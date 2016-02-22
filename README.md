@@ -1,4 +1,4 @@
-# @uber/rch
+# react-vis
 
 ## Overview
 

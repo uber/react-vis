@@ -1,10 +1,9 @@
 {
-  "_warning_": "Don't change the line below!",
-  "private": true,
-  "name": "@uber/rch",
-  "description": "Data visualization library based on React and d3.",
-  "version": "0.5.0",
+  "name": "react-vis",
+  "version": "0.0.0",
+  "license": "MIT",
   "author": "Anton Bulyenov <antonb@uber.com>",
+  "description": "Data visualization library based on React and d3.",
   "keywords": [
     "d3",
     "react",
@@ -15,13 +14,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "gitolite@code.uber.internal:vis/rch.git"
+    "url": "https://github.com/uber-common/react-vis.git"
   },
   "bugs": {
-    "url": "https://code.uberinternal.com/maniphest/task/create/",
+    "url": "https://github.com/uber-common/react-vis/issues/new",
     "email": "antonb@uber.com"
   },
-  "licenses": [],
   "main": "index.js",
   "dependencies": {
     "d3": "^3.5.6",
