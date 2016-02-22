@@ -1,13 +1,13 @@
 # XYPlot
 
-In react-vis you can make line charts, area charts, scatterplots, heat maps, etc with animations and different interactions between them.
+XYPlot allows you to make line charts, area charts, scatterplots, heat maps, etc with animations and different interactions between them.
 
-Currently following components to build charts are supported:
+Currently following components are used for this purpose:
 
 * [XYPlot](#xyplot) to wrap all the items.
 * [Grids](#grids) to show vertical and horizontal grids.
 * [Axes](#axes) to show X and Y axis.
-* [Different kinds of series](#series) for line/area/bar charts, scatterplots, heatmaps, etc.
+* [Different kinds of series](#series) for line/area/bar charts, scatterplots, heat maps, etc.
 * [Hints](#hints) to show the selected hints.
 * [Crosshair](#crosshair) for crosshairs.
 
@@ -47,10 +47,12 @@ XYPlot is a wrapper for series, hints, axes and other components. Most of these 
 * `x`
 * `y`
 * `opacity` (optional)
-* `color` (optional)
+* `fill` (optional)
+* `stroke` (optional)
+* `color` (optional, used instead of `fill` and `stroke` if none of them is passed)
 * `size` (optional)
 
-If the property is not passed in any of the objects, the property is not visualized. The user can override the way how properties are visualized by passing custom scales to the series (see [Series](#series) for more info).
+If the property is not passed in any of the objects, the property is not visualized. The user can override the way how properties are visualized by passing custom range, domain or type of scales to the series or the entire chart (please see [Series](#series) for more info).
 
 Not all properties can be visualized in each series. Here's a short comparison of them:
 
