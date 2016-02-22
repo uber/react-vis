@@ -1,0 +1,13 @@
+.rch-radial-chart {
+}
+
+.rch-radial-chart__svg {
+  display: block;
+}
+
+.rch-radial-chart__series--pie {
+  > path {
+    stroke: #fff;
+    stroke-width: 1px;
+  }
+}
