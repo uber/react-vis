@@ -55,7 +55,7 @@ If the property is not passed in any of the objects, the property is not visuali
 Not all properties can be visualized in each series. Here's a short comparison of them:
 
 |                  | `x` | `y` | `color` | `opacity` | `size` |
-|-------------------------------------------------------------|
+|------------------|-----|-----|---------|-----------|--------|
 | `LineSeries`     |  +  |  +  | +       |           |        |
 | `AreaSeries`     |  +  |  +  | +       |           |        |
 | `LinemarkSeries` |  +  |  +  | +       |     +     | +      |
