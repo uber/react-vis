@@ -1,0 +1,10 @@
+.rch-treemap {
+  font-family: $rch-font-family;
+  position: relative;
+}
+
+.rch-treemap__leaf {
+  position: absolute;
+  overflow: hidden;
+}
+

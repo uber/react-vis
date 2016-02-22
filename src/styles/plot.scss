@@ -1,0 +1,115 @@
+$rch-chart-axis-font-color: #c3c3c3;
+$rch-chart-axis-line-color: #c3c3c3;
+$rch-chart-axis-font-size: 12px;
+
+$rch-chart-tooltip-background: #222231;
+$rch-chart-tooltip-color: #D9D9DE;
+$rch-chart-tooltip-font-size: 12px;
+$rch-chart-tooltip-border-radius: 4px;
+
+.rch-chart {
+  color: #c3c3c3;
+  position: relative;
+  font-family: $rch-font-family;
+}
+
+.rch-chart__inner {
+  display: block;
+}
+
+.rch-chart__axis {
+
+  path {
+    stroke-width: 1px;
+    stroke: $rch-chart-axis-line-color;
+    fill: none;
+  }
+
+  .tick {
+    fill: $rch-chart-axis-font-color;
+    font-size: $rch-chart-axis-font-size;
+  }
+}
+
+.rch-chart__axis__ticks {
+  .tick {
+    stroke: $rch-chart-axis-line-color;
+  }
+}
+
+.rch-chart__axis__title {
+  text {
+    font-size: $rch-chart-axis-font-size;
+    fill: $rch-chart-axis-font-color;
+  }
+}
+
+.rch-chart__series--line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+.rch-crosshair {
+  position: absolute;
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.rch-crosshair__line {
+  background: $rch-chart-tooltip-background;
+  width: 1px;
+}
+
+.rch-crosshair__inner {
+  position: absolute;
+  text-align: left;
+  top: 0;
+}
+
+.rch-crosshair__inner__content {
+  background: $rch-chart-tooltip-background;
+  color: $rch-chart-tooltip-color;
+  font-size: $rch-chart-tooltip-font-size;
+  padding: 7px 9px;
+}
+
+.rch-crosshair__inner--left {
+  right: 0;
+  .rch-crosshair__inner__content {
+    border-top-left-radius: $rch-chart-tooltip-border-radius;
+    border-bottom-left-radius: $rch-chart-tooltip-border-radius;
+  }
+}
+
+.rch-crosshair__inner--right {
+  left: 0;
+  .rch-crosshair__inner__content {
+    border-top-right-radius: $rch-chart-tooltip-border-radius;
+    border-bottom-right-radius: $rch-chart-tooltip-border-radius;
+  }
+}
+
+.rch-crosshair__title {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.rch-crosshair__item {
+  white-space: nowrap;
+}
+
+.rch-hint {
+  position: absolute;
+  pointer-events: none;
+}
+
+.rch-hint__content {
+  border-radius: 4px;
+  padding: 7px 9px;
+  font-size: $rch-chart-tooltip-font-size;
+  background: $rch-chart-tooltip-background;
+  color: $rch-chart-tooltip-color;
+  text-align: left;
+  white-space: nowrap;
+}
