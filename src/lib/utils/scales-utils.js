@@ -152,6 +152,7 @@ function _getDomainByAttr(allData, attr, type) {
 /**
  * Create custom scale object from the value. When the scale is created from
  * this object, it should return the same value all time.
+ * @param {string} attr Attribute.
  * @param {*} value Value.
  * @returns {Object} Custom scale object.
  * @private
