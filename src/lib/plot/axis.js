@@ -27,6 +27,8 @@ import {getAttributeScale} from '../utils/scales-utils';
 
 import {AnimationPropType, applyTransition} from '../utils/animation-utils';
 
+import {DEFAULT_TICK_SIZE} from '../theme';
+
 /**
  * Get axis component for the chart/plot.
  * @param {string} displayName Display name for the component.
@@ -52,7 +54,14 @@ export default class Axis extends PureRenderComponent {
       labelValues: React.PropTypes.array,
       tickValues: React.PropTypes.array,
       ticksTotal: React.PropTypes.number,
+      tickSize: React.PropTypes.number,
       animation: AnimationPropType
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      tickSize: DEFAULT_TICK_SIZE
     };
   }
 
