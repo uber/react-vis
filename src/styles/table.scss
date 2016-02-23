@@ -1,13 +1,13 @@
-.rch-table {
+.rv-table {
   overflow: hidden;
 }
 
-.rch-table__header {
+.rv-table__header {
   position: relative;
   z-index: 100;
 }
 
-.rch-table__header__cell {
+.rv-table__header__cell {
   background: #fff;
   border: 1px solid #ccc;
   position: absolute;
@@ -15,28 +15,28 @@
   overflow: hidden;
 }
 
-.rch-table__header__cell__content {
+.rv-table__header__cell__content {
   margin: 0 4px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.rch-table__data {
+.rv-table__data {
   overflow: auto;
 }
 
-.rch-table__data-inner {
+.rv-table__data-inner {
   position: relative;
 }
 
-.rch-table__data__cell {
+.rv-table__data__cell {
   position: absolute;
   border: 1px solid #ccc;
   overflow: hidden;
 }
 
-.rch-table__data__cell__content {
+.rv-table__data__cell__content {
   margin: 0 4px;
   overflow: hidden;
   text-overflow: ellipsis;

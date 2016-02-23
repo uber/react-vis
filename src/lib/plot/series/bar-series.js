@@ -193,7 +193,7 @@ export default class BarSeries extends AbstractSeries {
     }
     return (
       <g
-        className="rch-chart__series rch-chart__series--bar"
+        className="rv-chart__series rv-chart__series--bar"
         ref="container"
         transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => <rect style={{opacity: 0}} key={i}/>)}

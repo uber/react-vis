@@ -29,7 +29,7 @@ import {
   OPACITY_RANGE} from '../theme';
 
 function _c(className) {
-  const prefix = 'rch-treemap';
+  const prefix = 'rv-treemap';
   if (!className) {
     return prefix;
   }

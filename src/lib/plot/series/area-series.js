@@ -116,7 +116,7 @@ export default class AreaSeries extends AbstractSeries {
       <path
         ref="line"
         style={{opacity: 0}}
-        className="rch-chart__series rch-chart__series--area"
+        className="rv-chart__series rv-chart__series--area"
         transform={`translate(${marginLeft},${marginTop})`}/>
     );
   }
