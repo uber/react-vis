@@ -34,6 +34,7 @@ Add the following code to your render function:
           color: 10
         }
       ]
+    }
   }
   />
 ```
