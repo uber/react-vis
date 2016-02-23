@@ -51,7 +51,7 @@ export default class YAxis extends PureRenderComponent {
     return (
       <Axis
         {...this.props}
-        className="rch-chart__axis--y"
+        className="rv-xy-plot__axis--y"
         titleStyle={{
           transform: 'translate(16px, 0) rotate(-90deg)',
           textAnchor: 'end'

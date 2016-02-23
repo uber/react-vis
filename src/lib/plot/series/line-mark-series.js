@@ -50,7 +50,7 @@ export default class LineMarkSeries extends AbstractSeries {
 
   render() {
     return (
-      <g className="rch-chart__series rch-chart__series--linemark">
+      <g className="rv-xy-plot__series rv-xy-plot__series--linemark">
         <LineSeries {...this.props} />
         <MarkSeries {...this.props} />
       </g>

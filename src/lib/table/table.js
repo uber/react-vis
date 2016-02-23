@@ -91,14 +91,14 @@ export default class Table extends React.Component {
     } else {
       cellContent = (
         <div
-          className="rch-table__header__cell__content">
+          className="rv-table__header__cell__content">
           {cell}
         </div>
       );
     }
     return (
       <div
-        className="rch-table__header__cell"
+        className="rv-table__header__cell"
         key={index}
         style={{
           top: 0,
@@ -124,7 +124,7 @@ export default class Table extends React.Component {
     }
     return (
       <div
-        className="rch-table__header"
+        className="rv-table__header"
         ref={HEADER_REF}
         style={{width: `${this._getDataBlockWidth()}px`}}>
         {header.map(this._renderHeaderCell)}
@@ -156,7 +156,7 @@ export default class Table extends React.Component {
       const isHtml = cell instanceof Object;
       return (
         <div
-          className="rch-table__data__cell"
+          className="rv-table__data__cell"
           key={cellIndex++}
           style={{
             top: `${rowIndex * cellHeight}px`,
@@ -168,7 +168,7 @@ export default class Table extends React.Component {
           {isHtml ?
             cell :
             <div
-              className="rch-table__data__cell__content">
+              className="rv-table__data__cell__content">
               {cell}
             </div>
           }
@@ -192,7 +192,7 @@ export default class Table extends React.Component {
 
     return (
       <div
-        className="rch-table__data"
+        className="rv-table__data"
         style={{
           height: `${outerHeight}px`,
           width: `${outerWidth}px`,
@@ -201,7 +201,7 @@ export default class Table extends React.Component {
         ref={DATA_REF}
         onScroll={this._updateHeaderPosition}>
         <div
-          className="rch-table__data-inner"
+          className="rv-table__data-inner"
           style={{
             height: `${innerHeight}px`,
             width: `${innerWidth}px`
@@ -216,7 +216,7 @@ export default class Table extends React.Component {
     const {height, width} = this.props;
     return (
       <div
-        className="rch-table"
+        className="rv-table"
         style={{
           height: `${height}px`,
           width: `${width}px`

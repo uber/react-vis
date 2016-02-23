@@ -227,13 +227,13 @@ export default class RadialChart extends React.Component {
           width: `${width}px`,
           height: `${height}px`
         }}
-        className="rch-radial-chart">
+        className="rv-radial-chart">
         <svg
           width={width}
           height={height}
-          className="rch-radial-chart__svg">
+          className="rv-radial-chart__svg">
           <g
-            className="rch-radial-chart__series--pie"
+            className="rv-radial-chart__series--pie"
             transform={`translate(${innerWidth / 2},${innerHeight / 2})`}
             ref="container">
             {data.map((d, i) => <path key={i}/>)}

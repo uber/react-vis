@@ -106,7 +106,7 @@ export default class MarkSeries extends AbstractSeries {
       return null;
     }
     return (
-      <g className="rch-chart__series rch-chart__series--mark"
+      <g className="rv-xy-plot__series rv-xy-plot__series--mark"
          ref="container"
          transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => <circle style={{opacity: 0}} key={i}/>)}

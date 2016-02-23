@@ -211,7 +211,7 @@ export default class XYPlot extends React.Component {
     if (!data || !data.length || ![].concat(...data).filter(d => d).length) {
       return (
         <div
-          className="rch-chart"
+          className="rv-xy-plot"
           style={{
             width: `${width}px`,
             height: `${height}px`
@@ -239,9 +239,9 @@ export default class XYPlot extends React.Component {
           width: `${width}px`,
           height: `${height}px`
         }}
-        className="rch-chart">
+        className="rv-xy-plot">
         <svg
-          className="rch-chart__inner"
+          className="rv-xy-plot__inner"
           width={width}
           height={height}
           onMouseMove={this._mouseMoveHandler}

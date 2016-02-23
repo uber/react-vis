@@ -99,7 +99,7 @@ export default class GridLines extends PureRenderComponent {
     return (
       <g
         transform={`translate(${marginLeft}, ${marginTop})`}
-        className="rch-chart__grid-lines">
+        className="rv-xy-plot__grid-lines">
           <g
             ref="container"
             transform={`translate(${left}, ${top})`}/>

@@ -115,7 +115,7 @@ export default class HeatmapSeries extends AbstractSeries {
     }
     return (
       <g
-        className="rch-chart__series rch-chart__series--heatmap"
+        className="rv-xy-plot__series rv-xy-plot__series--heatmap"
         ref="container"
         transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => <rect style={{opacity: 0}} key={i}/>)}
