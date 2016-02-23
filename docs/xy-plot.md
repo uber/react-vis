@@ -143,6 +143,11 @@ Label format for a chart.
 Type: `string | function | null`  
 Format function for a chart.
 
+#### tickSize (optional)
+Type: `number`  
+Default: `7`  
+Tick size.
+
 #### labelValues (optional)
 Type: `Array | null`  
 The list of values to be shown as labels.
