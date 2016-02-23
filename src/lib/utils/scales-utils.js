@@ -124,19 +124,6 @@ function _getScaleFnFromScaleObject(scaleObject) {
 }
 
 /**
- * Create a dummy scale that returns the same value.
- * @param {*} value Value.
- * @returns {function} D3 scale that returns the only value.
- * @private
- */
-function _getScaleFnFromValue(value) {
-  if (typeof value !== 'undefined') {
-    return d3.scale.linear().range([value, value]);
-  }
-  return null;
-}
-
-/**
  * Get the domain from the array of data.
  * @param {Array} allData All data.
  * @param {string} attr Property name.
@@ -163,6 +150,22 @@ function _getDomainByAttr(allData, attr, type) {
 }
 
 /**
+ * Create custom scale object from the value. When the scale is created from
+ * this object, it should return the same value all time.
+ * @param {*} value Value.
+ * @returns {Object} Custom scale object.
+ * @private
+ */
+function _createScaleObjectForValue(value) {
+  return {
+    type: 'linear',
+    range: [value, value],
+    domain: [],
+    distance: 0
+  };
+}
+
+/**
  * Get scale object from props. E. g. object like {xRange, xDomain, xDistance,
  * xType} is transformed into {range, domain, distance, type}.
  * @param {Object} props Props.
@@ -172,6 +175,10 @@ function _getDomainByAttr(allData, attr, type) {
  */
 function _collectScaleObjectFromProps(props, attr) {
   const {_allData: data = []} = props;
+  const value = props[attr];
+  if (typeof value !== 'undefined') {
+    return _createScaleObjectForValue(value);
+  }
   const filteredData = data.filter(d => d);
   const allData = [].concat(...filteredData);
   const range = props[`${attr}Range`];
@@ -252,10 +259,10 @@ function _isScaleAdjustmentPossible(props, scaleObject) {
 }
 
 /**
- * Retrieve a scale object from the properties passed.
+ * Retrieve a scale object or a value from the properties passed.
  * @param {Object} props Object of props.
  * @param {string} attr Attribute.
- * @returns {*} Scale object.
+ * @returns {*} Scale object, value or null.
  */
 export function getScaleObjectFromProps(props, attr) {
   // Create the initial scale object.
@@ -313,10 +320,7 @@ export function getScaleObjectFromProps(props, attr) {
  */
 export function getAttributeScale(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
-  if (typeof scaleObject === 'object') {
-    return _getScaleFnFromScaleObject(scaleObject);
-  }
-  return _getScaleFnFromValue(scaleObject);
+  return _getScaleFnFromScaleObject(scaleObject);
 }
 
 /**
@@ -329,11 +333,8 @@ export function getAttributeFunctor(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
   const fallbackValue = props[`_${attr}Value`];
   if (scaleObject) {
-    if (scaleObject instanceof Object) {
-      const scaleFn = _getScaleFnFromScaleObject(scaleObject);
-      return d => scaleFn(d.data ? d.data[attr] : d[attr], d);
-    }
-    return scaleObject;
+    const scaleFn = _getScaleFnFromScaleObject(scaleObject);
+    return d => scaleFn(d.data ? d.data[attr] : d[attr], d);
   }
   return fallbackValue;
 }
@@ -349,12 +350,9 @@ export function getAttributeValue(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
   const fallbackValue = props[`_${attr}Value`];
   if (scaleObject) {
-    if (scaleObject instanceof Object) {
-      warning(false, `Cannot use data defined ${attr} for this series` +
-        `type. Using fallback value "${fallbackValue}" instead.`);
-      return fallbackValue;
-    }
-    return scaleObject;
+    warning(false, `Cannot use data defined ${attr} for this series` +
+      `type. Using fallback value "${fallbackValue}" instead.`);
+    return fallbackValue;
   }
   return fallbackValue;
 }
@@ -375,38 +373,4 @@ export function getScalePropTypesByAttribute(attr) {
     ),
     [`${attr}Distance`]: React.PropTypes.number
   };
-}
-
-/**
- * Get the params for onNearesX.
- * TODO: return an object instad of array.
- * @param {Object} props Props.
- * @param {React.SyntheticEvent} event Mouse event.
- * @returns {Array} Array of parameters for onNearestX.
- */
-export function getOnNearestXParams(props, event) {
-  const {marginLeft = 0, onNearestX, data} = props;
-  if (!onNearestX || !data) {
-    return [];
-  }
-  let minDistance = Number.POSITIVE_INFINITY;
-  let value = null;
-
-  // TODO(antonb): WAT?
-  d3.event = event.nativeEvent;
-  const coordinate = d3.mouse(event.currentTarget)[0] - marginLeft;
-  const xScaleFn = getAttributeFunctor(props, 'x');
-
-  data.forEach(item => {
-    const currentCoordinate = xScaleFn(item);
-    const newDistance = Math.abs(coordinate - currentCoordinate);
-    if (newDistance < minDistance) {
-      minDistance = newDistance;
-      value = item;
-    }
-  });
-  if (!value) {
-    return [];
-  }
-  return [value, {innerX: xScaleFn(value), event}];
 }
