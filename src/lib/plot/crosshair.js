@@ -97,10 +97,10 @@ export default class Crosshair extends PureRenderComponent {
       return null;
     }
     return (
-      <div className="rch-crosshair__title" key="title">
-        <span className="rch-crosshair__title__title">{titleItem.title}</span>
+      <div className="rv-crosshair__title" key="title">
+        <span className="rv-crosshair__title__title">{titleItem.title}</span>
         {': '}
-        <span className="rch-crosshair__title__value">{titleItem.value}</span>
+        <span className="rv-crosshair__title__value">{titleItem.value}</span>
       </div>
     );
   }
@@ -118,10 +118,10 @@ export default class Crosshair extends PureRenderComponent {
     }
     return items.filter(i => i).map(function renderValue(item, i) {
       return (
-        <div className="rch-crosshair__item" key={`item${i}`}>
-          <span className="rch-crosshair__item__title">{item.title}</span>
+        <div className="rv-crosshair__item" key={`item${i}`}>
+          <span className="rv-crosshair__item__title">{item.title}</span>
           {': '}
-          <span className="rch-crosshair__item__value">{item.value}</span>
+          <span className="rv-crosshair__item__value">{item.value}</span>
         </div>
       );
     });
@@ -146,21 +146,21 @@ export default class Crosshair extends PureRenderComponent {
     const left = marginLeft + innerLeft;
     const top = marginTop;
     const innerClassName =
-      `rch-crosshair__inner rch-crosshair__inner--${orientation}`;
+      `rv-crosshair__inner rv-crosshair__inner--${orientation}`;
 
     return (
       <div
-        className="rch-crosshair"
+        className="rv-crosshair"
         style={{left: `${left}px`, top: `${top}px`}}>
 
         <div
-          className="rch-crosshair__line"
+          className="rv-crosshair__line"
           style={{height: `${innerHeight}px`}}/>
 
         <div className={innerClassName}>
           {children ?
             children :
-            <div className="rch-crosshair__inner__content">
+            <div className="rv-crosshair__inner__content">
               <div>
                 {this._renderCrosshairTitle()}
                 {this._renderCrosshairItems()}
