@@ -149,7 +149,7 @@ export default class BarSeries extends AbstractSeries {
     }
 
     const distance = this._getScaleDistance(linePosAttr);
-    const baseValue = data[0][valuePosAttr];
+    const [baseValue] = this._getScaleDomain(valuePosAttr);
     const lineFunctor = this._getAttributeFunctor(linePosAttr);
     const valueFunctor = this._getAttributeFunctor(valuePosAttr);
 

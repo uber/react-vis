@@ -92,6 +92,17 @@ export default class AbstractSeries extends PureRenderComponent {
   }
 
   /**
+   * Get scale domain for the given attribute.
+   * @param {string} attr Attribute.
+   * @returns {*} Domain or null if not defined.
+   * @protected
+   */
+  _getScaleDomain(attr) {
+    const scaleObject = getScaleObjectFromProps(this.props, attr);
+    return scaleObject ? scaleObject.domain : null;
+  }
+
+  /**
    * Apply transition to the elements and return the new elements instead.
    * @param {d3.selection} elements Elements.
    * @returns {d3.selection} Animated elements if animation is available.
