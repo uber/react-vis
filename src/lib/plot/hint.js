@@ -187,19 +187,19 @@ export default class Hint extends PureRenderComponent {
 
     return (
       <div
-        className="rch-hint"
+        className="rv-hint"
         style={{
           ... this._getPositionMixin(),
           position: 'absolute'
         }}>
         {children ?
           children :
-          <div className="rch-hint__content">
+          <div className="rv-hint__content">
             {format(value).map((formattedProp, i) =>
-              <div key={`rch-hint${i}`}>
-                <span className="rch-hint__title">{formattedProp.title}</span>
+              <div key={`rv-hint${i}`}>
+                <span className="rv-hint__title">{formattedProp.title}</span>
                 {': '}
-                <span className="rch-hint__value">{formattedProp.value}</span>
+                <span className="rv-hint__value">{formattedProp.value}</span>
               </div>
             )}
           </div>

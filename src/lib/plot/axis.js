@@ -135,18 +135,18 @@ export default class Axis extends PureRenderComponent {
     const {title, left, top} = this.props;
     const hasTitle = title && title !== '';
     return (
-      <g className="rch-chart__axis"
+      <g className="rv-xy-plot__axis"
          transform={`translate(${left},${top})`}
          ref="container">
         <g
           ref="labels"
-          className="rch-chart__axis__labels"/>
+          className="rv-xy-plot__axis__labels"/>
         <g
           ref="ticks"
-          className="rch-chart__axis__ticks"/>
+          className="rv-xy-plot__axis__ticks"/>
         {hasTitle ?
           <g
-            className="rch-chart__axis__title"
+            className="rv-xy-plot__axis__title"
             style={this.props.titleStyle}>
             <text>{title}</text>
           </g> :

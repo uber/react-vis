@@ -43,7 +43,7 @@ export default class XAxis extends PureRenderComponent {
     return (
       <Axis
         {... this.props}
-        className="rch-chart__axis--x"
+        className="rv-xy-plot__axis--x"
         orientation="bottom"
         titleStyle={{
           transform: `translate(${innerWidth}px, -5px)`,

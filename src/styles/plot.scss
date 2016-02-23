@@ -1,115 +1,115 @@
-$rch-chart-axis-font-color: #c3c3c3;
-$rch-chart-axis-line-color: #c3c3c3;
-$rch-chart-axis-font-size: 12px;
+$rv-xy-plot-axis-font-color: #c3c3c3;
+$rv-xy-plot-axis-line-color: #c3c3c3;
+$rv-xy-plot-axis-font-size: 12px;
 
-$rch-chart-tooltip-background: #222231;
-$rch-chart-tooltip-color: #D9D9DE;
-$rch-chart-tooltip-font-size: 12px;
-$rch-chart-tooltip-border-radius: 4px;
+$rv-xy-plot-tooltip-background: #222231;
+$rv-xy-plot-tooltip-color: #D9D9DE;
+$rv-xy-plot-tooltip-font-size: 12px;
+$rv-xy-plot-tooltip-border-radius: 4px;
 
-.rch-chart {
+.rv-xy-plot {
   color: #c3c3c3;
   position: relative;
-  font-family: $rch-font-family;
+  font-family: $rv-font-family;
 }
 
-.rch-chart__inner {
+.rv-xy-plot__inner {
   display: block;
 }
 
-.rch-chart__axis {
+.rv-xy-plot__axis {
 
   path {
     stroke-width: 1px;
-    stroke: $rch-chart-axis-line-color;
+    stroke: $rv-xy-plot-axis-line-color;
     fill: none;
   }
 
   .tick {
-    fill: $rch-chart-axis-font-color;
-    font-size: $rch-chart-axis-font-size;
+    fill: $rv-xy-plot-axis-font-color;
+    font-size: $rv-xy-plot-axis-font-size;
   }
 }
 
-.rch-chart__axis__ticks {
+.rv-xy-plot__axis__ticks {
   .tick {
-    stroke: $rch-chart-axis-line-color;
+    stroke: $rv-xy-plot-axis-line-color;
   }
 }
 
-.rch-chart__axis__title {
+.rv-xy-plot__axis__title {
   text {
-    font-size: $rch-chart-axis-font-size;
-    fill: $rch-chart-axis-font-color;
+    font-size: $rv-xy-plot-axis-font-size;
+    fill: $rv-xy-plot-axis-font-color;
   }
 }
 
-.rch-chart__series--line {
+.rv-xy-plot__series--line {
   fill: none;
   stroke: #000;
   stroke-width: 2px;
 }
 
-.rch-crosshair {
+.rv-crosshair {
   position: absolute;
   font-size: 11px;
   pointer-events: none;
 }
 
-.rch-crosshair__line {
-  background: $rch-chart-tooltip-background;
+.rv-crosshair__line {
+  background: $rv-xy-plot-tooltip-background;
   width: 1px;
 }
 
-.rch-crosshair__inner {
+.rv-crosshair__inner {
   position: absolute;
   text-align: left;
   top: 0;
 }
 
-.rch-crosshair__inner__content {
-  background: $rch-chart-tooltip-background;
-  color: $rch-chart-tooltip-color;
-  font-size: $rch-chart-tooltip-font-size;
+.rv-crosshair__inner__content {
+  background: $rv-xy-plot-tooltip-background;
+  color: $rv-xy-plot-tooltip-color;
+  font-size: $rv-xy-plot-tooltip-font-size;
   padding: 7px 9px;
 }
 
-.rch-crosshair__inner--left {
+.rv-crosshair__inner--left {
   right: 0;
-  .rch-crosshair__inner__content {
-    border-top-left-radius: $rch-chart-tooltip-border-radius;
-    border-bottom-left-radius: $rch-chart-tooltip-border-radius;
+  .rv-crosshair__inner__content {
+    border-top-left-radius: $rv-xy-plot-tooltip-border-radius;
+    border-bottom-left-radius: $rv-xy-plot-tooltip-border-radius;
   }
 }
 
-.rch-crosshair__inner--right {
+.rv-crosshair__inner--right {
   left: 0;
-  .rch-crosshair__inner__content {
-    border-top-right-radius: $rch-chart-tooltip-border-radius;
-    border-bottom-right-radius: $rch-chart-tooltip-border-radius;
+  .rv-crosshair__inner__content {
+    border-top-right-radius: $rv-xy-plot-tooltip-border-radius;
+    border-bottom-right-radius: $rv-xy-plot-tooltip-border-radius;
   }
 }
 
-.rch-crosshair__title {
+.rv-crosshair__title {
   font-weight: bold;
   white-space: nowrap;
 }
 
-.rch-crosshair__item {
+.rv-crosshair__item {
   white-space: nowrap;
 }
 
-.rch-hint {
+.rv-hint {
   position: absolute;
   pointer-events: none;
 }
 
-.rch-hint__content {
+.rv-hint__content {
   border-radius: 4px;
   padding: 7px 9px;
-  font-size: $rch-chart-tooltip-font-size;
-  background: $rch-chart-tooltip-background;
-  color: $rch-chart-tooltip-color;
+  font-size: $rv-xy-plot-tooltip-font-size;
+  background: $rv-xy-plot-tooltip-background;
+  color: $rv-xy-plot-tooltip-color;
   text-align: left;
   white-space: nowrap;
 }

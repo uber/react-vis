@@ -113,7 +113,7 @@ export default class LineSeries extends AbstractSeries {
     return (
       <path
         ref="line"
-        className="rch-chart__series rch-chart__series--line"
+        className="rv-xy-plot__series rv-xy-plot__series--line"
         transform={`translate(${marginLeft},${marginTop})`}
         style={{opacity: 0, strokeDasharray: STROKE_STYLES[strokeStyle]}}/>
     );
