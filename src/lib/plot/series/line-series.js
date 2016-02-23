@@ -76,13 +76,6 @@ export default class LineSeries extends AbstractSeries {
     }
   }
 
-  onParentMouseMove(event) {
-    const {onNearestX} = this.props;
-    if (onNearestX) {
-      onNearestX(...this._getOnNearestXParams(event));
-    }
-  }
-
   _updateSeries() {
     const lineElement = getDOMNode(this.refs.line);
     const {data} = this.props;

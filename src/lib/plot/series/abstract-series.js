@@ -19,12 +19,12 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import d3 from 'd3';
 
 import PureRenderComponent from '../../pure-render-component';
 import {
   getAttributeFunctor,
   getAttributeValue,
-  getOnNearestXParams,
   getScaleObjectFromProps,
   getScalePropTypesByAttribute} from '../../utils/scales-utils';
 
@@ -101,14 +101,31 @@ export default class AbstractSeries extends PureRenderComponent {
     return applyTransition(this.props, elements);
   }
 
-  /**
-   * Get the nearest value by the X coordinate.
-   * @param {React.SyntheticEvent} event Event.
-   * @returns {null|Object} Nearest value or null.
-   * @protected
-   */
-  _getOnNearestXParams(event) {
-    return getOnNearestXParams(this.props, event);
+  onParentMouseMove(event) {
+    const {marginLeft = 0, onNearestX, data} = this.props;
+    if (!onNearestX || !data) {
+      return;
+    }
+    let minDistance = Number.POSITIVE_INFINITY;
+    let value = null;
+
+    // TODO(antonb): WAT?
+    d3.event = event.nativeEvent;
+    const coordinate = d3.mouse(event.currentTarget)[0] - marginLeft;
+    const xScaleFn = this._getAttributeFunctor('x');
+
+    data.forEach(item => {
+      const currentCoordinate = xScaleFn(item);
+      const newDistance = Math.abs(coordinate - currentCoordinate);
+      if (newDistance < minDistance) {
+        minDistance = newDistance;
+        value = item;
+      }
+    });
+    if (!value) {
+      return;
+    }
+    onNearestX(value, {innerX: xScaleFn(value), event});
   }
 
 }

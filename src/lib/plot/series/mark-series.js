@@ -70,13 +70,6 @@ export default class MarkSeries extends AbstractSeries {
     }
   }
 
-  onParentMouseMove(event) {
-    const {onNearestX} = this.props;
-    if (onNearestX) {
-      onNearestX(...this._getOnNearestXParams(event));
-    }
-  }
-
   _updateSeries() {
     const container = getDOMNode(this.refs.container);
     const {data} = this.props;

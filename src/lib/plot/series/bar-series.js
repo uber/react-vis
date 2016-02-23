@@ -100,13 +100,6 @@ export default class BarSeries extends AbstractSeries {
     }
   }
 
-  onParentMouseMove(event) {
-    const {onNearestX} = this.props;
-    if (onNearestX) {
-      onNearestX(...this._getOnNearestXParams(event));
-    }
-  }
-
   /**
    * Get necessary variables to get orientation from.
    * @returns {Object} Config.
