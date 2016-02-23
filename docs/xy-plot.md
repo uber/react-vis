@@ -16,7 +16,7 @@ Currently following components are used for this purpose:
 Import the necessary components from the library&hellip;
 
 ```jsx
-import {XYPlot, XAxis, YAxis, Grid, LineSeries} from 'react-vis';
+import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
 ```
 
 &hellip; and add the following code to your `render` function:
@@ -25,7 +25,7 @@ import {XYPlot, XAxis, YAxis, Grid, LineSeries} from 'react-vis';
 <XYPlot
   width={300}
   height={300}>
-  <Grid />
+  <HorizontalGridLines />
   <LineSeries
     color="red"
     data={[
@@ -69,59 +69,59 @@ Not all properties can be visualized in each series. Here's a short comparison o
 
 ### XYPlot
 
-`XYPlot` is a component that wraps series, axis and grids, hints, etc and seamlessly provides necessary dimensions, sizes and scales into its children.
+`XYPlot` is a component that wraps series, axis and grids, hints, etc and seamlessly provides necessary dimensions, sizes and scales into its children.  
 `XYPlot` may or may not contain axes, grids, hints, crosshairs or series.
 
 #### width
-Type: `number`
+Type: `number`  
 Width of the chart. The height should be passed.
 
 #### height
-Type: `number`
+Type: `number`  
 Height of the component. The height should be passed.
 
 #### margin (optional)
-Type: `Object`
+Type: `Object`  
 Default: `{left: 40, right: 40, top: 10, bottom: 10}`
 Margin around the chart.
 
 #### onMouseLeave (optional)
-Type: `function()`
+Type: `function()`  
 The function that is triggered each time the mouse leaves the component.
 
 #### onMouseMove (optional)
-Type: `function()`
+Type: `function()`  
 The function that is triggered each time mouse moves over at the component.
 
 #### onMouseEnter (optional)
-Type: `function()`
+Type: `function()`  
 The function that is triggered each time the mouse enters the component.
 
 #### animation (optional)
 Type: `{duration: number}|boolean`
-Default: `false`
-Animation config, which is automatically passed to all children, but can be overrided for the each child.
-If `false` is passed, then the child components *will not be* animated.
-If `true` is passed then the child components *will be* animated with the default settings.
+Default: `false`  
+Animation config, which is automatically passed to all children, but can be overrided for the each child.  
+If `false` is passed, then the child components *will not be* animated.  
+If `true` is passed then the child components *will be* animated with the default settings.  
 If an object is passed, then the child components *will be* animated with the given settings.
 
 ### Grids
 
-`VerticalGrid` and `HorizontalGrid` show a grid inside the chart. Here is a short example:
+`VerticalGridLines` and `HorizontalGridLines` show a grid inside the chart. Here is a short example:
 
 ```jsx
 <XYPlot
   width={300}
   height={300}>
-  <VerticalGrid />
-  <HorizontalGrid />
+  <VerticalGridLines />
+  <HorizontalGridLines />
 </XYPlot>
 ```
 
 Currently both components have following properties:
 
 #### values (optional)
-Type: `Array(<string|number>)`
+Type: `Array(<string|number>)`  
 Array of y (for `HorizontalGrid`) or x (for `VerticalGrid`) values to show the gridlines at.
 
 #### animation (optional)
@@ -132,23 +132,23 @@ See the [XYPlot](#api-reference)'s `animation` section for more information.
 `XAxis` and `YAxis` shows are responsible for the axis in the chart. Both of them have following properties:
 
 #### title (optional)
-Type: `string`
+Type: `string`  
 Shows the title for the axis.
 
 #### labelFormat (optional)
-Type: `string | function | null`
+Type: `string | function | null`  
 Label format for a chart.
 
 #### tickFormat (optional)
-Type: `string | function | null`
+Type: `string | function | null`  
 Format function for a chart.
 
 #### labelValues (optional)
-Type: `Array | null`
+Type: `Array | null`  
 The list of values to be shown as labels.
 
 #### tickValues (optional)
-Type: `Array | null`
+Type: `Array | null`  
 The list of values to be shown as ticks.
 
 #### animation (optional)
@@ -173,11 +173,11 @@ Type: `Array<Object>`
 Array of data for the series.
 
 #### x
-Type: `number|Object`
+Type: `number|Object`  
 Exact X position of all series points in pixels or a series object.
 
-#### y (optional)
-Type: `number|Object`
+#### y (optional)  
+Type: `number|Object`  
 Exact Y position of all series points in pixels or a series object.
 
 #### color (optional)
@@ -185,35 +185,35 @@ Type: `string|Object`
 Exact color for all series points or a series object.
 
 #### size (optional)
-Type: `number|Object`
+Type: `number|Object`  
 Exact size for all series points in pixels or a series object.
 
 #### opacity (optional)
-Type: `number|Object`
+Type: `number|Object`  
 Exact opacity for all series points in pixels or a series object.
 
 #### onNearestX (optional)
-Type: `function(value, info)`
+Type: `function(value, info)`  
 A callback function which is triggered each time when the mouse pointer gets close to some X value.
 Callback is triggered with two arguments. `value` is the data point, `info` consists of `innerX` (the left position of the value) and `event` (the React event).
 
 #### onValueMouseOver (optional)
-Type: `function`
+Type: `function`  
 _add more here_
 
 #### onValueMouseOut (optional)
-Type: `function`
+Type: `function`  
 _add more here_
 
 #### onSeriesMouseOver (optional)
-Type: `function`
+Type: `function`  
 _add more here_
 
 #### onSeriesMouseOut (optional)
-Type: `function`
+Type: `function`  
 _add more here_
 
-#### animation (optional)
+#### animation (optional)  
 See the [XYPlot](#api-reference)'s `animation` section for more information.
 
 
@@ -232,17 +232,17 @@ In case if custom representation of is needed, the component is also able to wra
 ```
 
 #### value
-Type: `Object`
+Type: `Object`  
 The data point to show the value at. Hint component will automatically find the place where the data point is and put the hint there.
 
 #### format (optional)
-Type: `function`
-Format function for a tooltip. Receives the data point, should return an array of objects containing `title` and `value` properties. Each item of an array is shown on a separate line by default.
-Note: please pass custom contents in case if you need different look for the hint.
+Type: `function`  
+Format function for a tooltip. Receives the data point, should return an array of objects containing `title` and `value` properties. Each item of an array is shown on a separate line by default.  
+_Note: please pass custom contents in case if you need different look for the hint._
 
 #### orientation (optional)
-Type: `(auto|topleft|topright|bottomleft|bottomright)`
-Default: `auto`
+Type: `(auto|topleft|topright|bottomleft|bottomright)`  
+Default: `auto`  
 The way to align the hint inside the chart. When `auto` is set the hint is trying to stay inside the bounding box of the chart.
 Set the hint to `topleft` if you want to see a "conventional" hint alignment.
 
@@ -262,15 +262,15 @@ In case if custom representation of crosshair is needed, the component is able t
 ```
 
 #### values
-Type: `Array<Object>`
+Type: `Array<Object>`  
 The array of data points to show the crosshair at. Crosshair will automatically align to the horizontal position of the points passed there.
 
 #### formatTitle (optional)
-Type: `function`
-The function that formats the title for the crosshair. Receives the list of data points, should return an object containing `title` and `value` properties.
-Note: please pass custom contents in case if you need different look for the crosshair.
+Type: `function`  
+The function that formats the title for the crosshair. Receives the list of data points, should return an object containing `title` and `value` properties.  
+_Note: please pass custom contents in case if you need different look for the crosshair._
 
 #### formatItems (optional)
-Type: `function`
+Type: `function`  
 The function that formats the list of items for the crosshair. Receives the list of data points, should return an array of objects containing `title` and `value` properties.
 Note: please pass custom contents in case if you need different look for the crosshair.

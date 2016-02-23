@@ -2,22 +2,56 @@
 
 ## Overview
 
-A collection of react components to render common data visualization charts, such as **Line charts**, **Tables** and **TreeMaps**.
+A collection of react components to render common data visualization charts, such as **line/area/bar charts**, **heat maps**, **scatteplots**, **pie and donut charts**, **tables** with fixed headers and **tree maps**.
 
 Some notable features:
 
-- Provides a set of basic building blocks for charts, such as separate X and Y axis components. This provides a high level of control of chart layout for applications that need it.
-- Provides a set of defaults which can be overriden by the custom user's settings.
+- Simplicity. `react-vis` doesn't require any deep knowledge of data visualization libraries to start building your first visualizations.
+- Flexibility. `react-vis` provides a set of basic building blocks for different charts. For instance, separate X and Y axis components. This provides a high level of control of chart layout for applications that need it.
+- Ease of use. The library provides a set of defaults which can be overriden by the custom user's settings.
+- Integration with React. `react-vis` supports the React's lifecycle and doesn't create unnecessary nodes.
 
-**Note:** While the D3 charting library is currently used quite heavily under the hood, this module's API doesn't require the app to know anything about D3.
+## Usage
 
+Install react-vis via npm.
 
-## Reference
+```shell
+npm install react-vis
+```
 
-* [Common Principles](docs/common-principles.md)
-* [XYPlot](docs/xy-plot.md)
-* [Table](docs/table.md)
-* [Treemap](docs/treemap.md)
+Import the necessary components from the library&hellip;
+
+```jsx
+import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
+```
+
+&hellip; and add the following code to your `render` function:
+
+```jsx
+<XYPlot
+  width={300}
+  height={300}>
+  <HorizontalGridLines />
+  <LineSeries
+    data={[
+      {x: 1, y: 10},
+      {x: 2, y: 5},
+      {x: 3, y: 15}
+    ]}/>
+  <XAxis />
+  <YAxis />
+</XYPlot>
+```
+
+## More information
+
+Take a look at the [folder with examples](src/example) or check out some docs here:
+
+* [Common Principles](docs/common-principles.md) which tell you about the core concepts of the library.
+* [XYPlot](docs/xy-plot.md) about orthogonal charts.
+* [RadialChart](docs/radial-chart.md) about radial charts.
+* [Table](docs/table.md) about table.
+* [Treemap](docs/treemap.md) about making tree maps.
 
 ## Development
 
@@ -27,14 +61,9 @@ To develop on this component, install the dependencies and then build and watch 
 npm install && npm run watch
 ```
 
-Once complete, you can view the component's example in your browser at [localhost:3000](http://localhost:3000). Any changes you make to the example code will automatically run the compiler to build the files again.
+Once complete, you can view the component's example in your browser (will open automatically). Any changes you make to the example code will run the compiler to build the files again.
 
 To lint your code, run the tests, and create code coverage reports:
 ```
 npm test
-```
-
-You can view the code coverage reports with:
-```
-npm run view-cover
 ```

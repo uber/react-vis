@@ -28,23 +28,23 @@ The scale parameters propagate from the parent to the child. For instance, scale
 
 All scale properties are prepended with the name of the attribute, for instance `xDomain` where `x` is an attribute and `Domain` indicates a domain.
 
-* `[name]Domain` (optional)
-  Type: `Array`
+* `[name]Domain` (optional)  
+  Type: `Array`  
   Array of values to visualize from. If domain is not passed, it will be calculated from the values which are passed to component.
-* `[name]Range` (optional)
-  Type: `Array`
+* `[name]Range` (optional)  
+  Type: `Array`  
   Array of real-world values to visualize to. If range is not passed, the defaults (depend on visualization type) will be applied.
-* `[name]Type` (optional)
-  Type: `('log'|'linear'|'ordinal'|'time'\'category')`
-  Default: `'linear'`
+* `[name]Type` (optional)  
+  Type: `('log'|'linear'|'ordinal'|'time'\'category')`  
+  Default: `'linear'`  
   Type of the scale. Each scale type can be one of following values:
-    * `'linear'`
+    * `'linear'`  
     Continuous scale, that works with numbers. Similar to [d3.scale.linear](https://github.com/mbostock/d3/wiki/Quantitative-Scales#linear-scales).
-    * `'ordinal'`
+    * `'ordinal'`  
     Ordinal scale, works with numbers and strings. Similar to [d3.scale.ordinal](https://github.com/mbostock/d3/wiki/Ordinal-Scales).
-    * `'category'`
+    * `'category'`  
     Categorical scale, each new value gets the next value from the range. Similar to d3.scale.category\[Number\], but works with other values besides colors.
-    * `'time'`
+    * `'time'`  
     Time scale. Similar to [d3.time.scale](https://github.com/mbostock/d3/wiki/Time-Scales).
-    * `'log'`
+    * `'log'`  
     Log scale. Similar to [d3.scale.log](https://github.com/mbostock/d3/wiki/Quantitative-Scales#log).
