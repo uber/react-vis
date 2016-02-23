@@ -41,13 +41,6 @@ export default class LineMarkSeries extends AbstractSeries {
     return false;
   }
 
-  onParentMouseMove(event) {
-    const {onNearestX} = this.props;
-    if (onNearestX) {
-      onNearestX(...this._getOnNearestXParams(event));
-    }
-  }
-
   render() {
     return (
       <g className="rv-xy-plot__series rv-xy-plot__series--linemark">
