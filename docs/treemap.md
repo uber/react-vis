@@ -8,7 +8,7 @@ Note: currently only one-level treemaps are supported. No formatters and event h
 
 Import the `treemap` component:
 ```jsx
-import Table from 'react-vis/treemap';
+import {Treemap} from 'react-vis';
 ```
 
 Add the following code to your render function:
@@ -41,10 +41,10 @@ Add the following code to your render function:
 ## API Reference
 
 #### width
-Type: `number`   
+Type: `number`  
 Width of the component.
 
-#### height  
+#### height
 Type: `number`  
 Height of the component.
 
