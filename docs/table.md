@@ -28,18 +28,18 @@ Add following code to your render function:
 ### API Reference
 
 #### width
-Type: `number`
-Default: `null`
+Type: `number`  
+Default: `null`  
 Width of the table.
 
 #### height
-Type: `number`
+Type: `number`  
 Height of the component. The height should be passed.
 
 #### header
-Type: `Array`
+Type: `Array`  
 Array of titles for the table header.
 
 #### data
-Type: `Array`
+Type: `Array`  
 Array of rows. Each row is an array as well. Each value can be a primitive or a React component. In case if the component is passed no formatting is applied.

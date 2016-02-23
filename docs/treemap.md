@@ -41,43 +41,42 @@ Add the following code to your render function:
 ## API Reference
 
 #### width
-Type: `number`
-Default: `null`
+Type: `number`   
 Width of the component.
 
-#### height
-Type: `number`
+#### height  
+Type: `number`  
 Height of the component.
 
 #### padding
-Type: `number`
+Type: `number`  
 The padding between cells the cells of the heatmap in pixels.
 
 #### data
-Type: `Object`
-The data for the component. The `data` property is a tree-like structure.
+Type: `Object`  
+The data for the component. The `data` property is a tree-like structure.  
 Each point consists of following properties:
 
-* `title`
-  Type: `string`
+* `title`  
+  Type: `string`  
   The title to show inside the cell. Might be a string or a React component.
-* `size`
-  Type: `number`
+* `size`  
+  Type: `number`  
   The relative size of the cell.
-* `opacity` (optional)
-  Type: `number`
+* `opacity` (optional)  
+  Type: `number`  
   The value to visualize the opacity with.
-* `color` (optional)
-  Type: `number`
+* `color` (optional)  
+  Type: `number`  
   The value to visualize the color with.
-* `children` (optional)
-  Type: `Array`
+* `children` (optional)  
+  Type: `Array`  
   The children for the leaf.
 
 
 #### animation (optional)
-Type: `{duration: number}|boolean`
-Default: `false`
+Type: `{duration: number}|boolean`  
+Default: `false`  
 Animation config, which might have following values:
 
 - If `false` is passed, then the component *will not be* animated.
