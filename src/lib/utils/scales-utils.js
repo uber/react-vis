@@ -156,12 +156,34 @@ function _getDomainByAttr(allData, attr, type) {
  * @returns {Object} Custom scale object.
  * @private
  */
-function _createScaleObjectForValue(value) {
+function _createScaleObjectForValue(attr, value) {
   return {
     type: 'linear',
     range: [value, value],
     domain: [],
-    distance: 0
+    distance: 0,
+    isValue: true
+  };
+}
+
+/**
+ * Create a regular scale object for a further use from the existing parameters.
+ * @param {Array} domain Domain.
+ * @param {Array} range Range.
+ * @param {string} type Type.
+ * @param {number} distance Distance.
+ * @param {string} attr Attribute.
+ * @returns {Object} Scale object.
+ * @private
+ */
+function _createScaleObjectForFunction(domain, range, type, distance, attr) {
+  return {
+    domain,
+    range,
+    type,
+    distance,
+    attr,
+    isValue: false
   };
 }
 
@@ -177,7 +199,7 @@ function _collectScaleObjectFromProps(props, attr) {
   const {_allData: data = []} = props;
   const value = props[attr];
   if (typeof value !== 'undefined') {
-    return _createScaleObjectForValue(value);
+    return _createScaleObjectForValue(attr, value);
   }
   const filteredData = data.filter(d => d);
   const allData = [].concat(...filteredData);
@@ -192,8 +214,7 @@ function _collectScaleObjectFromProps(props, attr) {
       attr,
       type
     );
-  const scaleObject = {domain, distance, type, range, attr};
-  return scaleObject;
+  return _createScaleObjectForFunction(domain, range, type, distance, attr);
 }
 
 /**
@@ -350,9 +371,12 @@ export function getAttributeValue(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
   const fallbackValue = props[`_${attr}Value`];
   if (scaleObject) {
-    warning(false, `Cannot use data defined ${attr} for this series` +
-      `type. Using fallback value "${fallbackValue}" instead.`);
-    return fallbackValue;
+    if (!scaleObject.isValue) {
+      warning(false, `Cannot use data defined ${attr} for this series` +
+        `type. Using fallback value "${fallbackValue}" instead.`);
+      return fallbackValue;
+    }
+    return scaleObject.range[0];
   }
   return fallbackValue;
 }
