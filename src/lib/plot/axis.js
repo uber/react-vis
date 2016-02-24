@@ -86,6 +86,7 @@ export default class Axis extends PureRenderComponent {
       axis.tickFormat(labelFormat);
     }
     axis.tickSize(0, 0);
+    axis.outerTickSize(0);
     axis.tickPadding(14);
     return axis;
   }
@@ -97,14 +98,15 @@ export default class Axis extends PureRenderComponent {
    * @private
    */
   _setAxisTicks(axis) {
-    const {tickValues, ticksTotal} = this.props;
+    const {tickValues, ticksTotal, tickSize} = this.props;
     if (!tickValues) {
       axis.ticks(ticksTotal);
     } else {
       axis.tickValues(tickValues);
     }
     axis.tickFormat('');
-    axis.tickSize(7);
+    axis.tickSize(tickSize);
+    axis.outerTickSize(0);
     return axis;
   }
 
