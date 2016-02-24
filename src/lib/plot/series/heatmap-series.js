@@ -49,23 +49,22 @@ export default class HeatmapSeries extends AbstractSeries {
   }
 
   _mouseOver(d) {
-    const {seriesIndex, size, onValueMouseOver,
-      onSeriesMouseOver} = this.props;
+    const {onValueMouseOver, onSeriesMouseOver} = this.props;
     if (onValueMouseOver) {
-      onValueMouseOver(seriesIndex, d, size, size);
+      onValueMouseOver(d, {event: d3.event});
     }
     if (onSeriesMouseOver) {
-      onSeriesMouseOver(seriesIndex);
+      onSeriesMouseOver({event: d3.event});
     }
   }
 
   _mouseOut(d) {
-    const {seriesIndex, size, onValueMouseOut, onSeriesMouseOut} = this.props;
+    const {onValueMouseOut, onSeriesMouseOut} = this.props;
     if (onValueMouseOut) {
-      onValueMouseOut(seriesIndex, d, size, size);
+      onValueMouseOut(d, {event: d3.event});
     }
     if (onSeriesMouseOut) {
-      onSeriesMouseOut(seriesIndex);
+      onSeriesMouseOut({event: d3.event});
     }
   }
 

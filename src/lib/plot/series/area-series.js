@@ -51,22 +51,22 @@ export default class AreaSeries extends AbstractSeries {
   }
 
   _mouseOver(d) {
-    const {size, onValueMouseOver, onSeriesMouseOver} = this.props;
+    const {onValueMouseOver, onSeriesMouseOver} = this.props;
     if (onValueMouseOver) {
-      onValueMouseOver(d, size, size);
+      onValueMouseOver(d, {event: d3.event});
     }
     if (onSeriesMouseOver) {
-      onSeriesMouseOver();
+      onSeriesMouseOver({event: d3.event});
     }
   }
 
   _mouseOut(d) {
-    const {size, onValueMouseOut, onSeriesMouseOut} = this.props;
+    const {onValueMouseOut, onSeriesMouseOut} = this.props;
     if (onValueMouseOut) {
-      onValueMouseOut(d, size, size);
+      onValueMouseOut(d, {event: d3.event});
     }
     if (onSeriesMouseOut) {
-      onSeriesMouseOut();
+      onSeriesMouseOut({event: d3.event});
     }
   }
 
