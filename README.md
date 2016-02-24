@@ -45,13 +45,16 @@ import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
 
 ## More information
 
-Take a look at the [folder with examples](src/example) or check out some docs here:
+Take a look at the [folder with examples](src/example) or check out some docs:
 
-* [Common Principles](docs/common-principles.md) which tell you about the core concepts of the library.
-* [XYPlot](docs/xy-plot.md) about orthogonal charts.
-* [RadialChart](docs/radial-chart.md) about radial charts.
-* [Table](docs/table.md) about table.
-* [Treemap](docs/treemap.md) about making tree maps.
+- Common concepts:
+  * [Scales and Data](docs/scales-and-data.md) about how the attributes can be adjusted.
+  * [Animations](docs/animation.md) about how to tweak animations in the library.
+- Components:
+  * [XYPlot](docs/xy-plot.md) about orthogonal charts.
+  * [RadialChart](docs/radial-chart.md) about radial charts.
+  * [Table](docs/table.md) about table.
+  * [Treemap](docs/treemap.md) about making tree maps.
 
 ## Development
 
