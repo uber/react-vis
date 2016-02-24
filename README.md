@@ -1,4 +1,5 @@
 # react-vis
+![Demo of XYPlot](react-vis.gif?raw=true)
 
 ## Overview
 
