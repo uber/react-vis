@@ -72,6 +72,11 @@ export default class FixedTreemapVis extends React.Component {
     };
   }
 
+  constructor(props) {
+    super(props);
+    this._renderLeaf = this._renderLeaf.bind(this);
+  }
+
   /**
    * Walk through the tree and collect all values from the tree.
    * @param {Object} data Tree object.
@@ -170,49 +175,54 @@ export default class FixedTreemapVis extends React.Component {
     return nodes;
   }
 
-  render() {
-    const data = this.props.data;
-    const containerWidth = this.props.width;
-    const containerHeight = this.props.height;
-
-    const nodes = this._getNodesToRender();
+  _renderLeaf(node, i) {
+    if (!i) {
+      return null;
+    }
+    const {data} = this.props;
     const colorScale = this._getColorScaleFunction(data);
     const opacityScale = this._getOpacityScaleFunction(data);
+    // Don't draw the background for the first item: it's a container
+    // for the entire treemap.
+    const background = colorScale ? colorScale(node.color) : null;
+    const opacity = opacityScale ? opacityScale(node.opacity) : null;
+    let color = null;
+    if (background) {
+      color = d3.hsl(background).l > 0.57 ? '#222' : '#fff';
+    }
 
+    const width = Math.max(0, node.dx - 1);
+    const height = Math.max(0, node.dy - 1);
+    const style = getCSSAnimation(this.props, {
+      top: `${node.y}px`,
+      left: `${node.x}px`,
+      width: `${width}px`,
+      height: `${height}px`,
+      background,
+      opacity,
+      color
+    });
+    return (
+      <div
+        key={i}
+        className={_c('leaf')}
+        style={style}>
+        <div className="rv-treemap__leaf__content">{node.title}</div>
+      </div>
+    );
+  }
+
+  render() {
+    const {width, height} = this.props;
+    const nodes = this._getNodesToRender();
     return (
       <div
         className={_c()}
         style={{
-          width: `${containerWidth}px`,
-          height: `${containerHeight}px`
+          width: `${width}px`,
+          height: `${height}px`
         }}>
-        {nodes.map(
-          (node, i) => {
-            // Don't draw the background for the first item: it's a container
-            // for the entire treemap.
-            const background = (colorScale && i !== 0) ?
-              colorScale(node.color) : null;
-            const opacity = opacityScale ? opacityScale(node.opacity) : null;
-            const width = Math.max(0, node.dx - 1);
-            const height = Math.max(0, node.dy - 1);
-            const style = getCSSAnimation(this.props, {
-              top: `${node.y}px`,
-              left: `${node.x}px`,
-              width: `${width}px`,
-              height: `${height}px`,
-              background,
-              opacity
-            });
-            return (
-              <div
-                key={i}
-                className={_c('leaf')}
-                style={style}>
-                {node.title}
-              </div>
-            );
-          })
-        }
+        {nodes.map(this._renderLeaf)}
       </div>
     );
   }
