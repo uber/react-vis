@@ -66,14 +66,20 @@ export function applyTransition(props, elements) {
 export function getCSSAnimation(props, style) {
   let {animation} = props;
   let transition = 'none';
-  if (Boolean(animation)) {
+  if (animation) {
+    // Fallback to default animation if no animation is passed.
     if (!(animation instanceof Object)) {
       animation = DEFAULT_ANIMATION;
     }
     const keys = Object.keys(style);
-    const animationKeys = keys.map(
-      key => `${key} ${animation.duration / 1000}s`);
-    transition = animationKeys.join(',');
+    // Create a string of visualized parameters and filter out those, which
+    // don't have values.
+    const animationKeys = keys
+      .filter(key => Boolean(style[key]))
+      .map(key => `${key} ${animation.duration / 1000}s`);
+    if (animationKeys.length) {
+      transition = animationKeys.join(',');
+    }
   }
   return {
     transition,
