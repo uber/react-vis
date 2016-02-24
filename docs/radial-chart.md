@@ -72,5 +72,9 @@ Please refer to [Scales and Data](common-principles.md#scales-and-data) for more
 Scale properties for the `stroke` scale. If `stroke` property is not passed in the data object, stroke is _not_ visualized.  
 Please refer to [Scales and Data](common-principles.md#scales-and-data) for more information about scales.
 
+#### animation (optional)
+Type: `boolean|Object`
+Please refer to [Animation](./animation.md) doc for more information.
+
 ### Further work
 Currently no event handlers are provided for radial charts.

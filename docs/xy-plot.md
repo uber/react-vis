@@ -203,20 +203,22 @@ A callback function which is triggered each time when the mouse pointer gets clo
 Callback is triggered with two arguments. `value` is the data point, `info` consists of `innerX` (the left position of the value) and `event` (the React event).
 
 #### onValueMouseOver (optional)
-Type: `function`  
-_add more here_
+Type: `function(d, info)`  
+`mouseover` event handler for the elements corresponding separate data points `d` is a data point, `info` is an object with the only `event` property.  
+**NOTE**: This event handler is *not* triggered for AreaSeries and LineSeries.
 
 #### onValueMouseOut (optional)
-Type: `function`  
-_add more here_
+Type: `function(d, info)`  
+`mouseout` event handler for the elements corresponding separate data points. `d` is a data point, `info` is an object with the only `event` property.  
+**NOTE**: This event handler is *not* triggered for AreaSeries and LineSeries.
 
 #### onSeriesMouseOver (optional)
-Type: `function`  
-_add more here_
+Type: `function(info)`  
+`mouseover` event handler for the entire series. Received `info` object as argument with the only `event` property.
 
 #### onSeriesMouseOut (optional)
-Type: `function`  
-_add more here_
+Type: `function(info)`  
+`mouseout` event handler for the entire series. Received `info` object as argument with the only `event` property.
 
 #### animation (optional)  
 See the [XYPlot](#api-reference)'s `animation` section for more information.

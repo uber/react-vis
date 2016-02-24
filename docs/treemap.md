@@ -74,12 +74,6 @@ Each point consists of following properties:
   Type: `Array`  
   The children for the leaf.
 
-
 #### animation (optional)
-Type: `{duration: number}|boolean`  
-Default: `false`  
-Animation config, which might have following values:
-
-- If `false` is passed, then the component *will not be* animated.
-- If `true` is passed then the component *will be* animated with the default settings.
-- If an object is passed, then the component *will be* animated with the given settings.
+Type: `boolean|Object`
+Please refer to [Animation](./animation.md) doc for more information.
