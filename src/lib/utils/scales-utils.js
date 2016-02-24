@@ -219,6 +219,56 @@ function _collectScaleObjectFromProps(props, attr) {
 }
 
 /**
+ * Compute left domain adjustment for the given values.
+ * @param {Array} values Array of values.
+ * @returns {number} Domain adjustment.
+ * @private
+ */
+function _computeLeftDomainAdjustment(values) {
+  if (values.length > 1) {
+    return (values[1] - values[0]) / 2;
+  }
+  if (values.length === 1) {
+    return values[0] - 0.5;
+  }
+  return 0;
+}
+
+/**
+ * Compute right domain adjustment for the given values.
+ * @param {Array} values Array of values.
+ * @returns {number} Domain adjustment.
+ * @private
+ */
+function _computeRightDomainAdjustment(values) {
+  if (values.length > 1) {
+    return (values[values.length - 1] - values[values.length - 2]) / 2;
+  }
+  if (values.length === 1) {
+    return values[0] - 0.5;
+  }
+  return 0;
+}
+
+/**
+ * Compute distance for the given values.
+ * @param {Array} values Array of values.
+ * @param {number} index Index of a best distance found.
+ * @param {function} scaleFn Scale function.
+ * @returns {number} Domain adjustment.
+ * @private
+ */
+function _computeScaleDistance(values, domain, index, scaleFn) {
+  if (values.length > 1) {
+    return Math.abs(scaleFn(values[index]) - scaleFn(values[index - 1]));
+  }
+  if (values.length === 1) {
+    return Math.abs(scaleFn(domain[1]) - scaleFn(domain[0]));
+  }
+  return 0;
+}
+
+/**
  * Get the distance, the smallest and the largest value of the domain.
  * @param {Array} data Array of data for the single series.
  * @param {Object} scaleObject Scale object.
@@ -229,12 +279,11 @@ function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
   const {attr, domain} = scaleObject;
   const values = getUniquePropertyValues(data, attr);
   const index = _getSmallestDistanceIndex(values, scaleObject);
-  let distance = 0;
+
   const adjustedDomain = [].concat(domain);
 
-  adjustedDomain[0] -= (values[1] - values[0]) / 2;
-  adjustedDomain[adjustedDomain.length - 1] += (values[values.length - 1] -
-    values[values.length - 2]) / 2;
+  adjustedDomain[0] -= _computeLeftDomainAdjustment(values);
+  adjustedDomain[domain.length - 1] += _computeRightDomainAdjustment(values);
   // Fix log scale if it's too small.
   if (scaleObject.type === LOG_SCALE_TYPE && domain[0] <= 0) {
     adjustedDomain[0] = Math.min(domain[1] / 10, 1);
@@ -244,10 +293,9 @@ function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
     ...scaleObject,
     domain: adjustedDomain
   });
-  if (index) {
-    distance = Math.abs(adjustedScaleFn(values[index]) -
-      adjustedScaleFn(values[index - 1]));
-  }
+
+  const distance = _computeScaleDistance(
+    values, adjustedDomain, index, adjustedScaleFn);
 
   return {
     domain0: adjustedDomain[0],
@@ -260,7 +308,7 @@ function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
  * Returns true if scale adjustments are possible for a given scale.
  * @param {Object} props Props.
  * @param {Object} scaleObject Scale object.
-  * @returns {boolean} True if scale adjustments possible.
+ * @returns {boolean} True if scale adjustments possible.
  * @private
  */
 function _isScaleAdjustmentPossible(props, scaleObject) {
