@@ -77,7 +77,9 @@ export function getCSSAnimation(props, style) {
     const animationKeys = keys
       .filter(key => Boolean(style[key]))
       .map(key => `${key} ${animation.duration / 1000}s`);
-    transition = animationKeys.join(',');
+    if (animationKeys.length) {
+      transition = animationKeys.join(',');
+    }
   }
   return {
     transition,
