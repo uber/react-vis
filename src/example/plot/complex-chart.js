@@ -28,7 +28,6 @@ import {
   makeWidthFlexible,
   LineSeries,
   BarSeries,
-  MarkSeries,
   Crosshair} from '../../';
 
 const FlexibleXYPlot = makeWidthFlexible(XYPlot);
@@ -141,11 +140,6 @@ export default class Example extends React.Component {
           <LineSeries
             onNearestX={this._onNearestXs[1]}
             data={this.state.data[1]}/>
-          <MarkSeries
-            animation={false}
-            color="black"
-            size="4"
-            data={this.state.crosshairValues}/>
           <Crosshair
             itemsFormat={this._formatCrosshairItems}
             titleFormat={this._formatCrosshairTitle}
