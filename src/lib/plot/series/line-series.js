@@ -65,14 +65,14 @@ export default class LineSeries extends AbstractSeries {
   _mouseOver() {
     const {onSeriesMouseOver} = this.props;
     if (onSeriesMouseOver) {
-      onSeriesMouseOver();
+      onSeriesMouseOver({event: d3.event});
     }
   }
 
   _mouseOut() {
     const {onSeriesMouseOut} = this.props;
     if (onSeriesMouseOut) {
-      onSeriesMouseOut();
+      onSeriesMouseOut({event: d3.event});
     }
   }
 
