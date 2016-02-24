@@ -75,13 +75,12 @@ export default class BarSeries extends AbstractSeries {
    * @private
    */
   _mouseOver(d) {
-    const {seriesIndex, onValueMouseOver,
-      onSeriesMouseOver} = this.props;
+    const {onValueMouseOver, onSeriesMouseOver} = this.props;
     if (onValueMouseOver) {
-      onValueMouseOver(seriesIndex, d, 0, 0);
+      onValueMouseOver(d, {event: d3.event});
     }
     if (onSeriesMouseOver) {
-      onSeriesMouseOver(seriesIndex);
+      onSeriesMouseOver({event: d3.event});
     }
   }
 
@@ -91,12 +90,12 @@ export default class BarSeries extends AbstractSeries {
    * @private
    */
   _mouseOut(d) {
-    const {seriesIndex, onValueMouseOut, onSeriesMouseOut} = this.props;
+    const {onValueMouseOut, onSeriesMouseOut} = this.props;
     if (onValueMouseOut) {
-      onValueMouseOut(seriesIndex, d, 0, 0);
+      onValueMouseOut(d, {event: d3.event});
     }
     if (onSeriesMouseOut) {
-      onSeriesMouseOut(seriesIndex);
+      onSeriesMouseOut({event: d3.event});
     }
   }
 
