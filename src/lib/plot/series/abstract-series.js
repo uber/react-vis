@@ -136,7 +136,10 @@ export default class AbstractSeries extends PureRenderComponent {
     if (!value) {
       return;
     }
-    onNearestX(value, {innerX: xScaleFn(value), event});
+    onNearestX(value, {
+      innerX: xScaleFn(value),
+      event: event.nativeEvent
+    });
   }
 
 }

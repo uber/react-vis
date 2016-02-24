@@ -127,10 +127,10 @@ export default class XYPlot extends React.Component {
    * Trigger onMouseLeave handler if it was passed in props.
    * @private
    */
-  _mouseLeaveHandler() {
+  _mouseLeaveHandler(event) {
     const {onMouseLeave} = this.props;
     if (onMouseLeave) {
-      onMouseLeave();
+      onMouseLeave({event});
     }
   }
 
@@ -138,10 +138,10 @@ export default class XYPlot extends React.Component {
    * Trigger onMouseEnter handler if it was passed in props.
    * @private
    */
-  _mouseEnterHandler() {
+  _mouseEnterHandler(event) {
     const {onMouseEnter} = this.props;
     if (onMouseEnter) {
-      onMouseEnter();
+      onMouseEnter({event});
     }
   }
 
