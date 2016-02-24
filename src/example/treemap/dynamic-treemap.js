@@ -40,7 +40,7 @@ export default class DynamicTreemapExample extends React.Component {
   }
 
   _getRandomData() {
-    const totalLeaves = Math.random() * 100;
+    const totalLeaves = Math.random() * 20;
     const leaves = [];
     let title;
     for (let i = 0; i < totalLeaves; i++) {
@@ -53,14 +53,12 @@ export default class DynamicTreemapExample extends React.Component {
       leaves.push({
         title,
         size: Math.random() * 1000,
-        opacity: Math.random(),
         color: Math.random()
       });
     }
     return {
       title: '',
       color: 1,
-      opacity: 1,
       children: leaves
     };
   }
