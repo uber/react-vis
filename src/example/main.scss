@@ -100,22 +100,24 @@ article {
 }
 
 .custom-hint {
-  background: #fec;
+  background: #F9E7BB;
   border-radius: 3px;
-  border: 1px solid #fc3;
-  padding: 4px;
+  border: 1px solid #EDAF00;
+  padding: 10px;
   color: #333;
   font-size: 10px;
   position: relative;
+  margin: 12px 0 0 -10px;
   &:after {
     border-radius: 5px;
-    background: #f90;
+    border: 2px solid #EDAF00;
+    background: #fff;
     display: block;
     content: ' ';
-    height: 10px;
-    width: 10px;
-    top: -5px;
-    left: -5px;
+    height: 6px;
+    width: 6px;
+    top: -17px;
+    left: 5px;
     position: absolute;
   }
 }
