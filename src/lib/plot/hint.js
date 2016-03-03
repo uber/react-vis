@@ -54,8 +54,6 @@ export default class Hint extends PureRenderComponent {
       scales: React.PropTypes.object,
       value: React.PropTypes.object,
       format: React.PropTypes.func,
-      offsetTop: React.PropTypes.number,
-      offsetLeft: React.PropTypes.number,
       orientation: React.PropTypes.oneOf([
         ORIENTATION_AUTO,
         ORIENTATION_BOTTOMLEFT,
@@ -68,8 +66,6 @@ export default class Hint extends PureRenderComponent {
 
   static get defaultProps() {
     return {
-      offsetTop: 0,
-      offsetLeft: 0,
       format: defaultFormat,
       orientation: ORIENTATION_AUTO
     };
@@ -84,10 +80,9 @@ export default class Hint extends PureRenderComponent {
   _getCSSRight(x) {
     const {
       innerWidth,
-      marginRight,
-      offsetLeft} = this.props;
+      marginRight} = this.props;
     return {
-      right: `${marginRight + offsetLeft + innerWidth - x}px`
+      right: `${marginRight + innerWidth - x}px`
     };
   }
 
@@ -98,11 +93,9 @@ export default class Hint extends PureRenderComponent {
    * @private
    */
   _getCSSLeft(x) {
-    const {
-      marginLeft,
-      offsetLeft} = this.props;
+    const {marginLeft} = this.props;
     return {
-      left: `${marginLeft + offsetLeft + x}px`
+      left: `${marginLeft + x}px`
     };
   }
 
@@ -115,10 +108,9 @@ export default class Hint extends PureRenderComponent {
   _getCSSBottom(y) {
     const {
       innerHeight,
-      marginBottom,
-      offsetTop} = this.props;
+      marginBottom} = this.props;
     return {
-      bottom: `${marginBottom + offsetTop + innerHeight - y}px`
+      bottom: `${marginBottom + innerHeight - y}px`
     };
   }
 
@@ -129,11 +121,9 @@ export default class Hint extends PureRenderComponent {
    * @private
    */
   _getCSSTop(y) {
-    const {
-      marginTop,
-      offsetTop} = this.props;
+    const {marginTop} = this.props;
     return {
-      top: `${marginTop + offsetTop + y}px`
+      top: `${marginTop + y}px`
     };
   }
 
