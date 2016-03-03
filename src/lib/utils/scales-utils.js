@@ -163,6 +163,7 @@ function _createScaleObjectForValue(attr, value) {
     range: [value, value],
     domain: [],
     distance: 0,
+    attr,
     isValue: true
   };
 }
@@ -253,6 +254,7 @@ function _computeRightDomainAdjustment(values) {
 /**
  * Compute distance for the given values.
  * @param {Array} values Array of values.
+ * @param {Array} domain Domain.
  * @param {number} index Index of a best distance found.
  * @param {function} scaleFn Scale function.
  * @returns {number} Domain adjustment.
@@ -312,9 +314,7 @@ function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
  * @private
  */
 function _isScaleAdjustmentPossible(props, scaleObject) {
-  const {
-    type,
-    attr} = scaleObject;
+  const {attr} = scaleObject;
   const {
     _adjustBy: adjustBy = [],
     _adjustWhat: adjustWhat = []} = props;
@@ -323,31 +323,18 @@ function _isScaleAdjustmentPossible(props, scaleObject) {
   // suitable values
   return adjustWhat.length &&
     adjustBy.length &&
-    adjustBy.indexOf(attr) !== -1 &&
-    type !== ORDINAL_SCALE_TYPE &&
-    type !== CATEGORY_SCALE_TYPE;
+    adjustBy.indexOf(attr) !== -1;
 }
 
 /**
- * Retrieve a scale object or a value from the properties passed.
- * @param {Object} props Object of props.
- * @param {string} attr Attribute.
- * @returns {*} Scale object, value or null.
+ * Adjust continuous scales (e.g. 'linear', 'log' and 'time') by adding the
+ * space from the left and right of them and by computing the best distance.
+ * @param {Object} props Props.
+ * @param {Object} scaleObject Scale object.
+ * @returns {*} Scale object with adjustments.
+ * @private
  */
-export function getScaleObjectFromProps(props, attr) {
-  // Create the initial scale object.
-  const scaleObject = _collectScaleObjectFromProps(props, attr);
-
-  if (!scaleObject) {
-    return null;
-  }
-
-  // Make sure if it's possible to add space to the scale object. If not,
-  // return the object immediately.
-  if (!_isScaleAdjustmentPossible(props, scaleObject)) {
-    return scaleObject;
-  }
-
+function _adjustContinuousScale(props, scaleObject) {
   const {
     _allData: allSeriesData,
     _adjustWhat: adjustWhat = []} = props;
@@ -380,6 +367,49 @@ export function getScaleObjectFromProps(props, attr) {
   scaleObject.distance = scaleDistance;
 
   return scaleObject;
+}
+
+/**
+ * Get an adjusted scale. Suitable for 'category' and 'ordinal' scales.
+ * @param {Object} scaleObject Scale object.
+ * @returns {*} Scale object with adjustments.
+ * @private
+ */
+function _adjustCategoricalScale(scaleObject) {
+  const scaleFn = _getScaleFnFromScaleObject(scaleObject);
+  scaleObject.distance = scaleFn(scaleObject.domain[1]) -
+    scaleFn(scaleObject.domain[0]);
+  return scaleObject;
+}
+
+/**
+ * Retrieve a scale object or a value from the properties passed.
+ * @param {Object} props Object of props.
+ * @param {string} attr Attribute.
+ * @returns {*} Scale object, value or null.
+ */
+export function getScaleObjectFromProps(props, attr) {
+  // Create the initial scale object.
+  const scaleObject = _collectScaleObjectFromProps(props, attr);
+
+  if (!scaleObject) {
+    return null;
+  }
+
+  // Make sure if it's possible to add space to the scale object. If not,
+  // return the object immediately.
+  if (!_isScaleAdjustmentPossible(props, scaleObject)) {
+    return scaleObject;
+  }
+
+  const {type} = scaleObject;
+  // Depending on what type the scale is, apply different adjustments. Distances
+  // for the ordinal and category scales are even, equal domains cannot be
+  // adjusted.
+  if (type === ORDINAL_SCALE_TYPE || type === CATEGORY_SCALE_TYPE) {
+    return _adjustCategoricalScale(scaleObject);
+  }
+  return _adjustContinuousScale(props, scaleObject);
 }
 
 /**
