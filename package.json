@@ -52,13 +52,16 @@
     "react": ">=0.13.0"
   },
   "scripts": {
-    "build": "npm run build-js && npm run build-css",
     "build-js": "babel src -d dist --copy-files",
-    "build-js-debug": "npm run build-js -- --source-maps inline",
+    "build-js-example": "npm run build-js -- --source-maps inline",
     "build-docs": "browserify -t brfs ./dist/example/main.js > example.js",
     "build-css": "node-sass src/main.scss main.css",
     "build-css-example": "node-sass src/example/*.scss -o dist/example/",
-    "watch": "(npm run build-js-debug -- --watch) & (npm run build-css-example -- --watch) & (budo dist/example/main.js --live --css dist/example/main.css)",
+    "build-example": "npm run build-css-example && npm run build-js-example",
+    "watch-example": "(npm run build-css-example -- --watch) & (npm run build-js-example -- --watch) &",
+
+    "build": "npm run build-js && npm run build-css",
+    "watch": "npm run build-example && npm run watch-example && (budo dist/example/main.js --live --css dist/example/main.css)",
     "lint": "eslint src",
     "execute-tests": "run-browser-babel dist/test/index.js --phantom",
     "test": "npm run build-js && npm run execute-tests",
