@@ -1,6 +1,6 @@
 {
   "name": "react-vis",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "Anton Bulyenov <antonb@uber.com>",
   "description": "Data visualization library based on React and d3.",
@@ -59,7 +59,6 @@
     "build-css-example": "node-sass src/example/*.scss -o dist/example/",
     "build-example": "npm run build-css-example && npm run build-js-example",
     "watch-example": "(npm run build-css-example -- --watch) & (npm run build-js-example -- --watch) &",
-
     "build": "npm run build-js && npm run build-css",
     "watch": "npm run build-example && npm run watch-example && (budo dist/example/main.js --live --css dist/example/main.css)",
     "lint": "eslint src",
