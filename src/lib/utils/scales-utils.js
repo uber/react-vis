@@ -159,8 +159,8 @@ function _getDomainByAttr(allData, attr, type) {
  */
 function _createScaleObjectForValue(attr, value) {
   return {
-    type: 'linear',
-    range: [value, value],
+    type: 'category',
+    range: [value],
     domain: [],
     distance: 0,
     attr,
