@@ -32,8 +32,8 @@ export default class MarkSeries extends AbstractSeries {
     return 'MarkSeries';
   }
 
-  static isDomainAdjustmentNeeded() {
-    return false;
+  static getParentConfig() {
+    return {isDomainAdjustmentNeeded: false};
   }
 
   constructor(props) {

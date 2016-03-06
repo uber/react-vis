@@ -29,10 +29,6 @@ const HORIZONTAL_ORIENTATION = 'horizontal';
 
 export default class BarSeries extends AbstractSeries {
 
-  static get displayName() {
-    return 'BarSeries';
-  }
-
   static get propTypes() {
     return {
       ... AbstractSeries.propTypes,
@@ -48,11 +44,14 @@ export default class BarSeries extends AbstractSeries {
     };
   }
 
-  static isDomainAdjustmentNeeded(attr, props) {
+  static getParentConfig(attr, props) {
+    let isDomainAdjustmentNeeded;
     if (props.orientation === VERTICAL_ORIENTATION) {
-      return attr === 'x';
+      isDomainAdjustmentNeeded = attr === 'x';
+    } else {
+      isDomainAdjustmentNeeded = attr === 'y';
     }
-    return attr === 'y';
+    return {isDomainAdjustmentNeeded};
   }
 
   constructor(props) {

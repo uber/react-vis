@@ -32,8 +32,10 @@ export default class AreaSeries extends AbstractSeries {
     return 'AreaSeries';
   }
 
-  static isDomainAdjustmentNeeded() {
-    return false;
+  static getParentConfig() {
+    return {
+      isDomainAdjustmentNeeded: false
+    };
   }
 
   constructor(props) {

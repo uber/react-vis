@@ -44,8 +44,8 @@ export default class LineSeries extends AbstractSeries {
     };
   }
 
-  static isDomainAdjustmentNeeded() {
-    return false;
+  static getParentConfig() {
+    return {isDomainAdjustmentNeeded: false};
   }
 
   constructor(props) {

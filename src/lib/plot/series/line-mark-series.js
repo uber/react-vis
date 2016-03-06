@@ -33,11 +33,11 @@ export default class LineMarkSeries extends AbstractSeries {
     return LineSeries.defaultProps;
   }
 
-  static isDomainAdjustmentNeeded(attr) {
+  static getParentConfig(attr) {
     return false;
   }
 
-  isDomainAdjustmentNeeded() {
+  getParentConfig() {
     return false;
   }
 
