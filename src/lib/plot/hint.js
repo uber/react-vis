@@ -147,20 +147,20 @@ export default class Hint extends PureRenderComponent {
     let yCSS;
 
     if (orientation === ORIENTATION_AUTO) {
-      xCSS = (x > innerWidth / 2) ? this._getCSSRight(x) : this._getCSSLeft(x);
-      yCSS = (y > innerHeight / 2) ? this._getCSSBottom(y) : this._getCSSTop(y);
+      xCSS = (x > innerWidth / 2) ? this._getCSSLeft(x) : this._getCSSRight(x);
+      yCSS = (y > innerHeight / 2) ? this._getCSSTop(y) : this._getCSSBottom(y);
     } else {
       if (orientation === ORIENTATION_BOTTOMLEFT ||
         orientation === ORIENTATION_BOTTOMRIGHT) {
-        yCSS = this._getCSSBottom(y);
-      } else {
         yCSS = this._getCSSTop(y);
+      } else {
+        yCSS = this._getCSSBottom(y);
       }
       if (orientation === ORIENTATION_TOPLEFT ||
         orientation === ORIENTATION_BOTTOMLEFT) {
-        xCSS = this._getCSSLeft(x);
-      } else {
         xCSS = this._getCSSRight(x);
+      } else {
+        xCSS = this._getCSSLeft(x);
       }
     }
     return {
