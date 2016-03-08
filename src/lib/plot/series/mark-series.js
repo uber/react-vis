@@ -32,10 +32,6 @@ export default class MarkSeries extends AbstractSeries {
     return 'MarkSeries';
   }
 
-  static getParentConfig() {
-    return {isDomainAdjustmentNeeded: false};
-  }
-
   constructor(props) {
     super(props);
     this._mouseOver = this._mouseOver.bind(this);

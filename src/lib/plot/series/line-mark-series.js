@@ -33,14 +33,6 @@ export default class LineMarkSeries extends AbstractSeries {
     return LineSeries.defaultProps;
   }
 
-  static getParentConfig(attr) {
-    return false;
-  }
-
-  getParentConfig() {
-    return false;
-  }
-
   render() {
     return (
       <g className="rv-xy-plot__series rv-xy-plot__series--linemark">

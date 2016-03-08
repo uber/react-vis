@@ -51,15 +51,16 @@ export function isObjectPropertyInUse(arr, propertyName) {
 /**
  * Add zero to the domain.
  * @param {Array} arr Add zero to the domain.
+ * @param {Number} value Add zero to domain.
  * @returns {Array} Adjusted domain.
  */
-export function addZeroToArray(arr) {
+export function addValueToArray(arr, value) {
   const result = [].concat(arr);
-  if (result[0] > 0) {
-    result[0] = 0;
+  if (result[0] > value) {
+    result[0] = value;
   }
-  if (result[result.length - 1] < 0) {
-    result[result.length - 1] = 0;
+  if (result[result.length - 1] < value) {
+    result[result.length - 1] = value;
   }
   return result;
 }

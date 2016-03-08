@@ -32,12 +32,6 @@ export default class AreaSeries extends AbstractSeries {
     return 'AreaSeries';
   }
 
-  static getParentConfig() {
-    return {
-      isDomainAdjustmentNeeded: false
-    };
-  }
-
   constructor(props) {
     super(props);
     this._mouseOut = this._mouseOut.bind(this);
