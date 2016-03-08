@@ -60,6 +60,14 @@ export default class AbstractSeries extends PureRenderComponent {
   }
 
   /**
+   * Get a default config for the parent.
+   * @returns {Object} Empty config.
+   */
+  static getParentConfig() {
+    return {};
+  }
+
+  /**
    * Get attribute functor.
    * @param {string} attr Attribute name
    * @returns {*} Functor.
@@ -89,6 +97,11 @@ export default class AbstractSeries extends PureRenderComponent {
   _getScaleDistance(attr) {
     const scaleObject = getScaleObjectFromProps(this.props, attr);
     return scaleObject ? scaleObject.distance : 0;
+  }
+
+  _getScaleBaseValue(attr) {
+    const scaleObject = getScaleObjectFromProps(this.props, attr);
+    return scaleObject ? scaleObject.baseValue : 0;
   }
 
   /**

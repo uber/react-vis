@@ -27,7 +27,7 @@ import {
   HorizontalGridLines,
   makeWidthFlexible,
   LineSeries,
-  BarSeries,
+  VerticalBarSeries,
   Crosshair} from '../../';
 
 const FlexibleXYPlot = makeWidthFlexible(XYPlot);
@@ -134,7 +134,7 @@ export default class Example extends React.Component {
           <HorizontalGridLines />
           <YAxis />
           <XAxis />
-          <BarSeries
+          <VerticalBarSeries
             onNearestX={this._onNearestXs[0]}
             data={this.state.data[0]}/>
           <LineSeries

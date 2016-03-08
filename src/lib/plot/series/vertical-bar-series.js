@@ -21,25 +21,28 @@
 import React from 'react';
 
 import AbstractSeries from './abstract-series';
-import LineSeries from './line-series';
-import MarkSeries from './mark-series';
+import BarSeries from './bar-series';
 
-export default class LineMarkSeries extends AbstractSeries {
-  static get displayName() {
-    return 'LineMarkSeries';
-  }
+export default class VerticalBarSeries extends AbstractSeries {
 
-  static get defaultProps() {
-    return LineSeries.defaultProps;
+  static getParentConfig(attr) {
+    const isDomainAdjustmentNeeded = attr === 'x';
+    const zeroBaseValue = attr === 'y';
+    return {
+      isDomainAdjustmentNeeded,
+      zeroBaseValue
+    };
   }
 
   render() {
     return (
-      <g className="rv-xy-plot__series rv-xy-plot__series--linemark">
-        <LineSeries {...this.props} />
-        <MarkSeries {...this.props} />
-      </g>
+      <BarSeries
+        {...this.props}
+        linePosAttr="x"
+        valuePosAttr="y"
+        lineSizeAttr="width"
+        valueSizeAttr="height"
+      />
     );
   }
-
 }

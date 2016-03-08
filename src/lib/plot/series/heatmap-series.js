@@ -30,8 +30,9 @@ export default class HeatmapSeries extends AbstractSeries {
     return 'HeatmapSeries';
   }
 
-  static isDomainAdjustmentNeeded(attr) {
-    return attr === 'x' || attr === 'y';
+  static getParentConfig(attr) {
+    const isDomainAdjustmentNeeded = attr === 'x' || attr === 'y';
+    return {isDomainAdjustmentNeeded};
   }
 
   constructor(props) {

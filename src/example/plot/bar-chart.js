@@ -26,7 +26,7 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  BarSeries} from '../../';
+  VerticalBarSeries} from '../../';
 
 export default class Example extends React.Component {
   render() {
@@ -38,13 +38,13 @@ export default class Example extends React.Component {
         <HorizontalGridLines />
         <XAxis />
         <YAxis />
-        <BarSeries
+        <VerticalBarSeries
           data={[
             {x: 1, y: 10},
             {x: 2, y: 5},
             {x: 3, y: 15}
           ]}/>
-        <BarSeries
+        <VerticalBarSeries
           data={[
             {x: 1, y: 12},
             {x: 2, y: 2},

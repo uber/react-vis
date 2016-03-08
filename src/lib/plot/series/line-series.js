@@ -44,10 +44,6 @@ export default class LineSeries extends AbstractSeries {
     };
   }
 
-  static isDomainAdjustmentNeeded() {
-    return false;
-  }
-
   constructor(props) {
     super(props);
     this._mouseOver = this._mouseOver.bind(this);

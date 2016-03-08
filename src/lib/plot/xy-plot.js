@@ -183,6 +183,19 @@ export default class XYPlot extends React.Component {
       attrProps[key] = props[key];
     });
 
+    const zeroBaseProps = {};
+    ATTRIBUTES.forEach(attr => {
+      getSeriesChildren(props.children).forEach((child, index) => {
+        if (!child) {
+          return;
+        }
+        const {zeroBaseValue} = child.type.getParentConfig(attr, child.props);
+        if (zeroBaseValue) {
+          zeroBaseProps[`${attr}BaseValue`] = 0;
+        }
+      });
+    });
+
     const adjustBy = new Set();
     const adjustWhat = new Set();
     getSeriesChildren(props.children).forEach((child, index) => {
@@ -190,15 +203,25 @@ export default class XYPlot extends React.Component {
         return;
       }
       ATTRIBUTES.forEach(attr => {
-        if (child.type.isDomainAdjustmentNeeded(attr, child.props)) {
+        const {
+          isDomainAdjustmentNeeded,
+          zeroBaseValue} = child.type.getParentConfig(
+            attr,
+            child.props
+          );
+        if (isDomainAdjustmentNeeded) {
           adjustBy.add(attr);
           adjustWhat.add(index);
+        }
+        if (zeroBaseValue) {
+          zeroBaseProps[`${attr}BaseValue`] = 0;
         }
       });
     });
 
     return {
       ...defaults,
+      ...zeroBaseProps,
       ...attrProps,
       _allData: data,
       _adjustBy: Array.from(adjustBy),

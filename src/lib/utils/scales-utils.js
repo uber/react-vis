@@ -26,7 +26,7 @@ import {
   getObjectValueAccessor,
   getUniquePropertyValues,
   isObjectPropertyInUse,
-  addZeroToArray} from './data-utils';
+  addValueToArray} from './data-utils';
 
 /**
  * Linear scale name.
@@ -141,7 +141,7 @@ function _getDomainByAttr(allData, attr, type) {
     domain = d3.extent(allData, valueAccessor);
     // Include zero to the domain in case if it's not there.
     if (startFromZero) {
-      domain = addZeroToArray(domain);
+      domain = addValueToArray(domain);
     }
   } else {
     domain = d3.set(allData.map(valueAccessor)).values();
@@ -164,6 +164,7 @@ function _createScaleObjectForValue(attr, value) {
     domain: [],
     distance: 0,
     attr,
+    baseValue: 0,
     isValue: true
   };
 }
@@ -175,16 +176,19 @@ function _createScaleObjectForValue(attr, value) {
  * @param {string} type Type.
  * @param {number} distance Distance.
  * @param {string} attr Attribute.
+ * @param {number} baseValue Base value.
  * @returns {Object} Scale object.
  * @private
  */
-function _createScaleObjectForFunction(domain, range, type, distance, attr) {
+function _createScaleObjectForFunction(
+  domain, range, type, distance, attr, baseValue) {
   return {
     domain,
     range,
     type,
     distance,
     attr,
+    baseValue,
     isValue: false
   };
 }
@@ -198,25 +202,36 @@ function _createScaleObjectForFunction(domain, range, type, distance, attr) {
  * @private
  */
 function _collectScaleObjectFromProps(props, attr) {
-  const {_allData: data = []} = props;
-  const value = props[attr];
+  const {
+    _allData: data = [],
+    [attr]: value,
+    [`${attr}Domain`]: initialDomain,
+    [`${attr}Range`]: range,
+    [`${attr}Distance`]: distance = 0,
+    [`${attr}BaseValue`]: baseValue,
+    [`${attr}Type`]: type = LINEAR_SCALE_TYPE} = props;
+
   if (typeof value !== 'undefined') {
     return _createScaleObjectForValue(attr, value);
   }
   const filteredData = data.filter(d => d);
   const allData = [].concat(...filteredData);
-  const range = props[`${attr}Range`];
   if (!range || !allData.length || !isObjectPropertyInUse(allData, attr)) {
     return null;
   }
-  const distance = props[`${attr}Distance`] || 0;
-  const type = props[`${attr}Type`] || LINEAR_SCALE_TYPE;
-  const domain = props[`${attr}Domain`] || _getDomainByAttr(
-      allData,
-      attr,
-      type
-    );
-  return _createScaleObjectForFunction(domain, range, type, distance, attr);
+  let domain = initialDomain || _getDomainByAttr(allData, attr, type);
+  if (typeof baseValue !== 'undefined') {
+    domain = addValueToArray(domain, baseValue);
+  }
+
+  return _createScaleObjectForFunction(
+    domain,
+    range,
+    type,
+    distance,
+    attr,
+    baseValue || 0
+  );
 }
 
 /**
@@ -474,6 +489,7 @@ export function getScalePropTypesByAttribute(attr) {
     [`${attr}Type`]: React.PropTypes.oneOf(
       Object.keys(SCALE_FUNCTIONS)
     ),
-    [`${attr}Distance`]: React.PropTypes.number
+    [`${attr}Distance`]: React.PropTypes.number,
+    [`${attr}BaseValue`]: React.PropTypes.any
   };
 }
