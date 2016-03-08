@@ -243,3 +243,7 @@ export default class RadialChart extends React.Component {
     );
   }
 }
+
+RadialChart.displayName = 'RadialChart';
+
+export default RadialChart;

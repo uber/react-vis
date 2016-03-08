@@ -23,11 +23,7 @@ import React from 'react';
 import PureRenderComponent from '../pure-render-component';
 import Axis from './axis';
 
-export default class YAxis extends PureRenderComponent {
-
-  static get displayName() {
-    return 'YAXis';
-  }
+class YAxis extends PureRenderComponent {
 
   static get requiresSVG() {
     return true;
@@ -64,3 +60,7 @@ export default class YAxis extends PureRenderComponent {
     );
   }
 }
+
+YAxis.displayName = 'YAxis';
+
+export default YAxis;

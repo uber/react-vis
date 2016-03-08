@@ -25,11 +25,7 @@ import {getDOMNode} from '../utils/react-utils';
 const HEADER_REF = 'headerRef';
 const DATA_REF = 'dataRef';
 
-export default class Table extends React.Component {
-
-  static get displayName() {
-    return 'Table';
-  }
+class Table extends React.Component {
 
   static get propTypes() {
     return {
@@ -227,3 +223,7 @@ export default class Table extends React.Component {
     );
   }
 }
+
+Table.displayName = 'Table';
+
+export default Table;

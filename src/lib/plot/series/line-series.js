@@ -31,11 +31,7 @@ const STROKE_STYLES = {
   solid: null
 };
 
-export default class LineSeries extends AbstractSeries {
-
-  static get displayName() {
-    return 'LineSeries';
-  }
+class LineSeries extends AbstractSeries {
 
   static get defaultProps() {
     return {
@@ -108,3 +104,7 @@ export default class LineSeries extends AbstractSeries {
     );
   }
 }
+
+LineSeries.displayName = 'LineSeries';
+
+export default LineSeries;

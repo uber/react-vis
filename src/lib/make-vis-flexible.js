@@ -32,11 +32,7 @@ const CONTAINER_REF = 'container';
  */
 export default function makeVisFlexible(Component) {
 
-  return class extends React.Component {
-
-    static get displayName() {
-      return `Flexible${Component.displayName}`;
-    }
+  const ResultClass = class extends React.Component {
 
     static get propTypes() {
       const {width, ...otherPropTypes} = Component.propTypes;
@@ -100,4 +96,7 @@ export default function makeVisFlexible(Component) {
 
   };
 
+  ResultClass.displayName = `Flexible${Component.displayName}`;
+
+  return ResultClass;
 }

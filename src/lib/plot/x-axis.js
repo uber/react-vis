@@ -24,11 +24,7 @@ import PureRenderComponent from '../pure-render-component';
 import Axis from './axis';
 import {getTicksTotalFromSize} from '../utils/axis-utils';
 
-export default class XAxis extends PureRenderComponent {
-
-  static get displayName() {
-    return 'XAxis';
-  }
+class XAxis extends PureRenderComponent {
 
   static get requiresSVG() {
     return true;
@@ -56,3 +52,7 @@ export default class XAxis extends PureRenderComponent {
     );
   }
 }
+
+XAxis.displayName = 'XAxis';
+
+export default XAxis;

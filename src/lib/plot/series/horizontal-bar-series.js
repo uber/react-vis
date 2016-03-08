@@ -23,7 +23,7 @@ import React from 'react';
 import AbstractSeries from './abstract-series';
 import BarSeries from './bar-series';
 
-export default class HorizontalBarSeries extends AbstractSeries {
+class HorizontalBarSeries extends AbstractSeries {
 
   static getParentConfig(attr) {
     const isDomainAdjustmentNeeded = attr === 'y';
@@ -46,3 +46,7 @@ export default class HorizontalBarSeries extends AbstractSeries {
     );
   }
 }
+
+HorizontalBarSeries.displayName = 'HorizontalBarSeries';
+
+export default HorizontalBarSeries;

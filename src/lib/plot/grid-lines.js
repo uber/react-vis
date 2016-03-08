@@ -27,11 +27,7 @@ import {getAttributeScale} from '../utils/scales-utils';
 
 import {AnimationPropType, applyTransition} from '../utils/animation-utils';
 
-export default class GridLines extends PureRenderComponent {
-
-  static get displayName() {
-    return 'GridLines';
-  }
+class GridLines extends PureRenderComponent {
 
   static get propTypes() {
     return {
@@ -107,3 +103,7 @@ export default class GridLines extends PureRenderComponent {
     );
   }
 }
+
+GridLines.displayName = 'GridLines';
+
+export default GridLines;

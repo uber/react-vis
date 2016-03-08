@@ -24,10 +24,7 @@ import AbstractSeries from './abstract-series';
 import LineSeries from './line-series';
 import MarkSeries from './mark-series';
 
-export default class LineMarkSeries extends AbstractSeries {
-  static get displayName() {
-    return 'LineMarkSeries';
-  }
+class LineMarkSeries extends AbstractSeries {
 
   static get defaultProps() {
     return LineSeries.defaultProps;
@@ -41,5 +38,9 @@ export default class LineMarkSeries extends AbstractSeries {
       </g>
     );
   }
-
 }
+
+LineMarkSeries.displayName = 'LineMarkSeries';
+
+export default LineMarkSeries;
+
