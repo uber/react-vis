@@ -54,8 +54,6 @@ export default class Hint extends PureRenderComponent {
       scales: React.PropTypes.object,
       value: React.PropTypes.object,
       format: React.PropTypes.func,
-      offsetTop: React.PropTypes.number,
-      offsetLeft: React.PropTypes.number,
       orientation: React.PropTypes.oneOf([
         ORIENTATION_AUTO,
         ORIENTATION_BOTTOMLEFT,
@@ -68,8 +66,6 @@ export default class Hint extends PureRenderComponent {
 
   static get defaultProps() {
     return {
-      offsetTop: 0,
-      offsetLeft: 0,
       format: defaultFormat,
       orientation: ORIENTATION_AUTO
     };
@@ -84,10 +80,9 @@ export default class Hint extends PureRenderComponent {
   _getCSSRight(x) {
     const {
       innerWidth,
-      marginRight,
-      offsetLeft} = this.props;
+      marginRight} = this.props;
     return {
-      right: `${marginRight + offsetLeft + innerWidth - x}px`
+      right: `${marginRight + innerWidth - x}px`
     };
   }
 
@@ -98,11 +93,9 @@ export default class Hint extends PureRenderComponent {
    * @private
    */
   _getCSSLeft(x) {
-    const {
-      marginLeft,
-      offsetLeft} = this.props;
+    const {marginLeft} = this.props;
     return {
-      left: `${marginLeft + offsetLeft + x}px`
+      left: `${marginLeft + x}px`
     };
   }
 
@@ -115,10 +108,9 @@ export default class Hint extends PureRenderComponent {
   _getCSSBottom(y) {
     const {
       innerHeight,
-      marginBottom,
-      offsetTop} = this.props;
+      marginBottom} = this.props;
     return {
-      bottom: `${marginBottom + offsetTop + innerHeight - y}px`
+      bottom: `${marginBottom + innerHeight - y}px`
     };
   }
 
@@ -129,53 +121,98 @@ export default class Hint extends PureRenderComponent {
    * @private
    */
   _getCSSTop(y) {
-    const {
-      marginTop,
-      offsetTop} = this.props;
+    const {marginTop} = this.props;
     return {
-      top: `${marginTop + offsetTop + y}px`
+      top: `${marginTop + y}px`
     };
   }
 
   /**
+   * Convert the "automatic" orientation to the real one depending on the values
+   * of x and y.
+   * @param {number} x X value.
+   * @param {number} y Y value.
+   * @returns {string} Orientation.
+   * @private
+   */
+  _getOrientationFromAuto(x, y) {
+    const {
+      innerWidth,
+      innerHeight} = this.props;
+    if (x > innerWidth / 2) {
+      if (y > innerHeight / 2) {
+        return ORIENTATION_TOPLEFT;
+      }
+      return ORIENTATION_BOTTOMLEFT;
+    }
+    if (y > innerHeight / 2) {
+      return ORIENTATION_TOPRIGHT;
+    }
+    return ORIENTATION_BOTTOMRIGHT;
+  }
+
+  /**
    * Get a CSS mixin for a proper positioning of the element.
+   * @param {string} orientation Orientation.
+   * @param {number} x X position.
+   * @param {number} y Y position.
    * @returns {Object} Object, that may contain `left` or `right, `top` or
    * `bottom` properties.
    * @private
    */
-  _getPositionMixin() {
+  _getOrientationStyle(orientation, x, y) {
+    let xCSS;
+    let yCSS;
+
+    if (orientation === ORIENTATION_BOTTOMLEFT ||
+      orientation === ORIENTATION_BOTTOMRIGHT) {
+      yCSS = this._getCSSTop(y);
+    } else {
+      yCSS = this._getCSSBottom(y);
+    }
+    if (orientation === ORIENTATION_TOPLEFT ||
+      orientation === ORIENTATION_BOTTOMLEFT) {
+      xCSS = this._getCSSRight(x);
+    } else {
+      xCSS = this._getCSSLeft(x);
+    }
+
+    return {
+      ...xCSS,
+      ...yCSS
+    };
+  }
+
+  /**
+   * Get the class name from orientation value.
+   * @param {string} orientation Orientation.
+   * @returns {string} Class name.
+   * @private
+   */
+  _getOrientationClassName(orientation) {
+    return `rv-hint--orientation-${orientation}`;
+  }
+
+  /**
+   * Get the position for the hint and the appropriate class name.
+   * @returns {{style: Object, className: string}} Style and className for the
+   * hint.
+   * @private
+   */
+  _getPositionInfo() {
     const {
       value,
-      innerWidth,
-      innerHeight,
-      orientation} = this.props;
+      orientation: initialOrientation} = this.props;
 
     const x = getAttributeFunctor(this.props, 'x')(value);
     const y = getAttributeFunctor(this.props, 'y')(value);
 
-    let xCSS;
-    let yCSS;
+    const orientation = initialOrientation === ORIENTATION_AUTO ?
+      this._getOrientationFromAuto(x, y) : initialOrientation;
 
-    if (orientation === ORIENTATION_AUTO) {
-      xCSS = (x > innerWidth / 2) ? this._getCSSRight(x) : this._getCSSLeft(x);
-      yCSS = (y > innerHeight / 2) ? this._getCSSBottom(y) : this._getCSSTop(y);
-    } else {
-      if (orientation === ORIENTATION_BOTTOMLEFT ||
-        orientation === ORIENTATION_BOTTOMRIGHT) {
-        yCSS = this._getCSSBottom(y);
-      } else {
-        yCSS = this._getCSSTop(y);
-      }
-      if (orientation === ORIENTATION_TOPLEFT ||
-        orientation === ORIENTATION_BOTTOMLEFT) {
-        xCSS = this._getCSSLeft(x);
-      } else {
-        xCSS = this._getCSSRight(x);
-      }
-    }
     return {
-      ...xCSS,
-      ...yCSS
+      style: this._getOrientationStyle(orientation, x, y),
+      className: this._getOrientationClassName(orientation)
     };
   }
 
@@ -185,11 +222,12 @@ export default class Hint extends PureRenderComponent {
       format,
       children} = this.props;
 
+    const {style, className} = this._getPositionInfo();
     return (
       <div
-        className="rv-hint"
+        className={`rv-hint ${className}`}
         style={{
-          ... this._getPositionMixin(),
+          ... style,
           position: 'absolute'
         }}>
         {children ?

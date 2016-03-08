@@ -47,7 +47,7 @@ export default class Example extends React.Component {
             {x: 3, y: 15}
           ]}/>
         <Hint value={{x: 1, y: 10}}/>
-        <Hint value={{x: 0.4, y: 14}} orientation="topleft">
+        <Hint value={{x: 0.4, y: 14}} orientation="bottomright">
           <div className="custom-hint">
             This is a custom hint<br />
             for a non-existent value
