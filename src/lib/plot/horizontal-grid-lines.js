@@ -25,7 +25,7 @@ import GridLines from './grid-lines';
 import {getScalePropTypesByAttribute} from '../utils/scales-utils';
 import {getTicksTotalFromSize} from '../utils/axis-utils';
 
-export default class HorizontalGridLines extends PureRenderComponent {
+class HorizontalGridLines extends PureRenderComponent {
 
   static get propTypes() {
     return {
@@ -54,3 +54,7 @@ export default class HorizontalGridLines extends PureRenderComponent {
     );
   }
 }
+
+HorizontalGridLines.displayName = 'HorizontalGridLines';
+
+export default HorizontalGridLines;

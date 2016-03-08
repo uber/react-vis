@@ -40,10 +40,7 @@ function defaultFormat(value) {
   });
 }
 
-export default class Hint extends PureRenderComponent {
-  static get displayName() {
-    return 'Hint';
-  }
+class Hint extends PureRenderComponent {
 
   static get propTypes() {
     return {
@@ -246,3 +243,7 @@ export default class Hint extends PureRenderComponent {
     );
   }
 }
+
+Hint.displayName = 'Hint';
+
+export default Hint;

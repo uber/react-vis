@@ -45,11 +45,7 @@ const DEFAULT_SCALES = {
   }
 };
 
-export default class FixedTreemapVis extends React.Component {
-
-  static get displayName() {
-    return 'FixedTreemapVis';
-  }
+class Treemap extends React.Component {
 
   static get propTypes() {
     return {
@@ -228,3 +224,7 @@ export default class FixedTreemapVis extends React.Component {
   }
 
 }
+
+Treemap.displayName = 'Treemap';
+
+export default Treemap;

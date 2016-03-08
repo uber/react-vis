@@ -24,7 +24,7 @@ import d3 from 'd3';
 import AbstractSeries from './abstract-series';
 import {getDOMNode} from '../../utils/react-utils';
 
-export default class BarSeries extends AbstractSeries {
+class BarSeries extends AbstractSeries {
 
   static get propTypes() {
     return {
@@ -143,3 +143,7 @@ export default class BarSeries extends AbstractSeries {
     );
   }
 }
+
+BarSeries.displayName = 'BarSeries';
+
+export default BarSeries;

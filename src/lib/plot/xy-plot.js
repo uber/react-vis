@@ -46,11 +46,7 @@ const ATTRIBUTES = [
 
 import {AnimationPropType} from '../utils/animation-utils';
 
-export default class XYPlot extends React.Component {
-
-  static get displayName() {
-    return 'XYPlot';
-  }
+class XYPlot extends React.Component {
 
   static get propTypes() {
     return {
@@ -294,3 +290,7 @@ export default class XYPlot extends React.Component {
     );
   }
 }
+
+XYPlot.displayName = 'XYPlot';
+
+export default XYPlot;

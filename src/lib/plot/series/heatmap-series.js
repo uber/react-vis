@@ -24,11 +24,7 @@ import d3 from 'd3';
 import AbstractSeries from './abstract-series';
 import {getDOMNode} from '../../utils/react-utils';
 
-export default class HeatmapSeries extends AbstractSeries {
-
-  static get displayName() {
-    return 'HeatmapSeries';
-  }
+class HeatmapSeries extends AbstractSeries {
 
   static getParentConfig(attr) {
     const isDomainAdjustmentNeeded = attr === 'x' || attr === 'y';
@@ -115,5 +111,8 @@ export default class HeatmapSeries extends AbstractSeries {
       </g>
     );
   }
-
 }
+
+HeatmapSeries.displayName = 'HeatmapSeries';
+
+export default HeatmapSeries;

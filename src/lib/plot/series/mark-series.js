@@ -26,11 +26,7 @@ import {getDOMNode} from '../../utils/react-utils';
 
 import {DEFAULT_SIZE, DEFAULT_OPACITY} from '../../theme';
 
-export default class MarkSeries extends AbstractSeries {
-
-  static get displayName() {
-    return 'MarkSeries';
-  }
+class MarkSeries extends AbstractSeries {
 
   constructor(props) {
     super(props);
@@ -102,5 +98,9 @@ export default class MarkSeries extends AbstractSeries {
       </g>
     );
   }
-
 }
+
+MarkSeries.displayName = 'MarkSeries';
+
+export default MarkSeries;
+

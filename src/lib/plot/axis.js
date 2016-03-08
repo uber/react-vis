@@ -38,11 +38,7 @@ import {DEFAULT_TICK_SIZE} from '../theme';
  *   to calculate the number of ticks passed.
  * @returns {React.Component} Axis component.
  */
-export default class Axis extends PureRenderComponent {
-
-  static get displayName() {
-    return 'Axis';
-  }
+class Axis extends PureRenderComponent {
 
   static get propTypes() {
     return {
@@ -167,3 +163,7 @@ export default class Axis extends PureRenderComponent {
     );
   }
 }
+
+Axis.displayName = 'Axis';
+
+export default Axis;

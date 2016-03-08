@@ -26,11 +26,7 @@ import {getDOMNode} from '../../utils/react-utils';
 
 import {DEFAULT_OPACITY} from '../../theme';
 
-export default class AreaSeries extends AbstractSeries {
-
-  static get displayName() {
-    return 'AreaSeries';
-  }
+class AreaSeries extends AbstractSeries {
 
   constructor(props) {
     super(props);
@@ -111,3 +107,7 @@ export default class AreaSeries extends AbstractSeries {
   }
 
 }
+
+AreaSeries.displayName = 'AreaSeries';
+
+export default AreaSeries;

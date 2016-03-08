@@ -60,10 +60,7 @@ function getFirstNonEmptyValue(values) {
   return (values || []).find(v => Boolean(v));
 }
 
-export default class Crosshair extends PureRenderComponent {
-  static get displayName() {
-    return 'Crosshair';
-  }
+class Crosshair extends PureRenderComponent {
 
   static get propTypes() {
     return {
@@ -172,3 +169,7 @@ export default class Crosshair extends PureRenderComponent {
     );
   }
 }
+
+Crosshair.displayName = 'Crosshair';
+
+export default Crosshair;
