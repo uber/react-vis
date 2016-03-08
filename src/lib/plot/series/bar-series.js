@@ -24,34 +24,16 @@ import d3 from 'd3';
 import AbstractSeries from './abstract-series';
 import {getDOMNode} from '../../utils/react-utils';
 
-const VERTICAL_ORIENTATION = 'vertical';
-const HORIZONTAL_ORIENTATION = 'horizontal';
-
 export default class BarSeries extends AbstractSeries {
 
   static get propTypes() {
     return {
       ... AbstractSeries.propTypes,
-      orientation: React.PropTypes.oneOf([
-        VERTICAL_ORIENTATION, HORIZONTAL_ORIENTATION
-      ])
+      linePosAttr: React.PropTypes.string,
+      valuePosAttr: React.PropTypes.string,
+      lineSizeAttr: React.PropTypes.string,
+      valueSizeAttr: React.PropTypes.string
     };
-  }
-
-  static get defaultProps() {
-    return {
-      orientation: VERTICAL_ORIENTATION
-    };
-  }
-
-  static getParentConfig(attr, props) {
-    let isDomainAdjustmentNeeded;
-    if (props.orientation === VERTICAL_ORIENTATION) {
-      isDomainAdjustmentNeeded = attr === 'x';
-    } else {
-      isDomainAdjustmentNeeded = attr === 'y';
-    }
-    return {isDomainAdjustmentNeeded};
   }
 
   constructor(props) {
@@ -98,37 +80,6 @@ export default class BarSeries extends AbstractSeries {
     }
   }
 
-  /**
-   * Get necessary variables to get orientation from.
-   * @returns {Object} Config.
-   * @private
-   */
-  _getOrientationConfig() {
-    const {
-      orientation,
-      innerWidth,
-      innerHeight} = this.props;
-    let result;
-    if (orientation === VERTICAL_ORIENTATION) {
-      result = {
-        linePosAttr: 'x',
-        valuePosAttr: 'y',
-        lineSizeAttr: 'width',
-        valueSizeAttr: 'height',
-        lineSpace: innerWidth
-      };
-    } else {
-      result = {
-        linePosAttr: 'y',
-        valuePosAttr: 'x',
-        lineSizeAttr: 'height',
-        valueSizeAttr: 'width',
-        lineSpace: innerHeight
-      };
-    }
-    return result;
-  }
-
   _updateSeries() {
     const container = getDOMNode(this.refs.container);
     const {
@@ -140,14 +91,14 @@ export default class BarSeries extends AbstractSeries {
       lineSizeAttr,
       valuePosAttr,
       linePosAttr,
-      valueSizeAttr} = this._getOrientationConfig();
+      valueSizeAttr} = this.props;
 
     if (!data || !data.length) {
       return;
     }
 
     const distance = this._getScaleDistance(linePosAttr);
-    const [baseValue] = this._getScaleDomain(valuePosAttr);
+    const baseValue = this._getScaleBaseValue(valuePosAttr);
     const lineFunctor = this._getAttributeFunctor(linePosAttr);
     const valueFunctor = this._getAttributeFunctor(valuePosAttr);
 
