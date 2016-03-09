@@ -35,7 +35,9 @@ export default class AbstractSeries extends PureRenderComponent {
   static get propTypes() {
     return {
       ...getScalePropTypesByAttribute('x'),
+      ...getScalePropTypesByAttribute('x0'),
       ...getScalePropTypesByAttribute('y'),
+      ...getScalePropTypesByAttribute('y0'),
       ...getScalePropTypesByAttribute('size'),
       ...getScalePropTypesByAttribute('opacity'),
       ...getScalePropTypesByAttribute('color'),
@@ -48,6 +50,13 @@ export default class AbstractSeries extends PureRenderComponent {
       onSeriesMouseOut: React.PropTypes.func,
       onNearestX: React.PropTypes.func,
       animation: AnimationPropType
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      _y0Value: 0,
+      _x0Value: 0
     };
   }
 
