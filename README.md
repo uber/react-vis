@@ -73,3 +73,18 @@ To lint your code, run the tests, and create code coverage reports:
 ```
 npm test
 ```
+
+## Change log
+
+### 0.2
+
+#### Breaking changes
+
+* `BarSeries` component was split into `VerticalBarSeries` and `HorizontalBarSeries`; no `orientation` property is needed anymore.
+* All bar series are aligned to `0` by default. The value can be modified with `[scale-name]BaseValue` property.
+* Alignment of the `Hint` component was fixed: now `topleft` orientation aligns it to the top left corner, but not to the bottom right.
+
+### Non-breaking changes:
+
+* Static getters for `displayName` were removed (interverring with livereactload).
+* More tests were added.
