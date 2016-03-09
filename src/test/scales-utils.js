@@ -75,14 +75,14 @@ test('scales-utils/getScaleObjectFromProps with all props', function t(assert) {
 
 test('scales-utils/getScaleObjectFromProps with the value that overrides props',
   function t(
-  assert) {
-  const valueResult = getScaleObjectFromProps({x: 10, _allData}, 'x');
-  assert.ok(isScaleConsistent(valueResult, 'x'),
-    'Should be a consistent scale');
-  assert.ok(valueResult.isValue === true,
-    'Should have isValue = true');
-  assert.end();
-});
+    assert) {
+    const valueResult = getScaleObjectFromProps({x: 10, _allData}, 'x');
+    assert.ok(isScaleConsistent(valueResult, 'x'),
+      'Should be a consistent scale');
+    assert.ok(valueResult.isValue === true,
+      'Should have isValue = true');
+    assert.end();
+  });
 
 test('scales-utils/getScalePropTypesByAttribute', function t(
   assert) {
