@@ -21,7 +21,12 @@
 import test from 'tape';
 import 'babel-polyfill';
 
-import {getScaleObjectFromProps, getScalePropTypesByAttribute} from '../lib/utils/scales-utils';
+import {
+  getScaleObjectFromProps,
+  getScalePropTypesByAttribute,
+  getAttributeFunctor,
+  getAttributeScale,
+  getAttributeValue} from '../lib/utils/scales-utils';
 
 function isScaleConsistent(scaleObject, attr) {
   return scaleObject && scaleObject.range && scaleObject.domain &&
@@ -29,6 +34,7 @@ function isScaleConsistent(scaleObject, attr) {
 }
 
 const _allData = [{x: 1}, {x: 2}, {x: 3}, {x: 2}];
+const _xValue = 20;
 const xRange = [0, 100];
 const xDomain = [1, 5];
 const xType = 'ordinal';
@@ -81,6 +87,50 @@ test('getScalePropTypesByAttribute works well', function t(assert) {
     isValid &= key.indexOf(`_size`) === 0 || key.indexOf('size') === 0;
   });
   assert.ok(isValid, 'Should return _size or size values');
+  assert.end();
+});
+
+test('getAttributeFunctor without props', function t(assert) {
+  const result = getAttributeFunctor({_xValue}, 'x');
+  assert.ok(result === _xValue, 'Fallback value should be returned');
+  assert.end();
+});
+
+test('getAttributeFunctor with props', function t(assert) {
+  const result = getAttributeFunctor({xRange, _allData}, 'x');
+  const isFunction = typeof result === 'function';
+  assert.ok(isFunction, 'Result should be a function');
+  if (isFunction) {
+    assert.ok(result(_allData[0]) === xRange[0], 'Function should reflect values properly');
+  }
+  assert.end();
+});
+
+test('getAttributeScale without props', function t(assert) {
+  const result = getAttributeScale({}, 'x');
+  assert.ok(result === null, 'Result should be null');
+  assert.end();
+});
+
+test('getAttributeScale with props', function t(assert) {
+  const result = getAttributeScale({xRange, _allData}, 'x');
+  const isFunction = typeof result === 'function';
+  assert.ok(isFunction, 'Result should be a function');
+  if (isFunction) {
+    assert.ok(result(_allData[0].x) === xRange[0], 'Result scale is valid');
+  }
+  assert.end();
+});
+
+test('getAttributeValue without props', function t(assert) {
+  const result = getAttributeValue({_xValue}, 'x');
+  assert.ok(result === _xValue, 'Fallback value should be returned');
+  assert.end();
+});
+
+test('getAttributeValue with valid props', function t(assert) {
+  const result = getAttributeValue({x: 10}, 'x');
+  assert.ok(result === 10, 'The value should be returned');
   assert.end();
 });
 
