@@ -19,4 +19,4 @@
 // THE SOFTWARE.
 
 import './components';
-import './utils';
+import './scales-utils';

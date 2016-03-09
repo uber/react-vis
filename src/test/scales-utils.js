@@ -21,7 +21,7 @@
 import test from 'tape';
 import 'babel-polyfill';
 
-import {getScaleObjectFromProps} from '../lib/utils/scales-utils';
+import {getScaleObjectFromProps, getScalePropTypesByAttribute} from '../lib/utils/scales-utils';
 
 function isScaleConsistent(scaleObject, attr) {
   return scaleObject && scaleObject.range && scaleObject.domain &&
@@ -71,6 +71,16 @@ test('getScaleObjectFromProps with the value that overrides props', function t(
     'Should be a consistent scale');
   assert.ok(valueResult.isValue === true,
     'Should have isValue = true');
+  assert.end();
+});
+
+test('getScalePropTypesByAttribute works well', function t(assert) {
+  const result = getScalePropTypesByAttribute('size');
+  let isValid = true;
+  Object.keys(result).forEach(key => {
+    isValid &= key.indexOf(`_size`) === 0 || key.indexOf('size') === 0;
+  });
+  assert.ok(isValid, 'Should return _size or size values');
   assert.end();
 });
 

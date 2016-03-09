@@ -31,7 +31,7 @@ import LineSeries from '../lib/plot/series/line-series';
 import AreaSeries from '../lib/plot/series/area-series';
 import MarkSeries from '../lib/plot/series/mark-series';
 import HeatmapSeries from '../lib/plot/series/heatmap-series';
-import BarSeries from '../lib/plot/series/bar-series';
+import VerticalBarSeries from '../lib/plot/series/vertical-bar-series';
 
 import XAxisBottom from '../lib/plot/x-axis';
 import YAxisLeft from '../lib/plot/y-axis';
@@ -106,10 +106,10 @@ test('Rendering MarkSeries', function t(assert) {
   assert.end();
 });
 
-test('Rendering BarSeries', function t(assert) {
+test('Rendering VerticalBarSeries', function t(assert) {
   // TODO: Data duplication in data and _allData is a bad idea. Fix that.
   const component = utils.renderComponent(
-    React.createElement(BarSeries, {
+    React.createElement(VerticalBarSeries, {
       xDomain: [0, 1],
       xRange: [0, 1],
       xType: 'linear',
