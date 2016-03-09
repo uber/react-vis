@@ -40,19 +40,22 @@ const xDomain = [1, 5];
 const xType = 'ordinal';
 const xDistance = 10;
 
-test('getScaleObjectFromProps with empty props', function t(assert) {
+test('scales-utils/getScaleObjectFromProps with empty props', function t(
+  assert) {
   const nullResult = getScaleObjectFromProps({}, 'x');
   assert.ok(nullResult === null, 'Should return null if no props available.');
   assert.end();
 });
 
-test('getScaleObjectFromProps with empty range', function t(assert) {
+test('scales-utils/getScaleObjectFromProps with empty range', function t(
+  assert) {
   const noRangeResult = getScaleObjectFromProps({_allData}, 'x');
   assert.ok(noRangeResult === null, 'Should be null if no range is passed');
   assert.end();
 });
 
-test('getScaleObjectFromProps with incomplete props', function t(assert) {
+test('scales-utils/getScaleObjectFromProps with incomplete props', function t(
+  assert) {
   const incompleteResult = getScaleObjectFromProps({xRange, _allData}, 'x');
   assert.ok(isScaleConsistent(incompleteResult, 'x'),
     'Should be a consistent scale');
@@ -60,7 +63,7 @@ test('getScaleObjectFromProps with incomplete props', function t(assert) {
   assert.end();
 });
 
-test('getScaleObjectFromProps with all props', function t(assert) {
+test('scales-utils/getScaleObjectFromProps with all props', function t(assert) {
   const completeResult = getScaleObjectFromProps(
     {xRange, _allData, xDomain, xType, xDistance}, 'x');
   assert.ok(isScaleConsistent(completeResult, 'x'),
@@ -70,7 +73,8 @@ test('getScaleObjectFromProps with all props', function t(assert) {
   assert.end();
 });
 
-test('getScaleObjectFromProps with the value that overrides props', function t(
+test('scales-utils/getScaleObjectFromProps with the value that overrides props',
+  function t(
   assert) {
   const valueResult = getScaleObjectFromProps({x: 10, _allData}, 'x');
   assert.ok(isScaleConsistent(valueResult, 'x'),
@@ -80,7 +84,8 @@ test('getScaleObjectFromProps with the value that overrides props', function t(
   assert.end();
 });
 
-test('getScalePropTypesByAttribute works well', function t(assert) {
+test('scales-utils/getScalePropTypesByAttribute', function t(
+  assert) {
   const result = getScalePropTypesByAttribute('size');
   let isValid = true;
   Object.keys(result).forEach(key => {
@@ -90,13 +95,13 @@ test('getScalePropTypesByAttribute works well', function t(assert) {
   assert.end();
 });
 
-test('getAttributeFunctor without props', function t(assert) {
+test('scales-utils/getAttributeFunctor without props', function t(assert) {
   const result = getAttributeFunctor({_xValue}, 'x');
   assert.ok(result === _xValue, 'Fallback value should be returned');
   assert.end();
 });
 
-test('getAttributeFunctor with props', function t(assert) {
+test('scales-utils/getAttributeFunctor with props', function t(assert) {
   const result = getAttributeFunctor({xRange, _allData}, 'x');
   const isFunction = typeof result === 'function';
   assert.ok(isFunction, 'Result should be a function');
@@ -106,13 +111,13 @@ test('getAttributeFunctor with props', function t(assert) {
   assert.end();
 });
 
-test('getAttributeScale without props', function t(assert) {
+test('scales-utils/getAttributeScale without props', function t(assert) {
   const result = getAttributeScale({}, 'x');
   assert.ok(result === null, 'Result should be null');
   assert.end();
 });
 
-test('getAttributeScale with props', function t(assert) {
+test('scales-utils/getAttributeScale with props', function t(assert) {
   const result = getAttributeScale({xRange, _allData}, 'x');
   const isFunction = typeof result === 'function';
   assert.ok(isFunction, 'Result should be a function');
@@ -122,13 +127,13 @@ test('getAttributeScale with props', function t(assert) {
   assert.end();
 });
 
-test('getAttributeValue without props', function t(assert) {
+test('scales-utils/getAttributeValue without props', function t(assert) {
   const result = getAttributeValue({_xValue}, 'x');
   assert.ok(result === _xValue, 'Fallback value should be returned');
   assert.end();
 });
 
-test('getAttributeValue with valid props', function t(assert) {
+test('scales-utils/getAttributeValue with valid props', function t(assert) {
   const result = getAttributeValue({x: 10}, 'x');
   assert.ok(result === 10, 'The value should be returned');
   assert.end();
