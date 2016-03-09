@@ -18,6 +18,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import './components';
-import './scales-utils';
-import './axis-utils';
+import test from 'tape';
+import 'babel-polyfill';
+
+import {getTicksTotalFromSize} from '../lib/utils/axis-utils';
+
+test('getTicksTotalFromSize', function t(assert) {
+  assert.ok(getTicksTotalFromSize(0) === 5, 'Returns valid value for 0px');
+  assert.ok(getTicksTotalFromSize(301) === 10, 'Returns valid value for 301px');
+  assert.ok(getTicksTotalFromSize(701) === 20, 'Returns valid value for 701px');
+  assert.end();
+});
