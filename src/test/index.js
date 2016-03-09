@@ -22,3 +22,4 @@ import './components';
 import './scales-utils';
 import './axis-utils';
 import './data-utils';
+import './series-utils';
