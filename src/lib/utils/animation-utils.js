@@ -35,7 +35,7 @@ export const AnimationPropType = React.PropTypes.oneOfType([
  * @const
  */
 export const DEFAULT_ANIMATION = {
-  duration: 100
+  duration: 1000
 };
 
 /**
