@@ -66,7 +66,7 @@ export default class DynamicTreemapExample extends React.Component {
   render() {
     return (
       <Treemap
-        animation={true}
+        animation={{duration:1000}}
         data={this.state.treemapData}
         height={300}
         width={350}/>
