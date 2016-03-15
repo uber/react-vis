@@ -75,7 +75,6 @@ class LineSeries extends AbstractSeries {
       return;
     }
     const x = this._getAttributeFunctor('x');
-    const x0 = this._getAttributeFunctor('x0');
     const y = this._getAttributeFunctor('y');
     const stroke = this._getAttributeValue('stroke') ||
       this._getAttributeValue('color');

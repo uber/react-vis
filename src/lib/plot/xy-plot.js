@@ -172,7 +172,7 @@ class XYPlot extends React.Component {
     const attrProps = {};
     const defaults = this._getScaleDefaults(props);
     Object.keys(props).forEach(key => {
-      const attr = ATTRIBUTES.find(a => key.indexOf(a) === 0);
+      const attr = ATTRIBUTES.find(a => key.indexOf(a) === 0 || key.indexOf(`_${a}`) === 0);
       if (!attr) {
         return;
       }
