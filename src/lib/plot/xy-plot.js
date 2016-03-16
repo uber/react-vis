@@ -183,18 +183,6 @@ class XYPlot extends React.Component {
     });
 
     const zeroBaseProps = {};
-    ATTRIBUTES.forEach(attr => {
-      children.forEach((child, index) => {
-        if (!child || !data[index]) {
-          return;
-        }
-        const {zeroBaseValue} = child.type.getParentConfig(attr, child.props);
-        if (zeroBaseValue) {
-          zeroBaseProps[`${attr}BaseValue`] = 0;
-        }
-      });
-    });
-
     const adjustBy = new Set();
     const adjustWhat = new Set();
     children.forEach((child, index) => {
