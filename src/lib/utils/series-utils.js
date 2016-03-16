@@ -95,7 +95,7 @@ export function getStackedData(children, attr) {
       return {
         [attr0]: prevValue,
         ...d
-      }
+      };
     }));
   });
   return childData;

@@ -22,7 +22,6 @@ import test from 'tape';
 import 'babel-polyfill';
 
 import React from 'react';
-import equal from 'deep-equal';
 
 import {
   isSeriesChild,

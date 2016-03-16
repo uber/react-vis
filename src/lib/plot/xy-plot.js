@@ -26,9 +26,7 @@ import {
   getSeriesChildren,
   getSeriesPropsFromChildren} from '../utils/series-utils';
 
-import {
-  getInnerDimensions,
-  getDataFromChildren} from '../utils/chart-utils';
+import {getInnerDimensions} from '../utils/chart-utils';
 
 import {
   CONTINUOUS_COLOR_RANGE,
@@ -230,7 +228,7 @@ class XYPlot extends React.Component {
   }
 
   render() {
-    const {width, height, animation, stackBy} = this.props;
+    const {width, height, animation} = this.props;
     const {scaleMixins, data} = this.state;
 
     if (!data || !data.length || ![].concat(...data).filter(d => d).length) {

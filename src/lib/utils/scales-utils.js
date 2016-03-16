@@ -140,9 +140,8 @@ function _getDomainByAttr(allData, attr, type) {
       const attr0 = `${attr}0`;
       if (typeof d[attr0] !== 'undefined') {
         return d[attr] + d[attr0];
-      } else {
-        return d[attr];
       }
+      return d[attr];
     });
   } else {
     domain = d3.set(allData.map(valueAccessor)).values();
@@ -182,6 +181,8 @@ function _createScaleObjectForValue(attr, value) {
  * @param {number} distance Distance.
  * @param {string} attr Attribute.
  * @param {number} baseValue Base value.
+ * @oaram {boolean} hasAttr0 True if `[name]0` properties exist in the data
+ * objects.
  * @returns {Object} Scale object.
  * @private
  */
@@ -483,7 +484,7 @@ export function getAttributeFunctor(props, attr) {
       const attr0 = `${attr}0`;
       const value0 = _getAttrValue(d, attr0);
       return scaleFn(typeof value0 !== 'undefined' ? value + value0 : value);
-    }
+    };
   }
   return null;
 }
@@ -501,7 +502,6 @@ export function getAttributeValue(props, attr) {
     if (!scaleObject.isValue) {
       warning(false, `Cannot use data defined ${attr} for this series` +
         `type. Using fallback value instead.`);
-      return fallbackValue;
     }
     return scaleObject.range[0];
   }
