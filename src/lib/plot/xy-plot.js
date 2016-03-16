@@ -172,6 +172,7 @@ class XYPlot extends React.Component {
   _getScaleMixins(data, props) {
     const attrProps = {};
     const defaults = this._getScaleDefaults(props);
+    const children = React.Children.toArray(props.children);
     Object.keys(props).forEach(key => {
       const attr = ATTRIBUTES.find(
         a => key.indexOf(a) === 0 || key.indexOf(`_${a}`) === 0);
@@ -183,8 +184,8 @@ class XYPlot extends React.Component {
 
     const zeroBaseProps = {};
     ATTRIBUTES.forEach(attr => {
-      getSeriesChildren(props.children).forEach((child, index) => {
-        if (!child) {
+      children.forEach((child, index) => {
+        if (!child || !data[index]) {
           return;
         }
         const {zeroBaseValue} = child.type.getParentConfig(attr, child.props);
@@ -196,8 +197,8 @@ class XYPlot extends React.Component {
 
     const adjustBy = new Set();
     const adjustWhat = new Set();
-    getSeriesChildren(props.children).forEach((child, index) => {
-      if (!child) {
+    children.forEach((child, index) => {
+      if (!child || !data[index]) {
         return;
       }
       ATTRIBUTES.forEach(attr => {
