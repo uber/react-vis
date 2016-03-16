@@ -227,25 +227,29 @@ class XYPlot extends React.Component {
     };
   }
 
-  render() {
-    const {width, height, animation} = this.props;
-    const {scaleMixins, data} = this.state;
+  /**
+   * Checks if the plot is empty or not.
+   * Currently checks the data only.
+   * @returns {boolean} True for empty.
+   * @private
+   */
+  _isPlotEmpty() {
+    const {data} = this.state;
+    return !data || !data.length || ![].concat(...data).filter(d => d).length
+  }
 
-    if (!data || !data.length || ![].concat(...data).filter(d => d).length) {
-      return (
-        <div
-          className="rv-xy-plot"
-          style={{
-            width: `${width}px`,
-            height: `${height}px`
-          }}/>
-      );
-    }
+  /**
+   * Prepare the child components (including series) for rendering.
+   * @returns {Array} Array of child components.
+   * @private
+   */
+  _getClonedChildComponents() {
+    const {animation} = this.props;
+    const {scaleMixins, data} = this.state;
     const dimensions = getInnerDimensions(this.props);
     const children = React.Children.toArray(this.props.children);
-
     const seriesProps = getSeriesPropsFromChildren(children);
-    const components = children.map((child, index) => {
+    return children.map((child, index) => {
       const dataProps = data[index] ? {data: data[index]} : null;
       return React.cloneElement(child, {
         ...dimensions,
@@ -256,6 +260,22 @@ class XYPlot extends React.Component {
         ...dataProps
       });
     });
+  }
+
+  render() {
+    const {width, height} = this.props;
+
+    if (this._isPlotEmpty()) {
+      return (
+        <div
+          className="rv-xy-plot"
+          style={{
+            width: `${width}px`,
+            height: `${height}px`
+          }}/>
+      );
+    }
+    const components = this._getClonedChildComponents();
 
     return (
       <div
