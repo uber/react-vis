@@ -65,6 +65,42 @@ function collectSeriesTypesInfo(children) {
   return result;
 }
 
+export function getStackedData(children, attr) {
+  const childData = [];
+  const attr0 = `${attr}0`;
+  children.forEach((child, childIndex) => {
+    if (!child) {
+      childData.push(null);
+      return;
+    }
+
+    const {data} = child.props;
+    if (!attr || !data || !data.length) {
+      childData.push(data);
+      return;
+    }
+    childData.push(data.map((d, dIndex) => {
+      let prevValue = 0;
+      let prevIndex = childIndex - 1;
+      while (prevIndex >= 0) {
+        if (childData[prevIndex]) {
+          break;
+        }
+        prevIndex--;
+      }
+      if (prevIndex >= 0) {
+        const prevD = childData[prevIndex][dIndex];
+        prevValue = prevD[attr0] + prevD[attr];
+      }
+      return {
+        [attr0]: prevValue,
+        ...d
+      }
+    }));
+  });
+  return childData;
+}
+
 /**
  * Get the list of series props for a child.
  * @param {Array} children Array of all children.
