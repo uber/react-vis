@@ -22,6 +22,11 @@ Install react-vis via npm.
 npm install react-vis
 ```
 
+Include the CSS from `./node_modules/react-vis/main` in your HTML page or via SASS:
+```sass
+@import "./node_modules/react-vis/main";
+```
+
 Import the necessary components from the library&hellip;
 
 ```jsx
