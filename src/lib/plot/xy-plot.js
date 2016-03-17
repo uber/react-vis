@@ -224,7 +224,8 @@ class XYPlot extends React.Component {
    */
   _isPlotEmpty() {
     const {data} = this.state;
-    return !data || !data.length || ![].concat(...data).filter(d => d).length
+    return !data || !data.length ||
+      !data.some(series => series && series.some(d => d));
   }
 
   /**
