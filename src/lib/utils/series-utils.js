@@ -67,6 +67,7 @@ function collectSeriesTypesInfo(children) {
 
 export function getStackedData(children, attr) {
   const childData = [];
+  let prevIndex = -1;
   children.forEach((child, childIndex) => {
     if (!child) {
       childData.push(null);
@@ -80,13 +81,6 @@ export function getStackedData(children, attr) {
     const attr0 = `${attr}0`;
     childData.push(data.map((d, dIndex) => {
       let prevValue = 0;
-      let prevIndex = childIndex - 1;
-      while (prevIndex >= 0) {
-        if (childData[prevIndex]) {
-          break;
-        }
-        prevIndex--;
-      }
       if (prevIndex >= 0) {
         const prevD = childData[prevIndex][dIndex];
         prevValue = prevD[attr0] + prevD[attr];
@@ -96,6 +90,7 @@ export function getStackedData(children, attr) {
         ...d
       };
     }));
+    prevIndex = childIndex;
   });
   return childData;
 }
