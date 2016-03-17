@@ -67,18 +67,17 @@ function collectSeriesTypesInfo(children) {
 
 export function getStackedData(children, attr) {
   const childData = [];
-  const attr0 = `${attr}0`;
   children.forEach((child, childIndex) => {
     if (!child) {
       childData.push(null);
       return;
     }
-
     const {data} = child.props;
     if (!attr || !data || !data.length) {
       childData.push(data);
       return;
     }
+    const attr0 = `${attr}0`;
     childData.push(data.map((d, dIndex) => {
       let prevValue = 0;
       let prevIndex = childIndex - 1;
