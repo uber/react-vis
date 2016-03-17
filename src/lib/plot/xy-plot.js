@@ -22,12 +22,11 @@ import React from 'react';
 import equal from 'deep-equal';
 
 import {
+  getStackedData,
   getSeriesChildren,
   getSeriesPropsFromChildren} from '../utils/series-utils';
 
-import {
-  getInnerDimensions,
-  getDataFromChildren} from '../utils/chart-utils';
+import {getInnerDimensions} from '../utils/chart-utils';
 
 import {
   CONTINUOUS_COLOR_RANGE,
@@ -61,7 +60,8 @@ class XYPlot extends React.Component {
       onMouseLeave: React.PropTypes.func,
       onMouseMove: React.PropTypes.func,
       onMouseEnter: React.PropTypes.func,
-      animation: AnimationPropType
+      animation: AnimationPropType,
+      stackBy: React.PropTypes.oneOf(ATTRIBUTES)
     };
   }
 
@@ -81,7 +81,8 @@ class XYPlot extends React.Component {
     this._mouseLeaveHandler = this._mouseLeaveHandler.bind(this);
     this._mouseEnterHandler = this._mouseEnterHandler.bind(this);
     this._mouseMoveHandler = this._mouseMoveHandler.bind(this);
-    const data = getDataFromChildren(props);
+    const {children, stackBy} = props;
+    const data = getStackedData(children, stackBy);
     this.state = {
       scaleMixins: this._getScaleMixins(data, props),
       data
@@ -89,7 +90,7 @@ class XYPlot extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const nextData = getDataFromChildren(nextProps);
+    const nextData = getStackedData(nextProps.children, nextProps.stackBy);
     const {scaleMixins} = this.state;
     const nextScaleMixins = this._getScaleMixins(nextData, nextProps);
     if (!equal(nextScaleMixins, scaleMixins)) {
@@ -171,8 +172,10 @@ class XYPlot extends React.Component {
   _getScaleMixins(data, props) {
     const attrProps = {};
     const defaults = this._getScaleDefaults(props);
+    const children = React.Children.toArray(props.children);
     Object.keys(props).forEach(key => {
-      const attr = ATTRIBUTES.find(a => key.indexOf(a) === 0);
+      const attr = ATTRIBUTES.find(
+        a => key.indexOf(a) === 0 || key.indexOf(`_${a}`) === 0);
       if (!attr) {
         return;
       }
@@ -180,31 +183,19 @@ class XYPlot extends React.Component {
     });
 
     const zeroBaseProps = {};
-    ATTRIBUTES.forEach(attr => {
-      getSeriesChildren(props.children).forEach((child, index) => {
-        if (!child) {
-          return;
-        }
-        const {zeroBaseValue} = child.type.getParentConfig(attr, child.props);
-        if (zeroBaseValue) {
-          zeroBaseProps[`${attr}BaseValue`] = 0;
-        }
-      });
-    });
-
     const adjustBy = new Set();
     const adjustWhat = new Set();
-    getSeriesChildren(props.children).forEach((child, index) => {
-      if (!child) {
+    children.forEach((child, index) => {
+      if (!child || !data[index]) {
         return;
       }
       ATTRIBUTES.forEach(attr => {
         const {
           isDomainAdjustmentNeeded,
           zeroBaseValue} = child.type.getParentConfig(
-            attr,
-            child.props
-          );
+          attr,
+          child.props
+        );
         if (isDomainAdjustmentNeeded) {
           adjustBy.add(attr);
           adjustWhat.add(index);
@@ -225,11 +216,46 @@ class XYPlot extends React.Component {
     };
   }
 
-  render() {
-    const {width, height, animation} = this.props;
-    const {scaleMixins, data} = this.state;
+  /**
+   * Checks if the plot is empty or not.
+   * Currently checks the data only.
+   * @returns {boolean} True for empty.
+   * @private
+   */
+  _isPlotEmpty() {
+    const {data} = this.state;
+    return !data || !data.length ||
+      !data.some(series => series && series.some(d => d));
+  }
 
-    if (!data || !data.length || ![].concat(...data).filter(d => d).length) {
+  /**
+   * Prepare the child components (including series) for rendering.
+   * @returns {Array} Array of child components.
+   * @private
+   */
+  _getClonedChildComponents() {
+    const {animation} = this.props;
+    const {scaleMixins, data} = this.state;
+    const dimensions = getInnerDimensions(this.props);
+    const children = React.Children.toArray(this.props.children);
+    const seriesProps = getSeriesPropsFromChildren(children);
+    return children.map((child, index) => {
+      const dataProps = data[index] ? {data: data[index]} : null;
+      return React.cloneElement(child, {
+        ...dimensions,
+        animation,
+        ...seriesProps[index],
+        ...scaleMixins,
+        ...child.props,
+        ...dataProps
+      });
+    });
+  }
+
+  render() {
+    const {width, height} = this.props;
+
+    if (this._isPlotEmpty()) {
       return (
         <div
           className="rv-xy-plot"
@@ -239,20 +265,7 @@ class XYPlot extends React.Component {
           }}/>
       );
     }
-    const dimensions = getInnerDimensions(this.props);
-    const children = React.Children.toArray(this.props.children);
-    const svgComponents = [];
-    const htmlComponents = [];
-
-    children.forEach(child => {
-      if (child.type.requiresSVG) {
-        svgComponents.push(child);
-      } else {
-        htmlComponents.push(child);
-      }
-    });
-
-    const seriesProps = getSeriesPropsFromChildren(svgComponents);
+    const components = this._getClonedChildComponents();
 
     return (
       <div
@@ -268,24 +281,9 @@ class XYPlot extends React.Component {
           onMouseMove={this._mouseMoveHandler}
           onMouseLeave={this._mouseLeaveHandler}
           onMouseEnter={this._mouseEnterHandler}>
-          {svgComponents.map((child, index) => {
-            return React.cloneElement(child, {
-              ...dimensions,
-              animation,
-              ...seriesProps[index],
-              ...scaleMixins,
-              ...child.props
-            });
-          })}
+          {components.filter(c => c && c.type.requiresSVG)}
         </svg>
-        {htmlComponents.map(child =>
-          React.cloneElement(child, {
-            ...dimensions,
-            animation,
-            ...scaleMixins,
-            ...child.props
-          })
-        )}
+        {components.filter(c => c && !c.type.requiresSVG)}
       </div>
     );
   }

@@ -106,7 +106,8 @@ test('scales-utils/getAttributeFunctor with props', function t(assert) {
   const isFunction = typeof result === 'function';
   assert.ok(isFunction, 'Result should be a function');
   if (isFunction) {
-    assert.ok(result(_allData[0]) === xRange[0], 'Function should reflect values properly');
+    assert.ok(result(_allData[0]) === xRange[0],
+      'Function should reflect values properly');
   }
   assert.end();
 });
