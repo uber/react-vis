@@ -23,7 +23,6 @@ import React from 'react';
 import warning from 'warning';
 
 import {
-  getObjectValueAccessor,
   getUniquePropertyValues,
   isObjectPropertyInUse,
   addValueToArray} from './data-utils';
@@ -133,18 +132,24 @@ function _getScaleFnFromScaleObject(scaleObject) {
  */
 function _getDomainByAttr(allData, attr, type) {
   let domain;
-  const valueAccessor = getObjectValueAccessor(attr);
+  const attr0 = `${attr}0`;
+
+  // Collect both attr and available attr0 values from the array of data.
+  const values = allData.reduce((data, d) => {
+    const value = d[attr];
+    const value0 = d[attr0];
+    data.push(value);
+    if (_isDefined(value0)) {
+      data.push(value0);
+    }
+    return data;
+  }, []);
+
+  // Create proper domain depending on the type of the scale.
   if (type !== ORDINAL_SCALE_TYPE && type !== CATEGORY_SCALE_TYPE) {
-    // Find the domain.
-    domain = d3.extent(allData, d => {
-      const attr0 = `${attr}0`;
-      if (typeof d[attr0] !== 'undefined') {
-        return d[attr] + d[attr0];
-      }
-      return d[attr];
-    });
+    domain = d3.extent(values);
   } else {
-    domain = d3.set(allData.map(valueAccessor)).values();
+    domain = d3.set(values).values();
   }
   return domain;
 }
@@ -167,8 +172,7 @@ function _createScaleObjectForValue(attr, value) {
     domain: [],
     distance: 0,
     attr,
-    baseValue: 0,
-    hasAttr0: false,
+    baseValue: undefined,
     isValue: true
   };
 }
@@ -181,13 +185,11 @@ function _createScaleObjectForValue(attr, value) {
  * @param {number} distance Distance.
  * @param {string} attr Attribute.
  * @param {number} baseValue Base value.
- * @oaram {boolean} hasAttr0 True if `[name]0` properties exist in the data
- * objects.
  * @returns {Object} Scale object.
  * @private
  */
 function _createScaleObjectForFunction(
-  domain, range, type, distance, attr, baseValue, hasAttr0) {
+  domain, range, type, distance, attr, baseValue) {
   return {
     domain,
     range,
@@ -195,7 +197,6 @@ function _createScaleObjectForFunction(
     distance,
     attr,
     baseValue,
-    hasAttr0,
     isValue: false
   };
 }
@@ -245,8 +246,7 @@ function _collectScaleObjectFromProps(props, attr) {
     type,
     distance,
     attr,
-    baseValue || 0,
-    isObjectPropertyInUse(allData, `${attr}0`)
+    baseValue
   );
 }
 
@@ -465,6 +465,10 @@ function _getAttrValue(d, attr) {
   return d.data ? d.data[attr] : d[attr];
 }
 
+function _isDefined(value) {
+  return typeof value !== 'undefined';
+}
+
 /**
  * Get prop functor (either a value or a function) for a given attribute.
  * @param {Object} props Series props.
@@ -475,15 +479,29 @@ export function getAttributeFunctor(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
   if (scaleObject) {
     const scaleFn = _getScaleFnFromScaleObject(scaleObject);
-    const {hasAttr0} = scaleObject;
+    return d => scaleFn(_getAttrValue(d, attr));
+  }
+  return null;
+}
+
+/**
+ * Get the functor which extracts value form [attr]0 property. Use baseValue if
+ * no attr0 property for a given object is defined. Fall back to domain[0] if no
+ * base value is available.
+ * @param {Object} props Object of props.
+ * @param {string} attr Attribute name.
+ * @returns {*} Function which returns value or null if no values available.
+ */
+export function getAttr0Functor(props, attr) {
+  const scaleObject = getScaleObjectFromProps(props, attr);
+  if (scaleObject) {
+    const attr0 = `${attr}0`;
+    const {domain} = scaleObject;
+    const {baseValue = domain[0]} = scaleObject;
+    const scaleFn = _getScaleFnFromScaleObject(scaleObject);
     return d => {
-      const value = _getAttrValue(d, attr);
-      if (!hasAttr0) {
-        return scaleFn(value);
-      }
-      const attr0 = `${attr}0`;
-      const value0 = _getAttrValue(d, attr0);
-      return scaleFn(typeof value0 !== 'undefined' ? value + value0 : value);
+      const value = _getAttrValue(d, attr0);
+      return scaleFn(_isDefined(value) ? value : baseValue);
     };
   }
   return null;

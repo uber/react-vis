@@ -83,33 +83,36 @@ class BarSeries extends AbstractSeries {
   _updateSeries() {
     const container = getDOMNode(this.refs.container);
     const {
-      sameTypeTotal = 1,
-      sameTypeIndex = 0,
-      data} = this.props;
-
-    const {
+      _stackBy,
+      data,
       lineSizeAttr,
       valuePosAttr,
       linePosAttr,
       valueSizeAttr} = this.props;
+
+    let {
+      sameTypeTotal = 1,
+      sameTypeIndex = 0} = this.props;
 
     if (!data || !data.length) {
       return;
     }
 
     const distance = this._getScaleDistance(linePosAttr);
-    const baseValue = this._getScaleBaseValue(valuePosAttr);
     const lineFunctor = this._getAttributeFunctor(linePosAttr);
     const valueFunctor = this._getAttributeFunctor(valuePosAttr);
+    const value0Functor = this._getAttr0Functor(valuePosAttr);
+
+    if (_stackBy === valuePosAttr) {
+      sameTypeTotal = 1;
+      sameTypeIndex = 0;
+    }
 
     const rects = d3.select(container).selectAll('rect')
       .data(data)
       .on('mouseover', this._mouseOver)
       .on('mouseout', this._mouseOut);
 
-    const baseCoordinate = valueFunctor({
-      [valuePosAttr]: baseValue
-    });
     const itemSize = (distance / 2) * 0.85;
 
     this._applyTransition(rects)
@@ -123,9 +126,9 @@ class BarSeries extends AbstractSeries {
       )
       .attr(lineSizeAttr, itemSize * 2 / sameTypeTotal)
       .attr(valuePosAttr,
-        d => Math.min(baseCoordinate, valueFunctor(d)))
+        d => Math.min(value0Functor(d), valueFunctor(d)))
       .attr(valueSizeAttr,
-        d => Math.abs(-baseCoordinate + valueFunctor(d)));
+        d => Math.abs(-value0Functor(d) + valueFunctor(d)));
   }
 
   render() {

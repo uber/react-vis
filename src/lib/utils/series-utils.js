@@ -65,10 +65,21 @@ function collectSeriesTypesInfo(children) {
   return result;
 }
 
+/**
+ * Collect the stacked data for all children in use. If the children don't have
+ * the data (e.g. the child is invalid series or something else), then the child
+ * is skipped.
+ * Each next value of attr is equal to the previous value plus the difference
+ * between attr0 and attr.
+ * @param {Array} children Array of children.
+ * @param {string} attr Attribute.
+ * @returns {Array} New array of children for the series.
+ */
 export function getStackedData(children, attr) {
   const childData = [];
   let prevIndex = -1;
   children.forEach((child, childIndex) => {
+    // Skip the children that are not series (e.g. don't have any data).
     if (!child) {
       childData.push(null);
       return;
@@ -80,14 +91,17 @@ export function getStackedData(children, attr) {
     }
     const attr0 = `${attr}0`;
     childData.push(data.map((d, dIndex) => {
-      let prevValue = 0;
-      if (prevIndex >= 0) {
-        const prevD = childData[prevIndex][dIndex];
-        prevValue = prevD[attr0] + prevD[attr];
+      // In case if it's the first series don't try to override any values.
+      if (prevIndex < 0) {
+        return {...d};
       }
+      // In case if the series is not the first, try to get the attr0 values
+      // from the previous series.
+      const prevD = childData[prevIndex][dIndex];
       return {
-        [attr0]: prevValue,
-        ...d
+        ...d,
+        [attr0]: prevD[attr],
+        [attr]: prevD[attr] + d[attr] - (d[attr0] || 0)
       };
     }));
     prevIndex = childIndex;
