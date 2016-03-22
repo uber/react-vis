@@ -28,6 +28,8 @@ import {
   VerticalGridLines,
   LineSeries} from '../../';
 
+const MSEC_DAILY = 86400000;
+
 export default class Example extends React.Component {
   render() {
     const timestamp = Date.now();
@@ -42,19 +44,19 @@ export default class Example extends React.Component {
         <YAxis title="Y Axis" />
         <LineSeries
           data={[
-            {x: timestamp + 86400000, y: 3},
-            {x: timestamp + 86400000 * 2, y: 5},
-            {x: timestamp + 86400000 * 3, y: 15},
-            {x: timestamp + 86400000 * 4, y: 12}
+            {x: timestamp + MSEC_DAILY, y: 3},
+            {x: timestamp + MSEC_DAILY * 2, y: 5},
+            {x: timestamp + MSEC_DAILY * 3, y: 15},
+            {x: timestamp + MSEC_DAILY * 4, y: 12}
           ]}/>
         <LineSeries
           data={null}/>
         <LineSeries
           data={[
-            {x: timestamp + 86400000, y: 10},
-            {x: timestamp + 86400000 * 2, y: 4},
-            {x: timestamp + 86400000 * 3, y: 2},
-            {x: timestamp + 86400000 * 4, y: 15}
+            {x: timestamp + MSEC_DAILY, y: 10},
+            {x: timestamp + MSEC_DAILY * 2, y: 4},
+            {x: timestamp + MSEC_DAILY * 3, y: 2},
+            {x: timestamp + MSEC_DAILY * 4, y: 15}
           ]}/>
       </XYPlot>
     );
