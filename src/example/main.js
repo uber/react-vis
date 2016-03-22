@@ -38,6 +38,7 @@ import DynamicHints from './plot/dynamic-hints';
 import StaticCrosshair from './plot/static-crosshair';
 import DynamicCrosshair from './plot/dynamic-crosshair';
 import SyncedCharts from './plot/synced-charts';
+import TimeChart from './plot/time-chart';
 
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
@@ -124,6 +125,10 @@ const examples = (
       <section>
         <h3>Synced Charts</h3>
         <SyncedCharts />
+      </section>
+      <section>
+        <h3>Time Chart</h3>
+        <TimeChart />
       </section>
 
       <h1>Radial Chart</h1>
