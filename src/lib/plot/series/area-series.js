@@ -64,20 +64,22 @@ class AreaSeries extends AbstractSeries {
 
   _updateSeries() {
     const lineElement = getDOMNode(this.refs.line);
-    const {data, innerHeight} = this.props;
+    const {data} = this.props;
     if (!data) {
       return;
     }
 
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
+    const y0 = this._getAttr0Functor('y');
     const fill = this._getAttributeValue('fill') ||
       this._getAttributeValue('color');
 
     const stroke = this._getAttributeValue('stroke') ||
       this._getAttributeValue('color');
 
-    const line = d3.svg.area().x(x).y0(innerHeight).y1(y);
+    const line = d3.svg.area().x(x).y0(y0).y1(y);
+
     const opacity = this._getAttributeValue('opacity') || DEFAULT_OPACITY;
     const d = line(data);
 

@@ -212,7 +212,8 @@ class XYPlot extends React.Component {
       ...attrProps,
       _allData: data,
       _adjustBy: Array.from(adjustBy),
-      _adjustWhat: Array.from(adjustWhat)
+      _adjustWhat: Array.from(adjustWhat),
+      _stackBy: props.stackBy
     };
   }
 

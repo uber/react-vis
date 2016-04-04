@@ -24,6 +24,7 @@ import d3 from 'd3';
 import PureRenderComponent from '../../pure-render-component';
 import {
   getAttributeFunctor,
+  getAttr0Functor,
   getAttributeValue,
   getScaleObjectFromProps,
   getScalePropTypesByAttribute} from '../../utils/scales-utils';
@@ -78,6 +79,16 @@ export default class AbstractSeries extends PureRenderComponent {
   }
 
   /**
+   * Get the attr0 functor.
+   * @param {string} attr Attribute name.
+   * @returns {*} Functor.
+   * @private
+   */
+  _getAttr0Functor(attr) {
+    return getAttr0Functor(this.props, attr);
+  }
+
+  /**
    * Get the attribute value if it is available.
    * @param {string} attr Attribute name.
    * @returns {*} Attribute value if available, fallback value or undefined
@@ -97,22 +108,6 @@ export default class AbstractSeries extends PureRenderComponent {
   _getScaleDistance(attr) {
     const scaleObject = getScaleObjectFromProps(this.props, attr);
     return scaleObject ? scaleObject.distance : 0;
-  }
-
-  _getScaleBaseValue(attr) {
-    const scaleObject = getScaleObjectFromProps(this.props, attr);
-    return scaleObject ? scaleObject.baseValue : 0;
-  }
-
-  /**
-   * Get scale domain for the given attribute.
-   * @param {string} attr Attribute.
-   * @returns {*} Domain or null if not defined.
-   * @protected
-   */
-  _getScaleDomain(attr) {
-    const scaleObject = getScaleObjectFromProps(this.props, attr);
-    return scaleObject ? scaleObject.domain : null;
   }
 
   /**
