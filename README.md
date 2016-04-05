@@ -82,6 +82,13 @@ npm test
 
 ## Change log
 
+### 0.3
+
+#### Non-breaking changes
+
+* Travis CI is now supported.
+* Stacking was added to the charts. Please refer to [the docs of XYPlot](https://github.com/uber-common/react-vis/blob/master/docs/xy-plot.md) for more information.
+
 ### 0.2
 
 #### Breaking changes
