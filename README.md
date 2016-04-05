@@ -1,4 +1,5 @@
-# react-vis
+# react-vis ![Build Status](https://travis-ci.org/uber-common/react-vis.svg?branch=master)
+
 ![Demo of XYPlot](docs/assets/react-vis.gif?raw=true)
 
 See the live demo at http://uber-common.github.io/react-vis/
