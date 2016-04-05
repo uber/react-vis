@@ -196,7 +196,7 @@ test('Rendering HorizontalGrid', function t(assert) {
 
 test('Rendering XYPlot', function t(assert) {
   const component = utils.renderComponent(
-    React.createElement(XYPlot, {width: 10, height: 10})
+    React.createElement(XYPlot, {width: 10, height: 10}, [])
   );
   assert.ok(component, 'component should be rendered');
   utils.destroyComponent(component);

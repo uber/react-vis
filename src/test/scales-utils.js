@@ -97,7 +97,8 @@ test('scales-utils/getScalePropTypesByAttribute', function t(
 
 test('scales-utils/getAttributeFunctor without props', function t(assert) {
   const result = getAttributeFunctor({_xValue}, 'x');
-  assert.ok(result === _xValue, 'Fallback value should be returned');
+  assert.ok(result({x: Math.random()}) === _xValue,
+    `Fallback value ${_xValue} should be returned by the produced functor`);
   assert.end();
 });
 
