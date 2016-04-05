@@ -286,14 +286,16 @@ function _computeRightDomainAdjustment(values) {
  * Compute distance for the given values.
  * @param {Array} values Array of values.
  * @param {Array} domain Domain.
- * @param {number} index Index of a best distance found.
+ * @param {number} bestDistIndex Index of a best distance found.
  * @param {function} scaleFn Scale function.
  * @returns {number} Domain adjustment.
  * @private
  */
-function _computeScaleDistance(values, domain, index, scaleFn) {
+function _computeScaleDistance(values, domain, bestDistIndex, scaleFn) {
   if (values.length > 1) {
-    return Math.abs(scaleFn(values[index]) - scaleFn(values[index - 1]));
+    // Avoid zero indexes.
+    const i = Math.max(bestDistIndex, 1);
+    return Math.abs(scaleFn(values[i]) - scaleFn(values[i - 1]));
   }
   if (values.length === 1) {
     return Math.abs(scaleFn(domain[1]) - scaleFn(domain[0]));
