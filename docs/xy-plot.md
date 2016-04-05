@@ -85,6 +85,30 @@ Type: `Object`
 Default: `{left: 40, right: 40, top: 10, bottom: 10}`
 Margin around the chart.
 
+#### stackBy (optional)
+Type: `string`  
+Stack the chart by the given attribute. If the attribute is `y`, the chart is stacked vertically; if the attribute is `x` then it's stacked horizontally.
+
+```jsx
+<XYPlot
+  stackBy="y"
+  width={300}
+  height={300}>
+  <LineSeries
+    data={[
+      {x: 1, y: 10},
+      {x: 2, y: 5},
+      {x: 3, y: 15}
+    ]}/>
+  <LineSeries
+    data={[
+      {x: 1, y: 12},
+      {x: 2, y: 21},
+      {x: 3, y: 2}
+    ]}/>
+</XYPlot>
+```
+
 #### onMouseLeave (optional)
 Type: `function()`  
 The function that is triggered each time the mouse leaves the component.
