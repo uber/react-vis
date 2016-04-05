@@ -293,7 +293,8 @@ function _computeRightDomainAdjustment(values) {
  */
 function _computeScaleDistance(values, domain, index, scaleFn) {
   if (values.length > 1) {
-    return Math.abs(scaleFn(values[index]) - scaleFn(values[index - 1]));
+    const i = index > 0 ? index : 1;
+    return Math.abs(scaleFn(values[i]) - scaleFn(values[i - 1]));
   }
   if (values.length === 1) {
     return Math.abs(scaleFn(domain[1]) - scaleFn(domain[0]));
