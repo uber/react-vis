@@ -20,11 +20,11 @@
 
 import React from 'react';
 
-const [, versionNumber] = React.version.split('.');
-const versionHigherThanThirteen = Number(versionNumber) > 13;
+const [major, minor] = React.version.split('.');
+const versionHigherThanThirteen = Number(minor) > 13 || Number(major) > 13;
 
 /**
- * Support React 0.13 where refs are React components, not DOM Nodes.
+ * Support React 0.13 and greater where refs are React components, not DOM Nodes.
  * @param {*} ref React's ref.
  * @returns {Element} DOM element.
  */
