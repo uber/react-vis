@@ -69,7 +69,9 @@ export default class RadialChart extends React.Component {
         right: React.PropTypes.number,
         bottom: React.PropTypes.number
       }),
-      animation: AnimationPropType
+      animation: AnimationPropType,
+      onSectionMouseOver: React.PropTypes.func,
+      onSectionMouseOut: React.PropTypes.func
     };
   }
 
@@ -91,6 +93,8 @@ export default class RadialChart extends React.Component {
       scaleProps: this._getAllScaleProps(props, data),
       data
     };
+    this._sectionMouseOut = this._sectionMouseOut.bind(this);
+    this._sectionMouseOver = this._sectionMouseOver.bind(this);
   }
 
   componentDidMount() {
@@ -111,6 +115,20 @@ export default class RadialChart extends React.Component {
 
   componentDidUpdate() {
     this._updateChart();
+  }
+
+  _sectionMouseOver(d) {
+    const {onSectionMouseOver} = this.props;
+    if (onSectionMouseOver) {
+      onSectionMouseOver(d, {event: d3.event});
+    }
+  }
+
+  _sectionMouseOut(d) {
+    const {onSectionMouseOut} = this.props;
+    if (onSectionMouseOut) {
+      onSectionMouseOut(d, {event: d3.event});
+    }
   }
 
   /**
@@ -209,7 +227,9 @@ export default class RadialChart extends React.Component {
       .innerRadius(innerRadiusFn);
 
     const sections = d3.select(container).selectAll('path')
-      .data(pie(data));
+      .data(pie(data))
+      .on('mouseover', this._sectionMouseOver)
+      .on('mouseout', this._sectionMouseOut);
     this._applyTransition(sections)
       .attr('d', arc)
       .style('opacity', this._getAttributeValue('opacity'))
