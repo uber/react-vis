@@ -95,6 +95,7 @@ export default class RadialChart extends React.Component {
     };
     this._sectionMouseOut = this._sectionMouseOut.bind(this);
     this._sectionMouseOver = this._sectionMouseOver.bind(this);
+    this._arc = null;
   }
 
   componentDidMount() {
@@ -120,14 +121,16 @@ export default class RadialChart extends React.Component {
   _sectionMouseOver(d) {
     const {onSectionMouseOver} = this.props;
     if (onSectionMouseOver) {
-      onSectionMouseOver(d, {event: d3.event});
+      const [x, y] = this._arc.centroid(d);
+      onSectionMouseOver(d.data, {event: d3.event, x, y});
     }
   }
 
   _sectionMouseOut(d) {
     const {onSectionMouseOut} = this.props;
     if (onSectionMouseOut) {
-      onSectionMouseOut(d, {event: d3.event});
+      const [x, y] = this._arc.centroid(d);
+      onSectionMouseOut(d.data, {event: d3.event, x, y});
     }
   }
 
@@ -225,9 +228,13 @@ export default class RadialChart extends React.Component {
     const arc = d3.svg.arc()
       .outerRadius(radiusFn)
       .innerRadius(innerRadiusFn);
+    this._arc = arc;
 
     const sections = d3.select(container).selectAll('path')
       .data(pie(data))
+      .on('click', () => {
+        console.log(this.centroid());
+      })
       .on('mouseover', this._sectionMouseOver)
       .on('mouseout', this._sectionMouseOut);
     this._applyTransition(sections)
