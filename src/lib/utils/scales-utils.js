@@ -410,8 +410,12 @@ function _adjustContinuousScale(props, scaleObject) {
  */
 function _adjustCategoricalScale(scaleObject) {
   const scaleFn = _getScaleFnFromScaleObject(scaleObject);
-  scaleObject.distance = scaleFn(scaleObject.domain[1]) -
-    scaleFn(scaleObject.domain[0]);
+  const {domain, range} = scaleObject;
+  if (domain.length > 1) {
+    scaleObject.distance = scaleFn(domain[1]) - scaleFn(domain[0]);
+  } else {
+    scaleObject.distance = range[1] - range[0];
+  }
   return scaleObject;
 }
 
