@@ -82,6 +82,10 @@ npm test
 
 ## Change log
 
+### 0.3.1
+
+* Fixed the bug when no bars were shown for one point of ordinal data (see [#49](https://github.com/uber-common/react-vis/issues/49) for more details).
+
 ### 0.3
 
 #### Non-breaking changes
