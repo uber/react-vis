@@ -37,9 +37,6 @@ function _c(className) {
 }
 
 const DEFAULT_SCALES = {
-  color: {
-    range: CONTINUOUS_COLOR_RANGE
-  },
   opacity: {
     range: OPACITY_RANGE
   }
@@ -54,7 +51,9 @@ class Treemap extends React.Component {
       data: React.PropTypes.object.isRequired,
       mode: React.PropTypes.string.isRequired,
       padding: React.PropTypes.number.isRequired,
-      animation: AnimationPropType
+      animation: AnimationPropType,
+      colorRange: React.PropTypes.arrayOf(React.PropTypes.string),
+      defaultColor: React.PropTypes.string
     };
   }
 
@@ -64,7 +63,9 @@ class Treemap extends React.Component {
       padding: 0,
       data: {
         children: []
-      }
+      },
+      defaultColor: DEFAULT_COLOR,
+      colorRange: CONTINUOUS_COLOR_RANGE
     };
   }
 
@@ -125,12 +126,12 @@ class Treemap extends React.Component {
   _getColorScaleFunction(data) {
     const values = this._collectValuesFromTree(data, 'color');
     if (values.length) {
-      const range = DEFAULT_SCALES.color.range;
+      const range = this.props.colorRange;
       const domain = d3.extent(values);
-      const options = this.props.scales ? this.props.scales.color : null;
+      const options = this.props.scales ? this.props.colorRange : null;
       return this._getScaleFunction(options, domain, range);
     }
-    return () => DEFAULT_COLOR;
+    return () => this.props.defaultColor;
   }
 
   _getOpacityScaleFunction(data) {

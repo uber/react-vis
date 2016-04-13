@@ -67,6 +67,7 @@ export default class DynamicTreemapExample extends React.Component {
     return (
       <Treemap
         animation={true}
+        colorRange={['#FF9833', '#EF5D28']}
         data={this.state.treemapData}
         height={300}
         width={350}/>
