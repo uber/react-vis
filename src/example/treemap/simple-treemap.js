@@ -27,6 +27,7 @@ export default class SimpleTreemapExample extends React.Component {
   render() {
     return (
       <Treemap
+        defaultColor={'#12939A'}
         data={{
           title: '',
           children: [
