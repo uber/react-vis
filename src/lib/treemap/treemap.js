@@ -22,28 +22,19 @@ import React from 'react';
 import d3 from 'd3';
 
 import {getCSSAnimation, AnimationPropType} from '../utils/animation-utils';
+import {getAttributeFunctor} from '../utils/scales-utils';
 
 import {
   CONTINUOUS_COLOR_RANGE,
   DEFAULT_COLOR,
   OPACITY_RANGE} from '../theme';
 
-function _c(className) {
-  const prefix = 'rv-treemap';
-  if (!className) {
-    return prefix;
+function getFontColorFromBackground(background) {
+  if (background) {
+    return d3.hsl(background).l > 0.57 ? '#222' : '#fff';
   }
-  return `${prefix}__${className}`;
+  return null;
 }
-
-const DEFAULT_SCALES = {
-  color: {
-    range: CONTINUOUS_COLOR_RANGE
-  },
-  opacity: {
-    range: OPACITY_RANGE
-  }
-};
 
 class Treemap extends React.Component {
 
@@ -64,83 +55,43 @@ class Treemap extends React.Component {
       padding: 0,
       data: {
         children: []
-      }
+      },
+      colorRange: CONTINUOUS_COLOR_RANGE,
+      _colorValue: DEFAULT_COLOR,
+      opacityRange: OPACITY_RANGE,
+      _opacityValue: 1
     };
   }
 
   constructor(props) {
     super(props);
     this._renderLeaf = this._renderLeaf.bind(this);
+    this.state = {scales: this._getScaleFns(props)};
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({scales: this._getScaleFns(props)});
   }
 
   /**
-   * Walk through the tree and collect all values from the tree.
-   * @param {Object} data Tree object.
-   * @param {string} propName Property name.
-   * @returns {Array} Flat array of values.
+   * Get the map of scale functions from the given props.
+   * @param {Object} props Props for the component.
+   * @returns {Object} Map of scale functions.
    * @private
    */
-  _collectValuesFromTree(data, propName) {
-    let result = [];
-    if (data[propName]) {
-      result.push(data[propName]);
-    }
-    if (Array.isArray(data.children)) {
-      data.children.forEach(function getValuesFromChildren(child) {
-        result = result.concat(this._collectValuesFromTree(child, propName));
-      }, this);
-    }
-    return result;
-  }
+  _getScaleFns(props) {
+    const {data} = props;
 
-  /**
-   * Get the scale function from the options and from the array.
-   * @param {Object} scaleOptions Scale options that are passed in props.
-   * @param {Array} defaultDomain Default domain.
-   * @param {Array} defaultRange Default range.
-   * @returns {*} Scale function or undefined if scaleOptions are not defined.
-   * @private
-   */
-  _getScaleFunction(scaleOptions, defaultDomain, defaultRange) {
-    let domain;
-    let range;
-    let scaleFn;
-    if (scaleOptions) {
-      domain = scaleOptions.domain;
-      range = scaleOptions.range;
-      scaleFn = scaleOptions.scaleFn;
-    }
-    if (!scaleFn) {
-      if (!domain) {
-        domain = defaultDomain;
-      }
-      if (!range) {
-        range = defaultRange;
-      }
-      scaleFn = d3.scale.linear().range(range).domain(domain);
-    }
-    return scaleFn;
-  }
-
-  _getColorScaleFunction(data) {
-    const values = this._collectValuesFromTree(data, 'color');
-    if (values.length) {
-      const range = DEFAULT_SCALES.color.range;
-      const domain = d3.extent(values);
-      const options = this.props.scales ? this.props.scales.color : null;
-      return this._getScaleFunction(options, domain, range);
-    }
-    return () => DEFAULT_COLOR;
-  }
-
-  _getOpacityScaleFunction(data) {
-    const values = this._collectValuesFromTree(data, 'opacity');
-    if (values.length) {
-      const range = DEFAULT_SCALES.opacity.range;
-      const domain = d3.extent(values);
-      const options = this.props.scales ? this.props.scales.opacity : null;
-      return this._getScaleFunction(options, domain, range);
-    }
+    // Adding _allData property to the object to reuse the existing
+    // getAttributeFunctor function.
+    const compatibleProps = {
+      ...props,
+      _allData: data.children || []
+    };
+    return {
+      opacity: getAttributeFunctor(compatibleProps, 'opacity'),
+      color: getAttributeFunctor(compatibleProps, 'color')
+    };
   }
 
   /**
@@ -175,18 +126,11 @@ class Treemap extends React.Component {
     if (!i) {
       return null;
     }
-    const {data} = this.props;
-    const colorScale = this._getColorScaleFunction(data);
-    const opacityScale = this._getOpacityScaleFunction(data);
-    // Don't draw the background for the first item: it's a container
-    // for the entire treemap.
-    const background = colorScale ? colorScale(node.color) : null;
-    const opacity = opacityScale ? opacityScale(node.opacity) : null;
-    let color = null;
-    if (background) {
-      color = d3.hsl(background).l > 0.57 ? '#222' : '#fff';
-    }
+    const {scales} = this.state;
 
+    const background = scales.color(node);
+    const opacity = scales.opacity(node);
+    const color = getFontColorFromBackground(background);
     const width = Math.max(0, node.dx - 1);
     const height = Math.max(0, node.dy - 1);
     const style = getCSSAnimation(this.props, {
@@ -201,7 +145,7 @@ class Treemap extends React.Component {
     return (
       <div
         key={i}
-        className={_c('leaf')}
+        className="rv-treemap__leaf"
         style={style}>
         <div className="rv-treemap__leaf__content">{node.title}</div>
       </div>
@@ -213,7 +157,7 @@ class Treemap extends React.Component {
     const nodes = this._getNodesToRender();
     return (
       <div
-        className={_c()}
+        className="rv-treemap"
         style={{
           width: `${width}px`,
           height: `${height}px`
