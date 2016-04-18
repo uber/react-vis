@@ -25,7 +25,7 @@ const versionHigherThanThirteen = Number(minor) > 13 || Number(major) > 13;
 
 /**
  * Support React 0.13 and greater where refs are React components, not DOM
- * Nodes.
+ * nodes.
  * @param {*} ref React's ref.
  * @returns {Element} DOM element.
  */
