@@ -82,6 +82,12 @@ npm test
 
 ## Change log
 
+### 0.3.2
+
+* `colorRange`, `colorDomain`, `colorType`, `opacityRange`, `opacityDomain` and `opacityType` properties are now supported for the Treemap scales (more info about scales is [here](docs/scales-and-data.md)).
+* Basic mouse interactions for arcs were added to `RadialChart`: now `onSectionClick`, `onSectionMouseOver` and `onSectionMouseOut` are supported.
+* Several children-related bugs are fixed (see [#54](https://github.com/uber-common/react-vis/issues/54) and [#47](https://github.com/uber-common/react-vis/issues/47)).
+
 ### 0.3.1
 
 * Fixed the bug when no bars were shown for one point of ordinal data (see [#49](https://github.com/uber-common/react-vis/issues/49) for more details).
