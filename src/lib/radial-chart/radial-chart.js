@@ -122,14 +122,14 @@ export default class RadialChart extends React.Component {
 
   /**
    * Triggers a callback on a section if the callback is set.
-   * @param {function} callback Callback function.
+   * @param {function} handler Callback function.
    * @param {Object} d Data point of the arc.
    * @private
    */
-  _triggerSectionCallback(callback, d) {
-    if (callback) {
+  _triggerSectionHandler(handler, d) {
+    if (handler) {
       const [x, y] = this._arc.centroid(d);
-      callback(d.data, {event: d3.event, x, y});
+      handler(d.data, {event: d3.event, x, y});
     }
   }
 
@@ -140,7 +140,7 @@ export default class RadialChart extends React.Component {
    */
   _sectionMouseOver(d) {
     const {onSectionMouseOver} = this.props;
-    this._triggerSectionCallback(onSectionMouseOver, d);
+    this._triggerSectionHandler(onSectionMouseOver, d);
   }
 
   /**
@@ -150,7 +150,7 @@ export default class RadialChart extends React.Component {
    */
   _sectionMouseOut(d) {
     const {onSectionMouseOut} = this.props;
-    this._triggerSectionCallback(onSectionMouseOut, d);
+    this._triggerSectionHandler(onSectionMouseOut, d);
   }
 
   /**
@@ -160,7 +160,7 @@ export default class RadialChart extends React.Component {
    */
   _sectionClick(d) {
     const {onSectionClick} = this.props;
-    this._triggerSectionCallback(onSectionClick, d);
+    this._triggerSectionHandler(onSectionClick, d);
   }
 
   /**
@@ -261,9 +261,7 @@ export default class RadialChart extends React.Component {
 
     const sections = d3.select(container).selectAll('path')
       .data(pie(data))
-      .on('click', () => {
-        console.log(this.centroid());
-      })
+      .on('click', this._sectionClick)
       .on('mouseover', this._sectionMouseOver)
       .on('mouseout', this._sectionMouseOut);
     this._applyTransition(sections)
