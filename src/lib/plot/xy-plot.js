@@ -81,7 +81,8 @@ class XYPlot extends React.Component {
     this._mouseLeaveHandler = this._mouseLeaveHandler.bind(this);
     this._mouseEnterHandler = this._mouseEnterHandler.bind(this);
     this._mouseMoveHandler = this._mouseMoveHandler.bind(this);
-    const {children, stackBy} = props;
+    const {stackBy} = props;
+    const children = getSeriesChildren(props.children);
     const data = getStackedData(children, stackBy);
     this.state = {
       scaleMixins: this._getScaleMixins(data, props),
@@ -90,7 +91,8 @@ class XYPlot extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const nextData = getStackedData(nextProps.children, nextProps.stackBy);
+    const children = getSeriesChildren(nextProps.children);
+    const nextData = getStackedData(children, nextProps.stackBy);
     const {scaleMixins} = this.state;
     const nextScaleMixins = this._getScaleMixins(nextData, nextProps);
     if (!equal(nextScaleMixins, scaleMixins)) {
@@ -172,7 +174,7 @@ class XYPlot extends React.Component {
   _getScaleMixins(data, props) {
     const attrProps = {};
     const defaults = this._getScaleDefaults(props);
-    const children = React.Children.toArray(props.children);
+    const children = getSeriesChildren(props.children);
     Object.keys(props).forEach(key => {
       const attr = ATTRIBUTES.find(
         a => key.indexOf(a) === 0 || key.indexOf(`_${a}`) === 0);
