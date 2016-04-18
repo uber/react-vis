@@ -71,7 +71,8 @@ export default class RadialChart extends React.Component {
       }),
       animation: AnimationPropType,
       onSectionMouseOver: React.PropTypes.func,
-      onSectionMouseOut: React.PropTypes.func
+      onSectionMouseOut: React.PropTypes.func,
+      onSectionClick: React.PropTypes.func
     };
   }
 
@@ -95,6 +96,7 @@ export default class RadialChart extends React.Component {
     };
     this._sectionMouseOut = this._sectionMouseOut.bind(this);
     this._sectionMouseOver = this._sectionMouseOver.bind(this);
+    this._sectionClick = this._sectionClick.bind(this);
     this._arc = null;
   }
 
@@ -118,20 +120,47 @@ export default class RadialChart extends React.Component {
     this._updateChart();
   }
 
-  _sectionMouseOver(d) {
-    const {onSectionMouseOver} = this.props;
-    if (onSectionMouseOver) {
+  /**
+   * Triggers a callback on a section if the callback is set.
+   * @param {function} callback Callback function.
+   * @param {Object} d Data point of the arc.
+   * @private
+   */
+  _triggerSectionCallback(callback, d) {
+    if (callback) {
       const [x, y] = this._arc.centroid(d);
-      onSectionMouseOver(d.data, {event: d3.event, x, y});
+      callback(d.data, {event: d3.event, x, y});
     }
   }
 
+  /**
+   * `mouseover` handler for the section.
+   * @param {Object} d Data point.
+   * @private
+   */
+  _sectionMouseOver(d) {
+    const {onSectionMouseOver} = this.props;
+    this._triggerSectionCallback(onSectionMouseOver, d);
+  }
+
+  /**
+   * `mouseout` handler for the section.
+   * @param {Object} d Data point.
+   * @private
+   */
   _sectionMouseOut(d) {
     const {onSectionMouseOut} = this.props;
-    if (onSectionMouseOut) {
-      const [x, y] = this._arc.centroid(d);
-      onSectionMouseOut(d.data, {event: d3.event, x, y});
-    }
+    this._triggerSectionCallback(onSectionMouseOut, d);
+  }
+
+  /**
+   * `click` handler for the section.
+   * @param {Object} d Data point.
+   * @private
+   */
+  _sectionClick(d) {
+    const {onSectionClick} = this.props;
+    this._triggerSectionCallback(onSectionClick, d);
   }
 
   /**
