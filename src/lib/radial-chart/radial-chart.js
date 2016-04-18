@@ -69,7 +69,10 @@ export default class RadialChart extends React.Component {
         right: React.PropTypes.number,
         bottom: React.PropTypes.number
       }),
-      animation: AnimationPropType
+      animation: AnimationPropType,
+      onSectionMouseOver: React.PropTypes.func,
+      onSectionMouseOut: React.PropTypes.func,
+      onSectionClick: React.PropTypes.func
     };
   }
 
@@ -91,6 +94,10 @@ export default class RadialChart extends React.Component {
       scaleProps: this._getAllScaleProps(props, data),
       data
     };
+    this._sectionMouseOut = this._sectionMouseOut.bind(this);
+    this._sectionMouseOver = this._sectionMouseOver.bind(this);
+    this._sectionClick = this._sectionClick.bind(this);
+    this._arc = null;
   }
 
   componentDidMount() {
@@ -111,6 +118,49 @@ export default class RadialChart extends React.Component {
 
   componentDidUpdate() {
     this._updateChart();
+  }
+
+  /**
+   * Triggers a callback on a section if the callback is set.
+   * @param {function} handler Callback function.
+   * @param {Object} d Data point of the arc.
+   * @private
+   */
+  _triggerSectionHandler(handler, d) {
+    if (handler) {
+      const [x, y] = this._arc.centroid(d);
+      handler(d.data, {event: d3.event, x, y});
+    }
+  }
+
+  /**
+   * `mouseover` handler for the section.
+   * @param {Object} d Data point.
+   * @private
+   */
+  _sectionMouseOver(d) {
+    const {onSectionMouseOver} = this.props;
+    this._triggerSectionHandler(onSectionMouseOver, d);
+  }
+
+  /**
+   * `mouseout` handler for the section.
+   * @param {Object} d Data point.
+   * @private
+   */
+  _sectionMouseOut(d) {
+    const {onSectionMouseOut} = this.props;
+    this._triggerSectionHandler(onSectionMouseOut, d);
+  }
+
+  /**
+   * `click` handler for the section.
+   * @param {Object} d Data point.
+   * @private
+   */
+  _sectionClick(d) {
+    const {onSectionClick} = this.props;
+    this._triggerSectionHandler(onSectionClick, d);
   }
 
   /**
@@ -207,9 +257,13 @@ export default class RadialChart extends React.Component {
     const arc = d3.svg.arc()
       .outerRadius(radiusFn)
       .innerRadius(innerRadiusFn);
+    this._arc = arc;
 
     const sections = d3.select(container).selectAll('path')
-      .data(pie(data));
+      .data(pie(data))
+      .on('click', this._sectionClick)
+      .on('mouseover', this._sectionMouseOver)
+      .on('mouseout', this._sectionMouseOut);
     this._applyTransition(sections)
       .attr('d', arc)
       .style('opacity', this._getAttributeValue('opacity'))
