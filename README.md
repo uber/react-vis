@@ -1,4 +1,4 @@
-# react-vis ![Build Status](https://travis-ci.org/uber-common/react-vis.svg?branch=master)
+# react-vis ![Build Status](https://travis-ci.org/uber/react-vis.svg?branch=master)
 
 ![Demo of XYPlot](docs/assets/react-vis.gif?raw=true)
 
