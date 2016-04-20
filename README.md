@@ -2,7 +2,7 @@
 
 ![Demo of XYPlot](docs/assets/react-vis.gif?raw=true)
 
-See the live demo at http://uber-common.github.io/react-vis/
+See the live demo at http://uber.github.io/react-vis
 
 ## Overview
 
