@@ -176,6 +176,7 @@ export default class RadialChart extends React.Component {
       radiusRange: [0, radius],
       _radiusValue: radius,
       opacityRange: OPACITY_RANGE,
+      _opacityValue: 1,
       colorRange: DISCRETE_COLOR_RANGE,
       colorType: 'category'
     };
@@ -228,17 +229,6 @@ export default class RadialChart extends React.Component {
   }
 
   /**
-   * Get the attribute value if it is available.
-   * @param {string} attr Attribute name.
-   * @returns {*} Attribute value if available, fallback value or undefined
-   * otherwise.
-   * @protected
-   */
-  _getAttributeValue(attr) {
-    return getAttributeValue(this.state.scaleProps, attr);
-  }
-
-  /**
    * Update the radial chart. Assign new styles and positions to the sections.
    * @private
    */
@@ -266,7 +256,7 @@ export default class RadialChart extends React.Component {
       .on('mouseout', this._sectionMouseOut);
     this._applyTransition(sections)
       .attr('d', arc)
-      .style('opacity', this._getAttributeValue('opacity'))
+      .style('opacity', this._getAttributeFunctor('opacity'))
       .style('fill', this._getAttributeFunctor('fill') ||
         this._getAttributeFunctor('color'))
       .style('stroke', this._getAttributeFunctor('stroke'));
