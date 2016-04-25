@@ -49,6 +49,7 @@ XYPlot is a wrapper for series, hints, axes and other components. Most of these 
 * `opacity` (optional)
 * `fill` (optional)
 * `stroke` (optional)
+* `strokeWidth` (optional), `strokeStyle` (optional) - to control the width of the line series and whether they are dashed or solid. 
 * `color` (optional, used instead of `fill` and `stroke` if none of them is passed)
 * `size` (optional)
 
@@ -56,14 +57,14 @@ If the property is not passed in any of the objects, the property is not visuali
 
 Not all properties can be visualized in each series. Here's a short comparison of them:
 
-|                  | `x` | `y` | `color` | `opacity` | `size` |
-|------------------|-----|-----|---------|-----------|--------|
-| `LineSeries`     |  +  |  +  | +       |           |        |
-| `AreaSeries`     |  +  |  +  | +       |           |        |
-| `LinemarkSeries` |  +  |  +  | +       |     +     | +      |
-| `MarkSeries`     |  +  |  +  | +       |     +     | +      |
-| `BarSeries`      |  +  |  +  | +       |     +     |        |
-| `HeatmapSeries`  |  +  |  +  | +       |     +     |        |
+|                  | `x` | `y` | `color` | `opacity` | `size` | `strokeStyle` | `strokeWidth` |
+|------------------|-----|-----|---------|-----------|--------|-------------------------------|
+| `LineSeries`     |  +  |  +  | +       |           |        |       +       |       +       |
+| `AreaSeries`     |  +  |  +  | +       |           |        |               |               |
+| `LinemarkSeries` |  +  |  +  | +       |     +     | +      |       +       |       +       |
+| `MarkSeries`     |  +  |  +  | +       |     +     | +      |               |               |
+| `BarSeries`      |  +  |  +  | +       |     +     |        |               |               |
+| `HeatmapSeries`  |  +  |  +  | +       |     +     |        |               |               |
 
 ## API Reference
 
