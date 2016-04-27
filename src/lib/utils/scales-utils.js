@@ -374,8 +374,9 @@ function _adjustContinuousScale(props, scaleObject) {
 
   // Assign the initial values.
   const domainLength = scaleObject.domain.length;
-  let scaleDomain0 = scaleObject.domain[0];
-  let scaleDomainN = scaleObject.domain[domainLength - 1];
+  const {domain} = scaleObject;
+  let scaleDomain0 = domain[0];
+  let scaleDomainN = domain[domainLength - 1];
   let scaleDistance = scaleObject.distance;
 
   // Find the smallest left position of the domain, the largest right position
@@ -395,8 +396,12 @@ function _adjustContinuousScale(props, scaleObject) {
     }
   });
 
-  scaleObject.domain[0] = scaleDomain0;
-  scaleObject.domain[domainLength - 1] = scaleDomainN;
+  scaleObject.domain = [
+    scaleDomain0,
+    ...domain.slice(1, -1),
+    scaleDomainN
+  ];
+
   scaleObject.distance = scaleDistance;
 
   return scaleObject;
