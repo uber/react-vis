@@ -33,7 +33,7 @@ function isScaleConsistent(scaleObject, attr) {
     scaleObject.type && scaleObject.attr === attr;
 }
 
-const _allData = [{x: 1}, {x: 2}, {x: 3}, {x: 2}];
+const _allData = [[{x: 1}, {x: 2}, {x: 3}, {x: 2}]];
 const _xValue = 20;
 const xRange = [0, 100];
 const xDomain = [1, 5];
@@ -73,6 +73,17 @@ test('scales-utils/getScaleObjectFromProps with all props', function t(assert) {
   assert.end();
 });
 
+test('scales-utils/getScaleObjectFromProps should not mutate passed domain',
+function t(assert) {
+  const tXDomain = [1, 5];
+  getScaleObjectFromProps({
+    xRange, _adjustBy: ['x'], _adjustWhat: [0], _allData,
+    xDomain: tXDomain, xDistance}, 'x');
+  assert.deepEqual(tXDomain, [1, 5],
+    'original domain object should contain the same values');
+  assert.end();
+});
+
 test('scales-utils/getScaleObjectFromProps with the value that overrides props',
   function t(
     assert) {
@@ -107,7 +118,7 @@ test('scales-utils/getAttributeFunctor with props', function t(assert) {
   const isFunction = typeof result === 'function';
   assert.ok(isFunction, 'Result should be a function');
   if (isFunction) {
-    assert.ok(result(_allData[0]) === xRange[0],
+    assert.ok(result(_allData[0][0]) === xRange[0],
       'Function should reflect values properly');
   }
   assert.end();
@@ -124,7 +135,7 @@ test('scales-utils/getAttributeScale with props', function t(assert) {
   const isFunction = typeof result === 'function';
   assert.ok(isFunction, 'Result should be a function');
   if (isFunction) {
-    assert.ok(result(_allData[0].x) === xRange[0], 'Result scale is valid');
+    assert.ok(result(_allData[0][0].x) === xRange[0], 'Result scale is valid');
   }
   assert.end();
 });
