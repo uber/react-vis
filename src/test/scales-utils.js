@@ -76,9 +76,10 @@ test('scales-utils/getScaleObjectFromProps with all props', function t(assert) {
 test('scales-utils/getScaleObjectFromProps should not mutate passed domain',
 function t(assert) {
   const tXDomain = [1, 5];
-  getScaleObjectFromProps({
+  const scaleObj = getScaleObjectFromProps({
     xRange, _adjustBy: ['x'], _adjustWhat: [0], _allData,
     xDomain: tXDomain, xDistance}, 'x');
+  assert.deepEqual(scaleObj.domain, [0.5, 5.5], 'Correct adjustment of domain');
   assert.deepEqual(tXDomain, [1, 5],
     'original domain object should contain the same values');
   assert.end();
