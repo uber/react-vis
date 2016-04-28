@@ -161,13 +161,14 @@ test('scales-utils/_getSmallestDistanceIndex', function t(assert) {
     domain: [0, 1],
     range: [0, 1]
   };
+
   assert.equal(runTest([0, 0, 2]), 1);
-  assert.equal(runTest([0, 1, 2]), 2, 'returns last index with smallest dist');
+  assert.equal(runTest([0, 1, 2]), 1, 'returns first index with smallest dist');
   assert.equal(runTest([0, 2, 2]), 2);
   assert.equal(runTest([0, 2, 2]), 2);
   assert.equal(runTest([1, 2, 2]), 2);
-  assert.equal(runTest([2, 2, 2]), 2);
-  assert.equal(runTest([2, 2, 2]), 2);
+  assert.equal(runTest([2, 2, 2]), 1);
+  assert.equal(runTest([2, 2, 2]), 1);
   assert.end();
 
   function runTest(arg) {
