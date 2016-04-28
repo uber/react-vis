@@ -83,7 +83,7 @@ const SCALE_FUNCTIONS = {
  * @returns {number} Index of an element where the smallest distance was found.
  * @private
  */
-function _getSmallestDistanceIndex(values, scaleObject) {
+export function _getSmallestDistanceIndex(values, scaleObject) {
   const scaleFn = _getScaleFnFromScaleObject(scaleObject);
   let result = 0;
   if (scaleFn) {
