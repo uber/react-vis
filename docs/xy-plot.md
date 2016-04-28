@@ -57,14 +57,14 @@ If the property is not passed in any of the objects, the property is not visuali
 
 Not all properties can be visualized in each series. Here's a short comparison of them:
 
-|                  | `x` | `y` | `color` | `opacity` | `size` | `strokeStyle` | `strokeWidth` |
-|------------------|-----|-----|---------|-----------|--------|-------------------------------|
-| `LineSeries`     |  +  |  +  | +       |           |        |       +       |       +       |
-| `AreaSeries`     |  +  |  +  | +       |           |        |               |               |
-| `LinemarkSeries` |  +  |  +  | +       |     +     | +      |       +       |       +       |
-| `MarkSeries`     |  +  |  +  | +       |     +     | +      |               |               |
-| `BarSeries`      |  +  |  +  | +       |     +     |        |               |               |
-| `HeatmapSeries`  |  +  |  +  | +       |     +     |        |               |               |
+|                  | `x` | `y` | `color` | `opacity` | `size` |
+|------------------|-----|-----|---------|-----------|--------|
+| `LineSeries`     |  +  |  +  | +       |           |        |
+| `AreaSeries`     |  +  |  +  | +       |           |        |
+| `LinemarkSeries` |  +  |  +  | +       |     +     | +      |
+| `MarkSeries`     |  +  |  +  | +       |     +     | +      |
+| `BarSeries`      |  +  |  +  | +       |     +     |        |
+| `HeatmapSeries`  |  +  |  +  | +       |     +     |        |
 
 ## API Reference
 
@@ -248,6 +248,18 @@ Type: `function(info)`
 #### animation (optional)  
 See the [XYPlot](#api-reference)'s `animation` section for more information.
 
+
+### Series-specific properties:
+
+#### LineSeries/LineMarkSeries:
+
+##### strokeStyle (optional)
+Type: `string`
+If set to `dashed`, your series will use dashed lines. If set to `solid` or unspecified, your series will use solid lines.
+
+##### strokeWidth (optional)
+Type: `string|number`
+Specifies the width of the line for the series. By default, this is determined by react-vis css (2px).
 
 ### Hint
 
