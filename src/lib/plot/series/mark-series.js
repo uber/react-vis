@@ -28,6 +28,13 @@ import {DEFAULT_SIZE, DEFAULT_OPACITY} from '../../theme';
 
 class MarkSeries extends AbstractSeries {
 
+  static get propTypes() {
+    return {
+      ... AbstractSeries.propTypes,
+      dataKey: React.PropTypes.func
+    };
+  }
+
   constructor(props) {
     super(props);
     this._mouseOver = this._mouseOver.bind(this);
@@ -64,12 +71,14 @@ class MarkSeries extends AbstractSeries {
 
   _updateSeries() {
     const container = getDOMNode(this.refs.container);
-    const {data} = this.props;
+    const {
+      data,
+      dataKey} = this.props;
     if (!data) {
       return;
     }
     const circles = d3.select(container).selectAll('circle')
-      .data(data)
+      .data(data, dataKey)
       .on('mouseover', this._mouseOver)
       .on('mouseout', this._mouseOut);
 
