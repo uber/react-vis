@@ -26,7 +26,9 @@ import {
   getScalePropTypesByAttribute,
   getAttributeFunctor,
   getAttributeScale,
-  getAttributeValue} from '../lib/utils/scales-utils';
+  getAttributeValue,
+  _getSmallestDistanceIndex
+} from '../lib/utils/scales-utils';
 
 function isScaleConsistent(scaleObject, attr) {
   return scaleObject && scaleObject.range && scaleObject.domain &&
@@ -153,3 +155,22 @@ test('scales-utils/getAttributeValue with valid props', function t(assert) {
   assert.end();
 });
 
+test('scales-utils/_getSmallestDistanceIndex', function t(assert) {
+  const scaleObj = {
+    type: 'linear',
+    domain: [0, 1],
+    range: [0, 1]
+  };
+
+  assert.equal(runTest([0, 0, 2]), 1);
+  assert.equal(runTest([0, 1, 2]), 1);
+  assert.equal(runTest([0, 2, 2]), 2);
+  assert.equal(runTest([0, 2, 2]), 2);
+  assert.equal(runTest([1, 2, 2]), 2);
+  assert.equal(runTest([2, 2, 2]), 1);
+  assert.end();
+
+  function runTest(arg) {
+    return _getSmallestDistanceIndex(arg, scaleObj);
+  }
+});

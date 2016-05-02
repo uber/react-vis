@@ -78,24 +78,26 @@ const SCALE_FUNCTIONS = {
 /**
  * Find the smallest distance between the values on a given scale and return
  * the index of the element, where the smallest distance was found.
+ * It returns the first occurrence of i where
+ * `scale(value[i]) - scale(value[i - 1])` is minimal
  * @param {Array} values Array of values.
  * @param {Object} scaleObject Scale object.
  * @returns {number} Index of an element where the smallest distance was found.
  * @private
  */
-function _getSmallestDistanceIndex(values, scaleObject) {
+export function _getSmallestDistanceIndex(values, scaleObject) {
   const scaleFn = _getScaleFnFromScaleObject(scaleObject);
   let result = 0;
   if (scaleFn) {
     let nextValue;
-    let currentValue = scaleFn(values[1]);
-    let distance = currentValue - scaleFn(values[0]);
+    let currentValue = scaleFn(values[0]);
+    let distance = Infinity;
     let nextDistance;
 
     for (let i = 1; i < values.length; i++) {
       nextValue = scaleFn(values[i]);
       nextDistance = Math.abs(nextValue - currentValue);
-      if (distance <= nextDistance) {
+      if (nextDistance < distance) {
         distance = nextDistance;
         result = i;
       }
