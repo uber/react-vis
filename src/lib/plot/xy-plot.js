@@ -243,7 +243,13 @@ class XYPlot extends React.Component {
     const children = React.Children.toArray(this.props.children);
     const seriesProps = getSeriesPropsFromChildren(children);
     return children.map((child, index) => {
-      const dataProps = data[index] ? {data: data[index]} : null;
+      let dataProps = null;
+      if (seriesProps[index]) {
+        // Get the index of the series in the list of props and retrieve
+        // the data property from it.
+        const {seriesIndex} = seriesProps[index];
+        dataProps = data[seriesIndex];
+      }
       return React.cloneElement(child, {
         ...dimensions,
         animation,
