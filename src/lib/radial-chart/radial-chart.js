@@ -22,9 +22,7 @@ import React from 'react';
 import equal from 'deep-equal';
 import d3 from 'd3';
 
-import {
-  getAttributeFunctor,
-  getAttributeValue} from '../utils/scales-utils';
+import {getAttributeFunctor} from '../utils/scales-utils';
 
 import {getInnerDimensions} from '../utils/chart-utils';
 
