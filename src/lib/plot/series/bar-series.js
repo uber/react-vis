@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import d3 from 'd3';
+import d3Selection from 'd3-selection';
 
 import AbstractSeries from './abstract-series';
 import {getDOMNode} from '../../utils/react-utils';
@@ -58,10 +58,10 @@ class BarSeries extends AbstractSeries {
   _mouseOver(d) {
     const {onValueMouseOver, onSeriesMouseOver} = this.props;
     if (onValueMouseOver) {
-      onValueMouseOver(d, {event: d3.event});
+      onValueMouseOver(d, {event: d3Selection.event});
     }
     if (onSeriesMouseOver) {
-      onSeriesMouseOver({event: d3.event});
+      onSeriesMouseOver({event: d3Selection.event});
     }
   }
 
@@ -73,10 +73,10 @@ class BarSeries extends AbstractSeries {
   _mouseOut(d) {
     const {onValueMouseOut, onSeriesMouseOut} = this.props;
     if (onValueMouseOut) {
-      onValueMouseOut(d, {event: d3.event});
+      onValueMouseOut(d, {event: d3Selection.event});
     }
     if (onSeriesMouseOut) {
-      onSeriesMouseOut({event: d3.event});
+      onSeriesMouseOut({event: d3Selection.event});
     }
   }
 
@@ -108,7 +108,7 @@ class BarSeries extends AbstractSeries {
       sameTypeIndex = 0;
     }
 
-    const rects = d3.select(container).selectAll('rect')
+    const rects = d3Selection.select(container).selectAll('rect')
       .data(data)
       .on('mouseover', this._mouseOver)
       .on('mouseout', this._mouseOut);

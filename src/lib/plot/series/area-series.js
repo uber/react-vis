@@ -19,7 +19,8 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import d3 from 'd3';
+import d3Selection from 'd3-selection';
+import d3Shape from 'd3-shape';
 
 import AbstractSeries from './abstract-series';
 import {getDOMNode} from '../../utils/react-utils';
@@ -45,20 +46,20 @@ class AreaSeries extends AbstractSeries {
   _mouseOver(d) {
     const {onValueMouseOver, onSeriesMouseOver} = this.props;
     if (onValueMouseOver) {
-      onValueMouseOver(d, {event: d3.event});
+      onValueMouseOver(d, {event: d3Selection.event});
     }
     if (onSeriesMouseOver) {
-      onSeriesMouseOver({event: d3.event});
+      onSeriesMouseOver({event: d3Selection.event});
     }
   }
 
   _mouseOut(d) {
     const {onValueMouseOut, onSeriesMouseOut} = this.props;
     if (onValueMouseOut) {
-      onValueMouseOut(d, {event: d3.event});
+      onValueMouseOut(d, {event: d3Selection.event});
     }
     if (onSeriesMouseOut) {
-      onSeriesMouseOut({event: d3.event});
+      onSeriesMouseOut({event: d3Selection.event});
     }
   }
 
@@ -78,12 +79,12 @@ class AreaSeries extends AbstractSeries {
     const stroke = this._getAttributeValue('stroke') ||
       this._getAttributeValue('color');
 
-    const line = d3.svg.area().x(x).y0(y0).y1(y);
+    const line = d3Shape.area().x(x).y0(y0).y1(y);
 
     const opacity = this._getAttributeValue('opacity') || DEFAULT_OPACITY;
     const d = line(data);
 
-    const path = d3.select(lineElement)
+    const path = d3Selection.select(lineElement)
       .on('mouseover', this._onMouseOver)
       .on('mouseout', this._onMouseOut);
 

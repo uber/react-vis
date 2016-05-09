@@ -18,6 +18,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+import d3Axis from 'd3-axis';
+
+const AXIS_FNS = {
+  left: d3Axis.axisLeft,
+  right: d3Axis.axisRight,
+  top: d3Axis.axisTop,
+  bottom: d3Axis.axisBottom
+};
+
+export const AXIS_ORIENTATIONS = Object.keys(AXIS_FNS);
+
+export function getAxisFnByOrientation(orientation) {
+  return AXIS_FNS[orientation];
+}
+
 /**
  * Get total amount of ticks from a given size in pixels.
  * @param {number} size Size of the axis in pixels.

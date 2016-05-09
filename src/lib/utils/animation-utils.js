@@ -20,6 +20,10 @@
 
 import React from 'react';
 
+// Not obvious: d3-transition adds .transition() method to the selection
+// prototype (!!!). Do not remove this import.
+import 'd3-transition';
+
 /**
  * Property type for the animation.
  */

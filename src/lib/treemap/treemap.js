@@ -19,19 +19,22 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import d3 from 'd3';
-
+import d3Hierarchy from 'd3-hierarchy';
+import d3Color from 'd3-color';
 import {getCSSAnimation, AnimationPropType} from '../utils/animation-utils';
 import {getAttributeFunctor} from '../utils/scales-utils';
+import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, OPACITY_RANGE} from '../theme';
 
-import {
-  CONTINUOUS_COLOR_RANGE,
-  DEFAULT_COLOR,
-  OPACITY_RANGE} from '../theme';
+const TREEMAP_TILE_MODES = {
+  squarify: d3Hierarchy.treemapSquarify,
+  slice: d3Hierarchy.treemapSlice,
+  dice: d3Hierarchy.treemapDice,
+  slicedice: d3Hierarchy.treemapSliceDice
+};
 
 function getFontColorFromBackground(background) {
   if (background) {
-    return d3.hsl(background).l > 0.57 ? '#222' : '#fff';
+    return d3Color.hsl(background).l > 0.57 ? '#222' : '#fff';
   }
   return null;
 }
@@ -43,7 +46,9 @@ class Treemap extends React.Component {
       width: React.PropTypes.number.isRequired,
       height: React.PropTypes.number.isRequired,
       data: React.PropTypes.object.isRequired,
-      mode: React.PropTypes.string.isRequired,
+      mode: React.PropTypes.oneOf(
+        Object.keys(TREEMAP_TILE_MODES)
+      ),
       padding: React.PropTypes.number.isRequired,
       animation: AnimationPropType
     };
@@ -52,7 +57,7 @@ class Treemap extends React.Component {
   static get defaultProps() {
     return {
       mode: 'squarify',
-      padding: 0,
+      padding: 1,
       data: {
         children: []
       },
@@ -100,26 +105,20 @@ class Treemap extends React.Component {
    * @private
    */
   _getNodesToRender() {
-    const data = this.props.data;
-    const height = this.props.height;
-    const width = this.props.width;
-    const mode = this.props.mode;
-    const padding = this.props.padding;
-    let nodes = [];
-    let layout;
-    if (data) {
-      layout = d3.layout.treemap()
-        .padding(padding)
-        .mode(mode)
-        .sort((a, b) => a.size - b.size);
-      nodes = layout
-        .size([width, height])
-        .value(d => d.size)
-        .sticky(true)
-        .nodes(data);
-    }
+    const {data, height, width, mode, padding} = this.props;
 
-    return nodes;
+    if (data) {
+      const tileFn = TREEMAP_TILE_MODES[mode];
+      return d3Hierarchy.treemap(tileFn)
+        .tile(d3Hierarchy.treemapSquarify)
+        .size([width, height])
+        .padding(padding)(
+          d3Hierarchy.hierarchy(data)
+            .sort((a, b) => a.size - b.size)
+            .sum(d => d.size)
+        ).descendants();
+    }
+    return [];
   }
 
   _renderLeaf(node, i) {
@@ -131,13 +130,13 @@ class Treemap extends React.Component {
     const background = scales.color(node);
     const opacity = scales.opacity(node);
     const color = getFontColorFromBackground(background);
-    const width = Math.max(0, node.dx - 1);
-    const height = Math.max(0, node.dy - 1);
+    const {x0, x1, y0, y1, data: {title}} = node;
+
     const style = getCSSAnimation(this.props, {
-      top: `${node.y}px`,
-      left: `${node.x}px`,
-      width: `${width}px`,
-      height: `${height}px`,
+      top: `${y0}px`,
+      left: `${x0}px`,
+      width: `${x1 - x0}px`,
+      height: `${y1 - y0}px`,
       background,
       opacity,
       color
@@ -147,7 +146,7 @@ class Treemap extends React.Component {
         key={i}
         className="rv-treemap__leaf"
         style={style}>
-        <div className="rv-treemap__leaf__content">{node.title}</div>
+        <div className="rv-treemap__leaf__content">{title}</div>
       </div>
     );
   }
