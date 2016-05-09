@@ -50,6 +50,9 @@ $rv-xy-plot-tooltip-padding: 7px 10px;
   line {
     stroke: $rv-xy-plot-axis-line-color;
   }
+  .domain {
+    opacity: 0;
+  }
 }
 
 .rv-xy-plot__series--line {
