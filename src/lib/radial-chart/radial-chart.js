@@ -20,7 +20,8 @@
 
 import React from 'react';
 import equal from 'deep-equal';
-import d3 from 'd3';
+import d3Selection from 'd3-selection';
+import d3Shape from 'd3-shape';
 
 import {getAttributeFunctor} from '../utils/scales-utils';
 
@@ -127,7 +128,7 @@ export default class RadialChart extends React.Component {
   _triggerSectionHandler(handler, d) {
     if (handler) {
       const [x, y] = this._arc.centroid(d);
-      handler(d.data, {event: d3.event, x, y});
+      handler(d.data, {event: d3Selection.event, x, y});
     }
   }
 
@@ -233,21 +234,19 @@ export default class RadialChart extends React.Component {
   _updateChart() {
     const {data} = this.state;
     const container = getDOMNode(this.refs.container);
-    const pie = d3.layout.pie()
-      .sort(null)
-      .value(d => d.angle);
+    const pie = d3Shape.pie().sort(null).value(d => d.angle);
 
     const radiusFn = this._getAttributeFunctor('radius');
     const innerRadiusFn = this._getAttributeFunctor('innerRadius');
     if (!radiusFn) {
       return;
     }
-    const arc = d3.svg.arc()
+    const arc = d3Shape.arc()
       .outerRadius(radiusFn)
       .innerRadius(innerRadiusFn);
     this._arc = arc;
 
-    const sections = d3.select(container).selectAll('path')
+    const sections = d3Selection.select(container).selectAll('path')
       .data(pie(data))
       .on('click', this._sectionClick)
       .on('mouseover', this._sectionMouseOver)
