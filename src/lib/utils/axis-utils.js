@@ -27,7 +27,7 @@ const AXIS_FNS = {
   bottom: d3Axis.axisBottom
 };
 
-export const AXIS_ORIENTATION = Object.keys(AXIS_FNS);
+export const AXIS_ORIENTATIONS = Object.keys(AXIS_FNS);
 
 export function getAxisFnByOrientation(orientation) {
   return AXIS_FNS[orientation];

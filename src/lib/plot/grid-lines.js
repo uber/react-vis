@@ -24,7 +24,7 @@ import d3Selection from 'd3-selection';
 import PureRenderComponent from '../pure-render-component';
 import {getDOMNode} from '../utils/react-utils';
 import {getAttributeScale} from '../utils/scales-utils';
-import {AXIS_ORIENTATION, getAxisFnByOrientation} from '../utils/axis-utils';
+import {AXIS_ORIENTATIONS, getAxisFnByOrientation} from '../utils/axis-utils';
 
 import {AnimationPropType, applyTransition} from '../utils/animation-utils';
 
@@ -36,7 +36,7 @@ class GridLines extends PureRenderComponent {
       ticksTotal: React.PropTypes.number,
       values: React.PropTypes.array,
       attr: React.PropTypes.string.isRequired,
-      orientation: React.PropTypes.oneOf(AXIS_ORIENTATION),
+      orientation: React.PropTypes.oneOf(AXIS_ORIENTATIONS),
       top: React.PropTypes.number,
       left: React.PropTypes.number,
       marginTop: React.PropTypes.number,

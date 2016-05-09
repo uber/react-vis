@@ -23,7 +23,7 @@ import d3Selection from 'd3-selection';
 
 import PureRenderComponent from '../pure-render-component';
 import {getDOMNode} from '../utils/react-utils';
-import {AXIS_ORIENTATION, getAxisFnByOrientation} from '../utils/axis-utils';
+import {AXIS_ORIENTATIONS, getAxisFnByOrientation} from '../utils/axis-utils';
 import {getAttributeScale} from '../utils/scales-utils';
 
 import {AnimationPropType, applyTransition} from '../utils/animation-utils';
@@ -46,7 +46,7 @@ class Axis extends PureRenderComponent {
       title: React.PropTypes.string,
       classSet: React.PropTypes.object,
       attr: React.PropTypes.string.isRequired,
-      orientation: React.PropTypes.oneOf(AXIS_ORIENTATION),
+      orientation: React.PropTypes.oneOf(AXIS_ORIENTATIONS),
       labelFormat: React.PropTypes.func,
       labelValues: React.PropTypes.array,
       tickValues: React.PropTypes.array,
