@@ -20,6 +20,12 @@
 
 import React from 'react';
 
+// Not obvious: d3-transition adds .transition() method to the selection
+// prototype (!!!). Do not remove this import.
+/* eslint-disable no-unused-vars */
+import d3Transition from 'd3-transition';
+/* eslint-enable no-unused-vars */
+
 /**
  * Property type for the animation.
  */

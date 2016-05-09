@@ -18,7 +18,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import d3 from 'd3';
+import d3Scale from 'd3-scale';
+import d3Array from 'd3-array';
+import d3Collection from 'd3-collection';
 import React from 'react';
 import warning from 'warning';
 
@@ -68,11 +70,11 @@ const TIME_SCALE_TYPE = 'time';
  * @const
  */
 const SCALE_FUNCTIONS = {
-  [LINEAR_SCALE_TYPE]: d3.scale.linear,
-  [ORDINAL_SCALE_TYPE]: d3.scale.ordinal,
-  [CATEGORY_SCALE_TYPE]: d3.scale.ordinal,
-  [LOG_SCALE_TYPE]: d3.scale.log,
-  [TIME_SCALE_TYPE]: d3.time.scale
+  [LINEAR_SCALE_TYPE]: d3Scale.scaleLinear,
+  [ORDINAL_SCALE_TYPE]: d3Scale.scaleOrdinal,
+  [CATEGORY_SCALE_TYPE]: d3Scale.scaleOrdinal,
+  [LOG_SCALE_TYPE]: d3Scale.scaleLog,
+  [TIME_SCALE_TYPE]: d3Scale.scaleTime
 };
 
 /**
@@ -149,9 +151,9 @@ function _getDomainByAttr(allData, attr, type) {
 
   // Create proper domain depending on the type of the scale.
   if (type !== ORDINAL_SCALE_TYPE && type !== CATEGORY_SCALE_TYPE) {
-    domain = d3.extent(values);
+    domain = d3Array.extent(values);
   } else {
-    domain = d3.set(values).values();
+    domain = d3Collection.set(values).values();
   }
   return domain;
 }
