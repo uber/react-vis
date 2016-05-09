@@ -91,7 +91,7 @@ class LineSeries extends AbstractSeries {
   }
 
   render() {
-    const {data, strokeStyle, marginLeft, marginTop} = this.props;
+    const {data, strokeStyle, strokeWidth, marginLeft, marginTop} = this.props;
     if (!data) {
       return null;
     }
@@ -100,7 +100,11 @@ class LineSeries extends AbstractSeries {
         ref="line"
         className="rv-xy-plot__series rv-xy-plot__series--line"
         transform={`translate(${marginLeft},${marginTop})`}
-        style={{opacity: 0, strokeDasharray: STROKE_STYLES[strokeStyle]}}/>
+        style={{
+          opacity: 0,
+          strokeDasharray: STROKE_STYLES[strokeStyle],
+          strokeWidth
+        }}/>
     );
   }
 }

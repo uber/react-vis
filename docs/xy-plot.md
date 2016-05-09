@@ -49,6 +49,7 @@ XYPlot is a wrapper for series, hints, axes and other components. Most of these 
 * `opacity` (optional)
 * `fill` (optional)
 * `stroke` (optional)
+* `strokeWidth` (optional), `strokeStyle` (optional) - to control the width of the line series and whether they are dashed or solid. 
 * `color` (optional, used instead of `fill` and `stroke` if none of them is passed)
 * `size` (optional)
 
@@ -247,6 +248,18 @@ Type: `function(info)`
 #### animation (optional)  
 See the [XYPlot](#api-reference)'s `animation` section for more information.
 
+
+### Series-specific properties:
+
+#### LineSeries/LineMarkSeries:
+
+##### strokeStyle (optional)
+Type: `string`
+If set to `dashed`, your series will use dashed lines. If set to `solid` or unspecified, your series will use solid lines.
+
+##### strokeWidth (optional)
+Type: `string|number`
+Specifies the width of the line for the series. By default, this is determined by react-vis css (2px).
 
 ### Hint
 
