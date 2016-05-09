@@ -19,7 +19,8 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import d3 from 'd3';
+import d3Selection from 'd3-selection';
+import d3Shape from 'd3-shape';
 
 import AbstractSeries from './abstract-series';
 import {getDOMNode} from '../../utils/react-utils';
@@ -57,14 +58,14 @@ class LineSeries extends AbstractSeries {
   _mouseOver() {
     const {onSeriesMouseOver} = this.props;
     if (onSeriesMouseOver) {
-      onSeriesMouseOver({event: d3.event});
+      onSeriesMouseOver({event: d3Selection.event});
     }
   }
 
   _mouseOut() {
     const {onSeriesMouseOut} = this.props;
     if (onSeriesMouseOut) {
-      onSeriesMouseOut({event: d3.event});
+      onSeriesMouseOut({event: d3Selection.event});
     }
   }
 
@@ -79,9 +80,9 @@ class LineSeries extends AbstractSeries {
     const stroke = this._getAttributeValue('stroke') ||
       this._getAttributeValue('color');
     const opacity = this._getAttributeValue('opacity') || DEFAULT_OPACITY;
-    const line = d3.svg.line().x(x).y(y);
+    const line = d3Shape.line().x(x).y(y);
     const d = line(data);
-    const path = d3.select(lineElement)
+    const path = d3Selection.select(lineElement)
       .on('mouseover', this._mouseOver)
       .on('mouseout', this._mouseOut);
     this._applyTransition(path)

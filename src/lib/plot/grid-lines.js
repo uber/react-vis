@@ -19,11 +19,12 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import d3 from 'd3';
+import d3Selection from 'd3-selection';
 
 import PureRenderComponent from '../pure-render-component';
 import {getDOMNode} from '../utils/react-utils';
 import {getAttributeScale} from '../utils/scales-utils';
+import {AXIS_ORIENTATION, getAxisFnByOrientation} from '../utils/axis-utils';
 
 import {AnimationPropType, applyTransition} from '../utils/animation-utils';
 
@@ -35,9 +36,7 @@ class GridLines extends PureRenderComponent {
       ticksTotal: React.PropTypes.number,
       values: React.PropTypes.array,
       attr: React.PropTypes.string.isRequired,
-      orientation: React.PropTypes.oneOf([
-        'left', 'top', 'bottom', 'right'
-      ]),
+      orientation: React.PropTypes.oneOf(AXIS_ORIENTATION),
       top: React.PropTypes.number,
       left: React.PropTypes.number,
       marginTop: React.PropTypes.number,
@@ -67,11 +66,9 @@ class GridLines extends PureRenderComponent {
     if (!scale) {
       return;
     }
-    const container = d3.select(getDOMNode(this.refs.container));
-    const axis = d3.svg
-      .axis()
-      .scale(scale)
-      .orient(orientation)
+    const container = d3Selection.select(getDOMNode(this.refs.container));
+    const axisFn = getAxisFnByOrientation(orientation);
+    const axis = axisFn(scale)
       .tickFormat('')
       .tickSize(tickSize, 0, 0);
     if (!values) {

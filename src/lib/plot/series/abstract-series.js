@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import d3 from 'd3';
+import d3Selection from 'd3-selection';
 
 import PureRenderComponent from '../../pure-render-component';
 import {
@@ -129,8 +129,8 @@ export default class AbstractSeries extends PureRenderComponent {
     let value = null;
 
     // TODO(antonb): WAT?
-    d3.event = event.nativeEvent;
-    const coordinate = d3.mouse(event.currentTarget)[0] - marginLeft;
+    d3Selection.event = event.nativeEvent;
+    const coordinate = d3Selection.mouse(event.currentTarget)[0] - marginLeft;
     const xScaleFn = this._getAttributeFunctor('x');
 
     data.forEach(item => {

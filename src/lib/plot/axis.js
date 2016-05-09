@@ -19,10 +19,11 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import d3 from 'd3';
+import d3Selection from 'd3-selection';
 
 import PureRenderComponent from '../pure-render-component';
 import {getDOMNode} from '../utils/react-utils';
+import {AXIS_ORIENTATION, getAxisFnByOrientation} from '../utils/axis-utils';
 import {getAttributeScale} from '../utils/scales-utils';
 
 import {AnimationPropType, applyTransition} from '../utils/animation-utils';
@@ -45,7 +46,7 @@ class Axis extends PureRenderComponent {
       title: React.PropTypes.string,
       classSet: React.PropTypes.object,
       attr: React.PropTypes.string.isRequired,
-      orientation: React.PropTypes.string.isRequired,
+      orientation: React.PropTypes.oneOf(AXIS_ORIENTATION),
       labelFormat: React.PropTypes.func,
       labelValues: React.PropTypes.array,
       tickValues: React.PropTypes.array,
@@ -82,7 +83,7 @@ class Axis extends PureRenderComponent {
       axis.tickFormat(labelFormat);
     }
     axis.tickSize(0, 0);
-    axis.outerTickSize(0);
+    axis.tickSizeOuter(0);
     axis.tickPadding(14);
     return axis;
   }
@@ -102,7 +103,7 @@ class Axis extends PureRenderComponent {
     }
     axis.tickFormat('');
     axis.tickSize(tickSize);
-    axis.outerTickSize(0);
+    axis.tickSizeOuter(0);
     return axis;
   }
 
@@ -118,11 +119,10 @@ class Axis extends PureRenderComponent {
     }
 
     const {labels, ticks} = this.refs;
-    const selectedLabels = d3.select(getDOMNode(labels));
-    const selectedTicks = d3.select(getDOMNode(ticks));
-
-    let axis = d3.svg.axis().scale(scale).orient(orientation);
-    axis = this._setAxisLabels(axis);
+    const selectedLabels = d3Selection.select(getDOMNode(labels));
+    const selectedTicks = d3Selection.select(getDOMNode(ticks));
+    const axisFn = getAxisFnByOrientation(orientation);
+    const axis = this._setAxisLabels(axisFn(scale));
 
     applyTransition(this.props, selectedLabels)
       .call(this._setAxisLabels(axis));
