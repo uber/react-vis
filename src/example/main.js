@@ -27,7 +27,7 @@ import LineChart from './plot/line-chart';
 import LineMarkChart from './plot/linemark-chart';
 import BarChart from './plot/bar-chart';
 import AreaChart from './plot/area-chart';
-import ScatteplotChart from './plot/scatteplot';
+import ScatteplotChart from './plot/scatterplot';
 import HeatmapChart from './plot/heatmap-chart';
 import WidthHeightMarginChart from './plot/width-height-margin';
 import CustomScales from './plot/custom-scales';
