@@ -28,38 +28,12 @@ import {DEFAULT_SIZE, DEFAULT_OPACITY} from '../../theme';
 
 class MarkSeries extends AbstractSeries {
 
-  constructor(props) {
-    super(props);
-    this._mouseOver = this._mouseOver.bind(this);
-    this._mouseOut = this._mouseOut.bind(this);
-  }
-
   componentDidMount() {
     this._updateSeries();
   }
 
   componentDidUpdate() {
     this._updateSeries();
-  }
-
-  _mouseOver(d) {
-    const {onValueMouseOver, onSeriesMouseOver} = this.props;
-    if (onValueMouseOver) {
-      onValueMouseOver(d, {event: d3Selection.event});
-    }
-    if (onSeriesMouseOver) {
-      onSeriesMouseOver({event: d3Selection.event});
-    }
-  }
-
-  _mouseOut(d) {
-    const {onValueMouseOut, onSeriesMouseOut} = this.props;
-    if (onValueMouseOut) {
-      onValueMouseOut(d, {event: d3Selection.event});
-    }
-    if (onSeriesMouseOut) {
-      onSeriesMouseOut({event: d3Selection.event});
-    }
   }
 
   _updateSeries() {
@@ -70,8 +44,9 @@ class MarkSeries extends AbstractSeries {
     }
     const circles = d3Selection.select(container).selectAll('circle')
       .data(data)
-      .on('mouseover', this._mouseOver)
-      .on('mouseout', this._mouseOut);
+      .on('mouseover', this._mouseOverWithValue)
+      .on('mouseout', this._mouseOutWithValue)
+      .on('click', this._clickWithValue);
 
     // TODO(anton): radius should be the half of the size.
     this._applyTransition(circles)

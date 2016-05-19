@@ -36,48 +36,12 @@ class BarSeries extends AbstractSeries {
     };
   }
 
-  constructor(props) {
-    super(props);
-    this._mouseOver = this._mouseOver.bind(this);
-    this._mouseOut = this._mouseOut.bind(this);
-  }
-
   componentDidMount() {
     this._updateSeries();
   }
 
   componentDidUpdate() {
     this._updateSeries();
-  }
-
-  /**
-   * Mouseover handler. Triggers mouseover-related actions if they were set.
-   * @param {Object} d Data point.
-   * @private
-   */
-  _mouseOver(d) {
-    const {onValueMouseOver, onSeriesMouseOver} = this.props;
-    if (onValueMouseOver) {
-      onValueMouseOver(d, {event: d3Selection.event});
-    }
-    if (onSeriesMouseOver) {
-      onSeriesMouseOver({event: d3Selection.event});
-    }
-  }
-
-  /**
-   * Mouseout handler. Triggers mouseout-related actions if they were set.
-   * @param {Object} d Data point.
-   * @private
-   */
-  _mouseOut(d) {
-    const {onValueMouseOut, onSeriesMouseOut} = this.props;
-    if (onValueMouseOut) {
-      onValueMouseOut(d, {event: d3Selection.event});
-    }
-    if (onSeriesMouseOut) {
-      onSeriesMouseOut({event: d3Selection.event});
-    }
   }
 
   _updateSeries() {
@@ -110,8 +74,9 @@ class BarSeries extends AbstractSeries {
 
     const rects = d3Selection.select(container).selectAll('rect')
       .data(data)
-      .on('mouseover', this._mouseOver)
-      .on('mouseout', this._mouseOut);
+      .on('mouseover', this._mouseOverWithValue)
+      .on('mouseout', this._mouseOutWithValue)
+      .on('click', this._clickWithValue);
 
     const itemSize = (distance / 2) * 0.85;
 
