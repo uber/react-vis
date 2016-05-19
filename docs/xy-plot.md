@@ -75,7 +75,7 @@ Not all properties can be visualized in each series. Here's a short comparison o
 
 #### width
 Type: `number`  
-Width of the chart. The height should be passed.
+Width of the chart. The width should be passed.
 
 #### height
 Type: `number`  
