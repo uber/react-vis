@@ -53,10 +53,9 @@
     "react-addons-shallow-compare": ">=0.14.0",
     "react-addons-test-utils": "^15.0.2",
     "react-dom": ">=0.14.0",
-    "run-browser-babel": "^4.0.1",
+    "run-browser-babel": "^5.2.0",
     "tape": "^4.0.0",
-    "uglify-js": "^2.6.1",
-    "unitest": "^0.10.0"
+    "uglify-js": "^2.6.1"
   },
   "peerDependencies": {
     "react": "0.14.x - 15.x",
@@ -73,9 +72,9 @@
     "build": "npm run build-js && npm run build-css",
     "watch": "npm run build-example && npm run watch-example && (budo dist/example/main.js --live --css dist/example/main.css)",
     "lint": "eslint src",
-    "execute-tests": "(browserify dist/test/index.js -x react/addons -x react/lib/ReactContext -x react/lib/ExecutionEnvironment > dist/test/bundle.js) && unitest --browser=dist/test/bundle.js",
+    "execute-tests": "run-browser-babel dist/test/index.js --bx react/addons --bx react/lib/ReactContext --bx react/lib/ExecutionEnvironment --phantom",
     "test": "npm run build-js && npm run execute-tests",
-    "cover": "npm run test -- --report=text --report=cobertura --report=html --report=json-summary",
+    "cover": "npm run build-js && npm run execute-tests -- --report=text --report=cobertura --report=html --report=json-summary",
     "precommit": "npm run lint -s",
     "prepublish": "npm run build"
   },
