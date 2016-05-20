@@ -25,6 +25,65 @@ import window from 'global/window';
 
 const CONTAINER_REF = 'container';
 
+// As a performance enhancement, we want to only listen once
+const resizeSubscribers = [];
+const DEBOUNCE_DURATION = 100;
+let timeoutId = null;
+
+/**
+ * Calls each subscriber, debounced to the
+ */
+function debounceEmitResize() {
+  window.clearTimeout(timeoutId);
+  timeoutId = window.setTimeout(emitResize, DEBOUNCE_DURATION);
+}
+
+/**
+ * Calls each subscriber once syncronously.
+ */
+function emitResize() {
+  resizeSubscribers.forEach(cb => cb());
+}
+
+/**
+ * Add the given callback to the list of subscribers to be caled when the
+ * window resizes. Returns a function that, when called, removes the given
+ * callback from the list of subscribers. This function is also resposible for
+ * adding and removing the resize listener on `window`.
+ *
+ * @param {Function} cb - Subscriber callback function
+ * @returns {Function} Unsubscribe function
+ */
+function subscribeToDebouncedResize(cb) {
+  resizeSubscribers.push(cb);
+
+  // if we go from zero to one Flexible components instances, add the listener
+  if (resizeSubscribers.length === 1) {
+    window.addEventListener('resize', debounceEmitResize);
+  }
+  return function unsubscribe() {
+    removeSubscriber(resizeSubscribers, cb);
+
+    // if we have no Flexible components, remove the listener
+    if (resizeSubscribers.length === 0) {
+      window.clearTimeout(timeoutId);
+      window.removeEventListener('resize', debounceEmitResize);
+    }
+  };
+}
+
+/**
+ * Helper for removing the given callback from the list of subscribers.
+ *
+ * @param {Function} item - Subscriber callback function
+ */
+function removeSubscriber(item) {
+  const index = resizeSubscribers.indexOf(item);
+  if (index > -1) {
+    resizeSubscribers.splice(index, 1);
+  }
+}
+
 /**
  * Add the ability to stretch the visualization on window resize.
  * @param {*} Component React class for the child component.
@@ -44,9 +103,7 @@ export default function makeVisFlexible(Component) {
       this.state = {
         width: 0
       };
-      this._resizeTimeout = null;
       this._onResize = this._onResize.bind(this);
-      this._onResizeDebounced = this._onResizeDebounced.bind(this);
     }
 
     /**
@@ -63,14 +120,9 @@ export default function makeVisFlexible(Component) {
       }
     }
 
-    _onResizeDebounced() {
-      window.clearTimeout(this._resizeTimeout);
-      this._resizeTimeout = window.setTimeout(this._onResize, 100);
-    }
-
     componentDidMount() {
       this._onResize();
-      window.addEventListener('resize', this._onResizeDebounced);
+      this.cancelSubscription = subscribeToDebouncedResize(this._onResize);
     }
 
     componentWillReceiveProps() {
@@ -78,8 +130,7 @@ export default function makeVisFlexible(Component) {
     }
 
     componentWillUnmount() {
-      window.clearTimeout(this._resizeTimeout);
-      window.removeEventListener('resize', this._onResizeDebounced);
+      this.cancelSubscription();
     }
 
     render() {
