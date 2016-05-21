@@ -139,10 +139,10 @@ class Axis extends PureRenderComponent {
   }
 
   render() {
-    const {title, left, top} = this.props;
+    const {title, left, top, className} = this.props;
     const hasTitle = title && title !== '';
     return (
-      <g className="rv-xy-plot__axis"
+      <g className={`rv-xy-plot__axis ${className}`}
          transform={`translate(${left},${top})`}
          ref="container">
         <g
