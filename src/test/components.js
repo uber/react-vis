@@ -21,7 +21,6 @@
 import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
-
 import Treemap from '../lib/treemap/treemap';
 import Table from '../lib/table/table';
 import LineSeries from '../lib/plot/series/line-series';
@@ -37,17 +36,26 @@ import HorizontalGrid from '../lib/plot/horizontal-grid-lines';
 import XYPlot from '../lib/plot/xy-plot';
 
 function testRenderWithProps(Component, props) {
-  return test(`Rendering ${Component.displayName}`, (assert) => {
+  return test(`Rendering ${Component.displayName}`, assert => {
     const wrapper = mount(<Component {...props} />);
+    const wrapperProps = wrapper.props();
     assert.ok(
       wrapper.find(Component).length,
       `${Component.displayName} is rendered`
     );
+    Object.keys(props).forEach(propName => {
+      assert.ok(
+        wrapperProps[propName] === props[propName],
+        `${propName} is set`);
+    });
     assert.end();
   });
 }
 
-const TREEMAP_PROPS = {height: 100, data: {}};
+function NOOP() {
+}
+
+const TREEMAP_PROPS = {height: 100, width: 100, data: {}};
 
 const TABLE_PROPS = {
   height: 100,
@@ -72,7 +80,13 @@ const XYPLOT_SERIES_PROPS = {
   _allData: [[
     {x: 1, y: 1},
     {x: 2, y: 2}
-  ]]
+  ]],
+  onSeriesMouseOver: NOOP,
+  onSeriesMouseOut: NOOP,
+  onSeriesClick: NOOP,
+  onValueMouseOver: NOOP,
+  onValueMouseOut: NOOP,
+  onValueClick: NOOP
 };
 
 const XYPLOT_XAXIS_PROPS = {
