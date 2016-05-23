@@ -29,38 +29,12 @@ import {DEFAULT_OPACITY} from '../../theme';
 
 class AreaSeries extends AbstractSeries {
 
-  constructor(props) {
-    super(props);
-    this._mouseOut = this._mouseOut.bind(this);
-    this._mouseOver = this._mouseOver.bind(this);
-  }
-
   componentDidMount() {
     this._updateSeries();
   }
 
   componentDidUpdate() {
     this._updateSeries();
-  }
-
-  _mouseOver(d) {
-    const {onValueMouseOver, onSeriesMouseOver} = this.props;
-    if (onValueMouseOver) {
-      onValueMouseOver(d, {event: d3Selection.event});
-    }
-    if (onSeriesMouseOver) {
-      onSeriesMouseOver({event: d3Selection.event});
-    }
-  }
-
-  _mouseOut(d) {
-    const {onValueMouseOut, onSeriesMouseOut} = this.props;
-    if (onValueMouseOut) {
-      onValueMouseOut(d, {event: d3Selection.event});
-    }
-    if (onSeriesMouseOut) {
-      onSeriesMouseOut({event: d3Selection.event});
-    }
   }
 
   _updateSeries() {
@@ -85,8 +59,9 @@ class AreaSeries extends AbstractSeries {
     const d = line(data);
 
     const path = d3Selection.select(lineElement)
-      .on('mouseover', this._onMouseOver)
-      .on('mouseout', this._onMouseOut);
+      .on('mouseover', this._mouseOver)
+      .on('mouseout', this._mouseOut)
+      .on('click', this._click);
 
     this._applyTransition(path)
       .attr('d', d)

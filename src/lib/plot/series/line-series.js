@@ -41,32 +41,12 @@ class LineSeries extends AbstractSeries {
     };
   }
 
-  constructor(props) {
-    super(props);
-    this._mouseOver = this._mouseOver.bind(this);
-    this._mouseOut = this._mouseOut.bind(this);
-  }
-
   componentDidMount() {
     this._updateSeries();
   }
 
   componentDidUpdate() {
     this._updateSeries();
-  }
-
-  _mouseOver() {
-    const {onSeriesMouseOver} = this.props;
-    if (onSeriesMouseOver) {
-      onSeriesMouseOver({event: d3Selection.event});
-    }
-  }
-
-  _mouseOut() {
-    const {onSeriesMouseOut} = this.props;
-    if (onSeriesMouseOut) {
-      onSeriesMouseOut({event: d3Selection.event});
-    }
   }
 
   _updateSeries() {
@@ -84,7 +64,8 @@ class LineSeries extends AbstractSeries {
     const d = line(data);
     const path = d3Selection.select(lineElement)
       .on('mouseover', this._mouseOver)
-      .on('mouseout', this._mouseOut);
+      .on('mouseout', this._mouseOut)
+      .on('click', this._click);
     this._applyTransition(path)
       .attr('d', d)
       .style('stroke', stroke)
