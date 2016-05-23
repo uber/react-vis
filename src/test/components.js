@@ -19,186 +19,86 @@
 // THE SOFTWARE.
 
 import test from 'tape';
-import 'babel-polyfill';
-
 import React from 'react';
-import ReactTestUtils from 'react-addons-test-utils';
+import {mount} from 'enzyme';
 
 import Treemap from '../lib/treemap/treemap';
 import Table from '../lib/table/table';
-
 import LineSeries from '../lib/plot/series/line-series';
 import AreaSeries from '../lib/plot/series/area-series';
 import MarkSeries from '../lib/plot/series/mark-series';
 import HeatmapSeries from '../lib/plot/series/heatmap-series';
 import VerticalBarSeries from '../lib/plot/series/vertical-bar-series';
-
+import HorizontalBarSeries from '../lib/plot/series/horizontal-bar-series';
 import XAxisBottom from '../lib/plot/x-axis';
 import YAxisLeft from '../lib/plot/y-axis';
-
 import VerticalGrid from '../lib/plot/vertical-grid-lines';
 import HorizontalGrid from '../lib/plot/horizontal-grid-lines';
-
 import XYPlot from '../lib/plot/xy-plot';
 
-const utils = {
-  renderComponent(component) {
-    return ReactTestUtils.renderIntoDocument(component);
-  },
+function testRenderWithProps(Component, props) {
+  return test(`Rendering ${Component.displayName}`, (assert) => {
+    const wrapper = mount(<Component {...props} />);
+    assert.ok(
+      wrapper.find(Component).length,
+      `${Component.displayName} is rendered`
+    );
+    assert.end();
+  });
+}
 
-  find(component, type) {
-    return ReactTestUtils.findRenderedComponentWithType(component, type);
-  },
+const TREEMAP_PROPS = {height: 100, data: {}};
 
-  destroyComponent(component) {
-    // noop for now
-  }
+const TABLE_PROPS = {
+  height: 100,
+  width: 100,
+  header: ['a', 'b', 'c'],
+  data: [[1, 2, 3], [4, 5, 6]]
 };
 
-test('Rendering Treemap', function t(assert) {
-  const component = utils.renderComponent(
-    React.createElement(Treemap, {height: 100, data: {}}));
-  const treemap = utils.find(component, Treemap);
-  assert.ok(treemap, 'component should be rendered');
+const XYPLOT_SERIES_PROPS = {
+  xDomain: [0, 1],
+  xRange: [0, 1],
+  xType: 'linear',
+  xDistance: 1,
+  yDomain: [0, 1],
+  yRange: [0, 1],
+  yDistance: 1,
+  yType: 'linear',
+  data: [
+    {x: 1, y: 1},
+    {x: 2, y: 2}
+  ],
+  _allData: [[
+    {x: 1, y: 1},
+    {x: 2, y: 2}
+  ]]
+};
 
-  utils.destroyComponent(component);
-  assert.end();
-});
+const XYPLOT_XAXIS_PROPS = {
+  xRange: [0, 1],
+  xDomain: [0, 1],
+  xType: 'linear'
+};
 
-test('Rendering Table', function t(assert) {
-  const component = utils.renderComponent(
-    React.createElement(Table, {
-      height: 100,
-      width: 100,
-      header: ['a', 'b', 'c'],
-      data: [[1, 2, 3], [4, 5, 6]]
-    }));
-  assert.ok(component, 'component should be rendered');
+const XYPLOT_YAXIS_PROPS = {
+  yRange: [0, 1],
+  yDomain: [0, 1],
+  yType: 'linear'
+};
 
-  utils.destroyComponent(component);
-  assert.end();
-});
+const XYPLOT_PROPS = {width: 10, height: 10};
 
-test('Rendering LineSeries', function t(assert) {
-  const component = utils.renderComponent(
-    React.createElement(LineSeries, {data: []}));
-  assert.ok(component, 'component should be rendered');
-
-  utils.destroyComponent(component);
-  assert.end();
-});
-
-test('Rendering AreaSeries', function t(assert) {
-  const component = utils.renderComponent(
-    React.createElement(AreaSeries, {data: []}));
-  assert.ok(component, 'component should be rendered');
-
-  utils.destroyComponent(component);
-  assert.end();
-});
-
-test('Rendering MarkSeries', function t(assert) {
-  const component = utils.renderComponent(
-    React.createElement(MarkSeries, {data: []}));
-  assert.ok(component, 'component should be rendered');
-
-  utils.destroyComponent(component);
-  assert.end();
-});
-
-test('Rendering VerticalBarSeries', function t(assert) {
-  // TODO: Data duplication in data and _allData is a bad idea. Fix that.
-  const component = utils.renderComponent(
-    React.createElement(VerticalBarSeries, {
-      xDomain: [0, 1],
-      xRange: [0, 1],
-      xType: 'linear',
-      xDistance: 1,
-      yDomain: [0, 1],
-      yRange: [0, 1],
-      yDistance: 1,
-      yType: 'linear',
-      data: [
-        {x: 1, y: 1},
-        {x: 2, y: 2}
-      ],
-      _allData: [[
-        {x: 1, y: 1},
-        {x: 2, y: 2}
-      ]]
-    }));
-  assert.ok(component, 'component should be rendered');
-
-  utils.destroyComponent(component);
-  assert.end();
-});
-
-test('Rendering HeatmapSeries', function t(assert) {
-  const component = utils.renderComponent(
-    React.createElement(HeatmapSeries, {data: []}));
-  assert.ok(component, 'component should be rendered');
-
-  utils.destroyComponent(component);
-  assert.end();
-});
-
-test('Rendering XAxisBottom', function t(assert) {
-  const component = utils.renderComponent(
-    React.createElement(XAxisBottom, {
-      xRange: [0, 1],
-      xDomain: [0, 1],
-      xType: 'linear'
-    })
-  );
-  assert.ok(component, 'component should be rendered');
-  utils.destroyComponent(component);
-  assert.end();
-});
-
-test('Rendering YAxisLeft', function t(assert) {
-  const component = utils.renderComponent(
-    React.createElement(YAxisLeft, {
-      yRange: [0, 1],
-      yDomain: [0, 1],
-      yType: 'linear'
-    })
-  );
-  assert.ok(component, 'component should be rendered');
-  utils.destroyComponent(component);
-  assert.end();
-});
-
-test('Rendering VerticalGrid', function t(assert) {
-  const component = utils.renderComponent(
-    React.createElement(VerticalGrid, {
-      xRange: [0, 1],
-      xDomain: [0, 1],
-      xType: 'linear'
-    })
-  );
-  assert.ok(component, 'component should be rendered');
-  utils.destroyComponent(component);
-  assert.end();
-});
-
-test('Rendering HorizontalGrid', function t(assert) {
-  const component = utils.renderComponent(
-    React.createElement(HorizontalGrid, {
-      yRange: [0, 1],
-      yDomain: [0, 1],
-      yType: 'linear'
-    })
-  );
-  assert.ok(component, 'component should be rendered');
-  utils.destroyComponent(component);
-  assert.end();
-});
-
-test('Rendering XYPlot', function t(assert) {
-  const component = utils.renderComponent(
-    React.createElement(XYPlot, {width: 10, height: 10}, [])
-  );
-  assert.ok(component, 'component should be rendered');
-  utils.destroyComponent(component);
-  assert.end();
-});
+testRenderWithProps(Treemap, TREEMAP_PROPS);
+testRenderWithProps(Table, TABLE_PROPS);
+testRenderWithProps(LineSeries, XYPLOT_SERIES_PROPS);
+testRenderWithProps(AreaSeries, XYPLOT_SERIES_PROPS);
+testRenderWithProps(MarkSeries, XYPLOT_SERIES_PROPS);
+testRenderWithProps(VerticalBarSeries, XYPLOT_SERIES_PROPS);
+testRenderWithProps(HorizontalBarSeries, XYPLOT_SERIES_PROPS);
+testRenderWithProps(HeatmapSeries, XYPLOT_SERIES_PROPS);
+testRenderWithProps(XAxisBottom, XYPLOT_XAXIS_PROPS);
+testRenderWithProps(YAxisLeft, XYPLOT_YAXIS_PROPS);
+testRenderWithProps(VerticalGrid, XYPLOT_XAXIS_PROPS);
+testRenderWithProps(HorizontalGrid, XYPLOT_YAXIS_PROPS);
+testRenderWithProps(XYPlot, XYPLOT_PROPS);
