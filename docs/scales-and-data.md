@@ -37,5 +37,7 @@ All scale properties are prepended with the name of the attribute, for instance 
     Categorical scale, each new value gets the next value from the range. Similar to d3.scale.category\[Number\], but works with other values besides colors.
     * `'time'`  
     Time scale. Similar to [d3.time.scale](https://github.com/mbostock/d3/wiki/Time-Scales).
+    * `'time-utc'`  
+    Time UTC scale. Similar to [d3.time.scale.utc](https://github.com/d3/d3/wiki/Time-Scales#utc).
     * `'log'`  
     Log scale. Similar to [d3.scale.log](https://github.com/mbostock/d3/wiki/Quantitative-Scales#log).
