@@ -65,6 +65,13 @@ const LOG_SCALE_TYPE = 'log';
 const TIME_SCALE_TYPE = 'time';
 
 /**
+ * Time UTC scale name.
+ * @type {string}
+ * @const
+ */
+const TIME_UTC_SCALE_TYPE = 'time-utc';
+
+/**
  * Scale functions that are supported in the library.
  * @type {Object}
  * @const
@@ -74,7 +81,8 @@ const SCALE_FUNCTIONS = {
   [ORDINAL_SCALE_TYPE]: d3Scale.scaleOrdinal,
   [CATEGORY_SCALE_TYPE]: d3Scale.scaleOrdinal,
   [LOG_SCALE_TYPE]: d3Scale.scaleLog,
-  [TIME_SCALE_TYPE]: d3Scale.scaleTime
+  [TIME_SCALE_TYPE]: d3Scale.scaleTime,
+  [TIME_UTC_SCALE_TYPE]: d3Scale.scaleUtc
 };
 
 /**
