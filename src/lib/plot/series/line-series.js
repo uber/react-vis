@@ -62,12 +62,13 @@ class LineSeries extends AbstractSeries {
     const opacity = this._getAttributeValue('opacity') || DEFAULT_OPACITY;
     const line = d3Shape.line().x(x).y(y);
     const d = line(data);
+    const isPathValid = d.indexOf('NaN') === -1;
     const path = d3Selection.select(lineElement)
       .on('mouseover', this._mouseOver)
       .on('mouseout', this._mouseOut)
       .on('click', this._click);
     this._applyTransition(path)
-      .attr('d', d)
+      .attr('d', isPathValid ? d : '')
       .style('stroke', stroke)
       .style('opacity', opacity);
   }
