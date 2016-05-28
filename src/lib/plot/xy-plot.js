@@ -248,7 +248,7 @@ class XYPlot extends React.Component {
         // Get the index of the series in the list of props and retrieve
         // the data property from it.
         const {seriesIndex} = seriesProps[index];
-        dataProps = data[seriesIndex];
+        dataProps = {data: data[seriesIndex]};
       }
       return React.cloneElement(child, {
         ...dimensions,
