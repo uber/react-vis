@@ -78,7 +78,7 @@ const TIME_UTC_SCALE_TYPE = 'time-utc';
  */
 const SCALE_FUNCTIONS = {
   [LINEAR_SCALE_TYPE]: d3Scale.scaleLinear,
-  [ORDINAL_SCALE_TYPE]: d3Scale.scaleOrdinal,
+  [ORDINAL_SCALE_TYPE]: d3Scale.scalePoint,
   [CATEGORY_SCALE_TYPE]: d3Scale.scaleOrdinal,
   [LOG_SCALE_TYPE]: d3Scale.scaleLog,
   [TIME_SCALE_TYPE]: d3Scale.scaleTime,
@@ -128,10 +128,7 @@ function _getScaleFnFromScaleObject(scaleObject) {
     return null;
   }
   const {type, domain, range} = scaleObject;
-  if (type !== ORDINAL_SCALE_TYPE) {
-    return SCALE_FUNCTIONS[type]().domain(domain).range(range);
-  }
-  return SCALE_FUNCTIONS[type]().domain(domain).rangePoints(range, 1);
+  return SCALE_FUNCTIONS[type]().domain(domain).range(range);
 }
 
 /**
