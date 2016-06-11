@@ -128,7 +128,11 @@ function _getScaleFnFromScaleObject(scaleObject) {
     return null;
   }
   const {type, domain, range} = scaleObject;
-  return SCALE_FUNCTIONS[type]().domain(domain).range(range);
+  const scale = SCALE_FUNCTIONS[type]().domain(domain).range(range);
+  if (type === ORDINAL_SCALE_TYPE) {
+    scale.padding(0.5);
+  }
+  return scale;
 }
 
 /**
