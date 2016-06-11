@@ -32,6 +32,7 @@ export default class Example extends React.Component {
   render() {
     return (
       <XYPlot
+        xType="ordinal"
         width={300}
         height={300}>
         <VerticalGridLines />
@@ -40,15 +41,15 @@ export default class Example extends React.Component {
         <YAxis />
         <VerticalBarSeries
           data={[
-            {x: 1, y: 10},
-            {x: 2, y: 5},
-            {x: 3, y: 15}
+            {x: 'A', y: 10},
+            {x: 'B', y: 5},
+            {x: 'C', y: 15}
           ]}/>
         <VerticalBarSeries
           data={[
-            {x: 1, y: 12},
-            {x: 2, y: 2},
-            {x: 3, y: 11}
+            {x: 'A', y: 12},
+            {x: 'B', y: 2},
+            {x: 'C', y: 11}
           ]}/>
       </XYPlot>
     );
