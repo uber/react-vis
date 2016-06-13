@@ -50,7 +50,8 @@ export default class AbstractSeries extends PureRenderComponent {
       onSeriesMouseOut: React.PropTypes.func,
       onSeriesClick: React.PropTypes.func,
       onNearestX: React.PropTypes.func,
-      animation: AnimationPropType
+      animation: AnimationPropType,
+      label: React.PropTypes.string
     };
   }
 

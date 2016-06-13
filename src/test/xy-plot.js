@@ -24,6 +24,7 @@ import {shallow} from 'enzyme';
 import VerticalBarSeries from '../lib/plot/series/vertical-bar-series';
 import XAxis from '../lib/plot/x-axis';
 import XYPlot from '../lib/plot/xy-plot';
+import Legend from '../lib/plot/legend';
 
 test('Render a stacked bar chart', assert => {
   const wrapper = shallow(
@@ -110,6 +111,63 @@ test('Render a stacked bar chart with other children', assert => {
     ],
     'Second bar series data contains y0 values'
   );
+
+  assert.end();
+});
+
+test('Render chart with no legend by default', assert => {
+  const wrapper = shallow(
+    <XYPlot
+      width={300}
+      height={300}>
+      <XAxis />
+      <VerticalBarSeries
+        data={[
+          {x: 1, y: 0}
+        ]}
+      />
+      <VerticalBarSeries
+        data={[
+          {x: 1, y: 2}
+        ]}/>
+    </XYPlot>
+  );
+
+  const renderedLegendWrapper = wrapper.find(Legend);
+
+  assert.equal(
+    renderedLegendWrapper.length,
+    0,
+    'Validating creation of 0 Legend element by default');
+
+  assert.end();
+});
+
+test('Render chart with legend', assert => {
+  const wrapper = shallow(
+    <XYPlot
+      width={300}
+      height={300}
+      hasLegend={true}>
+      <XAxis />
+      <VerticalBarSeries
+        data={[
+          {x: 1, y: 0}
+        ]}
+      />
+      <VerticalBarSeries
+        data={[
+          {x: 1, y: 2}
+        ]}/>
+    </XYPlot>
+  );
+
+  const renderedLegendWrapper = wrapper.find(Legend);
+
+  assert.equal(
+    renderedLegendWrapper.length,
+    1,
+    'Validating creation of 1 Legend element');
 
   assert.end();
 });

@@ -42,6 +42,9 @@ export {default as YAxis} from './lib/plot/y-axis';
 export {default as VerticalGridLines} from './lib/plot/vertical-grid-lines';
 export {default as HorizontalGridLines} from './lib/plot/horizontal-grid-lines';
 
+export {default as Legend} from './lib/plot/legend';
+
 export {default as RadialChart} from './lib/radial-chart/radial-chart';
 
 export {default as makeWidthFlexible} from './lib/make-vis-flexible';
+

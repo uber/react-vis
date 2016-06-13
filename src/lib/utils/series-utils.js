@@ -124,8 +124,7 @@ export function getSeriesPropsFromChildren(children) {
     let props;
     if (isSeriesChild(child)) {
       const seriesTypeInfo = seriesTypesInfo[child.type.displayName];
-      const _colorValue = DISCRETE_COLOR_RANGE[seriesIndex %
-        DISCRETE_COLOR_RANGE.length];
+      const _colorValue = color(seriesIndex);
       props = {
         ...seriesTypeInfo,
         seriesIndex,
@@ -139,4 +138,27 @@ export function getSeriesPropsFromChildren(children) {
     result.push(props);
   });
   return result;
+}
+
+/**
+ * Returns a list of labels for all series.
+ * A label is defined by passing the prop "title" to a series element
+ * @param {Array} children
+ * @returns {Array} List of strings|null is title is not defined
+ */
+export function getSeriesLabels(children) {
+  return children.map(child => {
+    const {props: {label}} = child;
+    return label;
+  });
+}
+
+/**
+ * Return the color code for the given index.
+ * It is used to pick a color for a given series by pasing the series id
+ * @param {Integer} index
+ * @returns {string} the color code
+ */
+export function color(index) {
+  return DISCRETE_COLOR_RANGE[index % DISCRETE_COLOR_RANGE.length];
 }
