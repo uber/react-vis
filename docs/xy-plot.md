@@ -57,14 +57,15 @@ If the property is not passed in any of the objects, the property is not visuali
 
 Not all properties can be visualized in each series. Here's a short comparison of them:
 
-|                  | `x` | `y` | `color` | `opacity` | `size` |
-|------------------|-----|-----|---------|-----------|--------|
-| `LineSeries`     |  +  |  +  | +       |           |        |
-| `AreaSeries`     |  +  |  +  | +       |           |        |
-| `LinemarkSeries` |  +  |  +  | +       |     +     | +      |
-| `MarkSeries`     |  +  |  +  | +       |     +     | +      |
-| `BarSeries`      |  +  |  +  | +       |     +     |        |
-| `HeatmapSeries`  |  +  |  +  | +       |     +     |        |
+|                      | `x` | `y` | `color` | `opacity` | `size` |
+|----------------------|-----|-----|---------|-----------|--------|
+| `LineSeries`         |  +  |  +  | +       |           |        |
+| `AreaSeries`         |  +  |  +  | +       |           |        |
+| `LinemarkSeries`     |  +  |  +  | +       |     +     | +      |
+| `MarkSeries`         |  +  |  +  | +       |     +     | +      |
+| `VerticalBarSeries`  |  +  |  +  | +       |     +     |        |
+| `HorizontalBarSeries`|  +  |  +  | +       |     +     |        |
+| `HeatmapSeries`      |  +  |  +  | +       |     +     |        |
 
 ## API Reference
 
@@ -193,7 +194,8 @@ The library supports several types of series:
 * `AreaSeries` for area charts;
 * `MarkSeries` for scatterplots;
 * `LineMarkSeries` is a shorthand to place marks (e.g. circles) on lines;
-* `BarSeries` for column and bar charts;
+* `VerticalBarSeries` for vertical bar charts;
+* `HorizontalBarSeries` for horizontal bar charts;
 * `HeatmapSeries` for heat maps.
 
 Each series provides following API:
