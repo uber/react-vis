@@ -51,6 +51,8 @@ import SimpleRadialChart from './radial-chart/simple-radial-chart';
 
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
 
+import Legend from './plot/legend';
+
 import {isReactDOMSupported} from '../lib/utils/react-utils';
 
 const examples = (
@@ -135,6 +137,10 @@ const examples = (
         <h3>Time Chart</h3>
         <TimeChart />
       </section>
+      <section>
+        <h3>Legend</h3>
+        <Legend />
+      </section>
 
       <h1>Radial Chart</h1>
       <section>
@@ -167,6 +173,7 @@ const examples = (
         <p>Updates each 5 seconds</p>
         <DynamicTable />
       </section>
+
     </article>
   </main>
 );

@@ -24,9 +24,11 @@ import equal from 'deep-equal';
 import {
   getStackedData,
   getSeriesChildren,
-  getSeriesPropsFromChildren} from '../utils/series-utils';
+  getSeriesPropsFromChildren,
+  getSeriesLabels} from '../utils/series-utils';
 
 import {getInnerDimensions} from '../utils/chart-utils';
+import Legend from './legend';
 
 import {
   CONTINUOUS_COLOR_RANGE,
@@ -61,7 +63,8 @@ class XYPlot extends React.Component {
       onMouseMove: React.PropTypes.func,
       onMouseEnter: React.PropTypes.func,
       animation: AnimationPropType,
-      stackBy: React.PropTypes.oneOf(ATTRIBUTES)
+      stackBy: React.PropTypes.oneOf(ATTRIBUTES),
+      hasLegend: React.PropTypes.bool
     };
   }
 
@@ -72,7 +75,8 @@ class XYPlot extends React.Component {
         right: 10,
         top: 10,
         bottom: 40
-      }
+      },
+      hasLegend: false
     };
   }
 
@@ -84,9 +88,11 @@ class XYPlot extends React.Component {
     const {stackBy} = props;
     const children = getSeriesChildren(props.children);
     const data = getStackedData(children, stackBy);
+    const seriesLabels = getSeriesLabels(children);
     this.state = {
       scaleMixins: this._getScaleMixins(data, props),
-      data
+      data,
+      seriesLabels
     };
   }
 
@@ -237,10 +243,11 @@ class XYPlot extends React.Component {
    * @private
    */
   _getClonedChildComponents() {
-    const {animation} = this.props;
-    const {scaleMixins, data} = this.state;
-    const dimensions = getInnerDimensions(this.props);
-    const children = React.Children.toArray(this.props.children);
+    const {props, state} = this;
+    const {animation} = props;
+    const {scaleMixins, data} = state;
+    const dimensions = getInnerDimensions(props);
+    const children = React.Children.toArray(props.children);
     const seriesProps = getSeriesPropsFromChildren(children);
     return children.map((child, index) => {
       let dataProps = null;
@@ -262,7 +269,8 @@ class XYPlot extends React.Component {
   }
 
   render() {
-    const {width, height} = this.props;
+    const {width, height, hasLegend} = this.props;
+    const {data, seriesLabels} = this.state;
 
     if (this._isPlotEmpty()) {
       return (
@@ -275,6 +283,8 @@ class XYPlot extends React.Component {
       );
     }
     const components = this._getClonedChildComponents();
+    const legend = hasLegend ?
+      <Legend data={data} seriesLabels={seriesLabels} /> : null;
 
     return (
       <div
@@ -283,6 +293,7 @@ class XYPlot extends React.Component {
           height: `${height}px`
         }}
         className="rv-xy-plot">
+        {legend}
         <svg
           className="rv-xy-plot__inner"
           width={width}

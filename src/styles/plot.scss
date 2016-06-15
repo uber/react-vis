@@ -9,6 +9,11 @@ $rv-xy-plot-tooltip-border-radius: 4px;
 $rv-xy-plot-tooltip-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 $rv-xy-plot-tooltip-padding: 7px 10px;
 
+$rv-xy-plot-legend-pill-width: 30px;
+$rv-xy-plot-legend-pill-height: 5px;
+$rv-xy-plot-legend-font-color: #000;
+$rv-xy-plot-legend-pill-border-radius: 5px 5px 5px 5px;
+
 .rv-xy-plot {
   color: #c3c3c3;
   position: relative;
@@ -59,6 +64,27 @@ $rv-xy-plot-tooltip-padding: 7px 10px;
   fill: none;
   stroke: #000;
   stroke-width: 2px;
+}
+
+.rv-xy-plot__legend__item {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.rv-xy-plot__legend__item__title {
+  color: $rv-xy-plot-legend-font-color;
+  margin: 5px 0;
+}
+
+.rv-xy-plot__legend__pill {
+  display: block;
+  width: $rv-xy-plot-legend-pill-width;
+  height: $rv-xy-plot-legend-pill-height;
+  background-color: $rv-xy-plot-legend-font-color;
+  border-radius: $rv-xy-plot-legend-pill-border-radius;
+  -moz-border-radius: $rv-xy-plot-legend-pill-border-radius;
+  -webkit-border-radius: $rv-xy-plot-legend-pill-border-radius;
 }
 
 .rv-crosshair {
