@@ -267,6 +267,7 @@ Specifies the width of the line for the series. By default, this is determined b
 
 ##### interpolation (optional)
 Type: `(basis|basisClosed|basisOpen|bundle|cardinal|cardinalClosed|cardinalOpen|catmullRom|catmullRomClosed|catmullRomOpen|linear|linearClosed|monotoneX|monotoneY|natural|radial|step|stepAfter|stepBefore)`
+
 Default: `linear`
 The interpolation prop determines how data points should be connected when plotting a line
 
