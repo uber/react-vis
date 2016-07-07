@@ -266,11 +266,9 @@ Specifies the width of the line for the series. By default, this is determined b
 #### AreaSeries:
 
 ##### interpolation (optional)
-Type: `string`
+Type: `(basis|basisClosed|basisOpen|bundle|cardinal|cardinalClosed|cardinalOpen|catmullRom|catmullRomClosed|catmullRomOpen|linear|linearClosed|monotoneX|monotoneY|natural|radial|step|stepAfter|stepBefore)`
 Default: `linear`
 The interpolation prop determines how data points should be connected when plotting a line
-
-("basis", "basisClosed", "basisOpen", "bundle", "cardinal", "cardinalClosed", "cardinalOpen", "catmullRom", "catmullRomClosed", "catmullRomOpen", "linear", "linearClosed", "monotoneX", "monotoneY", "natural", "radial", "step", "stepAfter", "stepBefore")
 
 ### Hint
 
