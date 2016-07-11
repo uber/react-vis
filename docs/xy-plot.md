@@ -84,7 +84,7 @@ Height of the component. The height should be passed.
 
 #### margin (optional)
 Type: `Object`  
-Default: `{left: 40, right: 40, top: 10, bottom: 10}`
+Default: `{left: 40, right: 10, top: 10, bottom: 40}`
 Margin around the chart.
 
 #### stackBy (optional)
