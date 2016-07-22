@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import d3Selection from 'd3-selection';
+const d3Selection = require('d3-selection');
 
 import AbstractSeries from './abstract-series';
 import {getDOMNode} from '../../utils/react-utils';
