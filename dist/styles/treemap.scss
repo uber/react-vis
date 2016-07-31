@@ -1,0 +1,16 @@
+.rv-treemap {
+  font-size: 12px;
+  position: relative;
+}
+
+.rv-treemap__leaf {
+  position: absolute;
+  overflow: hidden;
+}
+
+.rv-treemap__leaf__content {
+  padding: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+

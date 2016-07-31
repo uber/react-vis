@@ -1,0 +1,44 @@
+.rv-table {
+  overflow: hidden;
+}
+
+.rv-table__header {
+  position: relative;
+  z-index: 100;
+}
+
+.rv-table__header__cell {
+  background: #fff;
+  border: 1px solid #ccc;
+  position: absolute;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.rv-table__header__cell__content {
+  margin: 0 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rv-table__data {
+  overflow: auto;
+}
+
+.rv-table__data-inner {
+  position: relative;
+}
+
+.rv-table__data__cell {
+  position: absolute;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.rv-table__data__cell__content {
+  margin: 0 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

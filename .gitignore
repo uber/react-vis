@@ -1,9 +1,7 @@
 .sass-cache/
 .DS_Store
 coverage/
-dist/
 node_modules/
-main.css
 
 # temporary jenkins files
 test/test.js.tap
