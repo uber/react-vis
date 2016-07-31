@@ -76,7 +76,8 @@
     "test": "npm run build-js && npm run execute-tests",
     "cover": "npm run build-js && npm run execute-tests -- --report=text --report=cobertura --report=html --report=json-summary",
     "precommit": "npm run lint -s",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "preinstall": "npm run prepublish"
   },
   "engines": {
     "node": "0.10.x",
