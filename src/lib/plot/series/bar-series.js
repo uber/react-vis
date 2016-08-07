@@ -1,5 +1,4 @@
 // Copyright (c) 2016 Uber Technologies, Inc.
-//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -78,7 +77,7 @@ class BarSeries extends AbstractSeries {
       .on('mouseout', this._mouseOutWithValue)
       .on('click', this._clickWithValue);
 
-    const itemSize = (distance / 2) * 0.85;
+    const itemSize = (distance / 2) * 0.95;
 
     this._applyTransition(rects)
       .style('opacity', this._getAttributeFunctor('opacity'))
