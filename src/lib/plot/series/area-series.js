@@ -19,8 +19,8 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import d3Selection from 'd3-selection';
-import d3Shape from 'd3-shape';
+import * as d3Selection from 'd3-selection';
+import * as d3Shape from 'd3-shape';
 
 import AbstractSeries from './abstract-series';
 import {getDOMNode} from '../../utils/react-utils';
