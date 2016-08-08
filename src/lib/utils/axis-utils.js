@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-const d3Axis = require('d3-axis');
+import * as d3Axis from 'd3-axis';
 
 const AXIS_FNS = {
   left: d3Axis.axisLeft,

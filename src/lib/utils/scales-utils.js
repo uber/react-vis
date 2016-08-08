@@ -18,9 +18,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-const d3Scale = require('d3-scale');
-const d3Array = require('d3-array');
-const d3Collection = require('d3-collection');
+import * as d3Scale from 'd3-scale';
+import * as d3Array from 'd3-array';
+import * as d3Collection from 'd3-collection';
 
 import React from 'react';
 import warning from 'warning';

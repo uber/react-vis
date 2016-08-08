@@ -19,8 +19,8 @@
 // THE SOFTWARE.
 
 import React from 'react';
-const d3Hierarchy = require('d3-hierarchy');
-const d3Color = require('d3-color');
+import * as d3Hierarchy from 'd3-hierarchy';
+import * as d3Color from 'd3-color';
 import {getCSSAnimation, AnimationPropType} from '../utils/animation-utils';
 import {getAttributeFunctor} from '../utils/scales-utils';
 import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, OPACITY_RANGE} from '../theme';

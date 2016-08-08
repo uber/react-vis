@@ -20,8 +20,8 @@
 
 import React from 'react';
 import equal from 'deep-equal';
-const d3Selection = require('d3-selection');
-const d3Shape = require('d3-shape');
+import * as d3Selection from 'd3-selection';
+import * as d3Shape from 'd3-shape';
 
 import {getAttributeFunctor} from '../utils/scales-utils';
 
