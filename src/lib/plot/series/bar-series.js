@@ -77,7 +77,7 @@ class BarSeries extends AbstractSeries {
       .on('mouseout', this._mouseOutWithValue)
       .on('click', this._clickWithValue);
 
-    const itemSize = (distance / 2) * 0.95;
+    const itemSize = (distance / 2) * 0.9;
 
     this._applyTransition(rects)
       .style('opacity', this._getAttributeFunctor('opacity'))
