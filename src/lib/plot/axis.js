@@ -19,151 +19,183 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import * as d3Selection from 'd3-selection';
-
 import PureRenderComponent from '../pure-render-component';
-import {getDOMNode} from '../utils/react-utils';
-import {AXIS_ORIENTATIONS, getAxisFnByOrientation} from '../utils/axis-utils';
 import {getAttributeScale} from '../utils/scales-utils';
+import {ORIENTATION} from '../utils/axis-utils';
 
-import {AnimationPropType, applyTransition} from '../utils/animation-utils';
+const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 
-import {DEFAULT_TICK_SIZE} from '../theme';
+const propTypes = {
+  orientation: React.PropTypes.oneOf([
+    LEFT, RIGHT, TOP, BOTTOM
+  ]),
+  attr: React.PropTypes.string.isRequired,
 
-/**
- * Get axis component for the chart/plot.
- * @param {string} displayName Display name for the component.
- * @param {string} classSet Class name postfix for the axis container.
- * @param {string} orientation d3's orientation.
- * @param {function(Number, Number, Object):Number} tickNumberCallback Callback
- *   to calculate the number of ticks passed.
- * @returns {React.Component} Axis component.
- */
+  tickSize: React.PropTypes.number,
+  tickSizeInner: React.PropTypes.number,
+  tickSizeOuter: React.PropTypes.number,
+  tickPadding: React.PropTypes.number,
+  tickValues: React.PropTypes.array,
+  tickFormat: React.PropTypes.func,
+  tickTotal: React.PropTypes.number,
+
+  width: React.PropTypes.number.isRequired,
+  height: React.PropTypes.number.isRequired,
+  top: React.PropTypes.number,
+  left: React.PropTypes.number
+};
+
+const defaultProps = {
+  tickSize: 6,
+  tickPadding: 2,
+  tickTotal: 10,
+  top: 0,
+  left: 0
+};
+
+function _getTextAnchorFromOrientation(orientation) {
+  if (orientation === LEFT) {
+    return 'end';
+  }
+  if (orientation === RIGHT) {
+    return 'start';
+  }
+  return 'middle';
+}
+
+function _getDyFromOrientation(orientation) {
+  if (orientation === TOP) {
+    return '0';
+  }
+  if (orientation === BOTTOM) {
+    return '0.72em';
+  }
+  return '0.32em';
+}
+
 class Axis extends PureRenderComponent {
 
-  static get propTypes() {
+  _getTickFormatFn(scale) {
+    const {tickFormat} = this.props;
+    return !tickFormat ?
+      (scale.tickFormat ? scale.tickFormat() : v => v) :
+      tickFormat;
+  }
+
+  _getTickValues(scale) {
+    const {tickTotal, tickValues} = this.props;
+    return !tickValues ?
+      (scale.ticks ? scale.ticks(tickTotal) : scale.domain()) :
+      tickValues;
+  }
+
+  _getLineCoordinates() {
+    const {width, height, orientation} = this.props;
+    if (orientation === LEFT) {
+      return {
+        x1: width,
+        x2: width,
+        y1: 0,
+        y2: height
+      };
+    }
+    if (orientation === RIGHT) {
+      return {
+        x1: 0,
+        x2: 0,
+        y1: 0,
+        y2: height
+      };
+    }
+    if (orientation === TOP) {
+      return {
+        x1: 0,
+        x2: width,
+        y1: height,
+        y2: height
+      };
+    }
     return {
-      title: React.PropTypes.string,
-      classSet: React.PropTypes.object,
-      attr: React.PropTypes.string.isRequired,
-      orientation: React.PropTypes.oneOf(AXIS_ORIENTATIONS),
-      labelFormat: React.PropTypes.func,
-      labelValues: React.PropTypes.array,
-      tickValues: React.PropTypes.array,
-      ticksTotal: React.PropTypes.number,
-      tickSize: React.PropTypes.number,
-      animation: AnimationPropType
+      x1: 0,
+      x2: width,
+      y1: 0,
+      y2: 0
     };
   }
 
-  static get defaultProps() {
-    return {
-      tickSize: DEFAULT_TICK_SIZE
-    };
-  }
-
-  static get requiresSVG() {
-    return true;
-  }
-
-  /**
-   * Set axis labels.
-   * @param {Object} axis Axis object.
-   * @returns {Object} Axis object.
-   * @private
-   */
-  _setAxisLabels(axis) {
-    const {labelFormat, labelValues, ticksTotal} = this.props;
-    if (!labelValues) {
-      axis.ticks(ticksTotal);
-    } else {
-      axis.tickValues(labelValues);
-    }
-    if (labelFormat) {
-      axis.tickFormat(labelFormat);
-    }
-    axis.tickSize(0, 0);
-    axis.tickSizeOuter(0);
-    axis.tickPadding(14);
-    return axis;
-  }
-
-  /**
-   * Set axis ticks.
-   * @param {Object} axis Axis object.
-   * @returns {Object} Axis object.
-   * @private
-   */
-  _setAxisTicks(axis) {
-    const {tickValues, ticksTotal, tickSize} = this.props;
-    if (!tickValues) {
-      axis.ticks(ticksTotal);
-    } else {
-      axis.tickValues(tickValues);
-    }
-    axis.tickFormat('');
-    axis.tickSize(tickSize);
-    axis.tickSizeOuter(0);
-    return axis;
-  }
-
-  /**
-   * Renders the axis inside the existing container.
-   * @private
-   */
-  _render() {
-    const {orientation, attr} = this.props;
+  _renderTicks() {
+    const {
+      attr,
+      tickSize,
+      tickPadding,
+      orientation
+    } = this.props;
+    const isVertical = orientation === LEFT || orientation === RIGHT;
+    const {
+      tickSizeInner = tickSize,
+      tickSizeOuter = tickSize
+    } = this.props;
     const scale = getAttributeScale(this.props, attr);
-    if (!scale) {
-      return;
-    }
 
-    const {labels, ticks} = this.refs;
-    const selectedLabels = d3Selection.select(getDOMNode(labels));
-    const selectedTicks = d3Selection.select(getDOMNode(ticks));
-    const axisFn = getAxisFnByOrientation(orientation);
-    const axis = this._setAxisLabels(axisFn(scale));
+    const wrap = (orientation === LEFT || orientation === TOP) ? -1 : 1;
 
-    applyTransition(this.props, selectedLabels)
-      .call(this._setAxisLabels(axis));
-    applyTransition(this.props, selectedTicks)
-      .call(this._setAxisTicks(axis));
-  }
+    const values = this._getTickValues(scale);
+    const tickFormatFn = this._getTickFormatFn(scale);
 
-  componentDidMount() {
-    this._render();
-  }
+    const tickXAttr = isVertical ? 'y' : 'x';
+    const tickYAttr = isVertical ? 'x' : 'y';
 
-  componentDidUpdate() {
-    this._render();
+    const dy = _getDyFromOrientation(orientation);
+    const textAnchor = _getTextAnchorFromOrientation(orientation);
+
+    return values.map((v, i) => {
+      const pos = scale(v);
+      const text = tickFormatFn(v);
+      const pathProps = {
+        [`${tickXAttr}1`]: pos,
+        [`${tickXAttr}2`]: pos,
+        [`${tickYAttr}1`]: -wrap * tickSizeOuter,
+        [`${tickYAttr}2`]: wrap * tickSizeInner
+      };
+      const textProps = {
+        [tickXAttr]: pos,
+        [tickYAttr]: wrap * (tickSizeOuter + tickPadding),
+        dy,
+        textAnchor
+      };
+      return (
+        <g key={i} className="rv-xy-plot__axis__tick">
+          <line {...pathProps} className="rv-xy-plot__axis__tick__line"/>
+          <text {...textProps} className="rv-xy-plot__axis__tick__text">
+            {text}
+          </text>
+        </g>
+      );
+    });
   }
 
   render() {
-    const {title, left, top, className} = this.props;
-    const hasTitle = title && title !== '';
+    const {left, top} = this.props;
+    const lineProps = this._getLineCoordinates();
+
     return (
-      <g className={`rv-xy-plot__axis ${className}`}
-         transform={`translate(${left},${top})`}
-         ref="container">
+      <g
+        transform={`translate(${left},${top})`}
+        className="rv-xy-plot__axis">
+        <line {...lineProps} className="rv-xy-plot__axis__line"/>
         <g
-          ref="labels"
-          className="rv-xy-plot__axis__labels"/>
-        <g
-          ref="ticks"
-          className="rv-xy-plot__axis__ticks"/>
-        {hasTitle ?
-          <g
-            className="rv-xy-plot__axis__title"
-            style={this.props.titleStyle}>
-            <text>{title}</text>
-          </g> :
-          null
-        }
+          transform={`translate(${lineProps.x1}, ${lineProps.y1})`}
+          className="rv-xy-plot__axis__ticks">
+          {this._renderTicks()}
+        </g>
       </g>
     );
   }
 }
 
 Axis.displayName = 'Axis';
+Axis.propTypes = propTypes;
+Axis.defaultProps = defaultProps;
+Axis.requiresSVG = true;
 
 export default Axis;

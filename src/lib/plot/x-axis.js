@@ -22,37 +22,65 @@ import React from 'react';
 
 import PureRenderComponent from '../pure-render-component';
 import Axis from './axis';
-import {getTicksTotalFromSize} from '../utils/axis-utils';
+import {ORIENTATION, getTicksTotalFromSize} from '../utils/axis-utils';
+
+const {TOP, BOTTOM} = ORIENTATION;
+
+const propTypes = {
+  ...Axis.propTypes,
+  orientation: React.PropTypes.oneOf([
+    TOP, BOTTOM
+  ])
+};
+
+const defaultProps = {
+  orientation: BOTTOM,
+  attr: 'x'
+};
 
 class XAxis extends PureRenderComponent {
 
-  static get requiresSVG() {
-    return true;
-  }
-
-  render() {
+  _getDefaultAxisProps() {
     const {
       innerWidth,
       innerHeight,
       marginTop,
-      marginLeft} = this.props;
+      marginBottom,
+      marginLeft,
+      orientation
+    } = this.props;
+    if (orientation === BOTTOM) {
+      return {
+        tickTotal: getTicksTotalFromSize(innerWidth),
+        top: innerHeight + marginTop,
+        left: marginLeft,
+        width: innerWidth,
+        height: marginBottom
+      };
+    }
+    return {
+      tickTotal: getTicksTotalFromSize(innerWidth),
+      top: 0,
+      left: marginLeft,
+      width: innerWidth,
+      height: marginTop
+    };
+  }
+
+  render() {
+    const axisProps = {
+      ...this._getDefaultAxisProps(),
+      ...this.props
+    };
     return (
-      <Axis
-        {... this.props}
-        className="rv-xy-plot__axis--x"
-        orientation="bottom"
-        titleStyle={{
-          transform: `translate(${innerWidth}px, -5px)`,
-          textAnchor: 'end'
-        }}
-        ticksTotal={getTicksTotalFromSize(innerWidth)}
-        top={innerHeight + marginTop}
-        left={marginLeft}
-        attr="x"/>
+      <Axis {...axisProps} />
     );
   }
 }
 
 XAxis.displayName = 'XAxis';
+XAxis.propTypes = propTypes;
+XAxis.defaultProps = defaultProps;
+XAxis.requiresSVG = true;
 
 export default XAxis;

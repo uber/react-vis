@@ -22,45 +22,68 @@ import React from 'react';
 
 import PureRenderComponent from '../pure-render-component';
 import Axis from './axis';
+import {ORIENTATION, getTicksTotalFromSize} from '../utils/axis-utils';
+
+const {LEFT, RIGHT} = ORIENTATION;
+
+const propTypes = {
+  ...Axis.propTypes,
+  orientation: React.PropTypes.oneOf([
+    LEFT, RIGHT
+  ])
+};
+
+const defaultProps = {
+  orientation: LEFT,
+  attr: 'y'
+};
 
 class YAxis extends PureRenderComponent {
 
-  static get requiresSVG() {
-    return true;
+  _getDefaultAxisProps() {
+    const {
+      innerWidth,
+      innerHeight,
+      marginTop,
+      marginLeft,
+      marginRight,
+      orientation
+    } = this.props;
+
+    if (orientation === LEFT) {
+      return {
+        tickTotal: getTicksTotalFromSize(innerHeight),
+        top: marginTop,
+        left: 0,
+        width: marginLeft,
+        height: innerHeight,
+        orientation
+      };
+    }
+    return {
+      tickTotal: getTicksTotalFromSize(innerHeight),
+      top: 0,
+      left: marginLeft + innerWidth,
+      width: marginRight,
+      height: innerHeight,
+      orientation
+    };
   }
 
   render() {
-    const {
-      innerHeight,
-      marginTop,
-      marginLeft} = this.props;
-    let ticksTotal;
-    if (innerHeight < 700) {
-      if (innerHeight > 300) {
-        ticksTotal = 10;
-      } else {
-        ticksTotal = 5;
-      }
-    } else {
-      ticksTotal = 20;
-    }
+    const axisProps = {
+      ...this._getDefaultAxisProps(),
+      ...this.props
+    };
     return (
-      <Axis
-        {...this.props}
-        className="rv-xy-plot__axis--y"
-        titleStyle={{
-          transform: 'translate(16px, 0) rotate(-90deg)',
-          textAnchor: 'end'
-        }}
-        orientation="left"
-        ticksTotal={ticksTotal}
-        attr="y"
-        left={marginLeft}
-        top={marginTop}/>
+      <Axis {...axisProps} />
     );
   }
 }
 
 YAxis.displayName = 'YAxis';
+YAxis.propTypes = propTypes;
+YAxis.defaultProps = defaultProps;
+YAxis.requiresSVG = true;
 
 export default YAxis;

@@ -40,8 +40,6 @@ export function getInnerDimensions(props) {
     marginTop,
     marginRight,
     marginBottom,
-    width,
-    height,
     innerHeight: height - marginBottom - marginTop,
     innerWidth: width - marginLeft - marginRight
   };
