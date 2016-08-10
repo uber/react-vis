@@ -39,8 +39,8 @@ const propTypes = {
   tickFormat: React.PropTypes.func,
   tickTotal: React.PropTypes.number,
 
-  width: React.PropTypes.number.isRequired,
-  height: React.PropTypes.number.isRequired,
+  width: React.PropTypes.number,
+  height: React.PropTypes.number,
   top: React.PropTypes.number,
   left: React.PropTypes.number
 };
@@ -50,7 +50,9 @@ const defaultProps = {
   tickPadding: 2,
   tickTotal: 10,
   top: 0,
-  left: 0
+  left: 0,
+  height: 0,
+  width: 0
 };
 
 function _getTextAnchorFromOrientation(orientation) {
