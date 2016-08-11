@@ -60,6 +60,7 @@ class XYPlot extends React.Component {
       onMouseLeave: React.PropTypes.func,
       onMouseMove: React.PropTypes.func,
       onMouseEnter: React.PropTypes.func,
+      onMouseDown: React.PropTypes.func,
       animation: AnimationPropType,
       stackBy: React.PropTypes.oneOf(ATTRIBUTES)
     };
@@ -81,6 +82,7 @@ class XYPlot extends React.Component {
     this._mouseLeaveHandler = this._mouseLeaveHandler.bind(this);
     this._mouseEnterHandler = this._mouseEnterHandler.bind(this);
     this._mouseMoveHandler = this._mouseMoveHandler.bind(this);
+    this._mouseDownHandler = this._mouseDownHandler.bind(this);
     const {stackBy} = props;
     const children = getSeriesChildren(props.children);
     const data = getStackedData(children, stackBy);
@@ -131,6 +133,18 @@ class XYPlot extends React.Component {
     const {onMouseLeave} = this.props;
     if (onMouseLeave) {
       onMouseLeave({event});
+    }
+  }
+
+  /**
+   * Trigger onMouseDown handler if it was passed in props.
+   * @param {Event} event Native event.
+   * @private
+   */
+  _mouseDownHandler(event) {
+    const {onMouseDown} = this.props;
+    if (onMouseDown) {
+      onMouseDown({event});
     }
   }
 
