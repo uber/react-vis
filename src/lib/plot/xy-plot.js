@@ -303,7 +303,8 @@ class XYPlot extends React.Component {
           height={height}
           onMouseMove={this._mouseMoveHandler}
           onMouseLeave={this._mouseLeaveHandler}
-          onMouseEnter={this._mouseEnterHandler}>
+          onMouseEnter={this._mouseEnterHandler}
+          onMouseDown={this._mouseDownHandler}>
           {components.filter(c => c && c.type.requiresSVG)}
         </svg>
         {components.filter(c => c && !c.type.requiresSVG)}
