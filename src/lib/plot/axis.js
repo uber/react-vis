@@ -55,24 +55,58 @@ const defaultProps = {
   width: 0
 };
 
-function _getTextAnchorFromOrientation(orientation) {
-  if (orientation === LEFT) {
-    return 'end';
-  }
-  if (orientation === RIGHT) {
-    return 'start';
-  }
-  return 'middle';
+function _getTickTextAttributes(orientation) {
+  const textAnchor = orientation === LEFT ?
+    'end' :
+    (orientation === RIGHT ? 'start' : 'middle');
+  const dy = orientation === TOP ?
+    '0' :
+    (orientation === BOTTOM ? '0.72em': '0.32em');
+  return {
+    textAnchor,
+    dy
+  };
 }
 
-function _getDyFromOrientation(orientation) {
+
+function _getLineAttributes(orientation, width, height) {
+  if (orientation === LEFT) {
+    return {
+      x1: width,
+      x2: width,
+      y1: 0,
+      y2: height
+    };
+  }
+  if (orientation === RIGHT) {
+    return {
+      x1: 0,
+      x2: 0,
+      y1: 0,
+      y2: height
+    };
+  }
   if (orientation === TOP) {
-    return '0';
+    return {
+      x1: 0,
+      x2: width,
+      y1: height,
+      y2: height
+    };
   }
-  if (orientation === BOTTOM) {
-    return '0.72em';
-  }
-  return '0.32em';
+  return {
+    x1: 0,
+    x2: width,
+    y1: 0,
+    y2: 0
+  };
+}
+
+function _getTitleAttributes(orientation) {
+  return {
+    transform: 'translate(16px, 0) rotate(-90deg)',
+    textAnchor: 'end'
+  };
 }
 
 class Axis extends PureRenderComponent {
@@ -89,40 +123,6 @@ class Axis extends PureRenderComponent {
     return !tickValues ?
       (scale.ticks ? scale.ticks(tickTotal) : scale.domain()) :
       tickValues;
-  }
-
-  _getLineCoordinates() {
-    const {width, height, orientation} = this.props;
-    if (orientation === LEFT) {
-      return {
-        x1: width,
-        x2: width,
-        y1: 0,
-        y2: height
-      };
-    }
-    if (orientation === RIGHT) {
-      return {
-        x1: 0,
-        x2: 0,
-        y1: 0,
-        y2: height
-      };
-    }
-    if (orientation === TOP) {
-      return {
-        x1: 0,
-        x2: width,
-        y1: height,
-        y2: height
-      };
-    }
-    return {
-      x1: 0,
-      x2: width,
-      y1: 0,
-      y2: 0
-    };
   }
 
   _renderTicks() {
@@ -147,9 +147,6 @@ class Axis extends PureRenderComponent {
     const tickXAttr = isVertical ? 'y' : 'x';
     const tickYAttr = isVertical ? 'x' : 'y';
 
-    const dy = _getDyFromOrientation(orientation);
-    const textAnchor = _getTextAnchorFromOrientation(orientation);
-
     return values.map((v, i) => {
       const pos = scale(v);
       const text = tickFormatFn(v);
@@ -162,8 +159,7 @@ class Axis extends PureRenderComponent {
       const textProps = {
         [tickXAttr]: pos,
         [tickYAttr]: wrap * (tickSizeOuter + tickPadding),
-        dy,
-        textAnchor
+        ..._getTickTextAttributes(orientation)
       };
       return (
         <g key={i} className="rv-xy-plot__axis__tick">
@@ -177,8 +173,17 @@ class Axis extends PureRenderComponent {
   }
 
   render() {
-    const {left, top} = this.props;
-    const lineProps = this._getLineCoordinates();
+    const {
+      left,
+      top,
+      width,
+      height,
+      orientation,
+      title
+    } = this.props;
+
+    const lineProps = _getLineAttributes(orientation, width, height);
+    const titleProps = _getTitleAttributes(orientation);
 
     return (
       <g
@@ -190,6 +195,7 @@ class Axis extends PureRenderComponent {
           className="rv-xy-plot__axis__ticks">
           {this._renderTicks()}
         </g>
+        <text style={titleProps} className="rv-xy-plot__axis__title">{title}</text>
       </g>
     );
   }
