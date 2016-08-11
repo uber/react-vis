@@ -27,6 +27,10 @@ export default class PureRenderComponent extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.shouldSerieUpdate !== undefined) {
+      console.log('not updating series')
+      return nextProps.shouldSerieUpdate;
+    }
     return shallowCompare(this, nextProps, nextState);
   }
 }
