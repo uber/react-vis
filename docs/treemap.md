@@ -15,6 +15,7 @@ Add the following code to your render function:
 ```jsx
 <Treemap
   title={'My New Treemap'}
+  width={300}
   height={300}
   data={
     {
