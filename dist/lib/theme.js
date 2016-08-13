@@ -1,3 +1,8 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 // Copyright (c) 2016 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,18 +23,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import shallowCompare from 'react-addons-shallow-compare';
+var DISCRETE_COLOR_RANGE = exports.DISCRETE_COLOR_RANGE = ['#12939A', '#79C7E3', '#1A3177', '#FF9833', '#EF5D28'];
 
-export default class PureRenderComponent extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+var CONTINUOUS_COLOR_RANGE = exports.CONTINUOUS_COLOR_RANGE = ['#EF5D28', '#FF9833'];
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.shouldSerieUpdate !== undefined) {
-      return nextProps.shouldSerieUpdate;
-    }
-    return shallowCompare(this, nextProps, nextState);
-  }
-}
+var SIZE_RANGE = exports.SIZE_RANGE = [1, 10];
+
+var OPACITY_RANGE = exports.OPACITY_RANGE = [0.1, 1];
+
+var DEFAULT_OPACITY = exports.DEFAULT_OPACITY = 1;
+
+var DEFAULT_SIZE = exports.DEFAULT_SIZE = 5;
+
+var DEFAULT_COLOR = exports.DEFAULT_COLOR = DISCRETE_COLOR_RANGE[0];
+
+var DEFAULT_TICK_SIZE = exports.DEFAULT_TICK_SIZE = 7;
+
+var DEFAULT_INTERPOLATION = exports.DEFAULT_INTERPOLATION = "linear";

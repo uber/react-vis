@@ -75,8 +75,7 @@
     "execute-tests": "run-browser-babel dist/test/index.js --bx react/addons --bx react/lib/ReactContext --bx react/lib/ExecutionEnvironment --phantom",
     "test": "npm run build-js && npm run execute-tests",
     "cover": "npm run build-js && npm run execute-tests -- --report=text --report=cobertura --report=html --report=json-summary",
-    "precommit": "npm run lint -s",
-    "prepublish": "npm run build"
+    "precommit": "npm run lint -s"
   },
   "engines": {
     "node": "0.10.x",

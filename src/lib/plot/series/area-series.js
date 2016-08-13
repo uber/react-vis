@@ -25,7 +25,7 @@ import * as d3Shape from 'd3-shape';
 import AbstractSeries from './abstract-series';
 import {getDOMNode} from '../../utils/react-utils';
 
-import {DEFAULT_OPACITY} from '../../theme';
+import {DEFAULT_OPACITY, DEFAULT_INTERPOLATION} from '../../theme';
 
 class AreaSeries extends AbstractSeries {
 
@@ -35,6 +35,11 @@ class AreaSeries extends AbstractSeries {
 
   componentDidUpdate() {
     this._updateSeries();
+  }
+
+  toNewName(interpolation) {
+    const capitalize = (s) => s && s[0].toUpperCase() + s.slice(1);
+    return `curve${capitalize(interpolation)}`;
   }
 
   _updateSeries() {
@@ -53,7 +58,9 @@ class AreaSeries extends AbstractSeries {
     const stroke = this._getAttributeValue('stroke') ||
       this._getAttributeValue('color');
 
-    const line = d3Shape.area().x(x).y0(y0).y1(y);
+    const interpolation = this._getAttributeValue('interpolation') || DEFAULT_INTERPOLATION;
+
+    const line = d3Shape.area().curve(d3Shape[this.toNewName(interpolation)]).x(x).y0(y0).y1(y);
 
     const opacity = this._getAttributeValue('opacity') || DEFAULT_OPACITY;
     const d = line(data);

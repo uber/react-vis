@@ -263,6 +263,14 @@ If set to `dashed`, your series will use dashed lines. If set to `solid` or unsp
 Type: `string|number`
 Specifies the width of the line for the series. By default, this is determined by react-vis css (2px).
 
+#### AreaSeries:
+
+##### interpolation (optional)
+Type: `string` one of `basis|basisClosed|basisOpen|bundle|cardinal|cardinalClosed|cardinalOpen|catmullRom|catmullRomClosed|catmullRomOpen|linear|linearClosed|monotoneX|monotoneY|natural|radial|step|stepAfter|stepBefore`
+
+Default: `linear`
+The interpolation prop determines how data points should be connected when plotting a line
+
 ### Hint
 
 `Hint` is a simple component that shows tooltips inside the chart. Hint places itself to the place which is set by your data.
@@ -299,7 +307,7 @@ In case if custom representation of crosshair is needed, the component is able t
 
 ```jsx
 <Crosshair values={myValues}>
-  <div style={background: 'black'}>
+  <div style={{background: 'black'}}>
     <h3>Values of crosshair:</h3>
     <p>Series 1: {myValues[0].x}</p>
     <p>Series 2: {myValues[1].x}</p>
@@ -320,3 +328,5 @@ _Note: please pass custom contents in case if you need different look for the cr
 Type: `function`  
 The function that formats the list of items for the crosshair. Receives the list of data points, should return an array of objects containing `title` and `value` properties.
 Note: please pass custom contents in case if you need different look for the crosshair.
+
+

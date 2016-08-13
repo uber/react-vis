@@ -1,0 +1,121 @@
+$rv-xy-plot-axis-font-color: #6B6B76;
+$rv-xy-plot-axis-line-color: #e6e6e9;
+$rv-xy-plot-axis-font-size: 11px;
+
+$rv-xy-plot-tooltip-background: #3A3A48;
+$rv-xy-plot-tooltip-color: #fff;
+$rv-xy-plot-tooltip-font-size: 12px;
+$rv-xy-plot-tooltip-border-radius: 4px;
+$rv-xy-plot-tooltip-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+$rv-xy-plot-tooltip-padding: 7px 10px;
+
+.rv-xy-plot {
+  color: #c3c3c3;
+  position: relative;
+}
+
+.rv-xy-plot__inner {
+  display: block;
+}
+
+.rv-xy-plot__axis {
+
+  path {
+    stroke-width: 2px;
+    stroke: $rv-xy-plot-axis-line-color;
+    fill: none;
+  }
+
+  .tick {
+    fill: $rv-xy-plot-axis-font-color;
+    font-size: $rv-xy-plot-axis-font-size;
+  }
+}
+
+.rv-xy-plot__axis__ticks {
+  .tick {
+    stroke: $rv-xy-plot-axis-line-color;
+  }
+}
+
+.rv-xy-plot__axis__title {
+  text {
+    font-size: $rv-xy-plot-axis-font-size;
+    fill: $rv-xy-plot-axis-font-color;
+  }
+}
+
+.rv-xy-plot__grid-lines {
+  line {
+    stroke: $rv-xy-plot-axis-line-color;
+  }
+  // Hide the axis path from the grid: not needed.
+  .domain {
+    display: none;
+  }
+}
+
+.rv-xy-plot__series--line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+.rv-crosshair {
+  position: absolute;
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.rv-crosshair__line {
+  background: #47d3d9;
+  width: 1px;
+}
+
+.rv-crosshair__inner {
+  position: absolute;
+  text-align: left;
+  top: 0;
+}
+
+.rv-crosshair__inner__content {
+  border-radius: $rv-xy-plot-tooltip-border-radius;
+  background: $rv-xy-plot-tooltip-background;
+  color: $rv-xy-plot-tooltip-color;
+  font-size: $rv-xy-plot-tooltip-font-size;
+  padding: $rv-xy-plot-tooltip-padding;
+  box-shadow: $rv-xy-plot-tooltip-shadow;
+}
+
+.rv-crosshair__inner--left {
+  right: 4px;
+}
+
+.rv-crosshair__inner--right {
+  left: 4px;
+}
+
+.rv-crosshair__title {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.rv-crosshair__item {
+  white-space: nowrap;
+}
+
+.rv-hint {
+  position: absolute;
+  pointer-events: none;
+}
+
+.rv-hint__content {
+  border-radius: $rv-xy-plot-tooltip-border-radius;
+  padding: $rv-xy-plot-tooltip-padding;
+  font-size: $rv-xy-plot-tooltip-font-size;
+  background: $rv-xy-plot-tooltip-background;
+  box-shadow: $rv-xy-plot-tooltip-shadow;
+  color: $rv-xy-plot-tooltip-color;
+  text-align: left;
+  white-space: nowrap;
+}

@@ -42,3 +42,5 @@ export const DEFAULT_SIZE = 5;
 export const DEFAULT_COLOR = DISCRETE_COLOR_RANGE[0];
 
 export const DEFAULT_TICK_SIZE = 7;
+
+export const DEFAULT_INTERPOLATION = "linear";

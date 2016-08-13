@@ -25,7 +25,7 @@ import * as d3Shape from 'd3-shape';
 import AbstractSeries from './abstract-series';
 import {getDOMNode} from '../../utils/react-utils';
 
-import {DEFAULT_OPACITY} from '../../theme';
+import {DEFAULT_OPACITY, DEFAULT_INTERPOLATION} from '../../theme';
 
 const STROKE_STYLES = {
   dashed: '6, 2',
@@ -49,6 +49,11 @@ class LineSeries extends AbstractSeries {
     this._updateSeries();
   }
 
+  toNewName(interpolation) {
+    const capitalize = (s) => s && s[0].toUpperCase() + s.slice(1);
+    return `curve${capitalize(interpolation)}`;
+  }
+
   _updateSeries() {
     const lineElement = getDOMNode(this.refs.line);
     const {data} = this.props;
@@ -60,7 +65,10 @@ class LineSeries extends AbstractSeries {
     const stroke = this._getAttributeValue('stroke') ||
       this._getAttributeValue('color');
     const opacity = this._getAttributeValue('opacity') || DEFAULT_OPACITY;
-    const line = d3Shape.line().x(x).y(y);
+    const interpolation = this._getAttributeValue('interpolation') || DEFAULT_INTERPOLATION;
+    
+    const line = d3Shape.line().curve(d3Shape[this.toNewName(interpolation)]).x(x).y(y);
+
     const d = line(data);
     const path = d3Selection.select(lineElement)
       .on('mouseover', this._mouseOver)

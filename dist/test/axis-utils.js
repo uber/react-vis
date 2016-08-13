@@ -1,4 +1,21 @@
-// Copyright (c) 2016 Uber Technologies, Inc.
+'use strict';
+
+var _tape = require('tape');
+
+var _tape2 = _interopRequireDefault(_tape);
+
+require('babel-polyfill');
+
+var _axisUtils = require('../lib/utils/axis-utils');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _tape2.default)('axis-utils/getTicksTotalFromSize', function t(assert) {
+  assert.ok((0, _axisUtils.getTicksTotalFromSize)(0) === 5, 'Returns valid value for 0px');
+  assert.ok((0, _axisUtils.getTicksTotalFromSize)(301) === 10, 'Returns valid value for 301px');
+  assert.ok((0, _axisUtils.getTicksTotalFromSize)(701) === 20, 'Returns valid value for 701px');
+  assert.end();
+}); // Copyright (c) 2016 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,19 +34,3 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
-import React from 'react';
-import shallowCompare from 'react-addons-shallow-compare';
-
-export default class PureRenderComponent extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.shouldSerieUpdate !== undefined) {
-      return nextProps.shouldSerieUpdate;
-    }
-    return shallowCompare(this, nextProps, nextState);
-  }
-}
