@@ -20,9 +20,9 @@
 
 import React from 'react';
 
-import PureRenderComponent from '../pure-render-component';
+import PureRenderComponent from '../../pure-render-component';
 import Axis from './axis';
-import {ORIENTATION, getTicksTotalFromSize} from '../utils/axis-utils';
+import {ORIENTATION, getTicksTotalFromSize} from '../../utils/axis-utils';
 
 const {LEFT, RIGHT} = ORIENTATION;
 

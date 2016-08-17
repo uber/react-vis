@@ -19,68 +19,50 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import {ORIENTATION} from '../../utils/axis-utils';
 
-import PureRenderComponent from '../pure-render-component';
-import Axis from './axis';
-import {ORIENTATION, getTicksTotalFromSize} from '../utils/axis-utils';
-
-const {TOP, BOTTOM} = ORIENTATION;
+const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 
 const propTypes = {
-  ...Axis.propTypes,
+  width: React.PropTypes.number.isRequired,
+  height: React.PropTypes.number.isRequired,
   orientation: React.PropTypes.oneOf([
-    TOP, BOTTOM
-  ])
+    LEFT, RIGHT, TOP, BOTTOM
+  ]).isRequired,
+  title: React.PropTypes.string.isRequired
 };
 
-const defaultProps = {
-  orientation: BOTTOM,
-  attr: 'x'
-};
-
-class XAxis extends PureRenderComponent {
-
-  _getDefaultAxisProps() {
-    const {
-      innerWidth,
-      innerHeight,
-      marginTop,
-      marginBottom,
-      marginLeft,
-      orientation
-    } = this.props;
-    if (orientation === BOTTOM) {
-      return {
-        tickTotal: getTicksTotalFromSize(innerWidth),
-        top: innerHeight + marginTop,
-        left: marginLeft,
-        width: innerWidth,
-        height: marginBottom
-      };
+function AxisTitle({orientation, width, height, title}) {
+  const x = orientation === LEFT ? width : 0;
+  const y = orientation === TOP ? height : 0;
+  let style;
+  if (orientation === LEFT) {
+    style = {
+      transform: 'translate(1em, 0) rotate(-90deg)',
+      textAnchor: 'end'
+    };
+  } else if (orientation === RIGHT) {
+    style = {
+      transform: 'translate(-1em, 0) rotate(-90deg)',
+      textAnchor: 'end'
+    };
+  } else if (orientation === BOTTOM) {
+    style = {
+      transform: `translate(${width}px, -6px)`,
+      textAnchor: 'end'
     }
-    return {
-      tickTotal: getTicksTotalFromSize(innerWidth),
-      top: 0,
-      left: marginLeft,
-      width: innerWidth,
-      height: marginTop
-    };
   }
-
-  render() {
-    const axisProps = {
-      ...this._getDefaultAxisProps(),
-      ...this.props
-    };
-    return (
-      <Axis {...axisProps} />
-    );
-  }
+  return (
+    <g transform={`translate(${x}, ${y})`} className="rv-xy-plot__axis__title">
+      <g style={style}>
+        <text>{title}</text>
+      </g>
+    </g>
+  );
 }
 
-XAxis.displayName = 'XAxis';
-XAxis.propTypes = propTypes;
-XAxis.defaultProps = defaultProps;
-XAxis.requiresSVG = true;
+AxisTitle.displayName = 'AxisTitle';
+AxisTitle.propTypes = propTypes;
 
-export default XAxis;
+export default AxisTitle;
+
