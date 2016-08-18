@@ -19,10 +19,8 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
-import PureRenderComponent from '../../pure-render-component';
 import Axis from './axis';
-import {ORIENTATION, getTicksTotalFromSize} from '../../utils/axis-utils';
+import {ORIENTATION} from '../../utils/axis-utils';
 
 const {TOP, BOTTOM} = ORIENTATION;
 
@@ -38,44 +36,10 @@ const defaultProps = {
   attr: 'x'
 };
 
-class XAxis extends PureRenderComponent {
-
-  _getDefaultAxisProps() {
-    const {
-      innerWidth,
-      innerHeight,
-      marginTop,
-      marginBottom,
-      marginLeft,
-      orientation
-    } = this.props;
-    if (orientation === BOTTOM) {
-      return {
-        tickTotal: getTicksTotalFromSize(innerWidth),
-        top: innerHeight + marginTop,
-        left: marginLeft,
-        width: innerWidth,
-        height: marginBottom
-      };
-    }
-    return {
-      tickTotal: getTicksTotalFromSize(innerWidth),
-      top: 0,
-      left: marginLeft,
-      width: innerWidth,
-      height: marginTop
-    };
-  }
-
-  render() {
-    const axisProps = {
-      ...this._getDefaultAxisProps(),
-      ...this.props
-    };
-    return (
-      <Axis {...axisProps} />
-    );
-  }
+function XAxis(props) {
+  return (
+    <Axis {...props} />
+  );
 }
 
 XAxis.displayName = 'XAxis';

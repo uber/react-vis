@@ -20,9 +20,8 @@
 
 import React from 'react';
 
-import PureRenderComponent from '../../pure-render-component';
 import Axis from './axis';
-import {ORIENTATION, getTicksTotalFromSize} from '../../utils/axis-utils';
+import {ORIENTATION} from '../../utils/axis-utils';
 
 const {LEFT, RIGHT} = ORIENTATION;
 
@@ -38,47 +37,10 @@ const defaultProps = {
   attr: 'y'
 };
 
-class YAxis extends PureRenderComponent {
-
-  _getDefaultAxisProps() {
-    const {
-      innerWidth,
-      innerHeight,
-      marginTop,
-      marginLeft,
-      marginRight,
-      orientation
-    } = this.props;
-
-    if (orientation === LEFT) {
-      return {
-        tickTotal: getTicksTotalFromSize(innerHeight),
-        top: marginTop,
-        left: 0,
-        width: marginLeft,
-        height: innerHeight,
-        orientation
-      };
-    }
-    return {
-      tickTotal: getTicksTotalFromSize(innerHeight),
-      top: 0,
-      left: marginLeft + innerWidth,
-      width: marginRight,
-      height: innerHeight,
-      orientation
-    };
-  }
-
-  render() {
-    const axisProps = {
-      ...this._getDefaultAxisProps(),
-      ...this.props
-    };
-    return (
-      <Axis {...axisProps} />
-    );
-  }
+function YAxis(props) {
+  return (
+    <Axis {...props} />
+  );
 }
 
 YAxis.displayName = 'YAxis';

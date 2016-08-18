@@ -20,7 +20,7 @@
 
 import React from 'react';
 import PureRenderComponent from '../../pure-render-component';
-import {ORIENTATION} from '../../utils/axis-utils';
+import {ORIENTATION, getTicksTotalFromSize} from '../../utils/axis-utils';
 import AxisLine from './axis-line';
 import AxisTicks from './axis-ticks';
 import AxisTitle from './axis-title';
@@ -32,6 +32,10 @@ const propTypes = {
     LEFT, RIGHT, TOP, BOTTOM
   ]),
   attr: React.PropTypes.string.isRequired,
+  width: React.PropTypes.number,
+  height: React.PropTypes.number,
+  top: React.PropTypes.number,
+  left: React.PropTypes.number,
 
   tickSize: React.PropTypes.number,
   tickSizeInner: React.PropTypes.number,
@@ -41,24 +45,79 @@ const propTypes = {
   tickFormat: React.PropTypes.func,
   tickTotal: React.PropTypes.number,
 
-  width: React.PropTypes.number,
-  height: React.PropTypes.number,
-  top: React.PropTypes.number,
-  left: React.PropTypes.number
+  // Not expected to be used by the users.
+  // TODO: Add underscore to these properties later.
+  marginTop: React.PropTypes.number,
+  marginBottom: React.PropTypes.number,
+  marginLeft: React.PropTypes.number,
+  marginRight: React.PropTypes.number,
+  innerWidth: React.PropTypes.number,
+  innerHeight: React.PropTypes.number
 };
 
 const defaultProps = {
   tickSize: 6,
   tickPadding: 8,
-  tickTotal: 10,
-  top: 0,
-  left: 0,
-  height: 0,
-  width: 0
+  orientation: BOTTOM
 };
 
 class Axis extends PureRenderComponent {
+
+  /**
+   * Define the default values depending on the data passed from the outside.
+   * @returns {*} Object of default properties.
+   * @private
+   */
+  _getDefaultAxisProps() {
+    const {
+      innerWidth,
+      innerHeight,
+      marginTop,
+      marginBottom,
+      marginLeft,
+      marginRight,
+      orientation
+    } = this.props;
+    if (orientation === BOTTOM) {
+      return {
+        tickTotal: getTicksTotalFromSize(innerWidth),
+        top: innerHeight + marginTop,
+        left: marginLeft,
+        width: innerWidth,
+        height: marginBottom
+      };
+    } else if (orientation === TOP) {
+      return {
+        tickTotal: getTicksTotalFromSize(innerWidth),
+        top: 0,
+        left: marginLeft,
+        width: innerWidth,
+        height: marginTop
+      };
+    } else if (orientation === LEFT) {
+      return {
+        tickTotal: getTicksTotalFromSize(innerHeight),
+        top: marginTop,
+        left: 0,
+        width: marginLeft,
+        height: innerHeight
+      };
+    }
+    return {
+      tickTotal: getTicksTotalFromSize(innerHeight),
+      top: 0,
+      left: marginLeft + innerWidth,
+      width: marginRight,
+      height: innerHeight
+    };
+  }
+
   render() {
+    const props = {
+      ...this._getDefaultAxisProps(),
+      ...this.props
+    };
+
     const {
       left,
       top,
@@ -66,7 +125,7 @@ class Axis extends PureRenderComponent {
       height,
       orientation,
       title
-    } = this.props;
+    } = props;
 
     return (
       <g
@@ -76,7 +135,7 @@ class Axis extends PureRenderComponent {
           height={height}
           width={width}
           orientation={orientation}/>
-        <AxisTicks {...this.props} />
+        <AxisTicks {...props} />
         {title ?
           <AxisTitle
             title={title}
