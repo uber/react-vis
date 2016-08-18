@@ -27,7 +27,6 @@ import warning from 'warning';
 
 import {
   getUniquePropertyValues,
-  isObjectPropertyInUse,
   addValueToArray} from './data-utils';
 
 /**
@@ -152,12 +151,18 @@ function _getDomainByAttr(allData, attr, type) {
   const values = allData.reduce((data, d) => {
     const value = d[attr];
     const value0 = d[attr0];
-    data.push(value);
+    if (_isDefined(value)) {
+      data.push(value);
+    }
     if (_isDefined(value0)) {
       data.push(value0);
     }
     return data;
   }, []);
+
+  if (!values.length) {
+    return [];
+  }
 
   // Create proper domain depending on the type of the scale.
   if (type !== ORDINAL_SCALE_TYPE && type !== CATEGORY_SCALE_TYPE) {
@@ -241,17 +246,17 @@ function _collectScaleObjectFromProps(props, attr) {
   const filteredData = data.filter(d => d);
   const allData = [].concat(...filteredData);
 
-  // Make sure that the minimum necessary properties exist.
-  if (!range || !allData.length || !isObjectPropertyInUse(allData, attr)) {
-    // Try to use the fallback value if it is available.
-    return _createScaleObjectForValue(attr, fallbackValue);
-  }
-
   // Pick up the domain from the properties and create a new one if it's not
   // available.
   let domain = initialDomain || _getDomainByAttr(allData, attr, type);
   if (typeof baseValue !== 'undefined') {
     domain = addValueToArray(domain, baseValue);
+  }
+
+  // Make sure that the minimum necessary properties exist.
+  if (!range || !domain.length) {
+    // Try to use the fallback value if it is available.
+    return _createScaleObjectForValue(attr, fallbackValue);
   }
 
   return _createScaleObjectForFunction(
