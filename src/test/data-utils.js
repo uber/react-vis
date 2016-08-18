@@ -25,7 +25,6 @@ import equal from 'deep-equal';
 import {
   getObjectValueAccessor,
   getUniquePropertyValues,
-  isObjectPropertyInUse,
   addValueToArray} from '../lib/utils/data-utils';
 
 const arr = [{a: 1}, {b: 3, a: 2}, {a: 2}];
@@ -42,12 +41,6 @@ test('data-utils/getUniquePropertyValues', function t(assert) {
   assert.ok(
     result.indexOf(1) !== -1 && result.indexOf(2) !== -1,
     'Should return unique values of the property');
-  assert.end();
-});
-
-test('data-utils/isObjectPropertyInUse', function t(assert) {
-  const result = isObjectPropertyInUse(arr, 'a');
-  assert.ok(result, 'Should find the property in use');
   assert.end();
 });
 

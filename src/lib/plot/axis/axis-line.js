@@ -18,39 +18,57 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import {getSeriesChildren} from './series-utils';
+import React from 'react';
+import {ORIENTATION} from '../../utils/axis-utils';
 
-/**
- * Get the dimensions of the component for the future use.
- * @param {Object} props Props.
- * @returns {Object} Dimensions of the component.
- */
-export function getInnerDimensions(props) {
-  const {
-    height,
-    width,
-    margin: {
-      left: marginLeft = 0,
-      top: marginTop = 0,
-      right: marginRight = 0,
-      bottom: marginBottom = 0}
-    } = props;
-  return {
-    marginLeft,
-    marginTop,
-    marginRight,
-    marginBottom,
-    innerHeight: height - marginBottom - marginTop,
-    innerWidth: width - marginLeft - marginRight
-  };
+const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
+
+const propTypes = {
+  width: React.PropTypes.number.isRequired,
+  height: React.PropTypes.number.isRequired,
+  orientation: React.PropTypes.oneOf([
+    LEFT, RIGHT, TOP, BOTTOM
+  ]).isRequired
+};
+
+function AxisLine({orientation, width, height}) {
+  let lineProps;
+  if (orientation === LEFT) {
+    lineProps = {
+      x1: width,
+      x2: width,
+      y1: 0,
+      y2: height
+    };
+  } else if (orientation === RIGHT) {
+    lineProps = {
+      x1: 0,
+      x2: 0,
+      y1: 0,
+      y2: height
+    };
+  } else if (orientation === TOP) {
+    lineProps = {
+      x1: 0,
+      x2: width,
+      y1: height,
+      y2: height
+    };
+  } else {
+    lineProps = {
+      x1: 0,
+      x2: width,
+      y1: 0,
+      y2: 0
+    };
+  }
+  return (
+    <line {...lineProps} className="rv-xy-plot__axis__line"/>
+  );
 }
 
-/**
- * Collect data from the list of children.
- * @param {Object} props Props for the plot.
- * @returns {Array} Array of arrays with data.
- */
-export function getDataFromChildren(props) {
-  const {children} = props;
-  return getSeriesChildren(children).map(child => child.props.data);
-}
+AxisLine.displayName = 'AxisLine';
+AxisLine.propTypes = propTypes;
+
+export default AxisLine;
+

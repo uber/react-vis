@@ -33,6 +33,13 @@ export function getAxisFnByOrientation(orientation) {
   return AXIS_FNS[orientation];
 }
 
+export const ORIENTATION = {
+  TOP: 'top',
+  LEFT: 'left',
+  RIGHT: 'right',
+  BOTTOM: 'bottom'
+};
+
 /**
  * Get total amount of ticks from a given size in pixels.
  * @param {number} size Size of the axis in pixels.

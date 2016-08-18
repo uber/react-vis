@@ -39,16 +39,6 @@ export function getUniquePropertyValues(arr, propertyName) {
 }
 
 /**
- * Check if the property is used in at least one object of the array.
- * @param {Array} arr Array of all data.
- * @param {string} propertyName Property name.
- * @returns {boolean} True if used.
- */
-export function isObjectPropertyInUse(arr, propertyName) {
-  return Boolean(arr.find(d => d && typeof d[propertyName] !== 'undefined'));
-}
-
-/**
  * Add zero to the domain.
  * @param {Array} arr Add zero to the domain.
  * @param {Number} value Add zero to domain.

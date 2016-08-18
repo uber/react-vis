@@ -19,48 +19,32 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
-import PureRenderComponent from '../pure-render-component';
 import Axis from './axis';
+import {ORIENTATION} from '../../utils/axis-utils';
 
-class YAxis extends PureRenderComponent {
+const {TOP, BOTTOM} = ORIENTATION;
 
-  static get requiresSVG() {
-    return true;
-  }
+const propTypes = {
+  ...Axis.propTypes,
+  orientation: React.PropTypes.oneOf([
+    TOP, BOTTOM
+  ])
+};
 
-  render() {
-    const {
-      innerHeight,
-      marginTop,
-      marginLeft} = this.props;
-    let ticksTotal;
-    if (innerHeight < 700) {
-      if (innerHeight > 300) {
-        ticksTotal = 10;
-      } else {
-        ticksTotal = 5;
-      }
-    } else {
-      ticksTotal = 20;
-    }
-    return (
-      <Axis
-        {...this.props}
-        className="rv-xy-plot__axis--y"
-        titleStyle={{
-          transform: 'translate(16px, 0) rotate(-90deg)',
-          textAnchor: 'end'
-        }}
-        orientation="left"
-        ticksTotal={ticksTotal}
-        attr="y"
-        left={marginLeft}
-        top={marginTop}/>
-    );
-  }
+const defaultProps = {
+  orientation: BOTTOM,
+  attr: 'x'
+};
+
+function XAxis(props) {
+  return (
+    <Axis {...props} />
+  );
 }
 
-YAxis.displayName = 'YAxis';
+XAxis.displayName = 'XAxis';
+XAxis.propTypes = propTypes;
+XAxis.defaultProps = defaultProps;
+XAxis.requiresSVG = true;
 
-export default YAxis;
+export default XAxis;

@@ -19,23 +19,25 @@ $rv-xy-plot-tooltip-padding: 7px 10px;
 }
 
 .rv-xy-plot__axis {
-
-  path {
-    stroke-width: 2px;
-    stroke: $rv-xy-plot-axis-line-color;
-    fill: none;
-  }
-
-  .tick {
-    fill: $rv-xy-plot-axis-font-color;
-    font-size: $rv-xy-plot-axis-font-size;
-  }
 }
 
-.rv-xy-plot__axis__ticks {
-  .tick {
-    stroke: $rv-xy-plot-axis-line-color;
-  }
+.rv-xy-plot__axis__line {
+  stroke-width: 2px;
+  stroke: $rv-xy-plot-axis-line-color;
+  fill: none;
+}
+
+.rv-xy-plot__axis__tick {
+
+}
+
+.rv-xy-plot__axis__tick__line {
+  stroke: $rv-xy-plot-axis-line-color;
+}
+
+.rv-xy-plot__axis__tick__text {
+  fill: $rv-xy-plot-axis-font-color;
+  font-size: $rv-xy-plot-axis-font-size;
 }
 
 .rv-xy-plot__axis__title {

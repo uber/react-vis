@@ -36,8 +36,8 @@ export {default as LineMarkSeries} from './lib/plot/series/line-mark-series';
 export {default as Hint} from './lib/plot/hint';
 export {default as Crosshair} from './lib/plot/crosshair';
 
-export {default as XAxis} from './lib/plot/x-axis';
-export {default as YAxis} from './lib/plot/y-axis';
+export {default as XAxis} from './lib/plot/axis/x-axis';
+export {default as YAxis} from './lib/plot/axis/y-axis';
 
 export {default as VerticalGridLines} from './lib/plot/vertical-grid-lines';
 export {default as HorizontalGridLines} from './lib/plot/horizontal-grid-lines';
