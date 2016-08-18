@@ -49,7 +49,7 @@ const propTypes = {
 
 const defaultProps = {
   tickSize: 6,
-  tickPadding: 2,
+  tickPadding: 8,
   tickTotal: 10,
   top: 0,
   left: 0,
@@ -82,8 +82,8 @@ class Axis extends PureRenderComponent {
             title={title}
             height={height}
             width={width}
-            orientation={orientation}/>
-          : null}
+            orientation={orientation}/> :
+          null}
       </g>
     );
   }

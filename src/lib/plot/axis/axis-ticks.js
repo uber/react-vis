@@ -38,7 +38,7 @@ function _getTickTextAttributes(orientation) {
     (orientation === RIGHT ? 'start' : 'middle');
   const dy = orientation === TOP ?
     '0' :
-    (orientation === BOTTOM ? '0.72em': '0.32em');
+    (orientation === BOTTOM ? '0.72em' : '0.32em');
   return {
     textAnchor,
     dy

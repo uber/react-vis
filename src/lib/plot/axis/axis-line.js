@@ -32,33 +32,38 @@ const propTypes = {
 };
 
 function AxisLine({orientation, width, height}) {
-  let x1;
-  let x2;
-  let y1;
-  let y2;
+  let lineProps;
   if (orientation === LEFT) {
-    x1 = width;
-    x2 = width;
-    y1 = 0;
-    y2 = height;
+    lineProps = {
+      x1: width,
+      x2: width,
+      y1: 0,
+      y2: height
+    };
   } else if (orientation === RIGHT) {
-    x1 = 0;
-    x2 = 0;
-    y1 = 0;
-    y2 = height
+    lineProps = {
+      x1: 0,
+      x2: 0,
+      y1: 0,
+      y2: height
+    };
   } else if (orientation === TOP) {
-    x1 = 0;
-    x2 = width;
-    y1 = height;
-    y2 = height;
+    lineProps = {
+      x1: 0,
+      x2: width,
+      y1: height,
+      y2: height
+    };
   } else {
-    x1 = 0;
-    x2 = width;
-    y1 = 0;
-    y2 = 0;
+    lineProps = {
+      x1: 0,
+      x2: width,
+      y1: 0,
+      y2: 0
+    };
   }
   return (
-    <line x1={x1} x2={x2} y1={y1} y2={y2} className="rv-xy-plot__axis__line"/>
+    <line {...lineProps} className="rv-xy-plot__axis__line"/>
   );
 }
 

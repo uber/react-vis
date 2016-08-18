@@ -50,7 +50,7 @@ function AxisTitle({orientation, width, height, title}) {
     style = {
       transform: `translate(${width}px, -6px)`,
       textAnchor: 'end'
-    }
+    };
   }
   return (
     <g transform={`translate(${x}, ${y})`} className="rv-xy-plot__axis__title">
