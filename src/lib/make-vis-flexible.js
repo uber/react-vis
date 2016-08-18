@@ -62,7 +62,7 @@ function subscribeToDebouncedResize(cb) {
     window.addEventListener('resize', debounceEmitResize);
   }
   return function unsubscribe() {
-    removeSubscriber(resizeSubscribers, cb);
+    removeSubscriber(cb);
 
     // if we have no Flexible components, remove the listener
     if (resizeSubscribers.length === 0) {
@@ -75,10 +75,10 @@ function subscribeToDebouncedResize(cb) {
 /**
  * Helper for removing the given callback from the list of subscribers.
  *
- * @param {Function} item - Subscriber callback function
+ * @param {Function} cb - Subscriber callback function
  */
-function removeSubscriber(item) {
-  const index = resizeSubscribers.indexOf(item);
+function removeSubscriber(cb) {
+  const index = resizeSubscribers.indexOf(cb);
   if (index > -1) {
     resizeSubscribers.splice(index, 1);
   }
