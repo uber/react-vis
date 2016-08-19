@@ -26,7 +26,7 @@ export default class Example extends React.Component {
   render() {
     return (
       <XYPlot
-        margin={{left: 40, top: 40, right: 40, bottom: 40}}
+        margin={50}
         width={200}
         height={200}>
         <VerticalGridLines />
