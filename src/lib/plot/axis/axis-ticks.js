@@ -45,9 +45,9 @@ function _getTickTextAttributes(orientation) {
   };
 }
 
-function _getTickFormatFn(scale, tickFormat) {
+function _getTickFormatFn(scale, tickTotal, tickFormat) {
   return !tickFormat ?
-    (scale.tickFormat ? scale.tickFormat() : v => v) :
+    (scale.tickFormat ? scale.tickFormat(tickTotal) : v => v) :
     tickFormat;
 }
 
@@ -81,7 +81,7 @@ function AxisTicks(props) {
   const wrap = (orientation === LEFT || orientation === TOP) ? -1 : 1;
 
   const values = _getTickValues(scale, tickTotal, tickValues);
-  const tickFormatFn = _getTickFormatFn(scale, tickFormat);
+  const tickFormatFn = _getTickFormatFn(scale, tickTotal, tickFormat);
 
   const tickXAttr = isVertical ? 'y' : 'x';
   const tickYAttr = isVertical ? 'x' : 'y';
