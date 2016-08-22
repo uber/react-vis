@@ -27,12 +27,14 @@
     "d3-collection": "^1.0.1",
     "d3-color": "^1.0.1",
     "d3-hierarchy": "^1.0.2",
+    "d3-interpolate": "^1.1.1",
     "d3-scale": "^1.0.3",
     "d3-selection": "^1.0.2",
     "d3-shape": "^1.0.2",
     "d3-transition": "^1.0.1",
     "deep-equal": "^1.0.1",
     "global": "^4.3.0",
+    "react-motion": "^0.4.4",
     "warning": "^2.1.0"
   },
   "devDependencies": {
