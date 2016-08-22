@@ -63,7 +63,7 @@
   "scripts": {
     "build-js": "babel src -d dist --copy-files",
     "build-js-example": "npm run build-js -- --source-maps inline",
-    "build-docs": "browserify -t brfs ./dist/example/main.js > example.js",
+    "build-docs": "(node-sass src/example/main.scss example.css) & (browserify -t brfs ./dist/example/main.js > example.js)",
     "build-css": "node-sass src/main.scss main.css",
     "build-css-example": "node-sass src/example/*.scss -o dist/example/",
     "build-example": "npm run build-css-example && npm run build-js-example",
