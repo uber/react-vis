@@ -25,15 +25,15 @@ import {getAttributeScale} from '../utils/scales-utils';
 import {
   getTicksTotalFromSize,
   getTickValues,
-  ORIENTATION
+  DIRECTION
 } from '../utils/axis-utils';
 
 import {AnimationPropType} from '../utils/animation-utils';
 
-const {VERTICAL, HORIZONTAL} = ORIENTATION;
+const {VERTICAL, HORIZONTAL} = DIRECTION;
 
 const propTypes = {
-  orientation: React.PropTypes.oneOf([
+  direction: React.PropTypes.oneOf([
     VERTICAL, HORIZONTAL
   ]),
   attr: React.PropTypes.string.isRequired,
@@ -58,7 +58,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  orientation: VERTICAL
+  direction: VERTICAL
 };
 
 class GridLines extends PureRenderComponent {
@@ -69,7 +69,7 @@ class GridLines extends PureRenderComponent {
       innerHeight,
       marginTop,
       marginLeft,
-      orientation
+      direction
     } = this.props;
     return {
       left: marginLeft,
@@ -77,7 +77,7 @@ class GridLines extends PureRenderComponent {
       width: innerWidth,
       height: innerHeight,
       tickTotal: getTicksTotalFromSize(
-        orientation === VERTICAL ?
+        direction === VERTICAL ?
           innerWidth :
           innerHeight
       )
@@ -92,7 +92,7 @@ class GridLines extends PureRenderComponent {
 
     const {
       attr,
-      orientation,
+      direction,
       width,
       height,
       tickTotal,
@@ -100,7 +100,7 @@ class GridLines extends PureRenderComponent {
       top,
       left
     } = props;
-    const isVertical = orientation === VERTICAL;
+    const isVertical = direction === VERTICAL;
     const tickXAttr = isVertical ? 'y' : 'x';
     const tickYAttr = isVertical ? 'x' : 'y';
     const length = isVertical ? height : width;

@@ -18,14 +18,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-export const POSITION = {
+export const ORIENTATION = {
   TOP: 'top',
   LEFT: 'left',
   RIGHT: 'right',
   BOTTOM: 'bottom'
 };
 
-export const ORIENTATION = {
+export const DIRECTION = {
   VERTICAL: 'vertical',
   HORIZONTAL: 'horizontal'
 };

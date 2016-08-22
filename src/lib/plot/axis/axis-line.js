@@ -19,35 +19,35 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import {POSITION} from '../../utils/axis-utils';
+import {ORIENTATION} from '../../utils/axis-utils';
 
-const {LEFT, RIGHT, TOP, BOTTOM} = POSITION;
+const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 
 const propTypes = {
   width: React.PropTypes.number.isRequired,
   height: React.PropTypes.number.isRequired,
-  position: React.PropTypes.oneOf([
+  orientation: React.PropTypes.oneOf([
     LEFT, RIGHT, TOP, BOTTOM
   ]).isRequired
 };
 
-function AxisLine({position, width, height}) {
+function AxisLine({orientation, width, height}) {
   let lineProps;
-  if (position === LEFT) {
+  if (orientation === LEFT) {
     lineProps = {
       x1: width,
       x2: width,
       y1: 0,
       y2: height
     };
-  } else if (position === RIGHT) {
+  } else if (orientation === RIGHT) {
     lineProps = {
       x1: 0,
       x2: 0,
       y1: 0,
       y2: height
     };
-  } else if (position === TOP) {
+  } else if (orientation === TOP) {
     lineProps = {
       x1: 0,
       x2: width,

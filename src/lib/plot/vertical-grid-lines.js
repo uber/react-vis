@@ -20,17 +20,17 @@
 
 import React from 'react';
 import GridLines from './grid-lines';
-import {ORIENTATION} from '../utils/axis-utils';
+import {DIRECTION} from '../utils/axis-utils';
 
-const {VERTICAL} = ORIENTATION;
+const {VERTICAL} = DIRECTION;
 
 const propTypes = {
   ...GridLines.propTypes,
-  orientation: React.PropTypes.oneOf([VERTICAL])
+  direction: React.PropTypes.oneOf([VERTICAL])
 };
 
 const defaultProps = {
-  orientation: VERTICAL,
+  direction: VERTICAL,
   attr: 'x'
 };
 
