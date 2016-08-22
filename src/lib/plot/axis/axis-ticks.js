@@ -19,26 +19,26 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import {ORIENTATION} from '../../utils/axis-utils';
+import {POSITION, getTickValues} from '../../utils/axis-utils';
 import {getAttributeScale} from '../../utils/scales-utils';
 
-const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
+const {LEFT, RIGHT, TOP, BOTTOM} = POSITION;
 
 const propTypes = {
   width: React.PropTypes.number.isRequired,
   height: React.PropTypes.number.isRequired,
-  orientation: React.PropTypes.oneOf([
+  position: React.PropTypes.oneOf([
     LEFT, RIGHT, TOP, BOTTOM
   ]).isRequired
 };
 
-function _getTickTextAttributes(orientation) {
-  const textAnchor = orientation === LEFT ?
+function _getTickTextAttributes(position) {
+  const textAnchor = position === LEFT ?
     'end' :
-    (orientation === RIGHT ? 'start' : 'middle');
-  const dy = orientation === TOP ?
+    (position === RIGHT ? 'start' : 'middle');
+  const dy = position === TOP ?
     '0' :
-    (orientation === BOTTOM ? '0.72em' : '0.32em');
+    (position === BOTTOM ? '0.72em' : '0.32em');
   return {
     textAnchor,
     dy
@@ -51,16 +51,10 @@ function _getTickFormatFn(scale, tickTotal, tickFormat) {
     tickFormat;
 }
 
-function _getTickValues(scale, tickTotal, tickValues) {
-  return !tickValues ?
-    (scale.ticks ? scale.ticks(tickTotal) : scale.domain()) :
-    tickValues;
-}
-
 function AxisTicks(props) {
   const {
     attr,
-    orientation,
+    position,
     width,
     height,
     tickSize,
@@ -72,15 +66,15 @@ function AxisTicks(props) {
     tickSizeOuter = tickSize
   } = props;
 
-  const x = orientation === LEFT ? width : 0;
-  const y = orientation === TOP ? height : 0;
+  const x = position === LEFT ? width : 0;
+  const y = position === TOP ? height : 0;
 
-  const isVertical = orientation === LEFT || orientation === RIGHT;
+  const isVertical = position === LEFT || position === RIGHT;
   const scale = getAttributeScale(props, attr);
 
-  const wrap = (orientation === LEFT || orientation === TOP) ? -1 : 1;
+  const wrap = (position === LEFT || position === TOP) ? -1 : 1;
 
-  const values = _getTickValues(scale, tickTotal, tickValues);
+  const values = getTickValues(scale, tickTotal, tickValues);
   const tickFormatFn = _getTickFormatFn(scale, tickTotal, tickFormat);
 
   const tickXAttr = isVertical ? 'y' : 'x';
@@ -98,7 +92,7 @@ function AxisTicks(props) {
     const textProps = {
       [tickXAttr]: pos,
       [tickYAttr]: wrap * (tickSizeOuter + tickPadding),
-      ..._getTickTextAttributes(orientation)
+      ..._getTickTextAttributes(position)
     };
     return (
       <g key={i} className="rv-xy-plot__axis__tick">
@@ -121,6 +115,7 @@ function AxisTicks(props) {
 
 AxisTicks.displayName = 'AxisTicks';
 AxisTicks.propTypes = propTypes;
+AxisTicks.requiresSVG = true;
 
 export default AxisTicks;
 

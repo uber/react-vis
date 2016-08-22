@@ -19,43 +19,30 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
-import PureRenderComponent from '../pure-render-component';
 import GridLines from './grid-lines';
-import {getScalePropTypesByAttribute} from '../utils/scales-utils';
-import {getTicksTotalFromSize} from '../utils/axis-utils';
+import {ORIENTATION} from '../utils/axis-utils';
 
-class VerticalGridLines extends PureRenderComponent {
+const {VERTICAL} = ORIENTATION;
 
-  static get propTypes() {
-    return {
-      values: React.PropTypes.array,
-      marginTop: React.PropTypes.number,
-      marginLeft: React.PropTypes.number,
-      innerWidth: React.PropTypes.number,
-      innerHeight: React.PropTypes.number,
-      ...getScalePropTypesByAttribute('x')
-    };
-  }
+const propTypes = {
+  ...GridLines.propTypes,
+  orientation: React.PropTypes.oneOf([VERTICAL])
+};
 
-  static get requiresSVG() {
-    return true;
-  }
+const defaultProps = {
+  orientation: VERTICAL,
+  attr: 'x'
+};
 
-  render() {
-    const {innerHeight, innerWidth} = this.props;
-    return (
-      <GridLines
-        {...this.props}
-        attr="x"
-        orientation="bottom"
-        top={innerHeight}
-        ticksTotal={getTicksTotalFromSize(innerWidth)}
-        tickSize={-innerHeight}/>
-    );
-  }
+function VerticalGridLines(props) {
+  return (
+    <GridLines {...props} />
+  );
 }
 
 VerticalGridLines.displayName = 'VerticalGridLines';
+VerticalGridLines.propTypes = propTypes;
+VerticalGridLines.defaultProps = defaultProps;
+VerticalGridLines.requiresSVG = true;
 
 export default VerticalGridLines;

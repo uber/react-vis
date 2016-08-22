@@ -21,19 +21,19 @@
 import React from 'react';
 
 import Axis from './axis';
-import {ORIENTATION} from '../../utils/axis-utils';
+import {POSITION} from '../../utils/axis-utils';
 
-const {LEFT, RIGHT} = ORIENTATION;
+const {LEFT, RIGHT} = POSITION;
 
 const propTypes = {
   ...Axis.propTypes,
-  orientation: React.PropTypes.oneOf([
+  position: React.PropTypes.oneOf([
     LEFT, RIGHT
   ])
 };
 
 const defaultProps = {
-  orientation: LEFT,
+  position: LEFT,
   attr: 'y'
 };
 

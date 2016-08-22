@@ -20,15 +20,15 @@
 
 import React from 'react';
 import PureRenderComponent from '../../pure-render-component';
-import {ORIENTATION, getTicksTotalFromSize} from '../../utils/axis-utils';
+import {POSITION, getTicksTotalFromSize} from '../../utils/axis-utils';
 import AxisLine from './axis-line';
 import AxisTicks from './axis-ticks';
 import AxisTitle from './axis-title';
 
-const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
+const {LEFT, RIGHT, TOP, BOTTOM} = POSITION;
 
 const propTypes = {
-  orientation: React.PropTypes.oneOf([
+  position: React.PropTypes.oneOf([
     LEFT, RIGHT, TOP, BOTTOM
   ]),
   attr: React.PropTypes.string.isRequired,
@@ -58,7 +58,7 @@ const propTypes = {
 const defaultProps = {
   tickSize: 6,
   tickPadding: 8,
-  orientation: BOTTOM
+  position: BOTTOM
 };
 
 class Axis extends PureRenderComponent {
@@ -76,9 +76,9 @@ class Axis extends PureRenderComponent {
       marginBottom,
       marginLeft,
       marginRight,
-      orientation
+      position
     } = this.props;
-    if (orientation === BOTTOM) {
+    if (position === BOTTOM) {
       return {
         tickTotal: getTicksTotalFromSize(innerWidth),
         top: innerHeight + marginTop,
@@ -86,7 +86,7 @@ class Axis extends PureRenderComponent {
         width: innerWidth,
         height: marginBottom
       };
-    } else if (orientation === TOP) {
+    } else if (position === TOP) {
       return {
         tickTotal: getTicksTotalFromSize(innerWidth),
         top: 0,
@@ -94,7 +94,7 @@ class Axis extends PureRenderComponent {
         width: innerWidth,
         height: marginTop
       };
-    } else if (orientation === LEFT) {
+    } else if (position === LEFT) {
       return {
         tickTotal: getTicksTotalFromSize(innerHeight),
         top: marginTop,
@@ -123,7 +123,7 @@ class Axis extends PureRenderComponent {
       top,
       width,
       height,
-      orientation,
+      position,
       title
     } = props;
 
@@ -134,14 +134,14 @@ class Axis extends PureRenderComponent {
         <AxisLine
           height={height}
           width={width}
-          orientation={orientation}/>
+          position={position}/>
         <AxisTicks {...props} />
         {title ?
           <AxisTitle
             title={title}
             height={height}
             width={width}
-            orientation={orientation}/> :
+            position={position}/> :
           null}
       </g>
     );

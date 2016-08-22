@@ -19,88 +19,122 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import * as d3Selection from 'd3-selection';
-
 import PureRenderComponent from '../pure-render-component';
-import {getDOMNode} from '../utils/react-utils';
 import {getAttributeScale} from '../utils/scales-utils';
-import {AXIS_ORIENTATIONS, getAxisFnByOrientation} from '../utils/axis-utils';
 
-import {AnimationPropType, applyTransition} from '../utils/animation-utils';
+import {
+  getTicksTotalFromSize,
+  getTickValues,
+  ORIENTATION
+} from '../utils/axis-utils';
+
+import {AnimationPropType} from '../utils/animation-utils';
+
+const {VERTICAL, HORIZONTAL} = ORIENTATION;
+
+const propTypes = {
+  orientation: React.PropTypes.oneOf([
+    VERTICAL, HORIZONTAL
+  ]),
+  attr: React.PropTypes.string.isRequired,
+  width: React.PropTypes.number,
+  height: React.PropTypes.number,
+  top: React.PropTypes.number,
+  left: React.PropTypes.number,
+
+  tickValues: React.PropTypes.array,
+  tickTotal: React.PropTypes.number,
+
+  animation: AnimationPropType,
+
+  // Not expected to be used by the users.
+  // TODO: Add underscore to these properties later.
+  marginTop: React.PropTypes.number,
+  marginBottom: React.PropTypes.number,
+  marginLeft: React.PropTypes.number,
+  marginRight: React.PropTypes.number,
+  innerWidth: React.PropTypes.number,
+  innerHeight: React.PropTypes.number
+};
+
+const defaultProps = {
+  orientation: VERTICAL
+};
 
 class GridLines extends PureRenderComponent {
 
-  static get propTypes() {
+  _getDefaultProps() {
+    const {
+      innerWidth,
+      innerHeight,
+      marginTop,
+      marginLeft,
+      orientation
+    } = this.props;
     return {
-      tickSize: React.PropTypes.number,
-      ticksTotal: React.PropTypes.number,
-      values: React.PropTypes.array,
-      attr: React.PropTypes.string.isRequired,
-      orientation: React.PropTypes.oneOf(AXIS_ORIENTATIONS),
-      top: React.PropTypes.number,
-      left: React.PropTypes.number,
-      marginTop: React.PropTypes.number,
-      marginLeft: React.PropTypes.number,
-      animation: AnimationPropType
+      left: marginLeft,
+      top: marginTop,
+      width: innerWidth,
+      height: innerHeight,
+      tickTotal: getTicksTotalFromSize(
+        orientation === VERTICAL ?
+          innerWidth :
+          innerHeight
+      )
     };
-  }
-
-  static get defaultProps() {
-    return {
-      top: 0,
-      left: 0
-    };
-  }
-
-  static get requiresSVG() {
-    return true;
-  }
-
-  /**
-   * Renders the grid lines in a given container.
-   * @private
-   */
-  _render() {
-    const {attr, tickSize, orientation, ticksTotal, values} = this.props;
-    const scale = getAttributeScale(this.props, attr);
-    if (!scale) {
-      return;
-    }
-    const container = d3Selection.select(getDOMNode(this.refs.container));
-    const axisFn = getAxisFnByOrientation(orientation);
-    const axis = axisFn(scale)
-      .tickFormat('')
-      .tickSize(tickSize, 0, 0);
-    if (!values) {
-      axis.ticks(ticksTotal);
-    } else {
-      axis.tickValues(values);
-    }
-    applyTransition(this.props, container).call(axis);
-  }
-
-  componentDidMount() {
-    this._render();
-  }
-
-  componentDidUpdate() {
-    this._render();
   }
 
   render() {
-    const {top, left, marginTop, marginLeft} = this.props;
+    const props = {
+      ...this._getDefaultProps(),
+      ...this.props
+    };
+
+    const {
+      attr,
+      orientation,
+      width,
+      height,
+      tickTotal,
+      tickValues,
+      top,
+      left
+    } = props;
+    const isVertical = orientation === VERTICAL;
+    const tickXAttr = isVertical ? 'y' : 'x';
+    const tickYAttr = isVertical ? 'x' : 'y';
+    const length = isVertical ? height : width;
+
+    const scale = getAttributeScale(props, attr);
+    const values = getTickValues(scale, tickTotal, tickValues);
+
     return (
       <g
-        transform={`translate(${marginLeft}, ${marginTop})`}
+        transform={`translate(${left},${top})`}
         className="rv-xy-plot__grid-lines">
-          <g
-            ref="container"
-            transform={`translate(${left}, ${top})`}/>
+        {values.map((v, i) => {
+          const pos = scale(v);
+          const pathProps = {
+            [`${tickYAttr}1`]: pos,
+            [`${tickYAttr}2`]: pos,
+            [`${tickXAttr}1`]: 0,
+            [`${tickXAttr}2`]: length
+          };
+          return (
+            <line
+              {...pathProps}
+              key={i}
+              className="rv-xy-plot__grid-lines__line" />
+          );
+        })}
       </g>
     );
   }
 }
 
 GridLines.displayName = 'GridLines';
+GridLines.defaultProps = defaultProps;
+GridLines.propTypes = propTypes;
+GridLines.requiresSVG = true;
 
 export default GridLines;

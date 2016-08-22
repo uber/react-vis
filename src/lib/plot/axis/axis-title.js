@@ -19,34 +19,34 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import {ORIENTATION} from '../../utils/axis-utils';
+import {POSITION} from '../../utils/axis-utils';
 
-const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
+const {LEFT, RIGHT, TOP, BOTTOM} = POSITION;
 
 const propTypes = {
   width: React.PropTypes.number.isRequired,
   height: React.PropTypes.number.isRequired,
-  orientation: React.PropTypes.oneOf([
+  position: React.PropTypes.oneOf([
     LEFT, RIGHT, TOP, BOTTOM
   ]).isRequired,
   title: React.PropTypes.string.isRequired
 };
 
-function AxisTitle({orientation, width, height, title}) {
-  const x = orientation === LEFT ? width : 0;
-  const y = orientation === TOP ? height : 0;
+function AxisTitle({position, width, height, title}) {
+  const x = position === LEFT ? width : 0;
+  const y = position === TOP ? height : 0;
   let style;
-  if (orientation === LEFT) {
+  if (position === LEFT) {
     style = {
       transform: 'translate(1em, 0) rotate(-90deg)',
       textAnchor: 'end'
     };
-  } else if (orientation === RIGHT) {
+  } else if (position === RIGHT) {
     style = {
       transform: 'translate(-1em, 0) rotate(-90deg)',
       textAnchor: 'end'
     };
-  } else if (orientation === BOTTOM) {
+  } else if (position === BOTTOM) {
     style = {
       transform: `translate(${width}px, -6px)`,
       textAnchor: 'end'

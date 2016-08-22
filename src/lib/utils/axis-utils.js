@@ -18,26 +18,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import * as d3Axis from 'd3-axis';
-
-const AXIS_FNS = {
-  left: d3Axis.axisLeft,
-  right: d3Axis.axisRight,
-  top: d3Axis.axisTop,
-  bottom: d3Axis.axisBottom
-};
-
-export const AXIS_ORIENTATIONS = Object.keys(AXIS_FNS);
-
-export function getAxisFnByOrientation(orientation) {
-  return AXIS_FNS[orientation];
-}
-
-export const ORIENTATION = {
+export const POSITION = {
   TOP: 'top',
   LEFT: 'left',
   RIGHT: 'right',
   BOTTOM: 'bottom'
+};
+
+export const ORIENTATION = {
+  VERTICAL: 'vertical',
+  HORIZONTAL: 'horizontal'
 };
 
 /**
@@ -53,4 +43,17 @@ export function getTicksTotalFromSize(size) {
     return 5;
   }
   return 20;
+}
+
+/**
+ * Get the tick values from a given d3 scale.
+ * @param {d3.scale} scale Scale function.
+ * @param {number} tickTotal Total number of ticks
+ * @param {Array} tickValues Array of tick values if they exist.
+ * @returns {Array} Array of tick values.
+ */
+export function getTickValues(scale, tickTotal, tickValues) {
+  return !tickValues ?
+    (scale.ticks ? scale.ticks(tickTotal) : scale.domain()) :
+    tickValues;
 }
