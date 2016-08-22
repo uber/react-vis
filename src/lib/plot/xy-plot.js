@@ -21,6 +21,8 @@
 import React from 'react';
 import equal from 'deep-equal';
 
+import {getDomainByAttr} from '../utils/scales-utils';
+
 import {
   getStackedData,
   getSeriesChildren,
@@ -152,7 +154,7 @@ class XYPlot extends React.Component {
    * @returns {Object} Defaults.
    * @private
    */
-  _getScaleDefaults(props) {
+  _getDefaultScaleProps(props) {
     const {innerWidth, innerHeight} = getInnerDimensions(props);
     return {
       xRange: [0, innerWidth],
@@ -161,6 +163,37 @@ class XYPlot extends React.Component {
       opacityRange: OPACITY_RANGE,
       sizeRange: SIZE_RANGE
     };
+  }
+
+  _getUserScaleProps(data, props) {
+    const filteredData = data.filter(d => d);
+    const allData = [].concat(...filteredData);
+    const attrProps = {};
+    // Collect all properties from the parent and prepare them to pass
+    // to the children.
+    Object.keys(props).forEach(key => {
+      const attr = ATTRIBUTES.find(
+        a => key.indexOf(a) === 0 || key.indexOf(`_${a}`) === 0);
+      if (!attr) {
+        return;
+      }
+      attrProps[key] = props[key];
+    });
+
+    // Make sure that the domain is set and pass the domain as well.
+    ATTRIBUTES.forEach(attr => {
+      if (!attrProps[`${attr}Type`]) {
+        attrProps[`${attr}Type`] = 'linear';
+      }
+      if (!attrProps[`${attr}Domain`]) {
+        attrProps[`${attr}Domain`] = getDomainByAttr(
+          allData,
+          attr,
+          attrProps[`${attr}Type`]
+        );
+      }
+    });
+    return attrProps;
   }
 
   /**
@@ -172,18 +205,9 @@ class XYPlot extends React.Component {
    * @private
    */
   _getScaleMixins(data, props) {
-    const attrProps = {};
-    const defaults = this._getScaleDefaults(props);
+    const defaultScaleProps = this._getDefaultScaleProps(props);
+    const userScaleProps = this._getUserScaleProps(data, props);
     const children = getSeriesChildren(props.children);
-    Object.keys(props).forEach(key => {
-      const attr = ATTRIBUTES.find(
-        a => key.indexOf(a) === 0 || key.indexOf(`_${a}`) === 0);
-      if (!attr) {
-        return;
-      }
-      attrProps[key] = props[key];
-    });
-
     const zeroBaseProps = {};
     const adjustBy = new Set();
     const adjustWhat = new Set();
@@ -207,11 +231,10 @@ class XYPlot extends React.Component {
         }
       });
     });
-
     return {
-      ...defaults,
+      ...defaultScaleProps,
       ...zeroBaseProps,
-      ...attrProps,
+      ...userScaleProps,
       _allData: data,
       _adjustBy: Array.from(adjustBy),
       _adjustWhat: Array.from(adjustWhat),

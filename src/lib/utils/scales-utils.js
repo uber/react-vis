@@ -143,7 +143,7 @@ function _getScaleFnFromScaleObject(scaleObject) {
  * @returns {Array} Domain.
  * @private
  */
-function _getDomainByAttr(allData, attr, type) {
+export function getDomainByAttr(allData, attr, type) {
   let domain;
   const attr0 = `${attr}0`;
 
@@ -230,25 +230,22 @@ function _createScaleObjectForFunction(
  */
 function _collectScaleObjectFromProps(props, attr) {
   const {
-    _allData: data = [],
     [attr]: value,
     [`_${attr}Value`]: fallbackValue,
-    [`${attr}Domain`]: initialDomain,
     [`${attr}Range`]: range,
     [`${attr}Distance`]: distance = 0,
     [`${attr}BaseValue`]: baseValue,
-    [`${attr}Type`]: type = LINEAR_SCALE_TYPE} = props;
+    [`${attr}Type`]: type} = props;
+
+  let {[`${attr}Domain`]: domain} = props;
 
   // Return value-based scale if the value is assigned.
   if (typeof value !== 'undefined') {
     return _createScaleObjectForValue(attr, value);
   }
-  const filteredData = data.filter(d => d);
-  const allData = [].concat(...filteredData);
 
   // Pick up the domain from the properties and create a new one if it's not
   // available.
-  let domain = initialDomain || _getDomainByAttr(allData, attr, type);
   if (typeof baseValue !== 'undefined') {
     domain = addValueToArray(domain, baseValue);
   }
