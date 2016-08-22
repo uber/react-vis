@@ -82,6 +82,24 @@ npm test
 
 ## Change log
 
+### 0.5
+
+#### TL;DR
+
+Upgraded to modular d3, compiled code became smaller, changed the API for axes and grids, fixed several bugs.
+
+#### Breaking changes
+
+* d3-axis is no longer used, the rendering of axes and grids is made by react (and works faster).
+* The API of axes (`XAxis` and `YAxis`) was significantly changed: now it is (almost) compatible with the API of d3-axis. Please refer to [the updated documentation for axes](docs/xy-plot.md#axes) for more detail.
+* The API of grids (`VerticalGridLines` and `HorizontalGridLines`) was significantly changed: it partially replicates the API of the axes.  Please refer to [the updated documentation ](docs/xy-plot.md#grids) for more detail. 
+
+#### Non-breaking changes
+
+* Bugfix: `margin` for the radial and ortogonal chart is now able to receive partial objects (e. g.`<XYPlot margin={{left: 20}}>` instead of margins for each side) and numbers (e.g. `<XYPlot margin={20}>`)
+* Bugfix: `makeVisFlexible` doesn't fail anymore (see [#118](https://github.com/uber-common/react-vis/issues/118).
+* Minor bugfixes and improvements.
+
 ### 0.3.2
 
 * `colorRange`, `colorDomain`, `colorType`, `opacityRange`, `opacityDomain` and `opacityType` properties are now supported for the Treemap scales (more info about scales is [here](docs/scales-and-data.md)).
