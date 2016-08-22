@@ -146,12 +146,13 @@ If an object is passed, then the child components *will be* animated with the gi
 
 Currently both components have following properties:
 
-#### values (optional)
-Type: `Array(<string|number>)`  
-Array of y (for `HorizontalGrid`) or x (for `VerticalGrid`) values to show the gridlines at.
+#### tickTotal (optional)
+Type: `number`  
+Total number of lines on the grid. Already set by default, depends on the size of the grid. Similar to the `tickTotal()` method of d3-axis.
 
-#### animation (optional)
-See the [XYPlot](#api-reference)'s `animation` section for more information.
+#### tickValues (optional)
+Type: `Array<*>`  
+An array of values (not coordinates!) that where the lines should be shown. Similar to the `tickValues()` method of d3-axis.
 
 #### left (optional)
 Type: `number`  
@@ -168,6 +169,9 @@ Width of the grid lines in pixels. **Already set by default**, but can be overri
 #### height (optional)
 Type: `number`  
 Height of the grid lines in pixels. **Already set by default**, but can be overriden by the user.
+
+#### animation (optional)
+See the [XYPlot](#api-reference)'s `animation` section for more information.
 
 ### Axes
 
