@@ -97,8 +97,15 @@ Upgraded to modular d3, compiled code became smaller, changed the API for axes a
 #### Non-breaking changes
 
 * Bugfix: `margin` for the radial and ortogonal chart is now able to receive partial objects (e. g.`<XYPlot margin={{left: 20}}>` instead of margins for each side) and numbers (e.g. `<XYPlot margin={20}>`)
-* Bugfix: `makeVisFlexible` doesn't fail anymore (see [#118](https://github.com/uber-common/react-vis/issues/118).
+* Bugfix: `makeVisFlexible` doesn't fail anymore (see [#118](https://github.com/uber-common/react-vis/issues/118)).
 * Minor bugfixes and improvements.
+
+### 0.4
+
+* Enhancement: External fonts are now moved to examples and not present as a part of the library
+* Enhancement: Added `onClick` and `onValueClick` for the series of `XYPlot`.
+* Enhancement: Added `'time-utc'` scale similar to `d3.time.scale.utc()`.
+* Started switching to modular d3.
 
 ### 0.3.2
 
