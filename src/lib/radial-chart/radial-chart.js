@@ -25,7 +25,7 @@ import * as d3Shape from 'd3-shape';
 
 import {getAttributeFunctor} from '../utils/scales-utils';
 
-import {getInnerDimensions} from '../utils/chart-utils';
+import {getInnerDimensions, MarginPropType} from '../utils/chart-utils';
 
 import {AnimationPropType, applyTransition} from '../utils/animation-utils';
 
@@ -45,6 +45,13 @@ const ATTRIBUTES = [
   'stroke'
 ];
 
+const DEFAULT_MARGINS = {
+  left: 10,
+  right: 10,
+  top: 10,
+  bottom: 10
+};
+
 /**
  * Walk through the data and assign color property to the data points if it
  * doesn't exist.
@@ -62,27 +69,11 @@ export default class RadialChart extends React.Component {
     return {
       width: React.PropTypes.number.isRequired,
       height: React.PropTypes.number.isRequired,
-      margin: React.PropTypes.shape({
-        left: React.PropTypes.number,
-        top: React.PropTypes.number,
-        right: React.PropTypes.number,
-        bottom: React.PropTypes.number
-      }),
+      margin: MarginPropType,
       animation: AnimationPropType,
       onSectionMouseOver: React.PropTypes.func,
       onSectionMouseOut: React.PropTypes.func,
       onSectionClick: React.PropTypes.func
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      margin: {
-        left: 10,
-        right: 10,
-        top: 10,
-        bottom: 10
-      }
     };
   }
 
@@ -169,7 +160,10 @@ export default class RadialChart extends React.Component {
    * @private
    */
   _getScaleDefaults(props) {
-    const {innerWidth, innerHeight} = getInnerDimensions(props);
+    const {innerWidth, innerHeight} = getInnerDimensions(
+      props,
+      DEFAULT_MARGINS
+    );
     const radius = Math.min(innerWidth / 2, innerHeight / 2);
     return {
       radiusRange: [0, radius],
@@ -261,7 +255,10 @@ export default class RadialChart extends React.Component {
 
   render() {
     const {data, width, height} = this.props;
-    const {innerWidth, innerHeight} = getInnerDimensions(this.props);
+    const {innerWidth, innerHeight} = getInnerDimensions(
+      this.props,
+      DEFAULT_MARGINS
+    );
     return (
       <div
         style={{
