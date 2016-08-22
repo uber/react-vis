@@ -19,42 +19,30 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
-import PureRenderComponent from '../pure-render-component';
 import GridLines from './grid-lines';
-import {getScalePropTypesByAttribute} from '../utils/scales-utils';
-import {getTicksTotalFromSize} from '../utils/axis-utils';
+import {DIRECTION} from '../utils/axis-utils';
 
-class HorizontalGridLines extends PureRenderComponent {
+const {HORIZONTAL} = DIRECTION;
 
-  static get propTypes() {
-    return {
-      values: React.PropTypes.array,
-      marginTop: React.PropTypes.number,
-      marginLeft: React.PropTypes.number,
-      innerWidth: React.PropTypes.number,
-      innerHeight: React.PropTypes.number,
-      ...getScalePropTypesByAttribute('y')
-    };
-  }
+const propTypes = {
+  ...GridLines.propTypes,
+  direction: React.PropTypes.oneOf([HORIZONTAL])
+};
 
-  static get requiresSVG() {
-    return true;
-  }
+const defaultProps = {
+  direction: HORIZONTAL,
+  attr: 'y'
+};
 
-  render() {
-    const {innerHeight, innerWidth} = this.props;
-    return (
-      <GridLines
-        {...this.props}
-        attr="y"
-        orientation="left"
-        ticksTotal={getTicksTotalFromSize(innerHeight)}
-        tickSize={-innerWidth}/>
-    );
-  }
+function HorizontalGridLines(props) {
+  return (
+    <GridLines {...props} />
+  );
 }
 
 HorizontalGridLines.displayName = 'HorizontalGridLines';
+HorizontalGridLines.propTypes = propTypes;
+HorizontalGridLines.defaultProps = defaultProps;
+HorizontalGridLines.requiresSVG = true;
 
 export default HorizontalGridLines;

@@ -23,7 +23,6 @@
   "main": "index.js",
   "dependencies": {
     "d3-array": "^1.0.1",
-    "d3-axis": "^1.0.3",
     "d3-collection": "^1.0.1",
     "d3-color": "^1.0.1",
     "d3-hierarchy": "^1.0.2",
