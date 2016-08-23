@@ -235,7 +235,7 @@ function _collectScaleObjectFromProps(props, attr) {
     [`${attr}Range`]: range,
     [`${attr}Distance`]: distance = 0,
     [`${attr}BaseValue`]: baseValue,
-    [`${attr}Type`]: type} = props;
+    [`${attr}Type`]: type = LINEAR_SCALE_TYPE} = props;
 
   let {[`${attr}Domain`]: domain} = props;
 
@@ -251,7 +251,7 @@ function _collectScaleObjectFromProps(props, attr) {
   }
 
   // Make sure that the minimum necessary properties exist.
-  if (!range || !domain.length) {
+  if (!range || !domain || !domain.length) {
     // Try to use the fallback value if it is available.
     return _createScaleObjectForValue(attr, fallbackValue);
   }

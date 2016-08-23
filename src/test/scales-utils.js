@@ -49,19 +49,17 @@ test('scales-utils/getScaleObjectFromProps with empty props', function t(
   assert.end();
 });
 
-test('scales-utils/getScaleObjectFromProps with empty range', function t(
+test('scales-utils/getScaleObjectFromProps with empty domain', function t(
   assert) {
-  const noRangeResult = getScaleObjectFromProps({_allData}, 'x');
-  assert.ok(noRangeResult === null, 'Should be null if no range is passed');
+  const noRangeResult = getScaleObjectFromProps({xDomain}, 'x');
+  assert.ok(noRangeResult === null, 'Should be null if no domain is passed');
   assert.end();
 });
 
-test('scales-utils/getScaleObjectFromProps with incomplete props', function t(
+test('scales-utils/getScaleObjectFromProps with empty range', function t(
   assert) {
-  const incompleteResult = getScaleObjectFromProps({xRange, _allData}, 'x');
-  assert.ok(isScaleConsistent(incompleteResult, 'x'),
-    'Should be a consistent scale');
-  assert.ok(incompleteResult.type === 'linear', 'Should be linear by detault');
+  const noDomainResult = getScaleObjectFromProps({xRange}, 'x');
+  assert.ok(noDomainResult === null, 'Should be null if no range is passed');
   assert.end();
 });
 
@@ -117,7 +115,7 @@ test('scales-utils/getAttributeFunctor without props', function t(assert) {
 });
 
 test('scales-utils/getAttributeFunctor with props', function t(assert) {
-  const result = getAttributeFunctor({xRange, _allData}, 'x');
+  const result = getAttributeFunctor({xRange, xDomain}, 'x');
   const isFunction = typeof result === 'function';
   assert.ok(isFunction, 'Result should be a function');
   if (isFunction) {
@@ -134,7 +132,7 @@ test('scales-utils/getAttributeScale without props', function t(assert) {
 });
 
 test('scales-utils/getAttributeScale with props', function t(assert) {
-  const result = getAttributeScale({xRange, _allData}, 'x');
+  const result = getAttributeScale({xRange, xDomain}, 'x');
   const isFunction = typeof result === 'function';
   assert.ok(isFunction, 'Result should be a function');
   if (isFunction) {

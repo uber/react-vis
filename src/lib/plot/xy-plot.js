@@ -182,9 +182,6 @@ class XYPlot extends React.Component {
 
     // Make sure that the domain is set and pass the domain as well.
     ATTRIBUTES.forEach(attr => {
-      if (!attrProps[`${attr}Type`]) {
-        attrProps[`${attr}Type`] = 'linear';
-      }
       if (!attrProps[`${attr}Domain`]) {
         attrProps[`${attr}Domain`] = getDomainByAttr(
           allData,
