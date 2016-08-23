@@ -33,7 +33,6 @@ export default class SimpleRadialChart extends React.Component {
           {angle: 3},
           {angle: 5}
         ]}
-        onSectionClick={(d, i) => console.log(d, i)}
         width={300}
         height={300} />
     );

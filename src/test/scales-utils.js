@@ -187,7 +187,7 @@ test('scales-utils/extractScalePropsFromProps', function t(assert) {
     bDomain: [1, 2, 3]
   };
   const result = extractScalePropsFromProps(props, ['a', 'b']);
-  assert.ok(Object.keys(result).length == 4 && result.aType === props.aType &&
+  assert.ok(Object.keys(result).length === 4 && result.aType === props.aType &&
     result.aRange === props.aRange && result._aValue === props._aValue &&
     result.bDomain === props.bDomain,
     'Should return valid object');
