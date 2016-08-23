@@ -20,14 +20,15 @@
 
 import test from 'tape';
 import 'babel-polyfill';
-
 import {
   getScaleObjectFromProps,
   getScalePropTypesByAttribute,
   getAttributeFunctor,
   getAttributeScale,
   getAttributeValue,
-  _getSmallestDistanceIndex
+  _getSmallestDistanceIndex,
+  extractScalePropsFromProps,
+  getMissingScaleProps
 } from '../lib/utils/scales-utils';
 
 function isScaleConsistent(scaleObject, attr) {
@@ -171,4 +172,34 @@ test('scales-utils/_getSmallestDistanceIndex', function t(assert) {
   function runTest(arg) {
     return _getSmallestDistanceIndex(arg, scaleObj);
   }
+});
+
+test('scales-utils/extractScalePropsFromProps', function t(assert) {
+  assert.ok(
+    Object.keys(extractScalePropsFromProps({}, [])).length === 0,
+    'Should return empty object on empty values'
+  );
+  const props = {
+    aType: 'linear',
+    aRange: [1, 2],
+    _aValue: 10,
+    somethingElse: [],
+    bDomain: [1, 2, 3]
+  };
+  const result = extractScalePropsFromProps(props, ['a', 'b']);
+  assert.ok(Object.keys(result).length == 4 && result.aType === props.aType &&
+    result.aRange === props.aRange && result._aValue === props._aValue &&
+    result.bDomain === props.bDomain,
+    'Should return valid object');
+  assert.end();
+});
+
+test('scales-utils/getMissingScaleProps', function t(assert) {
+  assert.ok(Object.keys(getMissingScaleProps({}, [], [])).length === 0,
+    'Should return empty result on empty arguments');
+  const result = getMissingScaleProps({}, _allData[0], ['x']);
+  assert.ok(Boolean(result.xDomain) && result.xDomain.length === 2 &&
+    result.xDomain[0] === 1 && result.xDomain[1] === 3,
+    'Should return a valid object');
+  assert.end();
 });

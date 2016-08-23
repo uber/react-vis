@@ -20,22 +20,18 @@
 
 import React from 'react';
 import equal from 'deep-equal';
-
-import {getDomainByAttr} from '../utils/scales-utils';
-
+import {
+  extractScalePropsFromProps,
+  getMissingScaleProps
+} from '../utils/scales-utils';
 import {
   getStackedData,
   getSeriesChildren,
-  getSeriesPropsFromChildren} from '../utils/series-utils';
-
+  getSeriesPropsFromChildren
+} from '../utils/series-utils';
 import {getInnerDimensions, MarginPropType} from '../utils/chart-utils';
-
 import {AnimationPropType} from '../utils/animation-utils';
-
-import {
-  CONTINUOUS_COLOR_RANGE,
-  SIZE_RANGE,
-  OPACITY_RANGE} from '../theme';
+import {CONTINUOUS_COLOR_RANGE, SIZE_RANGE, OPACITY_RANGE} from '../theme';
 
 const ATTRIBUTES = [
   'x',
@@ -159,34 +155,6 @@ class XYPlot extends React.Component {
     };
   }
 
-  _getUserScaleProps(data, props) {
-    const filteredData = data.filter(d => d);
-    const allData = [].concat(...filteredData);
-    const attrProps = {};
-    // Collect all properties from the parent and prepare them to pass
-    // to the children.
-    Object.keys(props).forEach(key => {
-      const attr = ATTRIBUTES.find(
-        a => key.indexOf(a) === 0 || key.indexOf(`_${a}`) === 0);
-      if (!attr) {
-        return;
-      }
-      attrProps[key] = props[key];
-    });
-
-    // Make sure that the domain is set and pass the domain as well.
-    ATTRIBUTES.forEach(attr => {
-      if (!attrProps[`${attr}Domain`]) {
-        attrProps[`${attr}Domain`] = getDomainByAttr(
-          allData,
-          attr,
-          attrProps[`${attr}Type`]
-        );
-      }
-    });
-    return attrProps;
-  }
-
   /**
    * Get the map of scales from the props, apply defaults to them and then pass
    * them further.
@@ -196,8 +164,16 @@ class XYPlot extends React.Component {
    * @private
    */
   _getScaleMixins(data, props) {
+
+    const filteredData = data.filter(d => d);
+    const allData = [].concat(...filteredData);
+
     const defaultScaleProps = this._getDefaultScaleProps(props);
-    const userScaleProps = this._getUserScaleProps(data, props);
+    const userScaleProps = extractScalePropsFromProps(props, ATTRIBUTES);
+    const missingScaleProps = getMissingScaleProps({
+      ...defaultScaleProps,
+      ...userScaleProps
+    }, allData, ATTRIBUTES);
     const children = getSeriesChildren(props.children);
     const zeroBaseProps = {};
     const adjustBy = new Set();
@@ -225,6 +201,7 @@ class XYPlot extends React.Component {
     return {
       ...defaultScaleProps,
       ...zeroBaseProps,
+      ...missingScaleProps,
       ...userScaleProps,
       _allData: data,
       _adjustBy: Array.from(adjustBy),

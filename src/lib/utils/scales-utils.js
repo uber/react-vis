@@ -571,3 +571,47 @@ export function getScalePropTypesByAttribute(attr) {
     [`${attr}BaseValue`]: React.PropTypes.any
   };
 }
+
+/**
+ * Extract the list of scale properties from the entire props object.
+ * @param {Object} props Props.
+ * @param {Array<String>} attributes Array of attributes for the given
+ * components (for instance, `['x', 'y', 'color']`).
+ * @returns {Object} Collected props.
+ */
+export function extractScalePropsFromProps(props, attributes) {
+  const result = {};
+  Object.keys(props).forEach(key => {
+    const attr = attributes.find(
+      a => key.indexOf(a) === 0 || key.indexOf(`_${a}`) === 0);
+    if (!attr) {
+      return;
+    }
+    result[key] = props[key];
+  });
+  return result;
+}
+
+/**
+ * Extract the missing scale props from the given data and return them as
+ * an object.
+ * @param {Object} props Props.
+ * @param {Array} data Array of all data.
+ * @param {Array<String>} attributes Array of attributes for the given
+ * components (for instance, `['x', 'y', 'color']`).
+ * @returns {Object} Collected props.
+ */
+export function getMissingScaleProps(props, data, attributes) {
+  const result = {};
+  // Make sure that the domain is set and pass the domain as well.
+  attributes.forEach(attr => {
+    if (!props[`${attr}Domain`]) {
+      result[`${attr}Domain`] = getDomainByAttr(
+        data,
+        attr,
+        props[`${attr}Type`]
+      );
+    }
+  });
+  return result;
+}

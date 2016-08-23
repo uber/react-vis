@@ -22,7 +22,7 @@ import React from 'react';
 import * as d3Hierarchy from 'd3-hierarchy';
 import * as d3Color from 'd3-color';
 import {getCSSAnimation, AnimationPropType} from '../utils/animation-utils';
-import {getAttributeFunctor} from '../utils/scales-utils';
+import {getAttributeFunctor, getMissingScaleProps} from '../utils/scales-utils';
 import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, OPACITY_RANGE} from '../theme';
 
 const TREEMAP_TILE_MODES = {
@@ -38,6 +38,8 @@ function getFontColorFromBackground(background) {
   }
   return null;
 }
+
+const ATTRIBUTES = ['opacity', 'color'];
 
 class Treemap extends React.Component {
 
@@ -86,12 +88,14 @@ class Treemap extends React.Component {
    */
   _getScaleFns(props) {
     const {data} = props;
+    const allData = data.children || [];
 
     // Adding _allData property to the object to reuse the existing
     // getAttributeFunctor function.
     const compatibleProps = {
       ...props,
-      _allData: data.children || []
+      ...getMissingScaleProps(props, allData, ATTRIBUTES),
+      _allData: allData
     };
     return {
       opacity: getAttributeFunctor(compatibleProps, 'opacity'),
