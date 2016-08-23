@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import {ORIENTATION} from '../../utils/axis-utils';
+import {ORIENTATION, getTickValues} from '../../utils/axis-utils';
 import {getAttributeScale} from '../../utils/scales-utils';
 
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
@@ -51,12 +51,6 @@ function _getTickFormatFn(scale, tickTotal, tickFormat) {
     tickFormat;
 }
 
-function _getTickValues(scale, tickTotal, tickValues) {
-  return !tickValues ?
-    (scale.ticks ? scale.ticks(tickTotal) : scale.domain()) :
-    tickValues;
-}
-
 function AxisTicks(props) {
   const {
     attr,
@@ -80,7 +74,7 @@ function AxisTicks(props) {
 
   const wrap = (orientation === LEFT || orientation === TOP) ? -1 : 1;
 
-  const values = _getTickValues(scale, tickTotal, tickValues);
+  const values = getTickValues(scale, tickTotal, tickValues);
   const tickFormatFn = _getTickFormatFn(scale, tickTotal, tickFormat);
 
   const tickXAttr = isVertical ? 'y' : 'x';
@@ -121,6 +115,7 @@ function AxisTicks(props) {
 
 AxisTicks.displayName = 'AxisTicks';
 AxisTicks.propTypes = propTypes;
+AxisTicks.requiresSVG = true;
 
 export default AxisTicks;
 

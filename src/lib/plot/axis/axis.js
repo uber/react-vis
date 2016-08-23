@@ -36,6 +36,7 @@ const propTypes = {
   height: React.PropTypes.number,
   top: React.PropTypes.number,
   left: React.PropTypes.number,
+  title: React.PropTypes.string,
 
   tickSize: React.PropTypes.number,
   tickSizeInner: React.PropTypes.number,

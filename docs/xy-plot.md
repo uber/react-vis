@@ -49,7 +49,7 @@ XYPlot is a wrapper for series, hints, axes and other components. Most of these 
 * `opacity` (optional)
 * `fill` (optional)
 * `stroke` (optional)
-* `strokeWidth` (optional), `strokeStyle` (optional) - to control the width of the line series and whether they are dashed or solid. 
+* `strokeWidth` (optional), `strokeStyle` (optional) - to control the width of the line series and whether they are dashed or solid.
 * `color` (optional, used instead of `fill` and `stroke` if none of them is passed)
 * `size` (optional)
 
@@ -146,14 +146,36 @@ If an object is passed, then the child components *will be* animated with the gi
 
 Currently both components have following properties:
 
-#### values (optional)
-Type: `Array(<string|number>)`  
-Array of y (for `HorizontalGrid`) or x (for `VerticalGrid`) values to show the gridlines at.
+#### tickTotal (optional)
+Type: `number`  
+Total number of lines on the grid. Already set by default, depends on the size of the grid. Similar to the `tickTotal()` method of d3-axis.
+
+#### tickValues (optional)
+Type: `Array<*>`  
+An array of values (not coordinates!) that where the lines should be shown. Similar to the `tickValues()` method of d3-axis.
+
+#### left (optional)
+Type: `number`  
+Horizontal position of the grid lines in pixels. **Already set by default**, but can be overriden by the user.
+
+#### top (optional)
+Type: `number`  
+Vertical position of the grid lines in pixels. **Already set by default**, but can be overriden by the user.
+
+#### width (optional)
+Type: `number`  
+Width of the grid lines in pixels. **Already set by default**, but can be overriden by the user.
+
+#### height (optional)
+Type: `number`  
+Height of the grid lines in pixels. **Already set by default**, but can be overriden by the user.
 
 #### animation (optional)
 See the [XYPlot](#api-reference)'s `animation` section for more information.
 
 ### Axes
+
+**Note**: Axes API was changed in 0.5.
 
 `XAxis` and `YAxis` shows are responsible for the axis in the chart. Both of them have following properties:
 
@@ -161,26 +183,58 @@ See the [XYPlot](#api-reference)'s `animation` section for more information.
 Type: `string`  
 Shows the title for the axis.
 
-#### labelFormat (optional)
-Type: `string | function | null`  
-Label format for a chart.
+#### orientation (optional)
+Type: `'top'|'left'|'bottom'|'right'`  
+The position of the axis inside the chart.
+By default **it is already set** to `'bottom'` for `XAxis` and to `'left'` for `YAxis`. Similar to how the axis are oriented in d3-axis.
+
+#### tickTotal (optional)
+Type: `number`  
+Total number of ticks on the axis. Already set by default. Similar to the `tickTotal()` method of d3-axis.
+
+#### tickValues (optional)
+Type: `Array<*>`  
+An array of values (not coordinates!) that where the ticks should be shown. Similar to the `tickValues()` method of d3-axis.
 
 #### tickFormat (optional)
-Type: `string | function | null`  
-Format function for a chart.
+Type: `function(*)`  
+Format function for the tick label. Similar to the `tickFormat()` method of d3-axis.
 
 #### tickSize (optional)
 Type: `number`  
-Default: `7`  
-Tick size.
+Default: `6`  
+Tick size for the axis. Sets both inner and outer sizes of the tick line. Similar to the `tickSize()` method of d3-axis.
 
-#### labelValues (optional)
-Type: `Array | null`  
-The list of values to be shown as labels.
+#### tickSizeOuter (optional)
+Type: `number`  
+Default: `null`
+Tick size for the axis. Sets the outer size of the tick line. Similar to the `tickSizeOuter()` method of d3-axis.
 
-#### tickValues (optional)
-Type: `Array | null`  
-The list of values to be shown as ticks.
+#### tickSizeInner (optional)
+Type: `number`  
+Default: `null`
+Tick size for the axis. Sets the inner size of the tick line. Similar to the `tickSizeInner()` method of d3-axis.
+
+#### tickPadding (optional)
+Type: `number`  
+Default: `2`  
+Distance between the tick and the text of the tick in pixels. Similar to the `tickPadding()` method of d3-axis.
+
+#### left (optional)
+Type: `number`  
+Horizontal position of the axis in pixels. **Already set by default**, but can be overriden by the user.
+
+#### top (optional)
+Type: `number`  
+Vertical position of the axis in pixels. **Already set by default**, but can be overriden by the user.
+
+#### width (optional)
+Type: `number`  
+Width of the axis in pixels. **Already set by default**, but can be overriden by the user.
+
+#### height (optional)
+Type: `number`  
+Height of the axis in pixels. **Already set by default**, but can be overriden by the user.
 
 #### animation (optional)
 See the [XYPlot](#api-reference)'s `animation` section for more information.

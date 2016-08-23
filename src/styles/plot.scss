@@ -48,13 +48,10 @@ $rv-xy-plot-tooltip-padding: 7px 10px;
 }
 
 .rv-xy-plot__grid-lines {
-  line {
-    stroke: $rv-xy-plot-axis-line-color;
-  }
-  // Hide the axis path from the grid: not needed.
-  .domain {
-    display: none;
-  }
+}
+
+.rv-xy-plot__grid-lines__line {
+  stroke: $rv-xy-plot-axis-line-color;
 }
 
 .rv-xy-plot__series--line {

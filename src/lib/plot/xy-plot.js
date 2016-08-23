@@ -28,7 +28,9 @@ import {
   getSeriesChildren,
   getSeriesPropsFromChildren} from '../utils/series-utils';
 
-import {getInnerDimensions} from '../utils/chart-utils';
+import {getInnerDimensions, MarginPropType} from '../utils/chart-utils';
+
+import {AnimationPropType} from '../utils/animation-utils';
 
 import {
   CONTINUOUS_COLOR_RANGE,
@@ -45,7 +47,12 @@ const ATTRIBUTES = [
   'size'
 ];
 
-import {AnimationPropType} from '../utils/animation-utils';
+const DEFAULT_MARGINS = {
+  left: 40,
+  right: 10,
+  top: 10,
+  bottom: 40
+};
 
 class XYPlot extends React.Component {
 
@@ -53,28 +60,12 @@ class XYPlot extends React.Component {
     return {
       width: React.PropTypes.number.isRequired,
       height: React.PropTypes.number.isRequired,
-      margin: React.PropTypes.oneOfType([React.PropTypes.shape({
-        left: React.PropTypes.number,
-        top: React.PropTypes.number,
-        right: React.PropTypes.number,
-        bottom: React.PropTypes.number
-      }), React.PropTypes.number]),
+      margin: MarginPropType,
       onMouseLeave: React.PropTypes.func,
       onMouseMove: React.PropTypes.func,
       onMouseEnter: React.PropTypes.func,
       animation: AnimationPropType,
       stackBy: React.PropTypes.oneOf(ATTRIBUTES)
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      margin: {
-        left: 40,
-        right: 10,
-        top: 10,
-        bottom: 40
-      }
     };
   }
 
@@ -155,7 +146,10 @@ class XYPlot extends React.Component {
    * @private
    */
   _getDefaultScaleProps(props) {
-    const {innerWidth, innerHeight} = getInnerDimensions(props);
+    const {innerWidth, innerHeight} = getInnerDimensions(
+      props,
+      DEFAULT_MARGINS
+    );
     return {
       xRange: [0, innerWidth],
       yRange: [innerHeight, 0],
@@ -259,7 +253,7 @@ class XYPlot extends React.Component {
   _getClonedChildComponents() {
     const {animation} = this.props;
     const {scaleMixins, data} = this.state;
-    const dimensions = getInnerDimensions(this.props);
+    const dimensions = getInnerDimensions(this.props, DEFAULT_MARGINS);
     const children = React.Children.toArray(this.props.children);
     const seriesProps = getSeriesPropsFromChildren(children);
     return children.map((child, index) => {
