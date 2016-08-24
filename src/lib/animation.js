@@ -1,27 +1,38 @@
 import React from 'react';
 import {interpolate} from 'd3-interpolate';
 import {spring, Motion} from 'react-motion';
+import PureRenderComponent from './pure-render-component';
 
 const propTypes = {
   animatedProps: React.PropTypes.arrayOf(React.PropTypes.string).isRequired
 };
 
-class Animation extends React.Component {
+class Animation extends PureRenderComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      data: this._extractPropsFromChild(this.props),
-      interpolator: null
-    };
+    const data = this._extractPropsFromChild(this.props);
+    const interpolator = interpolate(data, null);
+    this.state = {data, interpolator};
     this._renderChildren = this._renderChildren.bind(this);
   }
 
-  componentWillReceiveProps(props) {
+  shouldComponentUpdate({children: newChildren, animatedProps}) {
+    const {children} = this.props;
+    const child = React.Children.only(children);
+    const newChild = React.Children.only(newChildren);
+
+    return Boolean(
+      animatedProps.find(
+        propName => newChild.props[propName] !== child.props[propName]
+      )
+    );
+  }
+
+  componentWillUpdate(props) {
     const {data} = this.state;
     const newData = this._extractPropsFromChild(props);
-    this.setState({
-      interpolator: interpolate(data, newData)
-    });
+    const interpolator = interpolate(data, newData);
+    this.setState({interpolator, data: newData});
   }
 
   _extractPropsFromChild({children, animatedProps}) {
@@ -42,16 +53,22 @@ class Animation extends React.Component {
 
     return React.cloneElement(
       child,
-      {...child.props, ...interpolatedProps}
+      {
+        ...child.props,
+        ...interpolatedProps,
+        _animation: Math.random() // enforce re-rendering
+      }
     );
   }
 
   render() {
+    const defaultStyle = {i: 0};
+    const style = {i: spring(1)};
     return (
-      <Motion defaultStyle={{i: 0}} style={{i: spring(1)}}>
+      <Motion {...{defaultStyle, style, key: Math.random()}}>
         {this._renderChildren}
       </Motion>
-    )
+    );
   }
 }
 

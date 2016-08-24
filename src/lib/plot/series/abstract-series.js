@@ -31,28 +31,26 @@ import {
 
 import {AnimationPropType, applyTransition} from '../../utils/animation-utils';
 
-export default class AbstractSeries extends PureRenderComponent {
+const propTypes = {
+  ...getScalePropTypesByAttribute('x'),
+  ...getScalePropTypesByAttribute('y'),
+  ...getScalePropTypesByAttribute('size'),
+  ...getScalePropTypesByAttribute('opacity'),
+  ...getScalePropTypesByAttribute('color'),
+  width: React.PropTypes.number,
+  height: React.PropTypes.number,
+  data: React.PropTypes.array,
+  onValueMouseOver: React.PropTypes.func,
+  onValueMouseOut: React.PropTypes.func,
+  onValueClick: React.PropTypes.func,
+  onSeriesMouseOver: React.PropTypes.func,
+  onSeriesMouseOut: React.PropTypes.func,
+  onSeriesClick: React.PropTypes.func,
+  onNearestX: React.PropTypes.func,
+  animation: AnimationPropType
+};
 
-  static get propTypes() {
-    return {
-      ...getScalePropTypesByAttribute('x'),
-      ...getScalePropTypesByAttribute('y'),
-      ...getScalePropTypesByAttribute('size'),
-      ...getScalePropTypesByAttribute('opacity'),
-      ...getScalePropTypesByAttribute('color'),
-      width: React.PropTypes.number,
-      height: React.PropTypes.number,
-      data: React.PropTypes.array,
-      onValueMouseOver: React.PropTypes.func,
-      onValueMouseOut: React.PropTypes.func,
-      onValueClick: React.PropTypes.func,
-      onSeriesMouseOver: React.PropTypes.func,
-      onSeriesMouseOut: React.PropTypes.func,
-      onSeriesClick: React.PropTypes.func,
-      onNearestX: React.PropTypes.func,
-      animation: AnimationPropType
-    };
-  }
+class AbstractSeries extends PureRenderComponent {
 
   constructor(props) {
     super(props);
@@ -245,5 +243,9 @@ export default class AbstractSeries extends PureRenderComponent {
       event: event.nativeEvent
     });
   }
-
 }
+
+AbstractSeries.displayName = 'AbstractSeries';
+AbstractSeries.propTypes = propTypes;
+
+export default AbstractSeries;

@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import {spring, Motion} from 'react-motion';
 
 import Animation from '../../animation';
 import PureRenderComponent from '../../pure-render-component';
@@ -70,7 +69,7 @@ const defaultProps = {
   orientation: BOTTOM
 };
 
-class Axis extends React.Component {
+class Axis extends PureRenderComponent {
 
   /**
    * Define the default values depending on the data passed from the outside.

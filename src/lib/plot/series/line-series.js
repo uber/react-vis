@@ -19,11 +19,10 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import * as d3Selection from 'd3-selection';
 import * as d3Shape from 'd3-shape';
 
 import AbstractSeries from './abstract-series';
-import {getDOMNode} from '../../utils/react-utils';
+import Animation from '../../animation';
 
 import {DEFAULT_OPACITY} from '../../theme';
 
@@ -32,29 +31,40 @@ const STROKE_STYLES = {
   solid: null
 };
 
+const animatedProps = [
+  'xRange', 'yRange', 'xDomain', 'yDomain', 'colorRange', 'colorDomain',
+  'opacityRange', 'opacityDomain', 'strokeRange', 'strokeDomain',
+  'width', 'height', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
+  'data'
+];
+
+const defaultProps = {
+  strokeStyle: 'solid',
+  opacity: 1
+};
+
+const propTypes = {
+  ...AbstractSeries.propTypes,
+  strokeStyle: React.PropTypes.oneOf(Object.keys(STROKE_STYLES))
+};
+
 class LineSeries extends AbstractSeries {
 
-  static get defaultProps() {
-    return {
-      strokeStyle: 'solid',
-      opacity: 1
-    };
-  }
-
-  componentDidMount() {
-    this._updateSeries();
-  }
-
-  componentDidUpdate() {
-    this._updateSeries();
-  }
-
-  _updateSeries() {
-    const lineElement = getDOMNode(this.refs.line);
-    const {data} = this.props;
+  render() {
+    const {data, animation} = this.props;
     if (!data) {
-      return;
+      return null;
     }
+    if (animation) {
+      return (
+        <Animation {...{animatedProps}} {...animation}>
+          <LineSeries {...this.props} animation={null}/>
+        </Animation>
+      );
+    }
+
+    const {strokeStyle, strokeWidth, marginLeft, marginTop} = this.props;
+
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
     const stroke = this._getAttributeValue('stroke') ||
@@ -62,35 +72,27 @@ class LineSeries extends AbstractSeries {
     const opacity = this._getAttributeValue('opacity') || DEFAULT_OPACITY;
     const line = d3Shape.line().x(x).y(y);
     const d = line(data);
-    const path = d3Selection.select(lineElement)
-      .on('mouseover', this._mouseOver)
-      .on('mouseout', this._mouseOut)
-      .on('click', this._click);
-    this._applyTransition(path)
-      .attr('d', d)
-      .style('stroke', stroke)
-      .style('opacity', opacity);
-  }
 
-  render() {
-    const {data, strokeStyle, strokeWidth, marginLeft, marginTop} = this.props;
-    if (!data) {
-      return null;
-    }
     return (
       <path
-        ref="line"
+        d={d}
         className="rv-xy-plot__series rv-xy-plot__series--line"
         transform={`translate(${marginLeft},${marginTop})`}
+        onMouseOver={this._mouseOver}
+        onMouseOut={this._mouseOut}
+        onClick={this._click}
         style={{
-          opacity: 0,
+          opacity,
           strokeDasharray: STROKE_STYLES[strokeStyle],
-          strokeWidth
+          strokeWidth,
+          stroke
         }}/>
     );
   }
 }
 
 LineSeries.displayName = 'LineSeries';
+LineSeries.defaultProps = defaultProps;
+LineSeries.propTypes = propTypes;
 
 export default LineSeries;
