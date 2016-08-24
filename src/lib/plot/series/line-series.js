@@ -57,7 +57,7 @@ class LineSeries extends AbstractSeries {
     }
     if (animation) {
       return (
-        <Animation {...{animatedProps}} {...animation}>
+        <Animation {...this.props} {...{animatedProps}}>
           <LineSeries {...this.props} animation={null}/>
         </Animation>
       );

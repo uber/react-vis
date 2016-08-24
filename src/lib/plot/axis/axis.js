@@ -126,7 +126,7 @@ class Axis extends PureRenderComponent {
 
     if (animation) {
       return (
-        <Animation {...{animatedProps}} {...animation}>
+        <Animation {...this.props} {...{animatedProps}}>
           <Axis {...this.props} animation={null}/>
         </Animation>
       );
