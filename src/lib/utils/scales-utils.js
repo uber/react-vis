@@ -143,7 +143,7 @@ function _getScaleFnFromScaleObject(scaleObject) {
  * @returns {Array} Domain.
  * @private
  */
-function _getDomainByAttr(allData, attr, type) {
+export function getDomainByAttr(allData, attr, type) {
   let domain;
   const attr0 = `${attr}0`;
 
@@ -230,31 +230,28 @@ function _createScaleObjectForFunction(
  */
 function _collectScaleObjectFromProps(props, attr) {
   const {
-    _allData: data = [],
     [attr]: value,
     [`_${attr}Value`]: fallbackValue,
-    [`${attr}Domain`]: initialDomain,
     [`${attr}Range`]: range,
     [`${attr}Distance`]: distance = 0,
     [`${attr}BaseValue`]: baseValue,
     [`${attr}Type`]: type = LINEAR_SCALE_TYPE} = props;
 
+  let {[`${attr}Domain`]: domain} = props;
+
   // Return value-based scale if the value is assigned.
   if (typeof value !== 'undefined') {
     return _createScaleObjectForValue(attr, value);
   }
-  const filteredData = data.filter(d => d);
-  const allData = [].concat(...filteredData);
 
   // Pick up the domain from the properties and create a new one if it's not
   // available.
-  let domain = initialDomain || _getDomainByAttr(allData, attr, type);
   if (typeof baseValue !== 'undefined') {
     domain = addValueToArray(domain, baseValue);
   }
 
   // Make sure that the minimum necessary properties exist.
-  if (!range || !domain.length) {
+  if (!range || !domain || !domain.length) {
     // Try to use the fallback value if it is available.
     return _createScaleObjectForValue(attr, fallbackValue);
   }
@@ -573,4 +570,48 @@ export function getScalePropTypesByAttribute(attr) {
     [`${attr}Distance`]: React.PropTypes.number,
     [`${attr}BaseValue`]: React.PropTypes.any
   };
+}
+
+/**
+ * Extract the list of scale properties from the entire props object.
+ * @param {Object} props Props.
+ * @param {Array<String>} attributes Array of attributes for the given
+ * components (for instance, `['x', 'y', 'color']`).
+ * @returns {Object} Collected props.
+ */
+export function extractScalePropsFromProps(props, attributes) {
+  const result = {};
+  Object.keys(props).forEach(key => {
+    const attr = attributes.find(
+      a => key.indexOf(a) === 0 || key.indexOf(`_${a}`) === 0);
+    if (!attr) {
+      return;
+    }
+    result[key] = props[key];
+  });
+  return result;
+}
+
+/**
+ * Extract the missing scale props from the given data and return them as
+ * an object.
+ * @param {Object} props Props.
+ * @param {Array} data Array of all data.
+ * @param {Array<String>} attributes Array of attributes for the given
+ * components (for instance, `['x', 'y', 'color']`).
+ * @returns {Object} Collected props.
+ */
+export function getMissingScaleProps(props, data, attributes) {
+  const result = {};
+  // Make sure that the domain is set and pass the domain as well.
+  attributes.forEach(attr => {
+    if (!props[`${attr}Domain`]) {
+      result[`${attr}Domain`] = getDomainByAttr(
+        data,
+        attr,
+        props[`${attr}Type`]
+      );
+    }
+  });
+  return result;
 }

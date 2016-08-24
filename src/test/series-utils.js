@@ -35,7 +35,11 @@ test('series-utils/isSeriesChild', function t(assert) {
   const axis = React.createElement(XAxis, {
     xRange: [0, 1],
     xDomain: [0, 1],
-    xType: 'linear'
+    xType: 'linear',
+    width: 100,
+    height: 100,
+    top: 0,
+    left: 0
   });
   assert.notOk(isSeriesChild(axis), 'Should return false for non-series');
   assert.end();

@@ -20,20 +20,18 @@
 
 import React from 'react';
 import equal from 'deep-equal';
-
+import {
+  extractScalePropsFromProps,
+  getMissingScaleProps
+} from '../utils/scales-utils';
 import {
   getStackedData,
   getSeriesChildren,
-  getSeriesPropsFromChildren} from '../utils/series-utils';
-
+  getSeriesPropsFromChildren
+} from '../utils/series-utils';
 import {getInnerDimensions, MarginPropType} from '../utils/chart-utils';
-
 import {AnimationPropType} from '../utils/animation-utils';
-
-import {
-  CONTINUOUS_COLOR_RANGE,
-  SIZE_RANGE,
-  OPACITY_RANGE} from '../theme';
+import {CONTINUOUS_COLOR_RANGE, SIZE_RANGE, OPACITY_RANGE} from '../theme';
 
 const ATTRIBUTES = [
   'x',
@@ -143,7 +141,7 @@ class XYPlot extends React.Component {
    * @returns {Object} Defaults.
    * @private
    */
-  _getScaleDefaults(props) {
+  _getDefaultScaleProps(props) {
     const {innerWidth, innerHeight} = getInnerDimensions(
       props,
       DEFAULT_MARGINS
@@ -166,18 +164,17 @@ class XYPlot extends React.Component {
    * @private
    */
   _getScaleMixins(data, props) {
-    const attrProps = {};
-    const defaults = this._getScaleDefaults(props);
-    const children = getSeriesChildren(props.children);
-    Object.keys(props).forEach(key => {
-      const attr = ATTRIBUTES.find(
-        a => key.indexOf(a) === 0 || key.indexOf(`_${a}`) === 0);
-      if (!attr) {
-        return;
-      }
-      attrProps[key] = props[key];
-    });
 
+    const filteredData = data.filter(d => d);
+    const allData = [].concat(...filteredData);
+
+    const defaultScaleProps = this._getDefaultScaleProps(props);
+    const userScaleProps = extractScalePropsFromProps(props, ATTRIBUTES);
+    const missingScaleProps = getMissingScaleProps({
+      ...defaultScaleProps,
+      ...userScaleProps
+    }, allData, ATTRIBUTES);
+    const children = getSeriesChildren(props.children);
     const zeroBaseProps = {};
     const adjustBy = new Set();
     const adjustWhat = new Set();
@@ -201,11 +198,11 @@ class XYPlot extends React.Component {
         }
       });
     });
-
     return {
-      ...defaults,
+      ...defaultScaleProps,
       ...zeroBaseProps,
-      ...attrProps,
+      ...missingScaleProps,
+      ...userScaleProps,
       _allData: data,
       _adjustBy: Array.from(adjustBy),
       _adjustWhat: Array.from(adjustWhat),
