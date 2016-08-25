@@ -19,10 +19,9 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import * as d3Selection from 'd3-selection';
-
 import AbstractSeries from './abstract-series';
-import {getDOMNode} from '../../utils/react-utils';
+import Animation from '../../animation';
+import {ANIMATED_SERIES_PROPS} from '../../utils/series-utils';
 
 class BarSeries extends AbstractSeries {
 
@@ -36,19 +35,24 @@ class BarSeries extends AbstractSeries {
     };
   }
 
-  componentDidMount() {
-    this._updateSeries();
-  }
+  render() {
+    const {data, marginLeft, marginTop, animation} = this.props;
 
-  componentDidUpdate() {
-    this._updateSeries();
-  }
 
-  _updateSeries() {
-    const container = getDOMNode(this.refs.container);
+    if (!data) {
+      return null;
+    }
+
+    if (animation) {
+      return (
+        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+          <BarSeries {...this.props} animation={null}/>
+        </Animation>
+      );
+    }
+
     const {
       _stackBy,
-      data,
       lineSizeAttr,
       valuePosAttr,
       linePosAttr,
@@ -66,47 +70,40 @@ class BarSeries extends AbstractSeries {
     const lineFunctor = this._getAttributeFunctor(linePosAttr);
     const valueFunctor = this._getAttributeFunctor(valuePosAttr);
     const value0Functor = this._getAttr0Functor(valuePosAttr);
+    const fillFunctor = this._getAttributeFunctor('fill') ||
+      this._getAttributeFunctor('color');
+    const strokeFunctor = this._getAttributeFunctor('stroke') ||
+      this._getAttributeFunctor('color');
+    const opacityFunctor = this._getAttributeFunctor('opacity');
 
     if (_stackBy === valuePosAttr) {
       sameTypeTotal = 1;
       sameTypeIndex = 0;
     }
 
-    const rects = d3Selection.select(container).selectAll('rect')
-      .data(data)
-      .on('mouseover', this._mouseOverWithValue)
-      .on('mouseout', this._mouseOutWithValue)
-      .on('click', this._clickWithValue);
-
     const itemSize = (distance / 2) * 0.85;
 
-    this._applyTransition(rects)
-      .style('opacity', this._getAttributeFunctor('opacity'))
-      .style('fill', this._getAttributeFunctor('fill') ||
-        this._getAttributeFunctor('color'))
-      .style('stroke', this._getAttributeFunctor('stroke') ||
-        this._getAttributeFunctor('color'))
-      .attr(linePosAttr, d => lineFunctor(d) - itemSize +
-        (itemSize * 2 / sameTypeTotal * sameTypeIndex)
-      )
-      .attr(lineSizeAttr, itemSize * 2 / sameTypeTotal)
-      .attr(valuePosAttr,
-        d => Math.min(value0Functor(d), valueFunctor(d)))
-      .attr(valueSizeAttr,
-        d => Math.abs(-value0Functor(d) + valueFunctor(d)));
-  }
-
-  render() {
-    const {data, marginLeft, marginTop} = this.props;
-    if (!data) {
-      return null;
-    }
     return (
       <g
         className="rv-xy-plot__series rv-xy-plot__series--bar"
         ref="container"
         transform={`translate(${marginLeft},${marginTop})`}>
-        {data.map((d, i) => <rect style={{opacity: 0}} key={i}/>)}
+        {data.map((d, i) => {
+          const attrs = {
+            style: {
+              opacity: opacityFunctor(d),
+              stroke: strokeFunctor(d),
+              fill: fillFunctor(d)
+            },
+            [linePosAttr]: lineFunctor(d) - itemSize +
+              (itemSize * 2 / sameTypeTotal * sameTypeIndex),
+            [lineSizeAttr]: itemSize * 2 / sameTypeTotal,
+            [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
+            [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
+            key: i
+          };
+          return (<rect {...attrs} />);
+        })}
       </g>
     );
   }
