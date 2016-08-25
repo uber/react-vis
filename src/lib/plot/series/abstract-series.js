@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import * as d3Selection from 'd3-selection';
 import PureRenderComponent from '../../pure-render-component';
 import {
   getAttributeFunctor,
@@ -206,17 +205,22 @@ class AbstractSeries extends PureRenderComponent {
     return scaleObject ? scaleObject.distance : 0;
   }
 
+  _getXCoordinateInContainer(event) {
+    const {marginLeft = 0} = this.props;
+    const {nativeEvent: {clientX}, currentTarget} = event;
+    const rect = currentTarget.getBoundingClientRect();
+    return clientX - rect.left - currentTarget.clientLeft - marginLeft;
+  }
+
   onParentMouseMove(event) {
-    const {marginLeft = 0, onNearestX, data} = this.props;
+    const {onNearestX, data} = this.props;
     if (!onNearestX || !data) {
       return;
     }
     let minDistance = Number.POSITIVE_INFINITY;
     let value = null;
 
-    // TODO(antonb): WAT?
-    d3Selection.event = event.nativeEvent;
-    const coordinate = d3Selection.mouse(event.currentTarget)[0] - marginLeft;
+    const coordinate = this._getXCoordinateInContainer(event);
     const xScaleFn = this._getAttributeFunctor('x');
 
     data.forEach(item => {

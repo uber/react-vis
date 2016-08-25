@@ -20,10 +20,6 @@
 
 import React from 'react';
 
-// Not obvious: d3-transition adds .transition() method to the selection
-// prototype (!!!). Do not remove this import.
-import 'd3-transition';
-
 /**
  * Property type for the animation.
  */
@@ -41,24 +37,6 @@ export const AnimationPropType = React.PropTypes.oneOfType([
 export const DEFAULT_ANIMATION = {
   duration: 100
 };
-
-/**
- * Applies d3.transition to the given selection if transition is set in props.
- * @param {{animation:*}} props The object with the component's props.
- * @param {d3.selection} elements D3's selection of elements that should be
- * animated.
- * @returns {d3.selection} The new d3 selection with the animation applied.
- */
-export function applyTransition(props, elements) {
-  let {animation} = props;
-  if (Boolean(animation)) {
-    if (!(animation instanceof Object)) {
-      animation = DEFAULT_ANIMATION;
-    }
-    return elements.transition().duration(animation.duration);
-  }
-  return elements;
-}
 
 /**
  * Transforms a regular CSS object into an object with CSS animation (e. g. adds
