@@ -19,68 +19,55 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import * as d3Selection from 'd3-selection';
 import * as d3Shape from 'd3-shape';
 
 import AbstractSeries from './abstract-series';
-import {getDOMNode} from '../../utils/react-utils';
+import Animation from '../../animation';
 
 import {DEFAULT_OPACITY} from '../../theme';
+import {ANIMATED_SERIES_PROPS} from '../../utils/series-utils';
 
 class AreaSeries extends AbstractSeries {
 
-  componentDidMount() {
-    this._updateSeries();
-  }
-
-  componentDidUpdate() {
-    this._updateSeries();
-  }
-
-  _updateSeries() {
-    const lineElement = getDOMNode(this.refs.line);
-    const {data} = this.props;
+  render() {
+    const {data, animation} = this.props;
     if (!data) {
-      return;
+      return null;
     }
+    if (animation) {
+      return (
+        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+          <AreaSeries {...this.props} animation={null}/>
+        </Animation>
+      );
+    }
+
+    const {marginLeft, marginTop} = this.props;
 
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
     const y0 = this._getAttr0Functor('y');
-    const fill = this._getAttributeValue('fill') ||
-      this._getAttributeValue('color');
-
     const stroke = this._getAttributeValue('stroke') ||
       this._getAttributeValue('color');
-
-    const line = d3Shape.area().x(x).y0(y0).y1(y);
-
+    const fill = this._getAttributeValue('fill') ||
+      this._getAttributeValue('color');
     const opacity = this._getAttributeValue('opacity') || DEFAULT_OPACITY;
+    const line = d3Shape.area().x(x).y0(y0).y1(y);
     const d = line(data);
 
-    const path = d3Selection.select(lineElement)
-      .on('mouseover', this._mouseOver)
-      .on('mouseout', this._mouseOut)
-      .on('click', this._click);
-
-    this._applyTransition(path)
-      .attr('d', d)
-      .style('stroke', stroke)
-      .style('fill', fill)
-      .style('opacity', opacity);
-  }
-
-  render() {
-    const {data, marginLeft, marginTop} = this.props;
-    if (!data) {
-      return null;
-    }
     return (
       <path
-        ref="line"
-        style={{opacity: 0}}
-        className="rv-xy-plot__series rv-xy-plot__series--area"
-        transform={`translate(${marginLeft},${marginTop})`}/>
+        d={d}
+        className="rv-xy-plot__series rv-xy-plot__series--line"
+        transform={`translate(${marginLeft},${marginTop})`}
+        onMouseOver={this._mouseOver}
+        onMouseOut={this._mouseOut}
+        onClick={this._click}
+        style={{
+          opacity,
+          stroke,
+          fill
+        }}/>
     );
   }
 

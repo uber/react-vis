@@ -25,18 +25,12 @@ import AbstractSeries from './abstract-series';
 import Animation from '../../animation';
 
 import {DEFAULT_OPACITY} from '../../theme';
+import {ANIMATED_SERIES_PROPS} from '../../utils/series-utils';
 
 const STROKE_STYLES = {
   dashed: '6, 2',
   solid: null
 };
-
-const animatedProps = [
-  'xRange', 'yRange', 'xDomain', 'yDomain', 'colorRange', 'colorDomain',
-  'opacityRange', 'opacityDomain', 'strokeRange', 'strokeDomain',
-  'width', 'height', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
-  'data'
-];
 
 const defaultProps = {
   strokeStyle: 'solid',
@@ -57,7 +51,7 @@ class LineSeries extends AbstractSeries {
     }
     if (animation) {
       return (
-        <Animation {...this.props} {...{animatedProps}}>
+        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
           <LineSeries {...this.props} animation={null}/>
         </Animation>
       );

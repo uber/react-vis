@@ -140,3 +140,10 @@ export function getSeriesPropsFromChildren(children) {
   });
   return result;
 }
+
+export const ANIMATED_SERIES_PROPS = [
+  'xRange', 'yRange', 'xDomain', 'yDomain', 'colorRange', 'colorDomain',
+  'opacityRange', 'opacityDomain', 'strokeRange', 'strokeDomain',
+  'width', 'height', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
+  'data'
+];
