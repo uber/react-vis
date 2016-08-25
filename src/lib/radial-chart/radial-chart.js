@@ -22,17 +22,14 @@ import React from 'react';
 import equal from 'deep-equal';
 import * as d3Selection from 'd3-selection';
 import * as d3Shape from 'd3-shape';
-
-import {getAttributeFunctor} from '../utils/scales-utils';
-
-import {getInnerDimensions} from '../utils/chart-utils';
-
-import {AnimationPropType, applyTransition} from '../utils/animation-utils';
-
 import {
-  OPACITY_RANGE,
-  DISCRETE_COLOR_RANGE} from '../theme';
-
+  getAttributeFunctor,
+  extractScalePropsFromProps,
+  getMissingScaleProps
+} from '../utils/scales-utils';
+import {getInnerDimensions, MarginPropType} from '../utils/chart-utils';
+import {AnimationPropType, applyTransition} from '../utils/animation-utils';
+import {OPACITY_RANGE, DISCRETE_COLOR_RANGE} from '../theme';
 import {getDOMNode} from '../utils/react-utils';
 
 const ATTRIBUTES = [
@@ -44,6 +41,13 @@ const ATTRIBUTES = [
   'fill',
   'stroke'
 ];
+
+const DEFAULT_MARGINS = {
+  left: 10,
+  right: 10,
+  top: 10,
+  bottom: 10
+};
 
 /**
  * Walk through the data and assign color property to the data points if it
@@ -57,32 +61,16 @@ function assignColorsToData(data) {
   });
 }
 
-export default class RadialChart extends React.Component {
+class RadialChart extends React.Component {
   static get propTypes() {
     return {
       width: React.PropTypes.number.isRequired,
       height: React.PropTypes.number.isRequired,
-      margin: React.PropTypes.shape({
-        left: React.PropTypes.number,
-        top: React.PropTypes.number,
-        right: React.PropTypes.number,
-        bottom: React.PropTypes.number
-      }),
+      margin: MarginPropType,
       animation: AnimationPropType,
       onSectionMouseOver: React.PropTypes.func,
       onSectionMouseOut: React.PropTypes.func,
       onSectionClick: React.PropTypes.func
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      margin: {
-        left: 10,
-        right: 10,
-        top: 10,
-        bottom: 10
-      }
     };
   }
 
@@ -168,8 +156,11 @@ export default class RadialChart extends React.Component {
    * @returns {Object} Defaults.
    * @private
    */
-  _getScaleDefaults(props) {
-    const {innerWidth, innerHeight} = getInnerDimensions(props);
+  _getDefaultScaleProps(props) {
+    const {innerWidth, innerHeight} = getInnerDimensions(
+      props,
+      DEFAULT_MARGINS
+    );
     const radius = Math.min(innerWidth / 2, innerHeight / 2);
     return {
       radiusRange: [0, radius],
@@ -184,24 +175,23 @@ export default class RadialChart extends React.Component {
   /**
    * Get the map of scales from the props.
    * @param {Object} props Props.
-   * @param {Object} data Array of all data.
+   * @param {Array} data Array of all data.
    * @returns {Object} Map of scales.
    * @private
    */
   _getAllScaleProps(props, data) {
-    const attrProps = {};
-    const defaults = this._getScaleDefaults(props);
-    Object.keys(props).forEach(key => {
-      const attr = ATTRIBUTES.find(a => key.indexOf(a) === 0);
-      if (!attr) {
-        return;
-      }
-      attrProps[key] = props[key];
-    });
+    const defaultScaleProps = this._getDefaultScaleProps(props);
+    const userScaleProps = extractScalePropsFromProps(props, ATTRIBUTES);
+    const missingScaleProps = getMissingScaleProps({
+      ...defaultScaleProps,
+      ...userScaleProps
+    }, data, ATTRIBUTES);
+
     return {
-      ...defaults,
-      ...attrProps,
-      _allData: data,
+      ...defaultScaleProps,
+      ...userScaleProps,
+      ...missingScaleProps,
+      _allData: [],
       _adjustBy: [],
       _adjustWhat: []
     };
@@ -248,7 +238,6 @@ export default class RadialChart extends React.Component {
 
     const sections = d3Selection.select(container).selectAll('path')
       .data(pie(data))
-      .on('click', this._sectionClick)
       .on('mouseover', this._sectionMouseOver)
       .on('mouseout', this._sectionMouseOut);
     this._applyTransition(sections)
@@ -261,7 +250,10 @@ export default class RadialChart extends React.Component {
 
   render() {
     const {data, width, height} = this.props;
-    const {innerWidth, innerHeight} = getInnerDimensions(this.props);
+    const {innerWidth, innerHeight} = getInnerDimensions(
+      this.props,
+      DEFAULT_MARGINS
+    );
     return (
       <div
         style={{

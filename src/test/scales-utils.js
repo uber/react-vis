@@ -20,14 +20,15 @@
 
 import test from 'tape';
 import 'babel-polyfill';
-
 import {
   getScaleObjectFromProps,
   getScalePropTypesByAttribute,
   getAttributeFunctor,
   getAttributeScale,
   getAttributeValue,
-  _getSmallestDistanceIndex
+  _getSmallestDistanceIndex,
+  extractScalePropsFromProps,
+  getMissingScaleProps
 } from '../lib/utils/scales-utils';
 
 function isScaleConsistent(scaleObject, attr) {
@@ -49,19 +50,17 @@ test('scales-utils/getScaleObjectFromProps with empty props', function t(
   assert.end();
 });
 
-test('scales-utils/getScaleObjectFromProps with empty range', function t(
+test('scales-utils/getScaleObjectFromProps with empty domain', function t(
   assert) {
-  const noRangeResult = getScaleObjectFromProps({_allData}, 'x');
-  assert.ok(noRangeResult === null, 'Should be null if no range is passed');
+  const noRangeResult = getScaleObjectFromProps({xDomain}, 'x');
+  assert.ok(noRangeResult === null, 'Should be null if no domain is passed');
   assert.end();
 });
 
-test('scales-utils/getScaleObjectFromProps with incomplete props', function t(
+test('scales-utils/getScaleObjectFromProps with empty range', function t(
   assert) {
-  const incompleteResult = getScaleObjectFromProps({xRange, _allData}, 'x');
-  assert.ok(isScaleConsistent(incompleteResult, 'x'),
-    'Should be a consistent scale');
-  assert.ok(incompleteResult.type === 'linear', 'Should be linear by detault');
+  const noDomainResult = getScaleObjectFromProps({xRange}, 'x');
+  assert.ok(noDomainResult === null, 'Should be null if no range is passed');
   assert.end();
 });
 
@@ -117,7 +116,7 @@ test('scales-utils/getAttributeFunctor without props', function t(assert) {
 });
 
 test('scales-utils/getAttributeFunctor with props', function t(assert) {
-  const result = getAttributeFunctor({xRange, _allData}, 'x');
+  const result = getAttributeFunctor({xRange, xDomain}, 'x');
   const isFunction = typeof result === 'function';
   assert.ok(isFunction, 'Result should be a function');
   if (isFunction) {
@@ -134,7 +133,7 @@ test('scales-utils/getAttributeScale without props', function t(assert) {
 });
 
 test('scales-utils/getAttributeScale with props', function t(assert) {
-  const result = getAttributeScale({xRange, _allData}, 'x');
+  const result = getAttributeScale({xRange, xDomain}, 'x');
   const isFunction = typeof result === 'function';
   assert.ok(isFunction, 'Result should be a function');
   if (isFunction) {
@@ -173,4 +172,34 @@ test('scales-utils/_getSmallestDistanceIndex', function t(assert) {
   function runTest(arg) {
     return _getSmallestDistanceIndex(arg, scaleObj);
   }
+});
+
+test('scales-utils/extractScalePropsFromProps', function t(assert) {
+  assert.ok(
+    Object.keys(extractScalePropsFromProps({}, [])).length === 0,
+    'Should return empty object on empty values'
+  );
+  const props = {
+    aType: 'linear',
+    aRange: [1, 2],
+    _aValue: 10,
+    somethingElse: [],
+    bDomain: [1, 2, 3]
+  };
+  const result = extractScalePropsFromProps(props, ['a', 'b']);
+  assert.ok(Object.keys(result).length === 4 && result.aType === props.aType &&
+    result.aRange === props.aRange && result._aValue === props._aValue &&
+    result.bDomain === props.bDomain,
+    'Should return valid object');
+  assert.end();
+});
+
+test('scales-utils/getMissingScaleProps', function t(assert) {
+  assert.ok(Object.keys(getMissingScaleProps({}, [], [])).length === 0,
+    'Should return empty result on empty arguments');
+  const result = getMissingScaleProps({}, _allData[0], ['x']);
+  assert.ok(Boolean(result.xDomain) && result.xDomain.length === 2 &&
+    result.xDomain[0] === 1 && result.xDomain[1] === 3,
+    'Should return a valid object');
+  assert.end();
 });

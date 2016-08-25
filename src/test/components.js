@@ -92,13 +92,21 @@ const XYPLOT_SERIES_PROPS = {
 const XYPLOT_XAXIS_PROPS = {
   xRange: [0, 1],
   xDomain: [0, 1],
-  xType: 'linear'
+  xType: 'linear',
+  width: 100,
+  height: 100,
+  top: 0,
+  left: 0
 };
 
 const XYPLOT_YAXIS_PROPS = {
   yRange: [0, 1],
   yDomain: [0, 1],
-  yType: 'linear'
+  yType: 'linear',
+  width: 100,
+  height: 100,
+  top: 0,
+  left: 0
 };
 
 const XYPLOT_PROPS = {width: 10, height: 10};
