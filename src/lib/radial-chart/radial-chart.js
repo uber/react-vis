@@ -61,7 +61,7 @@ function assignColorsToData(data) {
   });
 }
 
-export default class RadialChart extends React.Component {
+class RadialChart extends React.Component {
   static get propTypes() {
     return {
       width: React.PropTypes.number.isRequired,
