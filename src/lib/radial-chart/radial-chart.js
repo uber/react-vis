@@ -20,17 +20,16 @@
 
 import React from 'react';
 import equal from 'deep-equal';
-import * as d3Selection from 'd3-selection';
 import * as d3Shape from 'd3-shape';
+import Animation from '../animation';
 import {
   getAttributeFunctor,
   extractScalePropsFromProps,
   getMissingScaleProps
 } from '../utils/scales-utils';
 import {getInnerDimensions, MarginPropType} from '../utils/chart-utils';
-import {AnimationPropType, applyTransition} from '../utils/animation-utils';
+import {AnimationPropType} from '../utils/animation-utils';
 import {OPACITY_RANGE, DISCRETE_COLOR_RANGE} from '../theme';
-import {getDOMNode} from '../utils/react-utils';
 
 const ATTRIBUTES = [
   'angle',
@@ -40,6 +39,17 @@ const ATTRIBUTES = [
   'opacity',
   'fill',
   'stroke'
+];
+
+const ANIMATED_PROPS = [
+  'angleDomain', 'angleRange', 'angle',
+  'radiusDomain', 'radiusRange', 'radius',
+  'innerRadiusDomain', 'innerRadiusRange', 'innerRadius',
+  'colorDomain', 'colorRange', 'color',
+  'opacityDomain', 'opacityRange', 'opacity',
+  'fillDomain', 'fillRange', 'fill',
+  'strokeDomain', 'strokeRange', 'stroke',
+  'data'
 ];
 
 const DEFAULT_MARGINS = {
@@ -87,10 +97,6 @@ class RadialChart extends React.Component {
     this._arc = null;
   }
 
-  componentDidMount() {
-    this._updateChart();
-  }
-
   componentWillReceiveProps(nextProps) {
     const nextData = assignColorsToData(nextProps.data);
     const {scaleProps} = this.state;
@@ -103,51 +109,51 @@ class RadialChart extends React.Component {
     }
   }
 
-  componentDidUpdate() {
-    this._updateChart();
-  }
-
   /**
    * Triggers a callback on a section if the callback is set.
    * @param {function} handler Callback function.
    * @param {Object} d Data point of the arc.
+   * @param {Object} event Event.
    * @private
    */
-  _triggerSectionHandler(handler, d) {
+  _triggerSectionHandler(handler, d, event) {
     if (handler) {
       const [x, y] = this._arc.centroid(d);
-      handler(d.data, {event: d3Selection.event, x, y});
+      handler(d.data, {event, x, y});
     }
   }
 
   /**
    * `mouseover` handler for the section.
    * @param {Object} d Data point.
+   * @param {Object} event Event.
    * @private
    */
-  _sectionMouseOver(d) {
+  _sectionMouseOver(d, event) {
     const {onSectionMouseOver} = this.props;
-    this._triggerSectionHandler(onSectionMouseOver, d);
+    this._triggerSectionHandler(onSectionMouseOver, d, event);
   }
 
   /**
    * `mouseout` handler for the section.
    * @param {Object} d Data point.
+   * @param {Object} event Event.
    * @private
    */
-  _sectionMouseOut(d) {
+  _sectionMouseOut(d, event) {
     const {onSectionMouseOut} = this.props;
-    this._triggerSectionHandler(onSectionMouseOut, d);
+    this._triggerSectionHandler(onSectionMouseOut, d, event);
   }
 
   /**
    * `click` handler for the section.
    * @param {Object} d Data point.
+   * @param {Object} event Event.
    * @private
    */
-  _sectionClick(d) {
+  _sectionClick(d, event) {
     const {onSectionClick} = this.props;
-    this._triggerSectionHandler(onSectionClick, d);
+    this._triggerSectionHandler(onSectionClick, d, event);
   }
 
   /**
@@ -198,16 +204,6 @@ class RadialChart extends React.Component {
   }
 
   /**
-   * Apply transition to the elements and return the new elements instead.
-   * @param {d3.selection} elements Elements.
-   * @returns {d3.selection} Animated elements if animation is available.
-   * @protected
-   */
-  _applyTransition(elements) {
-    return applyTransition(this.props, elements);
-  }
-
-  /**
    * Get attribute functor.
    * @param {string} attr Attribute name.
    * @returns {*} Functor.
@@ -217,43 +213,43 @@ class RadialChart extends React.Component {
     return getAttributeFunctor(this.state.scaleProps, attr);
   }
 
-  /**
-   * Update the radial chart. Assign new styles and positions to the sections.
-   * @private
-   */
-  _updateChart() {
-    const {data} = this.state;
-    const container = getDOMNode(this.refs.container);
-    const pie = d3Shape.pie().sort(null).value(d => d.angle);
-
-    const radiusFn = this._getAttributeFunctor('radius');
-    const innerRadiusFn = this._getAttributeFunctor('innerRadius');
-    if (!radiusFn) {
-      return;
-    }
-    const arc = d3Shape.arc()
-      .outerRadius(radiusFn)
-      .innerRadius(innerRadiusFn);
-    this._arc = arc;
-
-    const sections = d3Selection.select(container).selectAll('path')
-      .data(pie(data))
-      .on('mouseover', this._sectionMouseOver)
-      .on('mouseout', this._sectionMouseOut);
-    this._applyTransition(sections)
-      .attr('d', arc)
-      .style('opacity', this._getAttributeFunctor('opacity'))
-      .style('fill', this._getAttributeFunctor('fill') ||
-        this._getAttributeFunctor('color'))
-      .style('stroke', this._getAttributeFunctor('stroke'));
-  }
-
   render() {
-    const {data, width, height} = this.props;
+    const {width, height, animation} = this.props;
+
+    if (animation) {
+      return (
+        <Animation {...this.props} animatedProps={ANIMATED_PROPS}>
+          <RadialChart {...this.props} animation={null}/>
+        </Animation>
+      );
+    }
+    const {data} = this.state;
+    if (!data) {
+      return null;
+    }
     const {innerWidth, innerHeight} = getInnerDimensions(
       this.props,
       DEFAULT_MARGINS
     );
+    const pie = d3Shape.pie().sort(null).value(d => d.angle);
+
+    const radiusFunctor = this._getAttributeFunctor('radius');
+    const innerRadiusFunctor = this._getAttributeFunctor('innerRadius');
+    if (!radiusFunctor) {
+      return null;
+    }
+    const opacityFunctor = this._getAttributeFunctor('opacity');
+    const fillFunctor = this._getAttributeFunctor('fill') ||
+      this._getAttributeFunctor('color');
+    const strokeFunctor = this._getAttributeFunctor('stroke') ||
+      this._getAttributeFunctor('color');
+
+    const arc = d3Shape.arc()
+      .outerRadius(radiusFunctor)
+      .innerRadius(innerRadiusFunctor);
+    this._arc = arc;
+    const pieData = pie(data);
+
     return (
       <div
         style={{
@@ -269,7 +265,18 @@ class RadialChart extends React.Component {
             className="rv-radial-chart__series--pie"
             transform={`translate(${innerWidth / 2},${innerHeight / 2})`}
             ref="container">
-            {data.map((d, i) => <path key={i}/>)}
+            {data.map((d, i) => <path {...{
+              d: arc(pieData[i]),
+              style: {
+                opacity: opacityFunctor && opacityFunctor(d),
+                stroke: strokeFunctor && strokeFunctor(d),
+                fill: fillFunctor && fillFunctor(d)
+              },
+              onMouseOver: e => this._sectionMouseOut(d, e),
+              onMouseOut: e => this._sectionMouseOut(d, e),
+              onClick: e => this._sectionClick(d, e),
+              key: i
+            }}/>)}
           </g>
         </svg>
       </div>
