@@ -51,7 +51,10 @@ import SimpleRadialChart from './radial-chart/simple-radial-chart';
 
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
 
+import DiscreteColorLegendExample from './legends/discrete-color';
+
 import {isReactDOMSupported} from '../lib/utils/react-utils';
+
 
 const examples = (
   <main>
@@ -166,6 +169,11 @@ const examples = (
         <h3>Dynamic Table</h3>
         <p>Updates each 5 seconds</p>
         <DynamicTable />
+      </section>
+      <h1>Legends</h1>
+      <section>
+        <h3>Discrete color legend</h3>
+        <DiscreteColorLegendExample />
       </section>
     </article>
   </main>

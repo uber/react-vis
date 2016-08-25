@@ -44,4 +44,7 @@ export {default as HorizontalGridLines} from './lib/plot/horizontal-grid-lines';
 
 export {default as RadialChart} from './lib/radial-chart/radial-chart';
 
+export {default as DiscreteColorLegend}
+  from './lib/legends/discrete-color-legend';
+
 export {default as makeWidthFlexible} from './lib/make-vis-flexible';
