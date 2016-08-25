@@ -55,7 +55,6 @@ import DiscreteColorLegendExample from './legends/discrete-color';
 
 import {isReactDOMSupported} from '../lib/utils/react-utils';
 
-
 const examples = (
   <main>
     <header>react-vis</header>

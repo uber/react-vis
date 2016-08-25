@@ -31,11 +31,10 @@ const defaultProps = {
   disabled: false
 };
 
-
 function DiscreteColorLegendItem({onClick, title, color, disabled}) {
   let className = 'rv-discrete-color-legend-item';
   if (disabled) {
-    className += ' disabled'
+    className += ' disabled';
   }
   if (onClick) {
     className += ' clickable';
