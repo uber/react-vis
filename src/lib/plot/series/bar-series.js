@@ -35,9 +35,30 @@ class BarSeries extends AbstractSeries {
     };
   }
 
-  render() {
-    const {data, marginLeft, marginTop, animation} = this.props;
+  _getScackParams() {
+    const {_stackBy, valuePosAttr} = this.props;
+    let {
+      sameTypeTotal = 1,
+      sameTypeIndex = 0
+    } = this.props;
+    if (_stackBy === valuePosAttr) {
+      sameTypeTotal = 1;
+      sameTypeIndex = 0;
+    }
+    return {sameTypeTotal, sameTypeIndex};
+  }
 
+  render() {
+    const {
+      data,
+      marginLeft,
+      marginTop,
+      animation,
+      lineSizeAttr,
+      valuePosAttr,
+      linePosAttr,
+      valueSizeAttr
+    } = this.props;
 
     if (!data) {
       return null;
@@ -51,20 +72,7 @@ class BarSeries extends AbstractSeries {
       );
     }
 
-    const {
-      _stackBy,
-      lineSizeAttr,
-      valuePosAttr,
-      linePosAttr,
-      valueSizeAttr} = this.props;
-
-    let {
-      sameTypeTotal = 1,
-      sameTypeIndex = 0} = this.props;
-
-    if (!data || !data.length) {
-      return;
-    }
+    const {sameTypeTotal, sameTypeIndex} = this._getScackParams();
 
     const distance = this._getScaleDistance(linePosAttr);
     const lineFunctor = this._getAttributeFunctor(linePosAttr);
@@ -75,11 +83,6 @@ class BarSeries extends AbstractSeries {
     const strokeFunctor = this._getAttributeFunctor('stroke') ||
       this._getAttributeFunctor('color');
     const opacityFunctor = this._getAttributeFunctor('opacity');
-
-    if (_stackBy === valuePosAttr) {
-      sameTypeTotal = 1;
-      sameTypeIndex = 0;
-    }
 
     const itemSize = (distance / 2) * 0.85;
 
@@ -96,10 +99,13 @@ class BarSeries extends AbstractSeries {
               fill: fillFunctor(d)
             },
             [linePosAttr]: lineFunctor(d) - itemSize +
-              (itemSize * 2 / sameTypeTotal * sameTypeIndex),
+            (itemSize * 2 / sameTypeTotal * sameTypeIndex),
             [lineSizeAttr]: itemSize * 2 / sameTypeTotal,
             [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
             [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
+            onClick: e => this._clickWithValue(d, e),
+            onMouseOver: e => this._mouseOverWithValue(d, e),
+            onMouseOut: e => this._mouseOutWithValue(d, e),
             key: i
           };
           return (<rect {...attrs} />);

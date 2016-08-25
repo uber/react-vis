@@ -19,10 +19,9 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import * as d3Selection from 'd3-selection';
-
 import AbstractSeries from './abstract-series';
-import {getDOMNode} from '../../utils/react-utils';
+import Animation from '../../animation';
+import {ANIMATED_SERIES_PROPS} from '../../utils/series-utils';
 
 class HeatmapSeries extends AbstractSeries {
 
@@ -31,58 +30,50 @@ class HeatmapSeries extends AbstractSeries {
     return {isDomainAdjustmentNeeded};
   }
 
-  componentDidMount() {
-    this._updateSeries();
-  }
-
-  componentDidUpdate() {
-    this._updateSeries();
-  }
-
-  _updateSeries() {
-    const container = getDOMNode(this.refs.container);
-    const {data} = this.props;
-    const xDistance = this._getScaleDistance('x');
-    const yDistance = this._getScaleDistance('y');
-    if (!data) {
-      return;
-    }
-    const x = this._getAttributeFunctor('x');
-    const y = this._getAttributeFunctor('y');
-
-    const rects = d3Selection.select(container).selectAll('rect')
-      .data(data)
-      .on('mouseover', this._mouseOverWithValue)
-      .on('mouseout', this._mouseOutWithValue)
-      .on('click', this._clickWithValue);
-
-    this._applyTransition(rects)
-      .style('opacity', this._getAttributeFunctor('opacity'))
-      .style('fill', this._getAttributeFunctor('fill') ||
-        this._getAttributeFunctor('color'))
-      .style('stroke', this._getAttributeFunctor('stroke') ||
-        this._getAttributeFunctor('color'))
-      .attr('x', function getX(d) {
-        return x(d) - xDistance / 2;
-      })
-      .attr('y', function getY(d) {
-        return y(d) - yDistance / 2;
-      })
-      .attr('width', xDistance)
-      .attr('height', yDistance);
-  }
-
   render() {
-    const {data, marginLeft, marginTop} = this.props;
+    const {data, marginLeft, marginTop, animation} = this.props;
     if (!data) {
       return null;
     }
+    if (animation) {
+      return (
+        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+          <HeatmapSeries {...this.props} animation={null}/>
+        </Animation>
+      );
+    }
+    const xFunctor = this._getAttributeFunctor('x');
+    const yFunctor = this._getAttributeFunctor('y');
+    const opacityFunctor = this._getAttributeFunctor('opacity');
+    const fillFunctor = this._getAttributeFunctor('fill') ||
+      this._getAttributeFunctor('color');
+    const strokeFunctor = this._getAttributeFunctor('stroke') ||
+      this._getAttributeFunctor('color');
+    const xDistance = this._getScaleDistance('x');
+    const yDistance = this._getScaleDistance('y');
     return (
       <g
         className="rv-xy-plot__series rv-xy-plot__series--heatmap"
         ref="container"
         transform={`translate(${marginLeft},${marginTop})`}>
-        {data.map((d, i) => <rect style={{opacity: 0}} key={i}/>)}
+        {data.map((d, i) => {
+          const attrs = {
+            style: {
+              stroke: strokeFunctor && strokeFunctor(d),
+              fill: fillFunctor && fillFunctor(d),
+              opacity: opacityFunctor && opacityFunctor(d)
+            },
+            x: xFunctor(d) - xDistance / 2,
+            y: yFunctor(d) - yDistance / 2,
+            width: xDistance,
+            height: yDistance,
+            key: i,
+            onClick: e => this._clickWithValue(d, e),
+            onMouseOver: e => this._mouseOverWithValue(d, e),
+            onMouseOut: e => this._mouseOutWithValue(d, e)
+          };
+          return (<rect {...attrs} />);
+        })}
       </g>
     );
   }

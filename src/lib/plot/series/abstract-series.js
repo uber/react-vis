@@ -20,16 +20,15 @@
 
 import React from 'react';
 import * as d3Selection from 'd3-selection';
-
 import PureRenderComponent from '../../pure-render-component';
 import {
   getAttributeFunctor,
   getAttr0Functor,
   getAttributeValue,
   getScaleObjectFromProps,
-  getScalePropTypesByAttribute} from '../../utils/scales-utils';
-
-import {AnimationPropType, applyTransition} from '../../utils/animation-utils';
+  getScalePropTypesByAttribute
+} from '../../utils/scales-utils';
+import {AnimationPropType} from '../../utils/animation-utils';
 
 const propTypes = {
   ...getScalePropTypesByAttribute('x'),
@@ -102,15 +101,16 @@ class AbstractSeries extends PureRenderComponent {
    * Mouse over handler for all series.
    * @param {boolean} useValue Use value handler if true.
    * @param {Object} d Value object
+   * @param {Object} event Event.
    * @private
    */
-  _mouseOverHandler(useValue, d) {
+  _mouseOverHandler(useValue, d, event) {
     const {onValueMouseOver, onSeriesMouseOver} = this.props;
     if (useValue && onValueMouseOver) {
-      onValueMouseOver(d, {event: d3Selection.event});
+      onValueMouseOver(d, {event});
     }
     if (onSeriesMouseOver) {
-      onSeriesMouseOver({event: d3Selection.event});
+      onSeriesMouseOver({event});
     }
   }
 
@@ -118,15 +118,16 @@ class AbstractSeries extends PureRenderComponent {
    * Mouse out handler for all series.
    * @param {boolean} useValue Use value handler if true.
    * @param {Object} d Value object
+   * @param {Object} event Event.
    * @private
    */
-  _mouseOutHandler(useValue, d) {
+  _mouseOutHandler(useValue, d, event) {
     const {onValueMouseOut, onSeriesMouseOut} = this.props;
     if (useValue && onValueMouseOut) {
-      onValueMouseOut(d, {event: d3Selection.event});
+      onValueMouseOut(d, {event});
     }
     if (onSeriesMouseOut) {
-      onSeriesMouseOut({event: d3Selection.event});
+      onSeriesMouseOut({event});
     }
   }
 
@@ -134,15 +135,16 @@ class AbstractSeries extends PureRenderComponent {
    * Click handler for all series.
    * @param {boolean} useValue Use value handler if true.
    * @param {Object} d Value object
+   * @param {Object} event Event.
    * @private
    */
-  _clickHandler(useValue, d) {
+  _clickHandler(useValue, d, event) {
     const {onValueClick, onSeriesClick} = this.props;
     if (useValue && onValueClick) {
-      onValueClick(d, {event: d3Selection.event});
+      onValueClick(d, {event});
     }
     if (onSeriesClick) {
-      onSeriesClick({event: d3Selection.event});
+      onSeriesClick({event});
     }
   }
 
@@ -202,16 +204,6 @@ class AbstractSeries extends PureRenderComponent {
   _getScaleDistance(attr) {
     const scaleObject = getScaleObjectFromProps(this.props, attr);
     return scaleObject ? scaleObject.distance : 0;
-  }
-
-  /**
-   * Apply transition to the elements and return the new elements instead.
-   * @param {d3.selection} elements Elements.
-   * @returns {d3.selection} Animated elements if animation is available.
-   * @protected
-   */
-  _applyTransition(elements) {
-    return applyTransition(this.props, elements);
   }
 
   onParentMouseMove(event) {

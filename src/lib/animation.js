@@ -64,7 +64,8 @@ class Animation extends PureRenderComponent {
       {
         ...child.props,
         ...interpolatedProps,
-        _animation: Math.random() // enforce re-rendering
+        // enforce re-rendering
+        _animation: Math.random()
       }
     );
   }
