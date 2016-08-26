@@ -45,7 +45,7 @@ export default class DynamicTreemapExample extends React.Component {
     let title;
     for (let i = 0; i < totalLeaves; i++) {
       title = Math.random();
-      if (Math.random() > 1) {
+      if (Math.random() > 0.5) {
         title = (
           <b>{title}</b>
         );

@@ -41,6 +41,10 @@ function getFontColorFromBackground(background) {
 }
 
 const ATTRIBUTES = ['opacity', 'color'];
+const ANIMATED_PROPS = [
+  'colorRange', 'colorDomain', 'color',
+  'opacityRange', 'opacityDomain', 'opacity'
+];
 
 class Treemap extends React.Component {
 
@@ -159,7 +163,7 @@ class Treemap extends React.Component {
     const nodes = this._getNodesToRender();
     if (animation) {
       return (
-        <Animation {...this.props} animatedProps={['data', 'colorRange', 'colorDomain', 'opacityRange', 'opacityDomain', 'color', 'opacity']}>
+        <Animation {...this.props} animatedProps={ANIMATED_PROPS}>
           <Treemap {...this.props} animation={null}/>
         </Animation>
       );
