@@ -8,7 +8,7 @@ Currently following components are used for this purpose:
 * [Grids](#grids) to show vertical and horizontal grids.
 * [Axes](#axes) to show X and Y axis.
 * [Different kinds of series](#series) for line/area/bar charts, scatterplots, heat maps, etc.
-* [Hints](#hints) to show the selected hints.
+* [Hint](#hint) to show the selected hint.
 * [Crosshair](#crosshair) for crosshairs.
 
 ## Usage
@@ -324,7 +324,7 @@ In case if custom representation of is needed, the component is also able to wra
 
 ```jsx
 <Hint value={myValue}>
-  <div style={background: 'black'}>
+  <div style={{background: 'black'}}>
     <h3>Value of hint</h3>
     <p>{myValue.x}</p>
   </div>
@@ -353,7 +353,7 @@ In case if custom representation of crosshair is needed, the component is able t
 
 ```jsx
 <Crosshair values={myValues}>
-  <div style={background: 'black'}>
+  <div style={{background: 'black'}}>
     <h3>Values of crosshair:</h3>
     <p>Series 1: {myValues[0].x}</p>
     <p>Series 2: {myValues[1].x}</p>
