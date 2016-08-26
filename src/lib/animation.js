@@ -73,8 +73,12 @@ class Animation extends PureRenderComponent {
   render() {
     const defaultStyle = {i: 0};
     const style = {i: spring(1)};
+    // In order to make Motion re-run animations each time, the random key is
+    // always passed.
+    // TODO: find a better solution for the spring.
+    const key = Math.random();
     return (
-      <Motion {...{defaultStyle, style, key: Math.random()}}>
+      <Motion {...{defaultStyle, style, key}}>
         {this._renderChildren}
       </Motion>
     );
