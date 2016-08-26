@@ -20,31 +20,42 @@
 
 import React from 'react';
 
-import DiscreteColorLegendItem from './discrete-color-legend-item';
-
 const propTypes = {
-  items: React.PropTypes.arrayOf(
-    React.PropTypes.shape(DiscreteColorLegendItem.propTypes)
-  ),
-  onItemClick: React.PropTypes.func,
-  height: React.PropTypes.number,
-  width: React.PropTypes.number
+  searchText: React.PropTypes.string,
+  onSearchChange: React.PropTypes.func,
+  searchPlaceholder: React.PropTypes.string,
+  width: React.PropTypes.number,
+  height: React.PropTypes.number
 };
 
-function DiscreteColorLegend({items, width, height, onItemClick}) {
+const defaultProps = {
+  searchText: ''
+};
+
+function SearchWrapper({
+  children, onSearchChange, searchText, searchPlaceholder, width, height}) {
+  const onChange = onSearchChange ?
+    ({target: {value}}) => onSearchChange(value) :
+    null;
   return (
-    <div className="rv-discrete-color-legend" style={{width, height}}>
-      {items.map((item, i) =>
-        <DiscreteColorLegendItem key={i}
-          {...item}
-          onClick={onItemClick ? () => onItemClick(item, i) : null}
-        />
-      )}
+    <div className="rv-search-wrapper" style={{width, height}}>
+      <form className="rv-search-wrapper__form">
+        <input
+          type="search"
+          placeholder={searchPlaceholder}
+          className="rv-search-wrapper__form__input"
+          value={searchText}
+          onChange={onChange}/>
+      </form>
+      <div className="rv-search-wrapper__contents">
+        {children}
+      </div>
     </div>
   );
 }
 
-DiscreteColorLegend.displayName = 'DiscreteColorLegendItem';
-DiscreteColorLegend.propTypes = propTypes;
+SearchWrapper.propTypes = propTypes;
+SearchWrapper.defaultProps = defaultProps;
+SearchWrapper.displayName = 'SearchWrapper';
 
-export default DiscreteColorLegend;
+export default SearchWrapper;

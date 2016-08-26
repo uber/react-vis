@@ -20,31 +20,25 @@
 
 import React from 'react';
 
-import DiscreteColorLegendItem from './discrete-color-legend-item';
+import SearchWrapper from './search-wrapper';
+import DiscreteColorLegend from './discrete-color-legend';
 
 const propTypes = {
-  items: React.PropTypes.arrayOf(
-    React.PropTypes.shape(DiscreteColorLegendItem.propTypes)
-  ),
-  onItemClick: React.PropTypes.func,
-  height: React.PropTypes.number,
-  width: React.PropTypes.number
+  ...SearchWrapper.propTypes,
+  ...DiscreteColorLegend.propTypes
 };
 
-function DiscreteColorLegend({items, width, height, onItemClick}) {
+function SearchableDiscreteColorLegend(props) {
   return (
-    <div className="rv-discrete-color-legend" style={{width, height}}>
-      {items.map((item, i) =>
-        <DiscreteColorLegendItem key={i}
-          {...item}
-          onClick={onItemClick ? () => onItemClick(item, i) : null}
-        />
-      )}
-    </div>
+    <SearchWrapper {...props}>
+      <DiscreteColorLegend {...props}
+        height={null}
+        width={null} />
+    </SearchWrapper>
   );
 }
 
-DiscreteColorLegend.displayName = 'DiscreteColorLegendItem';
-DiscreteColorLegend.propTypes = propTypes;
+SearchableDiscreteColorLegend.propTypes = propTypes;
+SearchableDiscreteColorLegend.displayName = 'SearchableDiscreteColorLegend';
 
-export default DiscreteColorLegend;
+export default SearchableDiscreteColorLegend;

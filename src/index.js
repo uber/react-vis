@@ -47,4 +47,7 @@ export {default as RadialChart} from './lib/radial-chart/radial-chart';
 export {default as DiscreteColorLegend}
   from './lib/legends/discrete-color-legend';
 
+export {default as SearchableDiscreteColorLegend}
+  from './lib/legends/searchable-discrete-color-legend';
+
 export {default as makeWidthFlexible} from './lib/make-vis-flexible';

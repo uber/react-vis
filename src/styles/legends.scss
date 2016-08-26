@@ -9,6 +9,7 @@ $rv-legend-disabled-color: #B8B8B8;
 
 .rv-discrete-color-legend-item {
   color: $rv-legend-enabled-color;
+  border-radius: 1px;
   padding: 9px 10px;
 }
 
@@ -33,4 +34,30 @@ $rv-legend-disabled-color: #B8B8B8;
   &:hover {
     background: #f9f9f9;
   }
+}
+
+.rv-search-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.rv-search-wrapper__form {
+  flex: 0;
+}
+
+.rv-search-wrapper__form__input {
+  width: 100%;
+  color: #A6A6A5;
+  border: 1px solid #E5E5E4;
+  padding: 7px 10px;
+  font-size: 12px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  margin: 0 0 9px;
+  outline: 0;
+}
+
+.rv-search-wrapper__contents {
+  flex: 1;
+  overflow: auto;
 }
