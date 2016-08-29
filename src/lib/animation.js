@@ -4,7 +4,12 @@ import {spring, Motion} from 'react-motion';
 import PureRenderComponent from './pure-render-component';
 
 const propTypes = {
-  animatedProps: React.PropTypes.arrayOf(React.PropTypes.string).isRequired
+  animatedProps: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+  onStart: React.PropTypes.func,
+  onEnd: React.PropTypes.func,
+  stiffness: React.PropTypes.number,
+  damping: React.PropTypes.number,
+  precision: React.PropTypes.number
 };
 
 class Animation extends PureRenderComponent {
@@ -12,10 +17,14 @@ class Animation extends PureRenderComponent {
     super(props);
     this._updateInterpolator(props);
     this._renderChildren = this._renderChildren.bind(this);
+    this._motionEndHandler = this._motionEndHandler.bind(this);
   }
 
   componentWillUpdate(props) {
     this._updateInterpolator(this.props, props);
+    if (props.onStart) {
+      props.onStart();
+    }
   }
 
   /**
@@ -70,6 +79,12 @@ class Animation extends PureRenderComponent {
     );
   }
 
+  _motionEndHandler() {
+    if (this.props.onEnd) {
+      this.props.onEnd();
+    }
+  }
+
   render() {
     const defaultStyle = {i: 0};
     const style = {i: spring(1)};
@@ -78,7 +93,7 @@ class Animation extends PureRenderComponent {
     // TODO: find a better solution for the spring.
     const key = Math.random();
     return (
-      <Motion {...{defaultStyle, style, key}}>
+      <Motion {...{defaultStyle, style, key}} onRest={this._motionEndHandler}>
         {this._renderChildren}
       </Motion>
     );
