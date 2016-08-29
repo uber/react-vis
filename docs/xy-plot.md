@@ -293,6 +293,11 @@ Type: `function(d, info)`
 `mouseout` event handler for the elements corresponding separate data points. `d` is a data point, `info` is an object with the only `event` property.  
 **NOTE**: This event handler is *not* triggered for AreaSeries and LineSeries.
 
+#### onValueClick (optional)
+Type: `function(d, info)`  
+`click` event handler for the elements corresponding separate data points. `d` is a data point, `info` is an object with the only `event` property.  
+**NOTE**: This event handler is *not* triggered for AreaSeries and LineSeries.
+
 #### onSeriesMouseOver (optional)
 Type: `function(info)`  
 `mouseover` event handler for the entire series. Received `info` object as argument with the only `event` property.
@@ -300,6 +305,10 @@ Type: `function(info)`
 #### onSeriesMouseOut (optional)
 Type: `function(info)`  
 `mouseout` event handler for the entire series. Received `info` object as argument with the only `event` property.
+
+#### onSeriesClick (optional)
+Type: `function(info)`  
+`click` event handler for the entire series. Received `info` object as argument with the only `event` property.
 
 #### animation (optional)  
 See the [XYPlot](#api-reference)'s `animation` section for more information.
