@@ -19,26 +19,59 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
-import SearchWrapper from './search-wrapper';
 import DiscreteColorLegend from './discrete-color-legend';
 
 const propTypes = {
-  ...SearchWrapper.propTypes,
-  ...DiscreteColorLegend.propTypes
+  ...DiscreteColorLegend.propTypes,
+  searchText: React.PropTypes.string,
+  onSearchChange: React.PropTypes.func,
+  searchPlaceholder: React.PropTypes.string,
+  searchFn: React.PropTypes.function
+};
+
+const defaultProps = {
+  searchText: '',
+  searchFn: (items, s) => items.filter(
+    ({title}) => title.toLowerCase().indexOf(s) !== -1
+  )
 };
 
 function SearchableDiscreteColorLegend(props) {
+  const {
+    items,
+    onItemClick,
+    searchFn,
+    onSearchChange,
+    searchText,
+    searchPlaceholder,
+    width,
+    height
+  } = props;
+  const onChange = onSearchChange ?
+    ({target: {value}}) => onSearchChange(value) :
+    null;
+  const filteredItems = searchFn(items, searchText);
   return (
-    <SearchWrapper {...props}>
-      <DiscreteColorLegend {...props}
-        height={null}
-        width={null} />
-    </SearchWrapper>
+    <div className="rv-search-wrapper" style={{width, height}}>
+      <form className="rv-search-wrapper__form">
+        <input
+          type="search"
+          placeholder={searchPlaceholder}
+          className="rv-search-wrapper__form__input"
+          value={searchText}
+          onChange={onChange}/>
+      </form>
+      <div className="rv-search-wrapper__contents">
+        <DiscreteColorLegend
+          items={filteredItems}
+          onItemClick={onItemClick}/>
+      </div>
+    </div>
   );
 }
 
 SearchableDiscreteColorLegend.propTypes = propTypes;
+SearchableDiscreteColorLegend.defaultProps = defaultProps;
 SearchableDiscreteColorLegend.displayName = 'SearchableDiscreteColorLegend';
 
 export default SearchableDiscreteColorLegend;

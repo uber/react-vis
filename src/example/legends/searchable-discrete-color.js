@@ -55,9 +55,6 @@ export default class Example extends React.Component {
 
   render() {
     const {items, searchText} = this.state;
-    const filteredItems = items.filter(item =>
-      item.title.toLowerCase().indexOf(searchText) !== -1
-    );
     return (
       <SearchableDiscreteColorLegend
         height={200}
@@ -65,7 +62,7 @@ export default class Example extends React.Component {
         onSearchChange={this._searchChangeHandler}
         searchText={searchText}
         onItemClick={this._clickHandler}
-        items={filteredItems}
+        items={items}
       />
     );
   }
