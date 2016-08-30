@@ -50,4 +50,10 @@ export {default as DiscreteColorLegend}
 export {default as SearchableDiscreteColorLegend}
   from './lib/legends/searchable-discrete-color-legend';
 
+export {default as ContinuousColorLegend}
+  from './lib/legends/continuous-color-legend';
+
+export {default as ContinuousSizeLegend}
+  from './lib/legends/continuous-size-legend';
+
 export {default as makeWidthFlexible} from './lib/make-vis-flexible';

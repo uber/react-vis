@@ -61,3 +61,57 @@ $rv-legend-disabled-color: #B8B8B8;
   flex: 1;
   overflow: auto;
 }
+
+.rv-continuous-color-legend {
+  font-size: 12px;
+  .rv-gradient {
+    height: 4px;
+    border-radius: 2px;
+    margin-bottom: 5px;
+  }
+}
+
+.rv-continuous-size-legend {
+  font-size: 12px;
+  .rv-bubbles {
+    text-align: justify;
+    overflow: hidden;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .rv-bubble {
+    background: #D8D9DC;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+  .rv-spacer {
+    display: inline-block;
+    font-size: 0;
+    line-height: 0;
+    width: 100%;
+  }
+}
+
+.rv-legend-titles {
+  height: 16px;
+  position: relative;
+}
+.rv-legend-titles__left,
+.rv-legend-titles__right,
+.rv-legend-titles__center {
+  position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.rv-legend-titles__left {
+  position: absolute;
+}
+.rv-legend-titles__center {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+.rv-legend-titles__right {
+  position: absolute;
+  right: 0;
+}

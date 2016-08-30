@@ -52,7 +52,11 @@ import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
 
 import DiscreteColorLegendExample from './legends/discrete-color';
-import SearchableDiscreteColorLegendExample from './legends/searchable-discrete-color';
+import SearchableDiscreteColorLegendExample
+  from './legends/searchable-discrete-color';
+
+import ContinuousColorLegendExample from './legends/continuous-color';
+import ContinuousSizeLegendExample from './legends/continuous-size';
 
 import {isReactDOMSupported} from '../lib/utils/react-utils';
 
@@ -178,6 +182,14 @@ const examples = (
       <section>
         <h3>Discrete color legend with search</h3>
         <SearchableDiscreteColorLegendExample />
+      </section>
+      <section>
+        <h3>Continuous color legend</h3>
+        <ContinuousColorLegendExample />
+      </section>
+      <section>
+        <h3>Continuous size legend</h3>
+        <ContinuousSizeLegendExample />
       </section>
     </article>
   </main>
