@@ -50,11 +50,12 @@ function fillItemsWithDefaults(items) {
         item.color :
         DISCRETE_COLOR_RANGE[i % DISCRETE_COLOR_RANGE.length],
       disabled: Boolean(item.disabled)
-    }
+    };
   });
 }
 
-function DiscreteColorLegend({items: initialItems, width, height, onItemClick}) {
+function DiscreteColorLegend({items: initialItems, width, height,
+  onItemClick}) {
   const updatedItems = fillItemsWithDefaults(initialItems);
   return (
     <div className="rv-discrete-color-legend" style={{width, height}}>
