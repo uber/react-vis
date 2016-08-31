@@ -26,7 +26,7 @@ All scale properties are prepended with the name of the attribute, for instance 
   Type: `Array`  
   Array of real-world values to visualize to. If range is not passed, the defaults (depend on visualization type) will be applied.
 * `[name]Type` (optional)  
-  Type: `('log'|'linear'|'ordinal'|'time'\'category')`  
+  Type: `('linear'|'ordinal'|'category'|'time'|'time-utc'|'log')`  
   Default: `'linear'`  
   Type of the scale. Each scale type can be one of following values:
     * `'linear'`  
