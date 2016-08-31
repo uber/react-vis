@@ -19,26 +19,53 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import DiscreteColorLegendItem from './discrete-color-legend-item';
+import {DISCRETE_COLOR_RANGE} from '../theme';
 
 const propTypes = {
   items: React.PropTypes.arrayOf(
-    React.PropTypes.shape(DiscreteColorLegendItem.propTypes)
-  ),
+    React.PropTypes.oneOfType([
+      React.PropTypes.shape({
+        title: React.PropTypes.string.isRequired,
+        color: React.PropTypes.string,
+        disabled: React.PropTypes.bool
+      }),
+      React.PropTypes.string.isRequired
+    ])
+  ).isRequired,
   onItemClick: React.PropTypes.func,
   height: React.PropTypes.number,
   width: React.PropTypes.number
 };
 
-function DiscreteColorLegend({items, width, height, onItemClick}) {
+const defaultProps = {
+  colors: DISCRETE_COLOR_RANGE
+};
+
+function fillItemsWithDefaults(items) {
+  return items.map((item, i) => {
+    return {
+      title: item.title ? item.title : item,
+      color: item.color ?
+        item.color :
+        DISCRETE_COLOR_RANGE[i % DISCRETE_COLOR_RANGE.length],
+      disabled: Boolean(item.disabled)
+    };
+  });
+}
+
+function DiscreteColorLegend({items: initialItems, width, height,
+  onItemClick}) {
+  const updatedItems = fillItemsWithDefaults(initialItems);
   return (
     <div className="rv-discrete-color-legend" style={{width, height}}>
-      {items.map((item, i) =>
-        <DiscreteColorLegendItem key={i}
+      {updatedItems.map((item, i) =>
+        <DiscreteColorLegendItem
           {...item}
-          onClick={onItemClick ? () => onItemClick(item, i) : null}
-        />
+          key={i}
+          onClick={onItemClick ?
+            () => onItemClick(initialItems[i], i) :
+            null} />
       )}
     </div>
   );
@@ -46,5 +73,6 @@ function DiscreteColorLegend({items, width, height, onItemClick}) {
 
 DiscreteColorLegend.displayName = 'DiscreteColorLegendItem';
 DiscreteColorLegend.propTypes = propTypes;
+DiscreteColorLegend.defaultProps = defaultProps;
 
 export default DiscreteColorLegend;

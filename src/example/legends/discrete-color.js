@@ -19,42 +19,24 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import {DiscreteColorLegend} from '../../';
 
-import {
-  DiscreteColorLegend} from '../../';
+const ITEMS = [
+  'Options',
+  'Buttons',
+  'Select boxes',
+  'Date inputs',
+  'Password inputs',
+  'Forms',
+  'Other'
+];
 
-export default class Example extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [
-        {title: 'Apples', color: '#3a3'},
-        {title: 'Bananas', color: '#fc0'},
-        {title: 'Blueberries', color: '#337'},
-        {title: 'Carrots', color: '#f93'},
-        {title: 'Eggplants', color: '#337'},
-        {title: 'Limes', color: '#cf3'},
-        {title: 'Potatoes', color: '#766'}
-      ]
-    };
-    this._clickHandler = this._clickHandler.bind(this);
-  }
-
-  _clickHandler(item, i) {
-    const {items} = this.state;
-    items[i].disabled = !items[i].disabled;
-    this.setState({items});
-  }
-
-  render() {
-    return (
-      <DiscreteColorLegend
-        height={200}
-        width={300}
-        onItemClick={this._clickHandler}
-        items={this.state.items}
-      />
-    );
-  }
+export default function DiscreteColorExample() {
+  return (
+    <DiscreteColorLegend
+      height={200}
+      width={300}
+      items={ITEMS}
+    />
+  );
 }

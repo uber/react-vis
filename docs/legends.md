@@ -14,8 +14,8 @@ Currently following types of legends are supported:
 ### DiscreteColorLegend
 
 #### items (required)
-Type: `Array<{title: string, color: String}>`  
-Array of items that should be shown on the legend.
+Type: `Array<string|{title: string, color: String, disabled: boolean}>`  
+Array of items that should be shown on the legend. The array should consist from either objects (`title`, optional `color` and optional `disabled` flag) or strings (treated as titles). 
 
 #### onItemClick
 Type: `function(Object, number): void`  

@@ -89,11 +89,22 @@ article {
 }
 
 .example-with-click-me {
+  position: relative;
   text-align: center;
   &:hover {
     .click-me {
       animation: none;
     }
+  }
+
+  .chart {
+    margin-right: 200px;
+  }
+
+  .legend {
+    position: absolute;
+    text-align: left;
+    right: 0;
   }
 }
 

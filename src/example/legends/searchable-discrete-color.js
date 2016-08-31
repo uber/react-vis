@@ -46,7 +46,7 @@ export default class Example extends React.Component {
   _clickHandler(item) {
     const {items} = this.state;
     item.disabled = !item.disabled;
-    this.setState({items: [...items]});
+    this.setState({items});
   }
 
   _searchChangeHandler(searchText) {
