@@ -142,8 +142,13 @@ export function getSeriesPropsFromChildren(children) {
 }
 
 export const ANIMATED_SERIES_PROPS = [
-  'xRange', 'yRange', 'xDomain', 'yDomain', 'colorRange', 'colorDomain',
-  'opacityRange', 'opacityDomain', 'strokeRange', 'strokeDomain',
-  'width', 'height', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
+  'xRange', 'xDomain', 'x',
+  'yRange', 'yDomain', 'y',
+  'colorRange', 'colorDomain', 'color',
+  'opacityRange', 'opacityDomain', 'opacity',
+  'strokeRange', 'strokeDomain', 'stroke',
+  'fillRange', 'fillDomain', 'fill',
+  'width', 'height',
+  'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
   'data'
 ];
