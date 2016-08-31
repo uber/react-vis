@@ -219,16 +219,18 @@ class AbstractSeries extends PureRenderComponent {
     }
     let minDistance = Number.POSITIVE_INFINITY;
     let value = null;
+    let valueIndex = null;
 
     const coordinate = this._getXCoordinateInContainer(event);
     const xScaleFn = this._getAttributeFunctor('x');
 
-    data.forEach(item => {
+    data.forEach((item, i) => {
       const currentCoordinate = xScaleFn(item);
       const newDistance = Math.abs(coordinate - currentCoordinate);
       if (newDistance < minDistance) {
         minDistance = newDistance;
         value = item;
+        valueIndex = i;
       }
     });
     if (!value) {
@@ -236,6 +238,7 @@ class AbstractSeries extends PureRenderComponent {
     }
     onNearestX(value, {
       innerX: xScaleFn(value),
+      index: valueIndex,
       event: event.nativeEvent
     });
   }

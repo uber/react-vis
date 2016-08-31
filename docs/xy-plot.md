@@ -8,7 +8,7 @@ Currently following components are used for this purpose:
 * [Grids](#grids) to show vertical and horizontal grids.
 * [Axes](#axes) to show X and Y axis.
 * [Different kinds of series](#series) for line/area/bar charts, scatterplots, heat maps, etc.
-* [Hints](#hints) to show the selected hints.
+* [Hint](#hint) to show the selected hint.
 * [Crosshair](#crosshair) for crosshairs.
 
 ## Usage
@@ -281,7 +281,10 @@ Exact opacity for all series points in pixels or a series object.
 #### onNearestX (optional)
 Type: `function(value, info)`  
 A callback function which is triggered each time when the mouse pointer gets close to some X value.
-Callback is triggered with two arguments. `value` is the data point, `info` consists of `innerX` (the left position of the value) and `event` (the React event).
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the value;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
 
 #### onValueMouseOver (optional)
 Type: `function(d, info)`  
@@ -293,6 +296,11 @@ Type: `function(d, info)`
 `mouseout` event handler for the elements corresponding separate data points. `d` is a data point, `info` is an object with the only `event` property.  
 **NOTE**: This event handler is *not* triggered for AreaSeries and LineSeries.
 
+#### onValueClick (optional)
+Type: `function(d, info)`  
+`click` event handler for the elements corresponding separate data points. `d` is a data point, `info` is an object with the only `event` property.  
+**NOTE**: This event handler is *not* triggered for AreaSeries and LineSeries.
+
 #### onSeriesMouseOver (optional)
 Type: `function(info)`  
 `mouseover` event handler for the entire series. Received `info` object as argument with the only `event` property.
@@ -300,6 +308,10 @@ Type: `function(info)`
 #### onSeriesMouseOut (optional)
 Type: `function(info)`  
 `mouseout` event handler for the entire series. Received `info` object as argument with the only `event` property.
+
+#### onSeriesClick (optional)
+Type: `function(info)`  
+`click` event handler for the entire series. Received `info` object as argument with the only `event` property.
 
 #### animation (optional)  
 See the [XYPlot](#api-reference)'s `animation` section for more information.
@@ -324,7 +336,7 @@ In case if custom representation of is needed, the component is also able to wra
 
 ```jsx
 <Hint value={myValue}>
-  <div style={background: 'black'}>
+  <div style={{background: 'black'}}>
     <h3>Value of hint</h3>
     <p>{myValue.x}</p>
   </div>
@@ -353,7 +365,7 @@ In case if custom representation of crosshair is needed, the component is able t
 
 ```jsx
 <Crosshair values={myValues}>
-  <div style={background: 'black'}>
+  <div style={{background: 'black'}}>
     <h3>Values of crosshair:</h3>
     <p>Series 1: {myValues[0].x}</p>
     <p>Series 2: {myValues[1].x}</p>
