@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import {
   XYPlot,
   XAxis,
@@ -28,86 +27,96 @@ import {
   makeWidthFlexible,
   LineSeries,
   VerticalBarSeries,
-  Crosshair} from '../../';
+  DiscreteColorLegend,
+  Crosshair
+} from '../../';
 
 const FlexibleXYPlot = makeWidthFlexible(XYPlot);
+
+/**
+ * Get the array of x and y pairs.
+ * The function tries to avoid too large changes of the chart.
+ * @param {number} total Total number of values.
+ * @returns {Array} Array of data.
+ * @private
+ */
+function getRandomSeriesData(total) {
+  const result = [];
+  let lastY = Math.random() * 40 - 20;
+  let y;
+  const firstY = lastY;
+  for (let i = 0; i < total; i++) {
+    y = Math.random() * firstY - firstY / 2 + lastY;
+    result.push({
+      x: i,
+      y
+    });
+    lastY = y;
+  }
+  return result;
+}
 
 export default class Example extends React.Component {
 
   constructor(props) {
     super(props);
+    const totalValues = Math.random() * 50;
     this.state = {
       crosshairValues: [],
-      data: this._getStateData()
+      series: [
+        {
+          title: 'Apples',
+          disabled: false,
+          data: getRandomSeriesData(totalValues)
+        },
+        {
+          title: 'Bananas',
+          disabled: false,
+          data: getRandomSeriesData(totalValues)
+        }
+      ]
     };
-    this._crosshairValues = [];
-
-    this._onMouseLeave = this._onMouseLeave.bind(this);
-    this._onNearestXs = [
-      this._onNearestX.bind(this, 0),
-      this._onNearestX.bind(this, 1)
-    ];
-    this._updateSeries = this._updateSeries.bind(this);
+    this._nearestXHandler = this._nearestXHandler.bind(this);
+    this._mouseLeaveHandler = this._mouseLeaveHandler.bind(this);
+    this._updateButtonClicked = this._updateButtonClicked.bind(this);
+    this._legendClickHandler = this._legendClickHandler.bind(this);
+    this._formatCrosshairItems = this._formatCrosshairItems.bind(this);
   }
 
-  /**
-   * Get the array of x and y pairs.
-   * The function tries to avoid too large changes of the chart.
-   * @param {number} total Total number of points
-   * @returns {Array} Array of data.
-   * @private
-   */
-  _getRandomSeriesData(total) {
-    const result = [];
-    let lastY = Math.random() * 40 - 20;
-    let y;
-    const firstY = lastY;
-    for (let i = 0; i < total; i++) {
-      y = Math.random() * firstY - firstY / 2 + lastY;
-      result.push({
-        x: i,
-        y
-      });
-      lastY = y;
-    }
-    return result;
-  }
-
-  _getStateData() {
-    const maxValues = Math.floor(Math.random() * 50);
-    return [
-      this._getRandomSeriesData(maxValues),
-      this._getRandomSeriesData(maxValues)
-    ];
-  }
-
-  _updateSeries() {
-    this.setState({
-      data: this._getStateData()
-    });
+  _updateButtonClicked() {
+    const {series} = this.state;
+    const totalValues = Math.random() * 50;
+    series.forEach(s => s.data = getRandomSeriesData(totalValues));
+    this.setState({series});
   }
 
   /**
    * Event handler for onNearestX.
-   * @param {number} seriesIndex Index of the series.
    * @param {Object} value Selected value.
+   * @param {number} index Index of the series.
    * @private
    */
-  _onNearestX(seriesIndex, value) {
-    this._crosshairValues = this._crosshairValues.concat();
-    this._crosshairValues[seriesIndex] = value;
-    this.setState({crosshairValues: this._crosshairValues});
+  _nearestXHandler(value, {index}) {
+    const {series} = this.state;
+    this.setState({
+      crosshairValues: series.map(s => s.data[index])
+    });
   }
 
   /**
    * Event handler for onMouseLeave.
    * @private
    */
-  _onMouseLeave() {
-    this._crosshairValues = [];
-    this.setState({crosshairValues: this._crosshairValues});
+  _mouseLeaveHandler() {
+    this.setState({crosshairValues: []});
   }
 
+  /**
+   * Format the title line of the crosshair.
+   * @param {Array} values Array of values.
+   * @returns {Object} The caption and the value of the title.
+   * @private
+   */
   _formatCrosshairTitle(values) {
     return {
       title: 'X',
@@ -115,37 +124,68 @@ export default class Example extends React.Component {
     };
   }
 
+  /**
+   * A callback to format the crosshair items.
+   * @param {Object} values Array of values.
+   * @returns {Array<Object>} Array of objects with titles and values.
+   * @private
+   */
   _formatCrosshairItems(values) {
+    const {series} = this.state;
     return values.map((v, i) => {
       return {
-        title: `Series ${i}`,
+        title: series[i].title,
         value: v.y
       };
     });
   }
 
+  /**
+   * Click handler for the legend.
+   * @param {Object} item Clicked item of the legend.
+   * @param {number} i Index of the legend.
+   * @private
+   */
+  _legendClickHandler(item, i) {
+    const {series} = this.state;
+    series[i].disabled = !series[i].disabled;
+    this.setState({series});
+  }
+
   render() {
+    const {series, crosshairValues} = this.state;
     return (
       <div className="example-with-click-me">
-        <FlexibleXYPlot
-          animation={{duration: 200}}
-          onMouseLeave={this._onMouseLeave}
-          height={300}>
-          <HorizontalGridLines />
-          <YAxis />
-          <XAxis />
-          <VerticalBarSeries
-            onNearestX={this._onNearestXs[0]}
-            data={this.state.data[0]}/>
-          <LineSeries
-            onNearestX={this._onNearestXs[1]}
-            data={this.state.data[1]}/>
-          <Crosshair
-            itemsFormat={this._formatCrosshairItems}
-            titleFormat={this._formatCrosshairTitle}
-            values={this.state.crosshairValues}/>
-        </FlexibleXYPlot>
-        <button className="click-me" onClick={this._updateSeries}>
+        <div className="legend">
+          <DiscreteColorLegend
+            onItemClick={this._legendClickHandler}
+            width={180}
+            items={series}/>
+        </div>
+
+        <div className="chart">
+          <FlexibleXYPlot
+            animation={true}
+            onMouseLeave={this._mouseLeaveHandler}
+            height={300}>
+            <HorizontalGridLines />
+            <YAxis />
+            <XAxis />
+            <VerticalBarSeries
+              data={series[0].data}
+              onNearestX={this._nearestXHandler}
+              {...(series[0].disabled ? {opacity: 0.2} : null)}/>
+            <LineSeries
+              data={series[1].data}
+              {...(series[1].disabled ? {opacity: 0.2} : null)}/>
+            <Crosshair
+              itemsFormat={this._formatCrosshairItems}
+              titleFormat={this._formatCrosshairTitle}
+              values={crosshairValues}/>
+          </FlexibleXYPlot>
+        </div>
+
+        <button className="click-me" onClick={this._updateButtonClicked}>
           Click to update
         </button>
       </div>

@@ -26,13 +26,13 @@ const propTypes = {
   searchText: React.PropTypes.string,
   onSearchChange: React.PropTypes.func,
   searchPlaceholder: React.PropTypes.string,
-  searchFn: React.PropTypes.function
+  searchFn: React.PropTypes.func
 };
 
 const defaultProps = {
   searchText: '',
   searchFn: (items, s) => items.filter(
-    ({title}) => title.toLowerCase().indexOf(s) !== -1
+    item => (item.title || item).toLowerCase().indexOf(s) !== -1
   )
 };
 

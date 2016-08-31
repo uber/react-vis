@@ -281,7 +281,10 @@ Exact opacity for all series points in pixels or a series object.
 #### onNearestX (optional)
 Type: `function(value, info)`  
 A callback function which is triggered each time when the mouse pointer gets close to some X value.
-Callback is triggered with two arguments. `value` is the data point, `info` consists of `innerX` (the left position of the value) and `event` (the React event).
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the value;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
 
 #### onValueMouseOver (optional)
 Type: `function(d, info)`  
