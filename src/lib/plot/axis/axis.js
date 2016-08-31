@@ -19,11 +19,19 @@
 // THE SOFTWARE.
 
 import React from 'react';
+
+import Animation from '../../animation';
 import PureRenderComponent from '../../pure-render-component';
 import {ORIENTATION, getTicksTotalFromSize} from '../../utils/axis-utils';
 import AxisLine from './axis-line';
 import AxisTicks from './axis-ticks';
 import AxisTitle from './axis-title';
+
+const animatedProps = [
+  'xRange', 'yRange', 'xDomain', 'yDomain',
+  'width', 'height', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
+  'tickSize', 'tickTotal', 'tickSizeInner', 'tickSizeOuter'
+];
 
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 
@@ -114,6 +122,17 @@ class Axis extends PureRenderComponent {
   }
 
   render() {
+
+    const {animation} = this.props;
+
+    if (animation) {
+      return (
+        <Animation {...this.props} {...{animatedProps}}>
+          <Axis {...this.props} animation={null}/>
+        </Animation>
+      );
+    }
+
     const props = {
       ...this._getDefaultAxisProps(),
       ...this.props

@@ -19,57 +19,56 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import * as d3Selection from 'd3-selection';
-
 import AbstractSeries from './abstract-series';
-import {getDOMNode} from '../../utils/react-utils';
-
+import Animation from '../../animation';
+import {ANIMATED_SERIES_PROPS} from '../../utils/series-utils';
 import {DEFAULT_SIZE, DEFAULT_OPACITY} from '../../theme';
 
 class MarkSeries extends AbstractSeries {
 
-  componentDidMount() {
-    this._updateSeries();
-  }
-
-  componentDidUpdate() {
-    this._updateSeries();
-  }
-
-  _updateSeries() {
-    const container = getDOMNode(this.refs.container);
-    const {data} = this.props;
-    if (!data) {
-      return;
-    }
-    const circles = d3Selection.select(container).selectAll('circle')
-      .data(data)
-      .on('mouseover', this._mouseOverWithValue)
-      .on('mouseout', this._mouseOutWithValue)
-      .on('click', this._clickWithValue);
-
-    // TODO(anton): radius should be the half of the size.
-    this._applyTransition(circles)
-      .attr('r', this._getAttributeFunctor('size') || DEFAULT_SIZE)
-      .style('opacity', this._getAttributeFunctor('opacity') || DEFAULT_OPACITY)
-      .style('fill', this._getAttributeFunctor('fill') ||
-        this._getAttributeFunctor('color'))
-      .style('stroke', this._getAttributeFunctor('stroke') ||
-        this._getAttributeFunctor('color'))
-      .attr('cx', this._getAttributeFunctor('x'))
-      .attr('cy', this._getAttributeFunctor('y'));
-  }
-
   render() {
-    const {data, marginLeft, marginTop} = this.props;
+    const {data, marginLeft, marginTop, animation} = this.props;
     if (!data) {
       return null;
     }
+    if (animation) {
+      return (
+        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+          <MarkSeries {...this.props} animation={null}/>
+        </Animation>
+      );
+    }
+
+    const sizeFunctor = this._getAttributeFunctor('size');
+    const opacityFunctor = this._getAttributeFunctor('opacity');
+    const fillFunctor = this._getAttributeFunctor('fill') ||
+      this._getAttributeFunctor('color');
+    const strokeFunctor = this._getAttributeFunctor('stroke') ||
+      this._getAttributeFunctor('color');
+    const xFunctor = this._getAttributeFunctor('x');
+    const yFunctor = this._getAttributeFunctor('y');
+
     return (
       <g className="rv-xy-plot__series rv-xy-plot__series--mark"
          ref="container"
          transform={`translate(${marginLeft},${marginTop})`}>
-        {data.map((d, i) => <circle style={{opacity: 0}} key={i}/>)}
+        {data.map((d, i) => {
+          const attrs = {
+            r: sizeFunctor ? sizeFunctor(d) : DEFAULT_SIZE,
+            cx: xFunctor(d),
+            cy: yFunctor(d),
+            style: {
+              opacity: opacityFunctor ? opacityFunctor(d) : DEFAULT_OPACITY,
+              stroke: strokeFunctor && strokeFunctor(d),
+              fill: fillFunctor && fillFunctor(d)
+            },
+            key: i,
+            onClick: e => this._valueClickHandler(d, e),
+            onMouseOver: e => this._valueMouseOverHandler(d, e),
+            onMouseOut: e => this._valueMouseOutHandler(d, e)
+          };
+          return <circle {...attrs} />;
+        })}
       </g>
     );
   }

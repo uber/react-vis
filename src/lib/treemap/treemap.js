@@ -21,7 +21,8 @@
 import React from 'react';
 import * as d3Hierarchy from 'd3-hierarchy';
 import * as d3Color from 'd3-color';
-import {getCSSAnimation, AnimationPropType} from '../utils/animation-utils';
+import {AnimationPropType} from '../utils/animation-utils';
+import Animation from '../animation';
 import {getAttributeFunctor, getMissingScaleProps} from '../utils/scales-utils';
 import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, OPACITY_RANGE} from '../theme';
 
@@ -40,6 +41,10 @@ function getFontColorFromBackground(background) {
 }
 
 const ATTRIBUTES = ['opacity', 'color'];
+const ANIMATED_PROPS = [
+  'colorRange', 'colorDomain', 'color',
+  'opacityRange', 'opacityDomain', 'opacity'
+];
 
 class Treemap extends React.Component {
 
@@ -135,29 +140,34 @@ class Treemap extends React.Component {
     const opacity = scales.opacity(node);
     const color = getFontColorFromBackground(background);
     const {x0, x1, y0, y1, data: {title}} = node;
-
-    const style = getCSSAnimation(this.props, {
-      top: `${y0}px`,
-      left: `${x0}px`,
-      width: `${x1 - x0}px`,
-      height: `${y1 - y0}px`,
-      background,
-      opacity,
-      color
-    });
     return (
       <div
         key={i}
         className="rv-treemap__leaf"
-        style={style}>
+        style={{
+          top: `${y0}px`,
+          left: `${x0}px`,
+          width: `${x1 - x0}px`,
+          height: `${y1 - y0}px`,
+          background,
+          opacity,
+          color
+        }}>
         <div className="rv-treemap__leaf__content">{title}</div>
       </div>
     );
   }
 
   render() {
-    const {width, height} = this.props;
+    const {width, height, animation} = this.props;
     const nodes = this._getNodesToRender();
+    if (animation) {
+      return (
+        <Animation {...this.props} animatedProps={ANIMATED_PROPS}>
+          <Treemap {...this.props} animation={null}/>
+        </Animation>
+      );
+    }
     return (
       <div
         className="rv-treemap"

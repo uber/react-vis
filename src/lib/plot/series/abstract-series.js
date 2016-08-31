@@ -19,132 +19,128 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import * as d3Selection from 'd3-selection';
-
 import PureRenderComponent from '../../pure-render-component';
 import {
   getAttributeFunctor,
   getAttr0Functor,
   getAttributeValue,
   getScaleObjectFromProps,
-  getScalePropTypesByAttribute} from '../../utils/scales-utils';
+  getScalePropTypesByAttribute
+} from '../../utils/scales-utils';
+import {AnimationPropType} from '../../utils/animation-utils';
 
-import {AnimationPropType, applyTransition} from '../../utils/animation-utils';
+const propTypes = {
+  ...getScalePropTypesByAttribute('x'),
+  ...getScalePropTypesByAttribute('y'),
+  ...getScalePropTypesByAttribute('size'),
+  ...getScalePropTypesByAttribute('opacity'),
+  ...getScalePropTypesByAttribute('color'),
+  width: React.PropTypes.number,
+  height: React.PropTypes.number,
+  data: React.PropTypes.array,
+  onValueMouseOver: React.PropTypes.func,
+  onValueMouseOut: React.PropTypes.func,
+  onValueClick: React.PropTypes.func,
+  onSeriesMouseOver: React.PropTypes.func,
+  onSeriesMouseOut: React.PropTypes.func,
+  onSeriesClick: React.PropTypes.func,
+  onNearestX: React.PropTypes.func,
+  animation: AnimationPropType
+};
 
-export default class AbstractSeries extends PureRenderComponent {
-
-  static get propTypes() {
-    return {
-      ...getScalePropTypesByAttribute('x'),
-      ...getScalePropTypesByAttribute('y'),
-      ...getScalePropTypesByAttribute('size'),
-      ...getScalePropTypesByAttribute('opacity'),
-      ...getScalePropTypesByAttribute('color'),
-      width: React.PropTypes.number,
-      height: React.PropTypes.number,
-      data: React.PropTypes.array,
-      onValueMouseOver: React.PropTypes.func,
-      onValueMouseOut: React.PropTypes.func,
-      onValueClick: React.PropTypes.func,
-      onSeriesMouseOver: React.PropTypes.func,
-      onSeriesMouseOut: React.PropTypes.func,
-      onSeriesClick: React.PropTypes.func,
-      onNearestX: React.PropTypes.func,
-      animation: AnimationPropType
-    };
-  }
+class AbstractSeries extends PureRenderComponent {
 
   constructor(props) {
     super(props);
-
-    /**
-     * Mouse over handler for the series without single values.
-     * @type {function}
-     * @protected
-     */
-    this._mouseOver = this._mouseOverHandler.bind(this, false);
-
-    /**
-     * Mouse over handler for the series **with** single values.
-     * @type {function}
-     * @protected
-     */
-    this._mouseOverWithValue = this._mouseOverHandler.bind(this, true);
-
-    /**
-     * Mouse out handler for the series without single values.
-     * @type {function}
-     * @protected
-     */
-    this._mouseOut = this._mouseOutHandler.bind(this, false);
-
-    /**
-     * Mouse out handler for the series **with** single values.
-     * @type {function}
-     * @protected
-     */
-    this._mouseOutWithValue = this._mouseOutHandler.bind(this, true);
-
-    /**
-     * Click handler for the series without single values.
-     * @type {function}
-     * @protected
-     */
-    this._click = this._clickHandler.bind(this, false);
-
-    /**
-     * Click handler for the series **with** single values.
-     * @type {function}
-     * @protected
-     */
-    this._clickWithValue = this._clickHandler.bind(this, true);
+    this._seriesMouseOverHandler = this._seriesMouseOverHandler.bind(this);
+    this._valueMouseOverHandler = this._valueMouseOverHandler.bind(this);
+    this._seriesMouseOutHandler = this._seriesMouseOutHandler.bind(this);
+    this._valueMouseOutHandler = this._valueMouseOutHandler.bind(this);
+    this._seriesClickHandler = this._seriesClickHandler.bind(this);
+    this._valueClickHandler = this._valueClickHandler.bind(this);
   }
 
   /**
-   * Mouse over handler for all series.
-   * @param {boolean} useValue Use value handler if true.
+   * Mouse over handler for the specific series' value.
    * @param {Object} d Value object
-   * @private
+   * @param {Object} event Event.
+   * @protected
    */
-  _mouseOverHandler(useValue, d) {
+  _valueMouseOverHandler(d, event) {
     const {onValueMouseOver, onSeriesMouseOver} = this.props;
-    if (useValue && onValueMouseOver) {
-      onValueMouseOver(d, {event: d3Selection.event});
+    if (onValueMouseOver) {
+      onValueMouseOver(d, {event});
     }
     if (onSeriesMouseOver) {
-      onSeriesMouseOver({event: d3Selection.event});
+      onSeriesMouseOver({event});
     }
   }
 
   /**
-   * Mouse out handler for all series.
-   * @param {boolean} useValue Use value handler if true.
-   * @param {Object} d Value object
-   * @private
+   * Mouse over handler for the entire series.
+   * @param {Object} event Event.
+   * @protected
    */
-  _mouseOutHandler(useValue, d) {
+  _seriesMouseOverHandler(event) {
+    const {onSeriesMouseOver} = this.props;
+    if (onSeriesMouseOver) {
+      onSeriesMouseOver({event});
+    }
+  }
+
+  /**
+   * Mouse out handler for the specific series' value.
+   * @param {Object} d Value object
+   * @param {Object} event Event.
+   * @protected
+   */
+  _valueMouseOutHandler(d, event) {
     const {onValueMouseOut, onSeriesMouseOut} = this.props;
-    if (useValue && onValueMouseOut) {
-      onValueMouseOut(d, {event: d3Selection.event});
+    if (onValueMouseOut) {
+      onValueMouseOut(d, {event});
     }
     if (onSeriesMouseOut) {
-      onSeriesMouseOut({event: d3Selection.event});
+      onSeriesMouseOut({event});
     }
   }
 
   /**
-   * Click handler for all series.
-   * @param {boolean} useValue Use value handler if true.
-   * @param {Object} d Value object
-   * @private
+   * Mouse out handler for the entire series.
+   * @param {Object} event Event.
+   * @protected
    */
-  _clickHandler(useValue, d) {
+  _seriesMouseOutHandler(event) {
+    const {onSeriesMouseOut} = this.props;
+    if (onSeriesMouseOut) {
+      onSeriesMouseOut({event});
+    }
+  }
+
+  /**
+   * Click handler for the specific series' value.
+   * @param {Object} d Value object
+   * @param {Object} event Event.
+   * @protected
+   */
+  _valueClickHandler(d, event) {
     const {onValueClick, onSeriesClick} = this.props;
-    if (useValue && onValueClick) {
-      onValueClick(d, {event: d3Selection.event});
+    if (onValueClick) {
+      onValueClick(d, {event});
     }
     if (onSeriesClick) {
-      onSeriesClick({event: d3Selection.event});
+      onSeriesClick({event});
+    }
+  }
+
+  /**
+   * Click handler for the entire series.
+   * @param {Object} event Event.
+   * @protected
+   */
+  _seriesClickHandler(event) {
+    const {onSeriesClick} = this.props;
+    if (onSeriesClick) {
+      onSeriesClick({event});
     }
   }
 
@@ -206,18 +202,15 @@ export default class AbstractSeries extends PureRenderComponent {
     return scaleObject ? scaleObject.distance : 0;
   }
 
-  /**
-   * Apply transition to the elements and return the new elements instead.
-   * @param {d3.selection} elements Elements.
-   * @returns {d3.selection} Animated elements if animation is available.
-   * @protected
-   */
-  _applyTransition(elements) {
-    return applyTransition(this.props, elements);
+  _getXCoordinateInContainer(event) {
+    const {marginLeft = 0} = this.props;
+    const {nativeEvent: {clientX}, currentTarget} = event;
+    const rect = currentTarget.getBoundingClientRect();
+    return clientX - rect.left - currentTarget.clientLeft - marginLeft;
   }
 
   onParentMouseMove(event) {
-    const {marginLeft = 0, onNearestX, data} = this.props;
+    const {onNearestX, data} = this.props;
     if (!onNearestX || !data) {
       return;
     }
@@ -225,9 +218,7 @@ export default class AbstractSeries extends PureRenderComponent {
     let value = null;
     let valueIndex = null;
 
-    // TODO(antonb): WAT?
-    d3Selection.event = event.nativeEvent;
-    const coordinate = d3Selection.mouse(event.currentTarget)[0] - marginLeft;
+    const coordinate = this._getXCoordinateInContainer(event);
     const xScaleFn = this._getAttributeFunctor('x');
 
     data.forEach((item, i) => {
@@ -248,5 +239,9 @@ export default class AbstractSeries extends PureRenderComponent {
       event: event.nativeEvent
     });
   }
-
 }
+
+AbstractSeries.displayName = 'AbstractSeries';
+AbstractSeries.propTypes = propTypes;
+
+export default AbstractSeries;

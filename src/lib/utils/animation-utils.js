@@ -19,74 +19,12 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
-// Not obvious: d3-transition adds .transition() method to the selection
-// prototype (!!!). Do not remove this import.
-import 'd3-transition';
+import Animation from '../animation';
 
 /**
  * Property type for the animation.
  */
 export const AnimationPropType = React.PropTypes.oneOfType([
-  React.PropTypes.shape({
-    duration: React.PropTypes.number
-  }),
-  React.PropTypes.bool
+  React.PropTypes.shape(Animation.propTypes),
+  React.PropTypes.oneOf([true])
 ]);
-
-/**
- * Object with default settings for the lib's animation.
- * @const
- */
-export const DEFAULT_ANIMATION = {
-  duration: 100
-};
-
-/**
- * Applies d3.transition to the given selection if transition is set in props.
- * @param {{animation:*}} props The object with the component's props.
- * @param {d3.selection} elements D3's selection of elements that should be
- * animated.
- * @returns {d3.selection} The new d3 selection with the animation applied.
- */
-export function applyTransition(props, elements) {
-  let {animation} = props;
-  if (Boolean(animation)) {
-    if (!(animation instanceof Object)) {
-      animation = DEFAULT_ANIMATION;
-    }
-    return elements.transition().duration(animation.duration);
-  }
-  return elements;
-}
-
-/**
- * Transforms a regular CSS object into an object with CSS animation (e. g. adds
- * the `transition` property for all keys of an object).
- * @param {{animation: *}} props The object of component's props.
- * @param {Object} style A style object to apply animation to.
- * @returns {Object} New style object with CSS animation applied.
- */
-export function getCSSAnimation(props, style) {
-  let {animation} = props;
-  let transition = 'none';
-  if (animation) {
-    // Fallback to default animation if no animation is passed.
-    if (!(animation instanceof Object)) {
-      animation = DEFAULT_ANIMATION;
-    }
-    const keys = Object.keys(style);
-    // Create a string of visualized parameters and filter out those, which
-    // don't have values.
-    const animationKeys = keys
-      .filter(key => Boolean(style[key]))
-      .map(key => `${key} ${animation.duration / 1000}s`);
-    if (animationKeys.length) {
-      transition = animationKeys.join(',');
-    }
-  }
-  return {
-    transition,
-    ... style
-  };
-}
