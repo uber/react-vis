@@ -60,9 +60,9 @@ class AreaSeries extends AbstractSeries {
         d={d}
         className="rv-xy-plot__series rv-xy-plot__series--line"
         transform={`translate(${marginLeft},${marginTop})`}
-        onMouseOver={this._mouseOver}
-        onMouseOut={this._mouseOut}
-        onClick={this._click}
+        onMouseOver={this._seriesMouseOverHandler}
+        onMouseOut={this._seriesMouseOutHandler}
+        onClick={this._seriesClickHandler}
         style={{
           opacity,
           stroke,

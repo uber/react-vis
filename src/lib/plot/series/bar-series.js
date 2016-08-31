@@ -103,9 +103,9 @@ class BarSeries extends AbstractSeries {
             [lineSizeAttr]: itemSize * 2 / sameTypeTotal,
             [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
             [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
-            onClick: e => this._clickWithValue(d, e),
-            onMouseOver: e => this._mouseOverWithValue(d, e),
-            onMouseOut: e => this._mouseOutWithValue(d, e),
+            onClick: e => this._valueClickHandler(d, e),
+            onMouseOver: e => this._valueMouseOverHandler(d, e),
+            onMouseOut: e => this._valueMouseOutHandler(d, e),
             key: i
           };
           return (<rect {...attrs} />);

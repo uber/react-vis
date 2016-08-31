@@ -63,9 +63,9 @@ class MarkSeries extends AbstractSeries {
               fill: fillFunctor && fillFunctor(d)
             },
             key: i,
-            onClick: e => this._clickWithValue(d, e),
-            onMouseOver: e => this._mouseOverWithValue(d, e),
-            onMouseOut: e => this._mouseOutWithValue(d, e)
+            onClick: e => this._valueClickHandler(d, e),
+            onMouseOver: e => this._valueMouseOverHandler(d, e),
+            onMouseOut: e => this._valueMouseOutHandler(d, e)
           };
           return <circle {...attrs} />;
         })}

@@ -52,60 +52,23 @@ class AbstractSeries extends PureRenderComponent {
 
   constructor(props) {
     super(props);
-
-    /**
-     * Mouse over handler for the series without single values.
-     * @type {function}
-     * @protected
-     */
-    this._mouseOver = this._mouseOverHandler.bind(this, false);
-
-    /**
-     * Mouse over handler for the series **with** single values.
-     * @type {function}
-     * @protected
-     */
-    this._mouseOverWithValue = this._mouseOverHandler.bind(this, true);
-
-    /**
-     * Mouse out handler for the series without single values.
-     * @type {function}
-     * @protected
-     */
-    this._mouseOut = this._mouseOutHandler.bind(this, false);
-
-    /**
-     * Mouse out handler for the series **with** single values.
-     * @type {function}
-     * @protected
-     */
-    this._mouseOutWithValue = this._mouseOutHandler.bind(this, true);
-
-    /**
-     * Click handler for the series without single values.
-     * @type {function}
-     * @protected
-     */
-    this._click = this._clickHandler.bind(this, false);
-
-    /**
-     * Click handler for the series **with** single values.
-     * @type {function}
-     * @protected
-     */
-    this._clickWithValue = this._clickHandler.bind(this, true);
+    this._seriesMouseOverHandler = this._seriesMouseOverHandler.bind(this);
+    this._valueMouseOverHandler = this._valueMouseOverHandler.bind(this);
+    this._seriesMouseOutHandler = this._seriesMouseOutHandler.bind(this);
+    this._valueMouseOutHandler = this._valueMouseOutHandler.bind(this);
+    this._seriesClickHandler = this._seriesClickHandler.bind(this);
+    this._valueClickHandler = this._valueClickHandler.bind(this);
   }
 
   /**
-   * Mouse over handler for all series.
-   * @param {boolean} useValue Use value handler if true.
+   * Mouse over handler for the specific series' value.
    * @param {Object} d Value object
    * @param {Object} event Event.
-   * @private
+   * @protected
    */
-  _mouseOverHandler(useValue, d, event) {
+  _valueMouseOverHandler(d, event) {
     const {onValueMouseOver, onSeriesMouseOver} = this.props;
-    if (useValue && onValueMouseOver) {
+    if (onValueMouseOver) {
       onValueMouseOver(d, {event});
     }
     if (onSeriesMouseOver) {
@@ -114,15 +77,26 @@ class AbstractSeries extends PureRenderComponent {
   }
 
   /**
-   * Mouse out handler for all series.
-   * @param {boolean} useValue Use value handler if true.
+   * Mouse over handler for the entire series.
+   * @param {Object} event Event.
+   * @protected
+   */
+  _seriesMouseOverHandler(event) {
+    const {onSeriesMouseOver} = this.props;
+    if (onSeriesMouseOver) {
+      onSeriesMouseOver({event});
+    }
+  }
+
+  /**
+   * Mouse out handler for the specific series' value.
    * @param {Object} d Value object
    * @param {Object} event Event.
-   * @private
+   * @protected
    */
-  _mouseOutHandler(useValue, d, event) {
+  _valueMouseOutHandler(d, event) {
     const {onValueMouseOut, onSeriesMouseOut} = this.props;
-    if (useValue && onValueMouseOut) {
+    if (onValueMouseOut) {
       onValueMouseOut(d, {event});
     }
     if (onSeriesMouseOut) {
@@ -131,17 +105,40 @@ class AbstractSeries extends PureRenderComponent {
   }
 
   /**
-   * Click handler for all series.
-   * @param {boolean} useValue Use value handler if true.
+   * Mouse out handler for the entire series.
+   * @param {Object} event Event.
+   * @protected
+   */
+  _seriesMouseOutHandler(event) {
+    const {onSeriesMouseOut} = this.props;
+    if (onSeriesMouseOut) {
+      onSeriesMouseOut({event});
+    }
+  }
+
+  /**
+   * Click handler for the specific series' value.
    * @param {Object} d Value object
    * @param {Object} event Event.
-   * @private
+   * @protected
    */
-  _clickHandler(useValue, d, event) {
+  _valueClickHandler(d, event) {
     const {onValueClick, onSeriesClick} = this.props;
-    if (useValue && onValueClick) {
+    if (onValueClick) {
       onValueClick(d, {event});
     }
+    if (onSeriesClick) {
+      onSeriesClick({event});
+    }
+  }
+
+  /**
+   * Click handler for the entire series.
+   * @param {Object} event Event.
+   * @protected
+   */
+  _seriesClickHandler(event) {
+    const {onSeriesClick} = this.props;
     if (onSeriesClick) {
       onSeriesClick({event});
     }
