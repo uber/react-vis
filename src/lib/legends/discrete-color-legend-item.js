@@ -24,15 +24,16 @@ const propTypes = {
   title: React.PropTypes.string.isRequired,
   color: React.PropTypes.string.isRequired,
   disabled: React.PropTypes.bool,
-  onClick: React.PropTypes.func
+  onClick: React.PropTypes.func,
+  orientation: React.PropTypes.oneOf(['vertical', 'horizontal']).isRequired
 };
 
 const defaultProps = {
   disabled: false
 };
 
-function DiscreteColorLegendItem({onClick, title, color, disabled}) {
-  let className = 'rv-discrete-color-legend-item';
+function DiscreteColorLegendItem({onClick, title, color, disabled, orientation}) {
+  let className = `rv-discrete-color-legend-item ${orientation}`;
   if (disabled) {
     className += ' disabled';
   }

@@ -35,11 +35,13 @@ const propTypes = {
   ).isRequired,
   onItemClick: React.PropTypes.func,
   height: React.PropTypes.number,
-  width: React.PropTypes.number
+  width: React.PropTypes.number,
+  orientation: React.PropTypes.oneOf(['vertical', 'horizontal'])
 };
 
 const defaultProps = {
-  colors: DISCRETE_COLOR_RANGE
+  colors: DISCRETE_COLOR_RANGE,
+  orientation: 'vertical'
 };
 
 function fillItemsWithDefaults(items) {
@@ -55,13 +57,14 @@ function fillItemsWithDefaults(items) {
 }
 
 function DiscreteColorLegend({items: initialItems, width, height,
-  onItemClick}) {
+  onItemClick, orientation}) {
   const updatedItems = fillItemsWithDefaults(initialItems);
   return (
-    <div className="rv-discrete-color-legend" style={{width, height}}>
+    <div className={`rv-discrete-color-legend ${orientation}`} style={{width, height}}>
       {updatedItems.map((item, i) =>
         <DiscreteColorLegendItem
           {...item}
+          orientation={orientation}
           key={i}
           onClick={onItemClick ?
             () => onItemClick(initialItems[i], i) :

@@ -29,19 +29,28 @@ import {
   LineSeries,
   Crosshair} from '../../';
 
+const DATA = [
+  [
+    {x: 1, y: 10},
+    {x: 2, y: 7},
+    {x: 3, y: 15}
+  ],
+  [
+    {x: 1, y: 20},
+    {x: 2, y: 5},
+    {x: 3, y: 15}
+  ]
+];
+
 export default class DynamicCrosshair extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       crosshairValues: []
     };
-    this._crosshairValues = [];
 
     this._onMouseLeave = this._onMouseLeave.bind(this);
-    this._onNearestXs = [
-      this._onNearestX.bind(this, 0),
-      this._onNearestX.bind(this, 1)
-    ];
+    this._onNearestX = this._onNearestX.bind(this);
   }
 
   /**
@@ -50,10 +59,8 @@ export default class DynamicCrosshair extends React.Component {
    * @param {Object} value Selected value.
    * @private
    */
-  _onNearestX(seriesIndex, value) {
-    this._crosshairValues = this._crosshairValues.concat();
-    this._crosshairValues[seriesIndex] = value;
-    this.setState({crosshairValues: this._crosshairValues});
+  _onNearestX(value, {index}) {
+    this.setState({crosshairValues: DATA.map(d => d[index])});
   }
 
   /**
@@ -61,8 +68,7 @@ export default class DynamicCrosshair extends React.Component {
    * @private
    */
   _onMouseLeave() {
-    this._crosshairValues = [];
-    this.setState({crosshairValues: this._crosshairValues});
+    this.setState({crosshairValues: []});
   }
 
   render() {
@@ -76,19 +82,10 @@ export default class DynamicCrosshair extends React.Component {
         <XAxis />
         <YAxis />
         <LineSeries
-          onNearestX={this._onNearestXs[0]}
-          data={[
-            {x: 1, y: 10},
-            {x: 2, y: 7},
-            {x: 3, y: 15}
-          ]}/>
+          onNearestX={this._onNearestX}
+          data={DATA[0]}/>
         <LineSeries
-          onNearestX={this._onNearestXs[1]}
-          data={[
-            {x: 1, y: 20},
-            {x: 2, y: 5},
-            {x: 3, y: 15}
-          ]}/>
+          data={DATA[1]}/>
         <Crosshair values={this.state.crosshairValues}/>
       </XYPlot>
     );

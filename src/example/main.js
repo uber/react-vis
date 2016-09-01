@@ -40,31 +40,35 @@ import StaticCrosshair from './plot/static-crosshair';
 import DynamicCrosshair from './plot/dynamic-crosshair';
 import SyncedCharts from './plot/synced-charts';
 import TimeChart from './plot/time-chart';
-
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
-
 import StaticTable from './table/static-table';
 import DynamicTable from './table/dynamic-table';
-
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
-
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
-
-import DiscreteColorLegendExample from './legends/discrete-color';
-import SearchableDiscreteColorLegendExample
-  from './legends/searchable-discrete-color';
-
+import VerticalDiscreteColorLegendExample from './legends/vertical-discrete-color';
+import HorizontalDiscreteColorLegendExample from './legends/horizontal-discrete-color';
+import SearchableDiscreteColorLegendExample from './legends/searchable-discrete-color';
 import ContinuousColorLegendExample from './legends/continuous-color';
 import ContinuousSizeLegendExample from './legends/continuous-size';
-
 import {isReactDOMSupported} from '../lib/utils/react-utils';
 
 const examples = (
   <main>
-    <header>react-vis</header>
-    <article>
-      <h1>Chart</h1>
+    <header>
+      <div className="header-contents">
+        <a className="header-logo" href="#">react-vis</a>
+        <nav>
+          <li><a href="#plots">Plots</a></li>
+          <li><a href="#radial-charts">Radial Charts</a></li>
+          <li><a href="#treemaps">Treemaps</a></li>
+          <li><a href="#tables">Tables</a></li>
+          <li><a href="#legends">Legends</a></li>
+        </nav>
+      </div>
+    </header>
+    <article id="plots">
+      <h1>Plots</h1>
       <section>
         <ComplexChart />
       </section>
@@ -142,7 +146,8 @@ const examples = (
         <h3>Time Chart</h3>
         <TimeChart />
       </section>
-
+    </article>
+    <article id="radial-charts">
       <h1>Radial Chart</h1>
       <section>
         <h3>Simple Radial Chart</h3>
@@ -153,7 +158,8 @@ const examples = (
         <h3>Custom Radius</h3>
         <CustomRadiusRadialChart />
       </section>
-
+    </article>
+    <article id="treemaps">
       <h1>Treemap</h1>
       <section>
         <h3>Simple Treemap</h3>
@@ -163,7 +169,8 @@ const examples = (
         <h3>Animated Treemap</h3>
         <TreemapExample />
       </section>
-
+    </article>
+    <article id="tables">
       <h1>Table</h1>
       <section>
         <h3>Static Table</h3>
@@ -174,21 +181,30 @@ const examples = (
         <p>Updates each 5 seconds</p>
         <DynamicTable />
       </section>
+    </article>
+    <article id="legends">
       <h1>Legends</h1>
+      <h2>Discrete color legend</h2>
       <section>
-        <h3>Discrete color legend</h3>
-        <DiscreteColorLegendExample />
+        <h3>Vertical legend</h3>
+        <VerticalDiscreteColorLegendExample />
+      </section>
+      <section>
+        <h3>Horizontal legend</h3>
+        <HorizontalDiscreteColorLegendExample />
       </section>
       <section>
         <h3>Discrete color legend with search</h3>
         <SearchableDiscreteColorLegendExample />
       </section>
+      <h2>Continuous color legend</h2>
       <section>
-        <h3>Continuous color legend</h3>
+        <h3>Default legend</h3>
         <ContinuousColorLegendExample />
       </section>
+      <h2>Continuous size legend</h2>
       <section>
-        <h3>Continuous size legend</h3>
+        <h3>Default legend</h3>
         <ContinuousSizeLegendExample />
       </section>
     </article>

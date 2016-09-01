@@ -5,12 +5,22 @@ $rv-legend-disabled-color: #B8B8B8;
   box-sizing: border-box;
   overflow-y: auto;
   font-size: 12px;
+  &.horizontal {
+    white-space: nowrap;
+  }
 }
 
 .rv-discrete-color-legend-item {
   color: $rv-legend-enabled-color;
   border-radius: 1px;
   padding: 9px 10px;
+  &.horizontal {
+    display: inline-block;
+    .rv-discrete-color-legend-item__title {
+      margin-left: 0;
+      display: block;
+    }
+  }
 }
 
 .rv-discrete-color-legend-item__color {
