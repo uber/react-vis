@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Sintony:400,700);
-
 @import "../main";
 
 body {
@@ -23,22 +22,66 @@ h2 {
   margin: 15px 0;
 }
 
-header {
-  background: #333;
-  color: #fff;
-  font-size: 30px;
-  text-align: center;
-  line-height: 40px;
+main {
+  padding: 40px 0;
 }
 
+header {
+  background: #f0f0f0;
+  border-bottom: #e1e1e1 1px solid;
+  line-height: 40px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-contents {
+  min-width: 650px;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.header-logo {
+  float: left;
+  font-size: 20px;
+  color: #000000;
+  text-decoration: none;
+}
+
+nav {
+  display: inline-block;
+  font-size: 16px;
+  list-style-type: none;
+  margin: 0;
+  float: right;
+  padding: 0;
+  font-weight: 400;
+  li {
+    padding: 0;
+    display: inline-block;
+  }
+  a {
+    color: #494949;
+    display: block;
+    padding: 0 15px;
+    text-decoration: none;
+    transition: all 0.2s;
+    &:hover {
+      background: #E5E5E4;
+      color: #1C1B1B;
+    }
+  }
+}
 
 article {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
-  margin: 20px auto;
-  padding: 0 20px;
+  margin: 0 auto;
+  padding: 30px 20px 0;
   min-width: 650px;
   max-width: 1200px;
 
@@ -50,6 +93,7 @@ article {
     width: 400px;
     flex-basis: 400px;
     flex-grow: 1;
+    margin: 0 0 40px;
   }
 }
 
@@ -66,7 +110,7 @@ article {
   &:hover {
     background: #FF9833;
   }
-  animation: shake 5s 1s cubic-bezier(.36,.07,.19,.97) both infinite;
+  animation: shake 5s 1s cubic-bezier(.36, .07, .19, .97) both infinite;
   transform: translate3d(0, 0, 0);
 }
 

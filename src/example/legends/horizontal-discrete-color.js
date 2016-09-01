@@ -19,24 +19,24 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import {DiscreteColorLegend} from '../../';
 
-import {
-  ContinuousColorLegend} from '../../';
+const ITEMS = [
+  'Options',
+  'Buttons',
+  'Select boxes',
+  'Date inputs',
+  'Password inputs',
+  'Forms',
+  'Other'
+];
 
-export default class Example extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <ContinuousColorLegend
-        width={300}
-        startTitle="100"
-        midTitle="150"
-        endTitle="200"
-      />
-    );
-  }
+export default function DiscreteColorExample() {
+  return (
+    <DiscreteColorLegend
+      orientation="horizontal"
+      width={300}
+      items={ITEMS}
+    />
+  );
 }
