@@ -60,7 +60,9 @@ function DiscreteColorLegend({items: initialItems, width, height,
   onItemClick, orientation}) {
   const updatedItems = fillItemsWithDefaults(initialItems);
   return (
-    <div className={`rv-discrete-color-legend ${orientation}`} style={{width, height}}>
+    <div
+      className={`rv-discrete-color-legend ${orientation}`}
+      style={{width, height}}>
       {updatedItems.map((item, i) =>
         <DiscreteColorLegendItem
           {...item}

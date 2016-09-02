@@ -55,8 +55,8 @@ export default class DynamicCrosshair extends React.Component {
 
   /**
    * Event handler for onNearestX.
-   * @param {number} seriesIndex Index of the series.
    * @param {Object} value Selected value.
+   * @param {index} index Index of the value in the data array.
    * @private
    */
   _onNearestX(value, {index}) {

@@ -32,7 +32,8 @@ const defaultProps = {
   disabled: false
 };
 
-function DiscreteColorLegendItem({onClick, title, color, disabled, orientation}) {
+function DiscreteColorLegendItem({onClick, title, color, disabled,
+  orientation}) {
   let className = `rv-discrete-color-legend-item ${orientation}`;
   if (disabled) {
     className += ' disabled';

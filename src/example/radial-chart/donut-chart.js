@@ -27,12 +27,12 @@ export default function DonutChartExample() {
       innerRadius={100}
       radius={140}
       data={[
-          {angle: 2},
-          {angle: 6},
-          {angle: 2},
-          {angle: 3},
-          {angle: 1}
-        ]}
+        {angle: 2},
+        {angle: 6},
+        {angle: 2},
+        {angle: 3},
+        {angle: 1}
+      ]}
       width={300}
       height={300}/>
   );
