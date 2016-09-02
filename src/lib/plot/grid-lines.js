@@ -21,6 +21,7 @@
 import React from 'react';
 import PureRenderComponent from '../pure-render-component';
 import {getAttributeScale} from '../utils/scales-utils';
+import Animation from '../animation';
 
 import {
   getTicksTotalFromSize,
@@ -61,6 +62,12 @@ const defaultProps = {
   direction: VERTICAL
 };
 
+const animatedProps = [
+  'xRange', 'yRange', 'xDomain', 'yDomain',
+  'width', 'height', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
+  'tickTotal'
+];
+
 class GridLines extends PureRenderComponent {
 
   _getDefaultProps() {
@@ -85,6 +92,15 @@ class GridLines extends PureRenderComponent {
   }
 
   render() {
+    const {animation} = this.props;
+    if (animation) {
+      return (
+        <Animation {...this.props} {...{animatedProps}}>
+          <GridLines {...this.props} animation={null}/>
+        </Animation>
+      );
+    }
+
     const props = {
       ...this._getDefaultProps(),
       ...this.props
