@@ -91,7 +91,7 @@ New legends (sic!), new animations, faster rendering of components, no d3 in act
 
 #### Breaking changes
 
-* `animation` property works differently: duration is removed in favor of stiffness, dumping and precision. Please refer to the documentation for the latest changes.
+* `animation` property works differently: duration is removed in favor of stiffness, damping and precision. Please refer to the documentation for the latest changes.
 
 #### Non-breaking changes
 
