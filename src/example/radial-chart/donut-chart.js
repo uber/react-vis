@@ -19,42 +19,21 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import {RadialChart} from '../../';
 
-const propTypes = {
-  title: React.PropTypes.string.isRequired,
-  color: React.PropTypes.string.isRequired,
-  disabled: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
-  orientation: React.PropTypes.oneOf(['vertical', 'horizontal']).isRequired
-};
-
-const defaultProps = {
-  disabled: false
-};
-
-function DiscreteColorLegendItem({onClick, title, color, disabled,
-  orientation}) {
-  let className = `rv-discrete-color-legend-item ${orientation}`;
-  if (disabled) {
-    className += ' disabled';
-  }
-  if (onClick) {
-    className += ' clickable';
-  }
+export default function DonutChartExample() {
   return (
-    <div {...{className, onClick}}>
-      <span
-        className="rv-discrete-color-legend-item__color"
-        style={disabled ? null : {background: color}} />
-      <span className="rv-discrete-color-legend-item__title">
-        {title}
-      </span>
-    </div>
+    <RadialChart
+      innerRadius={100}
+      radius={140}
+      data={[
+        {angle: 2},
+        {angle: 6},
+        {angle: 2},
+        {angle: 3},
+        {angle: 1}
+      ]}
+      width={300}
+      height={300}/>
   );
 }
-
-DiscreteColorLegendItem.propTypes = propTypes;
-DiscreteColorLegendItem.defaultProps = defaultProps;
-DiscreteColorLegendItem.displayName = 'DiscreteColorLegendItem';
-
-export default DiscreteColorLegendItem;

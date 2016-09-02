@@ -45,10 +45,14 @@ import TreemapExample from './treemap/dynamic-treemap';
 import StaticTable from './table/static-table';
 import DynamicTable from './table/dynamic-table';
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
+import DonutChartExample from './radial-chart/donut-chart';
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
-import VerticalDiscreteColorLegendExample from './legends/vertical-discrete-color';
-import HorizontalDiscreteColorLegendExample from './legends/horizontal-discrete-color';
-import SearchableDiscreteColorLegendExample from './legends/searchable-discrete-color';
+import VerticalDiscreteColorLegendExample
+  from './legends/vertical-discrete-color';
+import HorizontalDiscreteColorLegendExample
+  from './legends/horizontal-discrete-color';
+import SearchableDiscreteColorLegendExample
+  from './legends/searchable-discrete-color';
 import ContinuousColorLegendExample from './legends/continuous-color';
 import ContinuousSizeLegendExample from './legends/continuous-size';
 import {isReactDOMSupported} from '../lib/utils/react-utils';
@@ -153,7 +157,10 @@ const examples = (
         <h3>Simple Radial Chart</h3>
         <SimpleRadialChart />
       </section>
-
+      <section>
+        <h3>Simple Donut Chart</h3>
+        <DonutChartExample />
+      </section>
       <section>
         <h3>Custom Radius</h3>
         <CustomRadiusRadialChart />

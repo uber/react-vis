@@ -87,10 +87,9 @@ class RadialChart extends React.Component {
   constructor(props) {
     super(props);
     const data = assignColorsToData(props.data);
-    this.state = {
-      scaleProps: this._getAllScaleProps(props, data),
-      data
-    };
+    const scaleProps = this._getAllScaleProps(props, data);
+    const arc = this._getArcFromProps(scaleProps);
+    this.state = {scaleProps, data, arc};
     this._sectionMouseOut = this._sectionMouseOut.bind(this);
     this._sectionMouseOver = this._sectionMouseOver.bind(this);
     this._sectionClick = this._sectionClick.bind(this);
@@ -104,7 +103,8 @@ class RadialChart extends React.Component {
     if (!equal(nextscaleProps, scaleProps)) {
       this.setState({
         scaleProps: nextscaleProps,
-        data: nextData
+        data: nextData,
+        arc: this._getArcFromProps(scaleProps)
       });
     }
   }
@@ -213,9 +213,25 @@ class RadialChart extends React.Component {
     return getAttributeFunctor(this.state.scaleProps, attr);
   }
 
+  /**
+   * Extract the arc function from the props.
+   * @param {Object} scaleProps Scale props.
+   * @returns {function} Arc function, null if radius is missing.
+   * @private
+   */
+  _getArcFromProps(scaleProps) {
+    const radiusFunctor = getAttributeFunctor(scaleProps, 'radius');
+    const innerRadiusFunctor = getAttributeFunctor(scaleProps, 'innerRadius');
+    if (!radiusFunctor) {
+      return null;
+    }
+    return d3Shape.arc()
+      .outerRadius(radiusFunctor)
+      .innerRadius(innerRadiusFunctor);
+  }
+
   render() {
     const {width, height, animation} = this.props;
-
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_PROPS}>
@@ -223,31 +239,23 @@ class RadialChart extends React.Component {
         </Animation>
       );
     }
-    const {data} = this.state;
-    if (!data) {
+
+    const {data, arc} = this.state;
+    if (!data || !arc) {
       return null;
     }
+
     const {innerWidth, innerHeight} = getInnerDimensions(
       this.props,
       DEFAULT_MARGINS
     );
-    const pie = d3Shape.pie().sort(null).value(d => d.angle);
-
-    const radiusFunctor = this._getAttributeFunctor('radius');
-    const innerRadiusFunctor = this._getAttributeFunctor('innerRadius');
-    if (!radiusFunctor) {
-      return null;
-    }
     const opacityFunctor = this._getAttributeFunctor('opacity');
     const fillFunctor = this._getAttributeFunctor('fill') ||
       this._getAttributeFunctor('color');
     const strokeFunctor = this._getAttributeFunctor('stroke') ||
       this._getAttributeFunctor('color');
 
-    const arc = d3Shape.arc()
-      .outerRadius(radiusFunctor)
-      .innerRadius(innerRadiusFunctor);
-    this._arc = arc;
+    const pie = d3Shape.pie().sort(null).value(d => d.angle);
     const pieData = pie(data);
 
     return (
