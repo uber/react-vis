@@ -64,6 +64,7 @@ Take a look at the [folder with examples](src/example) or check out some docs:
   * [RadialChart](docs/radial-chart.md) about radial charts.
   * [Table](docs/table.md) about table.
   * [Treemap](docs/treemap.md) about making tree maps.
+  * [Legends](docs/legends.md) about the legends.
 
 ## Development
 
@@ -81,6 +82,27 @@ npm test
 ```
 
 ## Change log
+
+### 0.6
+
+#### TL;DR
+
+New legends (sic!), new animations, faster rendering of components, no d3 in actual rendering process, new examples and more.
+
+#### Breaking changes
+
+* `animation` property works differently: duration is removed in favor of stiffness, dumping and precision. Please refer to the documentation for the latest changes.
+
+#### Non-breaking changes
+
+* Feature: added the first version of legends (discrete and continuous color legends, continuous size legend). Please refer to the [docs for legends](docs/radial-chart.md) for more details.
+* Improvement: got rid of assigning properties with d3 after rendering, currently all attributes and event listeners are attached using React (and it is faster).
+* Improvement: eliminated the use of `d3-selection` and `d3-transition` modules and made the source code smaller.
+* Improvement: added some structure into the examples and simplified their source code ([check them out](http://uber.github.com/react-vis)).
+* Bugfix: fixed crashing on animation (#114).
+* Improvement: `onNearestX` event now returns the index of the selected data point as an attribute (more details [here](docs/xy-plot.md#onnearestx-optional))
+* Bugfix: added the donut chart to the list of examples ([#83](https://github.com/uber/react-vis/issues/83)).
+* Bugfix: fixed failing bar charts when the number of segments was changed ([#55](https://github.com/uber/react-vis/issues/55)).
 
 ### 0.5
 
@@ -100,39 +122,4 @@ Upgraded to modular d3, compiled code became smaller, changed the API for axes a
 * Bugfix: `makeVisFlexible` doesn't fail anymore (see [#118](https://github.com/uber-common/react-vis/issues/118)).
 * Minor bugfixes and improvements.
 
-### 0.4
-
-* Enhancement: External fonts are now moved to examples and not present as a part of the library
-* Enhancement: Added `onClick` and `onValueClick` for the series of `XYPlot`.
-* Enhancement: Added `'time-utc'` scale similar to `d3.time.scale.utc()`.
-* Started switching to modular d3.
-
-### 0.3.2
-
-* `colorRange`, `colorDomain`, `colorType`, `opacityRange`, `opacityDomain` and `opacityType` properties are now supported for the Treemap scales (more info about scales is [here](docs/scales-and-data.md)).
-* Basic mouse interactions for arcs were added to `RadialChart`: now `onSectionClick`, `onSectionMouseOver` and `onSectionMouseOut` are supported.
-* Several children-related bugs are fixed (see [#54](https://github.com/uber-common/react-vis/issues/54) and [#47](https://github.com/uber-common/react-vis/issues/47)).
-
-### 0.3.1
-
-* Fixed the bug when no bars were shown for one point of ordinal data (see [#49](https://github.com/uber-common/react-vis/issues/49) for more details).
-
-### 0.3
-
-#### Non-breaking changes
-
-* Travis CI is now supported.
-* Stacking was added to the charts. Please refer to [the docs of XYPlot](https://github.com/uber-common/react-vis/blob/master/docs/xy-plot.md) for more information.
-
-### 0.2
-
-#### Breaking changes
-
-* `BarSeries` component was split into `VerticalBarSeries` and `HorizontalBarSeries`; no `orientation` property is needed anymore.
-* All bar series are aligned to `0` by default. The value can be modified with `[scale-name]BaseValue` property.
-* Alignment of the `Hint` component was fixed: now `topleft` orientation aligns it to the top left corner, but not to the bottom right.
-
-### Non-breaking changes:
-
-* Static getters for `displayName` were removed (interverring with livereactload).
-* More tests were added.
+Please find [full change log here](https://github.com/uber/react-vis/releases).
