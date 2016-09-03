@@ -95,7 +95,7 @@ New legends (sic!), new animations, faster rendering of components, no d3 in act
 
 #### Non-breaking changes
 
-* Feature: added the first version of legends (discrete and continuous color legends, continuous size legend). Please refer to the [docs for legends](docs/radial-chart.md) for more details.
+* Feature: added the first version of legends (discrete and continuous color legends, continuous size legend). Please refer to the [docs for legends](docs/legends.md) for more details.
 * Improvement: got rid of assigning properties with d3 after rendering, currently all attributes and event listeners are attached using React (and it is faster).
 * Improvement: eliminated the use of `d3-selection` and `d3-transition` modules and made the source code smaller.
 * Improvement: added some structure into the examples and simplified their source code ([check them out](http://uber.github.com/react-vis)).
