@@ -1,0 +1,35 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/ge/.nvm/v6.2.2/bin/node',
+1 verbose cli   '/Users/ge/.nvm/v6.2.2/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'build-css-example',
+1 verbose cli   '--',
+1 verbose cli   '--watch' ]
+2 info using npm@3.9.5
+3 info using node@v6.2.2
+4 verbose run-script [ 'prebuild-css-example',
+4 verbose run-script   'build-css-example',
+4 verbose run-script   'postbuild-css-example' ]
+5 info lifecycle react-vis@0.6.0~prebuild-css-example: react-vis@0.6.0
+6 silly lifecycle react-vis@0.6.0~prebuild-css-example: no script for prebuild-css-example, continuing
+7 info lifecycle react-vis@0.6.0~build-css-example: react-vis@0.6.0
+8 verbose lifecycle react-vis@0.6.0~build-css-example: unsafe-perm in lifecycle true
+9 verbose lifecycle react-vis@0.6.0~build-css-example: PATH: /Users/ge/.nvm/v6.2.2/lib/node_modules/npm/bin/node-gyp-bin:/Users/ge/Uber/react-vis/node_modules/.bin:/Users/ge/.nvm/v6.2.2/bin:/Users/ge/.nvm/v6.2.2/lib/node_modules/npm/bin/node-gyp-bin:/Users/ge/Uber/react-vis/node_modules/.bin:/Users/ge/.nvm/v6.2.2/bin://anaconda/bin:/Users/ge/.nvm/v0.10.32/bin:/Users/ge/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin:/usr/local/munki:/usr/local/share/npm/bin
+10 verbose lifecycle react-vis@0.6.0~build-css-example: CWD: /Users/ge/Uber/react-vis
+11 silly lifecycle react-vis@0.6.0~build-css-example: Args: [ '-c',
+11 silly lifecycle   'node-sass src/example/*.scss -o dist/example/ "--watch"' ]
+12 verbose stack Error: write EPIPE
+12 verbose stack     at exports._errnoException (util.js:1007:11)
+12 verbose stack     at WriteWrap.afterWrite (net.js:793:14)
+13 verbose cwd /Users/ge/Uber/react-vis
+14 error Darwin 15.6.0
+15 error argv "/Users/ge/.nvm/v6.2.2/bin/node" "/Users/ge/.nvm/v6.2.2/bin/npm" "run" "build-css-example" "--" "--watch"
+16 error node v6.2.2
+17 error npm  v3.9.5
+18 error code EPIPE
+19 error errno EPIPE
+20 error syscall write
+21 error write EPIPE
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]

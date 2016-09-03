@@ -57,3 +57,6 @@ export {default as ContinuousSizeLegend}
   from './lib/legends/continuous-size-legend';
 
 export {default as makeWidthFlexible} from './lib/make-vis-flexible';
+
+/* graph components */
+export * from './lib/graphs';

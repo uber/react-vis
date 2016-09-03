@@ -57,6 +57,12 @@ import ContinuousColorLegendExample from './legends/continuous-color';
 import ContinuousSizeLegendExample from './legends/continuous-size';
 import {isReactDOMSupported} from '../lib/utils/react-utils';
 
+/* graph components */
+import LinkGraphSimple from './graphs/link-graph-simple'
+import LinkGraphEvents from './graphs/link-graph-events'
+import SankeySimple from './graphs/sankey-simple';
+import SankeyFull from './graphs/sankey-full';
+
 const examples = (
   <main>
     <header>
@@ -68,6 +74,7 @@ const examples = (
           <li><a href="#treemaps">Treemaps</a></li>
           <li><a href="#tables">Tables</a></li>
           <li><a href="#legends">Legends</a></li>
+          <li><a href="#graphs">Graphs</a></li>
         </nav>
       </div>
     </header>
@@ -213,6 +220,26 @@ const examples = (
       <section>
         <h3>Default legend</h3>
         <ContinuousSizeLegendExample />
+      </section>
+    </article>
+    <article id="graphs">
+      <h1>Graphs</h1>
+      <h2>Link Graphs</h2>
+      <section>
+        <h3>Simple Link Graph</h3>
+        <LinkGraphSimple/>
+        <LinkGraphEvents/>
+      </section>
+      <h2>Sankey Diagrams</h2>
+      <section>
+        <h3>Simple Example</h3>
+        <SankeySimple/>
+      </section>
+      <section/>
+      <section/>
+      <section>
+        <h3>A More Sophisticated Example</h3>
+        <SankeyFull/>
       </section>
     </article>
   </main>
