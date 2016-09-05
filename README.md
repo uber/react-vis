@@ -83,6 +83,10 @@ npm test
 
 ## Change log
 
+### 0.6.1
+
+* Bugfix: axis is misplaced when `orientation` is set to `'right'`([#143](https://github.com/uber/react-vis/issues/143)).
+
 ### 0.6
 
 #### TL;DR
