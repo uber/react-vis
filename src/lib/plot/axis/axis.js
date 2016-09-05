@@ -114,7 +114,7 @@ class Axis extends PureRenderComponent {
     }
     return {
       tickTotal: getTicksTotalFromSize(innerHeight),
-      top: 0,
+      top: marginTop,
       left: marginLeft + innerWidth,
       width: marginRight,
       height: innerHeight
