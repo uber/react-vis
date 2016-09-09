@@ -101,16 +101,16 @@ class AxisTicks extends React.Component {
   _getTickLabelProps() {
     const {
       orientation,
-      tickAngle,
+      tickLabelAngle,
       tickSize,
       tickSizeOuter = tickSize,
       tickPadding = tickSize} = this.props;
 
     // Assign the text orientation inside the label of the tick mark.
     let textAnchor;
-    if (orientation === LEFT || orientation === BOTTOM && tickAngle) {
+    if (orientation === LEFT || orientation === BOTTOM && tickLabelAngle) {
       textAnchor = 'end';
-    } else if (orientation === RIGHT || orientation === TOP && tickAngle) {
+    } else if (orientation === RIGHT || orientation === TOP && tickLabelAngle) {
       textAnchor = 'start';
     } else {
       textAnchor = 'middle';
@@ -127,13 +127,13 @@ class AxisTicks extends React.Component {
     } else {
       transform += `translate(0, ${labelOffset})`;
     }
-    if (tickAngle) {
-      transform += ` rotate(${tickAngle})`;
+    if (tickLabelAngle) {
+      transform += ` rotate(${tickLabelAngle})`;
     }
 
     // Set the vertical offset of the label according to the position of
     // the axis.
-    const dy = orientation === TOP || tickAngle ?
+    const dy = orientation === TOP || tickLabelAngle ?
       '0' :
       (orientation === BOTTOM ? '0.72em' : '0.32em');
 

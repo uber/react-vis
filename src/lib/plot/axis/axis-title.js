@@ -43,13 +43,17 @@ function AxisTitle({orientation, width, height, title}) {
     };
   } else if (orientation === RIGHT) {
     style = {
-      transform: 'translate(-1em, 0) rotate(-90deg)',
-      textAnchor: 'end'
+      transform: `translate(-0.5em, ${height}px) rotate(-90deg)`,
+      textAnchor: 'start'
     };
   } else if (orientation === BOTTOM) {
     style = {
       transform: `translate(${width}px, -6px)`,
       textAnchor: 'end'
+    };
+  } else {
+    style = {
+      transform: 'translate(0px, 1em)'
     };
   }
   return (
