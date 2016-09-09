@@ -62,11 +62,11 @@ class AxisTicks extends React.Component {
 
   _getTickContainerPropsGetterFn() {
     if (this._isAxisVertical()) {
-      return (pos) => {
+      return pos => {
         return {transform: `translate(0, ${pos})`};
       };
     }
-    return (pos) => {
+    return pos => {
       return {transform: `translate(${pos}, 0)`};
     };
   }
@@ -120,16 +120,14 @@ class AxisTicks extends React.Component {
     // label is rotated to the given angle.
     const isVertical = this._isAxisVertical();
     const wrap = this._areTicksWrapped() ? -1 : 1;
-    let transform = '';
+
     const labelOffset = wrap * (tickSizeOuter + tickPadding);
-    if (isVertical) {
-      transform += `translate(${labelOffset}, 0)`;
-    } else {
-      transform += `translate(0, ${labelOffset})`;
-    }
-    if (tickLabelAngle) {
-      transform += ` rotate(${tickLabelAngle})`;
-    }
+    const transform = (isVertical ?
+        `translate(${labelOffset}, 0)` :
+        `translate(0, ${labelOffset})`) +
+      (tickLabelAngle ?
+        ` rotate(${tickLabelAngle})` :
+        '');
 
     // Set the vertical offset of the label according to the position of
     // the axis.
