@@ -32,7 +32,9 @@ import ScatteplotChart from './plot/scatterplot';
 import HeatmapChart from './plot/heatmap-chart';
 import WidthHeightMarginChart from './plot/width-height-margin';
 import CustomScales from './plot/custom-scales';
+import CustomAxesOrientation from './plot/custom-axes-orientation';
 import CustomAxisChart from './plot/custom-axis';
+import AxisWithTurnedLabels from './plot/axis-with-turned-labels';
 import GridLinesChart from './plot/grid';
 import StaticHints from './plot/static-hints';
 import DynamicHints from './plot/dynamic-hints';
@@ -115,12 +117,21 @@ const examples = (
         <CustomScales />
       </section>
       <section>
+        <h3>Custom GridLines</h3>
+        <GridLinesChart />
+      </section>
+      <h2>Axes</h2>
+      <section>
+        <h3>Custom Axes Orientation</h3>
+        <CustomAxesOrientation />
+      </section>
+      <section>
         <h3>Custom Axis</h3>
         <CustomAxisChart />
       </section>
       <section>
-        <h3>Custom GridLines</h3>
-        <GridLinesChart />
+        <h3>Turned axis labels</h3>
+        <AxisWithTurnedLabels />
       </section>
       <h2>Tooltips</h2>
       <section>

@@ -220,6 +220,11 @@ Type: `number`
 Default: `2`  
 Distance between the tick and the text of the tick in pixels. Similar to the `tickPadding()` method of d3-axis.
 
+#### tickLabelAngle (optional)
+Type: `number`  
+Default: `0`  
+The angle of the tick label. Can be used to fit the long labels of the axis without truncation.
+
 #### left (optional)
 Type: `number`  
 Horizontal position of the axis in pixels. **Already set by default**, but can be overriden by the user.

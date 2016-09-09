@@ -46,6 +46,7 @@ const propTypes = {
   left: React.PropTypes.number,
   title: React.PropTypes.string,
 
+  tickLabelAngle: React.PropTypes.number,
   tickSize: React.PropTypes.number,
   tickSizeInner: React.PropTypes.number,
   tickSizeOuter: React.PropTypes.number,
