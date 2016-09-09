@@ -32,85 +32,163 @@ const propTypes = {
   ]).isRequired
 };
 
-function _getTickTextAttributes(orientation) {
-  const textAnchor = orientation === LEFT ?
-    'end' :
-    (orientation === RIGHT ? 'start' : 'middle');
-  const dy = orientation === TOP ?
-    '0' :
-    (orientation === BOTTOM ? '0.72em' : '0.32em');
-  return {
-    textAnchor,
-    dy
-  };
-}
-
 function _getTickFormatFn(scale, tickTotal, tickFormat) {
   return !tickFormat ?
     (scale.tickFormat ? scale.tickFormat(tickTotal) : v => v) :
     tickFormat;
 }
 
-function AxisTicks(props) {
-  const {
-    attr,
-    orientation,
-    width,
-    height,
-    tickSize,
-    tickPadding,
-    tickFormat,
-    tickTotal,
-    tickValues,
-    tickSizeInner = tickSize,
-    tickSizeOuter = tickSize
-  } = props;
+class AxisTicks extends React.Component {
 
-  const x = orientation === LEFT ? width : 0;
-  const y = orientation === TOP ? height : 0;
+  /**
+   * Gets if the axis is vertical.
+   * @returns {boolean} True if vertical.
+   * @private
+   */
+  _isAxisVertical() {
+    const {orientation} = this.props;
+    return orientation === LEFT || orientation === RIGHT;
+  }
 
-  const isVertical = orientation === LEFT || orientation === RIGHT;
-  const scale = getAttributeScale(props, attr);
+  /**
+   * Check if axis ticks should be mirrored (for the right and top positions.
+   * @returns {boolean} True if mirrored.
+   * @private
+   */
+  _areTicksWrapped() {
+    const {orientation} = this.props;
+    return orientation === LEFT || orientation === TOP;
+  }
 
-  const wrap = (orientation === LEFT || orientation === TOP) ? -1 : 1;
+  _getTickContainerPropsGetterFn() {
+    if (this._isAxisVertical()) {
+      return (pos) => {
+        return {transform: `translate(0, ${pos})`};
+      };
+    }
+    return (pos) => {
+      return {transform: `translate(${pos}, 0)`};
+    };
+  }
 
-  const values = getTickValues(scale, tickTotal, tickValues);
-  const tickFormatFn = _getTickFormatFn(scale, tickTotal, tickFormat);
-
-  const tickXAttr = isVertical ? 'y' : 'x';
-  const tickYAttr = isVertical ? 'x' : 'y';
-
-  const ticks = values.map((v, i) => {
-    const pos = scale(v);
-    const text = tickFormatFn(v);
-    const pathProps = {
-      [`${tickXAttr}1`]: pos,
-      [`${tickXAttr}2`]: pos,
+  /**
+   * Get hte props of the tick line.
+   * @returns {Object} Props.
+   * @private
+   */
+  _getTickLineProps() {
+    const {
+      tickSize,
+      tickSizeOuter = tickSize,
+      tickSizeInner = tickSize} = this.props;
+    const isVertical = this._isAxisVertical();
+    const tickXAttr = isVertical ? 'y' : 'x';
+    const tickYAttr = isVertical ? 'x' : 'y';
+    const wrap = this._areTicksWrapped() ? -1 : 1;
+    return {
+      [`${tickXAttr}1`]: 0,
+      [`${tickXAttr}2`]: 0,
       [`${tickYAttr}1`]: -wrap * tickSizeOuter,
       [`${tickYAttr}2`]: wrap * tickSizeInner
     };
-    const textProps = {
-      [tickXAttr]: pos,
-      [tickYAttr]: wrap * (tickSizeOuter + tickPadding),
-      ..._getTickTextAttributes(orientation)
+  }
+
+  /**
+   * Get attributes for the label of the tick.
+   * @returns {Object} Object with properties.
+   * @private
+   */
+  _getTickLabelProps() {
+    const {
+      orientation,
+      tickAngle,
+      tickSize,
+      tickSizeOuter = tickSize,
+      tickPadding = tickSize} = this.props;
+
+    // Assign the text orientation inside the label of the tick mark.
+    let textAnchor;
+    if (orientation === LEFT || orientation === BOTTOM && tickAngle) {
+      textAnchor = 'end';
+    } else if (orientation === RIGHT || orientation === TOP && tickAngle) {
+      textAnchor = 'start';
+    } else {
+      textAnchor = 'middle';
+    }
+
+    // The label's position is translated to the given padding and then the
+    // label is rotated to the given angle.
+    const isVertical = this._isAxisVertical();
+    const wrap = this._areTicksWrapped() ? -1 : 1;
+    let transform = '';
+    const labelOffset = wrap * (tickSizeOuter + tickPadding);
+    if (isVertical) {
+      transform += `translate(${labelOffset}, 0)`;
+    } else {
+      transform += `translate(0, ${labelOffset})`;
+    }
+    if (tickAngle) {
+      transform += ` rotate(${tickAngle})`;
+    }
+
+    // Set the vertical offset of the label according to the position of
+    // the axis.
+    const dy = orientation === TOP || tickAngle ?
+      '0' :
+      (orientation === BOTTOM ? '0.72em' : '0.32em');
+
+    return {
+      textAnchor,
+      dy,
+      transform
     };
+  }
+
+  render() {
+    const {
+      attr,
+      orientation,
+      width,
+      height,
+      tickFormat,
+      tickTotal,
+      tickValues
+    } = this.props;
+
+    const x = orientation === LEFT ? width : 0;
+    const y = orientation === TOP ? height : 0;
+
+    const scale = getAttributeScale(this.props, attr);
+
+    const values = getTickValues(scale, tickTotal, tickValues);
+    const tickFormatFn = _getTickFormatFn(scale, tickTotal, tickFormat);
+
+    const translateFn = this._getTickContainerPropsGetterFn();
+    const pathProps = this._getTickLineProps();
+    const textProps = this._getTickLabelProps();
+
+    const ticks = values.map((v, i) => {
+      const pos = scale(v);
+      const text = tickFormatFn(v);
+
+      return (
+        <g key={i} {...translateFn(pos, 0)} className="rv-xy-plot__axis__tick">
+          <line {...pathProps} className="rv-xy-plot__axis__tick__line"/>
+          <text {...textProps} className="rv-xy-plot__axis__tick__text">
+            {text}
+          </text>
+        </g>
+      );
+    });
+
     return (
-      <g key={i} className="rv-xy-plot__axis__tick">
-        <line {...pathProps} className="rv-xy-plot__axis__tick__line"/>
-        <text {...textProps} className="rv-xy-plot__axis__tick__text">
-          {text}
-        </text>
+      <g
+        transform={`translate(${x}, ${y})`}
+        className="rv-xy-plot__axis__ticks">
+        {ticks}
       </g>
     );
-  });
-
-  return (
-    <g
-      transform={`translate(${x}, ${y})`}
-      className="rv-xy-plot__axis__ticks">
-      {ticks}
-    </g>
-  );
+  }
 }
 
 AxisTicks.displayName = 'AxisTicks';
