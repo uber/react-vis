@@ -83,6 +83,12 @@ npm test
 
 ## Change log
 
+### 0.6.2
+
+* Feature: added a new `tickLabelAngle` property that rotates the tick label ([see the documentation](docs/xy-plot.md#ticklabelangle-optional) for details).
+* Improvement: added a little bit of examples for the axes.
+* Bugfix: fixed misplaced axis title when orientation is set to `'top'` or `'right'` ([#146](https://github.com/uber/react-vis/issues/146)).
+
 ### 0.6.1
 
 * Bugfix: axis is misplaced when `orientation` is set to `'right'`([#143](https://github.com/uber/react-vis/issues/143)).
