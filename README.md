@@ -102,6 +102,7 @@ New legends (sic!), new animations, faster rendering of components, no d3 in act
 #### Breaking changes
 
 * `animation` property works differently: duration is removed in favor of stiffness, damping and precision. Please refer to the documentation for the latest changes.
+* `undefined` and `null` values of important scale-related attributes for domains and ranges are now treated as real values (and not ignored anymore).
 
 #### Non-breaking changes
 
@@ -123,7 +124,10 @@ Upgraded to modular d3, compiled code became smaller, changed the API for axes a
 #### Breaking changes
 
 * d3-axis is no longer used, the rendering of axes and grids is made by react (and works faster).
-* The API of axes (`XAxis` and `YAxis`) was significantly changed: now it is (almost) compatible with the API of d3-axis. Please refer to [the updated documentation for axes](docs/xy-plot.md#axes) for more detail.
+* The API of axes (`XAxis` and `YAxis`) was significantly changed:
+  * [the API of axes](docs/xy-plot.md#axes) is now (almost) compatible to the API of 'd3-axis'.
+  * `labelFormat` and `labelValues` attributes for the axes are **removed**: similar results can be done achieved when `tickFormat` and `tickValues` attributes are used (see the [the updated documentation for axes](docs/xy-plot.md#axes) for more details).
+  * `tickFormat` function is now gets only **one (value) argument instead of two (value and index)**.
 * The API of grids (`VerticalGridLines` and `HorizontalGridLines`) was significantly changed: it partially replicates the API of the axes.  Please refer to [the updated documentation ](docs/xy-plot.md#grids) for more detail. 
 
 #### Non-breaking changes
