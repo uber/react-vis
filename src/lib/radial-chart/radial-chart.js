@@ -93,7 +93,6 @@ class RadialChart extends React.Component {
     this._sectionMouseOut = this._sectionMouseOut.bind(this);
     this._sectionMouseOver = this._sectionMouseOver.bind(this);
     this._sectionClick = this._sectionClick.bind(this);
-    this._arc = null;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -118,7 +117,8 @@ class RadialChart extends React.Component {
    */
   _triggerSectionHandler(handler, d, event) {
     if (handler) {
-      const [x, y] = this._arc.centroid(d);
+      const {arc} = this.state;
+      const [x, y] = arc.centroid(d);
       handler(d.data, {event, x, y});
     }
   }
@@ -280,9 +280,9 @@ class RadialChart extends React.Component {
                 stroke: strokeFunctor && strokeFunctor(d),
                 fill: fillFunctor && fillFunctor(d)
               },
-              onMouseOver: e => this._sectionMouseOut(d, e),
-              onMouseOut: e => this._sectionMouseOut(d, e),
-              onClick: e => this._sectionClick(d, e),
+              onMouseOver: e => this._sectionMouseOver(pieData[i], e),
+              onMouseOut: e => this._sectionMouseOut(pieData[i], e),
+              onClick: e => this._sectionClick(pieData[i], e),
               key: i
             }}/>)}
           </g>
