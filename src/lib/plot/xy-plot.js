@@ -201,8 +201,8 @@ class XYPlot extends React.Component {
     return {
       ...defaultScaleProps,
       ...zeroBaseProps,
-      ...missingScaleProps,
       ...userScaleProps,
+      ...missingScaleProps,
       _allData: data,
       _adjustBy: Array.from(adjustBy),
       _adjustWhat: Array.from(adjustWhat),
