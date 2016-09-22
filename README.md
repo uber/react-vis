@@ -83,6 +83,11 @@ npm test
 
 ## Change log
 
+### 0.6.3
+
+- Bugfix: fix the broken event listeners for radial charts ([#150](https://github.com/uber/react-vis/issues/150));
+- Bugfix: compatibility fix: do not treat `null` and `undefined` in scale props as existing values ([#149](https://github.com/uber/react-vis/issues/149)).
+
 ### 0.6.2
 
 * Feature: added a new `tickLabelAngle` property that rotates the tick label ([see the documentation](docs/xy-plot.md#ticklabelangle-optional) for details).
