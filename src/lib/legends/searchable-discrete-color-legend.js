@@ -32,7 +32,7 @@ const propTypes = {
 const defaultProps = {
   searchText: '',
   searchFn: (items, s) => items.filter(
-    item => (item.title || item).toLowerCase().indexOf(s) !== -1
+    item => String(item.title || item).toLowerCase().indexOf(s) !== -1
   )
 };
 
