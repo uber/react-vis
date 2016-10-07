@@ -83,6 +83,10 @@ npm test
 
 ## Change log
 
+### 0.6.4
+
+- Bugfix: Fixed the issue with numeric titles in legends ([#154](https://github.com/uber/react-vis/pull/154)).
+
 ### 0.6.3
 
 - Bugfix: fix the broken event listeners for radial charts ([#150](https://github.com/uber/react-vis/issues/150));
