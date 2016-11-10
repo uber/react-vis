@@ -26,5 +26,5 @@ import Animation from '../animation';
  */
 export const AnimationPropType = React.PropTypes.oneOfType([
   React.PropTypes.shape(Animation.propTypes),
-  React.PropTypes.oneOf([true])
+  React.PropTypes.bool
 ]);
