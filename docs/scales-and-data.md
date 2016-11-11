@@ -30,16 +30,16 @@ All scale properties are prepended with the name of the attribute, for instance 
   Default: `'linear'`  
   Type of the scale. Each scale type can be one of following values:
     * `'linear'`  
-    Continuous scale, that works with numbers. Similar to [d3.scale.linear](https://github.com/mbostock/d3/wiki/Quantitative-Scales#linear-scales).
+    Continuous scale, that works with numbers. Similar to [d3.scaleLinear](https://github.com/d3/d3-scale/blob/master/README.md#scaleLinear).
     * `'ordinal'`  
-    Ordinal scale, works with numbers and strings. Similar to [d3.scale.ordinal](https://github.com/mbostock/d3/wiki/Ordinal-Scales).
+    Ordinal scale, works with numbers and strings. Similar to [d3.scaleOrdinal](https://github.com/d3/d3-scale/blob/master/README.md#ordinal-scales).
     * `'category'`  
     Categorical scale, each new value gets the next value from the range. Similar to d3.scale.category\[Number\], but works with other values besides colors.
     * `'time'`  
-    Time scale. Similar to [d3.time.scale](https://github.com/mbostock/d3/wiki/Time-Scales).
+    Time scale. Similar to [d3.scaleTime](https://github.com/d3/d3-scale/blob/master/README.md#time-scales).
     * `'time-utc'`  
-    Time UTC scale. Similar to [d3.time.scale.utc](https://github.com/d3/d3/wiki/Time-Scales#utc).
+    Time UTC scale. Similar to [d3.scaleUtc](https://github.com/d3/d3-scale/blob/master/README.md#scaleUtc)
     * `'log'`  
-    Log scale. Similar to [d3.scale.log](https://github.com/mbostock/d3/wiki/Quantitative-Scales#log).
+    Log scale. Similar to [d3.scaleLog](https://github.com/d3/d3-scale/blob/master/README.md#log-scales).
     * `'literal'`  
-    Returns exactly the value that was given to it. Similar to [d3's identity scale](https://github.com/d3/d3-scale#scaleIdentity), except that it does NOT coerce data into numbers. This is useful for precisely specifying properties in the data, eg color can be specified directly on the data.
+    Returns exactly the value that was given to it. Similar to [d3.scaleIdentity](https://github.com/d3/d3-scale#scaleIdentity), except that it does NOT coerce data into numbers. This is useful for precisely specifying properties in the data, eg color can be specified directly on the data.
