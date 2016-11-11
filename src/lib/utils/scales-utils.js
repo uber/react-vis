@@ -633,10 +633,10 @@ export function literalScale() {
   }
 
   scale.domain = function domain() {
-    return [0, 1];
+    return scale;
   };
   scale.range = function range() {
-    return [0, 1];
+    return scale;
   };
   scale.unknown = function unknown() {
     return scale;
