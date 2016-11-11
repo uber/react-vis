@@ -26,7 +26,7 @@ All scale properties are prepended with the name of the attribute, for instance 
   Type: `Array`  
   Array of real-world values to visualize to. If range is not passed, the defaults (depend on visualization type) will be applied.
 * `[name]Type` (optional)  
-  Type: `('linear'|'ordinal'|'category'|'time'|'time-utc'|'log')`  
+  Type: `('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal')`  
   Default: `'linear'`  
   Type of the scale. Each scale type can be one of following values:
     * `'linear'`  
@@ -41,3 +41,5 @@ All scale properties are prepended with the name of the attribute, for instance 
     Time UTC scale. Similar to [d3.time.scale.utc](https://github.com/d3/d3/wiki/Time-Scales#utc).
     * `'log'`  
     Log scale. Similar to [d3.scale.log](https://github.com/mbostock/d3/wiki/Quantitative-Scales#log).
+    * `'literal'`  
+    Returns exactly the value that was given to it. Similar to [d3's identity scale](https://github.com/d3/d3-scale#scaleIdentity), except that it does NOT coerce data into numbers. This is useful for precisely specifying properties in the data, eg color can be specified directly on the data.
