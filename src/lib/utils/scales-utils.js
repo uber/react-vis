@@ -51,6 +51,13 @@ const ORDINAL_SCALE_TYPE = 'ordinal';
 const CATEGORY_SCALE_TYPE = 'category';
 
 /**
+ * Literal scale.
+ * @type {string}
+ * @const
+ */
+const LITERAL_SCALE_TYPE = 'literal';
+
+/**
  * Log scale name.
  * @type {string}
  * @const
@@ -80,11 +87,11 @@ const SCALE_FUNCTIONS = {
   [LINEAR_SCALE_TYPE]: d3Scale.scaleLinear,
   [ORDINAL_SCALE_TYPE]: d3Scale.scalePoint,
   [CATEGORY_SCALE_TYPE]: d3Scale.scaleOrdinal,
+  [LITERAL_SCALE_TYPE]: literalScale,
   [LOG_SCALE_TYPE]: d3Scale.scaleLog,
   [TIME_SCALE_TYPE]: d3Scale.scaleTime,
   [TIME_UTC_SCALE_TYPE]: d3Scale.scaleUtc
 };
-
 /**
  * Find the smallest distance between the values on a given scale and return
  * the index of the element, where the smallest distance was found.
@@ -614,4 +621,29 @@ export function getMissingScaleProps(props, data, attributes) {
     }
   });
   return result;
+}
+
+/**
+ * Return a d3 scale that returns the literal value that was given to it
+ * @returns {function} literal scale.
+ */
+export function literalScale() {
+  function scale(d) {
+    return d;
+  }
+
+  scale.domain = function domain() {
+    return [0, 1];
+  };
+  scale.range = function range() {
+    return [0, 1];
+  };
+  scale.unknown = function unknown() {
+    return scale;
+  };
+  scale.copy = function copy() {
+    return scale;
+  };
+
+  return scale;
 }

@@ -28,7 +28,8 @@ import {
   getAttributeValue,
   _getSmallestDistanceIndex,
   extractScalePropsFromProps,
-  getMissingScaleProps
+  getMissingScaleProps,
+  literalScale
 } from '../lib/utils/scales-utils';
 
 function isScaleConsistent(scaleObject, attr) {
@@ -201,5 +202,21 @@ test('scales-utils/getMissingScaleProps', function t(assert) {
   assert.ok(Boolean(result.xDomain) && result.xDomain.length === 2 &&
     result.xDomain[0] === 1 && result.xDomain[1] === 3,
     'Should return a valid object');
+  assert.end();
+});
+
+test('scale-utils/literalScale', function t(assert) {
+  const s = literalScale();
+  assert.deepEqual(s.domain(), [0, 1], 'has the expected defaults');
+  assert.deepEqual(s.range(), [0, 1], 'has the expected defaults');
+
+  assert.equal(s(0.5), 0.5, 'acts as the identity');
+  assert.equal(s(1), 1, 'acts as the identity');
+  assert.equal(s(1.5), 1.5, 'acts as the identity');
+  assert.equal(s(2), 2, 'acts as the identity');
+  assert.equal(s(2.5), 2.5, 'acts as the identity');
+
+  assert.equal(s('2'), '2', 'does NOT coerce input to a number');
+
   assert.end();
 });
