@@ -52,6 +52,8 @@ const CATEGORY_SCALE_TYPE = 'category';
 
 /**
  * Literal scale.
+ * Differs slightly from d3's identity scale in that it does not coerce value
+ * into numbers, it simply returns exactly what you give it
  * @type {string}
  * @const
  */
@@ -632,18 +634,14 @@ export function literalScale() {
     return d;
   }
 
-  scale.domain = function domain() {
+  function response() {
     return scale;
-  };
-  scale.range = function range() {
-    return scale;
-  };
-  scale.unknown = function unknown() {
-    return scale;
-  };
-  scale.copy = function copy() {
-    return scale;
-  };
+  }
+
+  scale.domain = response;
+  scale.range = response;
+  scale.unknown = response;
+  scale.copy = response;
 
   return scale;
 }
