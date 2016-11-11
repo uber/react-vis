@@ -207,8 +207,6 @@ test('scales-utils/getMissingScaleProps', function t(assert) {
 
 test('scale-utils/literalScale', function t(assert) {
   const s = literalScale();
-  assert.deepEqual(s.domain(), [0, 1], 'has the expected defaults');
-  assert.deepEqual(s.range(), [0, 1], 'has the expected defaults');
 
   assert.equal(s(0.5), 0.5, 'acts as the identity');
   assert.equal(s(1), 1, 'acts as the identity');
