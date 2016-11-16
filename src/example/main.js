@@ -28,6 +28,7 @@ import LineMarkChart from './plot/linemark-chart';
 import BarChart from './plot/bar-chart';
 import StackedBarChart from './plot/stacked-bar-chart';
 import AreaChart from './plot/area-chart';
+import AreaChartElevated from './plot/area-chart-elevated';
 import ScatteplotChart from './plot/scatterplot';
 import HeatmapChart from './plot/heatmap-chart';
 import WidthHeightMarginChart from './plot/width-height-margin';
@@ -94,6 +95,10 @@ const examples = (
       <section>
         <h3>Area Series</h3>
         <AreaChart />
+      </section>
+      <section>
+        <h3>Area Series With vertical offset</h3>
+        <AreaChartElevated />
       </section>
       <section>
         <h3>Bar Series</h3>
