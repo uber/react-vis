@@ -23,6 +23,8 @@ import AbstractSeries from './abstract-series';
 import Animation from '../../animation';
 import {ANIMATED_SERIES_PROPS} from '../../utils/series-utils';
 
+const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--heatmap';
+
 class HeatmapSeries extends AbstractSeries {
 
   static getParentConfig(attr) {
@@ -31,7 +33,7 @@ class HeatmapSeries extends AbstractSeries {
   }
 
   render() {
-    const {data, marginLeft, marginTop, animation} = this.props;
+    const {animation, className, data, marginLeft, marginTop} = this.props;
     if (!data) {
       return null;
     }
@@ -53,7 +55,7 @@ class HeatmapSeries extends AbstractSeries {
     const yDistance = this._getScaleDistance('y');
     return (
       <g
-        className="rv-xy-plot__series rv-xy-plot__series--heatmap"
+        className={`${predefinedClassName} ${className || ''}`}
         ref="container"
         transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {
