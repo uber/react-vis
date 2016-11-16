@@ -51,7 +51,7 @@ class MarkSeries extends AbstractSeries {
     const yFunctor = this._getAttributeFunctor('y');
 
     return (
-      <g className={`${predefinedClassName} ${className || ''}`}
+      <g className={`${predefinedClassName} ${className}`}
          ref="container"
          transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {
