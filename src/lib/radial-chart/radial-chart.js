@@ -100,7 +100,6 @@ class RadialChart extends React.Component {
     const {scaleProps} = this.state;
     const nextscaleProps = this._getAllScaleProps(nextProps, nextData);
     if (!equal(nextscaleProps, scaleProps)) {
-      // console.log('????')
       this.setState({
         scaleProps: nextscaleProps,
         data: nextData,
