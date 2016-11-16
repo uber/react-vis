@@ -23,6 +23,8 @@ import AbstractSeries from './abstract-series';
 import Animation from '../../animation';
 import {ANIMATED_SERIES_PROPS} from '../../utils/series-utils';
 
+const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--bar';
+
 class BarSeries extends AbstractSeries {
 
   static get propTypes() {
@@ -50,13 +52,14 @@ class BarSeries extends AbstractSeries {
 
   render() {
     const {
+      animation,
+      className,
       data,
+      linePosAttr,
+      lineSizeAttr,
       marginLeft,
       marginTop,
-      animation,
-      lineSizeAttr,
       valuePosAttr,
-      linePosAttr,
       valueSizeAttr
     } = this.props;
 
@@ -87,8 +90,7 @@ class BarSeries extends AbstractSeries {
     const itemSize = (distance / 2) * 0.85;
 
     return (
-      <g
-        className="rv-xy-plot__series rv-xy-plot__series--bar"
+      <g className={`${predefinedClassName} ${className}`}
         ref="container"
         transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {

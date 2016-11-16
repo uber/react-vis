@@ -40,6 +40,7 @@ export default class Example extends React.Component {
         <XAxis />
         <YAxis />
         <VerticalBarSeries
+          className="vertical-bar-series-example"
           data={[
             {x: 'A', y: 10},
             {x: 'B', y: 5},

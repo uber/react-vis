@@ -39,6 +39,7 @@ export default class Example extends React.Component {
         <XAxis />
         <YAxis />
         <MarkSeries
+          className="mark-series-example"
           sizeRange={[5, 15]}
           data={[
             {x: 1, y: 10, size: 30},

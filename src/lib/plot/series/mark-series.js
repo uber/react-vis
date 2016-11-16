@@ -24,10 +24,12 @@ import Animation from '../../animation';
 import {ANIMATED_SERIES_PROPS} from '../../utils/series-utils';
 import {DEFAULT_SIZE, DEFAULT_OPACITY} from '../../theme';
 
+const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--mark';
+
 class MarkSeries extends AbstractSeries {
 
   render() {
-    const {data, marginLeft, marginTop, animation} = this.props;
+    const {animation, className, data, marginLeft, marginTop} = this.props;
     if (!data) {
       return null;
     }
@@ -49,7 +51,7 @@ class MarkSeries extends AbstractSeries {
     const yFunctor = this._getAttributeFunctor('y');
 
     return (
-      <g className="rv-xy-plot__series rv-xy-plot__series--mark"
+      <g className={`${predefinedClassName} ${className}`}
          ref="container"
          transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {
@@ -77,4 +79,3 @@ class MarkSeries extends AbstractSeries {
 MarkSeries.displayName = 'MarkSeries';
 
 export default MarkSeries;
-

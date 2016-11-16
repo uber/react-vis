@@ -39,6 +39,7 @@ export default class Example extends React.Component {
         <XAxis title="X Axis" />
         <YAxis title="Y Axis" />
         <LineSeries
+          className="first-series"
           data={[
             {x: 1, y: 3},
             {x: 2, y: 5},
@@ -46,8 +47,10 @@ export default class Example extends React.Component {
             {x: 4, y: 12}
           ]}/>
         <LineSeries
+          className="second-series"
           data={null}/>
         <LineSeries
+          className="third-series"
           data={[
             {x: 1, y: 10},
             {x: 2, y: 4},

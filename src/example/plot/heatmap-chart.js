@@ -31,6 +31,7 @@ export default class Example extends React.Component {
         <XAxis />
         <YAxis />
         <HeatmapSeries
+          className="heatmap-series-example"
           data={[
             {x: 1, y: 0, color: 10},
             {x: 1, y: 5, color: 10},

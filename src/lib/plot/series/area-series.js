@@ -27,10 +27,12 @@ import Animation from '../../animation';
 import {DEFAULT_OPACITY} from '../../theme';
 import {ANIMATED_SERIES_PROPS} from '../../utils/series-utils';
 
+const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--line';
+
 class AreaSeries extends AbstractSeries {
 
   render() {
-    const {data, animation} = this.props;
+    const {animation, className, data, marginLeft, marginTop} = this.props;
     if (!data) {
       return null;
     }
@@ -41,8 +43,6 @@ class AreaSeries extends AbstractSeries {
         </Animation>
       );
     }
-
-    const {marginLeft, marginTop} = this.props;
 
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
@@ -58,7 +58,7 @@ class AreaSeries extends AbstractSeries {
     return (
       <path
         d={d}
-        className="rv-xy-plot__series rv-xy-plot__series--line"
+        className={`${predefinedClassName} ${className}`}
         transform={`translate(${marginLeft},${marginTop})`}
         onMouseOver={this._seriesMouseOverHandler}
         onMouseOut={this._seriesMouseOutHandler}
