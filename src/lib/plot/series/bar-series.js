@@ -90,7 +90,7 @@ class BarSeries extends AbstractSeries {
     const itemSize = (distance / 2) * 0.85;
 
     return (
-      <g className={`${predefinedClassName} ${className || ''}`}
+      <g className={`${predefinedClassName} ${className}`}
         ref="container"
         transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {

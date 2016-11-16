@@ -58,7 +58,7 @@ class AreaSeries extends AbstractSeries {
     return (
       <path
         d={d}
-        className={`${predefinedClassName} ${className || ''}`}
+        className={`${predefinedClassName} ${className}`}
         transform={`translate(${marginLeft},${marginTop})`}
         onMouseOver={this._seriesMouseOverHandler}
         onMouseOut={this._seriesMouseOutHandler}

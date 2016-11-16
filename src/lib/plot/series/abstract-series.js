@@ -48,6 +48,10 @@ const propTypes = {
   animation: AnimationPropType
 };
 
+const defaultProps = {
+  className: ''
+};
+
 class AbstractSeries extends PureRenderComponent {
 
   constructor(props) {
@@ -243,5 +247,6 @@ class AbstractSeries extends PureRenderComponent {
 
 AbstractSeries.displayName = 'AbstractSeries';
 AbstractSeries.propTypes = propTypes;
+AbstractSeries.defaultProps = defaultProps;
 
 export default AbstractSeries;

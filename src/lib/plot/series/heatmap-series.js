@@ -55,7 +55,7 @@ class HeatmapSeries extends AbstractSeries {
     const yDistance = this._getScaleDistance('y');
     return (
       <g
-        className={`${predefinedClassName} ${className || ''}`}
+        className={`${predefinedClassName} ${className}`}
         ref="container"
         transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {

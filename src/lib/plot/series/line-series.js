@@ -45,7 +45,6 @@ const propTypes = {
 };
 
 class LineSeries extends AbstractSeries {
-
   render() {
     const {animation, className, data} = this.props;
     if (!data) {
@@ -72,7 +71,7 @@ class LineSeries extends AbstractSeries {
     return (
       <path
         d={d}
-        className={`${predefinedClassName} ${className || ''}`}
+        className={`${predefinedClassName} ${className}`}
         transform={`translate(${marginLeft},${marginTop})`}
         onMouseOver={this._seriesMouseOverHandler}
         onMouseOut={this._seriesMouseOutHandler}
