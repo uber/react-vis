@@ -21,45 +21,16 @@
 import React from 'react';
 
 import {Treemap} from '../../';
+import D3FlareData from './d3-flare-example.json';
 
 export default class SimpleTreemapExample extends React.Component {
 
   render() {
     return (
       <Treemap
-        data={{
-          title: '',
-          children: [
-            {
-              title: 'China',
-              size: 1357
-            },
-            {
-              title: 'India',
-              size: 1252
-            },
-            {
-              title: 'USA',
-              size: 321
-            },
-            {
-              title: 'Indonesia',
-              size: 249.9
-            },
-            {
-              title: 'Brasil',
-              size: 200.4
-            },
-            {
-              title: 'Pakistan',
-              size: 192
-            },
-            {
-              title: 'Nigeria',
-              size: 173.6
-            }
-          ]
-        }}
+        className="nested-tree-example"
+        colorType="literal"
+        data={D3FlareData}
         height={300}
         width={350}/>
     );

@@ -4,13 +4,12 @@
 }
 
 .rv-treemap__leaf {
-  position: absolute;
   overflow: hidden;
+  position: absolute;
 }
 
 .rv-treemap__leaf__content {
-  padding: 10px;
   overflow: hidden;
+  padding: 10px;
   text-overflow: ellipsis;
 }
-

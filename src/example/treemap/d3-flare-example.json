@@ -1,0 +1,380 @@
+{
+ "children": [
+  {
+   "name": "analytics",
+   "color": "#12939A",
+   "children": [
+    {
+     "name": "cluster",
+     "children": [
+      {"name": "AgglomerativeCluster", "color": "#12939A", "size": 3938},
+      {"name": "CommunityStructure", "color": "#12939A", "size": 3812},
+      {"name": "HierarchicalCluster", "color": "#12939A", "size": 6714},
+      {"name": "MergeEdge", "color": "#12939A", "size": 743}
+     ]
+    },
+    {
+     "name": "graph",
+     "children": [
+      {"name": "BetweennessCentrality", "color": "#12939A", "size": 3534},
+      {"name": "LinkDistance", "color": "#12939A", "size": 5731},
+      {"name": "MaxFlowMinCut", "color": "#12939A", "size": 7840},
+      {"name": "ShortestPaths", "color": "#12939A", "size": 5914},
+      {"name": "SpanningTree", "color": "#12939A", "size": 3416}
+     ]
+    },
+    {
+     "name": "optimization",
+     "children": [
+      {"name": "AspectRatioBanker", "color": "#12939A", "size": 7074}
+     ]
+    }
+   ]
+  },
+  {
+   "name": "animate",
+   "children": [
+    {"name": "Easing", "color": "#12939A", "size": 17010},
+    {"name": "FunctionSequence", "color": "#12939A", "size": 5842},
+    {
+     "name": "interpolate",
+     "children": [
+      {"name": "ArrayInterpolator", "color": "#12939A", "size": 1983},
+      {"name": "ColorInterpolator", "color": "#12939A", "size": 2047},
+      {"name": "DateInterpolator", "color": "#12939A", "size": 1375},
+      {"name": "Interpolator", "color": "#12939A", "size": 8746},
+      {"name": "MatrixInterpolator", "color": "#12939A", "size": 2202},
+      {"name": "NumberInterpolator", "color": "#12939A", "size": 1382},
+      {"name": "ObjectInterpolator", "color": "#12939A", "size": 1629},
+      {"name": "PointInterpolator", "color": "#12939A", "size": 1675},
+      {"name": "RectangleInterpolator", "color": "#12939A", "size": 2042}
+     ]
+    },
+    {"name": "ISchedulable", "color": "#12939A", "size": 1041},
+    {"name": "Parallel", "color": "#12939A", "size": 5176},
+    {"name": "Pause", "color": "#12939A", "size": 449},
+    {"name": "Scheduler", "color": "#12939A", "size": 5593},
+    {"name": "Sequence", "color": "#12939A", "size": 5534},
+    {"name": "Transition", "color": "#12939A", "size": 9201},
+    {"name": "Transitioner", "color": "#12939A", "size": 19975},
+    {"name": "TransitionEvent", "color": "#12939A", "size": 1116},
+    {"name": "Neonate", "color": "#12939A", "size": 6006}
+   ]
+  },
+  {
+   "name": "data",
+   "children": [
+    {
+     "name": "converters",
+     "children": [
+      {"name": "Converters", "color": "#12939A", "size": 721},
+      {"name": "DelimitedTextConverter", "color": "#12939A", "size": 4294},
+      {"name": "GraphMLConverter", "color": "#12939A", "size": 9800},
+      {"name": "IDataConverter", "color": "#12939A", "size": 1314},
+      {"name": "JSONConverter", "color": "#12939A", "size": 2220}
+     ]
+    },
+    {"name": "DataField", "color": "#12939A", "size": 1759},
+    {"name": "DataSchema", "color": "#12939A", "size": 2165},
+    {"name": "DataSet", "color": "#12939A", "size": 586},
+    {"name": "DataSource", "color": "#12939A", "size": 3331},
+    {"name": "DataTable", "color": "#12939A", "size": 772},
+    {"name": "DataUtil", "color": "#12939A", "size": 3322}
+   ]
+  },
+  {
+   "name": "display",
+   "children": [
+    {"name": "DirtySprite", "color": "#12939A", "size": 8833},
+    {"name": "LineSprite", "color": "#12939A", "size": 1732},
+    {"name": "RectSprite", "color": "#12939A", "size": 3623},
+    {"name": "TextSprite", "color": "#12939A", "size": 10066}
+   ]
+  },
+  {
+   "name": "flex",
+   "children": [
+    {"name": "FlareVis", "color": "#12939A", "size": 4116}
+   ]
+  },
+  {
+   "name": "physics",
+   "children": [
+    {"name": "DragForce", "color": "#12939A", "size": 1082},
+    {"name": "GravityForce", "color": "#12939A", "size": 1336},
+    {"name": "IForce", "color": "#12939A", "size": 319},
+    {"name": "NBodyForce", "color": "#12939A", "size": 10498},
+    {"name": "Particle", "color": "#12939A", "size": 2822},
+    {"name": "Simulation", "color": "#12939A", "size": 9983},
+    {"name": "Spring", "color": "#12939A", "size": 2213},
+    {"name": "SpringForce", "color": "#12939A", "size": 1681}
+   ]
+  },
+  {
+   "name": "query",
+   "children": [
+    {"name": "AggregateExpression", "color": "#12939A", "size": 1616},
+    {"name": "And", "color": "#12939A", "size": 1027},
+    {"name": "Arithmetic", "color": "#12939A", "size": 3891},
+    {"name": "Average", "color": "#12939A", "size": 891},
+    {"name": "BinaryExpression", "color": "#12939A", "size": 2893},
+    {"name": "Comparison", "color": "#12939A", "size": 5103},
+    {"name": "CompositeExpression", "color": "#12939A", "size": 3677},
+    {"name": "Count", "color": "#12939A", "size": 781},
+    {"name": "DateUtil", "color": "#12939A", "size": 4141},
+    {"name": "Distinct", "color": "#12939A", "size": 933},
+    {"name": "Expression", "color": "#12939A", "size": 5130},
+    {"name": "ExpressionIterator", "color": "#12939A", "size": 3617},
+    {"name": "Fn", "color": "#12939A", "size": 3240},
+    {"name": "If", "color": "#12939A", "size": 2732},
+    {"name": "IsA", "color": "#12939A", "size": 2039},
+    {"name": "Literal", "color": "#12939A", "size": 1214},
+    {"name": "Match", "color": "#12939A", "size": 3748},
+    {"name": "Maximum", "color": "#12939A", "size": 843},
+    {
+     "name": "methods",
+     "children": [
+      {"name": "add", "color": "#12939A", "size": 593},
+      {"name": "and", "color": "#12939A", "size": 330},
+      {"name": "average", "color": "#12939A", "size": 287},
+      {"name": "count", "color": "#12939A", "size": 277},
+      {"name": "distinct", "color": "#12939A", "size": 292},
+      {"name": "div", "color": "#12939A", "size": 595},
+      {"name": "eq", "color": "#12939A", "size": 594},
+      {"name": "fn", "color": "#12939A", "size": 460},
+      {"name": "gt", "color": "#12939A", "size": 603},
+      {"name": "gte", "color": "#12939A", "size": 625},
+      {"name": "iff", "color": "#12939A", "size": 748},
+      {"name": "isa", "color": "#12939A", "size": 461},
+      {"name": "lt", "color": "#12939A", "size": 597},
+      {"name": "lte", "color": "#12939A", "size": 619},
+      {"name": "max", "color": "#12939A", "size": 283},
+      {"name": "min", "color": "#12939A", "size": 283},
+      {"name": "mod", "color": "#12939A", "size": 591},
+      {"name": "mul", "color": "#12939A", "size": 603},
+      {"name": "neq", "color": "#12939A", "size": 599},
+      {"name": "not", "color": "#12939A", "size": 386},
+      {"name": "or", "color": "#12939A", "size": 323},
+      {"name": "orderby", "color": "#12939A", "size": 307},
+      {"name": "range", "color": "#12939A", "size": 772},
+      {"name": "select", "color": "#12939A", "size": 296},
+      {"name": "stddev", "color": "#12939A", "size": 363},
+      {"name": "sub", "color": "#12939A", "size": 600},
+      {"name": "sum", "color": "#12939A", "size": 280},
+      {"name": "update", "color": "#12939A", "size": 307},
+      {"name": "variance", "color": "#12939A", "size": 335},
+      {"name": "where", "color": "#12939A", "size": 299},
+      {"name": "xor", "color": "#12939A", "size": 354},
+      {"name": "_", "color": "#12939A", "size": 264}
+     ]
+    },
+    {"name": "Minimum", "color": "#12939A", "size": 843},
+    {"name": "Not", "color": "#12939A", "size": 1554},
+    {"name": "Or", "color": "#12939A", "size": 970},
+    {"name": "Query", "color": "#12939A", "size": 13896},
+    {"name": "Range", "color": "#12939A", "size": 1594},
+    {"name": "StringUtil", "color": "#12939A", "size": 4130},
+    {"name": "Sum", "color": "#12939A", "size": 791},
+    {"name": "Variable", "color": "#12939A", "size": 1124},
+    {"name": "Variance", "color": "#12939A", "size": 1876},
+    {"name": "Xor", "color": "#12939A", "size": 1101}
+   ]
+  },
+  {
+   "name": "scale",
+   "children": [
+    {"name": "IScaleMap", "color": "#FF9833", "size": 2105},
+    {"name": "LinearScale", "color": "#FF9833", "size": 1316},
+    {"name": "LogScale", "color": "#FF9833", "size": 3151},
+    {"name": "OrdinalScale", "color": "#FF9833", "size": 3770},
+    {"name": "QuantileScale", "color": "#1A3177", "size": 2435},
+    {"name": "QuantitativeScale", "color": "#FF9833", "size": 4839},
+    {"name": "RootScale", "color": "#FF9833", "size": 1756},
+    {"name": "Scale", "color": "#FF9833", "size": 4268},
+    {"name": "ScaleType", "color": "#FF9833", "size": 1821},
+    {"name": "TimeScale", "color": "#FF9833", "size": 5833}
+   ]
+  },
+  {
+   "name": "util",
+   "children": [
+    {"name": "Arrays", "color": "#12939A", "size": 8258},
+    {"name": "Colors", "color": "#12939A", "size": 10001},
+    {"name": "Dates", "color": "#12939A", "size": 8217},
+    {"name": "Displays", "color": "#12939A", "size": 12555},
+    {"name": "Filter", "color": "#12939A", "size": 2324},
+    {"name": "Geometry", "color": "#12939A", "size": 10993},
+    {
+     "name": "heap",
+     "children": [
+      {"name": "FibonacciHeap", "color": "#12939A", "size": 9354},
+      {"name": "HeapNode", "color": "#12939A", "size": 1233}
+     ]
+    },
+    {"name": "IEvaluable", "color": "#12939A", "size": 335},
+    {"name": "IPredicate", "color": "#12939A", "size": 383},
+    {"name": "IValueProxy", "color": "#12939A", "size": 874},
+    {
+     "name": "math",
+     "children": [
+      {"name": "DenseMatrix", "color": "#12939A", "size": 3165},
+      {"name": "IMatrix", "color": "#12939A", "size": 2815},
+      {"name": "SparseMatrix", "color": "#12939A", "size": 3366}
+     ]
+    },
+    {"name": "Maths", "color": "#12939A", "size": 17705},
+    {"name": "Orientation", "color": "#12939A", "size": 1486},
+    {
+     "name": "palette",
+     "children": [
+      {"name": "ColorPalette", "color": "#12939A", "size": 6367},
+      {"name": "Palette", "color": "#12939A", "size": 1229},
+      {"name": "ShapePalette", "color": "#12939A", "size": 2059},
+      {"name": "SizePalette", "color": "#12939A", "size": 2291}
+     ]
+    },
+    {"name": "Property", "color": "#12939A", "size": 5559},
+    {"name": "Shapes", "color": "#12939A", "size": 19118},
+    {"name": "Sort", "color": "#12939A", "size": 6887},
+    {"name": "Stats", "color": "#12939A", "size": 6557},
+    {"name": "Strings", "color": "#12939A", "size": 22026}
+   ]
+  },
+  {
+   "name": "vis",
+   "children": [
+    {
+     "name": "axis",
+     "children": [
+      {"name": "Axes", "color": "#12939A", "size": 1302},
+      {"name": "Axis", "color": "#12939A", "size": 24593},
+      {"name": "AxisGridLine", "color": "#12939A", "size": 652},
+      {"name": "AxisLabel", "color": "#12939A", "size": 636},
+      {"name": "CartesianAxes", "color": "#12939A", "size": 6703}
+     ]
+    },
+    {
+     "name": "controls",
+     "children": [
+      {"name": "AnchorControl", "color": "#12939A", "size": 2138},
+      {"name": "ClickControl", "color": "#12939A", "size": 3824},
+      {"name": "Control", "color": "#12939A", "size": 1353},
+      {"name": "ControlList", "color": "#12939A", "size": 4665},
+      {"name": "DragControl", "color": "#12939A", "size": 2649},
+      {"name": "ExpandControl", "color": "#12939A", "size": 2832},
+      {"name": "HoverControl", "color": "#12939A", "size": 4896},
+      {"name": "IControl", "color": "#12939A", "size": 763},
+      {"name": "PanZoomControl", "color": "#12939A", "size": 5222},
+      {"name": "SelectionControl", "color": "#12939A", "size": 7862},
+      {"name": "TooltipControl", "color": "#12939A", "size": 8435}
+     ]
+    },
+    {
+     "name": "data",
+     "children": [
+      {"name": "Data", "color": "#12939A", "size": 20544},
+      {"name": "DataList", "color": "#12939A", "size": 19788},
+      {"name": "DataSprite", "color": "#12939A", "size": 10349},
+      {"name": "EdgeSprite", "color": "#12939A", "size": 3301},
+      {"name": "NodeSprite", "color": "#12939A", "size": 19382},
+      {
+       "name": "render",
+       "children": [
+        {"name": "ArrowType", "color": "#12939A", "size": 698},
+        {"name": "EdgeRenderer", "color": "#12939A", "size": 5569},
+        {"name": "IRenderer", "color": "#12939A", "size": 353},
+        {"name": "ShapeRenderer", "color": "#12939A", "size": 2247}
+       ]
+      },
+      {"name": "ScaleBinding", "color": "#12939A", "size": 11275},
+      {"name": "Tree", "color": "#12939A", "size": 7147},
+      {"name": "TreeBuilder", "color": "#12939A", "size": 9930}
+     ]
+    },
+    {
+     "name": "events",
+     "children": [
+      {"name": "DataEvent", "color": "#12939A", "size": 2313},
+      {"name": "SelectionEvent", "color": "#12939A", "size": 1880},
+      {"name": "TooltipEvent", "color": "#12939A", "size": 1701},
+      {"name": "VisualizationEvent", "color": "#12939A", "size": 1117}
+     ]
+    },
+    {
+     "name": "legend",
+     "children": [
+      {"name": "Legend", "color": "#12939A", "size": 20859},
+      {"name": "LegendItem", "color": "#12939A", "size": 4614},
+      {"name": "LegendRange", "color": "#12939A", "size": 10530}
+     ]
+    },
+    {
+     "name": "operator",
+     "children": [
+      {
+       "name": "distortion",
+       "children": [
+        {"name": "BifocalDistortion", "color": "#12939A", "size": 4461},
+        {"name": "Distortion", "color": "#12939A", "size": 6314},
+        {"name": "FisheyeDistortion", "color": "#12939A", "size": 3444}
+       ]
+      },
+      {
+       "name": "encoder",
+       "children": [
+        {"name": "ColorEncoder", "color": "#12939A", "size": 3179},
+        {"name": "Encoder", "color": "#12939A", "size": 4060},
+        {"name": "PropertyEncoder", "color": "#12939A", "size": 4138},
+        {"name": "ShapeEncoder", "color": "#12939A", "size": 1690},
+        {"name": "SizeEncoder", "color": "#12939A", "size": 1830}
+       ]
+      },
+      {
+       "name": "filter",
+       "children": [
+        {"name": "FisheyeTreeFilter", "color": "#12939A", "size": 5219},
+        {"name": "GraphDistanceFilter", "color": "#12939A", "size": 3165},
+        {"name": "VisibilityFilter", "color": "#12939A", "size": 3509}
+       ]
+      },
+      {"name": "IOperator", "color": "#12939A", "size": 1286},
+      {
+       "name": "label",
+       "children": [
+        {"name": "Labeler", "color": "#12939A", "size": 9956},
+        {"name": "RadialLabeler", "color": "#12939A", "size": 3899},
+        {"name": "StackedAreaLabeler", "color": "#12939A", "size": 3202}
+       ]
+      },
+      {
+       "name": "layout",
+       "children": [
+        {"name": "AxisLayout", "color": "#12939A", "size": 6725},
+        {"name": "BundledEdgeRouter", "color": "#12939A", "size": 3727},
+        {"name": "CircleLayout", "color": "#12939A", "size": 9317},
+        {"name": "CirclePackingLayout", "color": "#12939A", "size": 12003},
+        {"name": "DendrogramLayout", "color": "#12939A", "size": 4853},
+        {"name": "ForceDirectedLayout", "color": "#12939A", "size": 8411},
+        {"name": "IcicleTreeLayout", "color": "#12939A", "size": 4864},
+        {"name": "IndentedTreeLayout", "color": "#12939A", "size": 3174},
+        {"name": "Layout", "color": "#12939A", "size": 7881},
+        {"name": "NodeLinkTreeLayout", "color": "#12939A", "size": 12870},
+        {"name": "PieLayout", "color": "#12939A", "size": 2728},
+        {"name": "RadialTreeLayout", "color": "#12939A", "size": 12348},
+        {"name": "RandomLayout", "color": "#12939A", "size": 870},
+        {"name": "StackedAreaLayout", "color": "#12939A", "size": 9121},
+        {"name": "TreeMapLayout", "color": "#12939A", "size": 9191}
+       ]
+      },
+      {"name": "Operator", "color": "#12939A", "size": 2490},
+      {"name": "OperatorList", "color": "#12939A", "size": 5248},
+      {"name": "OperatorSequence", "color": "#12939A", "size": 4190},
+      {"name": "OperatorSwitch", "color": "#12939A", "size": 2581},
+      {"name": "SortOperator", "color": "#12939A", "size": 2023}
+     ]
+    },
+    {"name": "Visualization", "color": "#12939A", "size": 16540}
+   ]
+  }
+ ]
+}
