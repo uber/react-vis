@@ -26,7 +26,6 @@ import D3FlareData from './d3-flare-example.json';
 export default class SimpleTreemapExample extends React.Component {
 
   render() {
-    // note the css rule!
     return (
       <Treemap
         className="nested-tree-example"
