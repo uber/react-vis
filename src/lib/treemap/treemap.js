@@ -50,28 +50,29 @@ class Treemap extends React.Component {
 
   static get propTypes() {
     return {
-      width: React.PropTypes.number.isRequired,
-      height: React.PropTypes.number.isRequired,
+      animation: AnimationPropType,
       data: React.PropTypes.object.isRequired,
+      height: React.PropTypes.number.isRequired,
       mode: React.PropTypes.oneOf(
         Object.keys(TREEMAP_TILE_MODES)
       ),
       padding: React.PropTypes.number.isRequired,
-      animation: AnimationPropType
+      width: React.PropTypes.number.isRequired
     };
   }
 
   static get defaultProps() {
     return {
-      mode: 'squarify',
-      padding: 1,
+      className: '',
+      colorRange: CONTINUOUS_COLOR_RANGE,
+      _colorValue: DEFAULT_COLOR,
       data: {
         children: []
       },
-      colorRange: CONTINUOUS_COLOR_RANGE,
-      _colorValue: DEFAULT_COLOR,
+      mode: 'squarify',
       opacityRange: OPACITY_RANGE,
-      _opacityValue: 1
+      _opacityValue: 1,
+      padding: 1
     };
   }
 
@@ -159,7 +160,7 @@ class Treemap extends React.Component {
   }
 
   render() {
-    const {width, height, animation} = this.props;
+    const {animation, className, height, width} = this.props;
     const nodes = this._getNodesToRender();
     if (animation) {
       return (
@@ -170,7 +171,7 @@ class Treemap extends React.Component {
     }
     return (
       <div
-        className="rv-treemap"
+        className={`rv-treemap ${className}`}
         style={{
           width: `${width}px`,
           height: `${height}px`
