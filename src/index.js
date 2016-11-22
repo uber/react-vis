@@ -39,6 +39,7 @@ export {default as Crosshair} from './lib/plot/crosshair';
 export {default as XAxis} from './lib/plot/axis/x-axis';
 export {default as YAxis} from './lib/plot/axis/y-axis';
 
+export {default as GridLines} from './lib/plot/grid-lines';
 export {default as VerticalGridLines} from './lib/plot/vertical-grid-lines';
 export {default as HorizontalGridLines} from './lib/plot/horizontal-grid-lines';
 
@@ -57,3 +58,6 @@ export {default as ContinuousSizeLegend}
   from './lib/legends/continuous-size-legend';
 
 export {default as makeWidthFlexible} from './lib/make-vis-flexible';
+
+export {default as AxisUtils} from './lib/utils/axis-utils';
+export {default as ScalesUtils} from './lib/utils/scales-utils';
