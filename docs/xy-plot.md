@@ -364,9 +364,18 @@ The way to align the hint inside the chart. When `auto` is set the hint is tryin
 Set the hint to `topleft` if you want to see a "conventional" hint alignment.
 
 #### curve (optional)
-Type: `string`
+Type: `string|function`
 Default: `null`  
-Apply the named curve function from the D3 shape library to smooth the line series plot, see [the D3 documentation](https://github.com/d3/d3-shape#curves) for function names.
+Apply the provided or named curve function from the D3 shape library to smooth the line series plot, see [the D3 documentation](https://github.com/d3/d3-shape#curves) for function names and instructions. Providing the function, not the name, will require importing the d3-shape package in order to configure it:
+
+```javascript
+// Setting up with only a name
+const stringCurveProp = <LineSeries data={data} curve={'curveMonotoneX'} .../>;
+
+const configuredCurve = d3Shape.curveCatmullRom.alpha(0.5);
+const funcCurveProp = <LineSeries data={data} curve={configuredCurve} .../>;
+```
+
 
 ### Crosshair
 

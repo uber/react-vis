@@ -43,15 +43,22 @@ const defaultProps = {
 const propTypes = {
   ...AbstractSeries.propTypes,
   strokeStyle: React.PropTypes.oneOf(Object.keys(STROKE_STYLES)),
-  curve: React.PropTypes.string
+  curve: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.func
+  ])
 };
 
 class LineSeries extends AbstractSeries {
 
   _renderLine(data, x, y, curve) {
     let line = d3Shape.line();
-    if (curve !== null && d3Shape[curve]) {
-      line = line.curve(d3Shape[curve]);
+    if (curve !== null) {
+      if (typeof curve === 'string' && d3Shape[curve]) {
+        line = line.curve(d3Shape[curve]);
+      } else if (typeof curve === 'function') {
+        line = line.curve(curve);
+      }
     }
     line = line.x(x).y(y);
     return line(data);

@@ -45,6 +45,14 @@ export default class Example extends React.Component {
             {x: 2, y: 5},
             {x: 3, y: 15}
           ]}/>
+        <LineMarkSeries
+          className="linemark-series-example-2"
+          curve={'curveMonotoneX'}
+          data={[
+            {x: 1, y: 11},
+            {x: 1.5, y: 29},
+            {x: 3, y: 7}
+          ]}/>
       </XYPlot>
     );
   }

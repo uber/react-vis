@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import {curveCatmullRom} from 'd3-shape';
 
 import {
   XYPlot,
@@ -51,6 +52,7 @@ export default class Example extends React.Component {
           data={null}/>
         <LineSeries
           className="third-series"
+          curve={'curveMonotoneX'}
           data={[
             {x: 1, y: 10},
             {x: 2, y: 4},
@@ -59,7 +61,7 @@ export default class Example extends React.Component {
           ]}/>
         <LineSeries
           className="fourth-series"
-          curve="curveCatmullRom"
+          curve={curveCatmullRom.alpha(0.5)}
           data={[
             {x: 1, y: 7},
             {x: 2, y: 11},
