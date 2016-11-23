@@ -177,6 +177,7 @@ export default class Example extends React.Component {
               {...(series[0].disabled ? {opacity: 0.2} : null)}/>
             <LineSeries
               data={series[1].data}
+              curve="curveMonotoneX"
               {...(series[1].disabled ? {opacity: 0.2} : null)}/>
             <Crosshair
               itemsFormat={this._formatCrosshairItems}

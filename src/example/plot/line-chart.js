@@ -57,6 +57,15 @@ export default class Example extends React.Component {
             {x: 3, y: 2},
             {x: 4, y: 15}
           ]}/>
+        <LineSeries
+          className="fourth-series"
+          curve="curveCatmullRom"
+          data={[
+            {x: 1, y: 7},
+            {x: 2, y: 11},
+            {x: 3, y: 9},
+            {x: 4, y: 2}
+          ]}/>
       </XYPlot>
     );
   }
