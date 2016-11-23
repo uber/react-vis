@@ -30,9 +30,21 @@ import {ANIMATED_SERIES_PROPS} from '../../utils/series-utils';
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--line';
 
 class AreaSeries extends AbstractSeries {
+  _renderArea(data, x, y0, y, curve) {
+    let area = d3Shape.area();
+    if (curve !== null) {
+      if (typeof curve === 'string' && d3Shape[curve]) {
+        area = area.curve(d3Shape[curve]);
+      } else if (typeof curve === 'function') {
+        area = area.curve(curve);
+      }
+    }
+    area = area.x(x).y0(y0).y1(y);
+    return area(data);
+  }
 
   render() {
-    const {animation, className, data, marginLeft, marginTop} = this.props;
+    const {animation, className, curve, data, marginLeft, marginTop} = this.props;
     if (!data) {
       return null;
     }
@@ -52,9 +64,9 @@ class AreaSeries extends AbstractSeries {
     const fill = this._getAttributeValue('fill') ||
       this._getAttributeValue('color');
     const opacity = this._getAttributeValue('opacity') || DEFAULT_OPACITY;
-    const line = d3Shape.area().x(x).y0(y0).y1(y);
-    const d = line(data);
-
+    // const line = d3Shape.area().x(x).y0(y0).y1(y);
+    // const d = line(data);
+    const d = this._renderArea(data, x, y0, y, curve);
     return (
       <path
         d={d}
