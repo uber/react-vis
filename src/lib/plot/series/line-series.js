@@ -36,15 +36,34 @@ const STROKE_STYLES = {
 
 const defaultProps = {
   strokeStyle: 'solid',
-  opacity: 1
+  opacity: 1,
+  curve: null
 };
 
 const propTypes = {
   ...AbstractSeries.propTypes,
-  strokeStyle: React.PropTypes.oneOf(Object.keys(STROKE_STYLES))
+  strokeStyle: React.PropTypes.oneOf(Object.keys(STROKE_STYLES)),
+  curve: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.func
+  ])
 };
 
 class LineSeries extends AbstractSeries {
+
+  _renderLine(data, x, y, curve) {
+    let line = d3Shape.line();
+    if (curve !== null) {
+      if (typeof curve === 'string' && d3Shape[curve]) {
+        line = line.curve(d3Shape[curve]);
+      } else if (typeof curve === 'function') {
+        line = line.curve(curve);
+      }
+    }
+    line = line.x(x).y(y);
+    return line(data);
+  }
+
   render() {
     const {animation, className, data} = this.props;
     if (!data) {
@@ -58,15 +77,14 @@ class LineSeries extends AbstractSeries {
       );
     }
 
-    const {strokeStyle, strokeWidth, marginLeft, marginTop} = this.props;
+    const {strokeStyle, strokeWidth, marginLeft, marginTop, curve} = this.props;
 
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
     const stroke = this._getAttributeValue('stroke') ||
       this._getAttributeValue('color');
     const opacity = this._getAttributeValue('opacity') || DEFAULT_OPACITY;
-    const line = d3Shape.line().x(x).y(y);
-    const d = line(data);
+    const d = this._renderLine(data, x, y, curve);
 
     return (
       <path
