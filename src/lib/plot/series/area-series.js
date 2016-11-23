@@ -64,8 +64,6 @@ class AreaSeries extends AbstractSeries {
     const fill = this._getAttributeValue('fill') ||
       this._getAttributeValue('color');
     const opacity = this._getAttributeValue('opacity') || DEFAULT_OPACITY;
-    // const line = d3Shape.area().x(x).y0(y0).y1(y);
-    // const d = line(data);
     const d = this._renderArea(data, x, y0, y, curve);
     return (
       <path
