@@ -365,7 +365,7 @@ Set the hint to `topleft` if you want to see a "conventional" hint alignment.
 
 #### curve (optional)
 Type: `string`
-Default: `null`__
+Default: `null`  
 Apply the named curve function from the D3 shape library to smooth the line series plot, see [the D3 documentation](https://github.com/d3/d3-shape#curves) for function names.
 
 ### Crosshair

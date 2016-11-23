@@ -83,6 +83,10 @@ npm test
 
 ## Change log
 
+### (UNRELEASED)
+
+- Improvement: added line smoothing via d3-shape curve functions ([#185](https://github.com/uber/react-vis/pull/185)).
+
 ### 0.6.4
 
 - Bugfix: Fixed the issue with numeric titles in legends ([#154](https://github.com/uber/react-vis/pull/154)).
