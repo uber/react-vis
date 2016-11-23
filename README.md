@@ -83,9 +83,13 @@ npm test
 
 ## Change log
 
-### (UNRELEASED)
+### v0.6.6
 
 - Improvement: added line smoothing via d3-shape curve functions ([#185](https://github.com/uber/react-vis/pull/185)).
+- Improvement: Expose GridLines, AxisLines, and ScaleUtils to export
+- Improvement: Add className prop to all series
+- Documentation: Expand tree map example
+- Documentation: Add elevated area chart example
 
 ### 0.6.4
 
