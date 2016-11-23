@@ -60,4 +60,4 @@ export {default as ContinuousSizeLegend}
 export {default as makeWidthFlexible} from './lib/make-vis-flexible';
 
 export {default as AxisUtils} from './lib/utils/axis-utils';
-export {default as ScalesUtils} from './lib/utils/scales-utils';
+export {default as ScaleUtils} from './lib/utils/scales-utils';
