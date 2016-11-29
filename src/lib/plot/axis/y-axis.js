@@ -25,15 +25,13 @@ import {ORIENTATION, DIRECTION} from '../../utils/axis-utils';
 
 const {LEFT, RIGHT} = ORIENTATION;
 
+const {axisType, ...axisPropsWithoutType} = Axis.propTypes;
 const propTypes = {
-  ...Axis.propTypes,
-  axisType: undefined,
+  ...axisPropsWithoutType,
   orientation: React.PropTypes.oneOf([
     LEFT, RIGHT
   ])
 };
-
-delete propTypes.axisType;
 
 const defaultProps = {
   orientation: LEFT,
