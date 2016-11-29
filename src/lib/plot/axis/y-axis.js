@@ -27,6 +27,7 @@ const {LEFT, RIGHT} = ORIENTATION;
 
 const propTypes = {
   ...Axis.propTypes,
+  axisType: undefined,
   orientation: React.PropTypes.oneOf([
     LEFT, RIGHT
   ])
@@ -40,13 +41,8 @@ const defaultProps = {
 };
 
 function YAxis(props) {
-  const axisProps = {
-    ...props,
-    axisType: DIRECTION.VERTICAL
-  };
-
   return (
-    <Axis {...axisProps} />
+    <Axis {...props} axisType={DIRECTION.VERTICAL}/>
   );
 }
 

@@ -27,6 +27,7 @@ const {TOP, BOTTOM} = ORIENTATION;
 
 const propTypes = {
   ...Axis.propTypes,
+  axisType: undefined,
   orientation: React.PropTypes.oneOf([
     TOP, BOTTOM
   ])
@@ -40,13 +41,8 @@ const defaultProps = {
 };
 
 function XAxis(props) {
-  const axisProps = {
-    ...props,
-    axisType: DIRECTION.HORIZONTAL
-  };
-
   return (
-    <Axis {...axisProps} />
+    <Axis {...props} axisType={DIRECTION.HORIZONTAL}/>
   );
 }
 
