@@ -43,9 +43,6 @@ const propTypes = {
   orientation: React.PropTypes.oneOf([
     LEFT, RIGHT, TOP, BOTTOM
   ]),
-  axisType: React.PropTypes.oneOf([
-    DIRECTION.VERTICAL, DIRECTION.HORIZONTAL
-  ]).isRequired,
   attr: React.PropTypes.string.isRequired,
   width: React.PropTypes.number,
   height: React.PropTypes.number,
@@ -152,7 +149,6 @@ class Axis extends PureRenderComponent {
     };
 
     const {
-      axisType,
       className,
       left,
       top,
@@ -161,9 +157,8 @@ class Axis extends PureRenderComponent {
       orientation,
       title
     } = props;
-    const isVertical = axisType === DIRECTION.VERTICAL;
-    const axisClassName = isVertical ? VERTICAL_CLASS_NAME :
-      HORIZONTAL_CLASS_NAME;
+    const isY = [LEFT, RIGHT].indexOf(orientation) > -1;
+    const axisClassName = isY ? VERTICAL_CLASS_NAME : HORIZONTAL_CLASS_NAME;
     return (
       <g
         transform={`translate(${left},${top})`}
