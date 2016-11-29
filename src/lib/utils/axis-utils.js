@@ -57,3 +57,10 @@ export function getTickValues(scale, tickTotal, tickValues) {
     (scale.ticks ? scale.ticks(tickTotal) : scale.domain()) :
     tickValues;
 }
+
+export default {
+  DIRECTION,
+  ORIENTATION,
+  getTicksTotalFromSize,
+  getTickValues
+};
