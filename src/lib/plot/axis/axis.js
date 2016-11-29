@@ -153,8 +153,9 @@ class Axis extends PureRenderComponent {
       top,
       width
     } = props;
-    const isY = [LEFT, RIGHT].indexOf(orientation) > -1;
-    const axisClassName = isY ? VERTICAL_CLASS_NAME : HORIZONTAL_CLASS_NAME;
+    const isVertical = [LEFT, RIGHT].indexOf(orientation) > -1;
+    const axisClassName = isVertical ? VERTICAL_CLASS_NAME :
+      HORIZONTAL_CLASS_NAME;
     return (
       <g
         transform={`translate(${left},${top})`}
