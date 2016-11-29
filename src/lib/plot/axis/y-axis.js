@@ -39,7 +39,7 @@ const defaultProps = {
 
 function YAxis(props) {
   return (
-    <Axis {...props}/>
+    <Axis {...props} />
   );
 }
 

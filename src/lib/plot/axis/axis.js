@@ -22,11 +22,7 @@ import React from 'react';
 
 import Animation from '../../animation';
 import PureRenderComponent from '../../pure-render-component';
-import {
-  DIRECTION,
-  getTicksTotalFromSize,
-  ORIENTATION
-} from '../../utils/axis-utils';
+import {ORIENTATION, getTicksTotalFromSize} from '../../utils/axis-utils';
 import AxisLine from './axis-line';
 import AxisTicks from './axis-ticks';
 import AxisTitle from './axis-title';
@@ -150,12 +146,12 @@ class Axis extends PureRenderComponent {
 
     const {
       className,
-      left,
-      top,
-      width,
       height,
+      left,
       orientation,
-      title
+      title,
+      top,
+      width
     } = props;
     const isY = [LEFT, RIGHT].indexOf(orientation) > -1;
     const axisClassName = isY ? VERTICAL_CLASS_NAME : HORIZONTAL_CLASS_NAME;

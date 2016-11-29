@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import Axis from './axis';
 import {ORIENTATION} from '../../utils/axis-utils';
 
@@ -39,7 +38,7 @@ const defaultProps = {
 
 function XAxis(props) {
   return (
-    <Axis {...props}/>
+    <Axis {...props} />
   );
 }
 
