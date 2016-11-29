@@ -645,3 +645,13 @@ export function literalScale() {
 
   return scale;
 }
+
+export default {
+  extractScalePropsFromProps,
+  getAttributeScale,
+  getDomainByAttr,
+  getMissingScaleProps,
+  getScaleObjectFromProps,
+  getScalePropTypesByAttribute,
+  literalScale
+}
