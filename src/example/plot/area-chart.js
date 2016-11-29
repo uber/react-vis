@@ -40,6 +40,7 @@ export default class Example extends React.Component {
         <YAxis />
         <AreaSeries
           className="area-series-example"
+          curve="curveNatural"
           data={[
             {x: 1, y: 10},
             {x: 2, y: 5},
