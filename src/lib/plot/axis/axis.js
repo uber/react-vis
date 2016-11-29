@@ -73,8 +73,8 @@ const defaultProps = {
 };
 
 const predefinedClassName = 'rv-xy-plot__axis';
-const VERTICAL_CLASS_NAME = 'rv-xy-plot__axis-vertical';
-const HORIZONTAL_CLASS_NAME = 'rv-xy-plot__axis-horizontal';
+const VERTICAL_CLASS_NAME = 'rv-xy-plot__axis--vertical';
+const HORIZONTAL_CLASS_NAME = 'rv-xy-plot__axis--horizontal';
 
 class Axis extends PureRenderComponent {
 
