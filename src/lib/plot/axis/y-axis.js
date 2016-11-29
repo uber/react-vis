@@ -21,7 +21,7 @@
 import React from 'react';
 
 import Axis from './axis';
-import {ORIENTATION} from '../../utils/axis-utils';
+import {ORIENTATION, DIRECTION} from '../../utils/axis-utils';
 
 const {LEFT, RIGHT} = ORIENTATION;
 
@@ -32,14 +32,21 @@ const propTypes = {
   ])
 };
 
+delete propTypes.axisType;
+
 const defaultProps = {
   orientation: LEFT,
   attr: 'y'
 };
 
 function YAxis(props) {
+  const axisProps = {
+    ...props,
+    axisType: DIRECTION.VERTICAL
+  };
+
   return (
-    <Axis {...props} />
+    <Axis {...axisProps} />
   );
 }
 

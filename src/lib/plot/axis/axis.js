@@ -22,7 +22,11 @@ import React from 'react';
 
 import Animation from '../../animation';
 import PureRenderComponent from '../../pure-render-component';
-import {ORIENTATION, getTicksTotalFromSize} from '../../utils/axis-utils';
+import {
+  DIRECTION,
+  getTicksTotalFromSize,
+  ORIENTATION
+} from '../../utils/axis-utils';
 import AxisLine from './axis-line';
 import AxisTicks from './axis-ticks';
 import AxisTitle from './axis-title';
@@ -39,6 +43,9 @@ const propTypes = {
   orientation: React.PropTypes.oneOf([
     LEFT, RIGHT, TOP, BOTTOM
   ]),
+  axisType: React.PropTypes.oneOf([
+    DIRECTION.VERTICAL, DIRECTION.HORIZONTAL
+  ]).isRequired,
   attr: React.PropTypes.string.isRequired,
   width: React.PropTypes.number,
   height: React.PropTypes.number,
@@ -46,6 +53,7 @@ const propTypes = {
   left: React.PropTypes.number,
   title: React.PropTypes.string,
 
+  className: React.PropTypes.string,
   tickLabelAngle: React.PropTypes.number,
   tickSize: React.PropTypes.number,
   tickSizeInner: React.PropTypes.number,
@@ -70,6 +78,10 @@ const defaultProps = {
   tickPadding: 8,
   orientation: BOTTOM
 };
+
+const predefinedClassName = 'rv-xy-plot__axis';
+const VERTICAL_CLASS_NAME = 'rv-xy-plot__axis-vertical';
+const HORIZONTAL_CLASS_NAME = 'rv-xy-plot__axis-horizontal';
 
 class Axis extends PureRenderComponent {
 
@@ -140,6 +152,8 @@ class Axis extends PureRenderComponent {
     };
 
     const {
+      axisType,
+      className,
       left,
       top,
       width,
@@ -147,11 +161,13 @@ class Axis extends PureRenderComponent {
       orientation,
       title
     } = props;
-
+    const isVertical = axisType === DIRECTION.VERTICAL;
+    const axisClassName = isVertical ? VERTICAL_CLASS_NAME :
+      HORIZONTAL_CLASS_NAME;
     return (
       <g
         transform={`translate(${left},${top})`}
-        className="rv-xy-plot__axis">
+        className={`${predefinedClassName} ${axisClassName} ${className}`}>
         <AxisLine
           height={height}
           width={width}

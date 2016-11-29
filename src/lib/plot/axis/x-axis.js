@@ -19,8 +19,9 @@
 // THE SOFTWARE.
 
 import React from 'react';
+
 import Axis from './axis';
-import {ORIENTATION} from '../../utils/axis-utils';
+import {DIRECTION, ORIENTATION} from '../../utils/axis-utils';
 
 const {TOP, BOTTOM} = ORIENTATION;
 
@@ -31,14 +32,21 @@ const propTypes = {
   ])
 };
 
+delete propTypes.axisType;
+
 const defaultProps = {
   orientation: BOTTOM,
   attr: 'x'
 };
 
 function XAxis(props) {
+  const axisProps = {
+    ...props,
+    axisType: DIRECTION.HORIZONTAL
+  };
+
   return (
-    <Axis {...props} />
+    <Axis {...axisProps} />
   );
 }
 
