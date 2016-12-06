@@ -58,6 +58,7 @@ class XYPlot extends React.Component {
       height: React.PropTypes.number.isRequired,
       margin: MarginPropType,
       onMouseDown: React.PropTypes.func,
+      onMouseLeave: React.PropTypes.func,
       onMouseMove: React.PropTypes.func,
       onMouseEnter: React.PropTypes.func,
       animation: AnimationPropType,
