@@ -57,7 +57,7 @@ class XYPlot extends React.Component {
       width: React.PropTypes.number.isRequired,
       height: React.PropTypes.number.isRequired,
       margin: MarginPropType,
-      onMouseLeave: React.PropTypes.func,
+      onMouseDown: React.PropTypes.func,
       onMouseMove: React.PropTypes.func,
       onMouseEnter: React.PropTypes.func,
       animation: AnimationPropType,
@@ -67,6 +67,7 @@ class XYPlot extends React.Component {
 
   constructor(props) {
     super(props);
+    this._mouseDownHandler = this._mouseDownHandler.bind(this);
     this._mouseLeaveHandler = this._mouseLeaveHandler.bind(this);
     this._mouseEnterHandler = this._mouseEnterHandler.bind(this);
     this._mouseMoveHandler = this._mouseMoveHandler.bind(this);
@@ -90,6 +91,25 @@ class XYPlot extends React.Component {
         data: nextData
       });
     }
+  }
+
+  /**
+   * Trigger mouse-down related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Mouse down event.
+   * @private
+   */
+  _mouseDownHandler(event) {
+    const {onMouseDown, children} = this.props;
+    if (onMouseDown) {
+      onMouseDown(event);
+    }
+    const seriesChildren = getSeriesChildren(children);
+    seriesChildren.forEach((child, index) => {
+      const component = this.refs[`series${index}`];
+      if (component && component.onParentMouseDown) {
+        component.onParentMouseDown(event);
+      }
+    });
   }
 
   /**
@@ -278,6 +298,7 @@ class XYPlot extends React.Component {
           className="rv-xy-plot__inner"
           width={width}
           height={height}
+          onMouseDown={this._mouseDownHandler}
           onMouseMove={this._mouseMoveHandler}
           onMouseLeave={this._mouseLeaveHandler}
           onMouseEnter={this._mouseEnterHandler}>
