@@ -23,6 +23,7 @@ export {default as Treemap} from './lib/treemap/treemap';
 
 export {default as XYPlot} from './lib/plot/xy-plot';
 
+export {default as AbstractSeries} from './lib/plot/series/abstract-series';
 export {default as LineSeries} from './lib/plot/series/line-series';
 export {default as VerticalBarSeries}
   from './lib/plot/series/vertical-bar-series';
