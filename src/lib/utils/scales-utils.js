@@ -649,6 +649,9 @@ export function literalScale() {
 export default {
   extractScalePropsFromProps,
   getAttributeScale,
+  getAttributeFunctor,
+  getAttr0Functor,
+  getAttributeValue,
   getDomainByAttr,
   getMissingScaleProps,
   getScaleObjectFromProps,
