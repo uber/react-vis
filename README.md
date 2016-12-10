@@ -83,6 +83,18 @@ npm test
 
 ## Change log
 
+### v0.7.0
+This release adds a new series: rectSeries. Rect series operates similarly to barSeries: they consist of a series of rectangles of various size that be stacked, but with one key difference. Where the bar series operates on the assumption of an ordinal axis, rect series operates on an assumption of a continuous one. This allows users to specify the positions of the edges of their rectangles!
+
+![alt text](https://cloud.githubusercontent.com/assets/6854312/21075697/47f1bbfa-becd-11e6-9f67-9c1ab5ad5e83.png "example histogram")
+
+Rect series are great for histograms, as they allow you to exactly specify the bounds of buckets. They can be accessed via VerticalRectSeries and HorizontalRectSeries. Check out the examples for more details. This is non breaking change, and can be dropped in immediately.
+
+
+### v0.6.8
+- Feature: Export Abstract series and the rest of the functions in scale utils.
+- Feature: Add specific class names to x and y axes
+
 ### v0.6.6
 
 - Improvement: added line smoothing via d3-shape curve functions ([#185](https://github.com/uber/react-vis/pull/185)).
