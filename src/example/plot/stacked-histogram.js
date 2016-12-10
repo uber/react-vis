@@ -26,8 +26,7 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  HorizontalBarSeries,
-  VerticalBarSeries} from '../../';
+  VerticalRectSeries} from '../../';
 
 export default class Example extends React.Component {
   render() {
@@ -36,46 +35,23 @@ export default class Example extends React.Component {
         <XYPlot
           width={300}
           height={300}
-          stackBy="x">
-          <VerticalGridLines />
-          <HorizontalGridLines />
-          <XAxis />
-          <YAxis />
-          <HorizontalBarSeries
-            data={[
-              {y: 2, x: 10},
-              {y: 4, x: 5},
-              {y: 5, x: 15}
-            ]}
-          />
-          <HorizontalBarSeries
-            data={[
-              {y: 2, x: 12},
-              {y: 4, x: 2},
-              {y: 5, x: 11}
-            ]}/>
-        </XYPlot>
-
-        <XYPlot
-          width={300}
-          height={300}
           stackBy="y">
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          <VerticalBarSeries
+          <VerticalRectSeries
             data={[
-              {x: 2, y: 10},
-              {x: 4, y: 5},
-              {x: 5, y: 15}
+              {x0: 1, x: 2, y: 10},
+              {x0: 2, x: 4, y: 5},
+              {x0: 5, x: 6, y: 15}
             ]}
           />
-          <VerticalBarSeries
+          <VerticalRectSeries
             data={[
-              {x: 2, y: 12},
-              {x: 4, y: 2},
-              {x: 5, y: 11}
+              {x0: 1, x: 2, y: 12},
+              {x0: 2, x: 4, y: 2},
+              {x0: 5, x: 6, y: 15}
             ]}/>
         </XYPlot>
       </div>

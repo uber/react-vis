@@ -23,9 +23,9 @@ import AbstractSeries from './abstract-series';
 import Animation from '../../animation';
 import {ANIMATED_SERIES_PROPS} from '../../utils/series-utils';
 
-const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--bar';
+const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--rect';
 
-class BarSeries extends AbstractSeries {
+class RectSeries extends AbstractSeries {
 
   static get propTypes() {
     return {
@@ -35,19 +35,6 @@ class BarSeries extends AbstractSeries {
       lineSizeAttr: React.PropTypes.string,
       valueSizeAttr: React.PropTypes.string
     };
-  }
-
-  _getScackParams() {
-    const {_stackBy, valuePosAttr} = this.props;
-    let {
-      sameTypeTotal = 1,
-      sameTypeIndex = 0
-    } = this.props;
-    if (_stackBy === valuePosAttr) {
-      sameTypeTotal = 1;
-      sameTypeIndex = 0;
-    }
-    return {sameTypeTotal, sameTypeIndex};
   }
 
   render() {
@@ -70,15 +57,13 @@ class BarSeries extends AbstractSeries {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <BarSeries {...this.props} animation={null}/>
+          <RectSeries {...this.props} animation={null}/>
         </Animation>
       );
     }
 
-    const {sameTypeTotal, sameTypeIndex} = this._getScackParams();
-
-    const distance = this._getScaleDistance(linePosAttr);
     const lineFunctor = this._getAttributeFunctor(linePosAttr);
+    const line0Functor = this._getAttr0Functor(linePosAttr);
     const valueFunctor = this._getAttributeFunctor(valuePosAttr);
     const value0Functor = this._getAttr0Functor(valuePosAttr);
     const fillFunctor = this._getAttributeFunctor('fill') ||
@@ -86,8 +71,6 @@ class BarSeries extends AbstractSeries {
     const strokeFunctor = this._getAttributeFunctor('stroke') ||
       this._getAttributeFunctor('color');
     const opacityFunctor = this._getAttributeFunctor('opacity');
-
-    const itemSize = (distance / 2) * 0.85;
 
     return (
       <g className={`${predefinedClassName} ${className}`}
@@ -100,9 +83,8 @@ class BarSeries extends AbstractSeries {
               stroke: strokeFunctor && strokeFunctor(d),
               fill: fillFunctor && fillFunctor(d)
             },
-            [linePosAttr]: lineFunctor(d) - itemSize +
-            (itemSize * 2 / sameTypeTotal * sameTypeIndex),
-            [lineSizeAttr]: itemSize * 2 / sameTypeTotal,
+            [linePosAttr]: line0Functor(d),
+            [lineSizeAttr]: lineFunctor(d) - line0Functor(d),
             [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
             [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
             onClick: e => this._valueClickHandler(d, e),
@@ -117,6 +99,6 @@ class BarSeries extends AbstractSeries {
   }
 }
 
-BarSeries.displayName = 'BarSeries';
+RectSeries.displayName = 'RectSeries';
 
-export default BarSeries;
+export default RectSeries;
