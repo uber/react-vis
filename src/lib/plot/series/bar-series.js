@@ -50,30 +50,51 @@ class BarSeries extends AbstractSeries {
     return {sameTypeTotal, sameTypeIndex};
   }
 
-  render() {
+  _renderRectanges() {
     const {
-      animation,
-      className,
-      data,
       linePosAttr,
       lineSizeAttr,
-      marginLeft,
-      marginTop,
       valuePosAttr,
       valueSizeAttr
     } = this.props;
+    const lineFunctor = this._getAttributeFunctor(linePosAttr);
+    const line0Functor = this._getAttr0Functor(linePosAttr);
 
-    if (!data) {
-      return null;
-    }
+    const valueFunctor = this._getAttributeFunctor(valuePosAttr);
+    const value0Functor = this._getAttr0Functor(valuePosAttr);
 
-    if (animation) {
-      return (
-        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <BarSeries {...this.props} animation={null}/>
-        </Animation>
-      );
-    }
+    const fillFunctor = this._getAttributeFunctor('fill') ||
+      this._getAttributeFunctor('color');
+    const strokeFunctor = this._getAttributeFunctor('stroke') ||
+      this._getAttributeFunctor('color');
+    const opacityFunctor = this._getAttributeFunctor('opacity');
+
+    return (d, i) => {
+      return {
+        style: {
+          opacity: opacityFunctor && opacityFunctor(d),
+          stroke: strokeFunctor && strokeFunctor(d),
+          fill: fillFunctor && fillFunctor(d)
+        },
+        [linePosAttr]: line0Functor(d),
+        [lineSizeAttr]: lineFunctor(d) - line0Functor(d),
+        [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
+        [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
+        onClick: e => this._valueClickHandler(d, e),
+        onMouseOver: e => this._valueMouseOverHandler(d, e),
+        onMouseOut: e => this._valueMouseOutHandler(d, e),
+        key: i
+      };
+    };
+  }
+
+  _renderCenteredRectanges() {
+    const {
+      linePosAttr,
+      lineSizeAttr,
+      valuePosAttr,
+      valueSizeAttr
+    } = this.props;
 
     const {sameTypeTotal, sameTypeIndex} = this._getScackParams();
 
@@ -88,30 +109,60 @@ class BarSeries extends AbstractSeries {
     const opacityFunctor = this._getAttributeFunctor('opacity');
 
     const itemSize = (distance / 2) * 0.85;
+    return (d, i) => {
+      return {
+        style: {
+          opacity: opacityFunctor && opacityFunctor(d),
+          stroke: strokeFunctor && strokeFunctor(d),
+          fill: fillFunctor && fillFunctor(d)
+        },
+        [linePosAttr]: lineFunctor(d) - itemSize +
+        (itemSize * 2 / sameTypeTotal * sameTypeIndex),
+        [lineSizeAttr]: itemSize * 2 / sameTypeTotal,
+        [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
+        [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
+        onClick: e => this._valueClickHandler(d, e),
+        onMouseOver: e => this._valueMouseOverHandler(d, e),
+        onMouseOut: e => this._valueMouseOutHandler(d, e),
+        key: i
+      };
+    };
+  }
 
+  _buildMappingFunction() {
+    if (this.props.histogramMode) {
+      return this._renderRectanges();
+    }
+
+    return this._renderCenteredRectanges();
+  }
+
+  render() {
+    const {
+      animation,
+      className,
+      data,
+      marginLeft,
+      marginTop
+    } = this.props;
+
+    if (!data) {
+      return null;
+    }
+
+    if (animation) {
+      return (
+        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+          <BarSeries {...this.props} animation={null}/>
+        </Animation>
+      );
+    }
+    const mappingFunctor = this._buildMappingFunction();
     return (
       <g className={`${predefinedClassName} ${className}`}
         ref="container"
         transform={`translate(${marginLeft},${marginTop})`}>
-        {data.map((d, i) => {
-          const attrs = {
-            style: {
-              opacity: opacityFunctor && opacityFunctor(d),
-              stroke: strokeFunctor && strokeFunctor(d),
-              fill: fillFunctor && fillFunctor(d)
-            },
-            [linePosAttr]: lineFunctor(d) - itemSize +
-            (itemSize * 2 / sameTypeTotal * sameTypeIndex),
-            [lineSizeAttr]: itemSize * 2 / sameTypeTotal,
-            [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
-            [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
-            onClick: e => this._valueClickHandler(d, e),
-            onMouseOver: e => this._valueMouseOverHandler(d, e),
-            onMouseOut: e => this._valueMouseOutHandler(d, e),
-            key: i
-          };
-          return (<rect {...attrs} />);
-        })}
+        {data.map((d, i) => (<rect {...mappingFunctor(d, i)} />))}
       </g>
     );
   }

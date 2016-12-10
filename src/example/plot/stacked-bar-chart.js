@@ -26,33 +26,85 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
+  HorizontalBarSeries,
   VerticalBarSeries} from '../../';
 
 export default class Example extends React.Component {
   render() {
     return (
-      <XYPlot
-        width={300}
-        height={300}
-        stackBy="y">
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <XAxis />
-        <YAxis />
-        <VerticalBarSeries
-          data={[
-            {x: 1, y: 10},
-            {x: 2, y: 5},
-            {x: 3, y: 15}
-          ]}
-        />
-        <VerticalBarSeries
-          data={[
-            {x: 1, y: 12},
-            {x: 2, y: 2},
-            {x: 3, y: 11}
-          ]}/>
-      </XYPlot>
+      <div>
+        <XYPlot
+          width={300}
+          height={300}
+          stackBy="x">
+          <VerticalGridLines />
+          <HorizontalGridLines />
+          <XAxis />
+          <YAxis />
+          <HorizontalBarSeries
+            data={[
+              {y: 2, x: 10},
+              {y: 4, x: 5},
+              {y: 5, x: 15}
+            ]}
+          />
+          <HorizontalBarSeries
+            data={[
+              {y: 2, x: 12},
+              {y: 4, x: 2},
+              {y: 5, x: 11}
+            ]}/>
+        </XYPlot>
+
+        <XYPlot
+          width={300}
+          height={300}
+          stackBy="y">
+          <VerticalGridLines />
+          <HorizontalGridLines />
+          <XAxis />
+          <YAxis />
+          <VerticalBarSeries
+            data={[
+              {x: 2, y: 10},
+              {x: 4, y: 5},
+              {x: 5, y: 15}
+            ]}
+          />
+          <VerticalBarSeries
+            data={[
+              {x: 2, y: 12},
+              {x: 4, y: 2},
+              {x: 5, y: 11}
+            ]}/>
+        </XYPlot>
+
+        <span> histogramMode</span>
+        <XYPlot
+          width={300}
+          height={300}
+          stackBy="y">
+          <VerticalGridLines />
+          <HorizontalGridLines />
+          <XAxis />
+          <YAxis />
+          <VerticalBarSeries
+            histogramMode="true"
+            data={[
+              {x0: 0.5, x: 2, y: 10},
+              {x0: 2, x: 4, y: 5},
+              {x0: 4, x: 5, y: 15}
+            ]}
+          />
+          <VerticalBarSeries
+            histogramMode="true"
+            data={[
+              {x0: 0.5, x: 2, y: 12},
+              {x0: 2, x: 4, y: 2},
+              {x0: 4, x: 5, y: 11}
+            ]}/>
+        </XYPlot>
+      </div>
     );
   }
 }

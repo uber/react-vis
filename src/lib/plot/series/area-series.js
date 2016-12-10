@@ -44,7 +44,9 @@ class AreaSeries extends AbstractSeries {
   }
 
   render() {
-    const {animation, className, curve, data, marginLeft, marginTop} = this.props;
+    const {
+      animation, className, curve, data, marginLeft, marginTop
+    } = this.props;
     if (!data) {
       return null;
     }
