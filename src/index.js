@@ -29,6 +29,11 @@ export {default as VerticalBarSeries}
   from './lib/plot/series/vertical-bar-series';
 export {default as HorizontalBarSeries}
   from './lib/plot/series/horizontal-bar-series';
+export {default as VerticalRectSeries}
+  from './lib/plot/series/vertical-rect-series';
+export {default as HorizontalRectSeries}
+  from './lib/plot/series/horizontal-rect-series';
+export {default as RectSeries} from './lib/plot/series/rect-series';
 export {default as MarkSeries} from './lib/plot/series/mark-series';
 export {default as HeatmapSeries} from './lib/plot/series/heatmap-series';
 export {default as AreaSeries} from './lib/plot/series/area-series';
