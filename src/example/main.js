@@ -22,37 +22,40 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import document from 'global/document';
 
-import ComplexChart from './plot/complex-chart';
-import LineChart from './plot/line-chart';
-import LineMarkChart from './plot/linemark-chart';
-import BarChart from './plot/bar-chart';
-import StackedBarChart from './plot/stacked-bar-chart';
-import StackedVerticalBarChart from './plot/stacked-vertical-bar-chart';
-import StackedHorizontalBarChart from './plot/stacked-horizontal-bar-chart';
-import StackedHistogram from './plot/stacked-histogram';
-import AreaChart from './plot/area-chart';
 import AreaChartElevated from './plot/area-chart-elevated';
-import ScatteplotChart from './plot/scatterplot';
-import HeatmapChart from './plot/heatmap-chart';
-import WidthHeightMarginChart from './plot/width-height-margin';
-import CustomScales from './plot/custom-scales';
+import AreaChart from './plot/area-chart';
+import AxisWithTurnedLabels from './plot/axis-with-turned-labels';
+import BarChart from './plot/bar-chart';
+import ComplexChart from './plot/complex-chart';
 import CustomAxesOrientation from './plot/custom-axes-orientation';
 import CustomAxisChart from './plot/custom-axis';
-import AxisWithTurnedLabels from './plot/axis-with-turned-labels';
-import GridLinesChart from './plot/grid';
-import StaticHints from './plot/static-hints';
-import DynamicHints from './plot/dynamic-hints';
-import StaticCrosshair from './plot/static-crosshair';
+import CustomScales from './plot/custom-scales';
 import DynamicCrosshair from './plot/dynamic-crosshair';
+import DynamicHints from './plot/dynamic-hints';
+import GridLinesChart from './plot/grid';
+import HeatmapChart from './plot/heatmap-chart';
+import LineChart from './plot/line-chart';
+import LineMarkChart from './plot/linemark-chart';
+import ScatteplotChart from './plot/scatterplot';
+import StackedHistogram from './plot/stacked-histogram';
+import StackedVerticalBarChart from './plot/stacked-vertical-bar-chart';
+import StackedHorizontalBarChart from './plot/stacked-horizontal-bar-chart';
+import StaticCrosshair from './plot/static-crosshair';
+import StaticHints from './plot/static-hints';
 import SyncedCharts from './plot/synced-charts';
 import TimeChart from './plot/time-chart';
+import WidthHeightMarginChart from './plot/width-height-margin';
+
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
-import StaticTable from './table/static-table';
+
 import DynamicTable from './table/dynamic-table';
+import StaticTable from './table/static-table';
+
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import DonutChartExample from './radial-chart/donut-chart';
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
+
 import VerticalDiscreteColorLegendExample
   from './legends/vertical-discrete-color';
 import HorizontalDiscreteColorLegendExample
@@ -61,6 +64,7 @@ import SearchableDiscreteColorLegendExample
   from './legends/searchable-discrete-color';
 import ContinuousColorLegendExample from './legends/continuous-color';
 import ContinuousSizeLegendExample from './legends/continuous-size';
+
 import {isReactDOMSupported} from '../lib/utils/react-utils';
 
 const examples = (
