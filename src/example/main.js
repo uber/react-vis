@@ -26,7 +26,6 @@ import ComplexChart from './plot/complex-chart';
 import LineChart from './plot/line-chart';
 import LineMarkChart from './plot/linemark-chart';
 import BarChart from './plot/bar-chart';
-import StackedBarChart from './plot/stacked-bar-chart';
 import StackedVerticalBarChart from './plot/stacked-vertical-bar-chart';
 import StackedHorizontalBarChart from './plot/stacked-horizontal-bar-chart';
 import StackedHistogram from './plot/stacked-histogram';
