@@ -657,4 +657,4 @@ export default {
   getScaleObjectFromProps,
   getScalePropTypesByAttribute,
   literalScale
-}
+};

@@ -23,11 +23,21 @@ import React from 'react';
 import PureRenderComponent from '../pure-render-component';
 import {getAttributeFunctor} from '../utils/scales-utils';
 
-const ORIENTATION_AUTO = 'auto';
-const ORIENTATION_TOPLEFT = 'topleft';
-const ORIENTATION_BOTTOMLEFT = 'bottomleft';
-const ORIENTATION_TOPRIGHT = 'topright';
-const ORIENTATION_BOTTOMRIGHT = 'bottomright';
+const ORIENTATION = {
+  AUTO: 'auto',
+  TOPLEFT: 'topleft',
+  BOTTOMLEFT: 'bottomleft',
+  TOPRIGHT: 'topright',
+  BOTTOMRIGHT: 'bottomright',
+  EDGETOP_LEFT: 'edgetopLeft',
+  EDGEBOTTOM_LEFT: 'edgebottomLeft',
+  EDGETOP_RIGHT: 'edgetopRight',
+  EDGEBOTTOM_RIGHT: 'edgebottomRight',
+  TOP_EDGELEFT: 'topEdgeleft',
+  BOTTOM_EDGELEFT: 'bottomEdgeleft',
+  TOP_EDGERIGHT: 'topEdgeright',
+  BOTTOM_EDGERIGHT: 'bottomEdgeright'
+};
 
 /**
  * Default format function for the value.
@@ -40,7 +50,7 @@ function defaultFormat(value) {
   });
 }
 
-class Hint extends PureRenderComponent {
+const Hint = class Hint extends PureRenderComponent {
 
   static get propTypes() {
     return {
@@ -52,11 +62,19 @@ class Hint extends PureRenderComponent {
       value: React.PropTypes.object,
       format: React.PropTypes.func,
       orientation: React.PropTypes.oneOf([
-        ORIENTATION_AUTO,
-        ORIENTATION_BOTTOMLEFT,
-        ORIENTATION_BOTTOMRIGHT,
-        ORIENTATION_TOPLEFT,
-        ORIENTATION_TOPRIGHT
+        ORIENTATION.AUTO,
+        ORIENTATION.TOPLEFT,
+        ORIENTATION.BOTTOMLEFT,
+        ORIENTATION.TOPRIGHT,
+        ORIENTATION.BOTTOMRIGHT,
+        ORIENTATION.EDGETOP_LEFT,
+        ORIENTATION.EDGEBOTTOM_LEFT,
+        ORIENTATION.EDGETOP_RIGHT,
+        ORIENTATION.EDGEBOTTOM_RIGHT,
+        ORIENTATION.TOP_EDGELEFT,
+        ORIENTATION.BOTTOM_EDGELEFT,
+        ORIENTATION.TOP_EDGERIGHT,
+        ORIENTATION.BOTTOM_EDGERIGHT
       ])
     };
   }
@@ -64,12 +82,13 @@ class Hint extends PureRenderComponent {
   static get defaultProps() {
     return {
       format: defaultFormat,
-      orientation: ORIENTATION_AUTO
+      orientation: ORIENTATION.AUTO
     };
   }
 
   /**
    * Get the right coordinate of the hint.
+   * When x undefined, edge case, pin right.
    * @param {number} x X.
    * @returns {{right: *}} Mixin.
    * @private
@@ -77,14 +96,16 @@ class Hint extends PureRenderComponent {
   _getCSSRight(x) {
     const {
       innerWidth,
-      marginRight} = this.props;
+      marginRight
+    } = this.props;
     return {
-      right: `${marginRight + innerWidth - x}px`
+      right: typeof x === 'number' ? marginRight + innerWidth - x : 0
     };
   }
 
   /**
    * Get the left coordinate of the hint.
+   * When x undefined, edge case, pin left.
    * @param {number} x X.
    * @returns {{left: *}} Mixin.
    * @private
@@ -92,12 +113,13 @@ class Hint extends PureRenderComponent {
   _getCSSLeft(x) {
     const {marginLeft} = this.props;
     return {
-      left: `${marginLeft + x}px`
+      left: typeof x === 'number' ? marginLeft + x : 0
     };
   }
 
   /**
    * Get the bottom coordinate of the hint.
+   * When y undefined, edge case, pin bottom.
    * @param {number} y Y.
    * @returns {{bottom: *}} Mixin.
    * @private
@@ -105,14 +127,16 @@ class Hint extends PureRenderComponent {
   _getCSSBottom(y) {
     const {
       innerHeight,
-      marginBottom} = this.props;
+      marginBottom
+    } = this.props;
     return {
-      bottom: `${marginBottom + innerHeight - y}px`
+      bottom: typeof y === 'number' ? marginBottom + innerHeight - y : 0
     };
   }
 
   /**
    * Get the top coordinate of the hint.
+   * When y undefined, edge case, pin top.
    * @param {number} y Y.
    * @returns {{top: *}} Mixin.
    * @private
@@ -120,7 +144,7 @@ class Hint extends PureRenderComponent {
   _getCSSTop(y) {
     const {marginTop} = this.props;
     return {
-      top: `${marginTop + y}px`
+      top: typeof y === 'number' ? marginTop + y : 0
     };
   }
 
@@ -138,14 +162,14 @@ class Hint extends PureRenderComponent {
       innerHeight} = this.props;
     if (x > innerWidth / 2) {
       if (y > innerHeight / 2) {
-        return ORIENTATION_TOPLEFT;
+        return ORIENTATION.TOPLEFT;
       }
-      return ORIENTATION_BOTTOMLEFT;
+      return ORIENTATION.BOTTOMLEFT;
     }
     if (y > innerHeight / 2) {
-      return ORIENTATION_TOPRIGHT;
+      return ORIENTATION.TOPRIGHT;
     }
-    return ORIENTATION_BOTTOMRIGHT;
+    return ORIENTATION.BOTTOMRIGHT;
   }
 
   /**
@@ -158,26 +182,56 @@ class Hint extends PureRenderComponent {
    * @private
    */
   _getOrientationStyle(orientation, x, y) {
-    let xCSS;
-    let yCSS;
-
-    if (orientation === ORIENTATION_BOTTOMLEFT ||
-      orientation === ORIENTATION_BOTTOMRIGHT) {
-      yCSS = this._getCSSTop(y);
-    } else {
-      yCSS = this._getCSSBottom(y);
-    }
-    if (orientation === ORIENTATION_TOPLEFT ||
-      orientation === ORIENTATION_BOTTOMLEFT) {
-      xCSS = this._getCSSRight(x);
-    } else {
-      xCSS = this._getCSSLeft(x);
-    }
-
     return {
-      ...xCSS,
-      ...yCSS
+      ...this._getXCSS(orientation, x),
+      ...this._getYCSS(orientation, y)
     };
+  }
+
+  _getYCSS(orientation, y) {
+    // obtain yCSS
+    switch (orientation) {
+    case ORIENTATION.EDGETOP_LEFT:
+    case ORIENTATION.EDGETOP_RIGHT:
+      // this pins x to top edge
+      return this._getCSSTop();
+    case ORIENTATION.EDGEBOTTOM_LEFT:
+    case ORIENTATION.EDGEBOTTOM_RIGHT:
+      // this pins x to bottom edge
+      return this._getCSSBottom();
+    case ORIENTATION.BOTTOMLEFT:
+    case ORIENTATION.BOTTOMRIGHT:
+    case ORIENTATION.BOTTOM_EDGELEFT:
+    case ORIENTATION.BOTTOM_EDGERIGHT:
+      // this places hint text to the bottom of center, so set its top edge
+      return this._getCSSTop(y);
+    default:
+      // this places hint text to the top of center, so set its bottom edge
+      return this._getCSSBottom(y);
+    }
+  }
+
+  _getXCSS(orientation, x) {
+    // obtain xCSS
+    switch(orientation) {
+    case ORIENTATION.TOP_EDGELEFT:
+    case ORIENTATION.BOTTOM_EDGELEFT:
+      // this pins x to left edge
+      return this._getCSSLeft();
+    case ORIENTATION.TOP_EDGERIGHT:
+    case ORIENTATION.BOTTOM_EDGERIGHT:
+      // this pins x to left edge
+      return this._getCSSRight();
+    case ORIENTATION.TOPLEFT:
+    case ORIENTATION.BOTTOMLEFT:
+    case ORIENTATION.EDGETOP_LEFT:
+    case ORIENTATION.EDGEBOTTOM_LEFT:
+      // this places hint text to the left of center, so set its right edge
+      return this._getCSSRight(x);
+    default:
+      // this places hint text to the right of center, so set its left edge
+      return this._getCSSLeft(x);
+    }
   }
 
   /**
@@ -204,7 +258,7 @@ class Hint extends PureRenderComponent {
     const x = getAttributeFunctor(this.props, 'x')(value);
     const y = getAttributeFunctor(this.props, 'y')(value);
 
-    const orientation = initialOrientation === ORIENTATION_AUTO ?
+    const orientation = initialOrientation === ORIENTATION.AUTO ?
       this._getOrientationFromAuto(x, y) : initialOrientation;
 
     return {
@@ -215,15 +269,18 @@ class Hint extends PureRenderComponent {
 
   render() {
     const {
+      className,
+      style,
       value,
       format,
       children} = this.props;
 
-    const {style, className} = this._getPositionInfo();
+    const posInfo = this._getPositionInfo();
     return (
       <div
-        className={`rv-hint ${className}`}
+        className={`rv-hint ${posInfo.className} ${className}`}
         style={{
+          ... posInfo.style,
           ... style,
           position: 'absolute'
         }}>
@@ -242,8 +299,9 @@ class Hint extends PureRenderComponent {
       </div>
     );
   }
-}
+};
 
 Hint.displayName = 'Hint';
+Hint.ORIENTATION = ORIENTATION;
 
 export default Hint;
