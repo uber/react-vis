@@ -158,7 +158,7 @@ const examples = (
       </section>
       <section>
         <h3>Dynamic Hints</h3>
-        <p >Move mouse over the point to see the hint.</p>
+        <p>Move mouse over the point to see the hint.</p>
         <DynamicHints />
       </section>
       <section>

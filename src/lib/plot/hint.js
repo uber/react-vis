@@ -50,7 +50,7 @@ function defaultFormat(value) {
   });
 }
 
-const Hint = class Hint extends PureRenderComponent {
+class Hint extends PureRenderComponent {
 
   static get propTypes() {
     return {
@@ -88,7 +88,7 @@ const Hint = class Hint extends PureRenderComponent {
 
   /**
    * Get the right coordinate of the hint.
-   * When x undefined, edge case, pin right.
+   * When x undefined or null, edge case, pin right.
    * @param {number} x X.
    * @returns {{right: *}} Mixin.
    * @private
@@ -99,13 +99,13 @@ const Hint = class Hint extends PureRenderComponent {
       marginRight
     } = this.props;
     return {
-      right: typeof x === 'number' ? marginRight + innerWidth - x : 0
+      right: x === undefined || x === null ? 0 : marginRight + innerWidth - x
     };
   }
 
   /**
    * Get the left coordinate of the hint.
-   * When x undefined, edge case, pin left.
+   * When x undefined or null, edge case, pin left.
    * @param {number} x X.
    * @returns {{left: *}} Mixin.
    * @private
@@ -113,13 +113,13 @@ const Hint = class Hint extends PureRenderComponent {
   _getCSSLeft(x) {
     const {marginLeft} = this.props;
     return {
-      left: typeof x === 'number' ? marginLeft + x : 0
+      left: x === undefined || x === null ? 0 : marginLeft + x
     };
   }
 
   /**
    * Get the bottom coordinate of the hint.
-   * When y undefined, edge case, pin bottom.
+   * When y undefined or null, edge case, pin bottom.
    * @param {number} y Y.
    * @returns {{bottom: *}} Mixin.
    * @private
@@ -130,13 +130,13 @@ const Hint = class Hint extends PureRenderComponent {
       marginBottom
     } = this.props;
     return {
-      bottom: typeof y === 'number' ? marginBottom + innerHeight - y : 0
+      bottom: y === undefined || y === null ? 0 : marginBottom + innerHeight - y
     };
   }
 
   /**
    * Get the top coordinate of the hint.
-   * When y undefined, edge case, pin top.
+   * When y undefined or null, edge case, pin top.
    * @param {number} y Y.
    * @returns {{top: *}} Mixin.
    * @private
@@ -144,7 +144,7 @@ const Hint = class Hint extends PureRenderComponent {
   _getCSSTop(y) {
     const {marginTop} = this.props;
     return {
-      top: typeof y === 'number' ? marginTop + y : 0
+      top: y === undefined || y === null ? 0 : marginTop + y
     };
   }
 
@@ -194,11 +194,11 @@ const Hint = class Hint extends PureRenderComponent {
     case ORIENTATION.EDGETOP_LEFT:
     case ORIENTATION.EDGETOP_RIGHT:
       // this pins x to top edge
-      return this._getCSSTop();
+      return this._getCSSTop(null);
     case ORIENTATION.EDGEBOTTOM_LEFT:
     case ORIENTATION.EDGEBOTTOM_RIGHT:
       // this pins x to bottom edge
-      return this._getCSSBottom();
+      return this._getCSSBottom(null);
     case ORIENTATION.BOTTOMLEFT:
     case ORIENTATION.BOTTOMRIGHT:
     case ORIENTATION.BOTTOM_EDGELEFT:
@@ -217,11 +217,11 @@ const Hint = class Hint extends PureRenderComponent {
     case ORIENTATION.TOP_EDGELEFT:
     case ORIENTATION.BOTTOM_EDGELEFT:
       // this pins x to left edge
-      return this._getCSSLeft();
+      return this._getCSSLeft(null);
     case ORIENTATION.TOP_EDGERIGHT:
     case ORIENTATION.BOTTOM_EDGERIGHT:
       // this pins x to left edge
-      return this._getCSSRight();
+      return this._getCSSRight(null);
     case ORIENTATION.TOPLEFT:
     case ORIENTATION.BOTTOMLEFT:
     case ORIENTATION.EDGETOP_LEFT:
@@ -269,18 +269,15 @@ const Hint = class Hint extends PureRenderComponent {
 
   render() {
     const {
-      className,
-      style,
       value,
       format,
       children} = this.props;
 
-    const posInfo = this._getPositionInfo();
+    const {style, className} = this._getPositionInfo();
     return (
       <div
-        className={`rv-hint ${posInfo.className} ${className}`}
+        className={`rv-hint ${className}`}
         style={{
-          ... posInfo.style,
           ... style,
           position: 'absolute'
         }}>
@@ -299,7 +296,7 @@ const Hint = class Hint extends PureRenderComponent {
       </div>
     );
   }
-};
+}
 
 Hint.displayName = 'Hint';
 Hint.ORIENTATION = ORIENTATION;

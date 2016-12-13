@@ -79,6 +79,8 @@ export default class Example extends React.Component {
           >
             <div className="rv-hint__content">
               { `(${value.x}, ${value.y})` }
+              <br/>
+              { DATA_HINT_ORIENTATION[value.x - 1] }
             </div>
           </Hint> : null
         }
