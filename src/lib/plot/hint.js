@@ -23,6 +23,25 @@ import React from 'react';
 import PureRenderComponent from '../pure-render-component';
 import {getAttributeFunctor} from '../utils/scales-utils';
 
+/*
+ * Hint is placed in one of four quadrants around a data point (imagine the
+ * point bisected by two axes -vertical, horizontal- creating 4 quadrants around
+ * a data point).
+ *
+ * A new extension to Hint introduced the edges of chart/plot area as a valid
+ * place to pin one dimension (edge) of a data point where a hint is placed.
+ * The data point's other dimension determines the location along the pinned
+ * edge as well as which side of the edge. Thus, the data point's
+ * x (if top/bottom edge is pinned) or y (if left/right edge is pinned) value
+ * determines the location of the edge plus descriptor of which side (top/bottom
+ * if left/right edge is pinned or left/righ if top/bottom edge is pinned).
+ *
+ * The constants identify positioning the Hint in either a quadrant or
+ * combination of an edge and an axis.
+ *
+ * The constants use the following naming format:
+ *   <edgetop | edgebottom | top | bottom>_<edgeleft | edgeright | left | right>
+ */
 const ORIENTATION = {
   AUTO: 'auto',
   TOPLEFT: 'topleft',
@@ -94,12 +113,18 @@ class Hint extends PureRenderComponent {
    * @private
    */
   _getCSSRight(x) {
+    if (x === undefined || x === null) {
+      return {
+        right: 0
+      };
+    }
+
     const {
       innerWidth,
       marginRight
     } = this.props;
     return {
-      right: x === undefined || x === null ? 0 : marginRight + innerWidth - x
+      right: marginRight + innerWidth - x
     };
   }
 
@@ -111,9 +136,15 @@ class Hint extends PureRenderComponent {
    * @private
    */
   _getCSSLeft(x) {
+    if (x === undefined || x === null) {
+      return {
+        left:  0
+      };
+    }
+
     const {marginLeft} = this.props;
     return {
-      left: x === undefined || x === null ? 0 : marginLeft + x
+      left:  marginLeft + x
     };
   }
 
@@ -125,12 +156,18 @@ class Hint extends PureRenderComponent {
    * @private
    */
   _getCSSBottom(y) {
+    if (y === undefined || y === null) {
+      return {
+        bottom: 0
+      };
+    }
+
     const {
       innerHeight,
       marginBottom
     } = this.props;
     return {
-      bottom: y === undefined || y === null ? 0 : marginBottom + innerHeight - y
+      bottom: marginBottom + innerHeight - y
     };
   }
 
@@ -142,9 +179,15 @@ class Hint extends PureRenderComponent {
    * @private
    */
   _getCSSTop(y) {
+    if (y === undefined || y === null) {
+      return {
+        top: 0
+      };
+    }
+
     const {marginTop} = this.props;
     return {
-      top: y === undefined || y === null ? 0 : marginTop + y
+      top: marginTop + y
     };
   }
 

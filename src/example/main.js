@@ -163,15 +163,15 @@ const examples = (
       </section>
       <section>
         <h3>Dynamic Simple Edge Hints</h3>
-        <p>Mouse over point; hint appears on different edges.<br/>
+        <p>Mouse over point. Hint appears on different edges.<br/>
           Left margin enables first point to show w/o break.</p>
         <DynamicSimpleEdgeHints />
       </section>
       <section>
         <h3>Dynamic Simple Top Edge Hints</h3>
-        <p>Mouse over point. <br/>
-          Hint appears at top edge & pole to point.<br/>
-        Left margin enables first point to show w/o break.</p>
+        <p>Mouse over point. Orientation is EDGETOP_LEFT. <br/>
+          Hint pinned to top edge & pole indicates location
+          along edge with hint box on the left side of edge.</p>
         <DynamicSimpleTopEdgeHints />
       </section>
       <section>
