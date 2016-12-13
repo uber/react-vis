@@ -26,35 +26,64 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  LineSeries,
+  MarkSeries,
   Hint} from '../../';
 
+const {EDGEBOTTOM_LEFT, EDGEBOTTOM_RIGHT, EDGETOP_LEFT, TOP_EDGERIGHT} =
+  Hint.ORIENTATION;
+const CHART_MARGINS = {left: 50, right: 50, top: 10, bottom: 25};
+const DATA = [
+  {x: 1, y: 5},
+  {x: 2, y: 10},
+  {x: 3, y: 10},
+  {x: 4, y: 15}
+];
+const DATA_HINT_ORIENTATION = [
+  TOP_EDGERIGHT,
+  EDGEBOTTOM_RIGHT,
+  EDGETOP_LEFT,
+  EDGEBOTTOM_LEFT
+];
+
 export default class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null
+    };
+    this._rememberValue = this._rememberValue.bind(this);
+  }
+
+  _rememberValue(value) {
+    this.setState({value});
+  }
+
   render() {
+    const {value} = this.state;
     return (
       <XYPlot
         width={300}
-        height={300}>
+        height={300}
+        margin={CHART_MARGINS}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis />
         <YAxis />
-        <LineSeries
-          data={[
-            {x: 0, y: 1},
-            {x: 1, y: 10},
-            {x: 2, y: 5},
-            {x: 3, y: 15}
-          ]}/>
-        <Hint value={{x: 1, y: 10}}/>
-        <Hint
-          value={{x: 0.4, y: 14}}
-          orientation={ Hint.ORIENTATION.BOTTOMRIGHT }>
-          <div className="custom-hint">
-            This is a custom hint<br />
-            for a non-existent value
-          </div>
-        </Hint>
+        <MarkSeries
+          onNearestX={ this._rememberValue}
+          data={DATA}/>
+        {value ?
+          <Hint
+            value={value}
+            orientation={ DATA_HINT_ORIENTATION[value.x - 1] }
+          >
+            <div className="rv-hint__content">
+              { `(${value.x}, ${value.y})` }
+              <br/>
+              { DATA_HINT_ORIENTATION[value.x - 1] }
+            </div>
+          </Hint> : null
+        }
       </XYPlot>
     );
   }
