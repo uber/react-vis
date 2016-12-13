@@ -179,8 +179,7 @@ const examples = (
         <p>Mouse over point. <br/>
           Hint uses flex, css to show hint and pole<br/>
           from point to outside plot edge (requires<br/>
-          margin values). Pass in style to Hint (could use<br/>
-          className alternatively)</p>
+          margin values).</p>
         <DynamicComplexEdgeHints />
       </section>
       <section>
