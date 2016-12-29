@@ -210,30 +210,30 @@ class Hint extends PureRenderComponent {
     // TODO: print warning that this feature is deprecated and support will be
     // removed in next major release.
     switch (orientation) {
-      case ORIENTATION.BOTTOM_LEFT:
-        return {
-          horizontal: ALIGN.LEFT,
-          vertical: ALIGN.BOTTOM
-        };
-      case ORIENTATION.BOTTOM_RIGHT:
-        return {
-          horizontal: ALIGN.RIGHT,
-          vertical: ALIGN.BOTTOM
-        };
-      case ORIENTATION.TOP_LEFT:
-        return {
-          horizontal: ALIGN.LEFT,
-          vertical: ALIGN.TOP
-        };
-      case ALIGN.TOP_RIGHT:
-        return {
-          horizontal: ALIGN.RIGHT,
-          vertical: ALIGN.TOP
-        };
-      default:
-        // fall back to horizontalAlign, verticalAlign that are either
-        // provided or defaulted to AUTO.  So, don't change things
-        break;
+    case ORIENTATION.BOTTOM_LEFT:
+      return {
+        horizontal: ALIGN.LEFT,
+        vertical: ALIGN.BOTTOM
+      };
+    case ORIENTATION.BOTTOM_RIGHT:
+      return {
+        horizontal: ALIGN.RIGHT,
+        vertical: ALIGN.BOTTOM
+      };
+    case ORIENTATION.TOP_LEFT:
+      return {
+        horizontal: ALIGN.LEFT,
+        vertical: ALIGN.TOP
+      };
+    case ALIGN.TOP_RIGHT:
+      return {
+        horizontal: ALIGN.RIGHT,
+        vertical: ALIGN.TOP
+      };
+    default:
+      // fall back to horizontalAlign, verticalAlign that are either
+      // provided or defaulted to AUTO.  So, don't change things
+      break;
     }
   }
 
@@ -255,10 +255,10 @@ class Hint extends PureRenderComponent {
     const align = orientation ?
       this._mapOrientationToAlign(orientation) : {horizontal, vertical};
     if (horizontal === ALIGN.AUTO) {
-      align.horizontal = (x > innerWidth / 2) ? ALIGN.LEFT : ALIGN.RIGHT
+      align.horizontal = (x > innerWidth / 2) ? ALIGN.LEFT : ALIGN.RIGHT;
     }
     if (vertical === ALIGN.AUTO) {
-      align.vertical = (y > innerHeight / 2) ? ALIGN.TOP : ALIGN.BOTTOM
+      align.vertical = (y > innerHeight / 2) ? ALIGN.TOP : ALIGN.BOTTOM;
     }
     return align;
   }
@@ -282,40 +282,40 @@ class Hint extends PureRenderComponent {
   _getYCSS(verticalAlign, y) {
     // obtain yCSS
     switch (verticalAlign) {
-      case ALIGN.TOP_EDGE:
-        // this pins x to top edge
-        return this._getCSSTop(null);
-      case ALIGN.BOTTOM_EDGE:
-        // this pins x to bottom edge
-        return this._getCSSBottom(null);
-      case ALIGN.BOTTOM:
-        // this places hint text to the bottom of center, so set its top edge
-        return this._getCSSTop(y);
-      case ALIGN.TOP:
-      default:
-        // this places hint text to the top of center, so set its bottom edge
-        // default case should not be possible but if it happens set to BOTTOM
-        return this._getCSSBottom(y);
+    case ALIGN.TOP_EDGE:
+      // this pins x to top edge
+      return this._getCSSTop(null);
+    case ALIGN.BOTTOM_EDGE:
+      // this pins x to bottom edge
+      return this._getCSSBottom(null);
+    case ALIGN.BOTTOM:
+      // this places hint text to the bottom of center, so set its top edge
+      return this._getCSSTop(y);
+    case ALIGN.TOP:
+    default:
+      // this places hint text to the top of center, so set its bottom edge
+      // default case should not be possible but if it happens set to BOTTOM
+      return this._getCSSBottom(y);
     }
   }
 
   _getXCSS(horizontal, x) {
     // obtain xCSS
     switch (horizontal) {
-      case ALIGN.LEFT_EDGE:
-        // this pins x to left edge
-        return this._getCSSLeft(null);
-      case ALIGN.RIGHT_EDGE:
-        // this pins x to left edge
-        return this._getCSSRight(null);
-      case ALIGN.LEFT:
-        // this places hint text to the left of center, so set its right edge
-        return this._getCSSRight(x);
-      case ALIGN.RIGHT:
-      default:
-        // this places hint text to the right of center, so set its left edge
-        // default case should not be possible but if it happens set to RIGHT
-        return this._getCSSLeft(x);
+    case ALIGN.LEFT_EDGE:
+      // this pins x to left edge
+      return this._getCSSLeft(null);
+    case ALIGN.RIGHT_EDGE:
+      // this pins x to left edge
+      return this._getCSSRight(null);
+    case ALIGN.LEFT:
+      // this places hint text to the left of center, so set its right edge
+      return this._getCSSRight(x);
+    case ALIGN.RIGHT:
+    default:
+      // this places hint text to the right of center, so set its left edge
+      // default case should not be possible but if it happens set to RIGHT
+      return this._getCSSLeft(x);
     }
   }
 
@@ -326,7 +326,10 @@ class Hint extends PureRenderComponent {
    * @private
    */
   _getAlignClassNames(align) {
-    return `rv-hint--horizontalAlign-${align.horizontal}
+    const {orientation} = this.props;
+    const orientationClass = orientation ?
+      `rv-hint--orientation-${orientation}` : '';
+    return `${orientationClass} rv-hint--horizontalAlign-${align.horizontal}
      rv-hint--verticalAlign-${align.vertical}`;
   }
 
