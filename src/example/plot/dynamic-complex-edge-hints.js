@@ -51,17 +51,17 @@ const POLE = [
   [{x: XMIN, y: DATA[3].y}, {x: DATA[3].x, y: DATA[3].y}]
 ];
 const DATA_HINT_ALIGN = [{
-  horizontalAlign: RIGHT_EDGE,
-  verticalAlign: TOP
+  horizontal: RIGHT_EDGE,
+  vertical: TOP
 }, {
-  horizontalAlign: LEFT,
-  verticalAlign: TOP_EDGE
+  horizontal: LEFT,
+  vertical: TOP_EDGE
 }, {
-  horizontalAlign: LEFT,
-  verticalAlign: BOTTOM_EDGE
+  horizontal: LEFT,
+  vertical: BOTTOM_EDGE
 }, {
-  horizontalAlign: LEFT_EDGE,
-  verticalAlign: TOP
+  horizontal: LEFT_EDGE,
+  vertical: TOP
 }];
 
 export default class Example extends React.Component {
@@ -101,19 +101,18 @@ export default class Example extends React.Component {
           {value ?
             <Hint
               value={value}
-              horizontalAlign={ DATA_HINT_ALIGN[value.x - 1].horizontalAlign }
-              verticalAlign={ DATA_HINT_ALIGN[value.x - 1].verticalAlign }
+              align={ DATA_HINT_ALIGN[value.x - 1] }
             >
               <div className={ `hint--text-container ${
-                DATA_HINT_ALIGN[value.x - 1].horizontalAlign}-${
-                DATA_HINT_ALIGN[value.x - 1].verticalAlign}`}>
+                DATA_HINT_ALIGN[value.x - 1].horizontal}-${
+                DATA_HINT_ALIGN[value.x - 1].vertical}`}>
                 <div className="hint--text">
                   { `(${value.x}, ${value.y})` }
                 </div>
               </div>
               <div className={`hint--pole ${
-                DATA_HINT_ALIGN[value.x - 1].horizontalAlign}-${
-                DATA_HINT_ALIGN[value.x - 1].verticalAlign}`}/>
+                DATA_HINT_ALIGN[value.x - 1].horizontal}-${
+                DATA_HINT_ALIGN[value.x - 1].vertical}`}/>
             </Hint> : null
           }
         </XYPlot>

@@ -26,31 +26,25 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
+  LineSeries,
   MarkSeries,
   Hint} from '../../';
 
-const {LEFT, RIGHT, TOP, BOTTOM_EDGE, RIGHT_EDGE, TOP_EDGE} =
-  Hint.ALIGN;
 const CHART_MARGINS = {left: 50, right: 10, top: 10, bottom: 25};
 const DATA = [
   {x: 1, y: 5},
-  {x: 2, y: 10},
-  {x: 3, y: 10},
+  {x: 2, y: 12},
+  {x: 3, y: 8},
   {x: 4, y: 15}
 ];
-const DATA_HINT_ALIGN = [{
-  horizontal: RIGHT_EDGE,
-  vertical: TOP
-}, {
-  horizontal: RIGHT,
-  vertical: BOTTOM_EDGE
-}, {
-  horizontal: LEFT,
-  vertical: TOP_EDGE
-}, {
-  horizontal: LEFT,
-  vertical: BOTTOM_EDGE
-}];
+const XMAX = 4;
+
+function getAlignStyle(align, x, y) {
+  return {
+    right: 0,
+    top: CHART_MARGINS.top + y
+  }
+}
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -80,15 +74,18 @@ export default class Example extends React.Component {
           onNearestX={ this._rememberValue}
           data={DATA}/>
         {value ?
+          <LineSeries
+            data={[{x: value.x, y: value.y}, {x: XMAX, y: value.y}]}
+            stroke="black"
+          /> : null
+        }
+        {value ?
           <Hint
             value={value}
-            align={ DATA_HINT_ALIGN[value.x - 1] }
+            getAlignStyle={ getAlignStyle }
           >
             <div className="rv-hint__content">
               { `(${value.x}, ${value.y})` }
-              <br/>
-              { `${DATA_HINT_ALIGN[value.x - 1].horizontal}-${
-                DATA_HINT_ALIGN[value.x - 1].vertical}` }
             </div>
           </Hint> : null
         }

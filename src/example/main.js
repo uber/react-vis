@@ -44,6 +44,7 @@ import DynamicHints from './plot/dynamic-hints';
 import DynamicComplexEdgeHints from './plot/dynamic-complex-edge-hints';
 import DynamicSimpleEdgeHints from './plot/dynamic-simple-edge-hints';
 import DynamicSimpleTopEdgeHints from './plot/dynamic-simple-topedge-hints';
+import DynamicProgrammaticRightEdgeHints from './plot/dynamic-programmatic-rightedge-hints';
 import StaticCrosshair from './plot/static-crosshair';
 import DynamicCrosshair from './plot/dynamic-crosshair';
 import SyncedCharts from './plot/synced-charts';
@@ -176,6 +177,14 @@ const examples = (
           along edge, hint box on right of pole<br/>
           for first 2 data points and left otherwise.</p>
         <DynamicSimpleTopEdgeHints />
+      </section>
+      <section>
+        <h3>Dynamic Programmatic Right Edge Hints</h3>
+        <p>Mouse over point.<br/>
+          getAlignStyle method returns style object<br/>
+          with right and top CSS props set (pinned<br/>
+          right edge and at y position) </p>
+        <DynamicProgrammaticRightEdgeHints />
       </section>
       <section>
         <h3>Dynamic Complex Edge Hints</h3>
