@@ -32,13 +32,13 @@ import {getAttributeFunctor} from '../utils/scales-utils';
  *    using data point's other dimension value.
  *
  * To support these two options, deprecate one Hint props (orientation) with two
- * new Hint props (horizontalAlign, verticalAlign) with following values:
+ * new Hint align prop object (horizontal, vertical) with following values:
  *
- *   horizontalAlign: auto, left, right, leftEdge, rightEdge
- *   verticalAlign: auto, bottom, top, bottomEdge, topEdge
+ *   horizontal: auto, left, right, leftEdge, rightEdge
+ *   vertical: auto, bottom, top, bottomEdge, topEdge
  *
- * Thus, the following ALIGN constants are the values for horizontalAlign
- * and verticalAlign
+ * Thus, the following ALIGN constants are the values for horizontal
+ * and vertical
  */
 const ALIGN = {
   AUTO: 'auto',
@@ -50,6 +50,16 @@ const ALIGN = {
   TOP: 'top',
   BOTTOM_EDGE: 'bottomEdge',
   TOP_EDGE: 'topEdge'
+};
+
+/**
+ * For backwards support, retain the ORIENTATION prop constants
+ */
+const ORIENTATION = {
+  BOTTOM_LEFT: 'bottomleft',
+  BOTTOM_RIGHT: 'bottomright',
+  TOP_LEFT: 'topleft',
+  TOP_RIGHT: 'topright'
 };
 
 /**
@@ -74,19 +84,28 @@ class Hint extends PureRenderComponent {
       scales: React.PropTypes.object,
       value: React.PropTypes.object,
       format: React.PropTypes.func,
-      horizontalAlign: React.PropTypes.oneOf([
-        ALIGN.AUTO,
-        ALIGN.LEFT,
-        ALIGN.RIGHT,
-        ALIGN.LEFT_EDGE,
-        ALIGN.RIGHT_EDGE
-      ]),
-      verticalAlign: React.PropTypes.oneOf([
-        ALIGN.AUTO,
-        ALIGN.BOTTOM,
-        ALIGN.TOP,
-        ALIGN.BOTTOM_EDGE,
-        ALIGN.TOP_EDGE
+      align: React.PropTypes.shape({
+        horizontal: React.PropTypes.oneOf([
+          ALIGN.AUTO,
+          ALIGN.LEFT,
+          ALIGN.RIGHT,
+          ALIGN.LEFT_EDGE,
+          ALIGN.RIGHT_EDGE
+        ]),
+        vertical: React.PropTypes.oneOf([
+          ALIGN.AUTO,
+          ALIGN.BOTTOM,
+          ALIGN.TOP,
+          ALIGN.BOTTOM_EDGE,
+          ALIGN.TOP_EDGE
+        ])
+      }),
+      getAlignStyle: React.PropTypes.func,
+      orientation: React.PropTypes.oneOf([
+        ORIENTATION.BOTTOM_LEFT,
+        ORIENTATION.BOTTOM_RIGHT,
+        ORIENTATION.TOP_LEFT,
+        ORIENTATION.TOP_RIGHT
       ])
     };
   }
@@ -94,8 +113,10 @@ class Hint extends PureRenderComponent {
   static get defaultProps() {
     return {
       format: defaultFormat,
-      horizontalAlign: ALIGN.AUTO,
-      verticalAlign: ALIGN.AUTO
+      align: {
+        horizontal: ALIGN.AUTO,
+        vertical: ALIGN.AUTO
+      }
     };
   }
 
@@ -185,33 +206,66 @@ class Hint extends PureRenderComponent {
     };
   }
 
+  _mapOrientationToAlign(orientation) {
+    // TODO: print warning that this feature is deprecated and support will be
+    // removed in next major release.
+    switch (orientation) {
+      case ORIENTATION.BOTTOM_LEFT:
+        return {
+          horizontal: ALIGN.LEFT,
+          vertical: ALIGN.BOTTOM
+        };
+      case ORIENTATION.BOTTOM_RIGHT:
+        return {
+          horizontal: ALIGN.RIGHT,
+          vertical: ALIGN.BOTTOM
+        };
+      case ORIENTATION.TOP_LEFT:
+        return {
+          horizontal: ALIGN.LEFT,
+          vertical: ALIGN.TOP
+        };
+      case ALIGN.TOP_RIGHT:
+        return {
+          horizontal: ALIGN.RIGHT,
+          vertical: ALIGN.TOP
+        };
+      default:
+        // fall back to horizontalAlign, verticalAlign that are either
+        // provided or defaulted to AUTO.  So, don't change things
+        break;
+    }
+  }
+
   /**
-   * Obtain align object with horizontalAlign and verticalAlign settings
+   * Obtain align object with horizontal and vertical settings
    * but convert any AUTO values to the non-auto ALIGN depending on the
    * values of x and y.
    * @param {number} x X value.
    * @param {number} y Y value.
-   * @returns {Object} Align w/ horizontalAlign, verticalAlign prop strings.
+   * @returns {Object} Align object w/ horizontal, vertical prop strings.
    * @private
    */
   _getAlign(x, y) {
     const {
       innerWidth, innerHeight,
-      horizontalAlign, verticalAlign
+      orientation,
+      align: {horizontal, vertical}
     } = this.props;
-    const align = {horizontalAlign, verticalAlign};
-    if (horizontalAlign === ALIGN.AUTO) {
-      align.horizontalAlign = (x > innerWidth / 2) ? ALIGN.LEFT : ALIGN.RIGHT
+    const align = orientation ?
+      this._mapOrientationToAlign(orientation) : {horizontal, vertical};
+    if (horizontal === ALIGN.AUTO) {
+      align.horizontal = (x > innerWidth / 2) ? ALIGN.LEFT : ALIGN.RIGHT
     }
-    if (verticalAlign === ALIGN.AUTO) {
-      align.verticalAlign = (y > innerHeight / 2) ? ALIGN.TOP : ALIGN.BOTTOM
+    if (vertical === ALIGN.AUTO) {
+      align.vertical = (y > innerHeight / 2) ? ALIGN.TOP : ALIGN.BOTTOM
     }
     return align;
   }
 
   /**
    * Get a CSS mixin for a proper positioning of the element.
-   * @param {Object} align with horizontalAlign, verticalAlign prop strings.
+   * @param {Object} align object with horizontal and vertical prop strings.
    * @param {number} x X position.
    * @param {number} y Y position.
    * @returns {Object} Object, that may contain `left` or `right, `top` or
@@ -220,60 +274,60 @@ class Hint extends PureRenderComponent {
    */
   _getAlignStyle(align, x, y) {
     return {
-      ...this._getXCSS(align.horizontalAlign, x),
-      ...this._getYCSS(align.verticalAlign, y)
+      ...this._getXCSS(align.horizontal, x),
+      ...this._getYCSS(align.vertical, y)
     };
   }
 
   _getYCSS(verticalAlign, y) {
     // obtain yCSS
     switch (verticalAlign) {
-    case ALIGN.TOP_EDGE:
-      // this pins x to top edge
-      return this._getCSSTop(null);
-    case ALIGN.BOTTOM_EDGE:
-      // this pins x to bottom edge
-      return this._getCSSBottom(null);
-    case ALIGN.BOTTOM:
-      // this places hint text to the bottom of center, so set its top edge
-      return this._getCSSTop(y);
-    case ALIGN.TOP:
-    default:
-      // this places hint text to the top of center, so set its bottom edge
-      // default case should not be possible but if it happens set to BOTTOM
-      return this._getCSSBottom(y);
+      case ALIGN.TOP_EDGE:
+        // this pins x to top edge
+        return this._getCSSTop(null);
+      case ALIGN.BOTTOM_EDGE:
+        // this pins x to bottom edge
+        return this._getCSSBottom(null);
+      case ALIGN.BOTTOM:
+        // this places hint text to the bottom of center, so set its top edge
+        return this._getCSSTop(y);
+      case ALIGN.TOP:
+      default:
+        // this places hint text to the top of center, so set its bottom edge
+        // default case should not be possible but if it happens set to BOTTOM
+        return this._getCSSBottom(y);
     }
   }
 
-  _getXCSS(horizontalAlign, x) {
+  _getXCSS(horizontal, x) {
     // obtain xCSS
-    switch(horizontalAlign) {
-    case ALIGN.LEFT_EDGE:
-      // this pins x to left edge
-      return this._getCSSLeft(null);
-    case ALIGN.RIGHT_EDGE:
-      // this pins x to left edge
-      return this._getCSSRight(null);
-    case ALIGN.LEFT:
-      // this places hint text to the left of center, so set its right edge
-      return this._getCSSRight(x);
-    case ALIGN.RIGHT:
-    default:
-      // this places hint text to the right of center, so set its left edge
-      // default case should not be possible but if it happens set to RIGHT
-      return this._getCSSLeft(x);
+    switch (horizontal) {
+      case ALIGN.LEFT_EDGE:
+        // this pins x to left edge
+        return this._getCSSLeft(null);
+      case ALIGN.RIGHT_EDGE:
+        // this pins x to left edge
+        return this._getCSSRight(null);
+      case ALIGN.LEFT:
+        // this places hint text to the left of center, so set its right edge
+        return this._getCSSRight(x);
+      case ALIGN.RIGHT:
+      default:
+        // this places hint text to the right of center, so set its left edge
+        // default case should not be possible but if it happens set to RIGHT
+        return this._getCSSLeft(x);
     }
   }
 
   /**
    * Get the class names from align values.
-   * @param {Object} align with horizontalAlign, verticalAlign prop strings.
+   * @param {Object} align object with horizontal and vertical prop strings.
    * @returns {string} Class names.
    * @private
    */
   _getAlignClassNames(align) {
-    return `rv-hint--horizontalAlign-${align.horizontalAlign}
-     rv-hint--verticalAlign-${align.verticalAlign}`;
+    return `rv-hint--horizontalAlign-${align.horizontal}
+     rv-hint--verticalAlign-${align.vertical}`;
   }
 
   /**
@@ -285,8 +339,7 @@ class Hint extends PureRenderComponent {
   _getPositionInfo() {
     const {
       value,
-      horizontalAlign,
-      verticalAlign
+      getAlignStyle
     } = this.props;
 
     const x = getAttributeFunctor(this.props, 'x')(value);
@@ -295,7 +348,8 @@ class Hint extends PureRenderComponent {
     const align = this._getAlign(x, y);
 
     return {
-      style: this._getAlignStyle(align, x, y),
+      style: getAlignStyle ? getAlignStyle(align, x, y) :
+        this._getAlignStyle(align, x, y),
       className: this._getAlignClassNames(align)
     };
   }
@@ -304,7 +358,8 @@ class Hint extends PureRenderComponent {
     const {
       value,
       format,
-      children} = this.props;
+      children
+    } = this.props;
 
     const {style, className} = this._getPositionInfo();
     return (
@@ -332,6 +387,7 @@ class Hint extends PureRenderComponent {
 }
 
 Hint.displayName = 'Hint';
+Hint.ORIENTATION = ORIENTATION;
 Hint.ALIGN = ALIGN;
 
 export default Hint;
