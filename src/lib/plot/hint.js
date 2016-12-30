@@ -51,6 +51,12 @@ class Hint extends PureRenderComponent {
       scales: React.PropTypes.object,
       value: React.PropTypes.object,
       format: React.PropTypes.func,
+      positionOverrides: React.PropTypes.shape({
+        top: React.PropTypes.number,
+        right: React.PropTypes.number,
+        bottom: React.PropTypes.number,
+        left: React.PropTypes.number
+      }),
       orientation: React.PropTypes.oneOf([
         ORIENTATION_AUTO,
         ORIENTATION_BOTTOMLEFT,
@@ -64,7 +70,8 @@ class Hint extends PureRenderComponent {
   static get defaultProps() {
     return {
       format: defaultFormat,
-      orientation: ORIENTATION_AUTO
+      orientation: ORIENTATION_AUTO,
+      positionOverrides: null
     };
   }
 
@@ -208,7 +215,10 @@ class Hint extends PureRenderComponent {
       this._getOrientationFromAuto(x, y) : initialOrientation;
 
     return {
-      style: this._getOrientationStyle(orientation, x, y),
+      style: {
+        ...this._getOrientationStyle(orientation, x, y),
+        ...this.props.positionOverrides
+      },
       className: this._getOrientationClassName(orientation)
     };
   }
