@@ -41,6 +41,10 @@ import AxisWithTurnedLabels from './plot/axis-with-turned-labels';
 import GridLinesChart from './plot/grid';
 import StaticHints from './plot/static-hints';
 import DynamicHints from './plot/dynamic-hints';
+import DynamicComplexEdgeHints from './plot/dynamic-complex-edge-hints';
+import DynamicSimpleEdgeHints from './plot/dynamic-simple-edge-hints';
+import DynamicSimpleTopEdgeHints from './plot/dynamic-simple-topedge-hints';
+import DynamicProgrammaticRightEdgeHints from './plot/dynamic-programmatic-rightedge-hints';
 import StaticCrosshair from './plot/static-crosshair';
 import DynamicCrosshair from './plot/dynamic-crosshair';
 import SyncedCharts from './plot/synced-charts';
@@ -157,6 +161,38 @@ const examples = (
         <h3>Dynamic Hints</h3>
         <p>Move mouse over the point to see the hint.</p>
         <DynamicHints />
+      </section>
+      <section>
+        <h3>Dynamic Simple Edge Hints</h3>
+        <p>Mouse over point. Hint appears on different edges.<br/>
+          Left margin enables first point to show w/o break.</p>
+        <DynamicSimpleEdgeHints />
+      </section>
+      <section>
+        <h3>Dynamic Simple Top Edge Hints</h3>
+        <p>Mouse over point.<br/>
+          horizontalAlign=ALIGN.AUTO,<br/>
+          verticalAlign=ALIGN.TOP_EDGE <br/>
+          Hint pinned to top edge, pole moves<br/>
+          along edge, hint box on right of pole<br/>
+          for first 2 data points and left otherwise.</p>
+        <DynamicSimpleTopEdgeHints />
+      </section>
+      <section>
+        <h3>Dynamic Programmatic Right Edge Hints</h3>
+        <p>Mouse over point.<br/>
+          getAlignStyle method returns style object<br/>
+          with right and top CSS props set (pinned<br/>
+          right edge and at y position) </p>
+        <DynamicProgrammaticRightEdgeHints />
+      </section>
+      <section>
+        <h3>Dynamic Complex Edge Hints</h3>
+        <p>Mouse over point. <br/>
+          Hint uses flex, css to show hint and pole<br/>
+          from point to outside plot edge (css for<br/>
+          margin values).</p>
+        <DynamicComplexEdgeHints />
       </section>
       <section>
         <h3>Static Crosshair</h3>

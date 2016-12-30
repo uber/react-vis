@@ -26,37 +26,72 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  LineSeries,
+  MarkSeries,
   Hint} from '../../';
 
+const {LEFT, RIGHT, TOP, BOTTOM_EDGE, RIGHT_EDGE, TOP_EDGE} =
+  Hint.ALIGN;
+const CHART_MARGINS = {left: 50, right: 10, top: 10, bottom: 25};
+const DATA = [
+  {x: 1, y: 5},
+  {x: 2, y: 10},
+  {x: 3, y: 10},
+  {x: 4, y: 15}
+];
+const DATA_HINT_ALIGN = [{
+  horizontal: RIGHT_EDGE,
+  vertical: TOP
+}, {
+  horizontal: RIGHT,
+  vertical: BOTTOM_EDGE
+}, {
+  horizontal: LEFT,
+  vertical: TOP_EDGE
+}, {
+  horizontal: LEFT,
+  vertical: BOTTOM_EDGE
+}];
+
 export default class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null
+    };
+    this._rememberValue = this._rememberValue.bind(this);
+  }
+
+  _rememberValue(value) {
+    this.setState({value});
+  }
+
   render() {
+    const {value} = this.state;
     return (
       <XYPlot
         width={300}
-        height={300}>
+        height={300}
+        margin={CHART_MARGINS}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis />
         <YAxis />
-        <LineSeries
-          data={[
-            {x: 0, y: 1},
-            {x: 1, y: 10},
-            {x: 2, y: 5},
-            {x: 3, y: 15}
-          ]}/>
-        <Hint value={{x: 1, y: 10}}/>
-        <Hint
-          value={{x: 0.4, y: 14}}
-          horizontalAlign={ Hint.ALIGN.RIGHT }
-          verticalAlign={Hint.ALIGN.BOTTOM }
+        <MarkSeries
+          onNearestX={ this._rememberValue}
+          data={DATA}/>
+        {value ?
+          <Hint
+            value={value}
+            align={ DATA_HINT_ALIGN[value.x - 1] }
           >
-          <div className="custom-hint">
-            This is a custom hint<br />
-            for a non-existent value
-          </div>
-        </Hint>
+            <div className="rv-hint__content">
+              { `(${value.x}, ${value.y})` }
+              <br/>
+              { `${DATA_HINT_ALIGN[value.x - 1].horizontal}-${
+                DATA_HINT_ALIGN[value.x - 1].vertical}` }
+            </div>
+          </Hint> : null
+        }
       </XYPlot>
     );
   }
