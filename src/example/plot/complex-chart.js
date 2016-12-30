@@ -81,6 +81,7 @@ export default class Example extends React.Component {
     this._updateButtonClicked = this._updateButtonClicked.bind(this);
     this._legendClickHandler = this._legendClickHandler.bind(this);
     this._formatCrosshairItems = this._formatCrosshairItems.bind(this);
+    this._formatCrosshairTitle = this._formatCrosshairTitle.bind(this);
   }
 
   _updateButtonClicked() {
