@@ -83,6 +83,18 @@ npm test
 
 ## Change log
 
+### v0.8.0
+This release adds two new props (and set of illustrative examples) to Hint component: ```align``` and ```getAlignStyle```. ```align``` (replacing ```orientation``` prop) is an object with two props &mdash; ```horizontal``` and ```vertical``` &mdash; and set of values that support existing and new hint placement:
+  a) around a data point in one of four quadrants (imagine the point bisected by two axes &mdash; vertical, horizontal &mdash; creating 4 quadrants around a data point).
+  b) **New**: pin to an edge of chart/plot area and position along that edge using data point's other dimension value.
+
+Developers wanting total control can use the ```getAlignStyle(align, x, y)``` function that returns an inline style object with one or more of the following props (```left, right, top, bottom```).
+
+The ```orientation``` prop is supported for backwards compatibility but will be deprecated in future release.
+
+See the following figure explaining the two props  (```horizontal, vertical```) for the ```align``` prop object.
+![react-vis-hint](https://cloud.githubusercontent.com/assets/2983206/21572148/f1529198-ce8a-11e6-8dc3-ef5f320ab9a1.png)
+
 ### v0.7.0
 This release adds a new series: rectSeries. Rect series operates similarly to barSeries: they consist of a series of rectangles of various size that be stacked, but with one key difference. Where the bar series operates on the assumption of an ordinal axis, rect series operates on an assumption of a continuous one. This allows users to specify the positions of the edges of their rectangles!
 
