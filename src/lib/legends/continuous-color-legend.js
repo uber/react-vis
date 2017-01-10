@@ -58,8 +58,7 @@ function ContinuousColorLegend({startColor, midColor, endColor, startTitle,
     <div className="rv-continuous-color-legend" style={{width, height}}>
       <div
         className="rv-gradient"
-        style={{background: `linear-gradient(to right, ${colors.join(',')})`}}>
-      </div>
+        style={{background: `linear-gradient(to right, ${colors.join(',')})`}} />
       <div className="rv-legend-titles">
         <span className="rv-legend-titles__left">
           {startTitle}

@@ -283,6 +283,8 @@ const examples = (
 // Cannot render to body anymore: react is throwing warnings.
 // Adding new element instead.
 const el = document.createElement('div');
-const render = isReactDOMSupported() ? ReactDOM.render : React.render;
+const render = isReactDOMSupported() ?
+  ReactDOM.render :
+  React.render; // eslint-disable-line react/no-deprecated
 document.body.appendChild(el);
 render(examples, el);

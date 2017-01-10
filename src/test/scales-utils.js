@@ -103,7 +103,7 @@ test('scales-utils/getScalePropTypesByAttribute', function t(
   const result = getScalePropTypesByAttribute('size');
   let isValid = true;
   Object.keys(result).forEach(key => {
-    isValid &= key.indexOf(`_size`) === 0 || key.indexOf('size') === 0;
+    isValid &= key.indexOf('_size') === 0 || key.indexOf('size') === 0;
   });
   assert.ok(isValid, 'Should return _size or size values');
   assert.end();
