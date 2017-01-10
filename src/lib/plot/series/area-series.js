@@ -65,8 +65,8 @@ class AreaSeries extends AbstractSeries {
       this._getAttributeValue('color');
     const fill = this._getAttributeValue('fill') ||
       this._getAttributeValue('color');
-    const givenOpacity = this._getAttributeValue('opacity');
-    const opacity = !isNaN(givenOpacity) ? givenOpacity : DEFAULT_OPACITY;
+    const newOpacity = this._getAttributeValue('opacity');
+    const opacity = Number.isFinite(newOpacity) ? newOpacity : DEFAULT_OPACITY;
     const d = this._renderArea(data, x, y0, y, curve);
     return (
       <path
