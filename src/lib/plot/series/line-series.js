@@ -83,7 +83,8 @@ class LineSeries extends AbstractSeries {
     const y = this._getAttributeFunctor('y');
     const stroke = this._getAttributeValue('stroke') ||
       this._getAttributeValue('color');
-    const opacity = this._getAttributeValue('opacity') || DEFAULT_OPACITY;
+    const givenOpacity = this._getAttributeValue('opacity');
+    const opacity = !isNaN(givenOpacity) ? givenOpacity : DEFAULT_OPACITY;
     const d = this._renderLine(data, x, y, curve);
 
     return (

@@ -49,7 +49,7 @@ export default class AreaChartElevated extends React.Component {
           ]}/>
         <AreaSeries
           className="area-elevated-series-2"
-          color="12939a"
+          color="#12939a"
           data={[
             {x: 1, y: 5, y0: 6},
             {x: 2, y: 20, y0: 11},
