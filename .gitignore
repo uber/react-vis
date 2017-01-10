@@ -12,4 +12,5 @@ jshint-proper.xml
 
 core
 npm-debug.log
+.eslintcache
 .idea/

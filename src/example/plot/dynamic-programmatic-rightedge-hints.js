@@ -43,7 +43,7 @@ function getAlignStyle(align, x, y) {
   return {
     right: 0,
     top: CHART_MARGINS.top + y
-  }
+  };
 }
 
 export default class Example extends React.Component {
