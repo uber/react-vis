@@ -67,6 +67,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  className: '',
   tickSize: 6,
   tickPadding: 8,
   orientation: BOTTOM
