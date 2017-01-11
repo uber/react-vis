@@ -23,6 +23,7 @@ import DiscreteColorLegendItem from './discrete-color-legend-item';
 import {DISCRETE_COLOR_RANGE} from '../theme';
 
 const propTypes = {
+  className: React.PropTypes.string,
   items: React.PropTypes.arrayOf(
     React.PropTypes.oneOfType([
       React.PropTypes.shape({
@@ -36,11 +37,11 @@ const propTypes = {
   onItemClick: React.PropTypes.func,
   height: React.PropTypes.number,
   width: React.PropTypes.number,
-  orientation: React.PropTypes.oneOf(['vertical', 'horizontal']),
-  className: React.PropTypes.string
+  orientation: React.PropTypes.oneOf(['vertical', 'horizontal'])
 };
 
 const defaultProps = {
+  className: '',
   colors: DISCRETE_COLOR_RANGE,
   orientation: 'vertical'
 };
@@ -58,7 +59,7 @@ function fillItemsWithDefaults(items) {
 }
 
 function DiscreteColorLegend({items: initialItems, width, height,
-  onItemClick, orientation, className = ''}) {
+  onItemClick, orientation, className }) {
   const updatedItems = fillItemsWithDefaults(initialItems);
   return (
     <div
