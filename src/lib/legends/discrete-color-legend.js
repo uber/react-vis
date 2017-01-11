@@ -36,7 +36,8 @@ const propTypes = {
   onItemClick: React.PropTypes.func,
   height: React.PropTypes.number,
   width: React.PropTypes.number,
-  orientation: React.PropTypes.oneOf(['vertical', 'horizontal'])
+  orientation: React.PropTypes.oneOf(['vertical', 'horizontal']),
+  className: React.PropTypes.string
 };
 
 const defaultProps = {
