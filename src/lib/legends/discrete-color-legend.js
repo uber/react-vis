@@ -57,11 +57,11 @@ function fillItemsWithDefaults(items) {
 }
 
 function DiscreteColorLegend({items: initialItems, width, height,
-  onItemClick, orientation}) {
+  onItemClick, orientation, className = ''}) {
   const updatedItems = fillItemsWithDefaults(initialItems);
   return (
     <div
-      className={`rv-discrete-color-legend ${orientation}`}
+      className={`rv-discrete-color-legend ${orientation} ${className}`}
       style={{width, height}}>
       {updatedItems.map((item, i) =>
         <DiscreteColorLegendItem
