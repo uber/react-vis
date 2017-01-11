@@ -280,9 +280,13 @@ const examples = (
   </main>
 );
 
-// Cannot render to body anymore: react is throwing warnings.
+// Cannot render to body anymore: react is throwing warnings. React.render()
+// was deprecated in 0.15.0
+//
 // Adding new element instead.
 const el = document.createElement('div');
-const render = isReactDOMSupported() ? ReactDOM.render : React.render;
+const render = isReactDOMSupported() ?
+  ReactDOM.render :
+  React.render; // eslint-disable-line react/no-deprecated
 document.body.appendChild(el);
 render(examples, el);

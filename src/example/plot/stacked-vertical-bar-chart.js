@@ -26,7 +26,6 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  HorizontalBarSeries,
   VerticalBarSeries} from '../../';
 
 export default class Example extends React.Component {

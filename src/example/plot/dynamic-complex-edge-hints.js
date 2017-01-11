@@ -117,6 +117,6 @@ export default class Example extends React.Component {
           }
         </XYPlot>
       </div>
-  );
+    );
   }
 }

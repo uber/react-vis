@@ -88,7 +88,7 @@ test('Render a stacked bar chart with other children', assert => {
         Empty div here is intentional, for testing series children handling
         */
       }
-      <div></div>
+      <div />
     </XYPlot>
   );
 

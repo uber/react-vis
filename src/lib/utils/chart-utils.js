@@ -32,12 +32,12 @@ export function getInnerDimensions(props, defaultMargins) {
     ...defaultMargins,
     ...(
       typeof margin === 'number' ?
-        {
-          left: margin,
-          right: margin,
-          top: margin,
-          bottom: margin
-        } :
+      {
+        left: margin,
+        right: margin,
+        top: margin,
+        bottom: margin
+      } :
         margin
     )
   };

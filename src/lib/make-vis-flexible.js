@@ -94,7 +94,7 @@ export default function makeVisFlexible(Component) {
   const ResultClass = class extends React.Component {
 
     static get propTypes() {
-      const {width, ...otherPropTypes} = Component.propTypes;
+      const {width, ...otherPropTypes} = Component.propTypes; // eslint-disable-line no-unused-vars
       return otherPropTypes;
     }
 

@@ -54,7 +54,7 @@ function ContinuousSizeLegend({startTitle, endTitle, startSize, endSize,
         width: size,
         height: size,
         borderRadius: size / 2
-      }}></div>
+      }} />
     );
     // Add the separator in order to justify the content (otherwise the tags
     // will be stacked together without any margins around).
@@ -64,7 +64,7 @@ function ContinuousSizeLegend({startTitle, endTitle, startSize, endSize,
     <div className="rv-continuous-size-legend" style={{width, height}}>
       <div className="rv-bubbles" style={{height: endSize}}>
         {circles}
-        <div className="rv-spacer"></div>
+        <div className="rv-spacer" />
       </div>
       <div className="rv-legend-titles">
         <span className="rv-legend-titles__left">
