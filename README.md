@@ -20,7 +20,7 @@ Some notable features:
 Install react-vis via npm.
 
 ```shell
-npm install react-vis
+npm install react-vis --save
 ```
 
 Include the CSS from `./node_modules/react-vis/main` in your HTML page or via SASS:
