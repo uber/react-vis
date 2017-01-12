@@ -83,6 +83,16 @@ npm test
 
 ## Change log
 
+### v0.9.0
+
+This release addresses a couple of bugs and improves our dep tree. The only psuedo-breaking change is to the layout of radial plot. The way that it now works is that the pie is centered within the given width/height and then allowed to grow to an innerWidth/innerHeight that is computed from the margins and the width/height.
+
+- Bug: Modify margin system for radial chart
+- Improvement: Support for classname on legends
+- Chore: Remove duplicated styles
+- Bug: Add default props to classname for axis
+- Chore: Update deps, fix lint errors
+
 ### v0.8.0
 This release adds two new props (and set of illustrative examples) to Hint component: ```align``` and ```getAlignStyle```. ```align``` (replacing ```orientation``` prop) is an object with two props &mdash; ```horizontal``` and ```vertical``` &mdash; and set of values that support existing and new hint placement:
   a) around a data point in one of four quadrants (imagine the point bisected by two axes &mdash; vertical, horizontal &mdash; creating 4 quadrants around a data point).
