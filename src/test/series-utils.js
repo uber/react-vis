@@ -25,9 +25,9 @@ import React from 'react';
 
 import {
   isSeriesChild,
-  getSeriesPropsFromChildren} from '../lib/utils/series-utils';
+  getSeriesPropsFromChildren} from '../utils/series-utils';
 
-import {LineSeries, XAxis} from '../';
+import {LineSeries, XAxis} from '../../';
 
 test('series-utils/isSeriesChild', function t(assert) {
   const series = React.createElement(LineSeries, {data: []});

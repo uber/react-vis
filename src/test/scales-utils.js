@@ -30,7 +30,7 @@ import {
   extractScalePropsFromProps,
   getMissingScaleProps,
   literalScale
-} from '../lib/utils/scales-utils';
+} from '../utils/scales-utils';
 
 function isScaleConsistent(scaleObject, attr) {
   return scaleObject && scaleObject.range && scaleObject.domain &&

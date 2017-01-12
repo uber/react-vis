@@ -25,7 +25,7 @@ import equal from 'deep-equal';
 import {
   getObjectValueAccessor,
   getUniquePropertyValues,
-  addValueToArray} from '../lib/utils/data-utils';
+  addValueToArray} from '../utils/data-utils';
 
 const arr = [{a: 1}, {b: 3, a: 2}, {a: 2}];
 

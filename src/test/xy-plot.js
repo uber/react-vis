@@ -21,9 +21,9 @@
 import test from 'tape';
 import React from 'react';
 import {shallow} from 'enzyme';
-import VerticalBarSeries from '../lib/plot/series/vertical-bar-series';
-import XAxis from '../lib/plot/axis/x-axis';
-import XYPlot from '../lib/plot/xy-plot';
+import VerticalBarSeries from '../plot/series/vertical-bar-series';
+import XAxis from '../plot/axis/x-axis';
+import XYPlot from '../plot/xy-plot';
 
 test('Render a stacked bar chart', assert => {
   const wrapper = shallow(
