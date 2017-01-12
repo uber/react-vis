@@ -29,6 +29,7 @@ export default class SimpleRadialChart extends React.Component {
         colorType={'literal'}
         colorDomain={[0, 100]}
         colorRange={[0, 10]}
+        margin={{top: 100}}
         data={[
           {angle: 1, color: '#0f0'},
           {angle: 2, color: '#ff0'},

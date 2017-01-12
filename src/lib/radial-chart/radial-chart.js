@@ -245,10 +245,6 @@ class RadialChart extends React.Component {
       return null;
     }
 
-    const {innerWidth, innerHeight} = getInnerDimensions(
-      this.props,
-      DEFAULT_MARGINS
-    );
     const opacityFunctor = this._getAttributeFunctor('opacity');
     const fillFunctor = this._getAttributeFunctor('fill') ||
       this._getAttributeFunctor('color');
@@ -271,7 +267,7 @@ class RadialChart extends React.Component {
           className="rv-radial-chart__svg">
           <g
             className="rv-radial-chart__series--pie"
-            transform={`translate(${innerWidth / 2},${innerHeight / 2})`}
+            transform={`translate(${width / 2},${height / 2})`}
             ref="container">
             {data.map((d, i) => <path {...{
               d: arc(pieData[i]),
