@@ -80,7 +80,7 @@
     "prepublish": "npm run build"
   },
   "engines": {
-    "node": "0.10.x",
-    "npm": "3.x"
+    "node": ">=0.10.0",
+    "npm": ">=3.0"
   }
 }
