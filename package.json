@@ -2,15 +2,12 @@
   "name": "react-vis",
   "version": "0.9.0",
   "license": "MIT",
-  "author": "Anton Bulyenov <antonb@uber.com>",
+  "author": "Visualization Team <visualization@uber.com>",
   "description": "Data visualization library based on React and d3.",
-  "keywords": [
-    "d3",
-    "react",
-    "visualization",
-    "chart",
-    "es6",
-    "babel"
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "main.css"
   ],
   "repository": {
     "type": "git",
@@ -18,9 +15,17 @@
   },
   "bugs": {
     "url": "https://github.com/uber-common/react-vis/issues/new",
-    "email": "antonb@uber.com"
+    "email": "visualization@uber.com"
   },
-  "main": "index.js",
+  "scripts": {
+    "docs": "(cd showcase && npm run build && cp bundle.* .. && cd .. && git checkout gh-pages && git commit -am 'Upgrade docs' && git push && git checkout master)",
+    "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
+    "clean": "rm -rf dist bundle.* index.html && mkdir dist",
+    "build": "npm run clean && babel src -d dist --copy-files && node-sass src/main.scss main.css",
+    "lint": "eslint src tests showcase --ignore-pattern node_modules --ignore-pattern bundle.js",
+    "test": "tape -r babel-register tests/**/*.js",
+    "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test"
+  },
   "dependencies": {
     "d3-array": "^1.0.2",
     "d3-collection": "^1.0.2",
@@ -35,48 +40,55 @@
   },
   "devDependencies": {
     "babel-cli": "6.18.0",
-    "babel-polyfill": "^6.20.0",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-module-resolver": "^2.4.0",
     "babel-preset-es2015": "6.18.0",
     "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-2": "^6.18.0",
-    "brfs": "^1.4.3",
-    "browserify": "^13.3.0",
-    "budo": "^9.4.1",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.18.0",
     "enzyme": "^2.7.0",
     "eslint": "^3.13.1",
     "eslint-config-uber-es2015": "^3.0.1",
     "eslint-config-uber-jsx": "^3.0.1",
-    "eslint-formatter-pretty": "^1.1.0",
+    "eslint-plugin-babel": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
+    "jsdom": "^9.9.1",
     "node-sass": "^4.2.0",
+    "nyc": "^10.0.0",
     "react": ">=15.4.2",
     "react-addons-shallow-compare": ">=15.4.2",
     "react-addons-test-utils": ">=15.4.2",
     "react-dom": ">=15.4.2",
-    "run-browser-babel": "^5.2.0",
-    "tape": "^4.6.3",
-    "uglify-js": "^2.7.5"
+    "tape": "^4.6.3"
   },
   "peerDependencies": {
     "react": "0.14.x - 15.x",
     "react-addons-shallow-compare": "0.14.x - 15.x"
   },
-  "scripts": {
-    "build-js": "babel src -d dist --copy-files",
-    "build-js-example": "npm run build-js -- --source-maps inline",
-    "build-docs": "(node-sass src/example/main.scss example.css) & (browserify -t brfs ./dist/example/main.js > example.js)",
-    "build-css": "node-sass src/main.scss main.css",
-    "build-css-example": "node-sass src/example/main.scss -o dist/example/",
-    "build-example": "npm run build-css-example && npm run build-js-example",
-    "watch-example": "(npm run build-css-example -- --watch) & (npm run build-js-example -- --watch) &",
-    "build": "npm run build-js && npm run build-css",
-    "watch": "npm run build-example && npm run watch-example && (budo dist/example/main.js --live --css dist/example/main.css)",
-    "lint": "eslint --cache --ignore-path .gitignore --format=node_modules/eslint-formatter-pretty .",
-    "execute-tests": "run-browser-babel dist/test/index.js --bx react/addons --bx react/lib/ReactContext --bx react/lib/ExecutionEnvironment --phantom",
-    "test": "npm run build-js && npm run execute-tests",
-    "cover": "npm run build-js && npm run execute-tests -- --report=text --report=cobertura --report=html --report=json-summary",
-    "precommit": "npm run lint -s",
-    "prepublish": "npm run build"
+  "keywords": [
+    "d3",
+    "react",
+    "visualization",
+    "chart",
+    "es6",
+    "babel"
+  ],
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0",
+      "react"
+    ],
+    "plugins": [
+      [
+        "module-resolver",
+        {
+          "root": [
+            "./src"
+          ]
+        }
+      ]
+    ]
   },
   "engines": {
     "node": ">=0.10.0",

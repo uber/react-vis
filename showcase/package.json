@@ -1,0 +1,20 @@
+{
+  "name": "react-vis-showcase",
+  "description": "Showcase of react-vis components",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "webpack-dev-server --progress --hot --port 3001 --open",
+    "build": "NODE_ENV=production webpack"
+  },
+  "devDependencies": {
+    "babel-loader": "^6.2.10",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^2.0.0-beta",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "2.2.0-rc.4",
+    "webpack-dev-server": "2.2.0-rc.0"
+  },
+  "license": "MIT",
+  "private": true
+}

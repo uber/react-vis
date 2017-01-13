@@ -9,9 +9,13 @@
   ],
   "rules": {
     "consistent-return": 0,
-    "max-params": ["error", 6]
+    "max-params": ["error", 6],
+    "object-curly-spacing": 0,
+    "babel/object-curly-spacing": 2
   },
+  "parser": "babel-eslint",
   "plugins": [
-    "react"
+    "react",
+    "babel"
   ]
 }
