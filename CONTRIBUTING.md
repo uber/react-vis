@@ -11,12 +11,6 @@ Before you get started, here are some suggestions:
  - The pull requests gets reviewed and then merged assuming there are no problems.
  - A new release version gets cut.
 
-## Licencing
-
- - Every file must have a licence block at the top. This is enforced using `uber-licence`
- - If you contribute to a file in this project and are not an Uber employee, then you should add your name to the copyright section of the licence file.
- - Work that you contribute must be your own.
-
 ## Releases
 
 Declaring formal releases requires peer review.
