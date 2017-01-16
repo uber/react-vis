@@ -28,6 +28,11 @@ Include the CSS from `./node_modules/react-vis/main` in your HTML page or via SA
 @import "./node_modules/react-vis/main";
 ```
 
+You can also select only the styles you want to use. This helps minimize the size of the outputted CSS. Here's an example of importing only the legends styles:
+```sass
+@import "./node_modules/react-vis/dist/styles/legends";
+```
+
 Import the necessary components from the library&hellip;
 
 ```jsx
