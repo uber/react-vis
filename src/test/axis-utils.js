@@ -21,7 +21,7 @@
 import test from 'tape';
 import 'babel-polyfill';
 
-import {getTicksTotalFromSize} from '../lib/utils/axis-utils';
+import {getTicksTotalFromSize} from '../utils/axis-utils';
 
 test('axis-utils/getTicksTotalFromSize', function t(assert) {
   assert.ok(getTicksTotalFromSize(0) === 5, 'Returns valid value for 0px');
