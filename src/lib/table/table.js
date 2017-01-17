@@ -24,6 +24,7 @@ import {getDOMNode} from '../utils/react-utils';
 
 const HEADER_REF = 'headerRef';
 const DATA_REF = 'dataRef';
+let DID_WARN = false;
 
 class Table extends React.Component {
 
@@ -50,6 +51,15 @@ class Table extends React.Component {
     this._updateHeaderPosition = this._updateHeaderPosition.bind(this);
     this._renderHeaderCell = this._renderHeaderCell.bind(this);
     this._renderDataRow = this._renderDataRow.bind(this);
+  }
+
+  componentDidMount() {
+    /* eslint-disable no-console */
+    if (!DID_WARN) {
+      console.warn('[React-vis] The table chart type will be depreciated in the next release');
+      DID_WARN = true;
+    }
+    /* eslint-enable no-console */
   }
 
   /**
