@@ -18,7 +18,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-export {default as Table} from './lib/table/table';
 export {default as Treemap} from './lib/treemap/treemap';
 
 export {default as XYPlot} from './lib/plot/xy-plot';

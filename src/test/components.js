@@ -22,7 +22,6 @@ import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import Treemap from '../lib/treemap/treemap';
-import Table from '../lib/table/table';
 import LineSeries from '../lib/plot/series/line-series';
 import AreaSeries from '../lib/plot/series/area-series';
 import MarkSeries from '../lib/plot/series/mark-series';
@@ -56,13 +55,6 @@ function NOOP() {
 }
 
 const TREEMAP_PROPS = {height: 100, width: 100, data: {}};
-
-const TABLE_PROPS = {
-  height: 100,
-  width: 100,
-  header: ['a', 'b', 'c'],
-  data: [[1, 2, 3], [4, 5, 6]]
-};
 
 const XYPLOT_SERIES_PROPS = {
   xDomain: [0, 1],
@@ -112,7 +104,6 @@ const XYPLOT_YAXIS_PROPS = {
 const XYPLOT_PROPS = {width: 10, height: 10};
 
 testRenderWithProps(Treemap, TREEMAP_PROPS);
-testRenderWithProps(Table, TABLE_PROPS);
 testRenderWithProps(LineSeries, XYPLOT_SERIES_PROPS);
 testRenderWithProps(AreaSeries, XYPLOT_SERIES_PROPS);
 testRenderWithProps(MarkSeries, XYPLOT_SERIES_PROPS);

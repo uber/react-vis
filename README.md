@@ -6,7 +6,7 @@ See the live demo at http://uber.github.io/react-vis
 
 ## Overview
 
-A collection of react components to render common data visualization charts, such as **line/area/bar charts**, **heat maps**, **scatteplots**, **pie and donut charts**, **tables** with fixed headers and **tree maps**.
+A collection of react components to render common data visualization charts, such as **line/area/bar charts**, **heat maps**, **scatteplots**, **pie and donut charts** with fixed headers and **tree maps**.
 
 Some notable features:
 
@@ -67,7 +67,6 @@ Take a look at the [folder with examples](src/example) or check out some docs:
 - Components:
   * [XYPlot](docs/xy-plot.md) about orthogonal charts.
   * [RadialChart](docs/radial-chart.md) about radial charts.
-  * [Table](docs/table.md) about table.
   * [Treemap](docs/treemap.md) about making tree maps.
   * [Legends](docs/legends.md) about the legends.
 
@@ -184,7 +183,7 @@ Upgraded to modular d3, compiled code became smaller, changed the API for axes a
   * [the API of axes](docs/xy-plot.md#axes) is now (almost) compatible to the API of 'd3-axis'.
   * `labelFormat` and `labelValues` attributes for the axes are **removed**: similar results can be done achieved when `tickFormat` and `tickValues` attributes are used (see the [the updated documentation for axes](docs/xy-plot.md#axes) for more details).
   * `tickFormat` function is now gets only **one (value) argument instead of two (value and index)**.
-* The API of grids (`VerticalGridLines` and `HorizontalGridLines`) was significantly changed: it partially replicates the API of the axes.  Please refer to [the updated documentation ](docs/xy-plot.md#grids) for more detail. 
+* The API of grids (`VerticalGridLines` and `HorizontalGridLines`) was significantly changed: it partially replicates the API of the axes.  Please refer to [the updated documentation ](docs/xy-plot.md#grids) for more detail.
 
 #### Non-breaking changes
 

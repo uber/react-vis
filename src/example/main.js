@@ -51,8 +51,6 @@ import SyncedCharts from './plot/synced-charts';
 import TimeChart from './plot/time-chart';
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
-import StaticTable from './table/static-table';
-import DynamicTable from './table/dynamic-table';
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import DonutChartExample from './radial-chart/donut-chart';
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
@@ -75,7 +73,6 @@ const examples = (
           <li><a href="#plots">Plots</a></li>
           <li><a href="#radial-charts">Radial Charts</a></li>
           <li><a href="#treemaps">Treemaps</a></li>
-          <li><a href="#tables">Tables</a></li>
           <li><a href="#legends">Legends</a></li>
         </nav>
       </div>
@@ -237,18 +234,6 @@ const examples = (
       <section>
         <h3>Animated Treemap</h3>
         <TreemapExample />
-      </section>
-    </article>
-    <article id="tables">
-      <h1>Table</h1>
-      <section>
-        <h3>Static Table</h3>
-        <StaticTable />
-      </section>
-      <section>
-        <h3>Dynamic Table</h3>
-        <p>Updates each 5 seconds</p>
-        <DynamicTable />
       </section>
     </article>
     <article id="legends">
