@@ -1,15 +1,14 @@
-@import url(https://fonts.googleapis.com/css?family=Sintony:400,700);
 .rv-treemap {
   font-size: 12px;
   position: relative; }
 
 .rv-treemap__leaf {
-  position: absolute;
-  overflow: hidden; }
+  overflow: hidden;
+  position: absolute; }
 
 .rv-treemap__leaf__content {
-  padding: 10px;
   overflow: hidden;
+  padding: 10px;
   text-overflow: ellipsis; }
 
 .rv-table {
@@ -133,18 +132,21 @@
   box-sizing: border-box;
   overflow-y: auto;
   font-size: 12px; }
-  .rv-discrete-color-legend.horizontal {
-    white-space: nowrap; }
+
+.rv-discrete-color-legend.horizontal {
+  white-space: nowrap; }
 
 .rv-discrete-color-legend-item {
   color: #3A3A48;
   border-radius: 1px;
   padding: 9px 10px; }
-  .rv-discrete-color-legend-item.horizontal {
-    display: inline-block; }
-    .rv-discrete-color-legend-item.horizontal .rv-discrete-color-legend-item__title {
-      margin-left: 0;
-      display: block; }
+
+.rv-discrete-color-legend-item.horizontal {
+  display: inline-block; }
+
+.rv-discrete-color-legend-item.horizontal .rv-discrete-color-legend-item__title {
+  margin-left: 0;
+  display: block; }
 
 .rv-discrete-color-legend-item__color {
   background: #DCDCDC;
@@ -161,8 +163,9 @@
 
 .rv-discrete-color-legend-item.clickable {
   cursor: pointer; }
-  .rv-discrete-color-legend-item.clickable:hover {
-    background: #f9f9f9; }
+
+.rv-discrete-color-legend-item.clickable:hover {
+  background: #f9f9f9; }
 
 .rv-search-wrapper {
   display: flex;
@@ -188,27 +191,31 @@
 
 .rv-continuous-color-legend {
   font-size: 12px; }
-  .rv-continuous-color-legend .rv-gradient {
-    height: 4px;
-    border-radius: 2px;
-    margin-bottom: 5px; }
+
+.rv-continuous-color-legend .rv-gradient {
+  height: 4px;
+  border-radius: 2px;
+  margin-bottom: 5px; }
 
 .rv-continuous-size-legend {
   font-size: 12px; }
-  .rv-continuous-size-legend .rv-bubbles {
-    text-align: justify;
-    overflow: hidden;
-    margin-bottom: 5px;
-    width: 100%; }
-  .rv-continuous-size-legend .rv-bubble {
-    background: #D8D9DC;
-    display: inline-block;
-    vertical-align: bottom; }
-  .rv-continuous-size-legend .rv-spacer {
-    display: inline-block;
-    font-size: 0;
-    line-height: 0;
-    width: 100%; }
+
+.rv-continuous-size-legend .rv-bubbles {
+  text-align: justify;
+  overflow: hidden;
+  margin-bottom: 5px;
+  width: 100%; }
+
+.rv-continuous-size-legend .rv-bubble {
+  background: #D8D9DC;
+  display: inline-block;
+  vertical-align: bottom; }
+
+.rv-continuous-size-legend .rv-spacer {
+  display: inline-block;
+  font-size: 0;
+  line-height: 0;
+  width: 100%; }
 
 .rv-legend-titles {
   height: 16px;
@@ -221,16 +228,12 @@
   white-space: nowrap;
   overflow: hidden; }
 
-.rv-legend-titles__left {
-  position: absolute; }
-
 .rv-legend-titles__center {
   display: block;
   text-align: center;
   width: 100%; }
 
 .rv-legend-titles__right {
-  position: absolute;
   right: 0; }
 
 .rv-radial-chart__svg {
@@ -379,3 +382,81 @@ article {
     top: -17px;
     left: 5px;
     position: absolute; }
+
+.complex-hint {
+  margin-top: 40px; }
+  .complex-hint .rv-hint {
+    /* must be positioned in a parent with relative positioning */
+    position: absolute;
+    width: 0;
+    height: 100%; }
+    .complex-hint .rv-hint .hint--text-container {
+      position: absolute;
+      /*
+       * set to 0,0 so that its content (including children)
+       * can overflow out in vertical and horizontal
+       */
+      width: 0;
+      height: 0;
+      /*
+       * use flex to place its children (centered) and aligned (bottom).
+       * As its height is 0, align-items flex-end paints its items from cross-axis
+       * up.  flex-start, its items would paint from cross-axis down.
+       */
+      display: flex;
+      justify-content: center; }
+      .complex-hint .rv-hint .hint--text-container.rightEdge-top {
+        flex-direction: column-reverse;
+        align-items: flex-start; }
+      .complex-hint .rv-hint .hint--text-container.left-topEdge {
+        flex-direction: row;
+        align-items: flex-end; }
+      .complex-hint .rv-hint .hint--text-container.left-bottomEdge {
+        flex-direction: row;
+        align-items: flex-start; }
+      .complex-hint .rv-hint .hint--text-container.leftEdge-top {
+        flex-direction: column;
+        align-items: flex-end; }
+      .complex-hint .rv-hint .hint--text-container .hint--text {
+        /* text content uses -micro padding */
+        padding: 4px;
+        border: 2px solid black;
+        color: black;
+        white-space: nowrap; }
+    .complex-hint .rv-hint .hint--pole {
+      position: absolute; }
+      .complex-hint .rv-hint .hint--pole.rightEdge-top {
+        top: -1px;
+        left: -10px;
+        border-top: 2px solid black;
+        width: 10px;
+        height: 0; }
+      .complex-hint .rv-hint .hint--pole.left-topEdge {
+        border-left: 2px solid black;
+        left: -1px;
+        height: 10px;
+        width: 0;
+        top: 0; }
+      .complex-hint .rv-hint .hint--pole.left-bottomEdge {
+        border-left: 2px solid black;
+        left: -1px;
+        height: 25px;
+        width: 0;
+        top: -25px; }
+      .complex-hint .rv-hint .hint--pole.leftEdge-top {
+        top: -1px;
+        border-top: 2px solid black;
+        width: 30px;
+        height: 0; }
+  .complex-hint .rv-hint--horizontalAlign-rightEdge.rv-hint--verticalAlign-top {
+    width: 0;
+    height: 0; }
+  .complex-hint .rv-hint--horizontalAlign-left.rv-hint--verticalAlign-topEdge {
+    width: 0;
+    height: 100%; }
+  .complex-hint .rv-hint--horizontalAlign-left.rv-hint--verticalAlign-bottomEdge {
+    width: 0;
+    height: 0; }
+  .complex-hint .rv-hint--horizontalAlign-leftEdge.rv-hint--verticalAlign-top {
+    width: 100%;
+    height: 0; }
