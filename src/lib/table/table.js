@@ -19,12 +19,12 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import warning from 'warning';
 
 import {getDOMNode} from '../utils/react-utils';
 
 const HEADER_REF = 'headerRef';
 const DATA_REF = 'dataRef';
-let DID_WARN = false;
 
 class Table extends React.Component {
 
@@ -54,12 +54,8 @@ class Table extends React.Component {
   }
 
   componentDidMount() {
-    /* eslint-disable no-console */
-    if (!DID_WARN) {
-      console.warn('[React-vis] The table chart type will be depreciated in the next release');
-      DID_WARN = true;
-    }
-    /* eslint-enable no-console */
+    warning(false, '[React-vis] The table chart type will ' +
+      'be depreciated in the next release');
   }
 
   /**

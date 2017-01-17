@@ -554,8 +554,8 @@ export function getAttributeValue(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
   if (scaleObject) {
     if (!scaleObject.isValue) {
-      warning(false, `Cannot use data defined ${attr} for this series` +
-        'type. Using fallback value instead.');
+      warning(false, `[React-vis] Cannot use data defined ${attr} for this ` +
+        'series type. Using fallback value instead.');
     }
     return scaleObject.range[0];
   }
