@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {getDOMNode} from '../utils/react-utils';
+import {getDOMNode, warnOnce} from '../utils/react-utils';
 
 const HEADER_REF = 'headerRef';
 const DATA_REF = 'dataRef';
@@ -50,6 +50,11 @@ class Table extends React.Component {
     this._updateHeaderPosition = this._updateHeaderPosition.bind(this);
     this._renderHeaderCell = this._renderHeaderCell.bind(this);
     this._renderDataRow = this._renderDataRow.bind(this);
+  }
+
+  componentDidMount() {
+    warnOnce('[React-vis] The table chart type will ' +
+      'be depreciated in the next release');
   }
 
   /**

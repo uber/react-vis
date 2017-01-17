@@ -23,12 +23,11 @@ import * as d3Array from 'd3-array';
 import * as d3Collection from 'd3-collection';
 
 import React from 'react';
-import warning from 'warning';
 
 import {
   getUniquePropertyValues,
   addValueToArray} from './data-utils';
-
+import {warning} from './react-utils';
 /**
  * Linear scale name.
  * @type {string}
@@ -554,8 +553,8 @@ export function getAttributeValue(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
   if (scaleObject) {
     if (!scaleObject.isValue) {
-      warning(false, `Cannot use data defined ${attr} for this series` +
-        'type. Using fallback value instead.');
+      warning(`[React-vis] Cannot use data defined ${attr} for this ` +
+        'series type. Using fallback value instead.');
     }
     return scaleObject.range[0];
   }

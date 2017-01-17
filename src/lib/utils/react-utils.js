@@ -39,3 +39,36 @@ export function getDOMNode(ref) {
 export function isReactDOMSupported() {
   return versionHigherThanThirteen;
 }
+
+const USED_MESSAGES = {};
+const HIDDEN_PROCESSES = {
+  test: true,
+  production: true
+};
+/**
+ * Warn the user about something
+ * @param {String} message - the message to be shown
+ * @param {Boolean} onlyShowMessageOnce - whether or not we allow the
+ - message to be show multiple times
+ */
+export function warning(message, onlyShowMessageOnce = false) {
+  /* eslint-disable no-undef, no-process-env */
+  if (process && HIDDEN_PROCESSES[process.env.NODE_ENV]) {
+    return;
+  }
+  /* eslint-enable no-undef, no-process-env */
+  if (!onlyShowMessageOnce || !USED_MESSAGES[message]) {
+    /* eslint-disable no-console */
+    console.warn(message);
+    /* eslint-enable no-console */
+    USED_MESSAGES[message] = true;
+  }
+}
+
+/**
+ * Convience wrapper for warning
+ * @param {String} message - the message to be shown
+ */
+export function warnOnce(message) {
+  warning(message, true);
+}
