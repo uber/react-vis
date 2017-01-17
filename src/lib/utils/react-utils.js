@@ -51,7 +51,7 @@ const HIDDEN_PROCESSES = {
  * @param {Boolean} onlyShowMessageOnce - whether or not we allow the
  - message to be show multiple times
  */
-export function warning(message, onlyShowMessageOnce) {
+export function warning(message, onlyShowMessageOnce = false) {
   /* eslint-disable no-undef, no-process-env */
   if (process && HIDDEN_PROCESSES[process.env.NODE_ENV]) {
     return;
@@ -63,4 +63,12 @@ export function warning(message, onlyShowMessageOnce) {
     /* eslint-enable no-console */
     USED_MESSAGES[message] = true;
   }
+}
+
+/**
+ * Convience wrapper for warning
+ * @param {String} message - the message to be shown
+ */
+export function warnOnce(message) {
+  warning(message, true);
 }
