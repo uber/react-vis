@@ -19,9 +19,8 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import warning from 'warning';
 
-import {getDOMNode} from '../utils/react-utils';
+import {getDOMNode, warning} from '../utils/react-utils';
 
 const HEADER_REF = 'headerRef';
 const DATA_REF = 'dataRef';
@@ -54,8 +53,8 @@ class Table extends React.Component {
   }
 
   componentDidMount() {
-    warning(false, '[React-vis] The table chart type will ' +
-      'be depreciated in the next release');
+    warning('[React-vis] The table chart type will ' +
+      'be depreciated in the next release', true);
   }
 
   /**
