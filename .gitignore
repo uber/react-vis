@@ -1,20 +1,17 @@
 .sass-cache/
-.DS_Store
+node_modules/
+
 coverage/
+showcase/
 dist/
 docs/
-node_modules/
 src/
+
 index.js
 main.css
 react-vis.gif
 
-# temporary jenkins files
-test/test.js.tap
-jshint.xml
-jshint-proper.xml
-
-core
-npm-debug.log
-.idea/
+npm-debug.log*
+.DS_Store
 .*
+.idea/
