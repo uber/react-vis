@@ -60,6 +60,8 @@ import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import DonutChartExample from './radial-chart/donut-chart';
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
 
+import BasicSankeyExample from './sankey/basic';
+
 import VerticalDiscreteColorLegendExample from './legends/vertical-discrete-color';
 import HorizontalDiscreteColorLegendExample from './legends/horizontal-discrete-color';
 import SearchableDiscreteColorLegendExample from './legends/searchable-discrete-color';
@@ -80,6 +82,7 @@ const App = (
           <li><a href="#treemaps">Treemaps</a></li>
           <li><a href="#tables">Tables</a></li>
           <li><a href="#legends">Legends</a></li>
+          <li><a href="#sankeys">Sankeys</a></li>
         </nav>
       </div>
     </header>
@@ -283,6 +286,14 @@ const App = (
       <section>
         <h3>Default legend</h3>
         <ContinuousSizeLegendExample />
+      </section>
+    </article>
+
+    <article id="sankeys">
+      <h1>Sankeys</h1>
+      <section>
+        <h3>Basic</h3>
+        <BasicSankeyExample />
       </section>
     </article>
 
