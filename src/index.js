@@ -18,52 +18,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-export {default as Table} from './lib/table/table';
-export {default as Treemap} from './lib/treemap/treemap';
+export AbstractSeries from 'plot/series/abstract-series';
+export LineSeries from 'plot/series/line-series';
+export VerticalBarSeries from 'plot/series/vertical-bar-series';
+export HorizontalBarSeries from 'plot/series/horizontal-bar-series';
+export VerticalRectSeries from 'plot/series/vertical-rect-series';
+export HorizontalRectSeries from 'plot/series/horizontal-rect-series';
+export RectSeries from 'plot/series/rect-series';
+export MarkSeries from 'plot/series/mark-series';
+export HeatmapSeries from 'plot/series/heatmap-series';
+export AreaSeries from 'plot/series/area-series';
+export LineMarkSeries from 'plot/series/line-mark-series';
+export Hint from 'plot/hint';
+export Crosshair from 'plot/crosshair';
+export XYPlot from 'plot/xy-plot';
+export XAxis from 'plot/axis/x-axis';
+export YAxis from 'plot/axis/y-axis';
+export GridLines from 'plot/grid-lines';
+export VerticalGridLines from 'plot/vertical-grid-lines';
+export HorizontalGridLines from 'plot/horizontal-grid-lines';
 
-export {default as XYPlot} from './lib/plot/xy-plot';
+export DiscreteColorLegend from 'legends/discrete-color-legend';
+export SearchableDiscreteColorLegend from 'legends/searchable-discrete-color-legend';
+export ContinuousColorLegend from 'legends/continuous-color-legend';
+export ContinuousSizeLegend from 'legends/continuous-size-legend';
 
-export {default as AbstractSeries} from './lib/plot/series/abstract-series';
-export {default as LineSeries} from './lib/plot/series/line-series';
-export {default as VerticalBarSeries}
-  from './lib/plot/series/vertical-bar-series';
-export {default as HorizontalBarSeries}
-  from './lib/plot/series/horizontal-bar-series';
-export {default as VerticalRectSeries}
-  from './lib/plot/series/vertical-rect-series';
-export {default as HorizontalRectSeries}
-  from './lib/plot/series/horizontal-rect-series';
-export {default as RectSeries} from './lib/plot/series/rect-series';
-export {default as MarkSeries} from './lib/plot/series/mark-series';
-export {default as HeatmapSeries} from './lib/plot/series/heatmap-series';
-export {default as AreaSeries} from './lib/plot/series/area-series';
-export {default as LineMarkSeries} from './lib/plot/series/line-mark-series';
+export Table from 'table';
 
-export {default as Hint} from './lib/plot/hint';
-export {default as Crosshair} from './lib/plot/crosshair';
+export Treemap from 'treemap';
 
-export {default as XAxis} from './lib/plot/axis/x-axis';
-export {default as YAxis} from './lib/plot/axis/y-axis';
+export RadialChart from 'radial-chart';
 
-export {default as GridLines} from './lib/plot/grid-lines';
-export {default as VerticalGridLines} from './lib/plot/vertical-grid-lines';
-export {default as HorizontalGridLines} from './lib/plot/horizontal-grid-lines';
+export makeWidthFlexible from 'make-vis-flexible';
 
-export {default as RadialChart} from './lib/radial-chart/radial-chart';
-
-export {default as DiscreteColorLegend}
-  from './lib/legends/discrete-color-legend';
-
-export {default as SearchableDiscreteColorLegend}
-  from './lib/legends/searchable-discrete-color-legend';
-
-export {default as ContinuousColorLegend}
-  from './lib/legends/continuous-color-legend';
-
-export {default as ContinuousSizeLegend}
-  from './lib/legends/continuous-size-legend';
-
-export {default as makeWidthFlexible} from './lib/make-vis-flexible';
-
-export {default as AxisUtils} from './lib/utils/axis-utils';
-export {default as ScaleUtils} from './lib/utils/scales-utils';
+export AxisUtils from 'utils/axis-utils';
+export ScaleUtils from 'utils/scales-utils';

@@ -1,16 +1,14 @@
+node_modules/
 .sass-cache/
-.DS_Store
+.nyc_output/
 coverage/
 dist/
-node_modules/
+
+# To be removed in next major
 main.css
 
-# temporary jenkins files
-test/test.js.tap
-jshint.xml
-jshint-proper.xml
-
-core
-npm-debug.log
-.eslintcache
+/index.html
+bundle.*
+npm-debug.log*
+.DS_Store
 .idea/
