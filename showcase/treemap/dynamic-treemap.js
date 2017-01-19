@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import timers from 'timers';
+import window from 'global/window';
 
 import Treemap from 'treemap';
 
@@ -34,7 +34,7 @@ export default class DynamicTreemapExample extends React.Component {
   }
 
   componentDidMount() {
-    timers.setInterval(
+    window.setInterval(
       () => this.setState({treemapData: this._getRandomData()}),
       5000
     );

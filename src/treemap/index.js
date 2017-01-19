@@ -34,6 +34,8 @@ const TREEMAP_TILE_MODES = {
   slicedice: d3Hierarchy.treemapSliceDice
 };
 
+const NOOP = d => d;
+
 function getFontColorFromBackground(background) {
   if (background) {
     return d3Color.hsl(background).l > 0.57 ? '#222' : '#fff';
@@ -142,10 +144,8 @@ class Treemap extends React.Component {
    * @param {Object} event Event.
    * @private
    */
-  _triggerHandler(handler, d, event) {
-    if (handler) {
-      handler(d, event);
-    }
+  _triggerHandler(handler = NOOP, d, event) {
+    handler(d, event);
   }
 
   _renderLeaf(node, i) {
@@ -163,15 +163,9 @@ class Treemap extends React.Component {
       <div
         key={i}
         className="rv-treemap__leaf"
-        onMouseEnter={event => {
-          this._triggerHandler(onLeafMouseOver, node, event);
-        }}
-        onMouseLeave={event => {
-          this._triggerHandler(onLeafMouseOut, node, event);
-        }}
-        onClick={event => {
-          this._triggerHandler(onLeafClick, node, event);
-        }}
+        onMouseEnter={event => this._triggerHandler(onLeafMouseOver, node, event)}
+        onMouseLeave={event => this._triggerHandler(onLeafMouseOut, node, event)}
+        onClick={event => this._triggerHandler(onLeafClick, node, event)}
         style={{
           top: `${y0}px`,
           left: `${x0}px`,
