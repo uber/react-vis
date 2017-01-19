@@ -133,17 +133,6 @@ class Treemap extends React.Component {
     return [];
   }
 
-  /**
-   * Triggers a callback on a box if the callback is set.
-   * @param {function} handler Callback function.
-   * @param {Object} d Data point of the arc.
-   * @param {Object} event Event.
-   * @private
-   */
-  _triggerHandler(handler = NOOP, d, event) {
-    handler(d, event);
-  }
-
   _renderLeaf(node, i) {
     if (!i) {
       return null;
