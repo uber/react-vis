@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 import * as d3Hierarchy from 'd3-hierarchy';
 import * as d3Color from 'd3-color';
 
@@ -52,13 +52,16 @@ class Treemap extends React.Component {
   static get propTypes() {
     return {
       animation: AnimationPropType,
-      data: React.PropTypes.object.isRequired,
-      height: React.PropTypes.number.isRequired,
-      mode: React.PropTypes.oneOf(
+      data: PropTypes.object.isRequired,
+      height: PropTypes.number.isRequired,
+      mode: PropTypes.oneOf(
         Object.keys(TREEMAP_TILE_MODES)
       ),
-      padding: React.PropTypes.number.isRequired,
-      width: React.PropTypes.number.isRequired
+      onLeafClick: PropTypes.func,
+      onLeafMouseOver: PropTypes.func,
+      onLeafMouseOut: PropTypes.func,
+      padding: PropTypes.number.isRequired,
+      width: PropTypes.number.isRequired
     };
   }
 
@@ -132,10 +135,24 @@ class Treemap extends React.Component {
     return [];
   }
 
+  /**
+   * Triggers a callback on a box if the callback is set.
+   * @param {function} handler Callback function.
+   * @param {Object} d Data point of the arc.
+   * @param {Object} event Event.
+   * @private
+   */
+  _triggerHandler(handler, d, event) {
+    if (handler) {
+      handler(d, event);
+    }
+  }
+
   _renderLeaf(node, i) {
     if (!i) {
       return null;
     }
+    const {onLeafClick, onLeafMouseOver, onLeafMouseOut} = this.props;
     const {scales} = this.state;
 
     const background = scales.color(node);
@@ -146,6 +163,15 @@ class Treemap extends React.Component {
       <div
         key={i}
         className="rv-treemap__leaf"
+        onMouseEnter={event => {
+          this._triggerHandler(onLeafMouseOver, node, event);
+        }}
+        onMouseLeave={event => {
+          this._triggerHandler(onLeafMouseOut, node, event);
+        }}
+        onClick={event => {
+          this._triggerHandler(onLeafClick, node, event);
+        }}
         style={{
           top: `${y0}px`,
           left: `${x0}px`,

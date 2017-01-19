@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import window from 'global/window';
+import timers from 'timers';
 
 import Treemap from 'treemap';
 
@@ -28,12 +28,13 @@ export default class DynamicTreemapExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      hoveredNode: false,
       treemapData: this._getRandomData()
     };
   }
 
   componentDidMount() {
-    window.setInterval(
+    timers.setInterval(
       () => this.setState({treemapData: this._getRandomData()}),
       5000
     );
@@ -65,11 +66,17 @@ export default class DynamicTreemapExample extends React.Component {
 
   render() {
     return (
-      <Treemap
-        animation={true}
-        data={this.state.treemapData}
-        height={300}
-        width={350}/>
+      <div>
+        <Treemap
+          animation={false}
+          data={this.state.treemapData}
+          onLeafMouseOver={x => this.setState({hoveredNode: x})}
+          onLeafMouseOut={() => this.setState({hoveredNode: false})}
+          onLeafClick={() => this.setState({treemapData: this._getRandomData()})}
+          height={300}
+          width={350}/>
+        {this.state.hoveredNode && this.state.hoveredNode.value}
+      </div>
     );
   }
 
