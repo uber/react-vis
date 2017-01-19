@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import equal from 'deep-equal';
 import * as d3Shape from 'd3-shape';
 
 import Animation from 'animation';
@@ -31,6 +30,8 @@ import {
   extractScalePropsFromProps,
   getMissingScaleProps
 } from 'utils/scales-utils';
+
+const NOOP = d => d;
 
 const ATTRIBUTES = [
   'angle',
@@ -91,22 +92,16 @@ class RadialChart extends React.Component {
     const scaleProps = this._getAllScaleProps(props, data);
     const arc = this._getArcFromProps(scaleProps);
     this.state = {scaleProps, data, arc};
-    this._sectionMouseOut = this._sectionMouseOut.bind(this);
-    this._sectionMouseOver = this._sectionMouseOver.bind(this);
-    this._sectionClick = this._sectionClick.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     const nextData = assignColorsToData(nextProps.data);
-    const {scaleProps} = this.state;
-    const nextscaleProps = this._getAllScaleProps(nextProps, nextData);
-    if (!equal(nextscaleProps, scaleProps)) {
-      this.setState({
-        scaleProps: nextscaleProps,
-        data: nextData,
-        arc: this._getArcFromProps(scaleProps)
-      });
-    }
+    const nextScaleProps = this._getAllScaleProps(nextProps, nextData);
+    this.setState({
+      scaleProps: this._getAllScaleProps(nextProps, nextData),
+      data: nextData,
+      arc: this._getArcFromProps(nextScaleProps)
+    });
   }
 
   /**
@@ -116,45 +111,10 @@ class RadialChart extends React.Component {
    * @param {Object} event Event.
    * @private
    */
-  _triggerSectionHandler(handler, d, event) {
-    if (handler) {
-      const {arc} = this.state;
-      const [x, y] = arc.centroid(d);
-      handler(d.data, {event, x, y});
-    }
-  }
-
-  /**
-   * `mouseover` handler for the section.
-   * @param {Object} d Data point.
-   * @param {Object} event Event.
-   * @private
-   */
-  _sectionMouseOver(d, event) {
-    const {onSectionMouseOver} = this.props;
-    this._triggerSectionHandler(onSectionMouseOver, d, event);
-  }
-
-  /**
-   * `mouseout` handler for the section.
-   * @param {Object} d Data point.
-   * @param {Object} event Event.
-   * @private
-   */
-  _sectionMouseOut(d, event) {
-    const {onSectionMouseOut} = this.props;
-    this._triggerSectionHandler(onSectionMouseOut, d, event);
-  }
-
-  /**
-   * `click` handler for the section.
-   * @param {Object} d Data point.
-   * @param {Object} event Event.
-   * @private
-   */
-  _sectionClick(d, event) {
-    const {onSectionClick} = this.props;
-    this._triggerSectionHandler(onSectionClick, d, event);
+  _sectionHandler(handler = NOOP, d, event) {
+    const {arc} = this.state;
+    const [x, y] = arc.centroid(d);
+    handler(d.data, {event, x, y});
   }
 
   /**
@@ -232,7 +192,15 @@ class RadialChart extends React.Component {
   }
 
   render() {
-    const {width, height, animation} = this.props;
+    const {
+      animation,
+      height,
+      onSectionMouseOver,
+      onSectionMouseOut,
+      onSectionClick,
+      width
+    } = this.props;
+
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_PROPS}>
@@ -247,14 +215,11 @@ class RadialChart extends React.Component {
     }
 
     const opacityFunctor = this._getAttributeFunctor('opacity');
-    const fillFunctor = this._getAttributeFunctor('fill') ||
-      this._getAttributeFunctor('color');
-    const strokeFunctor = this._getAttributeFunctor('stroke') ||
-      this._getAttributeFunctor('color');
+    const fillFunctor = this._getAttributeFunctor('fill') || this._getAttributeFunctor('color');
+    const strokeFunctor = this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color');
 
     const pie = d3Shape.pie().sort(null).value(d => d.angle);
     const pieData = pie(data);
-
     return (
       <div
         style={{
@@ -270,18 +235,19 @@ class RadialChart extends React.Component {
             className="rv-radial-chart__series--pie"
             transform={`translate(${width / 2},${height / 2})`}
             ref="container">
-            {data.map((d, i) => <path {...{
-              d: arc(pieData[i]),
-              style: {
-                opacity: opacityFunctor && opacityFunctor(d),
-                stroke: strokeFunctor && strokeFunctor(d),
-                fill: fillFunctor && fillFunctor(d)
-              },
-              onMouseOver: e => this._sectionMouseOver(pieData[i], e),
-              onMouseOut: e => this._sectionMouseOut(pieData[i], e),
-              onClick: e => this._sectionClick(pieData[i], e),
-              key: i
-            }}/>)}
+            {data.map((d, i) =>
+              <path {...{
+                d: arc(pieData[i]),
+                style: {
+                  opacity: opacityFunctor && opacityFunctor(d),
+                  stroke: strokeFunctor && strokeFunctor(d),
+                  fill: fillFunctor && fillFunctor(d)
+                },
+                onMouseEnter: e => this._sectionHandler(onSectionMouseOver, pieData[i], e),
+                onMouseLeave: e => this._sectionHandler(onSectionMouseOut, pieData[i], e),
+                onClick: e => this._sectionHandler(onSectionClick, pieData[i], e),
+                key: i
+              }}/>)}
           </g>
         </svg>
       </div>

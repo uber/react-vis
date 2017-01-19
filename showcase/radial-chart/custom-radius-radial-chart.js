@@ -18,22 +18,56 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {Component} from 'react';
 
 import RadialChart from 'radial-chart';
 
-export default class SimpleRadialChart extends React.Component {
+export default class SimpleRadialChart extends Component {
+
+  state = {
+    hoveredSection: false
+  }
+
   render() {
+    const {hoveredSection} = this.state;
     return (
       <RadialChart
+        animation
         radiusDomain={[0, 20]}
         data={[
-          {angle: 1, radius: 10},
-          {angle: 2, radius: 20},
-          {angle: 5, radius: 5},
-          {angle: 3, radius: 14},
-          {angle: 5, radius: 12}
+          {
+            angle: 1,
+            id: 1,
+            radius: 10,
+            opacity: (!hoveredSection || hoveredSection === 1) ? 1 : 0.6
+          },
+          {
+            angle: 2,
+            id: 2,
+            radius: 20,
+            opacity: (!hoveredSection || hoveredSection === 2) ? 1 : 0.6
+          },
+          {
+            angle: 5,
+            id: 3,
+            radius: 5,
+            opacity: (!hoveredSection || hoveredSection === 3) ? 1 : 0.6
+          },
+          {
+            angle: 3,
+            id: 4,
+            radius: 14,
+            opacity: (!hoveredSection || hoveredSection === 4) ? 1 : 0.6
+          },
+          {
+            angle: 5,
+            id: 5,
+            radius: 12,
+            opacity: (!hoveredSection || hoveredSection === 5) ? 1 : 0.6
+          }
         ]}
+        onSectionMouseOver={row => this.setState({hoveredSection: row.id})}
+        onSectionMouseOut={() => this.setState({hoveredSection: false})}
         width={300}
         height={300} />
     );
