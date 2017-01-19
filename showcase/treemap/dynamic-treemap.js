@@ -25,12 +25,9 @@ import Treemap from 'treemap';
 
 export default class DynamicTreemapExample extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      hoveredNode: false,
-      treemapData: this._getRandomData()
-    };
+  state = {
+    hoveredNode: false,
+    treemapData: this._getRandomData()
   }
 
   componentDidMount() {

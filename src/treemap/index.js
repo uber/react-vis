@@ -20,12 +20,12 @@
 
 import React, {PropTypes} from 'react';
 import * as d3Hierarchy from 'd3-hierarchy';
-import * as d3Color from 'd3-color';
 
 import Animation from 'animation';
 import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, OPACITY_RANGE} from 'theme';
 import {AnimationPropType} from 'utils/animation-utils';
-import {getAttributeFunctor, getMissingScaleProps} from 'utils/scales-utils';
+import {getAttributeFunctor, getFontColorFromBackground, getMissingScaleProps} from 'utils/scales-utils';
+import {} from 'utils/chart-utils';
 
 const TREEMAP_TILE_MODES = {
   squarify: d3Hierarchy.treemapSquarify,
@@ -35,13 +35,6 @@ const TREEMAP_TILE_MODES = {
 };
 
 const NOOP = d => d;
-
-function getFontColorFromBackground(background) {
-  if (background) {
-    return d3Color.hsl(background).l > 0.57 ? '#222' : '#fff';
-  }
-  return null;
-}
 
 const ATTRIBUTES = ['opacity', 'color'];
 const ANIMATED_PROPS = [
@@ -76,6 +69,9 @@ class Treemap extends React.Component {
         children: []
       },
       mode: 'squarify',
+      onLeafClick: NOOP,
+      onLeafMouseOver: NOOP,
+      onLeafMouseOut: NOOP,
       opacityRange: OPACITY_RANGE,
       _opacityValue: 1,
       padding: 1
@@ -163,9 +159,9 @@ class Treemap extends React.Component {
       <div
         key={i}
         className="rv-treemap__leaf"
-        onMouseEnter={event => this._triggerHandler(onLeafMouseOver, node, event)}
-        onMouseLeave={event => this._triggerHandler(onLeafMouseOut, node, event)}
-        onClick={event => this._triggerHandler(onLeafClick, node, event)}
+        onMouseEnter={event => onLeafMouseOver(node, event)}
+        onMouseLeave={event => onLeafMouseOut(node, event)}
+        onClick={event => onLeafClick(node, event)}
         style={{
           top: `${y0}px`,
           left: `${x0}px`,
