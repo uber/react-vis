@@ -25,7 +25,6 @@ import Animation from 'animation';
 import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, OPACITY_RANGE} from 'theme';
 import {AnimationPropType} from 'utils/animation-utils';
 import {getAttributeFunctor, getFontColorFromBackground, getMissingScaleProps} from 'utils/scales-utils';
-import {} from 'utils/chart-utils';
 
 const TREEMAP_TILE_MODES = {
   squarify: d3Hierarchy.treemapSquarify,
