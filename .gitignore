@@ -3,7 +3,6 @@ node_modules/
 .nyc_output/
 coverage/
 dist/
-showcase/node_modules/
 
 # To be removed in next major
 main.css
