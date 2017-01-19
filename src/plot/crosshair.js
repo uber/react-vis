@@ -70,6 +70,7 @@ class Crosshair extends PureRenderComponent {
       innerHeight: React.PropTypes.number,
       marginLeft: React.PropTypes.number,
       marginTop: React.PropTypes.number,
+      orientation: React.PropTypes.oneOf(['left', 'right']),
       itemsFormat: React.PropTypes.func,
       titleFormat: React.PropTypes.func
     };
@@ -139,7 +140,7 @@ class Crosshair extends PureRenderComponent {
     const x = getAttributeFunctor(this.props, 'x');
     const innerLeft = x(value);
 
-    const orientation = (innerLeft > innerWidth / 2) ? 'left' : 'right';
+    const {orientation = (innerLeft > innerWidth / 2) ? 'left' : 'right'} = this.props;
     const left = marginLeft + innerLeft;
     const top = marginTop;
     const innerClassName =
