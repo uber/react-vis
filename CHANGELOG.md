@@ -1,3 +1,17 @@
+### v0.10.1
+
+In this release we release a new chart type, a large repo refactor, address a variety of bugs, and a host of additional features!
+
+- **New Chart**: Type: Sankey Diagram: this chart type allows users visualize data flows and transfers. We are initially releasing this chart in alpha, so that we can gather feedback, and iterate to make the best chart that we can! Check out the docs here here!
+
+- **Bug Fix**: Fix numerous bugs on the radial plot, including mouse interaction issues, incorrect domains, and props falling out of sync
+
+- **Refactor**: We reorganized the way that we are keeping/organizing our repo, installed yarn, added webpack for the examples. (Pro tip, if you are having trouble running the examples after upgrading rm -rf your dist)
+
+- **Feature**: Allow custom crosshair orientation
+
+- **Feature**: Added interaction listeners for the tree map
+
 ### v0.9.0
 
 This release addresses a couple of bugs and improves our dep tree. The only psuedo-breaking change is to the layout of radial plot. The way that it now works is that the pie is centered within the given width/height and then allowed to grow to an innerWidth/innerHeight that is computed from the margins and the width/height.
@@ -94,7 +108,7 @@ Upgraded to modular d3, compiled code became smaller, changed the API for axes a
   * [the API of axes](docs/xy-plot.md#axes) is now (almost) compatible to the API of 'd3-axis'.
   * `labelFormat` and `labelValues` attributes for the axes are **removed**: similar results can be done achieved when `tickFormat` and `tickValues` attributes are used (see the [the updated documentation for axes](docs/xy-plot.md#axes) for more details).
   * `tickFormat` function is now gets only **one (value) argument instead of two (value and index)**.
-* The API of grids (`VerticalGridLines` and `HorizontalGridLines`) was significantly changed: it partially replicates the API of the axes.  Please refer to [the updated documentation ](docs/xy-plot.md#grids) for more detail. 
+* The API of grids (`VerticalGridLines` and `HorizontalGridLines`) was significantly changed: it partially replicates the API of the axes.  Please refer to [the updated documentation ](docs/xy-plot.md#grids) for more detail.
 
 #### Non-breaking changes
 
