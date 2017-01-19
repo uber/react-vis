@@ -1,0 +1,27 @@
+{
+  "description": "react-vis examples",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-addons-shallow-compare": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-vis": "0.9.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2017": "^6.22.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "2.0.0-beta.4",
+    "node-sass": "^4.2.0",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.0-rc.3",
+    "webpack-dev-server": "^2.2.0-rc.0"
+  },
+  "babel": {
+    "presets": ["es2017", "stage-2", "react"]
+  }
+}
