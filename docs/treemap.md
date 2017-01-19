@@ -78,3 +78,18 @@ Each point consists of following properties:
 #### animation (optional)
 Type: `boolean|Object`
 Please refer to [Animation](./animation.md) doc for more information.
+
+#### onLeafClick (optional)
+Type: `function`
+- Should accept arguments (leafNode, domEvent)
+Pass in a function that will be called on click on a given leaf.
+
+#### onLeafMouseOver (optional)
+Type: `function`
+- Should accept arguments (leafNode, domEvent)
+Pass in a function that will be called on mouseEnter on a given leaf.
+
+#### onLeafMouseOut (optional)
+Type: `function`
+- Should accept arguments (leafNode, domEvent)
+Pass in a function that will be called on mouseOut on a given leaf.
