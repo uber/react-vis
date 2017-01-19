@@ -227,6 +227,7 @@ test('scale-utils/literalScale', assert => {
 test('scale-utils/getFontColorFromBackground', assert => {
   assert.equal(getFontColorFromBackground('#fff'), '#222', 'should find correct color');
   assert.equal(getFontColorFromBackground('#000'), '#fff', 'should find correct color');
+  assert.equal(getFontColorFromBackground(null), null, 'sensible default');
 
   assert.end();
 });
