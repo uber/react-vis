@@ -18,24 +18,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {Component} from 'react';
 
 import RadialChart from 'radial-chart';
 
-export default class SimpleRadialChart extends React.Component {
-  constructor(props) {
-    super(props);
+export default class SimpleRadialChart extends Component {
 
-    this.state = {
-      hoveredSection: false
-    };
+  state = {
+    hoveredSection: false
   }
 
   render() {
     const {hoveredSection} = this.state;
     return (
       <RadialChart
-        animation={true}
+        animation
         radiusDomain={[0, 20]}
         data={[
           {
