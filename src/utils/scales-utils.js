@@ -21,6 +21,7 @@
 import * as d3Scale from 'd3-scale';
 import * as d3Array from 'd3-array';
 import * as d3Collection from 'd3-collection';
+import {hsl} from 'd3-color';
 
 import React from 'react';
 
@@ -646,6 +647,13 @@ export function literalScale() {
   return scale;
 }
 
+export function getFontColorFromBackground(background) {
+  if (background) {
+    return hsl(background).l > 0.57 ? '#222' : '#fff';
+  }
+  return null;
+}
+
 export default {
   extractScalePropsFromProps,
   getAttributeScale,
@@ -653,6 +661,7 @@ export default {
   getAttr0Functor,
   getAttributeValue,
   getDomainByAttr,
+  getFontColorFromBackground,
   getMissingScaleProps,
   getScaleObjectFromProps,
   getScalePropTypesByAttribute,

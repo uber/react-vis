@@ -18,14 +18,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 import * as d3Hierarchy from 'd3-hierarchy';
-import * as d3Color from 'd3-color';
 
 import Animation from 'animation';
 import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, OPACITY_RANGE} from 'theme';
 import {AnimationPropType} from 'utils/animation-utils';
-import {getAttributeFunctor, getMissingScaleProps} from 'utils/scales-utils';
+import {getAttributeFunctor, getFontColorFromBackground, getMissingScaleProps} from 'utils/scales-utils';
 
 const TREEMAP_TILE_MODES = {
   squarify: d3Hierarchy.treemapSquarify,
@@ -34,12 +33,7 @@ const TREEMAP_TILE_MODES = {
   slicedice: d3Hierarchy.treemapSliceDice
 };
 
-function getFontColorFromBackground(background) {
-  if (background) {
-    return d3Color.hsl(background).l > 0.57 ? '#222' : '#fff';
-  }
-  return null;
-}
+const NOOP = d => d;
 
 const ATTRIBUTES = ['opacity', 'color'];
 const ANIMATED_PROPS = [
@@ -52,13 +46,16 @@ class Treemap extends React.Component {
   static get propTypes() {
     return {
       animation: AnimationPropType,
-      data: React.PropTypes.object.isRequired,
-      height: React.PropTypes.number.isRequired,
-      mode: React.PropTypes.oneOf(
+      data: PropTypes.object.isRequired,
+      height: PropTypes.number.isRequired,
+      mode: PropTypes.oneOf(
         Object.keys(TREEMAP_TILE_MODES)
       ),
-      padding: React.PropTypes.number.isRequired,
-      width: React.PropTypes.number.isRequired
+      onLeafClick: PropTypes.func,
+      onLeafMouseOver: PropTypes.func,
+      onLeafMouseOut: PropTypes.func,
+      padding: PropTypes.number.isRequired,
+      width: PropTypes.number.isRequired
     };
   }
 
@@ -71,6 +68,9 @@ class Treemap extends React.Component {
         children: []
       },
       mode: 'squarify',
+      onLeafClick: NOOP,
+      onLeafMouseOver: NOOP,
+      onLeafMouseOut: NOOP,
       opacityRange: OPACITY_RANGE,
       _opacityValue: 1,
       padding: 1
@@ -136,6 +136,7 @@ class Treemap extends React.Component {
     if (!i) {
       return null;
     }
+    const {onLeafClick, onLeafMouseOver, onLeafMouseOut} = this.props;
     const {scales} = this.state;
 
     const background = scales.color(node);
@@ -146,6 +147,9 @@ class Treemap extends React.Component {
       <div
         key={i}
         className="rv-treemap__leaf"
+        onMouseEnter={event => onLeafMouseOver(node, event)}
+        onMouseLeave={event => onLeafMouseOut(node, event)}
+        onClick={event => onLeafClick(node, event)}
         style={{
           top: `${y0}px`,
           left: `${x0}px`,

@@ -25,6 +25,7 @@ import {
   getAttributeFunctor,
   getAttributeScale,
   getAttributeValue,
+  getFontColorFromBackground,
   _getSmallestDistanceIndex,
   extractScalePropsFromProps,
   getMissingScaleProps,
@@ -219,6 +220,14 @@ test('scale-utils/literalScale', assert => {
   assert.equal(s(2.5), 2.5, 'acts as the identity');
 
   assert.equal(s('2'), '2', 'does NOT coerce input to a number');
+
+  assert.end();
+});
+
+test('scale-utils/getFontColorFromBackground', assert => {
+  assert.equal(getFontColorFromBackground('#fff'), '#222', 'should find correct color');
+  assert.equal(getFontColorFromBackground('#000'), '#fff', 'should find correct color');
+  assert.equal(getFontColorFromBackground(null), null, 'sensible default');
 
   assert.end();
 });
