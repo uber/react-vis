@@ -192,13 +192,102 @@ class RadialChart extends React.Component {
       .innerRadius(innerRadiusFunctor);
   }
 
+  /**
+   * Generate the svg pie slices to be rendered
+   * @param {Array} pieData - the d3 generate information for drawing slices
+   * @param {Func} arc - the arc generator
+   * @returns {function} the react content functor
+   * @private
+   */
+  _renderPieSlice(pieData, arc) {
+    const opacityFunctor = this._getAttributeFunctor('opacity');
+    const fillFunctor = this._getAttributeFunctor('fill') || this._getAttributeFunctor('color');
+    const strokeFunctor = this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color');
+    return (d, i) => {
+      return (<path {...{
+        className: 'rv-radial-chart__series--pie__slice',
+        d: arc(pieData[i]),
+        style: {
+          opacity: opacityFunctor && opacityFunctor(d),
+          stroke: strokeFunctor && strokeFunctor(d),
+          fill: fillFunctor && fillFunctor(d)
+        },
+        key: i
+      }}/>);
+    };
+  }
+
+  /**
+   * Generate the svg labels to be rendered.
+   * @param {Array} pieData - the d3 generate information for drawing slices
+   * @returns {function} the react content functor
+   * @private
+   */
+  _renderLabel(pieData) {
+    const radiusFunctor = getAttributeFunctor(this.state.scaleProps, 'radius');
+    return (d, i) => {
+      // reject the label if its not affixed to the section
+      const canRenderMainLabel = d.label && typeof d.label === 'string';
+      const canRenderSubLabel = d.subLabel && typeof d.subLabel === 'string';
+      if (!canRenderMainLabel && !canRenderSubLabel) {
+        return;
+      }
+      const angle = (pieData[i].startAngle + pieData[i].endAngle) / 2 - Math.PI / 2;
+      const xTrans = 1.1 * radiusFunctor(d) * Math.cos(angle);
+      const yTrans = 1.1 * radiusFunctor(d) * Math.sin(angle);
+      const textAnchor = (angle > 0.5 * Math.PI) && angle < (1.5 * Math.PI) ? 'end' : 'start';
+      return (
+        <g transform={`translate(${xTrans},${yTrans})`} key={`${i}-text-wrapper`}>
+          {canRenderMainLabel && (<text
+            className="rv-radial-chart__series--pie-label-primary"
+            x="0"
+            y="0"
+            fontSize="12"
+            textAnchor={textAnchor}
+            >{d.label}</text>)}
+          {canRenderSubLabel && (<text
+            className="rv-radial-chart__series--pie-label-secondary"
+            x="0"
+            y="15"
+            fontSize="10"
+            textAnchor={textAnchor}
+            >{d.subLabel}</text>)}
+        </g>
+      );
+    };
+  }
+
+  /**
+   * Generate invisible svg overlays for applying listeners to
+   * @param {Array} pieData - the d3 generate information for drawing slices
+   * @param {Func} arc - the arc generator
+   * @returns {function} the react content functor
+   * @private
+   */
+  _renderOverlay(pieData, arc) {
+    const {
+      onSectionMouseOver,
+      onSectionMouseOut,
+      onSectionClick
+    } = this.props;
+
+    return (d, i) => {
+      return (<path {...{
+        className: 'rv-radial-chart__series--pie__slice-overlay',
+        d: arc(pieData[i]),
+        style: {opacity: 0},
+        onMouseEnter: e => this._sectionHandler(onSectionMouseOver, pieData[i], e),
+        onMouseLeave: e => this._sectionHandler(onSectionMouseOut, pieData[i], e),
+        onClick: e => this._sectionHandler(onSectionClick, pieData[i], e),
+        key: `${i}-listeners`
+      }}/>);
+    };
+  }
+
   render() {
     const {
       animation,
       height,
-      onSectionMouseOver,
-      onSectionMouseOut,
-      onSectionClick,
       showLabels,
       width
     } = this.props;
@@ -215,11 +304,6 @@ class RadialChart extends React.Component {
     if (!data || !arc) {
       return null;
     }
-
-    const opacityFunctor = this._getAttributeFunctor('opacity');
-    const radiusFunctor = getAttributeFunctor(this.state.scaleProps, 'radius');
-    const fillFunctor = this._getAttributeFunctor('fill') || this._getAttributeFunctor('color');
-    const strokeFunctor = this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color');
 
     const pie = d3Shape.pie().sort(null).value(d => d.angle);
     const pieData = pie(data);
@@ -239,62 +323,13 @@ class RadialChart extends React.Component {
             transform={`translate(${width / 2},${height / 2})`}
             ref="container">
             <g className="rv-radial-chart__series--pie-slices-wrapper">
-              {data.map((d, i) =>
-                <path {...{
-                  className: 'rv-radial-chart__series--pie__slice',
-                  d: arc(pieData[i]),
-                  style: {
-                    opacity: opacityFunctor && opacityFunctor(d),
-                    stroke: strokeFunctor && strokeFunctor(d),
-                    fill: fillFunctor && fillFunctor(d)
-                  },
-                  key: i
-                }}/>)}
+              {data.map(this._renderPieSlice(pieData, arc))}
             </g>
             <g className="rv-radial-chart__series--pie-labels-wrapper">
-              {showLabels && data.map((d, i) => {
-                // reject the label if its not affixed to the section
-                const canRenderMainLabel = d.label && typeof d.label === 'string';
-                const canRenderSubLabel = d.subLabel && typeof d.subLabel === 'string';
-                if (!canRenderMainLabel && !canRenderSubLabel) {
-                  return;
-                }
-                const angle = (pieData[i].startAngle + pieData[i].endAngle) / 2 - Math.PI / 2;
-                const xTrans = 1.1 * radiusFunctor(d) * Math.cos(angle);
-                const yTrans = 1.1 * radiusFunctor(d) * Math.sin(angle);
-                const textAnchor = (angle > 0.5 * Math.PI) && angle < (1.5 * Math.PI) ? 'end' : 'start';
-                return (
-                  <g transform={`translate(${xTrans},${yTrans})`} key={`${i}-text-wrapper`}>
-                    {canRenderMainLabel && (<text
-                      className="rv-radial-chart__series--pie-label-primary"
-                      x="0"
-                      y="0"
-                      fontSize="12"
-                      textAnchor={textAnchor}
-                      >{d.label}</text>)}
-                    {canRenderSubLabel && (<text
-                      className="rv-radial-chart__series--pie-label-secondary"
-                      x="0"
-                      y="15"
-                      fontSize="10"
-                      textAnchor={textAnchor}
-                      >{d.subLabel}</text>)}
-                  </g>
-                );
-              })}
+              {showLabels && data.map(this._renderLabel(pieData))}
             </g>
             <g className="rv-radial-chart__series--pie-overlays-wrapper">
-              {data.map((d, i) => {
-                return (<path {...{
-                  className: 'rv-radial-chart__series--pie__slice-overlay',
-                  d: arc(pieData[i]),
-                  style: {opacity: 0},
-                  onMouseEnter: e => this._sectionHandler(onSectionMouseOver, pieData[i], e),
-                  onMouseLeave: e => this._sectionHandler(onSectionMouseOut, pieData[i], e),
-                  onClick: e => this._sectionHandler(onSectionClick, pieData[i], e),
-                  key: `${i}-listeners`
-                }}/>);
-              })}
+              {data.map(this._renderOverlay(pieData, arc))}
             </g>
           </g>
         </svg>
