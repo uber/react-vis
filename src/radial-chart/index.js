@@ -232,9 +232,15 @@ class RadialChart extends React.Component {
       if (!canRenderMainLabel && !canRenderSubLabel) {
         return;
       }
+      // this equation finds the center of the pie wedge and place the label there
+      // there is a quarter circle correction, due to where d3 places it's coord system
       const angle = (pieData[i].startAngle + pieData[i].endAngle) / 2 - Math.PI / 2;
+      // we then translate a g to just outside the location of the wedge
       const xTrans = 1.1 * radiusFunctor(d) * Math.cos(angle);
       const yTrans = 1.1 * radiusFunctor(d) * Math.sin(angle);
+      // finally we select which way we want the text to be oriented
+      // if its on the left half of the circle, the it should be right aligned
+      // and vice versa for the right half
       const textAnchor = (angle > 0.5 * Math.PI) && angle < (1.5 * Math.PI) ? 'end' : 'start';
       return (
         <g transform={`translate(${xTrans},${yTrans})`} key={`${i}-text-wrapper`}>
