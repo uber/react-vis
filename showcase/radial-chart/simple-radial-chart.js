@@ -31,13 +31,14 @@ export default class SimpleRadialChart extends React.Component {
         colorRange={[0, 10]}
         margin={{top: 100}}
         data={[
-          {angle: 1, color: '#0f0'},
-          {angle: 2, color: '#ff0'},
-          {angle: 5, color: '#0ff'},
-          {angle: 3, color: '#f0f'},
-          {angle: 5, color: '#ff0'}
+          {angle: 1, color: '#0f0', label: 'green'},
+          {angle: 2, color: '#ff0', label: 'yellow'},
+          {angle: 5, color: '#0ff', label: 'cyan'},
+          {angle: 3, color: '#f0f', label: 'magenta'},
+          {angle: 5, color: '#ff0', label: 'yellow again'}
         ]}
-        width={300}
+        showLabels
+        width={400}
         height={300} />
     );
   }

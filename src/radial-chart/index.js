@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 import * as d3Shape from 'd3-shape';
 
 import Animation from 'animation';
@@ -76,13 +76,14 @@ function assignColorsToData(data) {
 class RadialChart extends React.Component {
   static get propTypes() {
     return {
-      width: React.PropTypes.number.isRequired,
-      height: React.PropTypes.number.isRequired,
-      margin: MarginPropType,
       animation: AnimationPropType,
-      onSectionMouseOver: React.PropTypes.func,
-      onSectionMouseOut: React.PropTypes.func,
-      onSectionClick: React.PropTypes.func
+      height: PropTypes.number.isRequired,
+      margin: MarginPropType,
+      onSectionMouseOver: PropTypes.func,
+      onSectionMouseOut: PropTypes.func,
+      onSectionClick: PropTypes.func,
+      showLabels: PropTypes.bool,
+      width: PropTypes.number.isRequired
     };
   }
 
@@ -191,13 +192,109 @@ class RadialChart extends React.Component {
       .innerRadius(innerRadiusFunctor);
   }
 
+  /**
+   * Generate the svg pie slices to be rendered
+   * @param {Array} pieData - the d3 generate information for drawing slices
+   * @param {Func} arc - the arc generator
+   * @returns {function} the react content functor
+   * @private
+   */
+  _renderPieSlice(pieData, arc) {
+    const opacityFunctor = this._getAttributeFunctor('opacity');
+    const fillFunctor = this._getAttributeFunctor('fill') || this._getAttributeFunctor('color');
+    const strokeFunctor = this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color');
+    return (d, i) => {
+      return (<path {...{
+        className: 'rv-radial-chart__series--pie__slice',
+        d: arc(pieData[i]),
+        style: {
+          opacity: opacityFunctor && opacityFunctor(d),
+          stroke: strokeFunctor && strokeFunctor(d),
+          fill: fillFunctor && fillFunctor(d)
+        },
+        key: i
+      }}/>);
+    };
+  }
+
+  /**
+   * Generate the svg labels to be rendered.
+   * @param {Array} pieData - the d3 generate information for drawing slices
+   * @returns {function} the react content functor
+   * @private
+   */
+  _renderLabel(pieData) {
+    const radiusFunctor = getAttributeFunctor(this.state.scaleProps, 'radius');
+    return (d, i) => {
+      // reject the label if its not affixed to the section
+      const canRenderMainLabel = d.label && typeof d.label === 'string';
+      const canRenderSubLabel = d.subLabel && typeof d.subLabel === 'string';
+      if (!canRenderMainLabel && !canRenderSubLabel) {
+        return;
+      }
+      // this equation finds the center of the pie wedge and place the label there
+      // there is a quarter circle correction, due to where d3 places it's coord system
+      const angle = (pieData[i].startAngle + pieData[i].endAngle) / 2 - Math.PI / 2;
+      // we then translate a g to just outside the location of the wedge
+      const xTrans = 1.1 * radiusFunctor(d) * Math.cos(angle);
+      const yTrans = 1.1 * radiusFunctor(d) * Math.sin(angle);
+      // finally we select which way we want the text to be oriented
+      // if its on the left half of the circle, the it should be right aligned
+      // and vice versa for the right half
+      const textAnchor = (angle > 0.5 * Math.PI) && angle < (1.5 * Math.PI) ? 'end' : 'start';
+      return (
+        <g transform={`translate(${xTrans},${yTrans})`} key={`${i}-text-wrapper`}>
+          {canRenderMainLabel && (<text
+            className="rv-radial-chart__series--pie-label-primary"
+            x="0"
+            y="0"
+            fontSize="12"
+            textAnchor={textAnchor}
+            >{d.label}</text>)}
+          {canRenderSubLabel && (<text
+            className="rv-radial-chart__series--pie-label-secondary"
+            x="0"
+            y="15"
+            fontSize="10"
+            textAnchor={textAnchor}
+            >{d.subLabel}</text>)}
+        </g>
+      );
+    };
+  }
+
+  /**
+   * Generate invisible svg overlays for applying listeners to
+   * @param {Array} pieData - the d3 generate information for drawing slices
+   * @param {Func} arc - the arc generator
+   * @returns {function} the react content functor
+   * @private
+   */
+  _renderOverlay(pieData, arc) {
+    const {
+      onSectionMouseOver,
+      onSectionMouseOut,
+      onSectionClick
+    } = this.props;
+
+    return (d, i) => {
+      return (<path {...{
+        className: 'rv-radial-chart__series--pie__slice-overlay',
+        d: arc(pieData[i]),
+        style: {opacity: 0},
+        onMouseEnter: e => this._sectionHandler(onSectionMouseOver, pieData[i], e),
+        onMouseLeave: e => this._sectionHandler(onSectionMouseOut, pieData[i], e),
+        onClick: e => this._sectionHandler(onSectionClick, pieData[i], e),
+        key: `${i}-listeners`
+      }}/>);
+    };
+  }
+
   render() {
     const {
       animation,
       height,
-      onSectionMouseOver,
-      onSectionMouseOut,
-      onSectionClick,
+      showLabels,
       width
     } = this.props;
 
@@ -213,10 +310,6 @@ class RadialChart extends React.Component {
     if (!data || !arc) {
       return null;
     }
-
-    const opacityFunctor = this._getAttributeFunctor('opacity');
-    const fillFunctor = this._getAttributeFunctor('fill') || this._getAttributeFunctor('color');
-    const strokeFunctor = this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color');
 
     const pie = d3Shape.pie().sort(null).value(d => d.angle);
     const pieData = pie(data);
@@ -235,19 +328,15 @@ class RadialChart extends React.Component {
             className="rv-radial-chart__series--pie"
             transform={`translate(${width / 2},${height / 2})`}
             ref="container">
-            {data.map((d, i) =>
-              <path {...{
-                d: arc(pieData[i]),
-                style: {
-                  opacity: opacityFunctor && opacityFunctor(d),
-                  stroke: strokeFunctor && strokeFunctor(d),
-                  fill: fillFunctor && fillFunctor(d)
-                },
-                onMouseEnter: e => this._sectionHandler(onSectionMouseOver, pieData[i], e),
-                onMouseLeave: e => this._sectionHandler(onSectionMouseOut, pieData[i], e),
-                onClick: e => this._sectionHandler(onSectionClick, pieData[i], e),
-                key: i
-              }}/>)}
+            <g className="rv-radial-chart__series--pie-slices-wrapper">
+              {data.map(this._renderPieSlice(pieData, arc))}
+            </g>
+            <g className="rv-radial-chart__series--pie-labels-wrapper">
+              {showLabels && data.map(this._renderLabel(pieData))}
+            </g>
+            <g className="rv-radial-chart__series--pie-overlays-wrapper">
+              {data.map(this._renderOverlay(pieData, arc))}
+            </g>
           </g>
         </svg>
       </div>
