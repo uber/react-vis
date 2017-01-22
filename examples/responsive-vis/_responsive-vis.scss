@@ -1,0 +1,10 @@
+.responsive-vis-example {
+  display: flex;
+  flex-direction: column;
+
+  .responsive-controls {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+  }
+}
