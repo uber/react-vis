@@ -22,55 +22,56 @@ import React from 'react';
 
 import {
   createData,
-  filterFeatures,
-  computeRadius,
   getPPP
 } from './responsive-vis-utils';
 
 import ResponsiveScatterplot from './responsive-scatterplot';
+import ResponsiveBarChart from './responsive-bar-chart';
 
 const ASPECT_RATIO = 1.2;
-// range constants
-const SUPER_LOW_RANGE = [0, 1e-4];
-const VERY_LOW_RANGE = [0, 8e-4];
-const LOW_RANGE = [0, 5e-3];
-const MED_LOW_RANGE = [1e-4, 5e-3];
-const HIGH_LOW_RANGE = [8e-4, 5e-3];
-const MED_RANGE = [5e-3, 1e-2];
-const HIGH_RANGE = [1e-2, Infinity];
-const MED_HIGH_RANGE = [MED_RANGE[0], HIGH_RANGE[1]];
-// const MIN_PPP = 2e-5;
-
-const SCATTERPLOT_FEATURES = [
-  {min: -Infinity, max: Infinity, name: 'axes'},
-  {min: SUPER_LOW_RANGE[0], max: SUPER_LOW_RANGE[1], name: 'labels'},
-  {min: VERY_LOW_RANGE[0], max: VERY_LOW_RANGE[1], name: 'pointSelection'},
-  {min: LOW_RANGE[0], max: LOW_RANGE[1], name: 'points'},
-  {min: MED_LOW_RANGE[0], max: MED_LOW_RANGE[1], name: 'tooltips'},
-  {min: MED_HIGH_RANGE[0], max: MED_HIGH_RANGE[1], name: 'bins'},
-  {min: MED_HIGH_RANGE[0], max: MED_HIGH_RANGE[1], name: 'bintips'},
-  {min: MED_HIGH_RANGE[0], max: MED_HIGH_RANGE[1], name: 'binSelection'},
-  {min: HIGH_LOW_RANGE[0], max: HIGH_LOW_RANGE[1], name: 'brushSelection'}
-];
 
 export default class ResponsiveVisDemo extends React.Component {
 
   state = {
     dataSize: 1,
     visSize: 400,
-    data: createData(5)
+    data: createData(5, true),
+    chartType: 'barChart'
   }
 
-  renderControls(featuresToRender) {
-    const {dataSize, visSize} = this.state;
+  renderControls() {
+    const {chartType, data, dataSize, visSize} = this.state;
+    const width = visSize;
+    const height = visSize * ASPECT_RATIO;
+    const ppp = getPPP(width, height, data, 'TWOD');
+    const featuresToRender = this.refs.barChart && this.refs.barChart.getFeatures() || {};
     return (<div className="responsive-controls">
+      <div className="chart-type-selector">
+        <div
+          className={chartType === 'scatterplot' ? 'selected-chart-type' : 'unselected-chart-type'}
+          onClick={() => this.setState({
+            chartType: 'scatterplot',
+            data: createData((~~Math.pow(10, dataSize)), false)
+          })}
+          >
+          Scatterplot
+        </div>
+        <div
+          className={chartType === 'barChart' ? 'selected-chart-type' : 'unselected-chart-type'}
+          onClick={() => this.setState({
+            chartType: 'barChart',
+            data: createData((~~Math.pow(10, dataSize)), true)
+          })}
+          >
+          BarChart
+        </div>
+      </div>
       {`Data Size: ${(~~Math.pow(10, dataSize))}`}
       <input
         onChange={e => {
-          const newData = createData(~~Math.pow(10, e.target.value));
           this.setState({
             dataSize: e.target.value,
-            data: newData
+            data: createData(~~Math.pow(10, e.target.value), this.state.chartType === 'barChart')
           });
         }}
         type="range"
@@ -89,23 +90,33 @@ export default class ResponsiveVisDemo extends React.Component {
         value={visSize}
         />
       <div>{`Features: ${Object.keys(featuresToRender).join(', ')}`}</div>
+      <div>{`Points Per Pixel: ${ppp}`}</div>
     </div>);
   }
 
   render() {
-    const {data, visSize} = this.state;
-    const width = visSize;
-    const height = visSize * ASPECT_RATIO;
-    const ppp = getPPP(width, height, data, 'TWOD');
-    const featuresToRender = filterFeatures(SCATTERPLOT_FEATURES, ppp);
+    const {chartType, data, visSize} = this.state;
+    const margin = {left: 60, top: 60, bottom: 50, right: 50};
 
     return (
       <div className="responsive-vis-example">
-        {this.renderControls(featuresToRender)}
-        <ResponsiveScatterplot
+        {this.renderControls()}
+
+        {chartType === 'scatterplot' && <ResponsiveScatterplot
+            data={data}
+            ref="scatterplot"
+            margin={margin}
+            height={ASPECT_RATIO * visSize}
+            width={visSize} />}
+        {
+          // TODO Add a orientation prop
+        }
+        {chartType === 'barChart' && <ResponsiveBarChart
           data={data}
           height={ASPECT_RATIO * visSize}
-          width={visSize} />
+          margin={margin}
+          ref="barChart"
+          width={visSize} />}
       </div>
     );
   }

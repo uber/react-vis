@@ -7,4 +7,24 @@
     flex-direction: column;
     max-width: 400px;
   }
+
+  .chart-type-selector {
+    display: flex;
+    justify-content: space-around;
+
+    * {
+      cursor: pointer;
+    }
+  }
+
+  .selected-chart-type {
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .responsive-bar-chart {
+    .rv-hint {
+      color: #000;
+    }
+  }
 }

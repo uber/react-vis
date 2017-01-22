@@ -3,7 +3,7 @@ import {scaleLinear, scaleQuantize, scaleSqrt} from 'd3-scale';
 import {max, range} from 'd3-array';
 
 // create fake data
-export function createData(dataSize) {
+export function createData(dataSize, barChart = true) {
   const gen1 = randomNormal(70, 15);
   const gen2 = randomNormal(50, 8);
   const gen = (i) => i % 3 ? gen1() : gen2();
@@ -11,14 +11,26 @@ export function createData(dataSize) {
   let index = -1;
 
   while (index++ < dataSize) {
-    data[index] = {
-      x: gen(index),
-      y: gen(index),
-      label: `Point ${index}`,
-      color: '#12939A'
-    };
+    if (barChart) {
+      data[index] = {
+        x: gen(index),
+        y: `Point-${index}`,
+        label: `Point ${index}`,
+        color: '#12939A'
+      };
+    }
+    if (!barChart) {
+      data[index] = {
+        x: gen(index),
+        y: gen(index),
+        label: `Point ${index}`,
+        color: '#12939A'
+      };
+    }
   }
-
+  if (barChart) {
+    data.sort((a, b) => b.x - a.x);
+  }
   return data;
 }
 

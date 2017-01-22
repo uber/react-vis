@@ -120,19 +120,31 @@ export default class ResponsiveScatterplot extends React.Component {
     this._select(value, d => d.label);
   }
 
+  getFeatures() {
+    const {data, height, margin, width} = this.props;
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+    const ppp = getPPP(innerWidth, innerHeight, data, 'HEIGHT');
+    return filterFeatures(SCATTERPLOT_FEATURES, ppp);
+  }
+
   render() {
     const {binData, hoveredPoint, selectedPoints} = this.state;
-    const {data, height, width} = this.props;
-    const ppp = getPPP(width, height, data, 'TWOD');
+    const {data, height, margin, width} = this.props;
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+
+    const ppp = getPPP(innerWidth, innerHeight, data, 'TWOD');
     const featuresToRender = filterFeatures(SCATTERPLOT_FEATURES, ppp);
     const remeberVal = featuresToRender.pointSelection || featuresToRender.tooltips;
     const remeberBin = featuresToRender.bintips || featuresToRender.binSelection;
 
-    const pointRadii = computeRadius(data, width, height);
+    const pointRadii = computeRadius(data, innerWidth, innerHeight);
     return (
       <div className="responsive-vis">
         <XYPlot
           height={height}
+          margin={margin}
           width={width}>
           {featuresToRender.axes && <XAxis />}
           {featuresToRender.axes && <YAxis />}
