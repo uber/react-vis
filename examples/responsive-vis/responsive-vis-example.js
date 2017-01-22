@@ -21,28 +21,14 @@
 import React from 'react';
 
 import {
-  VerticalRectSeries,
-  XYPlot,
-  XAxis,
-  Crosshair
-} from 'react-vis';
-
-import {
   createData,
   getPPP
 } from './responsive-vis-utils';
 
-import ResponsiveScatterplot, {SCATTERPLOT_FEATURES} from './responsive-scatterplot';
-import ResponsiveBarChart, {BARCHART_FEATURES} from './responsive-bar-chart';
+import ResponsiveScatterplot from './responsive-scatterplot';
+import ResponsiveBarChart from './responsive-bar-chart';
 
 const ASPECT_RATIO = 1.2;
-const THEME_COLORS = [
-  '#12939A',
-  '#79C7E3',
-  '#1A3177',
-  '#FF9833',
-  '#EF5D28'
-];
 
 export default class ResponsiveVisDemo extends React.Component {
 
@@ -59,21 +45,6 @@ export default class ResponsiveVisDemo extends React.Component {
     const height = visSize * ASPECT_RATIO;
     const ppp = getPPP(width, height, data, 'TWOD');
     const featuresToRender = this.refs[chartType] && this.refs[chartType].getFeatures() || {};
-
-    const featuresToUse = (chartType === 'scatterplot' ? SCATTERPLOT_FEATURES : BARCHART_FEATURES);
-    const featuresMax = featuresToUse.reduce((res, feature) => {
-      return feature.max === Infinity ? res : Math.max(res, feature.max);
-    }, 0);
-
-    const mappedData = featuresToUse.map((feature, index) => {
-      return {
-        x0: Math.max(feature.min, 0),
-        x: Math.min(feature.max, featuresMax),
-        y0: feature.group,
-        y: feature.group + 1,
-        color: THEME_COLORS[feature.group]
-      };
-    }).reverse();
 
     return (<div className="responsive-controls">
       <div className="points-per-pixel-label">{`Points Per Pixel: ${ppp}`}</div>
@@ -123,17 +94,6 @@ export default class ResponsiveVisDemo extends React.Component {
         max={1000}
         value={visSize}
         />
-      <div className="responsive-vis-example-diagram">
-        <XYPlot height={100} width={600}>
-          <XAxis />
-          <VerticalRectSeries
-            className="responsive-indicator"
-            xDomain={[0, featuresMax]}
-            colorType="literal"
-            data={mappedData}/>
-          <Crosshair values={[{x: Math.min(ppp, featuresMax)}]} >PPP</Crosshair>
-        </XYPlot>
-      </div>
     </div>);
   }
 
