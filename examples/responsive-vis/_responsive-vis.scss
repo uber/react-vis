@@ -27,4 +27,23 @@
       color: #000;
     }
   }
+
+  .points-per-pixel-label {
+    font-size: 32px;
+    white-space: nowrap;
+  }
+
+  .features-label {
+    font-size: 24px;
+    white-space: nowrap;
+  }
+
+  .responsive-indicator rect {
+    stroke: #fff !important;
+  }
+
+  .rv-crosshair__inner {
+    color: #000;
+    top: -15px;
+  }
 }

@@ -41,12 +41,12 @@ const VERY_LOW_TO_HIGH = [0.08, Infinity];
 const HIGH_RANGE = [0.7, Infinity];
 // const MIN_PPP = 2e-5;
 
-const BARCHART_FEATURES = [
-  {min: -Infinity, max: Infinity, name: 'xaxis'},
-  {min: VERY_LOW_RANGE[0], max: VERY_LOW_RANGE[1], name: 'yaxis'},
-  {min: VERY_LOW_TO_HIGH[0], max: VERY_LOW_TO_HIGH[1], name: 'mouseLabels'},
-  {min: LOW_RANGE[0], max: LOW_RANGE[1], name: 'bars'},
-  {min: HIGH_RANGE[0], max: HIGH_RANGE[1], name: 'area'}
+export const BARCHART_FEATURES = [
+  {min: -Infinity, max: Infinity, name: 'xaxis', group: 0},
+  {min: VERY_LOW_RANGE[0], max: VERY_LOW_RANGE[1], name: 'yaxis', group: 1},
+  {min: VERY_LOW_TO_HIGH[0], max: VERY_LOW_TO_HIGH[1], name: 'mouseLabels', group: 1},
+  {min: LOW_RANGE[0], max: LOW_RANGE[1], name: 'bars', group: 2},
+  {min: HIGH_RANGE[0], max: HIGH_RANGE[1], name: 'area', group: 2}
 ];
 
 function updateDataForArea(data, ppp) {
@@ -74,11 +74,10 @@ export default class ResponsiveScatterplot extends React.Component {
     hoveredPoint: false
   }
 
-  _rememberValue(value) {
-    console.log(value)
+  _rememberValue(value, e) {
     this.setState({hoveredPoint: {
       x: -25,
-      y: value.y,
+      y: typeof value.y === 'string' ? value.y : e.index,
       label: value.label
     }});
   }
@@ -104,6 +103,7 @@ export default class ResponsiveScatterplot extends React.Component {
     const ppp = getPPP(innerWidth, innerHeight, data, 'HEIGHT');
     const featuresToRender = filterFeatures(BARCHART_FEATURES, ppp);
     const updatedData = featuresToRender.area ? updateDataForArea(data, ppp) : data;
+
     return (
       <div className="responsive-bar-chart">
         <XYPlot
@@ -118,7 +118,7 @@ export default class ResponsiveScatterplot extends React.Component {
             colorType="literal"
             yRange={[0, innerHeight]}
             xRange={[0, innerWidth]}
-            onValueMouseOver={featuresToRender.mouseLabels ? this._rememberValue : null}
+            onNearestX={featuresToRender.mouseLabels ? this._rememberValue : null}
             data={updatedData} />}
           {featuresToRender.area && <AreaSeries
             colorType="literal"
@@ -127,7 +127,6 @@ export default class ResponsiveScatterplot extends React.Component {
             yDomain={[0, updatedData.length]}
             yRange={[0, innerHeight]}
             xRange={[innerWidth, 0]}
-            onValueMouseOver={featuresToRender.mouseLabels ? this._rememberValue : null}
             onNearestX={featuresToRender.mouseLabels ? this._rememberValue : null}
             data={updatedData} />}
           {featuresToRender.mouseLabels && hoveredPoint && <Hint

@@ -49,16 +49,16 @@ const HIGH_RANGE = [1e-2, Infinity];
 const MED_HIGH_RANGE = [MED_RANGE[0], HIGH_RANGE[1]];
 // const MIN_PPP = 2e-5;
 
-const SCATTERPLOT_FEATURES = [
-  {min: -Infinity, max: Infinity, name: 'axes'},
-  {min: SUPER_LOW_RANGE[0], max: SUPER_LOW_RANGE[1], name: 'labels'},
-  {min: VERY_LOW_RANGE[0], max: VERY_LOW_RANGE[1], name: 'pointSelection'},
-  {min: LOW_RANGE[0], max: LOW_RANGE[1], name: 'points'},
-  {min: MED_LOW_RANGE[0], max: MED_LOW_RANGE[1], name: 'tooltips'},
-  {min: MED_HIGH_RANGE[0], max: MED_HIGH_RANGE[1], name: 'bins'},
-  {min: MED_HIGH_RANGE[0], max: MED_HIGH_RANGE[1], name: 'bintips'},
-  {min: MED_HIGH_RANGE[0], max: MED_HIGH_RANGE[1], name: 'binSelection'},
-  {min: HIGH_LOW_RANGE[0], max: HIGH_LOW_RANGE[1], name: 'brushSelection'}
+export const SCATTERPLOT_FEATURES = [
+  {min: -Infinity, max: Infinity, name: 'axes', group: 0},
+  {min: SUPER_LOW_RANGE[0], max: SUPER_LOW_RANGE[1], name: 'labels', group: 1},
+  {min: VERY_LOW_RANGE[0], max: VERY_LOW_RANGE[1], name: 'pointSelection', group: 1},
+  {min: LOW_RANGE[0], max: LOW_RANGE[1], name: 'points', group: 3},
+  {min: MED_LOW_RANGE[0], max: MED_LOW_RANGE[1], name: 'tooltips', group: 2},
+  {min: MED_HIGH_RANGE[0], max: MED_HIGH_RANGE[1], name: 'bins', group: 3},
+  {min: MED_HIGH_RANGE[0], max: MED_HIGH_RANGE[1], name: 'bintips', group: 2},
+  {min: MED_HIGH_RANGE[0], max: MED_HIGH_RANGE[1], name: 'binSelection', group: 1},
+  {min: HIGH_LOW_RANGE[0], max: HIGH_LOW_RANGE[1], name: 'brushSelection', group: 1}
 ];
 
 export default class ResponsiveScatterplot extends React.Component {
