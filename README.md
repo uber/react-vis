@@ -77,7 +77,7 @@ import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
 
 ## More information
 
-Take a look at the [folder with examples](src/example) or check out some docs:
+Take a look at the [folder with examples](examples/) or check out some docs:
 
 - Common concepts:
   * [Scales and Data](docs/scales-and-data.md) about how the attributes can be adjusted.
