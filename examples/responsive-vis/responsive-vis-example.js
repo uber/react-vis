@@ -1,0 +1,150 @@
+// Copyright (c) 2016 Uber Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+import React from 'react';
+
+import {
+  createData,
+  getPPP
+} from './responsive-vis-utils';
+
+import ResponsiveScatterplot from './responsive-scatterplot';
+import ResponsiveBarChart from './responsive-bar-chart';
+
+const ASPECT_RATIO = 1.2;
+
+export default class ResponsiveVisDemo extends React.Component {
+
+  state = {
+    dataSize: 1,
+    visSize: 400,
+    data: createData(5, true),
+    chartType: 'barChart'
+  }
+
+  renderControls() {
+    const {chartType, data, dataSize, visSize} = this.state;
+    const width = visSize;
+    const height = visSize * ASPECT_RATIO;
+    const ppp = getPPP(width, height, data, 'TWOD');
+    const featuresToRender = this.refs[chartType] && this.refs[chartType].getFeatures() || {};
+
+    return (<div className="responsive-controls">
+      <div className="points-per-pixel-label">{`Points Per Pixel: ${ppp}`}</div>
+      <div className="features-label">
+        {`Features: ${Object.keys(featuresToRender).join(', ')}`}
+      </div>
+      <div className="chart-type-selector">
+        <div
+          className={chartType === 'scatterplot' ? 'selected-chart-type' : 'unselected-chart-type'}
+          onClick={() => this.setState({
+            chartType: 'scatterplot',
+            data: createData((~~Math.pow(10, dataSize)), false)
+          })}
+          >
+          Scatterplot
+        </div>
+        <div
+          className={chartType === 'barChart' ? 'selected-chart-type' : 'unselected-chart-type'}
+          onClick={() => this.setState({
+            chartType: 'barChart',
+            data: createData((~~Math.pow(10, dataSize)), true)
+          })}
+          >
+          BarChart
+        </div>
+      </div>
+      {`Data Size: ${(~~Math.pow(10, dataSize))}`}
+      <input
+        onChange={e => {
+          this.setState({
+            dataSize: e.target.value,
+            data: createData(~~Math.pow(10, e.target.value), this.state.chartType === 'barChart')
+          });
+        }}
+        type="range"
+        min={1}
+        max={6}
+        step={0.1}
+        value={dataSize}
+        />
+
+      {`Visualization size: ${visSize}`}
+      <input
+        onChange={e => this.setState({visSize: ~~e.target.value})}
+        type="range"
+        min={100}
+        max={1000}
+        value={visSize}
+        />
+    </div>);
+  }
+
+  render() {
+    const {chartType, data, visSize} = this.state;
+    const margin = {left: 60, top: 60, bottom: 50, right: 50};
+
+    return (
+      <div className="responsive-vis-example">
+        <div className="responsive-explanation">
+          This demo explores the concept of "Responsive Data Visualization"
+          (As coined by Nick Rabinowitz). The basic notion is lifted from responsive design:
+          some features work for some screen resolutions, while others do not.
+          Responsive design determines whether or not to use a given feature by
+          consulting an aspect ratio (width by height). Through this notation we are
+          able to create beautiful web experiences that work seemlessly between phones,
+          tablets, and computers. Taking this idea on step
+          farther we introduce a third element into the fray: data size.
+          <br />
+          <br />
+          In data visualization, we often need to create applications that work with
+          enmorous ranges of sizes of data. Sometimes the data might be small (10 - 100 rows),
+          or it might be gigantic (100k-1M+ row): throughout the entire range it just needs to work.
+          Again, following our cues from responsive design, we note that maybe labels on
+          scatterplots look great when you have under 50 data points, but bad when you have 2000.
+          Checkout Nicks
+          <a href="http://nrabinowitz.github.io/rdv/"> original demo </a>
+           for more details on the theory, as well to see his rad implementation in
+           raw d3.
+
+        </div>
+        <div className="responsive-vis-example-main-content">
+          {this.renderControls()}
+
+          {chartType === 'scatterplot' && <ResponsiveScatterplot
+              data={data}
+              ref="scatterplot"
+              margin={margin}
+              height={ASPECT_RATIO * visSize}
+              width={visSize} />}
+          {
+            // TODO Add a orientation prop
+          }
+          {chartType === 'barChart' && <ResponsiveBarChart
+            data={data}
+            height={ASPECT_RATIO * visSize}
+            margin={margin}
+            ref="barChart"
+            width={visSize} />}
+        </div>
+      </div>
+    );
+  }
+}
