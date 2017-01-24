@@ -1,8 +1,7 @@
 {
   "extends": "stylelint-config-standard",
-	"rules": {
-		"color-hex-case": "upper",
-    "selector-list-comma-space-after": "always",
-    "selector-list-comma-newline-after": "never-multi-line"
-	}
+  "rules": {
+    "color-hex-case": "upper",
+    "selector-list-comma-newline-after": "always"
+  }
 }

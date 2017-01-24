@@ -7,7 +7,11 @@ body {
   font-size: 14px;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-weight: normal;
 }
 
@@ -87,7 +91,8 @@ article {
   min-width: 650px;
   max-width: 1200px;
 
-  h1, h2 {
+  h1,
+  h2 {
     flex: 1 100%;
   }
 
@@ -119,19 +124,24 @@ article {
 }
 
 @keyframes shake {
-  1%, 9% {
+  1%,
+  9% {
     transform: translate3d(-1px, 0, 0);
   }
 
-  2%, 8% {
+  2%,
+  8% {
     transform: translate3d(2px, 0, 0);
   }
 
-  3%, 5%, 7% {
+  3%,
+  5%,
+  7% {
     transform: translate3d(-4px, 0, 0);
   }
 
-  4%, 6% {
+  4%,
+  6% {
     transform: translate3d(4px, 0, 0);
   }
 }
