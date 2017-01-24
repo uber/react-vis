@@ -34,6 +34,8 @@ import {
 
 const FlexibleXYPlot = makeWidthFlexible(XYPlot);
 
+const totalValues = Math.random() * 50;
+
 /**
  * Get the array of x and y pairs.
  * The function tries to avoid too large changes of the chart.
@@ -59,11 +61,9 @@ function getRandomSeriesData(total) {
 
 export default class Example extends React.Component {
 
-  constructor(props) {
-    super(props);
-    const totalValues = Math.random() * 50;
-    this.crosshairValues = [];
-    this.series = [
+  state = {
+    crosshairValues: [],
+    series: [
       {
         title: 'Apples',
         disabled: false,
@@ -74,7 +74,7 @@ export default class Example extends React.Component {
         disabled: false,
         data: getRandomSeriesData(totalValues)
       }
-    ];
+    ]
   }
 
   componentWillMount() {
@@ -87,7 +87,6 @@ export default class Example extends React.Component {
 
   _updateButtonClicked = () => {
     const {series} = this.state;
-    const totalValues = Math.random() * 50;
     series.forEach(s => {
       s.data = getRandomSeriesData(totalValues);
     });
