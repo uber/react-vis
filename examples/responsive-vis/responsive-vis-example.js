@@ -119,7 +119,7 @@ export default class ResponsiveVisDemo extends React.Component {
           or it might be gigantic (100k-1M+ row): throughout the entire range it just needs to work.
           Again, following our cues from responsive design, we note that maybe labels on
           scatterplots look great when you have under 50 data points, but bad when you have 2000.
-          Checkout Nick's
+          Checkout Nicks
           <a href="http://nrabinowitz.github.io/rdv/"> original demo </a>
            for more details on the theory, as well to see his rad implementation in
            raw d3.
