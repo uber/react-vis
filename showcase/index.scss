@@ -1,4 +1,4 @@
-@import "../main";
+@import "../src/main.scss";
 
 body {
   margin: 0;
@@ -7,7 +7,7 @@ body {
   font-size: 14px;
 }
 
-h1, h2, h3, h4, h5 {
+h1,h2,h3,h4,h5 {
   font-weight: normal;
 }
 
@@ -26,8 +26,8 @@ main {
 }
 
 header {
-  background: #f0f0f0;
-  border-bottom: #e1e1e1 1px solid;
+  background: #F0F0F0;
+  border-bottom: #E1E1E1 1px solid;
   line-height: 40px;
   position: fixed;
   top: 0;
@@ -45,7 +45,7 @@ header {
 .header-logo {
   float: left;
   font-size: 20px;
-  color: #000000;
+  color: #000;
   text-decoration: none;
 }
 
@@ -57,16 +57,19 @@ nav {
   float: right;
   padding: 0;
   font-weight: 400;
+
   li {
     padding: 0;
     display: inline-block;
   }
+
   a {
     color: #494949;
     display: block;
     padding: 0 15px;
     text-decoration: none;
     transition: all 0.2s;
+
     &:hover {
       background: #E5E5E4;
       color: #1C1B1B;
@@ -84,7 +87,7 @@ article {
   min-width: 650px;
   max-width: 1200px;
 
-  h1, h2 {
+  h1,h2 {
     flex: 1 100%;
   }
 
@@ -99,34 +102,36 @@ article {
 .click-me {
   border: 0;
   background: #EF5D28;
-  color: #fff;
+  color: #FFF;
   cursor: pointer;
   font-family: Sintony, Helvetica, sans-serif;
   font-size: 14px;
   outline: none;
   padding: 11px 20px;
   text-transform: uppercase;
+
   &:hover {
     background: #FF9833;
   }
-  animation: shake 5s 1s cubic-bezier(.36, .07, .19, .97) both infinite;
+
+  animation: shake 5s 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
   transform: translate3d(0, 0, 0);
 }
 
 @keyframes shake {
-  1%, 9% {
+  1%,9% {
     transform: translate3d(-1px, 0, 0);
   }
 
-  2%, 8% {
+  2%,8% {
     transform: translate3d(2px, 0, 0);
   }
 
-  3%, 5%, 7% {
+  3%,5%,7% {
     transform: translate3d(-4px, 0, 0);
   }
 
-  4%, 6% {
+  4%,6% {
     transform: translate3d(4px, 0, 0);
   }
 }
@@ -134,6 +139,7 @@ article {
 .example-with-click-me {
   position: relative;
   text-align: center;
+
   &:hover {
     .click-me {
       animation: none;
@@ -164,10 +170,11 @@ article {
   font-size: 10px;
   position: relative;
   margin: 12px 0 0 -10px;
-  &:after {
+
+  &::after {
     border-radius: 5px;
     border: 2px solid #EDAF00;
-    background: #fff;
+    background: #FFF;
     display: block;
     content: ' ';
     height: 6px;
@@ -180,13 +187,13 @@ article {
 
 .complex-hint {
   margin-top: 40px;
+
   .rv-hint {
     /* must be positioned in a parent with relative positioning */
     position: absolute;
     width: 0;
     height: 100%;
-
-    $hint-color: black;
+    $hint-color: BLACK;
     $margin-left: 30px;
     $margin-right: 10px;
     $margin-top: 10px;
@@ -194,6 +201,7 @@ article {
 
     & .hint--text-container {
       position: absolute;
+
       /*
        * set to 0,0 so that its content (including children)
        * can overflow out in vertical and horizontal
@@ -213,14 +221,17 @@ article {
         flex-direction: column-reverse;
         align-items: flex-start;
       }
+
       &.left-topEdge {
         flex-direction: row;
         align-items: flex-end;
       }
+
       &.left-bottomEdge {
         flex-direction: row;
         align-items: flex-start;
       }
+
       &.leftEdge-top {
         flex-direction: column;
         align-items: flex-end;
@@ -245,6 +256,7 @@ article {
         width: $margin-right;
         height: 0;
       }
+
       &.left-topEdge {
         border-left: 2px solid $hint-color;
         left: -1px;
@@ -252,6 +264,7 @@ article {
         width: 0;
         top: 0;
       }
+
       &.left-bottomEdge {
         border-left: 2px solid $hint-color;
         left: -1px;
@@ -259,6 +272,7 @@ article {
         width: 0;
         top: -$margin-bottom;
       }
+
       &.leftEdge-top {
         top: -1px;
         border-top: 2px solid $hint-color;
@@ -272,14 +286,17 @@ article {
     width: 0;
     height: 0;
   }
+
   .rv-hint--horizontalAlign-left.rv-hint--verticalAlign-topEdge {
     width: 0;
     height: 100%;
   }
+
   .rv-hint--horizontalAlign-left.rv-hint--verticalAlign-bottomEdge {
     width: 0;
     height: 0;
   }
+
   .rv-hint--horizontalAlign-leftEdge.rv-hint--verticalAlign-top {
     width: 100%;
     height: 0;

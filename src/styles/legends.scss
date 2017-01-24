@@ -5,6 +5,7 @@ $rv-legend-disabled-color: #B8B8B8;
   box-sizing: border-box;
   overflow-y: auto;
   font-size: 12px;
+
   &.horizontal {
     white-space: nowrap;
   }
@@ -14,8 +15,10 @@ $rv-legend-disabled-color: #B8B8B8;
   color: $rv-legend-enabled-color;
   border-radius: 1px;
   padding: 9px 10px;
+
   &.horizontal {
     display: inline-block;
+
     .rv-discrete-color-legend-item__title {
       margin-left: 0;
       display: block;
@@ -41,8 +44,9 @@ $rv-legend-disabled-color: #B8B8B8;
 
 .rv-discrete-color-legend-item.clickable {
   cursor: pointer;
+
   &:hover {
-    background: #f9f9f9;
+    background: #F9F9F9;
   }
 }
 
@@ -74,6 +78,7 @@ $rv-legend-disabled-color: #B8B8B8;
 
 .rv-continuous-color-legend {
   font-size: 12px;
+
   .rv-gradient {
     height: 4px;
     border-radius: 2px;
@@ -83,17 +88,20 @@ $rv-legend-disabled-color: #B8B8B8;
 
 .rv-continuous-size-legend {
   font-size: 12px;
+
   .rv-bubbles {
     text-align: justify;
     overflow: hidden;
     margin-bottom: 5px;
     width: 100%;
   }
+
   .rv-bubble {
     background: #D8D9DC;
     display: inline-block;
     vertical-align: bottom;
   }
+
   .rv-spacer {
     display: inline-block;
     font-size: 0;
@@ -107,9 +115,7 @@ $rv-legend-disabled-color: #B8B8B8;
   position: relative;
 }
 
-.rv-legend-titles__left,
-.rv-legend-titles__right,
-.rv-legend-titles__center {
+.rv-legend-titles__left,.rv-legend-titles__right,.rv-legend-titles__center {
   position: absolute;
   white-space: nowrap;
   overflow: hidden;
