@@ -77,18 +77,11 @@ export default class Example extends React.Component {
     ]
   }
 
-  componentWillMount() {
-    const {crosshairValues, series} = this;
-    this.setState({
-      crosshairValues,
-      series
-    });
-  }
-
   _updateButtonClicked = () => {
     const {series} = this.state;
+    const newTotalValues = Math.random() * 50;
     series.forEach(s => {
-      s.data = getRandomSeriesData(totalValues);
+      s.data = getRandomSeriesData(newTotalValues);
     });
     this.setState({series});
   }
