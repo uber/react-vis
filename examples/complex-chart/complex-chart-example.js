@@ -61,24 +61,20 @@ function getRandomSeriesData(total) {
 
 export default class Example extends React.Component {
 
-  crosshairValues = []
-
-  series = [
-    {
-      title: 'Apples',
-      disabled: false,
-      data: getRandomSeriesData(totalValues)
-    },
-    {
-      title: 'Bananas',
-      disabled: false,
-      data: getRandomSeriesData(totalValues)
-    }
-  ]
-
   state = {
-    crosshairValues: this.crosshairValues,
-    series: this.series
+    crosshairValues: [],
+    series: [
+      {
+        title: 'Apples',
+        disabled: false,
+        data: getRandomSeriesData(totalValues)
+      },
+      {
+        title: 'Bananas',
+        disabled: false,
+        data: getRandomSeriesData(totalValues)
+      }
+    ]
   }
 
   _updateButtonClicked = () => {
