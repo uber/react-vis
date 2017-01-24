@@ -30,8 +30,8 @@ main {
 }
 
 header {
-  background: #F0F0F0;
-  border-bottom: #E1E1E1 1px solid;
+  background: #f0f0f0;
+  border-bottom: #e1e1e1 1px solid;
   line-height: 40px;
   position: fixed;
   top: 0;
@@ -75,8 +75,8 @@ nav {
     transition: all 0.2s;
 
     &:hover {
-      background: #E5E5E4;
-      color: #1C1B1B;
+      background: #e5e5e4;
+      color: #1c1b1b;
     }
   }
 }
@@ -106,8 +106,8 @@ article {
 
 .click-me {
   border: 0;
-  background: #EF5D28;
-  color: #FFF;
+  background: #ef5d28;
+  color: #fff;
   cursor: pointer;
   font-family: Sintony, Helvetica, sans-serif;
   font-size: 14px;
@@ -116,7 +116,7 @@ article {
   text-transform: uppercase;
 
   &:hover {
-    background: #FF9833;
+    background: #ff9833;
   }
 
   animation: shake 5s 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
@@ -172,9 +172,9 @@ article {
 }
 
 .custom-hint {
-  background: #F9E7BB;
+  background: #f9e7bb;
   border-radius: 3px;
-  border: 1px solid #EDAF00;
+  border: 1px solid #edaf00;
   padding: 10px;
   color: #333;
   font-size: 10px;
@@ -183,8 +183,8 @@ article {
 
   &::after {
     border-radius: 5px;
-    border: 2px solid #EDAF00;
-    background: #FFF;
+    border: 2px solid #edaf00;
+    background: #fff;
     display: block;
     content: ' ';
     height: 6px;
@@ -203,7 +203,7 @@ article {
     position: absolute;
     width: 0;
     height: 100%;
-    $hint-color: BLACK;
+    $hint-color: black;
     $margin-left: 30px;
     $margin-right: 10px;
     $margin-top: 10px;
