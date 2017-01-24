@@ -23,7 +23,7 @@
     "clean": "rm -rf dist bundle.* index.html && mkdir dist",
     "build": "npm run clean && babel src -d dist --copy-files && node-sass src/main.scss main.css",
     "lint": "eslint src tests showcase --ignore-pattern node_modules --ignore-pattern bundle.js",
-    "lint-styles": "stylelint examples/*.scss showcase/*.scss src/*.scss src/styles/*.scss --syntax scss",
+    "lint-styles": "stylelint src/*.scss src/styles/*.scss --syntax scss",
     "test": "tape -r babel-register tests/**/*.js",
     "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test"
   },
