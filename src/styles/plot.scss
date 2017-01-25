@@ -1,8 +1,7 @@
-$rv-xy-plot-axis-font-color: #6B6B76;
+$rv-xy-plot-axis-font-color: #6b6b76;
 $rv-xy-plot-axis-line-color: #e6e6e9;
 $rv-xy-plot-axis-font-size: 11px;
-
-$rv-xy-plot-tooltip-background: #3A3A48;
+$rv-xy-plot-tooltip-background: #3a3a48;
 $rv-xy-plot-tooltip-color: #fff;
 $rv-xy-plot-tooltip-font-size: 12px;
 $rv-xy-plot-tooltip-border-radius: 4px;
@@ -18,17 +17,12 @@ $rv-xy-plot-tooltip-padding: 7px 10px;
   display: block;
 }
 
-.rv-xy-plot__axis {
-}
+// .rv-xy-plot__axis {}
 
 .rv-xy-plot__axis__line {
   stroke-width: 2px;
   stroke: $rv-xy-plot-axis-line-color;
   fill: none;
-}
-
-.rv-xy-plot__axis__tick {
-
 }
 
 .rv-xy-plot__axis__tick__line {
@@ -45,9 +39,6 @@ $rv-xy-plot-tooltip-padding: 7px 10px;
     font-size: $rv-xy-plot-axis-font-size;
     fill: $rv-xy-plot-axis-font-color;
   }
-}
-
-.rv-xy-plot__grid-lines {
 }
 
 .rv-xy-plot__grid-lines__line {

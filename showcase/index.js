@@ -68,7 +68,7 @@ import SearchableDiscreteColorLegendExample from './legends/searchable-discrete-
 import ContinuousColorLegendExample from './legends/continuous-color';
 import ContinuousSizeLegendExample from './legends/continuous-size';
 
-import './index.scss';
+import '../src/styles/examples.scss';
 
 const App = (
   <main>

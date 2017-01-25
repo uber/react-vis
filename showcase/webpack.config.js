@@ -21,7 +21,7 @@ const config = isProd ? {
 
   module: {
     rules: [jsRule, {
-      test: /index.scss$/,
+      test: /\.scss$/,
       loader: ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
         loader: ['css-loader', 'sass-loader']

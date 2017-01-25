@@ -24,7 +24,7 @@ import window from 'global/window';
 import document from 'global/document';
 
 import ComplexChartExample from './complex-chart-example';
-import '../examples.scss';
+import '../../src/styles/examples.scss';
 
 export default class App extends Component {
   componentWillMount() {
