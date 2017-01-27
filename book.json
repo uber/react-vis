@@ -2,6 +2,7 @@
   "gitbook": "3.2.2",
   "title": "React Vis",
   "plugins": ["edit-link", "prism", "-highlight", "github", "anchorjs"],
+  "root": "./docs",
   "pluginsConfig": {
     "edit-link": {
       "base": "https://github.com/uber/react-vis/tree/master",

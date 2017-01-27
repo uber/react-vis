@@ -20,7 +20,7 @@
 
 <h5 align="center">Data Visualization oriented components</h5>
 
-![demo](docs/assets/react-vis.gif?raw=true)
+![demo](https://raw.githubusercontent.com/uber/react-vis/master/docs/assets/react-vis.gif)
 
 ## Overview
 
