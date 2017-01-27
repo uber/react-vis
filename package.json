@@ -55,6 +55,7 @@
     "eslint-config-uber-jsx": "^3.0.1",
     "eslint-plugin-babel": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
+    "gitbook-cli": "^2.3.0",
     "jsdom": "^9.9.1",
     "node-sass": "^4.2.0",
     "nyc": "^10.0.0",
