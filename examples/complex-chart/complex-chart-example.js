@@ -79,9 +79,8 @@ export default class Example extends React.Component {
 
   _updateButtonClicked = () => {
     const {series} = this.state;
-    const newTotalValues = Math.random() * 50;
     series.forEach(s => {
-      s.data = getRandomSeriesData(newTotalValues);
+      s.data = getRandomSeriesData(Math.random() * 50);
     });
     this.setState({series});
   }
