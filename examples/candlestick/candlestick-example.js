@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Uber Technologies, Inc.
+// Copyright (c) 2017 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import {
   XYPlot,
   XAxis,
@@ -27,7 +26,9 @@ import {
   LineSeries,
   makeWidthFlexible
 } from 'react-vis';
+
 import Candlestick from './candlestick';
+
 const FlexibleXYPlot = makeWidthFlexible(XYPlot);
 
 /**
@@ -36,23 +37,22 @@ const FlexibleXYPlot = makeWidthFlexible(XYPlot);
  * @returns {Array} Array of data.
  */
 function buildRandomBinnedData(total) {
-  const result = [];
-  for (let i = 0; i < total; i++) {
+  const result = Array(total).fill(0).map((x, i) => {
     const values = [Math.random(), Math.random(), Math.random(), Math.random()]
-      .sort()
-      .map(d => Math.floor(d * 100));
-    const yVal = (values[2] + values[1]) / 2;
-    result.push({
+    .sort()
+    .map(d => Math.floor(d * 100));
+    const y = (values[2] + values[1]) / 2;
+    return {
       x: i,
-      y: yVal,
+      y,
       yHigh: values[3],
       yOpen: values[2],
       yClose: values[1],
       yLow: values[0],
-      color: yVal < 25 ? '#EF5D28' : '#12939A',
-      opacity: yVal > 75 ? 0.7 : 1
-    });
-  }
+      color: y < 25 ? '#EF5D28' : '#12939A',
+      opacity: y > 75 ? 0.7 : 1
+    };
+  });
   return result;
 }
 
