@@ -1,0 +1,40 @@
+.responsive-vis-example {
+  display: flex;
+  flex-direction: column;
+
+  .responsive-controls {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+  }
+
+  .chart-type-selector {
+    display: flex;
+    justify-content: space-around;
+
+    * {
+      cursor: pointer;
+    }
+  }
+
+  .selected-chart-type {
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .responsive-bar-chart {
+    .rv-hint {
+      color: #000;
+    }
+  }
+
+  .points-per-pixel-label {
+    font-size: 32px;
+    white-space: nowrap;
+  }
+
+  .features-label {
+    font-size: 24px;
+    white-space: nowrap;
+  }
+}
