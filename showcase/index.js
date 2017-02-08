@@ -61,6 +61,7 @@ import DonutChartExample from './radial-chart/donut-chart';
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
 
 import BasicSankeyExample from './sankey/basic';
+import VoronoiSankeyExample from './sankey/voronoi';
 
 import VerticalDiscreteColorLegendExample from './legends/vertical-discrete-color';
 import HorizontalDiscreteColorLegendExample from './legends/horizontal-discrete-color';
@@ -294,6 +295,10 @@ const App = (
       <section>
         <h3>Basic</h3>
         <BasicSankeyExample />
+      </section>
+      <section>
+        <h3>With Voronoi Selection</h3>
+        <VoronoiSankeyExample />
       </section>
     </article>
 
