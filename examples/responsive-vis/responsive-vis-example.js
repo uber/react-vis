@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Uber Technologies, Inc.
+// Copyright (c) 2017 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import {
   createData,
   getPPP
@@ -29,6 +28,7 @@ import ResponsiveScatterplot from './responsive-scatterplot';
 import ResponsiveBarChart from './responsive-bar-chart';
 
 const ASPECT_RATIO = 1.2;
+const EXAMPLE_MARGIN = {left: 60, top: 60, bottom: 50, right: 50};
 
 export default class ResponsiveVisDemo extends React.Component {
 
@@ -39,12 +39,22 @@ export default class ResponsiveVisDemo extends React.Component {
     chartType: 'barChart'
   }
 
+  handleTypeClick(chartType) {
+    const {dataSize} = this.state;
+    return () => {
+      this.setState({
+        chartType,
+        data: createData((~~Math.pow(10, dataSize)), chartType === 'barChart')
+      });
+    };
+  }
+
   renderControls() {
     const {chartType, data, dataSize, visSize} = this.state;
     const width = visSize;
     const height = visSize * ASPECT_RATIO;
     const ppp = getPPP(width, height, data, 'TWOD');
-    const featuresToRender = this.refs[chartType] && this.refs[chartType].getFeatures() || {};
+    const featuresToRender = this.refs.responsiveExample && this.refs.responsiveExample.getFeatures() || {};
 
     return (<div className="responsive-controls">
       <div className="points-per-pixel-label">{`Points Per Pixel: ${ppp}`}</div>
@@ -54,19 +64,13 @@ export default class ResponsiveVisDemo extends React.Component {
       <div className="chart-type-selector">
         <div
           className={chartType === 'scatterplot' ? 'selected-chart-type' : 'unselected-chart-type'}
-          onClick={() => this.setState({
-            chartType: 'scatterplot',
-            data: createData((~~Math.pow(10, dataSize)), false)
-          })}
+          onClick={this.handleTypeClick('scatterplot')}
           >
           Scatterplot
         </div>
         <div
           className={chartType === 'barChart' ? 'selected-chart-type' : 'unselected-chart-type'}
-          onClick={() => this.setState({
-            chartType: 'barChart',
-            data: createData((~~Math.pow(10, dataSize)), true)
-          })}
+          onClick={this.handleTypeClick('barChart')}
           >
           BarChart
         </div>
@@ -99,8 +103,7 @@ export default class ResponsiveVisDemo extends React.Component {
 
   render() {
     const {chartType, data, visSize} = this.state;
-    const margin = {left: 60, top: 60, bottom: 50, right: 50};
-
+    const ResponsiveChartType = chartType === 'barChart' ? ResponsiveBarChart : ResponsiveScatterplot;
     return (
       <div className="responsive-vis-example">
         <div className="responsive-explanation">
@@ -127,22 +130,12 @@ export default class ResponsiveVisDemo extends React.Component {
         </div>
         <div className="responsive-vis-example-main-content">
           {this.renderControls()}
-
-          {chartType === 'scatterplot' && <ResponsiveScatterplot
+          <ResponsiveChartType
               data={data}
-              ref="scatterplot"
-              margin={margin}
+              ref="responsiveExample"
+              margin={EXAMPLE_MARGIN}
               height={ASPECT_RATIO * visSize}
-              width={visSize} />}
-          {
-            // TODO Add a orientation prop
-          }
-          {chartType === 'barChart' && <ResponsiveBarChart
-            data={data}
-            height={ASPECT_RATIO * visSize}
-            margin={margin}
-            ref="barChart"
-            width={visSize} />}
+              width={visSize} />
         </div>
       </div>
     );

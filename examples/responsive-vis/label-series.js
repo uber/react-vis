@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Uber Technologies, Inc.
+// Copyright (c) 2017 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import {AbstractSeries} from 'react-vis';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--label';
@@ -38,6 +37,7 @@ class Label extends AbstractSeries {
       yOffset,
       yRange
     } = this.props;
+
     if (!data) {
       return null;
     }
@@ -73,7 +73,5 @@ class Label extends AbstractSeries {
     );
   }
 }
-
-Label.displayName = 'Label';
 
 export default Label;

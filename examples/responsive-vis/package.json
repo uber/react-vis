@@ -1,5 +1,5 @@
 {
-  "description": "Complex Chart examples for react-vis",
+  "description": "Responsive Vis Example for react-vis",
   "license": "MIT",
   "scripts": {
     "link-html": "rm -f index.html && ln -s ../index.html",

@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Uber Technologies, Inc.
+// Copyright (c) 2017 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import {
   XYPlot,
   MarkSeries,
@@ -62,7 +61,6 @@ export const SCATTERPLOT_FEATURES = [
 ];
 
 export default class ResponsiveScatterplot extends React.Component {
-
   constructor(props) {
     super(props);
     this._rememberValue = this._rememberValue.bind(this);
@@ -136,8 +134,8 @@ export default class ResponsiveScatterplot extends React.Component {
 
     const ppp = getPPP(innerWidth, innerHeight, data, 'TWOD');
     const featuresToRender = filterFeatures(SCATTERPLOT_FEATURES, ppp);
-    const remeberVal = featuresToRender.pointSelection || featuresToRender.tooltips;
-    const remeberBin = featuresToRender.bintips || featuresToRender.binSelection;
+    const rememberVal = featuresToRender.pointSelection || featuresToRender.tooltips;
+    const rememberBin = featuresToRender.bintips || featuresToRender.binSelection;
 
     const pointRadii = computeRadius(data, innerWidth, innerHeight);
     return (
@@ -151,16 +149,16 @@ export default class ResponsiveScatterplot extends React.Component {
           {featuresToRender.bins && <HeatmapSeries
             className="responsive-vis-heatmap"
             colorType="literal"
-            onValueMouseOver={remeberBin ? this._rememberValue : null}
-            onValueMouseOut={remeberBin ? this._forgetValue : null}
+            onValueMouseOver={rememberBin ? this._rememberValue : null}
+            onValueMouseOut={rememberBin ? this._forgetValue : null}
             onValueClick={featuresToRender.binSelection ? this._selectBin : null}
             data={manicureData(binData, hoveredPoint, selectedPoints, true)}/>}
           {featuresToRender.points && <MarkSeries
             className="responsive-vis-scatterplot"
             colorType="literal"
             size={pointRadii}
-            onValueMouseOver={remeberVal ? this._rememberValue : null}
-            onValueMouseOut={remeberVal ? this._forgetValue : null}
+            onValueMouseOver={rememberVal ? this._rememberValue : null}
+            onValueMouseOut={rememberVal ? this._forgetValue : null}
             onValueClick={featuresToRender.pointSelection ? this._selectValue : null}
             data={manicureData(data, hoveredPoint, selectedPoints, false)}/>}
           {(featuresToRender.tooltips || featuresToRender.bintips) &&

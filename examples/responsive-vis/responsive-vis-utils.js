@@ -1,3 +1,23 @@
+// Copyright (c) 2017 Uber Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
 import {randomNormal} from 'd3-random';
 import {scaleLinear, scaleQuantize, scaleSqrt} from 'd3-scale';
 import {max, range} from 'd3-array';
@@ -7,27 +27,14 @@ export function createData(dataSize, barChart = true) {
   const gen1 = randomNormal(70, 15);
   const gen2 = randomNormal(50, 8);
   const gen = (i) => i % 3 ? gen1() : gen2();
-  const data = new Array(dataSize);
-  let index = -1;
 
-  while (index++ < dataSize) {
-    if (barChart) {
-      data[index] = {
-        x: gen(index),
-        y: `Point-${index}`,
-        label: `Point ${index}`,
-        color: '#12939A'
-      };
-    }
-    if (!barChart) {
-      data[index] = {
-        x: gen(index),
-        y: gen(index),
-        label: `Point ${index}`,
-        color: '#12939A'
-      };
-    }
-  }
+  const data = new Array(dataSize).fill(0).map((d, index) => ({
+    x: gen(index),
+    y: barChart ? `Point-${index}` : gen(index),
+    label: `Point ${index}`,
+    color: '#12939A'
+  }));
+
   if (barChart) {
     data.sort((a, b) => b.x - a.x);
   }
@@ -58,15 +65,12 @@ export function getPPP(w, h, data, dimensionality) {
 }
 
 function generateDomain(data) {
-  return data.reduce((res, row) => {
-    res = {
-      xMin: Math.min(res.xMin, row.x),
-      xMax: Math.max(res.xMax, row.x),
-      yMin: Math.min(res.yMin, row.y),
-      yMax: Math.max(res.yMax, row.y)
-    };
-    return res;
-  }, {xMin: Infinity, xMax: -Infinity, yMin: Infinity, yMax: -Infinity});
+  return data.reduce((res, row) => ({
+    xMin: Math.min(res.xMin, row.x),
+    xMax: Math.max(res.xMax, row.x),
+    yMin: Math.min(res.yMin, row.y),
+    yMax: Math.max(res.yMax, row.y)
+  }), {xMin: Infinity, xMax: -Infinity, yMin: Infinity, yMax: -Infinity});
 }
 
 export function transformToBinData(data, width, height) {
@@ -76,23 +80,20 @@ export function transformToBinData(data, width, height) {
   const xBin = scaleQuantize().domain([domains.xMin, domains.xMax]).range(range(binCount));
   const yBin = scaleQuantize().domain([domains.yMin, domains.yMax]).range(range(binCount));
 
-  const binData = new Array(binCount * binCount);
-  for (let i = 0; i < binData.length; i++) {
-    binData[i] = 0;
-  }
+  const binData = new Array(binCount * binCount).fill(0);
   data.forEach(d => {
+    // compute the "address" of the bin in the binData hash
     const index = xBin(d.x) + (binCount * yBin(d.y));
     binData[index]++;
   });
   const maxCount = max(binData);
   const color = scaleSqrt().domain([0, maxCount]).range(['#fff', '#12939A']);
 
-  const mappedData = binData.map((d, index) => {
+  return binData.map((d, index) => {
     const x = index % binCount;
     const y = ~~(index / binCount);
     return {x, y, color: color(d), count: d, maxCount};
   });
-  return mappedData;
 }
 
 function transformColor(data, hovered = [], useRange = false) {

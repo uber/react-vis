@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Uber Technologies, Inc.
+// Copyright (c) 2017 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import {
   AreaSeries,
   Hint,
@@ -29,10 +28,7 @@ import {
   YAxis
 } from 'react-vis';
 
-import {
-  filterFeatures,
-  getPPP
-} from './responsive-vis-utils';
+import {filterFeatures, getPPP} from './responsive-vis-utils';
 
 // range constants
 const VERY_LOW_RANGE = [0, 0.08];
@@ -62,8 +58,7 @@ function updateDataForArea(data, ppp) {
   return sample;
 }
 
-export default class ResponsiveScatterplot extends React.Component {
-
+export default class ResponsiveBarChart extends React.Component {
   constructor(props) {
     super(props);
     this._rememberValue = this._rememberValue.bind(this);
@@ -86,6 +81,7 @@ export default class ResponsiveScatterplot extends React.Component {
     this.setState({hoveredPoint: null});
   }
 
+  // todo build a root responsive class that has this as a class method
   getFeatures() {
     const {data, height, margin, width} = this.props;
     const innerWidth = width - margin.left - margin.right;
