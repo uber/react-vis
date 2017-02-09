@@ -13,11 +13,8 @@ const links = [
 ];
 
 export default class VoronoiSankeyExample extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeNode: null
-    };
+  state = {
+    activeNode: null
   }
   render() {
     const {activeNode} = this.state;
