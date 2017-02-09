@@ -26,6 +26,8 @@ function Voronoi({className, extent, nodes, onBlur, onClick, onHover, x, y}) {
   );
 }
 
+Voronoi.requiresSVG = true;
+
 Voronoi.defaultProps = {
   className: '',
   onBlur: NOOP,
