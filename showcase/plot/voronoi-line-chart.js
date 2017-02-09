@@ -21,7 +21,6 @@
 import React from 'react';
 import {curveCatmullRom} from 'd3-shape';
 import {scaleLinear} from 'd3-scale';
-import {extent} from 'd3-array';
 
 import {
   XYPlot,
@@ -83,7 +82,7 @@ export default class Example extends React.Component {
         {lines.map((d, i) => (
           <LineSeries
             key={i}
-            opacity={highlightedLine === i ? 1 : .6}
+            opacity={highlightedLine === i ? 1 : 0.6}
             curve={curveCatmullRom.alpha(0.5)}
             data={d}
           />
