@@ -1,0 +1,100 @@
+// Copyright (c) 2016 Uber Technologies, Inc.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+import React from 'react';
+import {curveCatmullRom} from 'd3-shape';
+import {scaleLinear} from 'd3-scale';
+import {extent} from 'd3-array';
+
+import {
+  XYPlot,
+  XAxis,
+  YAxis,
+  HorizontalGridLines,
+  VerticalGridLines,
+  LineSeries,
+  Voronoi
+} from 'index';
+
+const lines = [
+  [
+    {x: 1, y: 3},
+    {x: 2, y: 5},
+    {x: 3, y: 15},
+    {x: 4, y: 12}
+  ],
+  [
+    {x: 1, y: 10},
+    {x: 2, y: 4},
+    {x: 3, y: 2},
+    {x: 4, y: 15}
+  ],
+  [
+    {x: 1, y: 7},
+    {x: 2, y: 11},
+    {x: 3, y: 9},
+    {x: 4, y: 2}
+  ]
+].map((p, i) => p.map(d => ({...d, i})));
+
+const width = 300;
+const height = 300;
+
+const x = scaleLinear()
+  .domain([1, 4])
+  .range([0, width]);
+const y = scaleLinear()
+  .domain([2, 15])
+  .range([0, height]);
+
+export default class Example extends React.Component {
+  state = {
+    highlightedLine: null
+  }
+  render() {
+    const {highlightedLine} = this.state;
+    return (
+      <XYPlot
+        width={width}
+        height={height}>
+        <HorizontalGridLines />
+        <VerticalGridLines />
+        <XAxis title="X Axis" />
+        <YAxis title="Y Axis" />
+        {lines.map((d, i) => (
+          <LineSeries
+            key={i}
+            opacity={highlightedLine === i ? 1 : .6}
+            curve={curveCatmullRom.alpha(0.5)}
+            data={d}
+          />
+        ))}
+        <Voronoi
+          extent={[[0, 0], [width, height]]}
+          nodes={lines.reduce((acc, d) => [...acc, ...d], [])}
+          onHover={point => this.setState({highlightedLine: point.i})}
+          onBlur={() => this.setState({highlightedLine: null})}
+          x={d => x(d.x)}
+          y={d => y(d.y)}
+        />
+      </XYPlot>
+    );
+  }
+}

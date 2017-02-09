@@ -49,6 +49,7 @@ import StaticCrosshair from './plot/static-crosshair';
 import DynamicCrosshair from './plot/dynamic-crosshair';
 import SyncedCharts from './plot/synced-charts';
 import TimeChart from './plot/time-chart';
+import VoronoiLineChart from './plot/voronoi-line-chart';
 
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
@@ -219,6 +220,10 @@ const App = (
       <section>
         <h3>Time Chart</h3>
         <TimeChart />
+      </section>
+      <section>
+        <h3>Voronoi Line Chart</h3>
+        <VoronoiLineChart />
       </section>
     </article>
 
