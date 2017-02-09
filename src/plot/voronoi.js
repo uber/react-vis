@@ -3,16 +3,7 @@ import {voronoi} from 'd3-voronoi';
 
 const NOOP = f => f;
 
-function Voronoi({
-  className = '',
-  extent,
-  nodes,
-  onBlur = NOOP,
-  onClick = NOOP,
-  onHover = NOOP,
-  x = d => d.x,
-  y = d => d.y
-}) {
+function Voronoi({className, extent, nodes, onBlur, onClick, onHover, x, y}) {
   // Create a voronoi with each node center points
   const voronoiInstance = voronoi()
     .x(x)
@@ -34,6 +25,15 @@ function Voronoi({
     </g>
   );
 }
+
+Voronoi.defaultProps = {
+  className: '',
+  onBlur: NOOP,
+  onClick: NOOP,
+  onHover: NOOP,
+  x: d => d.x,
+  y: d => d.y
+};
 
 Voronoi.propTypes = {
   className: PropTypes.string,
