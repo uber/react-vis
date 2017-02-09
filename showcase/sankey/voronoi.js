@@ -30,7 +30,7 @@ export default class VoronoiSankeyExample extends React.Component {
         links={links.map(d => ({...d}))}
         width={200}
         height={200}
-        hasVoronoi={true}
+        hasVoronoi
         onHover={node => this.setState({activeNode: node})}
         onBlur={() => this.setState({activeNode: null})}
       />
