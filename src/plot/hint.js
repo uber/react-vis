@@ -225,7 +225,7 @@ class Hint extends PureRenderComponent {
         horizontal: ALIGN.LEFT,
         vertical: ALIGN.TOP
       };
-    case ALIGN.TOP_RIGHT:
+    case ORIENTATION.TOP_RIGHT:
       return {
         horizontal: ALIGN.RIGHT,
         vertical: ALIGN.TOP
