@@ -33,8 +33,14 @@ class Sankey extends Component {
     height: PropTypes.number.isRequired,
     layout: PropTypes.number,
     links: PropTypes.arrayOf(PropTypes.shape({
-      source: PropTypes.number.isRequired,
-      target: PropTypes.number.isRequired
+      source: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.object
+      ]).isRequired,
+      target: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.object
+      ]).isRequired
     })).isRequired,
     margin: PropTypes.number,
     nodePadding: PropTypes.number,
