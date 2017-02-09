@@ -3,7 +3,7 @@ import {voronoi} from 'd3-voronoi';
 
 const NOOP = f => f;
 
-function Voronoi({className, extent, nodes, onBlur, onClick, onHover, x, y}) {
+function Voronoi({className, extent, nodes, onBlur, onClick, onHover, polygonStyle, style, x, y}) {
   // Create a voronoi with each node center points
   const voronoiInstance = voronoi()
     .x(x)
@@ -11,7 +11,7 @@ function Voronoi({className, extent, nodes, onBlur, onClick, onHover, x, y}) {
     .extent(extent);
 
   return (
-    <g className={`${className} rv-voronoi`}>
+    <g className={`${className} rv-voronoi`} style={style}>
       {voronoiInstance.polygons(nodes).map((d, i) => (
         <path
           d={`M${d.join('L')}Z`}
@@ -19,7 +19,10 @@ function Voronoi({className, extent, nodes, onBlur, onClick, onHover, x, y}) {
           onMouseOver={() => onHover(d.data)}
           onMouseOut={() => onBlur(d.data)}
           fill="none"
-          style={{pointerEvents: 'all'}}
+          style={{
+            pointerEvents: 'all',
+            ...polygonStyle
+          }}
           key={i} />
       ))}
     </g>
