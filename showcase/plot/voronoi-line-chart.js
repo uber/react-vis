@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import {curveCatmullRom} from 'd3-shape';
 import {scaleLinear} from 'd3-scale';
 
 import {
@@ -29,6 +28,7 @@ import {
   HorizontalGridLines,
   VerticalGridLines,
   LineSeries,
+  MarkSeries,
   Voronoi
 } from 'index';
 
@@ -51,8 +51,9 @@ const lines = [
     {x: 3, y: 9},
     {x: 4, y: 2}
   ]
-].map((p, i) => p.map(d => ({...d, i})));
+].map((p, i) => p.map(d => ({...d, line: i})));
 
+const margin = {top: 10, left: 40, bottom: 40, right: 10};
 const width = 300;
 const height = 300;
 
@@ -61,41 +62,59 @@ const x = scaleLinear()
   .range([0, width]);
 const y = scaleLinear()
   .domain([2, 15])
-  .range([0, height]);
+  .range([height, 0]);
 
 export default class Example extends React.Component {
 
   state = {
-    highlightedLine: null
+    hoveredNode: null,
+    showVoronoi: false
   }
 
   render() {
-    const {highlightedLine} = this.state;
+    const {hoveredNode, showVoronoi} = this.state;
     return (
-      <XYPlot
-        width={width}
-        height={height}>
-        <HorizontalGridLines />
-        <VerticalGridLines />
-        <XAxis title="X Axis" />
-        <YAxis title="Y Axis" />
-        {lines.map((d, i) => (
-          <LineSeries
-            key={i}
-            opacity={highlightedLine === i ? 1 : 0.6}
-            curve={curveCatmullRom.alpha(0.5)}
-            data={d}
+      <div>
+        <label style={{display: 'block'}}>
+          <input
+            type="checkbox"
+            checked={showVoronoi}
+            onChange={e => this.setState({showVoronoi: !showVoronoi})}
           />
-        ))}
-        <Voronoi
-          extent={[[0, 0], [width, height]]}
-          nodes={lines.reduce((acc, d) => [...acc, ...d], [])}
-          onHover={point => this.setState({highlightedLine: point.i})}
-          onBlur={() => this.setState({highlightedLine: null})}
-          x={d => x(d.x)}
-          y={d => y(d.y)}
-        />
-      </XYPlot>
+          Show Voronoi
+        </label>
+        <XYPlot
+          width={width}
+          height={height}>
+          <HorizontalGridLines />
+          <VerticalGridLines />
+          <XAxis title="X Axis" />
+          <YAxis title="Y Axis" />
+          {lines.map((d, i) => (
+            <LineSeries
+              key={i}
+              opacity={hoveredNode && hoveredNode.line === i ? 1 : 0.6}
+              data={d}
+            />
+          ))}
+          {hoveredNode ? (
+            <MarkSeries
+              data={[hoveredNode]}
+              x={x(hoveredNode.x)}
+              y={y(hoveredNode.y)}
+            />
+          ) : null}
+          <Voronoi
+            extent={[[margin.left, margin.top], [width - margin.right, height - margin.bottom]]}
+            nodes={lines.reduce((acc, d) => [...acc, ...d], [])}
+            onHover={node => this.setState({hoveredNode: node})}
+            onBlur={() => this.setState({hoveredNode: null})}
+            polygonStyle={{stroke: showVoronoi ? 'rgba(0, 0, 0, .4)' : null}}
+            x={d => x(d.x)}
+            y={d => y(d.y)}
+          />
+        </XYPlot>
+      </div>
     );
   }
 }
