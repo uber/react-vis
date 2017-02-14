@@ -121,7 +121,7 @@ class Treemap extends React.Component {
     if (data) {
       const tileFn = TREEMAP_TILE_MODES[mode];
       return d3Hierarchy.treemap(tileFn)
-        .tile(d3Hierarchy.treemapSquarify)
+        .tile(tileFn)
         .size([width, height])
         .padding(padding)(
           d3Hierarchy.hierarchy(data)
