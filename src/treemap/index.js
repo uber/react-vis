@@ -28,9 +28,11 @@ import {getAttributeFunctor, getFontColorFromBackground, getMissingScaleProps} f
 
 const TREEMAP_TILE_MODES = {
   squarify: d3Hierarchy.treemapSquarify,
+  resquarify: d3Hierarchy.treemapResquarify,
   slice: d3Hierarchy.treemapSlice,
   dice: d3Hierarchy.treemapDice,
-  slicedice: d3Hierarchy.treemapSliceDice
+  slicedice: d3Hierarchy.treemapSliceDice,
+  binary: d3Hierarchy.treemapBinary
 };
 
 const NOOP = d => d;
