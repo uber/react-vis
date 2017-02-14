@@ -28,9 +28,11 @@ import {getAttributeFunctor, getFontColorFromBackground, getMissingScaleProps} f
 
 const TREEMAP_TILE_MODES = {
   squarify: d3Hierarchy.treemapSquarify,
+  resquarify: d3Hierarchy.treemapResquarify,
   slice: d3Hierarchy.treemapSlice,
   dice: d3Hierarchy.treemapDice,
-  slicedice: d3Hierarchy.treemapSliceDice
+  slicedice: d3Hierarchy.treemapSliceDice,
+  binary: d3Hierarchy.treemapBinary
 };
 
 const NOOP = d => d;
@@ -121,7 +123,7 @@ class Treemap extends React.Component {
     if (data) {
       const tileFn = TREEMAP_TILE_MODES[mode];
       return d3Hierarchy.treemap(tileFn)
-        .tile(d3Hierarchy.treemapSquarify)
+        .tile(tileFn)
         .size([width, height])
         .padding(padding)(
           d3Hierarchy.hierarchy(data)

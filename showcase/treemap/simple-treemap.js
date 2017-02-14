@@ -32,6 +32,7 @@ export default class SimpleTreemapExample extends React.Component {
         className="nested-tree-example"
         colorType="literal"
         data={D3FlareData}
+        mode="slicedice"
         height={300}
         width={350}/>
     );
