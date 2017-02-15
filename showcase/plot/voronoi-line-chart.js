@@ -100,8 +100,8 @@ export default class Example extends React.Component {
           {hoveredNode ? (
             <MarkSeries
               data={[hoveredNode]}
-              x={x(hoveredNode.x)}
-              y={y(hoveredNode.y)}
+              xDomain={x.domain()}
+              yDomain={y.domain()}
             />
           ) : null}
           <Voronoi
