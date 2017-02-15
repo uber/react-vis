@@ -21,6 +21,9 @@ export default class VoronoiSankeyExample extends React.Component {
   render() {
     const {activeNode} = this.state;
 
+    // Note: d3.sankey currently mutates the `nodes` and `links` arrays, which doesn't play nice
+    // with React's single-direction data flow. We create a copy of each before we pass to the sankey
+    // component, just to be sure.
     return (
       <Sankey
         nodes={nodes.map(d => ({
