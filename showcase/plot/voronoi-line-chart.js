@@ -93,7 +93,7 @@ export default class Example extends React.Component {
           {lines.map((d, i) => (
             <LineSeries
               key={i}
-              opacity={hoveredNode && hoveredNode.line === i ? 1 : 0.6}
+              opacity={hoveredNode && hoveredNode.line === i ? 1 : 0.5}
               data={d}
             />
           ))}
@@ -109,7 +109,7 @@ export default class Example extends React.Component {
             nodes={lines.reduce((acc, d) => [...acc, ...d], [])}
             onHover={node => this.setState({hoveredNode: node})}
             onBlur={() => this.setState({hoveredNode: null})}
-            polygonStyle={{stroke: showVoronoi ? 'rgba(0, 0, 0, .4)' : null}}
+            polygonStyle={{stroke: showVoronoi ? 'rgba(0, 0, 0, .2)' : null}}
             x={d => x(d.x)}
             y={d => y(d.y)}
           />
