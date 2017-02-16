@@ -37,6 +37,7 @@ export YAxis from 'plot/axis/y-axis';
 export GridLines from 'plot/grid-lines';
 export VerticalGridLines from 'plot/vertical-grid-lines';
 export HorizontalGridLines from 'plot/horizontal-grid-lines';
+export Voronoi from 'plot/voronoi';
 
 export DiscreteColorLegend from 'legends/discrete-color-legend';
 export SearchableDiscreteColorLegend from 'legends/searchable-discrete-color-legend';

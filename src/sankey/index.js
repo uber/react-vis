@@ -1,7 +1,7 @@
 import React, {PropTypes, Component} from 'react';
-import {voronoi} from 'd3-voronoi';
 import {sankey} from 'd3-sankey-align';
 
+import Voronoi from 'plot/voronoi';
 import {DISCRETE_COLOR_RANGE} from 'theme';
 
 const NOOP = f => f;
@@ -33,8 +33,14 @@ class Sankey extends Component {
     height: PropTypes.number.isRequired,
     layout: PropTypes.number,
     links: PropTypes.arrayOf(PropTypes.shape({
-      source: PropTypes.number.isRequired,
-      target: PropTypes.number.isRequired
+      source: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.object
+      ]).isRequired,
+      target: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.object
+      ]).isRequired
     })).isRequired,
     margin: PropTypes.number,
     nodePadding: PropTypes.number,
@@ -77,14 +83,6 @@ class Sankey extends Component {
     const nWidth = sankeyInstance.nodeWidth();
     const path = sankeyInstance.link();
 
-    // Create a voronoi with each node center points
-    const voronoiInstance = hasVoronoi ?
-      voronoi()
-        .x(d => d.x + d.dx / 2)
-        .y(d => d.y + d.dy / 2)
-        .extent([[-margin, -margin], [width + margin, height + margin]]) :
-      null;
-
     return (
       <svg height={height + margin} width={width + margin} className={`rv-sankey ${className}`}>
         <g transform={`translate(${margin / 2}, ${margin / 2})`}>
@@ -117,18 +115,16 @@ class Sankey extends Component {
           ))}
 
           {hasVoronoi && (
-            <g className="rv-sankey__voronoi">
-              {voronoiInstance.polygons(nodes).map((d, i) => (
-                <path
-                  d={`M${d.join('L')}Z`}
-                  onClick={() => onClick(d.data)}
-                  onMouseOver={() => onHover(d.data)}
-                  onMouseOut={() => onBlur(d.data)}
-                  fill="none"
-                  style={{pointerEvents: 'all'}}
-                  key={i} />
-              ))}
-            </g>
+            <Voronoi
+              className="rv-sankey__voronoi"
+              extent={[[-margin, -margin], [width + margin, height + margin]]}
+              nodes={nodes}
+              onBlur={onBlur}
+              onClick={onClick}
+              onHover={onHover}
+              x={d => d.x + d.dx / 2}
+              y={d => d.y + d.dy / 2}
+            />
           )}
 
         </g>

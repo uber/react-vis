@@ -49,6 +49,7 @@ import StaticCrosshair from './plot/static-crosshair';
 import DynamicCrosshair from './plot/dynamic-crosshair';
 import SyncedCharts from './plot/synced-charts';
 import TimeChart from './plot/time-chart';
+import VoronoiLineChart from './plot/voronoi-line-chart';
 
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
@@ -61,6 +62,7 @@ import DonutChartExample from './radial-chart/donut-chart';
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
 
 import BasicSankeyExample from './sankey/basic';
+import VoronoiSankeyExample from './sankey/voronoi';
 
 import VerticalDiscreteColorLegendExample from './legends/vertical-discrete-color';
 import HorizontalDiscreteColorLegendExample from './legends/horizontal-discrete-color';
@@ -219,6 +221,10 @@ const App = (
         <h3>Time Chart</h3>
         <TimeChart />
       </section>
+      <section>
+        <h3>Voronoi Line Chart</h3>
+        <VoronoiLineChart />
+      </section>
     </article>
 
     <article id="radial-charts">
@@ -294,6 +300,10 @@ const App = (
       <section>
         <h3>Basic</h3>
         <BasicSankeyExample />
+      </section>
+      <section>
+        <h3>With Voronoi Selection</h3>
+        <VoronoiSankeyExample />
       </section>
     </article>
 
