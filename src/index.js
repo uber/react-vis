@@ -44,7 +44,6 @@ export SearchableDiscreteColorLegend from 'legends/searchable-discrete-color-leg
 export ContinuousColorLegend from 'legends/continuous-color-legend';
 export ContinuousSizeLegend from 'legends/continuous-size-legend';
 
-export Table from 'table';
 export Treemap from 'treemap';
 export RadialChart from 'radial-chart';
 export Sankey from 'sankey';

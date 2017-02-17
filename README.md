@@ -25,7 +25,7 @@
 ## Overview
 
 A collection of react components to render common data visualization charts,
-such as **line/area/bar charts**, **heat maps**, **scatteplots**, **pie and donut charts**, **tables**
+such as **line/area/bar charts**, **heat maps**, **scatterplots**, **pie and donut charts**
 with fixed headers and **tree maps**.
 
 Some notable features:
@@ -85,7 +85,6 @@ Take a look at the [folder with examples](examples/) or check out some docs:
 - Components:
   * [XYPlot](docs/xy-plot.md) about orthogonal charts.
   * [RadialChart](docs/radial-chart.md) about radial charts.
-  * [Table](docs/table.md) about table.
   * [Treemap](docs/treemap.md) about making tree maps.
   * [Legends](docs/legends.md) about the legends.
 
