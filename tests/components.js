@@ -29,7 +29,6 @@ import HorizontalGrid from 'plot/horizontal-grid-lines';
 import LineSeries from 'plot/series/line-series';
 import MarkSeries from 'plot/series/mark-series';
 import Treemap from 'treemap';
-import Table from 'table';
 import VerticalBarSeries from 'plot/series/vertical-bar-series';
 import VerticalGrid from 'plot/vertical-grid-lines';
 import XAxisBottom from 'plot/axis/x-axis';
@@ -82,12 +81,6 @@ const TREEMAP_PROPS_WITH_DATA = {height: 100, width: 100, data: {
     {name: 'TransitionEvent', color: '#12939A', size: 1116},
     {name: 'Neonate', color: '#12939A', size: 6006}
   ]}
-};
-const TABLE_PROPS = {
-  height: 100,
-  width: 100,
-  header: ['a', 'b', 'c'],
-  data: [[1, 2, 3], [4, 5, 6]]
 };
 
 const NOOP = f => f;
@@ -147,7 +140,6 @@ testRenderWithProps(LineSeries, XYPLOT_SERIES_PROPS);
 testRenderWithProps(MarkSeries, XYPLOT_SERIES_PROPS);
 testRenderWithProps(Treemap, TREEMAP_PROPS);
 testRenderWithProps(Treemap, TREEMAP_PROPS_WITH_DATA);
-testRenderWithProps(Table, TABLE_PROPS);
 testRenderWithProps(VerticalBarSeries, XYPLOT_SERIES_PROPS);
 testRenderWithProps(VerticalGrid, XYPLOT_XAXIS_PROPS);
 testRenderWithProps(XAxisBottom, XYPLOT_XAXIS_PROPS);

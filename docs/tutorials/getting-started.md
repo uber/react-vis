@@ -2,7 +2,6 @@
 **react-vis** is a data visualization library based on React and d3. react-vis supports tooltips and legends for each example. react-vis provides support for the following types of charts and graphs:
 
 * series
-* table
 * treemap
 * xy plot
 * line
