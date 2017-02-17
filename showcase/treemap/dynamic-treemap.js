@@ -65,7 +65,7 @@ export default class DynamicTreemapExample extends React.Component {
     return (
       <div>
         <Treemap
-          animation={true}
+          animation
           data={this.state.treemapData}
           onLeafMouseOver={x => this.setState({hoveredNode: x})}
           onLeafMouseOut={() => this.setState({hoveredNode: false})}

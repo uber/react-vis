@@ -40,6 +40,29 @@ const NOOP = d => d;
 
 const ATTRIBUTES = ['opacity', 'color'];
 
+/**
+ * Get the map of scale functions from the given props.
+ * @param {Object} props Props for the component.
+ * @returns {Object} Map of scale functions.
+ * @private
+ */
+function _getScaleFns(props) {
+  const {data} = props;
+  const allData = data.children || [];
+
+  // Adding _allData property to the object to reuse the existing
+  // getAttributeFunctor function.
+  const compatibleProps = {
+    ...props,
+    ...getMissingScaleProps(props, allData, ATTRIBUTES),
+    _allData: allData
+  };
+  return {
+    opacity: getAttributeFunctor(compatibleProps, 'opacity'),
+    color: getAttributeFunctor(compatibleProps, 'color')
+  };
+}
+
 class Treemap extends React.Component {
 
   static get propTypes() {
@@ -78,34 +101,11 @@ class Treemap extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {scales: this._getScaleFns(props)};
+    this.state = {scales: _getScaleFns(props)};
   }
 
   componentWillReceiveProps(props) {
-    this.setState({scales: this._getScaleFns(props)});
-  }
-
-  /**
-   * Get the map of scale functions from the given props.
-   * @param {Object} props Props for the component.
-   * @returns {Object} Map of scale functions.
-   * @private
-   */
-  _getScaleFns(props) {
-    const {data} = props;
-    const allData = data.children || [];
-
-    // Adding _allData property to the object to reuse the existing
-    // getAttributeFunctor function.
-    const compatibleProps = {
-      ...props,
-      ...getMissingScaleProps(props, allData, ATTRIBUTES),
-      _allData: allData
-    };
-    return {
-      opacity: getAttributeFunctor(compatibleProps, 'opacity'),
-      color: getAttributeFunctor(compatibleProps, 'color')
-    };
+    this.setState({scales: _getScaleFns(props)});
   }
 
   /**
@@ -142,6 +142,11 @@ class Treemap extends React.Component {
           height: `${height}px`
         }}>
         {nodes.map((node, index) => {
+          // throw out the rootest node
+          if (!index) {
+            return null;
+          }
+
           const nodeProps = {
             animation,
             node,
@@ -152,14 +157,7 @@ class Treemap extends React.Component {
             y1: node.y1,
             scales: this.state.scales
           };
-          // throw out the rootest node
-          if (!index) {
-            return null;
-          }
-          return (<TreemapLeaf
-              {...nodeProps}
-              key={`leaf-${index}`}
-              />);
+          return (<TreemapLeaf {...nodeProps} key={`leaf-${index}`} />);
         })}
       </div>
     );

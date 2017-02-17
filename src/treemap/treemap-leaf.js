@@ -65,7 +65,7 @@ class TreemapLeaf extends React.Component {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_PROPS}>
-          <TreemapLeaf {...this.props} animation={null}/>
+          <TreemapLeaf {...this.props} animation={null} />
         </Animation>
       );
     }
@@ -81,10 +81,10 @@ class TreemapLeaf extends React.Component {
         onMouseLeave={event => onLeafMouseOut(node, event)}
         onClick={event => onLeafClick(node, event)}
         style={{
-          top: `${y0}px`,
-          left: `${x0}px`,
-          width: `${x1 - x0}px`,
-          height: `${y1 - y0}px`,
+          top: y0,
+          left: x0,
+          width: x1 - x0,
+          height: y1 - y0,
           background,
           opacity,
           color
@@ -94,7 +94,5 @@ class TreemapLeaf extends React.Component {
     );
   }
 }
-
-TreemapLeaf.displayName = 'TreemapLeaf';
 
 export default TreemapLeaf;
