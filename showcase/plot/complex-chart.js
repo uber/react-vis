@@ -169,7 +169,7 @@ export default class Example extends React.Component {
 
         <div className="chart">
           <FlexibleXYPlot
-            animation={true}
+            animation
             onMouseLeave={this._mouseLeaveHandler}
             height={300}>
             <HorizontalGridLines />

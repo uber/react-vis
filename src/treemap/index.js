@@ -21,10 +21,11 @@
 import React, {PropTypes} from 'react';
 import * as d3Hierarchy from 'd3-hierarchy';
 
-import Animation from 'animation';
 import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, OPACITY_RANGE} from 'theme';
 import {AnimationPropType} from 'utils/animation-utils';
-import {getAttributeFunctor, getFontColorFromBackground, getMissingScaleProps} from 'utils/scales-utils';
+import {getAttributeFunctor, getMissingScaleProps} from 'utils/scales-utils';
+
+import TreemapLeaf from './treemap-leaf';
 
 const TREEMAP_TILE_MODES = {
   squarify: d3Hierarchy.treemapSquarify,
@@ -38,10 +39,29 @@ const TREEMAP_TILE_MODES = {
 const NOOP = d => d;
 
 const ATTRIBUTES = ['opacity', 'color'];
-const ANIMATED_PROPS = [
-  'colorRange', 'colorDomain', 'color',
-  'opacityRange', 'opacityDomain', 'opacity'
-];
+
+/**
+ * Get the map of scale functions from the given props.
+ * @param {Object} props Props for the component.
+ * @returns {Object} Map of scale functions.
+ * @private
+ */
+function _getScaleFns(props) {
+  const {data} = props;
+  const allData = data.children || [];
+
+  // Adding _allData property to the object to reuse the existing
+  // getAttributeFunctor function.
+  const compatibleProps = {
+    ...props,
+    ...getMissingScaleProps(props, allData, ATTRIBUTES),
+    _allData: allData
+  };
+  return {
+    opacity: getAttributeFunctor(compatibleProps, 'opacity'),
+    color: getAttributeFunctor(compatibleProps, 'color')
+  };
+}
 
 class Treemap extends React.Component {
 
@@ -81,35 +101,11 @@ class Treemap extends React.Component {
 
   constructor(props) {
     super(props);
-    this._renderLeaf = this._renderLeaf.bind(this);
-    this.state = {scales: this._getScaleFns(props)};
+    this.state = {scales: _getScaleFns(props)};
   }
 
   componentWillReceiveProps(props) {
-    this.setState({scales: this._getScaleFns(props)});
-  }
-
-  /**
-   * Get the map of scale functions from the given props.
-   * @param {Object} props Props for the component.
-   * @returns {Object} Map of scale functions.
-   * @private
-   */
-  _getScaleFns(props) {
-    const {data} = props;
-    const allData = data.children || [];
-
-    // Adding _allData property to the object to reuse the existing
-    // getAttributeFunctor function.
-    const compatibleProps = {
-      ...props,
-      ...getMissingScaleProps(props, allData, ATTRIBUTES),
-      _allData: allData
-    };
-    return {
-      opacity: getAttributeFunctor(compatibleProps, 'opacity'),
-      color: getAttributeFunctor(compatibleProps, 'color')
-    };
+    this.setState({scales: _getScaleFns(props)});
   }
 
   /**
@@ -134,48 +130,10 @@ class Treemap extends React.Component {
     return [];
   }
 
-  _renderLeaf(node, i) {
-    if (!i) {
-      return null;
-    }
-    const {onLeafClick, onLeafMouseOver, onLeafMouseOut} = this.props;
-    const {scales} = this.state;
-
-    const background = scales.color(node);
-    const opacity = scales.opacity(node);
-    const color = getFontColorFromBackground(background);
-    const {x0, x1, y0, y1, data: {title}} = node;
-    return (
-      <div
-        key={i}
-        className="rv-treemap__leaf"
-        onMouseEnter={event => onLeafMouseOver(node, event)}
-        onMouseLeave={event => onLeafMouseOut(node, event)}
-        onClick={event => onLeafClick(node, event)}
-        style={{
-          top: `${y0}px`,
-          left: `${x0}px`,
-          width: `${x1 - x0}px`,
-          height: `${y1 - y0}px`,
-          background,
-          opacity,
-          color
-        }}>
-        <div className="rv-treemap__leaf__content">{title}</div>
-      </div>
-    );
-  }
-
   render() {
     const {animation, className, height, width} = this.props;
     const nodes = this._getNodesToRender();
-    if (animation) {
-      return (
-        <Animation {...this.props} animatedProps={ANIMATED_PROPS}>
-          <Treemap {...this.props} animation={null}/>
-        </Animation>
-      );
-    }
+
     return (
       <div
         className={`rv-treemap ${className}`}
@@ -183,7 +141,24 @@ class Treemap extends React.Component {
           width: `${width}px`,
           height: `${height}px`
         }}>
-        {nodes.map(this._renderLeaf)}
+        {nodes.map((node, index) => {
+          // throw out the rootest node
+          if (!index) {
+            return null;
+          }
+
+          const nodeProps = {
+            animation,
+            node,
+            ...this.props,
+            x0: node.x0,
+            x1: node.x1,
+            y0: node.y0,
+            y1: node.y1,
+            scales: this.state.scales
+          };
+          return (<TreemapLeaf {...nodeProps} key={`leaf-${index}`} />);
+        })}
       </div>
     );
   }
