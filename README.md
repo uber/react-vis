@@ -43,7 +43,7 @@ Install react-vis via npm.
 
 Include the built main CSS file in your HTML page or via SASS:
 ```sass
-@import "./node_modules/react-vis/main";
+@import "./node_modules/react-vis/dist/style";
 ```
 
 You can also select only the styles you want to use. This helps minimize the size of the outputted CSS. Here's an example of importing only the legends styles:
