@@ -25,7 +25,7 @@ import {isSeriesChild, getSeriesPropsFromChildren} from 'utils/series-utils';
 import LineSeries from 'plot/series/line-series';
 import XAxis from 'plot/axis/x-axis';
 
-test('series-utils/isSeriesChild', assert => {
+test('series-utils #isSeriesChild', assert => {
   const series = React.createElement(LineSeries, {data: []});
   assert.ok(isSeriesChild(series), 'Should return true for series');
   const axis = React.createElement(XAxis, {
@@ -50,14 +50,22 @@ const arePropsValid = seriesProps => {
     typeof seriesProps.seriesIndex === 'number';
 };
 
-test('series-utils/collectSeriesTypesInfo', assert => {
+test('series-utils #collectSeriesTypesInfo', assert => {
   const result = getSeriesPropsFromChildren([
     React.createElement(LineSeries, {data: []}),
     React.createElement(LineSeries, {data: []})
   ]);
   assert.ok(result.length === 2, 'Returns array of proper size');
-  result.forEach((props, i) => {
-    assert.ok(arePropsValid(props), `Props #${i} are valid`);
-  });
+  result.forEach((props, i) => assert.ok(arePropsValid(props), `Props #${i} are valid`));
+  assert.end();
+});
+
+test('series-utils #getStackedData', assert => {
+  const result = getSeriesPropsFromChildren([
+    React.createElement(LineSeries, {data: []}),
+    React.createElement(LineSeries, {data: []})
+  ]);
+  assert.ok(result.length === 2, 'Returns array of proper size');
+  result.forEach((props, i) => assert.ok(arePropsValid(props), `Props #${i} are valid`));
   assert.end();
 });

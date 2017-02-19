@@ -18,7 +18,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import AreaSeries from 'plot/series/area-series';
 import HorizontalBarSeries from 'plot/series/horizontal-bar-series';
 import HorizontalGrid from 'plot/horizontal-grid-lines';
 import LineSeries from 'plot/series/line-series';
@@ -53,7 +52,6 @@ const XYPLOT_YAXIS_PROPS = {
 
 const XYPLOT_PROPS = {width: 10, height: 10};
 
-testRenderWithProps(AreaSeries, GENERIC_XYPLOT_SERIES_PROPS);
 testRenderWithProps(HorizontalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
 testRenderWithProps(HorizontalGrid, XYPLOT_YAXIS_PROPS);
 testRenderWithProps(LineSeries, GENERIC_XYPLOT_SERIES_PROPS);

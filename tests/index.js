@@ -27,5 +27,7 @@ import './data-utils';
 import './series-utils';
 import './xy-plot';
 
-import './treemap-tests';
-import './heatmap-tests';
+import './components/area-series-tests';
+import './components/heatmap-tests';
+import './components/radial-tests';
+import './components/treemap-tests';

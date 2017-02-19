@@ -243,7 +243,9 @@ class RadialChart extends React.Component {
       // and vice versa for the right half
       const textAnchor = (angle > 0.5 * Math.PI) && angle < (1.5 * Math.PI) ? 'end' : 'start';
       return (
-        <g transform={`translate(${xTrans},${yTrans})`} key={`${i}-text-wrapper`}>
+        <g
+          className="rv-radial-chart__series--pie-label-inner-wrapper"
+          transform={`translate(${xTrans},${yTrans})`} key={`${i}-text-wrapper`}>
           {canRenderMainLabel && (<text
             className="rv-radial-chart__series--pie-label-primary"
             x="0"

@@ -3,7 +3,7 @@ import React from 'react';
 import {mount} from 'enzyme';
 import XYPlot from 'plot/xy-plot';
 import HeatmapSeries from 'plot/series/heatmap-series';
-import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from './test-utils';
+import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 
 const HEATMAP_PROPS = {
   className: 'heatmap-series-example',
@@ -25,7 +25,7 @@ const HEATMAP_PROPS = {
 
 testRenderWithProps(HeatmapSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
-test('Heatmap: ', t => {
+test('Heatmap: basic rendering', t => {
   const $ = mount(
     <XYPlot width={300} height={300}>
       <HeatmapSeries {...HEATMAP_PROPS}/>
@@ -33,9 +33,11 @@ test('Heatmap: ', t => {
   );
   t.equal($.find('.rv-xy-plot__series--heatmap').length, 1, 'should find the right number of series');
   t.equal($.find('.rv-xy-plot__series--heatmap rect').length, 12, 'should find the right number of series');
+  t.equal($.find('.heatmap-series-example').length, 1, 'should find the correct custom class name');
 
   $.setProps({children: (<HeatmapSeries {...{...HEATMAP_PROPS, data: null}}/>)});
-  t.equal($.find('.rv-xy-plot__series--heatmap').length, 0, 'should find the right number of series');
-  t.equal($.find('.rv-xy-plot__series--heatmap rect').length, 0, 'should find the right number of series');
+  t.equal($.find('.rv-xy-plot__series--heatmap').length, 0, 'should find no series');
+  t.equal($.find('.rv-xy-plot__series--heatmap rect').length, 0, 'should find no rects');
+  t.equal($.find('.heatmap-series-example').length, 0, 'should not find the custom name');
   t.end();
 });

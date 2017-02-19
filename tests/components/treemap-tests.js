@@ -4,7 +4,7 @@ import {mount} from 'enzyme';
 import Treemap from 'treemap';
 /* eslint-disable max-len */
 
-import {testRenderWithProps} from './test-utils';
+import {testRenderWithProps} from '../test-utils';
 
 const INTERPOLATE_DATA = {
   title: 'interpolate',
@@ -47,7 +47,7 @@ const TREEMAP_PROPS = {
 // make sure that the components render at all
 testRenderWithProps(Treemap, TREEMAP_PROPS);
 
-test('Treemap: Treemap with text', t => {
+test('Treemap: Basic rendering', t => {
   const $ = mount(<Treemap {...TREEMAP_PROPS}/>);
   t.equal($.find('.rv-treemap__leaf').length, 21, 'should find the right number of children');
   t.equal($.find('.rv-treemap').text(),
