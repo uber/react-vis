@@ -31,3 +31,4 @@ import './components/area-series-tests';
 import './components/heatmap-tests';
 import './components/radial-tests';
 import './components/treemap-tests';
+import './components/sankey-tests';

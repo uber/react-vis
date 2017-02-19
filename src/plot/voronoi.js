@@ -14,6 +14,7 @@ function Voronoi({className, extent, nodes, onBlur, onClick, onHover, polygonSty
     <g className={`${className} rv-voronoi`} style={style}>
       {voronoiInstance.polygons(nodes).map((d, i) => (
         <path
+          className="rv-voronoi__cell"
           d={`M${d.join('L')}Z`}
           onClick={() => onClick(d.data)}
           onMouseOver={() => onHover(d.data)}
