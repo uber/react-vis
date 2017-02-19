@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 import AreaSeries from 'plot/series/area-series';
-import HeatmapSeries from 'plot/series/heatmap-series';
 import HorizontalBarSeries from 'plot/series/horizontal-bar-series';
 import HorizontalGrid from 'plot/horizontal-grid-lines';
 import LineSeries from 'plot/series/line-series';
@@ -30,33 +29,7 @@ import XAxisBottom from 'plot/axis/x-axis';
 import XYPlot from 'plot/xy-plot';
 import YAxisLeft from 'plot/axis/y-axis';
 
-import {testRenderWithProps} from './test-utils';
-const NOOP = f => f;
-
-const XYPLOT_SERIES_PROPS = {
-  xDomain: [0, 1],
-  xRange: [0, 1],
-  xType: 'linear',
-  xDistance: 1,
-  yDomain: [0, 1],
-  yRange: [0, 1],
-  yDistance: 1,
-  yType: 'linear',
-  data: [
-    {x: 1, y: 1},
-    {x: 2, y: 2}
-  ],
-  _allData: [[
-    {x: 1, y: 1},
-    {x: 2, y: 2}
-  ]],
-  onSeriesMouseOver: NOOP,
-  onSeriesMouseOut: NOOP,
-  onSeriesClick: NOOP,
-  onValueMouseOver: NOOP,
-  onValueMouseOut: NOOP,
-  onValueClick: NOOP
-};
+import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from './test-utils';
 
 const XYPLOT_XAXIS_PROPS = {
   xRange: [0, 1],
@@ -80,13 +53,12 @@ const XYPLOT_YAXIS_PROPS = {
 
 const XYPLOT_PROPS = {width: 10, height: 10};
 
-testRenderWithProps(AreaSeries, XYPLOT_SERIES_PROPS);
-testRenderWithProps(HeatmapSeries, XYPLOT_SERIES_PROPS);
-testRenderWithProps(HorizontalBarSeries, XYPLOT_SERIES_PROPS);
+testRenderWithProps(AreaSeries, GENERIC_XYPLOT_SERIES_PROPS);
+testRenderWithProps(HorizontalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
 testRenderWithProps(HorizontalGrid, XYPLOT_YAXIS_PROPS);
-testRenderWithProps(LineSeries, XYPLOT_SERIES_PROPS);
-testRenderWithProps(MarkSeries, XYPLOT_SERIES_PROPS);
-testRenderWithProps(VerticalBarSeries, XYPLOT_SERIES_PROPS);
+testRenderWithProps(LineSeries, GENERIC_XYPLOT_SERIES_PROPS);
+testRenderWithProps(MarkSeries, GENERIC_XYPLOT_SERIES_PROPS);
+testRenderWithProps(VerticalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
 testRenderWithProps(VerticalGrid, XYPLOT_XAXIS_PROPS);
 testRenderWithProps(XAxisBottom, XYPLOT_XAXIS_PROPS);
 testRenderWithProps(XYPlot, XYPLOT_PROPS);

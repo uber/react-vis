@@ -26,3 +26,6 @@ import './axis-utils';
 import './data-utils';
 import './series-utils';
 import './xy-plot';
+
+import './treemap-tests';
+import './heatmap-tests';
