@@ -29,30 +29,30 @@ import {
 
 const arr = [{a: 1}, {b: 3, a: 2}, {a: 2}];
 
-test('data-utils/getObjectValueAccessor', assert => {
+test('data-utils #getObjectValueAccessor', t => {
   const result = getObjectValueAccessor('a');
-  assert.ok(result({a: 1, b: 2}) === 1, 'Should return value of the property');
-  assert.end();
+  t.ok(result({a: 1, b: 2}) === 1, 'Should return value of the property');
+  t.end();
 });
 
-test('data-utils/getUniquePropertyValues', assert => {
+test('data-utils #getUniquePropertyValues', t => {
   const result = getUniquePropertyValues(arr, 'a');
-  assert.ok(result.length === 2, 'Should return the array of the proper size');
-  assert.ok(
+  t.ok(result.length === 2, 'Should return the array of the proper size');
+  t.ok(
     result.indexOf(1) !== -1 && result.indexOf(2) !== -1,
     'Should return unique values of the property');
-  assert.end();
+  t.end();
 });
 
-test('data-utils/addValueToArray', assert => {
-  assert.ok(
+test('data-utils #addValueToArray', t => {
+  t.ok(
     equal(addValueToArray([-10, 10], 1), [-10, 10]),
     'Shouldn\'t add the value if the value is in the array');
-  assert.ok(
+  t.ok(
     equal(addValueToArray([-10, 0], 1), [-10, 1]),
     'Should add the value if the value is larger');
-  assert.ok(
+  t.ok(
     equal(addValueToArray([0, 10], -1), [-1, 10]),
     'Should add the value if the value is smaller');
-  assert.end();
+  t.end();
 });

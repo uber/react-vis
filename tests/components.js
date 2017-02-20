@@ -20,7 +20,6 @@
 
 import HorizontalBarSeries from 'plot/series/horizontal-bar-series';
 import HorizontalGrid from 'plot/horizontal-grid-lines';
-import LineSeries from 'plot/series/line-series';
 import MarkSeries from 'plot/series/mark-series';
 import VerticalBarSeries from 'plot/series/vertical-bar-series';
 import VerticalGrid from 'plot/vertical-grid-lines';
@@ -53,10 +52,11 @@ const XYPLOT_YAXIS_PROPS = {
 const XYPLOT_PROPS = {width: 10, height: 10};
 
 testRenderWithProps(HorizontalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
-testRenderWithProps(HorizontalGrid, XYPLOT_YAXIS_PROPS);
-testRenderWithProps(LineSeries, GENERIC_XYPLOT_SERIES_PROPS);
-testRenderWithProps(MarkSeries, GENERIC_XYPLOT_SERIES_PROPS);
 testRenderWithProps(VerticalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
+
+testRenderWithProps(MarkSeries, GENERIC_XYPLOT_SERIES_PROPS);
+
+testRenderWithProps(HorizontalGrid, XYPLOT_YAXIS_PROPS);
 testRenderWithProps(VerticalGrid, XYPLOT_XAXIS_PROPS);
 testRenderWithProps(XAxisBottom, XYPLOT_XAXIS_PROPS);
 testRenderWithProps(XYPlot, XYPLOT_PROPS);

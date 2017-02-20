@@ -20,15 +20,17 @@
 
 import './setup';
 
-import './components';
-import './scales-utils';
-import './axis-utils';
-import './data-utils';
-import './series-utils';
-import './xy-plot';
+import './utils/axis-utils-tests';
+import './utils/data-utils-tests';
+import './utils/scales-utils-tests';
+import './utils/react-utils-tests';
+import './utils/series-utils-tests';
 
+import './components';
 import './components/area-series-tests';
 import './components/heatmap-tests';
+import './components/line-series-tests';
 import './components/radial-tests';
 import './components/treemap-tests';
 import './components/sankey-tests';
+import './components/xy-plot-tests';
