@@ -27,7 +27,7 @@ import {
   HorizontalGridLines,
   makeWidthFlexible,
   LineSeries,
-  VerticalBarSeries,
+  VerticalRectSeries,
   DiscreteColorLegend,
   Crosshair
 } from 'index';
@@ -46,7 +46,7 @@ function getRandomSeriesData(total) {
   let lastY = Math.random() * 40 - 20;
   let y;
   const firstY = lastY;
-  for (let i = 0; i < total; i++) {
+  for (let i = 0; i < Math.max(total, 3); i++) {
     y = Math.random() * firstY - firstY / 2 + lastY;
     result.push({
       x: i,
@@ -171,6 +171,7 @@ export default class Example extends React.Component {
           <FlexibleXYPlot
             animation
             onMouseLeave={this._mouseLeaveHandler}
+            xDomain={[0, series[0].data.length - 1]}
             height={300}>
             <HorizontalGridLines />
             <YAxis
@@ -183,8 +184,9 @@ export default class Example extends React.Component {
               tickSizeInner={0}
               tickSizeOuter={8}
             />
-            <VerticalBarSeries
-              data={series[0].data}
+            <VerticalRectSeries
+              data={series[0].data.map(({x, y}) => ({x0: x - 0.5, x: x + 0.5, y}))}
+              stroke="white"
               onNearestX={this._nearestXHandler}
               {...(series[0].disabled ? {opacity: 0.2} : null)}/>
             <LineSeries
