@@ -23,42 +23,42 @@ import window from 'global/window';
 
 import Treemap from 'treemap';
 
-function _getRandomData() {
-  const totalLeaves = Math.random() * 20;
-  const leaves = [];
-  let title;
-  for (let i = 0; i < totalLeaves; i++) {
-    title = Math.random();
-    if (Math.random() > 0.5) {
-      title = (
-        <b>{title}</b>
-      );
-    }
-    leaves.push({
-      title,
-      size: Math.random() * 1000,
-      color: Math.random()
-    });
-  }
-  return {
-    title: '',
-    color: 1,
-    children: leaves
-  };
-}
-
 export default class DynamicTreemapExample extends React.Component {
 
   state = {
     hoveredNode: false,
-    treemapData: _getRandomData()
+    treemapData: this._getRandomData()
   }
 
   componentDidMount() {
     window.setInterval(
-      () => this.setState({treemapData: _getRandomData()}),
+      () => this.setState({treemapData: this._getRandomData()}),
       5000
     );
+  }
+
+  _getRandomData() {
+    const totalLeaves = Math.random() * 20;
+    const leaves = [];
+    let title;
+    for (let i = 0; i < totalLeaves; i++) {
+      title = Math.random();
+      if (Math.random() > 0.5) {
+        title = (
+          <b>{title}</b>
+        );
+      }
+      leaves.push({
+        title,
+        size: Math.random() * 1000,
+        color: Math.random()
+      });
+    }
+    return {
+      title: '',
+      color: 1,
+      children: leaves
+    };
   }
 
   render() {
