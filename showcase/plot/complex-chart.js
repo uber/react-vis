@@ -176,13 +176,13 @@ export default class Example extends React.Component {
             <HorizontalGridLines />
             <YAxis
               className="cool-custom-name"
-              tickSizeInner={ 0 }
-              tickSizeOuter={ 8 }
+              tickSizeInner={0}
+              tickSizeOuter={8}
             />
             <XAxis
               className="even-cooler-custom-name"
-              tickSizeInner={ 0 }
-              tickSizeOuter={ 8 }
+              tickSizeInner={0}
+              tickSizeOuter={8}
             />
             <VerticalRectSeries
               data={series[0].data.map(row => {
