@@ -9,3 +9,4 @@ bundle.*
 npm-debug.log*
 .DS_Store
 .idea/
+_book
