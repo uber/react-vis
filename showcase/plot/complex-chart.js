@@ -27,7 +27,7 @@ import {
   HorizontalGridLines,
   makeWidthFlexible,
   LineSeries,
-  VerticalBarSeries,
+  VerticalRectSeries,
   DiscreteColorLegend,
   Crosshair
 } from 'index';
@@ -171,12 +171,16 @@ export default class Example extends React.Component {
           <FlexibleXYPlot
             animation
             onMouseLeave={this._mouseLeaveHandler}
+            xDomain={[0, series[0].data.length - 1]}
             height={300}>
             <HorizontalGridLines />
             <YAxis className="cool-custom-name"/>
             <XAxis className="even-cooler-custom-name"/>
-            <VerticalBarSeries
-              data={series[0].data}
+            <VerticalRectSeries
+              data={series[0].data.map(row => {
+                return {x0: row.x - 0.5, x: row.x + 0.5, y: row.y};
+              })}
+              stroke="white"
               onNearestX={this._nearestXHandler}
               {...(series[0].disabled ? {opacity: 0.2} : null)}/>
             <LineSeries

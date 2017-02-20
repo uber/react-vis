@@ -150,6 +150,10 @@ article {
   position: relative;
   text-align: center;
 
+  // .rv-xy-plot__series--rect rect {
+  //   stroke: white !important;
+  // }
+
   &:hover {
     .click-me {
       animation: none;

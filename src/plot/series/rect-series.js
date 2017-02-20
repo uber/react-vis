@@ -86,7 +86,7 @@ class RectSeries extends AbstractSeries {
               fill: fillFunctor && fillFunctor(d)
             },
             [linePosAttr]: line0Functor(d),
-            [lineSizeAttr]: lineFunctor(d) - line0Functor(d),
+            [lineSizeAttr]: Math.abs(lineFunctor(d) - line0Functor(d)),
             [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
             [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
             onClick: e => this._valueClickHandler(d, e),
