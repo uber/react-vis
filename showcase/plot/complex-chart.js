@@ -185,9 +185,7 @@ export default class Example extends React.Component {
               tickSizeOuter={8}
             />
             <VerticalRectSeries
-              data={series[0].data.map(row => {
-                return {x0: row.x - 0.5, x: row.x + 0.5, y: row.y};
-              })}
+              data={series[0].data.map(({x, y}) => ({x0: x - 0.5, x: x + 0.5, y}))}
               stroke="white"
               onNearestX={this._nearestXHandler}
               {...(series[0].disabled ? {opacity: 0.2} : null)}/>
