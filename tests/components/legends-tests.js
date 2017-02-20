@@ -19,10 +19,8 @@ test('Continuous Size Legend', t => {
 test('Continuous Color Legend', t => {
   const $ = mount(<ContinuousColorLegend/>);
   t.equal($.text(), '100200150', 'should find the correct text content');
-  t.deepEqual($.find('.rv-gradient').props().style,
-    {background: 'linear-gradient(to right, #EF5D28,#FF9833)'},
-    'should find the correct styling');
-
+  const expectedStyle = {background: 'linear-gradient(to right, #EF5D28,#FF9833)'};
+  t.deepEqual($.find('.rv-gradient').props().style, expectedStyle, 'should find the correct styling');
   t.end();
 });
 
@@ -40,12 +38,10 @@ test('Discerete Legends', t => {
   'should find the correct text content for the searchable legend');
   t.equal($.find('.rv-discrete-color-legend-item__color').length, 7,
   'should find the right number of element for the searchable legends');
-  $.find('.rv-search-wrapper__form__input')
-    .simulate('change', {target: {value: 'egg'}});
-  t.equal($.text(), 'Eggplants',
-  'should find the correct text content for the searchable legend after searched');
-  t.equal($.find('.rv-discrete-color-legend-item__color').length, 1,
-  'should find the right number of elements for the searchable legend after searched');
+  $.find('.rv-search-wrapper__form__input').simulate('change', {target: {value: 'egg'}});
+  t.equal($.text(), 'Eggplants', 'should find the correct text content after search');
+  const itemsFound = $.find('.rv-discrete-color-legend-item__color').length;
+  t.equal(itemsFound, 1, 'should find the right number of elements for the searchable legend after searched');
 
   t.equal($.find('.disabled').length, 0, 'before clicking, should find no items disabled');
   $.find('.clickable').simulate('click');

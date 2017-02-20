@@ -40,8 +40,8 @@ test('LineSeries: Showcase Example - LineChart', t => {
   const $ = mount(<LineChart />);
   t.equal($.text(), '1.01.52.02.53.03.54.0X Axis2468101214Y Axis', 'should fine the right text content');
   t.equal($.find('.rv-xy-plot__series--line').length, 3, 'should find the right number of series');
-  ['first-series', 'third-series', 'fourth-series'].forEach(customClassName => {
 
+  ['first-series', 'third-series', 'fourth-series'].forEach(customClassName => {
     t.equal($.find(`.${customClassName}`).length, 1,
     `should find the right number of series with the custom class name: ${customClassName}`);
   });
@@ -57,7 +57,6 @@ test('LineSeries: Showcase Example - LineMarkSeries', t => {
   t.equal($.find('.rv-xy-plot__series circle').length, 6, 'should find the right number of marks');
 
   ['linemark-series-example', 'linemark-series-example-2'].forEach(customClassName => {
-
     t.equal($.find(`.${customClassName}`).length, 2,
     `should find the right number of series with the custom class name: ${customClassName}`);
   });

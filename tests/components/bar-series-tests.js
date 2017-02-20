@@ -15,8 +15,7 @@ test('BarSeries: Showcase Example - BarChart', t => {
   const $ = mount(<BarChart />);
   t.equal($.text(), 'ABC02468101214', 'should fine the right text content');
   t.equal($.find('.rv-xy-plot__series--bar rect').length, 6, 'should find the right number of bars');
-  t.equal($.find('.vertical-bar-series-example').length, 1,
-    'should find the right number of custom named series');
+  t.equal($.find('.vertical-bar-series-example').length, 1, 'should find the right number of custom named series');
   t.end();
 });
 
@@ -24,9 +23,8 @@ test('BarSeries: Showcase Example - StackedHorizontalBarChart & StackedVerticalB
   [StackedHorizontalBarChart, StackedVerticalBarChart].forEach((Component, i) => {
     const $ = mount(<Component />);
     const textContent = ['0510152025', '12345'];
-    t.equal($.text(),
-      (i === 1 ? textContent.reverse() : textContent).join(''),
-      'should fine the right text content');
+    const expectedContent = (i === 1 ? textContent.reverse() : textContent).join('');
+    t.equal($.text(), expectedContent, 'should fine the right text content');
     t.equal($.find('.rv-xy-plot__series--bar rect').length, 6, 'should find the right number of bars');
   });
   t.end();

@@ -18,8 +18,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-/* eslint-disable max-len*/
-
 import test from 'tape';
 import {
   _adjustCategoricalScale,
@@ -286,14 +284,14 @@ test('scales-utils #_getScaleDistanceAndAdjustedDomain', t => {
 });
 
 test('scales-utils #_adjustCategoricalScale', t => {
-  let scaleObject = {type: 'category', domain: ['a', 'b', 'c'], range: [0, 10]};
-  let adjustedObject = _adjustCategoricalScale(scaleObject);
-  let expectedObject = {...scaleObject, distance: 10};
-  t.deepEqual(adjustedObject, expectedObject, 'should correctly adjust a categorical scale');
-
-  scaleObject = {type: 'category', domain: ['a'], range: [1, 10]};
-  adjustedObject = _adjustCategoricalScale(scaleObject);
-  expectedObject = {...scaleObject, distance: 9};
-  t.deepEqual(adjustedObject, expectedObject, 'should correctly adjust a categorical scale');
+  [{
+    scale: {type: 'category', domain: ['a', 'b', 'c'], range: [0, 10]},
+    distance: 10
+  }, {
+    scale: {type: 'category', domain: ['a'], range: [1, 10]},
+    distance: 9
+  }].forEach(({scale, distance}) => {
+    t.deepEqual(_adjustCategoricalScale(scale), {...scale, distance}, 'should correctly adjust a categorical scale');
+  });
   t.end();
 });

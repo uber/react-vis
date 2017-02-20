@@ -1,6 +1,7 @@
 import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
+
 import XYPlot from 'plot/xy-plot';
 import AreaSeries from 'plot/series/area-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';

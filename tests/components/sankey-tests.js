@@ -4,7 +4,6 @@ import {mount} from 'enzyme';
 import Sankey from 'sankey';
 import BasicSankey from '../../showcase/sankey/basic';
 import VoronoiSankey from '../../showcase/sankey/voronoi';
-/* eslint-disable max-len */
 
 const SANKEY_PROPS = {
   nodes: [],

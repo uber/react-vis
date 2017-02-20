@@ -2,7 +2,6 @@ import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import Treemap from 'treemap';
-/* eslint-disable max-len */
 
 import {testRenderWithProps} from '../test-utils';
 
@@ -50,16 +49,14 @@ testRenderWithProps(Treemap, TREEMAP_PROPS);
 test('Treemap: Basic rendering', t => {
   const $ = mount(<Treemap {...TREEMAP_PROPS}/>);
   t.equal($.find('.rv-treemap__leaf').length, 21, 'should find the right number of children');
-  t.equal($.find('.rv-treemap').text(),
-    'EasingNeonateinterpolateISchedulableParallelPauseFunctionSequenceSequenceTransitionTransitionerTransitionEventSchedulerArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator',
-    'should find the correct text shown');
+  const expectedText = 'EasingNeonateinterpolateISchedulableParallelPauseFunctionSequenceSequenceTransitionTransitionerTransitionEventSchedulerArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
+  t.equal($.find('.rv-treemap').text(), expectedText, 'should find the correct text shown');
   t.equal($.find('.little-nested-tree-example').length, 1, 'should find the custom class name used');
 
   $.setProps({data: INTERPOLATE_DATA});
   t.equal($.find('.rv-treemap__leaf').length, 9, 'should find the right number of children');
-  t.equal($.find('.rv-treemap').text(),
-    'ArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator',
-    'should find the correct text shown');
+  const newText = 'ArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
+  t.equal($.find('.rv-treemap').text(), newText, 'should find the correct text shown');
   t.equal($.find('.little-nested-tree-example').length, 1, 'should find the custom class name used');
   t.end();
 });

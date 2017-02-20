@@ -8,8 +8,6 @@ import CustomRadiusRadialChart from '../../showcase/radial-chart/custom-radius-r
 
 import {testRenderWithProps} from '../test-utils';
 
-/* eslint-disable max-len */
-
 const RADIAL_PROPS = {
   data: [
     {angle: 1, label: 'green'},
@@ -27,12 +25,14 @@ testRenderWithProps(RadialChart, RADIAL_PROPS);
 
 test('RadialChart: Basic rendering', t => {
   const $ = mount(<RadialChart {...RADIAL_PROPS}/>);
-  t.equal($.find('.rv-radial-chart__series--pie__slice').length, RADIAL_PROPS.data.length,
-    'should find the same number of slices as data entries');
-  t.equal($.find('.rv-radial-chart__series--pie__slice-overlay').length, RADIAL_PROPS.data.length,
-    'should find the right number of overlay slices');
-  t.equal($.find('.rv-radial-chart__series--pie-label-inner-wrapper').length, RADIAL_PROPS.data.length,
-    'should find the right number of label wrappers');
+  const pieSlices = $.find('.rv-radial-chart__series--pie__slice').length;
+  t.equal(pieSlices, RADIAL_PROPS.data.length, 'should find the same number of slices as data entries');
+
+  const overlaySlices = $.find('.rv-radial-chart__series--pie__slice-overlay').length;
+  t.equal(overlaySlices, RADIAL_PROPS.data.length, 'should find the right number of overlay slices');
+
+  const labels = $.find('.rv-radial-chart__series--pie-label-inner-wrapper').length;
+  t.equal(labels, RADIAL_PROPS.data.length, 'should find the right number of label wrappers');
   t.equal($.text(), 'greenyellowcyanmagentayellow again', 'should find appropriate text');
 
   $.setProps({data: []});
