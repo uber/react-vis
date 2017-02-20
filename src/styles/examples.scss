@@ -158,6 +158,9 @@ article {
 
   .chart {
     margin-right: 200px;
+    .rv-xy-plot__axis__tick__line {
+      stroke: $rv-xy-plot-axis-font-color;
+    }
   }
 
   .legend {

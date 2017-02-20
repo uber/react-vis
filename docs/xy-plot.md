@@ -210,10 +210,14 @@ Type: `number`
 Default: `null`
 Tick size for the axis. Sets the outer size of the tick line. Similar to the `tickSizeOuter()` method of d3-axis.
 
+NOTE: 1.0.0 and onwards now properly draws outer tick using this value. Previously, this value affected the drawing of inner tick.
+
 #### tickSizeInner (optional)
 Type: `number`  
 Default: `null`
 Tick size for the axis. Sets the inner size of the tick line. Similar to the `tickSizeInner()` method of d3-axis.
+
+NOTE: v1.0.0+ properly draws inner tick using this value. Previously, this value affected the drawing of outer tick.
 
 #### tickPadding (optional)
 Type: `number`  

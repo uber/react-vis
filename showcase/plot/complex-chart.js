@@ -173,8 +173,16 @@ export default class Example extends React.Component {
             onMouseLeave={this._mouseLeaveHandler}
             height={300}>
             <HorizontalGridLines />
-            <YAxis className="cool-custom-name"/>
-            <XAxis className="even-cooler-custom-name"/>
+            <YAxis
+              className="cool-custom-name"
+              tickSizeInner={ 0 }
+              tickSizeOuter={ 8 }
+            />
+            <XAxis
+              className="even-cooler-custom-name"
+              tickSizeInner={ 0 }
+              tickSizeOuter={ 8 }
+            />
             <VerticalBarSeries
               data={series[0].data}
               onNearestX={this._nearestXHandler}

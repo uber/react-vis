@@ -73,7 +73,7 @@ class AxisTicks extends React.Component {
   }
 
   /**
-   * Get hte props of the tick line.
+   * Get the props of the tick line.
    * @returns {Object} Props.
    * @private
    */
@@ -89,8 +89,8 @@ class AxisTicks extends React.Component {
     return {
       [`${tickXAttr}1`]: 0,
       [`${tickXAttr}2`]: 0,
-      [`${tickYAttr}1`]: -wrap * tickSizeOuter,
-      [`${tickYAttr}2`]: wrap * tickSizeInner
+      [`${tickYAttr}1`]: -wrap * tickSizeInner,
+      [`${tickYAttr}2`]: wrap * tickSizeOuter
     };
   }
 
