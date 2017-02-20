@@ -8,6 +8,13 @@
   position: absolute;
 }
 
+.rv-treemap__leaf--circle {
+  align-items: center;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .rv-treemap__leaf__content {
   overflow: hidden;
   padding: 10px;

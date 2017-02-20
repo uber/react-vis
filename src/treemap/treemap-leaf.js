@@ -27,7 +27,7 @@ import {getFontColorFromBackground} from 'utils/scales-utils';
 const ANIMATED_PROPS = [
   'colorRange', 'colorDomain', 'color',
   'opacityRange', 'opacityDomain', 'opacity',
-  'x0', 'x1', 'y0', 'y1'
+  'x0', 'x1', 'y0', 'y1', 'r'
 ];
 
 class TreemapLeaf extends React.Component {
@@ -42,6 +42,8 @@ class TreemapLeaf extends React.Component {
       onLeafMouseOut: PropTypes.func,
       scales: PropTypes.object.isRequired,
       width: PropTypes.number.isRequired,
+      useCirclePacking: PropTypes.bool,
+      r: PropTypes.number.isRequired,
       x0: PropTypes.number.isRequired,
       x1: PropTypes.number.isRequired,
       y0: PropTypes.number.isRequired,
@@ -56,7 +58,9 @@ class TreemapLeaf extends React.Component {
       onLeafClick,
       onLeafMouseOver,
       onLeafMouseOut,
+      r,
       scales,
+      useCirclePacking,
       x0,
       x1,
       y0,
@@ -76,15 +80,15 @@ class TreemapLeaf extends React.Component {
     const {data: {title}} = node;
     return (
       <div
-        className="rv-treemap__leaf"
+        className={`rv-treemap__leaf ${useCirclePacking ? 'rv-treemap__leaf--circle' : ''}`}
         onMouseEnter={event => onLeafMouseOver(node, event)}
         onMouseLeave={event => onLeafMouseOut(node, event)}
         onClick={event => onLeafClick(node, event)}
         style={{
-          top: y0,
-          left: x0,
-          width: x1 - x0,
-          height: y1 - y0,
+          top: useCirclePacking ? (y0 - r) : y0,
+          left: useCirclePacking ? (x0 - r) : x0,
+          width: useCirclePacking ? r * 2 : x1 - x0,
+          height: useCirclePacking ? r * 2 : y1 - y0,
           background,
           opacity,
           color
