@@ -174,8 +174,16 @@ export default class Example extends React.Component {
             xDomain={[0, series[0].data.length - 1]}
             height={300}>
             <HorizontalGridLines />
-            <YAxis className="cool-custom-name"/>
-            <XAxis className="even-cooler-custom-name"/>
+            <YAxis
+              className="cool-custom-name"
+              tickSizeInner={ 0 }
+              tickSizeOuter={ 8 }
+            />
+            <XAxis
+              className="even-cooler-custom-name"
+              tickSizeInner={ 0 }
+              tickSizeOuter={ 8 }
+            />
             <VerticalRectSeries
               data={series[0].data.map(row => {
                 return {x0: row.x - 0.5, x: row.x + 0.5, y: row.y};
