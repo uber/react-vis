@@ -46,6 +46,10 @@ const TREEMAP_TILE_MODES = {
   binary: treemapBinary
 };
 
+const TREEMAP_LAYOUT_MODES = [
+  'circlePack'
+];
+
 const NOOP = d => d;
 
 const ATTRIBUTES = ['opacity', 'color'];
@@ -81,7 +85,7 @@ class Treemap extends React.Component {
       data: PropTypes.object.isRequired,
       height: PropTypes.number.isRequired,
       mode: PropTypes.oneOf(
-        Object.keys(TREEMAP_TILE_MODES)
+        Object.keys(TREEMAP_TILE_MODES).concat(TREEMAP_LAYOUT_MODES)
       ),
       onLeafClick: PropTypes.func,
       onLeafMouseOver: PropTypes.func,
@@ -125,8 +129,8 @@ class Treemap extends React.Component {
    * @private
    */
   _getNodesToRender() {
-    const {data, height, width, mode, padding, useCirclePacking} = this.props;
-    if (data && useCirclePacking) {
+    const {data, height, width, mode, padding} = this.props;
+    if (data && mode === 'circlePack') {
       const packingFunction = pack()
           .size([width, height])
           .padding(padding);
@@ -151,9 +155,9 @@ class Treemap extends React.Component {
   }
 
   render() {
-    const {animation, className, height, useCirclePacking, width} = this.props;
+    const {animation, className, height, mode, width} = this.props;
     const nodes = this._getNodesToRender();
-
+    const useCirclePacking = mode === 'circlePack';
     return (
       <div
         className={`rv-treemap ${useCirclePacking ? 'rv-treemap-circle-packed' : ''} ${className}`}

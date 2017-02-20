@@ -70,7 +70,7 @@ export default class DynamicTreemapExample extends React.Component {
       onLeafMouseOut: () => this.setState({hoveredNode: false}),
       onLeafClick: () => this.setState({useCirclePacking: !this.state.useCirclePacking}),
       height: 300,
-      useCirclePacking: this.state.useCirclePacking,
+      mode: this.state.useCirclePacking ? 'circlePack' : 'squarify',
       width: 350
     };
     return (

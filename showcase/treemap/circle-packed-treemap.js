@@ -29,9 +29,9 @@ export default class CirclePackedTreemap extends React.Component {
       <Treemap
         colorType="literal"
         className="circle-packed-treemap-example"
-        useCirclePacking={true}
         data={D3FlareData}
         height={300}
+        mode="circlePack"
         width={500}/>
     );
   }

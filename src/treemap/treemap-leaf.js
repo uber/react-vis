@@ -36,13 +36,13 @@ class TreemapLeaf extends React.Component {
     return {
       animation: AnimationPropType,
       height: PropTypes.number.isRequired,
+      mode: PropTypes.string,
       node: PropTypes.object.isRequired,
       onLeafClick: PropTypes.func,
       onLeafMouseOver: PropTypes.func,
       onLeafMouseOut: PropTypes.func,
       scales: PropTypes.object.isRequired,
       width: PropTypes.number.isRequired,
-      useCirclePacking: PropTypes.bool,
       r: PropTypes.number.isRequired,
       x0: PropTypes.number.isRequired,
       x1: PropTypes.number.isRequired,
@@ -54,13 +54,13 @@ class TreemapLeaf extends React.Component {
   render() {
     const {
       animation,
+      mode,
       node,
       onLeafClick,
       onLeafMouseOver,
       onLeafMouseOut,
       r,
       scales,
-      useCirclePacking,
       x0,
       x1,
       y0,
@@ -73,7 +73,7 @@ class TreemapLeaf extends React.Component {
         </Animation>
       );
     }
-
+    const useCirclePacking = mode === 'circlePack';
     const background = scales.color(node);
     const opacity = scales.opacity(node);
     const color = getFontColorFromBackground(background);
