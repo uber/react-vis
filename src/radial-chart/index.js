@@ -24,7 +24,7 @@ import * as d3Shape from 'd3-shape';
 import Animation from 'animation';
 import {getInnerDimensions, MarginPropType} from 'utils/chart-utils';
 import {AnimationPropType} from 'utils/animation-utils';
-import {OPACITY_RANGE, DISCRETE_COLOR_RANGE} from 'theme';
+import {DEFAULT_OPACITY, OPACITY_TYPE, DISCRETE_COLOR_RANGE} from 'theme';
 import {
   getAttributeFunctor,
   extractScalePropsFromProps,
@@ -133,8 +133,8 @@ class RadialChart extends React.Component {
     return {
       radiusRange: [0, radius],
       _radiusValue: radius,
-      opacityRange: OPACITY_RANGE,
-      _opacityValue: 1,
+      opacityType: OPACITY_TYPE,
+      _opacityValue: DEFAULT_OPACITY,
       colorRange: DISCRETE_COLOR_RANGE,
       colorType: 'category'
     };

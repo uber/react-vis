@@ -189,10 +189,22 @@ export function getDomainByAttr(allData, attr, type) {
  * this object, it should return the same value all time.
  * @param {string} attr Attribute.
  * @param {*} value Value.
+ * @param {string} type - the type of scale being used
  * @returns {Object} Custom scale object.
  * @private
  */
-function _createScaleObjectForValue(attr, value) {
+function _createScaleObjectForValue(attr, value, type) {
+  if (type === 'literal') {
+    return {
+      type: 'literal',
+      domain: [],
+      range: [],
+      distance: 0,
+      attr,
+      baseValue: undefined,
+      isValue: true
+    };
+  }
   if (typeof value === 'undefined') {
     return null;
   }
@@ -251,7 +263,7 @@ function _collectScaleObjectFromProps(props, attr) {
 
   // Return value-based scale if the value is assigned.
   if (typeof value !== 'undefined') {
-    return _createScaleObjectForValue(attr, value);
+    return _createScaleObjectForValue(attr, value, props[`${attr}Type`]);
   }
 
   // Pick up the domain from the properties and create a new one if it's not
@@ -263,7 +275,7 @@ function _collectScaleObjectFromProps(props, attr) {
   // Make sure that the minimum necessary properties exist.
   if (!range || !domain || !domain.length) {
     // Try to use the fallback value if it is available.
-    return _createScaleObjectForValue(attr, fallbackValue);
+    return _createScaleObjectForValue(attr, fallbackValue, props[`${attr}Type`]);
   }
 
   return _createScaleObjectForFunction(

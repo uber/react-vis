@@ -25,7 +25,7 @@ import {extractScalePropsFromProps, getMissingScaleProps} from 'utils/scales-uti
 import {getStackedData, getSeriesChildren, getSeriesPropsFromChildren} from 'utils/series-utils';
 import {getInnerDimensions, MarginPropType} from 'utils/chart-utils';
 import {AnimationPropType} from 'utils/animation-utils';
-import {CONTINUOUS_COLOR_RANGE, SIZE_RANGE, OPACITY_RANGE} from 'theme';
+import {CONTINUOUS_COLOR_RANGE, SIZE_RANGE, OPACITY_TYPE} from 'theme';
 
 const ATTRIBUTES = [
   'x',
@@ -165,7 +165,7 @@ class XYPlot extends React.Component {
       xRange: [0, innerWidth],
       yRange: [innerHeight, 0],
       colorRange: CONTINUOUS_COLOR_RANGE,
-      opacityRange: OPACITY_RANGE,
+      opacityType: OPACITY_TYPE,
       sizeRange: SIZE_RANGE
     };
   }

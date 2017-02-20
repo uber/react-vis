@@ -222,7 +222,6 @@ const App = (
         <VoronoiLineChart />
       </section>
     </article>
-
     <article id="radial-charts">
       <h1>Radial Chart</h1>
       <section>

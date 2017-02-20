@@ -34,7 +34,7 @@ export const CONTINUOUS_COLOR_RANGE = [
 export const SIZE_RANGE = [1, 10];
 
 export const OPACITY_RANGE = [0.1, 1];
-
+export const OPACITY_TYPE = 'literal';
 export const DEFAULT_OPACITY = 1;
 
 export const DEFAULT_SIZE = 5;
