@@ -27,7 +27,8 @@ export default class DynamicTreemapExample extends React.Component {
 
   state = {
     hoveredNode: false,
-    treemapData: this._getRandomData()
+    treemapData: this._getRandomData(),
+    useCirclePacking: false
   }
 
   componentDidMount() {
@@ -62,16 +63,20 @@ export default class DynamicTreemapExample extends React.Component {
   }
 
   render() {
+    const treeProps = {
+      animation: true,
+      data: this.state.treemapData,
+      onLeafMouseOver: x => this.setState({hoveredNode: x}),
+      onLeafMouseOut: () => this.setState({hoveredNode: false}),
+      onLeafClick: () => this.setState({useCirclePacking: !this.state.useCirclePacking}),
+      height: 300,
+      mode: this.state.useCirclePacking ? 'circlePack' : 'squarify',
+      width: 350
+    };
     return (
-      <div>
-        <Treemap
-          animation
-          data={this.state.treemapData}
-          onLeafMouseOver={x => this.setState({hoveredNode: x})}
-          onLeafMouseOut={() => this.setState({hoveredNode: false})}
-          onLeafClick={() => this.setState({treemapData: this._getRandomData()})}
-          height={300}
-          width={350}/>
+      <div className="dynamic-treemap-example">
+        click below!
+        <Treemap {...treeProps}/>
         {this.state.hoveredNode && this.state.hoveredNode.value}
       </div>
     );

@@ -19,7 +19,17 @@
 // THE SOFTWARE.
 
 import React, {PropTypes} from 'react';
-import * as d3Hierarchy from 'd3-hierarchy';
+import {
+  hierarchy,
+  pack,
+  treemapSquarify,
+  treemapResquarify,
+  treemapSlice,
+  treemapDice,
+  treemapSliceDice,
+  treemapBinary,
+  treemap
+} from 'd3-hierarchy';
 
 import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, DEFAULT_OPACITY, OPACITY_TYPE} from 'theme';
 import {AnimationPropType} from 'utils/animation-utils';
@@ -28,13 +38,17 @@ import {getAttributeFunctor, getMissingScaleProps} from 'utils/scales-utils';
 import TreemapLeaf from './treemap-leaf';
 
 const TREEMAP_TILE_MODES = {
-  squarify: d3Hierarchy.treemapSquarify,
-  resquarify: d3Hierarchy.treemapResquarify,
-  slice: d3Hierarchy.treemapSlice,
-  dice: d3Hierarchy.treemapDice,
-  slicedice: d3Hierarchy.treemapSliceDice,
-  binary: d3Hierarchy.treemapBinary
+  squarify: treemapSquarify,
+  resquarify: treemapResquarify,
+  slice: treemapSlice,
+  dice: treemapDice,
+  slicedice: treemapSliceDice,
+  binary: treemapBinary
 };
+
+const TREEMAP_LAYOUT_MODES = [
+  'circlePack'
+];
 
 const NOOP = d => d;
 
@@ -71,11 +85,12 @@ class Treemap extends React.Component {
       data: PropTypes.object.isRequired,
       height: PropTypes.number.isRequired,
       mode: PropTypes.oneOf(
-        Object.keys(TREEMAP_TILE_MODES)
+        Object.keys(TREEMAP_TILE_MODES).concat(TREEMAP_LAYOUT_MODES)
       ),
       onLeafClick: PropTypes.func,
       onLeafMouseOver: PropTypes.func,
       onLeafMouseOut: PropTypes.func,
+      useCirclePacking: PropTypes.bool,
       padding: PropTypes.number.isRequired,
       width: PropTypes.number.isRequired
     };
@@ -115,35 +130,44 @@ class Treemap extends React.Component {
    */
   _getNodesToRender() {
     const {data, height, width, mode, padding} = this.props;
-
+    if (data && mode === 'circlePack') {
+      const packingFunction = pack()
+          .size([width, height])
+          .padding(padding);
+      const structuredInput = hierarchy(data)
+        .sort((a, b) => a.size - b.size)
+        .sum(d => d.size);
+      return packingFunction(structuredInput).descendants();
+    }
     if (data) {
       const tileFn = TREEMAP_TILE_MODES[mode];
-      return d3Hierarchy.treemap(tileFn)
+      const treemapingFunction = treemap(tileFn)
         .tile(tileFn)
         .size([width, height])
-        .padding(padding)(
-          d3Hierarchy.hierarchy(data)
-            .sort((a, b) => a.size - b.size)
-            .sum(d => d.size)
-        ).descendants();
+        .padding(padding);
+      const structuredInput = hierarchy(data)
+        .sort((a, b) => a.size - b.size)
+        .sum(d => d.size);
+
+      return treemapingFunction(structuredInput).descendants();
     }
     return [];
   }
 
   render() {
-    const {animation, className, height, width} = this.props;
+    const {animation, className, height, mode, width} = this.props;
     const nodes = this._getNodesToRender();
-
+    const useCirclePacking = mode === 'circlePack';
     return (
       <div
-        className={`rv-treemap ${className}`}
+        className={`rv-treemap ${useCirclePacking ? 'rv-treemap-circle-packed' : ''} ${className}`}
         style={{
           width: `${width}px`,
           height: `${height}px`
         }}>
         {nodes.map((node, index) => {
           // throw out the rootest node
-          if (!index) {
+          if (!useCirclePacking && !index) {
             return null;
           }
 
@@ -151,10 +175,11 @@ class Treemap extends React.Component {
             animation,
             node,
             ...this.props,
-            x0: node.x0,
-            x1: node.x1,
-            y0: node.y0,
-            y1: node.y1,
+            x0: useCirclePacking ? node.x : node.x0,
+            x1: useCirclePacking ? node.x : node.x1,
+            y0: useCirclePacking ? node.y : node.y0,
+            y1: useCirclePacking ? node.y : node.y1,
+            r: useCirclePacking ? node.r : 1,
             scales: this.state.scales
           };
           return (<TreemapLeaf {...nodeProps} key={`leaf-${index}`} />);

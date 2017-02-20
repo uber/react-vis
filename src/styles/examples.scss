@@ -311,3 +311,15 @@ article {
     height: 0;
   }
 }
+
+.circle-packed-treemap-example {
+  .rv-treemap__leaf--circle {
+    border: thin solid #ddd;
+  }
+}
+
+.dynamic-treemap-example {
+  .rv-treemap__leaf--circle {
+    border: thin solid white;
+  }
+}
