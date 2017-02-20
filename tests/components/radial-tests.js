@@ -43,7 +43,7 @@ test('RadialChart: Basic rendering', t => {
   t.end();
 });
 
-test('RadialChart: Simple Radial Chart Example', t => {
+test('RadialChart: Showcase Example - Simple Radial Chart Example', t => {
   const $ = mount(<SimpleRadialChart />);
   t.equal($.find('.rv-radial-chart__series--pie__slice').length, 5, 'should find the same number of slices as data entries');
   t.equal($.find('.rv-radial-chart__series--pie__slice-overlay').length, 5, 'should find the right number of overlay slices');
@@ -52,7 +52,7 @@ test('RadialChart: Simple Radial Chart Example', t => {
   t.end();
 });
 
-test('RadialChart: DonutChart', t => {
+test('RadialChart: Showcase Example - DonutChart', t => {
   const $ = mount(<DonutChart />);
   t.equal($.find('.rv-radial-chart__series--pie__slice').length, 5, 'should find an appropriate number of slice');
   t.equal($.find('.rv-radial-chart__series--pie__slice-overlay').length, 5, 'should find no overlays, as labels is turned off');
@@ -61,7 +61,7 @@ test('RadialChart: DonutChart', t => {
   t.end();
 });
 
-test('RadialChart: Custom radius example', t => {
+test('RadialChart: Showcase Example - Custom radius example', t => {
   const $ = mount(<CustomRadiusRadialChart />);
   $.find('.rv-radial-chart__series--pie__slice-overlay').at(1).simulate('mouseEnter');
   $.find('.rv-radial-chart__series--pie__slice-overlay').at(1).simulate('mouseLeave');

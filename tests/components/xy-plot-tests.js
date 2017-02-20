@@ -26,6 +26,11 @@ import VerticalBarSeries from 'plot/series/vertical-bar-series';
 import XAxis from 'plot/axis/x-axis';
 import XYPlot from 'plot/xy-plot';
 
+const XYPLOT_PROPS = {width: 10, height: 10};
+import {testRenderWithProps} from '../test-utils';
+
+testRenderWithProps(XYPlot, XYPLOT_PROPS);
+
 test('Render a stacked bar chart', t => {
   const wrapper = shallow(
     <XYPlot width={300} height={300} stackBy="y">

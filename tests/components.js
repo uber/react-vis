@@ -18,16 +18,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import HorizontalBarSeries from 'plot/series/horizontal-bar-series';
 import HorizontalGrid from 'plot/horizontal-grid-lines';
-import MarkSeries from 'plot/series/mark-series';
-import VerticalBarSeries from 'plot/series/vertical-bar-series';
 import VerticalGrid from 'plot/vertical-grid-lines';
 import XAxisBottom from 'plot/axis/x-axis';
-import XYPlot from 'plot/xy-plot';
 import YAxisLeft from 'plot/axis/y-axis';
 
-import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from './test-utils';
+import {testRenderWithProps} from './test-utils';
 
 const XYPLOT_XAXIS_PROPS = {
   xRange: [0, 1],
@@ -49,15 +45,7 @@ const XYPLOT_YAXIS_PROPS = {
   left: 0
 };
 
-const XYPLOT_PROPS = {width: 10, height: 10};
-
-testRenderWithProps(HorizontalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
-testRenderWithProps(VerticalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
-
-testRenderWithProps(MarkSeries, GENERIC_XYPLOT_SERIES_PROPS);
-
 testRenderWithProps(HorizontalGrid, XYPLOT_YAXIS_PROPS);
 testRenderWithProps(VerticalGrid, XYPLOT_XAXIS_PROPS);
 testRenderWithProps(XAxisBottom, XYPLOT_XAXIS_PROPS);
-testRenderWithProps(XYPlot, XYPLOT_PROPS);
 testRenderWithProps(YAxisLeft, XYPLOT_YAXIS_PROPS);

@@ -4,8 +4,8 @@ import {mount} from 'enzyme';
 import XYPlot from 'plot/xy-plot';
 import AreaSeries from 'plot/series/area-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
-import AreaChartElevatedExample from '../../showcase/plot/area-chart-elevated';
-import AreaChartExample from '../../showcase/plot/area-chart';
+import AreaChartElevated from '../../showcase/plot/area-chart-elevated';
+import AreaChart from '../../showcase/plot/area-chart';
 
 testRenderWithProps(AreaSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
@@ -36,16 +36,16 @@ test('AreaSeries: basic rendering', t => {
   t.end();
 });
 
-test('AreaSeries: Area Chart Example', t => {
-  const $ = mount(<AreaChartExample />);
+test('AreaSeries: Showcase Example - AreaChart', t => {
+  const $ = mount(<AreaChart />);
   t.equal($.find('.rv-xy-plot__series').length, 1, 'should find the right number of series');
   t.equal($.find('path.rv-xy-plot__series').length, 1, 'should find the right number of series');
   t.equal($.find('.area-series-example').length, 1, 'should find the right number of custom named series');
   t.end();
 });
 
-test('AreaSeries: Area Chart Elevated Example', t => {
-  const $ = mount(<AreaChartElevatedExample />);
+test('AreaSeries: Showcase Example - AreaChartElevated', t => {
+  const $ = mount(<AreaChartElevated />);
   t.equal($.find('.rv-xy-plot__series').length, 5, 'should find the right number of series');
   t.equal($.find('path.rv-xy-plot__series').length, 3, 'should find the right number of pathes');
   t.equal($.find('.area-elevated-series-1').length, 1, 'should find the first custom component correctly');
