@@ -26,7 +26,12 @@ import VerticalBarSeries from 'plot/series/vertical-bar-series';
 import XAxis from 'plot/axis/x-axis';
 import XYPlot from 'plot/xy-plot';
 
-test('Render a stacked bar chart', assert => {
+const XYPLOT_PROPS = {width: 10, height: 10};
+import {testRenderWithProps} from '../test-utils';
+
+testRenderWithProps(XYPlot, XYPLOT_PROPS);
+
+test('Render a stacked bar chart', t => {
   const wrapper = shallow(
     <XYPlot width={300} height={300} stackBy="y">
       <VerticalBarSeries
@@ -48,7 +53,7 @@ test('Render a stacked bar chart', assert => {
   const renderedVerticalBarsWrapper =
     wrapper.find(VerticalBarSeries);
 
-  assert.deepEqual(
+  t.deepEqual(
     renderedVerticalBarsWrapper.at(0).prop('data'),
     [
       {x: 1, y: 0},
@@ -58,7 +63,7 @@ test('Render a stacked bar chart', assert => {
     'First bar series data is the same'
   );
 
-  assert.deepEqual(
+  t.deepEqual(
     renderedVerticalBarsWrapper.at(1).prop('data'),
     [
       {x: 1, y: 2, y0: 0},
@@ -68,10 +73,10 @@ test('Render a stacked bar chart', assert => {
     'Second bar series data contains y0 values'
   );
 
-  assert.end();
+  t.end();
 });
 
-test('Render a stacked bar chart with other children', assert => {
+test('Render a stacked bar chart with other children', t => {
   const wrapper = shallow(
     <XYPlot width={300} height={300} stackBy="y">
       <XAxis />
@@ -93,7 +98,7 @@ test('Render a stacked bar chart with other children', assert => {
 
   const renderedVerticalBarsWrapper = wrapper.find(VerticalBarSeries);
 
-  assert.deepEqual(
+  t.deepEqual(
     renderedVerticalBarsWrapper.at(0).prop('data'),
     [
       {x: 1, y: 0}
@@ -101,7 +106,7 @@ test('Render a stacked bar chart with other children', assert => {
     'First bar series data is the same'
   );
 
-  assert.deepEqual(
+  t.deepEqual(
     renderedVerticalBarsWrapper.at(1).prop('data'),
     [
       {x: 1, y: 2, y0: 0}
@@ -109,5 +114,5 @@ test('Render a stacked bar chart with other children', assert => {
     'Second bar series data contains y0 values'
   );
 
-  assert.end();
+  t.end();
 });

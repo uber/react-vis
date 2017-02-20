@@ -128,10 +128,14 @@ export function _getSmallestDistanceIndex(values, scaleObject) {
 /**
  * Crate a scale function from the scale object.
  * @param {Object} scaleObject Scale object.
+ - scaleObject.domain {Array}
+ - scaleObject.range {Array}
+ - scaleObject.type {string}
+ - scaleObject.attr {string}
  * @returns {*} Scale function.
  * @private
  */
-function _getScaleFnFromScaleObject(scaleObject) {
+export function _getScaleFnFromScaleObject(scaleObject) {
   if (!scaleObject) {
     return null;
   }
@@ -348,7 +352,7 @@ function _computeScaleDistance(values, domain, bestDistIndex, scaleFn) {
  * @returns {{domain0: number, domainN: number, distance: number}} Resuylt.
  * @private
  */
-function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
+export function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
   const {attr, domain} = scaleObject;
   const values = getUniquePropertyValues(data, attr);
   const index = _getSmallestDistanceIndex(values, scaleObject);
@@ -451,7 +455,7 @@ function _adjustContinuousScale(props, scaleObject) {
  * @returns {*} Scale object with adjustments.
  * @private
  */
-function _adjustCategoricalScale(scaleObject) {
+export function _adjustCategoricalScale(scaleObject) {
   const scaleFn = _getScaleFnFromScaleObject(scaleObject);
   const {domain, range} = scaleObject;
   if (domain.length > 1) {

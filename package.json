@@ -23,7 +23,7 @@
     "build": "npm run clean && babel src -d dist --copy-files && node-sass src/main.scss dist/style.css --output-style compressed",
     "lint": "eslint src tests showcase --ignore-pattern node_modules --ignore-pattern bundle.js",
     "lint-styles": "stylelint src/styles/*.scss --syntax scss",
-    "test": "tape -r babel-register tests/**/*.js",
+    "test": "babel-node tests/index.js",
     "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test"
   },
   "dependencies": {
