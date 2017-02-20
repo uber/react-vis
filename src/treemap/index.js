@@ -21,7 +21,7 @@
 import React, {PropTypes} from 'react';
 import * as d3Hierarchy from 'd3-hierarchy';
 
-import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, OPACITY_RANGE} from 'theme';
+import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, DEFAULT_OPACITY, OPACITY_TYPE} from 'theme';
 import {AnimationPropType} from 'utils/animation-utils';
 import {getAttributeFunctor, getMissingScaleProps} from 'utils/scales-utils';
 
@@ -93,8 +93,8 @@ class Treemap extends React.Component {
       onLeafClick: NOOP,
       onLeafMouseOver: NOOP,
       onLeafMouseOut: NOOP,
-      opacityRange: OPACITY_RANGE,
-      _opacityValue: 1,
+      opacityType: OPACITY_TYPE,
+      _opacityValue: DEFAULT_OPACITY,
       padding: 1
     };
   }
