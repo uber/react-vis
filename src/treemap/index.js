@@ -82,6 +82,7 @@ class Treemap extends React.Component {
   static get propTypes() {
     return {
       animation: AnimationPropType,
+      className: PropTypes.string,
       data: PropTypes.object.isRequired,
       height: PropTypes.number.isRequired,
       mode: PropTypes.oneOf(

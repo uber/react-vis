@@ -24,6 +24,12 @@ const data = [
 
 ##### width (required, pixels)
 ##### height (required, pixels)
+
+##### className (optional)
+
+Type: `string`  
+DOM classNames to be added to the wrapper component.
+
 ##### margin (optional, pixels)
 
 Type: `Object`

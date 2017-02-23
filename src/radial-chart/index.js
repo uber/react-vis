@@ -77,6 +77,7 @@ class RadialChart extends React.Component {
   static get propTypes() {
     return {
       animation: AnimationPropType,
+      className: PropTypes.string,
       height: PropTypes.number.isRequired,
       margin: MarginPropType,
       onSectionMouseOver: PropTypes.func,
@@ -84,6 +85,12 @@ class RadialChart extends React.Component {
       onSectionClick: PropTypes.func,
       showLabels: PropTypes.bool,
       width: PropTypes.number.isRequired
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      className: ''
     };
   }
 
@@ -295,6 +302,7 @@ class RadialChart extends React.Component {
   render() {
     const {
       animation,
+      className,
       height,
       showLabels,
       width
@@ -321,7 +329,7 @@ class RadialChart extends React.Component {
           width: `${width}px`,
           height: `${height}px`
         }}
-        className="rv-radial-chart">
+        className={`rv-radial-chart ${className}`}>
         <svg
           width={width}
           height={height}

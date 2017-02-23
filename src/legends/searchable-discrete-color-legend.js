@@ -31,6 +31,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  className: '',
   searchText: '',
   searchFn: (items, s) => items.filter(
     item => String(item.title || item).toLowerCase().indexOf(s) !== -1
@@ -46,14 +47,15 @@ function SearchableDiscreteColorLegend(props) {
     searchText,
     searchPlaceholder,
     width,
-    height
+    height,
+    className
   } = props;
   const onChange = onSearchChange ?
     ({target: {value}}) => onSearchChange(value) :
     null;
   const filteredItems = searchFn(items, searchText);
   return (
-    <div className="rv-search-wrapper" style={{width, height}}>
+    <div className={`rv-search-wrapper ${className}`} style={{width, height}}>
       <form className="rv-search-wrapper__form">
         <input
           type="search"
