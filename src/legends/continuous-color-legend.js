@@ -23,39 +23,41 @@ import React from 'react';
 import {CONTINUOUS_COLOR_RANGE} from 'theme';
 
 const propTypes = {
-  startColor: React.PropTypes.string,
-  midColor: React.PropTypes.string,
+  className: React.PropTypes.string,
+  height: React.PropTypes.number,
   endColor: React.PropTypes.string,
-  startTitle: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]).isRequired,
-  midTitle: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]),
   endTitle: React.PropTypes.oneOfType([
     React.PropTypes.number,
     React.PropTypes.string
   ]).isRequired,
-  height: React.PropTypes.number,
+  midColor: React.PropTypes.string,
+  midTitle: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string
+  ]),
+  startColor: React.PropTypes.string,
+  startTitle: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string
+  ]).isRequired,
   width: React.PropTypes.number
 };
 
 const defaultProps = {
+  className: '',
   startColor: CONTINUOUS_COLOR_RANGE[0],
   endColor: CONTINUOUS_COLOR_RANGE[1]
 };
 
 function ContinuousColorLegend({startColor, midColor, endColor, startTitle,
-  midTitle, endTitle, height, width}) {
+  midTitle, endTitle, height, width, className}) {
   const colors = [startColor];
   if (midColor) {
     colors.push(midColor);
   }
   colors.push(endColor);
   return (
-    <div className="rv-continuous-color-legend" style={{width, height}}>
+    <div className={`rv-continuous-color-legend ${className}`} style={{width, height}}>
       <div
         className="rv-gradient"
         style={{background: `linear-gradient(to right, ${colors.join(',')})`}} />

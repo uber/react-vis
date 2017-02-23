@@ -82,6 +82,10 @@ Width of the chart. The width should be passed.
 Type: `number`  
 Height of the component. The height should be passed.
 
+#### className (optional)
+Type: `string`  
+DOM classNames to be added to the wrapper component.
+
 #### margin (optional)
 Type: `Object`  
 Default: `{left: 40, right: 10, top: 10, bottom: 40}`

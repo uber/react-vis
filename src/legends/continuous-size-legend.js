@@ -21,29 +21,31 @@
 import React from 'react';
 
 const propTypes = {
-  startTitle: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]).isRequired,
+  className: React.PropTypes.string,
+  circlesTotal: React.PropTypes.number,
+  endSize: React.PropTypes.number,
   endTitle: React.PropTypes.oneOfType([
     React.PropTypes.number,
     React.PropTypes.string
   ]).isRequired,
-  startSize: React.PropTypes.number,
-  endSize: React.PropTypes.number,
-  circlesTotal: React.PropTypes.number,
   height: React.PropTypes.number,
+  startSize: React.PropTypes.number,
+  startTitle: React.PropTypes.oneOfType([
+    React.PropTypes.number,
+    React.PropTypes.string
+  ]).isRequired,
   width: React.PropTypes.number
 };
 
 const defaultProps = {
-  startSize: 2,
+  circlesTotal: 10,
+  className: '',
   endSize: 20,
-  circlesTotal: 10
+  startSize: 2
 };
 
 function ContinuousSizeLegend({startTitle, endTitle, startSize, endSize,
-  circlesTotal, height, width}) {
+  circlesTotal, height, width, className}) {
   const circles = [];
   const step = (endSize - startSize) / (circlesTotal - 1);
 
@@ -61,7 +63,7 @@ function ContinuousSizeLegend({startTitle, endTitle, startSize, endSize,
     circles.push(' ');
   }
   return (
-    <div className="rv-continuous-size-legend" style={{width, height}}>
+    <div className={`rv-continuous-size-legend ${className}`} style={{width, height}}>
       <div className="rv-bubbles" style={{height: endSize}}>
         {circles}
         <div className="rv-spacer" />
