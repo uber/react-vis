@@ -23,6 +23,7 @@ import React from 'react';
 import {
   XYPlot,
   XAxis,
+  YAxis,
   VerticalGridLines,
   HorizontalGridLines,
   LineSeries
@@ -37,10 +38,12 @@ export default class Example extends React.Component {
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis
+          hideLine
           title="X"
           labelFormat={v => `Value is ${v}`}
           labelValues={[2]}
           tickValues={[1, 1.5, 2, 3]}/>
+        <YAxis hideTicks/>
         <LineSeries
           data={[
             {x: 1, y: 10},

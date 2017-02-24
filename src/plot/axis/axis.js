@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 import Animation from 'animation';
 import PureRenderComponent from 'pure-render-component';
@@ -37,34 +37,36 @@ const animatedProps = [
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 
 const propTypes = {
-  orientation: React.PropTypes.oneOf([
+  orientation: PropTypes.oneOf([
     LEFT, RIGHT, TOP, BOTTOM
   ]),
-  attr: React.PropTypes.string.isRequired,
-  width: React.PropTypes.number,
-  height: React.PropTypes.number,
-  top: React.PropTypes.number,
-  left: React.PropTypes.number,
-  title: React.PropTypes.string,
+  attr: PropTypes.string.isRequired,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  top: PropTypes.number,
+  left: PropTypes.number,
+  title: PropTypes.string,
 
-  className: React.PropTypes.string,
-  tickLabelAngle: React.PropTypes.number,
-  tickSize: React.PropTypes.number,
-  tickSizeInner: React.PropTypes.number,
-  tickSizeOuter: React.PropTypes.number,
-  tickPadding: React.PropTypes.number,
-  tickValues: React.PropTypes.array,
-  tickFormat: React.PropTypes.func,
-  tickTotal: React.PropTypes.number,
+  className: PropTypes.string,
+  hideTicks: PropTypes.bool,
+  hideLine: PropTypes.bool,
+  tickLabelAngle: PropTypes.number,
+  tickSize: PropTypes.number,
+  tickSizeInner: PropTypes.number,
+  tickSizeOuter: PropTypes.number,
+  tickPadding: PropTypes.number,
+  tickValues: PropTypes.array,
+  tickFormat: PropTypes.func,
+  tickTotal: PropTypes.number,
 
   // Not expected to be used by the users.
   // TODO: Add underscore to these properties later.
-  marginTop: React.PropTypes.number,
-  marginBottom: React.PropTypes.number,
-  marginLeft: React.PropTypes.number,
-  marginRight: React.PropTypes.number,
-  innerWidth: React.PropTypes.number,
-  innerHeight: React.PropTypes.number
+  marginTop: PropTypes.number,
+  marginBottom: PropTypes.number,
+  marginLeft: PropTypes.number,
+  marginRight: PropTypes.number,
+  innerWidth: PropTypes.number,
+  innerHeight: PropTypes.number
 };
 
 const defaultProps = {
@@ -149,6 +151,8 @@ class Axis extends PureRenderComponent {
     const {
       className,
       height,
+      hideLine,
+      hideTicks,
       left,
       orientation,
       title,
@@ -162,11 +166,11 @@ class Axis extends PureRenderComponent {
       <g
         transform={`translate(${left},${top})`}
         className={`${predefinedClassName} ${axisClassName} ${className}`}>
-        <AxisLine
+        {!hideLine && (<AxisLine
           height={height}
           width={width}
-          orientation={orientation}/>
-        <AxisTicks {...props} />
+          orientation={orientation}/>)}
+        {!hideTicks && (<AxisTicks {...props} />)}
         {title ?
           <AxisTitle
             title={title}
