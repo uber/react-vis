@@ -35,6 +35,21 @@ Some notable features:
 - Ease of use. The library provides a set of defaults which can be overriden by the custom user's settings.
 - Integration with React. `react-vis` supports the React's lifecycle and doesn't create unnecessary nodes.
 
+## Breaking changes
+
+We recently made a major jump to version v1, which naturally includes some breaking changes. Specifically these include
+
+*Table is deprecated*: There are other substantially better tables in the ecosystem, so we decided to stick to what we do best, charts and plots.
+*Stylesheet has been moved*: the stylesheet for react-vis can now be found within the dist folder, so simply modify your style import to be:
+
+```
+@import './node_modules/react-vis/dist/main';
+```
+
+*Default Opacity*: The default opacity behavior has been modified. Previously, react-vis asserted you had a linear scale with range [0.1, 1] and place your value within that range. Now react-vis presents a literal-scale by default. Check your opacities to make sure they are correct.
+*tickSizeInner & tickSizeOuter have been reversed*: the names of these props on the axes component have been switched. We feel this arrangement offers a more natural way to interact with the plot.
+*ALIGN.TOP_RIGHT was removed from hint.js*: this case did not match the orientation scheme followed by this component so was removed.
+
 ## Usage
 
 Install react-vis via npm.
