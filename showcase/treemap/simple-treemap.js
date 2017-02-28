@@ -48,10 +48,12 @@ export default class SimpleTreemapExample extends React.Component {
         this.setState({modeIndex: MODE.length - 1});
         return;
       }
+
       if (newIndex >= MODE.length) {
         this.setState({modeIndex: 0});
         return;
       }
+
       this.setState({modeIndex: newIndex});
     };
   }
