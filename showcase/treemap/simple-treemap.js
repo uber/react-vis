@@ -24,17 +24,60 @@ import Treemap from 'treemap';
 
 import D3FlareData from './d3-flare-example.json';
 
+const MODE = [
+  'circlePack',
+  'partition',
+  'partition-pivot',
+  'squarify',
+  'resquarify',
+  'slice',
+  'dice',
+  'slicedice',
+  'binary'
+];
+
 export default class SimpleTreemapExample extends React.Component {
+  state = {
+    modeIndex: 0
+  }
+
+  updateModeIndex(increment) {
+    return () => {
+      const newIndex = this.state.modeIndex + (increment ? 1 : -1);
+      if (newIndex < 0) {
+        this.setState({modeIndex: MODE.length - 1});
+        return;
+      }
+      if (newIndex >= MODE.length) {
+        this.setState({modeIndex: 0});
+        return;
+      }
+      this.setState({modeIndex: newIndex});
+    };
+  }
 
   render() {
+    const {modeIndex} = this.state;
     return (
-      <Treemap
-        className="nested-tree-example"
-        colorType="literal"
-        data={D3FlareData}
-        mode="slicedice"
-        height={300}
-        width={350}/>
+      <div className="simple-treemap-example">
+        <div className="simple-treemap-example-controls">
+          <div
+            className="simple-treemap-example-button"
+            onClick={this.updateModeIndex(false)}> PREV MODE </div>
+          <div> {MODE[modeIndex]} </div>
+          <div
+            className="simple-treemap-example-button"
+            onClick={this.updateModeIndex(true)}> NEXT MODE </div>
+        </div>
+        <Treemap
+          animation
+          className="nested-tree-example"
+          colorType="literal"
+          data={D3FlareData}
+          mode={MODE[modeIndex]}
+          height={300}
+          width={350}/>
+      </div>
     );
   }
 
