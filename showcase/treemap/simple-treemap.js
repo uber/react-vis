@@ -41,21 +41,10 @@ export default class SimpleTreemapExample extends React.Component {
     modeIndex: 0
   }
 
-  updateModeIndex(increment) {
-    return () => {
-      const newIndex = this.state.modeIndex + (increment ? 1 : -1);
-      if (newIndex < 0) {
-        this.setState({modeIndex: MODE.length - 1});
-        return;
-      }
-
-      if (newIndex >= MODE.length) {
-        this.setState({modeIndex: 0});
-        return;
-      }
-
-      this.setState({modeIndex: newIndex});
-    };
+  updateModeIndex = increment => () => {
+    const newIndex = this.state.modeIndex + (increment ? 1 : -1);
+    const modeIndex = newIndex < 0 ? MODE.length - 1 : newIndex >= MODE.length ? 0 : newIndex;
+    this.setState({modeIndex});
   }
 
   render() {
@@ -65,11 +54,15 @@ export default class SimpleTreemapExample extends React.Component {
         <div className="simple-treemap-example-controls">
           <div
             className="simple-treemap-example-button"
-            onClick={this.updateModeIndex(false)}> PREV MODE </div>
+            onClick={this.updateModeIndex(false)}>
+            {'PREV MODE'}
+          </div>
           <div> {MODE[modeIndex]} </div>
           <div
             className="simple-treemap-example-button"
-            onClick={this.updateModeIndex(true)}> NEXT MODE </div>
+            onClick={this.updateModeIndex(true)}>
+            {'NEXT MODE'}
+          </div>
         </div>
         <Treemap
           animation
