@@ -62,3 +62,23 @@ test('LineSeries: Showcase Example - LineMarkSeries', t => {
   });
   t.end();
 });
+
+test('LineSeries: Line Styling', t => {
+  const $ = mount(
+    <XYPlot width={300} height={300}>
+      <LineSeries
+        {...LINE_PROPS}
+        opacity={0.5}
+        strokeWidth="3px"
+        stroke="rgb(255, 255, 255)"
+      />
+    </XYPlot>
+  );
+
+  const lineStyle = $.find('.rv-xy-plot__series path').prop('style');
+
+  t.equal(lineStyle.opacity, 0.5, 'should render an opaque line');
+  t.equal(lineStyle.strokeWidth, '3px', 'should honor stroke width');
+  t.equal(lineStyle.stroke, 'rgb(255, 255, 255)', 'should honor stroke');
+  t.end();
+});
