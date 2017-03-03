@@ -202,7 +202,7 @@ function _createScaleObjectForValue(attr, value, type) {
     return {
       type: 'literal',
       domain: [],
-      range: [],
+      range: [value],
       distance: 0,
       attr,
       baseValue: undefined,
