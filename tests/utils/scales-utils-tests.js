@@ -164,6 +164,9 @@ test('scales-utils #getAttributeValue ', t => {
   // with props
   result = getAttributeValue({x: 10}, 'x');
   t.equal(result, 10, 'The value should be returned');
+  // with props including a scale type
+  result = getAttributeValue({opacity: 0.5, opacityType: 'literal'}, 'opacity');
+  t.equal(result, 0.5, 'The value should be returned');
   t.end();
 });
 
