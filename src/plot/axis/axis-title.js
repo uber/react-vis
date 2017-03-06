@@ -23,6 +23,32 @@ import React from 'react';
 import {ORIENTATION} from 'utils/axis-utils';
 
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
+const transformation = (width, height) => ({
+  [LEFT]: {
+    x: 16,
+    y: 0,
+    rotation: '-90',
+    textAnchor: 'end'
+  },
+  [RIGHT]: {
+    x: -8,
+    y: -height,
+    rotation: '-90',
+    textAnchor: 'start'
+  },
+  [TOP]: {
+    x: 0,
+    y: 12,
+    rotation: '0',
+    textAnchor: 'start'
+  },
+  [BOTTOM]: {
+    x: width,
+    y: -6,
+    rotation: '0',
+    textAnchor: 'end'
+  }
+});
 
 const propTypes = {
   width: React.PropTypes.number.isRequired,
@@ -34,32 +60,15 @@ const propTypes = {
 };
 
 function AxisTitle({orientation, width, height, title}) {
-  const x = orientation === LEFT ? width : 0;
-  const y = orientation === TOP ? height : 0;
-  let style;
-  if (orientation === LEFT) {
-    style = {
-      transform: 'translate(1em, 0) rotate(-90deg)',
-      textAnchor: 'end'
-    };
-  } else if (orientation === RIGHT) {
-    style = {
-      transform: `translate(-0.5em, ${height}px) rotate(-90deg)`,
-      textAnchor: 'start'
-    };
-  } else if (orientation === BOTTOM) {
-    style = {
-      transform: `translate(${width}px, -6px)`,
-      textAnchor: 'end'
-    };
-  } else {
-    style = {
-      transform: 'translate(0px, 1em)'
-    };
-  }
+  const outerGroupTranslateX = orientation === LEFT ? width : 0;
+  const outerGroupTranslateY = orientation === TOP ? height : 0;
+  const outerGroupTransform = `translate(${outerGroupTranslateX}, ${outerGroupTranslateY})`;
+  const {x, y, rotation, textAnchor} = transformation(width, height)[orientation];
+  const innerGroupTransform = `translate(${x}, ${y}) rotate(${rotation})`;
+
   return (
-    <g transform={`translate(${x}, ${y})`} className="rv-xy-plot__axis__title">
-      <g style={style}>
+    <g transform={outerGroupTransform} className="rv-xy-plot__axis__title">
+      <g style={{textAnchor}} transform={innerGroupTransform}>
         <text>{title}</text>
       </g>
     </g>
@@ -70,4 +79,3 @@ AxisTitle.displayName = 'AxisTitle';
 AxisTitle.propTypes = propTypes;
 
 export default AxisTitle;
-
