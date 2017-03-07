@@ -22,6 +22,7 @@ import React, {PropTypes} from 'react';
 import {
   hierarchy,
   pack,
+  partition,
   treemapSquarify,
   treemapResquarify,
   treemapSlice,
@@ -47,7 +48,9 @@ const TREEMAP_TILE_MODES = {
 };
 
 const TREEMAP_LAYOUT_MODES = [
-  'circlePack'
+  'circlePack',
+  'partition',
+  'partition-pivot'
 ];
 
 const NOOP = d => d;
@@ -131,6 +134,24 @@ class Treemap extends React.Component {
    */
   _getNodesToRender() {
     const {data, height, width, mode, padding} = this.props;
+    if (data && (mode === 'partition' || mode === 'partition-pivot')) {
+      const partitionFunction = partition()
+          .size([width, height])
+          .padding(padding);
+      const structuredInput = hierarchy(data)
+        .sum(d => d.size);
+      const mappedNodes = partitionFunction(structuredInput).descendants();
+      if (mode === 'partition-pivot') {
+        return mappedNodes.map(node => ({
+          ...node,
+          x0: node.y0,
+          x1: node.y1,
+          y0: node.x0,
+          y1: node.x1
+        }));
+      }
+      return mappedNodes;
+    }
     if (data && mode === 'circlePack') {
       const packingFunction = pack()
           .size([width, height])

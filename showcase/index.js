@@ -53,7 +53,6 @@ import VoronoiLineChart from './plot/voronoi-line-chart';
 
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
-import CirclePacking from './treemap/circle-packed-treemap';
 
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import DonutChartExample from './radial-chart/donut-chart';
@@ -248,10 +247,6 @@ const App = (
       <section>
         <h3>Animated Treemap</h3>
         <TreemapExample />
-      </section>
-      <section>
-        <h3>Circle Packing</h3>
-        <CirclePacking />
       </section>
     </article>
 

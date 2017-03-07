@@ -316,9 +316,32 @@ article {
   }
 }
 
-.circle-packed-treemap-example {
-  .rv-treemap__leaf--circle {
-    border: thin solid #ddd;
+.simple-treemap-example {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px;
+
+  .rv-treemap__leaf {
+    border: thin solid rgba(#ddd, .5);
+  }
+
+  .simple-treemap-example-controls {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    width: 75%;
+  }
+
+  .simple-treemap-example-button {
+    border: thin solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 5px 10px;
   }
 }
 
