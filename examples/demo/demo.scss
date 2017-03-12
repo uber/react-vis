@@ -1,0 +1,83 @@
+// $black: #000;
+// $white: #fff;
+$primary: #00ADE6;
+$secondary: #05E3D5;
+$black: #041725;
+$black-20: #213746;
+$black-40: #5A666D;
+$white: #EDEDED;
+$white-40: #8D9BA3;
+
+@import 'stylesheets/mixins';
+@import 'stylesheets/table-of-contents';
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: ff-clan-web-pro, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: 12px;
+  line-height: 1.833;
+  overflow-y: auto;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+a {
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  text-decoration: none;
+}
+
+a,
+a:visited {
+  color: $primary;
+}
+
+#index {
+  display: flex;
+  height: 100%;
+}
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.main-content {
+  display: flex;
+  height: 100%;
+}
+
+.example-header {
+  align-items: center;
+  background: $black;
+  color: $white;
+  display: flex;
+  height: 60px;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.table-of-contents {
+  border-right: thin solid $black;
+  height: 100%;
+  width: 252px;
+}
+
+.example-page {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  padding: 50px;
+  width: 100%;
+}

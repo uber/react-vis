@@ -5,6 +5,7 @@
     "react": "^15.4.2",
     "react-addons-shallow-compare": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-router": "2.4",
     "react-vis": "0.9.0"
   },
   "devDependencies": {
@@ -22,6 +23,10 @@
     "webpack-dev-server": "^2.2.0-rc.0"
   },
   "babel": {
-    "presets": ["es2017", "stage-2", "react"]
+    "presets": [
+      "es2017",
+      "stage-2",
+      "react"
+    ]
   }
 }

@@ -23,9 +23,8 @@ import React, {Component} from 'react';
 import window from 'global/window';
 import document from 'global/document';
 
-import ComplexChartExample from './candlestick-example';
+import CandlestickExample from './candlestick-example';
 import '../../src/styles/examples.scss';
-import './candlestick.scss';
 
 export default class App extends Component {
   componentWillMount() {
@@ -40,7 +39,7 @@ export default class App extends Component {
       <article>
         <h1>Candlestick Example</h1>
         <section>
-          <ComplexChartExample />
+          <CandlestickExample />
         </section>
       </article>
     );
