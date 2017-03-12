@@ -3,13 +3,14 @@ import {
   Router,
   Route,
   // IndexRoute,
+  Redirect,
   IndexRedirect,
   useRouterHistory
 } from 'react-router';
 import {createHashHistory} from 'history';
 
 import App from './components/app.js';
-// import Home from './demo-app.js';
+import Home from './components/app.js';
 import Layout from './components/layout.js';
 import ExamplePage from './components/example-page.js';
 import DocumentationPage from './components/documentation-page';
@@ -26,15 +27,16 @@ const pageType = {
 
 const appHistory = useRouterHistory(createHashHistory)({queryKey: false});
 
-// <IndexRoute component={Home} />
-// <Route path="*" component={Home} />
 export default () => (
   <Router history={appHistory}>
     <Route path="/" component={App} />
     { renderRouteGroup('documentation', docPages) }
     { renderRouteGroup('examples', examplePages) }
+    <Redirect from="/" to="/documentation/overview/getting" />
+    <Route path="*" component={Home} />
   </Router>
 );
+// <IndexRoute component={Home} />
 
 function renderRoute(page, i) {
   const {children, path, content} = page;

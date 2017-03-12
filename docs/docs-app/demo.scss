@@ -1,13 +1,12 @@
-// $black: #000;
-// $white: #fff;
-$primary: #00ADE6;
-$secondary: #05E3D5;
+$primary: #00ade6;
+$secondary: #05e3d5;
 $black: #041725;
 $black-20: #213746;
-$black-40: #5A666D;
-$white: #EDEDED;
-$white-40: #8D9BA3;
+$black-40: #5a666d;
+$white: #ededed;
+$white-40: #8d9ba3;
 
+@import 'stylesheets/markdown';
 @import 'stylesheets/mixins';
 @import 'stylesheets/table-of-contents';
 
@@ -29,6 +28,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 a {
   cursor: pointer;
   display: inline-block;
@@ -75,11 +75,24 @@ a:visited {
   }
 }
 
-.example-page,
-.documentation-page {
+.example-page {
   display: flex;
   height: 100%;
   justify-content: center;
   padding: 50px;
   width: 100%;
+}
+
+.documentation-page {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.markdown {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  overflow-y: scroll;
+  padding: 50px;
 }

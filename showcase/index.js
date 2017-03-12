@@ -69,7 +69,7 @@ import ContinuousSizeLegendExample from './legends/continuous-size';
 
 import '../src/styles/examples.scss';
 
-const App = (
+export const App = (
   <main>
 
     <header>

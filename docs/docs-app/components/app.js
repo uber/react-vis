@@ -12,4 +12,10 @@ class App extends Component {
   }
 }
 
-export default connect(state => state.app)(App);
+function mapStateToProps(state) {
+  return {
+    markdownPages: state.markdownPages
+  };
+}
+
+export default connect(mapStateToProps)(App);

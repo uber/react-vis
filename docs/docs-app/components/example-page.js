@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 class ExamplePage extends Component {
-  componentWillMount() {
+  componentDidMount() {
     window.addEventListener(
       'resize',
       () => this.setState({width: window.innerWidth})
@@ -9,7 +9,8 @@ class ExamplePage extends Component {
   }
 
   render() {
-    const ExampleComponent = this.props.route.content.component;
+    const {route} = this.props;
+    const ExampleComponent = route.content.component;
     console.log(ExampleComponent)
     return (
       <div className="example-page">
