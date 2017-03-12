@@ -64,17 +64,19 @@ a:visited {
   color: $white;
   display: flex;
   height: 60px;
+  justify-content: space-between;
   padding: 0 20px;
   width: 100%;
 }
 
-.table-of-contents {
-  border-right: thin solid $black;
-  height: 100%;
-  width: 252px;
+.tabs-wrapper {
+  .link {
+    padding: 0 10px;
+  }
 }
 
-.example-page {
+.example-page,
+.documentation-page {
   display: flex;
   height: 100%;
   justify-content: center;

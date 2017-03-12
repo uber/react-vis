@@ -12,26 +12,26 @@ import App from './components/app.js';
 // import Home from './demo-app.js';
 import Layout from './components/layout.js';
 import ExamplePage from './components/example-page.js';
+import DocumentationPage from './components/documentation-page';
 
 import {
-  examplePages
-  // docPages,
-  // layerDocPages
+  examplePages,
+  docPages
 } from './constants/pages';
 
 const pageType = {
-  example: ExamplePage
+  example: ExamplePage,
+  documentation: DocumentationPage
 };
 
 const appHistory = useRouterHistory(createHashHistory)({queryKey: false});
 
 // <IndexRoute component={Home} />
-// { renderRouteGroup('documentation', docPages) }
-// { renderRouteGroup('layers', layerDocPages) }
 // <Route path="*" component={Home} />
 export default () => (
   <Router history={appHistory}>
     <Route path="/" component={App} />
+    { renderRouteGroup('documentation', docPages) }
     { renderRouteGroup('examples', examplePages) }
   </Router>
 );

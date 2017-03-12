@@ -10,6 +10,7 @@ class ExamplePage extends Component {
 
   render() {
     const ExampleComponent = this.props.route.content.component;
+    console.log(ExampleComponent)
     return (
       <div className="example-page">
         <ExampleComponent />

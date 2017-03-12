@@ -2,13 +2,18 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Header from './header';
 import TableOfContents from './table-of-contents';
+import {loadContent} from '../actions';
 
-class Gallery extends Component {
+class Layout extends Component {
+  componentWillMount() {
+    this.props.loadContent();
+  }
 
   render() {
     const {
       children,
-      route: {path, pages}
+      route: {path, pages},
+      markdownPages
     } = this.props;
 
     return (
@@ -16,11 +21,17 @@ class Gallery extends Component {
         <Header />
         <div className="main-content">
           <TableOfContents pages={pages} parentRoute={path}/>
-          { children }
+          { {...children, props: {...children.props, markdownPages}} }
         </div>
       </div>
     );
   }
 }
 
-export default connect(state => state.app)(Gallery);
+function mapStateToProps(state) {
+  return {
+    markdownPages: state.markdownPages
+  };
+}
+
+export default connect(mapStateToProps, {loadContent})(Layout);
