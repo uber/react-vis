@@ -61,7 +61,7 @@ Not all properties can be visualized in each series. Here's a short comparison o
 |----------------------|-----|-----|---------|-----------|--------|
 | `LineSeries`         |  +  |  +  | +       |           |        |
 | `AreaSeries`         |  +  |  +  | +       |           |        |
-| `LinemarkSeries`     |  +  |  +  | +       |     +     | +      |
+| `LineMarkSeries`     |  +  |  +  | +       |     +     | +      |
 | `MarkSeries`         |  +  |  +  | +       |     +     | +      |
 | `VerticalBarSeries`  |  +  |  +  | +       |     +     |        |
 | `HorizontalBarSeries`|  +  |  +  | +       |     +     |        |
