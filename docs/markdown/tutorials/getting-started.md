@@ -30,7 +30,7 @@ Lets start an initial example with a radial graph. First we need to setup our We
 
 ```bash
 # Install webpack dependencies
-npm install --save-dev css-loader extract-text-webpack-plugin node-sass sass-loader style-loader webpack webpack-dev-server
+npm install -D css-loader node-sass sass-loader style-loader webpack webpack-dev-server
 ```
 
 ```js

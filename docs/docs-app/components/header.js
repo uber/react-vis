@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router';
 
 const tabs = [{
@@ -9,21 +9,26 @@ const tabs = [{
   path: '/documentation'
 }];
 
-export default class Header extends React.Component {
-  renderTab(tab, index) {
-    return (<Link
-      key={`${index}-link`}
-      className="link" to={ tab.path } activeClassName="active">{ tab.name }</Link>);
-  }
+const renderTab = (tab, index) => (
+  <Link
+    key={`${index}-link`}
+    className="link"
+    to={tab.path}
+    activeClassName="active">
+    {tab.name}
+  </Link>
+);
+
+export default class Header extends Component {
 
   render() {
     return (
       <div className="example-header">
-        <div className="app-name-wrapper">
+        <Link to="/" className="app-name-wrapper">
           {'REACT VIS'}
-        </div>
+        </Link>
         <div className="tabs-wrapper">
-          {tabs.map(this.renderTab)}
+          {tabs.map(renderTab)}
         </div>
       </div>
     );
