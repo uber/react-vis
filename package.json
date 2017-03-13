@@ -5,8 +5,11 @@
   "author": "Visualization Team <visualization@uber.com>",
   "description": "Data visualization library based on React and d3.",
   "main": "dist/index.js",
+  "module": "es/index",
+  "jsnext:main": "es/index",
   "files": [
-    "dist"
+    "dist",
+    "es"
   ],
   "repository": {
     "type": "git",
@@ -19,8 +22,8 @@
   "scripts": {
     "docs": "(cd showcase && npm run build && cp bundle.* .. && cd .. && git checkout gh-pages && git commit -am 'Upgrade docs' && git push && git checkout master)",
     "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
-    "clean": "rm -rf dist bundle.* index.html && mkdir dist",
-    "build": "npm run clean && babel src -d dist --copy-files && node-sass src/main.scss dist/style.css --output-style compressed",
+    "clean": "rm -rf dist es bundle.* index.html && mkdir dist es",
+    "build": "npm run clean && babel src -d dist --copy-files && BABEL_ENV=es babel src -d es --copy-files && node-sass src/main.scss dist/style.css --output-style compressed",
     "lint": "eslint src tests showcase --ignore-pattern node_modules --ignore-pattern bundle.js",
     "lint-styles": "stylelint src/styles/*.scss --syntax scss",
     "test": "babel-node tests/index.js",
@@ -78,11 +81,6 @@
     "babel"
   ],
   "babel": {
-    "presets": [
-      "es2015",
-      "stage-0",
-      "react"
-    ],
     "plugins": [
       [
         "module-resolver",
@@ -92,7 +90,23 @@
           ]
         }
       ]
-    ]
+    ],
+    "env": {
+      "es": {
+        "presets": [
+          ["es2015", { "modules": false }],
+          "stage-0",
+          "react"
+        ]
+      },
+      "development": {
+        "presets": [
+          "es2015",
+          "stage-0",
+          "react"
+        ]
+      }
+    }
   },
   "engines": {
     "node": ">=0.10.0",
