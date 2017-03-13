@@ -10,10 +10,13 @@ $white-40: #8d9ba3;
 @import 'stylesheets/mixins';
 @import 'stylesheets/table-of-contents';
 
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 html,
-body {
+body,
+#index,
+.app {
   height: 100%;
-  margin: 0;
 }
 
 body {
@@ -21,12 +24,6 @@ body {
   font-size: 12px;
   line-height: 1.833;
   overflow-y: auto;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 a {
@@ -41,32 +38,35 @@ a:visited {
   color: $primary;
 }
 
-#index {
-  display: flex;
-  height: 100%;
-}
-
-.layout-container {
+.app {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
 }
 
-.main-content {
+.app-container {
   display: flex;
-  height: 100%;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.f {
+  display: flex;
+}
+
+.fg {
+  flex-grow: 1;
 }
 
 .example-header {
+  display: flex;
+  flex-shrink: 0;
   align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  width: 100%;
+  padding: 0 20px;
   background: $black;
   color: $white;
-  display: flex;
-  height: 60px;
-  justify-content: space-between;
-  padding: 0 20px;
-  width: 100%;
 }
 
 .tabs-wrapper {
@@ -76,23 +76,14 @@ a:visited {
 }
 
 .example-page {
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  padding: 50px;
-  width: 100%;
+  flex-grow: 1;
+  padding: 2rem;
 }
 
 .documentation-page {
-  display: flex;
-  height: 100%;
-  width: 100%;
+  padding: 2rem;
 }
 
 .markdown {
-  display: flex;
-  flex-direction: column;
-  height: auto;
   overflow-y: scroll;
-  padding: 50px;
 }

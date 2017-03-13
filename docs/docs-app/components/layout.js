@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import Header from './header';
+
 import TableOfContents from './table-of-contents';
 import {loadContent} from '../actions';
 
 class Layout extends Component {
+
   componentWillMount() {
     this.props.loadContent();
   }
@@ -17,12 +18,9 @@ class Layout extends Component {
     } = this.props;
 
     return (
-      <div className="layout-container">
-        <Header />
-        <div className="main-content">
-          <TableOfContents pages={pages} parentRoute={path}/>
-          { {...children, props: {...children.props, markdownPages}} }
-        </div>
+      <div className="f fg">
+        <TableOfContents pages={pages} parentRoute={path}/>
+        {{...children, props: {...children.props, markdownPages}}}
       </div>
     );
   }

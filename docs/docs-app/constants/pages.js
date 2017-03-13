@@ -1,4 +1,7 @@
-function generatePath(tree) {
+import ComplexChartExample from '../../../examples/complex-chart/complex-chart-example';
+import Candlestick from '../../../examples/candlestick/candlestick-example';
+
+const generatePath = tree => {
   if (Array.isArray(tree)) {
     tree.forEach(branch => generatePath(branch));
   }
@@ -9,14 +12,9 @@ function generatePath(tree) {
     tree.path = tree.name.match(/(([A-Z]|^)[a-z]+|\d+)/g).join('-').toLowerCase();
   }
   return tree;
-}
+};
 
-function getDocUrl(filename) {
-  return `/markdown/${filename}`;
-}
-
-import ComplexChartExample from '../../../examples/complex-chart/complex-chart-example';
-import Candlestick from '../../../examples/candlestick/candlestick-example';
+const getDocUrl = filename => `/markdown/${filename}`;
 
 export const examplePages = generatePath([
   {
