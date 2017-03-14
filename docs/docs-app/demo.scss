@@ -58,15 +58,15 @@ a:visited {
 }
 
 .example-header {
-  display: flex;
-  flex-shrink: 0;
   align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  width: 100%;
-  padding: 0 20px;
   background: $black;
   color: $white;
+  display: flex;
+  flex-shrink: 0;
+  height: 60px;
+  justify-content: space-between;
+  padding: 0 20px;
+  width: 100%;
 }
 
 .tabs-wrapper {
