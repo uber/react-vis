@@ -38,6 +38,7 @@
     ]
   },
   "scripts": {
-    "start": "webpack-dev-server --progress --hot --port 3001"
+    "start": "webpack-dev-server --progress --hot --port 3001",
+    "build": "NODE_ENV=production webpack"
   }
 }

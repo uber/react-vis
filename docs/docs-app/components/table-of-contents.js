@@ -42,5 +42,7 @@ export default class TableOfContents extends Component {
 TableOfContents.propTypes = {
   isOpen: PropTypes.bool,
   parentRoute: PropTypes.string.isRequired,
+  /* eslint-disable react/forbid-prop-types */
   pages: PropTypes.array.isRequired
+  /* eslint-enable react/forbid-prop-types */
 };

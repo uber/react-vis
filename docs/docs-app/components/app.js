@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from './header';
 
+/* eslint-disable react/display-name*/
 export default ({children}) => (
   <div className="app">
     <Header />
@@ -10,3 +11,4 @@ export default ({children}) => (
     </div>
   </div>
 );
+/* eslint-enable react/display-name*/

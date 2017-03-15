@@ -61,6 +61,7 @@ const renderRouteGroup = (path, pages) => {
   );
 };
 
+/* eslint-disable react/display-name */
 export default () => (
   <Router history={appHistory}>
 
@@ -73,5 +74,4 @@ export default () => (
     <Redirect from="*" to="/" />
   </Router>
 );
-
-// <Redirect from="/" to="/documentation/overview/getting" />
+/* eslint-enable react/display-name */

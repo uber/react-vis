@@ -1,7 +1,8 @@
 const {resolve} = require('path');
 
-module.exports = {
+const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
 
+module.exports = {
   entry: {
     app: './app.js'
   },
@@ -36,6 +37,10 @@ module.exports = {
     alias: {
       react: resolve('./node_modules/react')
     }
-  }
+  },
 
+  output: isProd ? {
+    path: './',
+    filename: 'bundle.js'
+  } : null
 };

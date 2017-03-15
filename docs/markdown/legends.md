@@ -3,11 +3,11 @@
 Currently following types of legends are supported:
 
 - for colors:
-  * [DiscreteColorLegend](#DiscreteColorLegend) (for a fixed number of colors, good for series);
-  * [SearchableDiscreteColorLegend](#SearchableDiscreteColorLegend) (same as DiscreteColorLegend, but with search on top);
-  * [ContinuousColorLegend](#ContinuousColorLegend) (for gradually changing colors);
+  * DiscreteColorLegend (for a fixed number of colors, good for series);
+  * SearchableDiscreteColorLegend) (same as DiscreteColorLegend, but with search on top);
+  * ContinuousColorLegend (for gradually changing colors);
 - for sizes:
-  * [ContinuousSizeLegend](#ContinuousSizeLegend) (for gradually changing size).
+  * ContinuousSizeLegend (for gradually changing size).
 
 ## Color legends
 
@@ -15,7 +15,7 @@ Currently following types of legends are supported:
 
 #### items (required)
 Type: `Array<string|{title: string, color: String, disabled: boolean}>`  
-Array of items that should be shown on the legend. The array should consist from either objects (`title`, optional `color` and optional `disabled` flag) or strings (treated as titles). 
+Array of items that should be shown on the legend. The array should consist from either objects (`title`, optional `color` and optional `disabled` flag) or strings (treated as titles).
 
 #### onItemClick
 Type: `function(Object, number): void`  
