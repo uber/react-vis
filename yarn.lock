@@ -332,8 +332,8 @@ babel-helpers@^6.23.0:
     babel-template "^6.23.0"
 
 babel-loader@^6.2.10:
-  version "6.4.0"
-  resolved "https://unpm.uberinternal.com/babel-loader/-/babel-loader-6.4.0.tgz#e98c239662a22533b9e7a49594ef216d7635ea28"
+  version "6.4.1"
+  resolved "https://unpm.uberinternal.com/babel-loader/-/babel-loader-6.4.1.tgz#0b34112d5b0748a8dcdbf51acf6f9bd42d50b8ca"
   dependencies:
     find-cache-dir "^0.1.1"
     loader-utils "^0.2.16"
@@ -806,8 +806,8 @@ circular-json@^0.3.1:
   resolved "https://unpm.uberinternal.com/circular-json/-/circular-json-0.3.1.tgz#be8b36aefccde8b3ca7aa2d6afc07a37242c0d2d"
 
 clap@^1.0.9:
-  version "1.1.2"
-  resolved "https://unpm.uberinternal.com/clap/-/clap-1.1.2.tgz#316545bf22229225a2cecaa6824cd2f56a9709ed"
+  version "1.1.3"
+  resolved "https://unpm.uberinternal.com/clap/-/clap-1.1.3.tgz#b3bd36e93dd4cbfb395a3c26896352445265c05b"
   dependencies:
     chalk "^1.1.3"
 
@@ -2100,8 +2100,8 @@ ignore@^3.2.0:
   resolved "https://unpm.uberinternal.com/ignore/-/ignore-3.2.4.tgz#4055e03596729a8fabe45a43c100ad5ed815c4e8"
 
 immutable@^4.0.0-rc.1:
-  version "4.0.0-rc.1"
-  resolved "https://unpm.uberinternal.com/immutable/-/immutable-4.0.0-rc.1.tgz#75c5d728ccf1fb22d0a459add6748448ae270acc"
+  version "4.0.0-rc.2"
+  resolved "https://unpm.uberinternal.com/immutable/-/immutable-4.0.0-rc.2.tgz#fdd0948aae728fda2306a02f72bb73e1773432d1"
 
 imurmurhash@^0.1.4:
   version "0.1.4"
@@ -2496,8 +2496,8 @@ loader-utils@^0.2.15, loader-utils@^0.2.16, loader-utils@^0.2.3:
     object-assign "^4.0.1"
 
 loader-utils@^1.0.2:
-  version "1.0.4"
-  resolved "https://unpm.uberinternal.com/loader-utils/-/loader-utils-1.0.4.tgz#13f56197f1523a305891248b4c7244540848426c"
+  version "1.1.0"
+  resolved "https://unpm.uberinternal.com/loader-utils/-/loader-utils-1.1.0.tgz#c98aef488bcceda2ffb5e2de646d6a754429f5cd"
   dependencies:
     big.js "^3.1.3"
     emojis-list "^2.0.0"
@@ -4189,8 +4189,8 @@ ua-parser-js@^0.7.9:
   resolved "https://unpm.uberinternal.com/ua-parser-js/-/ua-parser-js-0.7.12.tgz#04c81a99bdd5dc52263ea29d24c6bf8d4818a4bb"
 
 uglify-js@^2.7.5:
-  version "2.8.12"
-  resolved "https://unpm.uberinternal.com/uglify-js/-/uglify-js-2.8.12.tgz#8a50f5d482243650b7108f6080aa3a6afe2a6c55"
+  version "2.8.13"
+  resolved "https://unpm.uberinternal.com/uglify-js/-/uglify-js-2.8.13.tgz#d0cdf02f3c661484fac601b7e723207b735a374c"
   dependencies:
     source-map "~0.5.1"
     uglify-to-browserify "~1.0.0"
