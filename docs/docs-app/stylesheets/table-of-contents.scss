@@ -40,7 +40,7 @@
     border-image-slice: 2;
     color: $primary;
     font-weight: bold;
-    @include linearGradientV(border-image, $primary, $secondary);
+    // @include linearGradientV(border-image, $primary, $secondary);
   }
 
   .link:hover {
