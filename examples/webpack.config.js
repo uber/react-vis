@@ -3,7 +3,7 @@ const {resolve} = require('path');
 module.exports = {
 
   entry: {
-    app: './docs/app.js'
+    app: './app.js'
   },
 
   devServer: {
@@ -30,12 +30,5 @@ module.exports = {
         exclude: [/node_modules/]
       }
     ]
-  },
-
-  resolve: {
-    alias: {
-      react: resolve('./node_modules/react')
-    }
   }
-
 };
