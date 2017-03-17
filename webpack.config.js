@@ -1,9 +1,6 @@
-const {resolve} = require('path');
-
 module.exports = {
-
   entry: {
-    app: './app.js'
+    app: './docs/app.js'
   },
 
   devServer: {

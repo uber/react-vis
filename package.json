@@ -21,7 +21,7 @@
     "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
     "clean": "rm -rf dist bundle.* index.html && mkdir dist",
     "build": "npm run clean && babel src -d dist --copy-files && node-sass src/main.scss dist/style.css --output-style compressed",
-    "lint": "eslint src tests showcase --ignore-pattern node_modules --ignore-pattern bundle.js",
+    "lint": "eslint src tests showcase docs --ignore-pattern node_modules --ignore-pattern bundle.js",
     "lint-styles": "stylelint src/styles/*.scss --syntax scss",
     "test": "babel-node tests/index.js",
     "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test"

@@ -1,0 +1,94 @@
+$primary: #00ade6;
+$secondary: #05e3d5;
+$black: #041725;
+$black-20: #213746;
+$black-40: #5a666d;
+$white: #ededed;
+$white-40: #8d9ba3;
+
+@import 'stylesheets/markdown';
+@import 'stylesheets/table-of-contents';
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html,
+body,
+#index,
+.app {
+  height: 100%;
+}
+
+body {
+  font-family: ff-clan-web-pro, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: 12px;
+  line-height: 1.833;
+  overflow-y: auto;
+}
+
+a {
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  text-decoration: none;
+}
+
+a,
+a:visited {
+  color: $primary;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.f {
+  display: flex;
+}
+
+.fg {
+  flex-grow: 1;
+}
+
+.example-header {
+  align-items: center;
+  background: $black;
+  color: $white;
+  display: flex;
+  flex-shrink: 0;
+  height: 60px;
+  justify-content: space-between;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.tabs-wrapper {
+  .link {
+    padding: 0 10px;
+  }
+}
+
+.example-page {
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+.markdown {
+  overflow-y: scroll;
+  padding: 2rem;
+  width: 100%;
+}
+
+.documentation-page {
+  padding: 2rem;
+}
+
+.markdown {
+  overflow-y: scroll;
+}

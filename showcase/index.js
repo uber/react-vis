@@ -69,7 +69,7 @@ import ContinuousSizeLegendExample from './legends/continuous-size';
 
 import '../src/styles/examples.scss';
 
-const App = (
+export const App = (
   <main>
 
     <header>
@@ -296,3 +296,50 @@ const el = document.createElement('div');
 document.body.appendChild(el);
 
 ReactDOM.render(App, el);
+
+export const showCase = {
+  ComplexChart,
+  LineChart,
+  LineMarkChart,
+  BarChart,
+  StackedVerticalBarChart,
+  StackedHorizontalBarChart,
+  StackedHistogram,
+  AreaChart,
+  AreaChartElevated,
+  ScatteplotChart,
+  HeatmapChart,
+  WidthHeightMarginChart,
+  CustomScales,
+  CustomAxesOrientation,
+  CustomAxisChart,
+  AxisWithTurnedLabels,
+  GridLinesChart,
+  StaticHints,
+  DynamicHints,
+  DynamicComplexEdgeHints,
+  DynamicSimpleEdgeHints,
+  DynamicSimpleTopEdgeHints,
+  DynamicProgrammaticRightEdgeHints,
+  StaticCrosshair,
+  DynamicCrosshair,
+  SyncedCharts,
+  TimeChart,
+  VoronoiLineChart,
+
+  SimpleTreemap,
+  TreemapExample,
+
+  SimpleRadialChart,
+  DonutChartExample,
+  CustomRadiusRadialChart,
+
+  BasicSankeyExample,
+  VoronoiSankeyExample,
+
+  VerticalDiscreteColorLegendExample,
+  HorizontalDiscreteColorLegendExample,
+  SearchableDiscreteColorLegendExample,
+  ContinuousColorLegendExample,
+  ContinuousSizeLegendExample
+};

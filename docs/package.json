@@ -2,19 +2,28 @@
   "description": "react-vis examples",
   "license": "MIT",
   "dependencies": {
+    "d3-request": "^1.0.5",
+    "immutable": "^4.0.0-rc.1",
+    "markdown-loader": "^2.0.0",
     "react": "^15.4.2",
     "react-addons-shallow-compare": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-router": "2.4",
-    "react-vis": "^1.0.1"
+    "react-redux": "^5.0.3",
+    "react-router": "^2.4.0",
+    "react-vis": "0.9.0",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
     "babel-preset-es2017": "^6.22.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-2": "^6.22.0",
     "css-loader": "^0.26.1",
+    "eslint": "^3.17.1",
+    "eslint-plugin-react": "^6.10.0",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
     "node-sass": "^4.2.0",
     "sass-loader": "^4.1.1",
@@ -28,5 +37,9 @@
       "stage-2",
       "react"
     ]
+  },
+  "scripts": {
+    "start": "webpack-dev-server --progress --hot --port 3001",
+    "build": "NODE_ENV=production webpack"
   }
 }

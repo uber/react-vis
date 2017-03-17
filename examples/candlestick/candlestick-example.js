@@ -26,7 +26,7 @@ import {
   LineSeries,
   makeWidthFlexible
 } from 'react-vis';
-
+import './candlestick.scss';
 import Candlestick from './candlestick';
 
 const FlexibleXYPlot = makeWidthFlexible(XYPlot);
@@ -95,5 +95,3 @@ export default class Example extends React.Component {
     );
   }
 }
-// <XAxis />
-// <YAxis />

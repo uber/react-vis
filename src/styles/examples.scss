@@ -149,10 +149,7 @@ article {
 .example-with-click-me {
   position: relative;
   text-align: center;
-
-  // .rv-xy-plot__series--rect rect {
-  //   stroke: white !important;
-  // }
+  width: 100%;
 
   &:hover {
     .click-me {

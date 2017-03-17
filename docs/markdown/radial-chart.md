@@ -78,7 +78,7 @@ Please refer to [Scales and Data](scales-and-data.md) for more information about
 ##### animation (optional)
 
 Type: `boolean|Object`
-Please refer to [Animation](./animation.md) doc for more information.
+Please refer to [Animation](animation.md) doc for more information.
 
 ### Further work
 
