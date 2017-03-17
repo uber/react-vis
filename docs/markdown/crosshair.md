@@ -1,4 +1,4 @@
-### Crosshair
+## Crosshair
 
 `Crosshair` is a tooltip for multiple values at the same time. Its purpose is to combine several values with the similar X coordinate in one tooltip. Crosshair is automatically aligned by the x coordinate depending on what values are passed.
 In case if custom representation of crosshair is needed, the component is able to wrap the user's JSX. In this case no CSS is applied to that. Here's a short example:

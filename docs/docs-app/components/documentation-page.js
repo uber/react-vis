@@ -4,6 +4,11 @@ import marked from 'marked';
 import {docsRouting} from '../constants/pages';
 
 class DocumentationPage extends Component {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.route.content.markdown !== this.props.route.content.markdown) {
+      this.refs.documentionContainer.scrollTop = 0;
+    }
+  }
 
   render() {
     const {markdownPages, route} = this.props;
@@ -22,7 +27,7 @@ class DocumentationPage extends Component {
     /* eslint-disable react/no-danger */
     return (
       <div className="documentation-page f fg">
-        <div className="markdown">
+        <div className="markdown" ref="documentionContainer">
           <div className="markdown-body" dangerouslySetInnerHTML={{__html}} />
         </div>
       </div>

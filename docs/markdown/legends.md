@@ -1,4 +1,4 @@
-# Legends
+## Legends
 
 Currently following types of legends are supported:
 

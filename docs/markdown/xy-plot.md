@@ -4,7 +4,7 @@ XYPlot allows you to make line charts, area charts, scatterplots, heat maps, etc
 
 Currently following components are used for this purpose:
 
-* [XYPlot](xy-plot.md) to wrap all the items.
+* XYPlot to wrap all the items.
 * [Grids](grids.md) to show vertical and horizontal grids.
 * [Axes](axes.md) to show X and Y axis.
 * [Different kinds of series](series.md) for line/area/bar charts, scatterplots, heat maps, etc.
@@ -59,9 +59,9 @@ Not all properties can be visualized in each series. Here's a short comparison o
 
 |                      | `x` | `y` | `color` | `opacity` | `size` |
 |----------------------|-----|-----|---------|-----------|--------|
-| `LineSeries`         |  +  |  +  | +       |           |        |
+| [LineSeries](line-series.md)  |  +  |  +  | +       |           |        |
 | `AreaSeries`         |  +  |  +  | +       |           |        |
-| `LinemarkSeries`     |  +  |  +  | +       |     +     | +      |
+| [LineMarkSeries](line-series.md)     |  +  |  +  | +       |     +     | +      |
 | `MarkSeries`         |  +  |  +  | +       |     +     | +      |
 | `VerticalBarSeries`  |  +  |  +  | +       |     +     |        |
 | `HorizontalBarSeries`|  +  |  +  | +       |     +     |        |

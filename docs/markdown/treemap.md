@@ -2,7 +2,6 @@
 
 `treemap` is a component to show treemaps. For more information about this type of visualization please read [this article](https://en.wikipedia.org/wiki/Treemapping).
 
-Note: currently only one-level treemaps are supported. No formatters and event handlers are available as well (to be implemented).
 
 ## Usage
 
@@ -77,19 +76,28 @@ Each point consists of following properties:
 
 #### animation (optional)
 Type: `boolean|Object`
-Please refer to [Animation](./animation.md) doc for more information.
+Please refer to [Animation](animation.md) doc for more information.
 
 #### onLeafClick (optional)
 Type: `function`
 - Should accept arguments (leafNode, domEvent)
+
 Pass in a function that will be called on click on a given leaf.
 
 #### onLeafMouseOver (optional)
 Type: `function`
 - Should accept arguments (leafNode, domEvent)
+
 Pass in a function that will be called on mouseEnter on a given leaf.
 
 #### onLeafMouseOut (optional)
 Type: `function`
 - Should accept arguments (leafNode, domEvent)
+
 Pass in a function that will be called on mouseOut on a given leaf.
+
+#### mode (options)
+Type: `string`
+- One of squarify, resquarify, slice, dice, slicedice, binary, circlePack, partition, partition-pivot
+
+This modifies the tiling stratagey for the treemap, for more information see the [d3 hierarchy docs](https://github.com/d3/d3-hierarchy).

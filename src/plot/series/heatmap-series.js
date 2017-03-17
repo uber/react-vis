@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
@@ -82,6 +82,10 @@ class HeatmapSeries extends AbstractSeries {
     );
   }
 }
+
+HeatmapSeries.propTypes = {
+  ...AbstractSeries.propTypes
+};
 
 HeatmapSeries.displayName = 'HeatmapSeries';
 
