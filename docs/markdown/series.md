@@ -1,12 +1,11 @@
-
-### Series
+## Series
 
 The library supports several types of series:
 
-* `LineSeries` for lines;
+* [LineSeries](line-series.md) for lines;
 * `AreaSeries` for area charts;
 * `MarkSeries` for scatterplots;
-* `LineMarkSeries` is a shorthand to place marks (e.g. circles) on lines;
+* [LineMarkSeries](line-series.md) is a shorthand to place marks (e.g. circles) on lines;
 * `VerticalBarSeries` for vertical bar charts;
 * `HorizontalBarSeries` for horizontal bar charts;
 * `HeatmapSeries` for heat maps.

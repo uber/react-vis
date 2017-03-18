@@ -9,10 +9,14 @@ const generatePath = tree => {
     generatePath(tree.children);
   }
   if (tree.name) {
-    tree.path = tree.name.match(/(([A-Z]|^)[a-z]+|\d+)/g).join('-').toLowerCase();
+    tree.path = updatePathName(tree.name);
   }
   return tree;
 };
+
+function updatePathName(name) {
+  return name.toLowerCase().replace(/\s/g, '-');
+}
 
 const getDocUrl = filename => `/markdown/${filename}`;
 
@@ -41,78 +45,109 @@ export const docPages = generatePath([
   {
     name: 'Overview',
     pageType: 'documentation',
+    children: [{
+      name: 'Getting started',
+      content: {
+        markdown: getDocUrl('tutorials/getting-started.md'),
+        filename: 'tutorials/getting-started.md',
+        pageType: 'documentation'
+      }
+    }, {
+      name: 'Scales and data',
+      content: {
+        markdown: getDocUrl('scales-and-data.md'),
+        filename: 'scales-and-data.md',
+        pageType: 'documentation'
+      }
+    }, {
+      name: 'Legends',
+      content: {
+        markdown: getDocUrl('legends.md'),
+        filename: 'legends.md',
+        pageType: 'documentation'
+      }
+    }, {
+      name: 'Animation',
+      content: {
+        markdown: getDocUrl('animation.md'),
+        filename: 'animation.md',
+        pageType: 'documentation'
+      }
+    }]
+  },
+  {
+    name: 'XY-Plot',
     children: [
       {
-        name: 'Getting started',
-        content: {
-          markdown: getDocUrl('tutorials/getting-started.md'),
-          filename: 'tutorials/getting-started.md',
-          pageType: 'documentation'
-        }
-      },
-      {
-        name: 'XYPlot',
+        name: 'Introduction',
         content: {
           markdown: getDocUrl('xy-plot.md'),
           filename: 'xy-plot.md',
           pageType: 'documentation'
         }
-      },
-      {
-        name: 'Axes',
+      }, {
+        name: 'Series',
         content: {
-          markdown: getDocUrl('axes.md'),
-          filename: 'axes.md',
+          markdown: getDocUrl('series.md'),
+          filename: 'series.md',
           pageType: 'documentation'
         }
-      },
-      {
+      }, {
         name: 'Crosshair',
         content: {
           markdown: getDocUrl('crosshair.md'),
           filename: 'crosshair.md',
           pageType: 'documentation'
         }
-      },
-      {
+      }, {
         name: 'Grids',
         content: {
           markdown: getDocUrl('grids.md'),
           filename: 'grids.md',
           pageType: 'documentation'
         }
-      },
-      {
+      }, {
         name: 'Hint',
         content: {
           markdown: getDocUrl('hint.md'),
           filename: 'hint.md',
           pageType: 'documentation'
         }
-      },
-      {
-        name: 'Scales and data',
+      }, {
+        name: 'Axes',
         content: {
-          markdown: getDocUrl('scales-and-data.md'),
-          filename: 'scales-and-data.md',
-          pageType: 'documentation'
-        }
-      },
-      {
-        name: 'Legends',
-        content: {
-          markdown: getDocUrl('legends.md'),
-          filename: 'legends.md',
+          markdown: getDocUrl('axes.md'),
+          filename: 'axes.md',
           pageType: 'documentation'
         }
       }
     ]
   },
   {
-    name: 'Charts',
+    name: 'XY Plot Series',
     children: [
       {
-        name: 'Sankey',
+        name: 'Line Series',
+        content: {
+          markdown: getDocUrl('line-series.md'),
+          filename: 'line-series.md',
+          pageType: 'documentation'
+        }
+      }, {
+        name: 'Heatmap Series',
+        content: {
+          markdown: getDocUrl('heatmap-series.md'),
+          filename: 'heatmap-series.md',
+          pageType: 'documentation'
+        }
+      }
+    ]
+  },
+  {
+    name: 'Other Charts',
+    children: [
+      {
+        name: 'Sankey Diagram',
         content: {
           markdown: getDocUrl('sankey.md'),
           filename: 'sankey.md',
@@ -128,26 +163,10 @@ export const docPages = generatePath([
         }
       },
       {
-        name: 'RadialChart',
+        name: 'Radial Chart',
         content: {
           markdown: getDocUrl('radial-chart.md'),
           filename: 'radial-chart.md',
-          pageType: 'documentation'
-        }
-      },
-      {
-        name: 'Series',
-        content: {
-          markdown: getDocUrl('series.md'),
-          filename: 'series.md',
-          pageType: 'documentation'
-        }
-      },
-      {
-        name: 'LineChart',
-        content: {
-          markdown: getDocUrl('line-chart.md'),
-          filename: 'line-chart.md',
           pageType: 'documentation'
         }
       }
@@ -158,7 +177,7 @@ export const docPages = generatePath([
 export const docsRouting = docPages.reduce((res, section) => section.children.reduce((mem, child) => {
   const filename = child.content.filename;
   const pureFilename = filename.slice(0, filename.length - 3);
-  const sectionName = section.name.toLowerCase();
+  const sectionName = updatePathName(section.name);
   res[filename] = `#/documentation/${sectionName}/${pureFilename}`;
   return mem;
 }, res), {});

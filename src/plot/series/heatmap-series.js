@@ -83,6 +83,10 @@ class HeatmapSeries extends AbstractSeries {
   }
 }
 
+HeatmapSeries.propTypes = {
+  ...AbstractSeries.propTypes
+};
+
 HeatmapSeries.displayName = 'HeatmapSeries';
 
 export default HeatmapSeries;

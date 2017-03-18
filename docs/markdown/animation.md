@@ -1,4 +1,4 @@
-# Animation
+## Animation
 
 `react-vis` animates its components by default. You can override this behavior by passing `animation` property to the components. Animation property can have one of the following values:
 

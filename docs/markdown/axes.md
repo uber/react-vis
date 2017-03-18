@@ -1,5 +1,4 @@
-
-### Axes
+## Axes
 
 **Note**: Axes API was changed in 0.5.
 

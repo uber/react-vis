@@ -1,4 +1,4 @@
-#### LineSeries/LineMarkSeries:
+## LineSeries/LineMarkSeries:
 
 ##### strokeStyle (optional)
 Type: `string`
