@@ -110,6 +110,11 @@ article {
   h1,
   h2 {
     flex: 1 100%;
+
+    small {
+      font-size: 50%;
+      color: #6b6b76;
+    }
   }
 
   section {
@@ -136,6 +141,13 @@ article {
 
   animation: shake 5s 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
   transform: translate3d(0, 0, 0);
+}
+
+.button {
+  @extend .click-me;
+
+  animation: none;
+  transform: none;
 }
 
 @keyframes shake {
@@ -177,6 +189,10 @@ article {
     .rv-xy-plot__axis__tick__line {
       stroke: $rv-xy-plot-axis-font-color;
     }
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   .legend {

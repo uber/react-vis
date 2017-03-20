@@ -1,0 +1,12 @@
+{
+  "description": "Zoomable chart example for react-vis",
+  "license": "MIT",
+  "author": "akindr",
+  "scripts": {
+    "link-html": "rm -f index.html && ln -s ../index.html",
+    "link-config": "rm -f webpack.config.js && ln -s ../webpack.config.js",
+    "link-deps": "rm -rf node_modules && ln -s ../node_modules && rm -f yarn.lock && ln -s ../yarn.lock",
+    "link": "npm run link-deps && npm run link-config && npm run link-html",
+    "start": "npm run link && webpack-dev-server --progress --hot --port 3001 --open"
+  }
+}
