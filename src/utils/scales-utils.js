@@ -459,10 +459,11 @@ export function _adjustCategoricalScale(scaleObject) {
   const scaleFn = _getScaleFnFromScaleObject(scaleObject);
   const {domain, range} = scaleObject;
   if (domain.length > 1) {
-    scaleObject.distance = scaleFn(domain[1]) - scaleFn(domain[0]);
+    scaleObject.distance = Math.abs(scaleFn(domain[1]) - scaleFn(domain[0]));
   } else {
-    scaleObject.distance = range[1] - range[0];
+    scaleObject.distance = Math.abs(range[1] - range[0]);
   }
+
   return scaleObject;
 }
 
