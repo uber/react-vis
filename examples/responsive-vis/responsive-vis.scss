@@ -22,7 +22,15 @@
     text-decoration: underline;
   }
 
+  .responsive-vis {
+    display: flex;
+    justify-content: center;    
+  }
+
   .responsive-bar-chart {
+    display: flex;
+    justify-content: center;
+
     .rv-hint {
       color: #000;
     }

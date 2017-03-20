@@ -23,7 +23,7 @@ import {scaleLinear, scaleQuantize, scaleSqrt} from 'd3-scale';
 import {max, range} from 'd3-array';
 
 // create fake data
-export function createData(dataSize, barChart = true) {
+export const createData = (dataSize, barChart = true) => {
   const gen1 = randomNormal(70, 15);
   const gen2 = randomNormal(50, 8);
   const gen = (i) => i % 3 ? gen1() : gen2();
@@ -39,7 +39,7 @@ export function createData(dataSize, barChart = true) {
     data.sort((a, b) => b.x - a.x);
   }
   return data;
-}
+};
 
 export function filterFeatures(features, ppp) {
   return features.reduce((res, feature) => {

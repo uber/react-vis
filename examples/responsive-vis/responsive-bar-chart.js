@@ -59,26 +59,18 @@ function updateDataForArea(data, ppp) {
 }
 
 export default class ResponsiveBarChart extends React.Component {
-  constructor(props) {
-    super(props);
-    this._rememberValue = this._rememberValue.bind(this);
-    this._forgetValue = this._forgetValue.bind(this);
-  }
-
   state = {
     hoveredPoint: false
   }
 
-  _rememberValue(value, e) {
-    this.setState({hoveredPoint: {
-      x: -25,
-      y: typeof value.y === 'string' ? value.y : e.index,
-      label: value.label
-    }});
-  }
-
-  _forgetValue() {
-    this.setState({hoveredPoint: null});
+  _rememberValue() {
+    return (value, e) => {
+      this.setState({hoveredPoint: {
+        x: -25,
+        y: typeof value.y === 'string' ? value.y : e.index,
+        label: value.label
+      }});
+    };
   }
 
   // todo build a root responsive class that has this as a class method
@@ -110,23 +102,31 @@ export default class ResponsiveBarChart extends React.Component {
           width={width}>
           {featuresToRender.xaxis && <XAxis orientation="top"/>}
           {featuresToRender.yaxis && <YAxis />}
-          {featuresToRender.bars && <HorizontalBarSeries
-            colorType="literal"
-            yRange={[0, innerHeight]}
-            xRange={[0, innerWidth]}
-            onNearestX={featuresToRender.mouseLabels ? this._rememberValue : null}
-            data={updatedData} />}
-          {featuresToRender.area && <AreaSeries
-            colorType="literal"
-            color="#12939A"
-            yType="linear"
-            yDomain={[0, updatedData.length]}
-            yRange={[0, innerHeight]}
-            xRange={[innerWidth, 0]}
-            onNearestX={featuresToRender.mouseLabels ? this._rememberValue : null}
-            data={updatedData} />}
-          {featuresToRender.mouseLabels && hoveredPoint && <Hint
-            value={hoveredPoint} >{hoveredPoint.label}</Hint>}
+          {featuresToRender.bars && (
+            <HorizontalBarSeries
+              colorType="literal"
+              yRange={[0, innerHeight]}
+              xRange={[0, innerWidth]}
+              onNearestX={featuresToRender.mouseLabels ? this._rememberValue() : null}
+              data={updatedData} />
+          )}
+          {featuresToRender.area && (
+            <AreaSeries
+              colorType="literal"
+              color="#12939A"
+              yType="linear"
+              yDomain={[0, updatedData.length]}
+              yRange={[0, innerHeight]}
+              xRange={[innerWidth, 0]}
+              onNearestX={featuresToRender.mouseLabels ? this._rememberValue() : null}
+              data={updatedData} />
+            )}
+          {featuresToRender.mouseLabels && hoveredPoint && (
+            <Hint
+              value={hoveredPoint}>
+              {hoveredPoint.label}
+            </Hint>
+          )}
         </XYPlot>
       </div>
     );

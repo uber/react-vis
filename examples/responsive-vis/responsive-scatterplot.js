@@ -61,15 +61,6 @@ export const SCATTERPLOT_FEATURES = [
 ];
 
 export default class ResponsiveScatterplot extends React.Component {
-  constructor(props) {
-    super(props);
-    this._rememberValue = this._rememberValue.bind(this);
-    this._forgetValue = this._forgetValue.bind(this);
-    this._select = this._select.bind(this);
-    this._selectValue = this._selectValue.bind(this);
-    this._selectBin = this._selectBin.bind(this);
-  }
-
   state = {
     binData: [],
     hoveredPoint: false,
@@ -83,39 +74,24 @@ export default class ResponsiveScatterplot extends React.Component {
     });
   }
 
-  _rememberValue(value) {
-    this.setState({hoveredPoint: value});
-  }
+  _select(accessor) {
+    return (value, e) => {
+      e.event.stopPropagation();
+      let foundValue = false;
 
-  _forgetValue() {
-    this.setState({hoveredPoint: null});
-  }
+      const selectedPoints = this.state.selectedPoints.filter(row => {
+        if (accessor(row) === accessor(value)) {
+          foundValue = true;
+        }
+        return accessor(row) !== accessor(value);
+      });
 
-  _select(value, accessor) {
-    let foundValue = false;
-
-    const selectedPoints = this.state.selectedPoints.filter(row => {
-      if (accessor(row) === accessor(value)) {
-        foundValue = true;
+      if (!foundValue) {
+        selectedPoints.push(value);
       }
-      return accessor(row) !== accessor(value);
-    });
 
-    if (!foundValue) {
-      selectedPoints.push(value);
-    }
-
-    this.setState({selectedPoints});
-  }
-
-  _selectBin(value, e) {
-    e.event.stopPropagation();
-    this._select(value, d => `${d.x}-${d.y}`);
-  }
-
-  _selectValue(value, e) {
-    e.event.stopPropagation();
-    this._select(value, d => d.label);
+      this.setState({selectedPoints});
+    };
   }
 
   getFeatures() {
@@ -138,6 +114,8 @@ export default class ResponsiveScatterplot extends React.Component {
     const rememberBin = featuresToRender.bintips || featuresToRender.binSelection;
 
     const pointRadii = computeRadius(data, innerWidth, innerHeight);
+
+    const showHint = (featuresToRender.tooltips || featuresToRender.bintips) && hoveredPoint;
     return (
       <div className="responsive-vis">
         <XYPlot
@@ -146,28 +124,33 @@ export default class ResponsiveScatterplot extends React.Component {
           width={width}>
           {featuresToRender.axes && <XAxis />}
           {featuresToRender.axes && <YAxis />}
-          {featuresToRender.bins && <HeatmapSeries
-            className="responsive-vis-heatmap"
-            colorType="literal"
-            onValueMouseOver={rememberBin ? this._rememberValue : null}
-            onValueMouseOut={rememberBin ? this._forgetValue : null}
-            onValueClick={featuresToRender.binSelection ? this._selectBin : null}
-            data={manicureData(binData, hoveredPoint, selectedPoints, true)}/>}
-          {featuresToRender.points && <MarkSeries
-            className="responsive-vis-scatterplot"
-            colorType="literal"
-            size={pointRadii}
-            onValueMouseOver={rememberVal ? this._rememberValue : null}
-            onValueMouseOut={rememberVal ? this._forgetValue : null}
-            onValueClick={featuresToRender.pointSelection ? this._selectValue : null}
-            data={manicureData(data, hoveredPoint, selectedPoints, false)}/>}
-          {(featuresToRender.tooltips || featuresToRender.bintips) &&
-            hoveredPoint && <Hint value={hoveredPoint}/>}
-          {featuresToRender.labels && <LabelSeries
-            allowOffsetToBeReversed
-            data={data}
-            yOffset={-1 * pointRadii}
-            />}
+          {featuresToRender.bins && (
+            <HeatmapSeries
+              className="responsive-vis-heatmap"
+              colorType="literal"
+              onValueMouseOver={rememberBin ? value => this.setState({hoveredPoint: value}) : null}
+              onValueMouseOut={rememberBin ? () => this.setState({hoveredPoint: null}) : null}
+              onValueClick={featuresToRender.binSelection ? this._select(d => `${d.x}-${d.y}`) : null}
+              data={manicureData(binData, hoveredPoint, selectedPoints, true)}/>
+            )}
+          {featuresToRender.points && (
+            <MarkSeries
+              className="responsive-vis-scatterplot"
+              colorType="literal"
+              size={pointRadii}
+              onValueMouseOver={rememberVal ? value => this.setState({hoveredPoint: value}) : null}
+              onValueMouseOut={rememberVal ? () => this.setState({hoveredPoint: null}) : null}
+              onValueClick={featuresToRender.pointSelection ? this._select(d => d.label) : null}
+              data={manicureData(data, hoveredPoint, selectedPoints, false)}/>
+            )}
+          {showHint && <Hint value={hoveredPoint}/>}
+          {featuresToRender.labels && (
+            <LabelSeries
+              allowOffsetToBeReversed
+              data={data}
+              yOffset={-1 * pointRadii}
+              />
+            )}
         </XYPlot>
       </div>
     );
