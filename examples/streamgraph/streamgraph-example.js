@@ -34,28 +34,27 @@ const NUMBER_OF_LAYERS = 20;
 const SAMPLES_PER_LAYER = 200;
 const BUMPS_PER_LAYER = 10;
 
+const bump = (aggregatingData, samplesPerLayer) => {
+  const x = 1 / (0.1 + Math.random());
+  const y = 2 * Math.random() - 0.5;
+  const z = 10 / (0.1 + Math.random());
+
+  return aggregatingData.map((v, i) => {
+    const w = (i / samplesPerLayer - y) * z;
+    return v + (x * Math.exp(-w * w));
+  });
+};
+
 // Inspired by Bostock's version of Lee Byron’s test data generator.
 function bumps(samplesPerLayer, bumpsPerLayer) {
   const dataOutline = (new Array(samplesPerLayer)).fill(0);
   return range(bumpsPerLayer).reduce(res => bump(res, samplesPerLayer), dataOutline);
 }
 
-// bumpsPerLayer
-function bump(aggregatingData, samplesPerLayer) {
-  const x = 1 / (0.1 + Math.random());
-  const y = 2 * Math.random() - 0.5;
-  const z = 10 / (0.1 + Math.random());
-  for (let i = 0; i < samplesPerLayer; i++) {
-    const w = (i / samplesPerLayer - y) * z;
-    aggregatingData[i] += x * Math.exp(-w * w);
-  }
-  return aggregatingData;
-}
-
 function generateData() {
   const stack = d3Stack().keys(range(NUMBER_OF_LAYERS)).offset(stackOffsetWiggle);
   const transposed = transpose(range(NUMBER_OF_LAYERS).map(() => bumps(SAMPLES_PER_LAYER, BUMPS_PER_LAYER)));
-  return stack(transposed).map(series => series.map((row, i) => ({x: i, y0: row[0], y: row[1]})));
+  return stack(transposed).map(series => series.map((row, x) => ({x, y0: row[0], y: row[1]})));
 }
 
 export default class Example extends React.Component {
