@@ -20,7 +20,7 @@
 
 <h5 align="center">Data Visualization oriented components</h5>
 
-![demo](docs/assets/react-vis.gif?raw=true)
+![demo](docs/markdown/assets/react-vis.gif?raw=true)
 
 ## Overview
 
@@ -95,13 +95,14 @@ import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
 Take a look at the [folder with examples](examples/) or check out some docs:
 
 - Common concepts:
-  * [Scales and Data](docs/scales-and-data.md) about how the attributes can be adjusted.
-  * [Animations](docs/animation.md) about how to tweak animations in the library.
+  * [Scales and Data](docs/markdown/scales-and-data.md) about how the attributes can be adjusted.
+  * [Animations](docs/markdown/animation.md) about how to tweak animations in the library.
 - Components:
-  * [XYPlot](docs/xy-plot.md) about orthogonal charts.
-  * [RadialChart](docs/radial-chart.md) about radial charts.
-  * [Treemap](docs/treemap.md) about making tree maps.
-  * [Legends](docs/legends.md) about the legends.
+  * [XYPlot](docs/markdown/xy-plot.md) about orthogonal charts.
+  * [RadialChart](docs/markdown/radial-chart.md) about radial charts.
+  * [Treemap](docs/markdown/treemap.md) about making tree maps.
+  * [Sankey](docs/markdown/sankey.md) about making sankey diagrams.
+  * [Legends](docs/markdown/legends.md) about the legends.
 
 ## Development
 
