@@ -1,6 +1,7 @@
 import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
+import XYPlot from 'plot/xy-plot';
 import HorizontalBarSeries from 'plot/series/horizontal-bar-series';
 import VerticalBarSeries from 'plot/series/vertical-bar-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
@@ -27,5 +28,23 @@ test('BarSeries: Showcase Example - StackedHorizontalBarChart & StackedVerticalB
     t.equal($.text(), expectedContent, 'should fine the right text content');
     t.equal($.find('.rv-xy-plot__series--bar rect').length, 6, 'should find the right number of bars');
   });
+  t.end();
+});
+
+test('BarSeries: Ordinal Y-Axis HorizontalBarSeries', t => {
+  const $ = mount(<XYPlot
+    width={300}
+    height={300}
+    yType="ordinal">
+    <HorizontalBarSeries
+      data={[
+        {y: 'a', x: 10},
+        {y: 'b', x: 5},
+        {y: 'c', x: 15}
+      ]}
+    />
+  </XYPlot>);
+  t.equal($.find('.rv-xy-plot__series--bar rect').length, 3, 'should find the right number of bars');
+  t.equal($.find('.rv-xy-plot__series--bar rect').at(0).prop('height') > 0, true, 'should not have negative bar height');
   t.end();
 });
