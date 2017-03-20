@@ -347,3 +347,11 @@ article {
     border: thin solid white;
   }
 }
+
+.clustered-stacked-bar-chart-example {
+  .rv-discrete-color-legend {
+    position: absolute;
+    top: 0px;
+    left: 40px;
+  }
+}

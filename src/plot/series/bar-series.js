@@ -35,17 +35,21 @@ class BarSeries extends AbstractSeries {
       linePosAttr: React.PropTypes.string,
       valuePosAttr: React.PropTypes.string,
       lineSizeAttr: React.PropTypes.string,
-      valueSizeAttr: React.PropTypes.string
+      valueSizeAttr: React.PropTypes.string,
+      cluster: React.PropTypes.string
     };
   }
 
-  _getScackParams() {
-    const {_stackBy, valuePosAttr} = this.props;
+  _getStackParams() {
+    const {_stackBy, valuePosAttr, cluster} = this.props;
     let {
       sameTypeTotal = 1,
       sameTypeIndex = 0
     } = this.props;
-    if (_stackBy === valuePosAttr) {
+
+    // If bars are stacked, but not clustering, override `sameTypeTotal` and
+    // `sameTypeIndex` such that bars are stacked and not staggered.
+    if (_stackBy === valuePosAttr && !cluster) {
       sameTypeTotal = 1;
       sameTypeIndex = 0;
     }
@@ -77,7 +81,7 @@ class BarSeries extends AbstractSeries {
       );
     }
 
-    const {sameTypeTotal, sameTypeIndex} = this._getScackParams();
+    const {sameTypeTotal, sameTypeIndex} = this._getStackParams();
 
     const distance = this._getScaleDistance(linePosAttr);
     const lineFunctor = this._getAttributeFunctor(linePosAttr);
