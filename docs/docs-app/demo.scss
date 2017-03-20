@@ -3,6 +3,7 @@ $secondary: #05e3d5;
 $black: #041725;
 $black-20: #213746;
 $black-40: #5a666d;
+$black-60: #4a4a4a;
 $white: #ededed;
 $white-40: #8d9ba3;
 
@@ -43,6 +44,7 @@ a:visited {
 }
 
 .app-container {
+  background-color: $white;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -52,20 +54,38 @@ a:visited {
   display: flex;
 }
 
+.f-down {
+  display: flex;
+  flex-direction: column;
+}
+
 .fg {
   flex-grow: 1;
 }
 
 .example-header {
   align-items: center;
-  background: $black;
-  color: $white;
+  background: $black-20;
+
   display: flex;
+  font-size: 12px;
   flex-shrink: 0;
   height: 60px;
   justify-content: space-between;
-  padding: 0 20px;
+  letter-spacing: .86px;
+  padding: 0 50px;
   width: 100%;
+
+  .link {
+    color: $white-40;
+  }
+
+  .link.active {
+    border-color: $primary;
+    border-image-slice: 2;
+    color: $primary;
+    font-weight: bold;
+  }
 }
 
 .tabs-wrapper {
@@ -75,6 +95,7 @@ a:visited {
 }
 
 .example-page {
+  background-color: $white;
   flex-grow: 1;
   padding: 2rem;
 }
@@ -86,9 +107,94 @@ a:visited {
 }
 
 .documentation-page {
+  background-color: $white;
   padding: 2rem;
 }
 
 .markdown {
   overflow-y: scroll;
+}
+
+// home page
+.home-wrapper {
+  height: 100%;
+}
+
+.home-top-section {
+  // dots
+  background-color: $black-40;
+  background-image: -webkit-repeating-radial-gradient(center center, $white-40, $white-40 1px, transparent 1px, transparent 100%);
+  background-image: -moz-repeating-radial-gradient(center center, $white-40, $white-40 1px, transparent 1px, transparent 100%);
+  background-image: -ms-repeating-radial-gradient(center center, $white-40, $white-40 1px, transparent 1px, transparent 100%);
+  background-image: repeating-radial-gradient(center center, $white-40, $white-40 1px, transparent 1px, transparent 100%);
+  -moz-background-size: 3px 3px;
+  -webkit-background-size: 3px 3px;
+  background-size: 15px 15px;
+  // everything else
+  height: 352px;
+  justify-content: space-between;
+  min-width: 700px;
+  padding: 0 150px;
+}
+
+.home-bottom-section {
+  background-color: $white;
+  height: 100%;
+  min-width: 700px;
+  padding: 0 150px;
+}
+
+.page-title {
+  color: $white;
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: 1.33px;
+}
+
+.page-subtitle {
+  color: $white;
+  font-size: 14px;
+  letter-spacing: .39px;
+}
+
+.bullet-points-wrapper {
+  height: auto;
+  max-width: 600px;
+}
+
+.bullet-point {
+  margin: 20px 0;
+}
+
+.bullet-point-title {
+  color: $black-60;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: .43px;
+}
+
+.bullet-point-title {
+  color: $black-60;
+  font-size: 14px;
+  letter-spacing: .3px;
+}
+
+.preview-image {
+  background: url("https://d1a3f4spazzrp4.cloudfront.net/geodude/frontpage-example.png") no-repeat center;
+  background-size: contain;
+  border-image: 0;
+  border: 0;
+  // height: 366px;
+  min-width: 300px;
+  width: 70%;
+}
+
+.image-wrapper {
+  justify-content: flex-end;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.title-wrapper {
+  min-width: 300px;
 }

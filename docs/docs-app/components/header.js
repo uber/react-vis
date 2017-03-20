@@ -19,16 +19,21 @@ const renderTab = (tab, index) => (
   </Link>
 );
 
+const renderGithubLink = () => (
+  <a href="https://github.com/uber/react-vis" className="link">GITHUB</a>
+);
+
 export default class Header extends Component {
 
   render() {
+    const mappedTabs = tabs.map(renderTab).concat(renderGithubLink());
     return (
       <div className="example-header">
-        <Link to="/" className="app-name-wrapper">
+        <Link to="/" className="link">
           {'REACT VIS'}
         </Link>
         <div className="tabs-wrapper">
-          {tabs.map(renderTab)}
+          {mappedTabs}
         </div>
       </div>
     );
