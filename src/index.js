@@ -28,6 +28,7 @@ export LabelSeries from 'plot/series/label-series';
 export PolygonSeries from 'plot/series/polygon-series';
 export RectSeries from 'plot/series/rect-series';
 export MarkSeries from 'plot/series/mark-series';
+export MarkSeriesGL from 'plot/series/mark-series-gl';
 export HeatmapSeries from 'plot/series/heatmap-series';
 export AreaSeries from 'plot/series/area-series';
 export LineMarkSeries from 'plot/series/line-mark-series';
