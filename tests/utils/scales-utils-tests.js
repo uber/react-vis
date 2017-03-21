@@ -293,6 +293,12 @@ test('scales-utils #_adjustCategoricalScale', t => {
   }, {
     scale: {type: 'category', domain: ['a'], range: [1, 10]},
     distance: 9
+  }, {
+    scale: {type: 'ordinal', domain: ['a', 'b', 'c', 'd'], range: [10, 0]},
+    distance: 2.5
+  }, {
+    scale: {type: 'ordinal', domain: ['a'], range: [10, 1]},
+    distance: 9
   }].forEach(({scale, distance}) => {
     t.deepEqual(_adjustCategoricalScale(scale), {...scale, distance}, 'should correctly adjust a categorical scale');
   });
