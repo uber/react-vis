@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Uber Technologies, Inc.
+// Copyright (c) 2017 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -18,57 +18,50 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 import DeckGL, {
   ScatterplotLayer, OrthographicViewport, COORDINATE_SYSTEM
 } from 'deck.gl';
+import {rgb} from 'd3-color';
 
-// import Animation from 'animation';
-// import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
-// import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
+import Animation from 'animation';
+import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
 
 import AbstractSeries from './abstract-series';
 
-// const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--mark';
+const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--mark';
 
 class MarkSeriesGL extends AbstractSeries {
-  _getDefaultProps() {
-    const {
-      innerWidth,
-      innerHeight,
-      marginTop,
-      marginLeft
-    } = this.props;
-    return {
-      left: marginLeft,
-      top: marginTop,
-      width: innerWidth,
-      height: innerHeight
-    };
-  }
-
   static get requiresSVG() {
     return false;
   }
 
-  _renderScatterplotLayer() {
+  _renderScatterplotLayer(props) {
+    const {data, _renderKey, seriesId} = props;
     const xFunctor = this._getAttributeFunctor('x');
     const yFunctor = this._getAttributeFunctor('y');
+    const sizeFunctor = this._getAttributeFunctor('size');
+    const fillFunctor = this._getAttributeFunctor('fill') ||
+      this._getAttributeFunctor('color');
+    const opacityFunctor = this._getAttributeFunctor('opacity');
+
     return new ScatterplotLayer({
-      id: 'scatterplot-layer',
-      data: this.props.data,
-      getPosition: p => [
-        xFunctor(p),
-        yFunctor(p)
-        // p.radius * Math.cos(p.theta * DEGREE_TO_RADIAN) * size,
-        // p.radius * Math.sin(p.theta * DEGREE_TO_RADIAN) * size
-      ],
-      getRadius: p => 2,
-      getColor: p => [255, 0, 128, 196],
-      updateTriggers: {
-        getPosition: this.points._lastUpdate
+      id: seriesId,
+      data,
+      getPosition: p => [xFunctor(p), yFunctor(p)],
+      getRadius: p => sizeFunctor(p) || DEFAULT_SIZE,
+      getColor: p => {
+        const color = rgb(fillFunctor(p));
+        return [color.r, color.g, color.b, (opacityFunctor(p) || DEFAULT_OPACITY) * 255];
       },
+      opacity: 1,
       projectionMode: COORDINATE_SYSTEM.IDENTITY,
+      updateTriggers: {
+        getPosition: _renderKey,
+        getColor: _renderKey,
+        getRadius: _renderKey
+      },
       // there's a bug that the radius calculated with project_scale
       radiusMinPixels: 2
     });
@@ -76,43 +69,50 @@ class MarkSeriesGL extends AbstractSeries {
 
   render() {
     const {
-      // animation,
-      // className,
+      animation,
+      className,
       data,
-      // marginLeft,
-      // marginTop,
-      height,
-      width
+      marginLeft,
+      marginTop,
+      marginBottom,
+      marginRight,
+      innerHeight,
+      innerWidth
     } = this.props;
+
     if (!data) {
       return null;
     }
-    // if (animation) {
-    //   return (
-    //     <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-    //       <MarkSeries {...this.props} animation={null}/>
-    //     </Animation>
-    //   );
-    // }
+    const width = innerWidth + marginLeft + marginRight;
+    const height = innerHeight + marginTop + marginBottom;
+    if (animation) {
+      return (
+        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+          <MarkSeriesGL {...this.props} animation={null}/>
+        </Animation>
+      );
+    }
 
-    // const sizeFunctor = this._getAttributeFunctor('size');
-    // const opacityFunctor = this._getAttributeFunctor('opacity');
-    // const fillFunctor = this._getAttributeFunctor('fill') ||
-    //   this._getAttributeFunctor('color');
-    // const strokeFunctor = this._getAttributeFunctor('stroke') ||
-    //   this._getAttributeFunctor('color');
-    const left = -Math.min(width, height) / 2;
-    const top = -Math.min(width, height) / 2;
-    const glViewport = new OrthographicViewport({width, height, left, top});
-
+    const glViewport = new OrthographicViewport({
+      width: width || 0,
+      height: height || 0,
+      left: -marginLeft,
+      top: -marginTop
+    });
     return (
-      height && width && <DeckGL width={width} height={height} viewport={glViewport}
-        style={{position: 'absolute', top: '0px', left: '0px'}}
-        layers={[this._renderScatterplotLayer()]}/>
+      <div className={`${predefinedClassName} ${className}`}>
+        {innerHeight && innerWidth && <DeckGL width={width} height={height} viewport={glViewport}
+          style={{position: 'absolute', top: '0px', left: '0px'}}
+          layers={[this._renderScatterplotLayer(this.props)]}/>}
+      </div>
     );
   }
 }
 
 MarkSeriesGL.displayName = 'MarkSeriesGL';
+MarkSeriesGL.propTypes = {
+  ...AbstractSeries.propTypes,
+  seriesId: PropTypes.string.isRequired
+};
 
 export default MarkSeriesGL;
