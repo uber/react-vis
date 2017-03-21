@@ -30,11 +30,17 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: [/node_modules/]
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader?name=public/fonts/[name].[ext]'
       }
     ]
   },
 
   resolve: {
+    modules: [resolve('../src'), 'node_modules'],
+
     alias: {
       react: resolve('./node_modules/react')
     }
