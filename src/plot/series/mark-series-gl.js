@@ -37,8 +37,8 @@ class MarkSeriesGL extends AbstractSeries {
     return false;
   }
 
-  _renderScatterplotLayer(props) {
-    const {data, _renderKey, seriesId} = props;
+  _renderScatterplotLayer() {
+    const {data, _renderKey, seriesId} = this.props;
     const xFunctor = this._getAttributeFunctor('x');
     const yFunctor = this._getAttributeFunctor('y');
     const sizeFunctor = this._getAttributeFunctor('size');
@@ -102,8 +102,8 @@ class MarkSeriesGL extends AbstractSeries {
     return (
       <div className={`${predefinedClassName} ${className}`}>
         {innerHeight && innerWidth && <DeckGL width={width} height={height} viewport={glViewport}
-          style={{position: 'absolute', top: '0px', left: '0px'}}
-          layers={[this._renderScatterplotLayer(this.props)]}/>}
+          style={{position: 'absolute', top: 0, left: 0}}
+          layers={[this._renderScatterplotLayer()]}/>}
       </div>
     );
   }

@@ -31,15 +31,13 @@ import {
 } from 'index';
 
 function getRandomData() {
-  return (new Array(100)).fill(0).map(row => {
-    return {
-      x: Math.random() * 10,
-      y: Math.random() * 20,
-      size: Math.random() * 10,
-      color: Math.random() * 10,
-      opacity: 0.9
-    };
-  });
+  return (new Array(100)).fill(0).map(row => ({
+    x: Math.random() * 10,
+    y: Math.random() * 20,
+    size: Math.random() * 10,
+    color: Math.random() * 10,
+    opacity: 0.9
+  }));
 }
 const colorRanges = {
   typeA: ['#59E4EC', '#0D676C'],
