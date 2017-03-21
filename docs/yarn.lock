@@ -3899,7 +3899,7 @@ signal-exit@^3.0.0:
 
 simple-html-tokenizer@^0.1.1:
   version "0.1.1"
-  resolved "https://unpm.uberinternal.com/simple-html-tokenizer/-/simple-html-tokenizer-0.1.1.tgz#05c2eec579ffffe145a030ac26cfea61b980fabe"
+  resolved "https://registry.yarnpkg.com/simple-html-tokenizer/-/simple-html-tokenizer-0.1.1.tgz#05c2eec579ffffe145a030ac26cfea61b980fabe"
 
 slash@^1.0.0:
   version "1.0.0"
@@ -4104,7 +4104,7 @@ supports-color@^3.1.0, supports-color@^3.1.1, supports-color@^3.2.3:
 
 svg-inline-loader@^0.7.1:
   version "0.7.1"
-  resolved "https://unpm.uberinternal.com/svg-inline-loader/-/svg-inline-loader-0.7.1.tgz#6d0e2728b7ec3414c2180b3f780bc3f7154ef226"
+  resolved "https://registry.yarnpkg.com/svg-inline-loader/-/svg-inline-loader-0.7.1.tgz#6d0e2728b7ec3414c2180b3f780bc3f7154ef226"
   dependencies:
     loader-utils "^0.2.11"
     object-assign "^4.0.1"
