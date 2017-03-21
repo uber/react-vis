@@ -26,7 +26,7 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  MarkSeries
+  MarkSeriesGL
 } from 'index';
 
 export default class Example extends React.Component {
@@ -39,7 +39,7 @@ export default class Example extends React.Component {
         <HorizontalGridLines />
         <XAxis />
         <YAxis />
-        <MarkSeries
+        <MarkSeriesGL
           className="mark-series-example"
           sizeRange={[5, 15]}
           data={[

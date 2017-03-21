@@ -26,6 +26,7 @@ export VerticalRectSeries from 'plot/series/vertical-rect-series';
 export HorizontalRectSeries from 'plot/series/horizontal-rect-series';
 export RectSeries from 'plot/series/rect-series';
 export MarkSeries from 'plot/series/mark-series';
+export MarkSeriesGL from 'plot/series/mark-series-gl';
 export HeatmapSeries from 'plot/series/heatmap-series';
 export AreaSeries from 'plot/series/area-series';
 export LineMarkSeries from 'plot/series/line-mark-series';
