@@ -1399,9 +1399,9 @@ decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
   version "1.2.0"
   resolved "https://unpm.uberinternal.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
 
-deck.gl@4.0.0-rc.2:
-  version "4.0.0-rc.2"
-  resolved "https://unpm.uberinternal.com/deck.gl/-/deck.gl-4.0.0-rc.2.tgz#11df3f416e66ef5cc973585ed8f1e7eba892244d"
+deck.gl@4.0.0-rc.3:
+  version "4.0.0-rc.3"
+  resolved "https://unpm.uberinternal.com/deck.gl/-/deck.gl-4.0.0-rc.3.tgz#c94b439bec96d05ae05d8cf4881c1df502157d16"
   dependencies:
     d3-hexbin "^0.2.1"
     earcut "^2.0.6"

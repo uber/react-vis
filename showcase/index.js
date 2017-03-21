@@ -31,7 +31,8 @@ import StackedHorizontalBarChart from './plot/stacked-horizontal-bar-chart';
 import StackedHistogram from './plot/stacked-histogram';
 import AreaChart from './plot/area-chart';
 import AreaChartElevated from './plot/area-chart-elevated';
-import ScatteplotChart from './plot/scatterplot';
+import ScatterplotChart from './plot/scatterplot';
+import ScatterplotGLChart from './plot/scatterplot-gl';
 import HeatmapChart from './plot/heatmap-chart';
 import WidthHeightMarginChart from './plot/width-height-margin';
 import CustomScales from './plot/custom-scales';
@@ -77,6 +78,12 @@ export const App = (
         <a className="header-logo" href="#">react-vis</a>
         <nav>
           <li><a href="#plots">Plots</a></li>
+          <li><a href="#line-series">Line Series</a></li>
+          <li><a href="#mark-series">Mark Series</a></li>
+          <li><a href="#area-series">Area Series</a></li>
+          <li><a href="#bar-series">Bar Series</a></li>
+          <li><a href="#heatmap-series">Heatmap Series</a></li>
+          <li><a href="#basic-components">Basic Components</a></li>
           <li><a href="#radial-charts">Radial Charts</a></li>
           <li><a href="#treemaps">Treemaps</a></li>
           <li><a href="#legends">Legends</a></li>
@@ -91,6 +98,8 @@ export const App = (
         <ComplexChart />
       </section>
       <h2>Series Types</h2>
+    </article>
+    <article id="line-series">
       <section>
         <h3>Line Series</h3>
         <LineChart />
@@ -99,10 +108,18 @@ export const App = (
         <h3>LineMark Series</h3>
         <LineMarkChart />
       </section>
+    </article>
+    <article id="mark-series">
       <section>
         <h3>Mark Series</h3>
-        <ScatteplotChart />
+        <ScatterplotChart />
       </section>
+      <section>
+        <h3>Mark Series GL</h3>
+        <ScatterplotGLChart />
+      </section>
+    </article>
+    <article id="area-series">
       <section>
         <h3>Area Series</h3>
         <AreaChart />
@@ -111,6 +128,8 @@ export const App = (
         <h3>Area Series With vertical offset</h3>
         <AreaChartElevated />
       </section>
+    </article>
+    <article id="bar-series">
       <section>
         <h3>Bar Series</h3>
         <BarChart />
@@ -127,10 +146,14 @@ export const App = (
         <h3>Stacked Vertical Rect Series (histogram)</h3>
         <StackedHistogram />
       </section>
+    </article>
+    <article id="heatmap-series">
       <section>
         <h3>Heatmap Series</h3>
         <HeatmapChart />
       </section>
+    </article>
+    <article id="basic-components">
       <h2>Basic Components</h2>
       <section>
         <h3>Custom Size and Margin</h3>
@@ -307,7 +330,7 @@ export const showCase = {
   StackedHistogram,
   AreaChart,
   AreaChartElevated,
-  ScatteplotChart,
+  ScatterplotChart,
   HeatmapChart,
   WidthHeightMarginChart,
   CustomScales,
