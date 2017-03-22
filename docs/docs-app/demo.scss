@@ -111,6 +111,9 @@ a:visited {
 }
 
 .tabs-wrapper {
+  align-items: center;
+  display: flex;
+  
   .link {
     padding: 0 10px;
   }

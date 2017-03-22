@@ -152,12 +152,12 @@ class Example extends React.Component {
     const {series, crosshairValues} = this.state;
     return (
       <div className={!forFrontPage ? 'example-with-click-me' : ''} >
-        {!forFrontPage && <div className="legend">
+        {!forFrontPage && (<div className="legend">
           <DiscreteColorLegend
             onItemClick={this._legendClickHandler}
             width={180}
             items={series}/>
-        </div>}
+        </div>)}
 
         <div className="chart">
           <FlexibleXYPlot
@@ -182,9 +182,9 @@ class Example extends React.Component {
           </FlexibleXYPlot>
         </div>
 
-        {!forFrontPage && <button className="click-me" onClick={this._updateButtonClicked}>
+        {!forFrontPage && (<button className="click-me" onClick={this._updateButtonClicked}>
           Click to update
-        </button>}
+        </button>)}
       </div>
     );
   }

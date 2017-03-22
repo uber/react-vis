@@ -68,9 +68,9 @@ class Example extends React.Component {
     const {data, hoveredIndex} = this.state;
     return (
       <div className="streamgraph-example">
-        {!forFrontPage && <button onClick={() => this.setState({data: generateData()})}>
+        {!forFrontPage && (<button onClick={() => this.setState({data: generateData()})}>
           {'Click me!'}
-          </button>}
+          </button>)}
         <div className="streamgraph">
           <FlexibleXYPlot
             animation
