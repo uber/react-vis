@@ -135,12 +135,14 @@ export default function makeVisFlexible(Component) {
 
     render() {
       const {width} = this.state;
+      const props = {...this.props, animation: width === 0 ? null : this.props.animation};
+
       return (
         <div
           ref={CONTAINER_REF}>
           <Component
             width={width}
-            {...this.props}/>
+            {...props}/>
         </div>
       );
     }
