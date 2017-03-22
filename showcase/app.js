@@ -35,4 +35,3 @@ const el = document.createElement('div');
 document.body.appendChild(el);
 
 ReactDOM.render(React.createElement(App), el);
-// ReactDOM.render(<App />, document.querySelector('#index'));
