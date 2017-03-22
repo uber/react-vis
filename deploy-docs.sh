@@ -2,7 +2,7 @@
 
 cd docs &&
 npm run build &&
-mv docs-dist/ ../docs-dist &&
+mv docs-dist/ ../ &&
 cp -rf ./markdown ../docs-dist/markdown &&
 cd .. &&
 git checkout local-gh-pages &&
