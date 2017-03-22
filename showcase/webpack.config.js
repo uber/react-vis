@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const entry = {app: './index'};
+const entry = {app: './app'};
 const jsRule = {
   test: /\.js$/,
   loader: 'babel-loader',
