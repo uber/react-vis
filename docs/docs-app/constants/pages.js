@@ -1,6 +1,7 @@
 import ComplexChartExample from '../../../examples/complex-chart/complex-chart-example';
 import Candlestick from '../../../examples/candlestick/candlestick-example';
 import StreamgraphExample from '../../../examples/streamgraph/streamgraph-example';
+import ShowcaseApp from '../../../showcase/showcase-app';
 
 const generatePath = tree => {
   if (Array.isArray(tree)) {
@@ -25,6 +26,12 @@ export const examplePages = generatePath([
   {
     name: 'Charts',
     children: [{
+      name: 'Showcase',
+      content: {
+        pageType: 'example',
+        component: ShowcaseApp
+      }
+    }, {
       name: 'Candlestick',
       content: {
         pageType: 'example',

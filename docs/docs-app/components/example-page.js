@@ -15,7 +15,7 @@ class ExamplePage extends Component {
 
     return (
       <div className="example-page">
-        <ExampleComponent />
+        <ExampleComponent forExample />
       </div>
     );
   }

@@ -4,6 +4,7 @@ $black: #041725;
 $black-20: #213746;
 $black-40: #5a666d;
 $black-60: #4a4a4a;
+$pure-white: #fff;
 $white: #ededed;
 $white-40: #8d9ba3;
 
@@ -113,15 +114,16 @@ a:visited {
 .tabs-wrapper {
   align-items: center;
   display: flex;
-  
+
   .link {
     padding: 0 10px;
   }
 }
 
 .example-page {
-  background-color: $white;
+  background-color: $pure-white;
   flex-grow: 1;
+  overflow-y: auto;
   padding: 2rem;
 }
 
@@ -132,7 +134,7 @@ a:visited {
 }
 
 .documentation-page {
-  background-color: $white;
+  background-color: $pure-white;
   padding: 2rem;
 }
 
@@ -166,7 +168,7 @@ a:visited {
 }
 
 .home-bottom-section {
-  background-color: $white;
+  background-color: $pure-white;
   height: 100%;
   min-height: min-content;
   min-width: 700px;
