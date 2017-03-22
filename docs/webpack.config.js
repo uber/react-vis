@@ -47,7 +47,7 @@ module.exports = {
   },
 
   output: isProd ? {
-    path: './',
+    path: './docs-dist',
     filename: 'bundle.js'
   } : null
 };
