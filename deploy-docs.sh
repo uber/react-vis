@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -rf docs-dist &&
 cd docs &&
 npm run build &&
 mv docs-dist/ ../ &&
