@@ -25,6 +25,7 @@
     "eslint": "^3.17.1",
     "eslint-plugin-react": "^6.10.0",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
+    "file-loader": "^0.10.1",
     "node-sass": "^4.2.0",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
@@ -36,6 +37,16 @@
       "es2017",
       "stage-2",
       "react"
+    ],
+    "plugins": [
+      [
+        "module-resolver",
+        {
+          "root": [
+            "../showcase"
+          ]
+        }
+      ]
     ]
   },
   "scripts": {

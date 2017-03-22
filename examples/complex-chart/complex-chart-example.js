@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 import {
   XYPlot,
@@ -59,7 +59,7 @@ function getRandomSeriesData(total) {
   return result;
 }
 
-export default class Example extends React.Component {
+class Example extends React.Component {
 
   state = {
     crosshairValues: [],
@@ -80,7 +80,7 @@ export default class Example extends React.Component {
   _updateButtonClicked = () => {
     const {series} = this.state;
     series.forEach(s => {
-      s.data = getRandomSeriesData(Math.random() * 50);
+      s.data = getRandomSeriesData(Math.random() * 50 + 5);
     });
     this.setState({series});
   }
@@ -148,15 +148,16 @@ export default class Example extends React.Component {
   }
 
   render() {
+    const {forFrontPage} = this.props;
     const {series, crosshairValues} = this.state;
     return (
-      <div className="example-with-click-me">
-        <div className="legend">
+      <div className={!forFrontPage ? 'example-with-click-me' : ''} >
+        {!forFrontPage && (<div className="legend">
           <DiscreteColorLegend
             onItemClick={this._legendClickHandler}
             width={180}
             items={series}/>
-        </div>
+        </div>)}
 
         <div className="chart">
           <FlexibleXYPlot
@@ -181,10 +182,15 @@ export default class Example extends React.Component {
           </FlexibleXYPlot>
         </div>
 
-        <button className="click-me" onClick={this._updateButtonClicked}>
+        {!forFrontPage && (<button className="click-me" onClick={this._updateButtonClicked}>
           Click to update
-        </button>
+        </button>)}
       </div>
     );
   }
 }
+Example.propTypes = {
+  forFrontPage: PropTypes.bool
+};
+
+export default Example;

@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {stack as d3Stack, stackOffsetWiggle} from 'd3-shape';
 import {range, transpose} from 'd3-array';
 
@@ -57,19 +57,20 @@ function generateData() {
   return stack(transposed).map(series => series.map((row, x) => ({x, y0: row[0], y: row[1]})));
 }
 
-export default class Example extends React.Component {
-
+class Example extends React.Component {
   state = {
     data: generateData(),
     hoveredIndex: false
   }
 
   render() {
-    // const {series, crosshairValues} = this.state;
+    const {forFrontPage} = this.props;
     const {data, hoveredIndex} = this.state;
     return (
       <div className="streamgraph-example">
-        <button onClick={() => this.setState({data: generateData()})}> Click me!</button>
+        {!forFrontPage && (<button onClick={() => this.setState({data: generateData()})}>
+          {'Click me!'}
+          </button>)}
         <div className="streamgraph">
           <FlexibleXYPlot
             animation
@@ -89,3 +90,9 @@ export default class Example extends React.Component {
     );
   }
 }
+
+Example.propTypes = {
+  forFrontPage: PropTypes.bool
+};
+
+export default Example;

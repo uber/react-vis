@@ -3,11 +3,13 @@ $secondary: #05e3d5;
 $black: #041725;
 $black-20: #213746;
 $black-40: #5a666d;
+$black-60: #4a4a4a;
 $white: #ededed;
 $white-40: #8d9ba3;
 
 @import 'stylesheets/markdown';
 @import 'stylesheets/table-of-contents';
+@import 'stylesheets/icons';
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -24,6 +26,25 @@ body {
   line-height: 1.833;
   overflow-y: auto;
 }
+
+::-webkit-scrollbar {
+  height: 3px;
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $black;
+
+  &:hover {
+    background: $white-40;
+    cursor: pointer;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: 0;
+}
+
 
 a {
   cursor: pointer;
@@ -43,13 +64,21 @@ a:visited {
 }
 
 .app-container {
+  background-color: $white;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  height: 100%;
+  overflow-x: auto;
 }
 
 .f {
   display: flex;
+}
+
+.fcol {
+  display: flex;
+  flex-direction: column;
 }
 
 .fg {
@@ -58,23 +87,40 @@ a:visited {
 
 .example-header {
   align-items: center;
-  background: $black;
-  color: $white;
+  background: $black-20;
+
   display: flex;
+  font-size: 12px;
   flex-shrink: 0;
   height: 60px;
   justify-content: space-between;
-  padding: 0 20px;
+  letter-spacing: .86px;
+  padding: 0 50px;
   width: 100%;
+
+  .link {
+    color: $white-40;
+  }
+
+  .link.active {
+    border-color: $primary;
+    border-image-slice: 2;
+    color: $primary;
+    font-weight: bold;
+  }
 }
 
 .tabs-wrapper {
+  align-items: center;
+  display: flex;
+  
   .link {
     padding: 0 10px;
   }
 }
 
 .example-page {
+  background-color: $white;
   flex-grow: 1;
   padding: 2rem;
 }
@@ -86,9 +132,146 @@ a:visited {
 }
 
 .documentation-page {
+  background-color: $white;
   padding: 2rem;
 }
 
 .markdown {
   overflow-y: scroll;
+}
+
+// home page
+.home-wrapper {
+  height: 100%;
+}
+
+.dots {
+  background-image: -webkit-repeating-radial-gradient(center center, $white-40, $white-40 1px, transparent 1px, transparent 100%);
+  background-image: -moz-repeating-radial-gradient(center center, $white-40, $white-40 1px, transparent 1px, transparent 100%);
+  background-image: -ms-repeating-radial-gradient(center center, $white-40, $white-40 1px, transparent 1px, transparent 100%);
+  background-image: repeating-radial-gradient(center center, $white-40, $white-40 1px, transparent 1px, transparent 100%);
+  -moz-background-size: 3px 3px;
+  -webkit-background-size: 3px 3px;
+  background-size: 15px 15px;
+}
+
+.home-top-section {
+  // dots
+  background-color: $black-40;
+  // everything else
+  min-height: 120px;
+  justify-content: space-between;
+  min-width: 700px;
+  padding: 0 150px;
+}
+
+.home-bottom-section {
+  background-color: $white;
+  height: 100%;
+  min-height: min-content;
+  min-width: 700px;
+  padding: 75px 150px;
+}
+
+.page-title {
+  color: $white;
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: 1.33px;
+  line-height: 45px;
+}
+
+.page-subtitle {
+  color: $white;
+  font-size: 14px;
+  letter-spacing: .39px;
+}
+
+.bullet-points-wrapper {
+  height: auto;
+  min-width: 600px;
+  width: 100%;
+}
+
+.bullet-point {
+  height: 100%;
+  margin: 20px 0;
+  min-height: 250px;
+  min-width: 100%;
+  width: 100%;
+}
+
+.bullet-info {
+  justify-content: center;
+  max-width: 500px;
+
+  &.bullet-info-reversed {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.bullet-point-title {
+  color: $black-60;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: .43px;
+}
+
+.bullet-point-title {
+  color: $black-60;
+  font-size: 14px;
+  letter-spacing: .3px;
+}
+
+.bullet-example {
+  // display: flex;
+  min-width: 300px;
+  width: 100%;
+}
+
+.preview-image {
+  background: url("https://d1a3f4spazzrp4.cloudfront.net/geodude/frontpage-example.png") no-repeat center;
+  background-size: contain;
+  min-width: 300px;
+  width: 70%;
+}
+
+.image-wrapper {
+  justify-content: flex-end;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.title-wrapper {
+  justify-content: center;
+  min-width: 300px;
+}
+
+#footer {
+  align-items: center;
+  background-color: $black-20;
+  color: $white;
+  display: flex;
+  height: 100%;
+  justify-content: flex-end;
+  min-height: 144px;
+  padding: 0 72px;
+  width: 100%;
+
+  .icon-uber-logo {
+    font-size: 24px;
+  }
+
+  h4 {
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 0;
+    margin-right: 30px;
+  }
+}
+
+.example-charts {
+  align-items: center;
+  justify-content: space-around;
 }
