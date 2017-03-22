@@ -34,8 +34,8 @@
   },
   "babel": {
     "presets": [
-      "es2015",
-      "stage-0",
+      "es2017",
+      "stage-2",
       "react"
     ],
     "plugins": [
