@@ -2,9 +2,8 @@
 
 cd docs
 npm run build
-cp -rf docs-dist/ ..
-cp -rf docs/markdown public/
-rm -rf docs-dist
+mv docs-dist/ ../docs-dist
+cp -rf docs/markdown ../docs-dist/markdown
 cd ..
 git checkout local-gh-pages
 mv docs-dist/bundle.js ./bundle.js
