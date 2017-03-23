@@ -9,3 +9,5 @@ bundle.*
 npm-debug.log*
 .DS_Store
 .idea/
+public/
+docs-dist/
