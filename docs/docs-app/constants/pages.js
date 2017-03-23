@@ -20,7 +20,8 @@ function updatePathName(name) {
   return name.toLowerCase().replace(/\s/g, '-');
 }
 
-const getDocUrl = filename => `/markdown/${filename}`;
+const isProd = process.env.NODE_ENV === 'production';  // eslint-disable-line
+const getDocUrl = filename => isProd ? `/public/markdown/${filename}` : `/markdown/${filename}`;
 
 export const examplePages = generatePath([
   {

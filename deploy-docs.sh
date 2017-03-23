@@ -10,7 +10,7 @@ git checkout gh-pages &&
 rm -rf markdown
 rm -rf public
 mv docs-dist/bundle.js ./bundle.js &&
-mv docs-dist/markdown ./ &&
 mv docs-dist/public ./ &&
+mv docs-dist/markdown ./public &&
 git add --a &&
 git commit -m 'Upgrade docs'
