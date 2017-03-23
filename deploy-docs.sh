@@ -11,5 +11,4 @@ mv docs-dist/bundle.js ./bundle.js &&
 mv docs-dist/markdown ./ &&
 git add --a &&
 git commit -m 'Upgrade docs' &&
-git push &&
-git checkout master
+git push
