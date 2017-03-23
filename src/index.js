@@ -20,6 +20,7 @@
 
 export AbstractSeries from 'plot/series/abstract-series';
 export LineSeries from 'plot/series/line-series';
+export LineSeriesGL from 'plot/series/line-series-gl';
 export VerticalBarSeries from 'plot/series/vertical-bar-series';
 export HorizontalBarSeries from 'plot/series/horizontal-bar-series';
 export VerticalRectSeries from 'plot/series/vertical-rect-series';

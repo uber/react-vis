@@ -20,6 +20,7 @@
 
 import ComplexChart from './plot/complex-chart';
 import LineChart from './plot/line-chart';
+import LineChartGl from './plot/line-chart-gl';
 import LineMarkChart from './plot/linemark-chart';
 import BarChart from './plot/bar-chart';
 import StackedVerticalBarChart from './plot/stacked-vertical-bar-chart';
