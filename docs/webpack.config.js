@@ -1,6 +1,4 @@
-const webpack = require('webpack');
 const {resolve} = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
 
 const entry = {
