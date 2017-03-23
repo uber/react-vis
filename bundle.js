@@ -12715,7 +12715,7 @@ Linear.prototype = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__examples_complex_chart_complex_chart_example__ = __webpack_require__(211);
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__examples_complex_chart_complex_chart_example__ = __webpack_require__(211);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__examples_candlestick_candlestick_example__ = __webpack_require__(407);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__examples_streamgraph_streamgraph_example__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__showcase_showcase_app__ = __webpack_require__(446);
@@ -12742,7 +12742,8 @@ function updatePathName(name) {
   return name.toLowerCase().replace(/\s/g, '-');
 }
 
-const getDocUrl = filename => `/markdown/${filename}`;
+const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
+const getDocUrl = filename => isProd ? `/react-vis/markdown/${filename}` : `/markdown/${filename}`;
 
 const examplePages = generatePath([{
   name: 'Charts',
@@ -12906,6 +12907,7 @@ const docsRouting = docPages.reduce((res, section) => section.children.reduce((m
 }, res), {});
 /* harmony export (immutable) */ __webpack_exports__["c"] = docsRouting;
 
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 /* 127 */
