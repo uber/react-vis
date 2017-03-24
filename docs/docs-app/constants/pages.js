@@ -20,7 +20,7 @@ function updatePathName(name) {
   return name.toLowerCase().replace(/\s/g, '-');
 }
 
-const getDocUrl = filename => `/markdown/${filename}`;
+const getDocUrl = filename => `markdown/${filename}`;
 
 export const examplePages = generatePath([
   {
