@@ -133,6 +133,15 @@ a:visited {
   width: 100%;
 }
 
+.markdown-example {
+  align-items: center;
+  display: flex;
+  height: auto;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+}
+
 .documentation-page {
   background-color: $pure-white;
   padding: 2rem;

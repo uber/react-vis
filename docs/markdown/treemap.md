@@ -3,6 +3,8 @@
 Treemaps are a splendid way to represent data that has a nested aspect to it. They allow for the easy display of complicated
 relative information, such as nested-part-to-whole relationships in a easy to grock fashion. Checkout [the wikipedia page](https://en.wikipedia.org/wiki/Treemapping) or Ben Shneiderman's excellent [History of treemaps](http://www.cs.umd.edu/hcil/treemap-history/index.shtml) for more information.
 
+<!-- INJECT:"SimpleTreemap" -->
+
 The `treemap` in react-vis builds a series of nested divs (allow for easy and highly restyleable trees). We offer ten different layout
 strategies, enabling the construction of standard treemaps, circle packed treemaps, and partition trees (also called icicle diagrams).
 

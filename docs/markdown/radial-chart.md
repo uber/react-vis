@@ -3,6 +3,8 @@
 `RadialChart` is responsible for creating pie and donut charts.
 Note: currently radial chart _does not_ support series and it is not planned in the nearest future.
 
+<!-- INJECT:"DonutChartExample" -->
+
 ## Usage
 
 ```jsx
@@ -19,6 +21,8 @@ const data = [
   width={300}
   height={300} />
 ```
+
+<!-- INJECT:"CustomRadiusRadialChart" -->
 
 ## Api
 
