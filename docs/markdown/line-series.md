@@ -1,4 +1,8 @@
-## LineSeries/LineMarkSeries:
+# LineSeries/LineMarkSeries
+
+<!-- INJECT:"LineChart" -->
+
+## API Reference
 
 ##### strokeDasharray (optional)
 Type: `string`

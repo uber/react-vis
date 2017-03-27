@@ -59,7 +59,9 @@ export default class Example extends React.Component {
             {x: 2, y: 4},
             {x: 3, y: 2},
             {x: 4, y: 15}
-          ]}/>
+          ]}
+          strokeDasharray="7, 3"
+          />
         <LineSeries
           className="fourth-series"
           curve={curveCatmullRom.alpha(0.5)}
