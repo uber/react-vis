@@ -71,6 +71,7 @@ test('LineSeries: Line Styling', t => {
         opacity={0.5}
         strokeWidth="3px"
         stroke="rgb(255, 255, 255)"
+        strokeDasharray="3, 1"
       />
     </XYPlot>
   );
@@ -80,5 +81,6 @@ test('LineSeries: Line Styling', t => {
   t.equal(lineStyle.opacity, 0.5, 'should render an opaque line');
   t.equal(lineStyle.strokeWidth, '3px', 'should honor stroke width');
   t.equal(lineStyle.stroke, 'rgb(255, 255, 255)', 'should honor stroke');
+  t.equal(lineStyle.strokeDasharray, '3, 1', 'should honor stroke dash-array');
   t.end();
 });
