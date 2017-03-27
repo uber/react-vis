@@ -83,21 +83,46 @@ test('series-utils #collectSeriesTypesInfo', t => {
   t.end();
 });
 
+test('series-utils #seriesClusterProps', t => {
+  const result = getSeriesPropsFromChildren([
+    React.createElement(HorizontalBarSeries, {cluster: 'alpha', data: []}),
+    React.createElement(HorizontalBarSeries, {cluster: 'beta', data: []}),
+    React.createElement(HorizontalBarSeries, {cluster: 'alpha', data: []}),
+    React.createElement(HorizontalBarSeries, {cluster: 'gamma', data: []})
+  ]);
+  const expectedClusters = ['alpha', 'beta', 'gamma'];
+  t.ok(result.length === 4, 'Returns array of proper size');
+  result.forEach((props, i) => {
+    t.ok(props.sameTypeIndex === expectedClusters.indexOf(props.cluster));
+    t.ok(props.sameTypeTotal === props.clusters.length, 'SameTypeTotal is set correctly');
+    t.ok(props.clusters.length === 3, 'Returns correct number of unique clusters');
+  });
+  t.end();
+});
+
 test('series-utils #getStackedData', t => {
+  const yData = [
+    [
+      {y: 2, x: 10},
+      {y: 4, x: 5},
+      {y: 5, x: 15}
+    ],
+    [
+      {y: 2, x: 12},
+      {y: 4, x: 2},
+      {y: 5, x: 11}
+    ]
+  ];
+
+  // Transpose data to flip stacking
+  const xData = yData.map(arr => arr.map(d => ({x: d.y, y: d.x})));
+
   let children = [
     (<HorizontalBarSeries
-      data={[
-        {y: 2, x: 10},
-        {y: 4, x: 5},
-        {y: 5, x: 15}
-      ]}
+      data={yData[0]}
     />),
     (<HorizontalBarSeries
-      data={[
-        {y: 2, x: 12},
-        {y: 4, x: 2},
-        {y: 5, x: 11}
-      ]}/>),
+      data={yData[1]}/>),
     (<div> i think i will by that lamp </div>)
   ];
   let results = getStackedData(children, 'y');
@@ -114,18 +139,10 @@ test('series-utils #getStackedData', t => {
 
   children = [
     (<HorizontalBarSeries
-      data={[
-        {x: 2, y: 10},
-        {x: 4, y: 5},
-        {x: 5, y: 15}
-      ]}
+      data={xData[0]}
     />),
     (<HorizontalBarSeries
-      data={[
-        {x: 2, y: 12},
-        {x: 4, y: 2},
-        {x: 5, y: 11}
-      ]}/>),
+      data={xData[1]}/>),
     null
   ];
   results = getStackedData(children, 'x');
@@ -138,6 +155,93 @@ test('series-utils #getStackedData', t => {
     {x: 8, x0: 4, y: 2},
     {x: 10, x0: 5, y: 11}
   ], null];
+
   t.deepEqual(results, expectedResults, 'should find the correct results for stacking by x');
+
+  children = [
+    <HorizontalBarSeries
+      cluster="alpha"
+      data={yData[0]}
+    />,
+    <HorizontalBarSeries
+      cluster="alpha"
+      data={yData[1]}
+    />,
+    <HorizontalBarSeries
+      cluster="beta"
+      data={yData[0]}
+    />,
+    <HorizontalBarSeries
+      cluster="beta"
+      data={yData[1]}
+    />
+  ];
+  results = getStackedData(children, 'y');
+  expectedResults = [
+    [
+      {x: 10, y: 2},
+      {x: 5, y: 4},
+      {x: 15, y: 5}
+    ],
+    [
+      {x: 12, y: 4, y0: 2},
+      {x: 2, y: 8, y0: 4},
+      {x: 11, y: 10, y0: 5}
+    ],
+    [
+      {x: 10, y: 2},
+      {x: 5, y: 4},
+      {x: 15, y: 5}
+    ],
+    [
+      {x: 12, y: 4, y0: 2},
+      {x: 2, y: 8, y0: 4},
+      {x: 11, y: 10, y0: 5}
+    ]
+  ];
+  t.deepEqual(results, expectedResults, 'should find the correct results for stacking bar clusters by y');
+
+  children = [
+    <HorizontalBarSeries
+      cluster="alpha"
+      data={xData[0]}
+    />,
+    <HorizontalBarSeries
+      cluster="alpha"
+      data={xData[1]}
+    />,
+    <HorizontalBarSeries
+      cluster="beta"
+      data={xData[0]}
+    />,
+    <HorizontalBarSeries
+      cluster="beta"
+      data={xData[1]}
+    />
+  ];
+  results = getStackedData(children, 'x');
+  expectedResults = [
+    [
+      {x: 2, y: 10},
+      {x: 4, y: 5},
+      {x: 5, y: 15}
+    ],
+    [
+      {x: 4, x0: 2, y: 12},
+      {x: 8, x0: 4, y: 2},
+      {x: 10, x0: 5, y: 11}
+    ],
+    [
+      {x: 2, y: 10},
+      {x: 4, y: 5},
+      {x: 5, y: 15}
+    ],
+    [
+      {x: 4, x0: 2, y: 12},
+      {x: 8, x0: 4, y: 2},
+      {x: 10, x0: 5, y: 11}
+    ]
+  ];
+  t.deepEqual(results, expectedResults, 'should find the correct results for stacking bar clusters by x');
   t.end();
 });

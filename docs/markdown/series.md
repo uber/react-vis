@@ -36,6 +36,10 @@ Exact size for all series points in pixels or a series object.
 Type: `number|Object`  
 Exact opacity for all series points in pixels or a series object.
 
+### cluster (optional, `BarSeries` only)
+Supply a clustering key for this series.
+When used with the `stackBy` attribute, creates a clustered stacked bar chart.
+
 #### onNearestX (optional)
 Type: `function(value, info)`  
 A callback function which is triggered each time when the mouse pointer gets close to some X value.

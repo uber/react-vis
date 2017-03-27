@@ -8,6 +8,7 @@ import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import StackedHorizontalBarChart from '../../showcase/plot/stacked-horizontal-bar-chart';
 import StackedVerticalBarChart from '../../showcase/plot/stacked-vertical-bar-chart';
 import BarChart from '../../showcase/plot/bar-chart';
+import ClusteredStackedVerticalBarChart from '../../showcase/plot/clustered-stacked-bar-chart';
 
 testRenderWithProps(HorizontalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
 testRenderWithProps(VerticalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
@@ -46,5 +47,13 @@ test('BarSeries: Ordinal Y-Axis HorizontalBarSeries', t => {
   </XYPlot>);
   t.equal($.find('.rv-xy-plot__series--bar rect').length, 3, 'should find the right number of bars');
   t.equal($.find('.rv-xy-plot__series--bar rect').at(0).prop('height') > 0, true, 'should not have negative bar height');
+  t.end();
+});
+
+test('BarSeries: Showcase Example - ClusteredStackedVerticalBarChart', t => {
+  const $ = mount(<ClusteredStackedVerticalBarChart />);
+  t.equal($.text(), 'Q1Q2Q3Q40102030ApplesOranges', 'should fine the right text content');
+  t.equal($.find('.rv-xy-plot__series--bar rect').length, 16, 'should find the right number of bars');
+  t.equal($.find('.rv-xy-plot__series').length, 4, 'should find the right number of series');
   t.end();
 });

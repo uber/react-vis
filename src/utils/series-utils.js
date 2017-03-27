@@ -53,12 +53,15 @@ function collectSeriesTypesInfo(children) {
   const result = {};
   children.filter(isSeriesChild).forEach(child => {
     const {displayName} = child.type;
+    const {cluster} = child.props;
     if (!result[displayName]) {
       result[displayName] = {
         sameTypeTotal: 0,
-        sameTypeIndex: 0
+        sameTypeIndex: 0,
+        clusters: new Set()
       };
     }
+    result[displayName].clusters.add(cluster);
     result[displayName].sameTypeTotal++;
   });
   return result;
@@ -71,41 +74,46 @@ function collectSeriesTypesInfo(children) {
  * Each next value of attr is equal to the previous value plus the difference
  * between attr0 and attr.
  * @param {Array} children Array of children.
- * @param {string} attr Attribute.
+ * @param {string} attr Attribute to stack by.
  * @returns {Array} New array of children for the series.
  */
 export function getStackedData(children, attr) {
-  const childData = [];
-  let prevIndex = -1;
-  children.forEach((child, childIndex) => {
+  return children.reduce((accumulator, series, seriesIndex) => {
     // Skip the children that are not series (e.g. don't have any data).
-    if (!child) {
-      childData.push(null);
-      return;
+    if (!series) {
+      accumulator.result.push(null);
+      return accumulator;
     }
-    const {data} = child.props;
+
+    const {data, cluster = 'default'} = series.props;
     if (!attr || !data || !data.length) {
-      childData.push(data);
-      return;
+      accumulator.result.push(data);
+      return accumulator;
     }
+
     const attr0 = `${attr}0`;
-    childData.push(data.map((d, dIndex) => {
+
+    accumulator.result.push(data.map((d, dIndex) => {
       // In case if it's the first series don't try to override any values.
-      if (prevIndex < 0) {
+      if (!accumulator.seriesPointers[cluster]) {
         return {...d};
       }
-      // In case if the series is not the first, try to get the attr0 values
-      // from the previous series.
-      const prevD = childData[prevIndex][dIndex];
+      // get the previous series in this cluster
+      const prevSeries = accumulator.seriesPointers[cluster].slice().pop();
+      // get the previous data point in that series
+      const prevD = accumulator.result[prevSeries][dIndex];
       return {
         ...d,
         [attr0]: prevD[attr],
         [attr]: prevD[attr] + d[attr] - (d[attr0] || 0)
       };
     }));
-    prevIndex = childIndex;
-  });
-  return childData;
+    accumulator.seriesPointers[cluster] = (accumulator.seriesPointers[cluster] || []).concat([seriesIndex]);
+    return accumulator;
+  }, {
+    result: [],
+    seriesPointers: {}
+  }).result;
 }
 
 /**
@@ -134,6 +142,13 @@ export function getSeriesPropsFromChildren(children) {
       };
       seriesTypeInfo.sameTypeIndex++;
       seriesIndex++;
+      if (child.props.cluster) {
+        props.cluster = child.props.cluster;
+        // Using Array.from() so we can use .indexOf
+        props.clusters = Array.from(seriesTypeInfo.clusters);
+        props.sameTypeTotal = props.clusters.length;
+        props.sameTypeIndex = props.clusters.indexOf(child.props.cluster);
+      }
     }
     result.push(props);
   });

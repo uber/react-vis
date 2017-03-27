@@ -8,6 +8,7 @@ const {
   BarChart,
   StackedVerticalBarChart,
   StackedHorizontalBarChart,
+  ClusteredStackedVerticalBarChart,
   StackedHistogram,
   AreaChart,
   AreaChartElevated,
@@ -104,6 +105,10 @@ class App extends Component {
           <section>
             <h3>Stacked Vertical Bar Series</h3>
             <StackedVerticalBarChart />
+          </section>
+          <section>
+            <h3>Clustered Stacked Vertical Bar Series</h3>
+            <ClusteredStackedVerticalBarChart />
           </section>
           <section>
             <h3>Stacked Vertical Rect Series (histogram)</h3>
