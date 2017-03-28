@@ -1,15 +1,6 @@
-# LineSeries/LineMarkSeries
+# LineMarkSeries
 
-<!-- INJECT:"LineChart" -->
-
-react-vis offers two different types of LineSeries, one that renders SVG and one that renders WebGL.
-The SVG mode is accessed by using the normal `LineSeries`, just as above, while the WebGL mode is used by simply calling
-`LineSeriesGL` instead of `LineSeries`. It is most effective to hover over your points using onNearestX rather
-than onValueMouseOver.
-
-<!-- INJECT:"LineChartGL" -->
-
-**NOTE**: using the GL version of this layer disables animation
+<!-- INJECT:"LineMarkChart" -->
 
 ## API Reference
 
@@ -47,27 +38,37 @@ Apply the provided or named curve function from the D3 shape library to smooth t
 
 ```javascript
 // Setting up with only a name
-const stringCurveProp = <LineSeries data={data} curve={'curveMonotoneX'} .../>;
+const stringCurveProp = <LineMarkSeries data={data} curve={'curveMonotoneX'} .../>;
 
 const configuredCurve = d3Shape.curveCatmullRom.alpha(0.5);
-const funcCurveProp = <LineSeries data={data} curve={configuredCurve} .../>;
+const funcCurveProp = <LineMarkSeries data={data} curve={configuredCurve} .../>;
 ```
+
+#### onNearestXY (optional)
+Type: `function(value, info)`
+A callback function which is triggered on mousemove and returns the closest point vased on the voronoi layout.
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the horizontal position of the value;
+- `innerY` is the vertical position of the value;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
 
 #### style (optional)
 Type: `object`
-An object which holds CSS properties that will be applied to the SVG element(s) rendered by the series. This allows you to style series beyond the other explicitly defined properties and without having to use CSS classnames and stylesheets. See [style](style.md)
+An object which holds CSS properties that will be applied to the SVG element(s) rendered by the series. See [style](style.md)This allows you to style series beyond the other explicitly defined properties and without having to use CSS classnames and stylesheets.
 
 ```jsx
-<LineSeries
+<LineMarkSeries
   data={data}
   style={{strokeLinejoin: "round"}}
 />
 ```
 
-## LineSeriesGL API Additions
+`LineMarkSeries` being a composite component (a mix of [LineSeries](line-series.md) and [MarkSeries](mark-series.md)), there are two additional property in the `style` object: `line` and `mark`, which allow you to specify a style for the line or the mark part of the line mark series, respectively.
 
-In addition to the above api the GL version of markSeries exposes several additional props.
-
-#### seriesId (REQUIRED)
-Type: `string`
-This string is used by deck.gl to identify which layer is being requested to render.
+```jsx
+<LineMarkSeries
+  data={data}
+  style={{line: {stroke:"blue"}, mark: {stroke:"red"}}}
+/>
+```

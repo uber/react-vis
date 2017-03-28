@@ -35,7 +35,9 @@ class HeatmapSeries extends AbstractSeries {
   }
 
   render() {
-    const {animation, className, data, marginLeft, marginTop} = this.props;
+    const {
+      animation, className, data, marginLeft, marginTop, style
+    } = this.props;
     if (!data) {
       return null;
     }
@@ -65,7 +67,8 @@ class HeatmapSeries extends AbstractSeries {
             style: {
               stroke: strokeFunctor && strokeFunctor(d),
               fill: fillFunctor && fillFunctor(d),
-              opacity: opacityFunctor && opacityFunctor(d)
+              opacity: opacityFunctor && opacityFunctor(d),
+              ...style
             },
             x: xFunctor(d) - xDistance / 2,
             y: yFunctor(d) - yDistance / 2,

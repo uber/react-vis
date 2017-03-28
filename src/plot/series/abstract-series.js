@@ -48,11 +48,13 @@ const propTypes = {
   onSeriesClick: PropTypes.func,
   onNearestX: PropTypes.func,
   onNearestXY: PropTypes.func,
+  style: PropTypes.object,
   animation: AnimationPropType
 };
 
 const defaultProps = {
-  className: ''
+  className: '',
+  style: {}
 };
 
 class AbstractSeries extends PureRenderComponent {

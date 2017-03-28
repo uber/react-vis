@@ -51,6 +51,7 @@ class CircularGridLines extends PureRenderComponent {
       top: marginTop,
       width: innerWidth,
       height: innerHeight,
+      style: {},
       tickTotal: getTicksTotalFromSize(Math.min(innerWidth, innerHeight))
     };
   }
@@ -75,7 +76,8 @@ class CircularGridLines extends PureRenderComponent {
       tickValues,
       marginLeft,
       marginTop,
-      rRange
+      rRange,
+      style
     } = props;
 
     const xScale = getAttributeScale(props, 'x');
@@ -94,7 +96,8 @@ class CircularGridLines extends PureRenderComponent {
             <circle
               {...{cx: 0, cy: 0, r: radius}}
               key={index}
-              className="rv-xy-plot__circular-grid-lines__line" />
+              className="rv-xy-plot__circular-grid-lines__line"
+              style={style} />
           ]);
         }, [])}
       </g>
@@ -111,6 +114,8 @@ CircularGridLines.propTypes = {
   top: PropTypes.number,
   left: PropTypes.number,
   rRange: PropTypes.arrayOf(PropTypes.number),
+
+  style: PropTypes.object,
 
   tickValues: PropTypes.arrayOf(PropTypes.number),
   tickTotal: PropTypes.number,

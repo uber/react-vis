@@ -28,11 +28,16 @@ import {getAttributeScale} from 'utils/scales-utils';
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 
 const propTypes = {
-  width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
   orientation: PropTypes.oneOf([
     LEFT, RIGHT, TOP, BOTTOM
-  ]).isRequired
+  ]).isRequired,
+  style: PropTypes.object,
+  width: PropTypes.number.isRequired
+};
+
+const defaultProps = {
+  style: {}
 };
 
 function _getTickFormatFn(scale, tickTotal, tickFormat) {
@@ -151,6 +156,7 @@ class AxisTicks extends React.Component {
       orientation,
       width,
       height,
+      style,
       tickFormat,
       tickTotal,
       tickValues
@@ -173,9 +179,17 @@ class AxisTicks extends React.Component {
       const text = tickFormatFn(v);
 
       return (
-        <g key={i} {...translateFn(pos, 0)} className="rv-xy-plot__axis__tick">
-          <line {...pathProps} className="rv-xy-plot__axis__tick__line"/>
-          <text {...textProps} className="rv-xy-plot__axis__tick__text">
+        <g key={i} {...translateFn(pos, 0)}
+        className="rv-xy-plot__axis__tick"
+        style={style}>
+          <line {...pathProps}
+            className="rv-xy-plot__axis__tick__line"
+            style={{...style, ...style.line}}
+          />
+          <text {...textProps}
+            className="rv-xy-plot__axis__tick__text"
+            style={{...style, ...style.text}}
+          >
             {text}
           </text>
         </g>
@@ -192,9 +206,9 @@ class AxisTicks extends React.Component {
   }
 }
 
+AxisTicks.defaultProps = defaultProps;
 AxisTicks.displayName = 'AxisTicks';
 AxisTicks.propTypes = propTypes;
 AxisTicks.requiresSVG = true;
 
 export default AxisTicks;
-

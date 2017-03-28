@@ -75,5 +75,43 @@ Type: `function(info)`
 Type: `function(info)`
 `click` event handler for the entire series. Received `info` object as argument with the only `event` property.
 
+#### style (optional)
+Type: `object`
+An object which holds CSS properties that will be applied to the SVG element(s) rendered by the series. This allows you to style series beyond the other explicitly defined properties and without having to use CSS classnames and stylesheets. For instance, you can set the stroke-linejoin style of a line series to "round":
+```jsx
+<LineSeries
+  data={data}
+  style={{strokeLinejoin: "round"}}
+/>
+```
+LineMark series is a composite series, and as such, it's possible to separate style instructions for the line and the mark part by putting them under a "line" and a "mark" property respectively: 
+
+```jsx
+<LineMarkSeries
+  data={data}
+  style={{
+  	// affect both the line and the mark part
+  	stroke: "red",
+  	.line: {
+  	  // affects just the line series
+  	  strokeWidth: 2
+  	},
+  	.mark {
+  	  // affects just the mark series
+  	  strokeWidth: 4
+  	}
+  }}
+/>
+```
+
+Note that style information passed through the style property will override those passed through props.
+```jsx
+<MarkSeries
+  data={data}
+  /// all the points are red
+  style={{fill: "red"}}
+/>
+```
+
 #### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.

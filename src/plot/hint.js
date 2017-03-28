@@ -86,6 +86,7 @@ class Hint extends PureRenderComponent {
       scales: PropTypes.object,
       value: PropTypes.object,
       format: PropTypes.func,
+      style: PropTypes.object,
       align: PropTypes.shape({
         horizontal: PropTypes.oneOf([
           ALIGN.AUTO,
@@ -118,7 +119,8 @@ class Hint extends PureRenderComponent {
       align: {
         horizontal: ALIGN.AUTO,
         vertical: ALIGN.AUTO
-      }
+      },
+      style: {}
     };
   }
 
@@ -353,7 +355,7 @@ class Hint extends PureRenderComponent {
     const align = this._getAlign(x, y);
 
     return {
-      style: getAlignStyle ? getAlignStyle(align, x, y) :
+      position: getAlignStyle ? getAlignStyle(align, x, y) :
         this._getAlignStyle(align, x, y),
       className: this._getAlignClassNames(align)
     };
@@ -363,25 +365,27 @@ class Hint extends PureRenderComponent {
     const {
       value,
       format,
-      children
+      children,
+      style
     } = this.props;
 
-    const {style, className} = this._getPositionInfo();
+    const {position, className} = this._getPositionInfo();
     return (
       <div
         className={`rv-hint ${className}`}
         style={{
-          ... style,
+          ...style,
+          ...position,
           position: 'absolute'
         }}>
         {children ?
           children :
-          <div className="rv-hint__content">
+          <div className="rv-hint__content" style={style.content}>
             {format(value).map((formattedProp, i) =>
-              <div key={`rv-hint${i}`}>
-                <span className="rv-hint__title">{formattedProp.title}</span>
+              <div key={`rv-hint${i}`} style={style.row}>
+                <span className="rv-hint__title" style={style.title}>{formattedProp.title}</span>
                 {': '}
-                <span className="rv-hint__value">{formattedProp.value}</span>
+                <span className="rv-hint__value" style={style.value}>{formattedProp.value}</span>
               </div>
             )}
           </div>

@@ -50,6 +50,7 @@ class RectSeries extends AbstractSeries {
       lineSizeAttr,
       marginLeft,
       marginTop,
+      style,
       valuePosAttr,
       valueSizeAttr
     } = this.props;
@@ -85,7 +86,8 @@ class RectSeries extends AbstractSeries {
             style: {
               opacity: opacityFunctor && opacityFunctor(d),
               stroke: strokeFunctor && strokeFunctor(d),
-              fill: fillFunctor && fillFunctor(d)
+              fill: fillFunctor && fillFunctor(d),
+              ...style
             },
             [linePosAttr]: line0Functor(d),
             [lineSizeAttr]: Math.abs(lineFunctor(d) - line0Functor(d)),

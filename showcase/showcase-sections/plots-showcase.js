@@ -13,6 +13,7 @@ const {
   GridLinesChart,
   HeatmapChart,
   LineChart,
+  LineChartWithStyle,
   LineChartGL,
   LineMarkChart,
   StackedVerticalBarChart,
@@ -29,6 +30,12 @@ const PLOTS = [{
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
 }, {
+  component: LineChartWithStyle,
+  name: 'Line Series with style',
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
+},
+{
   component: LineMarkChart,
   name: 'LineMark Series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-mark-series.js',
