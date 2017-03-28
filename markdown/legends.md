@@ -1,5 +1,7 @@
 ## Legends
 
+<!-- INJECT:"HorizontalDiscreteColorLegendExample" -->
+
 Currently following types of legends are supported:
 
 - for colors:
@@ -12,6 +14,8 @@ Currently following types of legends are supported:
 ## Color legends
 
 ### DiscreteColorLegend
+
+<!-- INJECT:"VerticalDiscreteColorLegendExample" -->
 
 #### items (required)
 Type: `Array<string|{title: string, color: String, disabled: boolean}>`  
@@ -32,6 +36,9 @@ Outer height of the component. Default is not set, the component stretches with 
 ### SearchableDiscreteColorLegend
 
 `SearchableDiscreteColorLegend` allows the user to perform search among the items.
+
+<!-- INJECT:"SearchableDiscreteColorLegendExample" -->
+
 Its API includes the API of `DiscreteColorLegend`, but adds several search-related items:
 
 #### searchText (optional)
@@ -52,6 +59,8 @@ Type: `function(string):void`
 Event handler for the change of the input field. The handler is triggered with the search field value as a parameter.
 
 ### ContinuousColorLegend
+
+<!-- INJECT:"ContinuousColorLegendExample" -->
 
 #### startTitle
 Type: `string|number`  
@@ -88,6 +97,8 @@ Outer height of the component.
 ## Size Legends
 
 ### ContinuousSizeLegend
+
+<!-- INJECT:"ContinuousSizeLegendExample" -->
 
 #### startTitle
 Type: `string|number`  

@@ -2,6 +2,8 @@
 
 Note: This component is in alpha.
 
+<!-- INJECT:"BasicSankeyExample" -->
+
 ### Usage
 
 ```jsx

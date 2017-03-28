@@ -1,5 +1,7 @@
 ## Axes
 
+<!-- INJECT:"CustomAxesOrientation" -->
+
 **Note**: Axes API was changed in 0.5.
 
 `XAxis` and `YAxis` shows are responsible for the axis in the chart. Both of them have following properties:

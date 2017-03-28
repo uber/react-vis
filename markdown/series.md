@@ -36,6 +36,10 @@ Exact size for all series points in pixels or a series object.
 Type: `number|Object`  
 Exact opacity for all series points in pixels or a series object.
 
+#### className (optional)
+Type: `string`
+Provide an additional class name for the series.
+
 #### onNearestX (optional)
 Type: `function(value, info)`  
 A callback function which is triggered each time when the mouse pointer gets close to some X value.
