@@ -65,7 +65,9 @@ Not all properties can be visualized in each series. Here's a short comparison o
 | `MarkSeries`         |  +  |  +  | +       |     +     | +      |
 | [VerticalBarSeries](bar-series.md)  |  +  |  +  | +       |     +     |        |
 | [HorizontalBarSeries](bar-series.md)|  +  |  +  | +       |     +     |        |
-| `HeatmapSeries`      |  +  |  +  | +       |     +     |        |
+| `VerticalRectSeries`  |  +  |  +  | +       |     +     |        |
+| `HorizontalRectSeries`|  +  |  +  | +       |     +     |        |
+| [HeatmapSeries](heatmap-series.md)      |  +  |  +  | +       |     +     |        |
 
 ## API Reference
 
