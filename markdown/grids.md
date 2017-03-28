@@ -1,5 +1,7 @@
 ## Grids
 
+<!-- INJECT:"CustomAxisChart" -->
+
 `VerticalGridLines` and `HorizontalGridLines` show a grid inside the chart. Here is a short example:
 
 ```jsx

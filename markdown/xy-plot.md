@@ -63,9 +63,11 @@ Not all properties can be visualized in each series. Here's a short comparison o
 | `AreaSeries`         |  +  |  +  | +       |           |        |
 | [LineMarkSeries](line-series.md)     |  +  |  +  | +       |     +     | +      |
 | `MarkSeries`         |  +  |  +  | +       |     +     | +      |
-| `VerticalBarSeries`  |  +  |  +  | +       |     +     |        |
-| `HorizontalBarSeries`|  +  |  +  | +       |     +     |        |
-| `HeatmapSeries`      |  +  |  +  | +       |     +     |        |
+| [VerticalBarSeries](bar-series.md)  |  +  |  +  | +       |     +     |        |
+| [HorizontalBarSeries](bar-series.md)|  +  |  +  | +       |     +     |        |
+| `VerticalRectSeries`  |  +  |  +  | +       |     +     |        |
+| `HorizontalRectSeries`|  +  |  +  | +       |     +     |        |
+| [HeatmapSeries](heatmap-series.md)      |  +  |  +  | +       |     +     |        |
 
 ## API Reference
 
@@ -114,6 +116,50 @@ Stack the chart by the given attribute. If the attribute is `y`, the chart is st
     ]}/>
 </XYPlot>
 ```
+
+*NOTE* in order to stack properly react-vis expects each x value in each series to be present (assuming stackBy: 'x', the same applies to stackBy 'y', just transposed). To wit, if our data looks like
+```
+const seriesOne = [
+  {x: 1, y: 10},
+  {x: 3, y: 15}
+];
+
+const seriesTwo = [
+  {x: 1, y: 10},
+  {x: 2, y: 5},
+  {x: 3, y: 15}
+];
+
+const seriesThree = [
+  {x: 3, y: 15}
+];
+
+```
+
+would render weirdly (eg boxes would not lump together at the bottom of the chart). To avoid this, simply provide zeroes for empty cells
+
+```
+const seriesOne = [
+  {x: 1, y: 10},
+  {x: 2, y: 0},
+  {x: 3, y: 15}
+];
+
+const seriesTwo = [
+  {x: 1, y: 10},
+  {x: 2, y: 5},
+  {x: 3, y: 15}
+];
+
+const seriesThree = [
+  {x: 1, y: 0},
+  {x: 2, y: 0},
+  {x: 3, y: 15}
+];
+
+```
+
+Will render beautifully!
 
 #### onMouseLeave (optional)
 Type: `function()`  
