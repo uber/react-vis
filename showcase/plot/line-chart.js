@@ -54,6 +54,9 @@ export default class Example extends React.Component {
         <LineSeries
           className="third-series"
           curve={'curveMonotoneX'}
+          style={{
+            strokeDasharray: '2 2'
+          }}
           data={[
             {x: 1, y: 10},
             {x: 2, y: 4},

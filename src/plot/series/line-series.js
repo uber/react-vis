@@ -37,6 +37,7 @@ const STROKE_STYLES = {
 
 const defaultProps = {
   strokeStyle: 'solid',
+  style: {},
   opacity: 1,
   curve: null
 };
@@ -78,7 +79,9 @@ class LineSeries extends AbstractSeries {
       );
     }
 
-    const {strokeDasharray, strokeStyle, strokeWidth, marginLeft, marginTop, curve} = this.props;
+    const {
+      strokeStyle, strokeDasharray, strokeWidth, marginLeft, marginTop, curve, style
+    } = this.props;
 
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
@@ -100,7 +103,8 @@ class LineSeries extends AbstractSeries {
           opacity,
           strokeDasharray: STROKE_STYLES[strokeStyle] || strokeDasharray,
           strokeWidth,
-          stroke
+          stroke,
+          ...style
         }}/>
     );
   }

@@ -97,6 +97,7 @@ class XYPlot extends React.Component {
       onMouseLeave: PropTypes.func,
       onMouseMove: PropTypes.func,
       stackBy: PropTypes.oneOf(ATTRIBUTES),
+      style: PropTypes.object,
       width: PropTypes.number.isRequired
     };
   }
@@ -370,6 +371,7 @@ class XYPlot extends React.Component {
   render() {
     const {
       className,
+      style,
       width,
       height
     } = this.props;
@@ -380,7 +382,8 @@ class XYPlot extends React.Component {
           className={`rv-xy-plot ${className}`}
           style={{
             width: `${width}px`,
-            height: `${height}px`
+            height: `${height}px`,
+            ...this.props.style
           }}/>
       );
     }
@@ -397,6 +400,7 @@ class XYPlot extends React.Component {
           className="rv-xy-plot__inner"
           width={width}
           height={height}
+          style={style}
           onMouseDown={this._mouseDownHandler}
           onMouseMove={this._mouseMoveHandler}
           onMouseLeave={this._mouseLeaveHandler}

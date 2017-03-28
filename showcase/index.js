@@ -21,6 +21,7 @@
 import ComplexChart from './plot/complex-chart';
 import LineChart from './plot/line-chart';
 import LineChartGL from './plot/line-chart-gl';
+import LineChartWithStyle from './plot/line-chart-with-style';
 import LineMarkChart from './plot/linemark-chart';
 import BarChart from './plot/bar-chart';
 import StackedVerticalBarChart from './plot/stacked-vertical-bar-chart';
@@ -83,6 +84,7 @@ export const showCase = {
   ComplexChart,
   LineChart,
   LineChartGL,
+  LineChartWithStyle,
   LineMarkChart,
   BarChart,
   StackedVerticalBarChart,

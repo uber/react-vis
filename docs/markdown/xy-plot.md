@@ -52,6 +52,7 @@ XYPlot is a wrapper for series, hints, axes and other components. Most of these 
 * `strokeWidth` (optional), `strokeStyle` (optional) - to control the width of the line series and whether they are dashed or solid.
 * `color` (optional, used instead of `fill` and `stroke` if none of them is passed)
 * `size` (optional)
+* `style` (optional) - css properties as an object.
 
 If the property is not passed in any of the objects, the property is not visualized. The user can override the way how properties are visualized by passing custom range, domain or type of scales to the series or the entire chart (please see [Series](series.md) for more info).
 
@@ -126,6 +127,10 @@ Margin around the chart.
 #### stackBy (optional)
 Type: `string`  
 Stack the chart by the given attribute. If the attribute is `y`, the chart is stacked vertically; if the attribute is `x` then it's stacked horizontally.
+
+### style (optional)
+Type: `object`
+CSS properties that will affect this wrapper component. Those will be applied to the SVG element in which other react-vis components will be created.  
 
 ```jsx
 <XYPlot

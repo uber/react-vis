@@ -102,3 +102,18 @@ Height of the axis in pixels. **Already set by default**, but can be overriden b
 
 #### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
+
+### style (optional)
+Type: `object`
+An object that contains CSS properties with which the axis component can be entirely re-styled.
+As the Axis component is composite, it is possible to style its different parts individually. See [style](style.md)
+
+The various parts of the axis can be styled by passing an object to the `line`, `ticks`, `text` and `title` properties:
+
+```jsx
+<XAxis title="X Axis" style={{
+  line: {stroke: '#ADDDE1'},
+  ticks: {stroke: '#ADDDE1'},
+  text: {stroke: 'none', fill: '#6b6b76', fontWeight: 600}
+}}/>
+```

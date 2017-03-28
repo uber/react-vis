@@ -38,6 +38,12 @@ import {
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--arc';
 const ATTRIBUTES = ['radius', 'angle'];
 
+const defaultProps = {
+  center: {x: 0, y: 0},
+  className: '',
+  style: {}
+};
+
 class ArcSeries extends AbstractSeries {
   constructor(props) {
     super(props);
@@ -96,7 +102,7 @@ class ArcSeries extends AbstractSeries {
       data,
       marginLeft,
       marginTop,
-      style = {}
+      style
     } = this.props;
 
     if (!data) {
@@ -173,11 +179,7 @@ ArcSeries.propTypes = {
   }),
   arcClassName: PropTypes.string
 };
-ArcSeries.defaultProps = {
-  arcClassName: '',
-  center: {x: 0, y: 0},
-  className: ''
-};
+ArcSeries.defaultProps = defaultProps;
 ArcSeries.displayName = 'ArcSeries';
 
 export default ArcSeries;
