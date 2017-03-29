@@ -39,6 +39,8 @@ const {
   DonutChartExample,
   CustomRadiusRadialChart,
 
+  PolarScatterplot,
+
   BasicSankeyExample,
   VoronoiSankeyExample,
 
@@ -64,10 +66,10 @@ class App extends Component {
               <li><a href="#treemaps">Treemaps</a></li>
               <li><a href="#legends">Legends</a></li>
               <li><a href="#sankeys">Sankeys</a></li>
+              <li><a href="#r-theta-plots">RTheta Plots</a></li>
             </nav>
           </div>
         </header>)}
-
         <article id="plots">
           <h1>Plots</h1>
           {!forExample && (<section>
@@ -273,6 +275,13 @@ class App extends Component {
           <section>
             <h3>With Voronoi Selection</h3>
             <VoronoiSankeyExample />
+          </section>
+        </article>
+        <article id="r-theta-plots">
+          <h1>RTheta Plots</h1>
+          <section>
+            <h3>Polar Scatterplot</h3>
+            <PolarScatterplot />
           </section>
         </article>
 

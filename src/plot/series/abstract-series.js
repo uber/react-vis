@@ -33,6 +33,8 @@ import {
 const propTypes = {
   ...getScalePropTypesByAttribute('x'),
   ...getScalePropTypesByAttribute('y'),
+  ...getScalePropTypesByAttribute('r'),
+  ...getScalePropTypesByAttribute('theta'),
   ...getScalePropTypesByAttribute('size'),
   ...getScalePropTypesByAttribute('opacity'),
   ...getScalePropTypesByAttribute('color'),

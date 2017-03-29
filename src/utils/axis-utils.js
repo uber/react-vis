@@ -27,6 +27,7 @@ export const ORIENTATION = {
 
 export const DIRECTION = {
   VERTICAL: 'vertical',
+  CIRCULAR: 'circular',
   HORIZONTAL: 'horizontal'
 };
 
