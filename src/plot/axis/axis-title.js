@@ -32,7 +32,7 @@ const transformation = (width, height) => ({
   },
   [RIGHT]: {
     x: -8,
-    y: -height,
+    y: height,
     rotation: '-90',
     textAnchor: 'start'
   },
