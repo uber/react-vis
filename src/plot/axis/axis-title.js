@@ -23,29 +23,36 @@ import React from 'react';
 import {ORIENTATION} from 'utils/axis-utils';
 
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
+
+/**
+ * Compute transformations, keyed by orientation
+ * @param {number} width - width of axis
+ * @param {number} height - height of axis
+ * @returns {Object} Object of transformations, keyed by orientation
+ */
 const transformation = (width, height) => ({
   [LEFT]: {
     x: 16,
     y: 0,
-    rotation: '-90',
+    rotation: -90,
     textAnchor: 'end'
   },
   [RIGHT]: {
     x: -8,
     y: height,
-    rotation: '-90',
+    rotation: -90,
     textAnchor: 'start'
   },
   [TOP]: {
     x: 0,
-    y: 12,
-    rotation: '0',
+    y: 16,
+    rotation: 0,
     textAnchor: 'start'
   },
   [BOTTOM]: {
     x: width,
     y: -6,
-    rotation: '0',
+    rotation: 0,
     textAnchor: 'end'
   }
 });
