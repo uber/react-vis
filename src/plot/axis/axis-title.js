@@ -22,6 +22,8 @@ import React from 'react';
 
 import {ORIENTATION} from 'utils/axis-utils';
 
+// Assuming that 16px = 1em
+const ADJUSTMENT_FOR_TEXT_SIZE = 16;
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 
 /**
@@ -32,20 +34,20 @@ const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
  */
 const transformation = (width, height) => ({
   [LEFT]: {
-    x: 16,
+    x: ADJUSTMENT_FOR_TEXT_SIZE,
     y: 0,
     rotation: -90,
     textAnchor: 'end'
   },
   [RIGHT]: {
-    x: -8,
+    x: ADJUSTMENT_FOR_TEXT_SIZE * -0.5,
     y: height,
     rotation: -90,
     textAnchor: 'start'
   },
   [TOP]: {
     x: 0,
-    y: 16,
+    y: ADJUSTMENT_FOR_TEXT_SIZE,
     rotation: 0,
     textAnchor: 'start'
   },
