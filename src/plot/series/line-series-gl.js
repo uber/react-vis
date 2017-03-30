@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, {PropTypes} from 'react';
+import {PropTypes} from 'react';
 import {COORDINATE_SYSTEM, PathLayer} from 'deck.gl';
 import {rgb} from 'd3-color';
 
@@ -73,18 +73,6 @@ class LineSeriesGL extends AbstractSeries {
   }
 
   render() {
-    // const {
-    //   animation
-    // } = this.props;
-    //
-    // if (animation) {
-    //   return (
-    //     <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-    //       <LineSeriesGL {...this.props} animation={null}/>
-    //     </Animation>
-    //   );
-    // }
-
     return null;
   }
 }

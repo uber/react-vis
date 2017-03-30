@@ -37,7 +37,7 @@ function getRandomData() {
     y: Math.random() * 20,
     size: Math.random() * 10,
     color: Math.random() * 10,
-    opacity: 0.9
+    opacity: Math.random() * 0.5 + 0.5
   }));
 }
 const colorRanges = {

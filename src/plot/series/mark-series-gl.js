@@ -18,13 +18,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, {PropTypes} from 'react';
+import {PropTypes} from 'react';
 import {ScatterplotLayer, COORDINATE_SYSTEM} from 'deck.gl';
-import DeckGLWrapper from './deck-gl-wrapper';
+// import DeckGLWrapper from './deck-gl-wrapper';
 import {rgb} from 'd3-color';
 
-import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+// import Animation from 'animation';
+// import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
 import {getAttributeFunctor} from 'utils/scales-utils';
 
@@ -84,22 +84,6 @@ class MarkSeriesGL extends AbstractSeries {
   }
 
   render() {
-    // const {
-    //   animation,
-    //   data,
-    //   _renderKey
-    // } = this.props;
-
-    // if (!data) {
-    //   return null;
-    // }
-    // if (animation) {
-    //   return (
-    //     <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-    //       <MarkSeriesGL {...this.props} animation={null}/>
-    //     </Animation>
-    //   );
-    // }
     return null;
   }
 }
