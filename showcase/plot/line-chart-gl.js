@@ -26,18 +26,25 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  LineSeriesGL,
-  LineSeries
+  LineMarkSeriesGL,
+  // MarkSeriesGL,
+  LineMarkSeries
 } from 'index';
 
 function getRandomData() {
   return (new Array(1000)).fill(0).map((row, i) => ({
     x: i,
-    y: Math.random() * 20
+    y: Math.random() * 20,
+    color: Math.random() * 10
   }));
 }
 
 const randomData = getRandomData();
+
+const colorRanges = {
+  typeA: ['#59E4EC', '#0D676C'],
+  typeB: ['#EFC1E3', '#B52F93']
+};
 
 export default class Example extends React.Component {
   state = {
@@ -53,12 +60,13 @@ export default class Example extends React.Component {
       animation: true,
       className: 'mark-series-example',
       sizeRange: [5, 15],
-      seriesId: 'my-example-scatterplot',
       color: colorType === 'typeA' ? '#0D676C' : '#B52F93',
+      colorRange: colorRanges[colorType],
       opacityType: 'literal',
       strokeWidth,
       data
     };
+
     return (
       <div className="scatterplot-gl-wrapper">
         <div className="scatterplot-gl-example-controls">
@@ -87,9 +95,9 @@ export default class Example extends React.Component {
           <XAxis />
           <YAxis />
           {glMode &&
-            <LineSeriesGL {...lineSeriesProps} seriesId="my-example-line-chart"/>}
+            <LineMarkSeriesGL {...lineSeriesProps} seriesId="my-example-line-chart"/>}
           {!glMode &&
-            <LineSeries {...lineSeriesProps}/>}
+            <LineMarkSeries {...lineSeriesProps}/>}
         </XYPlot>
       </div>
     );

@@ -21,17 +21,37 @@
 import React, {PropTypes, Component} from 'react';
 import DeckGL, {OrthographicViewport} from 'deck.gl';
 
+import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+import Animation from 'animation';
+
 class DeckGLWrapper extends Component {
   render() {
     const {
+      animation,
+      children,
       marginLeft,
       marginTop,
       marginBottom,
       marginRight,
       innerHeight,
       innerWidth,
-      layers
+      _renderKey
     } = this.props;
+
+    if (animation) {
+      // not animating, bc it's not animating its childrens props
+      return (
+        <DeckGLWrapper {...this.props} animation={null}>
+          {children.map(child => {
+            return (
+              <Animation {...child.props} animatedProps={ANIMATED_SERIES_PROPS}>
+                {child}
+              </Animation>
+            );
+          })}
+        </DeckGLWrapper>
+      );
+    }
 
     const width = innerWidth + marginLeft + marginRight;
     const height = innerHeight + marginTop + marginBottom;
@@ -45,6 +65,15 @@ class DeckGLWrapper extends Component {
     if (!innerHeight || !innerWidth) {
       return null;
     }
+    // console.log(_renderKey)
+    const layers = children.reduce((res, layer) => {
+      if (!layer.type.renderLayer) {
+        const trueLayer = layer.props.children;
+        console.log(trueLayer.props)
+        return res.concat(trueLayer.type.renderLayer({...trueLayer.props, _renderKey}));
+      }
+      return res.concat(layer.type.renderLayer({...layer.props, _renderKey}));
+    }, []);
 
     return (<DeckGL width={width} height={height} viewport={glViewport}
       style={{position: 'absolute', top: 0, left: 0}}

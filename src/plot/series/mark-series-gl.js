@@ -26,30 +26,42 @@ import {rgb} from 'd3-color';
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
+import {getAttributeFunctor} from 'utils/scales-utils';
 
 import AbstractSeries from './abstract-series';
-
-const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--mark';
 
 class MarkSeriesGL extends AbstractSeries {
   static get requiresSVG() {
     return false;
   }
 
-  _renderScatterplotLayer() {
-    const {data, _renderKey, seriesId} = this.props;
-    const xFunctor = this._getAttributeFunctor('x');
-    const yFunctor = this._getAttributeFunctor('y');
-    const sizeFunctor = this._getAttributeFunctor('size');
-    const fillFunctor = this._getAttributeFunctor('fill') ||
-      this._getAttributeFunctor('color');
-    const opacityFunctor = this._getAttributeFunctor('opacity');
+  static get isDeckGL() {
+    return true;
+  }
+
+  static renderLayer(props) {
+    const {
+      data,
+      _renderKey,
+      seriesId,
+      colorDomain,
+      colorRange,
+      sizeDomain,
+      sizeRange,
+      fp64
+    } = props;
+    // console.log(props)
+    const xFunctor = getAttributeFunctor(props, 'x');
+    const yFunctor = getAttributeFunctor(props, 'y');
+    const sizeFunctor = getAttributeFunctor(props, 'size') || (p => DEFAULT_SIZE);
+    const fillFunctor = getAttributeFunctor(props, 'fill') || getAttributeFunctor(props, 'color');
+    const opacityFunctor = getAttributeFunctor(props, 'opacity');
 
     return new ScatterplotLayer({
       id: seriesId,
       data,
       getPosition: p => [xFunctor(p), yFunctor(p)],
-      getRadius: p => sizeFunctor(p) || DEFAULT_SIZE,
+      getRadius: p => sizeFunctor(p),
       getColor: p => {
         const color = rgb(fillFunctor(p));
         return [color.r, color.g, color.b, (opacityFunctor(p) || DEFAULT_OPACITY) * 255];
@@ -58,58 +70,46 @@ class MarkSeriesGL extends AbstractSeries {
       projectionMode: COORDINATE_SYSTEM.IDENTITY,
       updateTriggers: {
         getPosition: _renderKey,
-        getColor: _renderKey,
-        getRadius: _renderKey
+        getColor: colorDomain.concat(colorRange).concat([_renderKey]).join(''),
+        getRadius: sizeDomain.concat(sizeRange).concat([_renderKey]).join('')
       },
       // there's a bug that the radius calculated with project_scale
-      radiusMinPixels: 2
+      radiusMinPixels: 2,
+      onHover: () => {
+        console.log('??????')
+        props.onValueMouseOver()
+      },
+      fp64
     });
   }
 
   render() {
-    const {
-      animation,
-      className,
-      data,
-      marginLeft,
-      marginTop,
-      marginBottom,
-      marginRight,
-      innerHeight,
-      innerWidth
-    } = this.props;
+    // const {
+    //   animation,
+    //   data,
+    //   _renderKey
+    // } = this.props;
 
-    if (!data) {
-      return null;
-    }
-    if (animation) {
-      return (
-        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <MarkSeriesGL {...this.props} animation={null}/>
-        </Animation>
-      );
-    }
-
-    return (
-      <div className={`${predefinedClassName} ${className}`}>
-        <DeckGLWrapper {...{
-          marginLeft,
-          marginTop,
-          marginBottom,
-          marginRight,
-          innerHeight,
-          innerWidth,
-          layers: [this._renderScatterplotLayer()]
-        }} />
-      </div>
-    );
+    // if (!data) {
+    //   return null;
+    // }
+    // if (animation) {
+    //   return (
+    //     <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+    //       <MarkSeriesGL {...this.props} animation={null}/>
+    //     </Animation>
+    //   );
+    // }
+    return null;
   }
 }
 
 MarkSeriesGL.displayName = 'MarkSeriesGL';
 MarkSeriesGL.propTypes = {
   ...AbstractSeries.propTypes,
-  seriesId: PropTypes.string.isRequired
+  seriesId: PropTypes.string.isRequired,
+  skipDeckGl: PropTypes.bool,
+  fp64: PropTypes.bool
 };
 
 export default MarkSeriesGL;

@@ -34,6 +34,7 @@ export HeatmapSeries from 'plot/series/heatmap-series';
 export AreaSeries from 'plot/series/area-series';
 export LineMarkSeries from 'plot/series/line-mark-series';
 export ArcSeries from 'plot/series/arc-series';
+export LineMarkSeriesGL from 'plot/series/line-mark-series-gl';
 export Hint from 'plot/hint';
 export Crosshair from 'plot/crosshair';
 export XYPlot from 'plot/xy-plot';

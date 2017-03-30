@@ -27,7 +27,8 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   MarkSeriesGL,
-  MarkSeries
+  MarkSeries,
+  Hint
 } from 'index';
 
 function getRandomData() {
@@ -50,11 +51,12 @@ export default class Example extends React.Component {
   state = {
     glMode: true,
     data: randomData,
-    colorType: 'typeA'
+    colorType: 'typeA',
+    value: false
   }
 
   render() {
-    const {glMode, data, colorType} = this.state;
+    const {glMode, data, colorType, value} = this.state;
     const markSeriesProps = {
       animation: true,
       className: 'mark-series-example',
@@ -62,7 +64,8 @@ export default class Example extends React.Component {
       seriesId: 'my-example-scatterplot',
       colorRange: colorRanges[colorType],
       opacityType: 'literal',
-      data
+      data,
+      onValueMouseOver: val => this.setState({value: val})
     };
     return (
       <div className="scatterplot-gl-wrapper">
@@ -90,6 +93,10 @@ export default class Example extends React.Component {
             <MarkSeriesGL {...markSeriesProps} seriesId="my-example-scatterplot"/>}
           {!glMode &&
             <MarkSeries {...markSeriesProps}/>}
+          {value ?
+            <Hint value={value}/> :
+            null
+          }
         </XYPlot>
       </div>
     );
