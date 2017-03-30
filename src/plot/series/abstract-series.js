@@ -20,6 +20,8 @@
 
 import React from 'react';
 
+import {voronoi} from 'd3-voronoi';
+
 import PureRenderComponent from 'pure-render-component';
 import {AnimationPropType} from 'utils/animation-utils';
 import {
@@ -46,6 +48,7 @@ const propTypes = {
   onSeriesMouseOut: React.PropTypes.func,
   onSeriesClick: React.PropTypes.func,
   onNearestX: React.PropTypes.func,
+  onNearestXY: React.PropTypes.func,
   animation: AnimationPropType
 };
 
@@ -207,28 +210,28 @@ class AbstractSeries extends PureRenderComponent {
     return scaleObject ? scaleObject.distance : 0;
   }
 
-  _getXCoordinateInContainer(event) {
-    const {marginLeft = 0} = this.props;
-    const {nativeEvent: {clientX}, currentTarget} = event;
+  _getXYCoordinateInContainer(event) {
+    const {marginTop = 0, marginLeft = 0} = this.props;
+    const {nativeEvent: {clientX, clientY}, currentTarget} = event;
     const rect = currentTarget.getBoundingClientRect();
-    return clientX - rect.left - currentTarget.clientLeft - marginLeft;
+    return {
+      x: clientX - rect.left - currentTarget.clientLeft - marginLeft,
+      y: clientY - rect.top - currentTarget.clientTop - marginTop
+    };
   }
 
-  onParentMouseMove(event) {
+  _handleNearestX(event) {
     const {onNearestX, data} = this.props;
-    if (!onNearestX || !data) {
-      return;
-    }
     let minDistance = Number.POSITIVE_INFINITY;
     let value = null;
     let valueIndex = null;
 
-    const coordinate = this._getXCoordinateInContainer(event);
+    const coordinate = this._getXYCoordinateInContainer(event);
     const xScaleFn = this._getAttributeFunctor('x');
 
     data.forEach((item, i) => {
       const currentCoordinate = xScaleFn(item);
-      const newDistance = Math.abs(coordinate - currentCoordinate);
+      const newDistance = Math.abs(coordinate.x - currentCoordinate);
       if (newDistance < minDistance) {
         minDistance = newDistance;
         value = item;
@@ -243,6 +246,44 @@ class AbstractSeries extends PureRenderComponent {
       index: valueIndex,
       event: event.nativeEvent
     });
+  }
+
+  _handleNearestXY(event) {
+    const {onNearestXY, data} = this.props;
+
+    const coordinate = this._getXYCoordinateInContainer(event);
+    const xScaleFn = this._getAttributeFunctor('x');
+    const yScaleFn = this._getAttributeFunctor('y');
+
+    // Create a voronoi with each node center points
+    const voronoiInstance = voronoi()
+      .x(xScaleFn)
+      .y(yScaleFn);
+
+    const foundPoint = voronoiInstance(data).find(coordinate.x, coordinate.y);
+    const value = foundPoint.data;
+
+    if (!value) {
+      return;
+    }
+    onNearestXY(value, {
+      innerX: foundPoint.x,
+      innerY: foundPoint.y,
+      index: foundPoint.index,
+      event: event.nativeEvent
+    });
+  }
+
+  onParentMouseMove(event) {
+    const {onNearestX, onNearestXY, data} = this.props;
+    if ((!onNearestX && !onNearestXY) || !data) {
+      return;
+    }
+    if (onNearestXY) {
+      this._handleNearestXY(event);
+    } else {
+      this._handleNearestX(event);
+    }
   }
 }
 
