@@ -167,6 +167,13 @@ export const docPages = generatePath([
           filename: 'heatmap-series.md',
           pageType: 'documentation'
         }
+      }, {
+        name: 'Mark Series',
+        content: {
+          markdown: getDocUrl('mark-series.md'),
+          filename: 'mark-series.md',
+          pageType: 'documentation'
+        }
       }
     ]
   },
