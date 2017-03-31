@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import {voronoi} from 'd3-voronoi';
 
 import PureRenderComponent from 'pure-render-component';
