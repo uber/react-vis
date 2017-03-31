@@ -67,7 +67,37 @@ Not all properties can be visualized in each series. Here's a short comparison o
 | [HorizontalBarSeries](bar-series.md)|  +  |  +  | +       |     +     |        |
 | `VerticalRectSeries`  |  +  |  +  | +       |     +     |        |
 | `HorizontalRectSeries`|  +  |  +  | +       |     +     |        |
-| [HeatmapSeries](heatmap-series.md)      |  +  |  +  | +       |     +     |        |
+| [HeatmapSeries](heatmap-series.md)      |  +  |  +  | +       |     +     |        |      |
+
+
+### A note on ordering
+
+XYPlot is pretty flexible, and can accept most kinds of things DOM, SVG, really whatever react can build. As far as XYPlot is concerned there are two types of components in the world: those that can be rendered as part of an SVG tree and those that can't. It separates it's children into these two groups, and clusters the SVG elements under a root svg tag in order and then presents each of the remaining children in order. To wit, given a react configuration like:
+
+```javascript
+<XYPlot>
+  <XAxis />
+  <YAxis />
+  <RectSeries {...props}/>
+  <Hint className="first-hint"/>
+  <Hint className="second-hint"/>
+</XYPlot>
+```
+Would generate HTML something like:
+
+```javascript
+<div class="rv-xy-plot">
+  <svg>
+    <svg for XAxis />
+    <svg for YAxis />
+    <svg for RectSeries />
+  </svg>
+  <div class="rv-hint first-hint">...</div>
+  <div class="rv-hint second-hint">...</div>
+</divt>
+```
+
+The TLDR here is that *ORDER MATTERS*! If you want the elements to appear in a different order, reorder them!
 
 ## API Reference
 
