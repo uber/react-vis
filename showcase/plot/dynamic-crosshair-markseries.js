@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import {scaleLinear} from 'd3-scale';
 
 import {
   Crosshair,
@@ -49,7 +50,6 @@ const DATA = [
   {x: 1, y: 4, size: 29}
 ];
 
-import {scaleLinear} from 'd3-scale';
 const x = scaleLinear()
   .domain([1, 3])
   .range([40, 290]);
@@ -58,23 +58,18 @@ const y = scaleLinear()
   .range([260, 10]);
 
 export default class Example extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: DATA,
-      selectedPointId: null,
-      showVoronoi: false
-    };
-
-    this._onMouseLeave = this._onMouseLeave.bind(this);
-    this._onNearestXY = this._onNearestXY.bind(this);
+  state = {
+    data: DATA,
+    selectedPointId: null,
+    showVoronoi: false
   }
+
   /**
    * Event handler for onNearestXY.
    * @param {Object} value Selected value.
    * @private
    */
-  _onNearestXY(value, {index}) {
+  _onNearestXY = (value, {index}) => {
     this.setState({selectedPointId: index});
   }
 
@@ -82,7 +77,7 @@ export default class Example extends React.Component {
    * Event handler for onMouseLeave.
    * @private
    */
-  _onMouseLeave() {
+  _onMouseLeave = () => {
     this.setState({selectedPointId: null});
   }
 
