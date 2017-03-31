@@ -28,7 +28,7 @@ import ClusteredStackedVerticalBarChart from './plot/clustered-stacked-bar-chart
 import StackedHistogram from './plot/stacked-histogram';
 import AreaChart from './plot/area-chart';
 import AreaChartElevated from './plot/area-chart-elevated';
-import ScatteplotChart from './plot/scatterplot';
+import ScatterplotChart from './plot/scatterplot';
 import HeatmapChart from './plot/heatmap-chart';
 import WidthHeightMarginChart from './plot/width-height-margin';
 import CustomScales from './plot/custom-scales';
@@ -44,6 +44,7 @@ import DynamicSimpleTopEdgeHints from './plot/dynamic-simple-topedge-hints';
 import DynamicProgrammaticRightEdgeHints from './plot/dynamic-programmatic-rightedge-hints';
 import StaticCrosshair from './plot/static-crosshair';
 import DynamicCrosshair from './plot/dynamic-crosshair';
+import DynamicCrosshairScatterplot from './plot/dynamic-crosshair-scatterplot';
 import SyncedCharts from './plot/synced-charts';
 import TimeChart from './plot/time-chart';
 import VoronoiLineChart from './plot/voronoi-line-chart';
@@ -75,7 +76,7 @@ export const showCase = {
   StackedHistogram,
   AreaChart,
   AreaChartElevated,
-  ScatteplotChart,
+  ScatterplotChart,
   HeatmapChart,
   WidthHeightMarginChart,
   CustomScales,
@@ -91,6 +92,7 @@ export const showCase = {
   DynamicProgrammaticRightEdgeHints,
   StaticCrosshair,
   DynamicCrosshair,
+  DynamicCrosshairScatterplot,
   SyncedCharts,
   TimeChart,
   VoronoiLineChart,
