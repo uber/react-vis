@@ -18,9 +18,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import * as d3Scale from 'd3-scale';
-import * as d3Array from 'd3-array';
-import * as d3Collection from 'd3-collection';
+import {
+  scaleLinear,
+  scalePoint,
+  scaleOrdinal,
+  scaleLog,
+  scaleTime,
+  scaleUtc
+} from 'd3-scale';
+import {extent} from 'd3-array';
+import {set} from 'd3-collection';
 import {hsl} from 'd3-color';
 
 import React from 'react';
@@ -85,13 +92,13 @@ const TIME_UTC_SCALE_TYPE = 'time-utc';
  * @const
  */
 const SCALE_FUNCTIONS = {
-  [LINEAR_SCALE_TYPE]: d3Scale.scaleLinear,
-  [ORDINAL_SCALE_TYPE]: d3Scale.scalePoint,
-  [CATEGORY_SCALE_TYPE]: d3Scale.scaleOrdinal,
+  [LINEAR_SCALE_TYPE]: scaleLinear,
+  [ORDINAL_SCALE_TYPE]: scalePoint,
+  [CATEGORY_SCALE_TYPE]: scaleOrdinal,
   [LITERAL_SCALE_TYPE]: literalScale,
-  [LOG_SCALE_TYPE]: d3Scale.scaleLog,
-  [TIME_SCALE_TYPE]: d3Scale.scaleTime,
-  [TIME_UTC_SCALE_TYPE]: d3Scale.scaleUtc
+  [LOG_SCALE_TYPE]: scaleLog,
+  [TIME_SCALE_TYPE]: scaleTime,
+  [TIME_UTC_SCALE_TYPE]: scaleUtc
 };
 /**
  * Find the smallest distance between the values on a given scale and return
@@ -181,9 +188,9 @@ export function getDomainByAttr(allData, attr, type) {
 
   // Create proper domain depending on the type of the scale.
   if (type !== ORDINAL_SCALE_TYPE && type !== CATEGORY_SCALE_TYPE) {
-    domain = d3Array.extent(values);
+    domain = extent(values);
   } else {
-    domain = d3Collection.set(values).values();
+    domain = set(values).values();
   }
   return domain;
 }

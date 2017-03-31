@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 import React, {PropTypes} from 'react';
-import * as d3Shape from 'd3-shape';
+import {arc as arcBuilder, pie as pieBuilder} from 'd3-shape';
 
 import Animation from 'animation';
 import {getInnerDimensions, MarginPropType} from 'utils/chart-utils';
@@ -194,7 +194,7 @@ class RadialChart extends React.Component {
     if (!radiusFunctor) {
       return null;
     }
-    return d3Shape.arc()
+    return arcBuilder()
       .outerRadius(radiusFunctor)
       .innerRadius(innerRadiusFunctor);
   }
@@ -321,7 +321,7 @@ class RadialChart extends React.Component {
       return null;
     }
 
-    const pie = d3Shape.pie().sort(null).value(d => d.angle);
+    const pie = pieBuilder().sort(null).value(d => d.angle);
     const pieData = pie(data);
     return (
       <div
