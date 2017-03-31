@@ -64,7 +64,7 @@ The color for all elements in the series, this property will be over-ridden by c
 Type: `string`
 Provide an additional class name for the series.
 
-### cluster
+#### cluster
 Supply a clustering key for this series.
 When used with the `stackBy` attribute, creates a clustered stacked bar chart. Returning to our pigeon example from earlier, if you had multiple years of pigeon sightings by season and you wanted to compare the season, clustering would be a great way to do that.
 
