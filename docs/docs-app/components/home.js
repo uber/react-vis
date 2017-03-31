@@ -41,7 +41,7 @@ function renderSection(section, index) {
     </div>
   )];
   return (
-    <div className="bullet-point f" key={`bullet-${index}`}>>
+    <div className="bullet-point f" key={`bullet-${index}`}>
       {!(index % 2) ? content.reverse() : content}
     </div>
   );
