@@ -44,6 +44,6 @@ test('MarkSeries: Showcase Example - Dynamic Crosshair Scatterplot', t => {
   function highlightedCircle(_highlightedCircle, circle) {
     const isHighlighted = circle.prop('style').fill === '#FF9833';
     const circlePosition = {cx: circle.prop('cx'), cy: circle.prop('cy')};
-    return isHighlighted ? [..._highlightedCircle, circlePosition]: _highlightedCircle;
+    return isHighlighted ? [..._highlightedCircle, circlePosition] : _highlightedCircle;
   }
 });
