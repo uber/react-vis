@@ -1,5 +1,7 @@
 # MarkSeries
 
+<!-- INJECT:"ScatteplotChart" -->
+
 ## API Reference
 
 #### onNearestXY (optional)

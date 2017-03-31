@@ -28,7 +28,7 @@ const {
   DynamicProgrammaticRightEdgeHints,
   StaticCrosshair,
   DynamicCrosshair,
-  DynamicCrosshairMarkseries,
+  DynamicCrosshairScatterplot,
   SyncedCharts,
   TimeChart,
   VoronoiLineChart,
@@ -197,9 +197,9 @@ class App extends Component {
             <DynamicCrosshair />
           </section>
           <section>
-            <h3>Dynamic Crosshair with MarkSeries</h3>
+            <h3>Dynamic Crosshair Scatteplot</h3>
             <p>Move your mouse over the chart to see the point.</p>
-            <DynamicCrosshairMarkseries />
+            <DynamicCrosshairScatterplot />
           </section>
           <h2>Miscellaneous</h2>
           <section>

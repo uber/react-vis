@@ -44,7 +44,7 @@ import DynamicSimpleTopEdgeHints from './plot/dynamic-simple-topedge-hints';
 import DynamicProgrammaticRightEdgeHints from './plot/dynamic-programmatic-rightedge-hints';
 import StaticCrosshair from './plot/static-crosshair';
 import DynamicCrosshair from './plot/dynamic-crosshair';
-import DynamicCrosshairMarkseries from './plot/dynamic-crosshair-markseries';
+import DynamicCrosshairScatterplot from './plot/dynamic-crosshair-scatterplot';
 import SyncedCharts from './plot/synced-charts';
 import TimeChart from './plot/time-chart';
 import VoronoiLineChart from './plot/voronoi-line-chart';
@@ -92,7 +92,7 @@ export const showCase = {
   DynamicProgrammaticRightEdgeHints,
   StaticCrosshair,
   DynamicCrosshair,
-  DynamicCrosshairMarkseries,
+  DynamicCrosshairScatterplot,
   SyncedCharts,
   TimeChart,
   VoronoiLineChart,
