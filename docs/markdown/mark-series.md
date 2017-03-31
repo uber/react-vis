@@ -1,6 +1,6 @@
 # MarkSeries
 
-<!-- INJECT:"ScatteplotChart" -->
+<!-- INJECT:"ScatterplotChart" -->
 
 ## API Reference
 

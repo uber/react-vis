@@ -12,7 +12,7 @@ const {
   StackedHistogram,
   AreaChart,
   AreaChartElevated,
-  ScatteplotChart,
+  ScatterplotChart,
   HeatmapChart,
   WidthHeightMarginChart,
   CustomScales,
@@ -86,7 +86,7 @@ class App extends Component {
           </section>
           <section>
             <h3>Mark Series</h3>
-            <ScatteplotChart />
+            <ScatterplotChart />
           </section>
           <section>
             <h3>Area Series</h3>
@@ -198,7 +198,7 @@ class App extends Component {
             <DynamicCrosshair />
           </section>
           <section>
-            <h3>Dynamic Crosshair Scatteplot</h3>
+            <h3>Dynamic Crosshair Scatterplot</h3>
             <p>Move your mouse over the chart to see the point.</p>
             <DynamicCrosshairScatterplot />
           </section>
