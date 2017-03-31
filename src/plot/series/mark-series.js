@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
@@ -27,11 +27,12 @@ import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
 import AbstractSeries from './abstract-series';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--mark';
+const DEFAULT_STROKE_WIDTH = 1;
 
 class MarkSeries extends AbstractSeries {
 
   render() {
-    const {animation, className, data, marginLeft, marginTop} = this.props;
+    const {animation, className, data, marginLeft, marginTop, strokeWidth} = this.props;
     if (!data) {
       return null;
     }
@@ -64,7 +65,8 @@ class MarkSeries extends AbstractSeries {
             style: {
               opacity: opacityFunctor ? opacityFunctor(d) : DEFAULT_OPACITY,
               stroke: strokeFunctor && strokeFunctor(d),
-              fill: fillFunctor && fillFunctor(d)
+              fill: fillFunctor && fillFunctor(d),
+              strokeWidth: strokeWidth || DEFAULT_STROKE_WIDTH
             },
             key: i,
             onClick: e => this._valueClickHandler(d, e),
@@ -79,5 +81,8 @@ class MarkSeries extends AbstractSeries {
 }
 
 MarkSeries.displayName = 'MarkSeries';
-
+MarkSeries.propTypes = {
+  ...AbstractSeries.propTypes,
+  strokeWidth: PropTypes.number
+};
 export default MarkSeries;
