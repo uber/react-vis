@@ -27,13 +27,8 @@ export function injectExamplesIntoHtml(content) {
 
 export function convertMarkdownToReact(content) {
   const renderer = new marked.Renderer();
-  renderer.link = (href, title, text) => {
-
-    if (docsRouting[href]) {
-      return `<a href=${docsRouting[href]} title=${title}>${text}</a>`;
-    }
-    return `<a href=${href} title=${title}>${text}</a>`;
-  };
+  renderer.link = (href, title, text) =>
+    `<a href=${docsRouting[href] || href} title=${title}>${text}</a>`;
 
   return marked(content, {renderer});
 }
