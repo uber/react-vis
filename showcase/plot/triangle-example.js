@@ -49,6 +49,7 @@ export default class Example extends React.Component {
 
   render() {
     const {hoveredIndex} = this.state;
+
     return (
       <XYPlot
         width={300}
