@@ -30,6 +30,7 @@ const {
   DynamicCrosshair,
   SyncedCharts,
   TimeChart,
+  TriangleExample,
   VoronoiLineChart,
 
   SimpleTreemap,
@@ -203,6 +204,10 @@ class App extends Component {
           <section>
             <h3>Time Chart</h3>
             <TimeChart />
+          </section>
+          <section>
+            <h3>Triangle Example</h3>
+            <TriangleExample />
           </section>
           <section>
             <h3>Voronoi Line Chart</h3>

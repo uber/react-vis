@@ -1327,7 +1327,7 @@ d3-interpolate@~0.2.0:
 
 d3-path@1:
   version "1.0.5"
-  resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-1.0.5.tgz#241eb1849bd9e9e8021c0d0a799f8a0e8e441764"
+  resolved "https://unpm.uberinternal.com/d3-path/-/d3-path-1.0.5.tgz#241eb1849bd9e9e8021c0d0a799f8a0e8e441764"
 
 d3-sankey-align@^0.1.0:
   version "0.1.0"
