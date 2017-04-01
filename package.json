@@ -16,6 +16,7 @@
     "url": "https://github.com/uber-common/react-vis/issues/new",
     "email": "visualization@uber.com"
   },
+  "pre-commit": ["remove-unpm-rfs"],
   "scripts": {
     "docs": "(cd showcase && npm run build && cp bundle.* .. && cd .. && git checkout gh-pages && git commit -am 'Upgrade docs' && git push && git checkout master)",
     "new-docs": "./deploy-docs.sh",
@@ -25,7 +26,8 @@
     "lint": "eslint src tests showcase docs --ignore-pattern node_modules --ignore-pattern bundle.js",
     "lint-styles": "stylelint src/styles/*.scss --syntax scss",
     "test": "babel-node tests/index.js",
-    "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test"
+    "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test",
+    "remove-unpm-rfs": "./remove-refs-to-unpm.pl"
   },
   "dependencies": {
     "d3-array": "^1.0.2",
