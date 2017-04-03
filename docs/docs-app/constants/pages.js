@@ -1,6 +1,7 @@
 import ComplexChartExample from '../../../examples/complex-chart/complex-chart-example';
 import Candlestick from '../../../examples/candlestick/candlestick-example';
 import StreamgraphExample from '../../../examples/streamgraph/streamgraph-example';
+import ForceDirectedGraph from '../../../examples/force-directed-graph/force-directed-example';
 import ShowcaseApp from '../../../showcase/showcase-app';
 
 const generatePath = tree => {
@@ -37,6 +38,12 @@ export const examplePages = generatePath([
         markdown: getDocUrl('examples/extensibility.md'),
         pageType: 'example',
         component: Candlestick
+      }
+    }, {
+      name: 'Force Directed Graph',
+      content: {
+        pageType: 'example',
+        component: ForceDirectedGraph
       }
     }, {
       name: 'Complex Chart',

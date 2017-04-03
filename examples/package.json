@@ -2,6 +2,7 @@
   "description": "react-vis examples",
   "license": "MIT",
   "dependencies": {
+    "d3-force": "^1.0.6",
     "react": "^15.4.2",
     "react-addons-shallow-compare": "^15.4.2",
     "react-dom": "^15.4.2",
