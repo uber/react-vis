@@ -41,6 +41,7 @@ const {
   SimpleRadialChart,
   DonutChartExample,
   CustomRadiusRadialChart,
+  ArcSeriesExample,
 
   BasicSankeyExample,
   VoronoiSankeyExample,
@@ -238,6 +239,10 @@ class App extends Component {
           <section>
             <h3>Custom Radius</h3>
             <CustomRadiusRadialChart />
+          </section>
+          <section>
+            <h3>Arc Series Example</h3>
+            <ArcSeriesExample />
           </section>
         </article>
 

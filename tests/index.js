@@ -28,6 +28,7 @@ import './utils/series-utils-tests';
 
 import './components';
 import './components/area-series-tests';
+import './components/arc-series-tests';
 import './components/bar-series-tests';
 import './components/circular-grid-lines-tests';
 import './components/heatmap-tests';
