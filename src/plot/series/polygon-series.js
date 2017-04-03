@@ -61,7 +61,6 @@ class PolygonSeries extends AbstractSeries {
         </Animation>
       );
     }
-
     const xFunctor = this._getAttributeFunctor('x');
     const yFunctor = this._getAttributeFunctor('y');
 
