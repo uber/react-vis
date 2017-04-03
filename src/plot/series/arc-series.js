@@ -41,21 +41,6 @@ const defaultProps = {
   className: ''
 };
 
-/**
- * Build a mouse response
- * @param {Function} mouseCallback - the call back to be called on the vent.
- * @param {Object} row - the object the handed to the callback
- * @returns {Function} the bound handler.
- */
-function buildMouseHandler(mouseCallback, row) {
-  return e => {
-    e.stopPropagation();
-    if (mouseCallback) {
-      mouseCallback(e, row);
-    }
-  };
-}
-
 class ArcSeries extends AbstractSeries {
   constructor(props) {
     super(props);
@@ -115,10 +100,7 @@ class ArcSeries extends AbstractSeries {
       data,
       marginLeft,
       marginTop,
-      style = {},
-      onValueMouseOut,
-      onValueMouseOver,
-      onValueClick
+      style = {}
     } = this.props;
 
     if (!data) {

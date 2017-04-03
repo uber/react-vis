@@ -24,8 +24,7 @@ import {
   XYPlot,
   ArcSeries,
   XAxis,
-  YAxis,
-  Hint
+  YAxis
 } from 'index';
 
 import {EXTENDED_DISCRETE_COLOR_RANGE as COLORS} from 'theme';
