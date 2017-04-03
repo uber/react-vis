@@ -43,9 +43,7 @@ const propTypes = {
   tickTotal: PropTypes.number,
 
   animation: AnimationPropType,
-
-  // Not expected to be used by the users.
-  // TODO: Add underscore to these properties later.
+  // generally supplied by xyplot
   marginTop: PropTypes.number,
   marginBottom: PropTypes.number,
   marginLeft: PropTypes.number,
@@ -82,7 +80,7 @@ class CircularGridLines extends PureRenderComponent {
     const {animation, centerX, centerY} = this.props;
     if (animation) {
       return (
-        <Animation {...this.props} {...{animatedProps}}>
+        <Animation {...this.props} animatedProps={animatedProps}>
           <CircularGridLines {...this.props} animation={null}/>
         </Animation>
       );

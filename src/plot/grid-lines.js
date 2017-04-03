@@ -49,8 +49,7 @@ const propTypes = {
 
   animation: AnimationPropType,
 
-  // Not expected to be used by the users.
-  // TODO: Add underscore to these properties later.
+  // generally supplied by xyplot
   marginTop: React.PropTypes.number,
   marginBottom: React.PropTypes.number,
   marginLeft: React.PropTypes.number,
