@@ -28,12 +28,8 @@ import AbstractSeries from './abstract-series';
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--polygon';
 const DEFAULT_COLOR = '#12939A';
 
-function generatePath(data, xFunctor, yFunctor) {
-  const path = data.reduce((res, row, i) => {
-    return `${res} ${i === 0 ? 'M' : 'L'}${xFunctor(row)} ${yFunctor(row)}`;
-  }, '');
-  return `${path} Z`;
-}
+const generatePath = (data, xFunctor, yFunctor) =>
+  `${data.reduce((res, row, i) => `${res} ${i ? 'L' : 'M'}${xFunctor(row)} ${yFunctor(row)}`, '')} Z`;
 
 class PolygonSeries extends AbstractSeries {
 
@@ -76,9 +72,7 @@ class PolygonSeries extends AbstractSeries {
         onMouseOut: this._seriesMouseOutHandler,
         onClick: this._seriesClickHandler,
         fill: color || DEFAULT_COLOR,
-        style: {
-          ...style
-        },
+        style,
         d: generatePath(data, xFunctor, yFunctor),
         transform: `translate(${marginLeft},${marginTop})`,
         ref: 'container'
