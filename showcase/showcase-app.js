@@ -12,6 +12,7 @@ const {
   StackedHistogram,
   AreaChart,
   AreaChartElevated,
+  FauxScatterplotChart,
   ScatterplotChart,
   HeatmapChart,
   WidthHeightMarginChart,
@@ -131,6 +132,10 @@ class App extends Component {
           <section>
             <h3>Custom GridLines</h3>
             <GridLinesChart />
+          </section>
+          <section>
+            <h3>Circular Gridlines</h3>
+            <FauxScatterplotChart />
           </section>
           <h2>Axes</h2>
           <section>
