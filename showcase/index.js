@@ -29,6 +29,7 @@ import StackedHistogram from './plot/stacked-histogram';
 import AreaChart from './plot/area-chart';
 import AreaChartElevated from './plot/area-chart-elevated';
 import ScatterplotChart from './plot/scatterplot';
+import FauxScatterplotChart from './plot/faux-radial-scatterplot';
 import HeatmapChart from './plot/heatmap-chart';
 import WidthHeightMarginChart from './plot/width-height-margin';
 import CustomScales from './plot/custom-scales';
@@ -77,6 +78,7 @@ export const showCase = {
   StackedHistogram,
   AreaChart,
   AreaChartElevated,
+  FauxScatterplotChart,
   ScatterplotChart,
   HeatmapChart,
   WidthHeightMarginChart,

@@ -35,6 +35,7 @@ export Crosshair from 'plot/crosshair';
 export XYPlot from 'plot/xy-plot';
 export XAxis from 'plot/axis/x-axis';
 export YAxis from 'plot/axis/y-axis';
+export CircularGridLines from 'plot/circular-grid-lines';
 export GridLines from 'plot/grid-lines';
 export VerticalGridLines from 'plot/vertical-grid-lines';
 export HorizontalGridLines from 'plot/horizontal-grid-lines';

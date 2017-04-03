@@ -1,4 +1,4 @@
-// Copyright (c) 2016 - 2017 Uber Technologies, Inc.
+// Copyright (c) 2016 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 import PureRenderComponent from 'pure-render-component';
 import {getAttributeScale} from 'utils/scales-utils';
@@ -26,40 +26,30 @@ import Animation from 'animation';
 
 import {
   getTicksTotalFromSize,
-  getTickValues,
-  DIRECTION
+  getTickValues
 } from '../utils/axis-utils';
 
 import {AnimationPropType} from '../utils/animation-utils';
 
-const {VERTICAL, HORIZONTAL} = DIRECTION;
-
 const propTypes = {
-  direction: React.PropTypes.oneOf([
-    VERTICAL, HORIZONTAL
-  ]),
-  attr: React.PropTypes.string.isRequired,
-  width: React.PropTypes.number,
-  height: React.PropTypes.number,
-  top: React.PropTypes.number,
-  left: React.PropTypes.number,
+  centerX: PropTypes.number,
+  centerY: PropTypes.number,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  top: PropTypes.number,
+  left: PropTypes.number,
 
-  tickValues: React.PropTypes.array,
-  tickTotal: React.PropTypes.number,
+  tickValues: PropTypes.array,
+  tickTotal: PropTypes.number,
 
   animation: AnimationPropType,
-
   // generally supplied by xyplot
-  marginTop: React.PropTypes.number,
-  marginBottom: React.PropTypes.number,
-  marginLeft: React.PropTypes.number,
-  marginRight: React.PropTypes.number,
-  innerWidth: React.PropTypes.number,
-  innerHeight: React.PropTypes.number
-};
-
-const defaultProps = {
-  direction: VERTICAL
+  marginTop: PropTypes.number,
+  marginBottom: PropTypes.number,
+  marginLeft: PropTypes.number,
+  marginRight: PropTypes.number,
+  innerWidth: PropTypes.number,
+  innerHeight: PropTypes.number
 };
 
 const animatedProps = [
@@ -68,35 +58,30 @@ const animatedProps = [
   'tickTotal'
 ];
 
-class GridLines extends PureRenderComponent {
+class CircularGridLines extends PureRenderComponent {
 
   _getDefaultProps() {
     const {
       innerWidth,
       innerHeight,
       marginTop,
-      marginLeft,
-      direction
+      marginLeft
     } = this.props;
     return {
       left: marginLeft,
       top: marginTop,
       width: innerWidth,
       height: innerHeight,
-      tickTotal: getTicksTotalFromSize(
-        direction === VERTICAL ?
-          innerWidth :
-          innerHeight
-      )
+      tickTotal: getTicksTotalFromSize(Math.min(innerWidth, innerHeight))
     };
   }
 
   render() {
-    const {animation} = this.props;
+    const {animation, centerX, centerY} = this.props;
     if (animation) {
       return (
-        <Animation {...this.props} {...{animatedProps}}>
-          <GridLines {...this.props} animation={null}/>
+        <Animation {...this.props} animatedProps={animatedProps}>
+          <CircularGridLines {...this.props} animation={null}/>
         </Animation>
       );
     }
@@ -107,40 +92,25 @@ class GridLines extends PureRenderComponent {
     };
 
     const {
-      attr,
-      direction,
-      width,
-      height,
       tickTotal,
       tickValues,
-      top,
-      left
+      marginLeft,
+      marginTop
     } = props;
-    const isVertical = direction === VERTICAL;
-    const tickXAttr = isVertical ? 'y' : 'x';
-    const tickYAttr = isVertical ? 'x' : 'y';
-    const length = isVertical ? height : width;
 
-    const scale = getAttributeScale(props, attr);
-    const values = getTickValues(scale, tickTotal, tickValues);
-
+    const xScale = getAttributeScale(props, 'x');
+    const yScale = getAttributeScale(props, 'y');
+    const values = getTickValues(xScale, tickTotal, tickValues);
     return (
       <g
-        transform={`translate(${left},${top})`}
-        className="rv-xy-plot__grid-lines">
-        {values.map((v, i) => {
-          const pos = scale(v);
-          const pathProps = {
-            [`${tickYAttr}1`]: pos,
-            [`${tickYAttr}2`]: pos,
-            [`${tickXAttr}1`]: 0,
-            [`${tickXAttr}2`]: length
-          };
+        transform={`translate(${xScale(centerX) + marginLeft},${yScale(centerY) + marginTop})`}
+        className="rv-xy-plot__circular-grid-lines">
+        {values.map((value, index) => {
           return (
-            <line
-              {...pathProps}
-              key={i}
-              className="rv-xy-plot__grid-lines__line" />
+            <circle
+              {...{cx: 0, cy: 0, r: xScale(value)}}
+              key={index}
+              className="rv-xy-plot__circular-grid-lines__line" />
           );
         })}
       </g>
@@ -148,9 +118,12 @@ class GridLines extends PureRenderComponent {
   }
 }
 
-GridLines.displayName = 'GridLines';
-GridLines.defaultProps = defaultProps;
-GridLines.propTypes = propTypes;
-GridLines.requiresSVG = true;
+CircularGridLines.displayName = 'CircularGridLines';
+CircularGridLines.propTypes = propTypes;
+CircularGridLines.defaultProps = {
+  centerX: 0,
+  centerY: 0
+};
+CircularGridLines.requiresSVG = true;
 
-export default GridLines;
+export default CircularGridLines;

@@ -45,6 +45,11 @@ $rv-xy-plot-tooltip-padding: 7px 10px;
   stroke: $rv-xy-plot-axis-line-color;
 }
 
+.rv-xy-plot__circular-grid-lines__line {
+  fill-opacity: 0;
+  stroke: $rv-xy-plot-axis-line-color;
+}
+
 .rv-xy-plot__series--line {
   fill: none;
   stroke: #000;
