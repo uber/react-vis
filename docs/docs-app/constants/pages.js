@@ -162,6 +162,13 @@ export const docPages = generatePath([
           pageType: 'documentation'
         }
       }, {
+        name: 'Polygon Series',
+        content: {
+          markdown: getDocUrl('polygon-series.md'),
+          filename: 'polygon-series.md',
+          pageType: 'documentation'
+        }
+      }, {
         name: 'Heatmap Series',
         content: {
           markdown: getDocUrl('heatmap-series.md'),

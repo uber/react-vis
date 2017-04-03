@@ -47,6 +47,7 @@ import DynamicCrosshair from './plot/dynamic-crosshair';
 import DynamicCrosshairScatterplot from './plot/dynamic-crosshair-scatterplot';
 import SyncedCharts from './plot/synced-charts';
 import TimeChart from './plot/time-chart';
+import TriangleExample from './plot/triangle-example';
 import VoronoiLineChart from './plot/voronoi-line-chart';
 
 import SimpleTreemap from './treemap/simple-treemap';
@@ -95,6 +96,7 @@ export const showCase = {
   DynamicCrosshairScatterplot,
   SyncedCharts,
   TimeChart,
+  TriangleExample,
   VoronoiLineChart,
 
   SimpleTreemap,

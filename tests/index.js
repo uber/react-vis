@@ -33,6 +33,7 @@ import './components/heatmap-tests';
 import './components/legends-tests';
 import './components/line-series-tests';
 import './components/mark-series-tests';
+import './components/polygon-series-tests';
 import './components/radial-tests';
 import './components/rect-series-tests';
 import './components/treemap-tests';
