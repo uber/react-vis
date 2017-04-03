@@ -16,7 +16,7 @@
   </a>
 </p>
 
-<h1 align="center">react-vis | <a href="http://uber.github.io/react-vis">Demos</a></h1>
+<h1 align="center">react-vis | <a href="http://uber.github.io/react-vis/#/examples/charts/showcase">Demos</a> | <a href="http://uber.github.io/react-vis/#">Docs</a></h1>
 
 <h5 align="center">Data Visualization oriented components</h5>
 
@@ -25,8 +25,7 @@
 ## Overview
 
 A collection of react components to render common data visualization charts,
-such as **line/area/bar charts**, **heat maps**, **scatterplots**, **pie and donut charts**
-with fixed headers and **tree maps**.
+such as **line/area/bar charts**, **heat maps**, **scatterplots**, **pie and donut charts**, and **tree maps**.
 
 Some notable features:
 
