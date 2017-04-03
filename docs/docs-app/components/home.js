@@ -25,7 +25,9 @@ const sections = [{
 
 function renderSection(section, index) {
   const content = [(
-    <div className={`fcol fg bullet-info ${(index % 2) ? '' : 'bullet-info-reversed'}`}>
+    <div
+      className={`fcol fg bullet-info ${(index % 2) ? '' : 'bullet-info-reversed'}`}
+      key={`section-${index}`}>
       <div className="bullet-point-title">
         {section.title}
       </div>
@@ -34,12 +36,12 @@ function renderSection(section, index) {
       </div>
     </div>
   ), (
-    <div className="bullet-example">
+    <div className="bullet-example" key={`bullet-example-${index}`}>
       {section.component}
     </div>
   )];
   return (
-    <div className="bullet-point f">
+    <div className="bullet-point f" key={`bullet-${index}`}>
       {!(index % 2) ? content.reverse() : content}
     </div>
   );

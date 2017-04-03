@@ -20,7 +20,9 @@ const renderTab = (tab, index) => (
 );
 
 const renderGithubLink = () => (
-  <a href="https://github.com/uber/react-vis" className="link"><i className="icon icon-github" /></a>
+  <a href="https://github.com/uber/react-vis" className="link" key="github-link">
+    <i className="icon icon-github" />
+  </a>
 );
 
 const mappedTabs = tabs.map(renderTab).concat(renderGithubLink());

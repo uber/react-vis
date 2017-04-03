@@ -34,6 +34,7 @@ export const examplePages = generatePath([
     }, {
       name: 'Candlestick',
       content: {
+        markdown: getDocUrl('examples/extensibility.md'),
         pageType: 'example',
         component: Candlestick
       }
