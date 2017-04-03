@@ -1,0 +1,9 @@
+.rv-rtheta-plot {
+  color: #c3c3c3;
+  position: relative;
+}
+
+.rv-rtheta-plot__grid-lines__line {
+  fill-opacity: 0;
+  stroke: $rv-xy-plot-axis-line-color;
+}

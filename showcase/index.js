@@ -52,6 +52,8 @@ import VoronoiLineChart from './plot/voronoi-line-chart';
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
 
+import PolarScatterplot from './r-theta-plots/polar-scatterplot';
+
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import DonutChartExample from './radial-chart/donut-chart';
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
@@ -103,6 +105,8 @@ export const showCase = {
   SimpleRadialChart,
   DonutChartExample,
   CustomRadiusRadialChart,
+
+  PolarScatterplot,
 
   BasicSankeyExample,
   VoronoiSankeyExample,
