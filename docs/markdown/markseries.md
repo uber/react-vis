@@ -1,5 +1,7 @@
 ## MarkSeries & MarkSeriesGL
 
+<!-- INJECT:"ScatterplotChart" -->
+
 The Markseries allows users to embed discrete information in pairs of continuous variables,
 that is make scatterplots. Deploying a markseries is super easy:
 
@@ -33,6 +35,8 @@ react-vis offers two different types of MarkSeries, one that renders SVG and one
 The SVG mode is accessed by using the normal `MarkSeries`, just as above, while the WebGL mode is used by simply calling
 `MarkSeriesGL` instead of `MarkSeries`.
 
+**NOTE**: using the GL version of this layer disables animation
+
 ## API
 
 #### data
@@ -64,6 +68,15 @@ Type: `function(value, info)`
 A callback function which is triggered each time when the mouse pointer gets close to some X value.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the value;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+
+#### onNearestXY (optional)
+Type: `function(value, info)`
+A callback function which is triggered on mousemove and returns the closest point vased on the voronoi layout.
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the horizontal position of the value;
+- `innerY` is the vertical position of the value;
 - `index` is the index of the data point in the array of data;
 - `event` is the event object.
 

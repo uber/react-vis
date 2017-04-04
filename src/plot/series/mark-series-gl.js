@@ -20,11 +20,8 @@
 
 import {PropTypes} from 'react';
 import {ScatterplotLayer, COORDINATE_SYSTEM} from 'deck.gl';
-// import DeckGLWrapper from './deck-gl-wrapper';
 import {rgb} from 'd3-color';
 
-// import Animation from 'animation';
-// import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
 import {getAttributeFunctor} from 'utils/scales-utils';
 
@@ -50,7 +47,7 @@ class MarkSeriesGL extends AbstractSeries {
       sizeRange,
       fp64
     } = props;
-    // console.log(props)
+
     const xFunctor = getAttributeFunctor(props, 'x');
     const yFunctor = getAttributeFunctor(props, 'y');
     const sizeFunctor = getAttributeFunctor(props, 'size') || (p => DEFAULT_SIZE);
@@ -75,10 +72,9 @@ class MarkSeriesGL extends AbstractSeries {
       },
       // there's a bug that the radius calculated with project_scale
       radiusMinPixels: 2,
-      onHover: () => {
-        console.log('??????')
-        props.onValueMouseOver()
-      },
+      pickable: true,
+      onHover: row => props.onValueMouseOver(row.object),
+      onClick: row => props.onValueClick(row.object),
       fp64
     });
   }
@@ -89,10 +85,15 @@ class MarkSeriesGL extends AbstractSeries {
 }
 
 MarkSeriesGL.displayName = 'MarkSeriesGL';
+MarkSeriesGL.defaultProps = {
+  onValueMouseOver: () => {},
+  onValueClick: () => {},
+  fp64: false
+};
+
 MarkSeriesGL.propTypes = {
   ...AbstractSeries.propTypes,
   seriesId: PropTypes.string.isRequired,
-  skipDeckGl: PropTypes.bool,
   fp64: PropTypes.bool
 };
 

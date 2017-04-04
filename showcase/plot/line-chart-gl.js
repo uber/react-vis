@@ -27,7 +27,6 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   LineMarkSeriesGL,
-  // MarkSeriesGL,
   LineMarkSeries
 } from 'index';
 

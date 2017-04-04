@@ -50,22 +50,18 @@ const propTypes = {
   ])
 };
 
-function getLineFunctor(curve) {
-  const line = d3Shape.line();
-  if (curve !== null) {
-    if (typeof curve === 'string' && d3Shape[curve]) {
-      return line.curve(d3Shape[curve]);
-    } else if (typeof curve === 'function') {
-      return line.curve(curve);
-    }
-  }
-  return line;
-}
-
 class LineSeries extends AbstractSeries {
 
   _renderLine(data, x, y, curve) {
-    const line = getLineFunctor(curve).x(x).y(y);
+    let line = d3Shape.line();
+    if (curve !== null) {
+      if (typeof curve === 'string' && d3Shape[curve]) {
+        line = line.curve(d3Shape[curve]);
+      } else if (typeof curve === 'function') {
+        line = line.curve(curve);
+      }
+    }
+    line = line.x(x).y(y);
     return line(data);
   }
 

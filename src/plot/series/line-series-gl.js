@@ -22,8 +22,6 @@ import {PropTypes} from 'react';
 import {COORDINATE_SYSTEM, PathLayer} from 'deck.gl';
 import {rgb} from 'd3-color';
 
-// import Animation from 'animation';
-// import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import {DEFAULT_OPACITY} from 'theme';
 
 import AbstractSeries from './abstract-series';
@@ -44,14 +42,15 @@ class LineSeriesGL extends AbstractSeries {
       opacity,
       seriesId,
       strokeWidth,
-      _renderKey
+      onValueMouseOver,
+      onValueClick,
+      fp64
     } = props;
 
     const xFunctor = getAttributeFunctor(props, 'x');
     const yFunctor = getAttributeFunctor(props, 'y');
     const fillFunctor = getAttributeFunctor(props, 'fill') || getAttributeFunctor(props, 'color');
     const opacityFunctor = getAttributeFunctor(props, 'opacity');
-
 
     return new PathLayer({
       id: seriesId,
@@ -64,11 +63,10 @@ class LineSeriesGL extends AbstractSeries {
       getWidth: p => Number(strokeWidth) || 1,
       opacity: (opacity || DEFAULT_OPACITY),
       projectionMode: COORDINATE_SYSTEM.IDENTITY,
-      updateTriggers: {
-        getPath: _renderKey,
-        getColor: _renderKey
-      },
-      onHover: props.onValueMouseOver
+      pickable: true,
+      onHover: row => onValueMouseOver(row.object),
+      onClick: row => onValueClick(row.object),
+      fp64
     });
   }
 
@@ -78,6 +76,11 @@ class LineSeriesGL extends AbstractSeries {
 }
 
 LineSeriesGL.displayName = 'LineSeriesGL';
+LineSeriesGL.defaultProps = {
+  onValueMouseOver: () => {},
+  onValueClick: () => {},
+  fp64: false
+};
 LineSeriesGL.propTypes = {
   ...AbstractSeries.propTypes,
   seriesId: PropTypes.string.isRequired
