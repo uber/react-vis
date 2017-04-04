@@ -10,7 +10,7 @@ Animation makes your charts feel physical, it makes them feel alive, shoot it ma
 
 *Objects*: react-motion expects an object formatting like {damping: NUMBER, stiffness: NUMBER}, and if you want to give us an object like that, we will hand it direct to react-motion.
 
-<!-- INJECT:"DynamicTreemap" -->
+<!-- INJECT:"TreemapExample" -->
 
 The above example has `animation: {damping: 9, stiffness: 300}`!
 
