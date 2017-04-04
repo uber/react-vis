@@ -335,9 +335,6 @@ class XYPlot extends React.Component {
       marginRight,
       innerHeight,
       innerWidth
-      // layers: componentsToRender.reduce((res, layer) => {
-      //   return res.concat(layer.type.renderLayer(layer.props));
-      // }, [])
     }}>
       {componentsToRender}
     </DeckGLWrapper>);
