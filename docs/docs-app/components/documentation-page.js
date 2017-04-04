@@ -2,9 +2,14 @@ import React, {Component} from 'react';
 import {injectExamplesIntoHtml, convertMarkdownToReact} from './utils';
 
 class DocumentationPage extends Component {
+  componentDidMount() {
+    this.props.loadSinglePage(this.props.route.content);
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.route.content.markdown !== this.props.route.content.markdown) {
       this.refs.documentionContainer.scrollTop = 0;
+      nextProps.loadSinglePage(nextProps.route.content);
     }
   }
 
