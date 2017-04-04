@@ -49,10 +49,10 @@ class DeckGLWrapper extends Component {
     const layers = children.reduce((res, layer) => {
       if (!layer.type.renderLayer) {
         const trueLayer = layer.props.children;
-        return res.concat(trueLayer.type.renderLayer({...trueLayer.props}));
+        return res.concat(trueLayer.type.renderLayer(trueLayer.props));
       }
 
-      return res.concat(layer.type.renderLayer({...layer.props}));
+      return res.concat(layer.type.renderLayer(layer.props));
     }, []);
     return (<DeckGL width={width} height={height} viewport={glViewport}
       style={{position: 'absolute', top: 0, left: 0}}

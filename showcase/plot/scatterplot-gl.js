@@ -56,7 +56,7 @@ export default class Example extends React.Component {
   }
 
   render() {
-    const {glMode, data, colorType, value} = this.state;
+    const {glMode, data, colorType} = this.state;
     const markSeriesProps = {
       animation: true,
       className: 'mark-series-example',
@@ -65,7 +65,7 @@ export default class Example extends React.Component {
       colorRange: colorRanges[colorType],
       opacityType: 'literal',
       data,
-      onValueMouseOver: val => this.setState({value: val})
+      onValueMouseOver: value => this.setState({value})
     };
     return (
       <div className="scatterplot-gl-wrapper">
@@ -93,8 +93,8 @@ export default class Example extends React.Component {
             <MarkSeriesGL {...markSeriesProps} seriesId="my-example-scatterplot"/>}
           {!glMode &&
             <MarkSeries {...markSeriesProps}/>}
-          {value ?
-            <Hint value={value}/> :
+          {this.state.value ?
+            <Hint value={this.state.value}/> :
             null
           }
         </XYPlot>
