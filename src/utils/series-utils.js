@@ -72,8 +72,11 @@ function collectSeriesTypesInfo(children) {
  * @param {Array} data - an array of objects to check
  * @returns {Boolean} whether or not this series contains polar configuration
  */
-function seriesHasAngleRadius(data) {
-  return (data || []).some(row => row.radius && row.angle);
+function seriesHasAngleRadius(data = []) {
+  if (!data) {
+    return false;
+  }
+  return data.some(row => row.radius && row.angle);
 }
 
 /**

@@ -19,12 +19,12 @@ The arc series allows users to specify arbitrary arcs in the plane! This is usef
 </XYPlot>
 ```
 
-A key point: XYPlot infers the necessary x and y domains by converting the angular coordinates to cartesian. If you want to guarentee a centered plot it is advisable to set the x and y domain's yourself, as above.
+A key point: XYPlot infers the necessary x and y domains by converting the angular coordinates to cartesian. If you want to guarantee a centered plot it is advisable to set the x and y domain's yourself, as above.
 
 ## Data format Reference
 
 Arc series works a little bit different than other series. The most natural language to describe arcs is using polar coordinates, so we allow
-users to write just that
+users to write just that:
 
 ```javascript
 const myData = [

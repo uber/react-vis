@@ -33,7 +33,7 @@ const PI = Math.PI;
 
 function updateData() {
   const divider = Math.floor(Math.random() * 8 + 3);
-  const newData = (new Array(5)).fill(0).map((row, index) => {
+  const newData = [...new Array(5)].map((row, index) => {
     return {
       color: index,
       radius0: Math.random() > 0.8 ? Math.random() + 1 : 0,
