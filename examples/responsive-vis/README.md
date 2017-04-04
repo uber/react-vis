@@ -1,11 +1,11 @@
-react-vis candlestick example
+react-vis responsive-vis example
 =================
 
 ## Setup
 ```bash
 git clone https://github.com/uber/react-vis
-cd react-vis/examples/
+cd react-vis/responsive-vis/
 npm install
-cd candlestick
+cd responsive-vis
 npm start
 ```

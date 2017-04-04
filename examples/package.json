@@ -3,6 +3,7 @@
   "license": "MIT",
   "dependencies": {
     "d3-force": "^1.0.6",
+    "d3-random": "^1.0.3",
     "react": "^15.4.2",
     "react-addons-shallow-compare": "^15.4.2",
     "react-dom": "^15.4.2",

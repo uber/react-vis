@@ -3,6 +3,7 @@ import Candlestick from '../../../examples/candlestick/candlestick-example';
 import StreamgraphExample from '../../../examples/streamgraph/streamgraph-example';
 import ForceDirectedGraph from '../../../examples/force-directed-graph/force-directed-example';
 import ShowcaseApp from '../../../showcase/showcase-app';
+import ResponsiveVis from '../../../examples/responsive-vis/responsive-vis-example';
 
 const generatePath = tree => {
   if (Array.isArray(tree)) {
@@ -56,6 +57,13 @@ export const examplePages = generatePath([
       content: {
         pageType: 'example',
         component: StreamgraphExample
+      }
+    }, {
+      name: 'Responsive Vis',
+      content: {
+        markdown: getDocUrl('examples/responsive-vis.md'),
+        pageType: 'example',
+        component: ResponsiveVis
       }
     }]
   }
