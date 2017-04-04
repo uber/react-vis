@@ -106,37 +106,15 @@ export default class ResponsiveVisDemo extends React.Component {
     const ResponsiveChartType = chartType === 'barChart' ? ResponsiveBarChart : ResponsiveScatterplot;
     return (
       <div className="responsive-vis-example">
-        <div className="responsive-explanation">
-          This demo explores the concept of "Responsive Data Visualization"
-          (As coined by Nick Rabinowitz). The basic notion is lifted from responsive design:
-          some features work for some screen resolutions, while others do not.
-          Responsive design determines whether or not to use a given feature by
-          consulting an aspect ratio (width by height). Through this notation we are
-          able to create beautiful web experiences that work seemlessly between phones,
-          tablets, and computers. Taking this idea on step
-          farther we introduce a third element into the fray: data size.
-          <br />
-          <br />
-          In data visualization, we often need to create applications that work with
-          enmorous ranges of sizes of data. Sometimes the data might be small (10 - 100 rows),
-          or it might be gigantic (100k-1M+ row): throughout the entire range it just needs to work.
-          Again, following our cues from responsive design, we note that maybe labels on
-          scatterplots look great when you have under 50 data points, but bad when you have 2000.
-          Checkout Nicks
-          <a href="http://nrabinowitz.github.io/rdv/"> original demo </a>
-           for more details on the theory, as well to see his rad implementation in
-           raw d3.
-
-        </div>
-        <div className="responsive-vis-example-main-content">
+        <div className="controls-wrapper">
           {this.renderControls()}
-          <ResponsiveChartType
-              data={data}
-              ref="responsiveExample"
-              margin={EXAMPLE_MARGIN}
-              height={ASPECT_RATIO * visSize}
-              width={visSize} />
         </div>
+        <ResponsiveChartType
+            data={data}
+            ref="responsiveExample"
+            margin={EXAMPLE_MARGIN}
+            height={ASPECT_RATIO * visSize}
+            width={visSize} />
       </div>
     );
   }

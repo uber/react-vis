@@ -24,7 +24,7 @@
 
   .responsive-vis {
     display: flex;
-    justify-content: center;    
+    justify-content: center;
   }
 
   .responsive-bar-chart {
@@ -44,5 +44,12 @@
   .features-label {
     font-size: 24px;
     white-space: nowrap;
+  }
+
+  .controls-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 }

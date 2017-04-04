@@ -21,7 +21,6 @@
 import React from 'react';
 import {
   AreaSeries,
-  Hint,
   HorizontalBarSeries,
   XAxis,
   XYPlot,
@@ -33,14 +32,11 @@ import {filterFeatures, getPPP} from './responsive-vis-utils';
 // range constants
 const VERY_LOW_RANGE = [0, 0.08];
 const LOW_RANGE = [0, 0.7];
-const VERY_LOW_TO_HIGH = [0.08, Infinity];
 const HIGH_RANGE = [0.7, Infinity];
-// const MIN_PPP = 2e-5;
 
 export const BARCHART_FEATURES = [
   {min: -Infinity, max: Infinity, name: 'xaxis', group: 0},
   {min: VERY_LOW_RANGE[0], max: VERY_LOW_RANGE[1], name: 'yaxis', group: 1},
-  {min: VERY_LOW_TO_HIGH[0], max: VERY_LOW_TO_HIGH[1], name: 'mouseLabels', group: 1},
   {min: LOW_RANGE[0], max: LOW_RANGE[1], name: 'bars', group: 2},
   {min: HIGH_RANGE[0], max: HIGH_RANGE[1], name: 'area', group: 2}
 ];
@@ -59,19 +55,6 @@ function updateDataForArea(data, ppp) {
 }
 
 export default class ResponsiveBarChart extends React.Component {
-  state = {
-    hoveredPoint: false
-  }
-
-  _rememberValue() {
-    return (value, e) => {
-      this.setState({hoveredPoint: {
-        x: -25,
-        y: typeof value.y === 'string' ? value.y : e.index,
-        label: value.label
-      }});
-    };
-  }
 
   // todo build a root responsive class that has this as a class method
   getFeatures() {
@@ -84,7 +67,6 @@ export default class ResponsiveBarChart extends React.Component {
 
   render() {
     const {data, height, margin, width} = this.props;
-    const {hoveredPoint} = this.state;
 
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
@@ -107,7 +89,6 @@ export default class ResponsiveBarChart extends React.Component {
               colorType="literal"
               yRange={[0, innerHeight]}
               xRange={[0, innerWidth]}
-              onNearestX={featuresToRender.mouseLabels ? this._rememberValue() : null}
               data={updatedData} />
           )}
           {featuresToRender.area && (
@@ -118,15 +99,8 @@ export default class ResponsiveBarChart extends React.Component {
               yDomain={[0, updatedData.length]}
               yRange={[0, innerHeight]}
               xRange={[innerWidth, 0]}
-              onNearestX={featuresToRender.mouseLabels ? this._rememberValue() : null}
               data={updatedData} />
             )}
-          {featuresToRender.mouseLabels && hoveredPoint && (
-            <Hint
-              value={hoveredPoint}>
-              {hoveredPoint.label}
-            </Hint>
-          )}
         </XYPlot>
       </div>
     );
