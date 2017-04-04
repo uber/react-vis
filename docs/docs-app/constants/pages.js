@@ -182,6 +182,13 @@ export const docPages = generatePath([
           filename: 'mark-series.md',
           pageType: 'documentation'
         }
+      }, {
+        name: 'Arc Series',
+        content: {
+          markdown: getDocUrl('arc-series.md'),
+          filename: 'arc-series.md',
+          pageType: 'documentation'
+        }
       }
     ]
   },

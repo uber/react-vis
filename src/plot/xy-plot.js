@@ -30,6 +30,8 @@ import {CONTINUOUS_COLOR_RANGE, SIZE_RANGE, OPACITY_TYPE} from 'theme';
 const ATTRIBUTES = [
   'x',
   'y',
+  'radius',
+  'angle',
   'color',
   'fill',
   'stroke',

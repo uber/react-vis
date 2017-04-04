@@ -57,6 +57,7 @@ import TreemapExample from './treemap/dynamic-treemap';
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import DonutChartExample from './radial-chart/donut-chart';
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
+import ArcSeriesExample from './radial-chart/arc-series-example';
 
 import BasicSankeyExample from './sankey/basic';
 import VoronoiSankeyExample from './sankey/voronoi';
@@ -107,6 +108,7 @@ export const showCase = {
   SimpleRadialChart,
   DonutChartExample,
   CustomRadiusRadialChart,
+  ArcSeriesExample,
 
   BasicSankeyExample,
   VoronoiSankeyExample,

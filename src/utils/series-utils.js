@@ -68,6 +68,36 @@ function collectSeriesTypesInfo(children) {
 }
 
 /**
+ * Check series to see if it has angular data that needs to be converted
+ * @param {Array} data - an array of objects to check
+ * @returns {Boolean} whether or not this series contains polar configuration
+ */
+function seriesHasAngleRadius(data = []) {
+  if (!data) {
+    return false;
+  }
+  return data.some(row => row.radius && row.angle);
+}
+
+/**
+ * Possibly convert polar coordinates to x/y for computing domain
+ * @param {Array} data - an array of objects to check
+ * @param {String} attr - the property being checked
+ * @returns {Boolean} whether or not this series contains polar configuration
+ */
+function prepareData(data) {
+  if (!seriesHasAngleRadius(data)) {
+    return data;
+  }
+
+  return data.map(row => ({
+    ...row,
+    x: row.radius * Math.cos(row.angle),
+    y: row.radius * Math.sin(row.angle)
+  }));
+}
+
+/**
  * Collect the stacked data for all children in use. If the children don't have
  * the data (e.g. the child is invalid series or something else), then the child
  * is skipped.
@@ -86,14 +116,16 @@ export function getStackedData(children, attr) {
     }
 
     const {data, cluster = 'default'} = series.props;
-    if (!attr || !data || !data.length) {
-      accumulator.result.push(data);
+    const preppedData = prepareData(data, attr);
+
+    if (!attr || !preppedData || !preppedData.length) {
+      accumulator.result.push(preppedData);
       return accumulator;
     }
 
     const attr0 = `${attr}0`;
 
-    accumulator.result.push(data.map((d, dIndex) => {
+    accumulator.result.push(preppedData.map((d, dIndex) => {
       // In case if it's the first series don't try to override any values.
       if (!accumulator.seriesPointers[cluster]) {
         return {...d};
