@@ -107,7 +107,7 @@ Take a look at the [folder with examples](examples/) or check out some docs:
 
 To develop on this component, install the dependencies and then build and watch the static files:
 
-    npm install && npm run watch
+    npm install && npm run start
 
 Once complete, you can view the component's example in your browser (will open automatically).
 Any changes you make to the example code will run the compiler to build the files again.
