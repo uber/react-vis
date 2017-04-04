@@ -30,7 +30,7 @@ import {
   DIRECTION
 } from '../utils/axis-utils';
 
-import {AnimationPropType} from '../utils/animation-utils';
+import {AnimationPropType} from '../animation';
 
 const {VERTICAL, HORIZONTAL} = DIRECTION;
 

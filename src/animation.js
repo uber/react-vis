@@ -1,17 +1,40 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {interpolate} from 'd3-interpolate';
-import {spring, Motion} from 'react-motion';
-
+import {spring, Motion, presets} from 'react-motion';
 import PureRenderComponent from 'pure-render-component';
 
+const ANIMATION_PROPTYPES = PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.shape({
+    stiffness: PropTypes.number,
+    damping: PropTypes.number
+  }),
+  PropTypes.bool
+]);
+
 const propTypes = {
-  animatedProps: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-  onStart: React.PropTypes.func,
-  onEnd: React.PropTypes.func,
-  stiffness: React.PropTypes.number,
-  damping: React.PropTypes.number,
-  precision: React.PropTypes.number
+  animatedProps: PropTypes.arrayOf(PropTypes.string).isRequired,
+  animation: ANIMATION_PROPTYPES,
+  onStart: PropTypes.func,
+  onEnd: PropTypes.func
 };
+
+/**
+ * Format the animation style object
+ * @param {Object|String} animationStyle - The animation style property, either the name of a
+ * presets are one of noWobble, gentle, wobbly, stiff
+ */
+function getAnimationStyle(animationStyle = presets.noWobble) {
+  if (typeof animationStyle === 'string') {
+    return presets[animationStyle] || presets.noWobble;
+  }
+  const {damping, stiffness} = animationStyle;
+  return {
+    damping: damping || presets.noWobble.damping,
+    stiffness: stiffness || presets.noWobble.stiffness,
+    ...animationStyle
+  };
+}
 
 class Animation extends PureRenderComponent {
   constructor(props) {
@@ -87,8 +110,9 @@ class Animation extends PureRenderComponent {
   }
 
   render() {
+    const animationStyle = getAnimationStyle(this.props.animation);
     const defaultStyle = {i: 0};
-    const style = {i: spring(1)};
+    const style = {i: spring(1, animationStyle)};
     // In order to make Motion re-run animations each time, the random key is
     // always passed.
     // TODO: find a better solution for the spring.
@@ -105,3 +129,5 @@ Animation.propTypes = propTypes;
 Animation.displayName = 'Animation';
 
 export default Animation;
+
+export const AnimationPropType = ANIMATION_PROPTYPES;

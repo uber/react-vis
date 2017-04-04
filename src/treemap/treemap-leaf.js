@@ -21,7 +21,7 @@
 import React, {PropTypes} from 'react';
 
 import Animation from 'animation';
-import {AnimationPropType} from 'utils/animation-utils';
+import {AnimationPropType} from 'animation';
 import {getFontColorFromBackground} from 'utils/scales-utils';
 
 const ANIMATED_PROPS = [

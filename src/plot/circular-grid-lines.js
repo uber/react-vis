@@ -29,7 +29,7 @@ import {
   getTickValues
 } from '../utils/axis-utils';
 
-import {AnimationPropType} from '../utils/animation-utils';
+import {AnimationPropType} from '../animation';
 
 const propTypes = {
   centerX: PropTypes.number,

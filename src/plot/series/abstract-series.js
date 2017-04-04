@@ -22,7 +22,7 @@ import React from 'react';
 import {voronoi} from 'd3-voronoi';
 
 import PureRenderComponent from 'pure-render-component';
-import {AnimationPropType} from 'utils/animation-utils';
+import {AnimationPropType} from 'animation';
 import {
   getAttributeFunctor,
   getAttr0Functor,

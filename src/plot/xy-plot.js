@@ -24,7 +24,7 @@ import equal from 'deep-equal';
 import {extractScalePropsFromProps, getMissingScaleProps} from 'utils/scales-utils';
 import {getStackedData, getSeriesChildren, getSeriesPropsFromChildren} from 'utils/series-utils';
 import {getInnerDimensions, MarginPropType} from 'utils/chart-utils';
-import {AnimationPropType} from 'utils/animation-utils';
+import {AnimationPropType} from 'animation';
 import {CONTINUOUS_COLOR_RANGE, SIZE_RANGE, OPACITY_TYPE} from 'theme';
 
 const ATTRIBUTES = [
