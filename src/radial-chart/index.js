@@ -21,9 +21,8 @@
 import React, {PropTypes} from 'react';
 import {arc as arcBuilder, pie as pieBuilder} from 'd3-shape';
 
-import Animation from 'animation';
+import Animation, {AnimationPropType} from 'animation';
 import {getInnerDimensions, MarginPropType} from 'utils/chart-utils';
-import {AnimationPropType} from 'utils/animation-utils';
 import {DEFAULT_OPACITY, OPACITY_TYPE, DISCRETE_COLOR_RANGE} from 'theme';
 import {
   getAttributeFunctor,

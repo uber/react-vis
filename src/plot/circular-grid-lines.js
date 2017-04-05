@@ -22,14 +22,12 @@ import React, {PropTypes} from 'react';
 
 import PureRenderComponent from 'pure-render-component';
 import {getAttributeScale} from 'utils/scales-utils';
-import Animation from 'animation';
+import Animation, {AnimationPropType} from 'animation';
 
 import {
   getTicksTotalFromSize,
   getTickValues
 } from '../utils/axis-utils';
-
-import {AnimationPropType} from '../utils/animation-utils';
 
 const propTypes = {
   centerX: PropTypes.number,

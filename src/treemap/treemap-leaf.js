@@ -20,8 +20,7 @@
 
 import React, {PropTypes} from 'react';
 
-import Animation from 'animation';
-import {AnimationPropType} from 'utils/animation-utils';
+import Animation, {AnimationPropType} from 'animation';
 import {getFontColorFromBackground} from 'utils/scales-utils';
 
 const ANIMATED_PROPS = [
@@ -66,6 +65,7 @@ class TreemapLeaf extends React.Component {
       y0,
       y1
     } = this.props;
+
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_PROPS}>

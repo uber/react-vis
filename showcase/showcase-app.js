@@ -10,6 +10,7 @@ const {
   StackedHorizontalBarChart,
   ClusteredStackedVerticalBarChart,
   StackedHistogram,
+  AnimationExample,
   AreaChart,
   AreaChartElevated,
   FauxScatterplotChart,
@@ -224,6 +225,10 @@ class App extends Component {
           <section>
             <h3>Voronoi Line Chart</h3>
             <VoronoiLineChart />
+          </section>
+          <section>
+            <h3>Animation Example</h3>
+            <AnimationExample />
           </section>
         </article>
         <article id="radial-charts">

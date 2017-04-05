@@ -22,15 +22,13 @@ import React from 'react';
 
 import PureRenderComponent from 'pure-render-component';
 import {getAttributeScale} from 'utils/scales-utils';
-import Animation from 'animation';
+import Animation, {AnimationPropType} from 'animation';
 
 import {
   getTicksTotalFromSize,
   getTickValues,
   DIRECTION
 } from '../utils/axis-utils';
-
-import {AnimationPropType} from '../utils/animation-utils';
 
 const {VERTICAL, HORIZONTAL} = DIRECTION;
 

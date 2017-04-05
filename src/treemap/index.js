@@ -33,7 +33,7 @@ import {
 } from 'd3-hierarchy';
 
 import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, DEFAULT_OPACITY, OPACITY_TYPE} from 'theme';
-import {AnimationPropType} from 'utils/animation-utils';
+import {AnimationPropType} from 'animation';
 import {getAttributeFunctor, getMissingScaleProps} from 'utils/scales-utils';
 
 import TreemapLeaf from './treemap-leaf';

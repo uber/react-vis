@@ -1,11 +1,30 @@
 ## Animation
 
-`react-vis` animates its components by default. You can override this behavior by passing `animation` property to the components. Animation property can have one of the following values:
+Animation makes your charts feel physical, it makes them feel alive, shoot it makes them feel l33t. `react-vis` offers a simple portal into the [react-motion](https://github.com/chenglou/react-motion) animation system by exposing a simple animation prop on most components! This prop accepts three types of values:
 
-- `true` The child components **will be** animated with the default settings. This is a default value.
-- `false` The child components **will not be** animated.
-- `Object` The child components **will be** animated with the given settings.
+*Booleans*: if true is present then `react-vis` will use the `no-wobble` preset (see below)
 
-Currently animation object has only one property — `duration` (length of animation in milliseconds).
+*Strings*: React-motion offers several different motion presets that cover most use cases. To access them set your animation prop to one of [noWobble, gentle, wobbly, stiff].
 
-Animations in `react-vis` are made by both CSS and, in case if animations in a given area are not supported, by JS.
+<!-- INJECT:"AnimationExample" -->
+
+*Objects*: react-motion expects an object formatting like {damping: NUMBER, stiffness: NUMBER}, and if you want to give us an object like that, we will hand it direct to react-motion.
+
+<!-- INJECT:"TreemapExample" -->
+
+The above example has `animation: {damping: 9, stiffness: 300}`!
+
+**NOTE** In Jsx the presence of the animation prop is enough to trigger an animation, eg
+
+```javascript
+<MarkSeries
+  data={nodes}
+  animation
+  colorType={'category'}
+  stroke={'#ddd'}
+  strokeWidth={2}
+  colorRange={colors}
+  />
+```
+
+Will be treated as true. If you want to include the animation prop but not have animation be engaged, you need to use animation={null}!

@@ -83,7 +83,6 @@ class ForceDirectedGraph extends React.Component {
 
   static get propTypes() {
     return {
-      // animation: AnimationPropType,
       className: PropTypes.string,
       data: PropTypes.object.isRequired,
       height: PropTypes.number.isRequired,

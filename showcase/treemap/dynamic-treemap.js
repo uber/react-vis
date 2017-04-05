@@ -19,65 +19,63 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import window from 'global/window';
 
 import Treemap from 'treemap';
 
-export default class DynamicTreemapExample extends React.Component {
+function _getRandomData() {
+  const totalLeaves = Math.random() * 20;
+  const leaves = [];
+  let title;
+  for (let i = 0; i < totalLeaves; i++) {
+    title = Math.random();
+    if (Math.random() > 0.5) {
+      title = (
+        <b>{title}</b>
+      );
+    }
+    leaves.push({
+      title,
+      size: Math.random() * 1000,
+      color: Math.random()
+    });
+  }
+  return {
+    title: '',
+    color: 1,
+    children: leaves
+  };
+}
 
+export default class DynamicTreemapExample extends React.Component {
   state = {
     hoveredNode: false,
-    treemapData: this._getRandomData(),
+    treemapData: _getRandomData(),
     useCirclePacking: false
   }
 
-  componentDidMount() {
-    window.setInterval(
-      () => this.setState({treemapData: this._getRandomData()}),
-      5000
-    );
-  }
-
-  _getRandomData() {
-    const totalLeaves = Math.random() * 20;
-    const leaves = [];
-    let title;
-    for (let i = 0; i < totalLeaves; i++) {
-      title = Math.random();
-      if (Math.random() > 0.5) {
-        title = (
-          <b>{title}</b>
-        );
-      }
-      leaves.push({
-        title,
-        size: Math.random() * 1000,
-        color: Math.random()
-      });
-    }
-    return {
-      title: '',
-      color: 1,
-      children: leaves
-    };
-  }
-
   render() {
+    const {hoveredNode, useCirclePacking} = this.state;
     const treeProps = {
-      animation: true,
+      animation: {
+        damping: 9,
+        stiffness: 300
+      },
       data: this.state.treemapData,
       onLeafMouseOver: x => this.setState({hoveredNode: x}),
       onLeafMouseOut: () => this.setState({hoveredNode: false}),
-      onLeafClick: () => this.setState({useCirclePacking: !this.state.useCirclePacking}),
+      onLeafClick: () => this.setState({treemapData: _getRandomData()}),
       height: 300,
       mode: this.state.useCirclePacking ? 'circlePack' : 'squarify',
       width: 350
     };
     return (
       <div className="dynamic-treemap-example">
-        click below!
+        <button onClick={() => this.setState({useCirclePacking: !useCirclePacking})}>
+          TOGGLE CIRCLE PACK
+        </button>
         <Treemap {...treeProps}/>
-        {this.state.hoveredNode && this.state.hoveredNode.value}
+        click above to the update data
+        {hoveredNode && hoveredNode.value}
       </div>
     );
   }
