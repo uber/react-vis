@@ -31,6 +31,7 @@ export const examplePages = generatePath([
       name: 'Showcase',
       content: {
         pageType: 'example',
+        markdown: getDocUrl('examples/showcase.md'),
         component: ShowcaseApp
       }
     }, {
@@ -44,18 +45,21 @@ export const examplePages = generatePath([
       name: 'Force Directed Graph',
       content: {
         pageType: 'example',
+        markdown: getDocUrl('examples/building-things-other-than-charts.md'),
         component: ForceDirectedGraph
       }
     }, {
       name: 'Complex Chart',
       content: {
         pageType: 'example',
+        markdown: getDocUrl('examples/complex-chart.md'),
         component: ComplexChartExample
       }
     }, {
       name: 'Streamgraph',
       content: {
         pageType: 'example',
+        markdown: getDocUrl('examples/stream-graph.md'),
         component: StreamgraphExample
       }
     }, {
