@@ -65,6 +65,7 @@ class TreemapLeaf extends React.Component {
       y0,
       y1
     } = this.props;
+
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_PROPS}>
