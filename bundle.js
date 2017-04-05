@@ -21482,6 +21482,7 @@ const examplePages = generatePath([{
     name: 'Showcase',
     content: {
       pageType: 'example',
+      markdown: getDocUrl('examples/showcase.md'),
       component: __WEBPACK_IMPORTED_MODULE_4__showcase_showcase_app___default.a
     }
   }, {
@@ -21495,18 +21496,21 @@ const examplePages = generatePath([{
     name: 'Force Directed Graph',
     content: {
       pageType: 'example',
+      markdown: getDocUrl('examples/building-things-other-than-charts.md'),
       component: __WEBPACK_IMPORTED_MODULE_3__examples_force_directed_graph_force_directed_example__["a" /* default */]
     }
   }, {
     name: 'Complex Chart',
     content: {
       pageType: 'example',
+      markdown: getDocUrl('examples/complex-chart.md'),
       component: __WEBPACK_IMPORTED_MODULE_0__examples_complex_chart_complex_chart_example__["a" /* default */]
     }
   }, {
     name: 'Streamgraph',
     content: {
       pageType: 'example',
+      markdown: getDocUrl('examples/stream-graph.md'),
       component: __WEBPACK_IMPORTED_MODULE_2__examples_streamgraph_streamgraph_example__["a" /* default */]
     }
   }, {
