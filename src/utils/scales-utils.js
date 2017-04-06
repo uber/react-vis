@@ -151,6 +151,7 @@ export function _getScaleFnFromScaleObject(scaleObject) {
     (domain[0] === 0 ? [-1, 0] : [-domain[0], domain[0]]) :
     domain;
   const scale = SCALE_FUNCTIONS[type]().domain(modDomain).range(range);
+  console.log(type)
   if (type === ORDINAL_SCALE_TYPE) {
     scale.padding(0.5);
   }

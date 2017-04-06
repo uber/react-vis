@@ -1,4 +1,4 @@
-react-vis stream-graph example
+react-vis parallel-coordinates example
 =================
 
 ## Setup
@@ -6,6 +6,6 @@ react-vis stream-graph example
 git clone https://github.com/uber/react-vis
 cd react-vis/examples/
 npm install
-cd stream-graph
+cd parallel-coordinates
 npm start
 ```
