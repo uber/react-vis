@@ -48,7 +48,6 @@ See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
 `CircularGridLines` allows you to draw circular grid lines. This might be useful for a polar scatterplot, as shown above, or a radar chart or any of a wide host of additional contexts. Usage example
 
-
 ```
 <XYPlot
   margin={margin}
