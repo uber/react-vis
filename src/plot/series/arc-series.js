@@ -50,7 +50,6 @@ class ArcSeries extends AbstractSeries {
 
   componentWillReceiveProps(nextProps) {
     this.setState({scaleProps: this._getAllScaleProps(nextProps)});
-    // console.log(nextProps)
   }
 
   /**
@@ -85,7 +84,6 @@ class ArcSeries extends AbstractSeries {
     const {innerWidth, innerHeight} = props;
     const radius = Math.min(innerWidth / 2, innerHeight / 2);
     return {
-      // wrong
       radiusRange: [0, radius],
       _radiusValue: radius,
       angleType: 'literal'

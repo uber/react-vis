@@ -230,6 +230,14 @@ export const docPages = generatePath([
           filename: 'radial-chart.md',
           pageType: 'documentation'
         }
+      },
+      {
+        name: 'Sunburst Diagram',
+        content: {
+          markdown: getDocUrl('sunburst.md'),
+          filename: 'sunburst.md',
+          pageType: 'documentation'
+        }
       }
     ]
   }
