@@ -103,7 +103,7 @@ export default class BasicSunburst extends React.Component {
           data={data}
           height={300}
           width={350}/>
-        {pathValue}
+        <div className="basic-sunburst-example-path-name">{pathValue}</div>
       </div>
     );
   }

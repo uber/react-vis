@@ -39,15 +39,11 @@ export default class ClockExample extends React.Component {
   }
 
   componentDidMount() {
-    /* eslint-disable react/no-did-mount-set-state */
-    this.setState({timerId: setInterval(() => {
-      this.setState({time: getSeconds()});
-    }, 100)});
-    /* eslint-enable react/no-did-mount-set-state */
+    this._timerId = setInterval(() => this.setState({time: getSeconds()}), 100);
   }
 
   componentWillUnmount() {
-    clearInterval(this.state.timerId);
+    clearInterval(this._timerId);
     this.setState({timerId: false});
   }
 
