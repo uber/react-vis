@@ -55,6 +55,8 @@ import VoronoiLineChart from './plot/voronoi-line-chart';
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
 
+import BasicSunburst from './sunbursts/basic-sunburst';
+
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import DonutChartExample from './radial-chart/donut-chart';
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
@@ -106,6 +108,8 @@ export const showCase = {
 
   SimpleTreemap,
   TreemapExample,
+
+  BasicSunburst,
 
   SimpleRadialChart,
   DonutChartExample,

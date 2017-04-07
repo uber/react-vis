@@ -50,6 +50,7 @@ export ContinuousSizeLegend from 'legends/continuous-size-legend';
 export Treemap from 'treemap';
 export RadialChart from 'radial-chart';
 export Sankey from 'sankey';
+export Sunburst from 'sunburst';
 
 export makeWidthFlexible from 'make-vis-flexible';
 

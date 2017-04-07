@@ -50,7 +50,6 @@ class ArcSeries extends AbstractSeries {
 
   componentWillReceiveProps(nextProps) {
     this.setState({scaleProps: this._getAllScaleProps(nextProps)});
-    // console.log(nextProps)
   }
 
   /**
@@ -85,7 +84,6 @@ class ArcSeries extends AbstractSeries {
     const {innerWidth, innerHeight} = props;
     const radius = Math.min(innerWidth / 2, innerHeight / 2);
     return {
-      // wrong
       radiusRange: [0, radius],
       _radiusValue: radius,
       angleType: 'literal'
@@ -142,20 +140,21 @@ class ArcSeries extends AbstractSeries {
         ref="container"
         transform={`translate(${marginLeft + xTranslate},${marginTop + yTranslate})`}>
         {data.map((row, i) => {
+          const cleanedRow = {...row};
           const noRadius = radiusDomain[1] === radiusDomain[0];
           const arcArg = {
-            innerRadius: noRadius ? 0 : radius0Functor(row),
-            outerRadius: radiusFunctor(row),
-            startAngle: angle0Functor(row) || 0,
-            endAngle: angleFunctor(row)
+            innerRadius: noRadius ? 0 : radius0Functor(cleanedRow),
+            outerRadius: radiusFunctor(cleanedRow),
+            startAngle: angle0Functor(cleanedRow) || 0,
+            endAngle: angleFunctor(cleanedRow)
           };
           const arcedData = arcBuilder();
-          const rowStyle = row.style || {};
+          const rowStyle = cleanedRow.style || {};
           return (<path {...{
             style: {
-              opacity: opacityFunctor && opacityFunctor(row),
-              stroke: strokeFunctor && strokeFunctor(row),
-              fill: fillFunctor && fillFunctor(row),
+              opacity: opacityFunctor && opacityFunctor(cleanedRow),
+              stroke: strokeFunctor && strokeFunctor(cleanedRow),
+              fill: fillFunctor && fillFunctor(cleanedRow),
               ...style,
               ...rowStyle
             },

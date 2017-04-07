@@ -46,6 +46,28 @@ const DEFAULT_MARGINS = {
   bottom: 40
 };
 
+function cleanseData(data) {
+  return data.map(series => {
+    if (!Array.isArray(series)) {
+      return series;
+    }
+    return series.map(row => ({...row, parent: null}));
+  });
+}
+
+function checkIfMixinsAreEqual(nextScaleMixins, scaleMixins) {
+  const newMixins = {
+    ...nextScaleMixins,
+    _allData: cleanseData(nextScaleMixins._allData)
+  };
+  const oldMixins = {
+    ...scaleMixins,
+    _allData: cleanseData(scaleMixins._allData)
+  };
+  // it's hard to say if this function is reasonable?
+  return equal(newMixins, oldMixins);
+}
+
 class XYPlot extends React.Component {
 
   static get propTypes() {
@@ -89,7 +111,7 @@ class XYPlot extends React.Component {
     const nextData = getStackedData(children, nextProps.stackBy);
     const {scaleMixins} = this.state;
     const nextScaleMixins = this._getScaleMixins(nextData, nextProps);
-    if (!equal(nextScaleMixins, scaleMixins)) {
+    if (!checkIfMixinsAreEqual(nextScaleMixins, scaleMixins)) {
       this.setState({
         scaleMixins: nextScaleMixins,
         data: nextData
