@@ -24,17 +24,7 @@ import Sunburst from 'sunburst';
 
 import D3FlareData from '../treemap/d3-flare-example.json';
 
-function getTextPath(node) {
-  const name = node.data && node.data.name || node.name || '';
-  if (!node.parent) {
-    return 'root';
-  }
-
-  return `${getTextPath(node.parent)} > ${name}`;
-}
-
 function getKeyPath(node) {
-  // const name = node.data && node.data.name || node.name || '';
   if (!node.parent) {
     return 'root';
   }
@@ -42,9 +32,9 @@ function getKeyPath(node) {
   return [node.data.name].concat(getKeyPath(node.parent));
 }
 
-function decorateData(data) {
-  if (!data.children) {
-    return data;
+function updateData(data, keyPath) {
+  if (data.children) {
+    data.children.map(child => updateData(child, keyPath));
   }
   // add a fill to all the uncolored cells
   if (!data.color) {
@@ -52,45 +42,51 @@ function decorateData(data) {
       fill: '#223F9A'
     };
   }
-  data.children.map(child => decorateData(child));
+  data.style = {
+    ...data.style,
+    fillOpacity: keyPath && data.name && keyPath.indexOf(data.name) === -1 ? 0.2 : 1
+  };
+
   return data;
 }
-const decoratedData = decorateData(D3FlareData);
+
+const decoratedData = updateData(D3FlareData, false);
 
 export default class BasicSunburst extends React.Component {
   state = {
-    value: false,
-    subState: false,
+    pathValue: false,
     data: decoratedData
   }
 
   render() {
-    const {subState, data} = this.state;
+    const {data, pathValue} = this.state;
     return (
       <div className="basic-sunburst-example-wrapper">
         <Sunburst
           animation
           className="basic-sunburst-example"
+          hideRootNode
           onValueMouseOver={node => {
-            const yy = getTextPath(node.parent);
-            const xx = getKeyPath(node.parent);
-            // console.log(xx)
-            // console.log(this)
-            // debugger;
-            this.setState({value: yy});
+            const path = getKeyPath(node.parent);
+            this.setState({
+              pathValue: Array.isArray(path) && path.join(' > ') || path,
+              data: updateData(decoratedData, path)
+            });
           }}
-          onValueClick={node => {
-            this.setState({subState: subState ? false : node});
-          }}
+          onSeriesMouseOut={() => this.setState({
+            pathValue: false,
+            data: updateData(decoratedData, false)
+          })}
           style={{
             stroke: '#ddd',
-            strokeWidth: '1px'
+            strokeOpacity: 0.3,
+            strokeWidth: '0.5'
           }}
           colorType="literal"
           data={data}
           height={300}
           width={350}/>
-        {this.state.value}
+        {pathValue}
       </div>
     );
   }
