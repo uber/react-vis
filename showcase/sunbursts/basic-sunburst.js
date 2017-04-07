@@ -21,17 +21,30 @@
 import React from 'react';
 
 import Sunburst from 'sunburst';
+import {EXTENDED_DISCRETE_COLOR_RANGE} from 'theme';
 
 import D3FlareData from '../treemap/d3-flare-example.json';
 
+/**
+ * Recursively work backwards from highlighted node to find path of valud nodes
+ * @param {Object} node - the current node being considered
+ * @returns {Array} an array of strings describing the key route to the current node
+ */
 function getKeyPath(node) {
   if (!node.parent) {
-    return 'root';
+    return ['root'];
   }
 
-  return [node.data.name].concat(getKeyPath(node.parent));
+  return [node.data && node.data.name || node.name].concat(getKeyPath(node.parent));
 }
 
+/**
+ * Recursively modify data depending on whether or not each cell has been selected by the hover/highlight
+ * @param {Object} data - the current node being considered
+ * @param {Object|Boolean} keyPath - a map of keys that are in the highlight path
+ * if this is false then all nodes are marked as selected
+ * @returns {Object} Updated tree structure
+ */
 function updateData(data, keyPath) {
   if (data.children) {
     data.children.map(child => updateData(child, keyPath));
@@ -39,12 +52,12 @@ function updateData(data, keyPath) {
   // add a fill to all the uncolored cells
   if (!data.color) {
     data.style = {
-      fill: '#223F9A'
+      fill: EXTENDED_DISCRETE_COLOR_RANGE[5]
     };
   }
   data.style = {
     ...data.style,
-    fillOpacity: keyPath && data.name && keyPath.indexOf(data.name) === -1 ? 0.2 : 1
+    fillOpacity: keyPath && !keyPath[data.name] ? 0.2 : 1
   };
 
   return data;
@@ -67,10 +80,14 @@ export default class BasicSunburst extends React.Component {
           className="basic-sunburst-example"
           hideRootNode
           onValueMouseOver={node => {
-            const path = getKeyPath(node.parent);
+            const path = getKeyPath(node).reverse();
+            const pathAsMap = path.reduce((res, row) => {
+              res[row] = true;
+              return res;
+            }, {});
             this.setState({
-              pathValue: Array.isArray(path) && path.join(' > ') || path,
-              data: updateData(decoratedData, path)
+              pathValue: path.join(' > '),
+              data: updateData(decoratedData, pathAsMap)
             });
           }}
           onSeriesMouseOut={() => this.setState({

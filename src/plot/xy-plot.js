@@ -46,6 +46,13 @@ const DEFAULT_MARGINS = {
   bottom: 40
 };
 
+
+/**
+ * Remove parents from tree formatted data. deep-equal doesnt play nice with data
+ * that has circular structures, so we make every node single directional by pruning the parents.
+ * @param {Array} data - the data object to have circular deps resolved in
+ * @returns {Array} the sanitized data
+ */
 function cleanseData(data) {
   return data.map(series => {
     if (!Array.isArray(series)) {
@@ -55,6 +62,12 @@ function cleanseData(data) {
   });
 }
 
+/**
+ * Wrapper on the deep-equal method for checking equality of next props vs current props
+ * @param {Object} scaleMixins - Scale object.
+ * @param {Object} nextScaleMixins - Scale object.
+ * @returns {Boolean} whether or not the two mixins objects are equal
+ */
 function checkIfMixinsAreEqual(nextScaleMixins, scaleMixins) {
   const newMixins = {
     ...nextScaleMixins,
