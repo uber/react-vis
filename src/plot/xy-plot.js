@@ -46,7 +46,6 @@ const DEFAULT_MARGINS = {
   bottom: 40
 };
 
-
 /**
  * Remove parents from tree formatted data. deep-equal doesnt play nice with data
  * that has circular structures, so we make every node single directional by pruning the parents.

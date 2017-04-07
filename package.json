@@ -25,6 +25,7 @@
     "lint": "eslint src tests showcase docs --ignore-pattern node_modules --ignore-pattern bundle.js",
     "lint-styles": "stylelint src/styles/*.scss --syntax scss",
     "test": "babel-node tests/index.js",
+    "full-test": "npm run lint && npm run cover",
     "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test",
     "remove-unpm-rfs": "./remove-refs-to-unpm.pl"
   },
