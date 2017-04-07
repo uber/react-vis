@@ -40,6 +40,7 @@ const {
   TreemapExample,
 
   BasicSunburst,
+  ClockExample,
 
   SimpleRadialChart,
   DonutChartExample,
@@ -268,6 +269,10 @@ class App extends Component {
           <section>
             <h3>Basic Sunburst</h3>
             <BasicSunburst />
+          </section>
+          <section>
+            <h3>Clock</h3>
+            <ClockExample />
           </section>
         </article>
         <article id="legends">

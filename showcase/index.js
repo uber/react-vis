@@ -56,6 +56,7 @@ import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
 
 import BasicSunburst from './sunbursts/basic-sunburst';
+import ClockExample from './sunbursts/clock-example';
 
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import DonutChartExample from './radial-chart/donut-chart';
@@ -110,6 +111,7 @@ export const showCase = {
   TreemapExample,
 
   BasicSunburst,
+  ClockExample,
 
   SimpleRadialChart,
   DonutChartExample,
