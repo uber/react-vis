@@ -55,7 +55,7 @@ export default class ClockExample extends React.Component {
     const {time} = this.state;
     const seconds = time % 60;
     const minutes = (time / 60) % 60;
-    const hours = (time / 3600) % 24;
+    const hours = (time / (60 * 24)) % 24;
     return (
       <XYPlot
         xDomain={[-3, 3]}
@@ -63,7 +63,10 @@ export default class ClockExample extends React.Component {
         width={300}
         height={300}>
         <ArcSeries
-          animation
+          animation={{
+            damping: 9,
+            stiffness: 300
+          }}
           radiusDomain={[0, 3]}
           data={[
             {angle0: 0, angle: seconds / 60 * 2 * PI, radius0: 1, radius: 1.5, color: 0},
