@@ -74,7 +74,6 @@ class App extends Component {
             </nav>
           </div>
         </header>)}
-{/*
         <article id="plots">
           <h1>Plots</h1>
           {!forExample && (<section>
@@ -247,12 +246,8 @@ class App extends Component {
             <h3>Custom Radius</h3>
             <CustomRadiusRadialChart />
           </section>
-          <section>
-            <h3>Arc Series Example</h3>
-            <ArcSeriesExample />
-          </section>
+
         </article>
-*/}
         <article id="treemaps">
           <h1>Treemap</h1>
           <section>
@@ -263,12 +258,18 @@ class App extends Component {
             <h3>Animated Treemap</h3>
             <TreemapExample />
           </section>
+        </article>
+        <article id="sunbursts">
+          <h1>Sunbursts</h1>
+          <section>
+            <h3>Arc Series Example</h3>
+            <ArcSeriesExample />
+          </section>
           <section>
             <h3>Basic Sunburst</h3>
             <BasicSunburst />
           </section>
         </article>
-{/*
         <article id="legends">
           <h1>Legends</h1>
           <h2>Discrete color legend</h2>
@@ -307,7 +308,6 @@ class App extends Component {
             <VoronoiSankeyExample />
           </section>
         </article>
-*/}
       </main>
     );
   }
