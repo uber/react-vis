@@ -27,6 +27,10 @@ import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
 
 import AbstractSeries from './abstract-series';
+import {
+  valueEventHandlers,
+  valueEventPropTypes
+} from 'utils/interactivity-utils';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--mark';
 const DEFAULT_STROKE_WIDTH = 1;
@@ -34,7 +38,7 @@ const DEFAULT_STROKE_WIDTH = 1;
 class MarkSeries extends AbstractSeries {
 
   render() {
-    const {animation, className, data, marginLeft, marginTop, strokeWidth} = this.props;
+    const {animation, className, data, focusable, marginLeft, marginTop, strokeWidth} = this.props;
     if (!data) {
       return null;
     }
@@ -61,19 +65,18 @@ class MarkSeries extends AbstractSeries {
          transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {
           const attrs = {
-            r: sizeFunctor ? sizeFunctor(d) : DEFAULT_SIZE,
             cx: xFunctor(d),
             cy: yFunctor(d),
+            key: i,
+            r: sizeFunctor ? sizeFunctor(d) : DEFAULT_SIZE,
             style: {
               opacity: opacityFunctor ? opacityFunctor(d) : DEFAULT_OPACITY,
               stroke: strokeFunctor && strokeFunctor(d),
               fill: fillFunctor && fillFunctor(d),
               strokeWidth: strokeWidth || DEFAULT_STROKE_WIDTH
             },
-            key: i,
-            onClick: e => this._valueClickHandler(d, e),
-            onMouseOver: e => this._valueMouseOverHandler(d, e),
-            onMouseOut: e => this._valueMouseOutHandler(d, e)
+            tabIndex: focusable ? 0 : null,
+            ...valueEventHandlers(this.props, d)
           };
           return <circle {...attrs} />;
         })}
@@ -85,6 +88,7 @@ class MarkSeries extends AbstractSeries {
 MarkSeries.displayName = 'MarkSeries';
 MarkSeries.propTypes = {
   ...AbstractSeries.propTypes,
+  ...valueEventPropTypes,
   strokeWidth: PropTypes.number
 };
 export default MarkSeries;

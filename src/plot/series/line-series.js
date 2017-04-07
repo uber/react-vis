@@ -25,6 +25,10 @@ import * as d3Shape from 'd3-shape';
 import Animation from 'animation';
 import {DEFAULT_OPACITY} from 'theme';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+import {
+  seriesEventHandlers,
+  seriesEventPropTypes
+} from 'utils/interactivity-utils';
 
 import AbstractSeries from './abstract-series';
 
@@ -43,6 +47,7 @@ const defaultProps = {
 
 const propTypes = {
   ...AbstractSeries.propTypes,
+  ...seriesEventPropTypes,
   strokeStyle: PropTypes.oneOf(Object.keys(STROKE_STYLES)),
   curve: PropTypes.oneOfType([
     PropTypes.string,
@@ -66,7 +71,7 @@ class LineSeries extends AbstractSeries {
   }
 
   render() {
-    const {animation, className, data} = this.props;
+    const {animation, className, data, focusable} = this.props;
     if (!data) {
       return null;
     }
@@ -93,9 +98,8 @@ class LineSeries extends AbstractSeries {
         d={d}
         className={`${predefinedClassName} ${className}`}
         transform={`translate(${marginLeft},${marginTop})`}
-        onMouseOver={this._seriesMouseOverHandler}
-        onMouseOut={this._seriesMouseOutHandler}
-        onClick={this._seriesClickHandler}
+        tabIndex={focusable ? 0 : null}
+        {...seriesEventHandlers(this.props)}
         style={{
           opacity,
           strokeDasharray: STROKE_STYLES[strokeStyle] || strokeDasharray,

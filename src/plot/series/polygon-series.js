@@ -25,6 +25,11 @@ import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 
 import AbstractSeries from './abstract-series';
 
+import {
+  seriesEventHandlers,
+  seriesEventPropTypes
+} from 'utils/interactivity-utils';
+
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--polygon';
 const DEFAULT_COLOR = '#12939A';
 
@@ -35,7 +40,8 @@ class PolygonSeries extends AbstractSeries {
 
   static get propTypes() {
     return {
-      ... AbstractSeries.propTypes
+      ...AbstractSeries.propTypes,
+      ...seriesEventPropTypes
     };
   }
 
@@ -67,14 +73,12 @@ class PolygonSeries extends AbstractSeries {
     return (
       <path {...{
         className: `${predefinedClassName} ${className}`,
-        onMouseOver: this._seriesMouseOverHandler,
-        onMouseOut: this._seriesMouseOutHandler,
-        onClick: this._seriesClickHandler,
-        fill: color || DEFAULT_COLOR,
-        style,
         d: generatePath(data, xFunctor, yFunctor),
-        transform: `translate(${marginLeft},${marginTop})`,
-        ref: 'container'
+        fill: color || DEFAULT_COLOR,
+        ref: 'container',
+        style,
+        ...seriesEventHandlers(this.props),
+        transform: `translate(${marginLeft},${marginTop})`
       }}/>
     );
   }

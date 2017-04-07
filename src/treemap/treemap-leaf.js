@@ -24,6 +24,11 @@ import PropTypes from 'prop-types';
 
 import Animation, {AnimationPropType} from 'animation';
 import {getFontColorFromBackground} from 'utils/scales-utils';
+import {
+  valueEventHandlers,
+  valueEventPropTypes,
+  ValueFocusable
+} from 'utils/interactivity-utils';
 
 const ANIMATED_PROPS = [
   'colorRange', 'colorDomain', 'color',
@@ -35,13 +40,11 @@ class TreemapLeaf extends React.Component {
 
   static get propTypes() {
     return {
+      ...valueEventPropTypes,
       animation: AnimationPropType,
       height: PropTypes.number.isRequired,
       mode: PropTypes.string,
       node: PropTypes.object.isRequired,
-      onLeafClick: PropTypes.func,
-      onLeafMouseOver: PropTypes.func,
-      onLeafMouseOut: PropTypes.func,
       scales: PropTypes.object.isRequired,
       width: PropTypes.number.isRequired,
       r: PropTypes.number.isRequired,
@@ -55,11 +58,9 @@ class TreemapLeaf extends React.Component {
   render() {
     const {
       animation,
+      focusable,
       mode,
       node,
-      onLeafClick,
-      onLeafMouseOver,
-      onLeafMouseOut,
       r,
       scales,
       x0,
@@ -80,12 +81,13 @@ class TreemapLeaf extends React.Component {
     const opacity = scales.opacity(node);
     const color = getFontColorFromBackground(background);
     const {data: {title}} = node;
+
     return (
       <div
         className={`rv-treemap__leaf ${useCirclePacking ? 'rv-treemap__leaf--circle' : ''}`}
-        onMouseEnter={event => onLeafMouseOver(node, event)}
-        onMouseLeave={event => onLeafMouseOut(node, event)}
-        onClick={event => onLeafClick(node, event)}
+        tabIndex={focusable ? 0 : null}
+        role={focusable ? 'button' : null}
+        {...valueEventHandlers(this.props, node)}
         style={{
           top: useCirclePacking ? (y0 - r) : y0,
           left: useCirclePacking ? (x0 - r) : x0,
@@ -101,4 +103,4 @@ class TreemapLeaf extends React.Component {
   }
 }
 
-export default TreemapLeaf;
+export default ValueFocusable(TreemapLeaf);

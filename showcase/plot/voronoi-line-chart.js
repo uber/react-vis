@@ -75,8 +75,9 @@ export default class Example extends React.Component {
     const {hoveredNode, showVoronoi} = this.state;
     return (
       <div>
-        <label style={{display: 'block'}}>
+        <label style={{display: 'block'}} htmlFor="showVoronoiCheckbox">
           <input
+            id="showVoronoiCheckbox"
             type="checkbox"
             checked={showVoronoi}
             onChange={e => this.setState({showVoronoi: !showVoronoi})}
@@ -107,8 +108,8 @@ export default class Example extends React.Component {
           <Voronoi
             extent={[[margin.left, margin.top], [width - margin.right, height - margin.bottom]]}
             nodes={lines.reduce((acc, d) => [...acc, ...d], [])}
-            onHover={node => this.setState({hoveredNode: node})}
-            onBlur={() => this.setState({hoveredNode: null})}
+            onValueMouseEnter={node => this.setState({hoveredNode: node})}
+            onValueMouseLeave={() => this.setState({hoveredNode: null})}
             polygonStyle={{stroke: showVoronoi ? 'rgba(0, 0, 0, .2)' : null}}
             x={d => x(d.x)}
             y={d => y(d.y)}

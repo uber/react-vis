@@ -4,8 +4,12 @@ import {sankey} from 'd3-sankey-align';
 
 import Voronoi from 'plot/voronoi';
 import {DISCRETE_COLOR_RANGE} from 'theme';
-
-const NOOP = f => f;
+import {
+  valueEventHandlers,
+  valueEventPropTypes,
+  valueEventHandlerPassThrough,
+  ValueFocusable
+} from 'utils/interactivity-utils';
 
 const DEFAULT_LINK_COLOR = DISCRETE_COLOR_RANGE[1];
 const DEFAULT_LINK_OPACITY = 0.7;
@@ -21,13 +25,11 @@ class Sankey extends Component {
     layout: 50,
     margin: 20,
     nodePadding: 10,
-    nodeWidth: 10,
-    onBlur: NOOP,
-    onClick: NOOP,
-    onHover: NOOP
+    nodeWidth: 10
   }
 
   static propTypes = {
+    ...valueEventPropTypes,
     align: PropTypes.oneOf(['justify', 'left', 'right', 'center']),
     className: PropTypes.string,
     hasVoronoi: PropTypes.bool,
@@ -47,9 +49,6 @@ class Sankey extends Component {
     nodePadding: PropTypes.number,
     nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
     nodeWidth: PropTypes.number,
-    onBlur: PropTypes.func,
-    onClick: PropTypes.func,
-    onHover: PropTypes.func,
     width: PropTypes.number.isRequired
   }
 
@@ -58,6 +57,7 @@ class Sankey extends Component {
     const {
       align,
       className,
+      focusable,
       hasVoronoi,
       height,
       layout,
@@ -66,9 +66,6 @@ class Sankey extends Component {
       nodePadding,
       nodes,
       nodeWidth,
-      onBlur,
-      onClick,
-      onHover,
       width
     } = this.props;
 
@@ -106,12 +103,12 @@ class Sankey extends Component {
               opacity={Number.isFinite(node.opacity) ? node.opacity : DEFAULT_NODE_OPACITY}
               key={node.id || node.key || `node-${i}`}>
               <rect
-                onClick={() => onClick(node)}
-                onMouseOver={() => onHover(node)}
-                onMouseOut={() => onBlur(node)}
+                tabIndex={focusable ? 0 : null}
                 fill={node.color || DEFAULT_NODE_COLOR}
                 height={node.dy}
-                width={nWidth} />
+                width={nWidth}
+                {...valueEventHandlers(this.props, node)}
+              />
             </g>
           ))}
 
@@ -120,9 +117,7 @@ class Sankey extends Component {
               className="rv-sankey__voronoi"
               extent={[[-margin, -margin], [width + margin, height + margin]]}
               nodes={nodes}
-              onBlur={onBlur}
-              onClick={onClick}
-              onHover={onHover}
+              {...valueEventHandlerPassThrough(this.props)}
               x={d => d.x + d.dx / 2}
               y={d => d.y + d.dy / 2}
             />
@@ -135,4 +130,4 @@ class Sankey extends Component {
 
 }
 
-export default Sankey;
+export default ValueFocusable(Sankey);

@@ -44,7 +44,7 @@ function DiscreteColorLegendItem({onClick, title, color, disabled,
     className += ' clickable';
   }
   return (
-    <div {...{className, onClick}}>
+    <div {...{className, onClick}} role="button" tabIndex={onClick ? 0 : null}>
       <span
         className="rv-discrete-color-legend-item__color"
         style={disabled ? null : {background: color}} />

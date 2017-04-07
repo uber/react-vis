@@ -85,8 +85,9 @@ export default class Example extends React.Component {
     const {data, selectedPointId, showVoronoi} = this.state;
     return (
       <div>
-        <label style={{display: 'block'}}>
+        <label htmlFor="showVoronoi" style={{display: 'block'}}>
           <input type="checkbox"
+            id="showVoronoi"
             checked={showVoronoi}
             onChange={e => this.setState({showVoronoi: !showVoronoi})}
           />
