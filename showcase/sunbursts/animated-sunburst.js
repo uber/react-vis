@@ -46,6 +46,8 @@ function updateData() {
   };
 }
 
+const DIVERGING_COLOR_SCALE = ['#00939C', '#85C4C8', '#EC9370', '#C22E00'];
+
 export default class AnimatedSunburst extends React.Component {
   state = {
     data: updateData()
@@ -57,9 +59,13 @@ export default class AnimatedSunburst extends React.Component {
       <div className="animated-sunburst-example-wrapper">
         <button onClick={() => this.setState({data: updateData()})}> UPDATE DATA </button>
         <Sunburst
-          animation
+          animation={{
+            damping: 20,
+            stiffness: 300
+          }}
           data={data}
           colorType={'category'}
+          colorRange={DIVERGING_COLOR_SCALE}
           style={{stroke: '#fff'}}
           height={300}
           width={350}/>

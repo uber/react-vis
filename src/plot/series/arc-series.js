@@ -92,7 +92,6 @@ class ArcSeries extends AbstractSeries {
 
   render() {
     const {
-      animatedProps,
       animation,
       className,
       center,
@@ -108,7 +107,7 @@ class ArcSeries extends AbstractSeries {
 
     if (animation) {
       return (
-        <Animation {...this.props} animatedProps={animatedProps || ANIMATED_SERIES_PROPS}>
+        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
           <ArcSeries {...this.props} animation={null}/>
         </Animation>
       );

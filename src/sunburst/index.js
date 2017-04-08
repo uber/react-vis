@@ -31,10 +31,7 @@ import {
 
 import {AnimationPropType} from 'animation';
 import ArcSeries from 'plot/series/arc-series';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import XYPlot from 'plot/xy-plot';
-
-const ALLOW_ANIMATED_PROPS = ANIMATED_SERIES_PROPS.filter(prop => prop !== 'data');
 
 /**
  * Find the max radius value from the nodes to be rendered after they have been
@@ -102,17 +99,17 @@ class Sunburst extends React.Component {
         xDomain={[-radialDomain, radialDomain]}
         yDomain={[-radialDomain, radialDomain]}>
         <ArcSeries {...{
-          animatedProps: ALLOW_ANIMATED_PROPS,
           colorType,
           ...this.props,
           animation,
           radiusDomain: [0, radialDomain],
-          data: mappedData
+          // need to present a stripped down version for interpolation
+          data: animation ? mappedData.map(row => ({...row, parent: null, children: null})) : mappedData,
+          _data: animation ? mappedData : null
         }}/>
       </XYPlot>
     );
   }
-
 }
 
 Sunburst.displayName = 'Sunburst';

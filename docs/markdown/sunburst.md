@@ -103,6 +103,8 @@ Simple boolean on whether or not to show the root node of the tree.
 Type: `boolean|Object`
 Please refer to [Animation](animation.md) doc for more information.
 
+<!-- INJECT:"AnimatedSunburst" -->
+
 #### onValueClick (optional)
 Type: `function`
 - Should accept arguments (arc node, domEvent)
