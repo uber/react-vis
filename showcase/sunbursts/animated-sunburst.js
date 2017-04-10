@@ -55,6 +55,7 @@ export default class AnimatedSunburst extends React.Component {
 
   render() {
     const {data} = this.state;
+
     return (
       <div className="animated-sunburst-example-wrapper">
         <button onClick={() => this.setState({data: updateData()})}> UPDATE DATA </button>
