@@ -30,8 +30,6 @@ import {extent} from 'd3-array';
 import {set} from 'd3-collection';
 import {hsl} from 'd3-color';
 
-import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import {warning} from './react-utils';
