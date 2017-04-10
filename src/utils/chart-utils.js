@@ -20,6 +20,8 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 /**
  * Get the dimensions of the component for the future use.
  * @param {Object} props Props.
@@ -57,12 +59,12 @@ export function getInnerDimensions(props, defaultMargins) {
   };
 }
 
-export const MarginPropType = React.PropTypes.oneOfType([
-  React.PropTypes.shape({
-    left: React.PropTypes.number,
-    top: React.PropTypes.number,
-    right: React.PropTypes.number,
-    bottom: React.PropTypes.number
+export const MarginPropType = PropTypes.oneOfType([
+  PropTypes.shape({
+    left: PropTypes.number,
+    top: PropTypes.number,
+    right: PropTypes.number,
+    bottom: PropTypes.number
   }),
-  React.PropTypes.number
+  PropTypes.number
 ]);

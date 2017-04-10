@@ -20,21 +20,23 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 const propTypes = {
-  className: React.PropTypes.string,
-  circlesTotal: React.PropTypes.number,
-  endSize: React.PropTypes.number,
-  endTitle: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
+  className: PropTypes.string,
+  circlesTotal: PropTypes.number,
+  endSize: PropTypes.number,
+  endTitle: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
   ]).isRequired,
-  height: React.PropTypes.number,
-  startSize: React.PropTypes.number,
-  startTitle: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
+  height: PropTypes.number,
+  startSize: PropTypes.number,
+  startTitle: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
   ]).isRequired,
-  width: React.PropTypes.number
+  width: PropTypes.number
 };
 
 const defaultProps = {

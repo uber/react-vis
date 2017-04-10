@@ -20,15 +20,17 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import {ORIENTATION, getTickValues} from 'utils/axis-utils';
 import {getAttributeScale} from 'utils/scales-utils';
 
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 
 const propTypes = {
-  width: React.PropTypes.number.isRequired,
-  height: React.PropTypes.number.isRequired,
-  orientation: React.PropTypes.oneOf([
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  orientation: PropTypes.oneOf([
     LEFT, RIGHT, TOP, BOTTOM
   ]).isRequired
 };

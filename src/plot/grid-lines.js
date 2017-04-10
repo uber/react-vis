@@ -20,6 +20,8 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import PureRenderComponent from 'pure-render-component';
 import {getAttributeScale} from 'utils/scales-utils';
 import Animation, {AnimationPropType} from 'animation';
@@ -33,27 +35,27 @@ import {
 const {VERTICAL, HORIZONTAL} = DIRECTION;
 
 const propTypes = {
-  direction: React.PropTypes.oneOf([
+  direction: PropTypes.oneOf([
     VERTICAL, HORIZONTAL
   ]),
-  attr: React.PropTypes.string.isRequired,
-  width: React.PropTypes.number,
-  height: React.PropTypes.number,
-  top: React.PropTypes.number,
-  left: React.PropTypes.number,
+  attr: PropTypes.string.isRequired,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  top: PropTypes.number,
+  left: PropTypes.number,
 
-  tickValues: React.PropTypes.array,
-  tickTotal: React.PropTypes.number,
+  tickValues: PropTypes.array,
+  tickTotal: PropTypes.number,
 
   animation: AnimationPropType,
 
   // generally supplied by xyplot
-  marginTop: React.PropTypes.number,
-  marginBottom: React.PropTypes.number,
-  marginLeft: React.PropTypes.number,
-  marginRight: React.PropTypes.number,
-  innerWidth: React.PropTypes.number,
-  innerHeight: React.PropTypes.number
+  marginTop: PropTypes.number,
+  marginBottom: PropTypes.number,
+  marginLeft: PropTypes.number,
+  marginRight: PropTypes.number,
+  innerWidth: PropTypes.number,
+  innerHeight: PropTypes.number
 };
 
 const defaultProps = {

@@ -20,6 +20,8 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import GridLines from 'plot/grid-lines';
 import {DIRECTION} from 'utils/axis-utils';
 
@@ -27,7 +29,7 @@ const {VERTICAL} = DIRECTION;
 
 const propTypes = {
   ...GridLines.propTypes,
-  direction: React.PropTypes.oneOf([VERTICAL])
+  direction: PropTypes.oneOf([VERTICAL])
 };
 
 const defaultProps = {

@@ -20,12 +20,14 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 const propTypes = {
-  title: React.PropTypes.string.isRequired,
-  color: React.PropTypes.string.isRequired,
-  disabled: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
-  orientation: React.PropTypes.oneOf(['vertical', 'horizontal']).isRequired
+  title: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  orientation: PropTypes.oneOf(['vertical', 'horizontal']).isRequired
 };
 
 const defaultProps = {

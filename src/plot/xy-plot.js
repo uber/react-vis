@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import equal from 'deep-equal';
 
 import {extractScalePropsFromProps, getMissingScaleProps} from 'utils/scales-utils';
@@ -85,15 +86,15 @@ class XYPlot extends React.Component {
   static get propTypes() {
     return {
       animation: AnimationPropType,
-      className: React.PropTypes.string,
-      height: React.PropTypes.number.isRequired,
+      className: PropTypes.string,
+      height: PropTypes.number.isRequired,
       margin: MarginPropType,
-      onMouseDown: React.PropTypes.func,
-      onMouseEnter: React.PropTypes.func,
-      onMouseLeave: React.PropTypes.func,
-      onMouseMove: React.PropTypes.func,
-      stackBy: React.PropTypes.oneOf(ATTRIBUTES),
-      width: React.PropTypes.number.isRequired
+      onMouseDown: PropTypes.func,
+      onMouseEnter: PropTypes.func,
+      onMouseLeave: PropTypes.func,
+      onMouseMove: PropTypes.func,
+      stackBy: PropTypes.oneOf(ATTRIBUTES),
+      width: PropTypes.number.isRequired
     };
   }
 
