@@ -11,11 +11,11 @@ const sections = [{
   component: (<ComplexChartExample forFrontPage/>)
 }, {
   title: 'ENABLES NUMEROUS CHART TYPES',
-  text: 'We provide a robust and ever expanding set of tools that enables users to create a wide variety of chart types including Line charts, Area charts, Scatterplots, Bar charts, Histograms, Heatmaps, Treemaps, Radial charts, Sankey diagrams, and many more.',
+  text: 'We provide a robust and ever-expanding set of tools that enables users to create a wide variety of chart types including Line charts, Area charts, Scatterplots, Bar charts, Histograms, Heatmaps, Treemaps, Radial charts, Sankey diagrams, and many more.',
   component: (<StreamgraphExample forFrontPage/>)
 }, {
   title: 'EASY TO EXTEND',
-  text: 'The library provides a strongly extenible API, so that if we dont have a chart type that you need, it is easy and pleasant to create.',
+  text: 'The library provides a strongly extenible API, so that if we don\'t have a chart type that you need, it is easy and pleasant to create.',
   component: (<div className="f example-charts">
     <SankeyBasic />
     <DonutChart />
