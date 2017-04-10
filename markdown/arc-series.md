@@ -63,6 +63,8 @@ The color of a box in the series. By default the color is interpreted as number 
 Type: `object`
 SVG paths (which is what the arc series is made up of) have numerous manipulable properties, so rather than trying to prescribe all of them as props we offer a port to let you style it for yourself. This overrides the series level version of this property.
 
+<!-- INJECT:"ClockExample" -->
+
 ## Series API Reference
 
 #### animation (optional)  
