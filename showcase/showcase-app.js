@@ -41,6 +41,7 @@ const {
 
   BasicSunburst,
   ClockExample,
+  AnimatedSunburst,
 
   SimpleRadialChart,
   DonutChartExample,
@@ -273,6 +274,10 @@ class App extends Component {
           <section>
             <h3>Clock</h3>
             <ClockExample />
+          </section>
+          <section>
+            <h3>Animated Sunburst</h3>
+            <AnimatedSunburst />
           </section>
         </article>
         <article id="legends">

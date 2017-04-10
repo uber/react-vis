@@ -81,6 +81,7 @@ function getNodesToRender({data, height, hideRootNode, width}) {
 class Sunburst extends React.Component {
   render() {
     const {
+      animation,
       className,
       data,
       height,
@@ -100,14 +101,15 @@ class Sunburst extends React.Component {
         <ArcSeries {...{
           colorType,
           ...this.props,
-          animation: false,
+          animation,
           radiusDomain: [0, radialDomain],
-          data: mappedData
+          // need to present a stripped down version for interpolation
+          data: animation ? mappedData.map(row => ({...row, parent: null, children: null})) : mappedData,
+          _data: animation ? mappedData : null
         }}/>
       </XYPlot>
     );
   }
-
 }
 
 Sunburst.displayName = 'Sunburst';

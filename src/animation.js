@@ -92,11 +92,24 @@ class Animation extends PureRenderComponent {
     const child = React.Children.only(children);
     const interpolatedProps = interpolator ? interpolator(i) : interpolator;
 
+    // interpolator doesnt play nice with deeply nested objected
+    // so we expose an additional prop for situations like these, soit _data,
+    // which stores the full tree and can be recombined with the sanitized version
+    // after interpolation
+    let data = interpolatedProps && interpolatedProps.data || null;
+    if (data && child.props._data) {
+      data = data.map((row, index) => {
+        const correspondingCell = child.props._data[index];
+        return {...row, parent: correspondingCell.parent, children: correspondingCell.children};
+      });
+    }
+
     return React.cloneElement(
       child,
       {
         ...child.props,
         ...interpolatedProps,
+        data: data || child.props.data || null,
         // enforce re-rendering
         _animation: Math.random()
       }
