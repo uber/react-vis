@@ -59,10 +59,7 @@ export default class AnimatedSunburst extends React.Component {
       <div className="animated-sunburst-example-wrapper">
         <button onClick={() => this.setState({data: updateData()})}> UPDATE DATA </button>
         <Sunburst
-          animation={{
-            damping: 20,
-            stiffness: 300
-          }}
+          animation={{damping: 20, stiffness: 300}}
           data={data}
           colorType={'category'}
           colorRange={DIVERGING_COLOR_SCALE}
