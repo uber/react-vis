@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {showCase} from '../index';
 const {
   AxisWithTurnedLabels,
+  CustomAxes,
   CustomAxisChart,
   CustomAxesOrientation,
   DynamicComplexEdgeHints,
@@ -28,6 +29,10 @@ class AxesShowcase extends Component {
         <section>
           <h3>Custom Axis</h3>
           <CustomAxisChart />
+        </section>
+        <section>
+          <h3>Even more Custom Axes</h3>
+          <CustomAxes />
         </section>
         <section>
           <h3>Turned axis labels</h3>
