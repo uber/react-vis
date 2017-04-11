@@ -18,9 +18,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import {PropTypes} from 'react';
 import {ScatterplotLayer, COORDINATE_SYSTEM} from 'deck.gl';
 import {rgb} from 'd3-color';
+import PropTypes from 'prop-types';
 
 import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
 import {getAttributeFunctor} from 'utils/scales-utils';

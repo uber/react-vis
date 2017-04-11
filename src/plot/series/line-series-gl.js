@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import {PropTypes} from 'react';
+import PropTypes from 'prop-types';
 import {COORDINATE_SYSTEM, PathLayer} from 'deck.gl';
 import {rgb} from 'd3-color';
 

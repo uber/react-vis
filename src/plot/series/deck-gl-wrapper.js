@@ -18,8 +18,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, {PropTypes, Component} from 'react';
+import React, {Component} from 'react';
 import DeckGL, {OrthographicViewport} from 'deck.gl';
+import PropTypes from 'prop-types';
 
 class DeckGLWrapper extends Component {
   render() {
