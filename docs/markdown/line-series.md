@@ -4,7 +4,8 @@
 
 react-vis offers two different types of LineSeries, one that renders SVG and one that renders WebGL.
 The SVG mode is accessed by using the normal `LineSeries`, just as above, while the WebGL mode is used by simply calling
-`LineSeriesGL` instead of `LineSeries`.
+`LineSeriesGL` instead of `LineSeries`. It is most effective to hover over your points using onNearestX rather
+than onValueMouseOver.
 
 <!-- INJECT:"LineChartGL" -->
 

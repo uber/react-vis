@@ -33,7 +33,8 @@ const myData = [
 
 react-vis offers two different types of MarkSeries, one that renders SVG and one that renders WebGL.
 The SVG mode is accessed by using the normal `MarkSeries`, just as above, while the WebGL mode is used by simply calling
-`MarkSeriesGL` instead of `MarkSeries`.
+`MarkSeriesGL` instead of `MarkSeries`. Important tip! It is most effective to hover over your points using onNearestXY rather
+than onValueMouseOver.
 
 <!-- INJECT:"ScatterplotGLChart" -->
 

@@ -70,7 +70,7 @@ export default class Example extends React.Component {
       colorRange: colorRanges[colorType],
       opacityType: 'literal',
       data,
-      onValueMouseOver: value => this.setState({value})
+      onNearestXY: value => this.setState({value})
     };
     return (
       <div className="scatterplot-gl-wrapper">
