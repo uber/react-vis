@@ -20,19 +20,11 @@
 
 import ReactDOM from 'react-dom';
 import React, {Component} from 'react';
-import window from 'global/window';
 import document from 'global/document';
 
 import ParallelCoordinates from './parallel-coordinates';
 
 export default class App extends Component {
-  componentWillMount() {
-    window.addEventListener(
-      'resize',
-      () => this.setState({width: window.innerWidth})
-    );
-  }
-
   render() {
     return (
       <article>
