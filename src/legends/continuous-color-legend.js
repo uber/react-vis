@@ -20,27 +20,29 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import {CONTINUOUS_COLOR_RANGE} from 'theme';
 
 const propTypes = {
-  className: React.PropTypes.string,
-  height: React.PropTypes.number,
-  endColor: React.PropTypes.string,
-  endTitle: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
+  className: PropTypes.string,
+  height: PropTypes.number,
+  endColor: PropTypes.string,
+  endTitle: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
   ]).isRequired,
-  midColor: React.PropTypes.string,
-  midTitle: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
+  midColor: PropTypes.string,
+  midTitle: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
   ]),
-  startColor: React.PropTypes.string,
-  startTitle: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
+  startColor: PropTypes.string,
+  startTitle: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
   ]).isRequired,
-  width: React.PropTypes.number
+  width: PropTypes.number
 };
 
 const defaultProps = {

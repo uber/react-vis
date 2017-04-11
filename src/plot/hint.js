@@ -20,6 +20,8 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import PureRenderComponent from 'pure-render-component';
 import {getAttributeFunctor} from 'utils/scales-utils';
 
@@ -77,22 +79,22 @@ class Hint extends PureRenderComponent {
 
   static get propTypes() {
     return {
-      marginTop: React.PropTypes.number,
-      marginLeft: React.PropTypes.number,
-      innerWidth: React.PropTypes.number,
-      innerHeight: React.PropTypes.number,
-      scales: React.PropTypes.object,
-      value: React.PropTypes.object,
-      format: React.PropTypes.func,
-      align: React.PropTypes.shape({
-        horizontal: React.PropTypes.oneOf([
+      marginTop: PropTypes.number,
+      marginLeft: PropTypes.number,
+      innerWidth: PropTypes.number,
+      innerHeight: PropTypes.number,
+      scales: PropTypes.object,
+      value: PropTypes.object,
+      format: PropTypes.func,
+      align: PropTypes.shape({
+        horizontal: PropTypes.oneOf([
           ALIGN.AUTO,
           ALIGN.LEFT,
           ALIGN.RIGHT,
           ALIGN.LEFT_EDGE,
           ALIGN.RIGHT_EDGE
         ]),
-        vertical: React.PropTypes.oneOf([
+        vertical: PropTypes.oneOf([
           ALIGN.AUTO,
           ALIGN.BOTTOM,
           ALIGN.TOP,
@@ -100,8 +102,8 @@ class Hint extends PureRenderComponent {
           ALIGN.TOP_EDGE
         ])
       }),
-      getAlignStyle: React.PropTypes.func,
-      orientation: React.PropTypes.oneOf([
+      getAlignStyle: PropTypes.func,
+      orientation: PropTypes.oneOf([
         ORIENTATION.BOTTOM_LEFT,
         ORIENTATION.BOTTOM_RIGHT,
         ORIENTATION.TOP_LEFT,

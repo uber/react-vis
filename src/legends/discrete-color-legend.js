@@ -20,25 +20,27 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import DiscreteColorLegendItem from 'legends/discrete-color-legend-item';
 import {DISCRETE_COLOR_RANGE} from 'theme';
 
 const propTypes = {
-  className: React.PropTypes.string,
-  items: React.PropTypes.arrayOf(
-    React.PropTypes.oneOfType([
-      React.PropTypes.shape({
-        title: React.PropTypes.string.isRequired,
-        color: React.PropTypes.string,
-        disabled: React.PropTypes.bool
+  className: PropTypes.string,
+  items: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        color: PropTypes.string,
+        disabled: PropTypes.bool
       }),
-      React.PropTypes.string.isRequired
+      PropTypes.string.isRequired
     ])
   ).isRequired,
-  onItemClick: React.PropTypes.func,
-  height: React.PropTypes.number,
-  width: React.PropTypes.number,
-  orientation: React.PropTypes.oneOf(['vertical', 'horizontal'])
+  onItemClick: PropTypes.func,
+  height: PropTypes.number,
+  width: PropTypes.number,
+  orientation: PropTypes.oneOf(['vertical', 'horizontal'])
 };
 
 const defaultProps = {

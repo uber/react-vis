@@ -20,6 +20,8 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 
@@ -32,10 +34,10 @@ class RectSeries extends AbstractSeries {
   static get propTypes() {
     return {
       ... AbstractSeries.propTypes,
-      linePosAttr: React.PropTypes.string,
-      valuePosAttr: React.PropTypes.string,
-      lineSizeAttr: React.PropTypes.string,
-      valueSizeAttr: React.PropTypes.string
+      linePosAttr: PropTypes.string,
+      valuePosAttr: PropTypes.string,
+      lineSizeAttr: PropTypes.string,
+      valueSizeAttr: PropTypes.string
     };
   }
 

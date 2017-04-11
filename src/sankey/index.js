@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {sankey} from 'd3-sankey-align';
 
 import Voronoi from 'plot/voronoi';

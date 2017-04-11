@@ -20,14 +20,16 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import DiscreteColorLegend from 'legends/discrete-color-legend';
 
 const propTypes = {
   ...DiscreteColorLegend.propTypes,
-  searchText: React.PropTypes.string,
-  onSearchChange: React.PropTypes.func,
-  searchPlaceholder: React.PropTypes.string,
-  searchFn: React.PropTypes.func
+  searchText: PropTypes.string,
+  onSearchChange: PropTypes.func,
+  searchPlaceholder: PropTypes.string,
+  searchFn: PropTypes.func
 };
 
 const defaultProps = {

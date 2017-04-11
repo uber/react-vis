@@ -20,6 +20,8 @@
 
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import PureRenderComponent from 'pure-render-component';
 import {getAttributeFunctor} from 'utils/scales-utils';
 
@@ -64,15 +66,15 @@ class Crosshair extends PureRenderComponent {
 
   static get propTypes() {
     return {
-      values: React.PropTypes.array,
-      series: React.PropTypes.object,
-      innerWidth: React.PropTypes.number,
-      innerHeight: React.PropTypes.number,
-      marginLeft: React.PropTypes.number,
-      marginTop: React.PropTypes.number,
-      orientation: React.PropTypes.oneOf(['left', 'right']),
-      itemsFormat: React.PropTypes.func,
-      titleFormat: React.PropTypes.func
+      values: PropTypes.array,
+      series: PropTypes.object,
+      innerWidth: PropTypes.number,
+      innerHeight: PropTypes.number,
+      marginLeft: PropTypes.number,
+      marginTop: PropTypes.number,
+      orientation: PropTypes.oneOf(['left', 'right']),
+      itemsFormat: PropTypes.func,
+      titleFormat: PropTypes.func
     };
   }
 

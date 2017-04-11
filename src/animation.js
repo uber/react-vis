@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {interpolate} from 'd3-interpolate';
 import {spring, Motion, presets} from 'react-motion';
 import PureRenderComponent from 'pure-render-component';

@@ -30,7 +30,7 @@ import {extent} from 'd3-array';
 import {set} from 'd3-collection';
 import {hsl} from 'd3-color';
 
-import React from 'react';
+import PropTypes from 'prop-types';
 
 import {warning} from './react-utils';
 import {getUniquePropertyValues, addValueToArray} from './data-utils';
@@ -595,14 +595,14 @@ export function getAttributeValue(props, attr) {
  */
 export function getScalePropTypesByAttribute(attr) {
   return {
-    [`_${attr}Value`]: React.PropTypes.any,
-    [`${attr}Domain`]: React.PropTypes.array,
-    [`${attr}Range`]: React.PropTypes.array,
-    [`${attr}Type`]: React.PropTypes.oneOf(
+    [`_${attr}Value`]: PropTypes.any,
+    [`${attr}Domain`]: PropTypes.array,
+    [`${attr}Range`]: PropTypes.array,
+    [`${attr}Type`]: PropTypes.oneOf(
       Object.keys(SCALE_FUNCTIONS)
     ),
-    [`${attr}Distance`]: React.PropTypes.number,
-    [`${attr}BaseValue`]: React.PropTypes.any
+    [`${attr}Distance`]: PropTypes.number,
+    [`${attr}BaseValue`]: PropTypes.any
   };
 }
 

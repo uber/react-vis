@@ -42,6 +42,7 @@
     "d3-voronoi": "^1.1.1",
     "deep-equal": "^1.0.1",
     "global": "^4.3.1",
+    "prop-types": "^15.5.6",
     "react-motion": "^0.4.7"
   },
   "devDependencies": {

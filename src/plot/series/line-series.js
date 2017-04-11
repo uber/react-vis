@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as d3Shape from 'd3-shape';
 
 import Animation from 'animation';
@@ -42,10 +43,10 @@ const defaultProps = {
 
 const propTypes = {
   ...AbstractSeries.propTypes,
-  strokeStyle: React.PropTypes.oneOf(Object.keys(STROKE_STYLES)),
-  curve: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.func
+  strokeStyle: PropTypes.oneOf(Object.keys(STROKE_STYLES)),
+  curve: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func
   ])
 };
 

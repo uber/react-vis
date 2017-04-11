@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {voronoi} from 'd3-voronoi';
 
 const NOOP = f => f;

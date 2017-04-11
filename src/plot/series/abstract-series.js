@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import PropTypes from 'prop-types';
 import {voronoi} from 'd3-voronoi';
 
 import PureRenderComponent from 'pure-render-component';
@@ -37,17 +37,17 @@ const propTypes = {
   ...getScalePropTypesByAttribute('size'),
   ...getScalePropTypesByAttribute('opacity'),
   ...getScalePropTypesByAttribute('color'),
-  width: React.PropTypes.number,
-  height: React.PropTypes.number,
-  data: React.PropTypes.array,
-  onValueMouseOver: React.PropTypes.func,
-  onValueMouseOut: React.PropTypes.func,
-  onValueClick: React.PropTypes.func,
-  onSeriesMouseOver: React.PropTypes.func,
-  onSeriesMouseOut: React.PropTypes.func,
-  onSeriesClick: React.PropTypes.func,
-  onNearestX: React.PropTypes.func,
-  onNearestXY: React.PropTypes.func,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  data: PropTypes.array,
+  onValueMouseOver: PropTypes.func,
+  onValueMouseOut: PropTypes.func,
+  onValueClick: PropTypes.func,
+  onSeriesMouseOver: PropTypes.func,
+  onSeriesMouseOut: PropTypes.func,
+  onSeriesClick: PropTypes.func,
+  onNearestX: PropTypes.func,
+  onNearestXY: PropTypes.func,
   animation: AnimationPropType
 };
 
