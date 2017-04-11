@@ -4,7 +4,37 @@
 
 **Note**: Axes API was changed in 0.5.
 
-`XAxis` and `YAxis` shows are responsible for the axis in the chart. Both of them have following properties:
+`XAxis` and `YAxis` shows are responsible for the axis in the chart. They can be used simply
+
+```javascript
+<XYPlot
+  width={300}
+  height={300}>
+  <XAxis />
+  <YAxis />
+  <MarkSeries data={myData}/>
+</XYPlot>
+```
+
+Which will automatically interpolate across the relevant domains of the data (ie it will present reasonable values for x and y). It can also be used to create more complex axes
+
+<!-- INJECT:"CustomAxes" -->
+
+Which is produced via
+
+```javascript
+<XYPlot width={300} height={300}>
+  <XAxis top={0} hideLine tickValues={[0, 1, 3, 4, 5]} title="X"/>
+  <XAxis tickFormat={v => `Value is ${v}`} tickLabelAngle={-90} />
+  <YAxis hideTicks/>
+  <YAxis left={50} tickFormat={v => v * v}/>
+  <YAxis hideLine left={150} tickFormat={v => WORDS[v]}/>
+  <MarkSeries data={[{x: 0, y: 0}, {x: 5, y: 5}]} opacity={0} opacityType="linear"/>
+</XYPlot>
+```
+
+
+## API Reference
 
 #### title (optional)
 Type: `string`  

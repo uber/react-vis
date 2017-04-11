@@ -36,6 +36,7 @@ import WidthHeightMarginChart from './plot/width-height-margin';
 import CustomScales from './plot/custom-scales';
 import CustomAxesOrientation from './plot/custom-axes-orientation';
 import CustomAxisChart from './plot/custom-axis';
+import CustomAxes from './plot/custom-axes';
 import AxisWithTurnedLabels from './plot/axis-with-turned-labels';
 import GridLinesChart from './plot/grid';
 import StaticHints from './plot/static-hints';
@@ -107,6 +108,7 @@ export const showCase = {
   TimeChart,
   TriangleExample,
   VoronoiLineChart,
+  CustomAxes,
 
   SimpleTreemap,
   TreemapExample,
