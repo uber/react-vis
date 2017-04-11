@@ -115,3 +115,7 @@ Any changes you make to the example code will run the compiler to build the file
 To lint your code, run the tests, and create code coverage reports:
 
     npm test
+
+## Requirements
+
+react-vis makes use of ES6 array methods such as [`Array.prototype.find`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find). If you make use of react-vis, in an environment without these methods, you'll see errors like `TypeError: Server rendering error: Object x,y,radius,angle,color,fill,stroke,opacity,size has no method 'find'`. You can use [`babel-polyfill`](https://babeljs.io/docs/usage/polyfill/) to polyfill these methods.
