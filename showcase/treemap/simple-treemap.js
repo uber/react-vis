@@ -23,6 +23,7 @@ import React from 'react';
 import Treemap from 'treemap';
 
 import D3FlareData from './d3-flare-example.json';
+import ShowcaseButton from '../showcase-components/showcase-button';
 
 const MODE = [
   'circlePack',
@@ -50,19 +51,11 @@ export default class SimpleTreemapExample extends React.Component {
   render() {
     const {modeIndex} = this.state;
     return (
-      <div className="simple-treemap-example">
-        <div className="simple-treemap-example-controls">
-          <div
-            className="simple-treemap-example-button"
-            onClick={this.updateModeIndex(false)}>
-            {'PREV MODE'}
-          </div>
+      <div className="centered-and-flexed">
+        <div className="centered-and-flexed-controls">
+          <ShowcaseButton onClick={this.updateModeIndex(false)} buttonContent={'PREV MODE'} />
           <div> {MODE[modeIndex]} </div>
-          <div
-            className="simple-treemap-example-button"
-            onClick={this.updateModeIndex(true)}>
-            {'NEXT MODE'}
-          </div>
+          <ShowcaseButton onClick={this.updateModeIndex(true)} buttonContent={'NEXT MODE'} />
         </div>
         <Treemap
           animation

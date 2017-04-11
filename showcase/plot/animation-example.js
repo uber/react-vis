@@ -20,6 +20,7 @@
 
 import React from 'react';
 
+import ShowcaseButton from '../showcase-components/showcase-button';
 import {
   XYPlot,
   XAxis,
@@ -57,19 +58,11 @@ export default class Example extends React.Component {
   render() {
     const {modeIndex, data} = this.state;
     return (
-      <div className="simple-treemap-example">
-        <div className="simple-treemap-example-controls">
-          <div
-            className="simple-treemap-example-button"
-            onClick={this.updateModeIndex(false)}>
-            {'PREV'}
-          </div>
+      <div className="centered-and-flexed">
+        <div className="centered-and-flexed-controls">
+          <ShowcaseButton onClick={this.updateModeIndex(false)} buttonContent={'PREV'} />
           <div> {`ANIMATION TECHNIQUE: ${MODE[modeIndex]}`} </div>
-          <div
-            className="simple-treemap-example-button"
-            onClick={this.updateModeIndex(true)}>
-            {'NEXT'}
-          </div>
+          <ShowcaseButton onClick={this.updateModeIndex(true)} buttonContent={'NEXT'} />
         </div>
         <XYPlot
           width={300}
@@ -82,7 +75,7 @@ export default class Example extends React.Component {
             animation={MODE[modeIndex]}
             data={data}/>
         </XYPlot>
-        <button onClick={() => this.setState({data: generateData()})}> UPDATE DATA </button>
+        <ShowcaseButton onClick={() => this.setState({data: generateData()})} buttonContent={'UPDATE DATA'} />
       </div>
     );
   }

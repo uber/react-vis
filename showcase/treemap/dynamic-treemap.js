@@ -21,6 +21,7 @@
 import React from 'react';
 
 import Treemap from 'treemap';
+import ShowcaseButton from '../showcase-components/showcase-button';
 
 function _getRandomData() {
   const totalLeaves = Math.random() * 20;
@@ -70,9 +71,9 @@ export default class DynamicTreemapExample extends React.Component {
     };
     return (
       <div className="dynamic-treemap-example">
-        <button onClick={() => this.setState({useCirclePacking: !useCirclePacking})}>
-          TOGGLE CIRCLE PACK
-        </button>
+        <ShowcaseButton
+          onClick={() => this.setState({useCirclePacking: !useCirclePacking})}
+          buttonContent={'TOGGLE CIRCLE PACK'} />
         <Treemap {...treeProps}/>
         click above to the update data
         {hoveredNode && hoveredNode.value}

@@ -21,6 +21,7 @@
 import React from 'react';
 
 import Sunburst from 'sunburst';
+import ShowcaseButton from '../showcase-components/showcase-button';
 
 function randomLeaf() {
   return {
@@ -58,7 +59,9 @@ export default class AnimatedSunburst extends React.Component {
 
     return (
       <div className="animated-sunburst-example-wrapper">
-        <button onClick={() => this.setState({data: updateData()})}> UPDATE DATA </button>
+        <ShowcaseButton
+          onClick={() => this.setState({data: updateData()})}
+          buttonContent={'UPDATE'} />
         <Sunburst
           animation={{damping: 20, stiffness: 300}}
           data={data}

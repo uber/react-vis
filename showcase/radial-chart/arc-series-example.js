@@ -20,6 +20,7 @@
 
 import React from 'react';
 
+import ShowcaseButton from '../showcase-components/showcase-button';
 import {
   XYPlot,
   ArcSeries,
@@ -62,10 +63,12 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.setState({
-          data: updateData(),
-          littleData: updateLittleData()
-        })}> UPDATE </button>
+        <ShowcaseButton
+          onClick={() => this.setState({
+            data: updateData(),
+            littleData: updateLittleData()
+          })}
+          buttonContent={'UPDATE'} />
         <XYPlot
           xDomain={[-5, 5]}
           yDomain={[-5, 5]}
