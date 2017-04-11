@@ -19,25 +19,24 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import LesMisData from './les-mis-data.json';
+import PropTypes from 'prop-types';
 
-import './force-directed.scss';
-import ForceDirectedGraph from './force-directed-graph';
-
-export default class Example extends React.Component {
-  state = {
-    strength: Math.random() * 60 - 30
-  }
-
+class ShowcaseButton extends React.Component {
   render() {
-    const {strength} = this.state;
+    const {buttonContent, onClick} = this.props;
     return (
-      <div className="force-directed-example">
-        <button
-          className="showcase-button"
-          onClick={() => this.setState({strength: Math.random() * 60 - 30})}> REWEIGHT </button>
-        <ForceDirectedGraph data={LesMisData} height={500} width={500} animation strength={strength}/>
-      </div>
+      <button
+        className="showcase-button"
+        onClick={onClick}>
+        {buttonContent}
+      </button>
     );
   }
 }
+
+ShowcaseButton.PropTypes = {
+  buttonContent: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
+};
+
+export default ShowcaseButton;

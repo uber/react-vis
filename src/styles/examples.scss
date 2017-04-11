@@ -313,7 +313,7 @@ article {
   }
 }
 
-.simple-treemap-example {
+.centered-and-flexed {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -324,21 +324,12 @@ article {
     border: thin solid rgba(#ddd, .5);
   }
 
-  .simple-treemap-example-controls {
+  .centered-and-flexed-controls {
     align-items: center;
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
     width: 75%;
-  }
-
-  .simple-treemap-example-button {
-    border: thin solid #333;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 10px;
-    font-weight: 600;
-    padding: 5px 10px;
   }
 }
 
@@ -350,12 +341,22 @@ article {
 
 .clustered-stacked-bar-chart-example {
   .rv-discrete-color-legend {
-    position: absolute;
-    top: 0px;
     left: 40px;
+    position: absolute;
+    top: 0;
   }
 }
 
 .basic-sunburst-example-path-name {
   height: 20px;
+}
+
+.showcase-button {
+  background: #fff;
+  border: thin solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 5px 10px;
 }
