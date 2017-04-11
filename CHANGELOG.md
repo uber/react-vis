@@ -1,3 +1,18 @@
+## v1.0.0 Breaking changes
+
+We recently made a major jump to version v1, which naturally includes some breaking changes. Specifically these include
+
+*Table is deprecated*: There are other substantially better tables in the ecosystem, so we decided to stick to what we do best, charts and plots.
+*Stylesheet has been moved*: the stylesheet for react-vis can now be found within the dist folder, so simply modify your style import to be:
+
+```
+@import './node_modules/react-vis/dist/main';
+```
+
+*Default Opacity*: The default opacity behavior has been modified. Previously, react-vis asserted you had a linear scale with range [0.1, 1] and place your value within that range. Now react-vis presents a literal-scale by default. Check your opacities to make sure they are correct.
+*tickSizeInner & tickSizeOuter have been reversed*: the names of these props on the axes component have been switched. We feel this arrangement offers a more natural way to interact with the plot.
+*ALIGN.TOP_RIGHT was removed from hint.js*: this case did not match the orientation scheme followed by this component so was removed.
+
 ### v0.10.1
 
 In this release we release a new chart type, a large repo refactor, address a variety of bugs, and a host of additional features!
