@@ -11,6 +11,10 @@ $rv-xy-plot-tooltip-padding: 7px 10px;
 .rv-xy-plot {
   color: #c3c3c3;
   position: relative;
+
+  canvas {
+    pointer-events: none;
+  }
 }
 
 .rv-xy-plot__inner {

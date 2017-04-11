@@ -47,18 +47,18 @@ class LineSeriesGL extends AbstractSeries {
       fp64
     } = props;
 
-    const xFunctor = getAttributeFunctor(props, 'x');
-    const yFunctor = getAttributeFunctor(props, 'y');
-    const fillFunctor = getAttributeFunctor(props, 'fill') || getAttributeFunctor(props, 'color');
-    const opacityFunctor = getAttributeFunctor(props, 'opacity');
+    const x = getAttributeFunctor(props, 'x');
+    const y = getAttributeFunctor(props, 'y');
+    const fill = getAttributeFunctor(props, 'fill') || getAttributeFunctor(props, 'color');
+    const opacityScale = getAttributeFunctor(props, 'opacity');
 
     return new PathLayer({
       id: seriesId,
       data: [data],
-      getPath: p => p.map(row => [xFunctor(row), yFunctor(row)]),
+      getPath: p => p.map(row => [x(row), y(row)]),
       getColor: p => {
-        const color = rgb(fillFunctor(p));
-        return [color.r, color.g, color.b, (opacityFunctor(p) || DEFAULT_OPACITY) * 255];
+        const color = rgb(fill(p));
+        return [color.r, color.g, color.b, (opacityScale(p) || DEFAULT_OPACITY) * 255];
       },
       getWidth: p => Number(strokeWidth) || 1,
       opacity: (opacity || DEFAULT_OPACITY),

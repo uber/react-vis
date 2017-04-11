@@ -35,6 +35,8 @@ react-vis offers two different types of MarkSeries, one that renders SVG and one
 The SVG mode is accessed by using the normal `MarkSeries`, just as above, while the WebGL mode is used by simply calling
 `MarkSeriesGL` instead of `MarkSeries`.
 
+<!-- INJECT:"ScatterplotGLChart" -->
+
 **NOTE**: using the GL version of this layer disables animation
 
 ## API

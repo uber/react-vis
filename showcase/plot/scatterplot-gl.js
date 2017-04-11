@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import ShowcaseButton from '../showcase-components/showcase-button';
 
 import {
   XYPlot,
@@ -46,6 +47,10 @@ const colorRanges = {
 };
 
 const randomData = getRandomData();
+const nextType = {
+  typeA: 'typeB',
+  typeB: 'typeA'
+};
 
 export default class Example extends React.Component {
   state = {
@@ -70,17 +75,15 @@ export default class Example extends React.Component {
     return (
       <div className="scatterplot-gl-wrapper">
         <div className="scatterplot-gl-example-controls">
-          <button onClick={() => this.setState({glMode: !glMode})}>
-            {glMode ? 'SWITCH TO SVG' : 'SWITCH TO GL'}
-          </button>
-          <button onClick={() => this.setState({data: getRandomData()})}>
-            {'UPDATE DATA'}
-          </button>
-          <button onClick={() => this.setState({
-            colorType: colorType === 'typeA' ? 'typeB' : 'typeA'
-          })}>
-            {'UPDATE COLOR'}
-          </button>
+          <ShowcaseButton
+            onClick={() => this.setState({glMode: !glMode})}
+            buttonContent={glMode ? 'SWITCH TO SVG' : 'SWITCH TO GL'} />
+          <ShowcaseButton
+            onClick={() => this.setState({data: getRandomData()})}
+            buttonContent={'UPDATE DATA'} />
+          <ShowcaseButton
+            onClick={() => this.setState({colorType: nextType[colorType]})}
+            buttonContent={'UPDATE COLOR'} />
         </div>
         <XYPlot
           width={600}

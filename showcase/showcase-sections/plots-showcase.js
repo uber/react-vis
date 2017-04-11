@@ -12,11 +12,13 @@ const {
   GridLinesChart,
   HeatmapChart,
   LineChart,
+  LineChartGL,
   LineMarkChart,
   StackedVerticalBarChart,
   StackedHorizontalBarChart,
   StackedHistogram,
   ScatterplotChart,
+  ScatterplotGLChart,
   WidthHeightMarginChart
 } = showCase;
 
@@ -39,8 +41,16 @@ class PlotsShowcase extends Component {
           <LineMarkChart />
         </section>
         <section>
+          <h3>LineMark Series</h3>
+          <LineChartGL />
+        </section>
+        <section>
           <h3>Mark Series</h3>
           <ScatterplotChart />
+        </section>
+        <section>
+          <h3>Mark Series GL</h3>
+          <ScatterplotGLChart />
         </section>
         <section>
           <h3>Area Series</h3>

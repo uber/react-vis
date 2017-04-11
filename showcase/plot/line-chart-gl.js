@@ -20,6 +20,7 @@
 
 import React from 'react';
 
+import ShowcaseButton from '../showcase-components/showcase-button';
 import {
   XYPlot,
   XAxis,
@@ -27,7 +28,10 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   LineMarkSeriesGL,
-  LineMarkSeries
+  LineMarkSeries,
+  LineSeriesGL,
+  LineSeries,
+  Crosshair
 } from 'index';
 
 function getRandomData() {
@@ -44,17 +48,23 @@ const colorRanges = {
   typeA: ['#59E4EC', '#0D676C'],
   typeB: ['#EFC1E3', '#B52F93']
 };
+const nextType = {
+  typeA: 'typeB',
+  typeB: 'typeA'
+};
 
 export default class Example extends React.Component {
   state = {
     glMode: true,
     data: randomData,
     colorType: 'typeA',
-    strokeWidth: 1
+    strokeWidth: 1,
+    showMarks: true,
+    value: false
   }
 
   render() {
-    const {glMode, data, colorType, strokeWidth} = this.state;
+    const {glMode, data, colorType, strokeWidth, value, showMarks} = this.state;
     const lineSeriesProps = {
       animation: true,
       className: 'mark-series-example',
@@ -63,28 +73,29 @@ export default class Example extends React.Component {
       colorRange: colorRanges[colorType],
       opacityType: 'literal',
       strokeWidth,
-      data
+      data,
+      onNearestX: d => this.setState({value: d})
     };
-
+    const GLComponent = showMarks ? LineMarkSeriesGL : LineSeriesGL;
+    const SVGComponent = showMarks ? LineMarkSeries : LineSeries;
     return (
       <div className="scatterplot-gl-wrapper">
         <div className="scatterplot-gl-example-controls">
-          <button onClick={() => this.setState({glMode: !glMode})}>
-            {glMode ? 'SWITCH TO SVG' : 'SWITCH TO GL'}
-          </button>
-          <button onClick={() => this.setState({data: getRandomData()})}>
-            {'UPDATE DATA'}
-          </button>
-          <button onClick={() => this.setState({
-            colorType: colorType === 'typeA' ? 'typeB' : 'typeA'
-          })}>
-            {'UPDATE COLOR'}
-          </button>
-          <button onClick={() => this.setState({
-            strokeWidth: strokeWidth === 1 ? 2 : 1
-          })}>
-            {'UPDATE STROKEWIDTH'}
-          </button>
+          <ShowcaseButton
+            onClick={() => this.setState({glMode: !glMode})}
+            buttonContent={glMode ? 'SWITCH TO SVG' : 'SWITCH TO GL'} />
+          <ShowcaseButton
+            onClick={() => this.setState({showMarks: !showMarks})}
+            buttonContent={showMarks ? 'HIDE MARKS' : 'SHOW MARKS'} />
+          <ShowcaseButton
+            onClick={() => this.setState({data: getRandomData()})}
+            buttonContent={'UPDATE DATA'} />
+          <ShowcaseButton
+            onClick={() => this.setState({colorType: nextType[colorType]})}
+            buttonContent={'UPDATE COLOR'} />
+          <ShowcaseButton
+            onClick={() => this.setState({strokeWidth: strokeWidth === 1 ? 2 : 1})}
+            buttonContent={'UPDATE STROKEWIDTH'} />
         </div>
         <XYPlot
           width={600}
@@ -94,9 +105,10 @@ export default class Example extends React.Component {
           <XAxis />
           <YAxis />
           {glMode &&
-            <LineMarkSeriesGL {...lineSeriesProps} seriesId="my-example-line-chart"/>}
+            <GLComponent {...lineSeriesProps} seriesId="my-example-line-chart"/>}
           {!glMode &&
-            <LineMarkSeries {...lineSeriesProps}/>}
+            <SVGComponent {...lineSeriesProps}/>}
+          {value && <Crosshair values={[value]} />}
         </XYPlot>
       </div>
     );
