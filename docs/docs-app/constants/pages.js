@@ -5,6 +5,15 @@ import ForceDirectedGraph from '../../../examples/force-directed-graph/force-dir
 import ResponsiveVis from '../../../examples/responsive-vis/responsive-vis-example';
 import ShowcaseApp from '../../../showcase/showcase-app';
 
+import AxesShowcase from '../../../showcase/showcase-sections/axes-showcase';
+import PlotsShowcase from '../../../showcase/showcase-sections/plots-showcase';
+import SunburstSection from '../../../showcase/showcase-sections/sunburst-showcase';
+import RadialShowcase from '../../../showcase/showcase-sections/radial-showcase';
+import LegendsShowcase from '../../../showcase/showcase-sections/legends-showcase';
+import SankeysShowcase from '../../../showcase/showcase-sections/sankeys-showcase';
+import TreemapShowcase from '../../../showcase/showcase-sections/treemap-showcase';
+import MiscShowcase from '../../../showcase/showcase-sections/misc-showcase';
+
 const generatePath = tree => {
   if (Array.isArray(tree)) {
     tree.forEach(branch => generatePath(branch));
@@ -25,6 +34,66 @@ function updatePathName(name) {
 const getDocUrl = filename => `markdown/${filename}`;
 
 export const examplePages = generatePath([
+  {
+    name: 'Showcases',
+    children: [{
+      name: 'Plots',
+      content: {
+        pageType: 'example',
+        markdown: getDocUrl('examples/showcase.md'),
+        component: PlotsShowcase
+      }
+    }, {
+      name: 'Axes',
+      content: {
+        markdown: getDocUrl('examples/showcase.md'),
+        pageType: 'example',
+        component: AxesShowcase
+      }
+    }, {
+      name: 'Legends',
+      content: {
+        pageType: 'example',
+        markdown: getDocUrl('examples/showcase.md'),
+        component: LegendsShowcase
+      }
+    }, {
+      name: 'Sunbursts',
+      content: {
+        pageType: 'example',
+        markdown: getDocUrl('examples/showcase.md'),
+        component: SunburstSection
+      }
+    }, {
+      name: 'Radial',
+      content: {
+        pageType: 'example',
+        markdown: getDocUrl('examples/showcase.md'),
+        component: RadialShowcase
+      }
+    }, {
+      name: 'Sankeys',
+      content: {
+        markdown: getDocUrl('examples/showcase.md'),
+        pageType: 'example',
+        component: SankeysShowcase
+      }
+    }, {
+      name: 'Treemaps',
+      content: {
+        markdown: getDocUrl('examples/showcase.md'),
+        pageType: 'example',
+        component: TreemapShowcase
+      }
+    }, {
+      name: 'Misc',
+      content: {
+        markdown: getDocUrl('examples/showcase.md'),
+        pageType: 'example',
+        component: MiscShowcase
+      }
+    }]
+  },
   {
     name: 'Charts',
     children: [{

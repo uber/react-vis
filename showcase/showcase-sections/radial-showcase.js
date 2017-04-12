@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
 const {
   CustomRadiusRadialChart,
@@ -7,23 +8,25 @@ const {
   SimpleRadialChart
 } = showCase;
 
+const RADIAL = [{
+  name: 'Simple Radial Chart',
+  component: SimpleRadialChart,
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/radial-chart/index.js',
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/other-charts/radial-chart'
+}, {
+  name: 'Simple Donut Chart',
+  component: DonutChartExample
+}, {
+  name: 'Custom Radius',
+  component: CustomRadiusRadialChart
+}];
+
 class RadialShowcase extends Component {
   render() {
     return (
       <article id="radial-charts">
         <h1>Radial Chart</h1>
-        <section>
-          <h3>Simple Radial Chart</h3>
-          <SimpleRadialChart />
-        </section>
-        <section>
-          <h3>Simple Hoverable Donut Chart</h3>
-          <DonutChartExample />
-        </section>
-        <section>
-          <h3>Custom Radius</h3>
-          <CustomRadiusRadialChart />
-        </section>
+        {RADIAL.map(mapSection)}
       </article>
     );
   }
