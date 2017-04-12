@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {showCase} from '../index';
 const {
   AnimationExample,
+  LabelSeriesExample,
   SyncedCharts,
   TimeChart,
   TriangleExample,
@@ -33,6 +34,10 @@ class MiscShowcase extends Component {
         <section>
           <h3>Animation Example</h3>
           <AnimationExample />
+        </section>
+        <section>
+          <h3>Label Series Example</h3>
+          <LabelSeriesExample />
         </section>
       </article>
     );

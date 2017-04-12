@@ -1,10 +1,6 @@
-.rv-radial-chart__svg {
-  display: block;
-}
+.rv-radial-chart {
 
-.rv-radial-chart__series--pie {
-  > path {
-    stroke: #fff;
-    stroke-width: 1px;
+  .rv-xy-plot__series--label {
+    pointer-events: none;
   }
 }

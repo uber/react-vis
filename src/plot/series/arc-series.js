@@ -38,11 +38,6 @@ import {
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--arc';
 const ATTRIBUTES = ['radius', 'angle'];
 
-const defaultProps = {
-  center: {x: 0, y: 0},
-  className: ''
-};
-
 class ArcSeries extends AbstractSeries {
   constructor(props) {
     super(props);
@@ -94,6 +89,7 @@ class ArcSeries extends AbstractSeries {
 
   render() {
     const {
+      arcClassName,
       animation,
       className,
       center,
@@ -117,22 +113,18 @@ class ArcSeries extends AbstractSeries {
     const {scaleProps} = this.state;
     const {radiusDomain} = scaleProps;
     // need to generate our own functors as abstract series doesnt have anythign for us
-    const radiusFunctor = getAttributeFunctor(scaleProps, 'radius');
-    const radius0Functor = getAttr0Functor(scaleProps, 'radius');
-    const angleFunctor = getAttributeFunctor(scaleProps, 'angle');
-    const angle0Functor = getAttr0Functor(scaleProps, 'angle');
-
+    const radius = getAttributeFunctor(scaleProps, 'radius');
+    const radius0 = getAttr0Functor(scaleProps, 'radius');
+    const angle = getAttributeFunctor(scaleProps, 'angle');
+    const angle0 = getAttr0Functor(scaleProps, 'angle');
     // but it does have good color support!
-    const fillFunctor = this._getAttributeFunctor('fill') ||
+    const fill = this._getAttributeFunctor('fill') ||
       this._getAttributeFunctor('color');
-    const strokeFunctor = this._getAttributeFunctor('stroke') ||
+    const stroke = this._getAttributeFunctor('stroke') ||
       this._getAttributeFunctor('color');
-    const opacityFunctor = this._getAttributeFunctor('opacity');
-    const xFunctor = this._getAttributeFunctor('x');
-    const yFunctor = this._getAttributeFunctor('y');
-
-    const xTranslate = xFunctor(center);
-    const yTranslate = yFunctor(center);
+    const opacity = this._getAttributeFunctor('opacity');
+    const x = this._getAttributeFunctor('x');
+    const y = this._getAttributeFunctor('y');
 
     return (
       <g className={`${predefinedClassName} ${className}`}
@@ -140,22 +132,22 @@ class ArcSeries extends AbstractSeries {
         onMouseOut={this._seriesMouseOutHandler}
         onClick={this._seriesClickHandler}
         ref="container"
-        transform={`translate(${marginLeft + xTranslate},${marginTop + yTranslate})`}>
+        transform={`translate(${marginLeft + x(center)},${marginTop + y(center)})`}>
         {data.map((row, i) => {
           const noRadius = radiusDomain[1] === radiusDomain[0];
           const arcArg = {
-            innerRadius: noRadius ? 0 : radius0Functor(row),
-            outerRadius: radiusFunctor(row),
-            startAngle: angle0Functor(row) || 0,
-            endAngle: angleFunctor(row)
+            innerRadius: noRadius ? 0 : radius0(row),
+            outerRadius: radius(row),
+            startAngle: angle0(row) || 0,
+            endAngle: angle(row)
           };
           const arcedData = arcBuilder();
           const rowStyle = row.style || {};
           return (<path {...{
             style: {
-              opacity: opacityFunctor && opacityFunctor(row),
-              stroke: strokeFunctor && strokeFunctor(row),
-              fill: fillFunctor && fillFunctor(row),
+              opacity: opacity && opacity(row),
+              stroke: stroke && stroke(row),
+              fill: fill && fill(row),
               ...style,
               ...rowStyle
             },
@@ -163,6 +155,7 @@ class ArcSeries extends AbstractSeries {
             onMouseOver: e => this._valueMouseOverHandler(row, e),
             onMouseOut: e => this._valueMouseOutHandler(row, e),
             key: i,
+            className: arcClassName,
             d: arcedData(arcArg)
           }} />);
         })}
@@ -177,9 +170,14 @@ ArcSeries.propTypes = {
   center: PropTypes.shape({
     x: PropTypes.number,
     y: PropTypes.number
-  })
+  }),
+  arcClassName: PropTypes.string
 };
-ArcSeries.defaultProps = defaultProps;
+ArcSeries.defaultProps = {
+  arcClassName: '',
+  center: {x: 0, y: 0},
+  className: ''
+};
 ArcSeries.displayName = 'ArcSeries';
 
 export default ArcSeries;

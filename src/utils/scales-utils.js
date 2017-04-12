@@ -268,12 +268,14 @@ function _collectScaleObjectFromProps(props, attr) {
     [`${attr}Range`]: range,
     [`${attr}Distance`]: distance = 0,
     [`${attr}BaseValue`]: baseValue,
-    [`${attr}Type`]: type = LINEAR_SCALE_TYPE} = props;
+    [`${attr}Type`]: type = LINEAR_SCALE_TYPE,
+    [`${attr}NoFallBack`]: noFallBack
+  } = props;
 
   let {[`${attr}Domain`]: domain} = props;
 
   // Return value-based scale if the value is assigned.
-  if (typeof value !== 'undefined') {
+  if (!noFallBack && typeof value !== 'undefined') {
     return _createScaleObjectForValue(attr, value, props[`${attr}Type`]);
   }
 

@@ -33,17 +33,7 @@ import {
 import {AnimationPropType} from 'animation';
 import ArcSeries from 'plot/series/arc-series';
 import XYPlot from 'plot/xy-plot';
-
-/**
- * Find the max radius value from the nodes to be rendered after they have been
- * transformed into an array
- * @param {Array} data - the tree data after it has been broken into a iterable
- * it is an array of objects!
- * @returns {number} the maximum value in coordinates for the radial variable
- */
-function getRadialDomain(data) {
-  return data.reduce((res, row) => Math.max(row.radius, res), 0);
-}
+import {getRadialDomain} from 'utils/series-utils';
 
 /**
  * Create the list of nodes to render.

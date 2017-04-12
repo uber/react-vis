@@ -2,8 +2,8 @@ import ComplexChartExample from '../../../examples/complex-chart/complex-chart-e
 import Candlestick from '../../../examples/candlestick/candlestick-example';
 import StreamgraphExample from '../../../examples/streamgraph/streamgraph-example';
 import ForceDirectedGraph from '../../../examples/force-directed-graph/force-directed-example';
-import ShowcaseApp from '../../../showcase/showcase-app';
 import ResponsiveVis from '../../../examples/responsive-vis/responsive-vis-example';
+import ShowcaseApp from '../../../showcase/showcase-app';
 
 const generatePath = tree => {
   if (Array.isArray(tree)) {
@@ -30,8 +30,8 @@ export const examplePages = generatePath([
     children: [{
       name: 'Showcase',
       content: {
-        pageType: 'example',
         markdown: getDocUrl('examples/showcase.md'),
+        pageType: 'example',
         component: ShowcaseApp
       }
     }, {
@@ -199,6 +199,13 @@ export const docPages = generatePath([
         content: {
           markdown: getDocUrl('arc-series.md'),
           filename: 'arc-series.md',
+          pageType: 'documentation'
+        }
+      }, {
+        name: 'Label Series',
+        content: {
+          markdown: getDocUrl('label-series.md'),
+          filename: 'label-series.md',
           pageType: 'documentation'
         }
       }

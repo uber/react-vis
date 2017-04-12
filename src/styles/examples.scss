@@ -360,3 +360,10 @@ article {
   font-weight: 600;
   padding: 5px 10px;
 }
+
+.donut-chart-example {
+  .rv-radial-chart__series--pie__slice:hover {
+    stroke: #000 !important;
+    stroke-width: 2px !important;
+  }
+}

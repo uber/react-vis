@@ -187,6 +187,17 @@ export function getSeriesPropsFromChildren(children) {
   return result;
 }
 
+/**
+ * Find the max radius value from the nodes to be rendered after they have been
+ * transformed into an array
+ * @param {Array} data - the tree data after it has been broken into a iterable
+ * it is an array of objects!
+ * @returns {number} the maximum value in coordinates for the radial variable
+ */
+export function getRadialDomain(data) {
+  return data.reduce((res, row) => Math.max(row.radius, res), 0);
+}
+
 export const ANIMATED_SERIES_PROPS = [
   'xRange', 'xDomain', 'x',
   'yRange', 'yDomain', 'y',
@@ -196,5 +207,8 @@ export const ANIMATED_SERIES_PROPS = [
   'fillRange', 'fillDomain', 'fill',
   'width', 'height',
   'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
-  'data'
+  'data',
+  'angleDomain', 'angleRange', 'angle',
+  'radiusDomain', 'radiusRange', 'radius',
+  'innerRadiusDomain', 'innerRadiusRange', 'innerRadius'
 ];

@@ -31,27 +31,6 @@ import {
   getTickValues
 } from '../utils/axis-utils';
 
-const propTypes = {
-  centerX: PropTypes.number,
-  centerY: PropTypes.number,
-  width: PropTypes.number,
-  height: PropTypes.number,
-  top: PropTypes.number,
-  left: PropTypes.number,
-
-  tickValues: PropTypes.array,
-  tickTotal: PropTypes.number,
-
-  animation: AnimationPropType,
-  // generally supplied by xyplot
-  marginTop: PropTypes.number,
-  marginBottom: PropTypes.number,
-  marginLeft: PropTypes.number,
-  marginRight: PropTypes.number,
-  innerWidth: PropTypes.number,
-  innerHeight: PropTypes.number
-};
-
 const animatedProps = [
   'xRange', 'yRange', 'xDomain', 'yDomain',
   'width', 'height', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
@@ -95,7 +74,8 @@ class CircularGridLines extends PureRenderComponent {
       tickTotal,
       tickValues,
       marginLeft,
-      marginTop
+      marginTop,
+      rRange
     } = props;
 
     const xScale = getAttributeScale(props, 'x');
@@ -105,21 +85,45 @@ class CircularGridLines extends PureRenderComponent {
       <g
         transform={`translate(${xScale(centerX) + marginLeft},${yScale(centerY) + marginTop})`}
         className="rv-xy-plot__circular-grid-lines">
-        {values.map((value, index) => {
-          return (
+        {values.reduce((res, value, index) => {
+          const radius = xScale(value);
+          if (rRange && (radius < rRange[0] || radius > rRange[1])) {
+            return res;
+          }
+          return res.concat([
             <circle
-              {...{cx: 0, cy: 0, r: xScale(value)}}
+              {...{cx: 0, cy: 0, r: radius}}
               key={index}
               className="rv-xy-plot__circular-grid-lines__line" />
-          );
-        })}
+          ]);
+        }, [])}
       </g>
     );
   }
 }
 
 CircularGridLines.displayName = 'CircularGridLines';
-CircularGridLines.propTypes = propTypes;
+CircularGridLines.propTypes = {
+  centerX: PropTypes.number,
+  centerY: PropTypes.number,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  top: PropTypes.number,
+  left: PropTypes.number,
+  rRange: PropTypes.arrayOf(PropTypes.number),
+
+  tickValues: PropTypes.arrayOf(PropTypes.number),
+  tickTotal: PropTypes.number,
+
+  animation: AnimationPropType,
+  // generally supplied by xyplot
+  marginTop: PropTypes.number,
+  marginBottom: PropTypes.number,
+  marginLeft: PropTypes.number,
+  marginRight: PropTypes.number,
+  innerWidth: PropTypes.number,
+  innerHeight: PropTypes.number
+};
 CircularGridLines.defaultProps = {
   centerX: 0,
   centerY: 0

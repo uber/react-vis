@@ -24,6 +24,7 @@ export VerticalBarSeries from 'plot/series/vertical-bar-series';
 export HorizontalBarSeries from 'plot/series/horizontal-bar-series';
 export VerticalRectSeries from 'plot/series/vertical-rect-series';
 export HorizontalRectSeries from 'plot/series/horizontal-rect-series';
+export LabelSeries from 'plot/series/label-series';
 export PolygonSeries from 'plot/series/polygon-series';
 export RectSeries from 'plot/series/rect-series';
 export MarkSeries from 'plot/series/mark-series';

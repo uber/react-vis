@@ -52,6 +52,7 @@ import SyncedCharts from './plot/synced-charts';
 import TimeChart from './plot/time-chart';
 import TriangleExample from './plot/triangle-example';
 import VoronoiLineChart from './plot/voronoi-line-chart';
+import LabelSeriesExample from './plot/label-series-example';
 
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
@@ -109,6 +110,7 @@ export const showCase = {
   TriangleExample,
   VoronoiLineChart,
   CustomAxes,
+  LabelSeriesExample,
 
   SimpleTreemap,
   TreemapExample,
