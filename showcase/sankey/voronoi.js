@@ -34,8 +34,8 @@ export default class VoronoiSankeyExample extends React.Component {
         width={200}
         height={200}
         hasVoronoi
-        onHover={node => this.setState({activeNode: node})}
-        onBlur={() => this.setState({activeNode: null})}
+        onValueMouseEnter={node => this.setState({activeNode: node})}
+        onValueMouseLeave={() => this.setState({activeNode: null})}
       />
     );
   }

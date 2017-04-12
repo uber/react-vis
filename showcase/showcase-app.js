@@ -18,7 +18,7 @@ class App extends Component {
 
         {!forExample && (<header>
           <div className="header-contents">
-            <a className="header-logo" href="#">react-vis</a>
+            <a className="header-logo" href="#plots">react-vis</a>
             <nav>
               <li><a href="#plots">Plots</a></li>
               <li><a href="#axes">Axes</a></li>

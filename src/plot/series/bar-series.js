@@ -26,14 +26,18 @@ import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 
 import AbstractSeries from './abstract-series';
+import {
+  valueEventHandlers,
+  valueEventPropTypes
+} from 'utils/interactivity-utils';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--bar';
 
 class BarSeries extends AbstractSeries {
-
   static get propTypes() {
     return {
-      ... AbstractSeries.propTypes,
+      ...AbstractSeries.propTypes,
+      ...valueEventPropTypes,
       linePosAttr: PropTypes.string,
       valuePosAttr: PropTypes.string,
       lineSizeAttr: PropTypes.string,
@@ -63,6 +67,7 @@ class BarSeries extends AbstractSeries {
       animation,
       className,
       data,
+      focusable,
       linePosAttr,
       lineSizeAttr,
       marginLeft,
@@ -103,6 +108,7 @@ class BarSeries extends AbstractSeries {
         transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {
           const attrs = {
+            key: i,
             style: {
               opacity: opacityFunctor && opacityFunctor(d),
               stroke: strokeFunctor && strokeFunctor(d),
@@ -113,10 +119,8 @@ class BarSeries extends AbstractSeries {
             [lineSizeAttr]: itemSize * 2 / sameTypeTotal,
             [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
             [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
-            onClick: e => this._valueClickHandler(d, e),
-            onMouseOver: e => this._valueMouseOverHandler(d, e),
-            onMouseOut: e => this._valueMouseOutHandler(d, e),
-            key: i
+            tabIndex: focusable ? 0 : null,
+            ...valueEventHandlers(this.props, d)
           };
           return (<rect {...attrs} />);
         })}

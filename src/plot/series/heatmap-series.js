@@ -24,6 +24,10 @@ import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 
 import AbstractSeries from './abstract-series';
+import {
+  valueEventHandlers,
+  valueEventPropTypes
+} from 'utils/interactivity-utils';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--heatmap';
 
@@ -72,9 +76,7 @@ class HeatmapSeries extends AbstractSeries {
             width: xDistance,
             height: yDistance,
             key: i,
-            onClick: e => this._valueClickHandler(d, e),
-            onMouseOver: e => this._valueMouseOverHandler(d, e),
-            onMouseOut: e => this._valueMouseOutHandler(d, e)
+            ...valueEventHandlers(this.props, d)
           };
           return (<rect {...attrs} />);
         })}
@@ -84,7 +86,8 @@ class HeatmapSeries extends AbstractSeries {
 }
 
 HeatmapSeries.propTypes = {
-  ...AbstractSeries.propTypes
+  ...AbstractSeries.propTypes,
+  ...valueEventPropTypes
 };
 
 HeatmapSeries.displayName = 'HeatmapSeries';

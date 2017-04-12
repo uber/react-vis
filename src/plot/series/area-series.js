@@ -24,8 +24,11 @@ import * as d3Shape from 'd3-shape';
 import Animation from 'animation';
 import {DEFAULT_OPACITY} from 'theme';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
-
 import AbstractSeries from './abstract-series';
+import {
+  seriesEventHandlers,
+  seriesEventPropTypes
+} from 'utils/interactivity-utils';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--line';
 
@@ -45,7 +48,7 @@ class AreaSeries extends AbstractSeries {
 
   render() {
     const {
-      animation, className, curve, data, marginLeft, marginTop
+      animation, className, curve, data, focusable, marginLeft, marginTop
     } = this.props;
     if (!data) {
       return null;
@@ -68,14 +71,14 @@ class AreaSeries extends AbstractSeries {
     const newOpacity = this._getAttributeValue('opacity');
     const opacity = Number.isFinite(newOpacity) ? newOpacity : DEFAULT_OPACITY;
     const d = this._renderArea(data, x, y0, y, curve);
+
     return (
       <path
         d={d}
         className={`${predefinedClassName} ${className}`}
         transform={`translate(${marginLeft},${marginTop})`}
-        onMouseOver={this._seriesMouseOverHandler}
-        onMouseOut={this._seriesMouseOutHandler}
-        onClick={this._seriesClickHandler}
+        tabIndex={focusable ? 0 : null}
+        {...seriesEventHandlers(this.props)}
         style={{
           opacity,
           stroke,
@@ -83,9 +86,12 @@ class AreaSeries extends AbstractSeries {
         }}/>
     );
   }
-
 }
 
+AreaSeries.propTypes = {
+  ...AbstractSeries.propTypes,
+  ...seriesEventPropTypes
+};
 AreaSeries.displayName = 'AreaSeries';
 
 export default AreaSeries;

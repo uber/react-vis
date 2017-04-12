@@ -1,4 +1,4 @@
-// Copyright (c) 2016 - 2017 Uber Technologies, Inc.
+// Copyright (c) 2016 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,13 +27,19 @@ import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 
 import AbstractSeries from './abstract-series';
 
+import {
+  valueEventHandlers,
+  valueEventPropTypes
+} from 'utils/interactivity-utils';
+
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--rect';
 
 class RectSeries extends AbstractSeries {
 
   static get propTypes() {
     return {
-      ... AbstractSeries.propTypes,
+      ...AbstractSeries.propTypes,
+      ...valueEventPropTypes,
       linePosAttr: PropTypes.string,
       valuePosAttr: PropTypes.string,
       lineSizeAttr: PropTypes.string,
@@ -46,6 +52,7 @@ class RectSeries extends AbstractSeries {
       animation,
       className,
       data,
+      focusable,
       linePosAttr,
       lineSizeAttr,
       marginLeft,
@@ -91,9 +98,8 @@ class RectSeries extends AbstractSeries {
             [lineSizeAttr]: Math.abs(lineFunctor(d) - line0Functor(d)),
             [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
             [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
-            onClick: e => this._valueClickHandler(d, e),
-            onMouseOver: e => this._valueMouseOverHandler(d, e),
-            onMouseOut: e => this._valueMouseOutHandler(d, e),
+            tabIndex: focusable ? 0 : null,
+            ...valueEventHandlers(this.props),
             key: i
           };
           return (<rect {...attrs} />);

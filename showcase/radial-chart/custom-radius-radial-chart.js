@@ -71,8 +71,8 @@ export default class SimpleRadialChart extends Component {
             opacity: (!hoveredSection || hoveredSection === 5) ? 1 : 0.6
           }
         ]}
-        onSectionMouseOver={row => this.setState({hoveredSection: row.id})}
-        onSectionMouseOut={() => this.setState({hoveredSection: false})}
+        onValueMouseEnter={row => this.setState({hoveredSection: row.id})}
+        onValueMouseLeave={() => this.setState({hoveredSection: false})}
         width={600}
         height={300} />
     );

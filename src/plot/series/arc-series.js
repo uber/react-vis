@@ -34,6 +34,12 @@ import {
   getMissingScaleProps,
   getScalePropTypesByAttribute
 } from 'utils/scales-utils';
+import {
+  seriesEventHandlers,
+  seriesEventPropTypes,
+  valueEventHandlers,
+  valueEventPropTypes
+} from 'utils/interactivity-utils';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--arc';
 const ATTRIBUTES = ['radius', 'angle'];
@@ -98,6 +104,7 @@ class ArcSeries extends AbstractSeries {
       className,
       center,
       data,
+      focusable,
       marginLeft,
       marginTop,
       style = {}
@@ -136,9 +143,8 @@ class ArcSeries extends AbstractSeries {
 
     return (
       <g className={`${predefinedClassName} ${className}`}
-        onMouseOver={this._seriesMouseOverHandler}
-        onMouseOut={this._seriesMouseOutHandler}
-        onClick={this._seriesClickHandler}
+        tabIndex = {focusable ? 0 : null}
+        {...seriesEventHandlers(this.props)}
         ref="container"
         transform={`translate(${marginLeft + xTranslate},${marginTop + yTranslate})`}>
         {data.map((row, i) => {
@@ -159,9 +165,7 @@ class ArcSeries extends AbstractSeries {
               ...style,
               ...rowStyle
             },
-            onClick: e => this._valueClickHandler(row, e),
-            onMouseOver: e => this._valueMouseOverHandler(row, e),
-            onMouseOut: e => this._valueMouseOutHandler(row, e),
+            ...valueEventHandlers(this.props, row),
             key: i,
             d: arcedData(arcArg)
           }} />);
@@ -174,6 +178,8 @@ ArcSeries.propTypes = {
   ...AbstractSeries.propTypes,
   ...getScalePropTypesByAttribute('radius'),
   ...getScalePropTypesByAttribute('angle'),
+  ...seriesEventPropTypes,
+  ...valueEventPropTypes,
   center: PropTypes.shape({
     x: PropTypes.number,
     y: PropTypes.number

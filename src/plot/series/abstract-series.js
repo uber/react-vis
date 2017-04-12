@@ -40,12 +40,6 @@ const propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
   data: PropTypes.array,
-  onValueMouseOver: PropTypes.func,
-  onValueMouseOut: PropTypes.func,
-  onValueClick: PropTypes.func,
-  onSeriesMouseOver: PropTypes.func,
-  onSeriesMouseOut: PropTypes.func,
-  onSeriesClick: PropTypes.func,
   onNearestX: PropTypes.func,
   onNearestXY: PropTypes.func,
   animation: AnimationPropType
@@ -56,100 +50,6 @@ const defaultProps = {
 };
 
 class AbstractSeries extends PureRenderComponent {
-
-  constructor(props) {
-    super(props);
-    this._seriesMouseOverHandler = this._seriesMouseOverHandler.bind(this);
-    this._valueMouseOverHandler = this._valueMouseOverHandler.bind(this);
-    this._seriesMouseOutHandler = this._seriesMouseOutHandler.bind(this);
-    this._valueMouseOutHandler = this._valueMouseOutHandler.bind(this);
-    this._seriesClickHandler = this._seriesClickHandler.bind(this);
-    this._valueClickHandler = this._valueClickHandler.bind(this);
-  }
-
-  /**
-   * Mouse over handler for the specific series' value.
-   * @param {Object} d Value object
-   * @param {Object} event Event.
-   * @protected
-   */
-  _valueMouseOverHandler(d, event) {
-    const {onValueMouseOver, onSeriesMouseOver} = this.props;
-    if (onValueMouseOver) {
-      onValueMouseOver(d, {event});
-    }
-    if (onSeriesMouseOver) {
-      onSeriesMouseOver({event});
-    }
-  }
-
-  /**
-   * Mouse over handler for the entire series.
-   * @param {Object} event Event.
-   * @protected
-   */
-  _seriesMouseOverHandler(event) {
-    const {onSeriesMouseOver} = this.props;
-    if (onSeriesMouseOver) {
-      onSeriesMouseOver({event});
-    }
-  }
-
-  /**
-   * Mouse out handler for the specific series' value.
-   * @param {Object} d Value object
-   * @param {Object} event Event.
-   * @protected
-   */
-  _valueMouseOutHandler(d, event) {
-    const {onValueMouseOut, onSeriesMouseOut} = this.props;
-    if (onValueMouseOut) {
-      onValueMouseOut(d, {event});
-    }
-    if (onSeriesMouseOut) {
-      onSeriesMouseOut({event});
-    }
-  }
-
-  /**
-   * Mouse out handler for the entire series.
-   * @param {Object} event Event.
-   * @protected
-   */
-  _seriesMouseOutHandler(event) {
-    const {onSeriesMouseOut} = this.props;
-    if (onSeriesMouseOut) {
-      onSeriesMouseOut({event});
-    }
-  }
-
-  /**
-   * Click handler for the specific series' value.
-   * @param {Object} d Value object
-   * @param {Object} event Event.
-   * @protected
-   */
-  _valueClickHandler(d, event) {
-    const {onValueClick, onSeriesClick} = this.props;
-    if (onValueClick) {
-      onValueClick(d, {event});
-    }
-    if (onSeriesClick) {
-      onSeriesClick({event});
-    }
-  }
-
-  /**
-   * Click handler for the entire series.
-   * @param {Object} event Event.
-   * @protected
-   */
-  _seriesClickHandler(event) {
-    const {onSeriesClick} = this.props;
-    if (onSeriesClick) {
-      onSeriesClick({event});
-    }
-  }
 
   /**
    * Tells the rest of the world that it requires SVG to work.

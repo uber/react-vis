@@ -62,9 +62,9 @@ export default class DynamicTreemapExample extends React.Component {
         stiffness: 300
       },
       data: this.state.treemapData,
-      onLeafMouseOver: x => this.setState({hoveredNode: x}),
-      onLeafMouseOut: () => this.setState({hoveredNode: false}),
-      onLeafClick: () => this.setState({treemapData: _getRandomData()}),
+      onValueMouseEnter: x => this.setState({hoveredNode: x}),
+      onValueMouseLeave: () => this.setState({hoveredNode: false}),
+      onValueClick: () => this.setState({treemapData: _getRandomData()}),
       height: 300,
       mode: this.state.useCirclePacking ? 'circlePack' : 'squarify',
       width: 350

@@ -30,8 +30,11 @@ import {
   extractScalePropsFromProps,
   getMissingScaleProps
 } from 'utils/scales-utils';
-
-const NOOP = d => d;
+import {
+  valueEventHandlers,
+  valueEventPropTypes,
+  ValueFocusable
+} from 'utils/interactivity-utils';
 
 const ATTRIBUTES = [
   'angle',
@@ -76,13 +79,11 @@ function assignColorsToData(data) {
 class RadialChart extends React.Component {
   static get propTypes() {
     return {
+      ...valueEventPropTypes,
       animation: AnimationPropType,
       className: PropTypes.string,
       height: PropTypes.number.isRequired,
       margin: MarginPropType,
-      onSectionMouseOver: PropTypes.func,
-      onSectionMouseOut: PropTypes.func,
-      onSectionClick: PropTypes.func,
       showLabels: PropTypes.bool,
       width: PropTypes.number.isRequired
     };
@@ -110,19 +111,6 @@ class RadialChart extends React.Component {
       data: nextData,
       arc: this._getArcFromProps(nextScaleProps)
     });
-  }
-
-  /**
-   * Triggers a callback on a section if the callback is set.
-   * @param {function} handler Callback function.
-   * @param {Object} d Data point of the arc.
-   * @param {Object} event Event.
-   * @private
-   */
-  _sectionHandler(handler = NOOP, d, event) {
-    const {arc} = this.state;
-    const [x, y] = arc.centroid(d);
-    handler(d.data, {event, x, y});
   }
 
   /**
@@ -280,21 +268,15 @@ class RadialChart extends React.Component {
    * @private
    */
   _renderOverlay(pieData, arc) {
-    const {
-      onSectionMouseOver,
-      onSectionMouseOut,
-      onSectionClick
-    } = this.props;
-
     return (d, i) => {
+      const [x, y] = arc.centroid(d);
       return (<path {...{
         className: 'rv-radial-chart__series--pie__slice-overlay',
+        key: `${i}-listeners`,
         d: arc(pieData[i]),
         style: {opacity: 0},
-        onMouseEnter: e => this._sectionHandler(onSectionMouseOver, pieData[i], e),
-        onMouseLeave: e => this._sectionHandler(onSectionMouseOut, pieData[i], e),
-        onClick: e => this._sectionHandler(onSectionClick, pieData[i], e),
-        key: `${i}-listeners`
+        tabIndex: this.props.focusable ? 0 : null,
+        ...valueEventHandlers(this.props, {...d, x, y})
       }}/>);
     };
   }
@@ -356,4 +338,4 @@ class RadialChart extends React.Component {
 
 RadialChart.displayName = 'RadialChart';
 
-export default RadialChart;
+export default ValueFocusable(RadialChart);

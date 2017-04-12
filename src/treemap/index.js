@@ -36,6 +36,7 @@ import {
 import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, DEFAULT_OPACITY, OPACITY_TYPE} from 'theme';
 import {AnimationPropType} from 'animation';
 import {getAttributeFunctor, getMissingScaleProps} from 'utils/scales-utils';
+import {valueEventPropTypes} from 'utils/interactivity-utils';
 
 import TreemapLeaf from './treemap-leaf';
 
@@ -53,8 +54,6 @@ const TREEMAP_LAYOUT_MODES = [
   'partition',
   'partition-pivot'
 ];
-
-const NOOP = d => d;
 
 const ATTRIBUTES = ['opacity', 'color'];
 
@@ -85,6 +84,7 @@ class Treemap extends React.Component {
 
   static get propTypes() {
     return {
+      ...valueEventPropTypes,
       animation: AnimationPropType,
       className: PropTypes.string,
       data: PropTypes.object.isRequired,
@@ -92,9 +92,6 @@ class Treemap extends React.Component {
       mode: PropTypes.oneOf(
         Object.keys(TREEMAP_TILE_MODES).concat(TREEMAP_LAYOUT_MODES)
       ),
-      onLeafClick: PropTypes.func,
-      onLeafMouseOver: PropTypes.func,
-      onLeafMouseOut: PropTypes.func,
       useCirclePacking: PropTypes.bool,
       padding: PropTypes.number.isRequired,
       width: PropTypes.number.isRequired
@@ -110,9 +107,6 @@ class Treemap extends React.Component {
         children: []
       },
       mode: 'squarify',
-      onLeafClick: NOOP,
-      onLeafMouseOver: NOOP,
-      onLeafMouseOut: NOOP,
       opacityType: OPACITY_TYPE,
       _opacityValue: DEFAULT_OPACITY,
       padding: 1
