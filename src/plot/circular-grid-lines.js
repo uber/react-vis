@@ -44,8 +44,7 @@ class CircularGridLines extends PureRenderComponent {
       innerWidth,
       innerHeight,
       marginTop,
-      marginLeft,
-      rRange
+      marginLeft
     } = this.props;
     return {
       left: marginLeft,

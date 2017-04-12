@@ -2,7 +2,7 @@
 
 <!-- INJECT:"LabelSeriesExample" -->
 
-Sometimes you just need to write on your data, and labelSeries has your back. This simple series has a similar API as the markSeries except it adds a label property to each of the rows. This label is then rendered as part of the svg tree. This can be useful for annotating points, as above, or in labeling wedges as (as in the radial chart).
+Sometimes you just need to write on your data, and labelSeries has your back. This simple series has a similar API as the markSeries except it adds a label property to each of the rows. This label is then rendered as part of the svg tree.
 
 ```javascript
 <XYPlot width={300} height={300}>
@@ -12,8 +12,7 @@ Sometimes you just need to write on your data, and labelSeries has your back. Th
     data={data} />
 </XYPlot>
 ```
-
-Each series corresponds to exactly **one** svg path. It is perfectly okay to many series to express many polygons!
+This can be useful for annotating points, as above, or in labeling wedges as (as in the radial chart).
 
 ## Data format Reference
 
@@ -28,7 +27,7 @@ const myData = [
 ]
 ```
 
-Would render three points with labels as suggested!
+The above would render three points with labels as suggested!
 
 #### x
 Type: `number`
@@ -79,14 +78,14 @@ Callback is triggered with two arguments. `value` is the data point, `info` obje
 - `index` is the index of the data point in the array of data;
 - `event` is the event object.
 
-#### onSeriesMouseOver (optional)
+#### onValueMouseOver (optional)
 Type: `function(d, {event})`  
 `mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
 
-#### onSeriesMouseOut (optional)
+#### onValueMouseOut (optional)
 Type: `function(d, {event})`  
 `mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
 
-#### onSeriesClick (optional)
+#### onValueClick (optional)
 Type: `function(d, {event})`  
 `click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  

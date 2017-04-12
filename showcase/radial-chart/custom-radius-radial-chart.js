@@ -22,8 +22,7 @@ import React, {Component} from 'react';
 
 import {
   CircularGridLines,
-  RadialChart,
-  XAxis
+  RadialChart
 } from 'index';
 
 const DATA = [
