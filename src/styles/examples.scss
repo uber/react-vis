@@ -63,8 +63,9 @@ nav {
   font-weight: 400;
 
   li {
-    padding: 0;
     display: inline-block;
+    padding: 0;
+    font-size: 10px
   }
 
   a {
@@ -97,7 +98,6 @@ article {
   }
 
   section {
-    width: 400px;
     flex-basis: 400px;
     flex-grow: 1;
     margin: 0 0 40px;
@@ -366,4 +366,15 @@ article {
     stroke: #000 !important;
     stroke-width: 2px !important;
   }
+}
+
+.scatterplot-gl-example-controls {
+  display: flex;
+}
+
+.scatterplot-gl-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }

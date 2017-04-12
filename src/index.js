@@ -20,6 +20,7 @@
 
 export AbstractSeries from 'plot/series/abstract-series';
 export LineSeries from 'plot/series/line-series';
+export LineSeriesGL from 'plot/series/line-series-gl';
 export VerticalBarSeries from 'plot/series/vertical-bar-series';
 export HorizontalBarSeries from 'plot/series/horizontal-bar-series';
 export VerticalRectSeries from 'plot/series/vertical-rect-series';
@@ -28,10 +29,12 @@ export LabelSeries from 'plot/series/label-series';
 export PolygonSeries from 'plot/series/polygon-series';
 export RectSeries from 'plot/series/rect-series';
 export MarkSeries from 'plot/series/mark-series';
+export MarkSeriesGL from 'plot/series/mark-series-gl';
 export HeatmapSeries from 'plot/series/heatmap-series';
 export AreaSeries from 'plot/series/area-series';
 export LineMarkSeries from 'plot/series/line-mark-series';
 export ArcSeries from 'plot/series/arc-series';
+export LineMarkSeriesGL from 'plot/series/line-mark-series-gl';
 export Hint from 'plot/hint';
 export Crosshair from 'plot/crosshair';
 export XYPlot from 'plot/xy-plot';

@@ -28,6 +28,8 @@ import {getInnerDimensions, MarginPropType} from 'utils/chart-utils';
 import {AnimationPropType} from 'animation';
 import {CONTINUOUS_COLOR_RANGE, SIZE_RANGE, OPACITY_TYPE} from 'theme';
 
+import DeckGLWrapper from './series/deck-gl-wrapper';
+
 const ATTRIBUTES = [
   'x',
   'y',
@@ -311,6 +313,33 @@ class XYPlot extends React.Component {
     });
   }
 
+  renderDeckGlComponents(components, props) {
+    const componentsToRender = components.filter(c => c && !c.type.requiresSVG && c.type.isDeckGL);
+    if (componentsToRender.length === 0) {
+      return null;
+    }
+    const animation = componentsToRender.some(layer => layer.props.animation);
+    const {
+      marginLeft,
+      marginTop,
+      marginBottom,
+      marginRight,
+      innerHeight,
+      innerWidth
+    } = componentsToRender[0].props;
+    return (<DeckGLWrapper {...{
+      animation,
+      marginLeft,
+      marginTop,
+      marginBottom,
+      marginRight,
+      innerHeight,
+      innerWidth
+    }}>
+      {componentsToRender}
+    </DeckGLWrapper>);
+  }
+
   render() {
     const {
       className,
@@ -345,8 +374,9 @@ class XYPlot extends React.Component {
           onMouseMove={this._mouseMoveHandler}
           onMouseLeave={this._mouseLeaveHandler}
           onMouseEnter={this._mouseEnterHandler}>
-          {components.filter(c => c && c.type.requiresSVG)}
+          {components.filter(c => c && c.type.requiresSVG && !c.type.isDeckGL)}
         </svg>
+        {this.renderDeckGlComponents(components, this.props)}
         {components.filter(c => c && !c.type.requiresSVG)}
       </div>
     );

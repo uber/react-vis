@@ -190,8 +190,8 @@ export const docPages = generatePath([
       }, {
         name: 'Mark Series',
         content: {
-          markdown: getDocUrl('mark-series.md'),
-          filename: 'mark-series.md',
+          markdown: getDocUrl('markseries.md'),
+          filename: 'markseries.md',
           pageType: 'documentation'
         }
       }, {

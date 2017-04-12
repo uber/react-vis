@@ -11,18 +11,20 @@ $rv-xy-plot-tooltip-padding: 7px 10px;
 .rv-xy-plot {
   color: #c3c3c3;
   position: relative;
+
+  canvas {
+    pointer-events: none;
+  }
 }
 
 .rv-xy-plot__inner {
   display: block;
 }
 
-// .rv-xy-plot__axis {}
-
 .rv-xy-plot__axis__line {
+  fill: none;
   stroke-width: 2px;
   stroke: $rv-xy-plot-axis-line-color;
-  fill: none;
 }
 
 .rv-xy-plot__axis__tick__line {
@@ -36,8 +38,8 @@ $rv-xy-plot-tooltip-padding: 7px 10px;
 
 .rv-xy-plot__axis__title {
   text {
-    font-size: $rv-xy-plot-axis-font-size;
     fill: $rv-xy-plot-axis-font-color;
+    font-size: $rv-xy-plot-axis-font-size;
   }
 }
 
