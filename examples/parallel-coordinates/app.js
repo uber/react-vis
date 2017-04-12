@@ -22,16 +22,15 @@ import ReactDOM from 'react-dom';
 import React, {Component} from 'react';
 import document from 'global/document';
 
-import CandlestickExample from './candlestick-example';
-import '../../src/styles/examples.scss';
+import ParallelCoordinates from './parallel-coordinates';
 
 export default class App extends Component {
   render() {
     return (
       <article>
-        <h1>Candlestick Example</h1>
+        <h1>Parallel Coordinate Example</h1>
         <section>
-          <CandlestickExample />
+          <ParallelCoordinates />
         </section>
       </article>
     );

@@ -1,4 +1,4 @@
-react-vis complex-chart example
+react-vis force-directed-graph example
 =================
 
 ## Setup
@@ -6,6 +6,6 @@ react-vis complex-chart example
 git clone https://github.com/uber/react-vis
 cd react-vis/examples/
 npm install
-cd complex-chart
+cd force-directed-graph
 npm start
 ```
