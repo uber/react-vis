@@ -18,23 +18,37 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {Component} from 'react';
 
-import RadialChart from 'radial-chart';
+import {
+  RadialChart,
+  Hint
+} from 'index';
 
-export default function DonutChartExample() {
-  return (
-    <RadialChart
-      innerRadius={100}
-      radius={140}
-      data={[
-        {angle: 2},
-        {angle: 6},
-        {angle: 2},
-        {angle: 3},
-        {angle: 1}
-      ]}
-      width={300}
-      height={300}/>
-  );
+export default class SimpleRadialChart extends Component {
+  state = {
+    value: false
+  }
+  render() {
+    const {value} = this.state;
+    return (
+      <RadialChart
+        className={'donut-chart-example'}
+        innerRadius={100}
+        radius={140}
+        data={[
+          {angle: 2},
+          {angle: 6},
+          {angle: 2},
+          {angle: 3},
+          {angle: 1}
+        ]}
+        onValueMouseOver={v => this.setState({value: v})}
+        onSeriesMouseOut={v => this.setState({value: false})}
+        width={300}
+        height={300}>
+        {value && <Hint value={value}/>}
+      </RadialChart>
+    );
+  }
 }

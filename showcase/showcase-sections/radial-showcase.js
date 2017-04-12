@@ -17,14 +17,13 @@ class RadialShowcase extends Component {
           <SimpleRadialChart />
         </section>
         <section>
-          <h3>Simple Donut Chart</h3>
+          <h3>Simple Hoverable Donut Chart</h3>
           <DonutChartExample />
         </section>
         <section>
           <h3>Custom Radius</h3>
           <CustomRadiusRadialChart />
         </section>
-
       </article>
     );
   }
