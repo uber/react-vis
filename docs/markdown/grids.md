@@ -78,3 +78,7 @@ The left-right value in coordinates of where the circles should be centered.
 #### centerY (optional)
 Type: `number`  
 The top-bottom value in coordinates of where the circles should be centered.
+
+#### rRange (optional)
+Type:[`number`, `number`]
+This allows users to specify the exact pixel range over which they wish their rings to appear.

@@ -20,7 +20,11 @@
 
 import React, {Component} from 'react';
 
-import RadialChart from 'radial-chart';
+import {
+  CircularGridLines,
+  RadialChart,
+  XAxis
+} from 'index';
 
 const DATA = [
   {
@@ -77,10 +81,13 @@ export default class SimpleRadialChart extends Component {
         showLabels
         radiusDomain={[0, 20]}
         data={mapData(hoveredSection)}
+        labelsAboveChildren
         onValueMouseOver={row => this.setState({hoveredSection: row.id})}
         onMouseLeave={() => this.setState({hoveredSection: false})}
         width={600}
-        height={300} />
+        height={300} >
+        <CircularGridLines tickTotal={20} rRange={[0, 150]}/>
+      </RadialChart>
     );
   }
 }

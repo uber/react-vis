@@ -108,7 +108,8 @@ class RadialChart extends Component {
       showLabels,
       margin,
       onMouseLeave,
-      onMouseEnter
+      onMouseEnter,
+      labelsAboveChildren
     } = this.props;
     const mappedData = getWedgesToRender({data, height, hideRootNode, width});
     const radialDomain = getRadialDomain(mappedData);
@@ -138,10 +139,9 @@ class RadialChart extends Component {
         xDomain={[-radialDomain, radialDomain]}
         yDomain={[-radialDomain, radialDomain]}>
         <ArcSeries {...arcProps}/>
-        {showLabels && <LabelSeries
-          data={generateLabels(mappedData)}
-          />}
+        {showLabels && !labelsAboveChildren && <LabelSeries data={generateLabels(mappedData)}/>}
         {children}
+        {showLabels && labelsAboveChildren && <LabelSeries data={generateLabels(mappedData)}/>}
       </XYPlot>
     );
   }
@@ -154,6 +154,7 @@ RadialChart.PropTypes = {
   colorType: PropTypes.string,
   data: PropTypes.object.isRequired,
   height: PropTypes.number.isRequired,
+  labelsAboveChildren: PropTypes.bool,
   margin: MarginPropType,
   onValueClick: PropTypes.func,
   onValueMouseOver: PropTypes.func,

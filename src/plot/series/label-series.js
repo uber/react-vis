@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import AbstractSeries from './abstract-series';
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
@@ -85,5 +86,23 @@ class LabelSeries extends AbstractSeries {
     );
   }
 }
+
+LabelSeries.PropTypes = {
+  animation: PropTypes.bool,
+  allowOffsetToBeReversed: PropTypes.bool,
+  className: PropTypes.string,
+  data: PropTypes.arrayOf(PropTypes.shape({
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
+    label: PropTypes.string.isRequired,
+    xOffset: PropTypes.number,
+    yOffset: PropTypes.number,
+    style: PropTypes.object
+  })).isRequired,
+  marginLeft: PropTypes.number,
+  marginTop: PropTypes.number,
+  xRange: PropTypes.arrayOf(PropTypes.number),
+  yRange: PropTypes.arrayOf(PropTypes.number)
+};
 
 export default LabelSeries;
