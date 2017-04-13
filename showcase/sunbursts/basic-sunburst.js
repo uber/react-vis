@@ -89,7 +89,7 @@ export default class BasicSunburst extends React.Component {
               data: updateData(decoratedData, pathAsMap)
             });
           }}
-          onSeriesMouseOut={() => this.setState({
+          onValueMouseOut={() => this.setState({
             pathValue: false,
             data: updateData(decoratedData, false)
           })}
