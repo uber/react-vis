@@ -28,6 +28,11 @@ const MISC = [{
   name: 'Animation Example',
   component: AnimationExample,
   docsLink: 'http://uber.github.io/react-vis/#/documentation/overview/animation'
+}, {
+  name: 'Label Series Example',
+  component: LabelSeriesExample,
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/label-series.js',
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/label-series'
 }];
 
 class MiscShowcase extends Component {
