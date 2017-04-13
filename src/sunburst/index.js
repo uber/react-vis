@@ -69,6 +69,25 @@ function getNodesToRender({data, height, hideRootNode, width}) {
     }, []);
 }
 
+/**
+ * Calculate the margin of the sunburst,
+ * so it can be at the center of the container
+ * @param  {Number} width - the width of the container
+ * @param  {Number} height - the height of the container
+ * @param  {Number} radius - the max radius of the sunburst
+ * @return {Object} an object includes {bottom, left, right, top}
+ */
+function getMargin(width, height, radius) {
+  const marginX = (width / 2) - radius;
+  const marginY = (height / 2) - radius;
+  return {
+    bottom: marginY,
+    left: marginX,
+    right: marginX,
+    top: marginY  
+  };
+}
+
 class Sunburst extends React.Component {
   render() {
     const {
@@ -82,11 +101,13 @@ class Sunburst extends React.Component {
     } = this.props;
     const mappedData = getNodesToRender({data, height, hideRootNode, width});
     const radialDomain = getRadialDomain(mappedData);
+    const margin = getMargin(widht, height, radialDomain);
     return (
       <XYPlot
         height={height}
         width={width}
         className={className}
+        margin={margin}
         xDomain={[-radialDomain, radialDomain]}
         yDomain={[-radialDomain, radialDomain]}>
         <ArcSeries {...{
