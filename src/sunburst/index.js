@@ -84,7 +84,7 @@ function getMargin(width, height, radius) {
     bottom: marginY,
     left: marginX,
     right: marginX,
-    top: marginY  
+    top: marginY
   };
 }
 
@@ -101,7 +101,7 @@ class Sunburst extends React.Component {
     } = this.props;
     const mappedData = getNodesToRender({data, height, hideRootNode, width});
     const radialDomain = getRadialDomain(mappedData);
-    const margin = getMargin(widht, height, radialDomain);
+    const margin = getMargin(width, height, radialDomain);
     return (
       <XYPlot
         height={height}
