@@ -39,6 +39,21 @@ header {
   z-index: 1000;
 }
 
+.flex {
+  display: flex;
+}
+
+.docs-link {
+  font-weight: 600;
+  margin-right: 5px;
+  text-transform: uppercase;
+}
+
+.docs-comment {
+  display: flex;
+  max-width: 300px;
+}
+
 .header-contents {
   min-width: 650px;
   max-width: 1200px;

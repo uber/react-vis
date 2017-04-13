@@ -27,7 +27,6 @@ import StackedVerticalBarChart from './plot/stacked-vertical-bar-chart';
 import StackedHorizontalBarChart from './plot/stacked-horizontal-bar-chart';
 import ClusteredStackedVerticalBarChart from './plot/clustered-stacked-bar-chart';
 import StackedHistogram from './plot/stacked-histogram';
-import AnimationExample from './plot/animation-example';
 import AreaChart from './plot/area-chart';
 import AreaChartElevated from './plot/area-chart-elevated';
 import ScatterplotChart from './plot/scatterplot';
@@ -36,46 +35,49 @@ import ScatterplotGLChart from './plot/scatterplot-gl';
 import HeatmapChart from './plot/heatmap-chart';
 import WidthHeightMarginChart from './plot/width-height-margin';
 import CustomScales from './plot/custom-scales';
-import CustomAxesOrientation from './plot/custom-axes-orientation';
-import CustomAxisChart from './plot/custom-axis';
-import CustomAxes from './plot/custom-axes';
 import AxisWithTurnedLabels from './plot/axis-with-turned-labels';
 import GridLinesChart from './plot/grid';
-import StaticHints from './plot/static-hints';
-import DynamicHints from './plot/dynamic-hints';
-import DynamicComplexEdgeHints from './plot/dynamic-complex-edge-hints';
-import DynamicSimpleEdgeHints from './plot/dynamic-simple-edge-hints';
-import DynamicSimpleTopEdgeHints from './plot/dynamic-simple-topedge-hints';
-import DynamicProgrammaticRightEdgeHints from './plot/dynamic-programmatic-rightedge-hints';
-import StaticCrosshair from './plot/static-crosshair';
-import DynamicCrosshair from './plot/dynamic-crosshair';
-import DynamicCrosshairScatterplot from './plot/dynamic-crosshair-scatterplot';
-import SyncedCharts from './plot/synced-charts';
-import TimeChart from './plot/time-chart';
-import TriangleExample from './plot/triangle-example';
-import VoronoiLineChart from './plot/voronoi-line-chart';
-import LabelSeriesExample from './plot/label-series-example';
 
-import SimpleTreemap from './treemap/simple-treemap';
-import TreemapExample from './treemap/dynamic-treemap';
-
-import BasicSunburst from './sunbursts/basic-sunburst';
-import ClockExample from './sunbursts/clock-example';
-import AnimatedSunburst from './sunbursts/animated-sunburst';
-
-import SimpleRadialChart from './radial-chart/simple-radial-chart';
-import DonutChartExample from './radial-chart/donut-chart';
-import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
-import ArcSeriesExample from './radial-chart/arc-series-example';
-
-import BasicSankeyExample from './sankey/basic';
-import VoronoiSankeyExample from './sankey/voronoi';
+import CustomAxesOrientation from './axes/custom-axes-orientation';
+import CustomAxisChart from './axes/custom-axis';
+import CustomAxes from './axes/custom-axes';
+import StaticHints from './axes/static-hints';
+import DynamicHints from './axes/dynamic-hints';
+import DynamicComplexEdgeHints from './axes/dynamic-complex-edge-hints';
+import DynamicSimpleEdgeHints from './axes/dynamic-simple-edge-hints';
+import DynamicSimpleTopEdgeHints from './axes/dynamic-simple-topedge-hints';
+import DynamicProgrammaticRightEdgeHints from './axes/dynamic-programmatic-rightedge-hints';
+import DynamicCrosshair from './axes/dynamic-crosshair';
+import DynamicCrosshairScatterplot from './axes/dynamic-crosshair-scatterplot';
+import StaticCrosshair from './axes/static-crosshair';
 
 import VerticalDiscreteColorLegendExample from './legends/vertical-discrete-color';
 import HorizontalDiscreteColorLegendExample from './legends/horizontal-discrete-color';
 import SearchableDiscreteColorLegendExample from './legends/searchable-discrete-color';
 import ContinuousColorLegendExample from './legends/continuous-color';
 import ContinuousSizeLegendExample from './legends/continuous-size';
+
+import AnimationExample from './misc/animation-example';
+import SyncedCharts from './misc/synced-charts';
+import TimeChart from './misc/time-chart';
+import TriangleExample from './misc/triangle-example';
+import VoronoiLineChart from './misc/voronoi-line-chart';
+import LabelSeriesExample from './misc/label-series-example';
+
+import SimpleRadialChart from './radial-chart/simple-radial-chart';
+import DonutChartExample from './radial-chart/donut-chart';
+import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
+import ArcSeriesExample from './radial-chart/arc-series-example';
+
+import BasicSunburst from './sunbursts/basic-sunburst';
+import ClockExample from './sunbursts/clock-example';
+import AnimatedSunburst from './sunbursts/animated-sunburst';
+
+import BasicSankeyExample from './sankey/basic';
+import VoronoiSankeyExample from './sankey/voronoi';
+
+import SimpleTreemap from './treemap/simple-treemap';
+import TreemapExample from './treemap/dynamic-treemap';
 
 export const showCase = {
   ComplexChart,

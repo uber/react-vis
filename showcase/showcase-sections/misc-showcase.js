@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
 const {
   AnimationExample,
@@ -10,35 +10,37 @@ const {
   VoronoiLineChart
 } = showCase;
 
+const MISC = [{
+  name: 'Synced Charts',
+  component: SyncedCharts
+}, {
+  name: 'Time Chart',
+  component: TimeChart
+}, {
+  name: 'Polygon Example',
+  component: TriangleExample,
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/polygon-series.js',
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/polygon-series'
+}, {
+  name: 'Voronoi Line Chart',
+  component: VoronoiLineChart
+}, {
+  name: 'Animation Example',
+  component: AnimationExample,
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/overview/animation'
+}, {
+  name: 'Label Series Example',
+  component: LabelSeriesExample,
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/label-series.js',
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/label-series'
+}];
+
 class MiscShowcase extends Component {
   render() {
     return (
       <article>
         <h2>Miscellaneous</h2>
-        <section>
-          <h3>Synced Charts</h3>
-          <SyncedCharts />
-        </section>
-        <section>
-          <h3>Time Chart</h3>
-          <TimeChart />
-        </section>
-        <section>
-          <h3>Polygon Example</h3>
-          <TriangleExample />
-        </section>
-        <section>
-          <h3>Voronoi Line Chart</h3>
-          <VoronoiLineChart />
-        </section>
-        <section>
-          <h3>Animation Example</h3>
-          <AnimationExample />
-        </section>
-        <section>
-          <h3>Label Series Example</h3>
-          <LabelSeriesExample />
-        </section>
+        {MISC.map(mapSection)}
       </article>
     );
   }

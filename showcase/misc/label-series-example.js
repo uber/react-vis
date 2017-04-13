@@ -41,7 +41,13 @@ function generateData() {
 
 export default class Example extends React.Component {
   state = {
-    data: generateData()
+    data: [
+      {x: 3, y: 7, label: 'Wigglytuff', size: 30, style: {fontSize: 20}},
+      {x: 2, y: 4, label: 'Psyduck', size: 10},
+      {x: 1, y: 20, label: 'Geodude', size: 1},
+      {x: 4, y: 12, label: 'Ditto', size: 12},
+      {x: 1, y: 14, label: 'Snorlax', size: 4}
+    ]
   }
   render() {
     const {data} = this.state;

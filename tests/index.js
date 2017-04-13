@@ -33,6 +33,7 @@ import './components/bar-series-tests';
 import './components/circular-grid-lines-tests';
 import './components/heatmap-tests';
 import './components/legends-tests';
+import './components/label-series-tests';
 import './components/line-series-tests';
 import './components/mark-series-tests';
 import './components/polygon-series-tests';

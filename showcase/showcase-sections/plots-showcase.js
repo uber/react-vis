@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {showCase} from '../index';
+import {mapSection} from '../showcase-components/showcase-utils';
 const {
   AreaChart,
   AreaChartElevated,
@@ -22,6 +23,75 @@ const {
   WidthHeightMarginChart
 } = showCase;
 
+const PLOTS = [{
+  component: LineChart,
+  name: 'Line Series',
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
+}, {
+  component: LineMarkChart,
+  name: 'LineMark Series',
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-mark-series.js',
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
+}, {
+  component: LineChartGL,
+  name: 'Line Series GL'
+}, {
+  component: ScatterplotChart,
+  name: 'Mark Series',
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/mark-series.js',
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/mark-series'
+}, {
+  component: ScatterplotGLChart,
+  name: 'Mark Series GL'
+}, {
+  component: AreaChart,
+  name: 'Area Series',
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/area-series.js'
+}, {
+  component: AreaChartElevated,
+  name: 'Area Series With vertical offset',
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/area-series.js'
+}, {
+  component: BarChart,
+  name: 'Bar Series',
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/bar-series.js',
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/bar-series'
+}, {
+  name: 'Stacked Horizontal Bar Series',
+  component: StackedHorizontalBarChart
+}, {
+  name: 'Stacked Vertical Bar Series',
+  component: StackedVerticalBarChart
+}, {
+  name: 'Clustered Stacked Vertical Bar Series',
+  component: ClusteredStackedVerticalBarChart
+}, {
+  name: 'Stacked Vertical Rect Series (histogram)',
+  component: StackedHistogram
+}, {
+  name: 'Heatmap Series',
+  component: HeatmapChart,
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/heatmap-series.js',
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/heatmap-series'
+}];
+
+const BASIC_COMPONENTS = [{
+  name: 'Custom Size and Margin',
+  component: WidthHeightMarginChart
+}, {
+  name: 'Custom scales',
+  component: CustomScales
+}, {
+  name: 'Custom GridLines',
+  component: GridLinesChart
+}, {
+  name: 'Circular Gridlines',
+  component: FauxScatterplotChart,
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/circular-grid-lines.js',
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot/grids'
+}];
+
 class PlotsShowcase extends Component {
   render() {
     const {forExample} = this.props;
@@ -32,76 +102,9 @@ class PlotsShowcase extends Component {
           <ComplexChart />
         </section>)}
         <h2>Series Types</h2>
-        <section>
-          <h3>Line Series</h3>
-          <LineChart />
-        </section>
-        <section>
-          <h3>LineMark Series</h3>
-          <LineMarkChart />
-        </section>
-        <section>
-          <h3>LineMark Series</h3>
-          <LineChartGL />
-        </section>
-        <section>
-          <h3>Mark Series</h3>
-          <ScatterplotChart />
-        </section>
-        <section>
-          <h3>Mark Series GL</h3>
-          <ScatterplotGLChart />
-        </section>
-        <section>
-          <h3>Area Series</h3>
-          <AreaChart />
-        </section>
-        <section>
-          <h3>Area Series With vertical offset</h3>
-          <AreaChartElevated />
-        </section>
-        <section>
-          <h3>Bar Series</h3>
-          <BarChart />
-        </section>
-        <section>
-          <h3>Stacked Horizontal Bar Series</h3>
-          <StackedHorizontalBarChart />
-        </section>
-        <section>
-          <h3>Stacked Vertical Bar Series</h3>
-          <StackedVerticalBarChart />
-        </section>
-        <section>
-          <h3>Clustered Stacked Vertical Bar Series</h3>
-          <ClusteredStackedVerticalBarChart />
-        </section>
-        <section>
-          <h3>Stacked Vertical Rect Series (histogram)</h3>
-          <StackedHistogram />
-        </section>
-        <section>
-          <h3>Heatmap Series</h3>
-          <HeatmapChart />
-        </section>
-
+        {PLOTS.map(mapSection)}
         <h2>Basic Components</h2>
-        <section>
-          <h3>Custom Size and Margin</h3>
-          <WidthHeightMarginChart />
-        </section>
-        <section>
-          <h3>Custom scales</h3>
-          <CustomScales />
-        </section>
-        <section>
-          <h3>Custom GridLines</h3>
-          <GridLinesChart />
-        </section>
-        <section>
-          <h3>Circular Gridlines</h3>
-          <FauxScatterplotChart />
-        </section>
+        {BASIC_COMPONENTS.map(mapSection)}
       </article>
     );
   }
