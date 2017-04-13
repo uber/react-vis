@@ -52,3 +52,11 @@ const stringCurveProp = <LineSeries data={data} curve={'curveMonotoneX'} .../>;
 const configuredCurve = d3Shape.curveCatmullRom.alpha(0.5);
 const funcCurveProp = <LineSeries data={data} curve={configuredCurve} .../>;
 ```
+
+## LineSeriesGL API Additions
+
+In addition to the above api the GL version of markSeries exposes several additional props.
+
+#### seriesId (REQUIRED)
+Type: `string`
+This string is used by deck.gl to identify which layer is being requested to render.

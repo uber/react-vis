@@ -112,3 +112,15 @@ Type: `function(info)`
 
 #### animation (optional)  
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
+
+## MarkSeriesGL API Additions
+
+In addition to the above api the GL version of markSeries exposes several additional props.
+
+#### seriesId (REQUIRED)
+Type: `string`
+This string is used by deck.gl to identify which layer is being requested to render.
+
+#### outline (optional)
+Type: `Boolean`
+This boolean determines whether or not to switch to the outline mode for the markes

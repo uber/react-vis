@@ -45,7 +45,7 @@ class MarkSeriesGL extends AbstractSeries {
       colorRange,
       sizeDomain,
       sizeRange,
-      fp64
+      outline
     } = props;
 
     const xFunctor = getAttributeFunctor(props, 'x');
@@ -64,6 +64,7 @@ class MarkSeriesGL extends AbstractSeries {
         return [color.r, color.g, color.b, (opacityFunctor(p) || DEFAULT_OPACITY) * 255];
       },
       opacity: 1,
+      outline,
       projectionMode: COORDINATE_SYSTEM.IDENTITY,
       updateTriggers: {
         getPosition: _renderKey,
@@ -74,8 +75,7 @@ class MarkSeriesGL extends AbstractSeries {
       radiusMinPixels: 2,
       pickable: true,
       onHover: row => props.onValueMouseOver(row.object),
-      onClick: row => props.onValueClick(row.object),
-      fp64
+      onClick: row => props.onValueClick(row.object)
     });
   }
 
@@ -88,13 +88,13 @@ MarkSeriesGL.displayName = 'MarkSeriesGL';
 MarkSeriesGL.defaultProps = {
   onValueMouseOver: () => {},
   onValueClick: () => {},
-  fp64: false
+  outline: false
 };
 
 MarkSeriesGL.propTypes = {
   ...AbstractSeries.propTypes,
   seriesId: PropTypes.string.isRequired,
-  fp64: PropTypes.bool
+  outline: PropTypes.bool
 };
 
 export default MarkSeriesGL;
