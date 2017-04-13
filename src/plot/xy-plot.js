@@ -29,6 +29,7 @@ import {AnimationPropType} from 'animation';
 import {CONTINUOUS_COLOR_RANGE, SIZE_RANGE, OPACITY_TYPE} from 'theme';
 
 import DeckGLWrapper from './series/deck-gl-wrapper';
+import CanvasWrapper from './series/canvas-wrapper';
 
 const ATTRIBUTES = [
   'x',
@@ -340,6 +341,32 @@ class XYPlot extends React.Component {
     </DeckGLWrapper>);
   }
 
+  renderCanvasComponents(components, props) {
+    const componentsToRender = components.filter(c => c && !c.type.requiresSVG && c.type.isCanvas);
+
+    if (componentsToRender.length === 0) {
+      return null;
+    }
+    const {
+      marginLeft,
+      marginTop,
+      marginBottom,
+      marginRight,
+      innerHeight,
+      innerWidth
+    } = componentsToRender[0].props;
+    return (<CanvasWrapper {...{
+      marginLeft,
+      marginTop,
+      marginBottom,
+      marginRight,
+      innerHeight,
+      innerWidth
+    }}>
+      {componentsToRender}
+    </CanvasWrapper>);
+  }
+
   render() {
     const {
       className,
@@ -376,6 +403,7 @@ class XYPlot extends React.Component {
           onMouseEnter={this._mouseEnterHandler}>
           {components.filter(c => c && c.type.requiresSVG && !c.type.isDeckGL)}
         </svg>
+        {this.renderCanvasComponents(components, this.props)}
         {this.renderDeckGlComponents(components, this.props)}
         {components.filter(c => c && !c.type.requiresSVG)}
       </div>

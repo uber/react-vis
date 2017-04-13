@@ -1,9 +1,9 @@
 import React from 'react';
 
-export function mapSection(section) {
+export function mapSection(section, index) {
   const SectionComponent = section.component;
   return (
-    <section>
+    <section key={`${section.name}-index`}>
       <h3>{section.name}</h3>
       <div className="flex">
         {section.sourceLink && <a className="docs-link" href={section.sourceLink}>> Source</a>}

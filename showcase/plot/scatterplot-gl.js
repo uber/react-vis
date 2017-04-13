@@ -27,8 +27,9 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  MarkSeriesGL,
   MarkSeries,
+  MarkSeriesGL,
+  MarkSeriesCanvas,
   Hint
 } from 'index';
 
@@ -52,16 +53,28 @@ const nextType = {
   typeB: 'typeA'
 };
 
+const nextModeContent = {
+  canvas: 'SWITCH TO GL',
+  gl: 'SWITCH TO SVG',
+  svg: 'SWITCH TO CANVAS'
+};
+
+const nextMode = {
+  canvas: 'gl',
+  gl: 'svg',
+  svg: 'canvas'
+};
+
 export default class Example extends React.Component {
   state = {
-    glMode: true,
+    mode: 'canvas',
     data: randomData,
     colorType: 'typeA',
     value: false
   }
 
   render() {
-    const {glMode, data, colorType} = this.state;
+    const {mode, data, colorType} = this.state;
     const markSeriesProps = {
       animation: true,
       className: 'mark-series-example',
@@ -75,9 +88,10 @@ export default class Example extends React.Component {
     return (
       <div className="scatterplot-gl-wrapper">
         <div className="scatterplot-gl-example-controls">
+          <div>{`MODE: ${mode}`}</div>
           <ShowcaseButton
-            onClick={() => this.setState({glMode: !glMode})}
-            buttonContent={glMode ? 'SWITCH TO SVG' : 'SWITCH TO GL'} />
+            onClick={() => this.setState({mode: nextMode[mode]})}
+            buttonContent={nextModeContent[mode]} />
           <ShowcaseButton
             onClick={() => this.setState({data: getRandomData()})}
             buttonContent={'UPDATE DATA'} />
@@ -92,9 +106,11 @@ export default class Example extends React.Component {
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          {glMode &&
+          {mode === 'gl' &&
             <MarkSeriesGL {...markSeriesProps} seriesId="my-example-scatterplot"/>}
-          {!glMode &&
+          {mode === 'canvas' &&
+            <MarkSeriesCanvas {...markSeriesProps}/>}
+          {mode === 'svg' &&
             <MarkSeries {...markSeriesProps}/>}
           {this.state.value ?
             <Hint value={this.state.value}/> :

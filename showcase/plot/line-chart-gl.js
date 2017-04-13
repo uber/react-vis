@@ -27,8 +27,10 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
+  LineMarkSeriesCanvas,
   LineMarkSeriesGL,
   LineMarkSeries,
+  LineSeriesCanvas,
   LineSeriesGL,
   LineSeries,
   Crosshair
@@ -48,14 +50,27 @@ const colorRanges = {
   typeA: ['#59E4EC', '#0D676C'],
   typeB: ['#EFC1E3', '#B52F93']
 };
+
 const nextType = {
   typeA: 'typeB',
   typeB: 'typeA'
 };
 
+const nextModeContent = {
+  canvas: 'SWITCH TO GL',
+  gl: 'SWITCH TO SVG',
+  svg: 'SWITCH TO CANVAS'
+};
+
+const nextMode = {
+  canvas: 'gl',
+  gl: 'svg',
+  svg: 'canvas'
+};
+
 export default class Example extends React.Component {
   state = {
-    glMode: true,
+    mode: 'canvas',
     data: randomData,
     colorType: 'typeA',
     strokeWidth: 1,
@@ -64,7 +79,7 @@ export default class Example extends React.Component {
   }
 
   render() {
-    const {glMode, data, colorType, strokeWidth, value, showMarks} = this.state;
+    const {mode, data, colorType, strokeWidth, value, showMarks} = this.state;
     const lineSeriesProps = {
       animation: true,
       className: 'mark-series-example',
@@ -78,12 +93,14 @@ export default class Example extends React.Component {
     };
     const GLComponent = showMarks ? LineMarkSeriesGL : LineSeriesGL;
     const SVGComponent = showMarks ? LineMarkSeries : LineSeries;
+    const CanvasComponent = showMarks ? LineMarkSeriesCanvas : LineSeriesCanvas;
     return (
       <div className="scatterplot-gl-wrapper">
         <div className="scatterplot-gl-example-controls">
+          <div> {`Mode: ${mode}`} </div>
           <ShowcaseButton
-            onClick={() => this.setState({glMode: !glMode})}
-            buttonContent={glMode ? 'SWITCH TO SVG' : 'SWITCH TO GL'} />
+            onClick={() => this.setState({mode: nextMode[mode]})}
+            buttonContent={nextModeContent[mode]} />
           <ShowcaseButton
             onClick={() => this.setState({showMarks: !showMarks})}
             buttonContent={showMarks ? 'HIDE MARKS' : 'SHOW MARKS'} />
@@ -92,10 +109,10 @@ export default class Example extends React.Component {
             buttonContent={'UPDATE DATA'} />
           <ShowcaseButton
             onClick={() => this.setState({colorType: nextType[colorType]})}
-            buttonContent={'UPDATE COLOR'} />
+            buttonContent={'TOGGLE COLOR'} />
           <ShowcaseButton
             onClick={() => this.setState({strokeWidth: strokeWidth === 1 ? 2 : 1})}
-            buttonContent={'UPDATE STROKEWIDTH'} />
+            buttonContent={'TOGGLE STROKEWIDTH'} />
         </div>
         <XYPlot
           width={600}
@@ -104,9 +121,11 @@ export default class Example extends React.Component {
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          {glMode &&
+          {mode === 'canvas' &&
+            <CanvasComponent {...lineSeriesProps}/>}
+          {mode === 'gl' &&
             <GLComponent {...lineSeriesProps} seriesId="my-example-line-chart"/>}
-          {!glMode &&
+          {mode === 'svg' &&
             <SVGComponent {...lineSeriesProps}/>}
           {value && <Crosshair values={[value]} />}
         </XYPlot>
