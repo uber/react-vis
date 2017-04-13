@@ -32,12 +32,7 @@ import {getRadialDomain} from 'utils/series-utils';
 
 const predefinedClassName = 'rv-radial-chart';
 
-const DEFAULT_MARGINS = {
-  left: 10,
-  right: 10,
-  top: 10,
-  bottom: 10
-};
+const DEFAULT_RADIUS_MARGIN = 15;
 
 /**
  * Create the list of wedges to render.
@@ -92,6 +87,10 @@ function generateLabels(mappedData) {
   // could add force direction here to make sure the labels dont overlap
 }
 
+function getMaxRadius(width, height) {
+  return Math.min(width, height) / 2 - DEFAULT_RADIUS_MARGIN;
+}
+
 class RadialChart extends Component {
   render() {
     const {
@@ -124,11 +123,11 @@ class RadialChart extends Component {
     };
     if (radius) {
       arcProps.radiusDomain = [0, 1];
-      arcProps.radiusRange = radius ? [innerRadius || 0, radius] : null;
+      arcProps.radiusRange = [innerRadius || 0, radius];
       arcProps.radiusType = 'linear';
     }
-    const defaultMargin = getRadialLayoutMargin(width, height, radius);
-
+    const maxRadius = radius ? radius : getMaxRadius(width, height);
+    const defaultMargin = getRadialLayoutMargin(width, height, maxRadius);
     return (
       <XYPlot
         height={height}
@@ -169,8 +168,7 @@ RadialChart.PropTypes = {
 RadialChart.defaultProps = {
   className: '',
   colorType: 'category',
-  colorRange: DISCRETE_COLOR_RANGE,
-  margin: DEFAULT_MARGINS
+  colorRange: DISCRETE_COLOR_RANGE
 };
 
 export default RadialChart;
