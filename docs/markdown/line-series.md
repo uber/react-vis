@@ -57,6 +57,6 @@ const funcCurveProp = <LineSeries data={data} curve={configuredCurve} .../>;
 
 In addition to the above api the GL version of markSeries exposes several additional props.
 
-#### seriesId
-Type: `string` (REQUIRED)
+#### seriesId (REQUIRED)
+Type: `string`
 This string is used by deck.gl to identify which layer is being requested to render.
