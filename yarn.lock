@@ -3438,7 +3438,7 @@ react-motion@^0.4.7:
 
 react-test-renderer@^15.5.4:
   version "15.5.4"
-  resolved "https://unpm.uberinternal.com/react-test-renderer/-/react-test-renderer-15.5.4.tgz#d4ebb23f613d685ea8f5390109c2d20fbf7c83bc"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-15.5.4.tgz#d4ebb23f613d685ea8f5390109c2d20fbf7c83bc"
   dependencies:
     fbjs "^0.8.9"
     object-assign "^4.1.0"

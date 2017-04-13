@@ -87,6 +87,12 @@ function generateLabels(mappedData) {
   // could add force direction here to make sure the labels dont overlap
 }
 
+/**
+ * Get the max radius so the chart can extend to the margin.
+ * @param  {Number} width - container width
+ * @param  {Number} height - container height
+ * @return {Number} radius
+ */
 function getMaxRadius(width, height) {
   return Math.min(width, height) / 2 - DEFAULT_RADIUS_MARGIN;
 }
