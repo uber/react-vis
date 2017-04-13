@@ -34,6 +34,7 @@ import {AnimationPropType} from 'animation';
 import ArcSeries from 'plot/series/arc-series';
 import XYPlot from 'plot/xy-plot';
 import {getRadialDomain} from 'utils/series-utils';
+import {getRadialLayoutMargin} from 'utils/chart-utils';
 
 /**
  * Create the list of nodes to render.
@@ -69,25 +70,6 @@ function getNodesToRender({data, height, hideRootNode, width}) {
     }, []);
 }
 
-/**
- * Calculate the margin of the sunburst,
- * so it can be at the center of the container
- * @param  {Number} width - the width of the container
- * @param  {Number} height - the height of the container
- * @param  {Number} radius - the max radius of the sunburst
- * @return {Object} an object includes {bottom, left, right, top}
- */
-function getMargin(width, height, radius) {
-  const marginX = (width / 2) - radius;
-  const marginY = (height / 2) - radius;
-  return {
-    bottom: marginY,
-    left: marginX,
-    right: marginX,
-    top: marginY
-  };
-}
-
 class Sunburst extends React.Component {
   render() {
     const {
@@ -101,7 +83,7 @@ class Sunburst extends React.Component {
     } = this.props;
     const mappedData = getNodesToRender({data, height, hideRootNode, width});
     const radialDomain = getRadialDomain(mappedData);
-    const margin = getMargin(width, height, radialDomain);
+    const margin = getRadialLayoutMargin(width, height, radialDomain);
     return (
       <XYPlot
         height={height}

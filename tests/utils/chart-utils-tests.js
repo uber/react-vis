@@ -18,29 +18,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import './setup';
+import test from 'tape';
 
-import './utils/axis-utils-tests';
-import './utils/chart-utils-tests';
-import './utils/data-utils-tests';
-import './utils/react-utils-tests';
-import './utils/scales-utils-tests';
-import './utils/series-utils-tests';
+import {getRadialLayoutMargin} from 'utils/chart-utils';
 
-import './components';
-import './components/area-series-tests';
-import './components/arc-series-tests';
-import './components/bar-series-tests';
-import './components/circular-grid-lines-tests';
-import './components/heatmap-tests';
-import './components/legends-tests';
-import './components/label-series-tests';
-import './components/line-series-tests';
-import './components/mark-series-tests';
-import './components/polygon-series-tests';
-import './components/radial-tests';
-import './components/rect-series-tests';
-import './components/treemap-tests';
-import './components/sankey-tests';
-import './components/sunburst-tests';
-import './components/xy-plot-tests';
+test('chart-utils #getRadialLayoutMargin', t => {
+  t.deepEqual(getRadialLayoutMargin(500, 300, 230), {
+    bottom: 35,
+    left: 135,
+    right: 135,
+    top: 35
+  }, 'Get the right margin to center the radial layout chart - landscape container');
+
+  t.deepEqual(getRadialLayoutMargin(300, 500, 230), {
+    bottom: 135,
+    left: 35,
+    right: 35,
+    top: 135
+  }, 'Get the right margin to center the radial layout chart  - portrait container');
+
+  t.deepEqual(getRadialLayoutMargin(300, 300, 230), {
+    bottom: 35,
+    left: 35,
+    right: 35,
+    top: 35
+  }, 'Get the right margin to center the radial layout chart  - rectangle container')
+  t.end();
+});

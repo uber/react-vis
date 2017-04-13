@@ -27,7 +27,7 @@ import ArcSeries from 'plot/series/arc-series';
 import LabelSeries from 'plot/series/label-series';
 import XYPlot from 'plot/xy-plot';
 import {DISCRETE_COLOR_RANGE} from 'theme';
-import {MarginPropType} from 'utils/chart-utils';
+import {MarginPropType, getRadialLayoutMargin} from 'utils/chart-utils';
 import {getRadialDomain} from 'utils/series-utils';
 
 const predefinedClassName = 'rv-radial-chart';
@@ -127,12 +127,16 @@ class RadialChart extends Component {
       arcProps.radiusRange = radius ? [innerRadius || 0, radius] : null;
       arcProps.radiusType = 'linear';
     }
+    const defaultMargin = getRadialLayoutMargin(width, height, radius);
 
     return (
       <XYPlot
         height={height}
         width={width}
-        margin={margin}
+        margin={{
+          ...margin,
+          ...defaultMargin
+        }}
         className={`${className} ${predefinedClassName}`}
         onMouseLeave={onMouseLeave}
         onMouseEnter={onMouseEnter}
