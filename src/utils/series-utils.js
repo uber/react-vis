@@ -212,3 +212,19 @@ export const ANIMATED_SERIES_PROPS = [
   'radiusDomain', 'radiusRange', 'radius',
   'innerRadiusDomain', 'innerRadiusRange', 'innerRadius'
 ];
+
+export function getStackParams(props) {
+  const {_stackBy, valuePosAttr, cluster} = props;
+  let {
+    sameTypeTotal = 1,
+    sameTypeIndex = 0
+  } = props;
+
+  // If bars are stacked, but not clustering, override `sameTypeTotal` and
+  // `sameTypeIndex` such that bars are stacked and not staggered.
+  if (_stackBy === valuePosAttr && !cluster) {
+    sameTypeTotal = 1;
+    sameTypeIndex = 0;
+  }
+  return {sameTypeTotal, sameTypeIndex};
+}
