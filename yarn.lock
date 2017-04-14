@@ -1028,7 +1028,7 @@ caniuse-db@^1.0.30000187, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
 
 canvas-prebuilt@^1.6.0:
   version "1.6.0"
-  resolved "https://unpm.uberinternal.com/canvas-prebuilt/-/canvas-prebuilt-1.6.0.tgz#f8dd9abe81fdc2103a39d8362df3219d6d83f788"
+  resolved "https://registry.yarnpkg.com/canvas-prebuilt/-/canvas-prebuilt-1.6.0.tgz#f8dd9abe81fdc2103a39d8362df3219d6d83f788"
   dependencies:
     node-pre-gyp "^0.6.29"
 
