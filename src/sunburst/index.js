@@ -34,6 +34,7 @@ import {AnimationPropType} from 'animation';
 import ArcSeries from 'plot/series/arc-series';
 import XYPlot from 'plot/xy-plot';
 import {getRadialDomain} from 'utils/series-utils';
+import {getRadialLayoutMargin} from 'utils/chart-utils';
 
 /**
  * Create the list of nodes to render.
@@ -82,11 +83,13 @@ class Sunburst extends React.Component {
     } = this.props;
     const mappedData = getNodesToRender({data, height, hideRootNode, width});
     const radialDomain = getRadialDomain(mappedData);
+    const margin = getRadialLayoutMargin(width, height, radialDomain);
     return (
       <XYPlot
         height={height}
         width={width}
         className={className}
+        margin={margin}
         xDomain={[-radialDomain, radialDomain]}
         yDomain={[-radialDomain, radialDomain]}>
         <ArcSeries {...{

@@ -57,6 +57,25 @@ export function getInnerDimensions(props, defaultMargins) {
   };
 }
 
+/**
+ * Calculate the margin of the sunburst,
+ * so it can be at the center of the container
+ * @param  {Number} width - the width of the container
+ * @param  {Number} height - the height of the container
+ * @param  {Number} radius - the max radius of the sunburst
+ * @return {Object} an object includes {bottom, left, right, top}
+ */
+export function getRadialLayoutMargin(width, height, radius) {
+  const marginX = (width / 2) - radius;
+  const marginY = (height / 2) - radius;
+  return {
+    bottom: marginY,
+    left: marginX,
+    right: marginX,
+    top: marginY
+  };
+}
+
 export const MarginPropType = PropTypes.oneOfType([
   PropTypes.shape({
     left: PropTypes.number,
