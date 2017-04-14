@@ -15,7 +15,7 @@ test('RectSeries: Showcase Example - StackedHistogram', t => {
   t.equal($.find('.rv-xy-plot__series--rect rect').length, 6, 'should find the right number of bars');
 
   $.find('.showcase-button').simulate('click');
-  t.equal($.find('.rv-xy-plot__series--rect rectt').length, 0, 'should now find no rects');
+  t.equal($.find('.rv-xy-plot__series--rect rect').length, 0, 'should now find no rects');
   t.equal($.find('.rv-xy-canvas canvas').length, 1, 'should now find one canvas');
   t.end();
 });

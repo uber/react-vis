@@ -56,6 +56,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.18.0",
+    "canvas-prebuilt": "^1.6.0",
     "enzyme": "^2.7.0",
     "eslint": "^3.13.1",
     "eslint-config-uber-es2015": "^3.0.1",

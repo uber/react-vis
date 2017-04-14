@@ -22,6 +22,14 @@ test('BarSeries: Showcase Example - BarChart', t => {
   $.find('.showcase-button').simulate('click');
   t.equal($.find('.rv-xy-plot__series--bar rect').length, 0, 'should now find no rects');
   t.equal($.find('.rv-xy-canvas canvas').length, 1, 'should now find one canvas');
+
+  const canvas = $.find('.rv-xy-canvas canvas');
+  t.equal(
+    canvas && canvas.node.toDataURL(),
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAYAAACI7Fo9AAAABmJLR0QA/wD/AP+gvaeTAAAEa0lEQVR4nO3cwYpWZQDH4fd8jjppTeJCpExoU0HrFOoS2rePoCBw0a5uwNoLgQTRTbTpBgy8i1JoVYsIQ3PeNk1CzJQYfcfp9zzbd/Pf/M55N+csA46R8zdufjnG8u7aOx6Zd3+89sGltVf8k83aA4D/ntAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHgJ21BzyOj7/97sPNXC6sveNPm+X29auXvl57BjyuYxH6MjefzDEvrb3jwNwfX40xhM6x4eoOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQci+/R4Wn0/Okz4+1Xrl587tad79fe8off5v7+O5+9dfn2Xw+EDk9os9mM3ZMnN+Op+SnK8vPYLGcPO3F1h39hzrn2hEeW+fCoI6FDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQc+pnqCzdvnvn1wfLytsccZX8+PLlZPJPgSR0a+v37mytzzG+WMe5te9Bh7j24v3f21O7aM+DYOvLHE8tYfhljntvmmKPMMeYYY1l7BxxX7sMQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BCws/aAgvM3vrg9xry49o4Dc4xPf7r2/udr72B7hL4Fy5ivzTGeXXvHgWXMC2tvYLtc3SFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUPAztoD2K7XL1weV1589aNTt+68t/aWMcZY5vzh+psvvbH2jv87occ8s3N6nDqxszfG3Ft7yxhjjGWcW3tCgas7BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQcGToy5i72xzyd5ZlWXsCHOrE5il6V85xZLO/A/PwTf3wSEVKAAAAAElFTkSuQmCC',
+    'should get the correct serialized image'
+  );
+
   t.end();
 });
 
@@ -54,6 +62,17 @@ test('BarSeries: Ordinal Y-Axis HorizontalBarSeries', t => {
   </XYPlot>);
   t.equal($.find('.rv-xy-plot__series--bar rect').length, 3, 'should find the right number of bars');
   t.equal($.find('.rv-xy-plot__series--bar rect').at(0).prop('height') > 0, true, 'should not have negative bar height');
+  t.end();
+});
+
+test('BarSeries: No data', t => {
+  const $ = mount(<XYPlot
+    width={300}
+    height={300}
+    yType="ordinal">
+    <HorizontalBarSeries data={null} />
+  </XYPlot>);
+  t.equal($.find('.rv-xy-plot__series--bar rect').length, 0, 'should find the right number of bars');
   t.end();
 });
 
