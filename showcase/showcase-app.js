@@ -31,15 +31,13 @@ class App extends Component {
           </div>
         </header>)}
         <PlotsShowcase forExample={forExample}/>
-        {/*
-          <AxesShowcase />
-          <MiscShowcase />
-          <RadialShowcase />
-          <TreemapShowcase />
-          <SunburstSection />
-          <LegendsShowcase />
-          <SankeysShowcase />
-          */}
+        <AxesShowcase />
+        <MiscShowcase />
+        <RadialShowcase />
+        <TreemapShowcase />
+        <SunburstSection />
+        <LegendsShowcase />
+        <SankeysShowcase />
       </main>
     );
   }
