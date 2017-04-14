@@ -51,7 +51,7 @@ The distance between the origin and the outside of the arc. This values is scale
 Type: `string`  
 The label to show next to the wedge.
 
-#### label
+#### subLabel
 Type: `string`  
 The subLabel to show next to the wedge. This can be used for annotations to the top label.
 
