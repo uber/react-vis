@@ -62,15 +62,11 @@ const nextModeContent = {
   svg: 'SWITCH TO CANVAS'
 };
 
-const nextMode = {
-  canvas: 'gl',
-  gl: 'svg',
-  svg: 'canvas'
-};
+const drawModes = ['canvas', 'gl', 'svg'];
 
 export default class Example extends React.Component {
   state = {
-    mode: 'canvas',
+    drawMode: 0,
     data: randomData,
     colorType: 'typeA',
     strokeWidth: 1,
@@ -79,7 +75,7 @@ export default class Example extends React.Component {
   }
 
   render() {
-    const {mode, data, colorType, strokeWidth, value, showMarks} = this.state;
+    const {drawMode, data, colorType, strokeWidth, value, showMarks} = this.state;
     const lineSeriesProps = {
       animation: true,
       className: 'mark-series-example',
@@ -94,12 +90,14 @@ export default class Example extends React.Component {
     const GLComponent = showMarks ? LineMarkSeriesGL : LineSeriesGL;
     const SVGComponent = showMarks ? LineMarkSeries : LineSeries;
     const CanvasComponent = showMarks ? LineMarkSeriesCanvas : LineSeriesCanvas;
+
+    const mode = drawModes[drawMode];
     return (
       <div className="scatterplot-gl-wrapper">
         <div className="scatterplot-gl-example-controls">
           <div> {`Mode: ${mode}`} </div>
           <ShowcaseButton
-            onClick={() => this.setState({mode: nextMode[mode]})}
+            onClick={() => this.setState({drawMode: (drawMode + 1) % 3})}
             buttonContent={nextModeContent[mode]} />
           <ShowcaseButton
             onClick={() => this.setState({showMarks: !showMarks})}

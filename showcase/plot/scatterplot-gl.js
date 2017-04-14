@@ -59,22 +59,18 @@ const nextModeContent = {
   svg: 'SWITCH TO CANVAS'
 };
 
-const nextMode = {
-  canvas: 'gl',
-  gl: 'svg',
-  svg: 'canvas'
-};
+const drawModes = ['canvas', 'gl', 'svg'];
 
 export default class Example extends React.Component {
   state = {
-    mode: 'canvas',
+    drawMode: 0,
     data: randomData,
     colorType: 'typeA',
     value: false
   }
 
   render() {
-    const {mode, data, colorType} = this.state;
+    const {drawMode, data, colorType} = this.state;
     const markSeriesProps = {
       animation: true,
       className: 'mark-series-example',
@@ -85,12 +81,14 @@ export default class Example extends React.Component {
       data,
       onNearestXY: value => this.setState({value})
     };
+
+    const mode = drawModes[drawMode];
     return (
       <div className="scatterplot-gl-wrapper">
         <div className="scatterplot-gl-example-controls">
           <div>{`MODE: ${mode}`}</div>
           <ShowcaseButton
-            onClick={() => this.setState({mode: nextMode[mode]})}
+            onClick={() => this.setState({drawMode: (drawMode + 1) % 3})}
             buttonContent={nextModeContent[mode]} />
           <ShowcaseButton
             onClick={() => this.setState({data: getRandomData()})}
