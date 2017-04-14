@@ -19,20 +19,30 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
+import ShowcaseButton from '../showcase-components/showcase-button';
 import {
   XYPlot,
   XAxis,
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  VerticalRectSeries
+  VerticalRectSeries,
+  VerticalRectSeriesCanvas
 } from 'index';
 
 export default class Example extends React.Component {
+  state = {
+    useCanvas: false
+  }
   render() {
+    const {useCanvas} = this.state;
+    const RectSeries = useCanvas ? VerticalRectSeriesCanvas : VerticalRectSeries;
+    const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
     return (
       <div>
+        <ShowcaseButton
+          onClick={() => this.setState({useCanvas: !useCanvas})}
+          buttonContent={content}/>
         <XYPlot
           width={300}
           height={300}
@@ -41,14 +51,14 @@ export default class Example extends React.Component {
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          <VerticalRectSeries
+          <RectSeries
             data={[
               {x0: 1, x: 2, y: 10},
               {x0: 2, x: 4, y: 5},
               {x0: 5, x: 6, y: 15}
             ]}
           />
-          <VerticalRectSeries
+          <RectSeries
             data={[
               {x0: 1, x: 2, y: 12},
               {x0: 2, x: 4, y: 2},

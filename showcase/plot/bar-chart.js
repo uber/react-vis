@@ -19,41 +19,54 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
+import ShowcaseButton from '../showcase-components/showcase-button';
 import {
   XYPlot,
   XAxis,
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  VerticalBarSeries
+  VerticalBarSeries,
+  VerticalBarSeriesCanvas
 } from 'index';
 
 export default class Example extends React.Component {
+  state = {
+    useCanvas: false
+  }
+
   render() {
+    const {useCanvas} = this.state;
+    const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
+    const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
     return (
-      <XYPlot
-        xType="ordinal"
-        width={300}
-        height={300}>
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <XAxis />
-        <YAxis />
-        <VerticalBarSeries
-          className="vertical-bar-series-example"
-          data={[
-            {x: 'A', y: 10},
-            {x: 'B', y: 5},
-            {x: 'C', y: 15}
-          ]}/>
-        <VerticalBarSeries
-          data={[
-            {x: 'A', y: 12},
-            {x: 'B', y: 2},
-            {x: 'C', y: 11}
-          ]}/>
-      </XYPlot>
+      <div>
+        <ShowcaseButton
+          onClick={() => this.setState({useCanvas: !useCanvas})}
+          buttonContent={content}/>
+        <XYPlot
+          xType="ordinal"
+          width={300}
+          height={300}>
+          <VerticalGridLines />
+          <HorizontalGridLines />
+          <XAxis />
+          <YAxis />
+          <BarSeries
+            className="vertical-bar-series-example"
+            data={[
+              {x: 'A', y: 10},
+              {x: 'B', y: 5},
+              {x: 'C', y: 15}
+            ]}/>
+          <BarSeries
+            data={[
+              {x: 'A', y: 12},
+              {x: 'B', y: 2},
+              {x: 'C', y: 11}
+            ]}/>
+        </XYPlot>
+      </div>
     );
   }
 }

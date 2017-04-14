@@ -1,4 +1,4 @@
-// Copyright (c) 2016 - 2017 Uber Technologies, Inc.
+// Copyright (c) 2017 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -18,30 +18,45 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import './setup';
+import AbstractSeries from './abstract-series';
+import BarSeries from './bar-series-canvas';
 
-import './utils/axis-utils-tests';
-import './utils/chart-utils-tests';
-import './utils/data-utils-tests';
-import './utils/react-utils-tests';
-import './utils/scales-utils-tests';
-import './utils/series-utils-tests';
+class HorizontalBarSeriesCanvas extends AbstractSeries {
+  static get requiresSVG() {
+    return false;
+  }
 
-import './components';
-import './components/area-series-tests';
-import './components/arc-series-tests';
-import './components/bar-series-tests';
-import './components/canvas-component-tests';
-import './components/circular-grid-lines-tests';
-import './components/heatmap-tests';
-import './components/legends-tests';
-import './components/label-series-tests';
-import './components/line-series-tests';
-import './components/mark-series-tests';
-import './components/polygon-series-tests';
-import './components/radial-tests';
-import './components/rect-series-tests';
-import './components/treemap-tests';
-import './components/sankey-tests';
-import './components/sunburst-tests';
-import './components/xy-plot-tests';
+  static get isCanvas() {
+    return true;
+  }
+
+  static getParentConfig(attr) {
+    const isDomainAdjustmentNeeded = attr === 'y';
+    const zeroBaseValue = attr === 'x';
+    return {
+      isDomainAdjustmentNeeded,
+      zeroBaseValue
+    };
+  }
+
+  static renderLayer(props, ctx) {
+    BarSeries.renderLayer({
+      ...props,
+      linePosAttr: 'y',
+      valuePosAttr: 'x',
+      lineSizeAttr: 'height',
+      valueSizeAttr: 'width'
+    }, ctx);
+  }
+
+  render() {
+    return null;
+  }
+}
+
+HorizontalBarSeriesCanvas.displayName = 'HorizontalBarSeriesCanvas';
+HorizontalBarSeriesCanvas.propTypes = {
+  ...AbstractSeries.propTypes
+};
+
+export default HorizontalBarSeriesCanvas;

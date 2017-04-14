@@ -23,7 +23,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+import {ANIMATED_SERIES_PROPS, getStackParams} from 'utils/series-utils';
 
 import AbstractSeries from './abstract-series';
 
@@ -40,22 +40,6 @@ class BarSeries extends AbstractSeries {
       valueSizeAttr: PropTypes.string,
       cluster: PropTypes.string
     };
-  }
-
-  _getStackParams() {
-    const {_stackBy, valuePosAttr, cluster} = this.props;
-    let {
-      sameTypeTotal = 1,
-      sameTypeIndex = 0
-    } = this.props;
-
-    // If bars are stacked, but not clustering, override `sameTypeTotal` and
-    // `sameTypeIndex` such that bars are stacked and not staggered.
-    if (_stackBy === valuePosAttr && !cluster) {
-      sameTypeTotal = 1;
-      sameTypeIndex = 0;
-    }
-    return {sameTypeTotal, sameTypeIndex};
   }
 
   render() {
@@ -83,7 +67,7 @@ class BarSeries extends AbstractSeries {
       );
     }
 
-    const {sameTypeTotal, sameTypeIndex} = this._getStackParams();
+    const {sameTypeTotal, sameTypeIndex} = getStackParams(this.props);
 
     const distance = this._getScaleDistance(linePosAttr);
     const lineFunctor = this._getAttributeFunctor(linePosAttr);

@@ -15,6 +15,11 @@ $rv-xy-plot-tooltip-padding: 7px 10px;
   canvas {
     pointer-events: none;
   }
+
+  .rv-xy-canvas {
+    pointer-events: none;
+    position: absolute;
+  }
 }
 
 .rv-xy-plot__inner {
