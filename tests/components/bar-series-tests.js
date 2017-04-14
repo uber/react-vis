@@ -18,6 +18,10 @@ test('BarSeries: Showcase Example - BarChart', t => {
   t.equal($.text(), 'TOGGLE TO CANVASABC02468101214', 'should fine the right text content');
   t.equal($.find('.rv-xy-plot__series--bar rect').length, 6, 'should find the right number of bars');
   t.equal($.find('.vertical-bar-series-example').length, 1, 'should find the right number of custom named series');
+
+  $.find('.showcase-button').simulate('click');
+  t.equal($.find('.rv-xy-plot__series--bar rect').length, 0, 'should now find no rects');
+  t.equal($.find('.rv-xy-canvas canvas').length, 1, 'should now find one canvas');
   t.end();
 });
 
@@ -28,6 +32,9 @@ test('BarSeries: Showcase Example - StackedHorizontalBarChart & StackedVerticalB
     const expectedContent = `TOGGLE TO CANVAS${(i === 1 ? textContent.reverse() : textContent).join('')}`;
     t.equal($.text(), expectedContent, 'should fine the right text content');
     t.equal($.find('.rv-xy-plot__series--bar rect').length, 6, 'should find the right number of bars');
+    $.find('.showcase-button').simulate('click');
+    t.equal($.find('.rv-xy-plot__series--bar rect').length, 0, 'should now find no rects');
+    t.equal($.find('.rv-xy-canvas canvas').length, 1, 'should now find one canvas');
   });
   t.end();
 });
@@ -55,5 +62,9 @@ test('BarSeries: Showcase Example - ClusteredStackedVerticalBarChart', t => {
   t.equal($.text(), 'TOGGLE TO CANVASQ1Q2Q3Q40102030ApplesOranges', 'should fine the right text content');
   t.equal($.find('.rv-xy-plot__series--bar rect').length, 16, 'should find the right number of bars');
   t.equal($.find('.rv-xy-plot__series').length, 4, 'should find the right number of series');
+
+  $.find('.showcase-button').simulate('click');
+  t.equal($.find('.rv-xy-plot__series--bar rect').length, 0, 'should now find no rects');
+  t.equal($.find('.rv-xy-canvas canvas').length, 1, 'should now find one canvas');
   t.end();
 });
