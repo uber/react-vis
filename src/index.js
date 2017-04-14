@@ -27,10 +27,13 @@ export HorizontalBarSeriesCanvas from 'plot/series/horizontal-bar-series-canvas'
 export VerticalBarSeries from 'plot/series/vertical-bar-series';
 export VerticalBarSeriesCanvas from 'plot/series/vertical-bar-series-canvas';
 export VerticalRectSeries from 'plot/series/vertical-rect-series';
+export VerticalRectSeriesCanvas from 'plot/series/vertical-rect-series-canvas';
 export HorizontalRectSeries from 'plot/series/horizontal-rect-series';
+export HorizontalRectSeriesCanvas from 'plot/series/horizontal-rect-series-canvas';
 export LabelSeries from 'plot/series/label-series';
 export PolygonSeries from 'plot/series/polygon-series';
 export RectSeries from 'plot/series/rect-series';
+export RectSeriesCanvas from 'plot/series/rect-series-canvas';
 export MarkSeries from 'plot/series/mark-series';
 export MarkSeriesGL from 'plot/series/mark-series-gl';
 export MarkSeriesCanvas from 'plot/series/mark-series-canvas';

@@ -36,6 +36,9 @@ class CanvasWrapper extends Component {
       innerHeight,
       innerWidth
     } = props;
+    if (!ctx) {
+      return;
+    }
     ctx.clearRect(0, 0, innerWidth, innerHeight);
     children.forEach(layer => layer.type.renderLayer(layer.props, ctx));
   }

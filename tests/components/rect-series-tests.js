@@ -11,7 +11,7 @@ testRenderWithProps(VerticalRectSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
 test('RectSeries: Showcase Example - StackedHistogram', t => {
   const $ = mount(<StackedHistogram />);
-  t.equal($.text(), '01234567051015202530', 'should fine the right text content');
+  t.equal($.text(), 'TOGGLE TO CANVAS01234567051015202530', 'should fine the right text content');
   t.equal($.find('.rv-xy-plot__series--rect rect').length, 6, 'should find the right number of bars');
   t.end();
 });

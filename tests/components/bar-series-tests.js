@@ -15,7 +15,7 @@ testRenderWithProps(VerticalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
 test('BarSeries: Showcase Example - BarChart', t => {
   const $ = mount(<BarChart />);
-  t.equal($.text(), 'ABC02468101214', 'should fine the right text content');
+  t.equal($.text(), 'TOGGLE TO CANVASABC02468101214', 'should fine the right text content');
   t.equal($.find('.rv-xy-plot__series--bar rect').length, 6, 'should find the right number of bars');
   t.equal($.find('.vertical-bar-series-example').length, 1, 'should find the right number of custom named series');
   t.end();
@@ -25,7 +25,7 @@ test('BarSeries: Showcase Example - StackedHorizontalBarChart & StackedVerticalB
   [StackedHorizontalBarChart, StackedVerticalBarChart].forEach((Component, i) => {
     const $ = mount(<Component />);
     const textContent = ['0510152025', '12345'];
-    const expectedContent = (i === 1 ? textContent.reverse() : textContent).join('');
+    const expectedContent = `TOGGLE TO CANVAS${(i === 1 ? textContent.reverse() : textContent).join('')}`;
     t.equal($.text(), expectedContent, 'should fine the right text content');
     t.equal($.find('.rv-xy-plot__series--bar rect').length, 6, 'should find the right number of bars');
   });
@@ -52,7 +52,7 @@ test('BarSeries: Ordinal Y-Axis HorizontalBarSeries', t => {
 
 test('BarSeries: Showcase Example - ClusteredStackedVerticalBarChart', t => {
   const $ = mount(<ClusteredStackedVerticalBarChart />);
-  t.equal($.text(), 'Q1Q2Q3Q40102030ApplesOranges', 'should fine the right text content');
+  t.equal($.text(), 'TOGGLE TO CANVASQ1Q2Q3Q40102030ApplesOranges', 'should fine the right text content');
   t.equal($.find('.rv-xy-plot__series--bar rect').length, 16, 'should find the right number of bars');
   t.equal($.find('.rv-xy-plot__series').length, 4, 'should find the right number of series');
   t.end();

@@ -26,6 +26,7 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
+  VerticalBarSeries,
   VerticalBarSeriesCanvas
 } from 'index';
 
@@ -37,6 +38,7 @@ export default class Example extends React.Component {
   render() {
     const {useCanvas} = this.state;
     const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
+    const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
     return (
       <div>
         <ShowcaseButton
@@ -50,14 +52,14 @@ export default class Example extends React.Component {
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          <VerticalBarSeriesCanvas
+          <BarSeries
             className="vertical-bar-series-example"
             data={[
               {x: 'A', y: 10},
               {x: 'B', y: 5},
               {x: 'C', y: 15}
             ]}/>
-          <VerticalBarSeriesCanvas
+          <BarSeries
             data={[
               {x: 'A', y: 12},
               {x: 'B', y: 2},
