@@ -22,7 +22,8 @@
     "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
     "start-docs": "(cd docs && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
     "clean": "rm -rf dist bundle.* index.html && mkdir dist",
-    "build": "npm run clean && babel src -d dist --copy-files && node-sass src/main.scss dist/style.css --output-style compressed",
+    "build:browser": "browserify src/index.js -t [ babelify ] --standalone reactVis | uglifyjs > dist/dist.min.js",
+    "build": "npm run clean && babel src -d dist --copy-files && node-sass src/main.scss dist/style.css --output-style compressed && npm run build:browser",
     "lint": "eslint src tests showcase docs --ignore-pattern node_modules --ignore-pattern bundle.js",
     "lint-styles": "stylelint src/styles/*.scss --syntax scss",
     "test": "babel-node tests/index.js",
@@ -56,6 +57,8 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.3.0",
     "canvas-prebuilt": "^1.6.0",
     "enzyme": "^2.7.0",
     "eslint": "^3.13.1",
@@ -72,7 +75,8 @@
     "react-dom": ">=15.4.2",
     "stylelint": "^7.7.1",
     "stylelint-config-standard": "^15.0.1",
-    "tape": "^4.6.3"
+    "tape": "^4.6.3",
+    "uglify-js": "^2.8.22"
   },
   "peerDependencies": {
     "react": "0.14.x - 15.x",
