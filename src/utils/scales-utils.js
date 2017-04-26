@@ -150,6 +150,9 @@ export function _getScaleFnFromScaleObject(scaleObject) {
   const modDomain = domain[0] === domain[1] ?
     (domain[0] === 0 ? [-1, 0] : [-domain[0], domain[0]]) :
     domain;
+  if (type === LITERAL_SCALE_TYPE) {
+    return literalScale(range[0]);
+  }
   const scale = SCALE_FUNCTIONS[type]().domain(modDomain).range(range);
   if (type === ORDINAL_SCALE_TYPE) {
     scale.padding(0.5);
@@ -656,8 +659,11 @@ export function getMissingScaleProps(props, data, attributes) {
  * Return a d3 scale that returns the literal value that was given to it
  * @returns {function} literal scale.
  */
-export function literalScale() {
+export function literalScale(defaultValue) {
   function scale(d) {
+    if (d === undefined) {
+      return defaultValue;
+    }
     return d;
   }
 

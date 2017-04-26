@@ -42,6 +42,7 @@ export default class Example extends React.Component {
         <MarkSeries
           className="mark-series-example"
           strokeWidth={2}
+          opacity="0.8"
           sizeRange={[5, 15]}
           data={[
             {x: 1, y: 10, size: 30},

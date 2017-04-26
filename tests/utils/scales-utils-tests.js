@@ -97,6 +97,10 @@ test('scales-utils #getAttributeFunctor', t => {
     result({x: Math.random()}) === _xValue,
     `No props: Fallback value ${_xValue} should be returned by the produced functor`
   );
+  t.ok(
+    result({}) === _xValue,
+    'value from the props is used as default value if no argument passed to functor'
+  );
   // with props
   result = getAttributeFunctor({xRange, xDomain}, 'x');
   const isFunction = typeof result === 'function';
