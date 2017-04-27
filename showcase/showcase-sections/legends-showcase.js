@@ -5,6 +5,7 @@ const {
   ContinuousColorLegendExample,
   ContinuousSizeLegendExample,
   HorizontalDiscreteColorLegendExample,
+  HorizontalDiscreteCustomPalette,
   SearchableDiscreteColorLegendExample,
   VerticalDiscreteColorLegendExample
 } = showCase;
@@ -15,6 +16,9 @@ const DISCRETE_LEGENDS = [{
 }, {
   name: 'Horizontal legend',
   component: HorizontalDiscreteColorLegendExample
+}, {
+  name: 'Custom palette',
+  component: HorizontalDiscreteCustomPalette
 }, {
   name: 'Discrete color legend with search',
   component: SearchableDiscreteColorLegendExample

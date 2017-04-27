@@ -57,6 +57,7 @@ import HorizontalDiscreteColorLegendExample from './legends/horizontal-discrete-
 import SearchableDiscreteColorLegendExample from './legends/searchable-discrete-color';
 import ContinuousColorLegendExample from './legends/continuous-color';
 import ContinuousSizeLegendExample from './legends/continuous-size';
+import HorizontalDiscreteCustomPalette from './legends/horizontal-discrete-custom-palette';
 
 import AnimationExample from './misc/animation-example';
 import SyncedCharts from './misc/synced-charts';
@@ -137,6 +138,7 @@ export const showCase = {
 
   VerticalDiscreteColorLegendExample,
   HorizontalDiscreteColorLegendExample,
+  HorizontalDiscreteCustomPalette,
   SearchableDiscreteColorLegendExample,
   ContinuousColorLegendExample,
   ContinuousSizeLegendExample
