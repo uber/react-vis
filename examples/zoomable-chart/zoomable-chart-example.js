@@ -103,7 +103,6 @@ export default class Example extends React.Component {
       <div className="example-with-click-me">
         <div className="legend">
           <DiscreteColorLegend
-            onItemClick={this._legendClickHandler}
             width={180}
             items={series}/>
         </div>
@@ -116,8 +115,8 @@ export default class Example extends React.Component {
 
             <HorizontalGridLines />
 
-            <YAxis className="cool-custom-name"/>
-            <XAxis className="even-cooler-custom-name"/>
+            <YAxis />
+            <XAxis />
 
             {series.map(entry => (
               <LineSeries
