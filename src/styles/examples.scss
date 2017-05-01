@@ -143,13 +143,6 @@ article {
   transform: translate3d(0, 0, 0);
 }
 
-.button {
-  @extend .click-me;
-
-  animation: none;
-  transform: none;
-}
-
 @keyframes shake {
   1%,
   9% {
@@ -419,4 +412,8 @@ article {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.highlight-container {
+  cursor: crosshair;
 }
