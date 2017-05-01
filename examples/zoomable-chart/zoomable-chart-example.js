@@ -27,9 +27,7 @@ import {
   HorizontalGridLines,
   makeWidthFlexible,
   LineSeries,
-  VerticalBarSeries,
-  DiscreteColorLegend,
-  Crosshair
+  DiscreteColorLegend
 } from 'react-vis';
 import Highlight from './highlight';
 
@@ -79,17 +77,6 @@ export default class Example extends React.Component {
   }
 
   /**
-   * Callback for when the user mouses up after drawing a given area on a chart
-   * @param area - An object containing t, l, b, r corresponding to the input domain area the user drew
-   * @private
-   */
-  _onDrawEnd = (area) => {
-    this.setState({
-      lastDrawLocation: area
-    });
-  }
-
-  /**
    * Reset the draw location, which will in turn reset the domain
    * @private
    */
@@ -110,7 +97,7 @@ export default class Example extends React.Component {
         <div className="chart">
           <FlexibleXYPlot
             animation
-            xDomain={lastDrawLocation && [lastDrawLocation.l, lastDrawLocation.r]}
+            xDomain={lastDrawLocation && [lastDrawLocation.left, lastDrawLocation.right]}
             height={300}>
 
             <HorizontalGridLines />
@@ -124,18 +111,22 @@ export default class Example extends React.Component {
               />
             ))}
 
-            <Highlight onDrawEnd={this._onDrawEnd} />
+            <Highlight onBrushEnd={(area) => {
+              this.setState({
+                lastDrawLocation: area
+              });
+            }} />
 
           </FlexibleXYPlot>
         </div>
 
-        <button className="button" onClick={this._resetZoom}>
+        <button className="showcase-button" onClick={this._resetZoom}>
           Reset Zoom
         </button>
 
         <div>
           <h4>
-            Last Draw Area
+            <b>Last Draw Area</b>
           </h4>
           <p>
             {lastDrawLocation ? JSON.stringify(lastDrawLocation, null, 2) : 'N/A'}
