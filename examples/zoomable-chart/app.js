@@ -19,34 +19,24 @@
 // THE SOFTWARE.
 
 import ReactDOM from 'react-dom';
-import React, {Component} from 'react';
-import window from 'global/window';
+import React from 'react';
 import document from 'global/document';
 
 import ZoomableChartExample from './zoomable-chart-example';
 import '../../src/styles/examples.scss';
 
-export default class App extends Component {
-  componentWillMount() {
-    window.addEventListener(
-      'resize',
-      () => this.setState({width: window.innerWidth})
-    );
-  }
-
-  render() {
-    return (
-      <article>
-        <h1>
-          Zoomable Chart Example
-          <br/><small>&nbsp;Click and Drag on the chart to draw a zoom area. The chart will zoom on mouse up.</small>
-        </h1>
-        <section>
-          <ZoomableChartExample />
-        </section>
-      </article>
-    );
-  }
+export default function App() {
+  return (
+    <article>
+      <h2>
+        Zoomable Chart Example
+        <br/><small>&nbsp;Click and Drag on the chart to draw a zoom area. The chart will zoom on mouse up.</small>
+      </h2>
+      <section>
+        <ZoomableChartExample />
+      </section>
+    </article>
+  );
 }
 
 ReactDOM.render(<App />, document.querySelector('#index'));
