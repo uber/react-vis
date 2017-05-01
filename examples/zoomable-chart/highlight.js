@@ -5,10 +5,6 @@ import window from 'global';
 
 export default class Highlight extends AbstractSeries {
 
-  static get requiresSVG() {
-    return true;
-  }
-
   static displayName = 'HighlightOverlay';
   static defaultProps = {
     allow: 'x',
@@ -20,7 +16,7 @@ export default class Highlight extends AbstractSeries {
     super(props);
     this.state = {
       drawing: false,
-      drawArea: {t: 0, r: 0, b: 0, l: 0},
+      drawArea: {top: 0, right: 0, bottom: 0, left: 0},
       startLoc: 0
     };
     this._onMouseUp = () => this.onMouseUp();
@@ -35,23 +31,23 @@ export default class Highlight extends AbstractSeries {
   }
 
   onParentMouseDown(e) {
-    const {marginLeft, innerHeight, onMouseDown} = this.props;
+    const {marginLeft, innerHeight, onBrushStart} = this.props;
     const location = e.nativeEvent.offsetX - marginLeft;
 
     // TODO: Eventually support drawing as a full rectangle, if desired. Currently the code supports 'x' only
     this.setState({
       drawing: true,
       drawArea: {
-        t: 0,
-        r: location,
-        b: innerHeight,
-        l: location
+        top: 0,
+        right: location,
+        bottom: innerHeight,
+        left: location
       },
       startLoc: location
     });
 
-    if (onMouseDown) {
-      onMouseDown(e);
+    if (onBrushStart) {
+      onBrushStart(e);
     }
   }
 
@@ -61,7 +57,7 @@ export default class Highlight extends AbstractSeries {
       return;
     }
 
-    const {onDrawEnd} = this.props;
+    const {onBrushEnd} = this.props;
     const {drawArea} = this.state;
     const xScale = ScaleUtils.getAttributeScale(this.props, 'x');
     const yScale = ScaleUtils.getAttributeScale(this.props, 'y');
@@ -69,31 +65,31 @@ export default class Highlight extends AbstractSeries {
     // Clear the draw area
     this.setState({
       drawing: false,
-      drawArea: {t: 0, r: 0, b: 0, l: 0},
+      drawArea: {top: 0, right: 0, bottom: 0, left: 0},
       startLoc: 0
     });
 
     // Invoke the callback with null if the selected area was < 5px
-    if (Math.abs(drawArea.r - drawArea.l) < 5) {
-      onDrawEnd(null);
+    if (Math.abs(drawArea.right - drawArea.left) < 5) {
+      onBrushEnd(null);
       return;
     }
 
     // Compute the corresponding domain drawn
     const domainArea = {
-      t: yScale.invert(drawArea.t),
-      r: xScale.invert(drawArea.r),
-      b: yScale.invert(drawArea.b),
-      l: xScale.invert(drawArea.l)
+      top: yScale.invert(drawArea.top),
+      right: xScale.invert(drawArea.right),
+      bottom: yScale.invert(drawArea.bottom),
+      left: xScale.invert(drawArea.left)
     };
 
-    if (onDrawEnd) {
-      onDrawEnd(domainArea);
+    if (onBrushEnd) {
+      onBrushEnd(domainArea);
     }
   }
 
   onParentMouseMove(e) {
-    const {innerWidth, marginLeft, onMouseMove} = this.props;
+    const {innerWidth, marginLeft, onBrush} = this.props;
     const {drawArea, startLoc, drawing} = this.state;
     const loc = e.nativeEvent.offsetX - marginLeft;
 
@@ -104,38 +100,38 @@ export default class Highlight extends AbstractSeries {
       if (loc < startLoc) {
         newDrawArea = {
           ...drawArea,
-          l: Math.max(loc, 0),
-          r: startLoc
+          left: Math.max(loc, 0),
+          right: startLoc
         };
       } else {
         newDrawArea = {
           ...drawArea,
-          r: Math.min(loc, innerWidth),
-          l: startLoc
+          right: Math.min(loc, innerWidth),
+          left: startLoc
         };
       }
       this.setState({drawArea: newDrawArea});
 
-      if (onMouseMove) {
-        onMouseMove(e);
+      if (onBrush) {
+        onBrush(e);
       }
     }
   }
 
   render() {
     const {marginLeft, marginTop, color, opacity} = this.props;
-    const {drawArea: {l, r, t, b}} = this.state;
+    const {drawArea: {left, right, top, bottom}} = this.state;
 
     return (
-      <g transform={`translate(${marginLeft}, ${marginTop})`} style={{cursor: 'crosshair'}}>
+      <g transform={`translate(${marginLeft}, ${marginTop})`} className="highlight-container">
         <rect
           pointerEvents="none"
           opacity={opacity}
           fill={color}
-          x={l}
-          y={t}
-          width={r - l}
-          height={b}
+          x={left}
+          y={top}
+          width={right - left}
+          height={bottom}
         ></rect>
       </g>
     );
