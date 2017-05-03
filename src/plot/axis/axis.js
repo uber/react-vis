@@ -18,12 +18,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 
 import Animation from 'animation';
-import PureRenderComponent from 'pure-render-component';
 import {ORIENTATION, getTicksTotalFromSize} from 'utils/axis-utils';
 
 import AxisLine from './axis-line';
@@ -85,7 +84,7 @@ const predefinedClassName = 'rv-xy-plot__axis';
 const VERTICAL_CLASS_NAME = 'rv-xy-plot__axis--vertical';
 const HORIZONTAL_CLASS_NAME = 'rv-xy-plot__axis--horizontal';
 
-class Axis extends PureRenderComponent {
+class Axis extends PureComponent {
 
   /**
    * Define the default values depending on the data passed from the outside.

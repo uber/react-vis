@@ -18,11 +18,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 
-import PureRenderComponent from 'pure-render-component';
 import {getAttributeScale} from 'utils/scales-utils';
 import Animation, {AnimationPropType} from 'animation';
 
@@ -37,7 +36,7 @@ const animatedProps = [
   'tickTotal'
 ];
 
-class CircularGridLines extends PureRenderComponent {
+class CircularGridLines extends PureComponent {
 
   _getDefaultProps() {
     const {

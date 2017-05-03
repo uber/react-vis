@@ -68,7 +68,6 @@
     "node-sass": "^4.2.0",
     "nyc": "^10.0.0",
     "react": "^15.5.4",
-    "react-addons-shallow-compare": "^15.5.2",
     "react-addons-test-utils": ">=15.4.2",
     "react-dom": "^15.5.4",
     "stylelint": "^7.7.1",
@@ -77,8 +76,7 @@
     "uglify-js": "^2.8.22"
   },
   "peerDependencies": {
-    "react": "0.14.x - 15.x",
-    "react-addons-shallow-compare": "0.14.x - 15.x"
+    "react": "0.14.x - 15.x"
   },
   "keywords": [
     "d3",

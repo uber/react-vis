@@ -18,11 +18,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 
-import PureRenderComponent from 'pure-render-component';
 import {getAttributeFunctor} from 'utils/scales-utils';
 
 /*
@@ -75,7 +74,7 @@ function defaultFormat(value) {
   });
 }
 
-class Hint extends PureRenderComponent {
+class Hint extends PureComponent {
 
   static get propTypes() {
     return {
