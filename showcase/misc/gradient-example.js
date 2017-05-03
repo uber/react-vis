@@ -18,31 +18,48 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import './setup';
+import React from 'react';
 
-import './utils/axis-utils-tests';
-import './utils/chart-utils-tests';
-import './utils/data-utils-tests';
-import './utils/react-utils-tests';
-import './utils/scales-utils-tests';
-import './utils/series-utils-tests';
+import {
+  XYPlot,
+  XAxis,
+  YAxis,
+  VerticalGridLines,
+  HorizontalGridLines,
+  AreaSeries,
+  GradientDefs
+} from 'index';
 
-import './components';
-import './components/area-series-tests';
-import './components/arc-series-tests';
-import './components/bar-series-tests';
-import './components/canvas-component-tests';
-import './components/circular-grid-lines-tests';
-import './components/gradient-tests';
-import './components/heatmap-tests';
-import './components/legends-tests';
-import './components/label-series-tests';
-import './components/line-series-tests';
-import './components/mark-series-tests';
-import './components/polygon-series-tests';
-import './components/radial-tests';
-import './components/rect-series-tests';
-import './components/treemap-tests';
-import './components/sankey-tests';
-import './components/sunburst-tests';
-import './components/xy-plot-tests';
+export default class GradientExample extends React.Component {
+  render() {
+    return (
+      <XYPlot
+        width={300}
+        height={300}>
+        <GradientDefs>
+          <linearGradient id="CoolGradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stopColor="red" stopOpacity={0.4}/>
+            <stop offset="100%" stopColor="blue" stopOpacity={0.3} />
+          </linearGradient>
+        </GradientDefs>
+        <VerticalGridLines />
+        <HorizontalGridLines />
+        <XAxis />
+        <YAxis />
+        <AreaSeries
+          color={'url(#CoolGradient)'}
+          data={[
+            {x: 1, y: 10, y0: 1},
+            {x: 2, y: 25, y0: 5},
+            {x: 3, y: 15, y0: 3}
+          ]}/>
+        <AreaSeries
+          data={[
+            {x: 1, y: 5, y0: 6},
+            {x: 2, y: 20, y0: 11},
+            {x: 3, y: 10, y0: 9}
+          ]}/>
+      </XYPlot>
+    );
+  }
+}

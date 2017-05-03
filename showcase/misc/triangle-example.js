@@ -24,7 +24,8 @@ import {
   XYPlot,
   PolygonSeries,
   XAxis,
-  YAxis
+  YAxis,
+  GradientDefs
 } from 'index';
 
 function buildTriangle(sideWidth, lowerLeftCoord) {
@@ -54,6 +55,12 @@ export default class Example extends React.Component {
       <XYPlot
         width={300}
         height={300}>
+        <GradientDefs>
+          <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%" stopColor="#829AE3" stopOpacity="0"/>
+            <stop offset="100%" stopColor="#12939A" stopOpacity="1" />
+          </radialGradient>
+        </GradientDefs>
         <XAxis />
         <YAxis />
         {triangles.map((triangle, index) => {
@@ -62,6 +69,7 @@ export default class Example extends React.Component {
             data={triangle}
             onSeriesMouseOver={() => this.setState({hoveredIndex: index})}
             onSeriesMouseOut={() => this.setState({hoveredIndex: false})}
+            color={index !== hoveredIndex ? 'url(#grad1)' : null}
             style={{
               strokeWidth: 0.5,
               strokeOpacity: 1,
