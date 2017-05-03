@@ -59,11 +59,12 @@ import ContinuousColorLegendExample from './legends/continuous-color';
 import ContinuousSizeLegendExample from './legends/continuous-size';
 
 import AnimationExample from './misc/animation-example';
+import LabelSeriesExample from './misc/label-series-example';
+import GradientExample from './misc/gradient-example';
 import SyncedCharts from './misc/synced-charts';
 import TimeChart from './misc/time-chart';
 import TriangleExample from './misc/triangle-example';
 import VoronoiLineChart from './misc/voronoi-line-chart';
-import LabelSeriesExample from './misc/label-series-example';
 
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import DonutChartExample from './radial-chart/donut-chart';
@@ -119,6 +120,7 @@ export const showCase = {
   VoronoiLineChart,
   CustomAxes,
   LabelSeriesExample,
+  GradientExample,
 
   SimpleTreemap,
   TreemapExample,

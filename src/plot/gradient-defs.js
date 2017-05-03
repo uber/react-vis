@@ -18,31 +18,29 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import './setup';
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
-import './utils/axis-utils-tests';
-import './utils/chart-utils-tests';
-import './utils/data-utils-tests';
-import './utils/react-utils-tests';
-import './utils/scales-utils-tests';
-import './utils/series-utils-tests';
+const predefinedClassName = 'rv-gradient-defs';
 
-import './components';
-import './components/area-series-tests';
-import './components/arc-series-tests';
-import './components/bar-series-tests';
-import './components/canvas-component-tests';
-import './components/circular-grid-lines-tests';
-import './components/gradient-tests';
-import './components/heatmap-tests';
-import './components/legends-tests';
-import './components/label-series-tests';
-import './components/line-series-tests';
-import './components/mark-series-tests';
-import './components/polygon-series-tests';
-import './components/radial-tests';
-import './components/rect-series-tests';
-import './components/treemap-tests';
-import './components/sankey-tests';
-import './components/sunburst-tests';
-import './components/xy-plot-tests';
+class GradientDefs extends PureComponent {
+  render() {
+    const {className} = this.props;
+    return (
+      <defs className={`${predefinedClassName} ${className}`}>
+        {this.props.children}
+      </defs>
+    );
+  }
+}
+
+GradientDefs.displayName = 'GradientDefs';
+GradientDefs.requiresSVG = true;
+GradientDefs.propTypes = {
+  className: PropTypes.string
+};
+GradientDefs.defaultPropTypes = {
+  className: ''
+};
+
+export default GradientDefs;

@@ -4,6 +4,7 @@ import {showCase} from '../index';
 const {
   AnimationExample,
   LabelSeriesExample,
+  GradientExample,
   SyncedCharts,
   TimeChart,
   TriangleExample,
@@ -24,6 +25,9 @@ const MISC = [{
 }, {
   name: 'Voronoi Line Chart',
   component: VoronoiLineChart
+}, {
+  name: 'Gradient Example',
+  component: GradientExample
 }, {
   name: 'Animation Example',
   component: AnimationExample,
