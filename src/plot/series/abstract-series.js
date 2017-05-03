@@ -20,8 +20,8 @@
 
 import PropTypes from 'prop-types';
 import {voronoi} from 'd3-voronoi';
+import {PureComponent} from 'react';
 
-import PureRenderComponent from 'pure-render-component';
 import {AnimationPropType} from 'animation';
 import {
   getAttributeFunctor,
@@ -57,7 +57,7 @@ const defaultProps = {
   style: {}
 };
 
-class AbstractSeries extends PureRenderComponent {
+class AbstractSeries extends PureComponent {
 
   constructor(props) {
     super(props);

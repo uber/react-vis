@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {interpolate} from 'd3-interpolate';
 import {spring, Motion, presets} from 'react-motion';
-import PureRenderComponent from 'pure-render-component';
 
 const ANIMATION_PROPTYPES = PropTypes.oneOfType([
   PropTypes.string,
@@ -37,7 +36,7 @@ function getAnimationStyle(animationStyle = presets.noWobble) {
   };
 }
 
-class Animation extends PureRenderComponent {
+class Animation extends PureComponent {
   constructor(props) {
     super(props);
     this._updateInterpolator(props);

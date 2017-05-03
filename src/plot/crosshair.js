@@ -18,11 +18,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 
-import PureRenderComponent from 'pure-render-component';
 import {getAttributeFunctor} from 'utils/scales-utils';
 
 /**
@@ -62,7 +61,7 @@ function getFirstNonEmptyValue(values) {
   return (values || []).find(v => Boolean(v));
 }
 
-class Crosshair extends PureRenderComponent {
+class Crosshair extends PureComponent {
 
   static get propTypes() {
     return {
