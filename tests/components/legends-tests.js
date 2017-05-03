@@ -45,7 +45,6 @@ test('Discrete Legends', t => {
     .props().style, {background: '#6588cd'},
     'custom discrete legend uses custom palette');
 
-
   const $ = mount(<SearchableDiscreteLegend/>);
   t.equal($.text(), 'ApplesBananasBlueberriesCarrotsEggplantsLimesPotatoes',
   'should find the correct text content for the searchable legend');
