@@ -49,6 +49,15 @@ const defaultProps = {
   orientation: 'vertical'
 };
 
+/**
+ * Add color information to a list of legend items.
+ * @param {Array} items - list of legend items
+ * @param {string} [items.title] - label of the legend item
+ * @param {string} [items.color] - color of the legend item
+ * @param {Array} colors - array of colors.
+ * @returns {Array} Array of tick values.
+ */
+
 function fillItemsWithDefaults(items, colors) {
   return items.map((item, i) => {
     return {

@@ -7,6 +7,8 @@ import ContinuousColorLegend from '../../showcase/legends/continuous-color';
 import HorizontalDiscreteLegend from '../../showcase/legends/horizontal-discrete-color';
 import VerticalDiscreteLegend from '../../showcase/legends/vertical-discrete-color';
 import SearchableDiscreteLegend from '../../showcase/legends/searchable-discrete-color';
+import HorizontalDiscreteCustomPalette from
+  '../../showcase/legends/horizontal-discrete-custom-palette';
 
 test('Continuous Size Legend', t => {
   const $ = mount(<ContinuousSizeLegend/>);
@@ -24,7 +26,7 @@ test('Continuous Color Legend', t => {
   t.end();
 });
 
-test('Discerete Legends', t => {
+test('Discrete Legends', t => {
   [HorizontalDiscreteLegend, VerticalDiscreteLegend].forEach(Component => {
     const $ = mount(<Component/>);
     t.equal($.text(), 'OptionsButtonsSelect boxesDate inputsPassword inputsFormsOther',
@@ -32,6 +34,17 @@ test('Discerete Legends', t => {
     t.equal($.find('.rv-discrete-color-legend-item__color').length, 7,
     'should find the right number of elements');
   });
+
+  t.deepEqual(mount(<HorizontalDiscreteLegend/>)
+    .find('.rv-discrete-color-legend-item__color').first()
+    .props().style, {background: '#12939A'},
+    'normal discrete legend uses default palette');
+
+  t.deepEqual(mount(<HorizontalDiscreteCustomPalette/>)
+    .find('.rv-discrete-color-legend-item__color').first()
+    .props().style, {background: '#6588cd'},
+    'custom discrete legend uses custom palette');
+
 
   const $ = mount(<SearchableDiscreteLegend/>);
   t.equal($.text(), 'ApplesBananasBlueberriesCarrotsEggplantsLimesPotatoes',
