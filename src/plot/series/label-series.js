@@ -87,7 +87,7 @@ class LabelSeries extends AbstractSeries {
   }
 }
 
-LabelSeries.PropTypes = {
+LabelSeries.propTypes = {
   animation: PropTypes.bool,
   allowOffsetToBeReversed: PropTypes.bool,
   className: PropTypes.string,

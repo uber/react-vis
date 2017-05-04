@@ -107,7 +107,7 @@ class Sunburst extends React.Component {
 }
 
 Sunburst.displayName = 'Sunburst';
-Sunburst.PropTypes = {
+Sunburst.propTypes = {
   animation: AnimationPropType,
   className: PropTypes.string,
   colorType: PropTypes.string,
