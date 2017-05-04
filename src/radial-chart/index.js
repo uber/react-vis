@@ -157,7 +157,7 @@ class RadialChart extends Component {
 }
 
 RadialChart.displayName = 'RadialChart';
-RadialChart.PropTypes = {
+RadialChart.propTypes = {
   animation: AnimationPropType,
   className: PropTypes.string,
   colorType: PropTypes.string,
