@@ -32,7 +32,7 @@ const propTypes = {
   orientation: PropTypes.oneOf([
     LEFT, RIGHT, TOP, BOTTOM
   ]).isRequired,
-  width: React.PropTypes.number.isRequired
+  width: PropTypes.number.isRequired
 };
 
 const defaultProps = {
