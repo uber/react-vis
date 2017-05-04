@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import AbstractSeries from './abstract-series';
 import LineSeries from './line-series';
@@ -26,8 +27,8 @@ import MarkSeries from './mark-series';
 
 const propTypes = {
   ...LineSeries.propTypes,
-  lineStyle: React.PropTypes.object,
-  markStyle: React.PropTypes.object
+  lineStyle: PropTypes.object,
+  markStyle: PropTypes.object
 };
 
 class LineMarkSeries extends AbstractSeries {
