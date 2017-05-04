@@ -2,14 +2,11 @@
 
 <!-- INJECT:"LineChart" -->
 
-react-vis offers two different types of LineSeries, one that renders SVG and one that renders WebGL.
-The SVG mode is accessed by using the normal `LineSeries`, just as above, while the WebGL mode is used by simply calling
-`LineSeriesGL` instead of `LineSeries`. It is most effective to hover over your points using onNearestX rather
-than onValueMouseOver.
+react-vis offers two different types of LineSeries, one that renders SVG and one that renders Canvas.
+The SVG mode is accessed by using the normal `LineSeries`, just as above, while the Canvas mode is used by simply calling `LineSeriesCanvas` instead of `LineSeries`.
 
-<!-- INJECT:"LineChartGL" -->
-
-**NOTE**: using the GL version of this layer disables animation
+<!-- INJECT:"LineChartCanvas" -->
+-**NOTE**: using the Canvas version of this layer disables animation
 
 ## API Reference
 
@@ -63,11 +60,3 @@ An object which holds CSS properties that will be applied to the SVG element(s) 
   style={{strokeLinejoin: "round"}}
 />
 ```
-
-## LineSeriesGL API Additions
-
-In addition to the above api the GL version of markSeries exposes several additional props.
-
-#### seriesId (REQUIRED)
-Type: `string`
-This string is used by deck.gl to identify which layer is being requested to render.

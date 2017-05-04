@@ -41,10 +41,8 @@
     "d3-scale": "^1.0.4",
     "d3-shape": "^1.0.4",
     "d3-voronoi": "^1.1.1",
-    "deck.gl": "^4.0.0",
     "deep-equal": "^1.0.1",
     "global": "^4.3.1",
-    "luma.gl": "^3.0.0-beta.11",
     "prop-types": "^15.5.8",
     "react-motion": "^0.4.8",
     "react-test-renderer": "^15.5.4"
