@@ -49,19 +49,29 @@ const defaultProps = {
   orientation: 'vertical'
 };
 
-function fillItemsWithDefaults(items) {
+/**
+ * Add color information to a list of legend items.
+ * @param {Array} items - list of legend items
+ * @param {string} [items.title] - label of the legend item
+ * @param {string} [items.color] - color of the legend item
+ * @param {Array} colors - array of colors.
+ * @returns {Array} Array of tick values.
+ */
+
+function fillItemsWithDefaults(items, colors) {
   return items.map((item, i) => {
     return {
       title: item.title ? item.title : item,
       color: item.color ?
         item.color :
-        DISCRETE_COLOR_RANGE[i % DISCRETE_COLOR_RANGE.length],
+        colors[i % colors.length],
       disabled: Boolean(item.disabled)
     };
   });
 }
 
 function DiscreteColorLegend({
+  colors,
   items: initialItems,
   width,
   height,
@@ -69,7 +79,7 @@ function DiscreteColorLegend({
   orientation,
   className
 }) {
-  const updatedItems = fillItemsWithDefaults(initialItems);
+  const updatedItems = fillItemsWithDefaults(initialItems, colors);
   return (
     <div
       className={`rv-discrete-color-legend ${orientation} ${className}`}

@@ -42,15 +42,17 @@ const defaultProps = {
 
 function SearchableDiscreteColorLegend(props) {
   const {
+    className,
+    colors,
+    height,
     items,
     onItemClick,
-    searchFn,
     onSearchChange,
-    searchText,
+    orientation,
+    searchFn,
     searchPlaceholder,
-    width,
-    height,
-    className
+    searchText,
+    width
   } = props;
   const onChange = onSearchChange ?
     ({target: {value}}) => onSearchChange(value) :
@@ -68,8 +70,11 @@ function SearchableDiscreteColorLegend(props) {
       </form>
       <div className="rv-search-wrapper__contents">
         <DiscreteColorLegend
+          colors={colors}
           items={filteredItems}
-          onItemClick={onItemClick}/>
+          onItemClick={onItemClick}
+          orientation={orientation}
+        />
       </div>
     </div>
   );
