@@ -41,6 +41,7 @@ export ArcSeries from 'plot/series/arc-series';
 export LineMarkSeries from 'plot/series/line-mark-series';
 export LineMarkSeriesCanvas from 'plot/series/line-mark-series-canvas';
 export Hint from 'plot/hint';
+export Borders from 'plot/borders';
 export Crosshair from 'plot/crosshair';
 export XYPlot from 'plot/xy-plot';
 export XAxis from 'plot/axis/x-axis';

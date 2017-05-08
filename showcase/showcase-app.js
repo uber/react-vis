@@ -27,6 +27,7 @@ class App extends Component {
               <li><a href="#legends">Legends</a></li>
               <li><a href="#sunbursts">Sunbursts</a></li>
               <li><a href="#sankeys">Sankeys</a></li>
+              <li><a href="#misc">Misc</a></li>
             </nav>
           </div>
         </header>)}
