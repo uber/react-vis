@@ -26,8 +26,9 @@ const MISC = [{
   name: 'Voronoi Line Chart',
   component: VoronoiLineChart
 }, {
-  name: 'Gradient Example',
-  component: GradientExample
+  name: 'Gradient & Custom Border Example',
+  component: GradientExample,
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/showcase/misc/gradient-example.js'
 }, {
   name: 'Animation Example',
   component: AnimationExample,
@@ -42,7 +43,7 @@ const MISC = [{
 class MiscShowcase extends Component {
   render() {
     return (
-      <article>
+      <article id="misc">
         <h2>Miscellaneous</h2>
         {MISC.map(mapSection)}
       </article>

@@ -31,6 +31,7 @@ import './components';
 import './components/area-series-tests';
 import './components/arc-series-tests';
 import './components/bar-series-tests';
+import './components/borders-tests';
 import './components/canvas-component-tests';
 import './components/circular-grid-lines-tests';
 import './components/gradient-tests';

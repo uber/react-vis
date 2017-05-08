@@ -27,13 +27,16 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   AreaSeries,
-  GradientDefs
+  GradientDefs,
+  Borders
 } from 'index';
 
 export default class GradientExample extends React.Component {
   render() {
     return (
       <XYPlot
+        xDomain={[1.2, 3]}
+        yDomain={[11, 26]}
         width={300}
         height={300}>
         <GradientDefs>
@@ -44,8 +47,7 @@ export default class GradientExample extends React.Component {
         </GradientDefs>
         <VerticalGridLines />
         <HorizontalGridLines />
-        <XAxis />
-        <YAxis />
+
         <AreaSeries
           color={'url(#CoolGradient)'}
           data={[
@@ -53,6 +55,14 @@ export default class GradientExample extends React.Component {
             {x: 2, y: 25, y0: 5},
             {x: 3, y: 15, y0: 3}
           ]}/>
+        <Borders style={{
+          bottom: {fill: '#fff'},
+          left: {fill: 'url(#CoolGradient)', opacity: 0.3},
+          right: {fill: '#fff'},
+          top: {fill: '#fff'}
+        }}/>
+        <XAxis />
+        <YAxis />
         <AreaSeries
           data={[
             {x: 1, y: 5, y0: 6},
