@@ -741,12 +741,13 @@ export function getXYPlotValues(props, children) {
   }, {});
 
   return children.map(child =>
-    Object.keys(XYPlotScales).reduce((prev, attr) => {
+    XYPLOT_ATTR.reduce((prev, attr) => {
       if (child.props && child.props[attr] !== undefined) {
         const scaleInput = child.props[attr];
         const scale = XYPlotScales[attr];
+        const fallbackValue = scale ? scale(scaleInput) : scaleInput;
         return {...prev,
-          [`_${attr}Value`]: scale(scaleInput)
+          [`_${attr}Value`]: fallbackValue
         };
       }
       return prev;
