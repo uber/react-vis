@@ -22,7 +22,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import equal from 'deep-equal';
 
-import {extractScalePropsFromProps, getMissingScaleProps} from 'utils/scales-utils';
+import {extractScalePropsFromProps, getMissingScaleProps, getXYPlotValues} from 'utils/scales-utils';
 import {getStackedData, getSeriesChildren, getSeriesPropsFromChildren} from 'utils/series-utils';
 import {getInnerDimensions, MarginPropType} from 'utils/chart-utils';
 import {AnimationPropType} from 'animation';
@@ -310,11 +310,13 @@ class XYPlot extends React.Component {
    * @private
    */
   _getClonedChildComponents() {
+    const props = this.props;
     const {animation} = this.props;
     const {scaleMixins, data} = this.state;
     const dimensions = getInnerDimensions(this.props, DEFAULT_MARGINS);
     const children = React.Children.toArray(this.props.children);
     const seriesProps = getSeriesPropsFromChildren(children);
+    const XYPlotValues = getXYPlotValues(props, children);
     return children.map((child, index) => {
       let dataProps = null;
       if (seriesProps[index]) {
@@ -323,12 +325,14 @@ class XYPlot extends React.Component {
         const {seriesIndex} = seriesProps[index];
         dataProps = {data: data[seriesIndex]};
       }
+
       return React.cloneElement(child, {
         ...dimensions,
         animation,
         ...seriesProps[index],
         ...scaleMixins,
         ...child.props,
+        ...XYPlotValues[index],
         ...dataProps
       });
     });
