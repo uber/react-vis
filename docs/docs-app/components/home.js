@@ -15,7 +15,7 @@ const sections = [{
   component: (<StreamgraphExample forFrontPage/>)
 }, {
   title: 'EASY TO EXTEND',
-  text: 'The library provides a strongly extenible API, so that if we don\'t have a chart type that you need, it is easy and pleasant to create.',
+  text: 'The library provides a strongly extensible API, so that if we don\'t have a chart type that you need, it is easy and pleasant to create.',
   component: (<div className="f example-charts">
     <SankeyBasic />
     <DonutChart />
