@@ -35,7 +35,7 @@ class MarkSeries extends AbstractSeries {
 
   render() {
     const {
-      animation, className, data, marginLeft, marginTop, strokeWidth, style
+      animation, className, data, marginLeft, marginTop, markType, strokeWidth, style
     } = this.props;
     if (!data) {
       return null;
@@ -78,6 +78,10 @@ class MarkSeries extends AbstractSeries {
             onMouseOver: e => this._valueMouseOverHandler(d, e),
             onMouseOut: e => this._valueMouseOutHandler(d, e)
           };
+
+          if (typeof markType === 'function') {
+            return markType({attrs, d});
+          }
           return <circle {...attrs} />;
         })}
       </g>
@@ -88,6 +92,7 @@ class MarkSeries extends AbstractSeries {
 MarkSeries.displayName = 'MarkSeries';
 MarkSeries.propTypes = {
   ...AbstractSeries.propTypes,
+  markType: PropTypes.func,
   strokeWidth: PropTypes.number
 };
 export default MarkSeries;
