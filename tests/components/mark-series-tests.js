@@ -16,6 +16,14 @@ test('MarkSeries: Showcase Example - Scatterplot', t => {
   t.end();
 });
 
+test('MarkSeries: Showcase Example - Scatterplot with rects', t => {
+  const $ = mount(<Scatterplot markType='rect' />);
+  t.equal($.text(), '1.01.52.02.53.068101214', 'should fine the right text content');
+  t.equal($.find('.rv-xy-plot__series--mark rect').length, 5, 'should find the right number of rect');
+  t.equal($.find('.mark-series-example').length, 1, 'should find the right number of custom named series');
+  t.end();
+});
+
 test('MarkSeries: Showcase Example - Dynamic Crosshair Scatterplot', t => {
   const $ = mount(<DynamicCrosshairScatterplot />);
   // NOTE: Point 0 (P0) and Point 1 (P1) are vertically aligned
