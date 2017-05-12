@@ -41,7 +41,7 @@ const prodConfig = {
   module: moduleConfig,
   resolve: resolveConfig,
   output: {
-    path: './docs-dist',
+    path: 'docs-dist',
     filename: 'bundle.js'
   }
 };
