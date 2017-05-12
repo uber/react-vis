@@ -1,5 +1,6 @@
 const {resolve} = require('path');
 const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
+const path = require('path');
 
 const entry = {
   app: './app.js'
@@ -41,7 +42,7 @@ const prodConfig = {
   module: moduleConfig,
   resolve: resolveConfig,
   output: {
-    path: './docs-dist',
+    path: path.resolve(__dirname, 'docs-dist'),
     filename: 'bundle.js'
   }
 };
