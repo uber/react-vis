@@ -18,11 +18,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
-
-import PureRenderComponent from 'pure-render-component';
 
 const propTypes = {
   style: PropTypes.shape({
@@ -48,7 +46,7 @@ const CLASSES = {
   top: 'rv-xy-plot__borders-top'
 };
 
-class Borders extends PureRenderComponent {
+class Borders extends PureComponent {
   render() {
     const {
       marginTop,
