@@ -18,6 +18,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+import {range} from 'd3-array';
+import {scaleLinear} from 'd3-scale';
+
 export const ORIENTATION = {
   TOP: 'top',
   LEFT: 'left',
@@ -56,6 +59,53 @@ export function getTickValues(scale, tickTotal, tickValues) {
   return !tickValues ?
     (scale.ticks ? scale.ticks(tickTotal) : scale.domain()) :
     tickValues;
+}
+
+// TODO WRITE TESTS
+// TODO WRITE JSDOC
+export function generateFit(axisStart, axisEnd) {
+  // address the special case when the slope is infinite
+  if (axisStart.x === axisEnd.x) {
+    return {
+      left: Math.min(axisStart.y, axisEnd.y),
+      right: Math.max(axisStart.y, axisEnd.y),
+      slope: 0,
+      offset: axisStart.x
+    };
+  }
+  const slope = (axisStart.y - axisEnd.y) / (axisStart.x - axisEnd.x);
+  return {
+    left: Math.min(axisStart.x, axisEnd.x),
+    right: Math.max(axisStart.x, axisEnd.x),
+    // generate the linear projection of the axis direction
+    slope,
+    offset: axisStart.y - slope * axisStart.x
+  };
+}
+
+// TODO WRITE TESTS
+// TODO WRITE JSDOC
+export function generatePoints({axisStart, axisEnd, numberOfTicks, axisDomain}) {
+  const {left, right, slope, offset} = generateFit(axisStart, axisEnd);
+  // construct a linear band of points, then map them
+  const pointSlope = (right - left) / (numberOfTicks);
+  const axisScale = scaleLinear().domain([left, right]).range(axisDomain.sort());
+
+  return {
+    slope: axisStart.x === axisEnd.x ? Infinity : slope,
+    points: range(left, right + pointSlope, pointSlope)
+      // TODO this may be wrong for other directions, that remains to be seen
+      .map(val => ({y: val, x: slope * val + offset, text: axisScale(val)}))
+  };
+}
+
+// TODO WRITE TESTS
+// TODO WRITE JSDOC
+export function getAxisAngle(axisStart, axisEnd) {
+  if (axisStart.x === axisEnd.x) {
+    return axisEnd.y > axisStart.y ? Math.PI / 2 : (3 * Math.PI / 2);
+  }
+  return Math.atan((axisEnd.y - axisStart.y) / (axisEnd.x - axisStart.x));
 }
 
 export default {

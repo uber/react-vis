@@ -383,6 +383,17 @@ article {
   }
 }
 
+.parallel-coordinates-example {
+  .rv-xy-plot__series--line {
+    stroke: #12939A !important;
+
+    &:hover {
+      stroke: #F15C17 !important;
+    }
+  }
+}
+
+
 .canvas-example-controls {
   display: flex;
 }

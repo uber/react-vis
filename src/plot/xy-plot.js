@@ -89,6 +89,7 @@ class XYPlot extends React.Component {
     return {
       animation: AnimationPropType,
       className: PropTypes.string,
+      dontCheckIfEmpty: PropTypes.bool,
       height: PropTypes.number.isRequired,
       margin: MarginPropType,
       onMouseDown: PropTypes.func,
@@ -343,12 +344,13 @@ class XYPlot extends React.Component {
   render() {
     const {
       className,
+      dontCheckIfEmpty,
       style,
       width,
       height
     } = this.props;
 
-    if (this._isPlotEmpty()) {
+    if (!dontCheckIfEmpty && this._isPlotEmpty()) {
       return (
         <div
           className={`rv-xy-plot ${className}`}

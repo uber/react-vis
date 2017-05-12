@@ -42,6 +42,7 @@ import GridLinesChart from './plot/grid';
 import CustomAxesOrientation from './axes/custom-axes-orientation';
 import CustomAxisChart from './axes/custom-axis';
 import CustomAxes from './axes/custom-axes';
+import DecorativeAxisCrissCross from './axes/decorative-axes-criss-cross';
 import StaticHints from './axes/static-hints';
 import DynamicHints from './axes/dynamic-hints';
 import DynamicComplexEdgeHints from './axes/dynamic-complex-edge-hints';
@@ -50,6 +51,7 @@ import DynamicSimpleTopEdgeHints from './axes/dynamic-simple-topedge-hints';
 import DynamicProgrammaticRightEdgeHints from './axes/dynamic-programmatic-rightedge-hints';
 import DynamicCrosshair from './axes/dynamic-crosshair';
 import DynamicCrosshairScatterplot from './axes/dynamic-crosshair-scatterplot';
+import ParallelCoordinatesExample from './axes/parallel-coordinates-example';
 import StaticCrosshair from './axes/static-crosshair';
 
 import VerticalDiscreteColorLegendExample from './legends/vertical-discrete-color';
@@ -107,6 +109,7 @@ export const showCase = {
   AxisWithTurnedLabels,
   GridLinesChart,
   StaticHints,
+  DecorativeAxisCrissCross,
   DynamicHints,
   DynamicComplexEdgeHints,
   DynamicSimpleEdgeHints,
@@ -115,6 +118,7 @@ export const showCase = {
   StaticCrosshair,
   DynamicCrosshair,
   DynamicCrosshairScatterplot,
+  ParallelCoordinatesExample,
   SyncedCharts,
   TimeChart,
   TriangleExample,
