@@ -117,3 +117,7 @@ The opacity for all elements in the series, this property will be over-ridden by
 #### stroke
 Type: `string|number`
 The outer color for all elements in the series, this property will be over-ridden by color specified in the data attribute.
+
+### style
+Type: `object`
+A list of CSS properties to style the series outside of the explicitly set properties. Note that it will override all other properties (ie fill, stroke, opacity, color). See [style](style.md)

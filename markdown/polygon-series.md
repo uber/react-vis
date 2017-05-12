@@ -82,4 +82,5 @@ Type: `function(d, {event})`
 
 #### style
 Type: `object`
-Paths accept a ton of different styles, so rather than prescribe every single one we just accept a general grab bag pf the styles. check out the [w3](https://www.w3schools.com/graphics/svg_path.asp) page for more details.
+Paths accept a ton of different styles, so rather than prescribe every single one we just accept a general grab bag pf the styles. check out the [w3](https://www.w3schools.com/graphics/svg_path.asp) page for more details and the [style] documnetation (style.md).
+
