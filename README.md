@@ -73,6 +73,21 @@ import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
 </XYPlot>
 ```
 
+If you're working in a non-node environment, you can also directly include the bundle and compiled style using basic html tags.
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/react-vis/dist/style.css">
+<script type="text/javascript" src="https://unpkg.com/react-vis/dist/dist.min.js"></script>
+```
+
+The global `reactVis` object will now be available for you to play around.
+
+You can checkout these example CodePens:
+[#1](https://codepen.io/Apercu/pen/mmLOpY?editors=0010),
+[#2](https://codepen.io/jckr/pen/oWZPJe?editors=0010),
+[#3](https://codepen.io/jckr/pen/BRpReQ?editors=0010) or
+[#4](https://codepen.io/jckr/pen/aWmRGx?editors=0010)
+
 ## More information
 
 Take a look at the [folder with examples](examples/) or check out some docs:
