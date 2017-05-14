@@ -61,8 +61,15 @@ export function getTickValues(scale, tickTotal, tickValues) {
     tickValues;
 }
 
-// TODO WRITE TESTS
-// TODO WRITE JSDOC
+/**
+ * Generate a description of a decorative axis in terms of a linear equation
+ * y = slope * x + offset in coordinates
+ * @param {Object} axisStart Object of format {x, y} describing in coordinates
+ * the start position of the decorative axis
+ * @param {Object} axisEnd Object of format {x, y} describing in coordinates
+ * the start position of the decorative axis
+ * @returns {Number} Object describing each the line in coordinates
+ */
 export function generateFit(axisStart, axisEnd) {
   // address the special case when the slope is infinite
   if (axisStart.x === axisEnd.x) {
@@ -83,8 +90,18 @@ export function generateFit(axisStart, axisEnd) {
   };
 }
 
-// TODO WRITE TESTS
-// TODO WRITE JSDOC
+/**
+ * Generate a description of a decorative axis in terms of a linear equation
+ * y = slope * x + offset in coordinates
+ * @param props
+ * props.@param {Object} axisStart Object of format {x, y} describing in coordinates
+ * the start position of the decorative axis
+ * props.@param {Object} axisEnd Object of format {x, y} describing in coordinates
+ * the start position of the decorative axis
+ * props.@param {Number} numberOfTicks The number of ticks on the axis
+ * props.@param {Array.Numbers} axisDomain The values to be interpolated across for the axis
+ * @returns {Number} Object describing the slope and the specific coordinates of the points
+ */
 export function generatePoints({axisStart, axisEnd, numberOfTicks, axisDomain}) {
   const {left, right, slope, offset} = generateFit(axisStart, axisEnd);
   // construct a linear band of points, then map them
@@ -99,8 +116,14 @@ export function generatePoints({axisStart, axisEnd, numberOfTicks, axisDomain}) 
   };
 }
 
-// TODO WRITE TESTS
-// TODO WRITE JSDOC
+/**
+ * Compute the angle (in radians) of a decorative axis
+ * @param {Object} axisStart Object of format {x, y} describing in coordinates
+ * the start position of the decorative axis
+ * @param {Object} axisEnd Object of format {x, y} describing in coordinates
+ * the start position of the decorative axis
+ * @returns {Number} Angle in radials
+ */
 export function getAxisAngle(axisStart, axisEnd) {
   if (axisStart.x === axisEnd.x) {
     return axisEnd.y > axisStart.y ? Math.PI / 2 : (3 * Math.PI / 2);

@@ -19,9 +19,15 @@
 // THE SOFTWARE.
 
 import test from 'tape';
-
-import {getTicksTotalFromSize, getTickValues} from 'utils/axis-utils';
 import {scaleLinear} from 'd3-scale';
+
+import {
+  getTicksTotalFromSize,
+  getTickValues,
+  getAxisAngle,
+  generateFit,
+  generatePoints
+} from 'utils/axis-utils';
 
 test('axis-utils #getTicksTotalFromSize', t => {
   t.ok(getTicksTotalFromSize(0) === 5, 'Returns valid value for 0px');
@@ -40,5 +46,41 @@ test('axis-utils #getTickValues', t => {
   t.deepEqual(getTickValues(scale, 10, predefinedVals), predefinedVals,
     'should find the correct tick values');
 
+  t.end();
+});
+
+test('axis-utils #getAxisAngle', t => {
+  t.equal(getAxisAngle({x: 0, y: 0}, {x: 1, y: 1}), Math.PI / 4);
+  t.equal(getAxisAngle({x: 0, y: 0}, {x: 0, y: 1}), Math.PI / 2);
+  t.equal(getAxisAngle({x: 0, y: 0}, {x: 0, y: -1}), 3 * Math.PI / 2);
+  t.end();
+});
+
+test('axis-utils #generateFit', t => {
+  t.deepEqual(generateFit({x: 0, y: 0}, {x: 1, y: 1}), {left: 0, offset: 0, right: 1, slope: 1});
+  t.deepEqual(generateFit({x: 0, y: 0}, {x: 0, y: 1}), {left: 0, offset: 0, right: 1, slope: 0});
+  t.deepEqual(generateFit({x: 0, y: 0}, {x: 0, y: -1}), {left: -1, offset: 0, right: 0, slope: 0});
+  t.end();
+});
+
+test('axis-utils #generatePoints', t => {
+  const result = generatePoints({
+    axisStart: {x: 0, y: 1},
+    axisEnd: {x: 1, y: 1},
+    numberOfTicks: 5,
+    axisDomain: [10, 100]
+  });
+  const expectedResult = {
+    points: [
+      {text: 10, x: 1, y: 0},
+      {text: 28, x: 1, y: 0.2},
+      {text: 46, x: 1, y: 0.4},
+      {text: 64, x: 1, y: 0.6000000000000001},
+      {text: 82, x: 1, y: 0.8},
+      {text: 100, x: 1, y: 1}
+    ],
+    slope: -0
+  };
+  t.deepEqual(result, expectedResult);
   t.end();
 });

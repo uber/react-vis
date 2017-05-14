@@ -95,7 +95,9 @@ DecorativeAxis.defaultProps = {
   tickValue: d => DEFAULT_FORMAT(d),
   tickSize: 5,
   style: {
-    line: {},
+    line: {
+      strokeWidth: 1
+    },
     ticks: {
       strokeWidth: 2
     },
