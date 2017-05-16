@@ -1556,7 +1556,7 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
-d3-array@1, d3-array@^1.0.2:
+d3-array@1, d3-array@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.0.tgz#147d269720e174c4057a7f42be8b0f3f2ba53108"
 
@@ -1564,7 +1564,7 @@ d3-array@~0.7.0:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-0.7.1.tgz#a321c21558459d994eb4ad47b478240e64933942"
 
-d3-collection@1, d3-collection@^1.0.2:
+d3-collection@1, d3-collection@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/d3-collection/-/d3-collection-1.0.3.tgz#00bdea94fbc1628d435abbae2f4dc2164e37dd34"
 
@@ -1572,7 +1572,7 @@ d3-collection@~0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/d3-collection/-/d3-collection-0.1.2.tgz#d1495f5720add3835117e1916607d2b05b186c5a"
 
-d3-color@1, d3-color@^1.0.2:
+d3-color@1, d3-color@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-1.0.3.tgz#bc7643fca8e53a8347e2fbdaffa236796b58509b"
 
@@ -1584,11 +1584,11 @@ d3-format@1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.2.0.tgz#6b480baa886885d4651dc248a8f4ac9da16db07a"
 
-d3-hierarchy@^1.0.3:
+d3-hierarchy@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/d3-hierarchy/-/d3-hierarchy-1.1.4.tgz#96c3942f3f21cf997a11b4edf00dde2a77b4c6d0"
 
-d3-interpolate@1, d3-interpolate@^1.1.2:
+d3-interpolate@1, d3-interpolate@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/d3-interpolate/-/d3-interpolate-1.1.4.tgz#a43ec5b3bee350d8516efdf819a4c08c053db302"
   dependencies:
@@ -1612,7 +1612,7 @@ d3-sankey-align@^0.1.0:
     d3-collection "~0.1.0"
     d3-interpolate "~0.2.0"
 
-d3-scale@^1.0.4:
+d3-scale@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-1.0.5.tgz#418506f0fb18eb052b385e196398acc2a4134858"
   dependencies:
@@ -1624,9 +1624,9 @@ d3-scale@^1.0.4:
     d3-time "1"
     d3-time-format "2"
 
-d3-shape@^1.0.4:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.0.6.tgz#b09e305cf0c7c6b9a98c90e6b42f62dac4bcfd5b"
+d3-shape@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.1.0.tgz#cdedfee735801e4058b5b31f9a1192b631564f6d"
   dependencies:
     d3-path "1"
 
@@ -1640,7 +1640,7 @@ d3-time@1:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/d3-time/-/d3-time-1.0.6.tgz#a55b13d7d15d3a160ae91708232e0835f1d5e945"
 
-d3-voronoi@^1.1.1:
+d3-voronoi@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/d3-voronoi/-/d3-voronoi-1.1.2.tgz#1687667e8f13a2d158c80c1480c5a29cb0d8973c"
 
