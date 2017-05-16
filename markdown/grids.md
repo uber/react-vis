@@ -42,6 +42,10 @@ Height of the grid lines in pixels. **Already set by default**, but can be overr
 #### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
+#### style (optional)
+Type: `object`
+An CSS object that will style these gridlines. 
+
 ## Polar Grids
 
 <!-- INJECT:"FauxScatterplotChart" -->
@@ -78,3 +82,12 @@ The left-right value in coordinates of where the circles should be centered.
 #### centerY (optional)
 Type: `number`  
 The top-bottom value in coordinates of where the circles should be centered.
+
+#### rRange (optional)
+Type:[`number`, `number`]
+This allows users to specify the exact pixel range over which they wish their rings to appear.
+
+#### style (optional)
+Type: `object`
+An CSS object that will style these gridlines. See [style](style.md)
+

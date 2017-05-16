@@ -2,9 +2,37 @@
 
 <!-- INJECT:"CustomAxesOrientation" -->
 
-**Note**: Axes API was changed in 0.5.
+`XAxis` and `YAxis` shows are responsible for the axis in the chart. They can be used simply
 
-`XAxis` and `YAxis` shows are responsible for the axis in the chart. Both of them have following properties:
+```javascript
+<XYPlot
+  width={300}
+  height={300}>
+  <XAxis />
+  <YAxis />
+  <MarkSeries data={myData}/>
+</XYPlot>
+```
+
+Which will automatically interpolate across the relevant domains of the data (ie it will present reasonable values for x and y). It can also be used to create more complex axes
+
+<!-- INJECT:"CustomAxes" -->
+
+Which is produced via
+
+```javascript
+<XYPlot width={300} height={300}>
+  <XAxis top={0} hideLine tickValues={[0, 1, 3, 4, 5]} title="X"/>
+  <XAxis tickFormat={v => `Value is ${v}`} tickLabelAngle={-90} />
+  <YAxis hideTicks/>
+  <YAxis left={50} tickFormat={v => v * v}/>
+  <YAxis hideLine left={150} tickFormat={v => WORDS[v]}/>
+  <MarkSeries data={[{x: 0, y: 0}, {x: 5, y: 5}]} opacity={0} opacityType="linear"/>
+</XYPlot>
+```
+
+
+## API Reference
 
 #### title (optional)
 Type: `string`  
@@ -74,3 +102,18 @@ Height of the axis in pixels. **Already set by default**, but can be overriden b
 
 #### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
+
+### style (optional)
+Type: `object`
+An object that contains CSS properties with which the axis component can be entirely re-styled.
+As the Axis component is composite, it is possible to style its different parts individually. See [style](style.md)
+
+The various parts of the axis can be styled by passing an object to the `line`, `ticks`, `text` and `title` properties:
+
+```jsx
+<XAxis title="X Axis" style={{
+  line: {stroke: '#ADDDE1'},
+  ticks: {stroke: '#ADDDE1'},
+  text: {stroke: 'none', fill: '#6b6b76', fontWeight: 600}
+}}/>
+```

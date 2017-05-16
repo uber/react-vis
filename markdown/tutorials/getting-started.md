@@ -18,7 +18,6 @@ npm init -y
 # react-vis's peerDependencies
 npm install --save react
 npm install --save react-dom
-npm install --save react-addons-shallow-compare
 
 # react-vis itself
 npm install --save react-vis
