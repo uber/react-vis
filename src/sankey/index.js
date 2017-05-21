@@ -18,6 +18,7 @@ class Sankey extends Component {
     align: 'justify',
     className: '',
     hasVoronoi: false,
+    hideLabels: false,
     layout: 50,
     margin: 20,
     nodePadding: 10,
@@ -32,6 +33,7 @@ class Sankey extends Component {
     className: PropTypes.string,
     hasVoronoi: PropTypes.bool,
     height: PropTypes.number.isRequired,
+    hideLabels: PropTypes.bool,
     layout: PropTypes.number,
     links: PropTypes.arrayOf(PropTypes.shape({
       source: PropTypes.oneOfType([
@@ -60,6 +62,7 @@ class Sankey extends Component {
       className,
       hasVoronoi,
       height,
+      hideLabels,
       layout,
       links,
       margin,
@@ -112,6 +115,18 @@ class Sankey extends Component {
                 fill={node.color || DEFAULT_NODE_COLOR}
                 height={node.dy}
                 width={nWidth} />
+
+              {!hideLabels && node.name && (
+                <text
+                  textAnchor={node.x < width / 2 ? 'start' : 'end'}
+                  dy=".35em"
+                  x={node.x < width / 2 ? nWidth + 10 : -10}
+                  y={node.dy / 2}
+                >
+                  {node.name}
+                </text>
+              )}
+
             </g>
           ))}
 
