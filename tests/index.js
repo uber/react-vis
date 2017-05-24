@@ -34,6 +34,7 @@ import './components/bar-series-tests';
 import './components/borders-tests';
 import './components/canvas-component-tests';
 import './components/circular-grid-lines-tests';
+import './components/decorative-axis-tests';
 import './components/gradient-tests';
 import './components/heatmap-tests';
 import './components/legends-tests';

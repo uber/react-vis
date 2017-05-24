@@ -7,6 +7,7 @@ const {
   CustomAxes,
   CustomAxisChart,
   CustomAxesOrientation,
+  DecorativeAxisCrissCross,
   DynamicComplexEdgeHints,
   DynamicCrosshair,
   DynamicCrosshairScatterplot,
@@ -14,6 +15,7 @@ const {
   DynamicProgrammaticRightEdgeHints,
   DynamicSimpleEdgeHints,
   DynamicSimpleTopEdgeHints,
+  ParallelCoordinatesExample,
   StaticCrosshair,
   StaticHints
 } = showCase;
@@ -69,6 +71,13 @@ const TOOLTIPS = [{
   component: DynamicCrosshairScatterplot
 }];
 /* eslint-enable max-len */
+const DECORATIVE_AXES = [{
+  name: 'Diagonal Axes',
+  component: DecorativeAxisCrissCross
+}, {
+  name: 'Parallel Coordinates',
+  component: ParallelCoordinatesExample
+}];
 
 class AxesShowcase extends Component {
   render() {
@@ -78,6 +87,8 @@ class AxesShowcase extends Component {
         {AXES.map(mapSection)}
         <h2>Tooltips</h2>
         {TOOLTIPS.map(mapSection)}
+        <h2>DecorativeAxis</h2>
+        {DECORATIVE_AXES.map(mapSection)}
       </article>
     );
   }

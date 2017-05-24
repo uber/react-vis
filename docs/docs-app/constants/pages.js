@@ -230,6 +230,13 @@ export const docPages = generatePath([
           pageType: 'documentation'
         }
       }, {
+        name: 'DecorativeAxis',
+        content: {
+          markdown: getDocUrl('decorative-axis.md'),
+          filename: 'axes.md',
+          pageType: 'documentation'
+        }
+      }, {
         name: 'Gradients',
         content: {
           markdown: getDocUrl('gradients.md'),

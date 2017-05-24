@@ -19,21 +19,15 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import {scaleLinear} from 'd3-scale';
 
 import CarData from './car-data.json';
-import '../../src/styles/examples.scss';
-import './parallel-coordinates.scss';
-
-import ManipulableAxis from './manipulable-axis';
-import {scaleLinear} from 'd3-scale';
 
 import {
   XYPlot,
-  makeWidthFlexible,
+  DecorativeAxis,
   LineSeries
-} from 'react-vis';
-
-const FlexibleXYPlot = makeWidthFlexible(XYPlot);
+} from 'index';
 
 const DEFAULT_DOMAIN = {min: Infinity, max: -Infinity};
 // begin by figuring out the domain of each of the columns
@@ -72,26 +66,30 @@ const MARGIN = {
 };
 
 // build a custom color scale
-class Example extends React.Component {
+class ParallelCoordinatesExample extends React.Component {
   render() {
     return (
-      <FlexibleXYPlot height={500} xType="ordinal" margin={MARGIN} className="parallel-coordinates-example">
+      <XYPlot
+        width={500}
+        height={300} xType="ordinal"
+        margin={MARGIN}
+        className="parallel-coordinates-example">
         {mappedData.map((series, index) => {
           return (<LineSeries
             data={series}
             key={`series-${index}`}/>);
         })}
         {mappedData[0].map((cell, index) => {
-          return (<ManipulableAxis
+          return (<DecorativeAxis
             key={`${index}-axis`}
             axisStart={{x: cell.x, y: 0}}
             axisEnd={{x: cell.x, y: 1}}
             axisDomain={[domains[cell.x].min, domains[cell.x].max]}
           />);
         })}
-      </FlexibleXYPlot>
+      </XYPlot>
     );
   }
 }
 
-export default Example;
+export default ParallelCoordinatesExample;

@@ -44,6 +44,7 @@ export Hint from 'plot/hint';
 export Borders from 'plot/borders';
 export Crosshair from 'plot/crosshair';
 export XYPlot from 'plot/xy-plot';
+export DecorativeAxis from 'plot/axis/decorative-axis';
 export XAxis from 'plot/axis/x-axis';
 export YAxis from 'plot/axis/y-axis';
 export CircularGridLines from 'plot/circular-grid-lines';
