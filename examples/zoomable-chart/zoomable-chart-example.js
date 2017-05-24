@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Uber Technologies, Inc.
+// Copyright (c) 2017 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ import Highlight from './highlight';
 
 const FlexibleXYPlot = makeWidthFlexible(XYPlot);
 
-const totalValues = Math.random() * 50;
+const totalValues = 100;
 
 /**
  * Get the array of x and y pairs.
@@ -58,7 +58,7 @@ function getRandomSeriesData(total) {
   return result;
 }
 
-export default class Example extends React.Component {
+export default class ZoomableChartExample extends React.Component {
 
   state = {
     lastDrawLocation: null,
@@ -76,14 +76,6 @@ export default class Example extends React.Component {
     ]
   }
 
-  /**
-   * Reset the draw location, which will in turn reset the domain
-   * @private
-   */
-  _resetZoom = () => {
-    this.setState({lastDrawLocation: null});
-  }
-
   render() {
     const {series, lastDrawLocation} = this.state;
     return (
@@ -94,7 +86,7 @@ export default class Example extends React.Component {
             items={series}/>
         </div>
 
-        <div className="chart">
+        <div className="chart no-select">
           <FlexibleXYPlot
             animation
             xDomain={lastDrawLocation && [lastDrawLocation.left, lastDrawLocation.right]}
@@ -107,6 +99,7 @@ export default class Example extends React.Component {
 
             {series.map(entry => (
               <LineSeries
+                key={entry.title}
                 data={entry.data}
               />
             ))}
@@ -120,7 +113,9 @@ export default class Example extends React.Component {
           </FlexibleXYPlot>
         </div>
 
-        <button className="showcase-button" onClick={this._resetZoom}>
+        <button className="showcase-button" onClick={() => {
+          this.setState({lastDrawLocation: null});
+        }}>
           Reset Zoom
         </button>
 
@@ -128,9 +123,14 @@ export default class Example extends React.Component {
           <h4>
             <b>Last Draw Area</b>
           </h4>
-          <p>
-            {lastDrawLocation ? JSON.stringify(lastDrawLocation, null, 2) : 'N/A'}
-          </p>
+          {lastDrawLocation ? (
+            <ul style={{listStyle: 'none'}}>
+              <li><b>Top:</b> {lastDrawLocation.top}</li>
+              <li><b>Right:</b> {lastDrawLocation.right}</li>
+              <li><b>Bottom:</b> {lastDrawLocation.bottom}</li>
+              <li><b>Left:</b> {lastDrawLocation.left}</li>
+            </ul>
+          ) : <span>N/A</span>}
         </div>
       </div>
     );

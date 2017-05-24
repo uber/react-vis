@@ -182,10 +182,6 @@ article {
     .rv-xy-plot__axis__tick__line {
       stroke: $rv-xy-plot-axis-font-color;
     }
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
   }
 
   .legend {
@@ -416,4 +412,11 @@ article {
 
 .highlight-container {
   cursor: crosshair;
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

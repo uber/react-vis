@@ -3,6 +3,7 @@ import Candlestick from '../../../examples/candlestick/candlestick-example';
 import StreamgraphExample from '../../../examples/streamgraph/streamgraph-example';
 import ForceDirectedGraph from '../../../examples/force-directed-graph/force-directed-example';
 import ResponsiveVis from '../../../examples/responsive-vis/responsive-vis-example';
+import ZoomableChartExample from '../../../examples/zoomable-chart/zoomable-chart-example';
 import ShowcaseApp from '../../../showcase/showcase-app';
 
 import AxesShowcase from '../../../showcase/showcase-sections/axes-showcase';
@@ -137,6 +138,13 @@ export const examplePages = generatePath([
         markdown: getDocUrl('examples/responsive-vis.md'),
         pageType: 'example',
         component: ResponsiveVis
+      }
+    }, {
+      name: 'Zoomable Chart',
+      content: {
+        markdown: getDocUrl('examples/zoomable-chart.md'),
+        pageType: 'example',
+        component: ZoomableChartExample
       }
     }]
   }
