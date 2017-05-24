@@ -1,7 +1,5 @@
-/* @flow */
 import React from 'react';
 import {ScaleUtils, AbstractSeries} from 'react-vis';
-import window from 'global';
 
 export default class Highlight extends AbstractSeries {
 
@@ -19,15 +17,6 @@ export default class Highlight extends AbstractSeries {
       drawArea: {top: 0, right: 0, bottom: 0, left: 0},
       startLoc: 0
     };
-    this._onMouseUp = () => this.onMouseUp();
-  }
-
-  componentDidMount() {
-    window.addEventListener('mouseup', this._onMouseUp);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('mouseup', this._onMouseUp);
   }
 
   onParentMouseDown(e) {
@@ -51,7 +40,7 @@ export default class Highlight extends AbstractSeries {
     }
   }
 
-  onMouseUp() {
+  stopDrawing() {
     // Quickly short-circuit if the user isn't drawing in our component
     if (!this.state.drawing) {
       return;
@@ -119,11 +108,23 @@ export default class Highlight extends AbstractSeries {
   }
 
   render() {
-    const {marginLeft, marginTop, color, opacity} = this.props;
+    const {marginLeft, marginTop, innerWidth, innerHeight, color, opacity} = this.props;
     const {drawArea: {left, right, top, bottom}} = this.state;
 
     return (
-      <g transform={`translate(${marginLeft}, ${marginTop})`} className="highlight-container">
+      <g transform={`translate(${marginLeft}, ${marginTop})`}
+         className="highlight-container"
+         onMouseUp={(e) => this.stopDrawing()}
+         onMouseLeave={(e) => this.stopDrawing()}
+      >
+        <rect
+          fill="black"
+          opacity="0"
+          x={0}
+          y={0}
+          width={innerWidth}
+          height={innerHeight}
+        ></rect>
         <rect
           pointerEvents="none"
           opacity={opacity}
