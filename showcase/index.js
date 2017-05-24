@@ -28,6 +28,7 @@ import StackedVerticalBarChart from './plot/stacked-vertical-bar-chart';
 import StackedHorizontalBarChart from './plot/stacked-horizontal-bar-chart';
 import ClusteredStackedVerticalBarChart from './plot/clustered-stacked-bar-chart';
 import StackedHistogram from './plot/stacked-histogram';
+import Histogram from './plot/histogram';
 import AreaChart from './plot/area-chart';
 import AreaChartElevated from './plot/area-chart-elevated';
 import ScatterplotChart from './plot/scatterplot';
@@ -95,6 +96,7 @@ export const showCase = {
   StackedHorizontalBarChart,
   ClusteredStackedVerticalBarChart,
   StackedHistogram,
+  Histogram,
   AnimationExample,
   AreaChart,
   AreaChartElevated,

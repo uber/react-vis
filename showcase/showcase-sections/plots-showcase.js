@@ -12,6 +12,7 @@ const {
   FauxScatterplotChart,
   GridLinesChart,
   HeatmapChart,
+  Histogram,
   LineChart,
   LineChartWithStyle,
   LineChartCanvas,
@@ -76,6 +77,9 @@ const PLOTS = [{
 }, {
   name: 'Stacked Vertical Rect Series (histogram)',
   component: StackedHistogram
+}, {
+  name: 'Horizontal Rect Series',
+  component: Histogram
 }, {
   name: 'Heatmap Series',
   component: HeatmapChart,
