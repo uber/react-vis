@@ -82,8 +82,8 @@ export function generateFit(axisStart, axisEnd) {
   }
   const slope = (axisStart.y - axisEnd.y) / (axisStart.x - axisEnd.x);
   return {
-    left: Math.min(axisStart.x, axisEnd.x),
-    right: Math.max(axisStart.x, axisEnd.x),
+    left: axisStart.x,
+    right: axisEnd.x,
     // generate the linear projection of the axis direction
     slope,
     offset: axisStart.y - slope * axisStart.x
@@ -106,13 +106,18 @@ export function generatePoints({axisStart, axisEnd, numberOfTicks, axisDomain}) 
   const {left, right, slope, offset} = generateFit(axisStart, axisEnd);
   // construct a linear band of points, then map them
   const pointSlope = (right - left) / (numberOfTicks);
-  const axisScale = scaleLinear().domain([left, right]).range(axisDomain.sort());
+  const axisScale = scaleLinear().domain([left, right]).range(axisDomain);
 
+  const slopeVertical = axisStart.x === axisEnd.x;
   return {
-    slope: axisStart.x === axisEnd.x ? Infinity : slope,
+    slope: slopeVertical ? Infinity : slope,
     points: range(left, right + pointSlope, pointSlope)
-      // TODO this may be wrong for other directions, that remains to be seen
-      .map(val => ({y: val, x: slope * val + offset, text: axisScale(val)}))
+      .map(val => {
+        if (slopeVertical) {
+          return {y: val, x: slope * val + offset, text: axisScale(val)};
+        }
+        return {x: val, y: slope * val + offset, text: axisScale(val)};
+      })
   };
 }
 

@@ -24,6 +24,7 @@ import PropTypes from 'prop-types';
 
 import AbstractSeries from 'plot/series/abstract-series';
 import DecorativeAxisTicks from './decorative-axis-ticks';
+import Animation from 'animation';
 
 const predefinedClassName = 'rv-xy-manipulable-axis rv-xy-plot__axis';
 
