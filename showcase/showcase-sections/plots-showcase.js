@@ -7,6 +7,7 @@ const {
   AreaChartElevated,
   BarChart,
   ClusteredStackedVerticalBarChart,
+  ContourSeriesExample,
   ComplexChart,
   CustomScales,
   FauxScatterplotChart,
@@ -85,6 +86,9 @@ const PLOTS = [{
   component: HeatmapChart,
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/heatmap-series.js',
   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/heatmap-series'
+}, {
+  name: 'Contour Series',
+  component: ContourSeriesExample
 }];
 
 const BASIC_COMPONENTS = [{
