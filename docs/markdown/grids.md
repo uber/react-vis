@@ -25,19 +25,19 @@ An array of values (not coordinates!) that where the lines should be shown. Simi
 
 #### left (optional)
 Type: `number`  
-Horizontal position of the grid lines in pixels. **Already set by default**, but can be overriden by the user.
+Horizontal position of the grid lines in pixels. **Already set by default**, but can be overridden by the user.
 
 #### top (optional)
 Type: `number`  
-Vertical position of the grid lines in pixels. **Already set by default**, but can be overriden by the user.
+Vertical position of the grid lines in pixels. **Already set by default**, but can be overridden by the user.
 
 #### width (optional)
 Type: `number`  
-Width of the grid lines in pixels. **Already set by default**, but can be overriden by the user.
+Width of the grid lines in pixels. **Already set by default**, but can be overridden by the user.
 
 #### height (optional)
 Type: `number`  
-Height of the grid lines in pixels. **Already set by default**, but can be overriden by the user.
+Height of the grid lines in pixels. **Already set by default**, but can be overridden by the user.
 
 #### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
