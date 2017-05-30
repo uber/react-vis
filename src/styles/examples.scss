@@ -110,6 +110,11 @@ article {
   h1,
   h2 {
     flex: 1 100%;
+
+    small {
+      font-size: 50%;
+      color: #6b6b76;
+    }
   }
 
   section {
@@ -403,4 +408,15 @@ article {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.highlight-container {
+  cursor: crosshair;
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
