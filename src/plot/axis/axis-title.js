@@ -80,7 +80,7 @@ function AxisTitle({orientation, width, height, style, title}) {
 
   return (
     <g transform={outerGroupTransform} className="rv-xy-plot__axis__title">
-      <g style={{...textAnchor, ...style}} transform={innerGroupTransform}>
+      <g style={{textAnchor, ...style}} transform={innerGroupTransform}>
         <text>{title}</text>
       </g>
     </g>
