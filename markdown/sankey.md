@@ -34,11 +34,14 @@ An array of objects matching the following shape:
 
 ```
 {
+  name: String,
   color: String,
   opacity: Number,
   key: String
 }
 ```
+
+The name will be displayed as a label next to its node.
 
 All these fields are optional.
 
@@ -96,6 +99,12 @@ Defaults to `50`.
 
 Determine if the node selection will be done using a voronoi or not. Although less
 precise, it can help providing a better interactive experience to the user.
+
+Defaults to `false`.
+
+##### hideLabels
+
+Hide the display of the node names if specified to true.
 
 Defaults to `false`.
 
