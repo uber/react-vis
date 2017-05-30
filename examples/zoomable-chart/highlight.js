@@ -9,14 +9,29 @@ export default class Highlight extends AbstractSeries {
     color: 'rgb(77, 182, 172)',
     opacity: 0.3
   };
+  state = {
+    drawing: false,
+    drawArea: {top: 0, right: 0, bottom: 0, left: 0},
+    startLoc: 0
+  };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      drawing: false,
-      drawArea: {top: 0, right: 0, bottom: 0, left: 0},
-      startLoc: 0
-    };
+  _getDrawArea(loc) {
+    const {innerWidth} = this.props;
+    const {drawArea, startLoc} = this.state;
+
+    if (loc < startLoc) {
+      return {
+        ...drawArea,
+        left: Math.max(loc, 0),
+        right: startLoc
+      };
+    } else {
+      return {
+        ...drawArea,
+        right: Math.min(loc, innerWidth),
+        left: startLoc
+      };
+    }
   }
 
   onParentMouseDown(e) {
@@ -78,27 +93,12 @@ export default class Highlight extends AbstractSeries {
   }
 
   onParentMouseMove(e) {
-    const {innerWidth, marginLeft, onBrush} = this.props;
-    const {drawArea, startLoc, drawing} = this.state;
+    const {marginLeft, onBrush} = this.props;
+    const {drawing} = this.state;
     const loc = e.nativeEvent.offsetX - marginLeft;
 
     if (drawing) {
-      let newDrawArea = {};
-
-      // Update the left or right edge of the rectangle depending on what side of the initial click they are on
-      if (loc < startLoc) {
-        newDrawArea = {
-          ...drawArea,
-          left: Math.max(loc, 0),
-          right: startLoc
-        };
-      } else {
-        newDrawArea = {
-          ...drawArea,
-          right: Math.min(loc, innerWidth),
-          left: startLoc
-        };
-      }
+      const newDrawArea = this._getDrawArea(loc);
       this.setState({drawArea: newDrawArea});
 
       if (onBrush) {
@@ -118,6 +118,7 @@ export default class Highlight extends AbstractSeries {
          onMouseLeave={(e) => this.stopDrawing()}
       >
         <rect
+          className="mouse-target"
           fill="black"
           opacity="0"
           x={0}
@@ -126,6 +127,7 @@ export default class Highlight extends AbstractSeries {
           height={innerHeight}
         ></rect>
         <rect
+          className="highlight"
           pointerEvents="none"
           opacity={opacity}
           fill={color}
