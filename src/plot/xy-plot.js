@@ -230,7 +230,6 @@ class XYPlot extends React.Component {
 
     const filteredData = data.filter(d => d);
     const allData = [].concat(...filteredData);
-
     const defaultScaleProps = this._getDefaultScaleProps(props);
     const userScaleProps = extractScalePropsFromProps(props, ATTRIBUTES);
     const missingScaleProps = getMissingScaleProps({
@@ -291,7 +290,7 @@ class XYPlot extends React.Component {
    * @private
    */
   _getClonedChildComponents() {
-    const {animation} = this.props;
+    const {animation, unanimatedProps} = this.props;
     const {scaleMixins, data} = this.state;
     const dimensions = getInnerDimensions(this.props, DEFAULT_MARGINS);
     const children = React.Children.toArray(this.props.children);
@@ -304,14 +303,18 @@ class XYPlot extends React.Component {
         const {seriesIndex} = seriesProps[index];
         dataProps = {data: data[seriesIndex]};
       }
-      return React.cloneElement(child, {
-        ...dimensions,
+      let clonedElementProps = {
         animation,
+        ...dimensions,
         ...seriesProps[index],
         ...scaleMixins,
         ...child.props,
         ...dataProps
-      });
+      }
+      if (unanimatedProps){
+        clonedElementProps.unanimatedProps = unanimatedProps
+      }
+      return React.cloneElement(child, clonedElementProps);
     });
   }
 
