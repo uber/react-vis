@@ -86,19 +86,19 @@ The angle of the tick label. Can be used to fit the long labels of the axis with
 
 #### left (optional)
 Type: `number`  
-Horizontal position of the axis in pixels. **Already set by default**, but can be overriden by the user.
+Horizontal position of the axis in pixels. **Already set by default**, but can be overridden by the user.
 
 #### top (optional)
 Type: `number`  
-Vertical position of the axis in pixels. **Already set by default**, but can be overriden by the user.
+Vertical position of the axis in pixels. **Already set by default**, but can be overridden by the user.
 
 #### width (optional)
 Type: `number`  
-Width of the axis in pixels. **Already set by default**, but can be overriden by the user.
+Width of the axis in pixels. **Already set by default**, but can be overridden by the user.
 
 #### height (optional)
 Type: `number`  
-Height of the axis in pixels. **Already set by default**, but can be overriden by the user.
+Height of the axis in pixels. **Already set by default**, but can be overridden by the user.
 
 #### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
