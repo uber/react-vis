@@ -290,7 +290,7 @@ class XYPlot extends React.Component {
    * @private
    */
   _getClonedChildComponents() {
-    const {animation, unanimatedProps} = this.props;
+    const {animation} = this.props;
     const {scaleMixins, data} = this.state;
     const dimensions = getInnerDimensions(this.props, DEFAULT_MARGINS);
     const children = React.Children.toArray(this.props.children);
@@ -303,18 +303,14 @@ class XYPlot extends React.Component {
         const {seriesIndex} = seriesProps[index];
         dataProps = {data: data[seriesIndex]};
       }
-      let clonedElementProps = {
+      return React.cloneElement(child, {
         animation,
         ...dimensions,
         ...seriesProps[index],
         ...scaleMixins,
         ...child.props,
         ...dataProps
-      }
-      if (unanimatedProps){
-        clonedElementProps.unanimatedProps = unanimatedProps
-      }
-      return React.cloneElement(child, clonedElementProps);
+      });
     });
   }
 

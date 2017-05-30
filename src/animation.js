@@ -7,6 +7,7 @@ const ANIMATION_PROPTYPES = PropTypes.oneOfType([
   PropTypes.string,
   PropTypes.shape({
     stiffness: PropTypes.number,
+    nonAnimatedProps: PropTypes.string,
     damping: PropTypes.number
   }),
   PropTypes.bool

@@ -141,8 +141,8 @@ class Axis extends PureComponent {
 
 
     if (animation) {
-      const animatedProps = unanimatedProps ? defaultAnimatedProps.filter(
-        prop => unanimatedProps.indexOf(prop) < 0
+      const animatedProps = animation.nonAnimatedProps ? defaultAnimatedProps.filter(
+        prop => animation.nonAnimatedProps.indexOf(prop) < 0
       ) : defaultAnimatedProps
 
       return (
