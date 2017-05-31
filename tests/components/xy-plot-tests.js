@@ -116,3 +116,35 @@ test('Render a stacked bar chart with other children', t => {
 
   t.end();
 });
+
+test('Render a bar chart with some nonAnimatedProps', t => {
+  const wrapper = shallow(
+    <XYPlot
+      width={300}
+      height={300}
+      animation={{nonAnimatedProps: ['xDomain']}}>
+      <VerticalBarSeries
+        data={[
+          {x: 1, y: 0}
+        ]}/>
+      <XAxis/>
+    </XYPlot>
+  );
+
+  const renderedXAxisWrapper = wrapper.find(XAxis);
+  const renderedVerticalBarsWrapper = wrapper.find(VerticalBarSeries);
+
+  t.deepEqual(
+    renderedXAxisWrapper.at(0).prop('animation'),
+    {nonAnimatedProps: ['xDomain']},
+    'XAxis has nonAnimatedProps'
+  );
+
+  t.deepEqual(
+    renderedVerticalBarsWrapper.at(0).prop('animation'),
+    {nonAnimatedProps: ['xDomain']},
+    'VerticalBarSeries has nonAnimatedProps'
+  );
+
+  t.end();
+});

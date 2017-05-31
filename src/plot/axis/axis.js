@@ -29,7 +29,7 @@ import AxisLine from './axis-line';
 import AxisTicks from './axis-ticks';
 import AxisTitle from './axis-title';
 
-const animatedProps = [
+const defaultAnimatedProps = [
   'xRange', 'yRange', 'xDomain', 'yDomain',
   'width', 'height', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
   'tickSize', 'tickTotal', 'tickSizeInner', 'tickSizeOuter'
@@ -140,6 +140,10 @@ class Axis extends PureComponent {
     const {animation} = this.props;
 
     if (animation) {
+      const animatedProps = animation.nonAnimatedProps ? defaultAnimatedProps.filter(
+        prop => animation.nonAnimatedProps.indexOf(prop) < 0
+      ) : defaultAnimatedProps;
+
       return (
         <Animation {...this.props} {...{animatedProps}}>
           <Axis {...this.props} animation={null}/>
