@@ -8,7 +8,7 @@ Animation makes your charts feel physical, it makes them feel alive, shoot it ma
 
 <!-- INJECT:"AnimationExample" -->
 
-*Objects*: react-motion expects an object formatting like {damping: NUMBER, stiffness: NUMBER}, and if you want to give us an object like that, we will hand it direct to react-motion.
+*Objects*: React-motion expects an object formatting like `{damping: NUMBER, stiffness: NUMBER}`, and if you want to give us an object like that, we will hand it direct to react-motion. You can also pass an object with `{nonAnimatedProps: ['foo', 'bar']}` to prevent those props from being interpolated by d3-interpolator.
 
 <!-- INJECT:"TreemapExample" -->
 
