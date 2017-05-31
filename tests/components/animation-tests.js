@@ -18,34 +18,39 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import './setup';
+import test from 'tape';
+import React from 'react';
+import {mount} from 'enzyme';
 
-import './utils/axis-utils-tests';
-import './utils/chart-utils-tests';
-import './utils/data-utils-tests';
-import './utils/react-utils-tests';
-import './utils/scales-utils-tests';
-import './utils/series-utils-tests';
+import Animation from 'animation';
+import Axis from 'plot/axis/axis';
+import AxisTicks from 'plot/axis/axis-ticks';
+import VerticalBarSeries from 'plot/series/vertical-bar-series';
+import XYPlot from 'plot/xy-plot';
 
-import './components';
-import './components/animation-tests';
-import './components/area-series-tests';
-import './components/arc-series-tests';
-import './components/bar-series-tests';
-import './components/borders-tests';
-import './components/canvas-component-tests';
-import './components/circular-grid-lines-tests';
-import './components/decorative-axis-tests';
-import './components/gradient-tests';
-import './components/heatmap-tests';
-import './components/legends-tests';
-import './components/label-series-tests';
-import './components/line-series-tests';
-import './components/mark-series-tests';
-import './components/polygon-series-tests';
-import './components/radial-tests';
-import './components/rect-series-tests';
-import './components/treemap-tests';
-import './components/sankey-tests';
-import './components/sunburst-tests';
-import './components/xy-plot-tests';
+test('Animation interpolates xDomain when specified', t => {
+  const wrapper = mount(
+    <XYPlot
+      width={300}
+      height={300}>
+      <VerticalBarSeries
+        data={[
+          {x: 1, y: 0}
+        ]}/>
+      <Axis
+        attr={'x'}
+        animation={{nonAnimatedProps: ['xDomain']}}
+        xDomain={['Black']}/>
+    </XYPlot>
+  );
+
+  const renderedAnimationWrapper = wrapper.find(Animation);
+
+  t.deepEqual(
+    renderedAnimationWrapper.children(AxisTicks).prop('xDomain'),
+    ['Black'],
+    'Axis interpolates props and passes to Animation'
+  );
+
+  t.end();
+});
