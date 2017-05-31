@@ -230,6 +230,7 @@ class XYPlot extends React.Component {
 
     const filteredData = data.filter(d => d);
     const allData = [].concat(...filteredData);
+
     const defaultScaleProps = this._getDefaultScaleProps(props);
     const userScaleProps = extractScalePropsFromProps(props, ATTRIBUTES);
     const missingScaleProps = getMissingScaleProps({
@@ -304,8 +305,8 @@ class XYPlot extends React.Component {
         dataProps = {data: data[seriesIndex]};
       }
       return React.cloneElement(child, {
-        animation,
         ...dimensions,
+        animation,
         ...seriesProps[index],
         ...scaleMixins,
         ...child.props,
