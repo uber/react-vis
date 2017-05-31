@@ -30,6 +30,7 @@ import './utils/series-utils-tests';
 import './components';
 import './components/area-series-tests';
 import './components/arc-series-tests';
+import './components/axis-title-tests';
 import './components/bar-series-tests';
 import './components/borders-tests';
 import './components/canvas-component-tests';
