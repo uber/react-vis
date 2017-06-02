@@ -149,7 +149,7 @@ class ArcSeries extends AbstractSeries {
           };
           const arcedData = arcBuilder();
           const rowStyle = row.style || {};
-          const seriesClassName = row.className || '';
+          const rowClassName = row.className || '';
           return (<path {...{
             style: {
               opacity: opacity && opacity(row),
@@ -162,7 +162,7 @@ class ArcSeries extends AbstractSeries {
             onMouseOver: e => this._valueMouseOverHandler(row, e),
             onMouseOut: e => this._valueMouseOutHandler(row, e),
             key: i,
-            className: `${arcClassName} ${seriesClassName}`,
+            className: `${arcClassName} ${rowClassName}`,
             d: arcedData(arcArg)
           }} />);
         })}
