@@ -18,8 +18,8 @@ test('MarkSeries: Showcase Example - Scatterplot', t => {
 
 test('MarkSeries: Showcase Example - Scatterplot with custom markType', t => {
   const $ = mount(<Scatterplot markType={({attrs, d}) => <rect /> } />);
-  t.equal($.text(), '1.01.52.02.53.068101214', 'should fine the right text content');
-  t.equal($.find('.rv-xy-plot__series--mark rect').length, 5, 'should find the right number of rect');
+  t.equal($.text(), '1.01.52.02.53.068101214', 'should find the right text content');
+  t.equal($.find('.rv-xy-plot__series--mark rect').length, 5, 'should find the right number of rects');
   t.equal($.find('.mark-series-example').length, 1, 'should find the right number of custom named series');
   t.end();
 });
