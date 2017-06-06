@@ -17,6 +17,7 @@ const {
   LineChartWithStyle,
   LineChartCanvas,
   LineMarkChart,
+  CustomLineMarkChart,
   StackedVerticalBarChart,
   StackedHorizontalBarChart,
   StackedHistogram,
@@ -35,10 +36,14 @@ const PLOTS = [{
   name: 'Line Series with style',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
-},
-{
+}, {
   component: LineMarkChart,
   name: 'LineMark Series',
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-mark-series.js',
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
+}, {
+  component: CustomLineMarkChart,
+  name: 'LineMark Series With Custom Mark',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-mark-series.js',
   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
 }, {
