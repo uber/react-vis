@@ -363,7 +363,13 @@ function _computeScaleDistance(values, domain, bestDistIndex, scaleFn) {
  */
 export function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
   const {attr, domain} = scaleObject;
-  const values = getUniquePropertyValues(data, attr);
+
+  let values = getUniquePropertyValues(data, attr);
+  // Fix time scale if a data has only one value.
+  if (scaleObject.type === TIME_SCALE_TYPE && values.length === 1) {
+    values = [data[0].x0, ...values];
+  }
+
   const index = _getSmallestDistanceIndex(values, scaleObject);
 
   const adjustedDomain = [].concat(domain);
