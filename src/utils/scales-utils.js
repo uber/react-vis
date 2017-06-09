@@ -367,7 +367,7 @@ export function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
   const values = getUniquePropertyValues(data, attr);
   // Fix time scale if a data has only one value.
   if (scaleObject.type === TIME_SCALE_TYPE && values.length === 1) {
-    values.unshift(data[0].y0 || data[0].x0);
+    values.unshift(data[0][`${scaleObject.attr}0`]);
   }
 
   const index = _getSmallestDistanceIndex(values, scaleObject);
