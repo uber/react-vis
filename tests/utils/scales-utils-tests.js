@@ -348,7 +348,3 @@ test('scales-utils #_adjustCategoricalScale', t => {
   });
   t.end();
 });
-
-test('scales-utils #missingScaleProps_padDomain', t => {
-  t.end();
-});
