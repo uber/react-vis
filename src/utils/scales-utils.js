@@ -532,6 +532,24 @@ function _isDefined(value) {
   return typeof value !== 'undefined';
 }
 
+/*
+ * Adds a percentage of padding to a given domain
+ * @param {Array} domain X or Y domain to pad.
+ * @param {Number} padding Percentage of padding to add to domain
+ * @returns {Array} Padded Domain
+ */
+function _padDomain(domain, padding) {
+  if (!domain) {
+    return domain;
+  }
+  if (isNaN(parseFloat(domain[0])) || isNaN(parseFloat(domain[1]))) {
+    return domain;
+  }
+  const [min, max] = domain;
+  const domainPadding = (max - min) * (padding * 0.01);
+  return [min - domainPadding, max + domainPadding];
+}
+
 /**
  * Get prop functor (either a value or a function) for a given attribute.
  * @param {Object} props Series props.
@@ -638,6 +656,7 @@ export function extractScalePropsFromProps(props, attributes) {
  * @returns {Object} Collected props.
  */
 export function getMissingScaleProps(props, data, attributes) {
+  const {padding} = props;
   const result = {};
   // Make sure that the domain is set and pass the domain as well.
   attributes.forEach(attr => {
@@ -649,6 +668,14 @@ export function getMissingScaleProps(props, data, attributes) {
       );
     }
   });
+
+  if (_isDefined(padding) && _isDefined(padding.x)) {
+    result.xDomain = _padDomain(result.xDomain, padding.x);
+  }
+  if (_isDefined(padding) && _isDefined(padding.y)) {
+    result.yDomain = _padDomain(result.yDomain, padding.y);
+  }
+
   return result;
 }
 

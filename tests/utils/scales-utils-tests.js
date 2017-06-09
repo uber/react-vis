@@ -208,12 +208,56 @@ test('scales-utils #extractScalePropsFromProps', t => {
 });
 
 test('scales-utils #getMissingScaleProps', t => {
+  const fakeDataInteger = [
+    {x: 10, y: 10},
+    {x: 15, y: 15},
+    {x: 20, y: 20}
+  ];
+  const fakeDataIntegerDomain = [9, 21];
+  const fakeDataString = [{x: 'React'}, {x: 'Vis'}];
+  const fakeDataStringDomain = ['React', 'Vis'];
+  const dayOne = 971136000;
+  const dayTen = 972000000;
+  const fakeDataUnixTime = [{x: dayOne}, {x: dayTen}];
+  const paddedDayOne = (dayOne - ((dayTen - dayOne) * 0.1));
+  const paddedDayTen = (dayTen + ((dayTen - dayOne) * 0.1));
+  const fakePadding = 10;
+
   t.ok(Object.keys(getMissingScaleProps({}, [], [])).length === 0,
     'Should return empty result on empty arguments');
   const result = getMissingScaleProps({}, _allData[0], ['x']);
   t.ok(Boolean(result.xDomain) && result.xDomain.length === 2 &&
     result.xDomain[0] === 1 && result.xDomain[1] === 3,
     'Should return a valid object');
+
+  t.deepEqual(
+    getMissingScaleProps({
+      padding: {x: fakePadding}
+    }, fakeDataInteger, ['x']).xDomain,
+    fakeDataIntegerDomain,
+    'should pad number xDomain'
+  );
+  t.deepEqual(
+    getMissingScaleProps({
+      padding: {y: fakePadding}
+    }, fakeDataInteger, ['y']).yDomain,
+    fakeDataIntegerDomain,
+    'should pad number yDomain'
+  );
+  t.deepEqual(
+    getMissingScaleProps({
+      padding: {x: fakePadding}
+    }, fakeDataString, ['x']).xDomain,
+    fakeDataStringDomain,
+    'should not pad non-number domain'
+  );
+  t.deepEqual(
+    getMissingScaleProps({
+      padding: {x: fakePadding}
+    }, fakeDataUnixTime, ['x']).xDomain,
+    [paddedDayOne, paddedDayTen],
+    'should pad unix time xDomain'
+  );
   t.end();
 });
 
