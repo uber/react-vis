@@ -218,6 +218,7 @@ test('scales-utils #getMissingScaleProps', t => {
   const fakeDataStringDomain = ['React', 'Vis'];
   const dayOne = 971136000;
   const dayTen = 972000000;
+  const fakeDomain = [0, 100];
   const fakeDataUnixTime = [{x: dayOne}, {x: dayTen}];
   const paddedDayOne = (dayOne - ((dayTen - dayOne) * 0.1));
   const paddedDayTen = (dayTen + ((dayTen - dayOne) * 0.1));
@@ -232,28 +233,36 @@ test('scales-utils #getMissingScaleProps', t => {
 
   t.deepEqual(
     getMissingScaleProps({
-      padding: {x: fakePadding}
+      xPadding: fakePadding
     }, fakeDataInteger, ['x']).xDomain,
     fakeDataIntegerDomain,
     'should pad number xDomain'
   );
   t.deepEqual(
     getMissingScaleProps({
-      padding: {y: fakePadding}
+      xPadding: fakePadding,
+      xDomain: fakeDomain
+    }, fakeDataInteger, ['x']),
+    {},
+    'should not pad if xDomain is already supplied'
+  );
+  t.deepEqual(
+    getMissingScaleProps({
+      yPadding: fakePadding
     }, fakeDataInteger, ['y']).yDomain,
     fakeDataIntegerDomain,
     'should pad number yDomain'
   );
   t.deepEqual(
     getMissingScaleProps({
-      padding: {x: fakePadding}
+      xPadding: fakePadding
     }, fakeDataString, ['x']).xDomain,
     fakeDataStringDomain,
     'should not pad non-number domain'
   );
   t.deepEqual(
     getMissingScaleProps({
-      padding: {x: fakePadding}
+      xPadding: fakePadding
     }, fakeDataUnixTime, ['x']).xDomain,
     [paddedDayOne, paddedDayTen],
     'should pad unix time xDomain'
