@@ -37,7 +37,7 @@ export default class SimpleRadialChart extends Component {
         innerRadius={100}
         radius={140}
         data={[
-          {angle: 2},
+          {angle: 2, className: 'custom-class'},
           {angle: 6},
           {angle: 2},
           {angle: 3},
