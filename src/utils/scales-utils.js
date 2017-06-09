@@ -657,7 +657,7 @@ export function extractScalePropsFromProps(props, attributes) {
  */
 export function getMissingScaleProps(props, data, attributes) {
   const result = {};
-  // Make sure that the domain is set and pass the domain as well.
+  // Make sure that the domain is set pad it if specified
   attributes.forEach(attr => {
     if (!props[`${attr}Domain`]) {
       result[`${attr}Domain`] = getDomainByAttr(
