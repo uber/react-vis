@@ -33,7 +33,8 @@ import {
   _getScaleDistanceAndAdjustedDomain,
   extractScalePropsFromProps,
   getMissingScaleProps,
-  literalScale
+  literalScale,
+  _padDomain
 } from 'utils/scales-utils';
 
 const isScaleConsistent = (scaleObject, attr) => {
@@ -302,5 +303,30 @@ test('scales-utils #_adjustCategoricalScale', t => {
   }].forEach(({scale, distance}) => {
     t.deepEqual(_adjustCategoricalScale(scale), {...scale, distance}, 'should correctly adjust a categorical scale');
   });
+});
+
+test('scales-utils #_padDomain', t => {
+  const fakeDomainInt = [10, 20];
+  const fakeDomainString = ['React', 'Vis'];
+  const dayOne = 971136000;
+  const dayTen = 972000000;
+  const paddedDayOne = (dayOne - ((dayTen - dayOne) * 0.1));
+  const paddedDayTen = (dayTen - ((dayTen - dayOne) * 0.1));
+  const fakePadding = 10;
+  t.deepEqual(
+    _padDomain(fakeDomainInt, fakePadding),
+    [9, 21],
+    'should pad integer domain'
+  );
+  t.deepEqual(
+    _padDomain(fakeDomainString, fakePadding),
+    fakeDomainString,
+    'should not pad non integer domain'
+  );
+  t.deepEqual(
+    _padDomain([dayOne, dayTen], fakePadding),
+    [paddedDayOne, paddedDayTen],
+    'should pad unix time integer domain'
+  );
   t.end();
 });
