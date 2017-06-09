@@ -1,0 +1,837 @@
+
+> react-vis@1.5.3 test /Users/charliemartell/Uber/react-vis
+> babel-node tests/index.js
+
+TAP version 13
+# axis-utils #getTicksTotalFromSize
+ok 1 Returns valid value for 0px
+ok 2 Returns valid value for 301px
+ok 3 Returns valid value for 701px
+# axis-utils #getTickValues
+ok 4 should find the correct tick values
+ok 5 should find the correct tick values
+# axis-utils #getAxisAngle
+ok 6 should be equal
+ok 7 should be equal
+ok 8 should be equal
+# axis-utils #generateFit
+ok 9 should be equivalent
+ok 10 should be equivalent
+ok 11 should be equivalent
+# axis-utils #generatePoints
+ok 12 should be equivalent
+# chart-utils #getRadialLayoutMargin
+ok 13 Get the right margin to center the radial layout chart - landscape container
+ok 14 Get the right margin to center the radial layout chart - portrait container
+ok 15 Get the right margin to center the radial layout chart - rectangle container
+# data-utils #getObjectValueAccessor
+ok 16 Should return value of the property
+# data-utils #getUniquePropertyValues
+ok 17 Should return the array of the proper size
+ok 18 Should return unique values of the property
+# data-utils #addValueToArray
+ok 19 Shouldn't add the value if the value is in the array
+ok 20 Should add the value if the value is larger
+ok 21 Should add the value if the value is smaller
+# react-utils #isReactDOMSupported
+ok 22 the app is built in a minimum of version 13
+# scales-utils #getScaleObjectFromProps 
+ok 23 Should return null if no props available.
+ok 24 Should be null if no domain is passed
+ok 25 Should be null if no range is passed
+ok 26 Should be a consistent scale
+ok 27 Should have same type that was passed by detault
+ok 28 Correct adjustment of domain
+ok 29 original domain object should contain the same values
+ok 30 Should be a consistent scale
+ok 31 Should have isValue = true
+# scales-utils #getScalePropTypesByAttribute
+ok 32 should find the correct scale prop attributes
+# scales-utils #getAttributeFunctor
+ok 33 No props: Fallback value 20 should be returned by the produced functor
+ok 34 Result should be a function
+ok 35 Function should reflect values properly
+ok 36 should find the correct transformed value
+# scales-utils #getAttr0Functor
+ok 37 should get null when given no props
+ok 38 Result should be a function
+ok 39 Function should reflect values properly
+ok 40 Function should fallback to base value properly
+ok 41 should find the correct transformed value
+ok 42 Result should be a function
+ok 43 Function should reflect values properly
+ok 44 Function should fallback to base value properly
+ok 45 should find the correct transformed value
+# scales-utils #getAttributeScale
+ok 46 No props: Result should be null
+ok 47 Result should be a function
+ok 48 Result scale is valid
+# scales-utils #getAttributeValue 
+ok 49 No Props: Fallback value should be returned
+ok 50 The value should be returned
+ok 51 The value should be returned
+# scales-utils #_getSmallestDistanceIndex
+ok 52 should be equal
+ok 53 should be equal
+ok 54 should be equal
+ok 55 should be equal
+ok 56 should be equal
+ok 57 should be equal
+# scales-utils #extractScalePropsFromProps
+ok 58 Should return empty object on empty values
+ok 59 Should return valid object
+# scales-utils #getMissingScaleProps
+ok 60 Should return empty result on empty arguments
+ok 61 Should return a valid object
+result.xDomain [ 10, 20 ]
+padding.x 10
+result.xDomain after padding [ 9, 21 ]
+ok 62 should pad number xDomain
+result.yDomain [ 10, 20 ]
+padding.y 10
+result.yDomain after padding [ 9, 21 ]
+ok 63 should pad number yDomain
+result.xDomain [ 'React', 'Vis' ]
+padding.x 10
+result.xDomain after padding [ 'React', 'Vis' ]
+ok 64 should not pad non-number domain
+result.xDomain [ 971136000, 972000000 ]
+padding.x 10
+result.xDomain after padding [ 971049600, 972086400 ]
+ok 65 should pad unix time xDomain
+# scales-utils #literalScale
+ok 66 acts as the identity
+ok 67 acts as the identity
+ok 68 acts as the identity
+ok 69 acts as the identity
+ok 70 acts as the identity
+ok 71 does NOT coerce input to a number
+# scales-utils #getFontColorFromBackground
+ok 72 should find correct color
+ok 73 should find correct color
+ok 74 sensible default
+# scales-utils #_getScaleFnFromScaleObject
+ok 75 should recieve null for undefined
+ok 76 should set the domain correctly
+ok 77 should set the range correctly
+ok 78 should build a generic domain about zero if the domain is closed
+ok 79 should build a generic domain that reflects about zero
+# scales-utils #_getScaleDistanceAndAdjustedDomain
+ok 80 should fine reasonable results
+ok 81 should fine reasonable results
+# scales-utils #_adjustCategoricalScale
+ok 82 should correctly adjust a categorical scale
+ok 83 should correctly adjust a categorical scale
+ok 84 should correctly adjust a categorical scale
+ok 85 should correctly adjust a categorical scale
+# scales-utils #missingScaleProps_padDomain
+# series-utils #isSeriesChild
+ok 86 Should return true for series
+ok 87 Should return false for non-series
+# series-utils #getSeriesChildren
+ok 88 should find the correct children
+# series-utils #collectSeriesTypesInfo
+ok 89 Returns array of proper size
+ok 90 Props #0 are valid
+ok 91 Props #1 are valid
+# series-utils #seriesClusterProps
+ok 92 Returns array of proper size
+ok 93 should be truthy
+ok 94 SameTypeTotal is set correctly
+ok 95 Returns correct number of unique clusters
+ok 96 should be truthy
+ok 97 SameTypeTotal is set correctly
+ok 98 Returns correct number of unique clusters
+ok 99 should be truthy
+ok 100 SameTypeTotal is set correctly
+ok 101 Returns correct number of unique clusters
+ok 102 should be truthy
+ok 103 SameTypeTotal is set correctly
+ok 104 Returns correct number of unique clusters
+# series-utils #getStackedData
+ok 105 should find the correct results for stacking by y
+ok 106 should find the correct results for stacking by x
+ok 107 should find the correct results for stacking bar clusters by y
+ok 108 should find the correct results for stacking bar clusters by x
+# Rendering HorizontalGridLines
+ok 109 HorizontalGridLines is rendered
+ok 110 yRange is set
+ok 111 yDomain is set
+ok 112 yType is set
+ok 113 width is set
+ok 114 height is set
+ok 115 top is set
+ok 116 left is set
+# Rendering VerticalGridLines
+ok 117 VerticalGridLines is rendered
+ok 118 xRange is set
+ok 119 xDomain is set
+ok 120 xType is set
+ok 121 width is set
+ok 122 height is set
+ok 123 top is set
+ok 124 left is set
+# Rendering XAxis
+ok 125 XAxis is rendered
+ok 126 xRange is set
+ok 127 xDomain is set
+ok 128 xType is set
+ok 129 width is set
+ok 130 height is set
+ok 131 top is set
+ok 132 left is set
+# Rendering YAxis
+ok 133 YAxis is rendered
+ok 134 yRange is set
+ok 135 yDomain is set
+ok 136 yType is set
+ok 137 width is set
+ok 138 height is set
+ok 139 top is set
+ok 140 left is set
+# Animation interpolates xDomain when specified
+ok 141 Axis interpolates props and passes to Animation
+# Rendering AreaSeries
+ok 142 AreaSeries is rendered
+ok 143 xDomain is set
+ok 144 xRange is set
+ok 145 xType is set
+ok 146 xDistance is set
+ok 147 yDomain is set
+ok 148 yRange is set
+ok 149 yDistance is set
+ok 150 yType is set
+ok 151 data is set
+ok 152 _allData is set
+ok 153 onSeriesMouseOver is set
+ok 154 onSeriesMouseOut is set
+ok 155 onSeriesClick is set
+ok 156 onValueMouseOver is set
+ok 157 onValueMouseOut is set
+ok 158 onValueClick is set
+# AreaSeries: basic rendering
+ok 159 should find the right number of series
+ok 160 should find the right number of series
+ok 161 should find the right number of custom named series
+ok 162 should find the right number of series
+ok 163 should find the right number of series
+ok 164 should find the right number of custom named series
+# AreaSeries: Showcase Example - AreaChart
+ok 165 should find the right number of series
+ok 166 should find the right number of series
+ok 167 should find the right number of custom named series
+# AreaSeries: Showcase Example - AreaChartElevated
+ok 168 should find the right number of series
+ok 169 should find the right number of pathes
+ok 170 should find the first custom component correctly
+ok 171 should find the second custom component correctly
+# Rendering ArcSeries
+ok 172 ArcSeries is rendered
+ok 173 xDomain is set
+ok 174 xRange is set
+ok 175 xType is set
+ok 176 xDistance is set
+ok 177 yDomain is set
+ok 178 yRange is set
+ok 179 yDistance is set
+ok 180 yType is set
+ok 181 data is set
+ok 182 _allData is set
+ok 183 onSeriesMouseOver is set
+ok 184 onSeriesMouseOut is set
+ok 185 onSeriesClick is set
+ok 186 onValueMouseOver is set
+ok 187 onValueMouseOut is set
+ok 188 onValueClick is set
+# MarkSeries: Showcase Example - ArcSeriesExample
+ok 189 should find the right text content
+ok 190 should find the right number of series
+ok 191 with the right number of arc in them
+# AxisTitle: horizontal bottom axis title
+ok 192 should have text-anchor: end
+ok 193 should render the correct title
+# AxisTitle: horizontal top axis title
+ok 194 should have text-anchor: start
+ok 195 should render the correct title
+# AxisTitle: vertical left title
+ok 196 should have text-anchor: end
+ok 197 should render the correct title
+# AxisTitle: vertical right title
+ok 198 should have text-anchor: start
+ok 199 should render the correct title
+# Rendering HorizontalBarSeries
+ok 200 HorizontalBarSeries is rendered
+ok 201 xDomain is set
+ok 202 xRange is set
+ok 203 xType is set
+ok 204 xDistance is set
+ok 205 yDomain is set
+ok 206 yRange is set
+ok 207 yDistance is set
+ok 208 yType is set
+ok 209 data is set
+ok 210 _allData is set
+ok 211 onSeriesMouseOver is set
+ok 212 onSeriesMouseOut is set
+ok 213 onSeriesClick is set
+ok 214 onValueMouseOver is set
+ok 215 onValueMouseOut is set
+ok 216 onValueClick is set
+# Rendering VerticalBarSeries
+ok 217 VerticalBarSeries is rendered
+ok 218 xDomain is set
+ok 219 xRange is set
+ok 220 xType is set
+ok 221 xDistance is set
+ok 222 yDomain is set
+ok 223 yRange is set
+ok 224 yDistance is set
+ok 225 yType is set
+ok 226 data is set
+ok 227 _allData is set
+ok 228 onSeriesMouseOver is set
+ok 229 onSeriesMouseOut is set
+ok 230 onSeriesClick is set
+ok 231 onValueMouseOver is set
+ok 232 onValueMouseOut is set
+ok 233 onValueClick is set
+# BarSeries: Showcase Example - BarChart
+ok 234 should fine the right text content
+ok 235 should find the right number of bars
+ok 236 should find the right number of custom named series
+ok 237 should now find no rects
+ok 238 should now find one canvas
+not ok 239 should get the correct serialized image
+  ---
+    operator: equal
+    expected: |-
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAYAAACI7Fo9AAAABmJLR0QA/wD/AP+gvaeTAAAEa0lEQVR4nO3cwYpWZQDH4fd8jjppTeJCpExoU0HrFOoS2rePoCBw0a5uwNoLgQTRTbTpBgy8i1JoVYsIQ3PeNk1CzJQYfcfp9zzbd/Pf/M55N+csA46R8zdufjnG8u7aOx6Zd3+89sGltVf8k83aA4D/ntAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHgJ21BzyOj7/97sPNXC6sveNPm+X29auXvl57BjyuYxH6MjefzDEvrb3jwNwfX40xhM6x4eoOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQci+/R4Wn0/Okz4+1Xrl587tad79fe8off5v7+O5+9dfn2Xw+EDk9os9mM3ZMnN+Op+SnK8vPYLGcPO3F1h39hzrn2hEeW+fCoI6FDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQc+pnqCzdvnvn1wfLytsccZX8+PLlZPJPgSR0a+v37mytzzG+WMe5te9Bh7j24v3f21O7aM+DYOvLHE8tYfhljntvmmKPMMeYYY1l7BxxX7sMQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BCws/aAgvM3vrg9xry49o4Dc4xPf7r2/udr72B7hL4Fy5ivzTGeXXvHgWXMC2tvYLtc3SFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUPAztoD2K7XL1weV1589aNTt+68t/aWMcZY5vzh+psvvbH2jv87occ8s3N6nDqxszfG3Ft7yxhjjGWcW3tCgas7BAgdAoQOAUKHAKFDgNAhQOgQIHQIEDoECB0ChA4BQocAoUOA0CFA6BAgdAgQOgQIHQKEDgFChwChQ4DQIUDoECB0CBA6BAgdAoQOAUKHAKFDgNAhQOgQcGToy5i72xzyd5ZlWXsCHOrE5il6V85xZLO/A/PwTf3wSEVKAAAAAElFTkSuQmCC'
+    actual: |-
+      null
+    at: Test.<anonymous> (/Users/charliemartell/Uber/react-vis/tests/components/bar-series-tests.js:27:5)
+  ...
+# BarSeries: Showcase Example - StackedHorizontalBarChart & StackedVerticalBarChart
+ok 240 should fine the right text content
+ok 241 should find the right number of bars
+ok 242 should now find no rects
+ok 243 should now find one canvas
+ok 244 should fine the right text content
+ok 245 should find the right number of bars
+ok 246 should now find no rects
+ok 247 should now find one canvas
+# BarSeries: Ordinal Y-Axis HorizontalBarSeries
+ok 248 should find the right number of bars
+ok 249 should not have negative bar height
+# BarSeries: No data
+ok 250 should find the right number of bars
+# BarSeries: Showcase Example - ClusteredStackedVerticalBarChart
+ok 251 should fine the right text content
+ok 252 should find the right number of bars
+ok 253 should find the right number of series
+ok 254 should now find no rects
+ok 255 should now find one canvas
+# Rendering Borders
+ok 256 Borders is rendered
+ok 257 xDomain is set
+ok 258 xRange is set
+ok 259 xType is set
+ok 260 xDistance is set
+ok 261 yDomain is set
+ok 262 yRange is set
+ok 263 yDistance is set
+ok 264 yType is set
+ok 265 data is set
+ok 266 _allData is set
+ok 267 onSeriesMouseOver is set
+ok 268 onSeriesMouseOut is set
+ok 269 onSeriesClick is set
+ok 270 onValueMouseOver is set
+ok 271 onValueMouseOut is set
+ok 272 onValueClick is set
+# Borders: GradientExample
+ok 273 should find the right number of borders containers
+ok 274 should find the right number of borders
+# Rendering HorizontalBarSeriesCanvas
+ok 275 HorizontalBarSeriesCanvas is rendered
+ok 276 xDomain is set
+ok 277 xRange is set
+ok 278 xType is set
+ok 279 xDistance is set
+ok 280 yDomain is set
+ok 281 yRange is set
+ok 282 yDistance is set
+ok 283 yType is set
+ok 284 data is set
+ok 285 _allData is set
+ok 286 onSeriesMouseOver is set
+ok 287 onSeriesMouseOut is set
+ok 288 onSeriesClick is set
+ok 289 onValueMouseOver is set
+ok 290 onValueMouseOut is set
+ok 291 onValueClick is set
+# Rendering HorizontalBarSeriesCanvas
+ok 292 HorizontalBarSeriesCanvas is rendered
+ok 293 xDomain is set
+ok 294 xRange is set
+ok 295 xType is set
+ok 296 xDistance is set
+ok 297 yDomain is set
+ok 298 yRange is set
+ok 299 yDistance is set
+ok 300 yType is set
+ok 301 data is set
+ok 302 _allData is set
+ok 303 onSeriesMouseOver is set
+ok 304 onSeriesMouseOut is set
+ok 305 onSeriesClick is set
+ok 306 onValueMouseOver is set
+ok 307 onValueMouseOut is set
+ok 308 onValueClick is set
+# Rendering HorizontalRectSeriesCanvas
+ok 309 HorizontalRectSeriesCanvas is rendered
+ok 310 xDomain is set
+ok 311 xRange is set
+ok 312 xType is set
+ok 313 xDistance is set
+ok 314 yDomain is set
+ok 315 yRange is set
+ok 316 yDistance is set
+ok 317 yType is set
+ok 318 data is set
+ok 319 _allData is set
+ok 320 onSeriesMouseOver is set
+ok 321 onSeriesMouseOut is set
+ok 322 onSeriesClick is set
+ok 323 onValueMouseOver is set
+ok 324 onValueMouseOut is set
+ok 325 onValueClick is set
+# Rendering HorizontalRectSeriesCanvas
+ok 326 HorizontalRectSeriesCanvas is rendered
+ok 327 xDomain is set
+ok 328 xRange is set
+ok 329 xType is set
+ok 330 xDistance is set
+ok 331 yDomain is set
+ok 332 yRange is set
+ok 333 yDistance is set
+ok 334 yType is set
+ok 335 data is set
+ok 336 _allData is set
+ok 337 onSeriesMouseOver is set
+ok 338 onSeriesMouseOut is set
+ok 339 onSeriesClick is set
+ok 340 onValueMouseOver is set
+ok 341 onValueMouseOut is set
+ok 342 onValueClick is set
+# Rendering RectSeriesCanvas
+ok 343 RectSeriesCanvas is rendered
+ok 344 xDomain is set
+ok 345 xRange is set
+ok 346 xType is set
+ok 347 xDistance is set
+ok 348 yDomain is set
+ok 349 yRange is set
+ok 350 yDistance is set
+ok 351 yType is set
+ok 352 data is set
+ok 353 _allData is set
+ok 354 onSeriesMouseOver is set
+ok 355 onSeriesMouseOut is set
+ok 356 onSeriesClick is set
+ok 357 onValueMouseOver is set
+ok 358 onValueMouseOut is set
+ok 359 onValueClick is set
+# Rendering BarSeriesCanvas
+ok 360 BarSeriesCanvas is rendered
+ok 361 xDomain is set
+ok 362 xRange is set
+ok 363 xType is set
+ok 364 xDistance is set
+ok 365 yDomain is set
+ok 366 yRange is set
+ok 367 yDistance is set
+ok 368 yType is set
+ok 369 data is set
+ok 370 _allData is set
+ok 371 onSeriesMouseOver is set
+ok 372 onSeriesMouseOut is set
+ok 373 onSeriesClick is set
+ok 374 onValueMouseOver is set
+ok 375 onValueMouseOut is set
+ok 376 onValueClick is set
+# Rendering CircularGridLines
+ok 377 CircularGridLines is rendered
+ok 378 xDomain is set
+ok 379 xRange is set
+ok 380 xType is set
+ok 381 xDistance is set
+ok 382 yDomain is set
+ok 383 yRange is set
+ok 384 yDistance is set
+ok 385 yType is set
+ok 386 data is set
+ok 387 _allData is set
+ok 388 onSeriesMouseOver is set
+ok 389 onSeriesMouseOut is set
+ok 390 onSeriesClick is set
+ok 391 onValueMouseOver is set
+ok 392 onValueMouseOut is set
+ok 393 onValueClick is set
+# CircularGridLines: Showcase Example - FauxRadialScatterplot
+ok 394 should find the right text content
+ok 395 should find the right number of circles
+# Rendering DecorativeAxis
+ok 396 DecorativeAxis is rendered
+ok 397 xDomain is set
+ok 398 xRange is set
+ok 399 xType is set
+ok 400 xDistance is set
+ok 401 yDomain is set
+ok 402 yRange is set
+ok 403 yDistance is set
+ok 404 yType is set
+ok 405 data is set
+ok 406 _allData is set
+ok 407 onSeriesMouseOver is set
+ok 408 onSeriesMouseOut is set
+ok 409 onSeriesClick is set
+ok 410 onValueMouseOver is set
+ok 411 onValueMouseOut is set
+ok 412 onValueClick is set
+ok 413 axisStart is set
+ok 414 axisEnd is set
+ok 415 axisDomain is set
+# DecorativeAxis: Showcase Example - DecorativeAxisCrissCross
+ok 416 should find the right text content
+ok 417 should find the number of axes
+ok 418 should find the number of axis ticks
+ok 419 should find the number of axis tick texts
+# DecorativeAxis: Showcase Example - ParallelCoordinatesExample
+ok 420 should find the right text content
+ok 421 should find the number of axes
+ok 422 should find the number of axis ticks
+ok 423 should find the number of axis tick texts
+# Rendering GradientDefs
+ok 424 GradientDefs is rendered
+ok 425 xDomain is set
+ok 426 xRange is set
+ok 427 xType is set
+ok 428 xDistance is set
+ok 429 yDomain is set
+ok 430 yRange is set
+ok 431 yDistance is set
+ok 432 yType is set
+ok 433 data is set
+ok 434 _allData is set
+ok 435 onSeriesMouseOver is set
+ok 436 onSeriesMouseOut is set
+ok 437 onSeriesClick is set
+ok 438 onValueMouseOver is set
+ok 439 onValueMouseOut is set
+ok 440 onValueClick is set
+# GradientDefs: TriangleExample
+ok 441 should find the right number of polygons
+ok 442 should find the right number of gradient defs
+ok 443 should find the right number of gradients
+# GradientDefs: GradientExample
+ok 444 should find the right number of polygons
+ok 445 should find the right number of gradient defs
+ok 446 should find the right number of gradients
+# Rendering HeatmapSeries
+ok 447 HeatmapSeries is rendered
+ok 448 xDomain is set
+ok 449 xRange is set
+ok 450 xType is set
+ok 451 xDistance is set
+ok 452 yDomain is set
+ok 453 yRange is set
+ok 454 yDistance is set
+ok 455 yType is set
+ok 456 data is set
+ok 457 _allData is set
+ok 458 onSeriesMouseOver is set
+ok 459 onSeriesMouseOut is set
+ok 460 onSeriesClick is set
+ok 461 onValueMouseOver is set
+ok 462 onValueMouseOut is set
+ok 463 onValueClick is set
+# Heatmap: basic rendering
+ok 464 should find the right number of series
+ok 465 should find the right number of series
+ok 466 should find the correct custom class name
+ok 467 should find no series
+ok 468 should find no rects
+ok 469 should not find the custom name
+# Continuous Size Legend
+ok 470 should find the correct text content
+ok 471 should find the right number of bubbles
+# Continuous Color Legend
+ok 472 should find the correct text content
+ok 473 should find the correct styling
+# Discrete Legends
+ok 474 should find the correct text content
+ok 475 should find the right number of elements
+ok 476 should find the correct text content
+ok 477 should find the right number of elements
+ok 478 normal discrete legend uses default palette
+ok 479 custom discrete legend uses custom palette
+ok 480 should find the correct text content for the searchable legend
+ok 481 should find the right number of element for the searchable legends
+ok 482 should find the correct text content after search
+ok 483 should find the right number of elements for the searchable legend after searched
+ok 484 before clicking, should find no items disabled
+ok 485 before clicking, should find no items disabled
+# Rendering AbstractSeries
+ok 486 AbstractSeries is rendered
+ok 487 xDomain is set
+ok 488 xRange is set
+ok 489 xType is set
+ok 490 xDistance is set
+ok 491 yDomain is set
+ok 492 yRange is set
+ok 493 yDistance is set
+ok 494 yType is set
+ok 495 data is set
+ok 496 _allData is set
+ok 497 onSeriesMouseOver is set
+ok 498 onSeriesMouseOut is set
+ok 499 onSeriesClick is set
+ok 500 onValueMouseOver is set
+ok 501 onValueMouseOut is set
+ok 502 onValueClick is set
+# LabelSeries: Showcase Example - LabelSeriesExample
+ok 503 should find the right text content
+ok 504 should find the right number of text boxes
+# Rendering LineSeries
+ok 505 LineSeries is rendered
+ok 506 xDomain is set
+ok 507 xRange is set
+ok 508 xType is set
+ok 509 xDistance is set
+ok 510 yDomain is set
+ok 511 yRange is set
+ok 512 yDistance is set
+ok 513 yType is set
+ok 514 data is set
+ok 515 _allData is set
+ok 516 onSeriesMouseOver is set
+ok 517 onSeriesMouseOut is set
+ok 518 onSeriesClick is set
+ok 519 onValueMouseOver is set
+ok 520 onValueMouseOut is set
+ok 521 onValueClick is set
+# LineSeries: basic rendering
+ok 522 should find the right number of series
+ok 523 should find the right number of series
+ok 524 should find the right number of custom named series
+ok 525 should find the right number of series
+ok 526 should find the right number of series
+ok 527 should find the right number of custom named series
+# LineSeries: Showcase Example - LineChart
+ok 528 should fine the right text content
+ok 529 should find the right number of series
+ok 530 should find the right number of series with the custom class name: first-series
+ok 531 should find the right number of series with the custom class name: third-series
+ok 532 should find the right number of series with the custom class name: fourth-series
+ok 533 there should be no line with the class second series bc it has null data and should be filtered out
+# LineSeries: Showcase Example - LineMarkSeries
+ok 534 should fine the right text content
+ok 535 should find the right number of series
+ok 536 should find the right number of marks
+ok 537 should find the right number of series with the custom class name: linemark-series-example
+ok 538 should find the right number of series with the custom class name: linemark-series-example-2
+# LineSeries: Line Styling
+ok 539 should render an opaque line
+ok 540 should honor stroke width
+ok 541 should honor stroke
+ok 542 should honor stroke dash-array
+# Rendering MarkSeries
+ok 543 MarkSeries is rendered
+ok 544 xDomain is set
+ok 545 xRange is set
+ok 546 xType is set
+ok 547 xDistance is set
+ok 548 yDomain is set
+ok 549 yRange is set
+ok 550 yDistance is set
+ok 551 yType is set
+ok 552 data is set
+ok 553 _allData is set
+ok 554 onSeriesMouseOver is set
+ok 555 onSeriesMouseOut is set
+ok 556 onSeriesClick is set
+ok 557 onValueMouseOver is set
+ok 558 onValueMouseOut is set
+ok 559 onValueClick is set
+# MarkSeries: Showcase Example - Scatterplot
+ok 560 should find the right text content
+ok 561 should find the right number of circles
+ok 562 should find the right number of custom named series
+# MarkSeries: Showcase Example - Dynamic Crosshair Scatterplot
+ok 563 should not highlight any circles
+ok 564 should highlight one circle
+ok 565 should highlight circle at <0, 0>
+ok 566 should highlight one circle
+ok 567 should highlight circle at <0, 2.5>
+# Rendering MarkSeries
+ok 568 MarkSeries is rendered
+ok 569 xDomain is set
+ok 570 xRange is set
+ok 571 xType is set
+ok 572 xDistance is set
+ok 573 yDomain is set
+ok 574 yRange is set
+ok 575 yDistance is set
+ok 576 yType is set
+ok 577 data is set
+ok 578 _allData is set
+ok 579 onSeriesMouseOver is set
+ok 580 onSeriesMouseOut is set
+ok 581 onSeriesClick is set
+ok 582 onValueMouseOver is set
+ok 583 onValueMouseOut is set
+ok 584 onValueClick is set
+# PolygonSeries: Showcase Example - Triangle Example
+ok 585 should fine the right text content
+ok 586 should find the right number of polygons
+# Rendering RadialChart
+ok 587 RadialChart is rendered
+ok 588 data is set
+ok 589 height is set
+ok 590 showLabels is set
+ok 591 width is set
+# RadialChart: Basic rendering
+ok 592 should find the same number of slices as data entries
+ok 593 should have custom class if defined in data entry
+ok 594 should find the right number of label wrappers
+ok 595 should find appropriate text
+ok 596 should find no slives
+ok 597 should find no overlay slices
+ok 598 should find no labels
+ok 599 should find no text
+# RadialChart: Showcase Example - Simple Radial Chart Example
+ok 600 should find the same number of slices as data entries
+ok 601 should find the right number of label wrappers
+ok 602 should find appropriate text
+# RadialChart: Showcase Example - DonutChart
+ok 603 should find an appropriate number of slice
+ok 604 should find no label wrappers, as labels is turned off
+ok 605 should find no text
+ok 606 should find appropriate hover text
+# RadialChart: Showcase Example - Custom radius example
+ok 607 should find the same number of slices as data entries
+ok 608 should find the right number of label wrappers
+ok 609 should find appropriate text
+# Rendering HorizontalBarSeries
+ok 610 HorizontalBarSeries is rendered
+ok 611 xDomain is set
+ok 612 xRange is set
+ok 613 xType is set
+ok 614 xDistance is set
+ok 615 yDomain is set
+ok 616 yRange is set
+ok 617 yDistance is set
+ok 618 yType is set
+ok 619 data is set
+ok 620 _allData is set
+ok 621 onSeriesMouseOver is set
+ok 622 onSeriesMouseOut is set
+ok 623 onSeriesClick is set
+ok 624 onValueMouseOver is set
+ok 625 onValueMouseOut is set
+ok 626 onValueClick is set
+# Rendering VerticalBarSeries
+ok 627 VerticalBarSeries is rendered
+ok 628 xDomain is set
+ok 629 xRange is set
+ok 630 xType is set
+ok 631 xDistance is set
+ok 632 yDomain is set
+ok 633 yRange is set
+ok 634 yDistance is set
+ok 635 yType is set
+ok 636 data is set
+ok 637 _allData is set
+ok 638 onSeriesMouseOver is set
+ok 639 onSeriesMouseOut is set
+ok 640 onSeriesClick is set
+ok 641 onValueMouseOver is set
+ok 642 onValueMouseOut is set
+ok 643 onValueClick is set
+# RectSeries: Showcase Example - StackedHistogram
+ok 644 should fine the right text content
+ok 645 should find the right number of bars
+ok 646 should now find no rects
+ok 647 should now find one canvas
+# RectSeries: Showcase Example - Histogram
+ok 648 should fine the right text content
+ok 649 should find the right number of bars
+# Rendering Treemap
+ok 650 Treemap is rendered
+ok 651 height is set
+ok 652 width is set
+ok 653 className is set
+ok 654 data is set
+# Treemap: Basic rendering
+ok 655 should find the right number of children
+ok 656 should find the correct text shown
+ok 657 should find the custom class name used
+ok 658 should find the right number of children
+ok 659 should find the correct text shown
+ok 660 should find the custom class name used
+# Treemap: Empty treemap
+ok 661 should find the right number of children
+ok 662 should find the correct text shown
+ok 663 should find the custom class name used
+# Rendering undefined
+ok 664 undefined is rendered
+ok 665 nodes is set
+ok 666 links is set
+ok 667 width is set
+ok 668 height is set
+# Sankey: labels
+ok 669 there should be two node labels
+ok 670 the labels should now be hidden
+# Sankey: Showcase Example - BasicSankey
+ok 671 should find the right number of links
+ok 672 should find the right number of nodes
+# Sankey: Showcase Example - VoronoiSankey
+ok 673 should find the right number of links
+ok 674 should find the right number of nodes
+ok 675 should find the right number of voronoi wrappers
+ok 676 should find the right number of voronoi cells
+# Rendering Sunburst
+ok 677 Sunburst is rendered
+ok 678 height is set
+ok 679 width is set
+ok 680 className is set
+ok 681 hideRootNode is set
+ok 682 data is set
+# Sunburst: Basic rendering + data changes
+ok 683 should find the custom class name used
+ok 684 should find the right number of children
+# Sunburst: Empty
+ok 685 should find the right number of children
+# Sunburst: Flare Demo
+ok 686 should find the right number of children
+ok 687 should initially find no hover path
+ok 688 should find the correct path hovered
+# Rendering XYPlot
+ok 689 XYPlot is rendered
+ok 690 width is set
+ok 691 height is set
+# Render a stacked bar chart
+ok 692 First bar series data is the same
+ok 693 Second bar series data contains y0 values
+# Render a stacked bar chart with other children
+ok 694 First bar series data is the same
+ok 695 Second bar series data contains y0 values
+# Render a bar chart with some nonAnimatedProps
+ok 696 XAxis has nonAnimatedProps
+ok 697 VerticalBarSeries has nonAnimatedProps
+
+1..697
+# tests 697
+# pass  696
+# fail  1
+

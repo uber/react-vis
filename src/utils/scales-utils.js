@@ -539,6 +539,9 @@ function _isDefined(value) {
  * @returns {Array} Padded Domain
  */
 function _padDomain(domain, padding) {
+  if (!domain) {
+    return domain;
+  }
   if (isNaN(parseFloat(domain[0])) || isNaN(parseFloat(domain[1]))) {
     return domain;
   }
