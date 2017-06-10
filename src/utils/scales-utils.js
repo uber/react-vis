@@ -656,9 +656,8 @@ export function extractScalePropsFromProps(props, attributes) {
  * @returns {Object} Collected props.
  */
 export function getMissingScaleProps(props, data, attributes) {
-  const {padding} = props;
   const result = {};
-  // Make sure that the domain is set and pass the domain as well.
+  // Make sure that the domain is set pad it if specified
   attributes.forEach(attr => {
     if (!props[`${attr}Domain`]) {
       result[`${attr}Domain`] = getDomainByAttr(
@@ -666,15 +665,11 @@ export function getMissingScaleProps(props, data, attributes) {
         attr,
         props[`${attr}Type`]
       );
+      if (props[`${attr}Padding`]) {
+        result[`${attr}Domain`] = _padDomain(result[`${attr}Domain`], props[`${attr}Padding`]);
+      }
     }
   });
-
-  if (_isDefined(padding) && _isDefined(padding.x)) {
-    result.xDomain = _padDomain(result.xDomain, padding.x);
-  }
-  if (_isDefined(padding) && _isDefined(padding.y)) {
-    result.yDomain = _padDomain(result.yDomain, padding.y);
-  }
 
   return result;
 }

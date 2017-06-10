@@ -42,7 +42,7 @@ const ATTRIBUTES = [
   'size'
 ];
 
-const OPTIONAL_SCALE_PROPS = ['padding'];
+const OPTIONAL_SCALE_PROPS = ['Padding'];
 
 const DEFAULT_MARGINS = {
   left: 40,
@@ -221,14 +221,14 @@ class XYPlot extends React.Component {
   }
 
   /**
-   * Get the list of scale-related settings that are optionally passed into x-y-plot
+   * Get the list of optional scale-related settings
    * @param {Object} props Object of props.
    * @returns {Object} Optional Props.
    * @private
    */
   _getOptionalScaleProps(props) {
     return Object.keys(props)
-      .filter(prop => OPTIONAL_SCALE_PROPS.includes(prop))
+      .filter(prop => OPTIONAL_SCALE_PROPS.map(option => prop.endsWith(option)).every(x => x))
       .reduce((obj, key) => {
         obj[key] = props[key];
         return obj;
