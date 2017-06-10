@@ -15,6 +15,7 @@ const {
   DynamicProgrammaticRightEdgeHints,
   DynamicSimpleEdgeHints,
   DynamicSimpleTopEdgeHints,
+  PaddedAxis,
   ParallelCoordinatesExample,
   StaticCrosshair,
   StaticHints
@@ -33,6 +34,9 @@ const AXES = [{
 }, {
   name: 'Turned axis labels',
   component: AxisWithTurnedLabels
+}, {
+  name: 'Unpadded Axis vs Padded Axis',
+  component: PaddedAxis
 }];
 
 const TOOLTIPS = [{

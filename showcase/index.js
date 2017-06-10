@@ -52,6 +52,7 @@ import DynamicSimpleTopEdgeHints from './axes/dynamic-simple-topedge-hints';
 import DynamicProgrammaticRightEdgeHints from './axes/dynamic-programmatic-rightedge-hints';
 import DynamicCrosshair from './axes/dynamic-crosshair';
 import DynamicCrosshairScatterplot from './axes/dynamic-crosshair-scatterplot';
+import PaddedAxis from './axes/padded-axis';
 import ParallelCoordinatesExample from './axes/parallel-coordinates-example';
 import StaticCrosshair from './axes/static-crosshair';
 
@@ -120,6 +121,7 @@ export const showCase = {
   StaticCrosshair,
   DynamicCrosshair,
   DynamicCrosshairScatterplot,
+  PaddedAxis,
   ParallelCoordinatesExample,
   SyncedCharts,
   TimeChart,

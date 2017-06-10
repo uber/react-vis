@@ -24,8 +24,8 @@ All scale properties are prepended with the name of the attribute, for instance 
   Array of values to visualize from. If domain is not passed, it will be calculated from the values which are passed to component.
 * `[name]Padding` (optional)  
   Type: `Number`  
-  A percentage that will pad your `[name]Domain`, if you supply `[name]Domain` it cannot be padded aswell, if not supplied `[name]Domain` will not be padded.
-* `[name]Range` (optional)  
+  A percentage that will pad your `[name]Domain`. If the padding not passed `[name]Domain` will not be padded. Note: if you pass `[name]Domain` and it is not calculated from the values, padding will not be used.
+* `[name]Range` (optional)
   Type: `Array`  
   Array of real-world values to visualize to. If range is not passed, the defaults (depend on visualization type) will be applied.
 * `[name]Type` (optional)  
