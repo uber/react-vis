@@ -326,68 +326,6 @@ test('scales-utils #_getScaleDistanceAndAdjustedDomain', t => {
   const expectedResults = {distance: 0.009900990099009799, domain0: -0.5, domainN: 100.5};
   t.deepEqual(resultObject, expectedResults, 'should fine reasonable results');
 
-  const FAKE_TIME_DATA_WITH_ONE_VALUE_AND_X0 = [{
-    x: 1422774000000,
-    x0: 1420095600000,
-    y: 16
-  }];
-
-  const FAKE_TIME_DATA_WITH_ONE_VALUE_AND_Y0 = [{
-    x: 16,
-    y0: 1420095600000,
-    y: 1422774000000
-  }];
-
-  const timeScaleObjectX = {
-    attr: 'x',
-    domain: [1417546800000, 1430420400000],
-    range: [0, 550],
-    type: 'time'
-  };
-  const timeResultWithOneValueAndX0 = _getScaleDistanceAndAdjustedDomain(
-    FAKE_TIME_DATA_WITH_ONE_VALUE_AND_X0,
-    timeScaleObjectX
-  );
-  const expectedTimeResultsWithOneValueAndX0 = {
-    distance: 94.72222222222223,
-    domain0: 1416207600000,
-    domainN: 1431759600000
-  };
-  t.deepEqual(
-    timeResultWithOneValueAndX0,
-    expectedTimeResultsWithOneValueAndX0,
-    'should fine reasonable results'
-  );
-
-  const timeScaleObjectY = {
-    attr: 'y',
-    domain: [1417546800000, 1430420400000],
-    range: [0, 550],
-    type: 'time'
-  };
-  const timeResultWithOneValueAndY0 = _getScaleDistanceAndAdjustedDomain(
-    FAKE_TIME_DATA_WITH_ONE_VALUE_AND_Y0,
-    timeScaleObjectY
-  );
-  const expectedTimeResultsWithOneValueAndY0 = {
-    distance: 94.72222222222223,
-    domain0: 1416207600000,
-    domainN: 1431759600000
-  };
-  t.deepEqual(
-    timeResultWithOneValueAndY0,
-    expectedTimeResultsWithOneValueAndY0,
-    'should fine reasonable results'
-  );
-
-  const timeResult = _getScaleDistanceAndAdjustedDomain(FAKE_DATA, timeScaleObjectX);
-  const expectedTimeResults = {
-    distance: 4.272442311048508e-8,
-    domain0: 1417546799999.5,
-    domainN: 1430420400000.5
-  };
-  t.deepEqual(timeResult, expectedTimeResults, 'should fine reasonable results');
-
   const logScaleObject = {
     attr: 'x',
     domain: [-0.5, 1],
