@@ -170,6 +170,7 @@ class Example extends React.Component {
             <YAxis className="cool-custom-name"/>
             <XAxis className="even-cooler-custom-name"/>
             <VerticalBarSeries
+              xDistance={10}
               data={series[0].data}
               onNearestX={this._nearestXHandler}
               {...(series[0].disabled ? {opacity: 0.2} : null)}/>

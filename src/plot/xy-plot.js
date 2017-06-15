@@ -26,7 +26,12 @@ import {extractScalePropsFromProps, getMissingScaleProps, getXYPlotValues} from 
 import {getStackedData, getSeriesChildren, getSeriesPropsFromChildren} from 'utils/series-utils';
 import {getInnerDimensions, MarginPropType} from 'utils/chart-utils';
 import {AnimationPropType} from 'animation';
-import {CONTINUOUS_COLOR_RANGE, SIZE_RANGE, OPACITY_TYPE} from 'theme';
+import {
+  CONTINUOUS_COLOR_RANGE,
+  EXTENDED_DISCRETE_COLOR_RANGE,
+  SIZE_RANGE,
+  OPACITY_TYPE
+} from 'theme';
 
 import CanvasWrapper from './series/canvas-wrapper';
 
@@ -211,10 +216,17 @@ class XYPlot extends React.Component {
       props,
       DEFAULT_MARGINS
     );
+
+    const colorRanges = ['color', 'fill', 'stroke'].reduce((acc, attr) => {
+      const range = props[`${attr}Type`] === 'category' ?
+        EXTENDED_DISCRETE_COLOR_RANGE : CONTINUOUS_COLOR_RANGE;
+      return {...acc, [`${attr}Range`]: range};
+    }, {});
+
     return {
       xRange: [0, innerWidth],
       yRange: [innerHeight, 0],
-      colorRange: CONTINUOUS_COLOR_RANGE,
+      ...colorRanges,
       opacityType: OPACITY_TYPE,
       sizeRange: SIZE_RANGE
     };
