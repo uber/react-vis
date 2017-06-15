@@ -29,12 +29,12 @@ import {
   LineSeries
 } from 'index';
 
-let data = [];
+const data = [];
 
 for (let i = 0; i < 20; i++) {
-  let series = [];
+  const series = [];
   for (let j = 0; j < 100; j++) {
-    series.push({x: j, y: (i /10 + 1) * Math.sin(Math.PI * (i + j) / 50)});
+    series.push({x: j, y: (i / 10 + 1) * Math.sin(Math.PI * (i + j) / 50)});
   }
   data.push({color: i, key: i, data: series, opacity: 0.8});
 }

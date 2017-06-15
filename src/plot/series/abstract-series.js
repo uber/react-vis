@@ -74,6 +74,22 @@ class AbstractSeries extends PureComponent {
     return {};
   }
 
+  /**
+   * Tells the rest of the world that it requires SVG to work.
+   * @returns {boolean} Result.
+   */
+  static get requiresSVG() {
+    return true;
+  }
+
+  /**
+   * Get a default config for the parent.
+   * @returns {Object} Empty config.
+   */
+  static getParentConfig() {
+    return {};
+  }
+
   constructor(props) {
     super(props);
     this._seriesMouseOverHandler = this._seriesMouseOverHandler.bind(this);

@@ -348,8 +348,8 @@ test('scales-utils getXYPlotValues', t => {
     {props: {color: 1}}
   ];
   const result = getXYPlotValues(XYPlotProps, children);
-  t.equals(result[2]['_colorValue'], 'rgb(255, 255, 255)', 'children can be colored through a XYPlot scale');
-  t.equals(result[1]['_opacityValue'], '0.5', 'children can have fallback values without a XYPlot scale');
+  t.equals(result[2]._colorValue, 'rgb(255, 255, 255)', 'children can be colored through a XYPlot scale');
+  t.equals(result[1]._opacityValue, '0.5', 'children can have fallback values without a XYPlot scale');
   t.end();
 });
 
