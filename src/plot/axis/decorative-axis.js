@@ -60,7 +60,7 @@ class DecorativeAxis extends AbstractSeries {
 
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
-    // TODO ADD MORE OPTION CONTROLS FOR AXIS
+
     return (
       <g className={`${predefinedClassName} ${className}`}
          ref="container"

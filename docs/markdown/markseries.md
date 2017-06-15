@@ -109,3 +109,7 @@ Type: `function(info)`
 
 #### animation (optional)  
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
+
+#### className (optional)
+Type: `string`
+Provide an additional class name for the series.

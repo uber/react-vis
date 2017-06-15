@@ -33,29 +33,45 @@ import DecorativeAxis from 'plot/axis/decorative-axis';
 
 const predefinedClassName = 'rv-radar-chart';
 const DEFAULT_FORMAT = format('.2r');
-// TODO add jsdoc
-function getAxes({domains, animation, style}) {
+/**
+ * Generate axes for each of the domains
+ * @param {Object} props
+ - props.animation {Boolean}
+ - props.domains {Array} array of object specifying the way each axis is to be plotted
+ - props.style {object} style object for the whole chart
+ * @return {Array} the plotted axis components
+ */
+function getAxes(props) {
+  const {animation, domains, style} = props;
   return domains.map((domain, index) => {
     const angle = index / domains.length * Math.PI * 2;
     const sortedDomain = domain.domain.sort();
 
-    return (<DecorativeAxis
-      animation
-      key={`${index}-axis`}
-      axisStart={{x: 0, y: 0}}
-      axisEnd={{x: Math.cos(angle), y: Math.sin(angle)}}
-      axisDomain={sortedDomain}
-      numberOfTicks={5}
-      tickValue={t => t === sortedDomain[0] ? '' : DEFAULT_FORMAT(t)}
-      style={style.axes}
-      />);
+    return (
+      <DecorativeAxis
+        animation={animation}
+        key={`${index}-axis`}
+        axisStart={{x: 0, y: 0}}
+        axisEnd={{x: Math.cos(angle), y: Math.sin(angle)}}
+        axisDomain={sortedDomain}
+        numberOfTicks={5}
+        tickValue={t => t === sortedDomain[0] ? '' : DEFAULT_FORMAT(t)}
+        style={style.axes}
+        />
+    );
   });
 }
 
-// TODO add jsdoc
-function getLabels(domains, style) {
+/**
+ * Generate labels for the ends of the axes
+ * @param {Object} props
+ - props.domains {Array} array of object specifying the way each axis is to be plotted
+ - props.style {object} style object for just the labels
+ * @return {Array} the plotted axis components
+ */
+function getLabels(props) {
+  const {domains, style} = props;
   return domains.map((domain, index) => {
-    // TODO special handling when there is just one domain
     const angle = index / domains.length * Math.PI * 2;
     const radius = 1.2;
     return {
@@ -67,8 +83,22 @@ function getLabels(domains, style) {
   });
 }
 
-// TODO add jsdoc
-function getPolygons({domains, data, animation, style}) {
+/**
+ * Generate the actual polygons to be plotted
+ * @param {Object} props
+ - props.animation {Boolean}
+ - props.data {Array} array of object specifying what values are to be plotted
+ - props.domains {Array} array of object specifying the way each axis is to be plotted
+ - props.style {object} style object for the whole chart
+ * @return {Array} the plotted axis components
+ */
+function getPolygons(props) {
+  const {
+    animation,
+    domains,
+    data,
+    style
+  } = props;
   const scales = domains.reduce((acc, domain) => {
     acc[domain.name] = scaleLinear().domain(domain.domain).range([0, 1]);
     return acc;
@@ -83,9 +113,9 @@ function getPolygons({domains, data, animation, style}) {
       const radius = Math.max(scales[domain.name](dataPoint), 0);
       return {x: radius * Math.cos(angle), y: radius * Math.sin(angle)};
     });
-    // add className
+
     return (<PolygonSeries
-      animation
+      animation={animation}
       className={`${predefinedClassName}-polygon`}
       key={`${rowIndex}-polygon`}
       data={mappedData}
@@ -135,7 +165,7 @@ class RadarChart extends Component {
             <LabelSeries
               animation
               className={`${predefinedClassName}-label`}
-              data={getLabels(domains, style.labels)} />
+              data={getLabels({domains, style: style.labels})} />
           )
         }
       </XYPlot>
@@ -160,11 +190,10 @@ RadarChart.propTypes = {
   ]).isRequired,
   height: PropTypes.number.isRequired,
   margin: MarginPropType,
-  onValueClick: PropTypes.func,
-  onValueMouseOver: PropTypes.func,
-  onValueMouseOut: PropTypes.func,
   style: PropTypes.shape({
-    labels: PropTypes.object
+    axes: PropTypes.object,
+    labels: PropTypes.object,
+    polygons: PropTypes.object
   }),
   width: PropTypes.number.isRequired
 };

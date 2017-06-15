@@ -12,6 +12,7 @@ import SunburstSection from '../../../showcase/showcase-sections/sunburst-showca
 import RadialShowcase from '../../../showcase/showcase-sections/radial-showcase';
 import LegendsShowcase from '../../../showcase/showcase-sections/legends-showcase';
 import SankeysShowcase from '../../../showcase/showcase-sections/sankeys-showcase';
+import RadarShowcase from '../../../showcase/showcase-sections/radar-showcase';
 import TreemapShowcase from '../../../showcase/showcase-sections/treemap-showcase';
 import MiscShowcase from '../../../showcase/showcase-sections/misc-showcase';
 
@@ -85,6 +86,13 @@ export const examplePages = generatePath([
         markdown: getDocUrl('examples/showcase.md'),
         pageType: 'example',
         component: TreemapShowcase
+      }
+    }, {
+      name: 'Radar Charts',
+      content: {
+        markdown: getDocUrl('examples/showcase.md'),
+        pageType: 'example',
+        component: RadarShowcase
       }
     }, {
       name: 'Misc',
@@ -333,6 +341,14 @@ export const docPages = generatePath([
         content: {
           markdown: getDocUrl('treemap.md'),
           filename: 'treemap.md',
+          pageType: 'documentation'
+        }
+      },
+      {
+        name: 'Radar Chart',
+        content: {
+          markdown: getDocUrl('radar-chart.md'),
+          filename: 'radar-chart.md',
           pageType: 'documentation'
         }
       },
