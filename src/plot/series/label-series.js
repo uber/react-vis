@@ -92,8 +92,10 @@ LabelSeries.propTypes = {
   allowOffsetToBeReversed: PropTypes.bool,
   className: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape({
-    x: PropTypes.number.isRequired,
-    y: PropTypes.number.isRequired,
+    x: PropTypes.number,
+    y: PropTypes.number,
+    angle: PropTypes.number,
+    radius: PropTypes.number,
     label: PropTypes.string.isRequired,
     xOffset: PropTypes.number,
     yOffset: PropTypes.number,
