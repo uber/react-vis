@@ -39,7 +39,7 @@ const propTypes = {
   ...getScalePropTypesByAttribute('color'),
   width: PropTypes.number,
   height: PropTypes.number,
-  data: PropTypes.array,
+  data: PropTypes.arrayOf(PropTypes.object),
   onValueMouseOver: PropTypes.func,
   onValueMouseOut: PropTypes.func,
   onValueClick: PropTypes.func,

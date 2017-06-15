@@ -161,7 +161,13 @@ RadialChart.propTypes = {
   animation: AnimationPropType,
   className: PropTypes.string,
   colorType: PropTypes.string,
-  data: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({
+    angle: PropTypes.number.isRequired,
+    className: PropTypes.string,
+    label: PropTypes.string,
+    radius: PropTypes.number,
+    style: PropTypes.object
+  })).isRequired,
   height: PropTypes.number.isRequired,
   labelsAboveChildren: PropTypes.bool,
   margin: MarginPropType,
