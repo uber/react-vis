@@ -28,7 +28,7 @@ const RADAR_PROPS = {
 // make sure that the components render at all
 testRenderWithProps(RadialChart, RADAR_PROPS);
 
-test('RadialChart: Showcase Example - Basic Radar Chart', t => {
+test('Radar: Showcase Example - Basic Radar Chart', t => {
   const $ = mount(<BasicRadarChart />);
   t.equal($.find('.rv-radar-chart').length, 1, 'should find a radar chart');
   t.equal($.find('.rv-xy-manipulable-axis__ticks').length, 6, 'should find the right number of axes');
@@ -37,11 +37,11 @@ test('RadialChart: Showcase Example - Basic Radar Chart', t => {
   t.end();
 });
 
-test('RadialChart: Showcase Example - Animated Radial ', t => {
+test('Radar: Showcase Example - Animated Radial ', t => {
   const $ = mount(<AnimatedRadarChart />);
   t.equal($.find('.rv-radar-chart').length, 1, 'should find a radar chart');
   t.equal($.find('.rv-xy-manipulable-axis__ticks').length, 5, 'should find the right number of axes');
   t.equal($.find('.rv-radar-chart-polygon').length, 1, 'should find the right number of axes');
-  t.equal($.find('.rv-radar-chart').text(), '204060801006.97.07.07.17.12.24.46.68.811133.26.49.613164.08.0121620niceexplosionswowdogsickMoves', 'should find the right text content');
+  t.equal($.find('.rv-radar-chart').text(), '0.00020.00040.00060.00080.000100.0006.9006.9406.9807.0207.0607.1000.0002.2004.4006.6008.80011.00013.2000.0003.2006.4009.60012.80016.0000.0004.0008.00012.00016.00020.000niceexplosionswowdogsickMoves', 'should find the right text content');
   t.end();
 });

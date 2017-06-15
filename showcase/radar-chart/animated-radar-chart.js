@@ -79,6 +79,7 @@ export default class AnimatedRadar extends Component {
             bottom: 40,
             right: 50
           }}
+          tickFormat={t => Number(t).toFixed(3)}
           width={400}
           height={300} />
         <ShowcaseButton

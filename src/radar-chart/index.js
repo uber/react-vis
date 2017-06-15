@@ -39,10 +39,11 @@ const DEFAULT_FORMAT = format('.2r');
  - props.animation {Boolean}
  - props.domains {Array} array of object specifying the way each axis is to be plotted
  - props.style {object} style object for the whole chart
+ - props.tickFormat {Function} formatting function for axes
  * @return {Array} the plotted axis components
  */
 function getAxes(props) {
-  const {animation, domains, style} = props;
+  const {animation, domains, style, tickFormat} = props;
   return domains.map((domain, index) => {
     const angle = index / domains.length * Math.PI * 2;
     const sortedDomain = domain.domain.sort();
@@ -55,7 +56,8 @@ function getAxes(props) {
         axisEnd={{x: Math.cos(angle), y: Math.sin(angle)}}
         axisDomain={sortedDomain}
         numberOfTicks={5}
-        tickValue={t => t === sortedDomain[0] ? '' : DEFAULT_FORMAT(t)}
+        tickValue={t => tickFormat ? tickFormat(t) :
+            t === sortedDomain[0] ? '' : DEFAULT_FORMAT(t)}
         style={style.axes}
         />
     );
@@ -140,6 +142,7 @@ class RadarChart extends Component {
       margin,
       onMouseLeave,
       onMouseEnter,
+      tickFormat,
       style
     } = this.props;
 
@@ -154,7 +157,7 @@ class RadarChart extends Component {
         onMouseEnter={onMouseEnter}
         xDomain={[-1, 1]}
         yDomain={[-1, 1]}>
-        {getAxes({domains, animation, style})
+        {getAxes({domains, animation, style, tickFormat})
           .concat(getPolygons({
             animation,
             domains,
@@ -195,6 +198,7 @@ RadarChart.propTypes = {
     labels: PropTypes.object,
     polygons: PropTypes.object
   }),
+  tickFormat: PropTypes.func,
   width: PropTypes.number.isRequired
 };
 RadarChart.defaultProps = {
