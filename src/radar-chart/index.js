@@ -69,7 +69,7 @@ function getAxes(props) {
  * @param {Object} props
  - props.domains {Array} array of object specifying the way each axis is to be plotted
  - props.style {object} style object for just the labels
- * @return {Array} the plotted axis components
+ * @return {Array} the prepped data for the labelSeries
  */
 function getLabels(props) {
   const {domains, style} = props;
@@ -167,6 +167,7 @@ class RadarChart extends Component {
           .concat(
             <LabelSeries
               animation
+              key={className}
               className={`${predefinedClassName}-label`}
               data={getLabels({domains, style: style.labels})} />
           )
@@ -181,16 +182,14 @@ RadarChart.propTypes = {
   animation: AnimationPropType,
   className: PropTypes.string,
   colorType: PropTypes.string,
-  data: PropTypes.arrayOf([
-    PropTypes.object
-  ]).isRequired,
-  domains: PropTypes.arrayOf([
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  domains: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      domain: PropTypes.arrayOf([PropTypes.number]).isRequired,
+      domain: PropTypes.arrayOf(PropTypes.number).isRequired,
       tickFormat: PropTypes.func
     })
-  ]).isRequired,
+  ).isRequired,
   height: PropTypes.number.isRequired,
   margin: MarginPropType,
   style: PropTypes.shape({

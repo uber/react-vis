@@ -42,6 +42,6 @@ test('Radar: Showcase Example - Animated Radial ', t => {
   t.equal($.find('.rv-radar-chart').length, 1, 'should find a radar chart');
   t.equal($.find('.rv-xy-manipulable-axis__ticks').length, 5, 'should find the right number of axes');
   t.equal($.find('.rv-radar-chart-polygon').length, 1, 'should find the right number of axes');
-  t.equal($.find('.rv-radar-chart').text(), '0.00020.00040.00060.00080.000100.0006.9006.9406.9807.0207.0607.1000.0002.2004.4006.6008.80011.00013.2000.0003.2006.4009.60012.80016.0000.0004.0008.00012.00016.00020.000niceexplosionswowdogsickMoves', 'should find the right text content');
+  t.equal($.find('.rv-radar-chart').text(), 'niceexplosionswowdogsickMoves', 'should find the right text content');
   t.end();
 });
