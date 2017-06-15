@@ -355,15 +355,38 @@ function _computeScaleDistance(values, domain, bestDistIndex, scaleFn) {
 }
 
 /**
+ * Normilize array of values with a single value.
+ * @param {Array} arr Array of data.
+ * @param {Array} values Array of values.
+ * @param {string} attr Attribute.
+ * @param {string} type Type.
+ * @private
+ */
+function _normalizeValues(data, values, attr, type) {
+  if (type === TIME_SCALE_TYPE && values.length === 1) {
+    const attr0 = data[0][`${attr}0`];
+
+    return [attr0, ...values];
+  }
+
+  return values;
+}
+
+/**
  * Get the distance, the smallest and the largest value of the domain.
  * @param {Array} data Array of data for the single series.
  * @param {Object} scaleObject Scale object.
- * @returns {{domain0: number, domainN: number, distance: number}} Resuylt.
+ * @returns {{domain0: number, domainN: number, distance: number}} Result.
  * @private
  */
 export function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
-  const {attr, domain} = scaleObject;
-  const values = getUniquePropertyValues(data, attr);
+  const {attr, domain, type} = scaleObject;
+
+  const uniqueValues = getUniquePropertyValues(data, attr);
+
+  // Fix time scale if a data has only one value.
+  const values = _normalizeValues(data, uniqueValues, attr, type);
+
   const index = _getSmallestDistanceIndex(values, scaleObject);
 
   const adjustedDomain = [].concat(domain);
@@ -371,7 +394,7 @@ export function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
   adjustedDomain[0] -= _computeLeftDomainAdjustment(values);
   adjustedDomain[domain.length - 1] += _computeRightDomainAdjustment(values);
   // Fix log scale if it's too small.
-  if (scaleObject.type === LOG_SCALE_TYPE && domain[0] <= 0) {
+  if (type === LOG_SCALE_TYPE && domain[0] <= 0) {
     adjustedDomain[0] = Math.min(domain[1] / 10, 1);
   }
 
