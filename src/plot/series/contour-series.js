@@ -55,7 +55,7 @@ class ContourSeries extends AbstractSeries {
       style
     } = this.props;
 
-    if (!data) {
+    if (!data || !innerWidth || !innerHeight) {
       return null;
     }
 
@@ -69,6 +69,7 @@ class ContourSeries extends AbstractSeries {
 
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
+
     const contouredData = contourDensity()
       .x(d => x(d))
       .y(d => y(d))
@@ -86,6 +87,7 @@ class ContourSeries extends AbstractSeries {
         {contouredData.map(polygon => {
           return (
             <path
+              className="rv-xy-plot__series--contour-line"
               d={geo(polygon)}
               style={{
                 fill: colorScale(polygon.value),
