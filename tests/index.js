@@ -45,6 +45,7 @@ import './components/line-series-tests';
 import './components/mark-series-tests';
 import './components/polygon-series-tests';
 import './components/radial-tests';
+import './components/radar-chart-tests';
 import './components/rect-series-tests';
 import './components/treemap-tests';
 import './components/sankey-tests';

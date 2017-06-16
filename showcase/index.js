@@ -76,6 +76,9 @@ import DonutChartExample from './radial-chart/donut-chart';
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
 import ArcSeriesExample from './radial-chart/arc-series-example';
 
+import BasicRadarChart from './radar-chart/basic-radar-chart';
+import AnimatedRadarChart from './radar-chart/animated-radar-chart';
+
 import BasicSunburst from './sunbursts/basic-sunburst';
 import ClockExample from './sunbursts/clock-example';
 import AnimatedSunburst from './sunbursts/animated-sunburst';
@@ -142,6 +145,9 @@ export const showCase = {
   DonutChartExample,
   CustomRadiusRadialChart,
   ArcSeriesExample,
+
+  AnimatedRadarChart,
+  BasicRadarChart,
 
   BasicSankeyExample,
   VoronoiSankeyExample,

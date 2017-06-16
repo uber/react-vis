@@ -3,6 +3,7 @@ import AxesShowcase from './showcase-sections/axes-showcase';
 import PlotsShowcase from './showcase-sections/plots-showcase';
 import SunburstSection from './showcase-sections/sunburst-showcase';
 import RadialShowcase from './showcase-sections/radial-showcase';
+import RadarShowcase from './showcase-sections/radar-showcase';
 import LegendsShowcase from './showcase-sections/legends-showcase';
 import SankeysShowcase from './showcase-sections/sankeys-showcase';
 import TreemapShowcase from './showcase-sections/treemap-showcase';
@@ -23,6 +24,7 @@ class App extends Component {
               <li><a href="#plots">Plots</a></li>
               <li><a href="#axes">Axes</a></li>
               <li><a href="#radial-charts">Radial Charts</a></li>
+              <li><a href="#radar-charts">Radar Charts</a></li>
               <li><a href="#treemaps">Treemaps</a></li>
               <li><a href="#legends">Legends</a></li>
               <li><a href="#sunbursts">Sunbursts</a></li>
@@ -35,6 +37,7 @@ class App extends Component {
         <AxesShowcase />
         <MiscShowcase />
         <RadialShowcase />
+        <RadarShowcase />
         <TreemapShowcase />
         <SunburstSection />
         <LegendsShowcase />

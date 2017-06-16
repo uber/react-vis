@@ -72,12 +72,12 @@ test('axis-utils #generatePoints', t => {
   });
   const expectedResult = {
     points: [
-      {text: 10, x: 1, y: 0},
-      {text: 28, x: 1, y: 0.2},
-      {text: 46, x: 1, y: 0.4},
-      {text: 64, x: 1, y: 0.6000000000000001},
-      {text: 82, x: 1, y: 0.8},
-      {text: 100, x: 1, y: 1}
+      {text: 10, y: 1, x: 0},
+      {text: 28, y: 1, x: 0.2},
+      {text: 46, y: 1, x: 0.4},
+      {text: 64, y: 1, x: 0.6000000000000001},
+      {text: 82, y: 1, x: 0.8},
+      {text: 100, y: 1, x: 1}
     ],
     slope: -0
   };

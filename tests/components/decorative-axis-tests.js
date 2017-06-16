@@ -25,7 +25,7 @@ test('DecorativeAxis: Showcase Example - DecorativeAxisCrissCross', t => {
 test('DecorativeAxis: Showcase Example - ParallelCoordinatesExample', t => {
   const $ = mount(<ParallelCoordinatesExample />);
   t.equal($.text(),
-    '0.04.79.314192328333742473.03.54.04.55.05.56.06.57.07.58.0460420380340300260220180150110680.023466992120140160180210230160020002300270030003400370041004400480051002523212018161513119.78.07071727475767778808182',
+    '0.04.79.314192328333742473.03.54.04.55.05.56.06.57.07.58.0681101501802202603003403804204600.023466992120140160180210230160020002300270030003400370041004400480051008.09.71113151618202123257071727475767778808182',
     'should find the right text content');
   t.equal($.find('.rv-xy-manipulable-axis').length, 7, 'should find the number of axes');
   t.equal($.find('.rv-xy-plot__axis__tick__line').length, 77, 'should find the number of axis ticks');

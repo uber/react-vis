@@ -24,6 +24,7 @@ import PropTypes from 'prop-types';
 
 import AbstractSeries from 'plot/series/abstract-series';
 import DecorativeAxisTicks from './decorative-axis-ticks';
+import Animation from 'animation';
 
 const predefinedClassName = 'rv-xy-manipulable-axis rv-xy-plot__axis';
 
@@ -59,7 +60,7 @@ class DecorativeAxis extends AbstractSeries {
 
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
-    // TODO ADD MORE OPTION CONTROLS FOR AXIS
+
     return (
       <g className={`${predefinedClassName} ${className}`}
          ref="container"

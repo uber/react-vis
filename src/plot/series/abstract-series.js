@@ -58,6 +58,21 @@ const defaultProps = {
 };
 
 class AbstractSeries extends PureComponent {
+  /**
+   * Tells the rest of the world that it requires SVG to work.
+   * @returns {boolean} Result.
+   */
+  static get requiresSVG() {
+    return true;
+  }
+
+  /**
+   * Get a default config for the parent.
+   * @returns {Object} Empty config.
+   */
+  static getParentConfig() {
+    return {};
+  }
 
   constructor(props) {
     super(props);
@@ -151,22 +166,6 @@ class AbstractSeries extends PureComponent {
     if (onSeriesClick) {
       onSeriesClick({event});
     }
-  }
-
-  /**
-   * Tells the rest of the world that it requires SVG to work.
-   * @returns {boolean} Result.
-   */
-  static get requiresSVG() {
-    return true;
-  }
-
-  /**
-   * Get a default config for the parent.
-   * @returns {Object} Empty config.
-   */
-  static getParentConfig() {
-    return {};
   }
 
   /**
