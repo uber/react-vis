@@ -110,15 +110,15 @@ Type: `function(d, {event})`
 Type: `function(d, {event})`  
 `click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
 
-#### onSerieseMouseOver (optional)
+#### onSeriesMouseOver (optional)
 Type: `function(d, {event})`  
 `mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
 
-#### onSerieseMouseOut (optional)
+#### onSeriesMouseOut (optional)
 Type: `function(d, {event})`  
 `mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
 
-#### onSerieseClick (optional)
+#### onSeriesClick (optional)
 Type: `function(d, {event})`  
 `click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
 

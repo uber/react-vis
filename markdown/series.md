@@ -6,9 +6,12 @@ The library supports several types of series:
 * `AreaSeries` for area charts;
 * [MarkSeries](mark-series.md) for scatterplots;
 * [LineMarkSeries](line-series.md) is a shorthand to place marks (e.g. circles) on lines;
-* `VerticalBarSeries` for vertical bar charts;
-* `HorizontalBarSeries` for horizontal bar charts;
-* `HeatmapSeries` for heat maps.
+* [VerticalBarSeries](bar-series.md) for vertical bar charts;
+* [HorizontalBarSeries](bar-series.md) for horizontal bar charts;
+* [HeatmapSeries](heatmap-series.md) for heat maps.
+* [ArcSeries](arc-series.md) for radial arcs such as might be found in pie charts.
+* [PolygonSeries](polygon-series.md) for arbitrary SVG shapes
+* [LabelSeries](label-series.md) for adding annotations to charts
 
 Each series provides following API:
 
@@ -84,7 +87,7 @@ An object which holds CSS properties that will be applied to the SVG element(s) 
   style={{strokeLinejoin: "round"}}
 />
 ```
-LineMark series is a composite series, and as such, it's possible to separate style instructions for the line and the mark part by putting them under a "line" and a "mark" property respectively: 
+LineMark series is a composite series, and as such, it's possible to separate style instructions for the line and the mark part by putting them under a "line" and a "mark" property respectively:
 
 ```jsx
 <LineMarkSeries
