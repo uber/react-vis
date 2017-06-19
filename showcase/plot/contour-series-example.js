@@ -62,12 +62,7 @@ export default class ContourSeriesExample extends Component {
             ]}
             data={data}/>
           <MarkSeries animation data={data} size={1} color={'#125C77'}/>
-          <Borders style={{
-            bottom: {fill: '#fff'},
-            left: {fill: '#fff'},
-            right: {fill: '#fff'},
-            top: {fill: '#fff'}
-          }}/>
+          <Borders style={{all: {fill: '#fff'}}}/>
           <XAxis />
           <YAxis />
 
