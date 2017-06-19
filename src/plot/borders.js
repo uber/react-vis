@@ -62,14 +62,34 @@ class Borders extends PureComponent {
     const width = innerWidth + marginLeft + marginRight;
     return (
       <g className={`${CLASSES.container} ${className}`}>
-        <rect className={`${CLASSES.bottom} ${className}-bottom`} style={style.bottom}
-          x={0} y={height - marginBottom} width={width} height={marginBottom} />
-        <rect className={`${CLASSES.left} ${className}-left`} style={style.left}
-          x={0} y={0} width={marginLeft} height={height} />
-        <rect className={`${CLASSES.right} ${className}-right`} style={style.right}
-          x={width - marginRight} y={0} width={marginRight} height={height} />
-        <rect className={`${CLASSES.top} ${className}-top`} style={style.top}
-          x={0} y={0} width={width} height={marginTop} />
+        <rect
+          className={`${CLASSES.bottom} ${className}-bottom`}
+          style={{...style.all, ...style.bottom}}
+          x={0}
+          y={height - marginBottom}
+          width={width}
+          height={marginBottom} />
+        <rect
+          className={`${CLASSES.left} ${className}-left`}
+          style={{...style.all, ...style.left}}
+          x={0}
+          y={0}
+          width={marginLeft}
+          height={height} />
+        <rect
+          className={`${CLASSES.right} ${className}-right`}
+          style={{...style.all, ...style.right}}
+          x={width - marginRight}
+          y={0}
+          width={marginRight}
+          height={height} />
+        <rect
+          className={`${CLASSES.top} ${className}-top`}
+          style={{...style.all, ...style.top}}
+          x={0}
+          y={0}
+          width={width}
+          height={marginTop} />
       </g>
     );
   }
@@ -78,6 +98,7 @@ class Borders extends PureComponent {
 Borders.displayName = 'Borders';
 Borders.defaultProps = {
   style: {
+    all: {},
     bottom: {},
     left: {},
     right: {},

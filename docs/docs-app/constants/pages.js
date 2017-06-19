@@ -322,6 +322,13 @@ export const docPages = generatePath([
           filename: 'label-series.md',
           pageType: 'documentation'
         }
+      }, {
+        name: 'Contour Series',
+        content: {
+          markdown: getDocUrl('contour-series.md'),
+          filename: 'contour-series.md',
+          pageType: 'documentation'
+        }
       }
     ]
   },

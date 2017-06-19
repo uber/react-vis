@@ -36,6 +36,7 @@ export RectSeriesCanvas from 'plot/series/rect-series-canvas';
 export MarkSeries from 'plot/series/mark-series';
 export MarkSeriesCanvas from 'plot/series/mark-series-canvas';
 export HeatmapSeries from 'plot/series/heatmap-series';
+export ContourSeries from 'plot/series/contour-series';
 export AreaSeries from 'plot/series/area-series';
 export ArcSeries from 'plot/series/arc-series';
 export LineMarkSeries from 'plot/series/line-mark-series';

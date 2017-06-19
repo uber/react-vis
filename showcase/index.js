@@ -35,6 +35,7 @@ import ScatterplotChart from './plot/scatterplot';
 import FauxScatterplotChart from './plot/faux-radial-scatterplot';
 import ScatterplotCanvas from './plot/scatterplot-canvas';
 import HeatmapChart from './plot/heatmap-chart';
+import ContourSeriesExample from './plot/contour-series-example';
 import WidthHeightMarginChart from './plot/width-height-margin';
 import CustomScales from './plot/custom-scales';
 import AxisWithTurnedLabels from './plot/axis-with-turned-labels';
@@ -108,6 +109,7 @@ export const showCase = {
   ScatterplotChart,
   ScatterplotCanvas,
   HeatmapChart,
+  ContourSeriesExample,
   WidthHeightMarginChart,
   CustomScales,
   CustomAxesOrientation,

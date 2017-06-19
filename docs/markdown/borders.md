@@ -51,4 +51,11 @@ You can pass a style object to your Hint component to apply your own styles. See
 }}/>
 ```
 
-Because border its made up of four individual rectangular components (there being four borders on an XYPlot) it is advisable to specify styles for all four rectangles. This can be done using either the style object or css-classes.
+Because border its made up of four individual rectangular components (there being four borders on an XYPlot) it is advisable to specify styles for all four rectangles. This can be done using either the style object or css-classes. Alternatively, if all the borders should be treated the same, this can be achieved by supplying an all object to style. This can be then over-ridden:
+
+```jsx
+<Borders style={{
+  all: {fill: '#fff'}
+  bottom: {fill: '#0f0'}
+}}/>
+```
