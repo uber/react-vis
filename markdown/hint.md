@@ -26,7 +26,7 @@ The different parts are: content, row, title, value. To style a specific part, y
   text: {
     display: 'none'
   },
-  value {
+  value: {
     color: 'red'
   }
 }}/>

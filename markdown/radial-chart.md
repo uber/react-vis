@@ -36,7 +36,7 @@ Or as complex as
   {angle: 2, label: 'Super Custom label', subLabel: 'With annotation', radius: 20},
   {angle: 5, radius: 5, label: 'Alt Label'},
   {angle: 3, radius: 14},
-  {angle: 5, radius: 12, subLabel: 'Sub Label only'}
+  {angle: 5, radius: 12, subLabel: 'Sub Label only', className: 'custom-class'}
 ];
 
 #### angle
@@ -44,15 +44,15 @@ Type: `number`
 The only required property for the data, this determines the angular size of each wedge.
 
 #### radius
-Type: `number`  
+Type: `number`
 The distance between the origin and the outside of the arc. This values is scaled linearly by default
 
 #### label
-Type: `string`  
+Type: `string`
 The label to show next to the wedge.
 
 #### subLabel
-Type: `string`  
+Type: `string`
 The subLabel to show next to the wedge. This can be used for annotations to the top label.
 
 #### color (optional)
@@ -62,6 +62,10 @@ The color of a box in the series. By default the color is interpreted as number 
 #### style (optional)
 Type: `object`
 SVG paths (which is what the arc series is made up of) have numerous manipulable properties, so rather than trying to prescribe all of them as props we offer a port to let you style it for yourself. This overrides the series level version of this property.
+
+#### className (optional)
+Type: `string`
+The className to be added to an individual arc in the series.
 
 ## Api
 
@@ -76,7 +80,7 @@ Please refer to [Animation](animation.md) doc for more information.
 
 ##### className (optional)
 
-Type: `string`  
+Type: `string`
 DOM classNames to be added to the wrapper component.
 
 ##### colorDomain, colorRange, colorType
