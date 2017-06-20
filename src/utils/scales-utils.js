@@ -111,7 +111,7 @@ const SCALE_FUNCTIONS = {
  * @private
  */
 export function _getSmallestDistanceIndex(values, scaleObject) {
-  const scaleFn = _getScaleFnFromScaleObject(scaleObject);
+  const scaleFn = getScaleFnFromScaleObject(scaleObject);
   let result = 0;
   if (scaleFn) {
     let nextValue;
@@ -142,7 +142,7 @@ export function _getSmallestDistanceIndex(values, scaleObject) {
  * @returns {*} Scale function.
  * @private
  */
-export function _getScaleFnFromScaleObject(scaleObject) {
+export function getScaleFnFromScaleObject(scaleObject) {
   if (!scaleObject) {
     return null;
   }
@@ -150,6 +150,9 @@ export function _getScaleFnFromScaleObject(scaleObject) {
   const modDomain = domain[0] === domain[1] ?
     (domain[0] === 0 ? [-1, 0] : [-domain[0], domain[0]]) :
     domain;
+  if (type === LITERAL_SCALE_TYPE) {
+    return literalScale(range[0]);
+  }
   const scale = SCALE_FUNCTIONS[type]().domain(modDomain).range(range);
   if (type === ORDINAL_SCALE_TYPE) {
     scale.padding(0.5);
@@ -205,9 +208,9 @@ export function getDomainByAttr(allData, attr, type) {
  * @private
  */
 function _createScaleObjectForValue(attr, value, type) {
-  if (type === 'literal') {
+  if (type === LITERAL_SCALE_TYPE) {
     return {
-      type: 'literal',
+      type: LITERAL_SCALE_TYPE,
       domain: [],
       range: [value],
       distance: 0,
@@ -220,7 +223,7 @@ function _createScaleObjectForValue(attr, value, type) {
     return null;
   }
   return {
-    type: 'category',
+    type: CATEGORY_SCALE_TYPE,
     range: [value],
     domain: [],
     distance: 0,
@@ -375,7 +378,7 @@ export function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
     adjustedDomain[0] = Math.min(domain[1] / 10, 1);
   }
 
-  const adjustedScaleFn = _getScaleFnFromScaleObject({
+  const adjustedScaleFn = getScaleFnFromScaleObject({
     ...scaleObject,
     domain: adjustedDomain
   });
@@ -465,7 +468,7 @@ function _adjustContinuousScale(props, scaleObject) {
  * @private
  */
 export function _adjustCategoricalScale(scaleObject) {
-  const scaleFn = _getScaleFnFromScaleObject(scaleObject);
+  const scaleFn = getScaleFnFromScaleObject(scaleObject);
   const {domain, range} = scaleObject;
   if (domain.length > 1) {
     scaleObject.distance = Math.abs(scaleFn(domain[1]) - scaleFn(domain[0]));
@@ -514,7 +517,7 @@ export function getScaleObjectFromProps(props, attr) {
  */
 export function getAttributeScale(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
-  return _getScaleFnFromScaleObject(scaleObject);
+  return getScaleFnFromScaleObject(scaleObject);
 }
 
 /**
@@ -559,7 +562,7 @@ function _padDomain(domain, padding) {
 export function getAttributeFunctor(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
   if (scaleObject) {
-    const scaleFn = _getScaleFnFromScaleObject(scaleObject);
+    const scaleFn = getScaleFnFromScaleObject(scaleObject);
     return d => scaleFn(_getAttrValue(d, attr));
   }
   return null;
@@ -579,7 +582,7 @@ export function getAttr0Functor(props, attr) {
     const attr0 = `${attr}0`;
     const {domain} = scaleObject;
     const {baseValue = domain[0]} = scaleObject;
-    const scaleFn = _getScaleFnFromScaleObject(scaleObject);
+    const scaleFn = getScaleFnFromScaleObject(scaleObject);
     return d => {
       const value = _getAttrValue(d, attr0);
       return scaleFn(_isDefined(value) ? value : baseValue);
@@ -678,8 +681,11 @@ export function getMissingScaleProps(props, data, attributes) {
  * Return a d3 scale that returns the literal value that was given to it
  * @returns {function} literal scale.
  */
-export function literalScale() {
+export function literalScale(defaultValue) {
   function scale(d) {
+    if (d === undefined) {
+      return defaultValue;
+    }
     return d;
   }
 

@@ -29,7 +29,7 @@ import {
   getAttributeValue,
   getFontColorFromBackground,
   _getSmallestDistanceIndex,
-  _getScaleFnFromScaleObject,
+  getScaleFnFromScaleObject,
   _getScaleDistanceAndAdjustedDomain,
   extractScalePropsFromProps,
   getMissingScaleProps,
@@ -96,6 +96,9 @@ test('scales-utils #getAttributeFunctor', t => {
   t.ok(
     result({x: Math.random()}) === _xValue,
     `No props: Fallback value ${_xValue} should be returned by the produced functor`
+  );
+  t.equal(result({}), _xValue,
+    'value from the props is used as default value if no argument passed to functor'
   );
   // with props
   result = getAttributeFunctor({xRange, xDomain}, 'x');
@@ -271,14 +274,14 @@ test('scales-utils #getMissingScaleProps', t => {
 });
 
 test('scales-utils #literalScale', t => {
-  const s = literalScale();
+  const s = literalScale(5);
 
   t.equal(s(0.5), 0.5, 'acts as the identity');
   t.equal(s(1), 1, 'acts as the identity');
   t.equal(s(1.5), 1.5, 'acts as the identity');
   t.equal(s(2), 2, 'acts as the identity');
   t.equal(s(2.5), 2.5, 'acts as the identity');
-
+  t.equal(s(), 5, 'accepts a default value');
   t.equal(s('2'), '2', 'does NOT coerce input to a number');
 
   t.end();
@@ -292,20 +295,30 @@ test('scales-utils #getFontColorFromBackground', t => {
   t.end();
 });
 
-test('scales-utils #_getScaleFnFromScaleObject', t => {
-  t.equal(_getScaleFnFromScaleObject(), null, 'should recieve null for undefined');
-  const linearScale = _getScaleFnFromScaleObject({
+test('scales-utils #getScaleFnFromScaleObject', t => {
+  t.equal(getScaleFnFromScaleObject(), null, 'should recieve null for undefined');
+  const linearScale = getScaleFnFromScaleObject({
     type: 'linear',
     domain: [0, 1],
     range: [1, 0]
   });
+
+  const literalScaleWithDefaultValue = getScaleFnFromScaleObject({
+    type: 'literal',
+    domain: [],
+    range: [5]
+  });
+
   t.deepEqual(linearScale.domain(), [0, 1], 'should set the domain correctly');
   t.deepEqual(linearScale.range(), [1, 0], 'should set the range correctly');
 
-  const modScaleWithZero = _getScaleFnFromScaleObject({type: 'linear', domain: [0, 0], range: [1, 0]});
+  t.deepEqual(literalScaleWithDefaultValue(), 5, 'literal scale should handle default values');
+  t.deepEqual(literalScaleWithDefaultValue(2), 2, 'literal scale should work as such with argument');
+
+  const modScaleWithZero = getScaleFnFromScaleObject({type: 'linear', domain: [0, 0], range: [1, 0]});
   t.deepEqual(modScaleWithZero.domain(), [-1, 0], 'should build a generic domain about zero if the domain is closed');
 
-  const modScale = _getScaleFnFromScaleObject({type: 'linear', domain: [1, 1], range: [1, 0]});
+  const modScale = getScaleFnFromScaleObject({type: 'linear', domain: [1, 1], range: [1, 0]});
   t.deepEqual(modScale.domain(), [-1, 1], 'should build a generic domain that reflects about zero');
   t.end();
 });

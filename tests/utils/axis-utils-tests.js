@@ -38,7 +38,7 @@ test('axis-utils #getTicksTotalFromSize', t => {
 
 test('axis-utils #getTickValues', t => {
   const scale = scaleLinear().domain([0, 1]).range(['red', 'blue']);
-  t.deepEqual(getTickValues(scale, 10, false),
+  t.deepEqual(getTickValues(scale, 10, false).map(d => Math.round(d * 1000) / 1000),
     [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
     'should find the correct tick values');
 
