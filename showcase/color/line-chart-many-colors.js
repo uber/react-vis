@@ -19,56 +19,42 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import ShowcaseButton from '../showcase-components/showcase-button';
+
 import {
   XYPlot,
   XAxis,
   YAxis,
-  VerticalGridLines,
   HorizontalGridLines,
-  VerticalBarSeries,
-  VerticalBarSeriesCanvas
+  VerticalGridLines,
+  LineSeries
 } from 'index';
 
-export default class Example extends React.Component {
-  state = {
-    useCanvas: false
-  }
+const data = [];
 
+for (let i = 0; i < 20; i++) {
+  const series = [];
+  for (let j = 0; j < 100; j++) {
+    series.push({x: j, y: (i / 10 + 1) * Math.sin(Math.PI * (i + j) / 50)});
+  }
+  data.push({color: i, key: i, data: series, opacity: 0.8});
+}
+
+export default class Example extends React.Component {
   render() {
-    const {useCanvas} = this.state;
-    const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
-    const BarSeries = useCanvas ? VerticalBarSeriesCanvas : VerticalBarSeries;
     return (
-      <div>
-        <ShowcaseButton
-          onClick={() => this.setState({useCanvas: !useCanvas})}
-          buttonContent={content}/>
-        <XYPlot
-          xType="ordinal"
-          width={300}
-          height={300}
-          xDistance={100}
-          >
-          <VerticalGridLines />
-          <HorizontalGridLines />
-          <XAxis />
-          <YAxis />
-          <BarSeries
-            className="vertical-bar-series-example"
-            data={[
-              {x: 'A', y: 10},
-              {x: 'B', y: 5},
-              {x: 'C', y: 15}
-            ]}/>
-          <BarSeries
-            data={[
-              {x: 'A', y: 12},
-              {x: 'B', y: 2},
-              {x: 'C', y: 11}
-            ]}/>
-        </XYPlot>
-      </div>
+      <XYPlot
+        width={300}
+        height={300}
+        colorType="linear"
+        colorDomain={[0, 9]}
+        colorRange={['yellow', 'orange']}
+        >
+        <HorizontalGridLines />
+        <VerticalGridLines />
+        <XAxis />
+        <YAxis />
+        {data.map(props => <LineSeries {...props}/>)}
+      </XYPlot>
     );
   }
 }

@@ -100,6 +100,20 @@ const SCALE_FUNCTIONS = {
   [TIME_SCALE_TYPE]: scaleTime,
   [TIME_UTC_SCALE_TYPE]: scaleUtc
 };
+
+/**
+ * Attrs for which a scale can be set up at XYPlot level
+ * @type {Array}
+ * @const
+ */
+
+const XYPLOT_ATTR = [
+  'color',
+  'fill',
+  'opacity',
+  'stroke'
+];
+
 /**
  * Find the smallest distance between the values on a given scale and return
  * the index of the element, where the smallest distance was found.
@@ -279,7 +293,8 @@ function _collectScaleObjectFromProps(props, attr) {
 
   // Return value-based scale if the value is assigned.
   if (!noFallBack && typeof value !== 'undefined') {
-    return _createScaleObjectForValue(attr, value, props[`${attr}Type`]);
+    return _createScaleObjectForValue(
+      attr, value, props[`${attr}Type`]);
   }
 
   // Pick up the domain from the properties and create a new one if it's not
@@ -601,11 +616,11 @@ export function getAttr0Functor(props, attr) {
 export function getAttributeValue(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
   if (scaleObject) {
-    if (!scaleObject.isValue) {
+    if (!scaleObject.isValue && props[`_${attr}Value`] === undefined) {
       warning(`[React-vis] Cannot use data defined ${attr} for this ` +
         'series type. Using fallback value instead.');
     }
-    return scaleObject.range[0];
+    return props[`_${attr}Value`] || scaleObject.range[0];
   }
   return null;
 }
@@ -708,6 +723,44 @@ export function getFontColorFromBackground(background) {
   return null;
 }
 
+/**
+ * Creates fallback values for series from scales defined at XYPlot level.
+ * @param {Object} props Props of the XYPlot object.
+ * @param {Array<Object>} children Array of components, children of XYPlot
+ * @returns {Array<Object>} Collected props.
+ */
+
+export function getXYPlotValues(props, children) {
+  const XYPlotScales = XYPLOT_ATTR.reduce((prev, attr) => {
+    const {
+      [`${attr}Domain`]: domain,
+      [`${attr}Range`]: range,
+      [`${attr}Type`]: type
+     } = props;
+
+    if (domain && range && type) {
+      return {...prev,
+        [attr]: SCALE_FUNCTIONS[type]().domain(domain).range(range)
+      };
+    }
+    return prev;
+  }, {});
+
+  return children.map(child =>
+    XYPLOT_ATTR.reduce((prev, attr) => {
+      if (child.props && child.props[attr] !== undefined) {
+        const scaleInput = child.props[attr];
+        const scale = XYPlotScales[attr];
+        const fallbackValue = scale ? scale(scaleInput) : scaleInput;
+        return {...prev,
+          [`_${attr}Value`]: fallbackValue
+        };
+      }
+      return prev;
+    }, {})
+  );
+}
+
 export default {
   extractScalePropsFromProps,
   getAttributeScale,
@@ -719,5 +772,6 @@ export default {
   getMissingScaleProps,
   getScaleObjectFromProps,
   getScalePropTypesByAttribute,
+  getXYPlotValues,
   literalScale
 };

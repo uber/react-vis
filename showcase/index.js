@@ -20,6 +20,7 @@
 
 import ComplexChart from './plot/complex-chart';
 import LineChart from './plot/line-chart';
+import LineChartManyColors from './color/line-chart-many-colors';
 import LineChartCanvas from './plot/line-chart-canvas';
 import LineChartWithStyle from './plot/line-chart-with-style';
 import LineMarkChart from './plot/linemark-chart';
@@ -93,6 +94,7 @@ import TreemapExample from './treemap/dynamic-treemap';
 export const showCase = {
   ComplexChart,
   LineChart,
+  LineChartManyColors,
   LineChartCanvas,
   LineChartWithStyle,
   LineMarkChart,

@@ -6,6 +6,7 @@ import LineSeries from 'plot/series/line-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import LineChart from '../../showcase/plot/line-chart';
 import LineMarkSeries from '../../showcase/plot/linemark-chart';
+import LineChartManyColors from '../../showcase/color/line-chart-many-colors';
 
 testRenderWithProps(LineSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
@@ -18,6 +19,14 @@ const LINE_PROPS = {
     {x: 3, y: 10, y0: 9}
   ]
 };
+
+const LINE_WITH_MANY_COLORS_COLORS = ['rgb(255, 255, 0)', 'rgb(255, 245, 0)', 'rgb(255, 235, 0)',
+  'rgb(255, 225, 0)', 'rgb(255, 215, 0)', 'rgb(255, 205, 0)', 'rgb(255, 195, 0)',
+  'rgb(255, 185, 0)', 'rgb(255, 175, 0)', 'rgb(255, 165, 0)', 'rgb(255, 155, 0)',
+  'rgb(255, 145, 0)', 'rgb(255, 135, 0)', 'rgb(255, 125, 0)', 'rgb(255, 115, 0)',
+  'rgb(255, 105, 0)', 'rgb(255, 95, 0)', 'rgb(255, 85, 0)', 'rgb(255, 75, 0)',
+  'rgb(255, 65, 0)'
+];
 
 test('LineSeries: basic rendering', t => {
   const $ = mount(
@@ -38,7 +47,7 @@ test('LineSeries: basic rendering', t => {
 
 test('LineSeries: Showcase Example - LineChart', t => {
   const $ = mount(<LineChart />);
-  t.equal($.text(), '1.01.52.02.53.03.54.0X Axis2468101214Y Axis', 'should fine the right text content');
+  t.equal($.text(), '1.01.52.02.53.03.54.0X Axis2468101214Y Axis', 'should find the right text content');
   t.equal($.find('.rv-xy-plot__series--line').length, 3, 'should find the right number of series');
 
   ['first-series', 'third-series', 'fourth-series'].forEach(customClassName => {
@@ -52,7 +61,7 @@ test('LineSeries: Showcase Example - LineChart', t => {
 
 test('LineSeries: Showcase Example - LineMarkSeries', t => {
   const $ = mount(<LineMarkSeries />);
-  t.equal($.text(), '1.01.52.02.53.0510152025', 'should fine the right text content');
+  t.equal($.text(), '1.01.52.02.53.0510152025', 'should find the right text content');
   t.equal($.find('.rv-xy-plot__series--linemark').length, 2, 'should find the right number of series');
   t.equal($.find('.rv-xy-plot__series circle').length, 6, 'should find the right number of marks');
 
@@ -60,6 +69,17 @@ test('LineSeries: Showcase Example - LineMarkSeries', t => {
     t.equal($.find(`.${customClassName}`).length, 2,
     `should find the right number of series with the custom class name: ${customClassName}`);
   });
+  t.end();
+});
+
+test('LineSeries: Showcase Example - LineChartManyColors', t => {
+  const $ = mount(<LineChartManyColors />);
+  const lines = $.find('.rv-xy-plot__series');
+  t.equal(lines.length, 20, 'line with many colors has 20 series');
+  lines.forEach((node, i) => t.equal(node.props().style.stroke,
+    LINE_WITH_MANY_COLORS_COLORS[i],
+    `${i}th line series gets the right color`)
+  );
   t.end();
 });
 

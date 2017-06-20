@@ -22,11 +22,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import equal from 'deep-equal';
 
-import {extractScalePropsFromProps, getMissingScaleProps} from 'utils/scales-utils';
+import {extractScalePropsFromProps, getMissingScaleProps, getXYPlotValues} from 'utils/scales-utils';
 import {getStackedData, getSeriesChildren, getSeriesPropsFromChildren} from 'utils/series-utils';
 import {getInnerDimensions, MarginPropType} from 'utils/chart-utils';
 import {AnimationPropType} from 'animation';
-import {CONTINUOUS_COLOR_RANGE, SIZE_RANGE, OPACITY_TYPE} from 'theme';
+import {
+  CONTINUOUS_COLOR_RANGE,
+  EXTENDED_DISCRETE_COLOR_RANGE,
+  SIZE_RANGE,
+  OPACITY_TYPE
+} from 'theme';
 
 import CanvasWrapper from './series/canvas-wrapper';
 
@@ -211,10 +216,17 @@ class XYPlot extends React.Component {
       props,
       DEFAULT_MARGINS
     );
+
+    const colorRanges = ['color', 'fill', 'stroke'].reduce((acc, attr) => {
+      const range = props[`${attr}Type`] === 'category' ?
+        EXTENDED_DISCRETE_COLOR_RANGE : CONTINUOUS_COLOR_RANGE;
+      return {...acc, [`${attr}Range`]: range};
+    }, {});
+
     return {
       xRange: [0, innerWidth],
       yRange: [innerHeight, 0],
-      colorRange: CONTINUOUS_COLOR_RANGE,
+      ...colorRanges,
       opacityType: OPACITY_TYPE,
       sizeRange: SIZE_RANGE
     };
@@ -310,11 +322,13 @@ class XYPlot extends React.Component {
    * @private
    */
   _getClonedChildComponents() {
+    const props = this.props;
     const {animation} = this.props;
     const {scaleMixins, data} = this.state;
     const dimensions = getInnerDimensions(this.props, DEFAULT_MARGINS);
     const children = React.Children.toArray(this.props.children);
     const seriesProps = getSeriesPropsFromChildren(children);
+    const XYPlotValues = getXYPlotValues(props, children);
     return children.map((child, index) => {
       let dataProps = null;
       if (seriesProps[index]) {
@@ -323,12 +337,14 @@ class XYPlot extends React.Component {
         const {seriesIndex} = seriesProps[index];
         dataProps = {data: data[seriesIndex]};
       }
+
       return React.cloneElement(child, {
         ...dimensions,
         animation,
         ...seriesProps[index],
         ...scaleMixins,
         ...child.props,
+        ...XYPlotValues[index],
         ...dataProps
       });
     });

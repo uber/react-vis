@@ -28,6 +28,7 @@ import {
   getAttributeScale,
   getAttributeValue,
   getFontColorFromBackground,
+  getXYPlotValues,
   _getSmallestDistanceIndex,
   getScaleFnFromScaleObject,
   _getScaleDistanceAndAdjustedDomain,
@@ -349,6 +350,19 @@ test('scales-utils #_getScaleDistanceAndAdjustedDomain', t => {
   const expectedLogResults = {distance: Infinity, domain0: 0.1, domainN: 1.5};
   t.deepEqual(logResult, expectedLogResults, 'should fine reasonable results');
 
+  t.end();
+});
+
+test('scales-utils getXYPlotValues', t => {
+  const XYPlotProps = {colorType: 'linear', colorRange: ['#000', '#fff'], colorDomain: [0, 1]};
+  const children = [
+    {props: {color: 0}},
+    {props: {color: 0.5, opacity: '0.5'}},
+    {props: {color: 1}}
+  ];
+  const result = getXYPlotValues(XYPlotProps, children);
+  t.equals(result[2]._colorValue, 'rgb(255, 255, 255)', 'children can be colored through a XYPlot scale');
+  t.equals(result[1]._opacityValue, '0.5', 'children can have fallback values without a XYPlot scale');
   t.end();
 });
 
