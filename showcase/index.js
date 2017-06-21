@@ -42,6 +42,21 @@ import CustomScales from './plot/custom-scales';
 import AxisWithTurnedLabels from './plot/axis-with-turned-labels';
 import GridLinesChart from './plot/grid';
 
+import {
+  SensibleDefaults,
+  ColorInXYPlot,
+  CategoryColorAtMarkLevel,
+  LinearColorAtMarkLevel,
+  LinearColorAtMarkLevelNoPalette,
+  LiteralColorAtMarkLevel,
+  CategoryColorAtSeriesLevel,
+  LinearColorAtSeriesLevel,
+  LiteralColorAtSeriesLevel,
+  ReactVis5,
+  ReactVis20,
+  Continuous
+} from './color/mini-color-examples';
+
 import CustomAxesOrientation from './axes/custom-axes-orientation';
 import CustomAxisChart from './axes/custom-axis';
 import CustomAxes from './axes/custom-axes';
@@ -138,6 +153,19 @@ export const showCase = {
   LabelSeriesExample,
   GradientExample,
 
+  SensibleDefaults,
+  ColorInXYPlot,
+  CategoryColorAtMarkLevel,
+  LinearColorAtMarkLevel,
+  LinearColorAtMarkLevelNoPalette,
+  LiteralColorAtMarkLevel,
+  CategoryColorAtSeriesLevel,
+  LinearColorAtSeriesLevel,
+  LiteralColorAtSeriesLevel,
+  ReactVis5,
+  ReactVis20,
+  Continuous,
+  
   SimpleTreemap,
   TreemapExample,
 
