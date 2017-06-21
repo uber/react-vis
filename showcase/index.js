@@ -165,7 +165,7 @@ export const showCase = {
   ReactVis5,
   ReactVis20,
   Continuous,
-  
+
   SimpleTreemap,
   TreemapExample,
 
