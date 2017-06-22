@@ -45,16 +45,22 @@ import GridLinesChart from './plot/grid';
 import {
   SensibleDefaults,
   ColorInXYPlot,
+  ColorSpecificity,
   CategoryColorAtMarkLevel,
+  CategoryColorAtMarkLevelCustomPalette,
+  CategoryColorAtMarkLevelFixedStroke,
+  GradientCharts,
   LinearColorAtMarkLevel,
   LinearColorAtMarkLevelNoPalette,
+  LineSeriesMarkSeries,
   LiteralColorAtMarkLevel,
   CategoryColorAtSeriesLevel,
   LinearColorAtSeriesLevel,
   LiteralColorAtSeriesLevel,
   ReactVis5,
   ReactVis20,
-  Continuous
+  Continuous,
+  CustomPalette
 } from './color/mini-color-examples';
 
 import CustomAxesOrientation from './axes/custom-axes-orientation';
@@ -155,9 +161,14 @@ export const showCase = {
 
   SensibleDefaults,
   ColorInXYPlot,
+  ColorSpecificity,
   CategoryColorAtMarkLevel,
+  CategoryColorAtMarkLevelCustomPalette,
+  CategoryColorAtMarkLevelFixedStroke,
+  GradientCharts,
   LinearColorAtMarkLevel,
   LinearColorAtMarkLevelNoPalette,
+  LineSeriesMarkSeries,
   LiteralColorAtMarkLevel,
   CategoryColorAtSeriesLevel,
   LinearColorAtSeriesLevel,
@@ -165,6 +176,7 @@ export const showCase = {
   ReactVis5,
   ReactVis20,
   Continuous,
+  CustomPalette,
 
   SimpleTreemap,
   TreemapExample,

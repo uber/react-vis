@@ -3625,9 +3625,9 @@ react-test-renderer@^15.5.4:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
 
-react-vis@^1.6.0:
-  version "1.6.0"
-  resolved "https://unpm.uberinternal.com/react-vis/-/react-vis-1.6.0.tgz#1eec3a2b5f4aa8aa9549a96ff029132951f40ea6"
+react-vis@^1.6.1:
+  version "1.6.1"
+  resolved "https://unpm.uberinternal.com/react-vis/-/react-vis-1.6.1.tgz#83625326c1045889ba9d9582428750ae3ec49c4f"
   dependencies:
     d3-array "^1.2.0"
     d3-collection "^1.0.3"
