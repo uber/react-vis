@@ -10,6 +10,16 @@ Before you get started, here are some suggestions:
  - Write code to fix the problem, then open a pull request with tests and documentation.
  - The pull requests gets reviewed and then merged assuming there are no problems.
  - A new release version gets cut.
+ 
+## Hints
+
+Want to make sure your PR gets a speedy review and a quick merge? Here are some tips:
+
+- Add Tests
+- Add documentation about the feature you added
+- Make sure you have a clear description of what your PR is about
+- Inlcude screenshots
+- Add Tests
 
 ## Releases
 
