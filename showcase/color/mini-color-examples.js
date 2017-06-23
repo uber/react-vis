@@ -116,7 +116,7 @@ export function LiteralColorAtSeriesLevel() {
 
 export function LinearColorAtSeriesLevel() {
   return generateCharts(data.linearColorAtSeriesLevel, {
-    colorType: 'linear', colorDomain: [0, 9], colorRange: CONTINUOUS_COLOR_RANGE,
+    colorType: 'linear', colorDomain: [0, 9], colorRange: CONTINUOUS_COLOR_RANGE
   });
 }
 
@@ -155,23 +155,23 @@ export function LinearColorAtMarkLevel() {
 
 export function LineSeriesMarkSeries() {
   return (<XYPlot {...defaultXYPlotProps} width={600}>
-      {data.noColor.map((d, i) => <LineSeries {...d}
-        key={i} color={DISCRETE_COLOR_RANGE[i]}/>)}
-      {data.noColor.map((d, i) => <MarkSeries {...d}
-        key={i} color={DISCRETE_COLOR_RANGE[i]} stroke="white"/>)} 
-    </XYPlot>);
+    {data.noColor.map((d, i) => <LineSeries {...d}
+      key={i} color={DISCRETE_COLOR_RANGE[i]}/>)}
+    {data.noColor.map((d, i) => <MarkSeries {...d}
+      key={i} color={DISCRETE_COLOR_RANGE[i]} stroke="white"/>)}
+  </XYPlot>);
 }
 
 export function GradientCharts() {
   const gradient = (<GradientDefs>
-      <linearGradient
-        id="myGradient"
-        gradientUnits="userSpaceOnUse"
-        x1="0" y1="0" x2="200" y2="200">
-        <stop offset="10%" stopColor="#c6e48b" />
-        <stop offset="33%" stopColor="#7bc96f" />
-         <stop offset="66%" stopColor="#239a3b" />
-        <stop offset="90%" stopColor="#196127" />
+    <linearGradient
+      id="myGradient"
+      gradientUnits="userSpaceOnUse"
+      x1="0" y1="0" x2="200" y2="200">
+      <stop offset="10%" stopColor="#c6e48b" />
+      <stop offset="33%" stopColor="#7bc96f" />
+      <stop offset="66%" stopColor="#239a3b" />
+      <stop offset="90%" stopColor="#196127" />
     </linearGradient>
   </GradientDefs>);
   return (<div style={{display: 'flex'}}>
@@ -187,7 +187,7 @@ export function GradientCharts() {
       {gradient}
       <MarkSeries {...data.noColor[0]} color={'url(#myGradient)'} />
     </XYPlot>
-  </div>)
+  </div>);
 }
 
 export function ColorSpecificity() {
@@ -211,7 +211,6 @@ export function ColorSpecificity() {
     </XYPlot>
   </div>);
 }
-
 
 export function ReactVis5() {
   return generatePalette(DISCRETE_COLOR_RANGE);
@@ -245,12 +244,12 @@ function generatePalette(range) {
 function generateCharts(seriesData, props) {
   return (
     <div style={{display: 'flex'}}>
-    {[VerticalBarSeries, LineSeries, MarkSeries]
+      {[VerticalBarSeries, LineSeries, MarkSeries]
       .map((Type, key) => (<XYPlot
         key={key}
         {...defaultXYPlotProps}
         {...props}>
-          {seriesData.map((d, i) => (<Type {...d} />))}
+        {seriesData.map((d, i) => (<Type {...d} />))}
       </XYPlot>))}
     </div>);
 }
