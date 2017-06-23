@@ -1157,7 +1157,7 @@ d3-array@1, d3-array@^1.1.1, d3-array@^1.2.0:
 
 d3-array@~0.7.0:
   version "0.7.1"
-  resolved "https://unpm.uberinternal.com/d3-array/-/d3-array-0.7.1.tgz#a321c21558459d994eb4ad47b478240e64933942"
+  resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-0.7.1.tgz#a321c21558459d994eb4ad47b478240e64933942"
 
 d3-collection@1, d3-collection@^1.0.3:
   version "1.0.3"
@@ -1165,7 +1165,7 @@ d3-collection@1, d3-collection@^1.0.3:
 
 d3-collection@~0.1.0:
   version "0.1.2"
-  resolved "https://unpm.uberinternal.com/d3-collection/-/d3-collection-0.1.2.tgz#d1495f5720add3835117e1916607d2b05b186c5a"
+  resolved "https://registry.yarnpkg.com/d3-collection/-/d3-collection-0.1.2.tgz#d1495f5720add3835117e1916607d2b05b186c5a"
 
 d3-color@1, d3-color@^1.0.3:
   version "1.0.3"
@@ -1173,11 +1173,11 @@ d3-color@1, d3-color@^1.0.3:
 
 d3-color@~0.3.2:
   version "0.3.4"
-  resolved "https://unpm.uberinternal.com/d3-color/-/d3-color-0.3.4.tgz#eba2fa9532513998b623a077c3b5149cb1df53d7"
+  resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-0.3.4.tgz#eba2fa9532513998b623a077c3b5149cb1df53d7"
 
 d3-contour@^1.1.0:
   version "1.1.0"
-  resolved "https://unpm.uberinternal.com/d3-contour/-/d3-contour-1.1.0.tgz#8290302491703c75109e9f515a1e0ce4734d42b7"
+  resolved "https://registry.yarnpkg.com/d3-contour/-/d3-contour-1.1.0.tgz#8290302491703c75109e9f515a1e0ce4734d42b7"
   dependencies:
     d3-array "^1.1.1"
 
@@ -1199,23 +1199,23 @@ d3-format@1:
 
 d3-geo@^1.6.4:
   version "1.6.4"
-  resolved "https://unpm.uberinternal.com/d3-geo/-/d3-geo-1.6.4.tgz#f20e1e461cb1845f5a8be55ab6f876542a7e3199"
+  resolved "https://registry.yarnpkg.com/d3-geo/-/d3-geo-1.6.4.tgz#f20e1e461cb1845f5a8be55ab6f876542a7e3199"
   dependencies:
     d3-array "1"
 
 d3-hierarchy@^1.1.4:
   version "1.1.5"
-  resolved "https://unpm.uberinternal.com/d3-hierarchy/-/d3-hierarchy-1.1.5.tgz#a1c845c42f84a206bcf1c01c01098ea4ddaa7a26"
+  resolved "https://registry.yarnpkg.com/d3-hierarchy/-/d3-hierarchy-1.1.5.tgz#a1c845c42f84a206bcf1c01c01098ea4ddaa7a26"
 
 d3-interpolate@1, d3-interpolate@^1.1.4:
   version "1.1.5"
-  resolved "https://unpm.uberinternal.com/d3-interpolate/-/d3-interpolate-1.1.5.tgz#69e099ff39214716e563c9aec3ea9d1ea4b8a79f"
+  resolved "https://registry.yarnpkg.com/d3-interpolate/-/d3-interpolate-1.1.5.tgz#69e099ff39214716e563c9aec3ea9d1ea4b8a79f"
   dependencies:
     d3-color "1"
 
 d3-interpolate@~0.2.0:
   version "0.2.1"
-  resolved "https://unpm.uberinternal.com/d3-interpolate/-/d3-interpolate-0.2.1.tgz#0f0d7364e40ab5e7f2ebd010de1539c5e6711991"
+  resolved "https://registry.yarnpkg.com/d3-interpolate/-/d3-interpolate-0.2.1.tgz#0f0d7364e40ab5e7f2ebd010de1539c5e6711991"
   dependencies:
     d3-color "~0.3.2"
 
@@ -1234,7 +1234,7 @@ d3-request@^1.0.5:
 
 d3-sankey-align@^0.1.0:
   version "0.1.0"
-  resolved "https://unpm.uberinternal.com/d3-sankey-align/-/d3-sankey-align-0.1.0.tgz#709d44089dc9fdb04e109daad6a2ce2c39dc1c3e"
+  resolved "https://registry.yarnpkg.com/d3-sankey-align/-/d3-sankey-align-0.1.0.tgz#709d44089dc9fdb04e109daad6a2ce2c39dc1c3e"
   dependencies:
     d3-array "~0.7.0"
     d3-collection "~0.1.0"
@@ -1242,7 +1242,7 @@ d3-sankey-align@^0.1.0:
 
 d3-scale@^1.0.5:
   version "1.0.6"
-  resolved "https://unpm.uberinternal.com/d3-scale/-/d3-scale-1.0.6.tgz#bce19da80d3a0cf422c9543ae3322086220b34ed"
+  resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-1.0.6.tgz#bce19da80d3a0cf422c9543ae3322086220b34ed"
   dependencies:
     d3-array "^1.2.0"
     d3-collection "1"
@@ -1254,7 +1254,7 @@ d3-scale@^1.0.5:
 
 d3-shape@^1.1.0:
   version "1.2.0"
-  resolved "https://unpm.uberinternal.com/d3-shape/-/d3-shape-1.2.0.tgz#45d01538f064bafd05ea3d6d2cb748fd8c41f777"
+  resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.2.0.tgz#45d01538f064bafd05ea3d6d2cb748fd8c41f777"
   dependencies:
     d3-path "1"
 
@@ -1270,7 +1270,7 @@ d3-time@1:
 
 d3-voronoi@^1.1.2:
   version "1.1.2"
-  resolved "https://unpm.uberinternal.com/d3-voronoi/-/d3-voronoi-1.1.2.tgz#1687667e8f13a2d158c80c1480c5a29cb0d8973c"
+  resolved "https://registry.yarnpkg.com/d3-voronoi/-/d3-voronoi-1.1.2.tgz#1687667e8f13a2d158c80c1480c5a29cb0d8973c"
 
 d@1:
   version "1.0.0"
@@ -3589,7 +3589,7 @@ react-dom@^15.5.4:
 
 react-motion@^0.4.8:
   version "0.4.8"
-  resolved "https://unpm.uberinternal.com/react-motion/-/react-motion-0.4.8.tgz#23bb2dd27c2d8e00d229e45572d105efcf40a35e"
+  resolved "https://registry.yarnpkg.com/react-motion/-/react-motion-0.4.8.tgz#23bb2dd27c2d8e00d229e45572d105efcf40a35e"
   dependencies:
     create-react-class "^15.5.2"
     performance-now "^0.2.0"
@@ -3620,14 +3620,14 @@ react-router@^2.4.0:
 
 react-test-renderer@^15.5.4:
   version "15.6.1"
-  resolved "https://unpm.uberinternal.com/react-test-renderer/-/react-test-renderer-15.6.1.tgz#026f4a5bb5552661fd2cc4bbcd0d4bc8a35ebf7e"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-15.6.1.tgz#026f4a5bb5552661fd2cc4bbcd0d4bc8a35ebf7e"
   dependencies:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
 
 react-vis@^1.6.1:
   version "1.6.1"
-  resolved "https://unpm.uberinternal.com/react-vis/-/react-vis-1.6.1.tgz#83625326c1045889ba9d9582428750ae3ec49c4f"
+  resolved "https://registry.yarnpkg.com/react-vis/-/react-vis-1.6.1.tgz#83625326c1045889ba9d9582428750ae3ec49c4f"
   dependencies:
     d3-array "^1.2.0"
     d3-collection "^1.0.3"
