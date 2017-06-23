@@ -10,7 +10,7 @@
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.3",
     "react-router": "^2.4.0",
-    "react-vis": "0.9.0",
+    "react-vis": "^1.6.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
   },

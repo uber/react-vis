@@ -178,6 +178,13 @@ export const docPages = generatePath([
         pageType: 'documentation'
       }
     }, {
+      name: 'Colors',
+      content: {
+        markdown: getDocUrl('colors.md'),
+        filename: 'colors.md',
+        pageType: 'documentation'
+      }
+    }, {
       name: 'Legends',
       content: {
         markdown: getDocUrl('legends.md'),

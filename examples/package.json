@@ -8,7 +8,7 @@
     "react-addons-shallow-compare": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-router": "2.4",
-    "react-vis": "^1.3.0"
+    "react-vis": "^1.6.1"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
