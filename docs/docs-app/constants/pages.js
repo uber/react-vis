@@ -185,6 +185,13 @@ export const docPages = generatePath([
         pageType: 'documentation'
       }
     }, {
+      name: 'Interaction',
+      content: {
+        markdown: getDocUrl('interaction.md'),
+        filename: 'interaction.md',
+        pageType: 'documentation'
+      }
+    }, {
       name: 'Legends',
       content: {
         markdown: getDocUrl('legends.md'),
