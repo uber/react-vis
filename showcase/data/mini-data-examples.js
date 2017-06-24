@@ -25,15 +25,7 @@ import {
   LineSeries,
   MarkSeries,
   VerticalBarSeries,
-  ContinuousSizeLegend,
-  ContinuousColorLegend
 } from 'index';
-
-import {
-  DISCRETE_COLOR_RANGE,
-  EXTENDED_DISCRETE_COLOR_RANGE,
-  CONTINUOUS_COLOR_RANGE
-} from '../../src/theme';
 
 const data = [
   {x: 0, y: 8},
