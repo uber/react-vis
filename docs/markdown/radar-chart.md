@@ -105,3 +105,7 @@ Provide an additional class name for the series.
 #### colorType (optional)
 Type: `string`
 Specify the type of color scale to be used on the radar chart, please refer to [Scales and data](scales-and-data.md) for more information.
+
+#### startingAngle (optional)
+Type: `number`
+The angle of the first axis in radians. Defaults to PI / 2.
