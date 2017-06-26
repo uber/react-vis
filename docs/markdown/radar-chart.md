@@ -30,7 +30,7 @@ const RADAR_PROPS = {
 };
 ```
 
-In such a case, there would be ONE polygon rendered for four variables (nice/explosions/wow/sickMoves), because those values are listed in the domains prop.
+In such a case, there would be ONE polygon rendered for four variables (nice/explosions/wow/sickMoves), because those values are listed in the domains prop. The radar chart accepts children if you wish to provide additional components, such as CircularGridLines.
 
 
 ## API Reference

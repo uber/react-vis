@@ -43,5 +43,6 @@ test('Radar: Showcase Example - Animated Radial ', t => {
   t.equal($.find('.rv-xy-manipulable-axis__ticks').length, 5, 'should find the right number of axes');
   t.equal($.find('.rv-radar-chart-polygon').length, 1, 'should find the right number of axes');
   t.equal($.find('.rv-radar-chart').text(), 'niceexplosionswowdogsickMoves', 'should find the right text content');
+  t.equal($.find('.rv-xy-plot__circular-grid-lines__line').length, 10, 'should find the correct number of rings');
   t.end();
 });
