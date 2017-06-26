@@ -162,7 +162,7 @@ RadialChart.propTypes = {
   className: PropTypes.string,
   colorType: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape({
-    angle: PropTypes.number.isRequired,
+    angle: PropTypes.number,
     className: PropTypes.string,
     label: PropTypes.string,
     radius: PropTypes.number,

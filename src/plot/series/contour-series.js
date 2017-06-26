@@ -84,10 +84,11 @@ class ContourSeries extends AbstractSeries {
       <g className={`${predefinedClassName} ${className}`}
          ref="container"
          transform={`translate(${marginLeft},${marginTop})`} >
-        {contouredData.map(polygon => {
+        {contouredData.map((polygon, index) => {
           return (
             <path
               className="rv-xy-plot__series--contour-line"
+              key={`rv-xy-plot__series--contour-line-${index}`}
               d={geo(polygon)}
               style={{
                 fill: colorScale(polygon.value),
