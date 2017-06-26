@@ -96,7 +96,7 @@ LabelSeries.propTypes = {
     y: PropTypes.number,
     angle: PropTypes.number,
     radius: PropTypes.number,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     xOffset: PropTypes.number,
     yOffset: PropTypes.number,
     style: PropTypes.object
@@ -106,5 +106,5 @@ LabelSeries.propTypes = {
   xRange: PropTypes.arrayOf(PropTypes.number),
   yRange: PropTypes.arrayOf(PropTypes.number)
 };
-
+LabelSeries.displayName = 'LabelSeries';
 export default LabelSeries;
