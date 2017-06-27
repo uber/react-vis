@@ -233,7 +233,7 @@ function generatePalette(range) {
     {range.map((d, i) => (<div key={i} style={{
       background: d,
       width: 80, height: 80, borderRadius: 5, margin: 10, position: 'relative'}}>
-      <div style={{
+      <div className="color-box" style={{
         position: 'absolute', top: '50%', left: '50%',
         textShadow: 'white 1px 1px',
         transform: 'translate(-50%, -50%)'}}>{d}</div>

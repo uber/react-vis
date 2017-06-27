@@ -106,6 +106,12 @@
       ]
     ]
   },
+  "nyc": {
+    "exclude": [
+      "tests/**/*.js",
+      "src/utils/react-utils.js"
+    ]
+  },
   "engines": {
     "node": ">=0.10.0",
     "npm": ">=3.0"
