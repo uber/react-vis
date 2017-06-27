@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React, {Component} from 'react';
+import {format} from 'd3-format';
 
 import RadarChart from 'radar-chart';
 
@@ -28,15 +29,19 @@ const DATA = [
   {name: 'Chevrolet', mileage: 5, price: 4, safety: 6, performance: 4, interior: 5, warranty: 6}
 ];
 
+const basicFormat = format('.2r');
+const wideFormat = format('.3r');
+
 export default class BasicRadarChart extends Component {
   render() {
     return (
       <RadarChart
         data={DATA}
+        tickFormat={t => wideFormat(t)}
         startingAngle={0}
         domains={[
           {name: 'mileage', domain: [0, 10]},
-          {name: 'price', domain: [2, 16]},
+          {name: 'price', domain: [2, 16], tickFormat: t => `$${basicFormat(t)}`},
           {name: 'safety', domain: [5, 10]},
           {name: 'performance', domain: [0, 10]},
           {name: 'interior', domain: [0, 7]},

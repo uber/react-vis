@@ -106,6 +106,10 @@ Provide an additional class name for the series.
 Type: `string`
 Specify the type of color scale to be used on the radar chart, please refer to [Scales and data](scales-and-data.md) for more information.
 
+#### tickFormat (optional)
+Type: 'function'
+Specify the tick format for all axes. Will be over-ridden by tickFormats specified on single domains.
+
 #### startingAngle (optional)
 Type: `number`
 The angle of the first axis in radians. Defaults to PI / 2.
