@@ -4,9 +4,12 @@
   "license": "MIT",
   "author": "Visualization Team <visualization@uber.com>",
   "description": "Data visualization library based on React and d3.",
-  "main": "dist/index.js",
+  "main": "dist",
+  "module": "es",
+  "jsnext:main": "es",
   "files": [
-    "dist"
+    "dist",
+    "es"
   ],
   "repository": {
     "type": "git",
@@ -21,9 +24,9 @@
     "new-docs": "./deploy-docs.sh",
     "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
     "start-docs": "(cd docs && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
-    "clean": "rm -rf dist bundle.* index.html && mkdir dist",
+    "clean": "rm -rf dist es bundle.* index.html && mkdir dist es",
     "build:browser": "browserify src/index.js -t [ babelify ] --standalone reactVis | uglifyjs > dist/dist.min.js",
-    "build": "npm run clean && babel src -d dist --copy-files && node-sass src/main.scss dist/style.css --output-style compressed && npm run build:browser",
+    "build": "npm run clean && babel src -d dist --copy-files && BABEL_ENV=es babel src -d es --copy-files && node-sass src/main.scss dist/style.css --output-style compressed && npm run build:browser",
     "lint": "eslint src tests showcase docs --ignore-pattern node_modules --ignore-pattern bundle.js",
     "lint-styles": "stylelint src/styles/*.scss --syntax scss",
     "test": "babel-node tests/index.js",
@@ -90,11 +93,6 @@
     "babel"
   ],
   "babel": {
-    "presets": [
-      "es2015",
-      "stage-0",
-      "react"
-    ],
     "plugins": [
       [
         "module-resolver",
@@ -104,7 +102,23 @@
           ]
         }
       ]
-    ]
+    ],
+    "env": {
+      "development": {
+        "presets": [
+          "es2015",
+          "stage-0",
+          "react"
+        ]
+      },
+      "es": {
+        "presets": [
+          ["es2015", { "modules": false }],
+          "stage-0",
+          "react"
+        ]
+      }
+    }
   },
   "nyc": {
     "exclude": [
