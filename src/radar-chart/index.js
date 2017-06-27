@@ -48,6 +48,10 @@ function getAxes(props) {
     const angle = index / domains.length * Math.PI * 2;
     const sortedDomain = domain.domain.sort();
 
+    const domainTickFormat = t =>
+      domain.tickFormat ? domain.tickFormat(t) :
+      tickFormat ? tickFormat(t) :
+      t === sortedDomain[0] ? '' : DEFAULT_FORMAT(t);
     return (
       <DecorativeAxis
         animation={animation}
@@ -56,8 +60,7 @@ function getAxes(props) {
         axisEnd={{x: Math.cos(angle), y: Math.sin(angle)}}
         axisDomain={sortedDomain}
         numberOfTicks={5}
-        tickValue={t => tickFormat ? tickFormat(t) :
-            t === sortedDomain[0] ? '' : DEFAULT_FORMAT(t)}
+        tickValue={domainTickFormat}
         style={style.axes}
         />
     );
