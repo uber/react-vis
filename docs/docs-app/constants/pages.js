@@ -278,12 +278,18 @@ export const docPages = generatePath([
   },
   {
     name: 'XY Plot Series',
-    children: [
-      {
-        name: 'Line Series',
+    children: [{
+        name: 'Arc Series',
         content: {
-          markdown: getDocUrl('line-series.md'),
-          filename: 'line-series.md',
+          markdown: getDocUrl('arc-series.md'),
+          filename: 'arc-series.md',
+          pageType: 'documentation'
+        }
+      }, {
+        name: 'Area Series',
+        content: {
+          markdown: getDocUrl('area-series.md'),
+          filename: 'area-series.md',
           pageType: 'documentation'
         }
       }, {
@@ -294,10 +300,10 @@ export const docPages = generatePath([
           pageType: 'documentation'
         }
       }, {
-        name: 'Polygon Series',
+        name: 'Contour Series',
         content: {
-          markdown: getDocUrl('polygon-series.md'),
-          filename: 'polygon-series.md',
+          markdown: getDocUrl('contour-series.md'),
+          filename: 'contour-series.md',
           pageType: 'documentation'
         }
       }, {
@@ -308,10 +314,17 @@ export const docPages = generatePath([
           pageType: 'documentation'
         }
       }, {
-        name: 'Mark Series',
+        name: 'Label Series',
         content: {
-          markdown: getDocUrl('markseries.md'),
-          filename: 'markseries.md',
+          markdown: getDocUrl('label-series.md'),
+          filename: 'label-series.md',
+          pageType: 'documentation'
+        }
+      }, {
+        name: 'Line Series',
+        content: {
+          markdown: getDocUrl('line-series.md'),
+          filename: 'line-series.md',
           pageType: 'documentation'
         }
       },
@@ -323,24 +336,17 @@ export const docPages = generatePath([
           pageType: 'documentation'
         }
       }, {
-        name: 'Arc Series',
+        name: 'Mark Series',
         content: {
-          markdown: getDocUrl('arc-series.md'),
-          filename: 'arc-series.md',
+          markdown: getDocUrl('markseries.md'),
+          filename: 'markseries.md',
           pageType: 'documentation'
         }
       }, {
-        name: 'Label Series',
+        name: 'Polygon Series',
         content: {
-          markdown: getDocUrl('label-series.md'),
-          filename: 'label-series.md',
-          pageType: 'documentation'
-        }
-      }, {
-        name: 'Contour Series',
-        content: {
-          markdown: getDocUrl('contour-series.md'),
-          filename: 'contour-series.md',
+          markdown: getDocUrl('polygon-series.md'),
+          filename: 'polygon-series.md',
           pageType: 'documentation'
         }
       }

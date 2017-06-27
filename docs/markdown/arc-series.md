@@ -40,7 +40,7 @@ const myData = [
 angle0 describes the start of the arc in radians, and angle describes the end of the arc, again in radians. radius0 describes the inner distance from the origin, while radius describes the outer distance to the origin. It is recomended to provide all four of these quantities to format your arcs well.
 
 #### angle0
-Type: `number`
+Type: `number`  
 The start position of the arc in radians. This quantity is returned literally by default.
 
 #### angle
@@ -48,19 +48,19 @@ Type: `number`
 The end position of the arc in radians. This quantity is returned literally by default.
 
 #### radius0
-Type: `number`
+Type: `number`  
 The distance between the origin and the inside of the arc. This values is scaled linearly by default
 
 #### radius
-Type: `number`  
+Type: `number`    
 The distance between the origin and the outside of the arc. This values is scaled linearly by default
 
 #### color (optional)
-Type: `string|number`
+Type: `string|number`  
 The color of a box in the series. By default the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop colorType="literal" to the series itself. This property can also be defined on the series level.
 
 #### style (optional)
-Type: `object`
+Type: `object`  
 SVG paths (which is what the arc series is made up of) have numerous manipulable properties, so rather than trying to prescribe all of them as props we offer a port to let you style it for yourself. This overrides the series level version of this property.
 
 <!-- INJECT:"ClockExample" -->
@@ -70,28 +70,28 @@ SVG paths (which is what the arc series is made up of) have numerous manipulable
 #### animation (optional)  
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
-#### center
+#### center  
 Type: `Object` of the form `{x, y}`, where x and y are in coordinates
 This allows users to specify the origin of their arcs.
 
-#### color
+#### color  
 Type: `string|number`
 The color for all elements in the series, this property will be over-ridden by color specified in the data attribute.
 
 #### className (optional)
-Type: `string`
+Type: `string`  
 Provide an additional class name for the series.
 
 #### data
-Type: `Array<Object>`
+Type: `Array<Object>`  
 Array of data for the series. See above data format reference.
 
 #### fill
-Type: `string|number`
+Type: `string|number`  
 The inner color for all elements in the series, this property will be over-ridden by color specified in the data attribute.
 
 #### onNearestX (optional)
-Type: `function(value, {event, innerX, index})`  
+Type: `function(value, {event, innerX, index})`   
 A callback function which is triggered each time when the mouse pointer gets close to some X value.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the value;
@@ -99,7 +99,7 @@ Callback is triggered with two arguments. `value` is the data point, `info` obje
 - `event` is the event object.
 
 #### onValueMouseOver (optional)
-Type: `function(d, {event})`  
+Type: `function(d, {event})`    
 `mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
 
 #### onValueMouseOut (optional)
@@ -107,29 +107,29 @@ Type: `function(d, {event})`
 `mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
 
 #### onValueClick (optional)
-Type: `function(d, {event})`  
+Type: `function(d, {event})`    
 `click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
 
 #### onSeriesMouseOver (optional)
-Type: `function(d, {event})`  
+Type: `function(d, {event})`    
 `mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
 
 #### onSeriesMouseOut (optional)
-Type: `function(d, {event})`  
+Type: `function(d, {event})`    
 `mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
 
 #### onSeriesClick (optional)
-Type: `function(d, {event})`  
+Type: `function(d, {event})`    
 `click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
 
 #### opacity
-Type: `string|number`
+Type: `string|number`  
 The opacity for all elements in the series, this property will be over-ridden by color specified in the data attribute.
 
 #### stroke
-Type: `string|number`
+Type: `string|number`  
 The outer color for all elements in the series, this property will be over-ridden by color specified in the data attribute.
 
 #### style (optional)
-Type: `object`
+Type: `object`  
 SVG paths (which is what the arc series is made up of) have numerous manipulable properties, so rather than trying to prescribe all of them as props we offer a port to let you style it for yourself.

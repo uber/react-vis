@@ -67,6 +67,13 @@ import {
   MiniCharts
 } from './data/mini-data-examples';
 
+import {
+  LineChartMouseOverSeries,
+  LineChartMouseOverXY,
+  LinkedCharts,
+  ScatterPlotOnNearestXY
+} from './interaction/interaction-examples';
+
 import CustomAxesOrientation from './axes/custom-axes-orientation';
 import CustomAxisChart from './axes/custom-axis';
 import CustomAxes from './axes/custom-axes';
@@ -183,6 +190,11 @@ export const showCase = {
   CustomPalette,
 
   MiniCharts,
+
+  LineChartMouseOverSeries,
+  LineChartMouseOverXY,
+  LinkedCharts,
+  ScatterPlotOnNearestXY,
 
   SimpleTreemap,
   TreemapExample,
