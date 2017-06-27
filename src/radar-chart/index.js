@@ -40,12 +40,13 @@ const DEFAULT_FORMAT = format('.2r');
  - props.domains {Array} array of object specifying the way each axis is to be plotted
  - props.style {object} style object for the whole chart
  - props.tickFormat {Function} formatting function for axes
+ - props.startingAngle {number} the initial angle offset
  * @return {Array} the plotted axis components
  */
 function getAxes(props) {
-  const {animation, domains, style, tickFormat} = props;
+  const {animation, domains, startingAngle, style, tickFormat} = props;
   return domains.map((domain, index) => {
-    const angle = index / domains.length * Math.PI * 2;
+    const angle = index / domains.length * Math.PI * 2 + startingAngle;
     const sortedDomain = domain.domain.sort();
 
     const domainTickFormat = t =>
@@ -71,13 +72,14 @@ function getAxes(props) {
  * Generate labels for the ends of the axes
  * @param {Object} props
  - props.domains {Array} array of object specifying the way each axis is to be plotted
+  - props.startingAngle {number} the initial angle offset
  - props.style {object} style object for just the labels
  * @return {Array} the prepped data for the labelSeries
  */
 function getLabels(props) {
-  const {domains, style} = props;
+  const {domains, startingAngle, style} = props;
   return domains.map((domain, index) => {
-    const angle = index / domains.length * Math.PI * 2;
+    const angle = index / domains.length * Math.PI * 2 + startingAngle;
     const radius = 1.2;
     return {
       x: radius * Math.cos(angle),
@@ -94,6 +96,7 @@ function getLabels(props) {
  - props.animation {Boolean}
  - props.data {Array} array of object specifying what values are to be plotted
  - props.domains {Array} array of object specifying the way each axis is to be plotted
+ - props.startingAngle {number} the initial angle offset
  - props.style {object} style object for the whole chart
  * @return {Array} the plotted axis components
  */
@@ -102,7 +105,8 @@ function getPolygons(props) {
     animation,
     domains,
     data,
-    style
+    style,
+    startingAngle
   } = props;
   const scales = domains.reduce((acc, domain) => {
     acc[domain.name] = scaleLinear().domain(domain.domain).range([0, 1]);
@@ -113,7 +117,7 @@ function getPolygons(props) {
     const mappedData = domains.map((domain, index) => {
       const dataPoint = row[domain.name];
       // error handling if point doesn't exisit
-      const angle = index / domains.length * Math.PI * 2;
+      const angle = index / domains.length * Math.PI * 2 + startingAngle;
       // dont let the radius become negative
       const radius = Math.max(scales[domain.name](dataPoint), 0);
       return {x: radius * Math.cos(angle), y: radius * Math.sin(angle)};
@@ -147,6 +151,7 @@ class RadarChart extends Component {
       onMouseLeave,
       onMouseEnter,
       tickFormat,
+      startingAngle,
       style
     } = this.props;
 
@@ -162,11 +167,12 @@ class RadarChart extends Component {
         xDomain={[-1, 1]}
         yDomain={[-1, 1]}>
         {children}
-        {getAxes({domains, animation, style, tickFormat})
+        {getAxes({domains, animation, startingAngle, style, tickFormat})
           .concat(getPolygons({
             animation,
             domains,
             data,
+            startingAngle,
             style
           }))
           .concat(
@@ -174,7 +180,7 @@ class RadarChart extends Component {
               animation
               key={className}
               className={`${predefinedClassName}-label`}
-              data={getLabels({domains, style: style.labels})} />
+              data={getLabels({domains, style: style.labels, startingAngle})} />
           )
         }
       </XYPlot>
@@ -197,6 +203,7 @@ RadarChart.propTypes = {
   ).isRequired,
   height: PropTypes.number.isRequired,
   margin: MarginPropType,
+  startingAngle: PropTypes.number,
   style: PropTypes.shape({
     axes: PropTypes.object,
     labels: PropTypes.object,
@@ -209,6 +216,7 @@ RadarChart.defaultProps = {
   className: '',
   colorType: 'category',
   colorRange: DISCRETE_COLOR_RANGE,
+  startingAngle: Math.PI / 2,
   style: {
     axes: {
       line: {},

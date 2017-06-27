@@ -38,6 +38,7 @@ export default class BasicRadarChart extends Component {
       <RadarChart
         data={DATA}
         tickFormat={t => wideFormat(t)}
+        startingAngle={0}
         domains={[
           {name: 'mileage', domain: [0, 10]},
           {name: 'price', domain: [2, 16], tickFormat: t => `$${basicFormat(t)}`},
