@@ -22,6 +22,7 @@ import React, {Component} from 'react';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
 import RadarChart from 'radar-chart';
+import CircularGridLines from 'plot/circular-grid-lines';
 
 const DATA = [{
   explosions: 7,
@@ -81,7 +82,9 @@ export default class AnimatedRadar extends Component {
           }}
           tickFormat={t => ''}
           width={400}
-          height={300} />
+          height={300} >
+          <CircularGridLines tickValues={[...new Array(10)].map((v, i) => i / 10 - 1)}/>
+        </RadarChart>
         <ShowcaseButton
          onClick={() => this.setState({data: generateData()})}
          buttonContent={'UPDATE DATA'} />

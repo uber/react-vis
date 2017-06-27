@@ -135,6 +135,7 @@ class RadarChart extends Component {
     const {
       animation,
       className,
+      children,
       data,
       domains,
       height,
@@ -157,6 +158,7 @@ class RadarChart extends Component {
         onMouseEnter={onMouseEnter}
         xDomain={[-1, 1]}
         yDomain={[-1, 1]}>
+        {children}
         {getAxes({domains, animation, style, tickFormat})
           .concat(getPolygons({
             animation,
