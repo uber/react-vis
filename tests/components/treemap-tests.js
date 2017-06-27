@@ -3,6 +3,9 @@ import React from 'react';
 import {mount} from 'enzyme';
 import Treemap from 'treemap';
 
+import SimpleTreemap from '../../showcase/treemap/simple-treemap';
+import DynamicTreemap from '../../showcase/treemap/dynamic-treemap';
+
 import {testRenderWithProps} from '../test-utils';
 
 const INTERPOLATE_DATA = {
@@ -66,6 +69,24 @@ test('Treemap: Empty treemap', t => {
   t.equal($.find('.rv-treemap__leaf').length, 0, 'should find the right number of children');
   t.equal($.find('.rv-treemap').text(), '', 'should find the correct text shown');
   t.equal($.find('.little-nested-tree-example').length, 1, 'should find the custom class name used');
+
+  t.end();
+});
+
+test('Treemap: SimpleTreemap', t => {
+  const $ = mount(<SimpleTreemap />);
+  t.equal($.find('.rv-treemap__leaf').length, 252, 'should find the right number of children');
+  t.equal($.find('.rv-treemap').text(), '', 'should find the correct text shown');
+
+  $.find('.showcase-button').at(1).simulate('click');
+
+  t.end();
+});
+
+test('Treemap: DynamicTreemap', t => {
+  const $ = mount(<DynamicTreemap />);
+  t.equal($.find('.rv-treemap__leaf').length, 20, 'should find the right number of children');
+  t.equal($.find('.rv-treemap').text(), '123123123123123123123123123123123123123123123123123123123123', 'should find the correct text shown');
 
   t.end();
 });

@@ -12,5 +12,6 @@ test('ArcSeries: Showcase Example - ArcSeriesExample', t => {
   t.equal($.text(), 'UPDATE-4-2024-4-2024', 'should find the right text content');
   t.equal($.find('.rv-xy-plot__series--arc').length, 2, 'should find the right number of series');
   t.equal($.find('.rv-xy-plot__series--arc path').length, 8, 'with the right number of arc in them');
+
   t.end();
 });

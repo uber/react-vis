@@ -23,19 +23,19 @@ import React from 'react';
 import Treemap from 'treemap';
 import ShowcaseButton from '../showcase-components/showcase-button';
 
-function _getRandomData() {
-  const totalLeaves = Math.random() * 20;
+function _getRandomData(total) {
+  const totalLeaves = total || Math.random() * 20;
   const leaves = [];
   let title;
   for (let i = 0; i < totalLeaves; i++) {
     title = Math.random();
-    if (Math.random() > 0.5) {
+    if (!Math.random() > 0.5) {
       title = (
         <b>{title}</b>
       );
     }
     leaves.push({
-      title,
+      title: total ? '123' : total,
       size: Math.random() * 1000,
       color: Math.random()
     });
@@ -50,7 +50,7 @@ function _getRandomData() {
 export default class DynamicTreemapExample extends React.Component {
   state = {
     hoveredNode: false,
-    treemapData: _getRandomData(),
+    treemapData: _getRandomData(20),
     useCirclePacking: false
   }
 
