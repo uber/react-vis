@@ -163,6 +163,7 @@ class RadarChart extends Component {
         onMouseEnter={onMouseEnter}
         xDomain={[-1, 1]}
         yDomain={[-1, 1]}>
+        {children}
         {getAxes({domains, animation, startingAngle, style, tickFormat})
           .concat(getPolygons({
             animation,
