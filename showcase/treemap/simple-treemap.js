@@ -57,14 +57,16 @@ export default class SimpleTreemapExample extends React.Component {
           <div> {MODE[modeIndex]} </div>
           <ShowcaseButton onClick={this.updateModeIndex(true)} buttonContent={'NEXT MODE'} />
         </div>
-        <Treemap
-          animation
-          className="nested-tree-example"
-          colorType="literal"
-          data={D3FlareData}
-          mode={MODE[modeIndex]}
-          height={300}
-          width={350}/>
+        <Treemap {...{
+          animation: true,
+          className: 'nested-tree-example',
+          colorType: 'literal',
+          colorRange: ['#88572C'],
+          data: D3FlareData,
+          mode: MODE[modeIndex],
+          height: 300,
+          width: 350
+        }}/>
       </div>
     );
   }
