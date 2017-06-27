@@ -4,6 +4,38 @@ The Line Mark series is a combination of a LineSeries and a MerkSeries: under th
 
 <!-- INJECT:"LineMarkChart" -->
 
+## Data format reference
+
+#### x
+Type: `string|number|date`  
+x will be used to determine the x position of each point on the line. The format of x depends on what scale is being used - see [Scales and Data](scales-and-data.md)
+
+#### y
+Type: `string|number|date`
+y will be used to determine the y position of each point on the line. The format of y depends on what scale is being used - see [Scales and Data](scales-and-data.md)
+
+#### color (optional)
+Type: `string|number`
+The color of the line and that of the marks. By default the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop colorType="literal" to the series itself. This property can also be defined on the series level.
+
+#### opacity (optional)
+Type: `string|number`  
+Opacity of the individual box to be rendered. By default opacity is scaled by `literal`, so the exact value provided will be used. This property can also be defined on the series level.
+
+#### stroke (optional)
+Type: `string|number`  
+Stroke affects both the color of the line, and the outline of the marks. When this value is not provided, the color attribute is used instead. This property can also be defined on the series level.
+
+#### fill (optional)
+Type: `string|number`  
+The color of the inside of the marks. When this value is not provided the color attribute is used instead. This property can also be defined on the series level.
+
+#### size (optional)
+Type: `string|number`  
+Default: 5
+The size of each of the marks. 
+
+
 ## API Reference
 
 ##### strokeDasharray (optional)
@@ -46,14 +78,7 @@ const configuredCurve = d3Shape.curveCatmullRom.alpha(0.5);
 const funcCurveProp = <LineMarkSeries data={data} curve={configuredCurve} .../>;
 ```
 
-#### onNearestXY (optional)
-Type: `function(value, info)`
-A callback function which is triggered on mousemove and returns the closest point vased on the voronoi layout.
-Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
-- `innerX` is the horizontal position of the value;
-- `innerY` is the vertical position of the value;
-- `index` is the index of the data point in the array of data;
-- `event` is the event object.
+Some, but not all line interpolations have the resulting curve going through the original coordinates of its data points. If not, the LineSeries part of the LineMarkSeries will be detached from the MarkSeries part. 
 
 #### style (optional)
 Type: `object`
@@ -73,4 +98,109 @@ An object which holds CSS properties that will be applied to the SVG element(s) 
   data={data}
   style={{line: {stroke:"blue"}, mark: {stroke:"red"}}}
 />
+```
+
+## Interaction handlers
+#### onNearestX (optional)
+Type: `function(value, {event, innerX, index})`  
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor. 
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the mark;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+See [interaction](interaction.md)
+
+#### onNearestXY (optional)
+Type: `function(value, {event, innerX, innerY, index})`  
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor. 
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the mark;
+- `innerY` is the top position of the mark;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+See [interaction](interaction.md)
+
+
+#### onSeriesClick
+Type: `function`  
+Default: none  
+This handler fires when the user clicks somewhere on a series, and provides the corresponding event. Unlike onClick, it doesn't pass a specific datapoint.
+
+```jsx
+<LineMarkSeries
+...
+  onSeriesClick={(event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```
+
+#### onSeriesMouseOut
+Type: `function`  
+Default: none  
+This handler fires when the user's mouse cursor leaves a series, and provides the corresponding event. Unlike onMouseOut, it doesn't pass a specific datapoint. 
+
+```jsx
+<LineMarkSeries
+...
+  onSeriesMouseOut={(event)=>{
+    // does something on mouse over
+    // you can access the value of the event
+  }}
+```
+
+#### onSeriesMouseOver
+Type: `function`
+Default: none  
+This handler fires when the user mouses over a series, and provides the corresponding event. Unlike onMouseOver, it doesn't pass a specific datapoint. 
+
+```jsx
+<LineMarkSeries
+...
+  onSeriesMouseOver={(event)=>{
+    // does something on mouse over
+    // you can access the value of the event
+  }}
+```
+
+#### onValueClick
+Type: `function`  
+Default: none  
+This handler is triggered either when the user clicks on a mark. 
+The handler passes two arguments, the corresponding datapoint and the actual event. 
+```jsx
+<LineMarkSeries
+...
+  onClick={(datapoint, event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```
+
+#### onValueMouseOut
+Type: `function`  
+Default: none  
+This handler is triggered either when the user's mouse leaves a mark. 
+The handler passes two arguments, the corresponding datapoint and the actual event. 
+```jsx
+<LineMarkSeries
+...
+  onMouseOut={(datapoint, event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```
+
+#### onValueMouseOver
+Type: `function`
+Default: none  
+This handler is triggered either when the user's mouse enters a mark. 
+The handler passes two arguments, the corresponding datapoint and the actual event. 
+```jsx
+<LineMarkSeries
+...
+  onMouseOver={(datapoint, event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
 ```

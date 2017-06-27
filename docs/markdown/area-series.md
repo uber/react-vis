@@ -82,32 +82,24 @@ An object which holds CSS properties that will be applied to the SVG element(s) 
 
 ### Interaction handlers
 
-#### onNearestX
-Type: `function`  
-Default: none  
-This handler fires when the user moves their mouse somewhere on the plot. The handler fires a function that takes two argument: the datapoint with the x value closest to the cursor, and a second object containing: the `innerX` value (x coordinates of the cursor relative to the left of the plot), `index` (position of this datapoint in the dataset, where 0 is the first datapoint, 1 is the second, etc) plus the actual event as `event`. 
+#### onNearestX (optional)
+Type: `function(value, {event, innerX, index})`  
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor. 
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the mark;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+See [interaction](interaction.md)
 
-onNearestX is at the series level, not at the plot level. If you attach onNearestX to several series, each time the user moves their mouse, each onNearestX handler will be triggered once with the closest mark of each series.
-
-```jsx
-<AreaSeries
-...
-  onNearestX={(datapoint, event)=>{
-  	// does something on mouseover
-  	// you can access the value of the event
-  }}
-```
-
-#### onNearestXY
-Type: `function`  
-Default: none  
-This handler is nearly identical to `onNearestX`. The difference is that it will return datapoint corresponding to the mark closest to the cursor, not just the one with the closest x coordinate.
-
-onNearestXY will supersede onNearestX, so if both exist for the same series, only onNearestXY will be fired.
-
-This handler fires when the user moves their mouse somewhere on the plot. The handler fires a function that takes two argument: the datapoint which is closest to the cursor, and a second object containing: the `innerX` and `innerY` value (x, y coordinates of the cursor relative to the top left of the plot), `index` (position of this datapoint in the dataset, where 0 is the first datapoint, 1 is the second, etc) plus the actual event as `event`. 
-
-onNearestXY is at the series level, not at the plot level. If you attach onNearestX to several series, each time the user moves their mouse, each onNearestX handler will be triggered once with the closest mark of each series.
+#### onNearestXY (optional)
+Type: `function(value, {event, innerX, innerY, index})`  
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor. 
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the mark;
+- `innerY` is the top position of the mark;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+See [interaction](interaction.md)
 
 ```jsx
 <AreaSeries
@@ -121,7 +113,7 @@ onNearestXY is at the series level, not at the plot level. If you attach onNeare
 #### onSeriesClick
 Type: `function`  
 Default: none  
-This handler fires when the user clicks somewhere on an AreaSeries, and provides the corresponding event. 
+This handler fires when the user clicks somewhere on an AreaSeries, and provides the corresponding event. See [interaction](interaction.nd)
 
 ```jsx
 <AreaSeries
@@ -135,7 +127,7 @@ This handler fires when the user clicks somewhere on an AreaSeries, and provides
 #### onSeriesMouseOut
 Type: `function`  
 Default: none  
-This handler fires when the user's mouse cursor leaves an AreaSeries, and provides the corresponding event. 
+This handler fires when the user's mouse cursor leaves an AreaSeries, and provides the corresponding event. See [interaction](interaction.nd)
 
 ```jsx
 <AreaSeries
@@ -149,7 +141,7 @@ This handler fires when the user's mouse cursor leaves an AreaSeries, and provid
 #### onSeriesMouseOver
 Type: `function`
 Default: none  
-This handler fires when the user mouses over an AreaSeries, and provides the corresponding event. 
+This handler fires when the user mouses over an AreaSeries, and provides the corresponding event. See [interaction](interaction.nd)
 
 ```jsx
 <AreaSeries

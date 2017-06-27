@@ -2,34 +2,41 @@
 
 Interaction in react-vis happens through _event handlers_ which are triggered by certain interactive events, such as mouse movement or clicks.
 
-These events can be implemented at 3 levels:  
+These events can be implemented either at the XYPlot level or at the plot level:  
 * At the plot level: this is for events that affect the whole chart. The mouse events that can be captured are: down, enter, leave, move. For instance, you can use `onMouseLeave` to reset the visualization when the user's mouse cursor is no longer on it. 
 
-* At the series level, for events that affect a whole series. How events handlers are implemented varies from series to series, but typically, mousing over or out of series is supported, as is clicking on a whole series. Many series also have an `onNearestX` or `onNearestXY` event handler, which is fired whenever the user moves their mouse anywhere on the plot (not necessarily on the series) and which gets access to the closest datapoint of the series.
-
-* At the mark level. These event handlers are fired when the user interacts with one specific mark. They can capture mouse interactions such as mouse overs, mouse outs and clicks. 
+* At the series level, there are three kind of handlers.
+	* Some series (arc, bar, heatmap, label, mark, rect) support interaction at the individual mark level. These series have onValueClick, onValueMouseOut and onValueMouseOver, which, in addition to passing the event, also pass the datapoint corresponding to the mark with which the user interacted.
+    * The above series, and some others (area, line, polygon) support interaction at the series level. These series have handlers like onSeriesClick, onSeriesMouseOut, onSeriesMouseOver. Those handlers only pass the mouseevent that triggered them. 
+    * Finally, all series support onNearestX and onNearestXY. These two special handlers are triggered when the user moves their mouse on the plot area, and can access the datapoint of the nearest mark, in addition to the mouse event.
 
 ### What handlers are implemented by series type
 
-| Series                             | onClick | onMouseOut | onMouseOver | onNearestX | onNearestY |
-|------------------------------------|---------|------------|-------------|------------|------------|
-| [ArcSeries](arc-series.md)         | mark    | mark       | mark        | series     | series     |
-| [AreaSeries](area-series.md)       | series  | series     | series      | series     | series     |
-| [BarSeries](bar-series.md)         | mark    | mark       | mark        | series     | series     |
-| [ContourSeries](contour-series.md) |         |            |             | series     | series     |
-| [HeatmapSeries](heatmap-series.md) | mark    | mark       | mark        | series     | series     |
-| [LabelSeries](label-series.md)     | mark    | mark       | mark        | series     | series     |
-| [LineSeries](line-series.md)       | series  | series     | series      | series     | series     |
-| [MarkSeries](markseries.md)        | mark    | mark       | mark        | series     | series     |
-| [PolygonSeries](polygon-series.md) | series  | series     | series      | series     | series     |
-| RectSeries                         | mark    | mark       | mark        | series     | series     |
+| Series                                | onNearestX | onNearestY | onSeriesClick | onSeriesMouseOut | onSeriesMouseOver | onValueClick | onValueMouseOut | onValueMouseOver |
+|---------------------------------------|------------|------------|---------------|------------------|-------------------|--------------|-----------------|------------------|
+| [ArcSeries](arc-series.md)            | ✔︎          | ✔︎          |               |                  |                   | ✔︎            | ✔︎               | ✔︎                |
+| [AreaSeries](area-series.md)          | ✔︎          | ✔︎          | ✔︎             | ✔︎                | ✔︎                 |              |                 |                  |
+| [BarSeries](bar-series.md)            | ✔︎          | ✔︎          |               |                  |                   | ✔︎            | ✔︎               | ✔︎                |
+| [ContourSeries](contour-series.md)    | ✔︎          | ✔︎          |               |                  |                   |              |                 |                  |
+| [HeatmapSeries](heatmap-series.md)    | ✔︎          | ✔︎          |               |                  |                   | ✔︎            | ✔︎               | ✔︎                |
+| [LabelSeries](label-series.md)        | ✔︎          | ✔︎          |               |                  |                   | ✔︎            | ✔︎               | ✔︎                |
+| [LineSeries](line-series.md)          | ✔︎          | ✔︎          | ✔︎             | ✔︎                | ✔︎                 |              |                 |                  |
+| [LineMarkSeries](line-mark-series.md) | ✔︎          | ✔︎          | ✔︎             | ✔︎                | ✔︎                 | ✔︎            | ✔︎               | ✔︎                |
+| [MarkSeries](markseries.md)           | ✔︎          | ✔︎          |               |                  |                   | ✔︎            | ✔︎               | ✔︎                |
+| [PolygonSeries](polygon-series.md)    | ✔︎          | ✔︎          | ✔︎             | ✔︎                | ✔︎                 |              |                 |                  |
+| [RectSeries](rect-series.md)                            | ✔︎          | ✔︎          |               |                  |                   | ✔︎            | ✔︎               | ✔︎                |
 
 How to read this table: 
-For some series types (Arc, Bar, Rect, Label, Mark) - onClick, onMouseOut and onMouseOver handlers will work at the mark type. When the user clicks on the series, or moves their mouse on our out of it, an event handler will be fired and will pass the datapoint corresponding to the mark that the user interacted with.
+For some series types (Arc, Bar, Rect, Label, Mark) - onValueClick, onValueMouseOut and onValueMouseOver handlers will work at the mark type. When the user clicks on the series, or moves their mouse on our out of it, an event handler will be fired and will pass the datapoint corresponding to the mark that the user interacted with.
 
 The other series types (area, line, polygon) have an onSeriesClick, onSeriesMouseOut and onSeriesMouseOver respectively. These event handler will work at the series level and will not pass a specific datapoint. 
 
 In all cases, onNearestX and onNearestXY can be implemented at the series level, but when fired, they will also pass a specific datapoint.
+
+### Note
+- the contour series doesn't support interaction other than onNearestX or onNearestXY
+- react-vis doesn't yet support interactions such as dragging, zooming or scrolling.
+- whenever the datapoint-level handlers are supported, they can also catch all the events happening at the series level. 
 
 ## API
 
@@ -56,48 +63,6 @@ Default: none
 This event handler is triggered whenever the mouse of the user moves while in the plot area. It passes a mouse event. 
 
 ### Series event handlers
-
-#### onClick
-Type: `function`  
-Default: none  
-This handler is triggered either when the user clicks on a mark. 
-The handler passes two arguments, the corresponding datapoint and the actual event. 
-```jsx
-<MarkSeries
-...
-  onClick={(datapoint, event)=>{
-  	// does something on click
-  	// you can access the value of the event
-  }}
-```
-
-#### onMouseOut
-Type: `function`  
-Default: none  
-This handler is triggered either when the user's mouse leaves a mark. 
-The handler passes two arguments, the corresponding datapoint and the actual event. 
-```jsx
-<MarkSeries
-...
-  onMouseOut={(datapoint, event)=>{
-  	// does something on click
-  	// you can access the value of the event
-  }}
-```
-
-#### onMouseOver
-Type: `function`
-Default: none  
-This handler is triggered either when the user's mouse enters a mark. 
-The handler passes two arguments, the corresponding datapoint and the actual event. 
-```jsx
-<MarkSeries
-...
-  onMouseOver={(datapoint, event)=>{
-  	// does something on click
-  	// you can access the value of the event
-  }}
-```
 
 #### onNearestX
 Type: `function`  
@@ -176,6 +141,49 @@ This handler fires when the user mouses over a series, and provides the correspo
   	// you can access the value of the event
   }}
 ```
+
+#### onValueClick
+Type: `function`  
+Default: none  
+This handler is triggered either when the user clicks on a mark. 
+The handler passes two arguments, the corresponding datapoint and the actual event. 
+```jsx
+<MarkSeries
+...
+  onClick={(datapoint, event)=>{
+  	// does something on click
+  	// you can access the value of the event
+  }}
+```
+
+#### onValueMouseOut
+Type: `function`  
+Default: none  
+This handler is triggered either when the user's mouse leaves a mark. 
+The handler passes two arguments, the corresponding datapoint and the actual event. 
+```jsx
+<MarkSeries
+...
+  onMouseOut={(datapoint, event)=>{
+  	// does something on click
+  	// you can access the value of the event
+  }}
+```
+
+#### onValueMouseOver
+Type: `function`
+Default: none  
+This handler is triggered either when the user's mouse enters a mark. 
+The handler passes two arguments, the corresponding datapoint and the actual event. 
+```jsx
+<MarkSeries
+...
+  onMouseOver={(datapoint, event)=>{
+  	// does something on click
+  	// you can access the value of the event
+  }}
+```
+
 
 ## Interaction strategies and examples
 

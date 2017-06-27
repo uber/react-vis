@@ -81,9 +81,6 @@ Type: `string|number`
 The color of a box in the series. By default the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop colorType="literal" to the series itself. This property can also be defined on the series level.
 
 
-
-
-
 ## Series API Reference
 
 #### animation (optional)  
@@ -91,7 +88,7 @@ See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
 #### color
 Type: `string|number`
-The color for all elements in the series, this property will be over-ridden by color specified in the data attribute.
+The color for all elements in the series, this property will be over-ridden by color specified in the data attribute. See [colors](colors.md)
 
 #### className (optional)
 Type: `string`
@@ -103,15 +100,39 @@ Array of data for the series. See above data format reference.
 
 #### fill
 Type: `string|number`
-The inner color for all elements in the series, this property will be over-ridden by color specified in the data attribute.
+The inner color for all elements in the series, this property will be over-ridden by color specified in the data attribute. See [colors](colors.md)
 
+#### opacity
+Type: `string|number`
+The opacity for all elements in the series, this property will be over-ridden by color specified in the data attribute.
+
+#### stroke
+Type: `string|number`
+The outer color for all elements in the series, this property will be over-ridden by color specified in the data attribute. See [colors](colors.md)
+
+### style
+Type: `object`
+A list of CSS properties to style the series outside of the explicitly set properties. Note that it will override all other properties (ie fill, stroke, opacity, color). See [style](style.md)
+
+## Interaction handlers
 #### onNearestX (optional)
 Type: `function(value, {event, innerX, index})`  
-A callback function which is triggered each time when the mouse pointer gets close to some X value.
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor. 
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
-- `innerX` is the left position of the value;
+- `innerX` is the left position of the mark;
 - `index` is the index of the data point in the array of data;
 - `event` is the event object.
+See [interaction](interaction.md)
+
+#### onNearestXY (optional)
+Type: `function(value, {event, innerX, innerY, index})`  
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor. 
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the mark;
+- `innerY` is the top position of the mark;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+See [interaction](interaction.md)
 
 #### onValueMouseOver (optional)
 Type: `function(d, {event})`  
@@ -125,10 +146,3 @@ Type: `function(d, {event})`
 Type: `function(d, {event})`  
 `click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
 
-#### opacity
-Type: `string|number`
-The opacity for all elements in the series, this property will be over-ridden by color specified in the data attribute.
-
-#### stroke
-Type: `string|number`
-The outer color for all elements in the series, this property will be over-ridden by color specified in the data attribute.

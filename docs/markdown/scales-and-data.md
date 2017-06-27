@@ -70,7 +70,7 @@ Here is what attribute is available as a scale per series type, and what is the 
 | Series              | angle  | angle0 | color      | fill       | opacity    | radius | radius0 | size   | stroke     | x      | x0     | y      | y0     | 
 |---------------------|--------|--------|------------|------------|------------|--------|---------|--------|------------|--------|--------|--------|--------| 
 | [ArcSeries](arc-series.md)           | linear | linear | linear     | linear     | literal    | linear | linear  |        | linear     | linear |        | linear |        | 
-| AreaSeries          |        |        | / series | / series | / series |        |         |        | / series | linear |        | linear | linear | 
+| [AreaSeries](area-series.md)          |        |        | / series | / series | / series |        |         |        | / series | linear |        | linear | linear | 
 | [ContourSeries](contour-series.md)       |        |        | linear*    |            |            |        |         |        |            | linear |        | linear |        | 
 | [HeatmapSeries](heatmap-series.md)       |        |        | linear     |            | literal    |        |         |        | linear     | linear |        | linear |        | 
 | [HorizontalBarSeries](bar-series.md) |        |        | linear     | linear     | literal    |        |         |        | linear     | linear | linear | linear |        | 
@@ -78,7 +78,7 @@ Here is what attribute is available as a scale per series type, and what is the 
 | [LineSeries](line-series.md)          |        |        | / series |            | / series |        |         |        | / series | linear |        | linear |        | 
 | [MarkSeries](markseries.md)          |        |        | linear     | linear     | literal    |        |         | linear | linear     | linear |        | linear |        | 
 | [PolygonSeries](polygon-series.md)       |        |        | / series |            |            |        |         |        |            | linear |        | linear |        | 
-| RectSeries          |        |        | linear     | linear     | literal    |        |         |        | linear     | linear | linear | linear | linear | 
+| [RectSeries](rect-series.md)          |        |        | linear     | linear     | literal    |        |         |        | linear     | linear | linear | linear | linear | 
 | [VerticalBarSeries](bar-series.md)   |        |        | linear     | linear     | literal    |        |         |        | linear     | linear |        | linear | linear | 
 
 For Heatmap series, while you can pass a colorDomain and a colorRange, you cannot override the type of scale for colors.

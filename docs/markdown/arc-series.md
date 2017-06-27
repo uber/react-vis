@@ -57,11 +57,20 @@ The distance between the origin and the outside of the arc. This values is scale
 
 #### color (optional)
 Type: `string|number`  
-The color of a box in the series. By default the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop colorType="literal" to the series itself. This property can also be defined on the series level.
+The color of an arc in the series. By default, the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop colorType="literal" to the series itself. This property can also be defined on the series level. See [colors](colors.md)
 
-#### style (optional)
-Type: `object`  
-SVG paths (which is what the arc series is made up of) have numerous manipulable properties, so rather than trying to prescribe all of them as props we offer a port to let you style it for yourself. This overrides the series level version of this property.
+#### fill (optional)
+Type: `string|number`  
+The inner color of an arc in the series. If `fill` and `color` are provided, `fill` will override `color`. By default, the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop fillType="literal" to the series itself. This property can also be defined on the series level. See [colors](colors.md)
+
+#### stroke (optional)
+Type: `string|number`  
+The outer color of an arc in the series (i.e. its outline). If `stroke` and `color` are provided, `stroke` will override `color`. By default, the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop strokeType="literal" to the series itself. This property can also be defined on the series level. See [colors](colors.md)
+
+#### opacity (optional)
+Type: `string|number`  
+Default: 1  
+The opacity of an arc in the series, from 0 (transparent) to 1 (opaque).
 
 <!-- INJECT:"ClockExample" -->
 
@@ -90,38 +99,6 @@ Array of data for the series. See above data format reference.
 Type: `string|number`  
 The inner color for all elements in the series, this property will be over-ridden by color specified in the data attribute.
 
-#### onNearestX (optional)
-Type: `function(value, {event, innerX, index})`   
-A callback function which is triggered each time when the mouse pointer gets close to some X value.
-Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
-- `innerX` is the left position of the value;
-- `index` is the index of the data point in the array of data;
-- `event` is the event object.
-
-#### onValueMouseOver (optional)
-Type: `function(d, {event})`    
-`mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
-
-#### onValueMouseOut (optional)
-Type: `function(d, {event})`  
-`mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
-
-#### onValueClick (optional)
-Type: `function(d, {event})`    
-`click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
-
-#### onSeriesMouseOver (optional)
-Type: `function(d, {event})`    
-`mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
-
-#### onSeriesMouseOut (optional)
-Type: `function(d, {event})`    
-`mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
-
-#### onSeriesClick (optional)
-Type: `function(d, {event})`    
-`click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
-
 #### opacity
 Type: `string|number`  
 The opacity for all elements in the series, this property will be over-ridden by color specified in the data attribute.
@@ -133,3 +110,107 @@ The outer color for all elements in the series, this property will be over-ridde
 #### style (optional)
 Type: `object`  
 SVG paths (which is what the arc series is made up of) have numerous manipulable properties, so rather than trying to prescribe all of them as props we offer a port to let you style it for yourself.
+
+## Interaction handlers
+#### onNearestX (optional)
+Type: `function(value, {event, innerX, index})`  
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor. 
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the mark;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+See [interaction](interaction.md)
+
+#### onNearestXY (optional)
+Type: `function(value, {event, innerX, innerY, index})`  
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor. 
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the mark;
+- `innerY` is the top position of the mark;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+See [interaction](interaction.md)
+
+#### onSeriesClick
+Type: `function`  
+Default: none  
+This handler fires when the user clicks somewhere on a series, and provides the corresponding event. Unlike onClick, it doesn't pass a specific datapoint.
+
+```jsx
+<ArcSeries
+...
+  onSeriesClick={(event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```
+
+#### onSeriesMouseOut
+Type: `function`  
+Default: none  
+This handler fires when the user's mouse cursor leaves a series, and provides the corresponding event. Unlike onMouseOut, it doesn't pass a specific datapoint. 
+
+```jsx
+<ArcSeries
+...
+  onSeriesMouseOut={(event)=>{
+    // does something on mouse over
+    // you can access the value of the event
+  }}
+```
+
+#### onSeriesMouseOver
+Type: `function`
+Default: none  
+This handler fires when the user mouses over a series, and provides the corresponding event. Unlike onMouseOver, it doesn't pass a specific datapoint. 
+
+```jsx
+<ArcSeries
+...
+  onSeriesMouseOver={(event)=>{
+    // does something on mouse over
+    // you can access the value of the event
+  }}
+```
+
+#### onValueClick
+Type: `function`  
+Default: none  
+This handler is triggered either when the user clicks on a mark. 
+The handler passes two arguments, the corresponding datapoint and the actual event. 
+```jsx
+<ArcSeries
+...
+  onClick={(datapoint, event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```
+
+#### onValueMouseOut
+Type: `function`  
+Default: none  
+This handler is triggered either when the user's mouse leaves a mark. 
+The handler passes two arguments, the corresponding datapoint and the actual event. 
+```jsx
+<ArcSeries
+...
+  onMouseOut={(datapoint, event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```
+
+#### onValueMouseOver
+Type: `function`
+Default: none  
+This handler is triggered either when the user's mouse enters a mark. 
+The handler passes two arguments, the corresponding datapoint and the actual event. 
+```jsx
+<ArcSeries
+...
+  onMouseOver={(datapoint, event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```

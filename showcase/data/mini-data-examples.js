@@ -24,7 +24,7 @@ import {
   XYPlot,
   LineSeries,
   MarkSeries,
-  VerticalBarSeries,
+  VerticalBarSeries
 } from 'index';
 
 const data = [

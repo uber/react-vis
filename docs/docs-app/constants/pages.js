@@ -278,7 +278,8 @@ export const docPages = generatePath([
   },
   {
     name: 'XY Plot Series',
-    children: [{
+    children: [
+      {
         name: 'Arc Series',
         content: {
           markdown: getDocUrl('arc-series.md'),
