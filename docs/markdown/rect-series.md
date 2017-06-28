@@ -12,8 +12,6 @@ Like BarSeries, RectSeries has two wrappers: HorizontalRectSeries and VerticalRe
 
 RectSeries isn't meant to be used directly, however, it's provided as it's being used under the hood by HorizontalRectSeries and VerticalRectSeries. 
 
-While two distinct HorizontalRectSeries and VerticalRectSeries are provided for consistency with BarSeries, their API is actually identical, so you can use either of them indifferently.
-
 ## Data format Reference
 
 Like other series, it is required that the data be an array of objects, formatted like so:
@@ -27,14 +25,13 @@ const myData = [
 ```
 
 The main difference with bar series is that it has x0 and y0 properties.  
-If any of these is omitted, the default value would be 0.  
-x and x0, and y and y0 respectively are interchangeable - x doesn't have to be less than or greater than x0; and y doesn't have to be less than or greater than y0.  
-The width of the rectangle will correspond to the difference in the position of x and x0 on the x scale. Likewise, its height will be the difference between the position of y and y0 on the y scale.
+
+### For HorizontalRectSeries:
 
 #### x (optional)
 Type: `string|number|date`    
 Default: 0  
-The value used to compute the x position of one side of the rectangle.
+The value used to compute the x position of _either_ side of the rectangle.
 
 #### x0 (optional)
 Type: `string|number|date`    
@@ -44,7 +41,29 @@ The value used to compute the x position of the other side of the rectangle.
 #### y (optional)
 Type: `string|number|date`    
 Default: 0  
-The value used to compute the y position of one side of the rectangle.
+The value used to compute the y position of _the bottom_ of the rectangle.
+
+#### y0 (optional)
+Type: `string|number|date`    
+Default: 0  
+The value used to compute the y position of _the top_ of the rectangle.
+
+### For VerticalRectSeries:
+
+#### x (optional)
+Type: `string|number|date`    
+Default: 0  
+The value used to compute the x position of _the left_ side of the rectangle.
+
+#### x0 (optional)
+Type: `string|number|date`    
+Default: 0  
+The value used to compute the x position of _the right_ side of the rectangle.
+
+#### y (optional)
+Type: `string|number|date`    
+Default: 0  
+The value used to compute the y position of _either_ side of the rectangle.
 
 #### y0 (optional)
 Type: `string|number|date`    

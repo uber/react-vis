@@ -35,35 +35,7 @@ Type: `string|number`
 Default: 5
 The size of each of the marks. 
 
-
 ## API Reference
-
-##### strokeDasharray (optional)
-Type: `string`
-Specify a custom `stroke-dasharray` attribute which controls the pattern of dashes and gaps used to stroke paths.
-
-##### strokeStyle (optional)
-Type: `string`
-If set to `dashed`, your series will use dashed lines. If set to `solid` or unspecified, your series will use solid lines. See `strokeDasharray` for specifying a custom stroke dash-array value.
-
-##### strokeWidth (optional)
-Type: `string|number`
-Specifies the width of the line for the series. By default, this is determined by react-vis css (2px).
-
-#### value
-Type: `Object`
-The data point to show the value at. Hint component will automatically find the place where the data point is and put the hint there.
-
-#### format (optional)
-Type: `function`
-Format function for a tooltip. Receives the data point, should return an array of objects containing `title` and `value` properties. Each item of an array is shown on a separate line by default.
-_Note: please pass custom contents in case if you need different look for the hint._
-
-#### orientation (optional)
-Type: `(auto|topleft|topright|bottomleft|bottomright)`
-Default: `auto`
-The way to align the hint inside the chart. When `auto` is set the hint is trying to stay inside the bounding box of the chart.
-Set the hint to `topleft` if you want to see a "conventional" hint alignment.
 
 #### curve (optional)
 Type: `string|function`
@@ -79,6 +51,27 @@ const funcCurveProp = <LineMarkSeries data={data} curve={configuredCurve} .../>;
 ```
 
 Some, but not all line interpolations have the resulting curve going through the original coordinates of its data points. If not, the LineSeries part of the LineMarkSeries will be detached from the MarkSeries part. 
+
+#### fill (optional)
+Type: `string|number`
+The inner color for all the marks in the series, this property will be over-ridden by fill specified in the data attribute. See [colors](colors.md)
+
+#### stroke (optional)
+Type: `string|number`  
+Default: see [colors](colors.md)  
+A color for the series. Will override color if both are provided.
+
+##### strokeDasharray (optional)
+Type: `string`
+Specify a custom `stroke-dasharray` attribute which controls the pattern of dashes and gaps used to stroke paths. This will only affect the LineSeries part of the LineMarkSeries. 
+
+##### strokeStyle (optional)
+Type: `string`
+If set to `dashed`, your series will use dashed lines. If set to `solid` or unspecified, your series will use solid lines. See `strokeDasharray` for specifying a custom stroke dash-array value. This will only affect the LineSeries part of the LineMarkSeries. 
+
+##### strokeWidth (optional)
+Type: `string|number`
+Specifies the width of the line for the series. By default, this is determined by react-vis css (2px). This will affect both the thickness of the Line and the Marks.
 
 #### style (optional)
 Type: `object`

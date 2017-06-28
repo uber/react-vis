@@ -8,7 +8,6 @@ The SVG mode is accessed by using the normal `LineSeries`, just as above, while 
 <!-- INJECT:"LineChartCanvas" -->
 -**NOTE**: using the Canvas version of this layer disables animation
 
-
 ## Data format reference
 
 #### x
@@ -76,7 +75,6 @@ An object which holds CSS properties that will be applied to the SVG element(s) 
   style={{strokeLinejoin: "round"}}
 />
 ```
-
 
 ### Interaction handlers
 
