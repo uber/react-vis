@@ -350,6 +350,13 @@ export const docPages = generatePath([
           filename: 'polygon-series.md',
           pageType: 'documentation'
         }
+      }, {
+        name: 'Rect Series',
+        content: {
+          markdown: getDocUrl('rect-series.md'),
+          filename: 'rect-series.md',
+          pageType: 'documentation'
+        }
       }
     ]
   },
