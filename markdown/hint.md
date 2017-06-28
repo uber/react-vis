@@ -11,6 +11,21 @@
 </Hint>
 ```
 
+#### value
+Type: `Object`
+The data point to show the value at. Hint component will automatically find the place where the data point is and put the hint there.
+
+#### format (optional)
+Type: `function`
+Format function for a tooltip. Receives the data point, should return an array of objects containing `title` and `value` properties. Each item of an array is shown on a separate line by default.
+_Note: please pass custom contents in case if you need different look for the hint._
+
+#### orientation (optional)
+Type: `(auto|topleft|topright|bottomleft|bottomright)`
+Default: `auto`
+The way to align the hint inside the chart. When `auto` is set the hint is trying to stay inside the bounding box of the chart.
+Set the hint to `topleft` if you want to see a "conventional" hint alignment.
+
 ### Style (optional)
 Type: `Object`
 You can pass a style object to your Hint component to apply your own styles. See [style](style.md)

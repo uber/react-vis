@@ -1,23 +1,97 @@
 ## Scales and data
 
 ### Data
-It is expected that each visualization has a `data` property. Each data property is an object. Please refer to the documentation for each component for more detail.
+
+React-Vis charts are made of Series components - LineSeries, BarSeries and so on and so forth.
+Each of these Series components requires a `data` property, through which we pass an array of objects.
+
+These properties correspond to various visual characteristics of the corresponding marks. For example, x and y, which are required for most series types, affect the position of each mark. Each series type takes more properties, though, which are described in the series section. 
+
+Here is how a simple dataset is transformed in some simple charts: 
+
+<!-- INJECT:"MiniCharts" -->
+
+```jsx
+const data = [
+  {x: 0, y: 8},
+  {x: 1, y: 5},
+  {x: 2, y: 4},
+  {x: 3, y: 9},
+  {x: 4, y: 1},
+  {x: 5, y: 7},
+  {x: 6, y: 6},
+  {x: 7, y: 3},
+  {x: 8, y: 2},
+  {x: 9, y: 0}
+];
+
+...
+
+<XYPlot height={200} width={200}>
+  <VerticalBarSeries data={data} />
+</XYPlot>
+<XYPlot height={200} width={200}>
+  <LineSeries data={data} />
+</XYPlot>
+<XYPlot height={200} width={200}>
+  <MarkSeries data={data} />
+</XYPlot>
+
+```
+
+By the way: can you guess what this dataset is? Answer at the end of the document. 
 
 ### Scales
 
-Scales describe the visual aspects of each data point. Depending on the visualization are x and y scales (for the position of x and y), color scale (e.g. the stroke or the fill of the series), size scale, opacity scale, radius scale, angle scale and others. Available scales are described in the "Scales and Data" section in the docs for each component.
+Scales are what actually transform the values of the properties in the data objects into visual attributes. In the example above, for instance, the third object is {x: 2, y: 4}. But the corresponding rectangle is 39.45px from the left and 105.56px from the top of the top left corner of the chart. How? Scales.
 
-Scales have their own range and domain. We are following the definition of scales which was given by Mike Bostock: _scales are functions that map from an input domain to an output range_. If the domain or the range for the scale is not passed, it will be calculated automatically according to the given data and scale parameters.
+React-vis scales are designed so that as often as possible, you shouldn't have to do anything; yet they give you control to override anything they do.  
 
-Scales are visualized _only_ in case if the appropriate property exists in the data object. For instance, if you want to visualize color, you should have `color` property in each of the data objects passed to the component. We do not support value accessors for the properties.
+The notion of scales and the corresponding vocabulary are directly taken from d3js. 
+Scales have a type, a range and a domain. For a given chart, there are multiple scales: there's one scale per attribute. Attributes include x position, y position, color, size, angle etc. Again, not all attributes are applicable in all series. 
 
-### Overriding scales
+We are following the definition of scales which was given by Mike Bostock: _scales are functions that map from an input domain to an output range_. 
 
-The scale parameters propagate from the parent to the child. For instance, scale parameters applied to the [XYPlot](xy-plot.md) component will be automatically applied to all nested series as well. react-vis allows you to override scales on any level of nesting.
+Under the hood, scales have a default type; a default domain can be inferred automatically from the data and, depending on the attribute, there's either a default range, or it is being generated depending on context. 
+
+For example, for x and y:
+- the default type is a linear scale (the relationship between the value in the data object and the actual position of the mark is of the form: y = ax + b ),
+- the domain is defined by the smallest and highest values for found in the dataset - in the above example, both x and y vary from 0 to 9, so the domains are [0, 9] for both the x- and the y- scale,
+- and the range is the total width of the XYPlot minus the margin. 
+
+All of this is sensible most of the time.  
+
+Scales transform each datapoint into visual characteristics for a mark, so, for a given attribute, they only work if the corresponding data property exists. The property in the datapoint MUST have the same name as the attribute. You can have all the properties you want in your datapoint object, but to position the mark from left to right, you NEED a x property.
+
+### Available scales by series type:
+
+Here is what attribute is available as a scale per series type, and what is the default scale type:
+
+| Series              | angle  | angle0 | color      | fill       | opacity    | radius | radius0 | size   | stroke     | x      | x0     | y      | y0     | 
+|---------------------|--------|--------|------------|------------|------------|--------|---------|--------|------------|--------|--------|--------|--------| 
+| [ArcSeries](arc-series.md)           | linear | linear | linear     | linear     | literal    | linear | linear  |        | linear     | linear |        | linear |        | 
+| [AreaSeries](area-series.md)          |        |        | / series | / series | / series |        |         |        | / series | linear |        | linear | linear | 
+| [ContourSeries](contour-series.md)       |        |        | linear*    |            |            |        |         |        |            | linear |        | linear |        | 
+| [HeatmapSeries](heatmap-series.md)       |        |        | linear     |            | literal    |        |         |        | linear     | linear |        | linear |        | 
+| [HorizontalBarSeries](bar-series.md) |        |        | linear     | linear     | literal    |        |         |        | linear     | linear | linear | linear |        | 
+| [LabelSeries](label-series.md)         |        |        |            |            |            |        |         |        |            | linear |        | linear |        | 
+| [LineSeries](line-series.md)          |        |        | / series |            | / series |        |         |        | / series | linear |        | linear |        | 
+| [MarkSeries](markseries.md)          |        |        | linear     | linear     | literal    |        |         | linear | linear     | linear |        | linear |        | 
+| [PolygonSeries](polygon-series.md)       |        |        | / series |            |            |        |         |        |            | linear |        | linear |        | 
+| [RectSeries](rect-series.md)          |        |        | linear     | linear     | literal    |        |         |        | linear     | linear | linear | linear | linear | 
+| [VerticalBarSeries](bar-series.md)   |        |        | linear     | linear     | literal    |        |         |        | linear     | linear |        | linear | linear | 
+
+For Heatmap series, while you can pass a colorDomain and a colorRange, you cannot override the type of scale for colors.
+
+"Per series" means that it's possible to pass a value to the series as a whole, but not per data point. 
+
+If am attribute is not available as a scale for a given series, all values passed in the corresponding property will be ignored. For instance, if you use a dataset that has fill properties, it will be ignored for LineSeries.
+
+This table is also meant to be used for derived series. Canvas series have the same interface as SVG series. HorizontalRectSeries and VerticalRectSeries take the same attribute as RectSeries. And LineMarkSeries take the same atttribute as Line and Mark series. 
 
 ### Scale properties
 
-All scale properties are prepended with the name of the attribute, for instance `xDomain` where `x` is an attribute and `Domain` indicates a domain.
+To redefine a scale, you must pass a prop to the series that uses that scale. The prop names are based on the name of the attribute: name + Domain, name + Range, name + Type, name + Padding (for instance: yDomain, colorType, xRange).
 
 * `[name]Domain` (optional)  
   Type: `Array`  
@@ -46,3 +120,15 @@ All scale properties are prepended with the name of the attribute, for instance 
     Log scale. Similar to [d3.scaleLog](https://github.com/d3/d3-scale/blob/master/README.md#log-scales).
     * `'literal'`  
     Returns exactly the value that was given to it. Similar to [d3.scaleIdentity](https://github.com/d3/d3-scale#scaleIdentity), except that it does NOT coerce data into numbers. This is useful for precisely specifying properties in the data, eg color can be specified directly on the data.
+
+### Overriding scales
+
+Scales can be defined either at the XYPlot level, in which case they apply to the whole chart, or at the series level. Scales defined at the series level override those defined at the XYPlot level. 
+
+The scales provided to each individual series don't have to have the same parameters. For instance, if you wanted to do a dual-axis chart, you could provide a different yDomain and yRange to two data series (use at your own risk).
+
+### Other uses of scales
+
+Scales can also be used in [Axes](axes.md) and in [Gridlines](grids.md). You can pass an x-scale (so xDomain, xRange, xPadding, xType) to an XAxis or a VerticalGridLines component, and a y-scale (so yDomain, yRange, yPadding, yType) to a YAxis or HorizontalGridLines component. These scale parameters don't have to be the same as the ones passed to your series. 
+
+Did you guess that this data set was the digits sorted alphabetically? eight, five, four... 

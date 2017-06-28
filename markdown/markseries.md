@@ -35,77 +35,42 @@ react-vis offers two different types of MarkSeries, one that renders SVG and one
 The SVG mode is accessed by using the normal `MarkSeries`, just as above, while the Canvas mode is used by simply calling `MarkSeriesCanvas` instead of `MarkSeries`.
 
 <!-- INJECT:"ScatterplotCanvas" -->
+
 -**NOTE**: using the Canvas version of this layer disables animation
 
-## API
-
-#### data
-Type: `Array<Object>`
-Array of data for the series.
+## Data format reference
 
 #### x
-Type: `number|Object`  
-Exact X position of all series points in pixels or a series object.
+Type: `string|number|date`  
+x will be used to determine the x position of each mark. The format of x depends on what scale is being used - see [Scales and Data](scales-and-data.md)
 
-#### y (optional)  
-Type: `number|Object`  
-Exact Y position of all series points in pixels or a series object.
+#### y
+Type: `string|number|date`
+y will be used to determine the y position of each mark. The format of y depends on what scale is being used - see [Scales and Data](scales-and-data.md)
 
 #### color (optional)
-Type: `string|Object`
-Exact color for all series points or a series object.
-
-#### size (optional)
-Type: `number|Object`  
-Exact size for all series points in pixels or a series object.
+Type: `string|number`
+The color of the marks. By default the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop colorType="literal" to the series itself. This property can also be defined on the series level.
 
 #### opacity (optional)
-Type: `number|Object`  
-Exact opacity for all series points in pixels or a series object.
+Type: `string|number`  
+Default: 1  
+Opacity of the individual marks, from 0 (transparent) to 1 (opaque). By default opacity is scaled by `literal`, so the exact value provided will be used. This property can also be defined on the series level.
 
-#### onNearestX (optional)
-Type: `function(value, info)`  
-A callback function which is triggered each time when the mouse pointer gets close to some X value.
-Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
-- `innerX` is the left position of the value;
-- `index` is the index of the data point in the array of data;
-- `event` is the event object.
+#### stroke (optional)
+Type: `string|number`  
+The color of the outline of the marks. When this value is not provided, the color attribute is used instead. This property can also be defined on the series level.
 
-#### onNearestXY (optional)
-Type: `function(value, info)`
-A callback function which is triggered on mousemove and returns the closest point vased on the voronoi layout.
-Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
-- `innerX` is the horizontal position of the value;
-- `innerY` is the vertical position of the value;
-- `index` is the index of the data point in the array of data;
-- `event` is the event object.
+#### fill (optional)
+Type: `string|number`  
+The color of the inside of the marks. When this value is not provided the color attribute is used instead. This property can also be defined on the series level.
 
-#### onValueMouseOver (optional)
-Type: `function(d, info)`  
-`mouseover` event handler for the elements corresponding separate data points `d` is a data point, `info` is an object with the only `event` property.  
-**NOTE**: This event handler is *not* triggered for AreaSeries and LineSeries.
+#### size (optional)
+Type: `string|number`  
+Default: 5
+The size of each of the marks. 
 
-#### onValueMouseOut (optional)
-Type: `function(d, info)`  
-`mouseout` event handler for the elements corresponding separate data points. `d` is a data point, `info` is an object with the only `event` property.  
-**NOTE**: This event handler is *not* triggered for AreaSeries and LineSeries.
-
-#### onValueClick (optional)
-Type: `function(d, info)`  
-`click` event handler for the elements corresponding separate data points. `d` is a data point, `info` is an object with the only `event` property.  
-**NOTE**: This event handler is *not* triggered for AreaSeries and LineSeries.
-
-#### onSeriesMouseOver (optional)
-Type: `function(info)`  
-`mouseover` event handler for the entire series. Received `info` object as argument with the only `event` property.
-
-#### onSeriesMouseOut (optional)
-Type: `function(info)`  
-`mouseout` event handler for the entire series. Received `info` object as argument with the only `event` property.
-
-#### onSeriesClick (optional)
-Type: `function(info)`  
-`click` event handler for the entire series. Received `info` object as argument with the only `event` property.
+## API Reference
 
 #### animation (optional)  
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
@@ -113,3 +78,138 @@ See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 #### className (optional)
 Type: `string`
 Provide an additional class name for the series.
+
+#### color (optional)
+Type: `string|number`
+Exact color for all series points or a series object.
+
+#### data
+Type: `Array<Object>`
+Array of data for the series.
+
+#### fill (optional)
+Type: `string|number`
+The inner color for all the marks in the series, this property will be over-ridden by fill specified in the data attribute. See [colors](colors.md)
+
+#### opacity (optional)
+Type: `string|number`  
+Exact opacity for all series points in pixels or a series object, from 0 (transparent) to 1 (opaque)
+
+#### size (optional)
+Type: `string|number`  
+Exact size for all series points in pixels or a series object.
+
+#### stroke (optional)
+Type: `string|number`  
+Default: see [colors](colors.md)  
+A color for the outline of the marks. Will override color if both are provided.
+
+#### strokeWidth (optional)
+Type: `string|number`
+Default: 1
+The width of the outline of the marks. 
+
+## Interaction handlers
+#### onNearestX (optional)
+Type: `function(value, {event, innerX, index})`  
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor. 
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the mark;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+See [interaction](interaction.md)
+
+#### onNearestXY (optional)
+Type: `function(value, {event, innerX, innerY, index})`  
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor. 
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the mark;
+- `innerY` is the top position of the mark;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+See [interaction](interaction.md)
+
+#### onSeriesClick
+Type: `function`  
+Default: none  
+This handler fires when the user clicks somewhere on a series, and provides the corresponding event. Unlike onClick, it doesn't pass a specific datapoint.
+
+```jsx
+<MarkSeries
+...
+  onSeriesClick={(event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```
+
+#### onSeriesMouseOut
+Type: `function`  
+Default: none  
+This handler fires when the user's mouse cursor leaves a series, and provides the corresponding event. Unlike onMouseOut, it doesn't pass a specific datapoint. 
+
+```jsx
+<MarkSeries
+...
+  onSeriesMouseOut={(event)=>{
+    // does something on mouse over
+    // you can access the value of the event
+  }}
+```
+
+#### onSeriesMouseOver
+Type: `function`
+Default: none  
+This handler fires when the user mouses over a series, and provides the corresponding event. Unlike onMouseOver, it doesn't pass a specific datapoint. 
+
+```jsx
+<MarkSeries
+...
+  onSeriesMouseOver={(event)=>{
+    // does something on mouse over
+    // you can access the value of the event
+  }}
+```
+
+#### onValueClick
+Type: `function`  
+Default: none  
+This handler is triggered either when the user clicks on a mark. 
+The handler passes two arguments, the corresponding datapoint and the actual event. 
+```jsx
+<MarkSeries
+...
+  onClick={(datapoint, event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```
+
+#### onValueMouseOut
+Type: `function`  
+Default: none  
+This handler is triggered either when the user's mouse leaves a mark. 
+The handler passes two arguments, the corresponding datapoint and the actual event. 
+```jsx
+<MarkSeries
+...
+  onMouseOut={(datapoint, event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```
+
+#### onValueMouseOver
+Type: `function`
+Default: none  
+This handler is triggered either when the user's mouse enters a mark. 
+The handler passes two arguments, the corresponding datapoint and the actual event. 
+```jsx
+<BarSeries
+...
+  onMouseOver={(datapoint, event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```
+

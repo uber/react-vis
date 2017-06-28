@@ -30,7 +30,7 @@ const RADAR_PROPS = {
 };
 ```
 
-In such a case, there would be ONE polygon rendered for four variables (nice/explosions/wow/sickMoves), because those values are listed in the domains prop.
+In such a case, there would be ONE polygon rendered for four variables (nice/explosions/wow/sickMoves), because those values are listed in the domains prop. The radar chart accepts children if you wish to provide additional components, such as CircularGridLines.
 
 
 ## API Reference
@@ -105,3 +105,11 @@ Provide an additional class name for the series.
 #### colorType (optional)
 Type: `string`
 Specify the type of color scale to be used on the radar chart, please refer to [Scales and data](scales-and-data.md) for more information.
+
+#### tickFormat (optional)
+Type: 'function'
+Specify the tick format for all axes. Will be over-ridden by tickFormats specified on single domains.
+
+#### startingAngle (optional)
+Type: `number`
+The angle of the first axis in radians. Defaults to PI / 2.

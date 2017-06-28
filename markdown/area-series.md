@@ -1,12 +1,19 @@
-# LineSeries/LineMarkSeries
+# AreaSeries
 
-<!-- INJECT:"LineChart" -->
+<!-- INJECT:"AreaChart" -->
 
-react-vis offers two different types of LineSeries, one that renders SVG and one that renders Canvas.
-The SVG mode is accessed by using the normal `LineSeries`, just as above, while the Canvas mode is used by simply calling `LineSeriesCanvas` instead of `LineSeries`.
+In addition to the the LineSeries, react-vis offers a similar chart type for area charts. 
+Like LineSeries, AreaSeries:
+- are styled at the series level, not at the mark level. 
+- can have a curve property for a different interpolation between points.
 
-<!-- INJECT:"LineChartCanvas" -->
--**NOTE**: using the Canvas version of this layer disables animation
+Unlike LineSeries, AreaSeries:
+- have a fill property. By default, the color property affects both the fill color and the outline color of the area charts. However, these two can be set independently,
+- don't have an API to style the stroke beyond color. It's still possible to use the style property, though. 
+- can be stacked,
+- do not have a canvas equivalent. 
+
+The stroke property of an AreaChart creates an outline around the whole shape of the chart (including to its left, right and bottom.) To create a chart that has a fill, no distinct lines to the left, right or bottom, but a different line style at the top, you may create an area chart with a line chart on top.
 
 ## Data format reference
 
@@ -18,30 +25,39 @@ Left-to-right position of marks in the series.
 Type: `number`  
 Top-to-bottom position of the top edge of the series.
 
+#### y0
+Type: `number`  
+Default: 0  
+Top-to-bottom position of the borrom edge of the series.
+
 ## API Reference
 
 #### color (optional)
 Type: `string|number`  
 Default: see [colors](colors.md)
-Color of the line series. 
-By default, you can pass a literal color to the series (i.e. "red" or "#f70"). You can also define a color scale at the top level, and pass a number which will be interpolated by the scale. If nothing is provided, lineSeries will be colored according to react-vis default scale.
+A color for both the fill and the outline of the area series. Will be overridden by both the fill and the stroke property, if provided.
 
 #### curve (optional)
-Type: `string|function`
-Default: `null`
+Type: `string|function`  
+Default: `null`  
 Apply the provided or named curve function from the D3 shape library to smooth the line series plot, see [the D3 documentation](https://github.com/d3/d3-shape#curves) for function names and instructions. Providing the function, not the name, will require importing the d3-shape package in order to configure it:
 
 ```javascript
 // Setting up with only a name
-const stringCurveProp = <LineSeries data={data} curve={'curveMonotoneX'} .../>;
+const stringCurveProp = <AreaSeries data={data} curve={'curveMonotoneX'} .../>;
 
 const configuredCurve = d3Shape.curveCatmullRom.alpha(0.5);
-const funcCurveProp = <LineSeries data={data} curve={configuredCurve} .../>;
+const funcCurveProp = <AreaSeries data={data} curve={configuredCurve} .../>;
 ```
 
 #### data
 Type: `Array<Object>`  
 Array of data for the series. See above data format reference.
+
+#### fill (optional)
+Type: `string|number`   
+Default: see [colors](colors.md)  
+A color for the fill of the area series. Will override the color property if both are provided.
 
 #### opacity (optional)
 Type: `number`  
@@ -51,28 +67,16 @@ Opacity of the area chart from 0 (transparent) to 1 (opaque).
 #### stroke (optional)
 Type: `string|number`  
 Default: see [colors](colors.md)  
-A color for the series. Will override color if both are provided.
-
-##### strokeDasharray (optional)
-Type: `string`
-Specify a custom `stroke-dasharray` attribute which controls the pattern of dashes and gaps used to stroke paths.
-
-##### strokeStyle (optional)
-Type: `string`
-If set to `dashed`, your series will use dashed lines. If set to `solid` or unspecified, your series will use solid lines. See `strokeDasharray` for specifying a custom stroke dash-array value.
-
-##### strokeWidth (optional)
-Type: `string|number`
-Specifies the width of the line for the series. By default, this is determined by react-vis css (2px).
+A color for the outline of the area series. Will override the color property if both are provided.
 
 #### style (optional)
-Type: `object`
+Type: `object`  
 An object which holds CSS properties that will be applied to the SVG element(s) rendered by the series. This allows you to style series beyond the other explicitly defined properties and without having to use CSS classnames and stylesheets. See [style](style.md)
 
 ```jsx
-<LineSeries
+<AreaSeries
   data={data}
-  style={{strokeLinejoin: "round"}}
+  style={{strokeDasharray: "2 2"}}
 />
 ```
 
@@ -97,13 +101,22 @@ Callback is triggered with two arguments. `value` is the data point, `info` obje
 - `event` is the event object.
 See [interaction](interaction.md)
 
+```jsx
+<AreaSeries
+...
+  onNearestX={(datapoint, event)=>{
+  	// does something on mouseover
+  	// you can access the value of the event
+  }}
+```
+
 #### onSeriesClick
 Type: `function`  
 Default: none  
-This handler fires when the user clicks somewhere on a LineSeries, and provides the corresponding event. See [interaction](interaction.nd)
+This handler fires when the user clicks somewhere on an AreaSeries, and provides the corresponding event. See [interaction](interaction.nd)
 
 ```jsx
-<LineSeries
+<AreaSeries
 ...
   onSeriesClick={(event)=>{
   	// does something on click
@@ -114,10 +127,10 @@ This handler fires when the user clicks somewhere on a LineSeries, and provides 
 #### onSeriesMouseOut
 Type: `function`  
 Default: none  
-This handler fires when the user's mouse cursor leaves a LineSeries, and provides the corresponding event. See [interaction](interaction.nd)
+This handler fires when the user's mouse cursor leaves an AreaSeries, and provides the corresponding event. See [interaction](interaction.nd)
 
 ```jsx
-LineSeries
+<AreaSeries
 ...
   onSeriesMouseOut={(event)=>{
   	// does something on mouse over
@@ -128,13 +141,14 @@ LineSeries
 #### onSeriesMouseOver
 Type: `function`
 Default: none  
-This handler fires when the user mouses over a LineSeries, and provides the corresponding event. See [interaction](interaction.nd)
+This handler fires when the user mouses over an AreaSeries, and provides the corresponding event. See [interaction](interaction.nd)
 
 ```jsx
-<LineSeries
+<AreaSeries
 ...
   onSeriesMouseOver={(event)=>{
   	// does something on mouse over
   	// you can access the value of the event
   }}
 ```
+
