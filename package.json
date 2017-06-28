@@ -104,6 +104,13 @@
       ]
     ],
     "env": {
+      "production": {
+        "presets": [
+          "es2015",
+          "stage-0",
+          "react"
+        ]
+      },
       "development": {
         "presets": [
           "es2015",
