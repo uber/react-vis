@@ -27,7 +27,7 @@ The ContourSeries expects a similar data input as would be fed to either the Mar
 </XYPlot>
 ```
 
-### API ref
+## API reference
 
 #### animation (optional)  
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
@@ -46,3 +46,23 @@ Array of data for the series. See above data format reference.
 ### style
 Type: `object`
 A list of CSS properties to style the series outside of the explicitly set properties. Note that it will override all other properties (ie fill, stroke, opacity, color). See [style](style.md)
+
+## Interaction handlers
+#### onNearestX (optional)
+Type: `function(value, {event, innerX, index})`  
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor. 
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the mark;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+See [interaction](interaction.md)
+
+#### onNearestXY (optional)
+Type: `function(value, {event, innerX, innerY, index})`  
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor. 
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the mark;
+- `innerY` is the top position of the mark;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+See [interaction](interaction.md)

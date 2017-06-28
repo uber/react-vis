@@ -48,39 +48,52 @@ The y position in coordinates of the box to be used.
 #### animation (optional)  
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
-#### color
-Type: `string`
-The color for all elements in the series, this property will be over-ridden by color specified in the data attribute.
-
 #### className (optional)
 Type: `string`
 Provide an additional class name for the series.
+
+#### color
+Type: `string`
+The color for all elements in the series, this property will be over-ridden by color specified in the data attribute. See [colors](colors.md)
 
 #### data
 Type: `Array<Object>`
 Array of data for the series. See above data format reference.
 
-#### onNearestX (optional)
-Type: `function(value, {event, innerX, index})`  
-A callback function which is triggered each time when the mouse pointer gets close to some X value.
-Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
-- `innerX` is the left position of the value;
-- `index` is the index of the data point in the array of data;
-- `event` is the event object.
-
-#### onSeriesMouseOver (optional)
-Type: `function(d, {event})`  
-`mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
-
-#### onSeriesMouseOut (optional)
-Type: `function(d, {event})`  
-`mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
-
-#### onSeriesClick (optional)
-Type: `function(d, {event})`  
-`click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
-
 #### style
 Type: `object`
 Paths accept a ton of different styles, so rather than prescribe every single one we just accept a general grab bag pf the styles. check out the [w3](https://www.w3schools.com/graphics/svg_path.asp) page for more details and the [style] documnetation (style.md).
+
+## Interaction handlers
+
+#### onNearestX (optional)
+Type: `function(value, {event, innerX, index})`  
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor. 
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the mark;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+See [interaction](interaction.md)
+
+#### onNearestXY (optional)
+Type: `function(value, {event, innerX, innerY, index})`  
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor. 
+Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
+- `innerX` is the left position of the mark;
+- `innerY` is the top position of the mark;
+- `index` is the index of the data point in the array of data;
+- `event` is the event object.
+See [interaction](interaction.md)
+
+#### onSeriesMouseOver (optional)
+Type: `function(d, {event})`  
+`mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property. See [interaction](interaction.md)
+
+#### onSeriesMouseOut (optional)
+Type: `function(d, {event})`  
+`mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property. See [interaction](interaction.md)
+
+#### onSeriesClick (optional)
+Type: `function(d, {event})`  
+`click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property. See [interaction](interaction.md)
 
