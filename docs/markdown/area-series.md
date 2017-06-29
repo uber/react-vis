@@ -28,7 +28,7 @@ Top-to-bottom position of the top edge of the series.
 #### y0
 Type: `number`  
 Default: 0  
-Top-to-bottom position of the borrom edge of the series.
+Top-to-bottom position of the bottom edge of the series.
 
 ## API Reference
 
