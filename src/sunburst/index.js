@@ -75,6 +75,7 @@ class Sunburst extends React.Component {
     const {
       animation,
       className,
+      children,
       data,
       height,
       hideRootNode,
@@ -101,6 +102,7 @@ class Sunburst extends React.Component {
           data: animation ? mappedData.map(row => ({...row, parent: null, children: null})) : mappedData,
           _data: animation ? mappedData : null
         }}/>
+        {children}
       </XYPlot>
     );
   }

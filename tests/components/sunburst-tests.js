@@ -67,7 +67,7 @@ test('Sunburst: Empty', t => {
 test('Sunburst: Flare Demo', t => {
   const $ = mount(<BasicSunburst />);
   t.equal($.find('.rv-xy-plot__series--arc path').length, 251, 'should find the right number of children');
-
+  t.equal($.text(), 'SUNBURST', 'should find the correct text inside of the chart');
   // check hover state
   t.deepEqual($.state().pathValue, false, 'should initially find no hover path');
   $.find('.rv-xy-plot__series--arc path').at(200).simulate('mouseover');

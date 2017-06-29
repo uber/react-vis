@@ -22,8 +22,14 @@ import React from 'react';
 
 import Sunburst from 'sunburst';
 import {EXTENDED_DISCRETE_COLOR_RANGE} from 'theme';
+import {LabelSeries} from 'index';
 
 import D3FlareData from '../treemap/d3-flare-example.json';
+
+const LABEL_STYLE = {
+  fontSize: '8px',
+  textAnchor: 'middle'
+};
 
 /**
  * Recursively work backwards from highlighted node to find path of valud nodes
@@ -68,11 +74,12 @@ const decoratedData = updateData(D3FlareData, false);
 export default class BasicSunburst extends React.Component {
   state = {
     pathValue: false,
-    data: decoratedData
+    data: decoratedData,
+    finalValue: 'SUNBURST'
   }
 
   render() {
-    const {data, pathValue} = this.state;
+    const {data, finalValue, pathValue} = this.state;
     return (
       <div className="basic-sunburst-example-wrapper">
         <Sunburst
@@ -85,12 +92,14 @@ export default class BasicSunburst extends React.Component {
               return res;
             }, {});
             this.setState({
+              finalValue: path[path.length - 1],
               pathValue: path.join(' > '),
               data: updateData(decoratedData, pathAsMap)
             });
           }}
           onValueMouseOut={() => this.setState({
             pathValue: false,
+            finalValue: false,
             data: updateData(decoratedData, false)
           })}
           style={{
@@ -101,7 +110,11 @@ export default class BasicSunburst extends React.Component {
           colorType="literal"
           data={data}
           height={300}
-          width={350}/>
+          width={350}>
+          {finalValue && <LabelSeries data={[
+            {x: 0, y: 0, label: finalValue, style: LABEL_STYLE}
+          ]} />}
+        </Sunburst>
         <div className="basic-sunburst-example-path-name">{pathValue}</div>
       </div>
     );

@@ -99,6 +99,10 @@ Each point consists of following properties:
 Type: `boolean`
 Simple boolean on whether or not to show the root node of the tree.
 
+#### children (optional)
+Type: `react components`
+Sunburst can accept react components as children if you wish to to annotate your diagram.
+
 #### animation (optional)
 Type: `boolean|Object`
 Please refer to [Animation](animation.md) doc for more information.
