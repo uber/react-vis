@@ -44,15 +44,25 @@ const DEFAULT_FORMAT = format('.2r');
  * @return {Array} the plotted axis components
  */
 function getAxes(props) {
-  const {animation, domains, startingAngle, style, tickFormat} = props;
+  const {
+    animation,
+    domains,
+    startingAngle,
+    style,
+    tickFormat,
+    hideInnerMostValues
+  } = props;
   return domains.map((domain, index) => {
     const angle = index / domains.length * Math.PI * 2 + startingAngle;
-    const sortedDomain = domain.domain.sort();
+    const sortedDomain = domain.domain;
 
-    const domainTickFormat = t =>
-      domain.tickFormat ? domain.tickFormat(t) :
-      tickFormat ? tickFormat(t) :
-      t === sortedDomain[0] ? '' : DEFAULT_FORMAT(t);
+    const domainTickFormat = t => {
+      if (hideInnerMostValues && t === sortedDomain[0]) {
+        return '';
+      }
+      return domain.tickFormat ? domain.tickFormat(t) : tickFormat(t);
+    };
+
     return (
       <DecorativeAxis
         animation={animation}
@@ -146,15 +156,39 @@ class RadarChart extends Component {
       data,
       domains,
       height,
-      width,
+      hideInnerMostValues,
       margin,
       onMouseLeave,
       onMouseEnter,
-      tickFormat,
       startingAngle,
-      style
+      style,
+      tickFormat,
+      width
     } = this.props;
 
+    const axes = getAxes({
+      domains,
+      animation,
+      hideInnerMostValues,
+      startingAngle,
+      style,
+      tickFormat
+    });
+
+    const polygons = getPolygons({
+      animation,
+      domains,
+      data,
+      startingAngle,
+      style
+    });
+    const labelSeries = (
+      <LabelSeries
+        animation
+        key={className}
+        className={`${predefinedClassName}-label`}
+        data={getLabels({domains, style: style.labels, startingAngle})} />
+    );
     return (
       <XYPlot
         height={height}
@@ -167,22 +201,7 @@ class RadarChart extends Component {
         xDomain={[-1, 1]}
         yDomain={[-1, 1]}>
         {children}
-        {getAxes({domains, animation, startingAngle, style, tickFormat})
-          .concat(getPolygons({
-            animation,
-            domains,
-            data,
-            startingAngle,
-            style
-          }))
-          .concat(
-            <LabelSeries
-              animation
-              key={className}
-              className={`${predefinedClassName}-label`}
-              data={getLabels({domains, style: style.labels, startingAngle})} />
-          )
-        }
+        {axes.concat(polygons).concat(labelSeries)}
       </XYPlot>
     );
   }
@@ -202,6 +221,7 @@ RadarChart.propTypes = {
     })
   ).isRequired,
   height: PropTypes.number.isRequired,
+  hideInnerMostValues: PropTypes.bool,
   margin: MarginPropType,
   startingAngle: PropTypes.number,
   style: PropTypes.shape({
@@ -216,6 +236,7 @@ RadarChart.defaultProps = {
   className: '',
   colorType: 'category',
   colorRange: DISCRETE_COLOR_RANGE,
+  hideInnerMostValues: true,
   startingAngle: Math.PI / 2,
   style: {
     axes: {
@@ -231,7 +252,8 @@ RadarChart.defaultProps = {
       strokeOpacity: 1,
       fillOpacity: 0.1
     }
-  }
+  },
+  tickFormat: DEFAULT_FORMAT
 };
 
 export default RadarChart;

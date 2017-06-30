@@ -98,6 +98,11 @@ Most generally, there are three top level components `axes`, `labels`, and `poly
 Type: `boolean|Object`
 Please refer to [Animation](animation.md) doc for more information.
 
+#### hideInnerMostValues (optional)
+Type: `boolean`
+defaults to true
+Whether or not to hide the inner most tick values of the radar chart. This attempts to ensure that the ticks do not run over each other.
+
 #### className (optional)
 Type: `string`
 Provide an additional class name for the series.
