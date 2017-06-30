@@ -72,6 +72,9 @@ export default class AnimatedRadar extends Component {
               text: {
                 opacity: 0
               }
+            },
+            labels: {
+              textAnchor: 'middle'
             }
           }}
           margin={{

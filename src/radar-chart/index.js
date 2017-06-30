@@ -245,7 +245,8 @@ RadarChart.defaultProps = {
       text: {}
     },
     labels: {
-      fontSize: 10
+      fontSize: 10,
+      textAnchor: 'middle'
     },
     polygons: {
       strokeWidth: 0.5,
