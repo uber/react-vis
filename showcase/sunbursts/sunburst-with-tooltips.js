@@ -56,9 +56,7 @@ const boxStyle = {height: '10px', width: '10px'};
 
 function buildValue(hoveredCell) {
   const {radius, angle, angle0} = hoveredCell;
-  // d3 insists on starting at 12 oclock and moving clockwise, rather than 3 oclock
-  // and moving counter clockwise
-  const truedAngle = -1 * (angle + angle0) / 2 + Math.PI / 2;
+  const truedAngle = (angle + angle0) / 2;
   return {
     x: radius * Math.cos(truedAngle),
     y: radius * Math.sin(truedAngle)
@@ -72,23 +70,21 @@ export default class SunburstWithTooltips extends React.Component {
   render() {
     const {hoveredCell} = this.state;
     return (
-      <div className="sunburst-with-tooltips-example-wrapper">
-        <Sunburst
-          data={DATA}
-          style={{stroke: '#fff'}}
-          onValueMouseOver={v => this.setState({hoveredCell: v.x && v.y ? v : false})}
-          onValueMouseOut={v => this.setState({hoveredCell: false})}
-          height={300}
-          margin={{top: 50, bottom: 50, left: 50, right: 50}}
-          width={350}>
-          {hoveredCell ? <Hint value={buildValue(hoveredCell)}>
-            <div style={tipStyle}>
-              <div style={{...boxStyle, background: hoveredCell.color}}/>
-              {hoveredCell.color}
-            </div>
-          </ Hint> : null}
-        </Sunburst>
-      </div>
+      <Sunburst
+        data={DATA}
+        style={{stroke: '#fff'}}
+        onValueMouseOver={v => this.setState({hoveredCell: v.x && v.y ? v : false})}
+        onValueMouseOut={v => this.setState({hoveredCell: false})}
+        height={300}
+        margin={{top: 50, bottom: 50, left: 50, right: 50}}
+        width={350}>
+        {hoveredCell ? <Hint value={buildValue(hoveredCell)}>
+          <div style={tipStyle}>
+            <div style={{...boxStyle, background: hoveredCell.color}}/>
+            {hoveredCell.color}
+          </div>
+        </ Hint> : null}
+      </Sunburst>
     );
   }
 
