@@ -6,7 +6,8 @@ const {
   AnimatedSunburst,
   ArcSeriesExample,
   BasicSunburst,
-  ClockExample
+  ClockExample,
+  SunburstWithTooltips
 } = showCase;
 
 const SUNBURSTS = [{
@@ -25,6 +26,9 @@ const SUNBURSTS = [{
 }, {
   name: 'Animated Sunburst',
   component: AnimatedSunburst
+}, {
+  name: 'Sunburst with tooltips',
+  component: SunburstWithTooltips
 }];
 
 class SunburstSection extends Component {
