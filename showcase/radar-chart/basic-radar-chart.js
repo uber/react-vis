@@ -45,7 +45,7 @@ export default class BasicRadarChart extends Component {
           {name: 'safety', domain: [5, 10]},
           {name: 'performance', domain: [0, 10]},
           {name: 'interior', domain: [0, 7]},
-          {name: 'warranty', domain: [2, 7]}
+          {name: 'warranty', domain: [10, 2]}
         ]}
         width={400}
         height={300} />
