@@ -116,6 +116,7 @@ import AnimatedRadarChart from './radar-chart/animated-radar-chart';
 import BasicSunburst from './sunbursts/basic-sunburst';
 import ClockExample from './sunbursts/clock-example';
 import AnimatedSunburst from './sunbursts/animated-sunburst';
+import SunburstWithTooltips from './sunbursts/sunburst-with-tooltips';
 
 import BasicSankeyExample from './sankey/basic';
 import VoronoiSankeyExample from './sankey/voronoi';
@@ -199,9 +200,10 @@ export const showCase = {
   SimpleTreemap,
   TreemapExample,
 
+  AnimatedSunburst,
   BasicSunburst,
   ClockExample,
-  AnimatedSunburst,
+  SunburstWithTooltips,
 
   SimpleRadialChart,
   DonutChartExample,

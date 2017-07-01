@@ -44,6 +44,27 @@ const defaultProps = {
   style: {}
 };
 
+/**
+ * Prepare the internal representation of row for real use.
+ * This is necessary because d3 insists on starting at 12 oclock and moving
+ * clockwise, rather than starting at 3 oclock and moving counter clockwise
+ * as one might expect from polar
+ * @param {Object} row - coordinate object to be modifed
+ * @return {Object} angle corrected object
+ */
+function modifyRow(row) {
+  const {radius, angle, angle0} = row;
+  const truedAngle = -1 * angle + Math.PI / 2;
+  const truedAngle0 = -1 * angle0 + Math.PI / 2;
+  return {
+    ...row,
+    x: radius * Math.cos(truedAngle),
+    y: radius * Math.sin(truedAngle),
+    angle: truedAngle,
+    angle0: truedAngle0
+  };
+}
+
 class ArcSeries extends AbstractSeries {
   constructor(props) {
     super(props);
@@ -158,9 +179,9 @@ class ArcSeries extends AbstractSeries {
               ...style,
               ...rowStyle
             },
-            onClick: e => this._valueClickHandler(row, e),
-            onMouseOver: e => this._valueMouseOverHandler(row, e),
-            onMouseOut: e => this._valueMouseOutHandler(row, e),
+            onClick: e => this._valueClickHandler(modifyRow(row), e),
+            onMouseOver: e => this._valueMouseOverHandler(modifyRow(row), e),
+            onMouseOut: e => this._valueMouseOutHandler(modifyRow(row), e),
             key: i,
             className: `${arcClassName} ${rowClassName}`,
             d: arcedData(arcArg)

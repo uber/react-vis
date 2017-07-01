@@ -3,6 +3,7 @@ import React from 'react';
 import {mount} from 'enzyme';
 import Sunburst from 'sunburst';
 import BasicSunburst from '../../showcase/sunbursts/basic-sunburst';
+import SunburstWithTooltips from '../../showcase/sunbursts/sunburst-with-tooltips';
 
 import {testRenderWithProps} from '../test-utils';
 
@@ -72,5 +73,14 @@ test('Sunburst: Flare Demo', t => {
   t.deepEqual($.state().pathValue, false, 'should initially find no hover path');
   $.find('.rv-xy-plot__series--arc path').at(200).simulate('mouseover');
   t.deepEqual($.state().pathValue, 'root > vis > events > DataEvent', 'should find the correct path hovered');
+  t.end();
+});
+
+test('Sunburst: SunburstWithTooltips', t => {
+  const $ = mount(<SunburstWithTooltips />);
+  t.equal($.find('.rv-xy-plot__series--arc path').length, 10, 'should find the right number of children');
+  $.find('.rv-xy-plot__series--arc path').at(1).simulate('mouseOver');
+  t.equal($.text(), '#FF991F', 'should find appropriate hover text');
+
   t.end();
 });
