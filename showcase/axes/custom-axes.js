@@ -40,7 +40,10 @@ const WORDS = [
   'skateboard',
   'wow',
   'such',
-  'doge'
+  (<tspan>
+    <tspan x="0" dy="1em">Multiline</tspan>
+    <tspan x="0" dy="1em">dogs</tspan>
+  </tspan>)
 ];
 export default class Example extends Component {
   render() {
