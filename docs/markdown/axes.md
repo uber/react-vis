@@ -53,7 +53,16 @@ An array of values (not coordinates!) that where the ticks should be shown. Simi
 
 #### tickFormat (optional)
 Type: `function(*)`  
-Format function for the tick label. Similar to the `tickFormat()` method of d3-axis.
+Format function for the tick label. Similar to the `tickFormat()` method of d3-axis. Typically the value that is return is a string or a number, however this function also supports rendering svg react elements. To wit, I could have formatting function like
+
+```javascript
+function myFormatter(t) {
+  return (<tspan>
+    <tspan x="0" dy="1em">MY VALUE</tspan>
+    <tspan x="0" dy="1em">{t}</tspan>
+  </tspan>);
+}
+```
 
 #### tickSize (optional)
 Type: `number`  
