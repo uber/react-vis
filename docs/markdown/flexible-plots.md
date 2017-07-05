@@ -12,7 +12,7 @@ const FlexibleVis = makeVisFlexible(XYPlot);
 
 makeWidthFlexible modifies XYPlot so that it no longer requires a width. It will take all the with in its container div. Likewise, makeHeightFlexible modifies XYPlot so that is no longer requires a height. Its height will be that of its container div. Finally, makeVisFlexible modifies XYPlot so that it no longer requires eiter a width and a height. Its dimensions will be that of its container.
 
-The result of that function can be used exactly as XYPloy:
+The result of that function can be used exactly as XYPlot:
 
 ```jsx
 <FlexibleWidth height={100}>
@@ -33,3 +33,6 @@ A flexible plot is useful when you don't know for sure the size of the container
 
 ### Size of parent container is not the same as "all the available space" 
 Flexible plots will inherit dimensions from their container. This is not the same thing as taking all the available space; if there are other elements in that container, a flexible plot won't deduce their dimensions from its own. For best results, a flexible plot should be the only child of its container.
+
+### Responsive visualizations
+We can go one step beyond and not simply adjust the dimensions of the chart of the available space, but change how a dataset is being represented. See the example [responsive visualizations](/#/examples/charts/responsive-vis)
