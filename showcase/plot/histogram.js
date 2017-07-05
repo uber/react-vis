@@ -46,7 +46,7 @@ export default class Example extends React.Component {
   render() {
     return (
       <XYPlot
-        xDomain={[timestamp, timestamp + 30 * ONE_DAY]}
+        xDomain={[timestamp - 2 * ONE_DAY, timestamp + 30 * ONE_DAY]}
         yDomain={[0.1, 2.1]}
         xType="time"
         width={300}
