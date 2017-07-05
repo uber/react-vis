@@ -44,6 +44,7 @@ export default class Example extends React.Component {
           onClick={() => this.setState({useCanvas: !useCanvas})}
           buttonContent={content}/>
         <XYPlot
+          xDomain={[0, 7]}
           width={300}
           height={300}
           stackBy="y">

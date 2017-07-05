@@ -31,7 +31,7 @@ class HorizontalRectSeriesCanvas extends AbstractSeries {
   }
 
   static getParentConfig(attr) {
-    const isDomainAdjustmentNeeded = attr === 'x';
+    const isDomainAdjustmentNeeded = false;
     const zeroBaseValue = attr === 'y';
     return {
       isDomainAdjustmentNeeded,
