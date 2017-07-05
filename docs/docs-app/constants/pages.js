@@ -273,6 +273,13 @@ export const docPages = generatePath([
           filename: 'gradients.md',
           pageType: 'documentation'
         }
+      }, {
+        name: 'Flexible plots',
+        content: {
+          markdown: getDocUrl('flexible-plots.md'),
+          filename: 'flexible-plots.md',
+          pageType: 'documentation'
+        }
       }
     ]
   },
