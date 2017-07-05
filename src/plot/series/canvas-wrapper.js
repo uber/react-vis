@@ -151,7 +151,6 @@ class CanvasWrapper extends Component {
 
   render() {
     const {
-      children,
       marginBottom,
       marginLeft,
       marginRight,
@@ -167,7 +166,6 @@ class CanvasWrapper extends Component {
           height={innerHeight + marginTop + marginBottom}
           width={innerWidth + marginLeft + marginRight}
           ref="canvas" />
-        {children}
       </div>
     );
   }

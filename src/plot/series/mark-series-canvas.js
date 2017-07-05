@@ -18,8 +18,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-
 import {rgb} from 'd3-color';
 
 import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
@@ -60,8 +58,7 @@ class MarkSeriesCanvas extends AbstractSeries {
   }
 
   render() {
-
-    return <div className="mark-series-shadow" />;
+    return null;
   }
 }
 
