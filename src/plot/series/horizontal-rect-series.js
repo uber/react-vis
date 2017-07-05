@@ -26,7 +26,7 @@ import RectSeries from './rect-series';
 class HorizontalRectSeries extends AbstractSeries {
 
   static getParentConfig(attr) {
-    const isDomainAdjustmentNeeded = attr === 'y';
+    const isDomainAdjustmentNeeded = false;
     const zeroBaseValue = attr === 'x';
     return {
       isDomainAdjustmentNeeded,
