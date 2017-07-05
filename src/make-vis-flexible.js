@@ -89,18 +89,20 @@ function removeSubscriber(cb) {
  * @param {*} Component React class for the child component.
  * @returns {*} Flexible component.
  */
-export default function makeVisFlexible(Component) {
+
+function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
 
   const ResultClass = class extends React.Component {
 
     static get propTypes() {
-      const {width, ...otherPropTypes} = Component.propTypes; // eslint-disable-line no-unused-vars
+      const {height, width, ...otherPropTypes} = Component.propTypes; // eslint-disable-line no-unused-vars
       return otherPropTypes;
     }
 
     constructor(props) {
       super(props);
       this.state = {
+        height: 0,
         width: 0
       };
       this._onResize = this._onResize.bind(this);
@@ -112,12 +114,18 @@ export default function makeVisFlexible(Component) {
      */
     _onResize() {
       const containerElement = getDOMNode(this.refs[CONTAINER_REF]);
-      const offsetWidth = containerElement.offsetWidth;
-      if (this.state.width !== offsetWidth) {
-        this.setState({
-          width: offsetWidth
-        });
-      }
+      const {offsetHeight, offsetWidth} = containerElement;
+
+      const newHeight = this.state.height === offsetHeight ? {} :
+        {height: offsetHeight};
+
+      const newWidth = this.state.width === offsetWidth ? {} :
+        {width: offsetWidth};
+
+      this.setState({
+        ...newHeight,
+        ...newWidth
+      });
     }
 
     componentDidMount() {
@@ -134,22 +142,41 @@ export default function makeVisFlexible(Component) {
     }
 
     render() {
-      const {width} = this.state;
-      const props = {...this.props, animation: width === 0 ? null : this.props.animation};
+      const {height, width} = this.state;
+      const props = {...this.props, animation: height === 0 && width === 0 ? null : this.props.animation};
+
+      const updatedDimensions = {
+        ...(isHeightFlexible ? {height} : {}),
+        ...(isWidthFlexible ? {width} : {})
+      };
 
       return (
         <div
-          ref={CONTAINER_REF}>
+          ref={CONTAINER_REF}
+          style={{width: '100%', height: '100%'}}>
           <Component
-            width={width}
-            {...props}/>
+            {...updatedDimensions}
+            {...props}
+          />
         </div>
       );
     }
-
   };
 
   ResultClass.displayName = `Flexible${Component.displayName}`;
 
   return ResultClass;
 }
+
+export function makeHeightFlexible(component) {
+  return makeFlexible(component, false, true);
+}
+
+export function makeVisFlexible(component) {
+  return makeFlexible(component, true, true);
+}
+
+export function makeWidthFlexible(component) {
+  return makeFlexible(component, true, false);
+}
+
