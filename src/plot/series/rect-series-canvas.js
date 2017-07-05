@@ -38,6 +38,8 @@ class RectSeriesCanvas extends AbstractSeries {
       data,
       linePosAttr,
       lineSizeAttr,
+      marginLeft,
+      marginTop,
       valuePosAttr
     } = props;
     if (!data || data.length === 0) {
@@ -68,7 +70,7 @@ class RectSeriesCanvas extends AbstractSeries {
       const width = lineSizeAttr === 'width' ? lineSize : valueSize;
 
       ctx.beginPath();
-      ctx.rect(x, y, width, height);
+      ctx.rect(x + marginLeft, y + marginTop, width, height);
       ctx.fillStyle = `rgba(${fillColor.r}, ${fillColor.g}, ${fillColor.b}, ${rowOpacity})`;
       ctx.fill();
       ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${strokeColor.b}, ${rowOpacity})`;

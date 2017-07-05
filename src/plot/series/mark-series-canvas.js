@@ -18,6 +18,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+import React from 'react';
+
 import {rgb} from 'd3-color';
 
 import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
@@ -35,7 +37,7 @@ class MarkSeriesCanvas extends AbstractSeries {
   }
 
   static renderLayer(props, ctx) {
-    const {data} = props;
+    const {data, marginLeft, marginTop} = props;
 
     const x = getAttributeFunctor(props, 'x');
     const y = getAttributeFunctor(props, 'y');
@@ -49,7 +51,7 @@ class MarkSeriesCanvas extends AbstractSeries {
       const strokeColor = rgb(stroke(row));
       const rowOpacity = opacity(row) || DEFAULT_OPACITY;
       ctx.beginPath();
-      ctx.arc(x(row), y(row), size(row), 0, 2 * Math.PI);
+      ctx.arc(x(row) + marginLeft, y(row) + marginTop, size(row), 0, 2 * Math.PI);
       ctx.fillStyle = `rgba(${fillColor.r}, ${fillColor.g}, ${fillColor.b}, ${rowOpacity})`;
       ctx.fill();
       ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${strokeColor.b}, ${rowOpacity})`;
@@ -58,7 +60,8 @@ class MarkSeriesCanvas extends AbstractSeries {
   }
 
   render() {
-    return null;
+
+    return <div className="mark-series-shadow" />;
   }
 }
 

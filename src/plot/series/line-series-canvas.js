@@ -35,7 +35,13 @@ class LineSeriesCanvas extends AbstractSeries {
   }
 
   static renderLayer(props, ctx) {
-    const {data, strokeWidth, strokeDasharray} = props;
+    const {
+      data,
+      marginLeft,
+      marginTop,
+      strokeWidth,
+      strokeDasharray
+    } = props;
     if (!data || data.length === 0) {
       return;
     }
@@ -48,8 +54,8 @@ class LineSeriesCanvas extends AbstractSeries {
     const opacity = Number.isFinite(newOpacity) ? newOpacity : DEFAULT_OPACITY;
 
     ctx.beginPath();
-    ctx.moveTo(x(data[0]), y(data[0]));
-    data.forEach(row => ctx.lineTo(x(row), y(row)));
+    ctx.moveTo(x(data[0]) + marginLeft, y(data[0]) + marginTop);
+    data.forEach(row => ctx.lineTo(x(row) + marginLeft, y(row) + marginTop));
 
     ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${strokeColor.b}, ${opacity})`;
     ctx.lineWidth = strokeWidth;
@@ -68,13 +74,13 @@ class LineSeriesCanvas extends AbstractSeries {
 
 LineSeriesCanvas.displayName = 'LineSeriesCanvas';
 LineSeriesCanvas.defaultProps = {
-  strokeWidth: PropTypes.number,
-  strokeDasharray: PropTypes.string
+  strokeWidth: 1,
+  strokeDasharray: ''
 };
 
 LineSeriesCanvas.propTypes = {
   ...AbstractSeries.propTypes,
-  strokeWidth: 1
+  strokeWidth: PropTypes.number
 };
 
 export default LineSeriesCanvas;

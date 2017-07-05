@@ -103,12 +103,13 @@ export default class Example extends React.Component {
             buttonContent={'UPDATE DATA'} />
           <ShowcaseButton
             onClick={() => this.setState({colorType: nextType[colorType]})}
-            buttonContent={'TOGGLE COLOR'} />
+            buttonContent={`TOGGLE COLOR to ${nextType[colorType]}`} />
           <ShowcaseButton
             onClick={() => this.setState({strokeWidth: strokeWidth === 1 ? 2 : 1})}
             buttonContent={'TOGGLE STROKEWIDTH'} />
         </div>
         <XYPlot
+          onMouseLeave={() => this.setState({value: false})}
           width={600}
           height={300}>
           <VerticalGridLines />
