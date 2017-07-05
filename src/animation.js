@@ -44,7 +44,7 @@ function getAnimationStyle(animationStyle = presets.noWobble) {
  */
 export function extractAnimatedPropValues(props) {
   const {animatedProps, ...otherProps} = props;
-  // console.log(animatedProps)
+
   return animatedProps.reduce((result, animatedPropName) => {
     if (otherProps.hasOwnProperty(animatedPropName)) {
       result[animatedPropName] = otherProps[animatedPropName];
