@@ -11,6 +11,13 @@
 </Hint>
 ```
 
+Hints can be placed in two ways
+a) around a data point in one of four quadrants (imagine the point bisected
+   by two axes -vertical, horizontal- creating 4 quadrants around a data
+   point).
+b) Pin to an edge of chart/plot area and position along that edge
+   using data point's other dimension value.
+
 #### value
 Type: `Object`
 The data point to show the value at. Hint component will automatically find the place where the data point is and put the hint there.
