@@ -2,16 +2,17 @@
 
 The library supports several types of series:
 
-* [LineSeries](line-series.md) for lines;
-* `AreaSeries` for area charts;
-* [MarkSeries](mark-series.md) for scatterplots;
-* [LineMarkSeries](line-series.md) is a shorthand to place marks (e.g. circles) on lines;
-* [VerticalBarSeries](bar-series.md) for vertical bar charts;
-* [HorizontalBarSeries](bar-series.md) for horizontal bar charts;
-* [HeatmapSeries](heatmap-series.md) for heat maps.
 * [ArcSeries](arc-series.md) for radial arcs such as might be found in pie charts.
-* [PolygonSeries](polygon-series.md) for arbitrary SVG shapes
+* [AreaSeries](area-series.md) for area charts;
+* [BarSeries](bar-series.md) for discrete bar charts, covers (covers HorizontalBarSeries and VerticalBarSeries);
+* [ContourSeries](contour-series.md) for making contour density plots;
+* [HeatmapSeries](heatmap-series.md) for heat maps.
 * [LabelSeries](label-series.md) for adding annotations to charts
+* [LineMarkSeries](line-series.md) is a shorthand to place marks (e.g. circles) on lines;
+* [LineSeries](line-series.md) for lines;
+* [MarkSeries](mark-series.md) for scatterplots;
+* [PolygonSeries](polygon-series.md) for arbitrary SVG shapes
+* [RectSeries](rect-series.md) for arbitrary histograms and other continuous variable boxes. (covers HorizontalRectSeries and VerticalRectSeries)
 
 Each series provides following API:
 
