@@ -5,9 +5,9 @@
 React-Vis charts are made of Series components - LineSeries, BarSeries and so on and so forth.
 Each of these Series components requires a `data` property, through which we pass an array of objects.
 
-These properties correspond to various visual characteristics of the corresponding marks. For example, x and y, which are required for most series types, affect the position of each mark. Each series type takes more properties, though, which are described in the series section. 
+These properties correspond to various visual characteristics of the corresponding marks. For example, x and y, which are required for most series types, affect the position of each mark. Each series type takes more properties, though, which are described in the series section.
 
-Here is how a simple dataset is transformed in some simple charts: 
+Here is how a simple dataset is transformed in some simple charts:
 
 <!-- INJECT:"MiniCharts" -->
 
@@ -39,7 +39,7 @@ const data = [
 
 ```
 
-By the way: can you guess what this dataset is? Answer at the end of the document. 
+By the way: can you guess what this dataset is? Answer at the end of the document.
 
 ### Scales
 
@@ -47,17 +47,17 @@ Scales are what actually transform the values of the properties in the data obje
 
 React-vis scales are designed so that as often as possible, you shouldn't have to do anything; yet they give you control to override anything they do.  
 
-The notion of scales and the corresponding vocabulary are directly taken from d3js. 
-Scales have a type, a range and a domain. For a given chart, there are multiple scales: there's one scale per attribute. Attributes include x position, y position, color, size, angle etc. Again, not all attributes are applicable in all series. 
+The notion of scales and the corresponding vocabulary are directly taken from d3js.
+Scales have a type, a range and a domain. For a given chart, there are multiple scales: there's one scale per attribute. Attributes include x position, y position, color, size, angle etc. Again, not all attributes are applicable in all series.
 
-We are following the definition of scales which was given by Mike Bostock: _scales are functions that map from an input domain to an output range_. 
+We are following the definition of scales which was given by Mike Bostock: _scales are functions that map from an input domain to an output range_.
 
-Under the hood, scales have a default type; a default domain can be inferred automatically from the data and, depending on the attribute, there's either a default range, or it is being generated depending on context. 
+Under the hood, scales have a default type; a default domain can be inferred automatically from the data and, depending on the attribute, there's either a default range, or it is being generated depending on context.
 
 For example, for x and y:
 - the default type is a linear scale (the relationship between the value in the data object and the actual position of the mark is of the form: y = ax + b ),
 - the domain is defined by the smallest and highest values for found in the dataset - in the above example, both x and y vary from 0 to 9, so the domains are [0, 9] for both the x- and the y- scale,
-- and the range is the total width of the XYPlot minus the margin. 
+- and the range is the total width of the XYPlot minus the margin.
 
 All of this is sensible most of the time.  
 
@@ -67,27 +67,27 @@ Scales transform each datapoint into visual characteristics for a mark, so, for 
 
 Here is what attribute is available as a scale per series type, and what is the default scale type:
 
-| Series              | angle  | angle0 | color      | fill       | opacity    | radius | radius0 | size   | stroke     | x      | x0     | y      | y0     | 
-|---------------------|--------|--------|------------|------------|------------|--------|---------|--------|------------|--------|--------|--------|--------| 
-| [ArcSeries](arc-series.md)           | linear | linear | linear     | linear     | literal    | linear | linear  |        | linear     | linear |        | linear |        | 
-| [AreaSeries](area-series.md)          |        |        | / series | / series | / series |        |         |        | / series | linear |        | linear | linear | 
-| [ContourSeries](contour-series.md)       |        |        | linear*    |            |            |        |         |        |            | linear |        | linear |        | 
-| [HeatmapSeries](heatmap-series.md)       |        |        | linear     |            | literal    |        |         |        | linear     | linear |        | linear |        | 
-| [HorizontalBarSeries](bar-series.md) |        |        | linear     | linear     | literal    |        |         |        | linear     | linear | linear | linear |        | 
-| [LabelSeries](label-series.md)         |        |        |            |            |            |        |         |        |            | linear |        | linear |        | 
-| [LineSeries](line-series.md)          |        |        | / series |            | / series |        |         |        | / series | linear |        | linear |        | 
-| [MarkSeries](markseries.md)          |        |        | linear     | linear     | literal    |        |         | linear | linear     | linear |        | linear |        | 
-| [PolygonSeries](polygon-series.md)       |        |        | / series |            |            |        |         |        |            | linear |        | linear |        | 
-| [RectSeries](rect-series.md)          |        |        | linear     | linear     | literal    |        |         |        | linear     | linear | linear | linear | linear | 
-| [VerticalBarSeries](bar-series.md)   |        |        | linear     | linear     | literal    |        |         |        | linear     | linear |        | linear | linear | 
+| Series              | angle  | angle0 | color      | fill       | opacity    | radius | radius0 | size   | stroke     | x      | x0     | y      | y0     |
+|---------------------|--------|--------|------------|------------|------------|--------|---------|--------|------------|--------|--------|--------|--------|
+| [ArcSeries](arc-series.md)           | linear | linear | linear     | linear     | literal    | linear | linear  |        | linear     | linear |        | linear |        |
+| [AreaSeries](area-series.md)          |        |        | / series | / series | / series |        |         |        | / series | linear |        | linear | linear |
+| [ContourSeries](contour-series.md)       |        |        | linear*    |            |            |        |         |        |            | linear |        | linear |        |
+| [HeatmapSeries](heatmap-series.md)       |        |        | linear     |            | literal    |        |         |        | linear     | linear |        | linear |        |
+| [HorizontalBarSeries](bar-series.md) |        |        | linear     | linear     | literal    |        |         |        | linear     | linear | linear | linear |        |
+| [LabelSeries](label-series.md)         |        |        |            |            |            |        |         |        |            | linear |        | linear |        |
+| [LineSeries](line-series.md)          |        |        | / series |            | / series |        |         |        | / series | linear |        | linear |        |
+| [MarkSeries](mark-series.md)          |        |        | linear     | linear     | literal    |        |         | linear | linear     | linear |        | linear |        | 
+| [PolygonSeries](polygon-series.md)       |        |        | / series |            |            |        |         |        |            | linear |        | linear |        |
+| [RectSeries](rect-series.md)          |        |        | linear     | linear     | literal    |        |         |        | linear     | linear | linear | linear | linear |
+| [VerticalBarSeries](bar-series.md)   |        |        | linear     | linear     | literal    |        |         |        | linear     | linear |        | linear | linear |
 
 For Heatmap series, while you can pass a colorDomain and a colorRange, you cannot override the type of scale for colors.
 
-"Per series" means that it's possible to pass a value to the series as a whole, but not per data point. 
+"Per series" means that it's possible to pass a value to the series as a whole, but not per data point.
 
 If am attribute is not available as a scale for a given series, all values passed in the corresponding property will be ignored. For instance, if you use a dataset that has fill properties, it will be ignored for LineSeries.
 
-This table is also meant to be used for derived series. Canvas series have the same interface as SVG series. HorizontalRectSeries and VerticalRectSeries take the same attribute as RectSeries. And LineMarkSeries take the same atttribute as Line and Mark series. 
+This table is also meant to be used for derived series. Canvas series have the same interface as SVG series. HorizontalRectSeries and VerticalRectSeries take the same attribute as RectSeries. And LineMarkSeries take the same atttribute as Line and Mark series.
 
 ### Scale properties
 
@@ -123,12 +123,12 @@ To redefine a scale, you must pass a prop to the series that uses that scale. Th
 
 ### Overriding scales
 
-Scales can be defined either at the XYPlot level, in which case they apply to the whole chart, or at the series level. Scales defined at the series level override those defined at the XYPlot level. 
+Scales can be defined either at the XYPlot level, in which case they apply to the whole chart, or at the series level. Scales defined at the series level override those defined at the XYPlot level.
 
 The scales provided to each individual series don't have to have the same parameters. For instance, if you wanted to do a dual-axis chart, you could provide a different yDomain and yRange to two data series (use at your own risk).
 
 ### Other uses of scales
 
-Scales can also be used in [Axes](axes.md) and in [Gridlines](grids.md). You can pass an x-scale (so xDomain, xRange, xPadding, xType) to an XAxis or a VerticalGridLines component, and a y-scale (so yDomain, yRange, yPadding, yType) to a YAxis or HorizontalGridLines component. These scale parameters don't have to be the same as the ones passed to your series. 
+Scales can also be used in [Axes](axes.md) and in [Gridlines](grids.md). You can pass an x-scale (so xDomain, xRange, xPadding, xType) to an XAxis or a VerticalGridLines component, and a y-scale (so yDomain, yRange, yPadding, yType) to a YAxis or HorizontalGridLines component. These scale parameters don't have to be the same as the ones passed to your series.
 
-Did you guess that this data set was the digits sorted alphabetically? eight, five, four... 
+Did you guess that this data set was the digits sorted alphabetically? eight, five, four...
