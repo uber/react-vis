@@ -40,6 +40,7 @@ const ATTRIBUTES = ['radius', 'angle'];
 
 const defaultProps = {
   center: {x: 0, y: 0},
+  arcClassName: '',
   className: '',
   style: {}
 };
@@ -183,7 +184,7 @@ class ArcSeries extends AbstractSeries {
             onMouseOver: e => this._valueMouseOverHandler(modifyRow(row), e),
             onMouseOut: e => this._valueMouseOutHandler(modifyRow(row), e),
             key: i,
-            className: `${arcClassName} ${rowClassName}`,
+            className: `${predefinedClassName}-path ${arcClassName} ${rowClassName}`,
             d: arcedData(arcArg)
           }} />);
         })}

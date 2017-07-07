@@ -27,7 +27,7 @@ test('RadialChart: Basic rendering', t => {
   const $ = mount(<RadialChart {...RADIAL_PROPS}/>);
   const pieSlices = $.find('.rv-radial-chart__series--pie__slice').length;
   t.equal(pieSlices, RADIAL_PROPS.data.length, 'should find the same number of slices as data entries');
-  t.equal($.find('.rv-radial-chart__series--pie__slice').at(0).prop('className'), 'rv-radial-chart__series--pie__slice custom-class', 'should have custom class if defined in data entry');
+  t.equal($.find('.rv-radial-chart__series--pie__slice').at(0).prop('className'), 'rv-xy-plot__series rv-xy-plot__series--arc-path rv-radial-chart__series--pie__slice custom-class', 'should have custom class if defined in data entry');
 
   const labels = $.find('.rv-xy-plot__series--label-text').length;
   t.equal(labels, RADIAL_PROPS.data.length, 'should find the right number of label wrappers');

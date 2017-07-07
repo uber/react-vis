@@ -54,13 +54,13 @@ test('Sunburst: Basic rendering + data changes', t => {
   t.equal($.find('.little-nested-burst-example.rv-xy-plot__series--arc path').length, 21, 'should find the custom class name used');
 
   $.setProps({data: INTERPOLATE_DATA});
-  t.equal($.find('.rv-xy-plot__series--arc path').length, 9, 'should find the right number of children');
+  t.equal($.find('.rv-xy-plot__series--arc-path').length, 9, 'should find the right number of children');
   t.end();
 });
 
 test('Sunburst: Empty', t => {
   const $ = mount(<Sunburst {...{...SUNBURST_PROPS, data: {}}}/>);
-  t.equal($.find('.rv-xy-plot__series--arc path').length, 0, 'should find the right number of children');
+  t.equal($.find('.rv-xy-plot__series--arc-path').length, 0, 'should find the right number of children');
 
   t.end();
 });
@@ -71,7 +71,7 @@ test('Sunburst: Flare Demo', t => {
   t.equal($.text(), 'SUNBURST', 'should find the correct text inside of the chart');
   // check hover state
   t.deepEqual($.state().pathValue, false, 'should initially find no hover path');
-  $.find('.rv-xy-plot__series--arc path').at(200).simulate('mouseover');
+  $.find('.rv-xy-plot__series--arc-path').at(200).simulate('mouseover');
   t.deepEqual($.state().pathValue, 'root > vis > events > DataEvent', 'should find the correct path hovered');
   t.end();
 });
@@ -79,7 +79,7 @@ test('Sunburst: Flare Demo', t => {
 test('Sunburst: SunburstWithTooltips', t => {
   const $ = mount(<SunburstWithTooltips />);
   t.equal($.find('.rv-xy-plot__series--arc path').length, 10, 'should find the right number of children');
-  $.find('.rv-xy-plot__series--arc path').at(1).simulate('mouseOver');
+  $.find('.rv-xy-plot__series--arc-path').at(1).simulate('mouseOver');
   t.equal($.text(), '#FF991F', 'should find appropriate hover text');
 
   t.end();
