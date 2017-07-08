@@ -164,13 +164,58 @@ export const docPages = generatePath([
     name: 'Overview',
     pageType: 'documentation',
     children: [{
-      name: 'Getting started',
+      name: 'Introduction',
       content: {
-        markdown: getDocUrl('tutorials/getting-started.md'),
-        filename: 'tutorials/getting-started.md',
+        markdown: getDocUrl('introduction.md'),
+        filename: 'introduction.md',
+        pageType: 'documentation'
+      }
+    }
+    // , {
+    //  name: 'The Uber Visualization Suite',
+    //  content: {
+    //    markdown: getDocUrl('suite.md'),
+    //    filename: 'suite.md',
+    //    pageType: 'documentation'
+    // }
+    ]
+  },
+  {
+    name: 'Getting started',
+    pageType: 'documentation',
+    children: [{
+      name: 'React-vis in codepen',
+      content: {
+        markdown: getDocUrl('getting-started/react-vis-in-codepen.md'),
+        filename: 'getting-started/react-vis-in-codepen.md',
         pageType: 'documentation'
       }
     }, {
+      name: 'Installing react-vis',
+      content: {
+        markdown: getDocUrl('getting-started/installing-react-vis.md'),
+        filename: 'getting-started/installing-react-vis.md',
+        pageType: 'documentation'
+      }
+    }, {
+      name: 'Creating a new react-vis project',
+      content: {
+        markdown: getDocUrl('getting-started/new-react-vis-project.md'),
+        filename: 'getting-started/new-react-vis-project.md',
+        pageType: 'documentation'
+      }
+    }, {
+      name: 'Your first chart',
+      content: {
+        markdown: getDocUrl('getting-started/your-first-chart.md'),
+        filename: 'getting-started/your-first-chart.md',
+        pageType: 'documentation'
+      }
+    }]
+  }, {
+    name: 'General principles',
+    pageType: 'documentation',
+    children: [{
       name: 'Scales and data',
       content: {
         markdown: getDocUrl('scales-and-data.md'),
@@ -215,10 +260,10 @@ export const docPages = generatePath([
     }]
   },
   {
-    name: 'XY-Plot',
+    name: 'API Reference',
     children: [
       {
-        name: 'Introduction',
+        name: 'XY-Plot',
         content: {
           markdown: getDocUrl('xy-plot.md'),
           filename: 'xy-plot.md',
@@ -284,7 +329,7 @@ export const docPages = generatePath([
     ]
   },
   {
-    name: 'XY Plot Series',
+    name: 'Series reference',
     children: [
       {
         name: 'Arc Series',
