@@ -52,7 +52,7 @@ Type: `function`
 Default: none  
 This event handler is triggered whenever the mouse of the user enters the plot area. It passes a mouse event.
 
-### onMouseLeve
+### onMouseLeave
 Type: `function`  
 Default: none  
 This event handler is triggered whenever the mouse of the user exits the plot area. It passes a mouse event.
