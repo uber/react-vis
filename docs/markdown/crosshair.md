@@ -19,12 +19,12 @@ In case if custom representation of crosshair is needed, the component is able t
 Type: `Array<Object>`  
 The array of data points to show the crosshair at. Crosshair will automatically align to the horizontal position of the points passed there.
 
-#### formatTitle (optional)
+#### titleFormat (optional)
 Type: `function`  
 The function that formats the title for the crosshair. Receives the list of data points, should return an object containing `title` and `value` properties.  
 _Note: please pass custom contents in case if you need different look for the crosshair._
 
-#### formatItems (optional)
+#### itemsFormat (optional)
 Type: `function`  
-The function that formats the list of items for the crosshair. Receives the list of data points, should return an array of objects containing `title` and `value` properties.
-Note: please pass custom contents in case if you need different look for the crosshair.
+The function that formats the list of items for the crosshair. Receives the list of data points, should return an array of objects containing `title` and `value` properties.  
+_Note: please pass custom contents in case if you need different look for the crosshair._
