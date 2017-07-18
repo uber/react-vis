@@ -33,7 +33,7 @@ const DATA = [{
 }];
 
 const DOMAIN = [
-  {name: 'nice', domain: [0, 100]},
+  {name: 'nice', domain: [0, 100], tickFormat: t => t},
   {name: 'explosions', domain: [6.9, 7.1]},
   {name: 'wow', domain: [0, 11]},
   {name: 'dog', domain: [0, 16]},
@@ -70,7 +70,7 @@ export default class AnimatedRadar extends Component {
             },
             axes: {
               text: {
-                opacity: 0
+                opacity: 1
               }
             },
             labels: {
