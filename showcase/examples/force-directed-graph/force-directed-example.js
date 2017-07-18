@@ -1,15 +1,15 @@
 // Copyright (c) 2016 - 2017 Uber Technologies, Inc.
-
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -18,30 +18,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import ReactDOM from 'react-dom';
-import React, {Component} from 'react';
-import document from 'global/document';
+import React from 'react';
+import LesMisData from './les-mis-data.json';
 
-import {
-  BrowserRouter,
-  Route
-} from 'react-router-dom';
+import './force-directed.scss';
+import ForceDirectedGraph from './force-directed-graph';
 
-import ShowcaseApp from './showcase-app';
-import '../src/styles/examples.scss';
+export default class ForceDirectedExample extends React.Component {
+  state = {
+    strength: Math.random() * 60 - 30
+  }
 
-export default class App extends Component {
   render() {
-    // using react-router to trigger react updates on url change
+    const {strength} = this.state;
     return (
-      <BrowserRouter>
-        <Route path="/" component={ShowcaseApp} />
-      </BrowserRouter>
+      <div className="force-directed-example">
+        <button
+          className="showcase-button"
+          onClick={() => this.setState({strength: Math.random() * 60 - 30})}> REWEIGHT </button>
+        <ForceDirectedGraph data={LesMisData} height={500} width={500} animation strength={strength}/>
+      </div>
     );
   }
 }
-
-const el = document.createElement('div');
-document.body.appendChild(el);
-
-ReactDOM.render(React.createElement(App), el);

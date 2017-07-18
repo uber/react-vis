@@ -1,15 +1,15 @@
 // Copyright (c) 2016 - 2017 Uber Technologies, Inc.
-
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -18,30 +18,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import ReactDOM from 'react-dom';
-import React, {Component} from 'react';
-import document from 'global/document';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import {
-  BrowserRouter,
-  Route
-} from 'react-router-dom';
-
-import ShowcaseApp from './showcase-app';
-import '../src/styles/examples.scss';
-
-export default class App extends Component {
+class ShowcaseDropdown extends React.Component {
+  state = {
+    open: false
+  }
   render() {
-    // using react-router to trigger react updates on url change
+    const {items} = this.props;
+    const {open} = this.state;
     return (
-      <BrowserRouter>
-        <Route path="/" component={ShowcaseApp} />
-      </BrowserRouter>
+      <div className="dropdown-wrapper">
+        <div className="dropdown-button" onClick={() => this.setState({open: !open})}>
+          {'SELECT SECTION'}
+        </div>
+        {open && <div className="background-overlay" onClick={() => this.setState({open: !open})} />}
+        {open && <ul className="dropdown-inner-wrapper">{items}</ul>}
+      </div>
     );
   }
 }
 
-const el = document.createElement('div');
-document.body.appendChild(el);
+ShowcaseDropdown.PropTypes = {
+  items: PropTypes.arrayOf(PropTypes.component)
+};
 
-ReactDOM.render(React.createElement(App), el);
+export default ShowcaseDropdown;

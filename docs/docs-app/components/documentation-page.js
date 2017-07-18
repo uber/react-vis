@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {injectExamplesIntoHtml, convertMarkdownToReact} from './utils';
+import {injectExamplesIntoHtml, convertMarkdownToReact, scanMarkdownForType} from './utils';
 
 class DocumentationPage extends Component {
   componentDidMount() {
@@ -17,8 +17,10 @@ class DocumentationPage extends Component {
     const {markdownPages, route} = this.props;
     const content = markdownPages.get(route.content.markdown, '');
 
+    const foundClass = scanMarkdownForType(content);
+    const stringClass = (foundClass && foundClass.length) ? foundClass[1] : 'documentation-page f fg';
     return (
-      <div className="documentation-page f fg">
+      <div className={stringClass}>
         <div className="markdown" ref="documentionContainer">
           {injectExamplesIntoHtml(convertMarkdownToReact(content))}
         </div>
