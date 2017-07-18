@@ -42,6 +42,6 @@ test('Axis: Showcase Example - AxisWithTurnedLabels', t => {
 test('Axis: Showcase Example - Padded', t => {
   const $ = mount(<PaddedAxis />);
   t.equal($.find('.rv-xy-plot__series--line').length, 4, 'should find the right number of lines');
-  t.equal($.find('line').length > 30, 44, 'should find the right number of grid lines');
+  t.ok($.find('line').length > 30, 'should find the right number of grid lines');
   t.end();
 });
