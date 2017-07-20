@@ -39,7 +39,7 @@ GradientDefs.requiresSVG = true;
 GradientDefs.propTypes = {
   className: PropTypes.string
 };
-GradientDefs.defaultPropTypes = {
+GradientDefs.defaultProps = {
   className: ''
 };
 

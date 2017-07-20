@@ -97,6 +97,7 @@ class Borders extends PureComponent {
 
 Borders.displayName = 'Borders';
 Borders.defaultProps = {
+  className: '',
   style: {
     all: {},
     bottom: {},

@@ -39,7 +39,8 @@ const defaultProps = {
   strokeStyle: 'solid',
   style: {},
   opacity: 1,
-  curve: null
+  curve: null,
+  className: ''
 };
 
 const propTypes = {

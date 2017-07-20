@@ -36,6 +36,8 @@ import XYPlot from 'plot/xy-plot';
 import {getRadialDomain} from 'utils/series-utils';
 import {getRadialLayoutMargin} from 'utils/chart-utils';
 
+const predefinedClassName = 'rv-sunburst';
+
 /**
  * Create the list of nodes to render.
  * @param {Object} props
@@ -89,7 +91,7 @@ class Sunburst extends React.Component {
       <XYPlot
         height={height}
         width={width}
-        className={className}
+        className={`${predefinedClassName} ${className}`}
         margin={margin}
         xDomain={[-radialDomain, radialDomain]}
         yDomain={[-radialDomain, radialDomain]}>
@@ -100,7 +102,8 @@ class Sunburst extends React.Component {
           radiusDomain: [0, radialDomain],
           // need to present a stripped down version for interpolation
           data: animation ? mappedData.map(row => ({...row, parent: null, children: null})) : mappedData,
-          _data: animation ? mappedData : null
+          _data: animation ? mappedData : null,
+          arcClassName: `${predefinedClassName}__series--radial__arc`
         }}/>
         {children}
       </XYPlot>
