@@ -33,6 +33,7 @@ import Histogram from './plot/histogram';
 import AreaChart from './plot/area-chart';
 import AreaChartElevated from './plot/area-chart-elevated';
 import ScatterplotChart from './plot/scatterplot';
+import CustomSVGExample from './plot/custom-svg-example';
 import FauxScatterplotChart from './plot/faux-radial-scatterplot';
 import ScatterplotCanvas from './plot/scatterplot-canvas';
 import HeatmapChart from './plot/heatmap-chart';
@@ -145,6 +146,7 @@ export const showCase = {
   AreaChart,
   AreaChartElevated,
   FauxScatterplotChart,
+  CustomSVGExample,
   ScatterplotChart,
   ScatterplotCanvas,
   HeatmapChart,
