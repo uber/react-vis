@@ -11,6 +11,7 @@ const {
   ComplexChart,
   CustomScales,
   CustomSVGExample,
+  CustomSVGAllTheMarks,
   FauxScatterplotChart,
   GridLinesChart,
   HeatmapChart,
@@ -97,6 +98,9 @@ const PLOTS = [{
 }, {
   name: 'Custom SVG Series',
   component: CustomSVGExample
+}, {
+  name: 'Custom SVG - All The Mark',
+  component: CustomSVGAllTheMarks
 }];
 
 const BASIC_COMPONENTS = [{

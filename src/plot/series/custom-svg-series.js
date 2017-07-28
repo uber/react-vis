@@ -34,22 +34,47 @@ const DEFAULT_STYLE = {
 
 function predefinedComponents(type, size = 2, style = DEFAULT_STYLE) {
   switch (type) {
-    // cross
-    // diamond
+  case 'diamond':
+    return (<polygon
+      style={style}
+      points={`0 0 ${size / 2} ${size / 2} 0 ${size} ${-size / 2} ${size / 2} 0 0`} />);
+  case 'star':
+    const starPoints = [...new Array(5)].map((c, index) => {
+      const angle = index / 5 * Math.PI * 2;
+      const innerAngle = angle + Math.PI / 10;
+      const outerAngle = angle - Math.PI / 10;
+      // ratio of inner polygon to outer polgyon
+      const innerRadius = size / 2.61;
+      return `
+        ${Math.cos(outerAngle) * size} ${Math.sin(outerAngle) * size}
+        ${Math.cos(innerAngle) * innerRadius} ${Math.sin(innerAngle) * innerRadius}
+      `;
+    }).join(' ');
+    return (<polygon
+        points={starPoints}
+        x="0" y="0" height={size} width={size} style={style}/>);
   case 'square':
-    return (<rect x="0" y="0" height={size} width={size} style={style}/>);
+    return (<rect x={`${-size / 2}`} y={`${-size / 2}`} height={size} width={size} style={style}/>);
   default:
   case 'circle':
-    return (<circle cx="0" cy="0" r={size} style={style}/>);
+    return (<circle cx="0" cy="0" r={size / 2} style={style}/>);
   }
 }
 
-function getInnerComponent(customComponent, positionInPixels, defaultType) {
+function getInnerComponent({customComponent, positionInPixels, defaultType, positionFunctions}) {
   const {size, style} = customComponent;
   const innerComponent = customComponent.customComponent;
-  if (typeof innerComponent === 'string' || !innerComponent) {
+  if (!innerComponent && typeof defaultType === 'string') {
+    return predefinedComponents(defaultType, size, style);
+  }
+  // if default component is a function
+  if (!innerComponent) {
+    return innerComponent(defaultType, positionInPixels);
+  }
+  if (typeof innerComponent === 'string') {
     return predefinedComponents(innerComponent || defaultType, size, style);
   }
+  // if inner component is a function
   return innerComponent(customComponent, positionInPixels);
 }
 
@@ -92,7 +117,12 @@ class CustomSVGSeries extends AbstractSeries {
             x: x({x: seriesComponent.x}),
             y: y({y: seriesComponent.y})
           };
-          const innerComponent = getInnerComponent(seriesComponent, positionInPixels, customComponent);
+          const innerComponent = getInnerComponent({
+            customComponent: seriesComponent,
+            positionInPixels,
+            defaultType: customComponent,
+            positionFunctions: {x, y}
+          });
           return (
             <g
               className="rv-xy-plot__series--custom-svg"
