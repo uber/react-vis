@@ -132,9 +132,6 @@ export const docPages = generatePath([
         name: 'XY-Plot',
         filename: 'xy-plot.md'
       }, {
-        name: 'Introduction',
-        filename: 'xy-plot.md'
-      }, {
         name: 'Series',
         filename: 'series.md'
       }, {
