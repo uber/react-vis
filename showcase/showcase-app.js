@@ -49,7 +49,12 @@ class App extends Component {
     const {forExample} = this.props;
     const linkedSection = location.href.split('/#')[1];
     const foundSection = sectionNames.find(section => section.link === linkedSection);
+
     const filteredSections = sectionNames.filter(section => {
+      // if at http://localhost:3001/, just return everything
+      if (!linkedSection) {
+        return section.showByDefault;
+      }
       const showThisSection = (foundSection && section.link === foundSection.link);
       const showDefaultSections = (!foundSection || foundSection.root) && section.showByDefault;
 

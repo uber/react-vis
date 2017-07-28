@@ -29,8 +29,8 @@ import {
 
 import {
   XYPlot,
-  MarkSeries,
-  LineSeries
+  MarkSeriesCanvas,
+  LineSeriesCanvas
 } from 'index';
 
 const colors = [
@@ -121,7 +121,7 @@ class ForceDirectedGraph extends React.Component {
       <XYPlot width={width} height={height} className={className}>
         {links.map(({source, target}, index) => {
           return (
-            <LineSeries
+            <LineSeriesCanvas
               animation={animation}
               color={'#B3AD9E'}
               key={`link-${index}`}
@@ -130,7 +130,7 @@ class ForceDirectedGraph extends React.Component {
               />
           );
         })}
-        <MarkSeries
+        <MarkSeriesCanvas
           data={nodes}
           animation={animation}
           colorType={'category'}

@@ -74,6 +74,7 @@ a:visited {
   overflow-x: auto;
   position: absolute;
   top: $topbar-height;
+  width: 100%;
 }
 
 .f {
@@ -234,6 +235,7 @@ header {
   display: flex;
   height: auto;
   justify-content: center;
+  min-width: 100%;
   padding: 20px;
   width: 100%;
 }
