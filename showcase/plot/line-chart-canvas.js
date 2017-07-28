@@ -68,11 +68,20 @@ export default class Example extends React.Component {
     colorType: 'typeA',
     strokeWidth: 1,
     showMarks: true,
-    value: false
+    value: false,
+    hideComponent: false
   }
 
   render() {
-    const {drawMode, data, colorType, strokeWidth, value, showMarks} = this.state;
+    const {
+      colorType,
+      drawMode,
+      data,
+      hideComponent,
+      strokeWidth,
+      showMarks,
+      value
+    } = this.state;
     const lineSeriesProps = {
       animation: true,
       className: 'mark-series-example',
@@ -107,8 +116,11 @@ export default class Example extends React.Component {
           <ShowcaseButton
             onClick={() => this.setState({strokeWidth: strokeWidth === 1 ? 2 : 1})}
             buttonContent={'TOGGLE STROKEWIDTH'} />
+          <ShowcaseButton
+            onClick={() => this.setState({hideComponent: !hideComponent})}
+            buttonContent={hideComponent ? 'SHOW' : 'HDE'} />
         </div>
-        <XYPlot
+        {!hideComponent && <XYPlot
           onMouseLeave={() => this.setState({value: false})}
           width={600}
           height={300}>
@@ -121,7 +133,7 @@ export default class Example extends React.Component {
           {mode === 'svg' &&
             <SVGComponent {...lineSeriesProps}/>}
           {value && <Crosshair values={[value]} />}
-        </XYPlot>
+        </XYPlot>}
       </div>
     );
   }

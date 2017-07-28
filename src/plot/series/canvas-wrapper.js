@@ -36,27 +36,18 @@ const MAX_DRAWS = 30;
  */
 function engageDrawLoop(ctx, height, width, layers) {
   let drawIteration = 0;
+  // using setInterval because request animation frame goes too fast
   const drawCycle = setInterval(() => {
+    if (!ctx) {
+      clearInterval(drawCycle);
+      return;
+    }
     drawLayers(ctx, height, width, layers, drawIteration);
     if (drawIteration > MAX_DRAWS) {
       clearInterval(drawCycle);
     }
     drawIteration += 1;
   }, 1);
-}
-
-/**
- * Determine whether the children for the wrapper at this point require animation
- * @param {Object} children the children to be checked.
- * @returns {Boolean} whether or not to animate
- */
-function checkChildrenForAnimation(children) {
-  return children.reduce((any, child) => {
-    if (any) {
-      return any;
-    }
-    return child.props.animation;
-  }, false);
 }
 
 /**
@@ -117,10 +108,17 @@ class CanvasWrapper extends Component {
     this.drawChildren(this.props, null, this.refs.canvas.getContext('2d'));
   }
 
-  componentWillUpdate(nextProps) {
+  componentDidUpdate(nextProps) {
     this.drawChildren(nextProps, this.props, this.refs.canvas.getContext('2d'));
   }
 
+  /**
+   * Check that we can and should be animating, then kick off animations as apporpriate
+   * @param {Object} newProps the new props to be interpolated to
+   * @param {Object} oldProps the old props to be interpolated against
+   * @param {DomRef} ctx the canvas context to be drawn on.
+   * @returns {Array} Object for rendering
+   */
   drawChildren(newProps, oldProps, ctx) {
     const {
       children,
@@ -135,7 +133,7 @@ class CanvasWrapper extends Component {
       return;
     }
 
-    const childrenShouldAnimate = checkChildrenForAnimation(children);
+    const childrenShouldAnimate = children.find(child => child.props.animation);
 
     const height = innerHeight + marginTop + marginBottom;
     const width = innerWidth + marginLeft + marginRight;
