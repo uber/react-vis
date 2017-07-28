@@ -417,7 +417,7 @@ class XYPlot extends React.Component {
           {components.filter(c => c && c.type.requiresSVG)}
         </svg>
         {this.renderCanvasComponents(components, this.props)}
-        {components.filter(c => c && !c.type.requiresSVG)}
+        {components.filter(c => c && !c.type.requiresSVG && !c.type.isCanvas)}
       </div>
     );
   }

@@ -37,6 +37,22 @@ function getAnimationStyle(animationStyle = presets.noWobble) {
   };
 }
 
+/**
+ * Extract the animated props from the entire props object.
+ * @param {Object} props Props.
+ * @returns {Object} Object of animated props.
+ */
+export function extractAnimatedPropValues(props) {
+  const {animatedProps, ...otherProps} = props;
+
+  return animatedProps.reduce((result, animatedPropName) => {
+    if (otherProps.hasOwnProperty(animatedPropName)) {
+      result[animatedPropName] = otherProps[animatedPropName];
+    }
+    return result;
+  }, {});
+}
+
 class Animation extends PureComponent {
   constructor(props) {
     super(props);
@@ -60,25 +76,9 @@ class Animation extends PureComponent {
    */
   _updateInterpolator(oldProps, newProps) {
     this._interpolator = interpolate(
-      this._extractAnimatedPropValues(oldProps),
-      newProps ? this._extractAnimatedPropValues(newProps) : null
+      extractAnimatedPropValues(oldProps),
+      newProps ? extractAnimatedPropValues(newProps) : null
     );
-  }
-
-  /**
-   * Extract the animated props from the entire props object.
-   * @param {Object} props Props.
-   * @returns {Object} Object of animated props.
-   * @private
-   */
-  _extractAnimatedPropValues(props) {
-    const {animatedProps, ...otherProps} = props;
-    return animatedProps.reduce((result, animatedPropName) => {
-      if (otherProps.hasOwnProperty(animatedPropName)) {
-        result[animatedPropName] = otherProps[animatedPropName];
-      }
-      return result;
-    }, {});
   }
 
   /**

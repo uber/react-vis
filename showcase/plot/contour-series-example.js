@@ -22,7 +22,7 @@ import React, {Component} from 'react';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
 
-import {XYPlot, XAxis, YAxis, ContourSeries, MarkSeries, Borders} from 'index';
+import {XYPlot, XAxis, YAxis, ContourSeries, MarkSeriesCanvas, Borders} from 'index';
 
 import DATA from './old-faithful.json';
 const MAPPED_DATA = DATA.map(row => ({
@@ -61,7 +61,7 @@ export default class ContourSeriesExample extends Component {
               '#FF9833'
             ]}
             data={data}/>
-          <MarkSeries animation data={data} size={1} color={'#125C77'}/>
+          <MarkSeriesCanvas animation data={data} size={1} color={'#125C77'}/>
           <Borders style={{all: {fill: '#fff'}}}/>
           <XAxis />
           <YAxis />

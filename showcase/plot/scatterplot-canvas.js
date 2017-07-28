@@ -96,6 +96,7 @@ export default class Example extends React.Component {
             buttonContent={'UPDATE COLOR'} />
         </div>
         <XYPlot
+          onMouseLeave={() => this.setState({value: false})}
           width={600}
           height={300}>
           <VerticalGridLines />
