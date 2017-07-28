@@ -117,7 +117,7 @@ This handler fires when the user clicks somewhere on a series, and provides the 
 #### onSeriesMouseOut
 Type: `function`  
 Default: none  
-This handler fires when the user's mouse cursor leaves a series, and provides the corresponding event. Unlike onMouseOut, it doesn't pass a specific datapoint.
+This handler fires when the user's mouse cursor leaves a series, and provides the corresponding event. Unlike onValueMouseOut, it doesn't pass a specific datapoint.
 
 ```jsx
 <AreaSeries
@@ -150,7 +150,7 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 ```jsx
 <MarkSeries
 ...
-  onClick={(datapoint, event)=>{
+  onValueClick={(datapoint, event)=>{
   	// does something on click
   	// you can access the value of the event
   }}
@@ -164,7 +164,7 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 ```jsx
 <MarkSeries
 ...
-  onMouseOut={(datapoint, event)=>{
+  onValueMouseOut={(datapoint, event)=>{
   	// does something on click
   	// you can access the value of the event
   }}
@@ -178,7 +178,7 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 ```jsx
 <MarkSeries
 ...
-  onMouseOver={(datapoint, event)=>{
+  onValueMouseOver={(datapoint, event)=>{
   	// does something on click
   	// you can access the value of the event
   }}
