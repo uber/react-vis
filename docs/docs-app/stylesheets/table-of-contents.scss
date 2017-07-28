@@ -7,6 +7,8 @@
   width: 240px;
   z-index: 1;
 
+  min-height: calc(100vh - #{$topbar-height});
+
   >div {
     padding-bottom: 80px;
     padding-top: 20px;

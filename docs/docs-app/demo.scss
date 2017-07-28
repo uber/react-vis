@@ -7,6 +7,7 @@ $black-60: #4a4a4a;
 $pure-white: #fff;
 $white: #ededed;
 $white-40: #8d9ba3;
+$topbar-height: 64px;
 
 @import 'stylesheets/markdown';
 @import 'stylesheets/table-of-contents';
@@ -69,8 +70,10 @@ a:visited {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  height: 100%;
+  height: calc(100% - $topbar-height);
   overflow-x: auto;
+  position: absolute;
+  top: $topbar-height;
 }
 
 .f {
@@ -86,28 +89,121 @@ a:visited {
   flex-grow: 1;
 }
 
-.example-header {
-  align-items: center;
-  background: $black-20;
-
-  display: flex;
-  font-size: 12px;
-  flex-shrink: 0;
-  height: 60px;
-  justify-content: space-between;
-  letter-spacing: .86px;
-  padding: 0 50px;
+header {
+  white-space: nowrap;
+  position: relative;
+  z-index: 10001;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  transition: all 300ms;
+  max-height: $topbar-height;
+  line-height: $topbar-height;
+  overflow: hidden;
 
-  .link {
-    color: $white-40;
+  .bg {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: $black;
+  }
+  .logo {
+    display: none;
+    color: $white !important;
+    float: left;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-left: 24px;
+    text-transform: uppercase;
+    vertical-align: top;
+  }
+  .menu-toggle {
+    font-size: 24px;
+    color: $white;
+    float: right;
+    cursor: pointer;
+    display: none;
+    vertical-align: top;
   }
 
-  .link.active {
-    border-color: $primary;
-    border-image-slice: 2;
-    color: $primary;
-    font-weight: bold;
+  .links {
+    float: right;
+    vertical-align: top;
+    margin-right: 80px;
+    a:hover {
+      border-color: $white-40;
+    }
+  }
+
+  .github-link {
+    position: absolute;
+    right: 24px;
+    top: 5px;
+  }
+
+  .links, .github-link {
+    a {
+      line-height: 58px;
+      color: $white-40;
+      text-transform: uppercase;
+      margin-left: 40px;
+      border-style: solid;
+      border-width: 3px 0 0 0;
+      border-color: transparent;
+      margin-top: -5px;
+    }
+    a:hover {
+      color: $white;
+    }
+    a.active {
+      color: $white;
+      border-color: $primary;
+      border-image-slice: 2;
+    }
+  }
+}
+
+.site-links {
+  position: fixed;
+  padding-left: 24px;
+  padding-right: 40px;
+  transition: all 300ms;
+  max-height: $topbar-height;
+  overflow: hidden;
+
+  &:after {
+    content: '▾';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 12px;
+    color: $black-40;
+  }
+
+  .site-link {
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    width: 100%;
+
+    a {
+      width: 100%;
+      color: $white;
+    }
+
+    &:nth-child(n+2) {
+      opacity: 0.5;
+    }
+    &:hover {
+      opacity: 1 !important;
+    }
+  }
+
+  &:hover {
+    background: $black;
+    max-height: $topbar-height * 5;
   }
 }
 
