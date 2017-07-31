@@ -3,7 +3,7 @@ import marked from 'marked';
 
 import {docsRouting} from '../constants/pages';
 import {showCase} from '../../../showcase/index';
-import ShowcaseIndex from '../../../showcase/showcase-index';
+import * as ShowcaseIndex from '../../../showcase/showcase-index';
 
 const INJECTION_REG = /<!-- INJECT:"(.+)\" -->/g;
 

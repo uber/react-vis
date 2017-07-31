@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ShowcaseDropdown from './showcase-components/showcase-dropdown';
 
-import ShowcaseIndex from './showcase-index';
-const {
+import {
   AxesShowcase,
   PlotsShowcase,
   SunburstSection,
@@ -19,7 +18,7 @@ const {
   ResponsiveVis,
   StreamgraphExample,
   ZoomableChart
-} = ShowcaseIndex;
+} from './showcase-index';
 
 const sectionNames = [
   {root: true, link: '', name: 'RETURN TO ROOT'},

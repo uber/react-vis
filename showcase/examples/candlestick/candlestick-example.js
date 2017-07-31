@@ -26,8 +26,8 @@ import {
   LineSeries,
   makeWidthFlexible
 } from 'index';
-import './candlestick.scss';
 import Candlestick from './candlestick';
+
 import './candlestick.scss';
 
 const FlexibleXYPlot = makeWidthFlexible(XYPlot);

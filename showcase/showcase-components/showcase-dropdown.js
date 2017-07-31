@@ -22,18 +22,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class ShowcaseDropdown extends React.Component {
-  state = {
-    open: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false
+    };
+    this.toggleState = this.toggleState.bind(this);
   }
+
+  toggleState() {
+    this.setState({open: !this.state.open});
+  }
+
   render() {
     const {items} = this.props;
     const {open} = this.state;
     return (
       <div className="dropdown-wrapper">
-        <div className="dropdown-button" onClick={() => this.setState({open: !open})}>
+        <div className="dropdown-button" onClick={this.toggleState}>
           {'SELECT SECTION'}
         </div>
-        {open && <div className="background-overlay" onClick={() => this.setState({open: !open})} />}
+        {open && <div className="background-overlay" onClick={this.toggleState} />}
         {open && <ul className="dropdown-inner-wrapper">{items}</ul>}
       </div>
     );

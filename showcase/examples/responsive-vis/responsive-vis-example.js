@@ -19,13 +19,14 @@
 // THE SOFTWARE.
 
 import React from 'react';
+
 import {
   createData,
   getPPP
 } from './responsive-vis-utils';
-
 import ResponsiveScatterplot from './responsive-scatterplot';
 import ResponsiveBarChart from './responsive-bar-chart';
+
 import './responsive-vis.scss';
 
 const ASPECT_RATIO = 1.2;
