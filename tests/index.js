@@ -54,5 +54,6 @@ import './components/radar-chart-tests';
 import './components/rect-series-tests';
 import './components/treemap-tests';
 import './components/sankey-tests';
+import './components/showcase-example-tests';
 import './components/sunburst-tests';
 import './components/xy-plot-tests';

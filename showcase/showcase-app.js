@@ -17,7 +17,8 @@ import {
   ForceDirectedGraph,
   ResponsiveVis,
   StreamgraphExample,
-  ZoomableChart
+  ZoomableChart,
+  HistoryExample
 } from './showcase-index';
 
 const sectionNames = [
@@ -40,6 +41,7 @@ const sectionNames = [
   {showByDefault: false, link: 'force-directed', name: 'ForceDirectedGraph', showcase: ForceDirectedGraph},
   {showByDefault: false, link: 'streamgraph', name: 'Streamgraph', showcase: StreamgraphExample},
   {showByDefault: false, link: 'responsive', name: 'ResponsiveVis', showcase: ResponsiveVis},
+  {showByDefault: false, link: 'history', name: 'HistoryExample', showcase: HistoryExample},
   {showByDefault: false, link: 'zoomable', name: 'ZoomableChart', showcase: ZoomableChart}
 ];
 
