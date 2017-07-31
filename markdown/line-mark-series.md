@@ -33,7 +33,7 @@ The color of the inside of the marks. When this value is not provided the color 
 #### size (optional)
 Type: `string|number`  
 Default: 5
-The size of each of the marks. 
+The size of each of the marks.
 
 ## API Reference
 
@@ -50,7 +50,7 @@ const configuredCurve = d3Shape.curveCatmullRom.alpha(0.5);
 const funcCurveProp = <LineMarkSeries data={data} curve={configuredCurve} .../>;
 ```
 
-Some, but not all line interpolations have the resulting curve going through the original coordinates of its data points. If not, the LineSeries part of the LineMarkSeries will be detached from the MarkSeries part. 
+Some, but not all line interpolations have the resulting curve going through the original coordinates of its data points. If not, the LineSeries part of the LineMarkSeries will be detached from the MarkSeries part.
 
 #### fill (optional)
 Type: `string|number`
@@ -63,11 +63,11 @@ A color for the series. Will override color if both are provided.
 
 ##### strokeDasharray (optional)
 Type: `string`
-Specify a custom `stroke-dasharray` attribute which controls the pattern of dashes and gaps used to stroke paths. This will only affect the LineSeries part of the LineMarkSeries. 
+Specify a custom `stroke-dasharray` attribute which controls the pattern of dashes and gaps used to stroke paths. This will only affect the LineSeries part of the LineMarkSeries.
 
 ##### strokeStyle (optional)
 Type: `string`
-If set to `dashed`, your series will use dashed lines. If set to `solid` or unspecified, your series will use solid lines. See `strokeDasharray` for specifying a custom stroke dash-array value. This will only affect the LineSeries part of the LineMarkSeries. 
+If set to `dashed`, your series will use dashed lines. If set to `solid` or unspecified, your series will use solid lines. See `strokeDasharray` for specifying a custom stroke dash-array value. This will only affect the LineSeries part of the LineMarkSeries.
 
 ##### strokeWidth (optional)
 Type: `string|number`
@@ -96,7 +96,7 @@ An object which holds CSS properties that will be applied to the SVG element(s) 
 ## Interaction handlers
 #### onNearestX (optional)
 Type: `function(value, {event, innerX, index})`  
-A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor. 
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
 - `index` is the index of the data point in the array of data;
@@ -105,7 +105,7 @@ See [interaction](interaction.md)
 
 #### onNearestXY (optional)
 Type: `function(value, {event, innerX, innerY, index})`  
-A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor. 
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
 - `innerY` is the top position of the mark;
@@ -131,7 +131,7 @@ This handler fires when the user clicks somewhere on a series, and provides the 
 #### onSeriesMouseOut
 Type: `function`  
 Default: none  
-This handler fires when the user's mouse cursor leaves a series, and provides the corresponding event. Unlike onMouseOut, it doesn't pass a specific datapoint. 
+This handler fires when the user's mouse cursor leaves a series, and provides the corresponding event. Unlike onValueMouseOut, it doesn't pass a specific datapoint.
 
 ```jsx
 <LineMarkSeries
@@ -145,7 +145,7 @@ This handler fires when the user's mouse cursor leaves a series, and provides th
 #### onSeriesMouseOver
 Type: `function`
 Default: none  
-This handler fires when the user mouses over a series, and provides the corresponding event. Unlike onMouseOver, it doesn't pass a specific datapoint. 
+This handler fires when the user mouses over a series, and provides the corresponding event. Unlike onValueMouseOver, it doesn't pass a specific datapoint.
 
 ```jsx
 <LineMarkSeries
@@ -159,12 +159,12 @@ This handler fires when the user mouses over a series, and provides the correspo
 #### onValueClick
 Type: `function`  
 Default: none  
-This handler is triggered either when the user clicks on a mark. 
-The handler passes two arguments, the corresponding datapoint and the actual event. 
+This handler is triggered either when the user clicks on a mark.
+The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx
 <LineMarkSeries
 ...
-  onClick={(datapoint, event)=>{
+  onValueClick={(datapoint, event)=>{
     // does something on click
     // you can access the value of the event
   }}
@@ -173,12 +173,12 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 #### onValueMouseOut
 Type: `function`  
 Default: none  
-This handler is triggered either when the user's mouse leaves a mark. 
-The handler passes two arguments, the corresponding datapoint and the actual event. 
+This handler is triggered either when the user's mouse leaves a mark.
+The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx
 <LineMarkSeries
 ...
-  onMouseOut={(datapoint, event)=>{
+  onValueMouseOut={(datapoint, event)=>{
     // does something on click
     // you can access the value of the event
   }}
@@ -187,12 +187,12 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 #### onValueMouseOver
 Type: `function`
 Default: none  
-This handler is triggered either when the user's mouse enters a mark. 
-The handler passes two arguments, the corresponding datapoint and the actual event. 
+This handler is triggered either when the user's mouse enters a mark.
+The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx
 <LineMarkSeries
 ...
-  onMouseOver={(datapoint, event)=>{
+  onValueMouseOver={(datapoint, event)=>{
     // does something on click
     // you can access the value of the event
   }}
