@@ -12,18 +12,13 @@ import {createHashHistory} from 'history';
 import App from './components/app.js';
 import Home from './components/home.js';
 import Layout from './components/layout.js';
-import ExamplePage from './components/example-page.js';
+
 import DocumentationPage from './components/documentation-page';
 
 import {
   examplePages,
   docPages
 } from './constants/pages';
-
-const pageType = {
-  example: ExamplePage,
-  documentation: DocumentationPage
-};
 
 const appHistory = useRouterHistory(createHashHistory)({queryKey: false});
 
@@ -39,7 +34,7 @@ const getDefaultPath = pages => {
 };
 
 const renderRoute = (page, i) => {
-  const {children, path, content} = page;
+  const {children, path, markdown, filename} = page;
   if (children) {
     return (
       <Route key={i} path={path} >
@@ -48,8 +43,12 @@ const renderRoute = (page, i) => {
       </Route>
     );
   }
-  const component = pageType[content.pageType];
-  return (<Route key={i} path={path} component={component} content={content} />);
+  const content = {
+    markdown,
+    filename
+  };
+
+  return (<Route key={i} path={path} component={DocumentationPage} content={content} />);
 };
 
 const renderRouteGroup = (path, pages) => {

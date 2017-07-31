@@ -1,3 +1,6 @@
+<!-- INJECT:"Candlestick" -->
+
+
 ## Extensibility
 
 react-vis is easily extensible! If we don't have what you want it's easy to make! For instance, the above chart

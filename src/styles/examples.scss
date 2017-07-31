@@ -1,10 +1,13 @@
 @import '../main.scss';
 
+$black: #000;
+$white: #fff;
+
 body {
-  margin: 0;
-  padding: 0;
   font-family: Sintony, Helvetica, sans-serif;
   font-size: 14px;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -31,7 +34,6 @@ main {
 
 header {
   background: #f0f0f0;
-  border-bottom: #e1e1e1 1px solid;
   line-height: 40px;
   position: fixed;
   top: 0;
@@ -55,65 +57,89 @@ header {
 }
 
 .header-contents {
-  min-width: 650px;
-  max-width: 1200px;
-  margin: 0 auto;
-  overflow: hidden;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .header-logo {
+  color: $black;
   float: left;
   font-size: 20px;
-  color: #000;
   text-decoration: none;
 }
 
-nav {
-  display: inline-block;
-  font-size: 16px;
-  list-style-type: none;
-  margin: 0;
-  float: right;
-  padding: 0;
-  font-weight: 400;
+.background-overlay {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
 
-  li {
-    display: inline-block;
-    padding: 0;
-    font-size: 10px
+.dropdown-button {
+  cursor: pointer;
+  z-index: 10;
+}
+
+.dropdown-wrapper {
+  display: flex;
+  position: relative;
+
+  .dropdown-inner-wrapper {
+    background: $white;
+    border: 2px solid $black;
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    height: auto;
+    list-style: none;
+    padding: 10px;
+    position: absolute;
+    right: -5px;
+    top: 25px;
+    width: 150px;
+    z-index: 10;
   }
 
   a {
-    color: #494949;
-    display: block;
-    padding: 0 15px;
+    display: flex;
+    height: auto;
+    line-height: 15px;
     text-decoration: none;
-    transition: all 0.2s;
+  }
 
-    &:hover {
-      background: #e5e5e4;
-      color: #1c1b1b;
-    }
+  li {
+    display: flex;
+    height: 100%;
+  }
+
+  .subsection-label {
+    font-weight: 600;
+    line-height: 15px;
   }
 }
 
+
 article {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: flex-start;
   margin: 0 auto;
-  padding: 30px 20px 0;
-  min-width: 650px;
   max-width: 1200px;
+  min-width: 650px;
+  padding: 30px 20px 0;
 
   h1,
   h2 {
     flex: 1 100%;
 
     small {
-      font-size: 50%;
       color: #6b6b76;
+      font-size: 50%;
     }
   }
 
@@ -127,7 +153,7 @@ article {
 .click-me {
   border: 0;
   background: #ef5d28;
-  color: #fff;
+  color: $white;
   cursor: pointer;
   font-family: Sintony, Helvetica, sans-serif;
   font-size: 14px;
@@ -204,7 +230,7 @@ article {
   &::after {
     border-radius: 5px;
     border: 2px solid #edaf00;
-    background: #fff;
+    background: $white;
     display: block;
     content: ' ';
     height: 6px;
@@ -372,7 +398,7 @@ article {
 }
 
 .showcase-button {
-  background: #fff;
+  background: $white;
   border: thin solid #333;
   border-radius: 5px;
   cursor: pointer;
@@ -383,7 +409,7 @@ article {
 
 .donut-chart-example {
   .rv-radial-chart__series--pie__slice:hover {
-    stroke: #000 !important;
+    stroke: $black !important;
     stroke-width: 2px !important;
   }
 }

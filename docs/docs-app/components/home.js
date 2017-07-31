@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import ComplexChartExample from '../../../examples/complex-chart/complex-chart-example';
-import StreamgraphExample from '../../../examples/streamgraph/streamgraph-example';
+import ComplexChartExample from '../../../showcase/plot/complex-chart';
+import StreamgraphExample from '../../../showcase/examples/streamgraph/streamgraph-example';
 import SankeyBasic from '../../../showcase/sankey/basic';
 import DonutChart from '../../../showcase/radial-chart/donut-chart';
 
