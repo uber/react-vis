@@ -59,7 +59,7 @@ test('axis-utils #getAxisAngle', t => {
 test('axis-utils #generateFit', t => {
   t.deepEqual(generateFit({x: 0, y: 0}, {x: 1, y: 1}), {left: 0, offset: 0, right: 1, slope: 1});
   t.deepEqual(generateFit({x: 0, y: 0}, {x: 0, y: 1}), {left: 0, offset: 0, right: 1, slope: 0});
-  t.deepEqual(generateFit({x: 0, y: 0}, {x: 0, y: -1}), {left: -1, offset: 0, right: 0, slope: 0});
+  t.deepEqual(generateFit({x: 0, y: 0}, {x: 0, y: -1}), {left: 0, offset: 0, right: -1, slope: 0});
   t.end();
 });
 

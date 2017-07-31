@@ -74,8 +74,8 @@ export function generateFit(axisStart, axisEnd) {
   // address the special case when the slope is infinite
   if (axisStart.x === axisEnd.x) {
     return {
-      left: Math.min(axisStart.y, axisEnd.y),
-      right: Math.max(axisStart.y, axisEnd.y),
+      left: axisStart.y,
+      right: axisEnd.y,
       slope: 0,
       offset: axisStart.x
     };
