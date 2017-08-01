@@ -67,6 +67,9 @@ export const examplePages = generatePath([
     }, {
       name: 'Zoomable Chart',
       filename: 'examples/zoomable-chart.md'
+    }, {
+      name: 'Git History',
+      filename: 'examples/history-example.md'
     }]
   }
 ]);

@@ -59,7 +59,7 @@ class LabelSeries extends AbstractSeries {
          ref="container"
          transform={`translate(${marginLeft},${marginTop})`}>
         {data.reduce((res, d, i) => {
-          const {label, style, xOffset, yOffset} = d;
+          const {label, style, xOffset, yOffset, rotation} = d;
           if (!label) {
             return res;
           }
@@ -67,6 +67,9 @@ class LabelSeries extends AbstractSeries {
           const yVal = yFunctor(d);
           const leftOfMiddle = xVal < (xRange[1] - xRange[0]) / 2;
           const aboveMiddle = yVal < Math.abs(yRange[1] - yRange[0]) / 2;
+
+          const x = xVal + ((allowOffsetToBeReversed && leftOfMiddle) ? -1 : 1) * (xOffset || 0);
+          const y = yVal + ((allowOffsetToBeReversed && aboveMiddle) ? -1 : 1) * (yOffset || 0);
           const attrs = {
             alignmentBaseline: aboveMiddle ? 'text-before-edge' : 'text-after-edge',
             className: 'rv-xy-plot__series--label-text',
@@ -75,11 +78,11 @@ class LabelSeries extends AbstractSeries {
             onMouseOver: e => this._valueMouseOverHandler(d, e),
             onMouseOut: e => this._valueMouseOutHandler(d, e),
             textAnchor: leftOfMiddle ? 'start' : 'end',
-            x: xVal + ((allowOffsetToBeReversed && leftOfMiddle) ? -1 : 1) * (xOffset || 0),
-            y: yVal + ((allowOffsetToBeReversed && aboveMiddle) ? -1 : 1) * (yOffset || 0),
+            x,
+            y,
+            transform: `rotate(${rotation},${x},${y})`,
             ...style
           };
-
           return res.concat([<text {...attrs} >{label}</text>]);
         }, [])}
       </g>
