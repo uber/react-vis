@@ -25,7 +25,7 @@ import {
   YAxis,
   LineMarkSeries,
   makeWidthFlexible,
-  Crosshair
+  LabelSeries
 } from 'index';
 
 import {EXTENDED_DISCRETE_COLOR_RANGE} from 'theme';
@@ -40,8 +40,8 @@ const blobbedHistry = HistoryLog.reduce((acc, row) => {
   return acc;
 }, {});
 
-const lines = Object.keys(blobbedHistry).map((email, index) => {
-  const commits = blobbedHistry[email].sort((a, b) => {
+const commitsByAuthor = Object.keys(blobbedHistry).map((email, index) => {
+  return blobbedHistry[email].sort((a, b) => {
     return new Date(a.date).getTime() - new Date(b.date).getTime();
   }).reduce((acc, commit) => {
     const x = new Date(commit.date).getTime();
@@ -52,11 +52,14 @@ const lines = Object.keys(blobbedHistry).map((email, index) => {
     acc.push({
       x,
       y: (previousLog ? previousLog.y : 0) + 1,
-      commiter: commit.name
+      commiter: commit.author,
+      rotation: 30
     });
     return acc;
   }, []);
+}).filter(commits => commits.length > 0);
 
+const lines = commitsByAuthor.map((commits, index) => {
   return (
     <LineMarkSeries
       data={commits}
@@ -66,13 +69,20 @@ const lines = Object.keys(blobbedHistry).map((email, index) => {
   );
 });
 
+const authors = commitsByAuthor.map(commits => {
+  const lastCommit = commits[commits.length - 1];
+  return {
+    ...lastCommit,
+    label: lastCommit.commiter.toUpperCase(),
+    style: {
+      fontSize: '8px'
+    }
+  };
+});
+
 const FlexibleXYPlot = makeWidthFlexible(XYPlot);
 
 export default class HistoryExample extends React.Component {
-  state = {
-    hoveredValues: []
-  }
-
   render() {
     return (
       <div className="history-example">
@@ -86,7 +96,7 @@ export default class HistoryExample extends React.Component {
             <XAxis />
             <YAxis tickFormat={t => t}/>
             {lines}
-            <Crosshair />
+            <LabelSeries data={authors} />
           </FlexibleXYPlot>
         </div>
       </div>
