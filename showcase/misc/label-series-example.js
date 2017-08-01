@@ -31,10 +31,10 @@ import {
 
 function generateData() {
   return [
-    {x: Math.random() * 3, y: Math.random() * 20, label: 'Wigglytuff', size: 30, style: {fontSize: 20}, rotation: 45},
+    {x: Math.random() * 3, y: Math.random() * 20, label: 'Wigglytuff', size: 30, style: {fontSize: 20}},
     {x: Math.random() * 3, y: Math.random() * 20, label: 'Psyduck', size: 10},
     {x: Math.random() * 3, y: Math.random() * 20, label: 'Geodude', size: 1},
-    {x: Math.random() * 3, y: Math.random() * 20, label: 'Ditto', size: 12},
+    {x: Math.random() * 3, y: Math.random() * 20, label: 'Ditto', size: 12, rotation: 45},
     {x: Math.random() * 3, y: Math.random() * 20, label: 'Snorlax', size: 4}
   ];
 }
@@ -42,10 +42,10 @@ function generateData() {
 export default class Example extends React.Component {
   state = {
     data: [
-      {x: 3, y: 7, label: 'Wigglytuff', size: 30, style: {fontSize: 20}},
+      {x: 3, y: 7, label: 'Wigglytuff', size: 30, style: {fontSize: 20}, rotation: 45},
       {x: 2, y: 4, label: 'Psyduck', size: 10},
       {x: 1, y: 20, label: 'Geodude', size: 1},
-      {x: 4, y: 12, label: 'Ditto', size: 12},
+      {x: 4, y: 12, label: 'Ditto', size: 12, rotation: 45},
       {x: 1, y: 14, label: 'Snorlax', size: 4}
     ]
   }

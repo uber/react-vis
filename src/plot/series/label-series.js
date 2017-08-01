@@ -80,7 +80,7 @@ class LabelSeries extends AbstractSeries {
             textAnchor: leftOfMiddle ? 'start' : 'end',
             x,
             y,
-            transform: `rotate(${rotation},${x},${y})`,
+            transform: `rotate(${rotation || 0},${x},${y})`,
             ...style
           };
           return res.concat([<text {...attrs} >{label}</text>]);
