@@ -99,7 +99,7 @@ class CustomSVGSeries extends AbstractSeries {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <CustomSVGSeries {...this.props} animation={null}/>
+          <CustomSVGSeries {...this.props} animation={false}/>
         </Animation>
       );
     }
