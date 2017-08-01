@@ -75,7 +75,7 @@ const authors = commitsByAuthor.map(commits => {
     ...lastCommit,
     label: lastCommit.commiter.toUpperCase(),
     style: {
-      fontSize: '8px'
+      fontSize: '8'
     }
   };
 });
@@ -89,7 +89,7 @@ export default class HistoryExample extends React.Component {
         <div className="chart">
           <FlexibleXYPlot
             animation
-            margin={{top: 50, bottom: 50, right: 50, left: 50}}
+            margin={50}
             yType="log"
             xType="time"
             height={500}>
