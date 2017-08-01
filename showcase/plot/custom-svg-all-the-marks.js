@@ -20,54 +20,61 @@
 
 import React from 'react';
 
-import ShowcaseButton from '../showcase-components/showcase-button';
 import {
   XYPlot,
   XAxis,
   YAxis,
-  MarkSeries,
-  LabelSeries
+  VerticalGridLines,
+  HorizontalGridLines,
+  CustomSVGSeries
 } from 'index';
 
-function generateData() {
+import ShowcaseButton from '../showcase-components/showcase-button';
+
+function generateData(reversed) {
   return [
-    {x: Math.random() * 3, y: Math.random() * 20, label: 'Wigglytuff', size: 30, style: {fontSize: 20}},
-    {x: Math.random() * 3, y: Math.random() * 20, label: 'Psyduck', size: 10},
-    {x: Math.random() * 3, y: Math.random() * 20, label: 'Geodude', size: 1},
-    {x: Math.random() * 3, y: Math.random() * 20, label: 'Ditto', size: 12, rotation: 45},
-    {x: Math.random() * 3, y: Math.random() * 20, label: 'Snorlax', size: 4}
-  ];
+    'star',
+    'square',
+    'circle',
+    'diamond'
+  ].reduce((acc, row, rowIndex) => {
+    const cellsInRow = [...new Array(5)].map((cell, index) => {
+      return ({
+        x: index,
+        y: reversed ? (5 - rowIndex) * 5 : rowIndex * 5,
+        size: (index + 1) * 3,
+        style: {stroke: 'red', fill: 'orange'},
+        customComponent: row
+      });
+    });
+
+    return acc.concat(cellsInRow);
+  }, []);
 }
+
+const DATA = generateData(false);
+const REVERSED_DATA = generateData(true);
 
 export default class Example extends React.Component {
   state = {
-    data: [
-      {x: 3, y: 7, label: 'Wigglytuff', size: 30, style: {fontSize: 20}, rotation: 45},
-      {x: 2, y: 4, label: 'Psyduck', size: 10},
-      {x: 1, y: 20, label: 'Geodude', size: 1},
-      {x: 4, y: 12, label: 'Ditto', size: 12, rotation: 45},
-      {x: 1, y: 14, label: 'Snorlax', size: 4}
-    ]
+    reverse: false
   }
   render() {
-    const {data} = this.state;
+    const {reverse} = this.state;
     return (
       <div>
-        <ShowcaseButton onClick={() => this.setState({data: generateData()})} buttonContent="UPDATE"/>
+        <ShowcaseButton
+          buttonContent="REVERSE"
+          onClick={() => this.setState({reverse: !reverse})} />
         <XYPlot
+          margin={50}
           width={300}
           height={300}>
+          <VerticalGridLines />
+          <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          <MarkSeries
-            className="mark-series-example"
-            strokeWidth={2}
-            sizeRange={[5, 15]}
-            data={data}/>
-          <LabelSeries
-            animation
-            allowOffsetToBeReversed
-            data={data} />
+          <CustomSVGSeries animation data={reverse ? REVERSED_DATA : DATA}/>
         </XYPlot>
       </div>
     );

@@ -39,6 +39,7 @@ import './components/canvas-component-tests';
 import './components/circular-grid-lines-tests';
 import './components/color-article-tests';
 import './components/contour-series-tests';
+import './components/custom-svg-series-tests';
 import './components/data-article-tests';
 import './components/decorative-axis-tests';
 import './components/gradient-tests';

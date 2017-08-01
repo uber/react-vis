@@ -35,6 +35,7 @@ class LabelSeries extends AbstractSeries {
       data,
       marginLeft,
       marginTop,
+      rotation,
       xRange,
       yRange
     } = this.props;
@@ -59,7 +60,7 @@ class LabelSeries extends AbstractSeries {
          ref="container"
          transform={`translate(${marginLeft},${marginTop})`}>
         {data.reduce((res, d, i) => {
-          const {label, style, xOffset, yOffset, rotation} = d;
+          const {label, style, xOffset, yOffset} = d;
           if (!label) {
             return res;
           }
@@ -80,7 +81,7 @@ class LabelSeries extends AbstractSeries {
             textAnchor: leftOfMiddle ? 'start' : 'end',
             x,
             y,
-            transform: `rotate(${rotation},${x},${y})`,
+            transform: `rotate(${d.rotation || rotation},${x},${y})`,
             ...style
           };
           return res.concat([<text {...attrs} >{label}</text>]);
@@ -106,8 +107,13 @@ LabelSeries.propTypes = {
   })).isRequired,
   marginLeft: PropTypes.number,
   marginTop: PropTypes.number,
+  rotation: PropTypes.number,
   xRange: PropTypes.arrayOf(PropTypes.number),
   yRange: PropTypes.arrayOf(PropTypes.number)
+};
+LabelSeries.defaultProps = {
+  animation: false,
+  rotation: 0
 };
 LabelSeries.displayName = 'LabelSeries';
 export default LabelSeries;

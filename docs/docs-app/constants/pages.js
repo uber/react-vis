@@ -177,6 +177,9 @@ export const docPages = generatePath([
         name: 'Contour Series',
         filename: 'contour-series.md'
       }, {
+        name: 'Custom SVG Series',
+        filename: 'custom-svg-series.md'
+      }, {
         name: 'Heatmap Series',
         filename: 'heatmap-series.md'
       }, {
