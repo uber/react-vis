@@ -20,7 +20,7 @@ test('CustomSVGSeries: Showcase Example - CustomSVGExample', t => {
 
 test('CustomSVGSeries: Showcase Example - CustomSVGAllTheMarks', t => {
   const $ = mount(<CustomSVGAllTheMarks />);
-  t.equal($.text(), '0123402468101214', 'should fine the right text content');
+  t.equal($.text(), 'REVERSE0123402468101214', 'should fine the right text content');
   t.equal($.find('.rv-xy-plot__series--custom-svg').length, 20, 'should find the right number of gs');
   t.equal($.find('.rv-xy-plot__series--custom-svg polygon').length, 10, 'should find the right number of polygons');
   t.equal($.find('.rv-xy-plot__series--custom-svg circle').length, 5, 'should find the right number of circle');

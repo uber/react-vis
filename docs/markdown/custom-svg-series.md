@@ -1,10 +1,10 @@
 ## CustomSVGSeries
 
-When creating visualizations, it is sometimes necessary to get your hands dirty and completely take control over what SVG components will be shown. This could be necessary in situations where you have predefined SVG code that you just want to appear the way you drew it in Sketch (but positioned using coordinates), or maybe you have multiline text annotations that you want to formatted in a particular way, or maybe even you just want to use an alternative type of mark instead of the usual scatterplot mark to differentiate series in a set. To serve these and many other tasks, we use the CustomSVGSeries.
+When creating visualizations, it is sometimes necessary to get your hands dirty and completely take control over what SVG components will be shown. This could be necessary in situations where you have predefined SVG code that you just want to appear the way you drew it in Sketch (but positioned using coordinates), or maybe you have multiline text annotations that you want to formatted in a particular way, or you just want to use an alternative type of mark instead of the usual scatterplot mark to differentiate series in a set. To serve these and many other tasks, we use the CustomSVGSeries.
 
 <!-- INJECT:"CustomSVGExample" -->
 
-The premise of the series is that it simply puts a ```<g>``` element at a desired x,y location, and the offers you a variety of ways to fill in the contents of that ```<g>``` element. Here's an example of the data format:
+The premise of the series is that it simply puts a `<g>` element at a desired x,y location, and the offers you a variety of ways to fill in the contents of that `<g>` element. Here's an example of the data format:
 
 ```javascript
 const myData = [
@@ -14,7 +14,7 @@ const myData = [
   {x: 3, y: 15},
   {x: 2.5, y: 7, customComponent: (customComponent, positionInPixels) => {
     return (
-      <g>
+      <g className="inner-inner-component">
         <circle cx="0" cy="0" r={10} fill="green"/>
         <text x={0} y={0}>
           <tspan x="0" y="0">{`x: ${positionInPixels.x}`}</tspan>
@@ -48,8 +48,6 @@ There are currently four types of string accessible custom marks: **star**, **sq
 <!-- INJECT:"CustomSVGAllTheMarks" -->
 
 If using a function to defined your mark, it is important to note that the function receives two arguments (customComponent, positionInPixels), where customComponent is the row of data as you have defined it. Thus if you are defining a function for the series as a whole you can make modifications based on the individual row as you go!
-
-
 
 ## API reference
 

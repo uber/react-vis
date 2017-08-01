@@ -29,38 +29,54 @@ import {
   CustomSVGSeries
 } from 'index';
 
-const DATA = [
-  'star',
-  'square',
-  'circle',
-  'diamond'
-].reduce((acc, row, rowIndex) => {
-  const cellsInRow = [...new Array(5)].map((cell, index) => {
-    return ({
-      x: index,
-      y: rowIndex * 5,
-      size: (index + 1) * 3,
-      style: {stroke: 'red', fill: 'orange'},
-      customComponent: row
-    });
-  });
+import ShowcaseButton from '../showcase-components/showcase-button';
 
-  return acc.concat(cellsInRow);
-}, []);
+function generateData(reversed) {
+  return [
+    'star',
+    'square',
+    'circle',
+    'diamond'
+  ].reduce((acc, row, rowIndex) => {
+    const cellsInRow = [...new Array(5)].map((cell, index) => {
+      return ({
+        x: index,
+        y: reversed ? (5 - rowIndex) * 5 : rowIndex * 5,
+        size: (index + 1) * 3,
+        style: {stroke: 'red', fill: 'orange'},
+        customComponent: row
+      });
+    });
+
+    return acc.concat(cellsInRow);
+  }, []);
+}
+
+const DATA = generateData(false);
+const REVERSED_DATA = generateData(true);
 
 export default class Example extends React.Component {
+  state = {
+    reverse: false
+  }
   render() {
+    const {reverse} = this.state;
     return (
-      <XYPlot
-        margin={{left: 50, right: 50, top: 50, bottom: 50}}
-        width={300}
-        height={300}>
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <XAxis />
-        <YAxis />
-        <CustomSVGSeries data={DATA}/>
-      </XYPlot>
+      <div>
+        <ShowcaseButton
+          buttonContent="REVERSE"
+          onClick={() => this.setState({reverse: !reverse})} />
+        <XYPlot
+          margin={50}
+          width={300}
+          height={300}>
+          <VerticalGridLines />
+          <HorizontalGridLines />
+          <XAxis />
+          <YAxis />
+          <CustomSVGSeries animation data={reverse ? REVERSED_DATA : DATA}/>
+        </XYPlot>
+      </div>
     );
   }
 }

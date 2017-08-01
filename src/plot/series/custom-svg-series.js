@@ -106,33 +106,33 @@ class CustomSVGSeries extends AbstractSeries {
 
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
-
+    const contents = data.map((seriesComponent, index) => {
+      const positionInPixels = {
+        x: x({x: seriesComponent.x}),
+        y: y({y: seriesComponent.y})
+      };
+      const innerComponent = getInnerComponent({
+        customComponent: seriesComponent,
+        positionInPixels,
+        defaultType: customComponent,
+        positionFunctions: {x, y}
+      });
+      return (
+        <g
+          className="rv-xy-plot__series--custom-svg"
+          key={`rv-xy-plot__series--custom-svg-${index}`}
+          transform={`translate(${positionInPixels.x},${positionInPixels.y})`}
+          >
+          {innerComponent}
+        </g>
+      );
+    });
     return (
       <g className={`${predefinedClassName} ${className}`}
          ref="container"
          transform={`translate(${marginLeft},${marginTop})`}
          style={style}>
-        {data.map((seriesComponent, index) => {
-          const positionInPixels = {
-            x: x({x: seriesComponent.x}),
-            y: y({y: seriesComponent.y})
-          };
-          const innerComponent = getInnerComponent({
-            customComponent: seriesComponent,
-            positionInPixels,
-            defaultType: customComponent,
-            positionFunctions: {x, y}
-          });
-          return (
-            <g
-              className="rv-xy-plot__series--custom-svg"
-              key={`rv-xy-plot__series--custom-svg-${index}`}
-              transform={`translate(${positionInPixels.x},${positionInPixels.y})`}
-              >
-              {innerComponent}
-            </g>
-          );
-        })}
+        {contents}
       </g>
     );
   }
@@ -152,6 +152,7 @@ CustomSVGSeries.propTypes = {
 };
 
 CustomSVGSeries.defaultProps = {
+  animation: false,
   customComponent: 'circle',
   style: {}
 };
