@@ -35,7 +35,7 @@ class MarkSeries extends AbstractSeries {
 
   render() {
     const {
-      animation, className, data, marginLeft, marginTop, strokeWidth, style
+      animation, className, data, marginLeft, marginTop, markType, strokeWidth, style
     } = this.props;
     if (!data) {
       return null;
@@ -62,10 +62,11 @@ class MarkSeries extends AbstractSeries {
          ref="container"
          transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {
+          const size = sizeFunctor ? sizeFunctor(d) : DEFAULT_SIZE;
+          const x = xFunctor(d);
+          const y = yFunctor(d);
+
           const attrs = {
-            r: sizeFunctor ? sizeFunctor(d) : DEFAULT_SIZE,
-            cx: xFunctor(d),
-            cy: yFunctor(d),
             style: {
               opacity: opacityFunctor ? opacityFunctor(d) : DEFAULT_OPACITY,
               stroke: strokeFunctor && strokeFunctor(d),
@@ -78,7 +79,11 @@ class MarkSeries extends AbstractSeries {
             onMouseOver: e => this._valueMouseOverHandler(d, e),
             onMouseOut: e => this._valueMouseOutHandler(d, e)
           };
-          return <circle {...attrs} />;
+
+          if (typeof markType === 'function') {
+            return markType({attrs: {...attrs, size, x, y}, d});
+          }
+          return <circle {...attrs} cx={x} cy={y} r={size} />;
         })}
       </g>
     );
@@ -88,6 +93,7 @@ class MarkSeries extends AbstractSeries {
 MarkSeries.displayName = 'MarkSeries';
 MarkSeries.propTypes = {
   ...AbstractSeries.propTypes,
+  markType: PropTypes.func,
   strokeWidth: PropTypes.number
 };
 export default MarkSeries;

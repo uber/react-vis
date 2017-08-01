@@ -40,6 +40,7 @@ export default class Example extends React.Component {
         <XAxis />
         <YAxis />
         <MarkSeries
+          {...this.props}
           className="mark-series-example"
           strokeWidth={2}
           opacity="0.8"
