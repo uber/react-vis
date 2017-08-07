@@ -67,7 +67,14 @@ export RadarChart from 'radar-chart';
 export Sankey from 'sankey';
 export Sunburst from 'sunburst';
 
-export {makeHeightFlexible, makeVisFlexible, makeWidthFlexible} from './make-vis-flexible';
+export {
+  makeHeightFlexible,
+  makeVisFlexible,
+  makeWidthFlexible,
+  FlexibleXYPlot,
+  FlexibleWidthXYPlot,
+  FlexibleHeightXYPlot
+} from './make-vis-flexible';
 
 export AxisUtils from 'utils/axis-utils';
 export ScaleUtils from 'utils/scales-utils';

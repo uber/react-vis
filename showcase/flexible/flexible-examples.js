@@ -21,11 +21,10 @@
 import React from 'react';
 
 import {
-  XYPlot,
   VerticalBarSeries,
-  makeHeightFlexible,
-  makeVisFlexible,
-  makeWidthFlexible
+  FlexibleWidthXYPlot,
+  FlexibleHeightXYPlot,
+  FlexibleXYPlot
 } from 'index';
 
 const data = [
@@ -44,12 +43,8 @@ const defaultProps = {
   margin: {top: 10, left: 10, right: 10, bottom: 10}
 };
 
-const FlexibleWidth = makeWidthFlexible(XYPlot);
-const FlexibleHeight = makeHeightFlexible(XYPlot);
-const FlexibleVis = makeVisFlexible(XYPlot);
-
-export function FlexibleCharts({height, width}) {
-  return (<div>
+export const FlexibleCharts = ({height, width}) => (
+  <div>
     <div style={{display: 'flex',
       justifyContent: 'space-between', position: 'relative', width: width || '60vw'}}>
       <div style={{width: '30%'}}>Flexible width - fixed height</div>
@@ -60,20 +55,20 @@ export function FlexibleCharts({height, width}) {
       justifyContent: 'space-between', position: 'relative',
       width: width || '60vw', height: height || '30vh'}}>
       <div className="flexible-width" style={{width: '30%', height: '100%', border: '1px solid #ccc'}}>
-        <FlexibleWidth {...defaultProps} height={100}>
+        <FlexibleWidthXYPlot {...defaultProps} height={100}>
           <VerticalBarSeries data={data} />
-        </FlexibleWidth>
+        </FlexibleWidthXYPlot>
       </div>
       <div className="flexible-height" style={{width: '30%', height: '100%', border: '1px solid #ccc'}}>
-        <FlexibleHeight {...defaultProps} width={100}>
+        <FlexibleHeightXYPlot {...defaultProps} width={100}>
           <VerticalBarSeries data={data} />
-        </FlexibleHeight>
+        </FlexibleHeightXYPlot>
       </div>
       <div className="flexible-vis" style={{width: '30%', height: '100%', border: '1px solid #ccc'}}>
-        <FlexibleVis {...defaultProps}>
+        <FlexibleXYPlot {...defaultProps}>
           <VerticalBarSeries data={data} />
-        </FlexibleVis>
+        </FlexibleXYPlot>
       </div>
     </div>
-  </div>);
-}
+  </div>
+);

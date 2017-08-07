@@ -23,15 +23,9 @@ import PropTypes from 'prop-types';
 import {stack as d3Stack, stackOffsetWiggle} from 'd3-shape';
 import {range, transpose} from 'd3-array';
 
-import {
-  XYPlot,
-  makeWidthFlexible,
-  AreaSeries
-} from 'index';
+import {FlexibleWidthXYPlot, AreaSeries} from 'index';
 
 import './streamgraph-example.scss';
-
-const FlexibleXYPlot = makeWidthFlexible(XYPlot);
 
 const NUMBER_OF_LAYERS = 20;
 const SAMPLES_PER_LAYER = 200;
@@ -77,7 +71,7 @@ class StreamgraphExample extends React.Component {
           {'Click me!'}
           </button>)}
         <div className="streamgraph">
-          <FlexibleXYPlot
+          <FlexibleWidthXYPlot
             animation
             onMouseLeave={() => this.setState({hoveredIndex: false})}
             height={300}>
@@ -89,7 +83,7 @@ class StreamgraphExample extends React.Component {
                 onSeriesMouseOver={() => this.setState({hoveredIndex: index})}
                 data={series} />
             ))}
-          </FlexibleXYPlot>
+          </FlexibleWidthXYPlot>
         </div>
       </div>
     );
