@@ -78,9 +78,10 @@ test('Sunburst: Flare Demo', t => {
 
 test('Sunburst: SunburstWithTooltips', t => {
   const $ = mount(<SunburstWithTooltips />);
+  t.equal($.text(), 'cooldogssunglasses', 'should find the right text');
   t.equal($.find('.rv-xy-plot__series--arc path').length, 10, 'should find the right number of children');
   $.find('.rv-xy-plot__series--arc-path').at(1).simulate('mouseOver');
-  t.equal($.text(), '#FF991F', 'should find appropriate hover text');
+  t.equal($.text(), 'cooldogssunglasses#FF991F', 'should find appropriate hover text');
 
   t.end();
 });
