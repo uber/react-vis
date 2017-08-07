@@ -21,6 +21,7 @@
 import React from 'react';
 import window from 'global/window';
 
+import XYPlot from 'plot/xy-plot';
 import {getDOMNode} from 'utils/react-utils';
 
 const CONTAINER_REF = 'container';
@@ -180,3 +181,6 @@ export function makeWidthFlexible(component) {
   return makeFlexible(component, true, false);
 }
 
+export const FlexibleWidthXYPlot = makeWidthFlexible(XYPlot);
+export const FlexibleHeightXYPlot = makeHeightFlexible(XYPlot);
+export const FlexibleXYPlot = makeVisFlexible(XYPlot);
