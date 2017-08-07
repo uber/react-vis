@@ -24,7 +24,7 @@ import {
   VerticalBarSeries,
   FlexibleWidthXYPlot,
   FlexibleHeightXYPlot,
-  FlexibleVisXYPlot
+  FlexibleXYPlot
 } from 'index';
 
 const data = [
@@ -65,9 +65,9 @@ export const FlexibleCharts = ({height, width}) => (
         </FlexibleHeightXYPlot>
       </div>
       <div className="flexible-vis" style={{width: '30%', height: '100%', border: '1px solid #ccc'}}>
-        <FlexibleVisXYPlot {...defaultProps}>
+        <FlexibleXYPlot {...defaultProps}>
           <VerticalBarSeries data={data} />
-        </FlexibleVisXYPlot>
+        </FlexibleXYPlot>
       </div>
     </div>
   </div>

@@ -27,9 +27,9 @@ import XAxis from 'plot/axis/x-axis';
 import XYPlot from 'plot/xy-plot';
 
 import {FlexibleCharts} from '../../showcase/flexible/flexible-examples';
+import {testRenderWithProps} from '../test-utils';
 
 const XYPLOT_PROPS = {width: 10, height: 10};
-import {testRenderWithProps} from '../test-utils';
 
 testRenderWithProps(XYPlot, XYPLOT_PROPS);
 

@@ -76,9 +76,7 @@ import {
   ScatterPlotOnNearestXY
 } from './interaction/interaction-examples';
 
-import {
-  FlexibleCharts
-} from './flexible/flexible-examples';
+import {FlexibleCharts} from './flexible/flexible-examples';
 
 import CustomAxesOrientation from './axes/custom-axes-orientation';
 import CustomAxisChart from './axes/custom-axis';
