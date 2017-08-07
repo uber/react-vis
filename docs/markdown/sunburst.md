@@ -95,8 +95,8 @@ Each point consists of following properties:
   Type: `string`
   The label to be attached for the current node.
 * `labelStyle` (optional)  
-  Type: `string`
-  The style of the attached label.
+  Type: `object`
+  The style of the attached label. Example `{labelStyle: {fontSize: 15}, ...}`
 * `children` (optional)  
   Type: `Array`  
   The children for the leaf.
