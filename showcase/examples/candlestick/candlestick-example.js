@@ -20,17 +20,14 @@
 
 import React from 'react';
 import {
-  XYPlot,
   XAxis,
   YAxis,
   LineSeries,
-  makeWidthFlexible
+  FlexibleWidthXYPlot
 } from 'index';
 import Candlestick from './candlestick';
 
 import './candlestick.scss';
-
-const FlexibleXYPlot = makeWidthFlexible(XYPlot);
 
 /**
  * Generate random random for candle stick chart
@@ -67,7 +64,7 @@ export default class CandlestickExample extends React.Component {
     return (
       <div className="candlestick-example">
         <div className="chart">
-          <FlexibleXYPlot
+          <FlexibleWidthXYPlot
             animation
             yDomain={[0, 100]}
             height={300}>
@@ -90,7 +87,7 @@ export default class CandlestickExample extends React.Component {
               opacityType="literal"
               stroke="#79C7E3"
               data={data} />
-          </FlexibleXYPlot>
+          </FlexibleWidthXYPlot>
         </div>
       </div>
     );

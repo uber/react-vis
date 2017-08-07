@@ -21,17 +21,14 @@
 import React from 'react';
 
 import {
-  XYPlot,
   XAxis,
   YAxis,
   HorizontalGridLines,
-  makeWidthFlexible,
+  FlexibleWidthXYPlot,
   LineSeries,
   DiscreteColorLegend
 } from 'index';
 import Highlight from './highlight';
-
-const FlexibleXYPlot = makeWidthFlexible(XYPlot);
 
 const totalValues = 100;
 
@@ -87,7 +84,7 @@ export default class ZoomableChartExample extends React.Component {
         </div>
 
         <div className="chart no-select">
-          <FlexibleXYPlot
+          <FlexibleWidthXYPlot
             animation
             xDomain={lastDrawLocation && [lastDrawLocation.left, lastDrawLocation.right]}
             height={300}>
@@ -110,7 +107,7 @@ export default class ZoomableChartExample extends React.Component {
               });
             }} />
 
-          </FlexibleXYPlot>
+          </FlexibleWidthXYPlot>
         </div>
 
         <button className="showcase-button" onClick={() => {

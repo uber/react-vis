@@ -20,11 +20,10 @@
 
 import React from 'react';
 import {
-  XYPlot,
   XAxis,
   YAxis,
   LineMarkSeries,
-  makeWidthFlexible,
+  FlexibleWidthXYPlot,
   LabelSeries
 } from 'index';
 
@@ -80,14 +79,12 @@ const authors = commitsByAuthor.map(commits => {
   };
 });
 
-const FlexibleXYPlot = makeWidthFlexible(XYPlot);
-
 export default class HistoryExample extends React.Component {
   render() {
     return (
       <div className="history-example">
         <div className="chart">
-          <FlexibleXYPlot
+          <FlexibleWidthXYPlot
             animation
             margin={50}
             yType="log"
@@ -97,7 +94,7 @@ export default class HistoryExample extends React.Component {
             <YAxis tickFormat={t => t}/>
             {lines}
             <LabelSeries data={authors} />
-          </FlexibleXYPlot>
+          </FlexibleWidthXYPlot>
         </div>
       </div>
     );

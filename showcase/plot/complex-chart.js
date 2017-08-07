@@ -21,18 +21,15 @@
 import React from 'react';
 
 import {
-  XYPlot,
   XAxis,
   YAxis,
+  FlexibleWidthXYPlot,
   HorizontalGridLines,
-  makeWidthFlexible,
   LineSeries,
   VerticalRectSeries,
   DiscreteColorLegend,
   Crosshair
 } from 'index';
-
-const FlexibleXYPlot = makeWidthFlexible(XYPlot);
 
 /**
  * Get the array of x and y pairs.
@@ -168,7 +165,7 @@ export default class Example extends React.Component {
         </div>
 
         <div className="chart">
-          <FlexibleXYPlot
+          <FlexibleWidthXYPlot
             animation
             onMouseLeave={this._mouseLeaveHandler}
             xDomain={[0, series[0].data.length - 1]}
@@ -197,7 +194,7 @@ export default class Example extends React.Component {
               itemsFormat={this._formatCrosshairItems}
               titleFormat={this._formatCrosshairTitle}
               values={crosshairValues}/>
-          </FlexibleXYPlot>
+          </FlexibleWidthXYPlot>
         </div>
 
         <button className="click-me" onClick={this._updateButtonClicked}>
