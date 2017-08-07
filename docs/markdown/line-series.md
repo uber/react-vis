@@ -11,7 +11,7 @@ The SVG mode is accessed by using the normal `LineSeries`, just as above, while 
 ## Data format reference
 
 #### x
-Type: `mumber`  
+Type: `number`  
 Left-to-right position of marks in the series.
 
 #### y
