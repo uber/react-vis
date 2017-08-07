@@ -52,7 +52,7 @@ For best results, a flexible plot should be the only child of its container.
 ### Responsive visualizations
 
 We can go one step beyond and not simply adjust the dimensions of the chart of the available space, but change how a dataset is being represented.
-See the example [responsive visualizations](/#/examples/charts/responsive-vis)
+See the example [responsive visualizations](examples/charts/responsive-vis)
 
 ### Custom flexible components
 
