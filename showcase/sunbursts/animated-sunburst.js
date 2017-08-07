@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import Sunburst from 'sunburst';
+import {Sunburst} from 'index';
 import ShowcaseButton from '../showcase-components/showcase-button';
 
 function randomLeaf() {
@@ -56,7 +56,6 @@ export default class AnimatedSunburst extends React.Component {
 
   render() {
     const {data} = this.state;
-
     return (
       <div className="animated-sunburst-example-wrapper">
         <ShowcaseButton

@@ -26,22 +26,31 @@ import {
 } from 'index';
 
 import {
-  EXTENDED_DISCRETE_COLOR_RANGE
+  EXTENDED_DISCRETE_COLOR_RANGE as COLORS
 } from 'theme';
 
 const DATA = {
   children: [
     {children: [
-      {size: 1, children: [], color: EXTENDED_DISCRETE_COLOR_RANGE[1]},
-      {size: 1, children: [], color: EXTENDED_DISCRETE_COLOR_RANGE[2]}
-    ], color: EXTENDED_DISCRETE_COLOR_RANGE[3]},
-    {size: 1, children: [], color: EXTENDED_DISCRETE_COLOR_RANGE[4]},
-    {size: 1, children: [], color: EXTENDED_DISCRETE_COLOR_RANGE[5]},
-    {size: 1, children: [], color: EXTENDED_DISCRETE_COLOR_RANGE[6]},
+      {size: 1, children: [], color: COLORS[1]},
+      {size: 1, children: [], color: COLORS[2]}
+    ], color: COLORS[3]},
+    {
+      size: 1,
+      children: [],
+      color: COLORS[4],
+      label: 'cool',
+      labelStyle: {
+        fontSize: 15,
+        fontWeight: 'bold'
+      }
+    },
+    {size: 1, children: [], color: COLORS[5], label: 'dogs'},
+    {size: 1, children: [], color: COLORS[6], label: 'sunglasses'},
     {children: [
-      {size: 1, children: [], color: EXTENDED_DISCRETE_COLOR_RANGE[7]},
-      {size: 1, children: [], color: EXTENDED_DISCRETE_COLOR_RANGE[8]}
-    ], color: EXTENDED_DISCRETE_COLOR_RANGE[9]}
+      {size: 1, children: [], color: COLORS[7]},
+      {size: 1, children: [], color: COLORS[8]}
+    ], color: COLORS[9]}
   ]
 };
 

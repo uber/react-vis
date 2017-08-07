@@ -31,6 +31,7 @@ import {
 } from 'd3-scale';
 
 import {AnimationPropType} from 'animation';
+import LabelSeries from 'plot/series/label-series';
 import ArcSeries from 'plot/series/arc-series';
 import XYPlot from 'plot/xy-plot';
 import {getRadialDomain} from 'utils/series-utils';
@@ -72,6 +73,31 @@ function getNodesToRender({data, height, hideRootNode, width}) {
     }, []);
 }
 
+/**
+ * Convert arc nodes into label rows.
+ * Important to use mappedData rather than regular data, bc it is already unrolled
+ * @param {Array} mappedData - Array of nodes.
+ * @returns {Array} array of node for rendering as labels
+ */
+function buildLabels(mappedData) {
+  return mappedData
+  .filter(row => row.label)
+  .map(row => {
+    const truedAngle = -1 * row.angle + Math.PI / 2;
+    const truedAngle0 = -1 * row.angle0 + Math.PI / 2;
+    const angle = (truedAngle0 + truedAngle) / 2;
+    return {
+      ...row,
+      children: null,
+      angle: null,
+      radius: null,
+      x: row.radius * Math.cos(angle),
+      y: row.radius * Math.sin(angle),
+      style: row.labelStyle
+    };
+  });
+}
+
 class Sunburst extends React.Component {
   render() {
     const {
@@ -87,6 +113,8 @@ class Sunburst extends React.Component {
     const mappedData = getNodesToRender({data, height, hideRootNode, width});
     const radialDomain = getRadialDomain(mappedData);
     const margin = getRadialLayoutMargin(width, height, radialDomain);
+
+    const labelData = buildLabels(mappedData);
     return (
       <XYPlot
         height={height}
@@ -105,6 +133,7 @@ class Sunburst extends React.Component {
           _data: animation ? mappedData : null,
           arcClassName: `${predefinedClassName}__series--radial__arc`
         }}/>
+        {labelData.length > 0 && (<LabelSeries data={labelData} />)}
         {children}
       </XYPlot>
     );
