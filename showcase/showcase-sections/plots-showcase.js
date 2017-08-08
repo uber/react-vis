@@ -26,6 +26,7 @@ const {
   StackedHistogram,
   ScatterplotChart,
   ScatterplotCanvas,
+  WhiskerChart,
   WidthHeightMarginChart
 } = showCase;
 
@@ -59,6 +60,11 @@ const PLOTS = [{
 }, {
   component: ScatterplotCanvas,
   name: 'Mark Series Canvas'
+}, {
+  component: WhiskerChart,
+  name: 'Whisker Series',
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/whisker-series.js',
+  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/whisker-series'
 }, {
   component: AreaChart,
   name: 'Area Series',
