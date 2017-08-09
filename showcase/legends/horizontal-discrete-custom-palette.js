@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {Component} from 'react';
 
 import DiscreteColorLegend from 'legends/discrete-color-legend';
 
@@ -42,13 +42,30 @@ const COLORS = [
   '#cb6141'
 ];
 
-export default function DiscreteColorExample() {
-  return (
-    <DiscreteColorLegend
-      colors={COLORS}
-      orientation="horizontal"
-      width={300}
-      items={ITEMS}
-    />
-  );
+export default class HorizontalDiscreteColorPalette extends Component {
+  state = {
+    hoveredItem: false
+  };
+  render() {
+    const {hoveredItem} = this.state;
+    return (
+      <DiscreteColorLegend
+        colors={COLORS}
+        onItemMouseEnter={i => this.setState({hoveredItem: i})}
+        onItemMouseLeave={() => this.setState({hoveredItem: false})}
+        orientation="horizontal"
+        width={300}
+        items={ITEMS.map(item => {
+          if (hoveredItem === item) {
+            return (
+              <div>
+                {item}<br /> "SELECTED"
+              </div>
+            );
+          }
+          return item;
+        })}
+        />
+    );
+  }
 }

@@ -18,7 +18,7 @@ Currently following types of legends are supported:
 <!-- INJECT:"VerticalDiscreteColorLegendExample" -->
 
 #### items (required)
-Type: `Array<string|{title: string, color: String, disabled: boolean}>`
+Type: `Array<string|{title: string, color: String, disabled: boolean}|react element>`
 Array of items that should be shown on the legend. The array should consist from either objects (`title`, optional `color` and optional `disabled` flag) or strings (treated as titles).
 
 #### onItemClick
