@@ -61,3 +61,18 @@ test('Discrete Legends', t => {
 
   t.end();
 });
+
+test('Discrete Legends Showcase: HorizontalDiscreteCustomPalette', t => {
+  const $ = mount(<HorizontalDiscreteCustomPalette/>);
+  const colors = $.find('.rv-discrete-color-legend-item__color').map(colorBrick => {
+    return colorBrick.props().style.background;
+  }).join(' ');
+
+  t.equal(colors, '#6588cd #66b046 #a361c7 #ad953f #c75a87 #55a47b #cb6141', 'should find all correct values for the colors');
+  t.equal($.text(), 'OptionsButtonsSelect boxesDate inputsPassword inputsFormsOther', 'should find the right text');
+
+  $.find('.rv-discrete-color-legend-item').first().simulate('mouseEnter');
+  t.equal($.text(), 'OptionsSELECTEDButtonsSelect boxesDate inputsPassword inputsFormsOther', 'should find the right text, with the first element selected');
+
+  t.end();
+});

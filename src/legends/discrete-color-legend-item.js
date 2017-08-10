@@ -22,20 +22,15 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-const propTypes = {
-  title: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func,
-  orientation: PropTypes.oneOf(['vertical', 'horizontal']).isRequired
-};
-
-const defaultProps = {
-  disabled: false
-};
-
-function DiscreteColorLegendItem({onClick, title, color, disabled,
-  orientation}) {
+function DiscreteColorLegendItem({
+  color,
+  disabled,
+  onClick,
+  orientation,
+  onMouseEnter,
+  onMouseLeave,
+  title
+}) {
   let className = `rv-discrete-color-legend-item ${orientation}`;
   if (disabled) {
     className += ' disabled';
@@ -44,7 +39,7 @@ function DiscreteColorLegendItem({onClick, title, color, disabled,
     className += ' clickable';
   }
   return (
-    <div {...{className, onClick}}>
+    <div {...{className, onClick, onMouseEnter, onMouseLeave}}>
       <span
         className="rv-discrete-color-legend-item__color"
         style={disabled ? null : {background: color}} />
@@ -55,8 +50,21 @@ function DiscreteColorLegendItem({onClick, title, color, disabled,
   );
 }
 
-DiscreteColorLegendItem.propTypes = propTypes;
-DiscreteColorLegendItem.defaultProps = defaultProps;
+DiscreteColorLegendItem.propTypes = {
+  color: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ]).isRequired,
+  onClick: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  orientation: PropTypes.oneOf(['vertical', 'horizontal']).isRequired
+};
+DiscreteColorLegendItem.defaultProps = {
+  disabled: false
+};
 DiscreteColorLegendItem.displayName = 'DiscreteColorLegendItem';
 
 export default DiscreteColorLegendItem;

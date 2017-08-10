@@ -25,7 +25,38 @@ import PropTypes from 'prop-types';
 import DiscreteColorLegendItem from 'legends/discrete-color-legend-item';
 import {DISCRETE_COLOR_RANGE} from 'theme';
 
-const propTypes = {
+function DiscreteColorLegend({
+  className,
+  colors,
+  height,
+  items,
+  onItemClick,
+  onItemMouseEnter,
+  onItemMouseLeave,
+  orientation,
+  width
+}) {
+  return (
+    <div
+      className={`rv-discrete-color-legend ${orientation} ${className}`}
+      style={{width, height}}>
+      {items.map((item, i) =>
+        <DiscreteColorLegendItem
+          title={item.title ? item.title : item}
+          color={item.color ? item.color : colors[i % colors.length]}
+          disabled={Boolean(item.disabled)}
+          orientation={orientation}
+          key={i}
+          onClick={e => onItemClick(item, i, e)}
+          onMouseEnter={e => onItemMouseEnter(item, i, e)}
+          onMouseLeave={e => onItemMouseLeave(item, i, e)}/>
+      )}
+    </div>
+  );
+}
+
+DiscreteColorLegend.displayName = 'DiscreteColorLegendItem';
+DiscreteColorLegend.propTypes = {
   className: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.oneOfType([
@@ -34,71 +65,26 @@ const propTypes = {
         color: PropTypes.string,
         disabled: PropTypes.bool
       }),
-      PropTypes.string.isRequired
+      PropTypes.string.isRequired,
+      PropTypes.element
     ])
   ).isRequired,
   onItemClick: PropTypes.func,
+  onItemMouseEnter: PropTypes.func,
+  onItemMouseLeave: PropTypes.func,
   height: PropTypes.number,
   width: PropTypes.number,
   orientation: PropTypes.oneOf(['vertical', 'horizontal'])
 };
+const NOOP = () => {};
 
-const defaultProps = {
+DiscreteColorLegend.defaultProps = {
   className: '',
   colors: DISCRETE_COLOR_RANGE,
+  onItemClick: NOOP,
+  onItemMouseEnter: NOOP,
+  onItemMouseLeave: NOOP,
   orientation: 'vertical'
 };
-
-/**
- * Add color information to a list of legend items.
- * @param {Array} items - list of legend items
- * @param {string} [items.title] - label of the legend item
- * @param {string} [items.color] - color of the legend item
- * @param {Array} colors - array of colors.
- * @returns {Array} Array of tick values.
- */
-
-function fillItemsWithDefaults(items, colors) {
-  return items.map((item, i) => {
-    return {
-      title: item.title ? item.title : item,
-      color: item.color ?
-        item.color :
-        colors[i % colors.length],
-      disabled: Boolean(item.disabled)
-    };
-  });
-}
-
-function DiscreteColorLegend({
-  colors,
-  items: initialItems,
-  width,
-  height,
-  onItemClick,
-  orientation,
-  className
-}) {
-  const updatedItems = fillItemsWithDefaults(initialItems, colors);
-  return (
-    <div
-      className={`rv-discrete-color-legend ${orientation} ${className}`}
-      style={{width, height}}>
-      {updatedItems.map((item, i) =>
-        <DiscreteColorLegendItem
-          {...item}
-          orientation={orientation}
-          key={i}
-          onClick={onItemClick ?
-            () => onItemClick(initialItems[i], i) :
-            null} />
-      )}
-    </div>
-  );
-}
-
-DiscreteColorLegend.displayName = 'DiscreteColorLegendItem';
-DiscreteColorLegend.propTypes = propTypes;
-DiscreteColorLegend.defaultProps = defaultProps;
 
 export default DiscreteColorLegend;
