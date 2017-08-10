@@ -17,7 +17,7 @@ const DISCRETE_LEGENDS = [{
   name: 'Horizontal legend',
   component: HorizontalDiscreteColorLegendExample
 }, {
-  name: 'Custom palette',
+  name: 'Custom palette with hover interaction',
   component: HorizontalDiscreteCustomPalette
 }, {
   name: 'Discrete color legend with search',

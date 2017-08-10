@@ -72,7 +72,7 @@ test('Discrete Legends Showcase: HorizontalDiscreteCustomPalette', t => {
   t.equal($.text(), 'OptionsButtonsSelect boxesDate inputsPassword inputsFormsOther', 'should find the right text');
 
   $.find('.rv-discrete-color-legend-item').first().simulate('mouseEnter');
-  t.equal($.text(), 'Options "SELECTED"ButtonsSelect boxesDate inputsPassword inputsFormsOther', 'should find the right text, with the first element selected');
+  t.equal($.text(), 'OptionsSELECTEDButtonsSelect boxesDate inputsPassword inputsFormsOther', 'should find the right text, with the first element selected');
 
   t.end();
 });

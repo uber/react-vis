@@ -55,16 +55,11 @@ export default class HorizontalDiscreteColorPalette extends Component {
         onItemMouseLeave={() => this.setState({hoveredItem: false})}
         orientation="horizontal"
         width={300}
-        items={ITEMS.map(item => {
-          if (hoveredItem === item) {
-            return (
-              <div>
-                {item}<br /> "SELECTED"
-              </div>
-            );
-          }
-          return item;
-        })}
+        items={ITEMS.map((item, key) =>
+          hoveredItem === item ?
+            <div key={key}>{item}<br />{'SELECTED'}</div> :
+            item
+        )}
         />
     );
   }

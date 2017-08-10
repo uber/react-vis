@@ -47,9 +47,9 @@ function DiscreteColorLegend({
           disabled={Boolean(item.disabled)}
           orientation={orientation}
           key={i}
-          onClick={onItemClick ? () => onItemClick(item, i) : null}
-          onMouseEnter={onItemMouseEnter ? (e) => onItemMouseEnter(item, i, e) : null}
-          onMouseLeave={onItemMouseLeave ? (e) => onItemMouseLeave(item, i, e) : null}/>
+          onClick={e => onItemClick(item, i, e)}
+          onMouseEnter={e => onItemMouseEnter(item, i, e)}
+          onMouseLeave={e => onItemMouseLeave(item, i, e)}/>
       )}
     </div>
   );
@@ -76,9 +76,14 @@ DiscreteColorLegend.propTypes = {
   width: PropTypes.number,
   orientation: PropTypes.oneOf(['vertical', 'horizontal'])
 };
+const NOOP = () => {};
+
 DiscreteColorLegend.defaultProps = {
   className: '',
   colors: DISCRETE_COLOR_RANGE,
+  onItemClick: NOOP,
+  onItemMouseEnter: NOOP,
+  onItemMouseLeave: NOOP,
   orientation: 'vertical'
 };
 

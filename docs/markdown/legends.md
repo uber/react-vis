@@ -23,17 +23,18 @@ Array of items that should be shown on the legend. The array should consist from
 
 #### onItemClick
 Type: `function(Object, number): void`
+Default: noop
 Click callback for the item in the list. Gets the clicked item and its index as parameters.
 
 #### onItemMouseEnter
 Type: `function`
-Default: none
+Default: noop
 This handler is triggered either when the user's mouse enters a legend item.
 The handler passes three arguments, the corresponding item, legend index and the actual event.
 ```jsx
 <DiscreteColorLegend
 ...
-  onItemMouseEnter={(item, index, event)=>{
+  onItemMouseEnter={(item, index, event) => {
     // does something on mouse enter
     // you can access the value of the event
   }}
@@ -41,13 +42,13 @@ The handler passes three arguments, the corresponding item, legend index and the
 
 #### onItemMouseLeave
 Type: `function`
-Default: none
+Default: noop
 This handler is triggered either when the user's mouse leaves a legend item.
 The handler passes three arguments, the corresponding item, legend index and the actual event.
 ```jsx
 <DiscreteColorLegend
 ...
-  onItemMouseLeave={(item, index, event)=>{
+  onItemMouseLeave={(item, index, event) => {
     // does something on mouse leave
     // you can access the value of the event
   }}
