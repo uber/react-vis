@@ -5,6 +5,6 @@ This demo explores the concept of "Responsive Data Visualization" (As coined by 
 
 In data visualization, we often need to create applications that work with enormous ranges of sizes of data. Sometimes the data might be small (10 - 100 rows), or it might be gigantic (100k-1M+ row): throughout the entire range it just needs to work. Again, following our cues from responsive design, we note that maybe labels on scatterplots look great when you have under 50 data points, but bad when you have 2000. Checkout Nicks [original demo](http://nrabinowitz.github.io/rdv/) for more details on the theory, as well to see his rad implementation in raw d3.
 
-[Scatterplot source code](https://github.com/uber/react-vis/blob/master/examples/responsive-vis/responsive-scatterplot.js)
+[Scatterplot source code](https://github.com/uber/react-vis/blob/master/showcase/examples/responsive-vis/responsive-scatterplot.js)
 
-[Barchart source code](https://github.com/uber/react-vis/blob/master/examples/responsive-vis/responsive-bar-chart.js)
+[Barchart source code](https://github.com/uber/react-vis/blob/master/showcase/examples/responsive-vis/responsive-bar-chart.js)
