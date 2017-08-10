@@ -27,6 +27,8 @@ const propTypes = {
   color: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']).isRequired
 };
 
@@ -35,7 +37,7 @@ const defaultProps = {
 };
 
 function DiscreteColorLegendItem({onClick, title, color, disabled,
-  orientation}) {
+  orientation, onMouseEnter, onMouseLeave}) {
   let className = `rv-discrete-color-legend-item ${orientation}`;
   if (disabled) {
     className += ' disabled';
@@ -44,7 +46,7 @@ function DiscreteColorLegendItem({onClick, title, color, disabled,
     className += ' clickable';
   }
   return (
-    <div {...{className, onClick}}>
+    <div {...{className, onClick, onMouseEnter, onMouseLeave}}>
       <span
         className="rv-discrete-color-legend-item__color"
         style={disabled ? null : {background: color}} />

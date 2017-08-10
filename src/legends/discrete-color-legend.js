@@ -38,6 +38,8 @@ const propTypes = {
     ])
   ).isRequired,
   onItemClick: PropTypes.func,
+  onItemMouseEnter: PropTypes.func,
+  onItemMouseLeave: PropTypes.func,
   height: PropTypes.number,
   width: PropTypes.number,
   orientation: PropTypes.oneOf(['vertical', 'horizontal'])
@@ -76,6 +78,8 @@ function DiscreteColorLegend({
   width,
   height,
   onItemClick,
+  onItemMouseEnter,
+  onItemMouseLeave,
   orientation,
   className
 }) {
@@ -91,7 +95,13 @@ function DiscreteColorLegend({
           key={i}
           onClick={onItemClick ?
             () => onItemClick(initialItems[i], i) :
-            null} />
+            null}
+          onMouseEnter={onItemMouseEnter ?
+            (e) => onItemMouseEnter(initialItems[i], i, e) :
+            null}
+          onMouseLeave={onItemMouseLeave ?
+            (e) => onItemMouseLeave(initialItems[i], i, e) :
+            null}/>
       )}
     </div>
   );
