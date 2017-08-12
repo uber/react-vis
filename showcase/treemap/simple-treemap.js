@@ -39,7 +39,8 @@ const MODE = [
 
 export default class SimpleTreemapExample extends React.Component {
   state = {
-    modeIndex: 0
+    modeIndex: 0,
+    useSVG: true
   }
 
   updateModeIndex = increment => () => {
@@ -49,9 +50,15 @@ export default class SimpleTreemapExample extends React.Component {
   }
 
   render() {
-    const {modeIndex} = this.state;
+    const {modeIndex, useSVG} = this.state;
+
     return (
       <div className="centered-and-flexed">
+        <div className="centered-and-flexed-controls">
+          <ShowcaseButton
+            onClick={() => this.setState({useSVG: !useSVG})}
+            buttonContent={useSVG ? 'USE DOM' : 'USE SVG'} />
+        </div>
         <div className="centered-and-flexed-controls">
           <ShowcaseButton onClick={this.updateModeIndex(false)} buttonContent={'PREV MODE'} />
           <div> {MODE[modeIndex]} </div>
@@ -64,8 +71,13 @@ export default class SimpleTreemapExample extends React.Component {
           colorRange: ['#88572C'],
           data: D3FlareData,
           mode: MODE[modeIndex],
+          renderMode: useSVG ? 'SVG' : 'DOM',
           height: 300,
-          width: 350
+          width: 350,
+          margin: 10,
+          style: {
+            border: 'thin solid rgba(#ddd, .5)'
+          }
         }}/>
       </div>
     );
