@@ -23,7 +23,7 @@ Like other series the `labelSeries` requires the data be formatted as an array o
 const myData = [
   {x: 0, y: 0, label: 'woah!', style={fontSize: 10}},
   {x: 1, y: 0, label: 'dope city', yOffset: 5},
-  {x: 0, y: 1, label: 'cool Dog friend', xOffset: 5}
+  {x: 0, y: 1, label: 'cool Dog friend', xOffset: 5, rotation: 34}
 ]
 ```
 
@@ -49,6 +49,11 @@ A number in pixels for the label to be offset from the x position specified on t
 Type: `number`
 A number in pixels for the label to be offset from the y position specified on the row.
 
+#### rotation
+Type: `number`
+Number in degrees for the text to be rotated about its xy point.
+
+
 ## Series API Reference
 
 #### animation (optional)  
@@ -72,7 +77,7 @@ SVG text objects (which is what the labelSeries is made up of) accept a ton of d
 ## Interaction handlers
 #### onNearestX (optional)
 Type: `function(value, {event, innerX, index})`  
-A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor. 
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
 - `index` is the index of the data point in the array of data;
@@ -81,7 +86,7 @@ See [interaction](interaction.md)
 
 #### onNearestXY (optional)
 Type: `function(value, {event, innerX, innerY, index})`  
-A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor. 
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
 - `innerY` is the top position of the mark;
