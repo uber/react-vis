@@ -118,9 +118,6 @@ export const docPages = generatePath([
       name: 'Interaction',
       filename: 'interaction.md'
     }, {
-      name: 'Legends',
-      filename: 'legends.md'
-    }, {
       name: 'Animation',
       filename: 'animation.md'
     }, {
@@ -137,6 +134,9 @@ export const docPages = generatePath([
       }, {
         name: 'Series',
         filename: 'series.md'
+      }, {
+        name: 'Legends',
+        filename: 'legends.md'
       }, {
         name: 'Crosshair',
         filename: 'crosshair.md'
@@ -158,6 +158,9 @@ export const docPages = generatePath([
       }, {
         name: 'Flexible plots',
         filename: 'flexible-plots.md'
+      }, {
+        name: 'Borders',
+        filename: 'borders.md'
       }
     ]
   },
