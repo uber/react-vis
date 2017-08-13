@@ -21,8 +21,8 @@ Currently following types of legends are supported:
 Type: `Array<string|{title: string, color: String, disabled: boolean}|react element>`
 Array of items that should be shown on the legend. The array should consist from either objects (`title`, optional `color` and optional `disabled` flag) or strings (treated as titles).
 
-#### orientation
-Type: `string`
+#### orientation (optional)
+Type: `(vertical|horizontal)`
 Default: `'vertical'`
 String either `horizontal` or `vertical` representing which direction the legend elements are rendered.
 
