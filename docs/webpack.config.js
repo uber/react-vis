@@ -1,10 +1,20 @@
 const {resolve} = require('path');
 const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
 const path = require('path');
+const webpack = require('webpack');
 
 const entry = {
   app: './app.js'
 };
+
+const plugins = [
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify('production')
+    }
+  }),
+  new webpack.optimize.UglifyJsPlugin()
+];
 
 const moduleConfig = {
   rules: [
@@ -44,7 +54,8 @@ const prodConfig = {
   output: {
     path: path.resolve(__dirname, 'docs-dist'),
     filename: 'bundle.js'
-  }
+  },
+  plugins
 };
 
 const devConfig = {
@@ -56,7 +67,6 @@ const devConfig = {
       warnings: false
     }
   },
-
   devtool: 'source-maps'
 };
 
