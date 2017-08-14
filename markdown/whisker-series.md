@@ -1,9 +1,10 @@
-## MarkSeries & MarkSeriesCanvas
+## WhiskerSeries
 
-<!-- INJECT:"ScatterplotChart" -->
+<!-- INJECT:"WhiskerChart" -->
 
-The MarkSeries allows users to embed discrete information in pairs of continuous variables,
-that is make scatterplots. Deploying a MarkSeries is super easy:
+WhiskerSeries plots variance "whiskers" for each data point. Often this is used in combination with another series (e.g. a MarkSeries or LineSeries) to represent the variance (or alternately standard deviation) associated with each value. Variance lines can be in the Y dimension, X dimension, or both.
+
+Deploy a WhiskerSeries like this:
 
 ```javascript
 render() {
@@ -11,32 +12,42 @@ render() {
     <XYPlot
       width={300}
       height={300}>
-      <MarkSeries
-        className="mark-series-example"
-        sizeRange={[5, 15]}
+      <WhiskerSeries
+        className="whisker-series-example"
         data={myData}/>
     </XYPlot>
   );
 ```
 
-Just like other series, MarkSeries expects its data to be formatted as an array of objects, like so:
+Just like other series, WhiskerSeries expects its data to be formatted as an array of
+objects. These data points may incude an `xVariance` property, a `yVariance` property,
+or both:
 
 ```javascript
 const myData = [
-  {x: 1, y: 10, size: 30},
-  {x: 1.7, y: 12, size: 10},
-  {x: 2, y: 5, size: 1},
-  {x: 3, y: 15, size: 12},
-  {x: 2.5, y: 7, size: 4}
-]
+  {x: 1, y: 10, xVariance: 4, yVariance: 4},
+  {x: 1.7, y: 12, xVariance: 7, yVariance: 7},
+  {x: 2, y: 5, xVariance: 3, yVariance: 3},
+  {x: 3, y: 15, xVariance: 10, yVariance: 10},
+  {x: 2.5, y: 7, xVariance: 4, yVariance: 4}
+];
 ```
 
-react-vis offers two different types of MarkSeries, one that renders SVG and one that renders Canvas.
-The SVG mode is accessed by using the normal `MarkSeries`, just as above, while the Canvas mode is used by simply calling `MarkSeriesCanvas` instead of `MarkSeries`.
+WhiskerSeries also accepts a `size` value that specifies an empty "buffer" region.
+This is especially useful if you are combinging the whiskers with another series, and
+the marks of that series include transparent regions. The buffer region prevents
+whisker lines from being drawn behind that other mark.
 
-<!-- INJECT:"ScatterplotCanvas" -->
+```javascript
+const myData = [
+  {x: 1, y: 10, size: 30, yVariance: 4},
+  {x: 1.7, y: 12, size: 10, yVariance: 7},
+  {x: 2, y: 5, size: 1, yVariance: 3},
+  {x: 3, y: 15, size: 12, yVariance: 10},
+  {x: 2.5, y: 7, size: 4, yVariance: 4}
+];
+```
 
--**NOTE**: using the Canvas version of this layer disables animation
 
 ## Data format reference
 
@@ -61,14 +72,19 @@ Opacity of the individual marks, from 0 (transparent) to 1 (opaque). By default 
 Type: `string|number`
 The color of the outline of the marks. When this value is not provided, the color attribute is used instead. This property can also be defined on the series level.
 
-#### fill (optional)
-Type: `string|number`
-The color of the inside of the marks. When this value is not provided the color attribute is used instead. This property can also be defined on the series level.
-
 #### size (optional)
 Type: `string|number`
-Default: 5
-The size of each of the marks.
+Default: 0
+The size of an empty "buffer" region at the center of each mark.
+
+#### xVariance (optional)
+Type: `string|number`
+The size of each of the lines in the X dimension. Either xVariance, yVariance, or both should be specified.
+
+#### yVariance (optional)
+Type: `string|number`
+The size of each of the lines in the Y dimension. Either xVariance, yVariance, or both should be specified.
+
 
 ## API Reference
 
@@ -87,17 +103,13 @@ Exact color for all series points or a series object.
 Type: `Array<Object>`
 Array of data for the series.
 
-#### fill (optional)
-Type: `string|number`
-The inner color for all the marks in the series, this property will be over-ridden by fill specified in the data attribute. See [colors](colors.md)
-
 #### opacity (optional)
 Type: `string|number`
 Exact opacity for all series points in pixels or a series object, from 0 (transparent) to 1 (opaque)
 
 #### size (optional)
 Type: `string|number`
-Exact size for all series points in pixels or a series object.
+Exact size of an empty "buffer" region for all series points in pixels or a series object.
 
 #### stroke (optional)
 Type: `string|number`
@@ -109,7 +121,9 @@ Type: `string|number`
 Default: 1
 The width of the outline of the marks.
 
+
 ## Interaction handlers
+
 #### onNearestX (optional)
 Type: `function(value, {event, innerX, index})`
 A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor.
@@ -135,7 +149,7 @@ Default: none
 This handler fires when the user clicks somewhere on a series, and provides the corresponding event. Unlike onClick, it doesn't pass a specific datapoint.
 
 ```jsx
-<MarkSeries
+<WhiskerSeries
 ...
   onSeriesClick={(event)=>{
     // does something on click
@@ -149,7 +163,7 @@ Default: none
 This handler fires when the user's mouse cursor leaves a series, and provides the corresponding event. Unlike onValueMouseOut, it doesn't pass a specific datapoint.
 
 ```jsx
-<MarkSeries
+<WhiskerSeries
 ...
   onSeriesMouseOut={(event)=>{
     // does something on mouse over
@@ -163,7 +177,7 @@ Default: none
 This handler fires when the user mouses over a series, and provides the corresponding event. Unlike onValueMouseOver, it doesn't pass a specific datapoint.
 
 ```jsx
-<MarkSeries
+<WhiskerSeries
 ...
   onSeriesMouseOver={(event)=>{
     // does something on mouse over
@@ -177,7 +191,7 @@ Default: none
 This handler is triggered either when the user clicks on a mark.
 The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx
-<MarkSeries
+<WhiskerSeries
 ...
   onValueClick={(datapoint, event)=>{
     // does something on click
@@ -191,7 +205,7 @@ Default: none
 This handler is triggered either when the user's mouse leaves a mark.
 The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx
-<MarkSeries
+<WhiskerSeries
 ...
   onValueMouseOut={(datapoint, event)=>{
     // does something on click
@@ -205,7 +219,7 @@ Default: none
 This handler is triggered either when the user's mouse enters a mark.
 The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx
-<BarSeries
+<WhiskerSeries
 ...
   onValueMouseOver={(datapoint, event)=>{
     // does something on click
