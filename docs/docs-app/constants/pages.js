@@ -204,6 +204,9 @@ export const docPages = generatePath([
       }, {
         name: 'Rect Series',
         filename: 'rect-series.md'
+      }, {
+        name: 'Whisker Series',
+        filename: 'whisker-series.md'
       }
     ]
   },
