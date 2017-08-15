@@ -63,8 +63,7 @@ export default class DynamicTreemapExample extends React.Component {
       onLeafClick: () => this.setState({treemapData: _getRandomData()}),
       height: 300,
       mode: this.state.useCirclePacking ? 'circlePack' : 'squarify',
-      width: 350,
-      renderMode: 'SVG'
+      width: 350
     };
     return (
       <div className="dynamic-treemap-example">

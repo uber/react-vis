@@ -37,6 +37,17 @@ const MODE = [
   'binary'
 ];
 
+const STYLES = {
+  SVG: {
+    stroke: '#ddd',
+    strokeWidth: '0.25',
+    strokeOpacity: 0.5
+  },
+  DOM: {
+    border: 'thin solid #ddd'
+  }
+};
+
 export default class SimpleTreemapExample extends React.Component {
   state = {
     modeIndex: 0,
@@ -75,9 +86,7 @@ export default class SimpleTreemapExample extends React.Component {
           height: 300,
           width: 350,
           margin: 10,
-          style: {
-            border: 'thin solid rgba(#ddd, .5)'
-          }
+          style: STYLES[useSVG ? 'SVG' : 'DOM']
         }}/>
       </div>
     );

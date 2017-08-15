@@ -61,6 +61,17 @@ class TreemapLeaf extends React.Component {
     const opacity = scales.opacity(node);
     const color = getFontColorFromBackground(background);
     const {data: {title}} = node;
+    const leafStyle = {
+      top: useCirclePacking ? (y0 - r) : y0,
+      left: useCirclePacking ? (x0 - r) : x0,
+      width: useCirclePacking ? r * 2 : x1 - x0,
+      height: useCirclePacking ? r * 2 : y1 - y0,
+      background,
+      opacity,
+      color,
+      ...style,
+      ...node.data.style
+    };
 
     return (
       <div
@@ -68,17 +79,7 @@ class TreemapLeaf extends React.Component {
         onMouseEnter={event => onLeafMouseOver(node, event)}
         onMouseLeave={event => onLeafMouseOut(node, event)}
         onClick={event => onLeafClick(node, event)}
-        style={{
-          top: useCirclePacking ? (y0 - r) : y0,
-          left: useCirclePacking ? (x0 - r) : x0,
-          width: useCirclePacking ? r * 2 : x1 - x0,
-          height: useCirclePacking ? r * 2 : y1 - y0,
-          background,
-          opacity,
-          color,
-          ...style,
-          ...node.data.style
-        }}>
+        style={leafStyle}>
         <div className="rv-treemap__leaf__content">{title}</div>
       </div>
     );

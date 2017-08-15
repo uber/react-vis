@@ -114,8 +114,11 @@ class Treemap extends React.Component {
   _getNodesToRender() {
     const {innerWidth, innerHeight} = this.state;
     const {data, mode, padding} = this.props;
+    if (!data) {
+      return [];
+    }
 
-    if (data && (mode === 'partition' || mode === 'partition-pivot')) {
+    if ((mode === 'partition' || mode === 'partition-pivot')) {
       const partitionFunction = partition()
           .size([innerWidth, innerHeight])
           .padding(padding);
@@ -133,7 +136,7 @@ class Treemap extends React.Component {
       }
       return mappedNodes;
     }
-    if (data && mode === 'circlePack') {
+    if (mode === 'circlePack') {
       const packingFunction = pack()
           .size([innerWidth, innerHeight])
           .padding(padding);
@@ -142,19 +145,18 @@ class Treemap extends React.Component {
         .sum(d => d.size);
       return packingFunction(structuredInput).descendants();
     }
-    if (data) {
-      const tileFn = TREEMAP_TILE_MODES[mode];
-      const treemapingFunction = treemap(tileFn)
-        .tile(tileFn)
-        .size([innerWidth, innerHeight])
-        .padding(padding);
-      const structuredInput = hierarchy(data)
-        .sort((a, b) => a.size - b.size)
-        .sum(d => d.size);
 
-      return treemapingFunction(structuredInput).descendants();
-    }
-    return [];
+    const tileFn = TREEMAP_TILE_MODES[mode];
+    const treemapingFunction = treemap(tileFn)
+      .tile(tileFn)
+      .size([innerWidth, innerHeight])
+      .padding(padding);
+    const structuredInput = hierarchy(data)
+      .sort((a, b) => a.size - b.size)
+      .sum(d => d.size);
+
+    return treemapingFunction(structuredInput).descendants();
+
   }
 
   render() {

@@ -107,7 +107,7 @@ test('Treemap: SimpleTreemap', t => {
 test('Treemap: DynamicTreemap', t => {
   const $ = mount(<DynamicTreemap />);
   t.equal($.find('.rv-treemap__leaf').length, 20, 'should find the right number of children');
-  t.equal($.find('.rv-treemap').text(), '123123123123123123123123123123123123123123123123123123123123', 'should find the correct text shown');
+  t.equal($.find('.rv-treemap').text(), '2020202020202020202020202020202020202020', 'should find the correct text shown');
 
   t.end();
 });
