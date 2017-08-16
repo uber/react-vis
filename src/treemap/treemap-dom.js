@@ -28,10 +28,7 @@ class TreemapDOM extends React.Component {
     return (
       <div
         className={`rv-treemap ${useCirclePacking ? 'rv-treemap-circle-packed' : ''} ${className}`}
-        style={{
-          width: `${width}px`,
-          height: `${height}px`
-        }}>
+        style={{height, width}}>
         {nodes.map((node, index) => {
           // throw out the rootest node
           if (!useCirclePacking && !index) {

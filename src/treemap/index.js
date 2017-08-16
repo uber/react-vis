@@ -163,11 +163,8 @@ class Treemap extends React.Component {
     const {renderMode} = this.props;
     const {scales} = this.state;
     const nodes = this._getNodesToRender();
-
-    if (renderMode === 'SVG') {
-      return <TreemapSVG {...this.props} nodes={nodes} scales={scales}/>;
-    }
-    return <TreemapDOM {...this.props} nodes={nodes} scales={scales}/>;
+    const TreemapElement = renderMode === 'SVG' ? TreemapSVG : TreemapDOM;
+    return <TreemapElement {...this.props} nodes={nodes} scales={scales}/>;
   }
 
 }
