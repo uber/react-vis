@@ -66,6 +66,22 @@ First, note the recursive tree relationship: each node has a title, and an array
 This pattern continues until we reach the leaves, where we declare the size of the leaves. This value is rolled up, so that
 the "cluster" node has  3938 + 3812 + 6714 + 743 = 15207 size units.
 
+### Adding annotations
+
+Tooltips and other helpful annotations can be added to the sunburst diagram by providing those elements as children. For instance, if we wanted to add a tooltip to the above Sunburst, this could be done by adding a [Hint](hint.md) component as a child.
+
+```jsx
+<Sunburst
+  hideRootNode
+  colorType="literal"
+  data={data}
+  height={300}
+  width={350}>
+  <Hint value={hoveredValue} />
+</Sunburst>
+```
+
+Where `hoveredValue` is an appropriately curated coordinate value. See the [sunburst-with-tooltips](https://github.com/uber/react-vis/blob/master/showcase/sunbursts/sunburst-with-tooltips.js) code for more details.
 
 ## API Reference
 
