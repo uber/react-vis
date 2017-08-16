@@ -26,18 +26,14 @@ import ShowcaseButton from '../showcase-components/showcase-button';
 function _getRandomData(total) {
   const totalLeaves = total || Math.random() * 20;
   const leaves = [];
-  let title;
   for (let i = 0; i < totalLeaves; i++) {
-    title = Math.random();
-    if (!Math.random() > 0.5) {
-      title = (
-        <b>{title}</b>
-      );
-    }
     leaves.push({
-      title: total ? '123' : total,
+      title: total ? total : String(Math.random()).slice(0, 3),
       size: Math.random() * 1000,
-      color: Math.random()
+      color: Math.random(),
+      style: {
+        border: 'thin solid red'
+      }
     });
   }
   return {

@@ -36,8 +36,10 @@ import {
 import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, DEFAULT_OPACITY, OPACITY_TYPE} from 'theme';
 import {AnimationPropType} from 'animation';
 import {getAttributeFunctor, getMissingScaleProps} from 'utils/scales-utils';
+import {MarginPropType, getInnerDimensions} from 'utils/chart-utils';
 
-import TreemapLeaf from './treemap-leaf';
+import TreemapDOM from './treemap-dom';
+import TreemapSVG from './treemap-svg';
 
 const TREEMAP_TILE_MODES = {
   squarify: treemapSquarify,
@@ -57,6 +59,13 @@ const TREEMAP_LAYOUT_MODES = [
 const NOOP = d => d;
 
 const ATTRIBUTES = ['opacity', 'color'];
+
+const DEFAULT_MARGINS = {
+  left: 40,
+  right: 10,
+  top: 10,
+  bottom: 40
+};
 
 /**
  * Get the map of scale functions from the given props.
@@ -82,50 +91,19 @@ function _getScaleFns(props) {
 }
 
 class Treemap extends React.Component {
-
-  static get propTypes() {
-    return {
-      animation: AnimationPropType,
-      className: PropTypes.string,
-      data: PropTypes.object.isRequired,
-      height: PropTypes.number.isRequired,
-      mode: PropTypes.oneOf(
-        Object.keys(TREEMAP_TILE_MODES).concat(TREEMAP_LAYOUT_MODES)
-      ),
-      onLeafClick: PropTypes.func,
-      onLeafMouseOver: PropTypes.func,
-      onLeafMouseOut: PropTypes.func,
-      useCirclePacking: PropTypes.bool,
-      padding: PropTypes.number.isRequired,
-      width: PropTypes.number.isRequired
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      className: '',
-      colorRange: CONTINUOUS_COLOR_RANGE,
-      _colorValue: DEFAULT_COLOR,
-      data: {
-        children: []
-      },
-      mode: 'squarify',
-      onLeafClick: NOOP,
-      onLeafMouseOver: NOOP,
-      onLeafMouseOut: NOOP,
-      opacityType: OPACITY_TYPE,
-      _opacityValue: DEFAULT_OPACITY,
-      padding: 1
-    };
-  }
-
   constructor(props) {
     super(props);
-    this.state = {scales: _getScaleFns(props)};
+    this.state = {
+      scales: _getScaleFns(props),
+      ...getInnerDimensions(props, DEFAULT_MARGINS)
+    };
   }
 
   componentWillReceiveProps(props) {
-    this.setState({scales: _getScaleFns(props)});
+    this.setState({
+      scales: _getScaleFns(props),
+      ...getInnerDimensions(props, DEFAULT_MARGINS)
+    });
   }
 
   /**
@@ -134,10 +112,15 @@ class Treemap extends React.Component {
    * @private
    */
   _getNodesToRender() {
-    const {data, height, width, mode, padding} = this.props;
-    if (data && (mode === 'partition' || mode === 'partition-pivot')) {
+    const {innerWidth, innerHeight} = this.state;
+    const {data, mode, padding} = this.props;
+    if (!data) {
+      return [];
+    }
+
+    if ((mode === 'partition' || mode === 'partition-pivot')) {
       const partitionFunction = partition()
-          .size([width, height])
+          .size([innerWidth, innerHeight])
           .padding(padding);
       const structuredInput = hierarchy(data)
         .sum(d => d.size);
@@ -153,66 +136,76 @@ class Treemap extends React.Component {
       }
       return mappedNodes;
     }
-    if (data && mode === 'circlePack') {
+    if (mode === 'circlePack') {
       const packingFunction = pack()
-          .size([width, height])
+          .size([innerWidth, innerHeight])
           .padding(padding);
       const structuredInput = hierarchy(data)
         .sort((a, b) => a.size - b.size)
         .sum(d => d.size);
       return packingFunction(structuredInput).descendants();
     }
-    if (data) {
-      const tileFn = TREEMAP_TILE_MODES[mode];
-      const treemapingFunction = treemap(tileFn)
-        .tile(tileFn)
-        .size([width, height])
-        .padding(padding);
-      const structuredInput = hierarchy(data)
-        .sort((a, b) => a.size - b.size)
-        .sum(d => d.size);
 
-      return treemapingFunction(structuredInput).descendants();
-    }
-    return [];
+    const tileFn = TREEMAP_TILE_MODES[mode];
+    const treemapingFunction = treemap(tileFn)
+      .tile(tileFn)
+      .size([innerWidth, innerHeight])
+      .padding(padding);
+    const structuredInput = hierarchy(data)
+      .sort((a, b) => a.size - b.size)
+      .sum(d => d.size);
+
+    return treemapingFunction(structuredInput).descendants();
+
   }
 
   render() {
-    const {animation, className, height, mode, width} = this.props;
+    const {renderMode} = this.props;
+    const {scales} = this.state;
     const nodes = this._getNodesToRender();
-    const useCirclePacking = mode === 'circlePack';
-    return (
-      <div
-        className={`rv-treemap ${useCirclePacking ? 'rv-treemap-circle-packed' : ''} ${className}`}
-        style={{
-          width: `${width}px`,
-          height: `${height}px`
-        }}>
-        {nodes.map((node, index) => {
-          // throw out the rootest node
-          if (!useCirclePacking && !index) {
-            return null;
-          }
-
-          const nodeProps = {
-            animation,
-            node,
-            ...this.props,
-            x0: useCirclePacking ? node.x : node.x0,
-            x1: useCirclePacking ? node.x : node.x1,
-            y0: useCirclePacking ? node.y : node.y0,
-            y1: useCirclePacking ? node.y : node.y1,
-            r: useCirclePacking ? node.r : 1,
-            scales: this.state.scales
-          };
-          return (<TreemapLeaf {...nodeProps} key={`leaf-${index}`} />);
-        })}
-      </div>
-    );
+    const TreemapElement = renderMode === 'SVG' ? TreemapSVG : TreemapDOM;
+    return <TreemapElement {...this.props} nodes={nodes} scales={scales}/>;
   }
 
 }
 
 Treemap.displayName = 'Treemap';
+Treemap.propTypes = {
+  animation: AnimationPropType,
+  className: PropTypes.string,
+  data: PropTypes.object.isRequired,
+  height: PropTypes.number.isRequired,
+  margin: MarginPropType,
+  mode: PropTypes.oneOf(
+    Object.keys(TREEMAP_TILE_MODES).concat(TREEMAP_LAYOUT_MODES)
+  ),
+  onLeafClick: PropTypes.func,
+  onLeafMouseOver: PropTypes.func,
+  onLeafMouseOut: PropTypes.func,
+  useCirclePacking: PropTypes.bool,
+  padding: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired
+};
 
+Treemap.defaultProps = {
+  className: '',
+  colorRange: CONTINUOUS_COLOR_RANGE,
+  _colorValue: DEFAULT_COLOR,
+  data: {
+    children: []
+  },
+  margin: {
+    bottom: 50,
+    left: 50,
+    top: 50,
+    right: 50
+  },
+  mode: 'squarify',
+  onLeafClick: NOOP,
+  onLeafMouseOver: NOOP,
+  onLeafMouseOut: NOOP,
+  opacityType: OPACITY_TYPE,
+  _opacityValue: DEFAULT_OPACITY,
+  padding: 1
+};
 export default Treemap;

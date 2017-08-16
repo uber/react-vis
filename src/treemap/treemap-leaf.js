@@ -32,26 +32,6 @@ const ANIMATED_PROPS = [
 ];
 
 class TreemapLeaf extends React.Component {
-
-  static get propTypes() {
-    return {
-      animation: AnimationPropType,
-      height: PropTypes.number.isRequired,
-      mode: PropTypes.string,
-      node: PropTypes.object.isRequired,
-      onLeafClick: PropTypes.func,
-      onLeafMouseOver: PropTypes.func,
-      onLeafMouseOut: PropTypes.func,
-      scales: PropTypes.object.isRequired,
-      width: PropTypes.number.isRequired,
-      r: PropTypes.number.isRequired,
-      x0: PropTypes.number.isRequired,
-      x1: PropTypes.number.isRequired,
-      y0: PropTypes.number.isRequired,
-      y1: PropTypes.number.isRequired
-    };
-  }
-
   render() {
     const {
       animation,
@@ -65,7 +45,8 @@ class TreemapLeaf extends React.Component {
       x0,
       x1,
       y0,
-      y1
+      y1,
+      style
     } = this.props;
 
     if (animation) {
@@ -80,25 +61,44 @@ class TreemapLeaf extends React.Component {
     const opacity = scales.opacity(node);
     const color = getFontColorFromBackground(background);
     const {data: {title}} = node;
+    const leafStyle = {
+      top: useCirclePacking ? (y0 - r) : y0,
+      left: useCirclePacking ? (x0 - r) : x0,
+      width: useCirclePacking ? r * 2 : x1 - x0,
+      height: useCirclePacking ? r * 2 : y1 - y0,
+      background,
+      opacity,
+      color,
+      ...style,
+      ...node.data.style
+    };
+
     return (
       <div
         className={`rv-treemap__leaf ${useCirclePacking ? 'rv-treemap__leaf--circle' : ''}`}
         onMouseEnter={event => onLeafMouseOver(node, event)}
         onMouseLeave={event => onLeafMouseOut(node, event)}
         onClick={event => onLeafClick(node, event)}
-        style={{
-          top: useCirclePacking ? (y0 - r) : y0,
-          left: useCirclePacking ? (x0 - r) : x0,
-          width: useCirclePacking ? r * 2 : x1 - x0,
-          height: useCirclePacking ? r * 2 : y1 - y0,
-          background,
-          opacity,
-          color
-        }}>
+        style={leafStyle}>
         <div className="rv-treemap__leaf__content">{title}</div>
       </div>
     );
   }
 }
-
+TreemapLeaf.propTypes = {
+  animation: AnimationPropType,
+  height: PropTypes.number.isRequired,
+  mode: PropTypes.string,
+  node: PropTypes.object.isRequired,
+  onLeafClick: PropTypes.func,
+  onLeafMouseOver: PropTypes.func,
+  onLeafMouseOut: PropTypes.func,
+  scales: PropTypes.object.isRequired,
+  width: PropTypes.number.isRequired,
+  r: PropTypes.number.isRequired,
+  x0: PropTypes.number.isRequired,
+  x1: PropTypes.number.isRequired,
+  y0: PropTypes.number.isRequired,
+  y1: PropTypes.number.isRequired
+};
 export default TreemapLeaf;

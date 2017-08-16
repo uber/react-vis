@@ -109,6 +109,9 @@ Each point consists of following properties:
 * `color` (optional)  
   Type: `number` or `string`
   The value to visualize the color with.
+* `style` (optional)  
+  Type: `object`
+  style object to be added to the inline styles of the array
 * `children` (optional)  
   Type: `Array`  
   The children for the leaf.
@@ -140,3 +143,8 @@ Type: `string`
 - One of squarify, resquarify, slice, dice, slicedice, binary, circlePack, partition, partition-pivot
 
 This modifies the tiling strategy for the treemap, for more information see the [d3 hierarchy docs](https://github.com/d3/d3-hierarchy).
+
+##### colorDomain, colorRange, colorType
+
+Scale properties for the `color` scale. If `color` property is not passed in the data object, each new section of the chart gets the next color (e. g. the `'category'` scale is applied).
+Please refer to [Scales and Data](scales-and-data.md) for more information about scales.

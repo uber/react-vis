@@ -75,10 +75,31 @@ test('Treemap: Empty treemap', t => {
 
 test('Treemap: SimpleTreemap', t => {
   const $ = mount(<SimpleTreemap />);
-  t.equal($.find('.rv-treemap__leaf').length, 252, 'should find the right number of children');
-  t.equal($.find('.rv-treemap').text(), '', 'should find the correct text shown');
+  [
+    'circlePack',
+    'partition',
+    'partition-pivot',
+    'squarify',
+    'resquarify',
+    'slice',
+    'dice',
+    'slicedice',
+    'binary'
+  ].forEach(mode => {
+    const selector = mode === 'circlePack' ? '.rv-treemap__leaf circle' : '.rv-treemap__leaf';
+    // circle pack includes the root node, while the other modes do not
+    const numberOfElements = mode === 'circlePack' ? 252 : 251;
+    t.equal($.find(selector).length, numberOfElements, `${mode}: should find the right number of SVG children`);
+    t.equal($.text(), `USE DOMPREV MODE ${mode} NEXT MODE`, `${mode}: should find the correct text shown`);
+    // switch to svg
+    $.find('.showcase-button').at(0).simulate('click');
+    t.equal($.find('.rv-treemap__leaf').length, numberOfElements, `${mode}: should find the right number of DOM children`);
+    t.equal($.text(), `USE SVGPREV MODE ${mode} NEXT MODE`, `${mode}: should find the correct text shown`);
 
-  $.find('.showcase-button').at(1).simulate('click');
+    // switch back to dom and go to next mode
+    $.find('.showcase-button').at(0).simulate('click');
+    $.find('.showcase-button').at(2).simulate('click');
+  });
 
   t.end();
 });
@@ -86,7 +107,7 @@ test('Treemap: SimpleTreemap', t => {
 test('Treemap: DynamicTreemap', t => {
   const $ = mount(<DynamicTreemap />);
   t.equal($.find('.rv-treemap__leaf').length, 20, 'should find the right number of children');
-  t.equal($.find('.rv-treemap').text(), '123123123123123123123123123123123123123123123123123123123123', 'should find the correct text shown');
+  t.equal($.find('.rv-treemap').text(), '2020202020202020202020202020202020202020', 'should find the correct text shown');
 
   t.end();
 });
