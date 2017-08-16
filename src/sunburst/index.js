@@ -39,6 +39,15 @@ import {getRadialLayoutMargin} from 'utils/chart-utils';
 
 const predefinedClassName = 'rv-sunburst';
 
+const LISTENERS_TO_OVERWRITE = [
+  'onValueMouseOver',
+  'onValueMouseOut',
+  'onValueClick',
+  'onSeriesMouseOver',
+  'onSeriesMouseOut',
+  'onSeriesClick'
+];
+
 /**
  * Create the list of nodes to render.
  * @param {Object} props
@@ -98,6 +107,8 @@ function buildLabels(mappedData) {
   });
 }
 
+const NOOP = () => {};
+
 class Sunburst extends React.Component {
   render() {
     const {
@@ -115,6 +126,7 @@ class Sunburst extends React.Component {
     const margin = getRadialLayoutMargin(width, height, radialDomain);
 
     const labelData = buildLabels(mappedData);
+    const hofBuilder = f => (e, i) => f ? f(mappedData[e.index], i) : NOOP;
     return (
       <XYPlot
         height={height}
@@ -129,9 +141,16 @@ class Sunburst extends React.Component {
           animation,
           radiusDomain: [0, radialDomain],
           // need to present a stripped down version for interpolation
-          data: animation ? mappedData.map(row => ({...row, parent: null, children: null})) : mappedData,
+          data: animation ?
+            mappedData.map((row, index) => ({...row, parent: null, children: null, index})) :
+            mappedData,
           _data: animation ? mappedData : null,
-          arcClassName: `${predefinedClassName}__series--radial__arc`
+          arcClassName: `${predefinedClassName}__series--radial__arc`,
+          ...(LISTENERS_TO_OVERWRITE.reduce((acc, propName) => {
+            const prop = this.props[propName];
+            acc[propName] = animation ? hofBuilder(prop) : prop;
+            return acc;
+          }, {}))
         }}/>
         {labelData.length > 0 && (<LabelSeries data={labelData} />)}
         {children}

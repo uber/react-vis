@@ -83,6 +83,7 @@ export default class BasicSunburst extends React.Component {
     return (
       <div className="basic-sunburst-example-wrapper">
         <Sunburst
+          animation
           className="basic-sunburst-example"
           hideRootNode
           onValueMouseOver={node => {
