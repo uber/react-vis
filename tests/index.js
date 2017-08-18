@@ -48,6 +48,7 @@ import './components/interaction-article-tests';
 import './components/legends-tests';
 import './components/label-series-tests';
 import './components/line-series-tests';
+import './components/make-vis-flexible';
 import './components/mark-series-tests';
 import './components/whisker-series-tests';
 import './components/polygon-series-tests';
