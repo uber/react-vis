@@ -76,7 +76,7 @@ Here is what attribute is available as a scale per series type, and what is the 
 | [HorizontalBarSeries](bar-series.md) |        |        | linear     | linear     | literal    |        |         |        | linear     | linear | linear | linear |        |
 | [LabelSeries](label-series.md)         |        |        |            |            |            |        |         |        |            | linear |        | linear |        |
 | [LineSeries](line-series.md)          |        |        | / series |            | / series |        |         |        | / series | linear |        | linear |        |
-| [MarkSeries](mark-series.md)          |        |        | linear     | linear     | literal    |        |         | linear | linear     | linear |        | linear |        | 
+| [MarkSeries](mark-series.md)          |        |        | linear     | linear     | literal    |        |         | linear | linear     | linear |        | linear |        |
 | [PolygonSeries](polygon-series.md)       |        |        | / series |            |            |        |         |        |            | linear |        | linear |        |
 | [RectSeries](rect-series.md)          |        |        | linear     | linear     | literal    |        |         |        | linear     | linear | linear | linear | linear |
 | [VerticalBarSeries](bar-series.md)   |        |        | linear     | linear     | literal    |        |         |        | linear     | linear |        | linear | linear |
@@ -126,6 +126,18 @@ To redefine a scale, you must pass a prop to the series that uses that scale. Th
 Scales can be defined either at the XYPlot level, in which case they apply to the whole chart, or at the series level. Scales defined at the series level override those defined at the XYPlot level.
 
 The scales provided to each individual series don't have to have the same parameters. For instance, if you wanted to do a dual-axis chart, you could provide a different yDomain and yRange to two data series (use at your own risk).
+
+### A brief example
+
+Let's apply these ideas to a reasonably common use case: reversing the domain of a chart. Imagine we wanted to reverse the x display order of our mark series above. To do this we would make use of the xDomain and our prior knowledge of the domain of the x variable.
+
+```javascript
+<XYPlot height={200} width={200} xDomain={[9, 0]}>
+  <MarkSeries data={data} />
+</XYPlot>
+```
+
+This of course applies for all types of series.
 
 ### Other uses of scales
 
