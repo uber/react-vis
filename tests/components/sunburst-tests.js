@@ -4,6 +4,7 @@ import {mount} from 'enzyme';
 import Sunburst from 'sunburst';
 import BasicSunburst from '../../showcase/sunbursts/basic-sunburst';
 import SunburstWithTooltips from '../../showcase/sunbursts/sunburst-with-tooltips';
+import AnimatedSunburst from '../../showcase/sunbursts/animated-sunburst';
 
 import {testRenderWithProps} from '../test-utils';
 
@@ -65,14 +66,22 @@ test('Sunburst: Empty', t => {
   t.end();
 });
 
-test('Sunburst: Flare Demo', t => {
+test('Sunburst: BasicSunburst', t => {
   const $ = mount(<BasicSunburst />);
-  t.equal($.find('.rv-xy-plot__series--arc path').length, 251, 'should find the right number of children');
-  t.equal($.text(), 'SUNBURST', 'should find the correct text inside of the chart');
+  // multiplied by two to account for the shadow listeners
+  t.equal($.find('.rv-xy-plot__series--arc path').length, 251 * 2, 'should find the right number of children');
+  t.equal($.text(), 'click to lock selectionSUNBURST', 'should find the correct text inside of the chart');
   // check hover state
   t.deepEqual($.state().pathValue, false, 'should initially find no hover path');
   $.find('.rv-xy-plot__series--arc-path').at(200).simulate('mouseover');
   t.deepEqual($.state().pathValue, 'root > vis > events > DataEvent', 'should find the correct path hovered');
+
+  $.find('.rv-xy-plot__series--arc-path').at(1).simulate('click');
+  t.equal($.text(), 'click to unlock selectionDataEventroot > vis > events > DataEvent', 'should find the right text');
+  $.find('.rv-xy-plot__series--arc-path').at(1).simulate('mouseLeave');
+  $.find('.rv-xy-plot__series--arc-path').at(10).simulate('mouseEnter');
+
+  t.equal($.text(), 'click to unlock selectionDataEventroot > vis > events > DataEvent', 'should find the right text');
   t.end();
 });
 
@@ -82,6 +91,16 @@ test('Sunburst: SunburstWithTooltips', t => {
   t.equal($.find('.rv-xy-plot__series--arc path').length, 10, 'should find the right number of children');
   $.find('.rv-xy-plot__series--arc-path').at(1).simulate('mouseOver');
   t.equal($.text(), 'cooldogssunglasses#FF991F', 'should find appropriate hover text');
+
+  t.end();
+});
+
+test('Sunburst: AnimatedSunburst', t => {
+  const $ = mount(<AnimatedSunburst />);
+  t.equal($.text(), 'UPDATENOT HOVERED', 'should find the right text');
+  t.ok($.find('.rv-xy-plot__series--arc path').length > 2, 'should find a minimum number of elements');
+  $.find('.rv-xy-plot__series--arc-path').at(1).simulate('mouseOver');
+  t.equal($.text(), 'UPDATECURRENTLY HOVERING', 'should find the sunburst is now hovered');
 
   t.end();
 });

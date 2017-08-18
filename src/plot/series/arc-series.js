@@ -122,6 +122,8 @@ class ArcSeries extends AbstractSeries {
       className,
       center,
       data,
+      disableSeries,
+      hideSeries,
       marginLeft,
       marginTop,
       style
@@ -132,12 +134,17 @@ class ArcSeries extends AbstractSeries {
     }
 
     if (animation) {
+      const cloneData = data.map(d => ({...d}));
       return (
-        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <ArcSeries {...this.props} animation={null}/>
-        </Animation>
+        <g className="rv-xy-plot__series--arc__animation-wrapper">
+          <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS} data={cloneData}>
+            <ArcSeries {...this.props} animation={null} disableSeries={true} data={cloneData}/>
+          </Animation>
+          <ArcSeries {...this.props} animation={null} hideSeries style={{stroke: 'red'}}/>
+        </g>
       );
     }
+
     const {scaleProps} = this.state;
     const {radiusDomain} = scaleProps;
     // need to generate our own functors as abstract series doesnt have anythign for us
@@ -160,6 +167,8 @@ class ArcSeries extends AbstractSeries {
         onMouseOut={this._seriesMouseOutHandler}
         onClick={this._seriesClickHandler}
         ref="container"
+        opacity={hideSeries ? 0 : 1}
+        pointerEvents={disableSeries ? 'none' : 'all'}
         transform={`translate(${marginLeft + x(center)},${marginTop + y(center)})`}>
         {data.map((row, i) => {
           const noRadius = radiusDomain[1] === radiusDomain[0];

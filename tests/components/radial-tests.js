@@ -63,7 +63,8 @@ test('RadialChart: Showcase Example - Custom radius example', t => {
   const $ = mount(<CustomRadiusRadialChart />);
   $.find('.rv-radial-chart__series--pie__slice').at(1).simulate('mouseEnter');
   $.find('.rv-radial-chart__series--pie__slice').at(1).simulate('mouseLeave');
-  t.equal($.find('.rv-radial-chart__series--pie__slice').length, 5, 'should find the same number of slices as data entries');
+  // multiplied by two to account for the shadow listeners
+  t.equal($.find('.rv-radial-chart__series--pie__slice').length, 2 * 5, 'should find the same number of slices as data entries');
   t.equal($.find('.rv-xy-plot__series--label-text').length, 4, 'should find the right number of label wrappers');
   t.equal($.text(), 'Sub Label onlyAlt LabelSuper Custom labelWith annotation', 'should find appropriate text');
   t.end();

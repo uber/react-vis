@@ -75,17 +75,23 @@ export default class BasicSunburst extends React.Component {
   state = {
     pathValue: false,
     data: decoratedData,
-    finalValue: 'SUNBURST'
+    finalValue: 'SUNBURST',
+    clicked: false
   }
 
   render() {
-    const {data, finalValue, pathValue} = this.state;
+    const {clicked, data, finalValue, pathValue} = this.state;
     return (
       <div className="basic-sunburst-example-wrapper">
+        <div>{clicked ? 'click to unlock selection' : 'click to lock selection'}</div>
         <Sunburst
+          animation
           className="basic-sunburst-example"
           hideRootNode
           onValueMouseOver={node => {
+            if (clicked) {
+              return;
+            }
             const path = getKeyPath(node).reverse();
             const pathAsMap = path.reduce((res, row) => {
               res[row] = true;
@@ -97,11 +103,12 @@ export default class BasicSunburst extends React.Component {
               data: updateData(decoratedData, pathAsMap)
             });
           }}
-          onValueMouseOut={() => this.setState({
+          onValueMouseOut={() => clicked ? () => {} : this.setState({
             pathValue: false,
             finalValue: false,
             data: updateData(decoratedData, false)
           })}
+          onValueClick={() => this.setState({clicked: !clicked})}
           style={{
             stroke: '#ddd',
             strokeOpacity: 0.3,

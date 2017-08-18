@@ -10,8 +10,9 @@ testRenderWithProps(ArcSeries, GENERIC_XYPLOT_SERIES_PROPS);
 test('ArcSeries: Showcase Example - ArcSeriesExample', t => {
   const $ = mount(<ArcSeriesExample />);
   t.equal($.text(), 'UPDATE-4-2024-4-2024', 'should find the right text content');
-  t.equal($.find('.rv-xy-plot__series--arc').length, 2, 'should find the right number of series');
-  t.equal($.find('.rv-xy-plot__series--arc path').length, 8, 'with the right number of arc in them');
+  // multiplied by two to account for shadow listeners
+  t.equal($.find('.rv-xy-plot__series--arc').length, 4, 'should find the right number of series');
+  t.equal($.find('.rv-xy-plot__series--arc path').length, 2 * 8, 'with the right number of arc in them');
 
   t.end();
 });
