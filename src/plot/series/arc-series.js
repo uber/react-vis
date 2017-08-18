@@ -122,6 +122,7 @@ class ArcSeries extends AbstractSeries {
       className,
       center,
       data,
+      disableSeries,
       hideSeries,
       marginLeft,
       marginTop,
@@ -167,7 +168,7 @@ class ArcSeries extends AbstractSeries {
         onClick={this._seriesClickHandler}
         ref="container"
         opacity={hideSeries ? 0 : 1}
-        pointerEvents={this.props.disableSeries ? 'none' : 'all'}
+        pointerEvents={disableSeries ? 'none' : 'all'}
         transform={`translate(${marginLeft + x(center)},${marginTop + y(center)})`}>
         {data.map((row, i) => {
           const noRadius = radiusDomain[1] === radiusDomain[0];
