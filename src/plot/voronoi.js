@@ -4,7 +4,7 @@ import {voronoi} from 'd3-voronoi';
 
 const NOOP = f => f;
 
-function Voronoi({className, extent, nodes, onBlur, onClick, onHover, polygonStyle, style, x, y}) {
+function Voronoi({className, extent, nodes, onBlur, onClick, onMouseUp, onMouseDown, onHover, polygonStyle, style, x, y}) {
   // Create a voronoi with each node center points
   const voronoiInstance = voronoi()
     .x(x)
@@ -18,6 +18,8 @@ function Voronoi({className, extent, nodes, onBlur, onClick, onHover, polygonSty
           className="rv-voronoi__cell"
           d={`M${d.join('L')}Z`}
           onClick={() => onClick(d.data)}
+          onMouseUp={() => onMouseUp(d.data)}
+          onMouseDown={() => onMouseDown(d.data)}
           onMouseOver={() => onHover(d.data)}
           onMouseOut={() => onBlur(d.data)}
           fill="none"
@@ -38,6 +40,8 @@ Voronoi.defaultProps = {
   onBlur: NOOP,
   onClick: NOOP,
   onHover: NOOP,
+  onMouseDown: NOOP,
+  onMouseUp: NOOP,
   x: d => d.x,
   y: d => d.y
 };
@@ -50,6 +54,8 @@ Voronoi.propTypes = {
   nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
   onBlur: PropTypes.func,
   onClick: PropTypes.func,
+  onMouseDown: PropTypes.func,
+  onMouseUp: PropTypes.func,
   onHover: PropTypes.func,
   x: PropTypes.func,
   y: PropTypes.func
