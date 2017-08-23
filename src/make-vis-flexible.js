@@ -86,6 +86,15 @@ function removeSubscriber(cb) {
 }
 
 /**
+ * Helper for getting a display name for the child component
+ * @param {*} Component React class for the child component.
+ * @returns {String} The child components name
+ */
+function getDisplayName(Component) {
+  return Component.displayName || Component.name || 'Component';
+}
+
+/**
  * Add the ability to stretch the visualization on window resize.
  * @param {*} Component React class for the child component.
  * @returns {*} Flexible component.
@@ -164,7 +173,7 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
     }
   };
 
-  ResultClass.displayName = `Flexible${Component.displayName}`;
+  ResultClass.displayName = `Flexible${getDisplayName(Component)}`;
 
   return ResultClass;
 }
