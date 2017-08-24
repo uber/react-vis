@@ -107,9 +107,7 @@ class DragableChartExample extends React.Component {
 }
 
 DragableChartExample.propTypes = {
-  width: PropTypes.number,
-  onHover: PropTypes.func,
-  onBlur: PropTypes.func
+  width: PropTypes.number
 };
 
 export default makeWidthFlexible(DragableChartExample);

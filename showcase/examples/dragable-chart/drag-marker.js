@@ -6,6 +6,7 @@ function DragMarker({innerHeight, marginTop, marginLeft, x, x2}) {
   const start = x2 > x ? x : x2;
   return (
     <rect
+      className="drag-marker"
       pointerEvents="none"
       fill="black"
       opacity="0.2"
