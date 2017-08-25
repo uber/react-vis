@@ -85,7 +85,6 @@ RectSeriesCanvas.defaultProps = {
   isCanvas: true
 };
 
-
 RectSeriesCanvas.propTypes = {
   ...AbstractSeries.propTypes,
   requiresSVG: PropTypes.bool,
