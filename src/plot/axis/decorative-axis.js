@@ -103,7 +103,8 @@ DecorativeAxis.defaultProps = {
       strokeWidth: 2
     },
     text: {}
-  }
+  },
+  requiresSVG: true
 };
 DecorativeAxis.propTypes = {
   ...AbstractSeries.propTypes,

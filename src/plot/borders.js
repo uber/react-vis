@@ -35,7 +35,8 @@ const propTypes = {
   marginLeft: PropTypes.number,
   marginRight: PropTypes.number,
   innerWidth: PropTypes.number,
-  innerHeight: PropTypes.number
+  innerHeight: PropTypes.number,
+  requiresSVG: PropTypes.bool
 };
 
 const CLASSES = {
@@ -104,9 +105,9 @@ Borders.defaultProps = {
     left: {},
     right: {},
     top: {}
-  }
+  },
+  requiresSVG: true
 };
 Borders.propTypes = propTypes;
-Borders.requiresSVG = true;
 
 export default Borders;

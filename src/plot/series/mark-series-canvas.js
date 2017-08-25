@@ -24,16 +24,9 @@ import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
 import {getAttributeFunctor} from 'utils/scales-utils';
 
 import AbstractSeries from './abstract-series';
+import PropTypes from 'prop-types';
 
 class MarkSeriesCanvas extends AbstractSeries {
-  static get requiresSVG() {
-    return false;
-  }
-
-  static get isCanvas() {
-    return true;
-  }
-
   static renderLayer(props, ctx) {
     const {data, marginLeft, marginTop} = props;
 
@@ -63,10 +56,15 @@ class MarkSeriesCanvas extends AbstractSeries {
 }
 
 MarkSeriesCanvas.displayName = 'MarkSeriesCanvas';
-MarkSeriesCanvas.defaultProps = {};
+MarkSeriesCanvas.defaultProps = {
+  requiresSVG: false,
+  isCanvas: true
+};
 
 MarkSeriesCanvas.propTypes = {
-  ...AbstractSeries.propTypes
+  ...AbstractSeries.propTypes,
+  requiresSVG: PropTypes.bool,
+  isCanvas: PropTypes.bool
 };
 
 export default MarkSeriesCanvas;

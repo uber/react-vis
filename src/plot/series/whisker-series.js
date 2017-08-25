@@ -205,6 +205,7 @@ WhiskerSeries.propTypes = {
 WhiskerSeries.defaultProps = {
   crossBarWidth: DEFAULT_CROSS_BAR_WIDTH,
   size: 0,
-  strokeWidth: DEFAULT_STROKE_WIDTH
+  strokeWidth: DEFAULT_STROKE_WIDTH,
+  requiresSVG: true
 };
 export default WhiskerSeries;

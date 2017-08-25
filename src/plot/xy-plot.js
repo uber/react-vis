@@ -105,7 +105,8 @@ class XYPlot extends React.Component {
       onMouseMove: PropTypes.func,
       stackBy: PropTypes.oneOf(ATTRIBUTES),
       style: PropTypes.object,
-      width: PropTypes.number.isRequired
+      width: PropTypes.number.isRequired,
+      requiresSVG: PropTypes.bool
     };
   }
 
@@ -351,7 +352,7 @@ class XYPlot extends React.Component {
   }
 
   renderCanvasComponents(components, props) {
-    const componentsToRender = components.filter(c => c && !c.type.requiresSVG && c.type.isCanvas);
+    const componentsToRender = components.filter(c => c && !c.props.requiresSVG && c.props.isCanvas);
 
     if (componentsToRender.length === 0) {
       return null;
@@ -414,10 +415,10 @@ class XYPlot extends React.Component {
           onMouseMove={this._mouseMoveHandler}
           onMouseLeave={this._mouseLeaveHandler}
           onMouseEnter={this._mouseEnterHandler}>
-          {components.filter(c => c && c.type.requiresSVG)}
+          {components.filter(c => c && c.props.requiresSVG)}
         </svg>
         {this.renderCanvasComponents(components, this.props)}
-        {components.filter(c => c && !c.type.requiresSVG && !c.type.isCanvas)}
+        {components.filter(c => c && !c.props.requiresSVG && !c.props.isCanvas)}
       </div>
     );
   }

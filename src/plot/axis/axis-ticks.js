@@ -33,11 +33,13 @@ const propTypes = {
     LEFT, RIGHT, TOP, BOTTOM
   ]).isRequired,
   style: PropTypes.object,
-  width: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired,
+  requiresSVG: PropTypes.bool
 };
 
 const defaultProps = {
-  style: {}
+  style: {},
+  requiresSVG: true
 };
 
 function _getTickFormatFn(scale, tickTotal, tickFormat) {
@@ -209,6 +211,5 @@ class AxisTicks extends React.Component {
 AxisTicks.defaultProps = defaultProps;
 AxisTicks.displayName = 'AxisTicks';
 AxisTicks.propTypes = propTypes;
-AxisTicks.requiresSVG = true;
 
 export default AxisTicks;

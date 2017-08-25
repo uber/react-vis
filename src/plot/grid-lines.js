@@ -56,11 +56,13 @@ const propTypes = {
   marginLeft: PropTypes.number,
   marginRight: PropTypes.number,
   innerWidth: PropTypes.number,
-  innerHeight: PropTypes.number
+  innerHeight: PropTypes.number,
+  requiresSVG: PropTypes.bool
 };
 
 const defaultProps = {
-  direction: VERTICAL
+  direction: VERTICAL,
+  requiresSVG: true
 };
 
 const animatedProps = [
@@ -154,6 +156,6 @@ class GridLines extends PureComponent {
 GridLines.displayName = 'GridLines';
 GridLines.defaultProps = defaultProps;
 GridLines.propTypes = propTypes;
-GridLines.requiresSVG = true;
+
 
 export default GridLines;

@@ -31,14 +31,6 @@ function getScaleDistance(props, attr) {
 }
 
 class BarSeriesCanvas extends AbstractSeries {
-  static get requiresSVG() {
-    return false;
-  }
-
-  static get isCanvas() {
-    return true;
-  }
-
   static renderLayer(props, ctx) {
     const {
       data,
@@ -97,11 +89,15 @@ BarSeriesCanvas.defaultProps = {
   linePosAttr: PropTypes.string.isRequired,
   valuePosAttr: PropTypes.string.isRequired,
   lineSizeAttr: PropTypes.string.isRequired,
-  valueSizeAttr: PropTypes.string.isRequired
+  valueSizeAttr: PropTypes.string.isRequired,
+  requiresSVG: PropTypes.bool,
+  isCanvas: PropTypes.bool
 };
 
 BarSeriesCanvas.propTypes = {
-  ...AbstractSeries.propTypes
+  ...AbstractSeries.propTypes,
+  requiresSVG: false,
+  isCanvas: true
 };
 
 export default BarSeriesCanvas;
