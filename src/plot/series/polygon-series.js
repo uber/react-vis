@@ -70,6 +70,7 @@ class PolygonSeries extends AbstractSeries {
         onMouseOver: this._seriesMouseOverHandler,
         onMouseOut: this._seriesMouseOutHandler,
         onClick: this._seriesClickHandler,
+        onContextMenu: this._seriesRightClickHandler,
         fill: color || DEFAULT_COLOR,
         style,
         d: generatePath(data, xFunctor, yFunctor),

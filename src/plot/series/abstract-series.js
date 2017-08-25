@@ -43,9 +43,11 @@ const propTypes = {
   onValueMouseOver: PropTypes.func,
   onValueMouseOut: PropTypes.func,
   onValueClick: PropTypes.func,
+  onValueRightClick: PropTypes.func,
   onSeriesMouseOver: PropTypes.func,
   onSeriesMouseOut: PropTypes.func,
   onSeriesClick: PropTypes.func,
+  onSeriesRightClick: PropTypes.func,
   onNearestX: PropTypes.func,
   onNearestXY: PropTypes.func,
   style: PropTypes.object,
@@ -82,6 +84,8 @@ class AbstractSeries extends PureComponent {
     this._valueMouseOutHandler = this._valueMouseOutHandler.bind(this);
     this._seriesClickHandler = this._seriesClickHandler.bind(this);
     this._valueClickHandler = this._valueClickHandler.bind(this);
+    this._seriesRightClickHandler = this._seriesRightClickHandler.bind(this);
+    this._valueRightClickHandler = this._valueRightClickHandler.bind(this);
   }
 
   /**
@@ -157,6 +161,22 @@ class AbstractSeries extends PureComponent {
   }
 
   /**
+   * Right Click handler for the specific series' value.
+   * @param {Object} d Value object
+   * @param {Object} event Event.
+   * @protected
+   */
+  _valueRightClickHandler(d, event) {
+    const {onValueRightClick, onSeriesRightClick} = this.props;
+    if (onValueRightClick) {
+      onValueRightClick(d, {event});
+    }
+    if (onSeriesRightClick) {
+      onSeriesRightClick({event});
+    }
+  }
+
+  /**
    * Click handler for the entire series.
    * @param {Object} event Event.
    * @protected
@@ -165,6 +185,18 @@ class AbstractSeries extends PureComponent {
     const {onSeriesClick} = this.props;
     if (onSeriesClick) {
       onSeriesClick({event});
+    }
+  }
+
+   /**
+   * Right Click handler for the entire series.
+   * @param {Object} event Event.
+   * @protected
+   */
+  _seriesRightClickHandler(event) {
+    const {onSeriesRightClick} = this.props;
+    if (onSeriesRightClick) {
+      onSeriesRightClick({event});
     }
   }
 

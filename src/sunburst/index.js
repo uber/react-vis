@@ -43,9 +43,11 @@ const LISTENERS_TO_OVERWRITE = [
   'onValueMouseOver',
   'onValueMouseOut',
   'onValueClick',
+  'onValueRightClick',
   'onSeriesMouseOver',
   'onSeriesMouseOut',
-  'onSeriesClick'
+  'onSeriesClick',
+  'onSeriesRightClick'
 ];
 
 /**

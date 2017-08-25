@@ -171,6 +171,20 @@ This handler fires when the user mouses over a series, and provides the correspo
   }}
 ```
 
+#### onSeriesClick
+Type: `function`
+Default: none
+This handler fires when the user right-clicks somewhere on a series, and provides the corresponding event. Unlike onClick, it doesn't pass a specific datapoint.
+
+```jsx
+<MarkSeries
+...
+  onSeriesRightClick={(event)=>{
+    // does something on right click
+    // you can access the value of the event
+  }}
+```
+
 #### onValueClick
 Type: `function`
 Default: none
@@ -209,6 +223,20 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 ...
   onValueMouseOver={(datapoint, event)=>{
     // does something on click
+    // you can access the value of the event
+  }}
+```
+
+#### onValueRightClick
+Type: `function`
+Default: none
+This handler is triggered either when the user right-clicks on a mark.
+The handler passes two arguments, the corresponding datapoint and the actual event.
+```jsx
+<MarkSeries
+...
+  onValueRightClick={(datapoint, event)=>{
+    // does something on right click
     // you can access the value of the event
   }}
 ```

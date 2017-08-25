@@ -24,9 +24,11 @@ export const GENERIC_XYPLOT_SERIES_PROPS = {
   onSeriesMouseOver: NOOP,
   onSeriesMouseOut: NOOP,
   onSeriesClick: NOOP,
+  onSeriesRightClick: NOOP,
   onValueMouseOver: NOOP,
   onValueMouseOut: NOOP,
-  onValueClick: NOOP
+  onValueClick: NOOP,
+  onValueRightClick: NOOP
 };
 
 export const testRenderWithProps = (Component, props) =>
