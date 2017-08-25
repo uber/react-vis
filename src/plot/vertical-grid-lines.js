@@ -49,5 +49,4 @@ VerticalGridLines.displayName = 'VerticalGridLines';
 VerticalGridLines.propTypes = propTypes;
 VerticalGridLines.defaultProps = defaultProps;
 
-
 export default VerticalGridLines;

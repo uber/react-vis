@@ -135,5 +135,4 @@ CircularGridLines.defaultProps = {
   requiresSVG: true
 };
 
-
 export default CircularGridLines;

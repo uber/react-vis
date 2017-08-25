@@ -157,5 +157,4 @@ GridLines.displayName = 'GridLines';
 GridLines.defaultProps = defaultProps;
 GridLines.propTypes = propTypes;
 
-
 export default GridLines;
