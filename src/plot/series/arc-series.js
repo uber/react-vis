@@ -166,6 +166,7 @@ class ArcSeries extends AbstractSeries {
         onMouseOver={this._seriesMouseOverHandler}
         onMouseOut={this._seriesMouseOutHandler}
         onClick={this._seriesClickHandler}
+        onContextMenu={this._seriesRightClickHandler}
         ref="container"
         opacity={hideSeries ? 0 : 1}
         pointerEvents={disableSeries ? 'none' : 'all'}
@@ -190,6 +191,7 @@ class ArcSeries extends AbstractSeries {
               ...rowStyle
             },
             onClick: e => this._valueClickHandler(modifyRow(row), e),
+            onContextMenu: e => this._valueRightClickHandler(modifyRow(row), e),
             onMouseOver: e => this._valueMouseOverHandler(modifyRow(row), e),
             onMouseOut: e => this._valueMouseOutHandler(modifyRow(row), e),
             key: i,

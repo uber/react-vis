@@ -85,15 +85,19 @@ Callback is triggered with two arguments. `value` is the data point, `info` obje
 - `event` is the event object.
 See [interaction](interaction.md)
 
-#### onSeriesMouseOver (optional)
-Type: `function(d, {event})`  
-`mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property. See [interaction](interaction.md)
-
-#### onSeriesMouseOut (optional)
-Type: `function(d, {event})`  
-`mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property. See [interaction](interaction.md)
-
 #### onSeriesClick (optional)
 Type: `function(d, {event})`  
 `click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property. See [interaction](interaction.md)
 
+#### onSeriesMouseOut (optional)
+Type: `function(d, {event})`  
+`mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an 
+
+#### onSeriesMouseOver (optional)
+Type: `function(d, {event})`  
+`mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property. See [interaction](interaction.md)
+object with the only `event` property. See [interaction](interaction.md)
+
+#### onSeriesRightClick (optional)
+Type: `function(d, {event})`  
+`right-click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property. See [interaction](interaction.md)

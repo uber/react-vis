@@ -94,6 +94,10 @@ Callback is triggered with two arguments. `value` is the data point, `info` obje
 - `event` is the event object.
 See [interaction](interaction.md)
 
+#### onValueClick (optional)
+Type: `function(d, {event})`  
+`click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
+
 #### onValueMouseOver (optional)
 Type: `function(d, {event})`  
 `mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
@@ -102,6 +106,6 @@ Type: `function(d, {event})`
 Type: `function(d, {event})`  
 `mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
 
-#### onValueClick (optional)
+#### onValueRightClick (optional)
 Type: `function(d, {event})`  
-`click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
+`right-click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  

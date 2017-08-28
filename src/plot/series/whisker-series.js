@@ -39,8 +39,9 @@ const DEFAULT_CROSS_BAR_WIDTH = 6;
  */
 const renderWhiskerMark = (whiskerMarkProps) => (d, i) => {
   const {
-    crossBarWidth, opacityFunctor, sizeFunctor, strokeFunctor, strokeWidth, style,
-    valueClickHandler, valueMouseOutHandler, valueMouseOverHandler, xFunctor, yFunctor
+    crossBarWidth, opacityFunctor, sizeFunctor, strokeFunctor, strokeWidth,
+    style, valueClickHandler, valueMouseOutHandler, valueMouseOverHandler,
+    valueRightClickHandler, xFunctor, yFunctor
   } = whiskerMarkProps;
 
   const r = sizeFunctor ? sizeFunctor(d) : 0;
@@ -130,6 +131,7 @@ const renderWhiskerMark = (whiskerMarkProps) => (d, i) => {
   return (
     <g className="mark-whiskers" key={i}
       onClick={e => valueClickHandler(d, e)}
+      onContextMenu={e => valueRightClickHandler(d, e)}
       onMouseOver={e => valueMouseOverHandler(d, e)}
       onMouseOut={e => valueMouseOutHandler(d, e)}
     >
@@ -158,8 +160,8 @@ const renderWhiskerMark = (whiskerMarkProps) => (d, i) => {
 class WhiskerSeries extends AbstractSeries {
   render() {
     const {
-      animation, className, crossBarWidth, data, marginLeft, marginTop, strokeWidth,
-      style
+      animation, className, crossBarWidth, data, marginLeft, marginTop,
+      strokeWidth, style
     } = this.props;
     if (!data) {
       return null;
@@ -183,6 +185,7 @@ class WhiskerSeries extends AbstractSeries {
       xFunctor: this._getAttributeFunctor('x'),
       yFunctor: this._getAttributeFunctor('y'),
       valueClickHandler: this._valueClickHandler,
+      valueRightClickHandler: this._valueRightClickHandler,
       valueMouseOverHandler: this._valueMouseOverHandler,
       valueMouseOutHandler: this._valueMouseOutHandler
     };

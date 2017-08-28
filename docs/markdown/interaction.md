@@ -12,19 +12,20 @@ These events can be implemented either at the XYPlot level or at the plot level:
 
 ### What handlers are implemented by series type
 
-| Series                                | onNearestX | onNearestY | onSeriesClick | onSeriesMouseOut | onSeriesMouseOver | onValueClick | onValueMouseOut | onValueMouseOver |
-|---------------------------------------|------------|------------|---------------|------------------|-------------------|--------------|-----------------|------------------|
-| [ArcSeries](arc-series.md)            | ✔︎          | ✔︎          |               |                  |                   | ✔︎            | ✔︎               | ✔︎                |
-| [AreaSeries](area-series.md)          | ✔︎          | ✔︎          | ✔︎             | ✔︎                | ✔︎                 |              |                 |                  |
-| [BarSeries](bar-series.md)            | ✔︎          | ✔︎          |               |                  |                   | ✔︎            | ✔︎               | ✔︎                |
-| [ContourSeries](contour-series.md)    | ✔︎          | ✔︎          |               |                  |                   |              |                 |                  |
-| [HeatmapSeries](heatmap-series.md)    | ✔︎          | ✔︎          |               |                  |                   | ✔︎            | ✔︎               | ✔︎                |
-| [LabelSeries](label-series.md)        | ✔︎          | ✔︎          |               |                  |                   | ✔︎            | ✔︎               | ✔︎                |
-| [LineSeries](line-series.md)          | ✔︎          | ✔︎          | ✔︎             | ✔︎                | ✔︎                 |              |                 |                  |
-| [LineMarkSeries](line-mark-series.md) | ✔︎          | ✔︎          | ✔︎             | ✔︎                | ✔︎                 | ✔︎            | ✔︎               | ✔︎                |
-| [MarkSeries](mark-series.md)           | ✔︎          | ✔︎          |               |                  |                   | ✔︎            | ✔︎               | ✔︎                |
-| [PolygonSeries](polygon-series.md)    | ✔︎          | ✔︎          | ✔︎             | ✔︎                | ✔︎                 |              |                 |                  |
-| [RectSeries](rect-series.md)                            | ✔︎          | ✔︎          |               |                  |                   | ✔︎            | ✔︎               | ✔︎                |
+| Series                                | Proximity handlers (onNearestX, onNearestY) | series level handlers (onSeriesClick, onSeriesRightClick, onSeriesMouseOver, onSeriesMouseOut) | mark-level handlers (onValueClick, onValueRightClick, onValueMouseOver, onValueMouseOut) |
+|---------------------------------------|---------------------------------------------|------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| [ArcSeries](arc-series.md)            |                      ✔︎                      |                                                ✔︎                                               |                                             ✔︎                                            |
+| [AreaSeries](area-series.md)          |                      ✔︎                      |                                                ✔︎                                               |                                                                                          |
+| [BarSeries](bar-series.md)            |                      ✔︎                      |                                                ✔︎                                               |                                             ✔︎                                            |
+| [ContourSeries](contour-series.md)    |                      ✔︎                      |                                                                                                |                                                                                          |
+| [HeatmapSeries](heatmap-series.md)    |                      ✔︎                      |                                                ✔︎                                               |                                             ✔︎                                            |
+| [LabelSeries](label-series.md)        |                      ✔︎                      |                                                ✔︎                                               |                                             ✔︎                                            |
+| [LineSeries](line-series.md)          |                      ✔︎                      |                                                ✔︎                                               |                                                                                          |
+| [LineMarkSeries](line-mark-series.md) |                      ✔︎                      |                                                ✔︎                                               |                                             ✔︎                                            |
+| [MarkSeries](mark-series.md)          |                      ✔︎                      |                                                ✔︎                                               |                                             ✔︎                                            |
+| [PolygonSeries](polygon-series.md)    |                      ✔︎                      |                                                ✔︎                                               |                                                                                          |
+| [RectSeries](rect-series.md)          |                      ✔︎                      |                                                ✔︎                                               |                                             ✔︎                                            |
+| [WhiskerSeries](whisker-series.md)    |                      ✔︎                      |                                                ✔︎                                               |                                             ✔︎                                            |
 
 How to read this table:
 For some series types (Arc, Bar, Rect, Label, Mark) - onValueClick, onValueMouseOut and onValueMouseOver handlers will work at the mark type. When the user clicks on the series, or moves their mouse on our out of it, an event handler will be fired and will pass the datapoint corresponding to the mark that the user interacted with.
@@ -103,7 +104,7 @@ onNearestXY is at the series level, not at the plot level. If you attach onNeare
 #### onSeriesClick
 Type: `function`  
 Default: none  
-This handler fires when the user clicks somewhere on a series, and provides the corresponding event. Unlike onClick, it doesn't pass a specific datapoint.
+This handler fires when the user clicks somewhere on a series, and provides the corresponding event. Unlike onValueClick, it doesn't pass a specific datapoint.
 
 ```jsx
 <AreaSeries
@@ -113,6 +114,21 @@ This handler fires when the user clicks somewhere on a series, and provides the 
   	// you can access the value of the event
   }}
 ```
+
+#### onSeriesRightClick
+Type: `function`  
+Default: none  
+This handler fires when the user right-clicks somewhere on a series, and provides the corresponding event. Unlike onValueRightClick, it doesn't pass a specific datapoint.
+
+```jsx
+<AreaSeries
+...
+  onSeriesRightClick={(event)=>{
+    // does something on right click
+    // you can access the value of the event
+  }}
+```
+
 
 #### onSeriesMouseOut
 Type: `function`  
@@ -153,6 +169,20 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
   onValueClick={(datapoint, event)=>{
   	// does something on click
   	// you can access the value of the event
+  }}
+```
+
+#### onValueRightClick
+Type: `function`  
+Default: none  
+This handler is triggered either when the user right-clicks on a mark.
+The handler passes two arguments, the corresponding datapoint and the actual event.
+```jsx
+<MarkSeries
+...
+  onValueRightClick={(datapoint, event)=>{
+    // does something on right click
+    // you can access the value of the event
   }}
 ```
 

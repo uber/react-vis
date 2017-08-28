@@ -146,7 +146,7 @@ See [interaction](interaction.md)
 #### onSeriesClick
 Type: `function`
 Default: none
-This handler fires when the user clicks somewhere on a series, and provides the corresponding event. Unlike onClick, it doesn't pass a specific datapoint.
+This handler fires when the user clicks somewhere on a series, and provides the corresponding event. Unlike onValueClick, it doesn't pass a specific datapoint.
 
 ```jsx
 <WhiskerSeries
@@ -181,6 +181,20 @@ This handler fires when the user mouses over a series, and provides the correspo
 ...
   onSeriesMouseOver={(event)=>{
     // does something on mouse over
+    // you can access the value of the event
+  }}
+```
+
+#### onSeriesRightClick
+Type: `function`
+Default: none
+This handler fires when the user right-clicks somewhere on a series, and provides the corresponding event. Unlike onValueRightClick, it doesn't pass a specific datapoint.
+
+```jsx
+<WhiskerSeries
+...
+  onSeriesRightClick={(event)=>{
+    // does something on click
     // you can access the value of the event
   }}
 ```
@@ -223,6 +237,20 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 ...
   onValueMouseOver={(datapoint, event)=>{
     // does something on click
+    // you can access the value of the event
+  }}
+```
+
+#### onValueRightClick
+Type: `function`
+Default: none
+This handler is triggered either when the user right-clicks on a mark.
+The handler passes two arguments, the corresponding datapoint and the actual event.
+```jsx
+<WhiskerSeries
+...
+  onValueClick={(datapoint, event)=>{
+    // does something on right click
     // you can access the value of the event
   }}
 ```
