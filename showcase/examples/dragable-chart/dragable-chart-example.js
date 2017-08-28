@@ -54,15 +54,15 @@ const seriesData = getRandomSeriesData(PLOT_DOMAIN.x[1], PLOT_DOMAIN.y[1]);
 class DragableChartExample extends React.Component {
   state = {
     isDrawing: false,
-    x: null,
-    x2: null,
+    selectionStart: null,
+    selectionEnd: null,
     hoveredX: null
   };
 
-  onMouseDown = node => this.setState({isDrawing: true, x: node.x, x2: null});
+  onMouseDown = node => this.setState({isDrawing: true, selectionStart: node.x, selectionEnd: null});
   onMouseUp = node => this.setState({isDrawing: false});
   onHover = node => this.setState(nextState =>
-    ({x2: nextState.isDrawing ? node.x : nextState.x2, hoveredX: node.x}));
+    ({selectionEnd: nextState.isDrawing ? node.x : nextState.selectionEnd, hoveredX: node.x}));
 
   render() {
     const PLOT_WIDTH = this.props.width;
@@ -92,13 +92,13 @@ class DragableChartExample extends React.Component {
             y={d => 0}
           />
 
-          {this.state.isDrawing && this.state.x2 !== null &&
-            <DragMarker x={x(this.state.x)} x2={x(this.state.x2)} />}
+          {this.state.isDrawing && this.state.selectionEnd !== null &&
+            <DragMarker selectionStart={x(this.state.selectionStart)} selectionEnd={x(this.state.selectionEnd)} />}
         </XYPlot>
 
         <div style={{marginLeft: '50px'}}>
-          <p><strong>x:</strong> {this.state.x}</p>
-          <p><strong>x2:</strong> {this.state.x2}</p>
+          <p><strong>selectionStart:</strong> {this.state.selectionStart}</p>
+          <p><strong>selectionEnd:</strong> {this.state.selectionEnd}</p>
           <p><strong>isDrawing:</strong> {this.state.isDrawing.toString()}</p>
         </div>
       </div>
