@@ -59,6 +59,7 @@ class DragableChartExample extends React.Component {
     hoveredX: null
   };
 
+  onMouseLeave = () => this.setState({isDrawing: false})
   onMouseDown = node => this.setState({isDrawing: true, selectionStart: node.x, selectionEnd: null});
   onMouseUp = node => this.setState({isDrawing: false});
   onHover = node => this.setState(nextState =>
@@ -71,6 +72,7 @@ class DragableChartExample extends React.Component {
     return (
       <div>
         <XYPlot
+          onMouseLeave={this.onMouseLeave}
           width={PLOT_WIDTH}
           height={PLOT_HEIGHT}
           margin={PLOT_MARGIN}
