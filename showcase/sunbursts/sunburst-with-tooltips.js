@@ -32,8 +32,8 @@ import {
 const DATA = {
   children: [
     {children: [
-      {size: 1, children: [], color: COLORS[1]},
-      {size: 1, children: [], color: COLORS[2]}
+      {size: 1, children: [], color: COLORS[1], label: 'excellent'},
+      {size: 1, children: [], color: COLORS[2], label: 'chart'}
     ], color: COLORS[3]},
     {
       size: 1,
@@ -48,8 +48,8 @@ const DATA = {
     {size: 1, children: [], color: COLORS[5], label: 'dogs'},
     {size: 1, children: [], color: COLORS[6], label: 'sunglasses'},
     {children: [
-      {size: 1, children: [], color: COLORS[7]},
-      {size: 1, children: [], color: COLORS[8]}
+      {size: 1, children: [], color: COLORS[7], label: 'great'},
+      {size: 1, children: [], color: COLORS[8], label: 'label'}
     ], color: COLORS[9]}
   ]
 };

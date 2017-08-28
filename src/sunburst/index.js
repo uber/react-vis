@@ -97,14 +97,24 @@ function buildLabels(mappedData) {
     const truedAngle = -1 * row.angle + Math.PI / 2;
     const truedAngle0 = -1 * row.angle0 + Math.PI / 2;
     const angle = (truedAngle0 + truedAngle) / 2;
+    const rotateLabels = !row.dontRotateLabel;
+    const rotAngle = -angle / (2 * Math.PI) * 360;
+
     return {
       ...row,
       children: null,
       angle: null,
       radius: null,
-      x: row.radius * Math.cos(angle),
-      y: row.radius * Math.sin(angle),
-      style: row.labelStyle
+      x: row.radius0 * Math.cos(angle),
+      y: row.radius0 * Math.sin(angle),
+      // style: row.labelStyle,
+      style: {
+        textAnchor: rotAngle > 90 ? 'end' : 'start',
+        ...row.labelStyle
+      },
+      rotation: rotateLabels ? (
+        rotAngle > 90 ? (rotAngle + 180) :
+        rotAngle === 90 ? 90 : (rotAngle)) : null
     };
   });
 }

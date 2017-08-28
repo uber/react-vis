@@ -113,6 +113,9 @@ Each point consists of following properties:
 * `labelStyle` (optional)  
   Type: `object`
   The style of the attached label. Example `{labelStyle: {fontSize: 15}, ...}`
+* `dontRotateLabel` (optional)  
+  Type: `boolean`
+  Dont rotate this label
 * `children` (optional)  
   Type: `Array`  
   The children for the leaf.
