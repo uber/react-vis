@@ -112,14 +112,14 @@ ContourSeries.propTypes = {
   })).isRequired,
   marginLeft: PropTypes.number,
   marginTop: PropTypes.number,
-  style: PropTypes.object,
-  requiresSVG: PropTypes.bool
+  _requiresSVG: PropTypes.bool,
+  style: PropTypes.object
 };
 
 ContourSeries.defaultProps = {
   bandwidth: 40,
-  style: {},
-  requiresSVG: true
+  _requiresSVG: true,
+  style: {}
 };
 
 export default ContourSeries;

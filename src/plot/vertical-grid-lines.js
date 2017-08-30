@@ -30,13 +30,13 @@ const {VERTICAL} = DIRECTION;
 const propTypes = {
   ...GridLines.propTypes,
   direction: PropTypes.oneOf([VERTICAL]),
-  requiresSVG: PropTypes.bool
+  _requiresSVG: PropTypes.bool
 };
 
 const defaultProps = {
   direction: VERTICAL,
   attr: 'x',
-  requiresSVG: true
+  _requiresSVG: true
 };
 
 function VerticalGridLines(props) {
@@ -48,5 +48,6 @@ function VerticalGridLines(props) {
 VerticalGridLines.displayName = 'VerticalGridLines';
 VerticalGridLines.propTypes = propTypes;
 VerticalGridLines.defaultProps = defaultProps;
+VerticalGridLines.requiresSVG = true;
 
 export default VerticalGridLines;

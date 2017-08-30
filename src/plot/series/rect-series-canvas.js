@@ -25,6 +25,14 @@ import {getAttributeFunctor, getAttr0Functor} from 'utils/scales-utils';
 import AbstractSeries from './abstract-series';
 
 class RectSeriesCanvas extends AbstractSeries {
+  static get requiresSVG() {
+    return false;
+  }
+
+  static get isCanvas() {
+    return true;
+  }
+
   static renderLayer(props, ctx) {
     const {
       data,
@@ -77,18 +85,18 @@ class RectSeriesCanvas extends AbstractSeries {
 
 RectSeriesCanvas.displayName = 'RectSeriesCanvas';
 RectSeriesCanvas.defaultProps = {
+  _isCanvas: true,
   linePosAttr: PropTypes.string.isRequired,
   valuePosAttr: PropTypes.string.isRequired,
   lineSizeAttr: PropTypes.string.isRequired,
   valueSizeAttr: PropTypes.string.isRequired,
-  requiresSVG: false,
-  isCanvas: true
+  _requiresSVG: false
 };
 
 RectSeriesCanvas.propTypes = {
   ...AbstractSeries.propTypes,
-  requiresSVG: PropTypes.bool,
-  isCanvas: PropTypes.bool
+  _isCanvas: PropTypes.bool,
+  _requiresSVG: PropTypes.bool
 };
 
 export default RectSeriesCanvas;

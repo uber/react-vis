@@ -27,6 +27,14 @@ import AbstractSeries from './abstract-series';
 import PropTypes from 'prop-types';
 
 class MarkSeriesCanvas extends AbstractSeries {
+  static get requiresSVG() {
+    return false;
+  }
+
+  static get isCanvas() {
+    return true;
+  }
+
   static renderLayer(props, ctx) {
     const {data, marginLeft, marginTop} = props;
 
@@ -57,14 +65,14 @@ class MarkSeriesCanvas extends AbstractSeries {
 
 MarkSeriesCanvas.displayName = 'MarkSeriesCanvas';
 MarkSeriesCanvas.defaultProps = {
-  requiresSVG: false,
-  isCanvas: true
+  _isCanvas: true,
+  _requiresSVG: false
 };
 
 MarkSeriesCanvas.propTypes = {
   ...AbstractSeries.propTypes,
-  requiresSVG: PropTypes.bool,
-  isCanvas: PropTypes.bool
+  _isCanvas: PropTypes.bool,
+  _requiresSVG: PropTypes.bool
 };
 
 export default MarkSeriesCanvas;

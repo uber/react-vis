@@ -48,18 +48,25 @@ const propTypes = {
   onSeriesClick: PropTypes.func,
   onNearestX: PropTypes.func,
   onNearestXY: PropTypes.func,
+  _requiresSVG: PropTypes.bool,
   style: PropTypes.object,
-  animation: AnimationPropType,
-  requiresSVG: PropTypes.bool
+  animation: AnimationPropType
 };
 
 const defaultProps = {
   className: '',
-  style: {},
-  requiresSVG: true
+  _requiresSVG: true,
+  style: {}
 };
 
 class AbstractSeries extends PureComponent {
+  /**
+   * Tells the rest of the world that it requires SVG to work.
+   * @returns {boolean} Result.
+   */
+  static get requiresSVG() {
+    return true;
+  }
   /**
    * Get a default config for the parent.
    * @returns {Object} Empty config.

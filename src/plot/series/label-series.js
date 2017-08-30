@@ -107,15 +107,15 @@ LabelSeries.propTypes = {
   })).isRequired,
   marginLeft: PropTypes.number,
   marginTop: PropTypes.number,
+  _requiresSVG: PropTypes.bool,
   rotation: PropTypes.number,
   xRange: PropTypes.arrayOf(PropTypes.number),
-  yRange: PropTypes.arrayOf(PropTypes.number),
-  requiresSVG: PropTypes.bool
+  yRange: PropTypes.arrayOf(PropTypes.number)
 };
 LabelSeries.defaultProps = {
   animation: false,
-  rotation: 0,
-  requiresSVG: true
+  _requiresSVG: true,
+  rotation: 0
 };
 LabelSeries.displayName = 'LabelSeries';
 export default LabelSeries;

@@ -41,7 +41,7 @@ const defaultProps = {
   opacity: 1,
   curve: null,
   className: '',
-  requiresSVG: true
+  _requiresSVG: true
 };
 
 const propTypes = {

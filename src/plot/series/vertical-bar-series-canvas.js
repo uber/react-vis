@@ -23,6 +23,14 @@ import BarSeries from './bar-series-canvas';
 import PropTypes from 'prop-types';
 
 class HorizontalBarSeriesCanvas extends AbstractSeries {
+  static get requiresSVG() {
+    return false;
+  }
+
+  static get isCanvas() {
+    return true;
+  }
+p
   static getParentConfig(attr) {
     const isDomainAdjustmentNeeded = attr === 'x';
     const zeroBaseValue = attr === 'y';
@@ -50,13 +58,13 @@ class HorizontalBarSeriesCanvas extends AbstractSeries {
 HorizontalBarSeriesCanvas.displayName = 'HorizontalBarSeriesCanvas';
 HorizontalBarSeriesCanvas.propTypes = {
   ...AbstractSeries.propTypes,
-  requiresSVG: PropTypes.bool,
-  isCanvas: PropTypes.bool
+  _isCanvas: PropTypes.bool,
+  _requiresSVG: PropTypes.bool
 };
 HorizontalBarSeriesCanvas.defaultProps = {
   ...AbstractSeries.defaultProps,
-  requiresSVG: false,
-  isCanvas: true
+  _isCanvas: true,
+  _requiresSVG: false
 };
 
 export default HorizontalBarSeriesCanvas;

@@ -36,7 +36,7 @@ const propTypes = {
   marginRight: PropTypes.number,
   innerWidth: PropTypes.number,
   innerHeight: PropTypes.number,
-  requiresSVG: PropTypes.bool
+  _requiresSVG: PropTypes.bool
 };
 
 const CLASSES = {
@@ -99,15 +99,16 @@ class Borders extends PureComponent {
 Borders.displayName = 'Borders';
 Borders.defaultProps = {
   className: '',
+  _requiresSVG: true,
   style: {
     all: {},
     bottom: {},
     left: {},
     right: {},
     top: {}
-  },
-  requiresSVG: true
+  }
 };
 Borders.propTypes = propTypes;
+Borders.requiresSVG = true;
 
 export default Borders;

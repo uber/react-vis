@@ -95,6 +95,7 @@ DecorativeAxis.defaultProps = {
   numberOfTicks: 10,
   tickValue: d => DEFAULT_FORMAT(d),
   tickSize: 5,
+  _requiresSVG: true,
   style: {
     line: {
       strokeWidth: 1
@@ -103,8 +104,7 @@ DecorativeAxis.defaultProps = {
       strokeWidth: 2
     },
     text: {}
-  },
-  requiresSVG: true
+  }
 };
 DecorativeAxis.propTypes = {
   ...AbstractSeries.propTypes,

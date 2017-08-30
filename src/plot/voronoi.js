@@ -31,14 +31,16 @@ function Voronoi({className, extent, nodes, onBlur, onClick, onHover, polygonSty
   );
 }
 
+Voronoi.requiresSVG = true;
+
 Voronoi.defaultProps = {
   className: '',
   onBlur: NOOP,
   onClick: NOOP,
   onHover: NOOP,
+  _requiresSVG: true,
   x: d => d.x,
-  y: d => d.y,
-  requiresSVG: true
+  y: d => d.y
 };
 
 Voronoi.propTypes = {
@@ -50,9 +52,9 @@ Voronoi.propTypes = {
   onBlur: PropTypes.func,
   onClick: PropTypes.func,
   onHover: PropTypes.func,
+  _requiresSVG: PropTypes.bool,
   x: PropTypes.func,
-  y: PropTypes.func,
-  requiresSVG: PropTypes.bool
+  y: PropTypes.func
 };
 
 export default Voronoi;

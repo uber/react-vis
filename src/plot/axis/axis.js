@@ -70,7 +70,7 @@ const propTypes = {
   marginRight: PropTypes.number,
   innerWidth: PropTypes.number,
   innerHeight: PropTypes.number,
-  requiresSVG: PropTypes.bool
+  _requiresSVG: PropTypes.bool
 };
 
 const defaultProps = {
@@ -79,7 +79,7 @@ const defaultProps = {
   tickSize: 6,
   tickPadding: 8,
   orientation: BOTTOM,
-  requiresSVG: true
+  _requiresSVG: true
 };
 
 const predefinedClassName = 'rv-xy-plot__axis';
@@ -201,5 +201,6 @@ class Axis extends PureComponent {
 Axis.displayName = 'Axis';
 Axis.propTypes = propTypes;
 Axis.defaultProps = defaultProps;
+Axis.requiresSVG = true;
 
 export default Axis;
