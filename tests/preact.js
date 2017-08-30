@@ -18,16 +18,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-//taken from https://preactjs.com/guide/unit-testing-with-enzyme
+// taken from https://preactjs.com/guide/unit-testing-with-enzyme
 const moduleAlias = require('module-alias');
 
 moduleAlias.addAliases({
-	"react-dom/server": "preact-render-to-string",
-	"react-addons-test-utils": "preact-test-utils",
-	"react-addons-transition-group": "preact-transition-group",
-	"react": "preact-compat-enzyme",
-	"react-dom": "preact-compat-enzyme",
-	"create-react-class": "preact-compat/lib/create-react-class"
+  'create-react-class': 'preact-compat/lib/create-react-class',
+  react: 'preact-compat-enzyme',
+  'react-addons-test-utils': 'preact-test-utils',
+  'react-addons-transition-group': 'preact-transition-group',
+  'react-dom': 'preact-compat-enzyme',
+  'react-dom/server': 'preact-render-to-string'
 });
 
 require('./index.js');

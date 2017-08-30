@@ -30,7 +30,7 @@ class HorizontalBarSeriesCanvas extends AbstractSeries {
   static get isCanvas() {
     return true;
   }
-p
+
   static getParentConfig(attr) {
     const isDomainAdjustmentNeeded = attr === 'x';
     const zeroBaseValue = attr === 'y';

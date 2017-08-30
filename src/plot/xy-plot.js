@@ -90,15 +90,16 @@ function checkIfMixinsAreEqual(nextScaleMixins, scaleMixins) {
   return equal(newMixins, oldMixins);
 }
 
-function isCanvas(c){
-  return c && ((c.type.isCanvas && !c.type.requiresSVG) || (c.type.isCanvas === 'undefined' && c.type.requiresSVG === 'undefined' && !c.props._requiresSVG && c.props.isCanvas));
+function isCanvas(c) {
+  return c && ((c.type.isCanvas && !c.type.requiresSVG) || (c.type.isCanvas === 'undefined' &&
+  c.type.requiresSVG === 'undefined' && !c.props._requiresSVG && c.props.isCanvas));
 }
 
-function isSVG(c){
+function isSVG(c) {
   return c && ((c.type.requiresSVG) || (typeof c.type.requiresSVG === 'undefined' && c.props._requiresSVG));
 }
 
-function isDOM(c){
+function isDOM(c) {
   return !isCanvas(c) && !isSVG(c);
 }
 
