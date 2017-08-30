@@ -1,37 +1,52 @@
+const PAGES = require('../constants/pages.js');
+const {docsRouting, docsNaming} = PAGES;
+
+let pages = [];
+
+// modify the results
+function buildResults(searchReg) {
+  return pages
+    .filter(page => page.text.match(searchReg) || page.name.match(searchReg));
+}
+
+/* eslint-disable consistent-this */
 module.exports = function worker(self) {
   self.addEventListener('message', (event) => {
     switch (event.data.actionType) {
     case 'getIndex':
-      // const myInit = {
-      //   method: 'GET',
-      //   headers: (new Headers()),
-      //   mode: 'cors',
-      //   cache: 'default'
-      // };
-      //
-      // const myRequest = new Request('markdown/examples/showcases/plots-showcase.md', myInit);
       fetch(
-        'http://localhost:3001/markdown/examples/showcases/plots-showcase.md',
-        {method: 'GET'}
+        'http://localhost:3001/markdown/index.json',
+        {
+          method: 'GET',
+          'content-type': 'application/json'
+        }
       )
-        .then(response => {
-          self.postMessage(JSON.stringify(response.text()));
-          // response.blob()
+      .then(response => response.json())
+      .then(body => {
+        pages = body.map(page => {
+
+          return {
+            text: page.text,
+            link: docsRouting[page.fileName] || '',
+            name: docsNaming[page.fileName] || ''
+          };
+        })
+        .sort((a, b) => {
+          return a.name > b.name ? 1 : (a.name < b.name ? -1 : 0);
         });
-        // .then(myBlob => {
-        // });
+        self.postMessage({actionType: 'successful-load', body: 'complete'});
+      });
+
       break;
     case 'search':
-      self.postMessage('search for thing');
+      const searchReg = new RegExp(event.data.searchString, 'i');
+      self.postMessage({
+        actionType: 'search-result',
+        body: event.data.searchString.length ? buildResults(searchReg) : []
+      });
       break;
     default:
       break;
     }
-    // // ev.data=4 from main.js
-    // const startNum = parseInt(event.data, 10);
-    // setInterval(() => {
-    //   const r = startNum / Math.random() - 1;
-    //   self.postMessage([r]);
-    // }, 500);
   });
 };

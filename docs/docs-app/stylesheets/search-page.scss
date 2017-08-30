@@ -1,0 +1,38 @@
+.search-page {
+  background-color: $pure-white;
+  padding: 20px;
+}
+
+.search-header {
+  height: 80px;
+  padding: 0 35px;
+}
+
+.search-bar {
+  border: 0;
+  font-size: 30px;
+  font-weight: 600;
+  max-height: 70px;
+  padding: 10px;
+
+  &:focus {
+    outline-width: 0;
+  }
+}
+
+.search-preview {
+  max-height: 100px;
+  overflow-y: hidden;
+  padding: 30px 0;
+
+  .markdown-body {
+    font-size: 8px;
+  }
+
+  h1,
+  h2,
+  h3,
+  pre {
+    display: none;
+  }
+}
