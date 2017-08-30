@@ -113,6 +113,7 @@ function getLabels(props) {
 function getPolygons(props) {
   const {
     animation,
+    colorRange,
     domains,
     data,
     style,
@@ -139,8 +140,8 @@ function getPolygons(props) {
       key={`${rowIndex}-polygon`}
       data={mappedData}
       style={{
-        stroke: row.color || row.stroke || DISCRETE_COLOR_RANGE[rowIndex],
-        fill: row.color || row.fill || DISCRETE_COLOR_RANGE[rowIndex],
+        stroke: row.color || row.stroke || colorRange[rowIndex],
+        fill: row.color || row.fill || colorRange[rowIndex],
         ...style.polygons
       }}
       />);
@@ -153,6 +154,7 @@ class RadarChart extends Component {
       animation,
       className,
       children,
+      colorRange,
       data,
       domains,
       height,
@@ -177,6 +179,7 @@ class RadarChart extends Component {
 
     const polygons = getPolygons({
       animation,
+      colorRange,
       domains,
       data,
       startingAngle,
@@ -212,6 +215,7 @@ RadarChart.propTypes = {
   animation: AnimationPropType,
   className: PropTypes.string,
   colorType: PropTypes.string,
+  colorRange: PropTypes.arrayOf(PropTypes.string),
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   domains: PropTypes.arrayOf(
     PropTypes.shape({
