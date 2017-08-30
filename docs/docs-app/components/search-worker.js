@@ -15,7 +15,7 @@ module.exports = function worker(self) {
     switch (event.data.actionType) {
     case 'getIndex':
       fetch(
-        'http://localhost:3001/markdown/index.json',
+        `${location.origin}/markdown/index.json`,
         {
           method: 'GET',
           'content-type': 'application/json'
