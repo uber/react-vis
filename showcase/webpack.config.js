@@ -9,7 +9,7 @@ const jsRule = {
 };
 
 const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
-
+const isPreact = process.env.USE_PREACT === 'true'; // eslint-disable-line
 const config = isProd ? {
 
   entry,
@@ -18,7 +18,6 @@ const config = isProd ? {
     path: './',
     filename: 'bundle.js'
   },
-
   module: {
     rules: [jsRule, {
       test: /\.scss$/,
@@ -48,5 +47,16 @@ const config = isProd ? {
   }
 
 };
+
+if (isPreact) {
+  config.resolve = {
+    alias: {
+      react: 'preact-compat',
+      'react-dom': 'preact-compat',
+      'create-react-class': 'preact-compat/lib/create-react-class'
+    },
+    extensions: ['.js', '.ts', '.tsx']
+  };
+}
 
 module.exports = config;

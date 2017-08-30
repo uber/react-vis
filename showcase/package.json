@@ -4,7 +4,9 @@
   "version": "0.1.0",
   "scripts": {
     "start": "webpack-dev-server --progress --hot --port 3001 --open",
-    "build": "NODE_ENV=production webpack"
+    "build": "NODE_ENV=production webpack",
+    "startPreact": "USE_PREACT=true webpack-dev-server --progress --hot --port 3001 --open",
+    "buildPreact": "USE_PREACT=true NODE_ENV=production webpack"
   },
   "devDependencies": {
     "babel-loader": "^6.2.10",
