@@ -78,6 +78,11 @@ An object which holds CSS properties that will be applied to the SVG element(s) 
 
 ### Interaction handlers
 
+Note - interacting with a line may be difficult especially with the standard width. To address that, consider:
+- the proximity handlers - onNearestX, onNearestXY;
+- increasing the width of your line to make it easier to reach with the mouse,
+- creating a near-transparent line series with extra width to catch mouse events. 
+
 #### onNearestX (optional)
 Type: `function(value, {event, innerX, index})`  
 A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor. 
@@ -136,5 +141,19 @@ This handler fires when the user mouses over a LineSeries, and provides the corr
   onSeriesMouseOver={(event)=>{
   	// does something on mouse over
   	// you can access the value of the event
+  }}
+```
+
+#### onSeriesRightClick
+Type: `function`  
+Default: none  
+This handler fires when the user right-clicks somewhere on a LineSeries, and provides the corresponding event. See [interaction](interaction.nd)
+
+```jsx
+<LineSeries
+...
+  onSeriesRightClick={(event)=>{
+    // does something on click
+    // you can access the value of the event
   }}
 ```

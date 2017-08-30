@@ -113,6 +113,9 @@ Each point consists of following properties:
 * `labelStyle` (optional)  
   Type: `object`
   The style of the attached label. Example `{labelStyle: {fontSize: 15}, ...}`
+* `dontRotateLabel` (optional)  
+  Type: `boolean`
+  Dont rotate this label
 * `children` (optional)  
   Type: `Array`  
   The children for the leaf.
@@ -138,6 +141,12 @@ Type: `function`
 - Should accept arguments (arc node, domEvent)
 
 Pass in a function that will be called on click on a given arc.
+
+#### onValueRightClick (optional)
+Type: `function`
+- Should accept arguments (arc node, domEvent)
+
+Pass in a function that will be called on right click on a given arc.
 
 #### onValueMouseOver (optional)
 Type: `function`

@@ -1598,7 +1598,7 @@ d3-contour@^1.1.0:
   dependencies:
     d3-array "^1.1.1"
 
-d3-format@1:
+d3-format@1, d3-format@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.2.0.tgz#6b480baa886885d4651dc248a8f4ac9da16db07a"
 

@@ -42,6 +42,7 @@ import './components/contour-series-tests';
 import './components/custom-svg-series-tests';
 import './components/data-article-tests';
 import './components/decorative-axis-tests';
+import './components/dragable-chart-tests';
 import './components/gradient-tests';
 import './components/heatmap-tests';
 import './components/interaction-article-tests';

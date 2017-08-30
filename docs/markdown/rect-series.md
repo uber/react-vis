@@ -140,26 +140,34 @@ Callback is triggered with two arguments. `value` is the data point, `info` obje
 - `event` is the event object.
 See [interaction](interaction.md)
 
-#### onValueMouseOver (optional)
+#### onValueClick (optional)
 Type: `function(d, {event})`  
-`mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
+`click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
 
 #### onValueMouseOut (optional)
 Type: `function(d, {event})`  
 `mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
 
-#### onValueClick (optional)
+#### onValueMouseOver (optional)
 Type: `function(d, {event})`  
-`click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
+`mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
 
-#### onSeriesMouseOver (optional)
+#### onValueRightClick (optional)
+Type: `function(d, {event})`  
+`right-click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
+
+#### onSeriesClick (optional)
 Type: `function({event})`  
-`mouseover` event handler for the entire series. Receives an object as argument with the `event` property.
+`click` event handler for the entire series. Receives an object as argument with the `event` property.
 
 #### onSeriesMouseOut (optional)
 Type: `function({event})`  
 `mouseout` event handler for the entire series. Receives an object as argument with the `event` property.
 
-#### onSeriesClick (optional)
+#### onSeriesMouseOver (optional)
 Type: `function({event})`  
-`click` event handler for the entire series. Receives an object as argument with the `event` property.
+`mouseover` event handler for the entire series. Receives an object as argument with the `event` property.
+
+#### onSeriesRightClick (optional)
+Type: `function({event})`  
+`right-click` event handler for the entire series. Receives an object as argument with the `event` property.

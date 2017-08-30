@@ -18,6 +18,7 @@ import {
   ResponsiveVis,
   StreamgraphExample,
   ZoomableChart,
+  DragableChart,
   HistoryExample
 } from './showcase-index';
 
@@ -42,7 +43,8 @@ const sectionNames = [
   {showByDefault: false, link: 'streamgraph', name: 'Streamgraph', showcase: StreamgraphExample},
   {showByDefault: false, link: 'responsive', name: 'ResponsiveVis', showcase: ResponsiveVis},
   {showByDefault: false, link: 'history', name: 'HistoryExample', showcase: HistoryExample},
-  {showByDefault: false, link: 'zoomable', name: 'ZoomableChart', showcase: ZoomableChart}
+  {showByDefault: false, link: 'zoomable', name: 'ZoomableChart', showcase: ZoomableChart},
+  {showByDefault: false, link: 'dragable', name: 'DragableChart', showcase: DragableChart}
 ];
 
 class App extends Component {

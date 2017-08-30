@@ -76,6 +76,7 @@ class LabelSeries extends AbstractSeries {
             className: 'rv-xy-plot__series--label-text',
             key: i,
             onClick: e => this._valueClickHandler(d, e),
+            onContextMenu: e => this._valueRightClickHandler(d, e),
             onMouseOver: e => this._valueMouseOverHandler(d, e),
             onMouseOut: e => this._valueMouseOutHandler(d, e),
             textAnchor: leftOfMiddle ? 'start' : 'end',
