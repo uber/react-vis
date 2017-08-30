@@ -49,6 +49,7 @@ export default class BasicParallelCoordinates extends Component {
           {name: 'interior', domain: [0, 7]},
           {name: 'warranty', domain: [10, 2]}
         ]}
+        showMarks
         width={400}
         height={300} />
     );

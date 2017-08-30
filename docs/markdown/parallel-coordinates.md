@@ -1,6 +1,6 @@
 # Parallel Coordinates
 
-Radar charts provide a robust method for displaying many variables simultaneously. It allows for rapid at-a-glance comparisons across a bunch of dimensions. These graphics can effectively be used either with several data rows on a single chart (as below) or as a small multiple. For more information, check out the [Wiki](https://en.wikipedia.org/wiki/Parallel_coordinates), it's got some really neat examples.
+Parallel Coordinates provide a robust method for displaying many variables simultaneously. It allows for rapid at-a-glance comparisons across a bunch of dimensions. These graphics can effectively be used either with several data rows on a single chart (as below) or as a small multiple. For more information, check out the [Wiki](https://en.wikipedia.org/wiki/Parallel_coordinates), it's got some really neat examples.
 
 <!-- INJECT:"BasicParallelCoordinates" -->
 
@@ -52,7 +52,7 @@ PropTypes.shape({
 Let's looks at each member of the object
 
 - name: generates a member of a labelSeries that shows at the end of the corresponding axis
-- domain: a pair of numbers that are interpolated between. Setting these values correctly is essential for making your graphic legible! Because it is often the case that there will only be one or two data rows in a radar chart, react-vis requires the user to specify the exact domain for each variable. Without which we would be unable to plot the variables well.
+- domain: a pair of numbers that are interpolated between. Setting these values correctly is essential for making your graphic legible! Because it is often the case that there will only be one or two data rows in a parallel coordinates, react-vis requires the user to specify the exact domain for each variable. Without which we would be unable to plot the variables well.
 - tickFormat: allows the user to provide a formatting function for prettifiying the the way that axis interpolates between the domain values.
 
 #### width
@@ -100,7 +100,11 @@ Provide an additional class name for the series.
 
 #### colorType (optional)
 Type: `string`
-Specify the type of color scale to be used on the radar chart, please refer to [Scales and data](scales-and-data.md) for more information.
+Specify the type of color scale to be used on the parallel coordinates chart, please refer to [Scales and data](scales-and-data.md) for more information.
+
+#### showMarks (optional)
+Type: 'boolean'
+Specific whether or not to show the marks on the vertices of the lines
 
 #### tickFormat (optional)
 Type: 'function'

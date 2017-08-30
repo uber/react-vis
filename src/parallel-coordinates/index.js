@@ -28,6 +28,7 @@ import XYPlot from 'plot/xy-plot';
 import {DISCRETE_COLOR_RANGE} from 'theme';
 import {MarginPropType} from 'utils/chart-utils';
 import LineSeries from 'plot/series/line-series';
+import LineMarkSeries from 'plot/series/line-mark-series';
 import LabelSeries from 'plot/series/label-series';
 import DecorativeAxis from 'plot/axis/decorative-axis';
 
@@ -97,6 +98,7 @@ function getLabels(props) {
  - props.data {Array} array of object specifying what values are to be plotted
  - props.domains {Array} array of object specifying the way each axis is to be plotted
  - props.style {object} style object for the whole chart
+ - props.showMarks {Bool} whether or not to use the line mark series
  * @return {Array} the plotted axis components
  */
 function getLines(props) {
@@ -105,7 +107,8 @@ function getLines(props) {
     colorRange,
     domains,
     data,
-    style
+    style,
+    showMarks
   } = props;
   const scales = domains.reduce((acc, domain) => {
     acc[domain.name] = scaleLinear().domain(domain.domain).range([0, 1]);
@@ -119,15 +122,15 @@ function getLines(props) {
         y: scales[domain.name](row[domain.name])
       };
     });
-
-    return (<LineSeries
-      animation={animation}
-      className={`${predefinedClassName}-line`}
-      key={`${rowIndex}-polygon`}
-      data={mappedData}
-      color={row.color || colorRange[rowIndex % colorRange.length]}
-      style={style.lines}
-      />);
+    const lineProps = {
+      animation,
+      className: `${predefinedClassName}-line`,
+      key: `${rowIndex}-polygon`,
+      data: mappedData,
+      color: row.color || colorRange[rowIndex % colorRange.length],
+      style: style.lines
+    };
+    return showMarks ? <LineMarkSeries {...lineProps} /> : <LineSeries {...lineProps} />;
   });
 }
 
@@ -145,6 +148,7 @@ class ParallelCoordinates extends Component {
       margin,
       onMouseLeave,
       onMouseEnter,
+      showMarks,
       style,
       tickFormat,
       width
@@ -163,6 +167,7 @@ class ParallelCoordinates extends Component {
       colorRange,
       domains,
       data,
+      showMarks,
       style
     });
     const labelSeries = (
@@ -211,6 +216,7 @@ ParallelCoordinates.propTypes = {
     labels: PropTypes.object,
     lines: PropTypes.object
   }),
+  showMarks: PropTypes.bool,
   tickFormat: PropTypes.func,
   width: PropTypes.number.isRequired
 };
