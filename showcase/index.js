@@ -118,6 +118,9 @@ import ArcSeriesExample from './radial-chart/arc-series-example';
 import BasicRadarChart from './radar-chart/basic-radar-chart';
 import AnimatedRadarChart from './radar-chart/animated-radar-chart';
 
+import BasicParallelCoordinates from './parallel-coordinates/basic-parallel-coordinates';
+import AnimatedParallelCoordinates from './parallel-coordinates/animated-parallel-coordinates';
+
 import BasicSunburst from './sunbursts/basic-sunburst';
 import ClockExample from './sunbursts/clock-example';
 import AnimatedSunburst from './sunbursts/animated-sunburst';
@@ -222,6 +225,9 @@ export const showCase = {
 
   AnimatedRadarChart,
   BasicRadarChart,
+
+  BasicParallelCoordinates,
+  AnimatedParallelCoordinates,
 
   BasicSankeyExample,
   VoronoiSankeyExample,
