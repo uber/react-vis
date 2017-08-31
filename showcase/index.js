@@ -25,6 +25,7 @@ import LineChartCanvas from './plot/line-chart-canvas';
 import LineChartWithStyle from './plot/line-chart-with-style';
 import LineMarkChart from './plot/linemark-chart';
 import BarChart from './plot/bar-chart';
+import BigBaseBarChart from './plot/big-base-bar-chart';
 import StackedVerticalBarChart from './plot/stacked-vertical-bar-chart';
 import StackedHorizontalBarChart from './plot/stacked-horizontal-bar-chart';
 import ClusteredStackedVerticalBarChart from './plot/clustered-stacked-bar-chart';
@@ -137,6 +138,7 @@ export const showCase = {
   LineChartWithStyle,
   LineMarkChart,
   BarChart,
+  BigBaseBarChart,
   StackedVerticalBarChart,
   StackedHorizontalBarChart,
   ClusteredStackedVerticalBarChart,

@@ -8,6 +8,7 @@ import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import StackedHorizontalBarChart from '../../showcase/plot/stacked-horizontal-bar-chart';
 import StackedVerticalBarChart from '../../showcase/plot/stacked-vertical-bar-chart';
 import BarChart from '../../showcase/plot/bar-chart';
+import BigBaseBarChart from '../../showcase/plot/big-base-bar-chart';
 import ClusteredStackedVerticalBarChart from '../../showcase/plot/clustered-stacked-bar-chart';
 
 testRenderWithProps(HorizontalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
@@ -82,6 +83,18 @@ test('BarSeries: Showcase Example - ClusteredStackedVerticalBarChart', t => {
   t.equal($.text(), 'TOGGLE TO CANVASQ1Q2Q3Q40102030ApplesOranges', 'should fine the right text content');
   t.equal($.find('.rv-xy-plot__series--bar rect').length, 16, 'should find the right number of bars');
   t.equal($.find('.rv-xy-plot__series').length, 4, 'should find the right number of series');
+
+  $.find('.showcase-button').simulate('click');
+  t.equal($.find('.rv-xy-plot__series--bar rect').length, 0, 'should now find no rects');
+  t.equal($.find('.rv-xy-canvas canvas').length, 1, 'should now find one canvas');
+  t.end();
+});
+
+test('BarSeries: Showcase Example - BigBaseBarChart', t => {
+  const $ = mount(<BigBaseBarChart />);
+  t.equal($.text(), 'TOGGLE TO CANVAS:38:39:40:41199,800199,900200,000200,100200,200200,300200,400', 'should fine the right text content');
+  t.equal($.find('.rv-xy-plot__series--bar rect').length, 15, 'should find the right number of bars');
+  t.equal($.find('.rv-xy-plot__series').length, 1, 'should find the right number of series');
 
   $.find('.showcase-button').simulate('click');
   t.equal($.find('.rv-xy-plot__series--bar rect').length, 0, 'should now find no rects');

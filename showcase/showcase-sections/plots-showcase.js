@@ -6,6 +6,7 @@ const {
   AreaChart,
   AreaChartElevated,
   BarChart,
+  BigBaseBarChart,
   ClusteredStackedVerticalBarChart,
   ContourSeriesExample,
   ComplexChart,
@@ -78,6 +79,9 @@ const PLOTS = [{
   name: 'Bar Series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/bar-series.js',
   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/bar-series'
+}, {
+  component: BigBaseBarChart,
+  name: 'Big Base Bar Series'
 }, {
   name: 'Stacked Horizontal Bar Series',
   component: StackedHorizontalBarChart

@@ -288,7 +288,8 @@ class XYPlot extends React.Component {
           adjustWhat.add(index);
         }
         if (zeroBaseValue) {
-          zeroBaseProps[`${attr}BaseValue`] = 0;
+          const specifiedDomain = props[`${attr}Domain`];
+          zeroBaseProps[`${attr}BaseValue`] = specifiedDomain ? specifiedDomain[0] : 0;
         }
       });
     });
