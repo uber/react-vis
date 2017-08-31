@@ -55,6 +55,8 @@ export default class Example extends React.Component {
       <div>
         <ShowcaseButton onClick={() => this.setState({data: generateData()})} buttonContent="UPDATE"/>
         <XYPlot
+          yDomain={[-1, 22]}
+          xDomain={[-1, 5]}
           width={300}
           height={300}>
           <XAxis />
