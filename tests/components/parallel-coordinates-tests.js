@@ -32,7 +32,8 @@ test('Parallel Coordinates: Showcase Example - Basic Parallel Coordinates', t =>
   const $ = mount(<BasicParallelCoordinates />);
   t.equal($.find('.rv-parallel-coordinates-chart').length, 1, 'should find a parallel coordinates chart');
   t.equal($.find('.rv-xy-manipulable-axis__ticks').length, 6, 'should find the right number of axes');
-  t.equal($.find('.rv-parallel-coordinates-chart-line').length, 3, 'should find the right number of axes');
+  t.equal($.find('.rv-parallel-coordinates-chart-line').length, 6, 'should find the right number of lines');
+  t.equal($.find('circle').length, 18, 'should find the right number of nodes rendered');
   t.equal($.find('.rv-parallel-coordinates-chart').text(), '0.002.004.006.008.0010.0$2.0$4.8$7.6$10$13$165.006.007.008.009.0010.00.002.004.006.008.0010.00.001.402.804.205.607.0010.08.406.805.203.602.00mileagepricesafetyperformanceinteriorwarranty', 'should find the right text content');
   t.end();
 });
