@@ -11,5 +11,11 @@ test('LabelSeries: Showcase Example - LabelSeriesExample', t => {
   const $ = mount(<LabelSeriesExample />);
   t.equal($.text(), 'UPDATE1.01.52.02.53.03.54.05101520WigglytuffPsyduckGeodudeDittoSnorlax', 'should find the right text content');
   t.equal($.find('.rv-xy-plot__series--label text').length, 5, 'should find the right number of text boxes');
+
+  const postAnimationText = 'UPDATE0.51.01.52.02.551015WigglytuffPsyduckGeoduderedblue';
+  $.find('.showcase-button').simulate('click');
+  t.equal($.text(), postAnimationText, 'should find the right text content');
+  $.find('.showcase-button').simulate('click');
+  t.equal($.text(), postAnimationText, 'should find the right text content');
   t.end();
 });

@@ -34,8 +34,8 @@ function generateData() {
     {x: Math.random() * 3, y: Math.random() * 20, label: 'Wigglytuff', size: 30, style: {fontSize: 20}},
     {x: Math.random() * 3, y: Math.random() * 20, label: 'Psyduck', size: 10},
     {x: Math.random() * 3, y: Math.random() * 20, label: 'Geodude', size: 1},
-    {x: Math.random() * 3, y: Math.random() * 20, label: 'Ditto', size: 12, rotation: 45},
-    {x: Math.random() * 3, y: Math.random() * 20, label: 'Snorlax', size: 4}
+    {x: Math.random() * 3, y: Math.random() * 20, label: 'red', size: 12, rotation: 45},
+    {x: Math.random() * 3, y: Math.random() * 20, label: 'blue', size: 4}
   ];
 }
 
