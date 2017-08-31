@@ -140,8 +140,8 @@ function getPolygons(props) {
       key={`${rowIndex}-polygon`}
       data={mappedData}
       style={{
-        stroke: row.color || row.stroke || colorRange[rowIndex],
-        fill: row.color || row.fill || colorRange[rowIndex],
+        stroke: row.color || row.stroke || colorRange[rowIndex % colorRange.length],
+        fill: row.color || row.fill || colorRange[rowIndex % colorRange.length],
         ...style.polygons
       }}
       />);
