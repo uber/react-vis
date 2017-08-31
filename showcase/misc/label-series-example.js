@@ -34,8 +34,8 @@ function generateData() {
     {x: Math.random() * 3, y: Math.random() * 20, label: 'Wigglytuff', size: 30, style: {fontSize: 20}},
     {x: Math.random() * 3, y: Math.random() * 20, label: 'Psyduck', size: 10},
     {x: Math.random() * 3, y: Math.random() * 20, label: 'Geodude', size: 1},
-    {x: Math.random() * 3, y: Math.random() * 20, label: 'Ditto', size: 12, rotation: 45},
-    {x: Math.random() * 3, y: Math.random() * 20, label: 'Snorlax', size: 4}
+    {x: Math.random() * 3, y: Math.random() * 20, label: 'red', size: 12, rotation: 45},
+    {x: Math.random() * 3, y: Math.random() * 20, label: 'blue', size: 4}
   ];
 }
 
@@ -55,6 +55,8 @@ export default class Example extends React.Component {
       <div>
         <ShowcaseButton onClick={() => this.setState({data: generateData()})} buttonContent="UPDATE"/>
         <XYPlot
+          yDomain={[-1, 22]}
+          xDomain={[-1, 5]}
           width={300}
           height={300}>
           <XAxis />
