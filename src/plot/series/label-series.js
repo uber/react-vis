@@ -98,8 +98,8 @@ LabelSeries.propTypes = {
   allowOffsetToBeReversed: PropTypes.bool,
   className: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape({
-    x: PropTypes.number,
-    y: PropTypes.number,
+    x: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    y: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     angle: PropTypes.number,
     radius: PropTypes.number,
     label: PropTypes.string,

@@ -227,6 +227,9 @@ export const docPages = generatePath([
     }, {
       name: 'Sunburst Diagram',
       filename: 'sunburst.md'
+    }, {
+      name: 'Parallel Coordinates',
+      filename: 'parallel-coordinates.md'
     }]
   }
 ]);

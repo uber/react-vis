@@ -95,7 +95,9 @@ class DragableChartExample extends React.Component {
           />
 
           {this.state.isDrawing && this.state.selectionEnd !== null &&
-            <DragMarker selectionStart={x(this.state.selectionStart)} selectionEnd={x(this.state.selectionEnd)} />}
+            <DragMarker
+              selectionStart={x(this.state.selectionStart)}
+              selectionEnd={x(this.state.selectionEnd)} />}
         </XYPlot>
 
         <div style={{marginLeft: '50px'}}>

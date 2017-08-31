@@ -11,6 +11,7 @@ import {
   LegendsShowcase,
   SankeysShowcase,
   TreemapShowcase,
+  ParallelCoordinatesShowcase,
   MiscShowcase,
 
   Candlestick,
@@ -34,6 +35,12 @@ const sectionNames = [
   {showByDefault: true, link: 'legends', name: 'Legends', showcase: LegendsShowcase},
   {showByDefault: true, link: 'sunbursts', name: 'Sunbursts', showcase: SunburstSection},
   {showByDefault: true, link: 'sankeys', name: 'Sankeys', showcase: SankeysShowcase},
+  {
+    showByDefault: true,
+    link: 'parallel-coordinates',
+    name: 'Parallel Coordinates',
+    showcase: ParallelCoordinatesShowcase
+  },
   {showByDefault: true, link: 'misc', name: 'Misc', showcase: MiscShowcase},
 
   // in depth examples
