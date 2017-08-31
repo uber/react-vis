@@ -135,7 +135,7 @@ class PlotsShowcase extends Component {
     return (
       <article id="plots">
         <h1>Plots</h1>
-        {forExample && (<section>
+        {!forExample && (<section>
           <ComplexChart />
         </section>)}
         <h2>Series Types</h2>
