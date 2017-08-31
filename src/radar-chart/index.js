@@ -127,7 +127,7 @@ function getPolygons(props) {
   return data.map((row, rowIndex) => {
     const mappedData = domains.map((domain, index) => {
       const dataPoint = row[domain.name];
-      // error handling if point doesn't exisit
+      // error handling if point doesn't exist
       const angle = index / domains.length * Math.PI * 2 + startingAngle;
       // dont let the radius become negative
       const radius = Math.max(scales[domain.name](dataPoint), 0);
@@ -187,7 +187,7 @@ class RadarChart extends Component {
     });
     const labelSeries = (
       <LabelSeries
-        animation
+        animation={animation}
         key={className}
         className={`${predefinedClassName}-label`}
         data={getLabels({domains, style: style.labels, startingAngle})} />
