@@ -30,100 +30,105 @@ const {
   WidthHeightMarginChart
 } = showCase;
 
-const PLOTS = [{
-  component: LineChart,
-  name: 'Line Series',
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
-}, {
-  component: LineChartWithStyle,
-  name: 'Line Series with style',
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
-},
+const PLOTS = [
+//   {
+//   component: LineChart,
+//   name: 'Line Series',
+//   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
+//   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
+// }, {
+//   component: LineChartWithStyle,
+//   name: 'Line Series with style',
+//   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
+//   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
+// },
+// {
+//   component: LineMarkChart,
+//   name: 'LineMark Series',
+//   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-mark-series.js',
+//   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
+// }, {
+//   component: LineChartCanvas,
+//   name: 'Line Series Canvas'
+// }, {
+//   component: LineChartManyColors,
+//   name: 'Line Series With Many Colors'
+// }, {
+//   component: ScatterplotChart,
+//   name: 'Mark Series',
+//   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/mark-series.js',
+//   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/mark-series'
+// }, {
+//   component: ScatterplotCanvas,
+//   name: 'Mark Series Canvas'
+// }, {
+//   component: WhiskerChart,
+//   name: 'Whisker Series',
+//   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/whisker-series.js',
+//   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/whisker-series'
+// }, {
+//   component: AreaChart,
+//   name: 'Area Series',
+//   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/area-series.js'
+// }, {
+//   component: AreaChartElevated,
+//   name: 'Area Series With vertical offset',
+//   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/area-series.js'
+// },
 {
-  component: LineMarkChart,
-  name: 'LineMark Series',
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-mark-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
-}, {
-  component: LineChartCanvas,
-  name: 'Line Series Canvas'
-}, {
-  component: LineChartManyColors,
-  name: 'Line Series With Many Colors'
-}, {
-  component: ScatterplotChart,
-  name: 'Mark Series',
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/mark-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/mark-series'
-}, {
-  component: ScatterplotCanvas,
-  name: 'Mark Series Canvas'
-}, {
-  component: WhiskerChart,
-  name: 'Whisker Series',
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/whisker-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/whisker-series'
-}, {
-  component: AreaChart,
-  name: 'Area Series',
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/area-series.js'
-}, {
-  component: AreaChartElevated,
-  name: 'Area Series With vertical offset',
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/area-series.js'
-}, {
   component: BarChart,
   name: 'Bar Series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/bar-series.js',
   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/bar-series'
-}, {
-  name: 'Stacked Horizontal Bar Series',
-  component: StackedHorizontalBarChart
-}, {
-  name: 'Stacked Vertical Bar Series',
-  component: StackedVerticalBarChart
-}, {
-  name: 'Clustered Stacked Vertical Bar Series',
-  component: ClusteredStackedVerticalBarChart
-}, {
-  name: 'Stacked Vertical Rect Series (histogram)',
-  component: StackedHistogram
-}, {
-  name: 'Horizontal Rect Series',
-  component: Histogram
-}, {
-  name: 'Heatmap Series',
-  component: HeatmapChart,
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/heatmap-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/heatmap-series'
-}, {
-  name: 'Contour Series',
-  component: ContourSeriesExample
-}, {
-  name: 'Custom SVG Series',
-  component: CustomSVGExample
-}, {
-  name: 'Custom SVG - All The Mark',
-  component: CustomSVGAllTheMarks
-}];
+}
+// , {
+//   name: 'Stacked Horizontal Bar Series',
+//   component: StackedHorizontalBarChart
+// }, {
+//   name: 'Stacked Vertical Bar Series',
+//   component: StackedVerticalBarChart
+// }, {
+//   name: 'Clustered Stacked Vertical Bar Series',
+//   component: ClusteredStackedVerticalBarChart
+// }, {
+//   name: 'Stacked Vertical Rect Series (histogram)',
+//   component: StackedHistogram
+// }, {
+//   name: 'Horizontal Rect Series',
+//   component: Histogram
+// }, {
+//   name: 'Heatmap Series',
+//   component: HeatmapChart,
+//   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/heatmap-series.js',
+//   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/heatmap-series'
+// }, {
+//   name: 'Contour Series',
+//   component: ContourSeriesExample
+// }, {
+//   name: 'Custom SVG Series',
+//   component: CustomSVGExample
+// }, {
+//   name: 'Custom SVG - All The Mark',
+//   component: CustomSVGAllTheMarks
+// }
+];
 
-const BASIC_COMPONENTS = [{
-  name: 'Custom Size and Margin',
-  component: WidthHeightMarginChart
-}, {
-  name: 'Custom scales',
-  component: CustomScales
-}, {
-  name: 'Custom GridLines',
-  component: GridLinesChart
-}, {
-  name: 'Circular Gridlines',
-  component: FauxScatterplotChart,
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/circular-grid-lines.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot/grids'
-}];
+const BASIC_COMPONENTS = [];
+// [{
+//   name: 'Custom Size and Margin',
+//   component: WidthHeightMarginChart
+// }, {
+//   name: 'Custom scales',
+//   component: CustomScales
+// }, {
+//   name: 'Custom GridLines',
+//   component: GridLinesChart
+// }, {
+//   name: 'Circular Gridlines',
+//   component: FauxScatterplotChart,
+//   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/circular-grid-lines.js',
+//   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot/grids'
+// }];
 
 class PlotsShowcase extends Component {
   render() {
@@ -131,7 +136,7 @@ class PlotsShowcase extends Component {
     return (
       <article id="plots">
         <h1>Plots</h1>
-        {!forExample && (<section>
+        {forExample && (<section>
           <ComplexChart />
         </section>)}
         <h2>Series Types</h2>
