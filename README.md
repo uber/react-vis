@@ -90,7 +90,7 @@ You can checkout these example CodePens:
 
 ## More information
 
-Take a look at the [folder with examples](examples/) or check out some docs:
+Take a look at the [folder with examples](showcase/examples/) or check out some docs:
 
 - Common concepts:
   * [Scales and Data](docs/markdown/scales-and-data.md) about how the attributes can be adjusted.
@@ -100,6 +100,9 @@ Take a look at the [folder with examples](examples/) or check out some docs:
   * [RadialChart](docs/markdown/radial-chart.md) about radial charts.
   * [Treemap](docs/markdown/treemap.md) about making tree maps.
   * [Sankey](docs/markdown/sankey.md) about making sankey diagrams.
+  * [Radar Chart](docs/markdown/radar-chart.md) about making radar charts.
+  * [Parallel Coordinates](docs/markdown/parallel-coordinates.md) about making parallel coordinate charts.
+  * [Sunbursts](docs/markdown/sunburst.md) about making sunburst diagrams.
   * [Legends](docs/markdown/legends.md) about the legends.
 
 ## Development
