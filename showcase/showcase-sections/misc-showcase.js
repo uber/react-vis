@@ -5,6 +5,7 @@ const {
   AnimationExample,
   LabelSeriesExample,
   GradientExample,
+  NullDataExample,
   SyncedCharts,
   TimeChart,
   TriangleExample,
@@ -38,6 +39,9 @@ const MISC = [{
   component: LabelSeriesExample,
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/label-series.js',
   docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/label-series'
+}, {
+  name: 'Null Data Example',
+  component: NullDataExample
 }];
 
 class MiscShowcase extends Component {

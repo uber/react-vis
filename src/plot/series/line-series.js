@@ -40,6 +40,7 @@ const defaultProps = {
   style: {},
   opacity: 1,
   curve: null,
+  defined: null,
   className: ''
 };
 
@@ -49,12 +50,13 @@ const propTypes = {
   curve: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.func
-  ])
+  ]),
+  defined: PropTypes.func
 };
 
 class LineSeries extends AbstractSeries {
 
-  _renderLine(data, x, y, curve) {
+  _renderLine(data, x, y, curve, defined) {
     let line = d3Shape.line();
     if (curve !== null) {
       if (typeof curve === 'string' && d3Shape[curve]) {
@@ -62,6 +64,9 @@ class LineSeries extends AbstractSeries {
       } else if (typeof curve === 'function') {
         line = line.curve(curve);
       }
+    }
+    if (defined !== null && typeof defined === 'function') {
+      line = line.defined(defined);
     }
     line = line.x(x).y(y);
     return line(data);
@@ -81,7 +86,7 @@ class LineSeries extends AbstractSeries {
     }
 
     const {
-      strokeStyle, strokeDasharray, strokeWidth, marginLeft, marginTop, curve, style
+      strokeStyle, strokeDasharray, strokeWidth, marginLeft, marginTop, curve, defined, style
     } = this.props;
 
     const x = this._getAttributeFunctor('x');
@@ -90,7 +95,7 @@ class LineSeries extends AbstractSeries {
       this._getAttributeValue('color');
     const newOpacity = this._getAttributeValue('opacity');
     const opacity = Number.isFinite(newOpacity) ? newOpacity : DEFAULT_OPACITY;
-    const d = this._renderLine(data, x, y, curve);
+    const d = this._renderLine(data, x, y, curve, defined);
 
     return (
       <path
