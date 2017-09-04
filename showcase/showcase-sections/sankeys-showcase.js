@@ -4,7 +4,8 @@ import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
 const {
   BasicSankeyExample,
-  VoronoiSankeyExample
+  VoronoiSankeyExample,
+  EnergySankeyExample
 } = showCase;
 
 const SANKEYS = [{
@@ -15,6 +16,9 @@ const SANKEYS = [{
 }, {
   name: 'With Voronoi Selection',
   component: VoronoiSankeyExample
+}, {
+  name: 'Energy Example',
+  component: EnergySankeyExample
 }];
 
 class SankeysSection extends Component {

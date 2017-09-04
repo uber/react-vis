@@ -1,8 +1,8 @@
 # Sankey
 
-Note: This component is in alpha.
+Sankey diagrams are a form of graph that allows for the easy communication of flows and other transferal processes.
 
-<!-- INJECT:"BasicSankeyExample" -->
+<!-- INJECT:"EnergySankey" -->
 
 ### Usage
 
@@ -28,8 +28,11 @@ const links = [
 
 ##### width (required, pixels)
 ##### height (required, pixels)
-##### nodes (required)
 
+<!-- INJECT:"BasicSankey" -->
+
+##### nodes (required)
+Type: `Object`
 An array of objects matching the following shape:
 
 ```
@@ -46,7 +49,7 @@ The name will be displayed as a label next to its node.
 All these fields are optional.
 
 ##### links (required)
-
+Type: `Object`
 An array of objects matching the following shape, where both `source` and `target`
 are the indexes of the nodes they intent to represent, and `value` that would
 match the height of the path link.
@@ -65,57 +68,79 @@ match the height of the path link.
 ```
 
 ##### margin (pixels)
+Type: either number or {top: Number, left: Number, right: Number, bottom: Number}
+The margin that will applied around the edge of the diagram.
 
-The margin that will be applied to each side of the Sankey.
-
-Defaults to `20`.
-
-##### nodeWidth (pixels)
-
+##### nodeWidth
+Type: `Number`(pixels)  
+Defaults: `10`.
 Width of the nodes.
 
-Defaults to `10`.
-
-##### nodePadding (pixels)
-
+##### nodePadding
+Type: `Number`(pixels)
+Defaults: `10`.
 Padding between each node.
 
-Defaults to `10`.
-
 ##### align
-
-The alignment used for the sankey ([example](http://bl.ocks.org/vasturiano/b0b14f2e58fdeb0da61e62d51c649908)).
-Can be `justify`, `center`, `left`, `right`.
-
-Defaults to `justify`.
+Type: `String`, one of  `justify`, `center`, `left`, `right`
+Defaults: `justify`.
+The alignment used for the sankey, see above for an example.
 
 ##### layout
-
+Type: `Number`  
+Defaults: `50`.
 The number of passes the sankey algorithm will do in order to arrange positioning.
 
-Defaults to `50`.
-
 ##### hasVoronoi
-
+Type: `Boolean`  
+Defaults: `false`
 Determine if the node selection will be done using a voronoi or not. Although less
 precise, it can help providing a better interactive experience to the user.
 
-Defaults to `false`.
+<!-- INJECT:"VornoiSankey" -->
 
 ##### hideLabels
-
+Type: `Boolean`  
+Defaults: `false`.
 Hide the display of the node names if specified to true.
 
-Defaults to `false`.
 
-##### onClick
+##### onValueClick
+Type: `function`  
+Default: none  
+This handler is triggered either when the user clicks on a node. Callback when clicking a node, or the voronoi assigned to this node, pass the node.
+```jsx
+<Sankey
+...
+  onValueClick={(datapoint, event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```
 
-Callback when clicking a node, or the voronoi assigned to this node, pass the node.
 
-##### onHover
+##### onValueMouseOver
+Type: `function`  
+Default: none  
+This handler is triggered either when the user hovers over a node. Callback when clicking a node, or the voronoi assigned to this node, pass the node.
+```jsx
+<Sankey
+...
+  onValueClick={(datapoint, event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```
 
-Callback when hovering a node, or the voronoi assigned to this node, pass the node.
-
-##### onBlur
-
-Callback when bluring a node, or the voronoi assigned to this node, pass the node.
+##### onValueMouseOut
+Type: `function`  
+Default: none  
+This handler is triggered either when the users mouse leaves a node. Callback when clicking a node, or the voronoi assigned to this node, pass the node.
+```jsx
+<Sankey
+...
+  onValueClick={(datapoint, event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+```
