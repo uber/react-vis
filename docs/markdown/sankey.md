@@ -71,27 +71,27 @@ match the height of the path link.
 Type: either number or {top: Number, left: Number, right: Number, bottom: Number}
 The margin that will applied around the edge of the diagram.
 
-##### nodeWidth
+##### nodeWidth (optional)
 Type: `Number`(pixels)  
 Defaults: `10`.
 Width of the nodes.
 
-##### nodePadding
+##### nodePadding (optional)
 Type: `Number`(pixels)
 Defaults: `10`.
 Padding between each node.
 
-##### align
+##### align (optional)
 Type: `String`, one of  `justify`, `center`, `left`, `right`
 Defaults: `justify`.
 The alignment used for the sankey, see above for an example.
 
-##### layout
+##### layout (optional)
 Type: `Number`  
 Defaults: `50`.
 The number of passes the sankey algorithm will do in order to arrange positioning.
 
-##### hasVoronoi
+##### hasVoronoi (optional)
 Type: `Boolean`  
 Defaults: `false`
 Determine if the node selection will be done using a voronoi or not. Although less
@@ -99,13 +99,13 @@ precise, it can help providing a better interactive experience to the user.
 
 <!-- INJECT:"VornoiSankey" -->
 
-##### hideLabels
+##### hideLabels (optional)
 Type: `Boolean`  
 Defaults: `false`.
 Hide the display of the node names if specified to true.
 
 
-##### onValueClick
+##### onValueClick (optional)
 Type: `function`  
 Default: none  
 This handler is triggered either when the user clicks on a node. Callback when clicking a node, or the voronoi assigned to this node, pass the node.
@@ -119,7 +119,7 @@ This handler is triggered either when the user clicks on a node. Callback when c
 ```
 
 
-##### onValueMouseOver
+##### onValueMouseOver (optional)
 Type: `function`  
 Default: none  
 This handler is triggered either when the user hovers over a node. Callback when clicking a node, or the voronoi assigned to this node, pass the node.
@@ -132,7 +132,7 @@ This handler is triggered either when the user hovers over a node. Callback when
   }}
 ```
 
-##### onValueMouseOut
+##### onValueMouseOut (optional)
 Type: `function`  
 Default: none  
 This handler is triggered either when the users mouse leaves a node. Callback when clicking a node, or the voronoi assigned to this node, pass the node.
@@ -143,4 +143,19 @@ This handler is triggered either when the users mouse leaves a node. Callback wh
     // does something on click
     // you can access the value of the event
   }}
+```
+
+
+### style (optional)
+Type: `object`
+An object that contains CSS properties with which the axis component can be entirely re-styled.
+As the Sankey is composite of several composite elements, it is possible to provide style objects for any and all parts of the tree. See [style](style.md)
+Most generally, there are three top level components `labels`, `links`, and `rects`. These in turn lead to their corresponding to style objects. As an example, here is the default style object for the Sankey:
+
+```jsx
+<Sankey data={mydata} style={{
+  labels: {},
+  links: {},
+  rects: {}
+}}/>
 ```
