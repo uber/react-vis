@@ -73,14 +73,24 @@ class Crosshair extends PureComponent {
       marginTop: PropTypes.number,
       orientation: PropTypes.oneOf(['left', 'right']),
       itemsFormat: PropTypes.func,
-      titleFormat: PropTypes.func
+      titleFormat: PropTypes.func,
+      style: PropTypes.shape({
+        line: PropTypes.object,
+        title: PropTypes.object,
+        box: PropTypes.object
+      })
     };
   }
 
   static get defaultProps() {
     return {
       titleFormat: defaultTitleFormat,
-      itemsFormat: defaultItemsFormat
+      itemsFormat: defaultItemsFormat,
+      style: {
+        line: {},
+        title: {},
+        box: {}
+      }
     };
   }
 
@@ -90,13 +100,13 @@ class Crosshair extends PureComponent {
    * @private
    */
   _renderCrosshairTitle() {
-    const {values, titleFormat} = this.props;
+    const {values, titleFormat, style} = this.props;
     const titleItem = titleFormat(values);
     if (!titleItem) {
       return null;
     }
     return (
-      <div className="rv-crosshair__title" key="title">
+      <div className="rv-crosshair__title" key="title" style={style.title}>
         <span className="rv-crosshair__title__title">{titleItem.title}</span>
         {': '}
         <span className="rv-crosshair__title__value">{titleItem.value}</span>
@@ -133,7 +143,8 @@ class Crosshair extends PureComponent {
       marginTop,
       marginLeft,
       innerWidth,
-      innerHeight} = this.props;
+      innerHeight,
+      style} = this.props;
     const value = getFirstNonEmptyValue(values);
     if (!value) {
       return null;
@@ -154,12 +165,12 @@ class Crosshair extends PureComponent {
 
         <div
           className="rv-crosshair__line"
-          style={{height: `${innerHeight}px`}}/>
+          style={{height: `${innerHeight}px`, ...style.line}}/>
 
         <div className={innerClassName}>
           {children ?
             children :
-            <div className="rv-crosshair__inner__content">
+            <div className="rv-crosshair__inner__content" style={style.box}>
               <div>
                 {this._renderCrosshairTitle()}
                 {this._renderCrosshairItems()}
