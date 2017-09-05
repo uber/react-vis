@@ -32,7 +32,6 @@ const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--mark';
 const DEFAULT_STROKE_WIDTH = 1;
 
 class MarkSeries extends AbstractSeries {
-
   _renderCircle(d, i, strokeWidth, style) {
     const sizeFunctor = this._getAttributeFunctor('size');
     const opacityFunctor = this._getAttributeFunctor('opacity');
@@ -65,7 +64,7 @@ class MarkSeries extends AbstractSeries {
 
   render() {
     const {
-      animation, className, data, defined, marginLeft, marginTop, strokeWidth, style
+      animation, className, data, marginLeft, marginTop, nullAccessor, strokeWidth, style
     } = this.props;
     if (!data) {
       return null;
@@ -83,12 +82,7 @@ class MarkSeries extends AbstractSeries {
          ref="container"
          transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {
-          if (defined !== undefined && defined !== null) {
-            if (typeof defined !== 'function' || !defined(d)) {
-              return;
-            }
-          }
-          return this._renderCircle(d, i, strokeWidth, style);
+          return nullAccessor(d) && this._renderCircle(d, i, strokeWidth, style);
         })}
       </g>
     );
@@ -98,7 +92,11 @@ class MarkSeries extends AbstractSeries {
 MarkSeries.displayName = 'MarkSeries';
 MarkSeries.propTypes = {
   ...AbstractSeries.propTypes,
-  defined: PropTypes.func,
+  nullAccessor: PropTypes.func,
   strokeWidth: PropTypes.number
 };
+MarkSeries.defaultProps = {
+  nullAccessor: () => true
+};
+
 export default MarkSeries;

@@ -49,36 +49,26 @@ const DATA = [
 ];
 
 export default class NullDataExample extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      crosshairValues: []
-    };
+  state = {
+    crosshairValues: []
+  };
 
-    this._onNearestX = this._onNearestX.bind(this);
-    this._onMouseLeave = this._onMouseLeave.bind(this);
-  }
-
-  _onNearestX(value, {index}) {
+  onMouseLeave = () => this.setState({crosshairValues: []});
+  onNearestX = (value, {index}) =>
     this.setState({crosshairValues: DATA.map(d => d[index].y !== null && d[index])});
-  }
-
-  _onMouseLeave() {
-    this.setState({crosshairValues: []});
-  }
 
   render() {
     return (
       <XYPlot
         width={300}
         height={300}
-        onMouseLeave={this._onMouseLeave}>
+        onMouseLeave={this.onMouseLeave}>
         <XAxis/>
         <YAxis/>
         <HorizontalGridLines />
         <VerticalGridLines />
-        <AreaSeries defined={(d) => d.y !== null} onNearestX={this._onNearestX} data={DATA[0]} />
-        <LineMarkSeries defined={(d) => d.y !== null} data={DATA[1]} />
+        <AreaSeries nullAccessor={(d) => d.y !== null} onNearestX={this.onNearestX} data={DATA[0]} />
+        <LineMarkSeries nullAccessor={(d) => d.y !== null} data={DATA[1]} />
         <Crosshair
           values={this.state.crosshairValues}/>
       </XYPlot>

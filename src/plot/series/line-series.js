@@ -35,28 +35,8 @@ const STROKE_STYLES = {
   solid: null
 };
 
-const defaultProps = {
-  strokeStyle: 'solid',
-  style: {},
-  opacity: 1,
-  curve: null,
-  defined: null,
-  className: ''
-};
-
-const propTypes = {
-  ...AbstractSeries.propTypes,
-  strokeStyle: PropTypes.oneOf(Object.keys(STROKE_STYLES)),
-  curve: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func
-  ]),
-  defined: PropTypes.func
-};
-
 class LineSeries extends AbstractSeries {
-
-  _renderLine(data, x, y, curve, defined) {
+  _renderLine(data, x, y, curve, nullAccessor) {
     let line = d3Shape.line();
     if (curve !== null) {
       if (typeof curve === 'string' && d3Shape[curve]) {
@@ -65,9 +45,7 @@ class LineSeries extends AbstractSeries {
         line = line.curve(curve);
       }
     }
-    if (defined !== null && typeof defined === 'function') {
-      line = line.defined(defined);
-    }
+    line = line.defined(nullAccessor);
     line = line.x(x).y(y);
     return line(data);
   }
@@ -86,7 +64,7 @@ class LineSeries extends AbstractSeries {
     }
 
     const {
-      strokeStyle, strokeDasharray, strokeWidth, marginLeft, marginTop, curve, defined, style
+      curve, marginLeft, marginTop, nullAccessor, strokeDasharray, strokeStyle, strokeWidth, style
     } = this.props;
 
     const x = this._getAttributeFunctor('x');
@@ -95,7 +73,7 @@ class LineSeries extends AbstractSeries {
       this._getAttributeValue('color');
     const newOpacity = this._getAttributeValue('opacity');
     const opacity = Number.isFinite(newOpacity) ? newOpacity : DEFAULT_OPACITY;
-    const d = this._renderLine(data, x, y, curve, defined);
+    const d = this._renderLine(data, x, y, curve, nullAccessor);
 
     return (
       <path
@@ -118,7 +96,22 @@ class LineSeries extends AbstractSeries {
 }
 
 LineSeries.displayName = 'LineSeries';
-LineSeries.defaultProps = defaultProps;
-LineSeries.propTypes = propTypes;
+LineSeries.propTypes = {
+  ...AbstractSeries.propTypes,
+  strokeStyle: PropTypes.oneOf(Object.keys(STROKE_STYLES)),
+  curve: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func
+  ]),
+  nullAccessor: PropTypes.func
+};
+LineSeries.defaultProps = {
+  strokeStyle: 'solid',
+  style: {},
+  opacity: 1,
+  curve: null,
+  className: '',
+  nullAccessor: () => true
+};
 
 export default LineSeries;
