@@ -43,6 +43,16 @@ const funcCurveProp = <LineSeries data={data} curve={configuredCurve} .../>;
 Type: `Array<Object>`  
 Array of data for the series. See above data format reference.
 
+#### nullAccessor (optional)
+Type: `function`  
+Default: `null`  
+A function that will be invoked for each data element that will return a boolean that specifies if the data point should be drawn or not. For more information see [the D3 documentation](https://github.com/d3/d3-shape#line_defined).
+
+```javascript
+// Only draw datapoints where the y value is not equal to null
+<LineSeries nullAccessor={(d) => d.y !== null} data={data} />
+```
+
 #### opacity (optional)
 Type: `number`  
 Default: 1  

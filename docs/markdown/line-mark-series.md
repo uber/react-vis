@@ -56,6 +56,16 @@ Some, but not all line interpolations have the resulting curve going through the
 Type: `string|number`
 The inner color for all the marks in the series, this property will be over-ridden by fill specified in the data attribute. See [colors](colors.md)
 
+#### nullAccessor (optional)
+Type: `function`  
+Default: `null`  
+A function that will be invoked for each data element that will return a boolean that specifies if the data point should be drawn or not. For more information see [the D3 documentation](https://github.com/d3/d3-shape#line_defined).
+
+```javascript
+// Only draw datapoints where the y value is not equal to null
+<LineMarkSeries nullAccessor={(d) => d.y !== null} data={data} />
+```
+
 #### stroke (optional)
 Type: `string|number`  
 Default: see [colors](colors.md)  

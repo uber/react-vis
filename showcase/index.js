@@ -106,6 +106,7 @@ import HorizontalDiscreteCustomPalette from './legends/horizontal-discrete-custo
 import AnimationExample from './misc/animation-example';
 import LabelSeriesExample from './misc/label-series-example';
 import GradientExample from './misc/gradient-example';
+import NullDataExample from './misc/null-data-example';
 import SyncedCharts from './misc/synced-charts';
 import TimeChart from './misc/time-chart';
 import TriangleExample from './misc/triangle-example';
@@ -184,6 +185,7 @@ export const showCase = {
   CustomAxes,
   LabelSeriesExample,
   GradientExample,
+  NullDataExample,
 
   SensibleDefaults,
   ColorInXYPlot,
