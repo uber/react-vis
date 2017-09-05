@@ -107,7 +107,7 @@ Hide the display of the node names if specified to true.
 
 ##### onValueClick (optional)
 Type: `function`  
-Default: none  
+Default: noop  
 This handler is triggered either when the user clicks on a node. Callback when clicking a node, or the voronoi assigned to this node, pass the node.
 ```jsx
 <Sankey
@@ -121,7 +121,7 @@ This handler is triggered either when the user clicks on a node. Callback when c
 
 ##### onValueMouseOver (optional)
 Type: `function`  
-Default: none  
+Default: noop  
 This handler is triggered either when the user hovers over a node. Callback when clicking a node, or the voronoi assigned to this node, pass the node.
 ```jsx
 <Sankey
@@ -134,7 +134,7 @@ This handler is triggered either when the user hovers over a node. Callback when
 
 ##### onValueMouseOut (optional)
 Type: `function`  
-Default: none  
+Default: noop  
 This handler is triggered either when the users mouse leaves a node. Callback when clicking a node, or the voronoi assigned to this node, pass the node.
 ```jsx
 <Sankey

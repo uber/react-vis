@@ -52,7 +52,7 @@ export default class EnergySankey extends React.Component {
             },
             rects: {
               strokeWidth: 2,
-              stroke: 'red'
+              stroke: '#1A3177'
             }
           }}
           />

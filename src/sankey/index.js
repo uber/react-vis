@@ -10,6 +10,7 @@ import {
 } from 'd3-sankey';
 import XYPlot from 'plot/xy-plot';
 
+import {MarginPropType, getMargins} from 'utils/chart-utils';
 import VerticalRectSeries from 'plot/series/vertical-rect-series';
 import LabelSeries from 'plot/series/label-series';
 import Voronoi from 'plot/voronoi';
@@ -51,13 +52,7 @@ class Sankey extends Component {
     const nodesCopy = [...new Array(nodes.length)].map((e, i) => ({...nodes[i]}));
     const linksCopy = [...new Array(links.length)].map((e, i) => ({...links[i]}));
 
-    const formattedMargin = {
-      left: typeof margin === 'object' ? margin.left || 0 : margin,
-      right: typeof margin === 'object' ? margin.right || 0 : margin,
-      bottom: typeof margin === 'object' ? margin.bottom || 0 : margin,
-      top: typeof margin === 'object' ? margin.tom || 0 : margin
-    };
-
+    const formattedMargin = getMargins(margin);
     const sankeyInstance = sankey()
       .extent([
         [formattedMargin.left, formattedMargin.top],
@@ -90,30 +85,25 @@ class Sankey extends Component {
             node={link}
             nWidth={nWidth}
             key={`link-${i}`}/>
-        ))
-        }
-        {
-          <VerticalRectSeries
-            animation={animation}
-            className={`${className} rv-sankey__node`}
-            data={nodesCopy.map(node => {
-              return {
-                ...node,
-                y: node.y1 - formattedMargin.top,
-                y0: node.y0 - formattedMargin.top,
-                x: node.x1,
-                x0: node.x0,
-                color: node.color || DISCRETE_COLOR_RANGE[0],
-                sourceLinks: null,
-                targetLinks: null
-              };
-            })}
-            style={style.rects}
-            onValueClick={onValueClick}
-            onValueMouseOver={onValueMouseOver}
-            onValueMouseOut={onValueMouseOut}
-            colorType="literal" />
-        }
+        ))}
+        <VerticalRectSeries
+          animation={animation}
+          className={`${className} rv-sankey__node`}
+          data={nodesCopy.map(node => ({
+            ...node,
+            y: node.y1 - formattedMargin.top,
+            y0: node.y0 - formattedMargin.top,
+            x: node.x1,
+            x0: node.x0,
+            color: node.color || DISCRETE_COLOR_RANGE[0],
+            sourceLinks: null,
+            targetLinks: null
+          }))}
+          style={style.rects}
+          onValueClick={onValueClick}
+          onValueMouseOver={onValueMouseOver}
+          onValueMouseOut={onValueMouseOut}
+          colorType="literal" />
         {!hideLabels && (
           <LabelSeries
             animation={animation}
@@ -131,7 +121,9 @@ class Sankey extends Component {
         {hasVoronoi && (
           <Voronoi
             className="rv-sankey__voronoi"
-            extent={[[-margin, -margin], [width + margin, height + margin]]}
+            extent={[
+              [-formattedMargin.left, -formattedMargin.top],
+              [width + formattedMargin.right, height + formattedMargin.bottom]]}
             nodes={nodesCopy}
             onClick={onValueClick}
             onHover={onValueMouseOver}
@@ -152,7 +144,12 @@ Sankey.defaultProps = {
   hasVoronoi: false,
   hideLabels: false,
   layout: 50,
-  margin: 20,
+  margin: {
+    top: 20,
+    left: 20,
+    right: 20,
+    bottom: 20
+  },
   nodePadding: 10,
   nodeWidth: 10,
   onValueMouseOver: NOOP,
@@ -181,7 +178,7 @@ Sankey.propTypes = {
       PropTypes.object
     ]).isRequired
   })).isRequired,
-  margin: PropTypes.number,
+  margin: MarginPropType,
   nodePadding: PropTypes.number,
   nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
   nodeWidth: PropTypes.number,
