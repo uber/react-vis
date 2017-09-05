@@ -1,153 +1,199 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {sankey} from 'd3-sankey-align';
+import {
+  sankey,
+  sankeyLinkHorizontal,
+  sankeyLeft,
+  sankeyRight,
+  sankeyCenter,
+  sankeyJustify
+} from 'd3-sankey';
+import XYPlot from 'plot/xy-plot';
 
+import {MarginPropType, getInnerDimensions} from 'utils/chart-utils';
+import VerticalRectSeries from 'plot/series/vertical-rect-series';
+import LabelSeries from 'plot/series/label-series';
 import Voronoi from 'plot/voronoi';
 import {DISCRETE_COLOR_RANGE} from 'theme';
 
+import SankeyLink from './sankey-link';
 const NOOP = f => f;
 
-const DEFAULT_LINK_COLOR = DISCRETE_COLOR_RANGE[1];
-const DEFAULT_LINK_OPACITY = 0.7;
-const DEFAULT_NODE_COLOR = DISCRETE_COLOR_RANGE[0];
-const DEFAULT_NODE_OPACITY = 1;
+const ALIGNMENTS = {
+  justify: sankeyJustify,
+  center: sankeyCenter,
+  left: sankeyLeft,
+  right: sankeyRight
+};
+
+const DEFAULT_MARGINS = {
+  top: 20,
+  left: 20,
+  right: 20,
+  bottom: 20
+};
 
 class Sankey extends Component {
-
-  static defaultProps = {
-    align: 'justify',
-    className: '',
-    hasVoronoi: false,
-    hideLabels: false,
-    layout: 50,
-    margin: 20,
-    nodePadding: 10,
-    nodeWidth: 10,
-    onBlur: NOOP,
-    onClick: NOOP,
-    onHover: NOOP
-  }
-
-  static propTypes = {
-    align: PropTypes.oneOf(['justify', 'left', 'right', 'center']),
-    className: PropTypes.string,
-    hasVoronoi: PropTypes.bool,
-    height: PropTypes.number.isRequired,
-    hideLabels: PropTypes.bool,
-    layout: PropTypes.number,
-    links: PropTypes.arrayOf(PropTypes.shape({
-      source: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.object
-      ]).isRequired,
-      target: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.object
-      ]).isRequired
-    })).isRequired,
-    margin: PropTypes.number,
-    nodePadding: PropTypes.number,
-    nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
-    nodeWidth: PropTypes.number,
-    onBlur: PropTypes.func,
-    onClick: PropTypes.func,
-    onHover: PropTypes.func,
-    width: PropTypes.number.isRequired
-  }
-
   render() {
 
     const {
       align,
+      animation,
       className,
       hasVoronoi,
       height,
       hideLabels,
       layout,
       links,
+      linkOpacity,
       margin,
       nodePadding,
       nodes,
       nodeWidth,
-      onBlur,
-      onClick,
-      onHover,
+      onValueClick,
+      onValueMouseOver,
+      onValueMouseOut,
+      style,
       width
     } = this.props;
+    const nodesCopy = [...new Array(nodes.length)].map((e, i) => ({...nodes[i]}));
+    const linksCopy = [...new Array(links.length)].map((e, i) => ({...links[i]}));
 
+    const {marginLeft, marginTop, marginRight, marginBottom} = getInnerDimensions({
+      margin, height, width
+    }, DEFAULT_MARGINS);
     const sankeyInstance = sankey()
-      .size([width, height])
+      .extent([
+        [marginLeft, marginTop],
+        [width - marginRight, height - marginBottom - marginTop]
+      ])
       .nodeWidth(nodeWidth)
       .nodePadding(nodePadding)
-      .nodes(nodes)
-      .links(links)
-      .align(align)
-      .layout(layout);
+      .nodes(nodesCopy)
+      .links(linksCopy)
+      .nodeAlign(ALIGNMENTS[align])
+      .iterations(layout);
+    sankeyInstance(nodesCopy);
 
     const nWidth = sankeyInstance.nodeWidth();
-    const path = sankeyInstance.link();
+    const path = sankeyLinkHorizontal();
 
     return (
-      <svg height={height + margin} width={width + margin} className={`rv-sankey ${className}`}>
-        <g transform={`translate(${margin / 2}, ${margin / 2})`}>
+      <XYPlot
+        {...this.props}
+        yType="literal"
+        className={`rv-sankey ${className}`}>
+        {linksCopy.map((link, i) => (
+          <SankeyLink
+            style={style.links}
+            data={path(link)}
+            opacity={link.opacity || linkOpacity}
+            color={link.color}
 
-          {links.map((link, i) => (
-            <path
-              d={path(link)}
-              className="rv-sankey__link"
-              opacity={Number.isFinite(link.opacity) ? link.opacity : DEFAULT_LINK_OPACITY}
-              stroke={link.color || DEFAULT_LINK_COLOR}
-              strokeWidth={Math.max(1, link.dy)}
-              fill="none"
-              key={link.id || link.key || `link-${i}`} />
-          ))}
-
-          {nodes.map((node, i) => (
-            <g
-              transform={`translate(${node.x}, ${node.y})`}
-              className="rv-sankey__node"
-              opacity={Number.isFinite(node.opacity) ? node.opacity : DEFAULT_NODE_OPACITY}
-              key={node.id || node.key || `node-${i}`}>
-              <rect
-                onClick={() => onClick(node)}
-                onMouseOver={() => onHover(node)}
-                onMouseOut={() => onBlur(node)}
-                fill={node.color || DEFAULT_NODE_COLOR}
-                height={node.dy}
-                width={nWidth} />
-
-              {!hideLabels && node.name && (
-                <text
-                  textAnchor={node.x < width / 2 ? 'start' : 'end'}
-                  dy=".35em"
-                  x={node.x < width / 2 ? nWidth + 10 : -10}
-                  y={node.dy / 2}
-                >
-                  {node.name}
-                </text>
-              )}
-
-            </g>
-          ))}
-
-          {hasVoronoi && (
-            <Voronoi
-              className="rv-sankey__voronoi"
-              extent={[[-margin, -margin], [width + margin, height + margin]]}
-              nodes={nodes}
-              onBlur={onBlur}
-              onClick={onClick}
-              onHover={onHover}
-              x={d => d.x + d.dx / 2}
-              y={d => d.y + d.dy / 2}
+            strokeWidth={Math.max(link.width, 1)}
+            node={link}
+            nWidth={nWidth}
+            key={`link-${i}`}/>
+        ))}
+        <VerticalRectSeries
+          animation={animation}
+          className={`${className} rv-sankey__node`}
+          data={nodesCopy.map(node => ({
+            ...node,
+            y: node.y1 - marginTop,
+            y0: node.y0 - marginTop,
+            x: node.x1,
+            x0: node.x0,
+            color: node.color || DISCRETE_COLOR_RANGE[0],
+            sourceLinks: null,
+            targetLinks: null
+          }))}
+          style={style.rects}
+          onValueClick={onValueClick}
+          onValueMouseOver={onValueMouseOver}
+          onValueMouseOut={onValueMouseOut}
+          colorType="literal" />
+        {!hideLabels && (
+          <LabelSeries
+            animation={animation}
+            className={className}
+            data={nodesCopy.map(node => {
+              return {
+                x: node.x0 + (node.x0 < width / 2 ? nWidth + 10 : -10),
+                y: node.y0 + (node.y1 - node.y0) / 2 - marginTop,
+                label: node.name,
+                style: style.labels
+              };
+            })}
             />
-          )}
-
-        </g>
-      </svg>
+        )}
+        {hasVoronoi && (
+          <Voronoi
+            className="rv-sankey__voronoi"
+            extent={[
+              [-marginLeft, -marginTop],
+              [width + marginRight, height + marginBottom]]}
+            nodes={nodesCopy}
+            onClick={onValueClick}
+            onHover={onValueMouseOver}
+            onBlur={onValueMouseOut}
+            x={d => d.x0 + (d.x1 - d.x0) / 2}
+            y={d => d.y0 + (d.y1 - d.y0) / 2}
+          />
+        )}
+      </XYPlot>
     );
   }
 
 }
 
+Sankey.defaultProps = {
+  align: 'justify',
+  className: '',
+  hasVoronoi: false,
+  hideLabels: false,
+  layout: 50,
+  margin: DEFAULT_MARGINS,
+  nodePadding: 10,
+  nodeWidth: 10,
+  onValueMouseOver: NOOP,
+  onValueClick: NOOP,
+  onValueMouseOut: NOOP,
+  style: {
+    links: {},
+    rects: {},
+    labels: {}
+  }
+};
+Sankey.propTypes = {
+  align: PropTypes.oneOf(['justify', 'left', 'right', 'center']),
+  className: PropTypes.string,
+  hasVoronoi: PropTypes.bool,
+  height: PropTypes.number.isRequired,
+  hideLabels: PropTypes.bool,
+  layout: PropTypes.number,
+  links: PropTypes.arrayOf(PropTypes.shape({
+    source: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.object
+    ]).isRequired,
+    target: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.object
+    ]).isRequired
+  })).isRequired,
+  margin: MarginPropType,
+  nodePadding: PropTypes.number,
+  nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  nodeWidth: PropTypes.number,
+  onValueMouseOver: PropTypes.func,
+  onValueClick: PropTypes.func,
+  onValueMouseOut: PropTypes.func,
+  style: PropTypes.shape({
+    links: PropTypes.object,
+    rects: PropTypes.object,
+    labels: PropTypes.object
+  }),
+  width: PropTypes.number.isRequired
+};
 export default Sankey;
