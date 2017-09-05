@@ -85,18 +85,3 @@ export const MarginPropType = PropTypes.oneOfType([
   }),
   PropTypes.number
 ]);
-
-/**
- * Infer the margins for the plot
- * @param  {Number|Object} margin - the margins specified by the user
- * @return {Object} an object includes {bottom, left, right, top}
- */
-export function getMargins(margin) {
-  const isObj = typeof margin === 'object';
-  return {
-    left: isObj ? margin.left || 0 : margin,
-    right: isObj ? margin.right || 0 : margin,
-    bottom: isObj ? margin.bottom || 0 : margin,
-    top: isObj ? margin.top || 0 : margin
-  };
-}

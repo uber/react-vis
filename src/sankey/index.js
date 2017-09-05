@@ -10,7 +10,7 @@ import {
 } from 'd3-sankey';
 import XYPlot from 'plot/xy-plot';
 
-import {MarginPropType, getMargins} from 'utils/chart-utils';
+import {MarginPropType, getInnerDimensions} from 'utils/chart-utils';
 import VerticalRectSeries from 'plot/series/vertical-rect-series';
 import LabelSeries from 'plot/series/label-series';
 import Voronoi from 'plot/voronoi';
@@ -24,6 +24,13 @@ const ALIGNMENTS = {
   center: sankeyCenter,
   left: sankeyLeft,
   right: sankeyRight
+};
+
+const DEFAULT_MARGINS = {
+  top: 20,
+  left: 20,
+  right: 20,
+  bottom: 20
 };
 
 class Sankey extends Component {
@@ -52,11 +59,13 @@ class Sankey extends Component {
     const nodesCopy = [...new Array(nodes.length)].map((e, i) => ({...nodes[i]}));
     const linksCopy = [...new Array(links.length)].map((e, i) => ({...links[i]}));
 
-    const formattedMargin = getMargins(margin);
+    const {marginLeft, marginTop, marginRight, marginBottom} = getInnerDimensions({
+      margin, height, width
+    }, DEFAULT_MARGINS);
     const sankeyInstance = sankey()
       .extent([
-        [formattedMargin.left, formattedMargin.top],
-        [width - formattedMargin.right, height - formattedMargin.bottom - formattedMargin.top]
+        [marginLeft, marginTop],
+        [width - marginRight, height - marginBottom - marginTop]
       ])
       .nodeWidth(nodeWidth)
       .nodePadding(nodePadding)
@@ -91,8 +100,8 @@ class Sankey extends Component {
           className={`${className} rv-sankey__node`}
           data={nodesCopy.map(node => ({
             ...node,
-            y: node.y1 - formattedMargin.top,
-            y0: node.y0 - formattedMargin.top,
+            y: node.y1 - marginTop,
+            y0: node.y0 - marginTop,
             x: node.x1,
             x0: node.x0,
             color: node.color || DISCRETE_COLOR_RANGE[0],
@@ -111,7 +120,7 @@ class Sankey extends Component {
             data={nodesCopy.map(node => {
               return {
                 x: node.x0 + (node.x0 < width / 2 ? nWidth + 10 : -10),
-                y: node.y0 + (node.y1 - node.y0) / 2 - formattedMargin.top,
+                y: node.y0 + (node.y1 - node.y0) / 2 - marginTop,
                 label: node.name,
                 style: style.labels
               };
@@ -122,8 +131,8 @@ class Sankey extends Component {
           <Voronoi
             className="rv-sankey__voronoi"
             extent={[
-              [-formattedMargin.left, -formattedMargin.top],
-              [width + formattedMargin.right, height + formattedMargin.bottom]]}
+              [-marginLeft, -marginTop],
+              [width + marginRight, height + marginBottom]]}
             nodes={nodesCopy}
             onClick={onValueClick}
             onHover={onValueMouseOver}
@@ -144,12 +153,7 @@ Sankey.defaultProps = {
   hasVoronoi: false,
   hideLabels: false,
   layout: 50,
-  margin: {
-    top: 20,
-    left: 20,
-    right: 20,
-    bottom: 20
-  },
+  margin: DEFAULT_MARGINS,
   nodePadding: 10,
   nodeWidth: 10,
   onValueMouseOver: NOOP,
