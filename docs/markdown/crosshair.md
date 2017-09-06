@@ -28,3 +28,9 @@ _Note: please pass custom contents in case if you need different look for the cr
 Type: `function`  
 The function that formats the list of items for the crosshair. Receives the list of data points, should return an array of objects containing `title` and `value` properties.  
 _Note: please pass custom contents in case if you need different look for the crosshair._
+
+### style (optional)
+Type: `object`  
+An object that contains objects of CSS properties with which the component can be entirely re-styled.
+As the Crosshair is composed of several elements, it is possible to provide style objects for any and all parts of the tree. See [style](style.md)
+Most generally, there are three top level keys: `line`, `title`, and `box`. These in turn lead to their corresponding style objects.
