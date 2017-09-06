@@ -1,5 +1,5 @@
 #!/bin/bash
-
+node docs/scripts/markdown-compiler.js
 rm -rf docs-dist &&
 cd docs &&
 npm run build &&

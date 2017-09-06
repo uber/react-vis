@@ -12,7 +12,8 @@
     "react-router": "^2.4.0",
     "react-vis": "^1.6.1",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "webworkify-webpack": "^2.0.5"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",

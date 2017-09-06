@@ -12,6 +12,7 @@ import {createHashHistory} from 'history';
 import App from './components/app.js';
 import Home from './components/home.js';
 import Layout from './components/layout.js';
+import Search from './components/search.js';
 
 import DocumentationPage from './components/documentation-page';
 
@@ -68,6 +69,8 @@ export default () => (
       <IndexRoute component={Home} />
       {renderRouteGroup('documentation', docPages)}
       {renderRouteGroup('examples', examplePages)}
+      <Route path={'search'} component={Search}/>
+      <Route path={'search/*'} component={Search}/>
     </Route>
 
     <Redirect from="*" to="/" />

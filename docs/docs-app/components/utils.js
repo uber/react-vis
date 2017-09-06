@@ -7,10 +7,10 @@ import * as ShowcaseIndex from '../../../showcase/showcase-index';
 
 const INJECTION_REG = /<!-- INJECT:"(.+)\" -->/g;
 
-export function injectExamplesIntoHtml(content) {
+export function injectExamplesIntoHtml(content, skipJS) {
   return content.split(INJECTION_REG).map((__html, index) => {
     const Example = showCase[__html] || ShowcaseIndex[__html];
-    if (!Example) {
+    if (!Example || skipJS) {
       /* eslint-disable react/no-danger */
       return (<div
         className="markdown-body"

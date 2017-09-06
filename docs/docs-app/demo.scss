@@ -11,6 +11,7 @@ $topbar-height: 64px;
 
 @import 'stylesheets/markdown';
 @import 'stylesheets/table-of-contents';
+@import 'stylesheets/search-page';
 @import 'stylesheets/icons';
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -167,20 +168,20 @@ header {
 }
 
 .site-links {
-  position: fixed;
-  padding-left: 24px;
-  padding-right: 40px;
-  transition: all 300ms;
   max-height: $topbar-height;
   overflow: hidden;
+  padding-left: 24px;
+  padding-right: 40px;
+  position: fixed;
+  transition: all 300ms;
 
   &:after {
+    color: $black-40;
     content: '▾';
     display: block;
     position: absolute;
-    top: 0;
     right: 12px;
-    color: $black-40;
+    top: 0;
   }
 
   .site-link {
@@ -195,8 +196,9 @@ header {
     }
 
     &:nth-child(n+2) {
-      opacity: 0.5;
+      opacity: .5;
     }
+
     &:hover {
       opacity: 1 !important;
     }
@@ -243,10 +245,6 @@ header {
 .documentation-page {
   background-color: $pure-white;
   padding: 2rem;
-}
-
-.markdown {
-  overflow-y: scroll;
 }
 
 // home page

@@ -18,7 +18,7 @@ function updatePathName(name) {
   return name.toLowerCase().replace(/\s/g, '-');
 }
 
-export const examplePages = generatePath([
+export const exampleConfig = [
   {
     name: 'Showcases',
     children: [{
@@ -72,23 +72,16 @@ export const examplePages = generatePath([
       filename: 'examples/history-example.md'
     }]
   }
-]);
+];
+export const examplePages = generatePath(exampleConfig);
 
-export const docPages = generatePath([
+export const docsConfig = [
   {
     name: 'Overview',
     children: [{
       name: 'Introduction',
       filename: 'introduction.md'
-    }
-    // , {
-    //  name: 'The Uber Visualization Suite',
-    //  content: {
-    //    markdown: getDocUrl('suite.md'),
-    //    filename: 'suite.md',
-    //    pageType: 'documentation'
-    // }
-    ]
+    }]
   },
   {
     name: 'Getting started',
@@ -149,6 +142,9 @@ export const docPages = generatePath([
       }, {
         name: 'Axes',
         filename: 'axes.md'
+      }, {
+        name: 'Borders',
+        filename: 'borders.md'
       }, {
         name: 'DecorativeAxis',
         filename: 'decorative-axis.md'
@@ -232,12 +228,27 @@ export const docPages = generatePath([
       filename: 'parallel-coordinates.md'
     }]
   }
-]);
+];
+export const docPages = generatePath(docsConfig);
 
-export const docsRouting = docPages.reduce((res, section) => section.children.reduce((mem, child) => {
-  const filename = child.filename;
-  const pureFilename = filename.slice(0, filename.length - 3);
-  const sectionName = updatePathName(section.name);
-  res[filename] = `#/documentation/${sectionName}/${pureFilename}`;
-  return mem;
-}, res), {});
+function generateRouting(sectionType, pages) {
+  return pages.reduce((res, section) => section.children.reduce((mem, child) => {
+    const filename = child.filename;
+    const pureFilename = filename.slice(0, filename.length - 3);
+    const sectionName = updatePathName(section.name);
+    res[filename] = `#/${sectionType}/${sectionName}/${pureFilename}`;
+    return mem;
+  }, res), {});
+}
+
+export const docsRouting = {
+  ...generateRouting('documentation', docPages),
+  ...generateRouting('examples', examplePages)
+};
+
+export const docsNaming = docPages.concat(examplePages)
+  .reduce((res, section) => section.children.reduce((mem, child) => {
+    const {filename, name} = child;
+    res[filename] = name;
+    return mem;
+  }, res), {});
