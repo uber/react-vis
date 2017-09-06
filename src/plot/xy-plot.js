@@ -99,10 +99,13 @@ class XYPlot extends React.Component {
       dontCheckIfEmpty: PropTypes.bool,
       height: PropTypes.number.isRequired,
       margin: MarginPropType,
+      onClick: PropTypes.func,
+      onDoubleClick: PropTypes.func,
       onMouseDown: PropTypes.func,
       onMouseEnter: PropTypes.func,
       onMouseLeave: PropTypes.func,
       onMouseMove: PropTypes.func,
+      onWheel: PropTypes.func,
       stackBy: PropTypes.oneOf(ATTRIBUTES),
       style: PropTypes.object,
       width: PropTypes.number.isRequired
@@ -117,10 +120,13 @@ class XYPlot extends React.Component {
 
   constructor(props) {
     super(props);
+    this._clickHandler = this._clickHandler.bind(this);
+    this._doubleClickHandler = this._doubleClickHandler.bind(this);
     this._mouseDownHandler = this._mouseDownHandler.bind(this);
     this._mouseLeaveHandler = this._mouseLeaveHandler.bind(this);
     this._mouseEnterHandler = this._mouseEnterHandler.bind(this);
     this._mouseMoveHandler = this._mouseMoveHandler.bind(this);
+    this._wheelHandler = this._wheelHandler.bind(this);
     const {stackBy} = props;
     const children = getSeriesChildren(props.children);
     const data = getStackedData(children, stackBy);
@@ -140,6 +146,30 @@ class XYPlot extends React.Component {
         scaleMixins: nextScaleMixins,
         data: nextData
       });
+    }
+  }
+
+  /**
+   * Trigger click related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Click event.
+   * @private
+   */
+  _clickHandler(event) {
+    const {onClick} = this.props;
+    if (onClick) {
+      onClick(event);
+    }
+  }
+
+  /**
+   * Trigger doule-click related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Double-click event.
+   * @private
+   */
+  _doubleClickHandler(event) {
+    const {onDoubleClick} = this.props;
+    if (onDoubleClick) {
+      onDoubleClick(event);
     }
   }
 
@@ -202,6 +232,18 @@ class XYPlot extends React.Component {
     const {onMouseEnter} = this.props;
     if (onMouseEnter) {
       onMouseEnter({event});
+    }
+  }
+
+  /**
+   * Trigger doule-click related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Double-click event.
+   * @private
+   */
+  _wheelHandler(event) {
+    const {onWheel} = this.props;
+    if (onWheel) {
+      onWheel(event);
     }
   }
 
@@ -411,10 +453,13 @@ class XYPlot extends React.Component {
           width={width}
           height={height}
           style={style}
+          onClick={this._clickHandler}
+          onDoubleClick={this._doubleClickHandler}
           onMouseDown={this._mouseDownHandler}
           onMouseMove={this._mouseMoveHandler}
           onMouseLeave={this._mouseLeaveHandler}
-          onMouseEnter={this._mouseEnterHandler}>
+          onMouseEnter={this._mouseEnterHandler}
+          onWheel={this._wheelHandler}>
           {components.filter(c => c && c.type.requiresSVG)}
         </svg>
         {this.renderCanvasComponents(components, this.props)}
