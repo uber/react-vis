@@ -196,6 +196,14 @@ const seriesThree = [
 
 Will render beautifully!
 
+#### onClick (optional)
+Type: `function()`  
+The function that is triggered each time the mouse clicks the component.
+
+#### onDoubleClick (optional)
+Type: `function()`  
+The function that is triggered each time the mouse double-clicks the component.
+
 #### onMouseLeave (optional)
 Type: `function()`  
 The function that is triggered each time the mouse leaves the component.
@@ -207,6 +215,10 @@ The function that is triggered each time mouse moves over at the component.
 #### onMouseEnter (optional)
 Type: `function()`  
 The function that is triggered each time the mouse enters the component.
+
+#### onWheel (optional)
+Type: `function()`  
+The function that is triggered each time a wheel button is rotated on the component.
 
 #### animation (optional)
 Type: `{duration: number}|boolean`
