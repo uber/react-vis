@@ -6,6 +6,7 @@ showcase/
 dist/
 docs/
 src/
+es/
 
 index.js
 main.css
