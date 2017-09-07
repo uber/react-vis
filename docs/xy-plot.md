@@ -119,6 +119,10 @@ Height of the component. The height should be passed.
 Type: `string`  
 DOM classNames to be added to the wrapper component.
 
+#### hasTreeStructure (optional)
+Type: `Boolean`
+Flag declaring whether or not react-vis should try to remove potential cyclic deps from tree structures created by d3. Specifically references to "parent" are removed. This is generally used as an internal prop, checkout the treemap or sunburst if you are curious.
+
 #### margin (optional)
 Type: `Object`  
 Default: `{left: 40, right: 10, top: 10, bottom: 40}`

@@ -142,6 +142,7 @@ class Sunburst extends React.Component {
     return (
       <XYPlot
         height={height}
+        hasTreeStructure
         width={width}
         className={`${predefinedClassName} ${className}`}
         margin={margin}
