@@ -1,9 +1,9 @@
 .sass-cache/
 node_modules/
 
+/dist/
 coverage/
 showcase/
-dist/
 docs/
 src/
 es/
