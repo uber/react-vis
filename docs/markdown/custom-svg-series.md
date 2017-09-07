@@ -47,7 +47,7 @@ There are currently four types of string accessible custom marks: **star**, **sq
 
 <!-- INJECT:"CustomSVGAllTheMarks" -->
 
-If using a function to defined your mark, it is important to note that the function receives two arguments (customComponent, positionInPixels), where customComponent is the row of data as you have defined it. Thus if you are defining a function for the series as a whole you can make modifications based on the individual row as you go!
+If using a function to defined your mark, it is important to note that the function receives three arguments (customComponent, positionInPixels, globalStyle), where customComponent is the row of data as you have defined it. Thus if you are defining a function for the series as a whole you can make modifications based on the individual row as you go!
 
 ## API reference
 

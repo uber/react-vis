@@ -61,21 +61,28 @@ function predefinedComponents(type, size = 2, style = DEFAULT_STYLE) {
   }
 }
 
-function getInnerComponent({customComponent, positionInPixels, defaultType, positionFunctions}) {
-  const {size, style} = customComponent;
+function getInnerComponent({
+  customComponent,
+  defaultType,
+  positionInPixels,
+  positionFunctions,
+  style
+}) {
+  const {size} = customComponent;
+  const aggStyle = {...style, ...(customComponent.style || {})};
   const innerComponent = customComponent.customComponent;
   if (!innerComponent && typeof defaultType === 'string') {
-    return predefinedComponents(defaultType, size, style);
+    return predefinedComponents(defaultType, size, aggStyle);
   }
   // if default component is a function
   if (!innerComponent) {
-    return innerComponent(defaultType, positionInPixels);
+    return innerComponent(defaultType, positionInPixels, aggStyle);
   }
   if (typeof innerComponent === 'string') {
-    return predefinedComponents(innerComponent || defaultType, size, style);
+    return predefinedComponents(innerComponent || defaultType, size, aggStyle);
   }
   // if inner component is a function
-  return innerComponent(customComponent, positionInPixels);
+  return innerComponent(customComponent, positionInPixels, aggStyle);
 }
 
 class CustomSVGSeries extends AbstractSeries {
@@ -115,7 +122,8 @@ class CustomSVGSeries extends AbstractSeries {
         customComponent: seriesComponent,
         positionInPixels,
         defaultType: customComponent,
-        positionFunctions: {x, y}
+        positionFunctions: {x, y},
+        style
       });
       return (
         <g
@@ -130,8 +138,7 @@ class CustomSVGSeries extends AbstractSeries {
     return (
       <g className={`${predefinedClassName} ${className}`}
          ref="container"
-         transform={`translate(${marginLeft},${marginTop})`}
-         style={style}>
+         transform={`translate(${marginLeft},${marginTop})`}>
         {contents}
       </g>
     );
