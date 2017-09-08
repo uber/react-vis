@@ -113,7 +113,7 @@ class Treemap extends React.Component {
    */
   _getNodesToRender() {
     const {innerWidth, innerHeight} = this.state;
-    const {data, mode, padding, sortFunction} = this.props;
+    const {data, mode, padding, sortFunction, sizeAccessor} = this.props;
     if (!data) {
       return [];
     }
@@ -186,7 +186,9 @@ Treemap.propTypes = {
   useCirclePacking: PropTypes.bool,
   padding: PropTypes.number.isRequired,
   sortFunction: PropTypes.func,
-  width: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired,
+  sizeAccessor: PropTypes.func,
+  colorAccessor: PropTypes.func
 };
 
 Treemap.defaultProps = {
@@ -205,6 +207,9 @@ Treemap.defaultProps = {
   opacityType: OPACITY_TYPE,
   _opacityValue: DEFAULT_OPACITY,
   padding: 1,
-  sortFunction: (a, b) => a.size - b.size
+  sortFunction: (a, b) => a.size - b.size,
+  sizeAccessor: d => d.size,
+  colorAccessor: d => d.color,
+  labelAccessor: d => d.title
 };
 export default Treemap;

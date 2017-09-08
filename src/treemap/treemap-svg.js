@@ -75,6 +75,7 @@ class TreemapSVG extends React.Component {
           data={rows}
           colorType="literal"
           sizeType="literal"
+          sizeAccessor={d => d.size}
           style={style}/>
       ),
       minY,

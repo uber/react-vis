@@ -55,7 +55,7 @@ test('RadialChart: Showcase Example - DonutChart', t => {
   t.equal($.find('.rv-xy-plot__series--label-text').length, 0, 'should find no label wrappers, as labels is turned off');
   t.equal($.text(), '', 'should find no text');
   $.find('.rv-radial-chart__series--pie__slice').at(1).simulate('mouseOver');
-  t.equal($.text(), 'angle: -4.263590029871862angle0: -2.9171931783333793radius0: 0radius: 1color: 1x: -0.4338837391175583y: 0.900968867902419', 'should find appropriate hover text');
+  t.equal($.text(), 'theta: 3angle0: -2.9171931783333793angle: -4.263590029871862radius0: 0radius: 1color: 1x: -0.4338837391175583y: 0.900968867902419', 'should find appropriate hover text');
   t.end();
 });
 

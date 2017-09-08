@@ -40,8 +40,8 @@ const DEFAULT_RADIUS_MARGIN = 15;
    props.data {Object} - tree structured data (each node has a name anc an array of children)
  * @returns {Array} Array of nodes.
  */
-function getWedgesToRender({data}) {
-  const pie = pieBuilder().sort(null).value(d => d.angle);
+function getWedgesToRender({data, angleAccessor}) {
+  const pie = pieBuilder().sort(null).value(angleAccessor);
   const pieData = pie(data).reverse();
   return pieData.map((row, index) => {
     return {
@@ -55,29 +55,33 @@ function getWedgesToRender({data}) {
   });
 }
 
-function generateLabels(mappedData) {
+function generateLabels(mappedData, accessors) {
+  const {
+    labelAccessor,
+    subLabelAccessor
+  } = accessors;
   return mappedData.reduce((res, row) => {
-    const {angle, angle0, radius, label, subLabel} = row;
+    const {angle, angle0, radius} = row;
     const centeredAngle = (angle + angle0) / 2;
 
     // unfortunate, but true fact: d3 starts its radians at 12 oclock rather than 3
     // and move clockwise rather than counter clockwise. why why why!
     const updatedAngle = -1 * centeredAngle + Math.PI / 2;
     const newLabels = [];
-    if (row.label) {
+    if (labelAccessor(row)) {
       newLabels.push({
         angle: updatedAngle,
         radius: radius * 1.1,
-        label,
+        label: labelAccessor(row),
         style: {fontSize: '12px'}
       });
     }
 
-    if (subLabel) {
+    if (subLabelAccessor(row)) {
       newLabels.push({
         angle: updatedAngle,
         radius: radius * 1.1,
-        label: subLabel,
+        label: subLabelAccessor(row),
         yOffset: 12,
         style: {fontSize: '10px'}
       });
@@ -114,9 +118,12 @@ class RadialChart extends Component {
       margin,
       onMouseLeave,
       onMouseEnter,
-      labelsAboveChildren
+      labelsAboveChildren,
+      angleAccessor,
+      labelAccessor,
+      subLabelAccessor
     } = this.props;
-    const mappedData = getWedgesToRender({data, height, hideRootNode, width});
+    const mappedData = getWedgesToRender({data, height, hideRootNode, width, angleAccessor});
     const radialDomain = getRadialDomain(mappedData);
     const arcProps = {
       colorType,
@@ -134,6 +141,11 @@ class RadialChart extends Component {
     }
     const maxRadius = radius ? radius : getMaxRadius(width, height);
     const defaultMargin = getRadialLayoutMargin(width, height, maxRadius);
+
+    const labels = generateLabels(mappedData, {
+      labelAccessor,
+      subLabelAccessor
+    });
     return (
       <XYPlot
         height={height}
@@ -147,10 +159,10 @@ class RadialChart extends Component {
         onMouseEnter={onMouseEnter}
         xDomain={[-radialDomain, radialDomain]}
         yDomain={[-radialDomain, radialDomain]}>
-        <ArcSeries {...arcProps}/>
-        {showLabels && !labelsAboveChildren && <LabelSeries data={generateLabels(mappedData)}/>}
+        <ArcSeries {...arcProps} angleAccessor={d => d.angle}/>
+        {showLabels && !labelsAboveChildren && <LabelSeries data={labels}/>}
         {children}
-        {showLabels && labelsAboveChildren && <LabelSeries data={generateLabels(mappedData)}/>}
+        {showLabels && labelsAboveChildren && <LabelSeries data={labels}/>}
       </XYPlot>
     );
   }
@@ -175,12 +187,24 @@ RadialChart.propTypes = {
   onValueMouseOver: PropTypes.func,
   onValueMouseOut: PropTypes.func,
   width: PropTypes.number.isRequired,
-  showLabels: PropTypes.bool
+  showLabels: PropTypes.bool,
+  angleAccessor: PropTypes.func,
+  angle0Accessor: PropTypes.func,
+  radiusAccessor: PropTypes.func,
+  radius0Accessor: PropTypes.func,
+  labelAccessor: PropTypes.func,
+  subLabel: PropTypes.func
 };
 RadialChart.defaultProps = {
   className: '',
   colorType: 'category',
-  colorRange: DISCRETE_COLOR_RANGE
+  colorRange: DISCRETE_COLOR_RANGE,
+  angleAccessor: d => d.angle,
+  angle0Accessor: d => d.angle0,
+  radiusAccessor: d => d.radius,
+  radius0Accessor: d => d.radius0,
+  labelAccessor: d => d.label,
+  subLabelAccessor: d => d.subLabel
 };
 
 export default RadialChart;
