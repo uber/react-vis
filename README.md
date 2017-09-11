@@ -116,7 +116,7 @@ Any changes you make to the example code will run the compiler to build the file
 
 To lint your code, run the tests, and create code coverage reports:
 
-    npm test
+    npm run full-test
 
 ## Requirements
 
