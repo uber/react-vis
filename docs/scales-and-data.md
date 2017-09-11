@@ -59,7 +59,7 @@ For example, for x and y:
 - the domain is defined by the smallest and highest values for found in the dataset - in the above example, both x and y vary from 0 to 9, so the domains are [0, 9] for both the x- and the y- scale,
 - and the range is the total width of the XYPlot minus the margin.
 
-All of this is sensible most of the time.  
+All of this is sensible most of the time.
 
 Scales transform each datapoint into visual characteristics for a mark, so, for a given attribute, they only work if the corresponding data property exists. The property in the datapoint MUST have the same name as the attribute. You can have all the properties you want in your datapoint object, but to position the mark from left to right, you NEED a x property.
 

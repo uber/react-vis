@@ -20,11 +20,9 @@
     "email": "visualization@uber.com"
   },
   "scripts": {
-    "docs": "(cd showcase && npm run build && cp bundle.* .. && cd .. && git checkout gh-pages && git commit -am 'Upgrade docs' && git push && git checkout master)",
-    "new-docs": "./deploy-docs.sh",
-    "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
-    "start-docs": "(cd docs && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
+    "docs": "./publish-docs.sh",
     "clean": "rm -rf dist es bundle.* index.html && mkdir dist es",
+    "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
     "build:browser": "browserify src/index.js -t [ babelify ] --standalone reactVis | uglifyjs > dist/dist.min.js",
     "build": "npm run clean && babel src -d dist --copy-files && BABEL_ENV=es babel src -d es --copy-files && node-sass src/main.scss dist/style.css --output-style compressed && npm run build:browser",
     "lint": "eslint src tests showcase docs --ignore-pattern node_modules --ignore-pattern bundle.js",

@@ -20,20 +20,15 @@
 
 import React from 'react';
 
-import {
-  createData,
-  getPPP
-} from './responsive-vis-utils';
+import {createData, getPPP} from './responsive-vis-utils';
 import ResponsiveScatterplot from './responsive-scatterplot';
 import ResponsiveBarChart from './responsive-bar-chart';
 
+import 'styles/examples.scss';
 import './responsive-vis.scss';
 
 const ASPECT_RATIO = 1.2;
 const EXAMPLE_MARGIN = {left: 60, top: 60, bottom: 50, right: 50};
-
-import '../../src/styles/examples.scss';
-import './responsive-vis.scss';
 
 export default class ResponsiveVisDemo extends React.Component {
 

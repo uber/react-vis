@@ -12,6 +12,7 @@ In this document, let's look at how different color choices affect 3 different m
 Each chart in the doc is made of 3 series with x going from 0 to 9 and random values of y between 0 and 10. The left-most chart is made of VerticalBarSeries, the middle one is made of 3 LineSeries, and the right-most one is made of MarkSeries.
 
 So it goes like this:
+
 ```jsx
 <XYPlot height={200} width={200}>
   <VerticalBarSeries data={series1}/>
@@ -33,6 +34,7 @@ So it goes like this:
 ### Cases
 
 #### We do nothing:
+
 <!-- INJECT:"SensibleDefaults" -->
 
 With no color instruction, colors are automatically set by series according to the default react-vis palette, which is: 
