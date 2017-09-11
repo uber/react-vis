@@ -6,7 +6,7 @@ const {ComplexChart, StreamgraphExample} = demos;
 
 export const PROJECT_TYPE = 'github';
 
-export const PROJECT_NAME = 'React-vis';
+export const PROJECT_NAME = 'react-vis';
 export const PROJECT_ORG = 'uber';
 export const PROJECT_URL = `https://github.com/${PROJECT_ORG}/${PROJECT_NAME}`;
 export const PROJECT_DESC = 'A composable charting library';

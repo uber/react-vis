@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'React-vis',
+  title: 'react-vis',
 
   baseHref: process.env.NODE_ENV === 'production' ? 'website/dist/' : '/',
 
