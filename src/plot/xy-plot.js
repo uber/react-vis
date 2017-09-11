@@ -413,7 +413,8 @@ class XYPlot extends React.Component {
       marginBottom,
       marginRight,
       innerHeight,
-      innerWidth
+      innerWidth,
+      pixelRatio: window.devicePixelRatio
     }}>
       {componentsToRender}
     </CanvasWrapper>);
