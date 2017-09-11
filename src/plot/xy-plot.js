@@ -75,16 +75,17 @@ function cleanseData(data) {
  * Wrapper on the deep-equal method for checking equality of next props vs current props
  * @param {Object} scaleMixins - Scale object.
  * @param {Object} nextScaleMixins - Scale object.
+ * @param {Boolean} hasTreeStructure - Whether or not to cleanse the data of possible cyclic structures
  * @returns {Boolean} whether or not the two mixins objects are equal
  */
-function checkIfMixinsAreEqual(nextScaleMixins, scaleMixins) {
+function checkIfMixinsAreEqual(nextScaleMixins, scaleMixins, hasTreeStructure) {
   const newMixins = {
     ...nextScaleMixins,
-    _allData: cleanseData(nextScaleMixins._allData)
+    _allData: hasTreeStructure ? cleanseData(nextScaleMixins._allData) : nextScaleMixins._allData
   };
   const oldMixins = {
     ...scaleMixins,
-    _allData: cleanseData(scaleMixins._allData)
+    _allData: hasTreeStructure ? cleanseData(scaleMixins._allData) : scaleMixins._allData
   };
   // it's hard to say if this function is reasonable?
   return equal(newMixins, oldMixins);
@@ -141,7 +142,7 @@ class XYPlot extends React.Component {
     const nextData = getStackedData(children, nextProps.stackBy);
     const {scaleMixins} = this.state;
     const nextScaleMixins = this._getScaleMixins(nextData, nextProps);
-    if (!checkIfMixinsAreEqual(nextScaleMixins, scaleMixins)) {
+    if (!checkIfMixinsAreEqual(nextScaleMixins, scaleMixins, nextProps.hasTreeStructure)) {
       this.setState({
         scaleMixins: nextScaleMixins,
         data: nextData

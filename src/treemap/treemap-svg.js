@@ -174,6 +174,7 @@ class TreemapSVG extends React.Component {
         yDomain={[maxY, minY]}
         xDomain={[minX, maxX]}
         colorType="literal"
+        hasTreeStructure
         {...this.props}
         >
         {updatedNodes}
