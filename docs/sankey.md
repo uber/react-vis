@@ -72,7 +72,7 @@ Type: either number or {top: Number, left: Number, right: Number, bottom: Number
 The margin that will applied around the edge of the diagram.
 
 ##### nodeWidth (optional)
-Type: `Number`(pixels)  
+Type: `Number`(pixels)
 Defaults: `10`.
 Width of the nodes.
 
@@ -87,12 +87,12 @@ Defaults: `justify`.
 The alignment used for the sankey, see above for an example.
 
 ##### layout (optional)
-Type: `Number`  
+Type: `Number`
 Defaults: `50`.
 The number of passes the sankey algorithm will do in order to arrange positioning.
 
 ##### hasVoronoi (optional)
-Type: `Boolean`  
+Type: `Boolean`
 Defaults: `false`
 Determine if the node selection will be done using a voronoi or not. Although less
 precise, it can help providing a better interactive experience to the user.
@@ -100,14 +100,14 @@ precise, it can help providing a better interactive experience to the user.
 <!-- INJECT:"VornoiSankey" -->
 
 ##### hideLabels (optional)
-Type: `Boolean`  
+Type: `Boolean`
 Defaults: `false`.
 Hide the display of the node names if specified to true.
 
 
 ##### onValueClick (optional)
-Type: `function`  
-Default: noop  
+Type: `function`
+Default: noop
 This handler is triggered either when the user clicks on a node. Callback when clicking a node, or the voronoi assigned to this node, pass the node.
 ```jsx
 <Sankey
@@ -120,8 +120,8 @@ This handler is triggered either when the user clicks on a node. Callback when c
 
 
 ##### onValueMouseOver (optional)
-Type: `function`  
-Default: noop  
+Type: `function`
+Default: noop
 This handler is triggered either when the user hovers over a node. Callback when clicking a node, or the voronoi assigned to this node, pass the node.
 ```jsx
 <Sankey
@@ -133,8 +133,8 @@ This handler is triggered either when the user hovers over a node. Callback when
 ```
 
 ##### onValueMouseOut (optional)
-Type: `function`  
-Default: noop  
+Type: `function`
+Default: noop
 This handler is triggered either when the users mouse leaves a node. Callback when clicking a node, or the voronoi assigned to this node, pass the node.
 ```jsx
 <Sankey

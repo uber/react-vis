@@ -16,7 +16,7 @@
   </a>
 </p>
 
-<h1 align="center">react-vis | <a href="http://uber.github.io/react-vis/#/examples/charts/showcase">Demos</a> | <a href="http://uber.github.io/react-vis/#">Docs</a></h1>
+<h1 align="center">react-vis | <a href="http://uber.github.io/react-vis/examples/showcases/axes">Demos</a> | <a href="http://uber.github.io/react-vis/documentation/getting-started/creating-a-new-react-vis-project">Docs</a></h1>
 
 <h5 align="center">A COMPOSABLE VISUALIZATION SYSTEM</h5>
 

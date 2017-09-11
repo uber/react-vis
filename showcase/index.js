@@ -45,6 +45,9 @@ import WidthHeightMarginChart from './plot/width-height-margin';
 import CustomScales from './plot/custom-scales';
 import AxisWithTurnedLabels from './plot/axis-with-turned-labels';
 import GridLinesChart from './plot/grid';
+import EnergySankey from './sankey/energy-sankey';
+import VornoiSankey from './sankey/voronoi';
+import BasicSankey from './sankey/basic';
 
 import {
   SensibleDefaults,
@@ -243,5 +246,9 @@ export const showCase = {
   HorizontalDiscreteCustomPalette,
   SearchableDiscreteColorLegendExample,
   ContinuousColorLegendExample,
-  ContinuousSizeLegendExample
+  ContinuousSizeLegendExample,
+
+  EnergySankey,
+  BasicSankey,
+  VornoiSankey
 };
