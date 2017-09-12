@@ -105,6 +105,12 @@ function buildLayers(newChildren, oldChildren) {
 }
 class CanvasWrapper extends Component {
 
+  static get defaultProps() {
+    return {
+      pixelRatio: window && window.devicePixelRatio || 1,
+    };
+  }
+
   componentDidMount() {
     const ctx = this.refs.canvas.getContext('2d');
     const {pixelRatio} = this.props;

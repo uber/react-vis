@@ -56,8 +56,6 @@ const DEFAULT_MARGINS = {
   bottom: 40
 };
 
-const DEFAULT_PIXEL_RATIO = window && window.devicePixelRatio || 1;
-
 /**
  * Remove parents from tree formatted data. deep-equal doesnt play nice with data
  * that has circular structures, so we make every node single directional by pruning the parents.
@@ -415,8 +413,7 @@ class XYPlot extends React.Component {
       marginLeft,
       marginTop,
       marginBottom,
-      marginRight,
-      pixelRatio: DEFAULT_PIXEL_RATIO
+      marginRight
     }}>
       {componentsToRender}
     </CanvasWrapper>);
