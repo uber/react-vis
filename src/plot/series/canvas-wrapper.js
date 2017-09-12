@@ -107,7 +107,7 @@ class CanvasWrapper extends Component {
 
   static get defaultProps() {
     return {
-      pixelRatio: window && window.devicePixelRatio || 1,
+      pixelRatio: window && window.devicePixelRatio || 1
     };
   }
 
