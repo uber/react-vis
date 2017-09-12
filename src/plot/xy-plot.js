@@ -409,12 +409,12 @@ class XYPlot extends React.Component {
       innerWidth
     } = componentsToRender[0].props;
     return (<CanvasWrapper {...{
+      innerHeight,
+      innerWidth,
       marginLeft,
       marginTop,
       marginBottom,
-      marginRight,
-      innerHeight,
-      innerWidth
+      marginRight
     }}>
       {componentsToRender}
     </CanvasWrapper>);
