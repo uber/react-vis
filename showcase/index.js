@@ -25,6 +25,7 @@ import LineChartCanvas from './plot/line-chart-canvas';
 import LineChartWithStyle from './plot/line-chart-with-style';
 import LineMarkChart from './plot/linemark-chart';
 import BarChart from './plot/bar-chart';
+import BigBaseBarChart from './plot/big-base-bar-chart';
 import StackedVerticalBarChart from './plot/stacked-vertical-bar-chart';
 import StackedHorizontalBarChart from './plot/stacked-horizontal-bar-chart';
 import ClusteredStackedVerticalBarChart from './plot/clustered-stacked-bar-chart';
@@ -44,6 +45,9 @@ import WidthHeightMarginChart from './plot/width-height-margin';
 import CustomScales from './plot/custom-scales';
 import AxisWithTurnedLabels from './plot/axis-with-turned-labels';
 import GridLinesChart from './plot/grid';
+import EnergySankey from './sankey/energy-sankey';
+import VornoiSankey from './sankey/voronoi';
+import BasicSankey from './sankey/basic';
 
 import {
   SensibleDefaults,
@@ -105,6 +109,7 @@ import HorizontalDiscreteCustomPalette from './legends/horizontal-discrete-custo
 import AnimationExample from './misc/animation-example';
 import LabelSeriesExample from './misc/label-series-example';
 import GradientExample from './misc/gradient-example';
+import NullDataExample from './misc/null-data-example';
 import SyncedCharts from './misc/synced-charts';
 import TimeChart from './misc/time-chart';
 import TriangleExample from './misc/triangle-example';
@@ -118,6 +123,9 @@ import ArcSeriesExample from './radial-chart/arc-series-example';
 import BasicRadarChart from './radar-chart/basic-radar-chart';
 import AnimatedRadarChart from './radar-chart/animated-radar-chart';
 
+import BasicParallelCoordinates from './parallel-coordinates/basic-parallel-coordinates';
+import AnimatedParallelCoordinates from './parallel-coordinates/animated-parallel-coordinates';
+
 import BasicSunburst from './sunbursts/basic-sunburst';
 import ClockExample from './sunbursts/clock-example';
 import AnimatedSunburst from './sunbursts/animated-sunburst';
@@ -125,6 +133,7 @@ import SunburstWithTooltips from './sunbursts/sunburst-with-tooltips';
 
 import BasicSankeyExample from './sankey/basic';
 import VoronoiSankeyExample from './sankey/voronoi';
+import EnergySankeyExample from './sankey/energy-sankey';
 
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
@@ -137,6 +146,7 @@ export const showCase = {
   LineChartWithStyle,
   LineMarkChart,
   BarChart,
+  BigBaseBarChart,
   StackedVerticalBarChart,
   StackedHorizontalBarChart,
   ClusteredStackedVerticalBarChart,
@@ -178,6 +188,7 @@ export const showCase = {
   CustomAxes,
   LabelSeriesExample,
   GradientExample,
+  NullDataExample,
 
   SensibleDefaults,
   ColorInXYPlot,
@@ -223,13 +234,21 @@ export const showCase = {
   AnimatedRadarChart,
   BasicRadarChart,
 
+  BasicParallelCoordinates,
+  AnimatedParallelCoordinates,
+
   BasicSankeyExample,
   VoronoiSankeyExample,
+  EnergySankeyExample,
 
   VerticalDiscreteColorLegendExample,
   HorizontalDiscreteColorLegendExample,
   HorizontalDiscreteCustomPalette,
   SearchableDiscreteColorLegendExample,
   ContinuousColorLegendExample,
-  ContinuousSizeLegendExample
+  ContinuousSizeLegendExample,
+
+  EnergySankey,
+  BasicSankey,
+  VornoiSankey
 };

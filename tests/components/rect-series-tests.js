@@ -23,7 +23,7 @@ test('RectSeries: Showcase Example - StackedHistogram', t => {
 
 test('RectSeries: Showcase Example - Histogram', t => {
   const $ = mount(<Histogram />);
-  t.equal($.text(), 'May 21May 28Jun 04Jun 11Jun 180.00.51.01.52.0', 'should fine the right text content');
+  t.equal($.text(), 'May 21May 28Jun 04Jun 11Jun 180.51.01.52.0', 'should fine the right text content');
   t.equal($.find('.rv-xy-plot__series--rect rect').length, 8, 'should find the right number of bars');
 
   t.end();

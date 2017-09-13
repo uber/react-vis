@@ -9,7 +9,12 @@ testRenderWithProps(LabelSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
 test('LabelSeries: Showcase Example - LabelSeriesExample', t => {
   const $ = mount(<LabelSeriesExample />);
-  t.equal($.text(), 'UPDATE1.01.52.02.53.03.54.05101520WigglytuffPsyduckGeodudeDittoSnorlax', 'should find the right text content');
+  t.equal($.text(), 'UPDATE-101234505101520WigglytuffPsyduckGeodudeDittoSnorlax', 'should find the right text content');
   t.equal($.find('.rv-xy-plot__series--label text').length, 5, 'should find the right number of text boxes');
+
+  $.find('.showcase-button').simulate('click');
+  t.equal($.text(), 'UPDATE-101234505101520WigglytuffPsyduckGeoduderedblue', 'should find the right text content');
+  $.find('.showcase-button').simulate('click');
+  t.equal($.text(), 'UPDATE-101234505101520WigglytuffPsyduckGeoduderedblue', 'should find the right text content');
   t.end();
 });

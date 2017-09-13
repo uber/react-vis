@@ -33,6 +33,7 @@ class LabelSeries extends AbstractSeries {
       allowOffsetToBeReversed,
       className,
       data,
+      _data,
       marginLeft,
       marginTop,
       rotation,
@@ -47,7 +48,7 @@ class LabelSeries extends AbstractSeries {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <LabelSeries {...this.props} animation={null}/>
+          <LabelSeries {...this.props} animation={null} _data={data}/>
         </Animation>
       );
     }
@@ -85,7 +86,7 @@ class LabelSeries extends AbstractSeries {
             transform: `rotate(${d.rotation || rotation},${x},${y})`,
             ...style
           };
-          return res.concat([<text {...attrs} >{label}</text>]);
+          return res.concat([<text {...attrs} >{_data ? _data[i].label : label}</text>]);
         }, [])}
       </g>
     );
@@ -97,8 +98,8 @@ LabelSeries.propTypes = {
   allowOffsetToBeReversed: PropTypes.bool,
   className: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape({
-    x: PropTypes.number,
-    y: PropTypes.number,
+    x: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    y: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     angle: PropTypes.number,
     radius: PropTypes.number,
     label: PropTypes.string,

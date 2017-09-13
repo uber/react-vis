@@ -47,7 +47,7 @@ export default class Example extends React.Component {
             {x: 1.7, y: 12, size: 20, style: {stroke: 'red', fill: 'orange'}},
             {x: 2, y: 5},
             {x: 3, y: 15},
-            {x: 2.5, y: 7, customComponent: (row, positionInPixels) => {
+            {x: 2.5, y: 7, customComponent: (row, positionInPixels, globalStyle) => {
               return (
                 <g className="inner-inner-component">
                   <circle cx="0" cy="0" r={10} fill="green"/>

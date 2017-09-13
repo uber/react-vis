@@ -16,15 +16,15 @@
   </a>
 </p>
 
-<h1 align="center">react-vis | <a href="http://uber.github.io/react-vis/#/examples/charts/showcase">Demos</a> | <a href="http://uber.github.io/react-vis/#">Docs</a></h1>
+<h1 align="center">react-vis | <a href="http://uber.github.io/react-vis/examples/showcases/axes">Demos</a> | <a href="http://uber.github.io/react-vis/documentation/getting-started/creating-a-new-react-vis-project">Docs</a></h1>
 
-<h5 align="center">Data Visualization oriented components</h5>
+<h5 align="center">A COMPOSABLE VISUALIZATION SYSTEM</h5>
 
 ![demo](docs/markdown/assets/react-vis.gif?raw=true)
 
 ## Overview
 
-A collection of react components to render common data visualization charts, such as **line/area/bar charts**, **heat maps**, **scatterplots**, **contour plots**, **pie and donut charts**, **sunbursts**, **radar charts**, and **tree maps**.
+A collection of react components to render common data visualization charts, such as **line/area/bar charts**, **heat maps**, **scatterplots**, **contour plots**, **pie and donut charts**, **sunbursts**, **radar charts**, **parallel coordinates**, and **tree maps**.
 
 Some notable features:
 
@@ -90,7 +90,7 @@ You can checkout these example CodePens:
 
 ## More information
 
-Take a look at the [folder with examples](examples/) or check out some docs:
+Take a look at the [folder with examples](showcase/examples/) or check out some docs:
 
 - Common concepts:
   * [Scales and Data](docs/markdown/scales-and-data.md) about how the attributes can be adjusted.
@@ -100,6 +100,9 @@ Take a look at the [folder with examples](examples/) or check out some docs:
   * [RadialChart](docs/markdown/radial-chart.md) about radial charts.
   * [Treemap](docs/markdown/treemap.md) about making tree maps.
   * [Sankey](docs/markdown/sankey.md) about making sankey diagrams.
+  * [Radar Chart](docs/markdown/radar-chart.md) about making radar charts.
+  * [Parallel Coordinates](docs/markdown/parallel-coordinates.md) about making parallel coordinate charts.
+  * [Sunbursts](docs/markdown/sunburst.md) about making sunburst diagrams.
   * [Legends](docs/markdown/legends.md) about the legends.
 
 ## Development
@@ -113,7 +116,7 @@ Any changes you make to the example code will run the compiler to build the file
 
 To lint your code, run the tests, and create code coverage reports:
 
-    npm test
+    npm run full-test
 
 ## Requirements
 

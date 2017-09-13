@@ -104,8 +104,19 @@ function buildLayers(newChildren, oldChildren) {
   });
 }
 class CanvasWrapper extends Component {
+
+  static get defaultProps() {
+    return {
+      pixelRatio: window && window.devicePixelRatio || 1
+    };
+  }
+
   componentDidMount() {
-    this.drawChildren(this.props, null, this.refs.canvas.getContext('2d'));
+    const ctx = this.refs.canvas.getContext('2d');
+    const {pixelRatio} = this.props;
+    ctx.scale(pixelRatio, pixelRatio);
+
+    this.drawChildren(this.props, null, ctx);
   }
 
   componentDidUpdate(nextProps) {
@@ -149,20 +160,28 @@ class CanvasWrapper extends Component {
 
   render() {
     const {
+      innerHeight,
+      innerWidth,
       marginBottom,
       marginLeft,
       marginRight,
       marginTop,
-      innerHeight,
-      innerWidth
+      pixelRatio
     } = this.props;
+
+    const height = innerHeight + marginTop + marginBottom;
+    const width = innerWidth + marginLeft + marginRight;
 
     return (
       <div style={{left: 0, top: 0}} className="rv-xy-canvas">
         <canvas
           className="rv-xy-canvas-element"
-          height={innerHeight + marginTop + marginBottom}
-          width={innerWidth + marginLeft + marginRight}
+          height={height * pixelRatio}
+          width={width * pixelRatio}
+          style={{
+            height: `${height}px`,
+            width: `${width}px`
+          }}
           ref="canvas" />
       </div>
     );
@@ -176,7 +195,8 @@ CanvasWrapper.propTypes = {
   marginRight: PropTypes.number.isRequired,
   marginTop: PropTypes.number.isRequired,
   innerHeight: PropTypes.number.isRequired,
-  innerWidth: PropTypes.number.isRequired
+  innerWidth: PropTypes.number.isRequired,
+  pixelRatio: PropTypes.number.isRequired
 };
 
 export default CanvasWrapper;

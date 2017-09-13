@@ -25,18 +25,21 @@ export default class VoronoiSankeyExample extends React.Component {
     // with React's single-direction data flow. We create a copy of each before we pass to the sankey
     // component, just to be sure.
     return (
-      <Sankey
-        nodes={nodes.map(d => ({
-          ...d,
-          opacity: activeNode && d.name === activeNode.name ? FOCUSED_NODE_OPACITY : BLURRED_NODE_OPACITY
-        }))}
-        links={links.map(d => ({...d}))}
-        width={200}
-        height={200}
-        hasVoronoi
-        onHover={node => this.setState({activeNode: node})}
-        onBlur={() => this.setState({activeNode: null})}
-      />
+      <div>
+        <div>{`${activeNode ? activeNode.name : 'None'} selected`}</div>
+        <Sankey
+          nodes={nodes.map(d => ({
+            ...d,
+            opacity: activeNode && d.name === activeNode.name ? FOCUSED_NODE_OPACITY : BLURRED_NODE_OPACITY
+          }))}
+          links={links.map(d => ({...d}))}
+          width={200}
+          height={200}
+          hasVoronoi
+          onValueMouseOver={node => this.setState({activeNode: node})}
+          onValueMouseOut={() => this.setState({activeNode: null})}
+        />
+      </div>
     );
   }
 }

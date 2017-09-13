@@ -5,10 +5,9 @@ coverage/
 dist/
 es/
 
-/index.html
-bundle.*
 npm-debug.log*
 .DS_Store
 .idea/
 public/
-docs-dist/
+
+/index.html

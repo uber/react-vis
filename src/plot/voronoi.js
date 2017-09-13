@@ -4,7 +4,20 @@ import {voronoi} from 'd3-voronoi';
 
 const NOOP = f => f;
 
-function Voronoi({className, extent, nodes, onBlur, onClick, onMouseUp, onMouseDown, onHover, polygonStyle, style, x, y}) {
+function Voronoi({
+  className,
+  extent,
+  nodes,
+  onBlur,
+  onClick,
+  onMouseUp,
+  onMouseDown,
+  onHover,
+  polygonStyle,
+  style,
+  x,
+  y
+}) {
   // Create a voronoi with each node center points
   const voronoiInstance = voronoi()
     .x(x)

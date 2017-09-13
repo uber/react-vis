@@ -7,6 +7,7 @@ import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import LineChart from '../../showcase/plot/line-chart';
 import LineMarkSeries from '../../showcase/plot/linemark-chart';
 import LineChartManyColors from '../../showcase/color/line-chart-many-colors';
+import NullData from '../../showcase/misc/null-data-example';
 
 testRenderWithProps(LineSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
@@ -103,4 +104,44 @@ test('LineSeries: Line Styling', t => {
   t.equal(lineStyle.stroke, 'rgb(255, 255, 255)', 'should honor stroke');
   t.equal(lineStyle.strokeDasharray, '3, 1', 'should honor stroke dash-array');
   t.end();
+});
+
+test('NullAccessor prop: Showcase Example - Null Data Example', t => {
+  const $ = mount(<NullData />);
+  t.equal($.find('.rv-xy-plot__series path').length, 2, 'should find the right number of series');
+  t.equal($.find('.rv-xy-plot__series--mark circle').length, 3, 'should find the right number of circles');
+
+  simulateMouseMove(35);
+  t.equal($.find('.rv-crosshair__title').text(), 'x: 1', 'should find the right crosshair title');
+  t.equal($.find('.rv-crosshair__item').at(0).text(), '0: 10', 'should find the right crosshair series text');
+  t.equal($.find('.rv-crosshair__item').at(1).text(), '1: 30', 'should find the right crosshair series text');
+
+  $.find('.rv-xy-plot__inner')
+    .simulate('mouseleave');
+  t.equal($.find('.rv-crosshair').exists(), false, 'crosshair should not exist');
+
+  simulateMouseMove(100);
+  t.equal($.find('.rv-crosshair__title').text(), 'x: 2', 'should find the right crosshair title');
+  t.equal($.find('.rv-crosshair__item').at(0).text(), '0: 10', 'should find the right crosshair series text');
+  t.equal($.find('.rv-crosshair__item').at(1).text(), '1: 0', 'should find the right crosshair series text');
+
+  simulateMouseMove(165);
+  t.equal($.find('.rv-crosshair__title').text(), 'x: 3', 'should find the right crosshair title');
+  t.equal($.find('.rv-crosshair__item').at(0).text(), '0: 13', 'should find the right crosshair series text');
+  t.equal($.find('.rv-crosshair__item').at(1).exists(), false, 'crosshair series text should not exist');
+
+  simulateMouseMove(230);
+  t.equal($.find('.rv-crosshair__title').text(), 'x: 4', 'should find the right crosshair title');
+  t.equal($.find('.rv-crosshair__item').at(0).text(), '0: 7', 'should find the right crosshair series text');
+  t.equal($.find('.rv-crosshair__item').at(1).text(), '1: 15', 'should find the right crosshair series text');
+
+  simulateMouseMove(295);
+  t.equal($.find('.rv-crosshair').exists(), false, 'crosshair should not exist');
+
+  t.end();
+
+  function simulateMouseMove(x) {
+    $.find('.rv-xy-plot__inner')
+      .simulate('mousemove', {nativeEvent: {clientX: x, clientY: 150}});
+  }
 });

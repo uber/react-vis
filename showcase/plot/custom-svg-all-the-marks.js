@@ -43,7 +43,6 @@ function generateData(reversed) {
         x: index,
         y: reversed ? (5 - rowIndex) * 5 : rowIndex * 5,
         size: (index + 1) * 3,
-        style: {stroke: 'red', fill: 'orange'},
         customComponent: row
       });
     });
@@ -74,7 +73,10 @@ export default class Example extends React.Component {
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          <CustomSVGSeries animation data={reverse ? REVERSED_DATA : DATA}/>
+          <CustomSVGSeries
+            animation
+            style={{stroke: 'red', fill: 'orange'}}
+            data={reverse ? REVERSED_DATA : DATA}/>
         </XYPlot>
       </div>
     );

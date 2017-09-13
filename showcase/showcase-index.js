@@ -6,6 +6,7 @@ export RadarShowcase from './showcase-sections/radar-showcase';
 export LegendsShowcase from './showcase-sections/legends-showcase';
 export SankeysShowcase from './showcase-sections/sankeys-showcase';
 export TreemapShowcase from './showcase-sections/treemap-showcase';
+export ParallelCoordinatesShowcase from './showcase-sections/parallel-coordinates-showcase';
 export MiscShowcase from './showcase-sections/misc-showcase';
 
 export Candlestick from './examples/candlestick/candlestick-example';

@@ -32,10 +32,39 @@ const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--mark';
 const DEFAULT_STROKE_WIDTH = 1;
 
 class MarkSeries extends AbstractSeries {
+  _renderCircle(d, i, strokeWidth, style) {
+    const sizeFunctor = this._getAttributeFunctor('size');
+    const opacityFunctor = this._getAttributeFunctor('opacity');
+    const fillFunctor = this._getAttributeFunctor('fill') ||
+      this._getAttributeFunctor('color');
+    const strokeFunctor = this._getAttributeFunctor('stroke') ||
+      this._getAttributeFunctor('color');
+    const xFunctor = this._getAttributeFunctor('x');
+    const yFunctor = this._getAttributeFunctor('y');
+
+    const attrs = {
+      r: sizeFunctor ? sizeFunctor(d) : DEFAULT_SIZE,
+      cx: xFunctor(d),
+      cy: yFunctor(d),
+      style: {
+        opacity: opacityFunctor ? opacityFunctor(d) : DEFAULT_OPACITY,
+        stroke: strokeFunctor && strokeFunctor(d),
+        fill: fillFunctor && fillFunctor(d),
+        strokeWidth: strokeWidth || DEFAULT_STROKE_WIDTH,
+        ...style
+      },
+      key: i,
+      onClick: e => this._valueClickHandler(d, e),
+      onContextMenu: e => this._valueRightClickHandler(d, e),
+      onMouseOver: e => this._valueMouseOverHandler(d, e),
+      onMouseOut: e => this._valueMouseOutHandler(d, e)
+    };
+    return <circle {...attrs} />;
+  }
 
   render() {
     const {
-      animation, className, data, marginLeft, marginTop, strokeWidth, style
+      animation, className, data, marginLeft, marginTop, nullAccessor, strokeWidth, style
     } = this.props;
     if (!data) {
       return null;
@@ -48,38 +77,12 @@ class MarkSeries extends AbstractSeries {
       );
     }
 
-    const sizeFunctor = this._getAttributeFunctor('size');
-    const opacityFunctor = this._getAttributeFunctor('opacity');
-    const fillFunctor = this._getAttributeFunctor('fill') ||
-      this._getAttributeFunctor('color');
-    const strokeFunctor = this._getAttributeFunctor('stroke') ||
-      this._getAttributeFunctor('color');
-    const xFunctor = this._getAttributeFunctor('x');
-    const yFunctor = this._getAttributeFunctor('y');
-
     return (
       <g className={`${predefinedClassName} ${className}`}
          ref="container"
          transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {
-          const attrs = {
-            r: sizeFunctor ? sizeFunctor(d) : DEFAULT_SIZE,
-            cx: xFunctor(d),
-            cy: yFunctor(d),
-            style: {
-              opacity: opacityFunctor ? opacityFunctor(d) : DEFAULT_OPACITY,
-              stroke: strokeFunctor && strokeFunctor(d),
-              fill: fillFunctor && fillFunctor(d),
-              strokeWidth: strokeWidth || DEFAULT_STROKE_WIDTH,
-              ...style
-            },
-            key: i,
-            onClick: e => this._valueClickHandler(d, e),
-            onContextMenu: e => this._valueRightClickHandler(d, e),
-            onMouseOver: e => this._valueMouseOverHandler(d, e),
-            onMouseOut: e => this._valueMouseOutHandler(d, e)
-          };
-          return <circle {...attrs} />;
+          return nullAccessor(d) && this._renderCircle(d, i, strokeWidth, style);
         })}
       </g>
     );
@@ -89,6 +92,11 @@ class MarkSeries extends AbstractSeries {
 MarkSeries.displayName = 'MarkSeries';
 MarkSeries.propTypes = {
   ...AbstractSeries.propTypes,
+  nullAccessor: PropTypes.func,
   strokeWidth: PropTypes.number
 };
+MarkSeries.defaultProps = {
+  nullAccessor: () => true
+};
+
 export default MarkSeries;

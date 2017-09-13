@@ -75,16 +75,17 @@ function cleanseData(data) {
  * Wrapper on the deep-equal method for checking equality of next props vs current props
  * @param {Object} scaleMixins - Scale object.
  * @param {Object} nextScaleMixins - Scale object.
+ * @param {Boolean} hasTreeStructure - Whether or not to cleanse the data of possible cyclic structures
  * @returns {Boolean} whether or not the two mixins objects are equal
  */
-function checkIfMixinsAreEqual(nextScaleMixins, scaleMixins) {
+function checkIfMixinsAreEqual(nextScaleMixins, scaleMixins, hasTreeStructure) {
   const newMixins = {
     ...nextScaleMixins,
-    _allData: cleanseData(nextScaleMixins._allData)
+    _allData: hasTreeStructure ? cleanseData(nextScaleMixins._allData) : nextScaleMixins._allData
   };
   const oldMixins = {
     ...scaleMixins,
-    _allData: cleanseData(scaleMixins._allData)
+    _allData: hasTreeStructure ? cleanseData(scaleMixins._allData) : scaleMixins._allData
   };
   // it's hard to say if this function is reasonable?
   return equal(newMixins, oldMixins);
@@ -112,10 +113,13 @@ class XYPlot extends React.Component {
       dontCheckIfEmpty: PropTypes.bool,
       height: PropTypes.number.isRequired,
       margin: MarginPropType,
+      onClick: PropTypes.func,
+      onDoubleClick: PropTypes.func,
       onMouseDown: PropTypes.func,
       onMouseEnter: PropTypes.func,
       onMouseLeave: PropTypes.func,
       onMouseMove: PropTypes.func,
+      onWheel: PropTypes.func,
       stackBy: PropTypes.oneOf(ATTRIBUTES),
       style: PropTypes.object,
       width: PropTypes.number.isRequired,
@@ -131,10 +135,13 @@ class XYPlot extends React.Component {
 
   constructor(props) {
     super(props);
+    this._clickHandler = this._clickHandler.bind(this);
+    this._doubleClickHandler = this._doubleClickHandler.bind(this);
     this._mouseDownHandler = this._mouseDownHandler.bind(this);
     this._mouseLeaveHandler = this._mouseLeaveHandler.bind(this);
     this._mouseEnterHandler = this._mouseEnterHandler.bind(this);
     this._mouseMoveHandler = this._mouseMoveHandler.bind(this);
+    this._wheelHandler = this._wheelHandler.bind(this);
     const {stackBy} = props;
     const children = getSeriesChildren(props.children);
     const data = getStackedData(children, stackBy);
@@ -149,11 +156,35 @@ class XYPlot extends React.Component {
     const nextData = getStackedData(children, nextProps.stackBy);
     const {scaleMixins} = this.state;
     const nextScaleMixins = this._getScaleMixins(nextData, nextProps);
-    if (!checkIfMixinsAreEqual(nextScaleMixins, scaleMixins)) {
+    if (!checkIfMixinsAreEqual(nextScaleMixins, scaleMixins, nextProps.hasTreeStructure)) {
       this.setState({
         scaleMixins: nextScaleMixins,
         data: nextData
       });
+    }
+  }
+
+  /**
+   * Trigger click related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Click event.
+   * @private
+   */
+  _clickHandler(event) {
+    const {onClick} = this.props;
+    if (onClick) {
+      onClick(event);
+    }
+  }
+
+  /**
+   * Trigger doule-click related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Double-click event.
+   * @private
+   */
+  _doubleClickHandler(event) {
+    const {onDoubleClick} = this.props;
+    if (onDoubleClick) {
+      onDoubleClick(event);
     }
   }
 
@@ -216,6 +247,18 @@ class XYPlot extends React.Component {
     const {onMouseEnter} = this.props;
     if (onMouseEnter) {
       onMouseEnter({event});
+    }
+  }
+
+  /**
+   * Trigger doule-click related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Double-click event.
+   * @private
+   */
+  _wheelHandler(event) {
+    const {onWheel} = this.props;
+    if (onWheel) {
+      onWheel(event);
     }
   }
 
@@ -302,7 +345,8 @@ class XYPlot extends React.Component {
           adjustWhat.add(index);
         }
         if (zeroBaseValue) {
-          zeroBaseProps[`${attr}BaseValue`] = 0;
+          const specifiedDomain = props[`${attr}Domain`];
+          zeroBaseProps[`${attr}BaseValue`] = specifiedDomain ? specifiedDomain[0] : 0;
         }
       });
     });
@@ -378,12 +422,12 @@ class XYPlot extends React.Component {
       innerWidth
     } = componentsToRender[0].props;
     return (<CanvasWrapper {...{
+      innerHeight,
+      innerWidth,
       marginLeft,
       marginTop,
       marginBottom,
-      marginRight,
-      innerHeight,
-      innerWidth
+      marginRight
     }}>
       {componentsToRender}
     </CanvasWrapper>);
@@ -423,10 +467,13 @@ class XYPlot extends React.Component {
           width={width}
           height={height}
           style={style}
+          onClick={this._clickHandler}
+          onDoubleClick={this._doubleClickHandler}
           onMouseDown={this._mouseDownHandler}
           onMouseMove={this._mouseMoveHandler}
           onMouseLeave={this._mouseLeaveHandler}
-          onMouseEnter={this._mouseEnterHandler}>
+          onMouseEnter={this._mouseEnterHandler}
+          onWheel={this._wheelHandler}>
           {components.filter(isSVG)}
         </svg>
         {this.renderCanvasComponents(components, this.props)}

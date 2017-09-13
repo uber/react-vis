@@ -71,7 +71,8 @@ class ParallelCoordinatesExample extends React.Component {
     return (
       <XYPlot
         width={500}
-        height={300} xType="ordinal"
+        height={300}
+        xType="ordinal"
         margin={MARGIN}
         className="parallel-coordinates-example">
         {mappedData.map((series, index) => {
