@@ -46,30 +46,19 @@ const TREEMAP_PROPS = {
   }
 };
 
-function size(node) {
-  return !node.children ? node.size : node.children.reduce((sum, child) => sum + size(child), node.size || 0);
-}
-
-function toString(children) {
-  const childStrings = children.sort((a, b) => size(b) - size(a)).map(child => {
-    return {title: child.title, childrenText: child.children && toString(child.children)};
-  });
-  return `${childStrings.map(child => child.title).join('')}${childStrings.map(child => child.childrenText || '').join('')}`;
-}
-
 // make sure that the components render at all
 testRenderWithProps(Treemap, TREEMAP_PROPS);
 
 test('Treemap: Basic rendering', t => {
   const $ = mount(<Treemap {...TREEMAP_PROPS}/>);
   t.equal($.find('.rv-treemap__leaf').length, 21, 'should find the right number of children');
-  const expectedText = toString(TREEMAP_PROPS.data.children, 0);
+  const expectedText = 'EasingNeonateinterpolateISchedulableParallelPauseFunctionSequenceSequenceTransitionTransitionerTransitionEventSchedulerArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
   t.equal($.find('.rv-treemap').text(), expectedText, 'should find the correct text shown');
   t.equal($.find('.little-nested-tree-example').length, 1, 'should find the custom class name used');
 
   $.setProps({data: INTERPOLATE_DATA});
   t.equal($.find('.rv-treemap__leaf').length, 9, 'should find the right number of children');
-  const newText = toString(INTERPOLATE_DATA.children, 0);
+  const newText = 'ArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
   t.equal($.find('.rv-treemap').text(), newText, 'should find the correct text shown');
   t.equal($.find('.little-nested-tree-example').length, 1, 'should find the custom class name used');
   t.end();
