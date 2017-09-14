@@ -36,7 +36,7 @@ These components can be used exactly as `XYPlot`:
 
 <FlexibleXYPlot>
   <VerticalBarSeries data={data} />
-</FlexibleVisXYPlot>
+</FlexibleXYPlot>
 ```
 
 ### No worries about resizing
