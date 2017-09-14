@@ -142,7 +142,7 @@ class Treemap extends React.Component {
           .padding(padding);
       const structuredInput = hierarchy(data)
         .sum(d => d.size)
-        .sort((a, b) => a.value - b.value);
+        .sort((a, b) => b.value - a.value);
       return packingFunction(structuredInput).descendants();
     }
 
