@@ -113,7 +113,7 @@ class Treemap extends React.Component {
    */
   _getNodesToRender() {
     const {innerWidth, innerHeight} = this.state;
-    const {data, mode, padding} = this.props;
+    const {data, mode, padding, sortFunction} = this.props;
     if (!data) {
       return [];
     }
@@ -142,7 +142,7 @@ class Treemap extends React.Component {
           .padding(padding);
       const structuredInput = hierarchy(data)
         .sum(d => d.size)
-        .sort((a, b) => b.value - a.value);
+        .sort(sortFunction);
       return packingFunction(structuredInput).descendants();
     }
 
@@ -153,8 +153,7 @@ class Treemap extends React.Component {
       .padding(padding);
     const structuredInput = hierarchy(data)
       .sum(d => d.size)
-      .sort((a, b) => b.height - a.height || b.value - a.value);
-
+      .sort(sortFunction);
     return treemapingFunction(structuredInput).descendants();
 
   }
@@ -184,6 +183,7 @@ Treemap.propTypes = {
   onLeafMouseOut: PropTypes.func,
   useCirclePacking: PropTypes.bool,
   padding: PropTypes.number.isRequired,
+  sortFunction: PropTypes.func,
   width: PropTypes.number.isRequired
 };
 
@@ -206,6 +206,7 @@ Treemap.defaultProps = {
   onLeafMouseOut: NOOP,
   opacityType: OPACITY_TYPE,
   _opacityValue: DEFAULT_OPACITY,
-  padding: 1
+  padding: 1,
+  sortFunction: (a, b) => a.size - b.size
 };
 export default Treemap;
