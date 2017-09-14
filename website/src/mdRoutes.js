@@ -195,7 +195,7 @@ export default [{
         markdown: arcSeries,
       }, {
         name: 'Area Series',
-        markdown: arcSeries,
+        markdown: areaSeries,
       }, {
         name: 'Bar Series',
         markdown: barSeries,
