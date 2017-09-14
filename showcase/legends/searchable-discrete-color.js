@@ -22,6 +22,8 @@ import React from 'react';
 
 import SearchableDiscreteColorLegend from 'legends/searchable-discrete-color-legend';
 
+import ShowcaseButton from '../showcase-components/showcase-button';
+
 export default class Example extends React.Component {
 
   constructor(props) {
@@ -36,7 +38,8 @@ export default class Example extends React.Component {
         {title: 'Limes', color: '#cf3'},
         {title: 'Potatoes', color: '#766'}
       ],
-      searchText: ''
+      searchText: '',
+      useDefaultInputClass: true
     };
     this._clickHandler = this._clickHandler.bind(this);
     this._searchChangeHandler = this._searchChangeHandler.bind(this);
@@ -45,7 +48,9 @@ export default class Example extends React.Component {
   _clickHandler(item) {
     const {items} = this.state;
     item.disabled = !item.disabled;
-    this.setState({items});
+    this.setState({
+      items
+    });
   }
 
   _searchChangeHandler(searchText) {
@@ -53,16 +58,25 @@ export default class Example extends React.Component {
   }
 
   render() {
-    const {items, searchText} = this.state;
+    const {items, searchText, useDefaultInputClass} = this.state;
+    const content = useDefaultInputClass ? 'REMOVE DEFAULT INPUT CLASS' : 'USE DEFAULT INPUT CLASS';
     return (
-      <SearchableDiscreteColorLegend
-        height={200}
-        width={300}
-        onSearchChange={this._searchChangeHandler}
-        searchText={searchText}
-        onItemClick={this._clickHandler}
-        items={items}
-      />
+      <div>
+        <ShowcaseButton
+          onClick={() => this.setState({
+            useDefaultInputClass: !useDefaultInputClass
+          })}
+          buttonContent={content}/>
+        <SearchableDiscreteColorLegend
+          height={200}
+          width={300}
+          onSearchChange={this._searchChangeHandler}
+          searchText={searchText}
+          onItemClick={this._clickHandler}
+          items={items}
+          {... !useDefaultInputClass && {inputClassName: null} }
+        />
+      </div>
     );
   }
 }
