@@ -64,6 +64,19 @@ test('Treemap: Basic rendering', t => {
   t.end();
 });
 
+test('Treemap: Custom Sorting', t => {
+  const $ = mount(<Treemap {...TREEMAP_PROPS}/>);
+  $.setProps({sortFunction: (a, b) => (b.height - a.height) || (b.value - a.value)});
+  const expectedText = 'interpolateTransitionerEasingTransitionNeonateFunctionSequenceSchedulerSequenceParallelTransitionEventISchedulablePauseInterpolatorMatrixInterpolatorColorInterpolatorRectangleInterpolatorArrayInterpolatorPointInterpolatorObjectInterpolatorNumberInterpolatorDateInterpolator';
+  t.equal($.find('.rv-treemap').text(), expectedText, 'should find the correct text shown');
+
+  $.setProps({data: INTERPOLATE_DATA});
+  const newText = 'InterpolatorMatrixInterpolatorColorInterpolatorRectangleInterpolatorArrayInterpolatorPointInterpolatorObjectInterpolatorNumberInterpolatorDateInterpolator';
+  t.equal($.find('.rv-treemap').text(), newText, 'should find the correct text shown');
+
+  t.end();
+});
+
 test('Treemap: Empty treemap', t => {
   const $ = mount(<Treemap {...{...TREEMAP_PROPS, data: {}}}/>);
   t.equal($.find('.rv-treemap__leaf').length, 0, 'should find the right number of children');

@@ -144,6 +144,12 @@ Type: `string`
 
 This modifies the tiling strategy for the treemap, for more information see the [d3 hierarchy docs](https://github.com/d3/d3-hierarchy).
 
+#### sortFuncion (optional)
+Type: `function`
+- Should accept arguments (a, b)
+
+Pass in a function that will be used to sort the nodes, for more information see the [d3 hierarchy docs on sorting](https://github.com/d3/d3-hierarchy#node_sort).
+
 ##### colorDomain, colorRange, colorType
 
 Scale properties for the `color` scale. If `color` property is not passed in the data object, each new section of the chart gets the next color (e. g. the `'category'` scale is applied).
