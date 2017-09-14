@@ -46,18 +46,21 @@ test('Discrete Legends', t => {
     'custom discrete legend uses custom palette');
 
   const $ = mount(<SearchableDiscreteLegend/>);
-  t.equal($.text(), 'ApplesBananasBlueberriesCarrotsEggplantsLimesPotatoes',
+  t.equal($.find('.rv-search-wrapper__contents').text(), 'ApplesBananasBlueberriesCarrotsEggplantsLimesPotatoes',
   'should find the correct text content for the searchable legend');
   t.equal($.find('.rv-discrete-color-legend-item__color').length, 7,
   'should find the right number of element for the searchable legends');
   $.find('.rv-search-wrapper__form__input').simulate('change', {target: {value: 'egg'}});
-  t.equal($.text(), 'Eggplants', 'should find the correct text content after search');
+  t.equal($.find('.rv-search-wrapper__contents').text(), 'Eggplants', 'should find the correct text content after search');
   const itemsFound = $.find('.rv-discrete-color-legend-item__color').length;
   t.equal(itemsFound, 1, 'should find the right number of elements for the searchable legend after searched');
 
   t.equal($.find('.disabled').length, 0, 'before clicking, should find no items disabled');
   $.find('.clickable').simulate('click');
   t.equal($.find('.disabled').length, 1, 'before clicking, should find no items disabled');
+
+  $.find('button').simulate('click');
+  t.equal($.find('.rv-search-wrapper__form__input').length, 0, 'should remove default class from input');
 
   t.end();
 });
