@@ -36,6 +36,7 @@ import AreaChartElevated from './plot/area-chart-elevated';
 import ScatterplotChart from './plot/scatterplot';
 import WhiskerChart from './plot/whisker-chart.js';
 import CustomSVGExample from './plot/custom-svg-example';
+import CustomSVGRootLevel from './plot/custom-svg-root-level';
 import CustomSVGAllTheMarks from './plot/custom-svg-all-the-marks';
 import FauxScatterplotChart from './plot/faux-radial-scatterplot';
 import ScatterplotCanvas from './plot/scatterplot-canvas';
@@ -157,6 +158,7 @@ export const showCase = {
   AreaChartElevated,
   FauxScatterplotChart,
   CustomSVGExample,
+  CustomSVGRootLevel,
   CustomSVGAllTheMarks,
   ScatterplotChart,
   ScatterplotCanvas,

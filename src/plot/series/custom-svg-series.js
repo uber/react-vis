@@ -76,7 +76,7 @@ function getInnerComponent({
   }
   // if default component is a function
   if (!innerComponent) {
-    return innerComponent(defaultType, positionInPixels, aggStyle);
+    return defaultType(customComponent, positionInPixels, aggStyle);
   }
   if (typeof innerComponent === 'string') {
     return predefinedComponents(innerComponent || defaultType, size, aggStyle);
@@ -148,7 +148,7 @@ class CustomSVGSeries extends AbstractSeries {
 CustomSVGSeries.propTypes = {
   animation: PropTypes.bool,
   className: PropTypes.string,
-  customComponent: PropTypes.string,
+  customComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   data: PropTypes.arrayOf(PropTypes.shape({
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired

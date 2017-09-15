@@ -13,6 +13,7 @@ const {
   CustomScales,
   CustomSVGExample,
   CustomSVGAllTheMarks,
+  CustomSVGRootLevel,
   FauxScatterplotChart,
   GridLinesChart,
   HeatmapChart,
@@ -111,6 +112,9 @@ const PLOTS = [{
 }, {
   name: 'Custom SVG - All The Mark',
   component: CustomSVGAllTheMarks
+}, {
+  name: 'Custom SVG - Root Level Function Definition',
+  component: CustomSVGRootLevel
 }];
 
 const BASIC_COMPONENTS = [{
