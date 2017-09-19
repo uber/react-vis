@@ -1,18 +1,18 @@
 CACHE MANIFEST
-#ver:9/18/2017, 8:05:13 PM
+#ver:9/18/2017, 9:54:13 PM
 #plugin:4.8.3
 
 CACHE:
-../bundle-db82ade4a8469f781d25.js
-../styles-db82ade4a8469f781d25.css
+../bundle-e7337d3b50f43a43f6ee.js
+../styles-e7337d3b50f43a43f6ee.css
 ../
 ../favicon.ico
-../fonts/uber.svg
 ../fonts/uber.ttf
+../fonts/uber.svg
 ../fonts/uber.woff
 ../images/footer-pattern.gif
-../images/icon-chart.svg
 ../images/icon-custom.svg
+../images/icon-chart.svg
 ../images/icon-high-precision.svg
 ../images/icon-layers.svg
 ../images/icon-react.svg
