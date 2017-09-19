@@ -20,7 +20,7 @@
 
 <h5 align="center">A COMPOSABLE VISUALIZATION SYSTEM</h5>
 
-![demo](docs/markdown/assets/react-vis.gif?raw=true)
+![demo](docs/assets/react-vis.gif?raw=true)
 
 ## Overview
 
@@ -93,17 +93,17 @@ You can checkout these example CodePens:
 Take a look at the [folder with examples](showcase/examples/) or check out some docs:
 
 - Common concepts:
-  * [Scales and Data](docs/markdown/scales-and-data.md) about how the attributes can be adjusted.
-  * [Animations](docs/markdown/animation.md) about how to tweak animations in the library.
+  * [Scales and Data](docs/scales-and-data.md) about how the attributes can be adjusted.
+  * [Animations](docs/animation.md) about how to tweak animations in the library.
 - Components:
-  * [XYPlot](docs/markdown/xy-plot.md) about orthogonal charts.
-  * [RadialChart](docs/markdown/radial-chart.md) about radial charts.
-  * [Treemap](docs/markdown/treemap.md) about making tree maps.
-  * [Sankey](docs/markdown/sankey.md) about making sankey diagrams.
-  * [Radar Chart](docs/markdown/radar-chart.md) about making radar charts.
-  * [Parallel Coordinates](docs/markdown/parallel-coordinates.md) about making parallel coordinate charts.
-  * [Sunbursts](docs/markdown/sunburst.md) about making sunburst diagrams.
-  * [Legends](docs/markdown/legends.md) about the legends.
+  * [XYPlot](docs/xy-plot.md) about orthogonal charts.
+  * [RadialChart](docs/radial-chart.md) about radial charts.
+  * [Treemap](docs/treemap.md) about making tree maps.
+  * [Sankey](docs/sankey.md) about making sankey diagrams.
+  * [Radar Chart](docs/radar-chart.md) about making radar charts.
+  * [Parallel Coordinates](docs/parallel-coordinates.md) about making parallel coordinate charts.
+  * [Sunbursts](docs/sunburst.md) about making sunburst diagrams.
+  * [Legends](docs/legends.md) about the legends.
 
 ## Development
 
