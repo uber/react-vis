@@ -89,7 +89,7 @@ test('LineSeries: Showcase Example - LineChartManyColors', t => {
 test('LineSeries: Showcase Example - TimeChart', t => {
   const $ = mount(<TimeChart />);
   t.equal($.find('.rv-xy-plot__series--line').length, 2, 'should find the right number of lines');
-  t.equal($.text(), 'Sep 1012 PMMon 1112 PMTue 1212 PMX Axis2468101214Y Axis', 'should find the right number of lines');
+  t.equal($.text(), 'Sep 1012 PMMon 1112 PMTue 1212 PMWed 13X Axis2468101214Y Axis', 'should find the right number of lines');
   t.end();
 });
 

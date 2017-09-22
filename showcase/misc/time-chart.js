@@ -33,7 +33,7 @@ const MSEC_DAILY = 86400000;
 
 export default class Example extends React.Component {
   render() {
-    const timestamp = Date.now();
+    const timestamp = new Date('September 9 2017').getTime();
     return (
       <XYPlot
         xType="time"

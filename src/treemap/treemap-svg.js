@@ -74,6 +74,7 @@ class TreemapSVG extends React.Component {
           onSeriesClick={onLeafClick}
           data={rows}
           colorType="literal"
+          colorAccessor={d => d.color}
           sizeType="literal"
           sizeAccessor={d => d.size}
           style={style}/>

@@ -33,24 +33,24 @@ const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--mark';
 const DEFAULT_STROKE_WIDTH = 1;
 
 class MarkSeries extends AbstractSeries {
-  _renderCircle(d, i, strokeWidth, style) {
-    const sizeFunctor = this._getAttributeFunctor('size');
-    const opacityFunctor = this._getAttributeFunctor('opacity');
-    const fillFunctor =
-      this._getAttributeFunctor('fill') || this._getAttributeFunctor('color');
-    const strokeFunctor =
-      this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color');
-    const xFunctor = this._getAttributeFunctor('x');
-    const yFunctor = this._getAttributeFunctor('y');
+  _renderCircle(d, i, strokeWidth, style, scalingFunctions) {
+    const {
+      fill,
+      opacity,
+      size,
+      stroke,
+      x,
+      y
+    } = scalingFunctions;
 
     const attrs = {
-      r: sizeFunctor ? sizeFunctor(d) : DEFAULT_SIZE,
-      cx: xFunctor(d),
-      cy: yFunctor(d),
+      r: size ? size(d) : DEFAULT_SIZE,
+      cx: x(d),
+      cy: y(d),
       style: {
-        opacity: opacityFunctor ? opacityFunctor(d) : DEFAULT_OPACITY,
-        stroke: strokeFunctor && strokeFunctor(d),
-        fill: fillFunctor && fillFunctor(d),
+        opacity: opacity ? opacity(d) : DEFAULT_OPACITY,
+        stroke: stroke && stroke(d),
+        fill: fill && fill(d),
         strokeWidth: strokeWidth || DEFAULT_STROKE_WIDTH,
         ...style
       },
@@ -92,6 +92,15 @@ class MarkSeries extends AbstractSeries {
       );
     }
 
+    const scalingFunctions = {
+      fill: this._getAttributeFunctor('fill') || this._getAttributeFunctor('color'),
+      opacity: this._getAttributeFunctor('opacity'),
+      size: this._getAttributeFunctor('size'),
+      stroke: this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color'),
+      x: this._getAttributeFunctor('x'),
+      y: this._getAttributeFunctor('y')
+    };
+
     return (
       <g
         className={`${predefinedClassName} ${className}`}
@@ -99,7 +108,7 @@ class MarkSeries extends AbstractSeries {
         transform={`translate(${marginLeft},${marginTop})`}
       >
         {data.map((d, i) => {
-          return getNull(d) && this._renderCircle(d, i, strokeWidth, style);
+          return getNull(d) && this._renderCircle(d, i, strokeWidth, style, scalingFunctions);
         })}
       </g>
     );
