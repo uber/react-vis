@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {PROJECT_NAME, PROJECT_DESC} from 'config';
 
 import {XYPlot, AreaSeries, LineSeries, VerticalBarSeries, MarkSeries, 
-  RadialChart, XAxis, YAxis} from 'react-vis';
+  Treemap, RadialChart, XAxis, YAxis} from 'react-vis';
 
 const palette = [
   '#12939A', '#17B8BE', '#1E96BE', '#FF991F', 'transparent'
@@ -97,6 +97,40 @@ const MiniChart = (props) => {
             opacity={props.s === null || props.s === i ? 0.8 : 0.5}
           />)}
         </XYPlot>);
+      case 4:
+        // treemaps
+        const treeMapData = props.data.reduce((prev, series, s) => {
+          prev.children.push(series.reduce((leaf, d) => {
+            leaf.children.push({
+              size: d.yS,
+              index: d.x,
+              series: s,
+              color: props.x === d.x ? palette[4] : palette[s],
+              stroke: 'white'
+            });
+            return leaf;
+          }, {
+            title: '',
+            strokeWidth: 2,
+            stroke: props.s === s ? palette[4] : 'white',
+            children: []
+          }));
+          return prev;
+        }, {
+          title: '',
+          children: []
+        });
+        return (<Treemap {...XYProps} 
+          data={treeMapData}
+          animation={{
+            damping: 9,
+            stiffness: 300
+          }}
+          onLeafMouseOver={(value) => {
+            props.highlight(d.series);
+            props.scrub(d.index);
+          }}
+        />);
     default:
       // Line charts
       return (<XYPlot {...XYProps}>
