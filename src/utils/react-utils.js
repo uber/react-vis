@@ -72,3 +72,29 @@ export function warning(message, onlyShowMessageOnce = false) {
 export function warnOnce(message) {
   warning(message, true);
 }
+
+// special tag for using to check if the style file has been imported
+// represented the md5 hash of the phrase "react-vis is cool"
+const MAGIC_CSS_RULE = '.react-vis-magic-css-import-rule';
+export function checkIfStyleSheetIsImported() {
+  /* eslint-disable no-undef, no-process-env */
+  if (process && HIDDEN_PROCESSES[process.env.NODE_ENV]) {
+    return;
+  }
+  /* eslint-enable no-undef, no-process-env */
+
+  const foundImportTag = [...new Array(document.styleSheets.length)].some((e, i) => {
+    const styleSheet = document.styleSheets[i];
+    const CSSRulesList = styleSheet.rules || styleSheet.cssRules;
+    return [...new Array(CSSRulesList ? CSSRulesList.length : 0)].some((el, j) => {
+      const selector = CSSRulesList[j];
+      return selector.selectorText === MAGIC_CSS_RULE;
+    });
+  });
+
+  if (!foundImportTag) {
+    /* eslint-disable max-len */
+    warnOnce('REACT-VIS: The style sheet for react-vis has not been imported, checkout https://uber.github.io/react-vis/documentation/general-principles/style for more details.');
+    /* eslint-enable max-len */
+  }
+}
