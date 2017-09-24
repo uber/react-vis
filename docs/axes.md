@@ -56,7 +56,7 @@ Type: `function(*)`
 Format function for the tick label. Similar to the `tickFormat()` method of d3-axis. Typically the value that is return is a string or a number, however this function also supports rendering svg react elements. To wit, I could have formatting function like
 
 ```javascript
-function myFormatter(t) {
+function myFormatter(t, i) {
   return (<tspan>
     <tspan x="0" dy="1em">MY VALUE</tspan>
     <tspan x="0" dy="1em">{t}</tspan>
