@@ -65,7 +65,7 @@ const MiniChart = (props) => {
             center={{x: 10, y: 10}}
             radius={45}
             onValueMouseOver={value => props.highlight(value.s)}
-            onSeriesMouseOut={() => props.hightlight(null)}
+            onSeriesMouseOut={() => props.highlight(null)}
           />);
       case 2:
         // area charts
@@ -105,14 +105,12 @@ const MiniChart = (props) => {
               size: d.yS,
               index: d.x,
               series: s,
-              color: props.x === d.x ? palette[4] : palette[s],
-              stroke: 'white'
+              style: {background: props.x === d.x ? palette[3] : palette[s]}
             });
             return leaf;
           }, {
             title: '',
-            strokeWidth: 2,
-            stroke: props.s === s ? palette[4] : 'white',
+            style: {background: 'white'},
             children: []
           }));
           return prev;
@@ -126,10 +124,12 @@ const MiniChart = (props) => {
             damping: 9,
             stiffness: 300
           }}
-          onLeafMouseOver={(value) => {
-            props.highlight(d.series);
-            props.scrub(d.index);
+          margin={{top: 6, bottom: 6, left: 6, right: 6}}
+          onLeafMouseOver={node => {
+            props.highlight(node.data.series);
+            props.scrub(node.data.index);
           }}
+          style={{margin: '6px -6px -6px 6px'}}
         />);
     default:
       // Line charts
@@ -206,9 +206,9 @@ class Hero extends Component {
   }
 
   componentDidMount() {
-    const chartsProps = [...Array(20).keys()].map(d => {
+    const chartsProps = [...Array(30).keys()].map(d => {
       const nbPoints = 5 + random({scope: 5, rolls: 2, integer: true});
-      const nbSeries = 1 + Number(Math.random() > 0.6) + Number(Math.random() > 0.6);
+      const nbSeries = 1 + Number(Math.random() > 0.2) + Number(Math.random() > 0.5);
       const data = makeData(nbSeries, nbPoints);
       const type = random({scope: 6, integer: true});
       return ({
