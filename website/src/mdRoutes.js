@@ -1,3 +1,5 @@
+import presentation from '../../docs/presentation.md';
+
 import codepen from '../../docs/getting-started/react-vis-in-codepen.md';
 import install from '../../docs/getting-started/installing-react-vis.md';
 import newProject from '../../docs/getting-started/new-react-vis-project.md';
@@ -117,6 +119,9 @@ export default [{
   name: 'Documentation',
   path: '/documentation',
   data: [{
+    name: 'Welcome to React-vis',
+    markdown: presentation,
+  }, {
     name: 'Getting Started',
     children: [{
       name: 'React-vis in codepen',
@@ -250,4 +255,4 @@ export default [{
       markdown: sunburst,
     }],
   }],
-}]
+}];
