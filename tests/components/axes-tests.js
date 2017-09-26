@@ -7,6 +7,7 @@ import CustomAxis from '../../showcase/axes/custom-axis';
 import PaddedAxis from '../../showcase/axes/padded-axis';
 import CustomAxesOrientation from '../../showcase/axes/custom-axes-orientation';
 import AxisWithTurnedLabels from '../../showcase/plot/axis-with-turned-labels';
+import AxisOn0 from '../../showcase/axes/axis-on-0';
 
 test('Axis: Showcase Example - CustomAxesOrientation', t => {
   const $ = mount(<CustomAxesOrientation />);
@@ -45,3 +46,64 @@ test('Axis: Showcase Example - Padded', t => {
   t.ok($.find('line').length > 30, 'should find the right number of grid lines');
   t.end();
 });
+
+test('Axis: axis crosses on 0', t => {
+  // vertical axes
+  const $0 = mount(<AxisOn0
+      verticalTickValues={[0]}
+      horizontalTickValues={[]}
+      yAxisOn0={true}
+  />)
+  .render();
+
+  const xOfGridlines0 = $0.find('.rv-xy-plot__grid-lines line')[0].attribs.x1;
+  const xOfAxisSetOn0 = translateToXY($0.find('.rv-xy-plot__axis.rv-xy-plot__axis--vertical')[0]
+    .attribs.transform)[0];
+
+  t.equal(xOfGridlines0, xOfAxisSetOn0, 'vertical axis set on 0 overlaps gridline.');
+
+  const $1 = mount(<AxisOn0
+    verticalTickValues={[0]}
+    horizontalTickValues={[]}
+    yAxisOn0={false}
+  />)
+  .render();
+
+  const xOfAxisNotSetOn0 = $1.find('.rv-xy-plot__axis.rv-xy-plot__axis--vertical')[0]
+    .attribs.transform.replace('translate(', '').split(',')[0];
+
+  t.ok(xOfGridlines0 !== xOfAxisNotSetOn0, 'vertical axis not set on 0 won\'t overlap gridline.');
+
+  // horizontal axes
+  const $2 = mount(<AxisOn0
+    verticalTickValue={[]}
+    horizontalTickValues={[0]}
+    xAxisOn0={true}
+  />).render();
+  const gridlinesY = Number(translateToXY($2.find('.rv-xy-plot__grid-lines')[0].attribs.transform)[1]);
+  const yOfGridlines0 = String(gridlinesY + Number($2.find('.rv-xy-plot__grid-lines__line')[0]
+    .attribs.y1));
+  const yOfAxisSetOn0 = translateToXY($2.find('.rv-xy-plot__axis.rv-xy-plot__axis--horizontal')[0]
+    .attribs.transform)[1];
+
+  t.equal(yOfAxisSetOn0, yOfGridlines0,
+      'horizontal axis set on 0 overlaps gridline.');
+
+  const $3 = mount(<AxisOn0
+    verticalTickValue={[]}
+    horizontalTickValues={[0]}
+    xAxisOn0={false}
+    />).render();
+
+  const yOfAxisNotSetOn0 = translateToXY($3.find('.rv-xy-plot__axis.rv-xy-plot__axis--horizontal')[0]
+    .attribs.transform)[1];
+  t.ok(yOfAxisNotSetOn0 !== yOfGridlines0, 'horizontal axis not set on 0 doesn\'t overlap gridline.');
+
+  t.end();
+});
+
+function translateToXY(translate) {
+  // 'translate(50,100)' => ['50', '100']
+  const results = (/translate\(\s*([^\s,)]+)[ ,]([^\s,)]+)/.exec(translate));
+  return [results[1], results[2]];
+}

@@ -84,6 +84,7 @@ import {
 
 import {FlexibleCharts} from './flexible/flexible-examples';
 
+import AxisOn0 from './axes/axis-on-0';
 import CustomAxesOrientation from './axes/custom-axes-orientation';
 import CustomAxisChart from './axes/custom-axis';
 import CustomAxes from './axes/custom-axes';
@@ -140,6 +141,7 @@ import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
 
 export const showCase = {
+  AxisOn0,
   ComplexChart,
   LineChart,
   LineChartManyColors,

@@ -25,7 +25,9 @@ export const ORIENTATION = {
   TOP: 'top',
   LEFT: 'left',
   RIGHT: 'right',
-  BOTTOM: 'bottom'
+  BOTTOM: 'bottom',
+  VERTICAL: 'vertical',
+  HORIZONTAL: 'horizontal'
 };
 
 export const DIRECTION = {
