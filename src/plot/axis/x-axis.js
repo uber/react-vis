@@ -32,12 +32,14 @@ const propTypes = {
   ...Axis.propTypes,
   orientation: PropTypes.oneOf([
     TOP, BOTTOM
-  ])
+  ]),
+  _requiresSVG: PropTypes.bool
 };
 
 const defaultProps = {
   orientation: BOTTOM,
-  attr: 'x'
+  attr: 'x',
+  _requiresSVG: true
 };
 
 function XAxis(props) {

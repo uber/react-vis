@@ -21,6 +21,7 @@
 import AbstractSeries from './abstract-series';
 import MarkSeriesCanvas from './mark-series-canvas';
 import LineSeriesCanvas from './line-series-canvas';
+import PropTypes from 'prop-types';
 
 class LineMarkSeriesCanvas extends AbstractSeries {
   static get requiresSVG() {
@@ -43,7 +44,14 @@ class LineMarkSeriesCanvas extends AbstractSeries {
 
 LineMarkSeriesCanvas.displayName = 'LineMarkSeriesCanvas';
 LineMarkSeriesCanvas.propTypes = {
-  ...AbstractSeries.propTypes
+  ...AbstractSeries.propTypes,
+  _isCanvas: PropTypes.bool,
+  _requiresSVG: PropTypes.bool
+};
+LineMarkSeriesCanvas.defaultProps = {
+  ...AbstractSeries.defaultProps,
+  _isCanvas: true,
+  _requiresSVG: false
 };
 
 export default LineMarkSeriesCanvas;

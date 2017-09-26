@@ -126,11 +126,13 @@ CircularGridLines.propTypes = {
   marginLeft: PropTypes.number,
   marginRight: PropTypes.number,
   innerWidth: PropTypes.number,
-  innerHeight: PropTypes.number
+  innerHeight: PropTypes.number,
+  _requiresSVG: PropTypes.bool
 };
 CircularGridLines.defaultProps = {
   centerX: 0,
-  centerY: 0
+  centerY: 0,
+  _requiresSVG: true
 };
 CircularGridLines.requiresSVG = true;
 

@@ -109,12 +109,14 @@ LabelSeries.propTypes = {
   })).isRequired,
   marginLeft: PropTypes.number,
   marginTop: PropTypes.number,
+  _requiresSVG: PropTypes.bool,
   rotation: PropTypes.number,
   xRange: PropTypes.arrayOf(PropTypes.number),
   yRange: PropTypes.arrayOf(PropTypes.number)
 };
 LabelSeries.defaultProps = {
   animation: false,
+  _requiresSVG: true,
   rotation: 0
 };
 LabelSeries.displayName = 'LabelSeries';

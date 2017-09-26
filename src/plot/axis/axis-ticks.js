@@ -32,11 +32,13 @@ const propTypes = {
   orientation: PropTypes.oneOf([
     LEFT, RIGHT, TOP, BOTTOM
   ]).isRequired,
+  _requiresSVG: PropTypes.bool,
   style: PropTypes.object,
   width: PropTypes.number.isRequired
 };
 
 const defaultProps = {
+  _requiresSVG: true,
   style: {}
 };
 

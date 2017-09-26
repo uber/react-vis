@@ -92,6 +92,19 @@ function checkIfMixinsAreEqual(nextScaleMixins, scaleMixins, hasTreeStructure) {
   return equal(newMixins, oldMixins);
 }
 
+function isCanvas(c) {
+  return c && ((c.type.isCanvas && !c.type.requiresSVG) || (c.type.isCanvas === 'undefined' &&
+  c.type.requiresSVG === 'undefined' && !c.props._requiresSVG && c.props.isCanvas));
+}
+
+function isSVG(c) {
+  return c && ((c.type.requiresSVG) || (typeof c.type.requiresSVG === 'undefined' && c.props._requiresSVG));
+}
+
+function isDOM(c) {
+  return !isCanvas(c) && !isSVG(c);
+}
+
 class XYPlot extends React.Component {
 
   static get propTypes() {
@@ -110,7 +123,8 @@ class XYPlot extends React.Component {
       onWheel: PropTypes.func,
       stackBy: PropTypes.oneOf(ATTRIBUTES),
       style: PropTypes.object,
-      width: PropTypes.number.isRequired
+      width: PropTypes.number.isRequired,
+      _requiresSVG: PropTypes.bool
     };
   }
 
@@ -400,8 +414,7 @@ class XYPlot extends React.Component {
   }
 
   renderCanvasComponents(components, props) {
-    const componentsToRender = components.filter(c => c && !c.type.requiresSVG && c.type.isCanvas);
-
+    const componentsToRender = components.filter(isCanvas);
     if (componentsToRender.length === 0) {
       return null;
     }
@@ -466,10 +479,10 @@ class XYPlot extends React.Component {
           onMouseLeave={this._mouseLeaveHandler}
           onMouseEnter={this._mouseEnterHandler}
           onWheel={this._wheelHandler}>
-          {components.filter(c => c && c.type.requiresSVG)}
+          {components.filter(isSVG)}
         </svg>
         {this.renderCanvasComponents(components, this.props)}
-        {components.filter(c => c && !c.type.requiresSVG && !c.type.isCanvas)}
+        {components.filter(isDOM)}
       </div>
     );
   }

@@ -32,12 +32,14 @@ const propTypes = {
   ...Axis.propTypes,
   orientation: PropTypes.oneOf([
     LEFT, RIGHT
-  ])
+  ]),
+  _requiresSVG: PropTypes.bool
 };
 
 const defaultProps = {
   orientation: LEFT,
-  attr: 'y'
+  attr: 'y',
+  _requiresSVG: true
 };
 
 function YAxis(props) {

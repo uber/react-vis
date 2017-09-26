@@ -56,11 +56,13 @@ const propTypes = {
   marginLeft: PropTypes.number,
   marginRight: PropTypes.number,
   innerWidth: PropTypes.number,
-  innerHeight: PropTypes.number
+  innerHeight: PropTypes.number,
+  _requiresSVG: PropTypes.bool
 };
 
 const defaultProps = {
-  direction: VERTICAL
+  direction: VERTICAL,
+  _requiresSVG: true
 };
 
 const animatedProps = [

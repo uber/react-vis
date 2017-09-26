@@ -20,6 +20,7 @@
 
 import AbstractSeries from './abstract-series';
 import BarSeries from './bar-series-canvas';
+import PropTypes from 'prop-types';
 
 class HorizontalBarSeriesCanvas extends AbstractSeries {
   static get requiresSVG() {
@@ -56,7 +57,14 @@ class HorizontalBarSeriesCanvas extends AbstractSeries {
 
 HorizontalBarSeriesCanvas.displayName = 'HorizontalBarSeriesCanvas';
 HorizontalBarSeriesCanvas.propTypes = {
-  ...AbstractSeries.propTypes
+  ...AbstractSeries.propTypes,
+  _isCanvas: PropTypes.bool,
+  _requiresSVG: PropTypes.bool
+};
+HorizontalBarSeriesCanvas.defaultProps = {
+  ...AbstractSeries.defaultProps,
+  _isCanvas: true,
+  _requiresSVG: false
 };
 
 export default HorizontalBarSeriesCanvas;

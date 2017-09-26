@@ -55,6 +55,7 @@ Voronoi.defaultProps = {
   onHover: NOOP,
   onMouseDown: NOOP,
   onMouseUp: NOOP,
+  _requiresSVG: true,
   x: d => d.x,
   y: d => d.y
 };
@@ -70,6 +71,7 @@ Voronoi.propTypes = {
   onMouseDown: PropTypes.func,
   onMouseUp: PropTypes.func,
   onHover: PropTypes.func,
+  _requiresSVG: PropTypes.bool,
   x: PropTypes.func,
   y: PropTypes.func
 };

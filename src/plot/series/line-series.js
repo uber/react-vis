@@ -35,6 +35,24 @@ const STROKE_STYLES = {
   solid: null
 };
 
+const defaultProps = {
+  strokeStyle: 'solid',
+  style: {},
+  opacity: 1,
+  curve: null,
+  className: '',
+  _requiresSVG: true
+};
+
+const propTypes = {
+  ...AbstractSeries.propTypes,
+  strokeStyle: PropTypes.oneOf(Object.keys(STROKE_STYLES)),
+  curve: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func
+  ])
+};
+
 class LineSeries extends AbstractSeries {
   _renderLine(data, x, y, curve, nullAccessor) {
     let line = d3Shape.line();

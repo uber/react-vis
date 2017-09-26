@@ -155,12 +155,14 @@ CustomSVGSeries.propTypes = {
   })).isRequired,
   marginLeft: PropTypes.number,
   marginTop: PropTypes.number,
+  _requiresSVG: PropTypes.bool,
   style: PropTypes.object
 };
 
 CustomSVGSeries.defaultProps = {
   animation: false,
   customComponent: 'circle',
+  _requiresSVG: true,
   style: {}
 };
 

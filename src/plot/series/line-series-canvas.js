@@ -80,7 +80,14 @@ LineSeriesCanvas.defaultProps = {
 
 LineSeriesCanvas.propTypes = {
   ...AbstractSeries.propTypes,
+  _isCanvas: PropTypes.bool,
+  _requiresSVG: PropTypes.bool,
   strokeWidth: PropTypes.number
+};
+LineSeriesCanvas.defaultProps = {
+  ...AbstractSeries.defaultProps,
+  _isCanvas: true,
+  _requiresSVG: false
 };
 
 export default LineSeriesCanvas;

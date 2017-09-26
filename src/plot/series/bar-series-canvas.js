@@ -94,14 +94,18 @@ class BarSeriesCanvas extends AbstractSeries {
 
 BarSeriesCanvas.displayName = 'BarSeriesCanvas';
 BarSeriesCanvas.defaultProps = {
+  _isCanvas: PropTypes.bool,
   linePosAttr: PropTypes.string.isRequired,
   valuePosAttr: PropTypes.string.isRequired,
   lineSizeAttr: PropTypes.string.isRequired,
+  _requiresSVG: PropTypes.bool,
   valueSizeAttr: PropTypes.string.isRequired
 };
 
 BarSeriesCanvas.propTypes = {
-  ...AbstractSeries.propTypes
+  ...AbstractSeries.propTypes,
+  _isCanvas: true,
+  _requiresSVG: false
 };
 
 export default BarSeriesCanvas;

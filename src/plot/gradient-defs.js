@@ -36,11 +36,14 @@ class GradientDefs extends PureComponent {
 
 GradientDefs.displayName = 'GradientDefs';
 GradientDefs.requiresSVG = true;
+
 GradientDefs.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  _requiresSVG: PropTypes.bool
 };
 GradientDefs.defaultProps = {
-  className: ''
+  className: '',
+  _requiresSVG: true
 };
 
 export default GradientDefs;

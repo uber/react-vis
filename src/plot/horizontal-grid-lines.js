@@ -29,12 +29,14 @@ const {HORIZONTAL} = DIRECTION;
 
 const propTypes = {
   ...GridLines.propTypes,
-  direction: PropTypes.oneOf([HORIZONTAL])
+  direction: PropTypes.oneOf([HORIZONTAL]),
+  _requiresSVG: PropTypes.bool
 };
 
 const defaultProps = {
   direction: HORIZONTAL,
-  attr: 'y'
+  attr: 'y',
+  _requiresSVG: true
 };
 
 function HorizontalGridLines(props) {

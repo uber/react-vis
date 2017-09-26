@@ -18,36 +18,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+// taken from https://preactjs.com/guide/unit-testing-with-enzyme
+const moduleAlias = require('module-alias');
 
-import PropTypes from 'prop-types';
+moduleAlias.addAliases({
+  'create-react-class': 'preact-compat/lib/create-react-class',
+  react: 'preact-compat-enzyme',
+  'react-addons-test-utils': 'preact-test-utils',
+  'react-addons-transition-group': 'preact-transition-group',
+  'react-dom': 'preact-compat-enzyme',
+  'react-dom/server': 'preact-render-to-string'
+});
 
-import GridLines from 'plot/grid-lines';
-import {DIRECTION} from 'utils/axis-utils';
-
-const {VERTICAL} = DIRECTION;
-
-const propTypes = {
-  ...GridLines.propTypes,
-  direction: PropTypes.oneOf([VERTICAL]),
-  _requiresSVG: PropTypes.bool
-};
-
-const defaultProps = {
-  direction: VERTICAL,
-  attr: 'x',
-  _requiresSVG: true
-};
-
-function VerticalGridLines(props) {
-  return (
-    <GridLines {...props} />
-  );
-}
-
-VerticalGridLines.displayName = 'VerticalGridLines';
-VerticalGridLines.propTypes = propTypes;
-VerticalGridLines.defaultProps = defaultProps;
-VerticalGridLines.requiresSVG = true;
-
-export default VerticalGridLines;
+require('./index.js');

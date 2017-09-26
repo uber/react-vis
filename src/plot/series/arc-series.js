@@ -42,6 +42,7 @@ const defaultProps = {
   center: {x: 0, y: 0},
   arcClassName: '',
   className: '',
+  _requiresSVG: true,
   style: {}
 };
 

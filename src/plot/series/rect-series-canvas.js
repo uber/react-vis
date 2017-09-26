@@ -85,14 +85,18 @@ class RectSeriesCanvas extends AbstractSeries {
 
 RectSeriesCanvas.displayName = 'RectSeriesCanvas';
 RectSeriesCanvas.defaultProps = {
+  _isCanvas: true,
   linePosAttr: PropTypes.string.isRequired,
   valuePosAttr: PropTypes.string.isRequired,
   lineSizeAttr: PropTypes.string.isRequired,
-  valueSizeAttr: PropTypes.string.isRequired
+  valueSizeAttr: PropTypes.string.isRequired,
+  _requiresSVG: false
 };
 
 RectSeriesCanvas.propTypes = {
-  ...AbstractSeries.propTypes
+  ...AbstractSeries.propTypes,
+  _isCanvas: PropTypes.bool,
+  _requiresSVG: PropTypes.bool
 };
 
 export default RectSeriesCanvas;
