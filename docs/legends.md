@@ -75,6 +75,11 @@ Outer height of the component. Default is not set, the component stretches with 
 
 Its API includes the API of `DiscreteColorLegend`, but adds several search-related items:
 
+#### inputClassName (optional)
+Type: `string`
+Default: `'rv-search-wrapper__form__input'`
+Override this to use a custom class name on the input field.  Or set to null for no class name.
+
 #### searchText (optional)
 Type: `string`
 Default: `''`

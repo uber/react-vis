@@ -26,6 +26,7 @@ import DiscreteColorLegend from 'legends/discrete-color-legend';
 
 const propTypes = {
   ...DiscreteColorLegend.propTypes,
+  inputClassName: PropTypes.string,
   searchText: PropTypes.string,
   onSearchChange: PropTypes.func,
   searchPlaceholder: PropTypes.string,
@@ -34,6 +35,7 @@ const propTypes = {
 
 const defaultProps = {
   className: '',
+  inputClassName: 'rv-search-wrapper__form__input',
   searchText: '',
   searchFn: (items, s) => items.filter(
     item => String(item.title || item).toLowerCase().indexOf(s) !== -1
@@ -45,6 +47,7 @@ function SearchableDiscreteColorLegend(props) {
     className,
     colors,
     height,
+    inputClassName,
     items,
     onItemClick,
     onSearchChange,
@@ -64,7 +67,7 @@ function SearchableDiscreteColorLegend(props) {
         <input
           type="search"
           placeholder={searchPlaceholder}
-          className="rv-search-wrapper__form__input"
+          className={inputClassName}
           value={searchText}
           onChange={onChange}/>
       </form>
