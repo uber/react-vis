@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
 const {
+  AxisOn0,
   AxisWithTurnedLabels,
   CustomAxes,
   CustomAxisChart,
@@ -23,6 +24,9 @@ const {
 
 /* eslint-disable max-len */
 const AXES = [{
+  name: 'Axis on 0',
+  component: AxisOn0
+}, {
   name: 'Custom Axes Orientation',
   component: CustomAxesOrientation
 }, {

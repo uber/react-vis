@@ -27,7 +27,7 @@
     "build": "npm run clean && babel src -d dist --copy-files && BABEL_ENV=es babel src -d es --copy-files && node-sass src/main.scss dist/style.css --output-style compressed && npm run build:browser",
     "lint": "eslint src tests showcase docs --ignore-pattern node_modules --ignore-pattern bundle.js",
     "lint-styles": "stylelint src/styles/*.scss --syntax scss",
-    "test": "babel-node tests/index.js",
+    "test": "node --inspect node_modules/.bin/babel-node tests/index.js",
     "full-test": "npm run lint && npm run cover",
     "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test",
     "remove-unpm-rfs": "./remove-refs-to-unpm.pl"

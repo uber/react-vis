@@ -24,6 +24,7 @@ import PropTypes from 'prop-types';
 
 import Animation from 'animation';
 import {ORIENTATION, getTicksTotalFromSize} from 'utils/axis-utils';
+import {getAttributeScale} from 'utils/scales-utils';
 
 import AxisLine from './axis-line';
 import AxisTicks from './axis-ticks';
@@ -42,6 +43,7 @@ const propTypes = {
     LEFT, RIGHT, TOP, BOTTOM
   ]),
   attr: PropTypes.string.isRequired,
+  attrAxis: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
   top: PropTypes.number,
@@ -53,6 +55,7 @@ const propTypes = {
   className: PropTypes.string,
   hideTicks: PropTypes.bool,
   hideLine: PropTypes.bool,
+  on0: PropTypes.bool,
   tickLabelAngle: PropTypes.number,
   tickSize: PropTypes.number,
   tickSizeInner: PropTypes.number,
@@ -74,6 +77,7 @@ const propTypes = {
 
 const defaultProps = {
   className: '',
+  on0: false,
   style: {},
   tickSize: 6,
   tickPadding: 8,
@@ -157,11 +161,14 @@ class Axis extends PureComponent {
     };
 
     const {
+      attrAxis,
       className,
       height,
       hideLine,
       hideTicks,
       left,
+      marginTop,
+      on0,
       orientation,
       style,
       title,
@@ -171,9 +178,21 @@ class Axis extends PureComponent {
     const isVertical = [LEFT, RIGHT].indexOf(orientation) > -1;
     const axisClassName = isVertical ? VERTICAL_CLASS_NAME :
       HORIZONTAL_CLASS_NAME;
+
+    let leftPos = left;
+    let topPos = top;
+    if (on0) {
+      const scale = getAttributeScale(props, attrAxis);
+      if (isVertical) {
+        leftPos = scale(0);
+      } else {
+        topPos = marginTop + scale(0);
+      }
+    }
+
     return (
       <g
-        transform={`translate(${left},${top})`}
+        transform={`translate(${leftPos},${topPos})`}
         className={`${predefinedClassName} ${axisClassName} ${className}`}
         style={style}>
         {!hideLine && (<AxisLine
