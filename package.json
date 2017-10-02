@@ -81,7 +81,7 @@
     "uglify-js": "^2.8.22"
   },
   "peerDependencies": {
-    "react": "0.14.x - 15.x"
+    "react": "0.14.x - 16.x"
   },
   "keywords": [
     "d3",
@@ -142,3 +142,4 @@
     "npm": ">=3.0"
   }
 }
+
