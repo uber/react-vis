@@ -9,7 +9,7 @@ export const PROJECTS = {
   'deck.gl': 'https://uber.github.io/deck.gl',
   'luma.gl': 'https://uber.github.io/luma.gl',
   'react-map-gl': 'https://uber.github.io/react-map-gl',
-  'vis-academy': 'https://uber.github.io/vis-academy',
+  'vis-academy': 'https://uber-common.github.io/vis-academy/',
 };
 
 export const HOME_HEADING = 'A composable charting library';
