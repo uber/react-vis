@@ -95,14 +95,14 @@ class Treemap extends React.Component {
     super(props);
     this.state = {
       scales: _getScaleFns(props),
-      ...getInnerDimensions(props, DEFAULT_MARGINS)
+      ...getInnerDimensions(props, props.margin)
     };
   }
 
   componentWillReceiveProps(props) {
     this.setState({
       scales: _getScaleFns(props),
-      ...getInnerDimensions(props, DEFAULT_MARGINS)
+      ...getInnerDimensions(props, props.margin)
     });
   }
 
@@ -194,12 +194,7 @@ Treemap.defaultProps = {
   data: {
     children: []
   },
-  margin: {
-    bottom: 50,
-    left: 50,
-    top: 50,
-    right: 50
-  },
+  margin: DEFAULT_MARGINS,
   mode: 'squarify',
   onLeafClick: NOOP,
   onLeafMouseOver: NOOP,
