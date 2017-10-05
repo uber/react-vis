@@ -28,7 +28,18 @@ const DEFAULT_LINK_OPACITY = 0.7;
 
 class SankeyLink extends PureComponent {
   render() {
-    const {animation, data, opacity, color, strokeWidth, style} = this.props;
+    const {
+      animation,
+      data,
+      node,
+      opacity,
+      color,
+      strokeWidth,
+      style,
+      onLinkClick,
+      onLinkMouseOver,
+      onLinkMouseOut
+    } = this.props;
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
@@ -43,6 +54,9 @@ class SankeyLink extends PureComponent {
         className="rv-sankey__link"
         opacity={Number.isFinite(opacity) ? opacity : DEFAULT_LINK_OPACITY}
         stroke={color || DEFAULT_LINK_COLOR}
+        onClick={e => onLinkClick(node, e)}
+        onMouseOver={e => onLinkMouseOver(node, e)}
+        onMouseOut={e => onLinkMouseOut(node, e)}
         strokeWidth={strokeWidth}
         fill="none" />
     );

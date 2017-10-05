@@ -146,6 +146,45 @@ This handler is triggered either when the users mouse leaves a node. Callback wh
 ```
 
 
+#### onLinkClick (optional)
+Type: `function`
+Default noop
+This handler is triggered when the user clicks on a link. Callback accepts the data point associated with this link as well as the click event.
+```jsx
+<Sankey
+  onLinkClick={(linkdata, event)=>{
+    // does something on click
+    // you can access the value of the event
+  }}
+/>
+```
+
+#### onLinkMouseOver (optional)
+Type: `function`
+Default noop
+This handler is triggered when the user's mouse hovers over a link. Callback accepts the data point associated with this link as well as the click event.
+```jsx
+<Sankey
+  onLinkMouseOver={(linkdata, event)=>{
+    // does something on mouseover
+    // you can access the value of the event
+  }}
+/>
+```
+
+#### onLinkMouseOut (optional)
+Type: `function`
+Default noop
+This handler is triggered when the user's exits a link. Callback accepts the data point associated with this link as well as the click event.
+```jsx
+<Sankey
+  onLinkMouseOut={(linkdata, event)=>{
+    // does something on mouseout
+    // you can access the value of the event
+  }}
+/>
+```
+
 ### style (optional)
 Type: `object`
 An object that contains CSS properties with which the axis component can be entirely re-styled.

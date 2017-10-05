@@ -53,6 +53,9 @@ class Sankey extends Component {
       onValueClick,
       onValueMouseOver,
       onValueMouseOut,
+      onLinkClick,
+      onLinkMouseOver,
+      onLinkMouseOut,
       style,
       width
     } = this.props;
@@ -89,7 +92,9 @@ class Sankey extends Component {
             data={path(link)}
             opacity={link.opacity || linkOpacity}
             color={link.color}
-
+            onLinkClick={onLinkClick}
+            onLinkMouseOver={onLinkMouseOver}
+            onLinkMouseOut={onLinkMouseOut}
             strokeWidth={Math.max(link.width, 1)}
             node={link}
             nWidth={nWidth}
@@ -159,6 +164,9 @@ Sankey.defaultProps = {
   onValueMouseOver: NOOP,
   onValueClick: NOOP,
   onValueMouseOut: NOOP,
+  onLinkClick: NOOP,
+  onLinkMouseOver: NOOP,
+  onLinkMouseOut: NOOP,
   style: {
     links: {},
     rects: {},
@@ -189,6 +197,9 @@ Sankey.propTypes = {
   onValueMouseOver: PropTypes.func,
   onValueClick: PropTypes.func,
   onValueMouseOut: PropTypes.func,
+  onLinkClick: PropTypes.func,
+  onLinkMouseOver: PropTypes.func,
+  onLinkMouseOut: PropTypes.func,
   style: PropTypes.shape({
     links: PropTypes.object,
     rects: PropTypes.object,
