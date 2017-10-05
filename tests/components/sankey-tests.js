@@ -6,6 +6,7 @@ import Sankey from 'sankey';
 import BasicSankey from '../../showcase/sankey/basic';
 import VoronoiSankey from '../../showcase/sankey/voronoi';
 import EnergySankey from '../../showcase/sankey/energy-sankey';
+import LinkEventSankey from '../../showcase/sankey/link-event';
 
 const SANKEY_PROPS = {
   nodes: [],
@@ -56,6 +57,21 @@ test('Sankey: Showcase Example - VoronoiSankey', t => {
   $.find('.rv-voronoi__cell').at(0).simulate('mouseOver');
   t.equal($.text(), 'a selectedabc', 'should find that the first bar is hovered bar is hovered');
   $.find('.rv-voronoi__cell').at(0).simulate('mouseLeave');
+
+  t.end();
+});
+
+test('Sankey: Showcase Example - LinkEventSankey', t => {
+  const $ = mount(<LinkEventSankey />);
+
+  t.equal($.find('.rv-sankey__link').length, 3, 'should find the right number of links');
+  t.equal($.find('.rv-sankey__node rect').length, 3, 'should find the right number of nodes');
+
+  t.equal($.text(), 'None selectedabc', 'should find that no link is hovered');
+  $.find('.rv-sankey__link').at(0).simulate('mouseOver');
+  t.equal($.text(), 'a -> b selectedabc', 'should find that the first link is hovered');
+  $.find('.rv-sankey__link').at(0).simulate('mouseOut');
+  t.equal($.text(), 'None selectedabc', 'should find that no bar is hovered');
 
   t.end();
 });
