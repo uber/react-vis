@@ -66,13 +66,35 @@ test('Treemap: Basic rendering', t => {
 
 test('Treemap: Custom Sorting', t => {
   const $ = mount(<Treemap {...TREEMAP_PROPS}/>);
-  $.setProps({sortFunction: (a, b) => (b.height - a.height) || (b.value - a.value)});
   const expectedText = 'interpolateTransitionerEasingTransitionNeonateFunctionSequenceSchedulerSequenceParallelTransitionEventISchedulablePauseInterpolatorMatrixInterpolatorColorInterpolatorRectangleInterpolatorArrayInterpolatorPointInterpolatorObjectInterpolatorNumberInterpolatorDateInterpolator';
-  t.equal($.find('.rv-treemap').text(), expectedText, 'should find the correct text shown');
+  const expectedReverseText = 'PauseISchedulableTransitionEventParallelSequenceSchedulerFunctionSequenceNeonateTransitionEasingTransitionerinterpolateDateInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorArrayInterpolatorRectangleInterpolatorColorInterpolatorMatrixInterpolatorInterpolator';
+  const expectedNewText = 'InterpolatorMatrixInterpolatorColorInterpolatorRectangleInterpolatorArrayInterpolatorPointInterpolatorObjectInterpolatorNumberInterpolatorDateInterpolator';
+  const expectedReverseNewText = 'DateInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorArrayInterpolatorRectangleInterpolatorColorInterpolatorMatrixInterpolatorInterpolator';
+  const expectedNewTextWithRoot = `interpolate${expectedNewText}`;
+  const expectedReverseNewTextWithRoot = `interpolate${expectedReverseNewText}`;
 
-  $.setProps({data: INTERPOLATE_DATA});
-  const newText = 'InterpolatorMatrixInterpolatorColorInterpolatorRectangleInterpolatorArrayInterpolatorPointInterpolatorObjectInterpolatorNumberInterpolatorDateInterpolator';
-  t.equal($.find('.rv-treemap').text(), newText, 'should find the correct text shown');
+  [
+    'circlePack',
+    'partition',
+    'partition-pivot',
+    'squarify',
+    'resquarify',
+    'slice',
+    'dice',
+    'slicedice',
+    'binary'
+  ].forEach(mode => {
+    $.setProps({mode, sortFunction: (a, b) => (b.value - a.value), ...TREEMAP_PROPS});
+    t.equal($.find('.rv-treemap').text(), expectedText, `should find the correct text shown for ${mode} with sort`);
+    $.setProps({sortFunction: (a, b) => (a.value - b.value)});
+    t.equal($.find('.rv-treemap').text(), expectedReverseText, `should find the correct text shown for ${mode} with reverse sort`);
+
+    // circle pack includes the root node, while the other modes do not. The root of INTERPOLATE_DATA has a title, but the root of the default data does not
+    $.setProps({data: INTERPOLATE_DATA, sortFunction: (a, b) => (b.value - a.value)});
+    t.equal($.find('.rv-treemap').text(), mode === 'circlePack' ? expectedNewTextWithRoot : expectedNewText, `should find the correct new text shown for ${mode} with sort`);
+    $.setProps({sortFunction: (a, b) => (a.value - b.value)});
+    t.equal($.find('.rv-treemap').text(), mode === 'circlePack' ? expectedReverseNewTextWithRoot : expectedReverseNewText, `should find the correct new text shown for ${mode} with reverse sort`);
+  });
 
   t.end();
 });
