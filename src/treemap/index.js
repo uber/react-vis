@@ -120,7 +120,7 @@ class Treemap extends React.Component {
 
     if ((mode === 'partition' || mode === 'partition-pivot')) {
       const partitionFunction = partition()
-          .size([innerWidth, innerHeight])
+          .size(mode === 'partition-pivot' ? [innerHeight, innerWidth] : [innerWidth, innerHeight])
           .padding(padding);
       const structuredInput = hierarchy(data)
         .sum(d => d.size);
