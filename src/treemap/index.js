@@ -123,7 +123,8 @@ class Treemap extends React.Component {
           .size(mode === 'partition-pivot' ? [innerHeight, innerWidth] : [innerWidth, innerHeight])
           .padding(padding);
       const structuredInput = hierarchy(data)
-        .sum(d => d.size);
+        .sum(d => d.size)
+        .sort(sortFunction);
       const mappedNodes = partitionFunction(structuredInput).descendants();
       if (mode === 'partition-pivot') {
         return mappedNodes.map(node => ({
