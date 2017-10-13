@@ -120,6 +120,10 @@ Each point consists of following properties:
 Type: `boolean|Object`
 Please refer to [Animation](animation.md) doc for more information.
 
+#### hideRootNode (optional)
+Type: `boolean`
+Simple boolean on whether or not to show the root node of the tree.
+
 #### onLeafClick (optional)
 Type: `function`
 - Should accept arguments (leafNode, domEvent)

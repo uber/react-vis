@@ -31,6 +31,7 @@ class TreemapSVG extends React.Component {
   getCircularNodes() {
     const {
       animation,
+      hideRootNode,
       nodes,
       onLeafMouseOver,
       onLeafMouseOut,
@@ -40,6 +41,9 @@ class TreemapSVG extends React.Component {
     } = this.props;
 
     const {rows, minY, maxY, minX, maxX} = nodes.reduce((acc, node, index) => {
+      if (!index && hideRootNode) {
+        return acc;
+      }
       const {x, y, r} = node;
       return {
         maxY: Math.max(y + r, acc.maxY),
@@ -83,6 +87,7 @@ class TreemapSVG extends React.Component {
   getNonCircularNodes() {
     const {
       animation,
+      hideRootNode,
       nodes,
       onLeafMouseOver,
       onLeafMouseOut,
@@ -92,7 +97,7 @@ class TreemapSVG extends React.Component {
     } = this.props;
     const {color} = scales;
     return nodes.reduce((acc, node, index) => {
-      if (!index) {
+      if (!index && hideRootNode) {
         return acc;
       }
       const {x0, x1, y1, y0} = node;
