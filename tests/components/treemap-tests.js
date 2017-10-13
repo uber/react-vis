@@ -99,7 +99,56 @@ test('Treemap: Custom Sorting', t => {
 
 test('Treemap: Empty treemap', t => {
   const $ = mount(<Treemap {...{...TREEMAP_PROPS, data: {}}}/>);
-  //1 is the empty root node
+  // 1 is the empty root node
+  t.equal($.find('.rv-treemap__leaf').length, 1, 'should find the right number of children');
+  t.equal($.find('.rv-treemap').text(), '', 'should find the correct text shown');
+  t.equal($.find('.little-nested-tree-example').length, 1, 'should find the custom class name used');
+
+  t.end();
+});
+
+test('Treemap: Hide Root Node', t => {
+  const $ = mount(<Treemap {...TREEMAP_PROPS}/>);
+  // the tree from TREEMAP_PROPS doesn't have a title so its text is the same with ot without the root
+  const expectedText = 'EasingNeonateinterpolateISchedulableParallelPauseFunctionSequenceSequenceTransitionTransitionerTransitionEventSchedulerArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
+  const numberOfElements = 21;
+  const numberOfElementsWithRoot = numberOfElements + 1;
+  const expectedNewText = 'ArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
+  const expectedNewTextWithRoot = `interpolate${expectedNewText}`;
+  const numberOfNewElements = 9;
+  const numberOfNewElementsWithRoot = numberOfNewElements + 1;
+  [
+    'circlePack',
+    'partition',
+    'partition-pivot',
+    'squarify',
+    'resquarify',
+    'slice',
+    'dice',
+    'slicedice',
+    'binary'
+  ].forEach(mode => {
+    $.setProps({mode, ...TREEMAP_PROPS, hideRootNode: false});
+    t.equal($.find('.rv-treemap').text(), expectedText, `should find the correct text shown for ${mode} with hideRootNode false`);
+    t.equal($.find('.rv-treemap__leaf').length, numberOfElementsWithRoot, `should find the correct number of children for ${mode} with  hideRootNode false`);
+    $.setProps({hideRootNode: true});
+    t.equal($.find('.rv-treemap').text(), expectedText, `should find the correct text shown for ${mode} with hideRootNode true`);
+    t.equal($.find('.rv-treemap__leaf').length, numberOfElements, `should find the right number of children for ${mode} with hideRootNode true`);
+
+    $.setProps({data: INTERPOLATE_DATA, hideRootNode: false});
+    t.equal($.find('.rv-treemap').text(), expectedNewTextWithRoot, `should find the correct new text shown for ${mode} with hideRootNode false`);
+    t.equal($.find('.rv-treemap__leaf').length, numberOfNewElementsWithRoot, `should find the new right number of children for ${mode} with  hideRootNode false`);
+    $.setProps({hideRootNode: true});
+    t.equal($.find('.rv-treemap').text(), expectedNewText, `should find the correct new text shown for ${mode} with hideRootNode true`);
+    t.equal($.find('.rv-treemap__leaf').length, numberOfNewElements, `should find the new right number of children for ${mode} with  hideRootNode true`);
+  });
+
+  t.end();
+});
+
+test('Treemap: Empty treemap', t => {
+  const $ = mount(<Treemap {...{...TREEMAP_PROPS, data: {}}}/>);
+  // 1 is the empty root node
   t.equal($.find('.rv-treemap__leaf').length, 1, 'should find the right number of children');
   t.equal($.find('.rv-treemap').text(), '', 'should find the correct text shown');
   t.equal($.find('.little-nested-tree-example').length, 1, 'should find the custom class name used');
