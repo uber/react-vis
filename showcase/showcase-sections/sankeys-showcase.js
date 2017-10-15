@@ -5,7 +5,8 @@ import {showCase} from '../index';
 const {
   BasicSankeyExample,
   VoronoiSankeyExample,
-  EnergySankeyExample
+  EnergySankeyExample,
+  LinkHoverSankeyExample
 } = showCase;
 
 const SANKEYS = [{
@@ -16,6 +17,9 @@ const SANKEYS = [{
 }, {
   name: 'With Voronoi Selection',
   component: VoronoiSankeyExample
+}, {
+  name: 'Link with hover effect',
+  component: LinkHoverSankeyExample
 }, {
   name: 'Energy Example',
   component: EnergySankeyExample

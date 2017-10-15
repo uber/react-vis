@@ -19,16 +19,56 @@
 // THE SOFTWARE.
 
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {DISCRETE_COLOR_RANGE} from 'theme';
-import Animation from 'animation';
+import {Animation, AnimationPropType} from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 
 const DEFAULT_LINK_COLOR = DISCRETE_COLOR_RANGE[1];
 const DEFAULT_LINK_OPACITY = 0.7;
+const NOOP = f => f;
+
+const propTypes = {
+  data: PropTypes.string.isRequired,
+  node: PropTypes.object.isRequired,
+  onMouseOver: PropTypes.func,
+  onMouseOut: PropTypes.func,
+  onClick: PropTypes.func,
+  onRightClick: PropTypes.func,
+  style: PropTypes.object,
+  opacity: PropTypes.number,
+  strokeWidth: PropTypes.number,
+  color: PropTypes.string,
+  animation: AnimationPropType
+};
+
+const defaultProps = {
+  animation: null,
+  className: '',
+  style: {},
+  color: null,
+  opacity: DEFAULT_LINK_OPACITY,
+  onMouseOver: NOOP,
+  onMouseOut: NOOP,
+  onClick: NOOP,
+  onRightClick: NOOP
+};
 
 class SankeyLink extends PureComponent {
+
   render() {
-    const {animation, data, opacity, color, strokeWidth, style} = this.props;
+    const {
+      animation, 
+      data, 
+      opacity, 
+      color, 
+      strokeWidth, 
+      style,      
+      node,  
+      onMouseOver,
+      onMouseOut,
+      onClick,
+      onRightClick} = this.props;
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
@@ -44,11 +84,17 @@ class SankeyLink extends PureComponent {
         opacity={Number.isFinite(opacity) ? opacity : DEFAULT_LINK_OPACITY}
         stroke={color || DEFAULT_LINK_COLOR}
         strokeWidth={strokeWidth}
-        fill="none" />
+        fill="none"
+        onMouseOver={(event) => onMouseOver(event.target, node)}
+        onMouseOut={(event) => onMouseOut(event.target, node)}
+        onClick={(event) => onClick(event.target, node)}
+        onContextMenu={(event) => onRightClick(event.target, node)}/>
     );
   }
 }
 
 SankeyLink.displayName = 'SankeyLink';
 SankeyLink.requiresSVG = true;
+SankeyLink.propTypes = propTypes;
+SankeyLink.defaultProps = defaultProps;
 export default SankeyLink;

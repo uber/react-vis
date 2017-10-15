@@ -135,6 +135,7 @@ import SunburstWithTooltips from './sunbursts/sunburst-with-tooltips';
 import BasicSankeyExample from './sankey/basic';
 import VoronoiSankeyExample from './sankey/voronoi';
 import EnergySankeyExample from './sankey/energy-sankey';
+import LinkHoverSankeyExample from './sankey/link-hover';
 
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
@@ -242,6 +243,7 @@ export const showCase = {
   BasicSankeyExample,
   VoronoiSankeyExample,
   EnergySankeyExample,
+  LinkHoverSankeyExample,
 
   VerticalDiscreteColorLegendExample,
   HorizontalDiscreteColorLegendExample,

@@ -39,6 +39,7 @@ class Sankey extends Component {
     const {
       align,
       animation,
+      children,
       className,
       hasVoronoi,
       height,
@@ -50,6 +51,10 @@ class Sankey extends Component {
       nodePadding,
       nodes,
       nodeWidth,
+      onLinkMouseOver,
+      onLinkMouseOut,
+      onLinkClick,
+      onLinkRightClick,
       onValueClick,
       onValueMouseOver,
       onValueMouseOut,
@@ -93,7 +98,11 @@ class Sankey extends Component {
             strokeWidth={Math.max(link.width, 1)}
             node={link}
             nWidth={nWidth}
-            key={`link-${i}`}/>
+            key={`link-${i}`}
+            onMouseOver={onLinkMouseOver}
+            onMouseOut={onLinkMouseOut}
+            onClick={onLinkClick}
+            onRightClick={onLinkRightClick}/>
         ))}
         <VerticalRectSeries
           animation={animation}
@@ -141,6 +150,7 @@ class Sankey extends Component {
             y={d => d.y0 + (d.y1 - d.y0) / 2}
           />
         )}
+        {children}
       </XYPlot>
     );
   }
@@ -159,6 +169,10 @@ Sankey.defaultProps = {
   onValueMouseOver: NOOP,
   onValueClick: NOOP,
   onValueMouseOut: NOOP,
+  onLinkMouseOver: NOOP,
+  onLinkMouseOut: NOOP,
+  onLinkClick: NOOP,
+  onLinkRightClick: NOOP,
   style: {
     links: {},
     rects: {},
@@ -189,6 +203,10 @@ Sankey.propTypes = {
   onValueMouseOver: PropTypes.func,
   onValueClick: PropTypes.func,
   onValueMouseOut: PropTypes.func,
+  onLinkMouseOver: PropTypes.func,
+  onLinkMouseOut: PropTypes.func,
+  onLinkClick: PropTypes.func,
+  onLinkRightClick: PropTypes.func,
   style: PropTypes.shape({
     links: PropTypes.object,
     rects: PropTypes.object,
