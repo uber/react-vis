@@ -22,7 +22,7 @@ const MISC = [{
   name: 'Polygon Example',
   component: TriangleExample,
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/polygon-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/polygon-series'
+  docsLink: 'http://uber.github.io/react-vis/documentation/xy-plot-series/polygon-series'
 }, {
   name: 'Voronoi Line Chart',
   component: VoronoiLineChart
@@ -33,12 +33,12 @@ const MISC = [{
 }, {
   name: 'Animation Example',
   component: AnimationExample,
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/overview/animation'
+  docsLink: 'http://uber.github.io/react-vis/documentation/overview/animation'
 }, {
   name: 'Label Series Example',
   component: LabelSeriesExample,
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/label-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/label-series'
+  docsLink: 'http://uber.github.io/react-vis/documentation/xy-plot-series/label-series'
 }, {
   name: 'Null Data Example',
   component: NullDataExample
