@@ -13,7 +13,7 @@ const {
 const SUNBURSTS = [{
   name: 'Arc Series Example',
   component: ArcSeriesExample,
-  docsLink: 'http://uber.github.io/react-vis/documentation/xy-plot-series/arc-series',
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/arc-series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/arc-series.js'
 }, {
   name: 'Basic Sunburst',
