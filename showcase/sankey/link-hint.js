@@ -22,17 +22,13 @@ export default class LinkHintSankeyExample extends React.Component {
   _renderHint() {
     const {activeLink} = this.state;
 
-    if (activeLink === null) {
-      return null;
-    }
-
     // calculate center x,y position of link for positioning of hint
     const x = activeLink.source.x1 + ((activeLink.target.x0 - activeLink.source.x1) / 2);
     const y = activeLink.y0 - ((activeLink.y0 - activeLink.y1) / 2);
 
-    const hintValue = {};
-    const label = `${activeLink.source.name} ➞ ${activeLink.target.name}`;
-    hintValue[label] = activeLink.value;
+    const hintValue = {
+      [`${activeLink.source.name} ➞ ${activeLink.target.name}`]: activeLink.value
+    };
 
     return (
       <Hint x={x} y={y} value={hintValue} />
@@ -60,7 +56,7 @@ export default class LinkHintSankeyExample extends React.Component {
           onLinkMouseOver={node => this.setState({activeLink: node})}
           onLinkMouseOut={() => this.setState({activeLink: null})}
           >
-          { this._renderHint() }
+          { activeLink && this._renderHint() }
         </Sankey>
       </div>
     );

@@ -40,7 +40,7 @@ test('Sankey: labels', t => {
 });
 
 test('Sankey: children', t => {
-  const wrap = mount(
+  const $ = mount(
     <Sankey
       height={100}
       width={100}
@@ -50,7 +50,7 @@ test('Sankey: children', t => {
       <Hint x={0} y={0} value={{test: 123}}/>
     </Sankey>
   );
-  t.equal(wrap.find(Hint).length, 1, 'should find children of sankey');
+  t.equal($.find(Hint).length, 1, 'should find children of sankey');
 
   t.end();
 });
