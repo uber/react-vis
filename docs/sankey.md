@@ -213,4 +213,4 @@ This is especially useful for rendering of Hints within a Sankey (since the must
   <Hint x={x} y={y} value={myValue}/>
 </Sankey>
 ```
-(See sample 'Sankey - With hint (for links)' at showcase for more details.)
+(See sample [Sankey - With hint (for links)](examples/showcases/sankeys-showcase.md) at showcase for more details.)
