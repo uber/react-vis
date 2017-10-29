@@ -4,13 +4,13 @@ We tried to make react-vis syntax as close to the traditional react syntax. You 
 
 Every react-vis chart is inside a component called XYPlot, for which a height and a width must be specified:
 
-```jsx
+```js
 <XYPlot height={300} width = {300} />
 ```
 
 And all the elements of a chart - series, axes, gridlines, etc. are other components, which will be children of XYPlot.
 
-```jsx
+```js
 const data = [
   {x: 0, y: 8},
   {x: 1, y: 5},
@@ -34,7 +34,7 @@ const data = [
 
 And like in traditional react, order matters as components are drawn in order. In the previous example, the gridlines are drawn below the line series, but in this next example, they will be drawn above it.
 
-```jsx
+```js
 <XYPlot height={300} width= {300}>
   <LineSeries data={data} />
   <VerticalGridLines />

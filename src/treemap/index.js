@@ -95,14 +95,14 @@ class Treemap extends React.Component {
     super(props);
     this.state = {
       scales: _getScaleFns(props),
-      ...getInnerDimensions(props, DEFAULT_MARGINS)
+      ...getInnerDimensions(props, props.margin)
     };
   }
 
   componentWillReceiveProps(props) {
     this.setState({
       scales: _getScaleFns(props),
-      ...getInnerDimensions(props, DEFAULT_MARGINS)
+      ...getInnerDimensions(props, props.margin)
     });
   }
 
@@ -120,10 +120,11 @@ class Treemap extends React.Component {
 
     if ((mode === 'partition' || mode === 'partition-pivot')) {
       const partitionFunction = partition()
-          .size([innerWidth, innerHeight])
+          .size(mode === 'partition-pivot' ? [innerHeight, innerWidth] : [innerWidth, innerHeight])
           .padding(padding);
       const structuredInput = hierarchy(data)
-        .sum(d => d.size);
+        .sum(d => d.size)
+        .sort(sortFunction);
       const mappedNodes = partitionFunction(structuredInput).descendants();
       if (mode === 'partition-pivot') {
         return mappedNodes.map(node => ({
@@ -174,6 +175,7 @@ Treemap.propTypes = {
   className: PropTypes.string,
   data: PropTypes.object.isRequired,
   height: PropTypes.number.isRequired,
+  hideRootNode: PropTypes.bool,
   margin: MarginPropType,
   mode: PropTypes.oneOf(
     Object.keys(TREEMAP_TILE_MODES).concat(TREEMAP_LAYOUT_MODES)
@@ -194,12 +196,8 @@ Treemap.defaultProps = {
   data: {
     children: []
   },
-  margin: {
-    bottom: 50,
-    left: 50,
-    top: 50,
-    right: 50
-  },
+  hideRootNode: false,
+  margin: DEFAULT_MARGINS,
   mode: 'squarify',
   onLeafClick: NOOP,
   onLeafMouseOver: NOOP,

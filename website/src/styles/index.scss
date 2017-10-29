@@ -1,0 +1,119 @@
+.Hero .container {
+  position: absolute;
+  background: #fff;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  cursor: pointer;
+  height: 120px;
+  overflow: hidden;
+  transition: background 0.5s;
+  padding: 12px;
+  width: 384px;
+  h1 {
+    margin-top: 0;
+    line-height: 84px;
+    letter-spacing: normal;
+    color: #494949;
+    margin-left: 24px;
+    transition: color 0.5s;
+  }
+  #get-started {
+    left: 400px;
+    opacity: 0;
+    color: white;
+    animation: pulse 2s infinite;
+  }
+
+  #project-desc {
+    opacity: 1;
+    left: 36px;
+  }
+  p {
+    transition: opacity 0.5s, left 0.5s;
+    font-size: 1rem;
+    line-height: 30px;
+    position: absolute;
+    bottom: 12px;
+  }
+  &:hover {
+    background: #17b8be;
+    h1 {
+      color: white;
+    }
+    #project-desc {
+      opacity: 0;
+      left: -100px;
+    }
+    #get-started {
+      opacity: 1;
+      left: 36px;
+    }
+  }
+}
+
+.container.f.fw {
+  display: none;
+}
+
+.container {
+  hr.short {
+    display: none;
+  }
+  .Contributors.m-top {
+    margin-top: 0;
+    .Contributor {
+      width: 8rem;
+      height: 10rem;
+      background: none;
+      margin: 10px;
+      img {
+        border-radius: 50%;
+        border: 4px solid #17b8be;
+        box-shadow: 0 0 0 #17b8be;
+        transition: border 0.5s, box-shadow 0.5s;
+      }
+      span {
+        display: block;
+        font-size: 1rem;
+        position: absolute;
+        margin-left: -8px;
+        bottom: 0;
+        color: #494949;
+        text-align: center;
+        text-shadow: none;
+        width: 8rem;
+      }
+    }
+    .Contributor:after {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      width: calc(8rem - 10px);
+      height: calc(8rem - 10px);
+      border: 2px solid white;
+      border-radius: 50%;
+    }
+    .Contributor:hover {
+      img {
+        border-radius: 50%;
+        border: 4px solid white;
+        box-shadow: 0 0 20px #17b8be;
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    font-size: 16px;
+    color: #ddd;
+  }
+  70% {
+    font-size: 17px;
+    color: white;
+  }
+  100% {
+    font-size: 16px;
+    color: #ddd;
+  }
+}

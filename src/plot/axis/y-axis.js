@@ -37,7 +37,8 @@ const propTypes = {
 
 const defaultProps = {
   orientation: LEFT,
-  attr: 'y'
+  attr: 'y',
+  attrAxis: 'x'
 };
 
 function YAxis(props) {
