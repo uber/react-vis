@@ -6,7 +6,8 @@ const {
   BasicSankeyExample,
   VoronoiSankeyExample,
   EnergySankeyExample,
-  LinkEventSankeyExample
+  LinkEventSankeyExample,
+  LinkHintSankeyExample
 } = showCase;
 
 const SANKEYS = [{
@@ -20,6 +21,9 @@ const SANKEYS = [{
 }, {
   name: 'With link selection',
   component: LinkEventSankeyExample
+}, {
+  name: 'With hint (for links)',
+  component: LinkHintSankeyExample
 }, {
   name: 'Energy Example',
   component: EnergySankeyExample

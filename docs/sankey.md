@@ -198,3 +198,19 @@ Most generally, there are three top level components `labels`, `links`, and `rec
   rects: {}
 }}/>
 ```
+
+##### children (optional)
+Type: `Node` (Based on React.PropTypes.node: Anything that can be rendered: numbers, strings, elements or an array (or fragment) containing these types.)  
+Allows to render additional children at the inner XYPlot used by the Sankey. See the [XYPlot](xy-plot.md)'s for more general information on children.  
+This is especially useful for rendering of Hints within a Sankey (since the must be rendered inside the XYPlot).
+```jsx
+<Sankey
+  nodes={nodes}
+  links={links}
+  width={200}
+  height={200}
+  >
+  <Hint x={x} y={y} value={myValue}/>
+</Sankey>
+```
+(See sample [Sankey - With hint (for links)](examples/showcases/sankeys-showcase.md) at showcase for more details.)

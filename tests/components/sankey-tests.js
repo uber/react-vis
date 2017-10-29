@@ -3,10 +3,12 @@ import React from 'react';
 import {mount} from 'enzyme';
 
 import Sankey from 'sankey';
+import Hint from 'plot/hint';
 import BasicSankey from '../../showcase/sankey/basic';
 import VoronoiSankey from '../../showcase/sankey/voronoi';
 import EnergySankey from '../../showcase/sankey/energy-sankey';
 import LinkEventSankey from '../../showcase/sankey/link-event';
+import LinkHintSankey from '../../showcase/sankey/link-hint';
 
 const SANKEY_PROPS = {
   nodes: [],
@@ -35,6 +37,22 @@ test('Sankey: labels', t => {
 
   t.end();
 
+});
+
+test('Sankey: children', t => {
+  const $ = mount(
+    <Sankey
+      height={100}
+      width={100}
+      nodes={[{name: 'one'}, {name: 'two'}]}
+      links={[{source: 0, target: 1}]}
+    >
+      <Hint x={0} y={0} value={{test: 123}}/>
+    </Sankey>
+  );
+  t.equal($.find(Hint).length, 1, 'should find children of sankey');
+
+  t.end();
 });
 
 test('Sankey: Showcase Example - BasicSankey', t => {
@@ -91,6 +109,21 @@ test('Sankey: Showcase Example - EnergySankey', t => {
     t.equal($.find('.rv-sankey__link').length, 68, 'should find the right number of links');
     t.equal($.find('.rv-sankey__node rect').length, 48, 'should find the right number of nodes');
   });
+
+  t.end();
+});
+
+test('Sankey: Showcase Example - LinkHintSankey', t => {
+  const $ = mount(<LinkHintSankey />);
+
+  t.equal($.find('.rv-sankey__link').length, 3, 'should find the right number of links');
+  t.equal($.find('.rv-sankey__node rect').length, 3, 'should find the right number of nodes');
+
+  t.equal($.find(Hint).length, 0, 'should find that no hint is shown');
+  $.find('.rv-sankey__link').at(0).simulate('mouseOver');
+  t.equal($.find(Hint).length, 1, 'should find that hint is shown if link is hovered');
+  $.find('.rv-sankey__link').at(0).simulate('mouseOut');
+  t.equal($.find(Hint).length, 0, 'should find that no hint is shown if link is not hovered anymore');
 
   t.end();
 });

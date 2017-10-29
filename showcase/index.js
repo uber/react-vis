@@ -137,6 +137,7 @@ import BasicSankeyExample from './sankey/basic';
 import VoronoiSankeyExample from './sankey/voronoi';
 import EnergySankeyExample from './sankey/energy-sankey';
 import LinkEventSankeyExample from './sankey/link-event';
+import LinkHintSankeyExample from './sankey/link-hint';
 
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
@@ -246,6 +247,7 @@ export const showCase = {
   VoronoiSankeyExample,
   EnergySankeyExample,
   LinkEventSankeyExample,
+  LinkHintSankeyExample,
 
   VerticalDiscreteColorLegendExample,
   HorizontalDiscreteColorLegendExample,

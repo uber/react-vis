@@ -39,6 +39,7 @@ class Sankey extends Component {
     const {
       align,
       animation,
+      children,
       className,
       hasVoronoi,
       height,
@@ -146,6 +147,7 @@ class Sankey extends Component {
             y={d => d.y0 + (d.y1 - d.y0) / 2}
           />
         )}
+        {children}
       </XYPlot>
     );
   }
