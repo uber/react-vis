@@ -22,6 +22,9 @@ test('Axis: Showcase Example - Custom axis', t => {
   t.equal($.text(), '1.01.52.03.0X', 'should find appropriate text');
   t.equal($.find('.rv-xy-plot__series--line').length, 1, 'should find the right number of lines');
   t.equal($.find('line').length, 15, 'should find the right number of grid lines');
+
+  const titleStyle = $.find('.rv-xy-plot__axis__title text').prop('style');
+  t.equal(titleStyle.fontSize, '16px', 'Styling: should honor title fontSize');
   t.end();
 });
 
