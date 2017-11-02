@@ -36,18 +36,18 @@ const PLOTS = [{
   component: LineChart,
   name: 'Line Series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/line-series'
 }, {
   component: LineChartWithStyle,
   name: 'Line Series with style',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/line-series'
 },
 {
   component: LineMarkChart,
   name: 'LineMark Series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-mark-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/line-series'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/line-mark-series'
 }, {
   component: LineChartCanvas,
   name: 'Line Series Canvas'
@@ -58,7 +58,7 @@ const PLOTS = [{
   component: ScatterplotChart,
   name: 'Mark Series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/mark-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/mark-series'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/mark-series'
 }, {
   component: ScatterplotCanvas,
   name: 'Mark Series Canvas'
@@ -66,7 +66,7 @@ const PLOTS = [{
   component: WhiskerChart,
   name: 'Whisker Series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/whisker-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/whisker-series'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/whisker-series'
 }, {
   component: AreaChart,
   name: 'Area Series',
@@ -74,12 +74,12 @@ const PLOTS = [{
 }, {
   component: AreaChartElevated,
   name: 'Area Series With vertical offset',
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/area-series.js'
+  sourceLink: 'http://uber.github.io/react-vis/documentation/series-reference/area-series'
 }, {
   component: BarChart,
   name: 'Bar Series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/bar-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/bar-series'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/bar-series'
 }, {
   component: BigBaseBarChart,
   name: 'Big Base Bar Series'
@@ -102,7 +102,7 @@ const PLOTS = [{
   name: 'Heatmap Series',
   component: HeatmapChart,
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/heatmap-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/heatmap-series'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/heatmap-series'
 }, {
   name: 'Contour Series',
   component: ContourSeriesExample
@@ -130,7 +130,7 @@ const BASIC_COMPONENTS = [{
   name: 'Circular Gridlines',
   component: FauxScatterplotChart,
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/circular-grid-lines.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot/grids'
+  docsLink: 'http://uber.github.io/react-vis/documentation/api-reference/grids'
 }];
 
 class PlotsShowcase extends Component {

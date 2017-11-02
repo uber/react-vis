@@ -13,7 +13,7 @@ const {
 const SANKEYS = [{
   name: 'Basic',
   component: BasicSankeyExample,
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/other-charts/sankey-diagram',
+  docsLink: 'http://uber.github.io/react-vis/documentation/other-charts/sankey-diagram',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/sankey/index.js'
 }, {
   name: 'With Voronoi Selection',

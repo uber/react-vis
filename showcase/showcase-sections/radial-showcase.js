@@ -12,7 +12,7 @@ const RADIAL = [{
   name: 'Simple Radial Chart',
   component: SimpleRadialChart,
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/radial-chart/index.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/other-charts/radial-chart'
+  docsLink: 'http://uber.github.io/react-vis/documentation/other-charts/radial-chart'
 }, {
   name: 'Simple Donut Chart',
   component: DonutChartExample

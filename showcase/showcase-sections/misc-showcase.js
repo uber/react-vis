@@ -22,23 +22,24 @@ const MISC = [{
   name: 'Polygon Example',
   component: TriangleExample,
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/polygon-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/polygon-series'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/polygon-series'
 }, {
   name: 'Voronoi Line Chart',
   component: VoronoiLineChart
 }, {
   name: 'Gradient & Custom Border Example',
   component: GradientExample,
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/showcase/misc/gradient-example.js'
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/showcase/misc/gradient-example.js',
+  docsLink: 'http://uber.github.io/react-vis/documentation/api-reference/gradients'
 }, {
   name: 'Animation Example',
   component: AnimationExample,
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/overview/animation'
+  docsLink: 'http://uber.github.io/react-vis/documentation/general-principles/animation'
 }, {
   name: 'Label Series Example',
   component: LabelSeriesExample,
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/label-series.js',
-  docsLink: 'http://uber.github.io/react-vis/#/documentation/xy-plot-series/label-series'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/label-series'
 }, {
   name: 'Null Data Example',
   component: NullDataExample
