@@ -31,6 +31,17 @@ import {
 
 export default class Example extends React.Component {
   render() {
+    const axisStyle = {
+      ticks: {
+        fontSize: '14px',
+        color: '#333'
+      },
+      title: {
+        fontSize: '16px',
+        color: '#333'
+      }
+    };
+
     return (
       <XYPlot
         width={300}
@@ -42,7 +53,8 @@ export default class Example extends React.Component {
           title="X"
           labelFormat={v => `Value is ${v}`}
           labelValues={[2]}
-          tickValues={[1, 1.5, 2, 3]}/>
+          tickValues={[1, 1.5, 2, 3]}
+          style={axisStyle}/>
         <YAxis hideTicks/>
         <LineSeries
           data={[
