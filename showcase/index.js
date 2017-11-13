@@ -34,6 +34,7 @@ import Histogram from './plot/histogram';
 import AreaChart from './plot/area-chart';
 import AreaChartElevated from './plot/area-chart-elevated';
 import ScatterplotChart from './plot/scatterplot';
+import ScatterplotManyPointsChart from './plot/scatterplot-large';
 import WhiskerChart from './plot/whisker-chart.js';
 import CustomSVGExample from './plot/custom-svg-example';
 import CustomSVGRootLevel from './plot/custom-svg-root-level';
@@ -164,8 +165,9 @@ export const showCase = {
   CustomSVGExample,
   CustomSVGRootLevel,
   CustomSVGAllTheMarks,
-  ScatterplotChart,
   ScatterplotCanvas,
+  ScatterplotChart,
+  ScatterplotManyPointsChart,
   WhiskerChart,
   HeatmapChart,
   ContourSeriesExample,
