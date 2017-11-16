@@ -35,6 +35,7 @@ const DEFAULT_STROKE_WIDTH = 1;
 class MarkSeries extends AbstractSeries {
   shouldComponentUpdate(nextProps, nextState) {
     const isMissingDataProp = !this.props.data || !nextProps.data;
+    const isMissingNullAccessorProp = !this.props.nullAccessor || !nextProps.nullAccessor;
     return [
       [this.props.animation, nextProps.animation],
       [this.props.className, nextProps.className],
@@ -64,7 +65,9 @@ class MarkSeries extends AbstractSeries {
         (this.props.data.length !== nextProps.data.length ||
          nextProps.data.some((d, i) =>
           !shallowequal(this.props.data[i], d) ||
-          (this.props.nullAccessor(d) !== nextProps.nullAccessor(d))))
+          (isMissingNullAccessorProp ?
+            !shallowequal(this.props.data, nextProps.data) :
+            this.props.nullAccessor(d) !== nextProps.nullAccessor(d))))
     );
   }
 
