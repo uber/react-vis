@@ -34,19 +34,18 @@ const DEFAULT_STROKE_WIDTH = 1;
 
 class MarkSeries extends AbstractSeries {
   shouldComponentUpdate(nextProps, nextState) {
+    const isMissingDataProp = !this.props.data || !nextProps.data;
     return [
       [this.props.animation, nextProps.animation],
       [this.props.className, nextProps.className],
       [this.props.colorDomain, nextProps.colorDomain],
       [this.props.colorRange, nextProps.colorRange],
-      [this.props.data, nextProps.data],
       [this.props.fillDomain, nextProps.fillDomain],
       [this.props.fillRange, nextProps.fillRange],
       [this.props.innerHeight, nextProps.innerHeight],
       [this.props.innerWidth, nextProps.innerWidth],
       [this.props.marginLeft, nextProps.marginLeft],
       [this.props.marginTop, nextProps.marginTop],
-      [this.props.nullAccessor, nextProps.nullAccessor],
       [this.props.opacityDomain, nextProps.opacityDomain],
       [this.props.opacityRange, nextProps.opacityRange],
       [this.props.sizeDomain, nextProps.sizeDomain],
@@ -59,7 +58,14 @@ class MarkSeries extends AbstractSeries {
       [this.props.xRange, nextProps.xRange],
       [this.props.yDomain, nextProps.yDomain],
       [this.props.yRange, nextProps.yRange]
-    ].some(([a, b]) => !shallowequal(a, b));
+    ].some(([a, b]) => !shallowequal(a, b)) || (
+      isMissingDataProp ?
+        !shallowequal(this.props.data, nextProps.data) :
+        (this.props.data.length !== nextProps.data.length ||
+         nextProps.data.some((d, i) =>
+          !shallowequal(this.props.data[i], d) ||
+          (this.props.nullAccessor(d) !== nextProps.nullAccessor(d))))
+    );
   }
 
   _renderCircle(d, i, strokeWidth, style) {
