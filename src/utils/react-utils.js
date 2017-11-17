@@ -75,7 +75,7 @@ export function warnOnce(message) {
 /**
  * Safely returns list of CSS from a CSS Style Sheet.
  * @param {CSSStyleSheet} styleSheet  - CSS style sheet
- * @returns {CSSRuleList} list of CSS rules when safe
+ * @returns {CSSRuleList} list of CSS rules
  */
 function getCSSRules(styleSheet) {
   // Without this check accessing styleSheet.cssRules throws SecurityErrror in Firefox
@@ -88,7 +88,7 @@ function getCSSRules(styleSheet) {
   ) {
     return styleSheet.rules || styleSheet.cssRules;
   }
-  return;
+  return [];
 }
 
 // special tag for using to check if the style file has been imported
@@ -101,11 +101,9 @@ export function checkIfStyleSheetIsImported() {
   }
   /* eslint-enable no-undef, no-process-env */
 
-  const foundImportTag = [...new Array(document.styleSheets.length)].some((e, i) => {
-    const styleSheet = document.styleSheets[i];
+  const foundImportTag = [...document.styleSheets].some(styleSheet => {
     const CSSRulesList = getCSSRules(styleSheet);
-    return [...new Array(CSSRulesList ? CSSRulesList.length : 0)].some((el, j) => {
-      const selector = CSSRulesList[j];
+    return [...CSSRulesList].some(selector => {
       return selector.selectorText === MAGIC_CSS_RULE;
     });
   });
