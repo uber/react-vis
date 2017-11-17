@@ -123,7 +123,7 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
      * @private
      */
     _onResize() {
-      const containerElement = getDOMNode(this.refs[CONTAINER_REF]);
+      const containerElement = getDOMNode(this.refs[CONTAINER_REF]) || {};
       const {offsetHeight, offsetWidth} = containerElement;
 
       const newHeight = this.state.height === offsetHeight ? {} :
