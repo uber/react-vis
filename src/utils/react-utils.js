@@ -73,7 +73,7 @@ export function warnOnce(message) {
 }
 
 /**
- * Safely returns list of CSS from a CSS Style Sheet.  
+ * Safely returns list of CSS from a CSS Style Sheet.
  * @param {CSSStyleSheet} styleSheet  - CSS style sheet
  * @returns {CSSRuleList} list of CSS rules when safe
  */
