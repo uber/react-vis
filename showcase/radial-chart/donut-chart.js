@@ -36,7 +36,7 @@ export default class SimpleRadialChart extends Component {
         className={'donut-chart-example'}
         innerRadius={100}
         radius={140}
-        angleAccessor={d => d.theta}
+        getAngle={d => d.theta}
         data={[
           {theta: 2, className: 'custom-class'},
           {theta: 6},

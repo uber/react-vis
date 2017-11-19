@@ -86,9 +86,9 @@ export default class SunburstWithTooltips extends React.Component {
         onValueMouseOut={v => this.setState({hoveredCell: false})}
         height={300}
         margin={{top: 50, bottom: 50, left: 50, right: 50}}
-        labelAccessor={d => d.name}
-        sizeAccessor={d => d.bigness}
-        colorAccessor={d => d.clr}
+        getLabel={d => d.name}
+        getSize={d => d.bigness}
+        getColor={d => d.clr}
         width={350}>
         {hoveredCell ? <Hint value={buildValue(hoveredCell)}>
           <div style={tipStyle}>

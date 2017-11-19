@@ -57,12 +57,12 @@ const LISTENERS_TO_OVERWRITE = [
    props.height {number} - the height of the graphic to be rendered
    props.hideRootNode {boolean} - whether or not to hide the root node
    props.width {number} - the width of the graphic to be rendered
-   props.sizeAccessor {function} - accessor for the size
+   props.getSize {function} - accessor for the size
  * @returns {Array} Array of nodes.
  */
-function getNodesToRender({data, height, hideRootNode, width, sizeAccessor}) {
+function getNodesToRender({data, height, hideRootNode, width, getSize}) {
   const partitionFunction = partition();
-  const structuredInput = hierarchy(data).sum(sizeAccessor);
+  const structuredInput = hierarchy(data).sum(getSize);
   const radius = (Math.min(width, height) / 2) - 10;
   const x = scaleLinear().range([0, 2 * Math.PI]);
   const y = scaleSqrt().range([0, radius]);
@@ -94,17 +94,17 @@ function getNodesToRender({data, height, hideRootNode, width, sizeAccessor}) {
  */
 function buildLabels(mappedData, accessors) {
   const {
-    angleAccessor,
-    angle0Accessor,
-    labelAccessor,
-    radius0Accessor
+    getAngle,
+    getAngle0,
+    getLabel,
+    getRadius0
   } = accessors;
 
   return mappedData
-  .filter(labelAccessor)
+  .filter(getLabel)
   .map(row => {
-    const truedAngle = -1 * angleAccessor(row) + Math.PI / 2;
-    const truedAngle0 = -1 * angle0Accessor(row) + Math.PI / 2;
+    const truedAngle = -1 * getAngle(row) + Math.PI / 2;
+    const truedAngle0 = -1 * getAngle0(row) + Math.PI / 2;
     const angle = (truedAngle0 + truedAngle) / 2;
     const rotateLabels = !row.dontRotateLabel;
     const rotAngle = -angle / (2 * Math.PI) * 360;
@@ -114,8 +114,8 @@ function buildLabels(mappedData, accessors) {
       children: null,
       angle: null,
       radius: null,
-      x: radius0Accessor(row) * Math.cos(angle),
-      y: radius0Accessor(row) * Math.sin(angle),
+      x: getRadius0(row) * Math.cos(angle),
+      y: getRadius0(row) * Math.sin(angle),
       style: {
         textAnchor: rotAngle > 90 ? 'end' : 'start',
         ...row.labelStyle
@@ -132,28 +132,28 @@ const NOOP = () => {};
 class Sunburst extends React.Component {
   render() {
     const {
-      angleAccessor,
-      angle0Accessor,
+      getAngle,
+      getAngle0,
       animation,
       className,
       children,
       data,
       height,
       hideRootNode,
-      labelAccessor,
+      getLabel,
       width,
-      sizeAccessor,
+      getSize,
       colorType
     } = this.props;
-    const mappedData = getNodesToRender({data, height, hideRootNode, width, sizeAccessor});
+    const mappedData = getNodesToRender({data, height, hideRootNode, width, getSize});
     const radialDomain = getRadialDomain(mappedData);
     const margin = getRadialLayoutMargin(width, height, radialDomain);
 
     const labelData = buildLabels(mappedData, {
-      angleAccessor,
-      angle0Accessor,
-      labelAccessor,
-      radius0Accessor: d => d.radius0
+      getAngle,
+      getAngle0,
+      getLabel,
+      getRadius0: d => d.radius0
     });
 
     const hofBuilder = f => (e, i) => f ? f(mappedData[e.index], i) : NOOP;
@@ -183,7 +183,7 @@ class Sunburst extends React.Component {
             return acc;
           }, {}))
         }}/>
-        {labelData.length > 0 && (<LabelSeries data={labelData} labelAccessor={labelAccessor}/>)}
+        {labelData.length > 0 && (<LabelSeries data={labelData} getLabel={getLabel}/>)}
         {children}
       </XYPlot>
     );
@@ -193,29 +193,29 @@ class Sunburst extends React.Component {
 Sunburst.displayName = 'Sunburst';
 Sunburst.propTypes = {
   animation: AnimationPropType,
-  angleAccessor: PropTypes.func,
-  angle0Accessor: PropTypes.func,
+  getAngle: PropTypes.func,
+  getAngle0: PropTypes.func,
   className: PropTypes.string,
   colorType: PropTypes.string,
   data: PropTypes.object.isRequired,
   height: PropTypes.number.isRequired,
   hideRootNode: PropTypes.bool,
-  labelAccessor: PropTypes.func,
+  getLabel: PropTypes.func,
   onValueClick: PropTypes.func,
   onValueMouseOver: PropTypes.func,
   onValueMouseOut: PropTypes.func,
-  sizeAccessor: PropTypes.func,
+  getSize: PropTypes.func,
   width: PropTypes.number.isRequired
 };
 Sunburst.defaultProps = {
-  angleAccessor: d => d.angle,
-  angle0Accessor: d => d.angle0,
+  getAngle: d => d.angle,
+  getAngle0: d => d.angle0,
   className: '',
   colorType: 'literal',
-  colorAccessor: d => d.color,
+  getColor: d => d.color,
   hideRootNode: false,
-  labelAccessor: d => d.label,
-  sizeAccessor: d => d.size
+  getLabel: d => d.label,
+  getSize: d => d.size
 };
 
 export default Sunburst;

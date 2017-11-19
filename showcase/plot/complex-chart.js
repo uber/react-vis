@@ -167,8 +167,8 @@ export default class Example extends React.Component {
         <div className="chart">
           <FlexibleWidthXYPlot
             animation
-            xAccessor={d => d.left}
-            yAccessor={d => d.top}
+            getX={d => d.left}
+            getY={d => d.top}
             onMouseLeave={this._mouseLeaveHandler}
             xDomain={[0, series[0].data.length - 1]}
             height={300}>

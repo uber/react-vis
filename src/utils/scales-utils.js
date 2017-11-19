@@ -115,6 +115,15 @@ const XYPLOT_ATTR = [
 ];
 
 /**
+ * Title case a given string
+ * @param {String} str Array of values.
+ * @returns {String} titlecased string
+ */
+function toTitleCase(str) {
+  return `${str[0].toUpperCase()}${str.slice(1)}`;
+}
+
+/**
  * Find the smallest distance between the values on a given scale and return
  * the index of the element, where the smallest distance was found.
  * It returns the first occurrence of i where
@@ -297,8 +306,8 @@ function _collectScaleObjectFromProps(props, attr) {
     [`${attr}BaseValue`]: baseValue,
     [`${attr}Type`]: type = LINEAR_SCALE_TYPE,
     [`${attr}NoFallBack`]: noFallBack,
-    [`${attr}Accessor`]: accessor = d => d[attr],
-    [`${attr}0Accessor`]: accessor0 = d => d[`${attr}0`]
+    [`get${toTitleCase(attr)}`]: accessor = d => d[attr],
+    [`get${toTitleCase(attr)}0`]: accessor0 = d => d[`${attr}0`]
   } = props;
 
   let {[`${attr}Domain`]: domain} = props;
@@ -307,7 +316,6 @@ function _collectScaleObjectFromProps(props, attr) {
     return _createScaleObjectForValue(
       attr, value, props[`${attr}Type`], accessor, accessor0);
   }
-
   // Pick up the domain from the properties and create a new one if it's not
   // available.
   if (typeof baseValue !== 'undefined') {
@@ -670,8 +678,8 @@ export function getScalePropTypesByAttribute(attr) {
   return {
     [`_${attr}Value`]: PropTypes.any,
     [`${attr}Domain`]: PropTypes.array,
-    [`${attr}Accessor`]: PropTypes.func,
-    [`${attr}0Accessor`]: PropTypes.func,
+    [`get${toTitleCase(attr)}`]: PropTypes.func,
+    [`get${toTitleCase(attr)}0`]: PropTypes.func,
     [`${attr}Range`]: PropTypes.array,
     [`${attr}Type`]: PropTypes.oneOf(
       Object.keys(SCALE_FUNCTIONS)
@@ -691,8 +699,16 @@ export function getScalePropTypesByAttribute(attr) {
 export function extractScalePropsFromProps(props, attributes) {
   const result = {};
   Object.keys(props).forEach(key => {
-    const attr = attributes.find(
-      a => key.indexOf(a) === 0 || key.indexOf(`_${a}`) === 0);
+    // this filtering is critical for extracting the correct accessors!
+    const attr = attributes.find(a => {
+      // width
+      const isPlainSet = key.indexOf(a) === 0;
+      // Ex: _data
+      const isUnderscoreSet = key.indexOf(`_${a}`) === 0;
+      // EX: getX
+      const usesGet = key.indexOf(`get${toTitleCase(a)}`) === 0;
+      return isPlainSet || isUnderscoreSet || usesGet;
+    });
     if (!attr) {
       return;
     }
@@ -714,17 +730,17 @@ export function getMissingScaleProps(props, data, attributes) {
   const result = {};
   // Make sure that the domain is set pad it if specified
   attributes.forEach(attr => {
-    if (!props[`${attr}Accessor`]) {
-      result[`${attr}Accessor`] = d => d[attr];
+    if (!props[`get${toTitleCase(attr)}`]) {
+      result[`get${toTitleCase(attr)}`] = d => d[attr];
     }
-    if (!props[`${attr}0Accessor`]) {
-      result[`${attr}0Accessor`] = d => d[`${attr}0`];
+    if (!props[`get${toTitleCase(attr)}0`]) {
+      result[`get${toTitleCase(attr)}0`] = d => d[`${attr}0`];
     }
     if (!props[`${attr}Domain`]) {
       result[`${attr}Domain`] = getDomainByAccessor(
         data,
-        props[`${attr}Accessor`] || result[`${attr}Accessor`],
-        props[`${attr}0Accessor`] || result[`${attr}0Accessor`],
+        props[`get${toTitleCase(attr)}`] || result[`get${toTitleCase(attr)}`],
+        props[`get${toTitleCase(attr)}0`] || result[`get${toTitleCase(attr)}0`],
         props[`${attr}Type`]
       );
       if (props[`${attr}Padding`]) {

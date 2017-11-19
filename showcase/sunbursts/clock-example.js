@@ -57,8 +57,8 @@ export default class ClockExample extends React.Component {
         xDomain={[-3, 3]}
         yDomain={[-3, 3]}
         width={300}
-        angleAccessor={d => d.time}
-        angle0Accessor={d => 0}
+        getAngle={d => d.time}
+        getAngle0={d => 0}
         height={300}>
         <ArcSeries
           animation={{

@@ -30,7 +30,7 @@ export default class SimpleRadialChart extends React.Component {
         colorDomain={[0, 100]}
         colorRange={[0, 10]}
         margin={{top: 100}}
-        labelAccessor={d => d.name}
+        getLabel={d => d.name}
         data={[
           {angle: 1, color: '#89DAC1', name: 'green', opacity: 0.2},
           {angle: 2, color: '#F6D18A', name: 'yellow'},

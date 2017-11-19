@@ -374,7 +374,6 @@ class XYPlot extends React.Component {
         const {seriesIndex} = seriesProps[index];
         dataProps = {data: data[seriesIndex]};
       }
-
       return React.cloneElement(child, {
         ...dimensions,
         animation,

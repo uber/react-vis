@@ -35,7 +35,7 @@ class TreemapLeaf extends React.Component {
   render() {
     const {
       animation,
-      labelAccessor,
+      getLabel,
       mode,
       node,
       onLeafClick,
@@ -62,7 +62,7 @@ class TreemapLeaf extends React.Component {
     const opacity = scales.opacity(node);
     const color = getFontColorFromBackground(background);
     const {data} = node;
-    const title = labelAccessor(data);
+    const title = getLabel(data);
     const leafStyle = {
       top: useCirclePacking ? (y0 - r) : y0,
       left: useCirclePacking ? (x0 - r) : x0,

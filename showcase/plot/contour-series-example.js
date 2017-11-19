@@ -44,8 +44,8 @@ export default class ContourSeriesExample extends Component {
           xDomain={[40, 100]}
           yDomain={[1.5, 8]}
           width={600}
-          xAccessor={d => d.waiting}
-          yAccessor={d => d.eruptions}
+          getX={d => d.waiting}
+          getY={d => d.eruptions}
           height={300}>
           <ContourSeries
             animation

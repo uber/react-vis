@@ -34,7 +34,7 @@ class LabelSeries extends AbstractSeries {
       className,
       data,
       _data,
-      labelAccessor,
+      getLabel,
       marginLeft,
       marginTop,
       rotation,
@@ -63,7 +63,7 @@ class LabelSeries extends AbstractSeries {
          transform={`translate(${marginLeft},${marginTop})`}>
         {data.reduce((res, d, i) => {
           const {style, xOffset, yOffset} = d;
-          if (!labelAccessor(d)) {
+          if (!getLabel(d)) {
             return res;
           }
           const xVal = xFunctor(d);
@@ -87,7 +87,7 @@ class LabelSeries extends AbstractSeries {
             transform: `rotate(${d.rotation || rotation},${x},${y})`,
             ...style
           };
-          const textContent = labelAccessor(_data ? _data[i] : d);
+          const textContent = getLabel(_data ? _data[i] : d);
           return res.concat([<text {...attrs} >{textContent}</text>]);
         }, [])}
       </g>
@@ -118,7 +118,7 @@ LabelSeries.propTypes = {
 LabelSeries.defaultProps = {
   animation: false,
   rotation: 0,
-  labelAccessor: d => d.label
+  getLabel: d => d.label
 };
 LabelSeries.displayName = 'LabelSeries';
 export default LabelSeries;

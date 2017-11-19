@@ -115,8 +115,8 @@ export default class BasicSunburst extends React.Component {
             strokeWidth: '0.5'
           }}
           colorType="literal"
-          sizeAccessor={d => d.value}
-          colorAccessor={d => d.hex}
+          getSize={d => d.value}
+          getColor={d => d.hex}
           data={data}
           height={300}
           width={350}>

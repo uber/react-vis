@@ -93,6 +93,9 @@ This table is also meant to be used for derived series. Canvas series have the s
 
 To redefine a scale, you must pass a prop to the series that uses that scale. The prop names are based on the name of the attribute: name + Domain, name + Range, name + Type, name + Padding (for instance: yDomain, colorType, xRange).
 
+* `get[name]` (optional)  
+  Type: `function`  
+  A accessir function that gets the value to be compute from the data. For instance if you were keeping your data as rows like {a: 1, b: 2, c: 3}, you could define an x accessor like `getX: d => d.a`.
 * `[name]Domain` (optional)  
   Type: `Array`  
   Array of values to visualize from. If domain is not passed, it will be calculated from the values which are passed to component.

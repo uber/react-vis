@@ -90,8 +90,8 @@ test('scales-utils #getScalePropTypesByAttribute', t => {
   const expectedResult = [
     '_sizeValue',
     'sizeDomain',
-    'sizeAccessor',
-    'size0Accessor',
+    'getSize',
+    'getSize0',
     'sizeRange',
     'sizeType',
     'sizeDistance',
@@ -266,7 +266,7 @@ test('scales-utils #getMissingScaleProps', t => {
       xPadding: fakePadding,
       xDomain: fakeDomain
     }, fakeDataInteger, ['x'])),
-    ['xAccessor', 'x0Accessor'],
+    ['getX', 'getX0'],
     'should not pad if xDomain is already supplied, but accessors should be present'
   );
   t.deepEqual(

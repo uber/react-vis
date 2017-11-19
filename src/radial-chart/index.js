@@ -40,8 +40,8 @@ const DEFAULT_RADIUS_MARGIN = 15;
    props.data {Object} - tree structured data (each node has a name anc an array of children)
  * @returns {Array} Array of nodes.
  */
-function getWedgesToRender({data, angleAccessor}) {
-  const pie = pieBuilder().sort(null).value(angleAccessor);
+function getWedgesToRender({data, getAngle}) {
+  const pie = pieBuilder().sort(null).value(getAngle);
   const pieData = pie(data).reverse();
   return pieData.map((row, index) => {
     return {
@@ -57,8 +57,8 @@ function getWedgesToRender({data, angleAccessor}) {
 
 function generateLabels(mappedData, accessors) {
   const {
-    labelAccessor,
-    subLabelAccessor
+    getLabel,
+    getSubLabel
   } = accessors;
   return mappedData.reduce((res, row) => {
     const {angle, angle0, radius} = row;
@@ -68,20 +68,20 @@ function generateLabels(mappedData, accessors) {
     // and move clockwise rather than counter clockwise. why why why!
     const updatedAngle = -1 * centeredAngle + Math.PI / 2;
     const newLabels = [];
-    if (labelAccessor(row)) {
+    if (getLabel(row)) {
       newLabels.push({
         angle: updatedAngle,
         radius: radius * 1.1,
-        label: labelAccessor(row),
+        label: getLabel(row),
         style: {fontSize: '12px'}
       });
     }
 
-    if (subLabelAccessor(row)) {
+    if (getSubLabel(row)) {
       newLabels.push({
         angle: updatedAngle,
         radius: radius * 1.1,
-        label: subLabelAccessor(row),
+        label: getSubLabel(row),
         yOffset: 12,
         style: {fontSize: '10px'}
       });
@@ -119,11 +119,11 @@ class RadialChart extends Component {
       onMouseLeave,
       onMouseEnter,
       labelsAboveChildren,
-      angleAccessor,
-      labelAccessor,
-      subLabelAccessor
+      getAngle,
+      getLabel,
+      getSubLabel
     } = this.props;
-    const mappedData = getWedgesToRender({data, height, hideRootNode, width, angleAccessor});
+    const mappedData = getWedgesToRender({data, height, hideRootNode, width, getAngle});
     const radialDomain = getRadialDomain(mappedData);
     const arcProps = {
       colorType,
@@ -143,8 +143,8 @@ class RadialChart extends Component {
     const defaultMargin = getRadialLayoutMargin(width, height, maxRadius);
 
     const labels = generateLabels(mappedData, {
-      labelAccessor,
-      subLabelAccessor
+      getLabel,
+      getSubLabel
     });
     return (
       <XYPlot
@@ -159,7 +159,7 @@ class RadialChart extends Component {
         onMouseEnter={onMouseEnter}
         xDomain={[-radialDomain, radialDomain]}
         yDomain={[-radialDomain, radialDomain]}>
-        <ArcSeries {...arcProps} angleAccessor={d => d.angle}/>
+        <ArcSeries {...arcProps} getAngle={d => d.angle}/>
         {showLabels && !labelsAboveChildren && <LabelSeries data={labels}/>}
         {children}
         {showLabels && labelsAboveChildren && <LabelSeries data={labels}/>}
@@ -180,6 +180,11 @@ RadialChart.propTypes = {
     radius: PropTypes.number,
     style: PropTypes.object
   })).isRequired,
+  getAngle: PropTypes.func,
+  getAngle0: PropTypes.func,
+  getRadius: PropTypes.func,
+  getRadius0: PropTypes.func,
+  getLabel: PropTypes.func,
   height: PropTypes.number.isRequired,
   labelsAboveChildren: PropTypes.bool,
   margin: MarginPropType,
@@ -188,23 +193,18 @@ RadialChart.propTypes = {
   onValueMouseOut: PropTypes.func,
   width: PropTypes.number.isRequired,
   showLabels: PropTypes.bool,
-  angleAccessor: PropTypes.func,
-  angle0Accessor: PropTypes.func,
-  radiusAccessor: PropTypes.func,
-  radius0Accessor: PropTypes.func,
-  labelAccessor: PropTypes.func,
   subLabel: PropTypes.func
 };
 RadialChart.defaultProps = {
   className: '',
   colorType: 'category',
   colorRange: DISCRETE_COLOR_RANGE,
-  angleAccessor: d => d.angle,
-  angle0Accessor: d => d.angle0,
-  radiusAccessor: d => d.radius,
-  radius0Accessor: d => d.radius0,
-  labelAccessor: d => d.label,
-  subLabelAccessor: d => d.subLabel
+  getAngle: d => d.angle,
+  getAngle0: d => d.angle0,
+  getRadius: d => d.radius,
+  getRadius0: d => d.radius0,
+  getLabel: d => d.label,
+  getSubLabel: d => d.subLabel
 };
 
 export default RadialChart;
