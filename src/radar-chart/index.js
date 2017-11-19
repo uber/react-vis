@@ -125,8 +125,8 @@ function getPolygons(props) {
   }, {});
 
   return data.map((row, rowIndex) => {
-    const mappedData = domains.map(({name, accessor}, index) => {
-      const dataPoint = accessor ? accessor(row) : row[name];
+    const mappedData = domains.map(({name, getValue}, index) => {
+      const dataPoint = getValue ? getValue(row) : row[name];
       // error handling if point doesn't exist
       const angle = index / domains.length * Math.PI * 2 + startingAngle;
       // dont let the radius become negative

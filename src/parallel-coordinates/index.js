@@ -117,10 +117,10 @@ function getLines(props) {
 
   return data.map((row, rowIndex) => {
     const mappedData = domains.map((domain, index) => {
-      const {accessor, name} = domain;
+      const {getValue, name} = domain;
       return {
         x: name,
-        y: scales[name](accessor ? accessor(row) : row[name])
+        y: scales[name](getValue ? getValue(row) : row[name])
       };
     });
     const lineProps = {
