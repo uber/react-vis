@@ -28,6 +28,7 @@ const {
   StackedHistogram,
   ScatterplotChart,
   ScatterplotCanvas,
+  ScatterplotManyPointsChart,
   WhiskerChart,
   WidthHeightMarginChart
 } = showCase;
@@ -57,6 +58,11 @@ const PLOTS = [{
 }, {
   component: ScatterplotChart,
   name: 'Mark Series',
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/mark-series.js',
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/mark-series'
+}, {
+  component: ScatterplotManyPointsChart,
+  name: 'Mark Series With Many Points',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/mark-series.js',
   docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/mark-series'
 }, {

@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import shallowequal from 'shallowequal';
 
 import PropTypes from 'prop-types';
 
@@ -32,6 +33,44 @@ const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--mark';
 const DEFAULT_STROKE_WIDTH = 1;
 
 class MarkSeries extends AbstractSeries {
+  shouldComponentUpdate(nextProps, nextState) {
+    const isMissingDataProp = !this.props.data || !nextProps.data;
+    const isMissingNullAccessorProp = !this.props.nullAccessor || !nextProps.nullAccessor;
+    return [
+      [this.props.animation, nextProps.animation],
+      [this.props.className, nextProps.className],
+      [this.props.colorDomain, nextProps.colorDomain],
+      [this.props.colorRange, nextProps.colorRange],
+      [this.props.fillDomain, nextProps.fillDomain],
+      [this.props.fillRange, nextProps.fillRange],
+      [this.props.innerHeight, nextProps.innerHeight],
+      [this.props.innerWidth, nextProps.innerWidth],
+      [this.props.marginLeft, nextProps.marginLeft],
+      [this.props.marginTop, nextProps.marginTop],
+      [this.props.opacityDomain, nextProps.opacityDomain],
+      [this.props.opacityRange, nextProps.opacityRange],
+      [this.props.sizeDomain, nextProps.sizeDomain],
+      [this.props.sizeRange, nextProps.sizeRange],
+      [this.props.strokeDomain, nextProps.strokeDomain],
+      [this.props.strokeRange, nextProps.strokeRange],
+      [this.props.strokeWidth, nextProps.strokeWidth],
+      [this.props.style, nextProps.style],
+      [this.props.xDomain, nextProps.xDomain],
+      [this.props.xRange, nextProps.xRange],
+      [this.props.yDomain, nextProps.yDomain],
+      [this.props.yRange, nextProps.yRange]
+    ].some(([a, b]) => !shallowequal(a, b)) || (
+      isMissingDataProp ?
+        !shallowequal(this.props.data, nextProps.data) :
+        (this.props.data.length !== nextProps.data.length ||
+         nextProps.data.some((d, i) =>
+          !shallowequal(this.props.data[i], d) ||
+          (isMissingNullAccessorProp ?
+            !shallowequal(this.props.data, nextProps.data) :
+            this.props.nullAccessor(d) !== nextProps.nullAccessor(d))))
+    );
+  }
+
   _renderCircle(d, i, strokeWidth, style) {
     const sizeFunctor = this._getAttributeFunctor('size');
     const opacityFunctor = this._getAttributeFunctor('opacity');
