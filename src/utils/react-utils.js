@@ -23,8 +23,7 @@ import React from 'react';
 const [major, minor] = React.version.split('.');
 const versionHigherThanThirteen = Number(minor) > 13 || Number(major) > 13;
 
-export const isReactDOMSupported = () =>
-  versionHigherThanThirteen;
+export const isReactDOMSupported = () => versionHigherThanThirteen;
 
 /**
  * Support React 0.13 and greater where refs are React components, not DOM
@@ -73,6 +72,25 @@ export function warnOnce(message) {
   warning(message, true);
 }
 
+/**
+ * Safely returns list of CSS from a CSS Style Sheet.
+ * @param {CSSStyleSheet} styleSheet  - CSS style sheet
+ * @returns {CSSRuleList} list of CSS rules
+ */
+function getCSSRules(styleSheet) {
+  // Without this check accessing styleSheet.cssRules throws SecurityErrror in Firefox
+  // See: https://github.com/uber/react-vis/issues/650
+  if (
+    styleSheet.ownerNode.tagName === 'STYLE' ||
+    (styleSheet.ownerNode.tagName === 'LINK' &&
+      styleSheet.ownerNode.href &&
+      styleSheet.ownerNode.href.startsWith(document.location.origin))
+  ) {
+    return styleSheet.rules || styleSheet.cssRules;
+  }
+  return [];
+}
+
 // special tag for using to check if the style file has been imported
 // represented the md5 hash of the phrase "react-vis is cool"
 const MAGIC_CSS_RULE = '.react-vis-magic-css-import-rule';
@@ -83,18 +101,18 @@ export function checkIfStyleSheetIsImported() {
   }
   /* eslint-enable no-undef, no-process-env */
 
-  const foundImportTag = [...new Array(document.styleSheets.length)].some((e, i) => {
-    const styleSheet = document.styleSheets[i];
-    const CSSRulesList = styleSheet.rules || styleSheet.cssRules;
-    return [...new Array(CSSRulesList ? CSSRulesList.length : 0)].some((el, j) => {
-      const selector = CSSRulesList[j];
+  const foundImportTag = [...document.styleSheets].some(styleSheet => {
+    const CSSRulesList = getCSSRules(styleSheet);
+    return [...CSSRulesList].some(selector => {
       return selector.selectorText === MAGIC_CSS_RULE;
     });
   });
 
   if (!foundImportTag) {
     /* eslint-disable max-len */
-    warnOnce('REACT-VIS: The style sheet for react-vis has not been imported, checkout https://uber.github.io/react-vis/documentation/general-principles/style for more details.');
+    warnOnce(
+      'REACT-VIS: The style sheet for react-vis has not been imported, checkout https://uber.github.io/react-vis/documentation/general-principles/style for more details.'
+    );
     /* eslint-enable max-len */
   }
 }
