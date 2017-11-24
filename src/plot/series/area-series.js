@@ -31,7 +31,7 @@ import AbstractSeries from './abstract-series';
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--line';
 
 class AreaSeries extends AbstractSeries {
-  _renderArea(data, x, y0, y, curve, nullAccessor) {
+  _renderArea(data, x, y0, y, curve, getNull) {
     let area = d3Shape.area();
     if (curve !== null) {
       if (typeof curve === 'string' && d3Shape[curve]) {
@@ -40,14 +40,14 @@ class AreaSeries extends AbstractSeries {
         area = area.curve(curve);
       }
     }
-    area = area.defined(nullAccessor);
+    area = area.defined(getNull);
     area = area.x(x).y0(y0).y1(y);
     return area(data);
   }
 
   render() {
     const {
-      animation, className, curve, data, marginLeft, marginTop, nullAccessor, style
+      animation, className, curve, data, marginLeft, marginTop, getNull, style
     } = this.props;
     if (!data) {
       return null;
@@ -69,7 +69,7 @@ class AreaSeries extends AbstractSeries {
       this._getAttributeValue('color');
     const newOpacity = this._getAttributeValue('opacity');
     const opacity = Number.isFinite(newOpacity) ? newOpacity : DEFAULT_OPACITY;
-    const d = this._renderArea(data, x, y0, y, curve, nullAccessor);
+    const d = this._renderArea(data, x, y0, y, curve, getNull);
     return (
       <path
         d={d}
@@ -93,10 +93,10 @@ class AreaSeries extends AbstractSeries {
 AreaSeries.displayName = 'AreaSeries';
 AreaSeries.propTypes = {
   ...AbstractSeries.propTypes,
-  nullAccessor: PropTypes.func
+  getNull: PropTypes.func
 };
 AreaSeries.defaultProps = {
-  nullAccessor: () => true
+  getNull: () => true
 };
 
 export default AreaSeries;

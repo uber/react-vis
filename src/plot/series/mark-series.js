@@ -64,7 +64,7 @@ class MarkSeries extends AbstractSeries {
 
   render() {
     const {
-      animation, className, data, marginLeft, marginTop, nullAccessor, strokeWidth, style
+      animation, className, data, marginLeft, marginTop, getNull, strokeWidth, style
     } = this.props;
     if (!data) {
       return null;
@@ -82,7 +82,7 @@ class MarkSeries extends AbstractSeries {
          ref="container"
          transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {
-          return nullAccessor(d) && this._renderCircle(d, i, strokeWidth, style);
+          return getNull(d) && this._renderCircle(d, i, strokeWidth, style);
         })}
       </g>
     );
@@ -92,11 +92,11 @@ class MarkSeries extends AbstractSeries {
 MarkSeries.displayName = 'MarkSeries';
 MarkSeries.propTypes = {
   ...AbstractSeries.propTypes,
-  nullAccessor: PropTypes.func,
+  getNull: PropTypes.func,
   strokeWidth: PropTypes.number
 };
 MarkSeries.defaultProps = {
-  nullAccessor: () => true
+  getNull: () => true
 };
 
 export default MarkSeries;
