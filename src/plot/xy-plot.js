@@ -22,7 +22,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import equal from 'deep-equal';
 
-import {extractScalePropsFromProps, getMissingScaleProps, getXYPlotValues} from 'utils/scales-utils';
+import {
+  extractScalePropsFromProps,
+  getMissingScaleProps,
+  getOptionalScaleProps,
+  getXYPlotValues
+} from 'utils/scales-utils';
 import {getStackedData, getSeriesChildren, getSeriesPropsFromChildren} from 'utils/series-utils';
 import {getInnerDimensions, MarginPropType} from 'utils/chart-utils';
 import {checkIfStyleSheetIsImported} from 'utils/react-utils';
@@ -47,8 +52,6 @@ const ATTRIBUTES = [
   'opacity',
   'size'
 ];
-
-const OPTIONAL_SCALE_PROPS = ['Padding'];
 
 const DEFAULT_MARGINS = {
   left: 40,
@@ -281,21 +284,6 @@ class XYPlot extends React.Component {
   }
 
   /**
-   * Get the list of optional scale-related settings
-   * @param {Object} props Object of props.
-   * @returns {Object} Optional Props.
-   * @private
-   */
-  _getOptionalScaleProps(props) {
-    return Object.keys(props)
-      .filter(prop => OPTIONAL_SCALE_PROPS.map(option => prop.endsWith(option)).every(x => x))
-      .reduce((obj, key) => {
-        obj[key] = props[key];
-        return obj;
-      }, {});
-  }
-
-  /**
    * Get the map of scales from the props, apply defaults to them and then pass
    * them further.
    * @param {Object} data Array of all data.
@@ -309,7 +297,7 @@ class XYPlot extends React.Component {
     const allData = [].concat(...filteredData);
 
     const defaultScaleProps = this._getDefaultScaleProps(props);
-    const optionalScaleProps = this._getOptionalScaleProps(props);
+    const optionalScaleProps = getOptionalScaleProps(props);
     const userScaleProps = extractScalePropsFromProps(props, ATTRIBUTES);
     const missingScaleProps = getMissingScaleProps({
       ...defaultScaleProps,

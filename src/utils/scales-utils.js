@@ -784,6 +784,27 @@ export function getXYPlotValues(props, children) {
   );
 }
 
+const OPTIONAL_SCALE_PROPS = ['Padding'];
+const OPTIONAL_SCALE_PROPS_REGS = OPTIONAL_SCALE_PROPS.map(str => new RegExp(`${str}$`, 'i'));
+/**
+ * Get the list of optional scale-related settings for XYPlot
+ * mostly just used to find padding properties
+ * @param {Object} props Object of props.
+ * @returns {Object} Optional Props.
+ * @private
+ */
+export function getOptionalScaleProps(props) {
+  return Object.keys(props)
+    .reduce((acc, prop) => {
+      const propIsNotOptional = OPTIONAL_SCALE_PROPS_REGS.every(reg => !prop.match(reg));
+      if (propIsNotOptional) {
+        return acc;
+      }
+      acc[prop] = props[prop];
+      return acc;
+    }, {});
+}
+
 export default {
   extractScalePropsFromProps,
   getAttributeScale,
@@ -793,6 +814,7 @@ export default {
   getDomainByAttr,
   getFontColorFromBackground,
   getMissingScaleProps,
+  getOptionalScaleProps,
   getScaleObjectFromProps,
   getScalePropTypesByAttribute,
   getXYPlotValues,

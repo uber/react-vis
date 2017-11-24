@@ -28,6 +28,7 @@ import {
   getAttributeScale,
   getAttributeValue,
   getFontColorFromBackground,
+  getOptionalScaleProps,
   getXYPlotValues,
   _getSmallestDistanceIndex,
   getScaleFnFromScaleObject,
@@ -444,5 +445,14 @@ test('scales-utils #_adjustCategoricalScale', t => {
   }].forEach(({scale, distance}) => {
     t.deepEqual(_adjustCategoricalScale(scale), {...scale, distance}, 'should correctly adjust a categorical scale');
   });
+  t.end();
+});
+
+test('scale-utils #getOptionalScaleProps', t => {
+  const foundProps = getOptionalScaleProps({node: 1, x: 2, margins: 4});
+  t.deepEqual(foundProps, {}, 'should not find any non-padding optional props');
+
+  const paddingProps = getOptionalScaleProps({node: 1, x: 2, margins: 4, coolDogExplosionPadding: 10});
+  t.deepEqual(paddingProps, {coolDogExplosionPadding: 10}, 'should find only padding optional props');
   t.end();
 });
