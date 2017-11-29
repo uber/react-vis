@@ -57,7 +57,6 @@ class AreaSeries extends AbstractSeries {
       data,
       marginLeft,
       marginTop,
-      getNull,
       style
     } = this.props;
 
@@ -86,6 +85,7 @@ class AreaSeries extends AbstractSeries {
       this._getAttributeValue('fill') || this._getAttributeValue('color');
     const newOpacity = this._getAttributeValue('opacity');
     const opacity = Number.isFinite(newOpacity) ? newOpacity : DEFAULT_OPACITY;
+    const getNull = this.props.nullAccessor || this.props.getNull;
     const d = this._renderArea(data, x, y0, y, curve, getNull);
 
     return (

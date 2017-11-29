@@ -70,7 +70,6 @@ class MarkSeries extends AbstractSeries {
       data,
       marginLeft,
       marginTop,
-      getNull,
       strokeWidth,
       style
     } = this.props;
@@ -78,6 +77,8 @@ class MarkSeries extends AbstractSeries {
     if (this.props.nullAccessor) {
       warning('nullAccessor has been renamed to getNull', true);
     }
+
+    const getNull = this.props.nullAccessor || this.props.getNull;
 
     if (!data) {
       return null;
