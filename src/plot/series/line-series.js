@@ -36,7 +36,7 @@ const STROKE_STYLES = {
 };
 
 class LineSeries extends AbstractSeries {
-  _renderLine(data, x, y, curve, nullAccessor) {
+  _renderLine(data, x, y, curve, getNull) {
     let line = d3Shape.line();
     if (curve !== null) {
       if (typeof curve === 'string' && d3Shape[curve]) {
@@ -45,7 +45,7 @@ class LineSeries extends AbstractSeries {
         line = line.curve(curve);
       }
     }
-    line = line.defined(nullAccessor);
+    line = line.defined(getNull);
     line = line.x(x).y(y);
     return line(data);
   }
@@ -64,7 +64,7 @@ class LineSeries extends AbstractSeries {
     }
 
     const {
-      curve, marginLeft, marginTop, nullAccessor, strokeDasharray, strokeStyle, strokeWidth, style
+      curve, marginLeft, marginTop, getNull, strokeDasharray, strokeStyle, strokeWidth, style
     } = this.props;
 
     const x = this._getAttributeFunctor('x');
@@ -73,7 +73,7 @@ class LineSeries extends AbstractSeries {
       this._getAttributeValue('color');
     const newOpacity = this._getAttributeValue('opacity');
     const opacity = Number.isFinite(newOpacity) ? newOpacity : DEFAULT_OPACITY;
-    const d = this._renderLine(data, x, y, curve, nullAccessor);
+    const d = this._renderLine(data, x, y, curve, getNull);
 
     return (
       <path
@@ -103,7 +103,7 @@ LineSeries.propTypes = {
     PropTypes.string,
     PropTypes.func
   ]),
-  nullAccessor: PropTypes.func
+  getNull: PropTypes.func
 };
 LineSeries.defaultProps = {
   strokeStyle: 'solid',
@@ -111,7 +111,7 @@ LineSeries.defaultProps = {
   opacity: 1,
   curve: null,
   className: '',
-  nullAccessor: () => true
+  getNull: () => true
 };
 
 export default LineSeries;

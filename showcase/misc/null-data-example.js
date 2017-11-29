@@ -67,8 +67,8 @@ export default class NullDataExample extends React.Component {
         <YAxis/>
         <HorizontalGridLines />
         <VerticalGridLines />
-        <AreaSeries nullAccessor={(d) => d.y !== null} onNearestX={this.onNearestX} data={DATA[0]} />
-        <LineMarkSeries nullAccessor={(d) => d.y !== null} data={DATA[1]} />
+        <AreaSeries getNull={(d) => d.y !== null} onNearestX={this.onNearestX} data={DATA[0]} />
+        <LineMarkSeries getNull={(d) => d.y !== null} data={DATA[1]} />
         <Crosshair
           values={this.state.crosshairValues}/>
       </XYPlot>
