@@ -86,7 +86,11 @@ function getCSSRules(styleSheet) {
       styleSheet.ownerNode.href &&
       styleSheet.ownerNode.href.startsWith(document.location.origin))
   ) {
-    return styleSheet.rules || styleSheet.cssRules;
+    try {
+      return styleSheet.rules || styleSheet.cssRules;
+    } catch (err) {
+      return [];
+    }
   }
   return [];
 }
