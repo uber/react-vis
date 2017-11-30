@@ -88,13 +88,13 @@ function getAxes(props) {
  */
 function getLabels(props) {
   const {domains, startingAngle, style} = props;
-  return domains.map((domain, index) => {
+  return domains.map(({name}, index) => {
     const angle = index / domains.length * Math.PI * 2 + startingAngle;
     const radius = 1.2;
     return {
       x: radius * Math.cos(angle),
       y: radius * Math.sin(angle),
-      label: domain.name,
+      label: name,
       style
     };
   });
@@ -119,18 +119,18 @@ function getPolygons(props) {
     style,
     startingAngle
   } = props;
-  const scales = domains.reduce((acc, domain) => {
-    acc[domain.name] = scaleLinear().domain(domain.domain).range([0, 1]);
+  const scales = domains.reduce((acc, {domain, name}) => {
+    acc[name] = scaleLinear().domain(domain).range([0, 1]);
     return acc;
   }, {});
 
   return data.map((row, rowIndex) => {
-    const mappedData = domains.map((domain, index) => {
-      const dataPoint = row[domain.name];
+    const mappedData = domains.map(({name, getValue}, index) => {
+      const dataPoint = getValue ? getValue(row) : row[name];
       // error handling if point doesn't exist
       const angle = index / domains.length * Math.PI * 2 + startingAngle;
       // dont let the radius become negative
-      const radius = Math.max(scales[domain.name](dataPoint), 0);
+      const radius = Math.max(scales[name](dataPoint), 0);
       return {x: radius * Math.cos(angle), y: radius * Math.sin(angle)};
     });
 

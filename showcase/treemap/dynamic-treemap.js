@@ -28,7 +28,7 @@ function _getRandomData(total) {
   const leaves = [];
   for (let i = 0; i < totalLeaves; i++) {
     leaves.push({
-      title: total ? total : String(Math.random()).slice(0, 3),
+      name: total ? total : String(Math.random()).slice(0, 3),
       size: Math.random() * 1000,
       color: Math.random(),
       style: {
@@ -63,6 +63,7 @@ export default class DynamicTreemapExample extends React.Component {
       onLeafClick: () => this.setState({treemapData: _getRandomData()}),
       height: 300,
       mode: this.state.useCirclePacking ? 'circlePack' : 'squarify',
+      getLabel: x => x.name,
       width: 350
     };
     return (

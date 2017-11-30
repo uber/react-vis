@@ -8,6 +8,8 @@ import LineChart from '../../showcase/plot/line-chart';
 import LineMarkSeries from '../../showcase/plot/linemark-chart';
 import LineChartManyColors from '../../showcase/color/line-chart-many-colors';
 import NullData from '../../showcase/misc/null-data-example';
+import TimeChart from '../../showcase/misc/time-chart';
+import SyncedCharts from '../../showcase/misc/synced-charts';
 
 testRenderWithProps(LineSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
@@ -81,6 +83,27 @@ test('LineSeries: Showcase Example - LineChartManyColors', t => {
     LINE_WITH_MANY_COLORS_COLORS[i],
     `${i}th line series gets the right color`)
   );
+  t.end();
+});
+
+test('LineSeries: Showcase Example - TimeChart', t => {
+  const $ = mount(<TimeChart />);
+  t.equal($.find('.rv-xy-plot__series--line').length, 2, 'should find the right number of lines');
+  t.equal($.text(), 'Sep 1012 PMMon 1112 PMTue 1212 PMWed 13X Axis2468101214Y Axis', 'should find the right number of lines');
+  t.end();
+});
+
+test('LineSeries: Showcase Example - SyncedCharts', t => {
+  const $ = mount(<SyncedCharts />);
+  const tests = () => {
+    t.equal($.find('.rv-xy-plot').length, 2, 'should find the right number of lines');
+    t.equal($.find('.rv-xy-plot__series--line').length, 4, 'should find the right number of lines');
+    t.equal($.text(), '1.01.52.02.53.024681012141.01.52.02.53.0246810', 'should find the right number of lines');
+  };
+  tests();
+  $.find('.rv-xy-plot__series--line').at(0).simulate('mouseEnter');
+  tests();
+  $.find('.rv-xy-plot').at(0).simulate('mouseLeave');
   t.end();
 });
 

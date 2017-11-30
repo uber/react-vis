@@ -113,7 +113,7 @@ class Treemap extends React.Component {
    */
   _getNodesToRender() {
     const {innerWidth, innerHeight} = this.state;
-    const {data, mode, padding, sortFunction} = this.props;
+    const {data, mode, padding, sortFunction, getSize} = this.props;
     if (!data) {
       return [];
     }
@@ -123,8 +123,8 @@ class Treemap extends React.Component {
           .size(mode === 'partition-pivot' ? [innerHeight, innerWidth] : [innerWidth, innerHeight])
           .padding(padding);
       const structuredInput = hierarchy(data)
-        .sum(d => d.size)
-        .sort(sortFunction);
+        .sum(getSize)
+        .sort((a, b) => sortFunction(a, b, getSize));
       const mappedNodes = partitionFunction(structuredInput).descendants();
       if (mode === 'partition-pivot') {
         return mappedNodes.map(node => ({
@@ -142,8 +142,8 @@ class Treemap extends React.Component {
           .size([innerWidth, innerHeight])
           .padding(padding);
       const structuredInput = hierarchy(data)
-        .sum(d => d.size)
-        .sort(sortFunction);
+        .sum(getSize)
+        .sort((a, b) => sortFunction(a, b, getSize));
       return packingFunction(structuredInput).descendants();
     }
 
@@ -153,8 +153,8 @@ class Treemap extends React.Component {
       .size([innerWidth, innerHeight])
       .padding(padding);
     const structuredInput = hierarchy(data)
-      .sum(d => d.size)
-      .sort(sortFunction);
+      .sum(getSize)
+      .sort((a, b) => sortFunction(a, b, getSize));
     return treemapingFunction(structuredInput).descendants();
 
   }
@@ -186,7 +186,9 @@ Treemap.propTypes = {
   useCirclePacking: PropTypes.bool,
   padding: PropTypes.number.isRequired,
   sortFunction: PropTypes.func,
-  width: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired,
+  getSize: PropTypes.func,
+  getColor: PropTypes.func
 };
 
 Treemap.defaultProps = {
@@ -205,6 +207,14 @@ Treemap.defaultProps = {
   opacityType: OPACITY_TYPE,
   _opacityValue: DEFAULT_OPACITY,
   padding: 1,
-  sortFunction: (a, b) => a.size - b.size
+  sortFunction: (a, b, accessor) => {
+    if (!accessor) {
+      return 0;
+    }
+    return accessor(a) - accessor(b);
+  },
+  getSize: d => d.size,
+  getColor: d => d.color,
+  getLabel: d => d.title
 };
 export default Treemap;

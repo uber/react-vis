@@ -19,22 +19,13 @@
 // THE SOFTWARE.
 
 /**
- * Get the value accessor function that gets a property from an object.
- * @param {string} propertyName Property name.
- * @returns {Function} Value accessor.
- */
-export function getObjectValueAccessor(propertyName) {
-  return obj => obj[propertyName];
-}
-
-/**
  * Get unique property values from an array.
  * @param {Array} arr Array of data.
  * @param {string} propertyName Prop name.
  * @returns {Array} Array of unique values.
  */
-export function getUniquePropertyValues(arr, propertyName) {
-  const setOfValues = new Set(arr.map(getObjectValueAccessor(propertyName)));
+export function getUniquePropertyValues(arr, accessor) {
+  const setOfValues = new Set(arr.map(accessor));
   return Array.from(setOfValues);
 }
 

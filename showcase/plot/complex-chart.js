@@ -46,8 +46,8 @@ function getRandomSeriesData(total) {
   for (let i = 0; i < Math.max(total, 3); i++) {
     y = Math.random() * firstY - firstY / 2 + lastY;
     result.push({
-      x: i,
-      y
+      left: i,
+      top: y
     });
     lastY = y;
   }
@@ -121,7 +121,7 @@ export default class Example extends React.Component {
   _formatCrosshairTitle(values) {
     return {
       title: 'X',
-      value: values[0].x
+      value: values[0].left
     };
   }
 
@@ -136,7 +136,7 @@ export default class Example extends React.Component {
     return values.map((v, i) => {
       return {
         title: series[i].title,
-        value: v.y
+        value: v.top
       };
     });
   }
@@ -167,6 +167,8 @@ export default class Example extends React.Component {
         <div className="chart">
           <FlexibleWidthXYPlot
             animation
+            getX={d => d.left}
+            getY={d => d.top}
             onMouseLeave={this._mouseLeaveHandler}
             xDomain={[0, series[0].data.length - 1]}
             height={300}>
@@ -182,7 +184,7 @@ export default class Example extends React.Component {
               tickSizeOuter={8}
             />
             <VerticalRectSeries
-              data={series[0].data.map(({x, y}) => ({x0: x - 0.5, x: x + 0.5, y}))}
+              data={series[0].data.map(({left, top}) => ({x0: left - 0.5, left: left + 0.5, top}))}
               stroke="white"
               onNearestX={this._nearestXHandler}
               {...(series[0].disabled ? {opacity: 0.2} : null)}/>

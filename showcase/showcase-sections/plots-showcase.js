@@ -145,7 +145,9 @@ class PlotsShowcase extends Component {
         <h2>Series Types</h2>
         {PLOTS.map(mapSection)}
         <h2>Basic Components</h2>
-        {BASIC_COMPONENTS.map(mapSection)}
+        {
+          BASIC_COMPONENTS.map(mapSection)
+        }
       </article>
     );
   }

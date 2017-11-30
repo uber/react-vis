@@ -56,7 +56,7 @@ function updateData(data, keyPath) {
     data.children.map(child => updateData(child, keyPath));
   }
   // add a fill to all the uncolored cells
-  if (!data.color) {
+  if (!data.hex) {
     data.style = {
       fill: EXTENDED_DISCRETE_COLOR_RANGE[5]
     };
@@ -115,6 +115,8 @@ export default class BasicSunburst extends React.Component {
             strokeWidth: '0.5'
           }}
           colorType="literal"
+          getSize={d => d.value}
+          getColor={d => d.hex}
           data={data}
           height={300}
           width={350}>

@@ -19,24 +19,16 @@
 // THE SOFTWARE.
 
 import test from 'tape';
-import equal from 'deep-equal';
 
 import {
-  getObjectValueAccessor,
   getUniquePropertyValues,
   addValueToArray
 } from 'utils/data-utils';
 
 const arr = [{a: 1}, {b: 3, a: 2}, {a: 2}];
 
-test('data-utils #getObjectValueAccessor', t => {
-  const result = getObjectValueAccessor('a');
-  t.ok(result({a: 1, b: 2}) === 1, 'Should return value of the property');
-  t.end();
-});
-
 test('data-utils #getUniquePropertyValues', t => {
-  const result = getUniquePropertyValues(arr, 'a');
+  const result = getUniquePropertyValues(arr, d => d.a);
   t.ok(result.length === 2, 'Should return the array of the proper size');
   t.ok(
     result.indexOf(1) !== -1 && result.indexOf(2) !== -1,
@@ -45,14 +37,11 @@ test('data-utils #getUniquePropertyValues', t => {
 });
 
 test('data-utils #addValueToArray', t => {
-  t.ok(
-    equal(addValueToArray([-10, 10], 1), [-10, 10]),
+  t.deepEqual(addValueToArray([-10, 10], 1), [-10, 10],
     'Shouldn\'t add the value if the value is in the array');
-  t.ok(
-    equal(addValueToArray([-10, 0], 1), [-10, 1]),
+  t.deepEqual(addValueToArray([-10, 0], 1), [-10, 1],
     'Should add the value if the value is larger');
-  t.ok(
-    equal(addValueToArray([0, 10], -1), [-1, 10]),
+  t.deepEqual(addValueToArray([0, 10], -1), [-1, 10],
     'Should add the value if the value is smaller');
   t.end();
 });

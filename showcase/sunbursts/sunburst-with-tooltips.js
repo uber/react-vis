@@ -32,25 +32,25 @@ import {
 const DATA = {
   children: [
     {children: [
-      {size: 1, children: [], color: COLORS[1], label: 'excellent'},
-      {size: 1, children: [], color: COLORS[2], label: 'chart'}
-    ], color: COLORS[3]},
+      {bigness: 1, children: [], clr: COLORS[1], name: 'excellent'},
+      {bigness: 1, children: [], clr: COLORS[2], name: 'chart'}
+    ], clr: COLORS[3]},
     {
-      size: 1,
+      bigness: 1,
       children: [],
-      color: COLORS[4],
-      label: 'cool',
+      clr: COLORS[4],
+      name: 'cool',
       labelStyle: {
         fontSize: 15,
         fontWeight: 'bold'
       }
     },
-    {size: 1, children: [], color: COLORS[5], label: 'dogs'},
-    {size: 1, children: [], color: COLORS[6], label: 'sunglasses'},
+    {bigness: 1, children: [], clr: COLORS[5], name: 'dogs'},
+    {bigness: 1, children: [], clr: COLORS[6], name: 'sunglasses'},
     {children: [
-      {size: 1, children: [], color: COLORS[7], label: 'great'},
-      {size: 1, children: [], color: COLORS[8], label: 'label'}
-    ], color: COLORS[9]}
+      {bigness: 1, children: [], clr: COLORS[7], name: 'great'},
+      {bigness: 1, children: [], clr: COLORS[8], name: 'label'}
+    ], clr: COLORS[9]}
   ]
 };
 
@@ -86,11 +86,14 @@ export default class SunburstWithTooltips extends React.Component {
         onValueMouseOut={v => this.setState({hoveredCell: false})}
         height={300}
         margin={{top: 50, bottom: 50, left: 50, right: 50}}
+        getLabel={d => d.name}
+        getSize={d => d.bigness}
+        getColor={d => d.clr}
         width={350}>
         {hoveredCell ? <Hint value={buildValue(hoveredCell)}>
           <div style={tipStyle}>
-            <div style={{...boxStyle, background: hoveredCell.color}}/>
-            {hoveredCell.color}
+            <div style={{...boxStyle, background: hoveredCell.clr}}/>
+            {hoveredCell.clr}
           </div>
         </ Hint> : null}
       </Sunburst>

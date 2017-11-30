@@ -87,7 +87,16 @@ test('scales-utils #getScaleObjectFromProps ', t => {
 
 test('scales-utils #getScalePropTypesByAttribute', t => {
   const result = Object.keys(getScalePropTypesByAttribute('size'));
-  const expectedResult = ['_sizeValue', 'sizeDomain', 'sizeRange', 'sizeType', 'sizeDistance', 'sizeBaseValue'];
+  const expectedResult = [
+    '_sizeValue',
+    'sizeDomain',
+    'getSize',
+    'getSize0',
+    'sizeRange',
+    'sizeType',
+    'sizeDistance',
+    'sizeBaseValue'
+  ];
   t.deepEqual(result, expectedResult, 'should find the correct scale prop attributes');
   t.end();
 });
@@ -229,7 +238,7 @@ test('scales-utils #getMissingScaleProps', t => {
   const paddedDayTen = (dayTen + ((dayTen - dayOne) * 0.1));
   const fakePadding = 10;
 
-  t.ok(Object.keys(getMissingScaleProps({}, [], [])).length === 0,
+  t.equal(Object.keys(getMissingScaleProps({}, [], [])).length, 0,
     'Should return empty result on empty arguments');
   const result = getMissingScaleProps({}, _allData[0], ['x']);
   t.ok(Boolean(result.xDomain) && result.xDomain.length === 2 &&
@@ -243,13 +252,22 @@ test('scales-utils #getMissingScaleProps', t => {
     fakeDataIntegerDomain,
     'should pad number xDomain'
   );
+  // need to use json stringify to peel off the functions
   t.deepEqual(
-    getMissingScaleProps({
+    JSON.stringify(getMissingScaleProps({
       xPadding: fakePadding,
       xDomain: fakeDomain
-    }, fakeDataInteger, ['x']),
-    {},
+    }, fakeDataInteger, ['x'])),
+    '{}',
     'should not pad if xDomain is already supplied'
+  );
+  t.deepEqual(
+    Object.keys(getMissingScaleProps({
+      xPadding: fakePadding,
+      xDomain: fakeDomain
+    }, fakeDataInteger, ['x'])),
+    ['getX', 'getX0'],
+    'should not pad if xDomain is already supplied, but accessors should be present'
   );
   t.deepEqual(
     getMissingScaleProps({
@@ -326,7 +344,7 @@ test('scales-utils #getScaleFnFromScaleObject', t => {
 });
 
 function generateFakeData() {
-  return new Array(100).fill(0).map((zero, i) => ({x: i}));
+  return new Array(100).fill(0).map((zero, i) => ({xxxx: i}));
 }
 
 test('scales-utils #_getScaleDistanceAndAdjustedDomain', t => {
@@ -335,11 +353,13 @@ test('scales-utils #_getScaleDistanceAndAdjustedDomain', t => {
     attr: 'x',
     domain: [0, 100],
     range: [0, 1],
-    type: 'linear'
+    type: 'linear',
+    // the extra x's are here to test the accessor behaviour
+    accessor: d => d.xxxx
   };
   const resultObject = _getScaleDistanceAndAdjustedDomain(FAKE_DATA, scaleObject);
   const expectedResults = {distance: 0.009900990099009799, domain0: -0.5, domainN: 100.5};
-  t.deepEqual(resultObject, expectedResults, 'should fine reasonable results');
+  t.deepEqual(resultObject, expectedResults, 'should find reasonable results');
 
   const FAKE_TIME_DATA_WITH_ONE_VALUE_AND_X0 = [{
     x: 1422774000000,
@@ -357,7 +377,9 @@ test('scales-utils #_getScaleDistanceAndAdjustedDomain', t => {
     attr: 'x',
     domain: [1417546800000, 1430420400000],
     range: [0, 550],
-    type: 'time'
+    type: 'time',
+    accessor: d => d.x,
+    accessor0: d => d.x0
   };
   const timeResultWithOneValueAndX0 = _getScaleDistanceAndAdjustedDomain(
     FAKE_TIME_DATA_WITH_ONE_VALUE_AND_X0,
@@ -371,14 +393,16 @@ test('scales-utils #_getScaleDistanceAndAdjustedDomain', t => {
   t.deepEqual(
     timeResultWithOneValueAndX0,
     expectedTimeResultsWithOneValueAndX0,
-    'should fine reasonable results'
+    'should fine reasonable results for time _getScaleDistanceAndAdjustedDomain'
   );
 
   const timeScaleObjectY = {
     attr: 'y',
     domain: [1417546800000, 1430420400000],
     range: [0, 550],
-    type: 'time'
+    type: 'time',
+    accessor: d => d.y,
+    accessor0: d => d.y0
   };
   const timeResultWithOneValueAndY0 = _getScaleDistanceAndAdjustedDomain(
     FAKE_TIME_DATA_WITH_ONE_VALUE_AND_Y0,
@@ -392,26 +416,30 @@ test('scales-utils #_getScaleDistanceAndAdjustedDomain', t => {
   t.deepEqual(
     timeResultWithOneValueAndY0,
     expectedTimeResultsWithOneValueAndY0,
-    'should fine reasonable results'
+    'should find reasonable results for y time _getScaleDistanceAndAdjustedDomain'
   );
 
-  const timeResult = _getScaleDistanceAndAdjustedDomain(FAKE_DATA, timeScaleObjectX);
+  const timeResult = _getScaleDistanceAndAdjustedDomain(FAKE_DATA, {
+    ...timeScaleObjectX,
+    accessor: d => d.xxxx
+  });
   const expectedTimeResults = {
     distance: 4.272442311048508e-8,
     domain0: 1417546799999.5,
     domainN: 1430420400000.5
   };
-  t.deepEqual(timeResult, expectedTimeResults, 'should fine reasonable results');
+  t.deepEqual(timeResult, expectedTimeResults, 'should fine reasonable results for a time scale');
 
   const logScaleObject = {
     attr: 'x',
     domain: [-0.5, 1],
     range: [1, 10],
-    type: 'log'
+    type: 'log',
+    accessor: d => d.xxxx
   };
   const logResult = _getScaleDistanceAndAdjustedDomain(FAKE_DATA, logScaleObject);
   const expectedLogResults = {distance: Infinity, domain0: 0.1, domainN: 1.5};
-  t.deepEqual(logResult, expectedLogResults, 'should fine reasonable results');
+  t.deepEqual(logResult, expectedLogResults, 'should fine reasonable results for a log scale');
 
   t.end();
 });

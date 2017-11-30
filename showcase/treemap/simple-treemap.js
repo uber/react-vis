@@ -86,6 +86,8 @@ export default class SimpleTreemapExample extends React.Component {
           height: 300,
           width: 350,
           margin: 10,
+          getSize: d => d.value,
+          getColor: d => d.hex,
           style: STYLES[useSVG ? 'SVG' : 'DOM']
         }}/>
       </div>

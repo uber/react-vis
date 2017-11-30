@@ -110,16 +110,17 @@ function getLines(props) {
     style,
     showMarks
   } = props;
-  const scales = domains.reduce((acc, domain) => {
-    acc[domain.name] = scaleLinear().domain(domain.domain).range([0, 1]);
+  const scales = domains.reduce((acc, {domain, name}) => {
+    acc[name] = scaleLinear().domain(domain).range([0, 1]);
     return acc;
   }, {});
 
   return data.map((row, rowIndex) => {
     const mappedData = domains.map((domain, index) => {
+      const {getValue, name} = domain;
       return {
-        x: domain.name,
-        y: scales[domain.name](row[domain.name])
+        x: name,
+        y: scales[name](getValue ? getValue(row) : row[name])
       };
     });
     const lineProps = {

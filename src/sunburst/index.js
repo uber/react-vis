@@ -57,11 +57,12 @@ const LISTENERS_TO_OVERWRITE = [
    props.height {number} - the height of the graphic to be rendered
    props.hideRootNode {boolean} - whether or not to hide the root node
    props.width {number} - the width of the graphic to be rendered
+   props.getSize {function} - accessor for the size
  * @returns {Array} Array of nodes.
  */
-function getNodesToRender({data, height, hideRootNode, width}) {
+function getNodesToRender({data, height, hideRootNode, width, getSize}) {
   const partitionFunction = partition();
-  const structuredInput = hierarchy(data).sum(d => d.size);
+  const structuredInput = hierarchy(data).sum(getSize);
   const radius = (Math.min(width, height) / 2) - 10;
   const x = scaleLinear().range([0, 2 * Math.PI]);
   const y = scaleSqrt().range([0, radius]);
@@ -88,14 +89,22 @@ function getNodesToRender({data, height, hideRootNode, width}) {
  * Convert arc nodes into label rows.
  * Important to use mappedData rather than regular data, bc it is already unrolled
  * @param {Array} mappedData - Array of nodes.
+ * @param {Object} accessors - object of accessors
  * @returns {Array} array of node for rendering as labels
  */
-function buildLabels(mappedData) {
+function buildLabels(mappedData, accessors) {
+  const {
+    getAngle,
+    getAngle0,
+    getLabel,
+    getRadius0
+  } = accessors;
+
   return mappedData
-  .filter(row => row.label)
+  .filter(getLabel)
   .map(row => {
-    const truedAngle = -1 * row.angle + Math.PI / 2;
-    const truedAngle0 = -1 * row.angle0 + Math.PI / 2;
+    const truedAngle = -1 * getAngle(row) + Math.PI / 2;
+    const truedAngle0 = -1 * getAngle0(row) + Math.PI / 2;
     const angle = (truedAngle0 + truedAngle) / 2;
     const rotateLabels = !row.dontRotateLabel;
     const rotAngle = -angle / (2 * Math.PI) * 360;
@@ -105,9 +114,8 @@ function buildLabels(mappedData) {
       children: null,
       angle: null,
       radius: null,
-      x: row.radius0 * Math.cos(angle),
-      y: row.radius0 * Math.sin(angle),
-      // style: row.labelStyle,
+      x: getRadius0(row) * Math.cos(angle),
+      y: getRadius0(row) * Math.sin(angle),
       style: {
         textAnchor: rotAngle > 90 ? 'end' : 'start',
         ...row.labelStyle
@@ -124,20 +132,30 @@ const NOOP = () => {};
 class Sunburst extends React.Component {
   render() {
     const {
+      getAngle,
+      getAngle0,
       animation,
       className,
       children,
       data,
       height,
       hideRootNode,
+      getLabel,
       width,
+      getSize,
       colorType
     } = this.props;
-    const mappedData = getNodesToRender({data, height, hideRootNode, width});
+    const mappedData = getNodesToRender({data, height, hideRootNode, width, getSize});
     const radialDomain = getRadialDomain(mappedData);
     const margin = getRadialLayoutMargin(width, height, radialDomain);
 
-    const labelData = buildLabels(mappedData);
+    const labelData = buildLabels(mappedData, {
+      getAngle,
+      getAngle0,
+      getLabel,
+      getRadius0: d => d.radius0
+    });
+
     const hofBuilder = f => (e, i) => f ? f(mappedData[e.index], i) : NOOP;
     return (
       <XYPlot
@@ -165,7 +183,7 @@ class Sunburst extends React.Component {
             return acc;
           }, {}))
         }}/>
-        {labelData.length > 0 && (<LabelSeries data={labelData} />)}
+        {labelData.length > 0 && (<LabelSeries data={labelData} getLabel={getLabel}/>)}
         {children}
       </XYPlot>
     );
@@ -175,20 +193,29 @@ class Sunburst extends React.Component {
 Sunburst.displayName = 'Sunburst';
 Sunburst.propTypes = {
   animation: AnimationPropType,
+  getAngle: PropTypes.func,
+  getAngle0: PropTypes.func,
   className: PropTypes.string,
   colorType: PropTypes.string,
   data: PropTypes.object.isRequired,
   height: PropTypes.number.isRequired,
   hideRootNode: PropTypes.bool,
+  getLabel: PropTypes.func,
   onValueClick: PropTypes.func,
   onValueMouseOver: PropTypes.func,
   onValueMouseOut: PropTypes.func,
+  getSize: PropTypes.func,
   width: PropTypes.number.isRequired
 };
 Sunburst.defaultProps = {
+  getAngle: d => d.angle,
+  getAngle0: d => d.angle0,
   className: '',
   colorType: 'literal',
-  hideRootNode: false
+  getColor: d => d.color,
+  hideRootNode: false,
+  getLabel: d => d.label,
+  getSize: d => d.size
 };
 
 export default Sunburst;

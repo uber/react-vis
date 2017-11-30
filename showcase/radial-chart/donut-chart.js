@@ -36,12 +36,13 @@ export default class SimpleRadialChart extends Component {
         className={'donut-chart-example'}
         innerRadius={100}
         radius={140}
+        getAngle={d => d.theta}
         data={[
-          {angle: 2, className: 'custom-class'},
-          {angle: 6},
-          {angle: 2},
-          {angle: 3},
-          {angle: 1}
+          {theta: 2, className: 'custom-class'},
+          {theta: 6},
+          {theta: 2},
+          {theta: 3},
+          {theta: 1}
         ]}
         onValueMouseOver={v => this.setState({value: v})}
         onSeriesMouseOut={v => this.setState({value: false})}

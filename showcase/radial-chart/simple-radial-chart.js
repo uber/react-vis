@@ -30,12 +30,13 @@ export default class SimpleRadialChart extends React.Component {
         colorDomain={[0, 100]}
         colorRange={[0, 10]}
         margin={{top: 100}}
+        getLabel={d => d.name}
         data={[
-          {angle: 1, color: '#89DAC1', label: 'green', opacity: 0.2},
-          {angle: 2, color: '#F6D18A', label: 'yellow'},
-          {angle: 5, color: '#1E96BE', label: 'cyan'},
-          {angle: 3, color: '#DA70BF', label: 'magenta'},
-          {angle: 5, color: '#F6D18A', label: 'yellow again'}
+          {angle: 1, color: '#89DAC1', name: 'green', opacity: 0.2},
+          {angle: 2, color: '#F6D18A', name: 'yellow'},
+          {angle: 5, color: '#1E96BE', name: 'cyan'},
+          {angle: 3, color: '#DA70BF', name: 'magenta'},
+          {angle: 5, color: '#F6D18A', name: 'yellow again'}
         ]}
         showLabels
         width={400}

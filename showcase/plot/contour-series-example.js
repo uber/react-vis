@@ -25,20 +25,16 @@ import ShowcaseButton from '../showcase-components/showcase-button';
 import {XYPlot, XAxis, YAxis, ContourSeries, MarkSeriesCanvas, Borders} from 'index';
 
 import DATA from './old-faithful.json';
-const MAPPED_DATA = DATA.map(row => ({
-  x: row.waiting,
-  y: row.eruptions
-}));
 
 function updateData() {
-  return MAPPED_DATA.map(row => ({
-    x: row.x + (Math.random() - 0.5) * 10,
-    y: row.y + (Math.random() - 0.5) * 2
+  return DATA.map(row => ({
+    waiting: row.waiting + (Math.random() - 0.5) * 10,
+    eruptions: row.eruptions + (Math.random() - 0.5) * 2
   }));
 }
 export default class ContourSeriesExample extends Component {
   state = {
-    data: MAPPED_DATA
+    data: DATA
   }
   render() {
     const {data} = this.state;
@@ -48,6 +44,8 @@ export default class ContourSeriesExample extends Component {
           xDomain={[40, 100]}
           yDomain={[1.5, 8]}
           width={600}
+          getX={d => d.waiting}
+          getY={d => d.eruptions}
           height={300}>
           <ContourSeries
             animation

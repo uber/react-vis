@@ -115,6 +115,15 @@ const XYPLOT_ATTR = [
 ];
 
 /**
+ * Title case a given string
+ * @param {String} str Array of values.
+ * @returns {String} titlecased string
+ */
+function toTitleCase(str) {
+  return `${str[0].toUpperCase()}${str.slice(1)}`;
+}
+
+/**
  * Find the smallest distance between the values on a given scale and return
  * the index of the element, where the smallest distance was found.
  * It returns the first occurrence of i where
@@ -177,19 +186,19 @@ export function getScaleFnFromScaleObject(scaleObject) {
 /**
  * Get the domain from the array of data.
  * @param {Array} allData All data.
- * @param {string} attr Property name.
+ * @param {function} accessor - accessor for main value.
+ * @param {function} accessor0 - accessor for the naught value.
  * @param {string} type Scale type.
  * @returns {Array} Domain.
  * @private
  */
-export function getDomainByAttr(allData, attr, type) {
+export function getDomainByAccessor(allData, accessor, accessor0, type) {
   let domain;
-  const attr0 = `${attr}0`;
 
   // Collect both attr and available attr0 values from the array of data.
   const values = allData.reduce((data, d) => {
-    const value = d[attr];
-    const value0 = d[attr0];
+    const value = accessor(d);
+    const value0 = accessor0(d);
     if (_isDefined(value)) {
       data.push(value);
     }
@@ -218,10 +227,12 @@ export function getDomainByAttr(allData, attr, type) {
  * @param {string} attr Attribute.
  * @param {*} value Value.
  * @param {string} type - the type of scale being used
+ * @param {function} accessor - the accessor function
+ * @param {function} accessor0 - the accessor function for the potential naught value
  * @returns {Object} Custom scale object.
  * @private
  */
-function _createScaleObjectForValue(attr, value, type) {
+function _createScaleObjectForValue(attr, value, type, accessor, accessor0) {
   if (type === LITERAL_SCALE_TYPE) {
     return {
       type: LITERAL_SCALE_TYPE,
@@ -230,7 +241,8 @@ function _createScaleObjectForValue(attr, value, type) {
       distance: 0,
       attr,
       baseValue: undefined,
-      isValue: true
+      isValue: true,
+      accessor
     };
   }
   if (typeof value === 'undefined') {
@@ -243,22 +255,27 @@ function _createScaleObjectForValue(attr, value, type) {
     distance: 0,
     attr,
     baseValue: undefined,
-    isValue: true
+    isValue: true,
+    accessor
   };
 }
 
 /**
  * Create a regular scale object for a further use from the existing parameters.
- * @param {Array} domain Domain.
- * @param {Array} range Range.
- * @param {string} type Type.
- * @param {number} distance Distance.
- * @param {string} attr Attribute.
- * @param {number} baseValue Base value.
+ * @param {Array} domain - Domain.
+ * @param {Array} range - Range.
+ * @param {string} type - Type.
+ * @param {number} distance - Distance.
+ * @param {string} attr - Attribute.
+ * @param {number} baseValue - Base value.
+ * @param {function} accessor - Attribute accesor
+ * @param {function} accessor0 - Attribute accesor for potential naught value
  * @returns {Object} Scale object.
  * @private
  */
-function _createScaleObjectForFunction(domain, range, type, distance, attr, baseValue) {
+function _createScaleObjectForFunction({
+  domain, range, type, distance, attr, baseValue, accessor, accessor0
+}) {
   return {
     domain,
     range,
@@ -266,7 +283,9 @@ function _createScaleObjectForFunction(domain, range, type, distance, attr, base
     distance,
     attr,
     baseValue,
-    isValue: false
+    isValue: false,
+    accessor,
+    accessor0
   };
 }
 
@@ -286,17 +305,17 @@ function _collectScaleObjectFromProps(props, attr) {
     [`${attr}Distance`]: distance = 0,
     [`${attr}BaseValue`]: baseValue,
     [`${attr}Type`]: type = LINEAR_SCALE_TYPE,
-    [`${attr}NoFallBack`]: noFallBack
+    [`${attr}NoFallBack`]: noFallBack,
+    [`get${toTitleCase(attr)}`]: accessor = d => d[attr],
+    [`get${toTitleCase(attr)}0`]: accessor0 = d => d[`${attr}0`]
   } = props;
 
   let {[`${attr}Domain`]: domain} = props;
-
   // Return value-based scale if the value is assigned.
   if (!noFallBack && typeof value !== 'undefined') {
     return _createScaleObjectForValue(
-      attr, value, props[`${attr}Type`]);
+      attr, value, props[`${attr}Type`], accessor, accessor0);
   }
-
   // Pick up the domain from the properties and create a new one if it's not
   // available.
   if (typeof baseValue !== 'undefined') {
@@ -306,17 +325,20 @@ function _collectScaleObjectFromProps(props, attr) {
   // Make sure that the minimum necessary properties exist.
   if (!range || !domain || !domain.length) {
     // Try to use the fallback value if it is available.
-    return _createScaleObjectForValue(attr, fallbackValue, props[`${attr}Type`]);
+    return _createScaleObjectForValue(
+      attr, fallbackValue, props[`${attr}Type`], accessor, accessor0);
   }
 
-  return _createScaleObjectForFunction(
+  return _createScaleObjectForFunction({
     domain,
     range,
     type,
     distance,
     attr,
-    baseValue
-  );
+    baseValue,
+    accessor,
+    accessor0
+  });
 }
 
 /**
@@ -380,9 +402,9 @@ function _computeScaleDistance(values, domain, bestDistIndex, scaleFn) {
  * @param {string} type Type.
  * @private
  */
-function _normalizeValues(data, values, attr, type) {
+function _normalizeValues(data, values, accessor0, type) {
   if (type === TIME_SCALE_TYPE && values.length === 1) {
-    const attr0 = data[0][`${attr}0`];
+    const attr0 = accessor0(data[0]);
 
     return [attr0, ...values];
   }
@@ -398,13 +420,12 @@ function _normalizeValues(data, values, attr, type) {
  * @private
  */
 export function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
-  const {attr, domain, type} = scaleObject;
+  const {domain, type, accessor, accessor0} = scaleObject;
 
-  const uniqueValues = getUniquePropertyValues(data, attr);
+  const uniqueValues = getUniquePropertyValues(data, accessor);
 
   // Fix time scale if a data has only one value.
-  const values = _normalizeValues(data, uniqueValues, attr, type);
-
+  const values = _normalizeValues(data, uniqueValues, accessor0, type);
   const index = _getSmallestDistanceIndex(values, scaleObject);
 
   const adjustedDomain = [].concat(domain);
@@ -526,7 +547,6 @@ export function _adjustCategoricalScale(scaleObject) {
 export function getScaleObjectFromProps(props, attr) {
   // Create the initial scale object.
   const scaleObject = _collectScaleObjectFromProps(props, attr);
-
   if (!scaleObject) {
     return null;
   }
@@ -560,13 +580,13 @@ export function getAttributeScale(props, attr) {
 
 /**
  * Get the value of `attr` from the object.
- * @param {Object} d Object.
- * @param {string} attr Attribute.
+ * @param {Object} d - data Object.
+ * @param {Function} accessor - accessor function.
  * @returns {*} Value of the point.
  * @private
  */
-function _getAttrValue(d, attr) {
-  return d.data ? d.data[attr] : d[attr];
+function _getAttrValue(d, accessor) {
+  return accessor(d.data ? d.data : d);
 }
 
 function _isDefined(value) {
@@ -594,14 +614,14 @@ function _padDomain(domain, padding) {
 /**
  * Get prop functor (either a value or a function) for a given attribute.
  * @param {Object} props Series props.
- * @param {string} attr Property name.
+ * @param {Function} accessor - Property accessor.
  * @returns {*} Function or value.
  */
 export function getAttributeFunctor(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
   if (scaleObject) {
     const scaleFn = getScaleFnFromScaleObject(scaleObject);
-    return d => scaleFn(_getAttrValue(d, attr));
+    return d => scaleFn(_getAttrValue(d, scaleObject.accessor));
   }
   return null;
 }
@@ -622,7 +642,7 @@ export function getAttr0Functor(props, attr) {
     const {baseValue = domain[0]} = scaleObject;
     const scaleFn = getScaleFnFromScaleObject(scaleObject);
     return d => {
-      const value = _getAttrValue(d, attr0);
+      const value = _getAttrValue(d, el => el[attr0]);
       return scaleFn(_isDefined(value) ? value : baseValue);
     };
   }
@@ -658,6 +678,8 @@ export function getScalePropTypesByAttribute(attr) {
   return {
     [`_${attr}Value`]: PropTypes.any,
     [`${attr}Domain`]: PropTypes.array,
+    [`get${toTitleCase(attr)}`]: PropTypes.func,
+    [`get${toTitleCase(attr)}0`]: PropTypes.func,
     [`${attr}Range`]: PropTypes.array,
     [`${attr}Type`]: PropTypes.oneOf(
       Object.keys(SCALE_FUNCTIONS)
@@ -677,8 +699,16 @@ export function getScalePropTypesByAttribute(attr) {
 export function extractScalePropsFromProps(props, attributes) {
   const result = {};
   Object.keys(props).forEach(key => {
-    const attr = attributes.find(
-      a => key.indexOf(a) === 0 || key.indexOf(`_${a}`) === 0);
+    // this filtering is critical for extracting the correct accessors!
+    const attr = attributes.find(a => {
+      // width
+      const isPlainSet = key.indexOf(a) === 0;
+      // Ex: _data
+      const isUnderscoreSet = key.indexOf(`_${a}`) === 0;
+      // EX: getX
+      const usesGet = key.indexOf(`get${toTitleCase(a)}`) === 0;
+      return isPlainSet || isUnderscoreSet || usesGet;
+    });
     if (!attr) {
       return;
     }
@@ -700,10 +730,17 @@ export function getMissingScaleProps(props, data, attributes) {
   const result = {};
   // Make sure that the domain is set pad it if specified
   attributes.forEach(attr => {
+    if (!props[`get${toTitleCase(attr)}`]) {
+      result[`get${toTitleCase(attr)}`] = d => d[attr];
+    }
+    if (!props[`get${toTitleCase(attr)}0`]) {
+      result[`get${toTitleCase(attr)}0`] = d => d[`${attr}0`];
+    }
     if (!props[`${attr}Domain`]) {
-      result[`${attr}Domain`] = getDomainByAttr(
+      result[`${attr}Domain`] = getDomainByAccessor(
         data,
-        attr,
+        props[`get${toTitleCase(attr)}`] || result[`get${toTitleCase(attr)}`],
+        props[`get${toTitleCase(attr)}0`] || result[`get${toTitleCase(attr)}0`],
         props[`${attr}Type`]
       );
       if (props[`${attr}Padding`]) {
@@ -811,7 +848,7 @@ export default {
   getAttributeFunctor,
   getAttr0Functor,
   getAttributeValue,
-  getDomainByAttr,
+  getDomainByAccessor,
   getFontColorFromBackground,
   getMissingScaleProps,
   getOptionalScaleProps,
