@@ -25,6 +25,7 @@ import * as d3Shape from 'd3-shape';
 import Animation from 'animation';
 import {DEFAULT_OPACITY} from 'theme';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+import {warning} from 'utils/react-utils';
 
 import AbstractSeries from './abstract-series';
 
@@ -41,21 +42,36 @@ class AreaSeries extends AbstractSeries {
       }
     }
     area = area.defined(getNull);
-    area = area.x(x).y0(y0).y1(y);
+    area = area
+      .x(x)
+      .y0(y0)
+      .y1(y);
     return area(data);
   }
 
   render() {
     const {
-      animation, className, curve, data, marginLeft, marginTop, getNull, style
+      animation,
+      className,
+      curve,
+      data,
+      marginLeft,
+      marginTop,
+      style
     } = this.props;
+
+    if (this.props.nullAccessor) {
+      warning('nullAccessor has been renamed to getNull', true);
+    }
+
     if (!data) {
       return null;
     }
+
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <AreaSeries {...this.props} animation={null}/>
+          <AreaSeries {...this.props} animation={null} />
         </Animation>
       );
     }
@@ -63,13 +79,15 @@ class AreaSeries extends AbstractSeries {
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
     const y0 = this._getAttr0Functor('y');
-    const stroke = this._getAttributeValue('stroke') ||
-      this._getAttributeValue('color');
-    const fill = this._getAttributeValue('fill') ||
-      this._getAttributeValue('color');
+    const stroke =
+      this._getAttributeValue('stroke') || this._getAttributeValue('color');
+    const fill =
+      this._getAttributeValue('fill') || this._getAttributeValue('color');
     const newOpacity = this._getAttributeValue('opacity');
     const opacity = Number.isFinite(newOpacity) ? newOpacity : DEFAULT_OPACITY;
+    const getNull = this.props.nullAccessor || this.props.getNull;
     const d = this._renderArea(data, x, y0, y, curve, getNull);
+
     return (
       <path
         d={d}
@@ -84,10 +102,10 @@ class AreaSeries extends AbstractSeries {
           stroke,
           fill,
           ...style
-        }}/>
+        }}
+      />
     );
   }
-
 }
 
 AreaSeries.displayName = 'AreaSeries';

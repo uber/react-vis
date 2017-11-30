@@ -24,6 +24,7 @@ import PropTypes from 'prop-types';
 
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+import {warning} from 'utils/react-utils';
 import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
 
 import AbstractSeries from './abstract-series';
@@ -35,10 +36,10 @@ class MarkSeries extends AbstractSeries {
   _renderCircle(d, i, strokeWidth, style) {
     const sizeFunctor = this._getAttributeFunctor('size');
     const opacityFunctor = this._getAttributeFunctor('opacity');
-    const fillFunctor = this._getAttributeFunctor('fill') ||
-      this._getAttributeFunctor('color');
-    const strokeFunctor = this._getAttributeFunctor('stroke') ||
-      this._getAttributeFunctor('color');
+    const fillFunctor =
+      this._getAttributeFunctor('fill') || this._getAttributeFunctor('color');
+    const strokeFunctor =
+      this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color');
     const xFunctor = this._getAttributeFunctor('x');
     const yFunctor = this._getAttributeFunctor('y');
 
@@ -64,23 +65,39 @@ class MarkSeries extends AbstractSeries {
 
   render() {
     const {
-      animation, className, data, marginLeft, marginTop, getNull, strokeWidth, style
+      animation,
+      className,
+      data,
+      marginLeft,
+      marginTop,
+      strokeWidth,
+      style
     } = this.props;
+
+    if (this.props.nullAccessor) {
+      warning('nullAccessor has been renamed to getNull', true);
+    }
+
+    const getNull = this.props.nullAccessor || this.props.getNull;
+
     if (!data) {
       return null;
     }
+
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <MarkSeries {...this.props} animation={null}/>
+          <MarkSeries {...this.props} animation={null} />
         </Animation>
       );
     }
 
     return (
-      <g className={`${predefinedClassName} ${className}`}
-         ref="container"
-         transform={`translate(${marginLeft},${marginTop})`}>
+      <g
+        className={`${predefinedClassName} ${className}`}
+        ref="container"
+        transform={`translate(${marginLeft},${marginTop})`}
+      >
         {data.map((d, i) => {
           return getNull(d) && this._renderCircle(d, i, strokeWidth, style);
         })}
