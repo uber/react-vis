@@ -177,6 +177,15 @@ class AxisTicks extends React.Component {
     const ticks = values.map((v, i) => {
       const pos = scale(v);
       const text = tickFormatFn(v, i);
+      
+      const tick = React.isValidElement(text) && !['tspan','a'].includes(text.type)
+      ? text
+      : <text {...textProps}
+          className="rv-xy-plot__axis__tick__text"
+          style={{...style, ...style.text}}
+        >
+          {text}
+        </text>
 
       return (
         <g key={i} {...translateFn(pos, 0)}
@@ -186,12 +195,7 @@ class AxisTicks extends React.Component {
             className="rv-xy-plot__axis__tick__line"
             style={{...style, ...style.line}}
           />
-          <text {...textProps}
-            className="rv-xy-plot__axis__tick__text"
-            style={{...style, ...style.text}}
-          >
-            {text}
-          </text>
+          {tick}
         </g>
       );
     });
