@@ -16,7 +16,8 @@ function Voronoi({
   polygonStyle,
   style,
   x,
-  y
+  y,
+  cellClassName
 }) {
   // Create a voronoi with each node center points
   const voronoiInstance = voronoi()
@@ -28,7 +29,7 @@ function Voronoi({
     <g className={`${className} rv-voronoi`} style={style}>
       {voronoiInstance.polygons(nodes).map((d, i) => (
         <path
-          className="rv-voronoi__cell"
+          className={`rv-voronoi__cell ${cellClassName(d.data)}`}
           d={`M${d.join('L')}Z`}
           onClick={() => onClick(d.data)}
           onMouseUp={() => onMouseUp(d.data)}
@@ -56,7 +57,8 @@ Voronoi.defaultProps = {
   onMouseDown: NOOP,
   onMouseUp: NOOP,
   x: d => d.x,
-  y: d => d.y
+  y: d => d.y,
+  cellClassName: () => ''
 };
 
 Voronoi.propTypes = {
@@ -71,7 +73,8 @@ Voronoi.propTypes = {
   onMouseUp: PropTypes.func,
   onHover: PropTypes.func,
   x: PropTypes.func,
-  y: PropTypes.func
+  y: PropTypes.func,
+  cellClassName: PropTypes.func
 };
 
 export default Voronoi;
