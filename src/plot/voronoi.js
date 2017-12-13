@@ -28,7 +28,7 @@ function Voronoi({
     <g className={`${className} rv-voronoi`} style={style}>
       {voronoiInstance.polygons(nodes).map((d, i) => (
         <path
-          className="rv-voronoi__cell"
+          className={`rv-voronoi__cell ${d.data && d.data.className || ''}`}
           d={`M${d.join('L')}Z`}
           onClick={() => onClick(d.data)}
           onMouseUp={() => onMouseUp(d.data)}
@@ -38,7 +38,8 @@ function Voronoi({
           fill="none"
           style={{
             pointerEvents: 'all',
-            ...polygonStyle
+            ...polygonStyle,
+            ...(d.data && d.data.style)
           }}
           key={i} />
       ))}
@@ -67,9 +68,9 @@ Voronoi.propTypes = {
   nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
   onBlur: PropTypes.func,
   onClick: PropTypes.func,
+  onHover: PropTypes.func,
   onMouseDown: PropTypes.func,
   onMouseUp: PropTypes.func,
-  onHover: PropTypes.func,
   x: PropTypes.func,
   y: PropTypes.func
 };
