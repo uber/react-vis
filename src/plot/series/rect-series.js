@@ -107,5 +107,8 @@ class RectSeries extends AbstractSeries {
 }
 
 RectSeries.displayName = 'RectSeries';
+RectSeries.defaultProps = {
+  stack: false
+};
 
 export default RectSeries;

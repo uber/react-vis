@@ -123,7 +123,8 @@ LineSeries.defaultProps = {
   opacity: 1,
   curve: null,
   className: '',
-  getNull: () => true
+  getNull: () => true,
+  stack: false
 };
 
 export default LineSeries;

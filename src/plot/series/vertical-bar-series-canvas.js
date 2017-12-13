@@ -58,5 +58,8 @@ HorizontalBarSeriesCanvas.displayName = 'HorizontalBarSeriesCanvas';
 HorizontalBarSeriesCanvas.propTypes = {
   ...AbstractSeries.propTypes
 };
+HorizontalBarSeriesCanvas.defaultProps = {
+  stack: false
+};
 
 export default HorizontalBarSeriesCanvas;

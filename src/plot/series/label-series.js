@@ -118,7 +118,8 @@ LabelSeries.propTypes = {
 LabelSeries.defaultProps = {
   animation: false,
   rotation: 0,
-  getLabel: d => d.label
+  getLabel: d => d.label,
+  stack: false
 };
 LabelSeries.displayName = 'LabelSeries';
 export default LabelSeries;

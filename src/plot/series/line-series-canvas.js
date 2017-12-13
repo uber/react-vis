@@ -75,7 +75,8 @@ class LineSeriesCanvas extends AbstractSeries {
 LineSeriesCanvas.displayName = 'LineSeriesCanvas';
 LineSeriesCanvas.defaultProps = {
   strokeWidth: 1,
-  strokeDasharray: ''
+  strokeDasharray: '',
+  stack: false
 };
 
 LineSeriesCanvas.propTypes = {

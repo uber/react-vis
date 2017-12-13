@@ -48,5 +48,8 @@ class HorizontalRectSeries extends AbstractSeries {
 }
 
 HorizontalRectSeries.displayName = 'HorizontalRectSeries';
+HorizontalRectSeries.defaultProps = {
+  stack: false
+};
 
 export default HorizontalRectSeries;

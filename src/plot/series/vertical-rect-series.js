@@ -48,5 +48,8 @@ class VerticalRectSeries extends AbstractSeries {
 }
 
 VerticalRectSeries.displayName = 'VerticalRectSeries';
+VerticalRectSeries.defaultProps = {
+  stack: false
+};
 
 export default VerticalRectSeries;

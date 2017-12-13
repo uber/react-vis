@@ -48,5 +48,8 @@ class VerticalBarSeries extends AbstractSeries {
 }
 
 VerticalBarSeries.displayName = 'VerticalBarSeries';
+VerticalBarSeries.defaultProps = {
+  stack: false
+};
 
 export default VerticalBarSeries;

@@ -48,5 +48,8 @@ class HorizontalBarSeries extends AbstractSeries {
 }
 
 HorizontalBarSeries.displayName = 'HorizontalBarSeries';
+HorizontalBarSeries.defaultProps = {
+  stack: false
+};
 
 export default HorizontalBarSeries;

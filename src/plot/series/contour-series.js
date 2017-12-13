@@ -117,7 +117,8 @@ ContourSeries.propTypes = {
 
 ContourSeries.defaultProps = {
   bandwidth: 40,
-  style: {}
+  style: {},
+  stack: false
 };
 
 export default ContourSeries;

@@ -42,7 +42,8 @@ const defaultProps = {
   center: {x: 0, y: 0},
   arcClassName: '',
   className: '',
-  style: {}
+  style: {},
+  stack: false
 };
 
 /**

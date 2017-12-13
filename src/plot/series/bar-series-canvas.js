@@ -97,7 +97,8 @@ BarSeriesCanvas.defaultProps = {
   linePosAttr: PropTypes.string.isRequired,
   valuePosAttr: PropTypes.string.isRequired,
   lineSizeAttr: PropTypes.string.isRequired,
-  valueSizeAttr: PropTypes.string.isRequired
+  valueSizeAttr: PropTypes.string.isRequired,
+  stack: false
 };
 
 BarSeriesCanvas.propTypes = {

@@ -82,5 +82,8 @@ class PolygonSeries extends AbstractSeries {
 }
 
 PolygonSeries.displayName = 'PolygonSeries';
+PolygonSeries.defaultProps = {
+  stack: false
+};
 
 export default PolygonSeries;

@@ -114,4 +114,8 @@ class BarSeries extends AbstractSeries {
 
 BarSeries.displayName = 'BarSeries';
 
+BarSeries.defaultProps = {
+  stack: false
+};
+
 export default BarSeries;
