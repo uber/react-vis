@@ -9,29 +9,36 @@ const {
   SearchableDiscreteColorLegendExample,
   VerticalDiscreteColorLegendExample
 } = showCase;
-
+/* eslint-disable max-len */
 const DISCRETE_LEGENDS = [{
   name: 'Vertical legend',
-  component: VerticalDiscreteColorLegendExample
+  component: VerticalDiscreteColorLegendExample,
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/legends/vertical-discrete-color.js'
 }, {
   name: 'Horizontal legend',
-  component: HorizontalDiscreteColorLegendExample
+  component: HorizontalDiscreteColorLegendExample,
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/legends/horizontal-discrete-color.js'
 }, {
   name: 'Custom palette with hover interaction',
-  component: HorizontalDiscreteCustomPalette
+  component: HorizontalDiscreteCustomPalette,
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/legends/horizontal-discrete-custom-palette.js'
 }, {
   name: 'Discrete color legend with search',
-  component: SearchableDiscreteColorLegendExample
+  component: SearchableDiscreteColorLegendExample,
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/legends/searchable-discrete-color.js'
 }];
+/* eslint-enable max-len */
 
 const CONTINOUS_COLOR_LEGEND = [{
   name: 'Default legend',
-  component: ContinuousColorLegendExample
+  component: ContinuousColorLegendExample,
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/legends/continuous-color.js'
 }];
 
 const CONTINOUS_SIZE_LEGEND = [{
   name: 'Default legend',
-  component: ContinuousSizeLegendExample
+  component: ContinuousSizeLegendExample,
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/legends/continuous-size.js'
 }];
 
 class LegendsExample extends Component {

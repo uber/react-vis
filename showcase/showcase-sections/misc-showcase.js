@@ -14,35 +14,43 @@ const {
 
 const MISC = [{
   name: 'Synced Charts',
-  component: SyncedCharts
+  component: SyncedCharts,
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/misc/synced-charts.js'
 }, {
   name: 'Time Chart',
-  component: TimeChart
+  component: TimeChart,
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/misc/time-chart.js'
 }, {
   name: 'Polygon Example',
   component: TriangleExample,
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/polygon-series.js',
-  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/polygon-series'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/polygon-series',
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/misc/triangle-example.js'
 }, {
   name: 'Voronoi Line Chart',
-  component: VoronoiLineChart
+  component: VoronoiLineChart,
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/misc/voronoi-line-chart.js'
 }, {
   name: 'Gradient & Custom Border Example',
   component: GradientExample,
   sourceLink: 'https://github.com/uber/react-vis/blob/master/showcase/misc/gradient-example.js',
-  docsLink: 'http://uber.github.io/react-vis/documentation/api-reference/gradients'
+  docsLink: 'http://uber.github.io/react-vis/documentation/api-reference/gradients',
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/misc/gradient-example.js'
 }, {
   name: 'Animation Example',
   component: AnimationExample,
-  docsLink: 'http://uber.github.io/react-vis/documentation/general-principles/animation'
+  docsLink: 'http://uber.github.io/react-vis/documentation/general-principles/animation',
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/misc/animation-example.js'
 }, {
   name: 'Label Series Example',
   component: LabelSeriesExample,
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/label-series.js',
-  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/label-series'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/label-series',
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/misc/label-series-example.js'
 }, {
   name: 'Null Data Example',
-  component: NullDataExample
+  component: NullDataExample,
+  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/misc/null-data-example.js'
 }];
 
 class MiscShowcase extends Component {
