@@ -108,6 +108,14 @@ function prepareData(data) {
  * @returns {Array} New array of children for the series.
  */
 export function getStackedData(children, attr) {
+  let areSomeSeriesStacked = false;
+
+  children.forEach((series) => {
+    if (series.props.stack) {
+      areSomeSeriesStacked = true;
+    }
+  });
+
   return children.reduce((accumulator, series, seriesIndex) => {
     // Skip the children that are not series (e.g. don't have any data).
     if (!series) {
@@ -115,10 +123,10 @@ export function getStackedData(children, attr) {
       return accumulator;
     }
 
-    const {data, cluster = 'default'} = series.props;
+    const {data, cluster = 'default', stack} = series.props;
     const preppedData = prepareData(data, attr);
 
-    if (!attr || !preppedData || !preppedData.length) {
+    if (!attr || !preppedData || !preppedData.length || (areSomeSeriesStacked && !stack)) {
       accumulator.result.push(preppedData);
       return accumulator;
     }
