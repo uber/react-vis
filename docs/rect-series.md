@@ -4,9 +4,9 @@ RectSeries is a generalization of [BarSeries](bar-series.md) which allows users 
 
 RectSeries can be used to build histograms, icicle charts, or anything really where both height and width matter. 
 
-<!-- INJECT:"Histogram" -->
+<!-- INJECT:"HistogramWithLink" -->
 
-<!-- INJECT:"StackedHistogram" -->
+<!-- INJECT:"StackedHistogramWithLink" -->
 
 Like BarSeries, RectSeries has two wrappers: HorizontalRectSeries and VerticalRectSeries. It also has a canvas version, RectSeriesCanvas (along with HorizontalRectSeriesCanvas and VerticalRectSeriesCanvas).
 

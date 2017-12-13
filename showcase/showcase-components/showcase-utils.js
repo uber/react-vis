@@ -1,16 +1,19 @@
 import React from 'react';
 
+import {SHOWCASE_LINKS} from '../showcase-links';
+
 export function mapSection(section, index) {
-  const {sourceLink, docsLink, exampleLink, comment} = section;
+  const {sourceLink, docsLink, comment, name, componentName} = section;
   const SectionComponent = section.component;
   const linkProps = {
     className: 'docs-link',
     target: '_blank',
     rel: 'noopener noreferrer'
   };
+  const exampleLink = SHOWCASE_LINKS[componentName];
   return (
-    <section key={`${section.name}-index`}>
-      <h3>{section.name}</h3>
+    <section key={`${name}-index`}>
+      <h3>{name}</h3>
       <div className="flex">
         {sourceLink && <a {...linkProps} href={sourceLink}>> Source</a>}
         {docsLink && <a {...linkProps} href={docsLink}>> Docs</a>}

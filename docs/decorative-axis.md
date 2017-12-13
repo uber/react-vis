@@ -1,6 +1,6 @@
 ## DecorativeAxis
 
-<!-- INJECT:"ParallelCoordinatesExample" -->
+<!-- INJECT:"ParallelCoordinatesExampleWithLink" -->
 
 In react-vis we try to express all of our components in terms of x and y coordinates. This is splendid and allows to separate a lot of our rendering logic from components! However, sometimes it is necessary to create labels that don't necessarily correspond to the underlying coordinates. For instance in cases of parallel coordinates (above) we want to mark up space in a series of discrete channels to show change across many different variables. To fill this need we use the ```DecorativeAxis``` component!
 
@@ -20,7 +20,7 @@ In react-vis we try to express all of our components in terms of x and y coordin
 
 In the above example we start be setting our domain on the XYPlot (though this would be accomplished automatically if any of it's children had a data prop), and then specified where in the XY space we want our Axis to be (axisStart/axisEnd). Finally we specify the domain that we wish to show across that axis.
 
-<!-- INJECT:"DecorativeAxisCrissCross" -->
+<!-- INJECT:"DecorativeAxisCrissCrossWithLink" -->
 
 **WHAT IS THIS FOR** Labeling sections of XY space when we wish the viewer to interpret space in a different way. This could be as part of a Radar chart or radial chart! Or even, the inherently bad Dual Y Axis chart.
 

@@ -1,6 +1,6 @@
 ## PolygonSeries:
 
-<!-- INJECT:"TriangleExample" -->
+<!-- INJECT:"TriangleExampleWithLink" -->
 
 The polygon series allows users to specify arbitrary polygons in coordinates. This may seem un-useful, but it allows for
 easy creation of radar charts, fancy mark series dots, and any variety of additional things you might need polygons for!

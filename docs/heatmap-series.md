@@ -1,6 +1,6 @@
 ## HeatmapSeries:
 
-<!-- INJECT:"HeatmapChart" -->
+<!-- INJECT:"HeatmapChartWithLink" -->
 
 The heatmap series enables users to create a 2d binning of the cartesian plane. These series often come in useful in situations when you might be using a scatterplot, but have too many rows of data for the reader to easily understand what is going on. So arises HeatmapSeries!
 

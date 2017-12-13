@@ -2,11 +2,11 @@
 
 Radar charts provide a cute method for displaying many variables simultaneously. It allows for rapid at-a-glance comparisons across a bunch of dimensions. These graphics can effectively be used either with several data rows on a single chart (as below) or as a small multiple. For more information, check out the [Wiki](https://en.wikipedia.org/wiki/Radar_chart), it's got some really neat examples.
 
-<!-- INJECT:"BasicRadarChart" -->
+<!-- INJECT:"BasicRadarChartWithLink" -->
 
 Imagine you have a trio of models of cars that you are trying to compare. You're being data driven so you've collected a number of measurements based on a variety of values. You know basic facts about your variables, eg the interior rating a car can have is 7 and the minimum 1. You can use all this information to produce the above chart! Viola! Informed consumer.
 
-<!-- INJECT:"AnimatedRadarChart" -->
+<!-- INJECT:"AnimatedRadarChartWithLink" -->
 
 Just like every other chart and series RadarChart expects an array of data, each row or object corresponds to a line or polygon (depending on how you have your chart styled). A key caveat for this chart type is that react-vis can not simply infer the variables from each data object that you wish to plot, so we need you to tell us! So enters the domains prop, an array of object specifying the order and behavior of each of the variables. So you have to tell react-vis a little more to get started, but you get a lot more expressiveness. Let's consider some code. You might provide the following object as props to the radar chart:
 

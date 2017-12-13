@@ -1,6 +1,6 @@
 # AreaSeries
 
-<!-- INJECT:"AreaChart" -->
+<!-- INJECT:"AreaChartWithLink" -->
 
 In addition to the the LineSeries, react-vis offers a similar chart type for area charts. 
 Like LineSeries, AreaSeries:

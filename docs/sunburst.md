@@ -3,7 +3,7 @@
 Sunbursts are a powerful way to demonstrate part to whole relationships. While they certainly have the many of easily criticized problems of pie charts, they allow for
 at a glance understanding of deeply nested systems. This could be useful for understanding for funnels problems or distributions of nested groups (eg how does my cities performance compare to other cities in my country?).
 
-<!-- INJECT:"BasicSunburst" -->
+<!-- INJECT:"BasicSunburstWithLink" -->
 
 The `Sunburst` is a thin data processing wrapper on an XYPlotted [ArcSeries](arc-series.md), it generates highly re-stylable SVG! Any props that are available in the arc series are also available here. Additionally it copies the data format of the treemap, so if you have data prepped to drop into the tree map, you can use that same data to get a sunbrust.
 
@@ -120,7 +120,7 @@ Each point consists of following properties:
   Type: `Array`  
   The children for the leaf.
 
-<!-- INJECT:"SunburstWithTooltips" -->
+<!-- INJECT:"SunburstWithTooltipsWithLink" -->
 
 #### hideRootNode (optional)
 Type: `boolean`
@@ -134,7 +134,7 @@ Sunburst can accept react components as children if you wish to to annotate your
 Type: `boolean|Object`
 Please refer to [Animation](animation.md) doc for more information.
 
-<!-- INJECT:"AnimatedSunburst" -->
+<!-- INJECT:"AnimatedSunburstWithLink" -->
 
 #### onValueClick (optional)
 Type: `function`

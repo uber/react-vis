@@ -34,129 +34,129 @@ const {
 
 const PLOTS = [{
   component: LineChart,
+  componentName: 'LineChart',
   name: 'Line Series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
-  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/line-series',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/line-chart.js'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/line-series'
 }, {
   component: LineChartWithStyle,
+  componentName: 'LineChartWithStyle',
   name: 'Line Series with style',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
-  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/line-series',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/line-chart-with-style.js'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/line-series'
 },
 {
   component: LineMarkChart,
+  componentName: 'LineMarkChart',
   name: 'LineMark Series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/line-mark-series.js',
-  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/line-mark-series',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/linemark-chart.js'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/line-mark-series'
 }, {
   component: LineChartCanvas,
-  name: 'Line Series Canvas',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/line-chart-canvas.js'
+  componentName: 'LineChartCanvas',
+  name: 'Line Series Canvas'
 }, {
   component: LineChartManyColors,
-  name: 'Line Series With Many Colors',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/color/line-chart-many-colors.js'
+  componentName: 'LineChartManyColors',
+  name: 'Line Series With Many Colors'
 }, {
   component: ScatterplotChart,
+  componentName: 'ScatterplotChart',
   name: 'Mark Series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/mark-series.js',
-  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/mark-series',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/line-chart.js'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/mark-series'
 }, {
   component: ScatterplotCanvas,
-  name: 'Mark Series Canvas',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/scatterplot.js'
+  componentName: 'ScatterplotCanvas',
+  name: 'Mark Series Canvas'
 }, {
   component: WhiskerChart,
+  componentName: 'WhiskerChart',
   name: 'Whisker Series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/whisker-series.js',
-  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/whisker-series',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/whisker-chart.js'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/whisker-series'
 }, {
   component: AreaChart,
+  componentName: 'AreaChart',
   name: 'Area Series',
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/area-series.js',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/area-chart.js'
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/area-series.js'
 }, {
   component: AreaChartElevated,
+  componentName: 'AreaChartElevated',
   name: 'Area Series With vertical offset',
-  sourceLink: 'http://uber.github.io/react-vis/documentation/series-reference/area-series',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/area-chart-elevated.js'
+  sourceLink: 'http://uber.github.io/react-vis/documentation/series-reference/area-series'
 }, {
   component: BarChart,
+  componentName: 'BarChart',
   name: 'Bar Series',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/bar-series.js',
-  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/bar-series',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/line-chart.js'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/bar-series'
 }, {
   component: BigBaseBarChart,
-  name: 'Big Base Bar Series',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/bar-chart.js'
+  componentName: 'BigBaseBarChart',
+  name: 'Big Base Bar Series'
 }, {
   name: 'Stacked Horizontal Bar Series',
   component: StackedHorizontalBarChart,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/stacked-horizontal-bar-chart.js'
+  componentName: 'StackedHorizontalBarChart'
 }, {
   name: 'Stacked Vertical Bar Series',
   component: StackedVerticalBarChart,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/stacked-vertical-bar-chart.js'
+  componentName: 'StackedVerticalBarChart'
 }, {
   name: 'Clustered Stacked Vertical Bar Series',
   component: ClusteredStackedVerticalBarChart,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/clustered-stacked-bar-chart.js'
+  componentName: 'ClusteredStackedVerticalBarChart'
 }, {
   name: 'Stacked Vertical Rect Series (histogram)',
   component: StackedHistogram,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/stacked-histogram.js'
+  componentName: 'StackedHistogram'
 }, {
   name: 'Horizontal Rect Series',
   component: Histogram,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/histogram.js'
+  componentName: 'Histogram'
 }, {
   name: 'Heatmap Series',
   component: HeatmapChart,
+  componentName: 'HeatmapChart',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/heatmap-series.js',
-  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/heatmap-series',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/heatmap-chart.js'
+  docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/heatmap-series'
 }, {
   name: 'Contour Series',
   component: ContourSeriesExample,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/contour-series-example.js'
+  componentName: 'ContourSeriesExample'
 }, {
   name: 'Custom SVG Series',
   component: CustomSVGExample,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/custom-svg-example.js'
+  componentName: 'CustomSVGExample'
 }, {
   name: 'Custom SVG - All The Mark',
   component: CustomSVGAllTheMarks,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/custom-svg-all-the-marks.js'
+  componentName: 'CustomSVGAllTheMarks'
 }, {
   name: 'Custom SVG - Root Level Function Definition',
   component: CustomSVGRootLevel,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/custom-svg-root-level.js'
+  componentName: 'CustomSVGRootLevel'
 }];
 
 const BASIC_COMPONENTS = [{
   name: 'Custom Size and Margin',
   component: WidthHeightMarginChart,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/width-height-margin.js'
+  componentName: 'WidthHeightMarginChart'
 }, {
   name: 'Custom scales',
   component: CustomScales,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/custom-scales.js'
+  componentName: 'CustomScales'
 }, {
   name: 'Custom GridLines',
   component: GridLinesChart,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/grid.js'
+  componentName: 'GridLinesChart'
 }, {
   name: 'Circular Gridlines',
   component: FauxScatterplotChart,
+  componentName: 'FauxScatterplotChart',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/circular-grid-lines.js',
-  docsLink: 'http://uber.github.io/react-vis/documentation/api-reference/grids',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/plot/faux-radial-scatterplot.js'
+  docsLink: 'http://uber.github.io/react-vis/documentation/api-reference/grids'
 }];
 
 class PlotsShowcase extends Component {

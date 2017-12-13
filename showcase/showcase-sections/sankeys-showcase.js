@@ -13,25 +13,25 @@ const {
 const SANKEYS = [{
   name: 'Basic',
   component: BasicSankeyExample,
+  componentName: 'BasicSankeyExample',
   docsLink: 'http://uber.github.io/react-vis/documentation/other-charts/sankey-diagram',
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/sankey/index.js',
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/sankey/basic.js'
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/sankey/index.js'
 }, {
   name: 'With Voronoi Selection',
   component: VoronoiSankeyExample,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/sankey/voronoi.js'
+  componentName: 'VoronoiSankeyExample'
 }, {
   name: 'With link selection',
   component: LinkEventSankeyExample,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/sankey/link-event.js'
+  componentName: 'LinkEventSankeyExample'
 }, {
   name: 'With hint (for links)',
   component: LinkHintSankeyExample,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/sankey/link-hint.js'
+  componentName: 'LinkHintSankeyExample'
 }, {
   name: 'Energy Example',
   component: EnergySankeyExample,
-  exampleLink: 'https://github.com/uber/react-vis/blob/master/showcase/sankey/energy-sankey.js'
+  componentName: 'EnergySankeyExample'
 }];
 
 class SankeysSection extends Component {
