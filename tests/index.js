@@ -61,4 +61,5 @@ import './components/treemap-tests';
 import './components/sankey-tests';
 import './components/showcase-example-tests';
 import './components/sunburst-tests';
+import './components/voronoi-tests';
 import './components/xy-plot-tests';
