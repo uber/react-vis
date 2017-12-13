@@ -38,7 +38,8 @@ function Voronoi({
           fill="none"
           style={{
             pointerEvents: 'all',
-            ...polygonStyle
+            ...polygonStyle,
+            ...d.data.style
           }}
           key={i} />
       ))}
