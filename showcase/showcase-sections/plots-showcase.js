@@ -23,6 +23,7 @@ const {
   LineChartWithStyle,
   LineChartCanvas,
   LineMarkChart,
+  MixedStackedChart,
   StackedVerticalBarChart,
   StackedHorizontalBarChart,
   StackedHistogram,
@@ -89,6 +90,9 @@ const PLOTS = [{
 }, {
   name: 'Stacked Vertical Bar Series',
   component: StackedVerticalBarChart
+}, {
+  name: 'Mixed Stacked Series',
+  component: MixedStackedChart
 }, {
   name: 'Clustered Stacked Vertical Bar Series',
   component: ClusteredStackedVerticalBarChart
