@@ -1,1 +1,1 @@
-<!-- INJECT:"AxesShowcase" -->
+<!-- INJECT:"AxesShowcaseWithLink" -->

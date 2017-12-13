@@ -2,7 +2,7 @@
 
 The Line Mark series is a combination of a LineSeries and a MarkSeries: under the hood, it creates both a LineSeries and a MarkSeries and passes them all of its properties.
 
-<!-- INJECT:"LineMarkChart" -->
+<!-- INJECT:"LineMarkChartWithLink" -->
 
 ## Data format reference
 

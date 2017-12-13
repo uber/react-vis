@@ -113,6 +113,9 @@ class CanvasWrapper extends Component {
 
   componentDidMount() {
     const ctx = this.refs.canvas.getContext('2d');
+    if (!ctx) {
+      return;
+    }
     const {pixelRatio} = this.props;
     if (!ctx) {
       return;

@@ -1,6 +1,6 @@
 ## MarkSeries & MarkSeriesCanvas
 
-<!-- INJECT:"ScatterplotChart" -->
+<!-- INJECT:"ScatterplotChartWithLink" -->
 
 The MarkSeries allows users to embed discrete information in pairs of continuous variables,
 that is make scatterplots. Deploying a MarkSeries is super easy:
@@ -34,7 +34,7 @@ const myData = [
 react-vis offers two different types of MarkSeries, one that renders SVG and one that renders Canvas.
 The SVG mode is accessed by using the normal `MarkSeries`, just as above, while the Canvas mode is used by simply calling `MarkSeriesCanvas` instead of `MarkSeries`.
 
-<!-- INJECT:"ScatterplotCanvas" -->
+<!-- INJECT:"ScatterplotCanvasWithLink" -->
 
 -**NOTE**: using the Canvas version of this layer disables animation
 

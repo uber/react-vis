@@ -2,7 +2,7 @@
 
 Sankey diagrams are a form of graph that allows for the easy communication of flows and other transferal processes.
 
-<!-- INJECT:"EnergySankey" -->
+<!-- INJECT:"EnergySankeyWithLink" -->
 
 ### Usage
 
@@ -29,7 +29,7 @@ const links = [
 ##### width (required, pixels)
 ##### height (required, pixels)
 
-<!-- INJECT:"BasicSankey" -->
+<!-- INJECT:"BasicSankeyWithLink" -->
 
 ##### nodes (required)
 Type: `Object`
@@ -97,7 +97,7 @@ Defaults: `false`
 Determine if the node selection will be done using a voronoi or not. Although less
 precise, it can help providing a better interactive experience to the user.
 
-<!-- INJECT:"VornoiSankey" -->
+<!-- INJECT:"VornoiSankeyWithLink" -->
 
 ##### hideLabels (optional)
 Type: `Boolean`

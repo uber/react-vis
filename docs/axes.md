@@ -1,6 +1,6 @@
 ## Axes
 
-<!-- INJECT:"CustomAxesOrientation" -->
+<!-- INJECT:"CustomAxesOrientationWithLink" -->
 
 `XAxis` and `YAxis` shows are responsible for the axis in the chart. They can be used simply
 
@@ -16,7 +16,7 @@
 
 Which will automatically interpolate across the relevant domains of the data (ie it will present reasonable values for x and y). It can also be used to create more complex axes
 
-<!-- INJECT:"CustomAxes" -->
+<!-- INJECT:"CustomAxesWithLink" -->
 
 Which is produced via
 

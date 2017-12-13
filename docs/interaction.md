@@ -221,7 +221,7 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 
 This was the first use case we built for interaction. We have one line chart on a plot, we want to show the value of the nearest mark to the cursor, without requiring the user to actually be over the plot proper.
 
-<!-- INJECT:"DynamicCrosshair" -->
+<!-- INJECT:"DynamicCrosshairWithLink" -->
 
 ```jsx
 const DATA = [
@@ -276,7 +276,7 @@ A few notes:
 - Having the handler on the 2nd LineSeries would have the exact same effect. We would change the state twice, to the same value. This is why it's not useful to call it several times.
 
 ### Mousing over near scatterplot marks
-<!-- INJECT:"ScatterPlotOnNearestXY" -->
+<!-- INJECT:"ScatterPlotOnNearestXYWithLink" -->
 
 ```jsx
 class ScatterPlotOnNearestXY extends Component {
@@ -310,7 +310,7 @@ Notes:
 - As above, in the onNearestXY handler, we're actually only interested in the index part of the second argument.
 
 ### Mousing over series - the 2nd series group option
-<!-- INJECT:"LineChartMouseOverSeries" -->
+<!-- INJECT:"LineChartMouseOverSeriesWithLink" -->
 ```jsx
 class LineChartMouseOverSeries extends Component {
   constructor() {
@@ -351,7 +351,7 @@ When creating the LineSeries for mouseover, I write:
 In the onSeriesMouseOver handler, I don't pass any argument in the handler proper, but I'm using the index of the array from the mapping method. So, for the first LineSeries, that value is 0, then 1, then 2.
 
 ### Mousing over series - the extra scatterplot option
-<!-- INJECT:"LineChartMouseOverXY" -->
+<!-- INJECT:"LineChartMouseOverXYWithLink" -->
 ```jsx
 const allData = lineData.reduce((prev, curr, i) => {
   return [...prev, ...curr.map((d) => ({...d, index: i}))]
@@ -396,7 +396,7 @@ The first argument of the onNearestXY handler is the datapoint proper. So again:
 In the embedded version of this example, I'm highlighting the mark that triggers onNearestXY, however I haven't added this in the snippet of code above.
 
 ### Linked Charts
-<!-- INJECT:"LinkedCharts" -->
+<!-- INJECT:"LinkedChartsWithLink" -->
 
 ```jsx
 class LinkedCharts extends Component {

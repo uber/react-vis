@@ -1,6 +1,6 @@
 ## ArcSeries:
 
-<!-- INJECT:"ArcSeriesExample" -->
+<!-- INJECT:"ArcSeriesExampleWithLink" -->
 
 The arc series allows users to specify arbitrary arcs in the plane! This is useful for making pie charts, sunbursts, and anything else circular.
 
@@ -72,7 +72,7 @@ Type: `string|number`
 Default: 1  
 The opacity of an arc in the series, from 0 (transparent) to 1 (opaque).
 
-<!-- INJECT:"ClockExample" -->
+<!-- INJECT:"ClockExampleWithLink" -->
 
 ## Series API Reference
 

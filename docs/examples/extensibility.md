@@ -1,4 +1,4 @@
-<!-- INJECT:"Candlestick" -->
+<!-- INJECT:"CandlestickWithLink" -->
 
 
 ## Extensibility

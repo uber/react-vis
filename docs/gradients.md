@@ -3,7 +3,7 @@
 Sometimes it is useful to style our svg components using gradients. The way that this is done in React-vis is by making use of the GradientDefs component, which is a simple wrapper on the svg <defs> tag.
 
 
-<!-- INJECT:"GradientExample" -->
+<!-- INJECT:"GradientExampleWithLink" -->
 
 Simply write gradient commands as you would normally as children of the GradientDefs component, and reference them from your series!
 
@@ -28,7 +28,7 @@ Simply write gradient commands as you would normally as children of the Gradient
 This approach works with both types of gradients (Linear and circular gradients)! The biggest gotcha is that react doesn't play nice the style prop that is normally specified on the gradientTags, so it is best to specify each property directly on the component as above.
 
 
-<!-- INJECT:"TriangleExample" -->
+<!-- INJECT:"TriangleExampleWithLink" -->
 
 ## Component API Reference
 

@@ -9,7 +9,7 @@ These properties correspond to various visual characteristics of the correspondi
 
 Here is how a simple dataset is transformed in some simple charts:
 
-<!-- INJECT:"MiniCharts" -->
+<!-- INJECT:"MiniChartsWithLink" -->
 
 ```jsx
 const data = [

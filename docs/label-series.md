@@ -1,6 +1,6 @@
 ## LabelSeries:
 
-<!-- INJECT:"LabelSeriesExample" -->
+<!-- INJECT:"LabelSeriesExampleWithLink" -->
 
 Sometimes you just need to write on your data, and labelSeries has your back. This simple series has a similar API as the markSeries except it adds a label property to each of the rows. This label is then rendered as part of the svg tree.
 

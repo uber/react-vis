@@ -18,6 +18,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+import sourceLinker from './showcase-components/source-linker';
+import {SHOWCASE_LINKS} from './showcase-links';
+
 import ComplexChart from './plot/complex-chart';
 import LineChart from './plot/line-chart';
 import LineChartManyColors from './color/line-chart-many-colors';
@@ -142,7 +145,7 @@ import LinkHintSankeyExample from './sankey/link-hint';
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
 
-export const showCase = {
+const mainShowCase = {
   AxisOn0,
   ComplexChart,
   LineChart,
@@ -260,3 +263,11 @@ export const showCase = {
   BasicSankey,
   VornoiSankey
 };
+
+const showCaseWithLinks = Object.keys(mainShowCase).reduce((acc, showCaseExample) => {
+  const link = SHOWCASE_LINKS[showCaseExample];
+  acc[`${showCaseExample}WithLink`] = sourceLinker(mainShowCase[showCaseExample], link);
+  return acc;
+}, {});
+
+export const showCase = {...mainShowCase, ...showCaseWithLinks};

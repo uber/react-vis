@@ -1,6 +1,6 @@
 ## WhiskerSeries
 
-<!-- INJECT:"WhiskerChart" -->
+<!-- INJECT:"WhiskerChartWithLink" -->
 
 WhiskerSeries plots variance "whiskers" for each data point. Often this is used in combination with another series (e.g. a MarkSeries or LineSeries) to represent the variance (or alternately standard deviation) associated with each value. Variance lines can be in the Y dimension, X dimension, or both.
 

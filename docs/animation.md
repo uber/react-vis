@@ -6,11 +6,11 @@ Animation makes your charts feel physical, it makes them feel alive, shoot it ma
 
 *Strings*: react-motion offers several different motion presets that cover most use cases. To access them set your animation prop to one of [noWobble, gentle, wobbly, stiff].
 
-<!-- INJECT:"AnimationExample" -->
+<!-- INJECT:"AnimationExampleWithLink" -->
 
 *Objects*: react-motion expects an object formatting like `{damping: NUMBER, stiffness: NUMBER}`, and if you want to give us an object like that, we will hand it direct to react-motion. You can also pass an object with `{nonAnimatedProps: ['foo', 'bar']}` to prevent those props from being interpolated by d3-interpolator.
 
-<!-- INJECT:"TreemapExample" -->
+<!-- INJECT:"TreemapExampleWithLink" -->
 
 The above example has `animation: {damping: 9, stiffness: 300}`!
 

@@ -9,7 +9,7 @@ For these cases, React-vis provides three different types of `XYPlot` with diffe
 
 and the associated helper functions that have been used to create these flexible components.
 
-<!-- INJECT:"FlexibleCharts" -->
+<!-- INJECT:"FlexibleChartsWithLink" -->
 
 ```jsx
 import {

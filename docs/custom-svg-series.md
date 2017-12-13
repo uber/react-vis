@@ -2,7 +2,7 @@
 
 When creating visualizations, it is sometimes necessary to get your hands dirty and completely take control over what SVG components will be shown. This could be necessary in situations where you have predefined SVG code that you just want to appear the way you drew it in Sketch (but positioned using coordinates), or maybe you have multiline text annotations that you want to formatted in a particular way, or you just want to use an alternative type of mark instead of the usual scatterplot mark to differentiate series in a set. To serve these and many other tasks, we use the CustomSVGSeries.
 
-<!-- INJECT:"CustomSVGExample" -->
+<!-- INJECT:"CustomSVGExampleWithLink" -->
 
 The premise of the series is that it simply puts a `<g>` element at a desired x,y location, and the offers you a variety of ways to fill in the contents of that `<g>` element. Here's an example of the data format:
 
@@ -45,7 +45,7 @@ The type of custom svg marks can be determined in one of several ways:
 
 There are currently four types of string accessible custom marks: **star**, **square**, **circle**, and **diamond**. If using a string, it can be useful to specify a size for the mark. This is done on a row level (see above data api example), with the size prop. Size is expressed in pixels, and is NOT scaled with the normal react-vis size keyword. They look like this:
 
-<!-- INJECT:"CustomSVGAllTheMarks" -->
+<!-- INJECT:"CustomSVGAllTheMarksWithLink" -->
 
 If using a function to defined your mark, it is important to note that the function receives three arguments (customComponent, positionInPixels, globalStyle), where customComponent is the row of data as you have defined it. Thus if you are defining a function for the series as a whole you can make modifications based on the individual row as you go!
 
