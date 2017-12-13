@@ -111,7 +111,7 @@ export function getStackedData(children, attr) {
   let areSomeSeriesStacked = false;
 
   children.forEach((series) => {
-    if (series.props.stack) {
+    if (series && series.props.stack) {
       areSomeSeriesStacked = true;
     }
   });
