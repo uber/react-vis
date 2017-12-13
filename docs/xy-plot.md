@@ -130,7 +130,7 @@ Margin around the chart.
 
 #### stackBy (optional)
 Type: `string`  
-Stack the chart by the given attribute. If the attribute is `y`, the chart is stacked vertically; if the attribute is `x` then it's stacked horizontally.
+Stack the chart by the given attribute. If the attribute is `y`, the chart is stacked vertically; if the attribute is `x` then it's stacked horizontally. See the [Series](series.md) API reference for series level stack opt-in.
 
 ### style (optional)
 Type: `object`
