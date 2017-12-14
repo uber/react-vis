@@ -24,7 +24,7 @@ In the above example we start be setting our domain on the XYPlot (though this w
 
 **WHAT IS THIS FOR** Labeling sections of XY space when we wish the viewer to interpret space in a different way. This could be as part of a Radar chart or radial chart! Or even, the inherently bad Dual Y Axis chart.
 
-**WHAT IS NOT THIS FOR** Using in place of XAxis or YAxis, which should cover most of use cases in which space is being used normally.This type of axis allows for a lot of freedom in it's usage, however that can be dangerous. Most of the time, if you can't get XAxis and YAxis to do what you want, you maybe don't need axes. Be careful!
+**WHAT IS NOT THIS FOR** Using in place of XAxis or YAxis, which should cover most of use cases in which space is being used normally. This type of axis allows for a lot of freedom in it's usage, however that can be dangerous. Most of the time, if you can't get XAxis and YAxis to do what you want, you maybe don't need axes. Be careful!
 
 ## API Reference
 
