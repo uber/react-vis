@@ -100,7 +100,7 @@ test('series-utils #seriesClusterProps', t => {
   t.end();
 });
 
-test('series-utils #getStackedData', t => {
+test('series-utils #getStackedData', t => { // eslint-disable-line max-statements
   const yData = [
     [
       {y: 2, x: 10},
