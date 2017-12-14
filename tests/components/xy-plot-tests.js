@@ -23,6 +23,7 @@ import React from 'react';
 import {mount, shallow} from 'enzyme';
 
 import VerticalBarSeries from 'plot/series/vertical-bar-series';
+import LineSeries from 'plot/series/line-series';
 import XAxis from 'plot/axis/x-axis';
 import XYPlot from 'plot/xy-plot';
 
@@ -163,5 +164,59 @@ test('testing flexible charts', t => {
   t.notEqual(h.height, '100px', 'flexible height - height is not 100px');
   t.notEqual(v.width, '100px', 'flexible vis - width is not 100px');
   t.notEqual(v.height, '100px', 'flexible vis - height is not 100px');
+  t.end();
+});
+
+test('Render two stacked bar series with a non-stacked line series chart', t => {
+  const wrapper = shallow(
+    <XYPlot width={300} height={300} stackBy="y">
+      <XAxis />
+      <VerticalBarSeries
+        data={[
+          {x: 1, y: 0}
+        ]}
+        stack
+      />
+      <LineSeries
+        data={[
+          {x: 1, y: 3}
+        ]}
+      />
+      <VerticalBarSeries
+        data={[
+          {x: 1, y: 2}
+        ]}
+        stack
+      />
+    </XYPlot>
+  );
+
+  const renderedVerticalBarsWrapper = wrapper.find(VerticalBarSeries);
+  const renderedLineWrapper = wrapper.find(LineSeries);
+
+  t.deepEqual(
+    renderedVerticalBarsWrapper.at(0).prop('data'),
+    [
+      {x: 1, y: 0}
+    ],
+    'First bar series data is the same'
+  );
+
+  t.deepEqual(
+    renderedVerticalBarsWrapper.at(1).prop('data'),
+    [
+      {x: 1, y: 2, y0: 0}
+    ],
+    'Second bar series data contains y0 values'
+  );
+
+  t.deepEqual(
+    renderedLineWrapper.at(0).prop('data'),
+    [
+      {x: 1, y: 3}
+    ],
+    'Line series data does not contain y0 values'
+  );
+
   t.end();
 });
