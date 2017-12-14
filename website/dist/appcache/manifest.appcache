@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver:2017-12-14 09:53:44
+#ver:2017-12-14 10:11:17
 #plugin:4.8.3
 
 CACHE:
@@ -7,17 +7,17 @@ CACHE:
 ../styles-a1c033153b86467d08e5.css
 ../
 ../favicon.ico
-../fonts/uber.ttf
-../fonts/uber.svg
-../images/footer-pattern.gif
 ../fonts/uber.woff
-../images/icon-chart.svg
-../images/icon-custom.svg
-../images/icon-high-precision.svg
+../fonts/uber.svg
+../fonts/uber.ttf
+../images/footer-pattern.gif
 ../images/hero.jpg
+../images/icon-high-precision.svg
+../images/icon-custom.svg
 ../images/icon-layers.svg
-../images/icon-react.svg
+../images/icon-chart.svg
 ../images/uber-logo.png
+../images/icon-react.svg
 
 NETWORK:
 *
