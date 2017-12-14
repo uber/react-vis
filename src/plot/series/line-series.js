@@ -118,13 +118,13 @@ LineSeries.propTypes = {
   getNull: PropTypes.func
 };
 LineSeries.defaultProps = {
+  ...AbstractSeries.defaultProps,
   strokeStyle: 'solid',
   style: {},
   opacity: 1,
   curve: null,
   className: '',
-  getNull: () => true,
-  stack: false
+  getNull: () => true
 };
 
 export default LineSeries;

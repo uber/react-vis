@@ -159,10 +159,10 @@ CustomSVGSeries.propTypes = {
 };
 
 CustomSVGSeries.defaultProps = {
+  ...AbstractSeries.defaultProps,
   animation: false,
   customComponent: 'circle',
-  style: {},
-  stack: false
+  style: {}
 };
 
 export default CustomSVGSeries;

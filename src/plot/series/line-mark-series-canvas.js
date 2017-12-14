@@ -45,8 +45,5 @@ LineMarkSeriesCanvas.displayName = 'LineMarkSeriesCanvas';
 LineMarkSeriesCanvas.propTypes = {
   ...AbstractSeries.propTypes
 };
-LineMarkSeriesCanvas.defaultProps = {
-  stack: false
-};
 
 export default LineMarkSeriesCanvas;

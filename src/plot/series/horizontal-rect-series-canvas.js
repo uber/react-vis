@@ -58,8 +58,5 @@ HorizontalRectSeriesCanvas.displayName = 'HorizontalRectSeriesCanvas';
 HorizontalRectSeriesCanvas.propTypes = {
   ...AbstractSeries.propTypes
 };
-HorizontalRectSeriesCanvas.defaultProps = {
-  stack: false
-};
 
 export default HorizontalRectSeriesCanvas;

@@ -57,6 +57,7 @@ const propTypes = {
 
 const defaultProps = {
   className: '',
+  stack: false,
   style: {}
 };
 

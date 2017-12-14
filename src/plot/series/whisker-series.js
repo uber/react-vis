@@ -206,9 +206,9 @@ WhiskerSeries.propTypes = {
   strokeWidth: PropTypes.number
 };
 WhiskerSeries.defaultProps = {
+  ...AbstractSeries.defaultProps,
   crossBarWidth: DEFAULT_CROSS_BAR_WIDTH,
   size: 0,
-  stack: false,
   strokeWidth: DEFAULT_STROKE_WIDTH
 };
 export default WhiskerSeries;

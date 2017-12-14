@@ -116,10 +116,10 @@ LabelSeries.propTypes = {
   yRange: PropTypes.arrayOf(PropTypes.number)
 };
 LabelSeries.defaultProps = {
+  ...AbstractSeries.defaultProps,
   animation: false,
   rotation: 0,
-  getLabel: d => d.label,
-  stack: false
+  getLabel: d => d.label
 };
 LabelSeries.displayName = 'LabelSeries';
 export default LabelSeries;

@@ -122,8 +122,7 @@ MarkSeries.propTypes = {
   strokeWidth: PropTypes.number
 };
 MarkSeries.defaultProps = {
-  getNull: () => true,
-  stack: false
+  getNull: () => true
 };
 
 export default MarkSeries;

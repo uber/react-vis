@@ -39,11 +39,11 @@ const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--arc';
 const ATTRIBUTES = ['radius', 'angle'];
 
 const defaultProps = {
+  ...AbstractSeries.defaultProps,
   center: {x: 0, y: 0},
   arcClassName: '',
   className: '',
-  style: {},
-  stack: false
+  style: {}
 };
 
 /**
