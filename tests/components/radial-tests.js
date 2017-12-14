@@ -6,6 +6,7 @@ import SimpleRadialChart from '../../showcase/radial-chart/simple-radial-chart';
 import DonutChart from '../../showcase/radial-chart/donut-chart';
 import CustomRadiusRadialChart from '../../showcase/radial-chart/custom-radius-radial-chart';
 
+import {FlexibleCharts} from '../../showcase/flexible/flexible-examples';
 import {testRenderWithProps} from '../test-utils';
 
 const RADIAL_PROPS = {
@@ -67,5 +68,15 @@ test('RadialChart: Showcase Example - Custom radius example', t => {
   t.equal($.find('.rv-radial-chart__series--pie__slice').length, 2 * 5, 'should find the same number of slices as data entries');
   t.equal($.find('.rv-xy-plot__series--label-text').length, 4, 'should find the right number of label wrappers');
   t.equal($.text(), 'Sub Label onlyAlt LabelSuper Custom labelWith annotation', 'should find appropriate text');
+  t.end();
+});
+
+test('testing flexible charts', t => {
+  const $ = mount(FlexibleCharts({height: 200, width: 400}));
+
+  const v = $.find('.flexible-radial-chart .rv-xy-plot').prop('style');
+
+  t.notEqual(v.width, '100px', 'flexible vis - width is not 100px');
+  t.notEqual(v.height, '100px', 'flexible vis - height is not 100px');
   t.end();
 });

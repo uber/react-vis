@@ -1,11 +1,16 @@
 ## Flexible plots
 
-By default, XYPlot requires a width and a height. There are times, however, when you'd like your chart to take all the space it can.
-For these cases, React-vis provides three different types of `XYPlot` with different flexible dimensions:
+By default, XYPlot, RadarChart, RadialChart, Sunburst, Treemap, Sankey require a width and a height. There are times, however, when you'd like your chart to take all the space it can.
+For these cases, React-vis provides three different types of `XYPlot, RadarChart, RadialChart, Sunburst, Treemap, Sankey` with different flexible dimensions:
 
-  - FlexibleWidthXYPlot
-  - FlexibleHeightXYPlot
-  - FlexibleXYPlot
+  - FlexibleXYPlot,
+  - FlexibleWidthXYPlot -**NOTE**: has been deprecated and will be removed in a future version,
+  - FlexibleHeightXYPlot -**NOTE**: has been deprecated and will be removed in a future version,
+  - FlexibleRadarChart,
+  - FlexibleRadialChart,
+  - FlexibleSunburst,
+  - FlexibleTreemap,
+  - FlexibleSankey
 
 and the associated helper functions that have been used to create these flexible components.
 
@@ -14,29 +19,76 @@ and the associated helper functions that have been used to create these flexible
 ```jsx
 import {
   FlexibleXYPlot,
-  FlexibleWidthXYPlot,
-  FlexibleHeightXYPlot
+  FlexibleWidthXYPlot, // has been deprecated and will be removed in a future version
+  FlexibleHeightXYPlot, // has been deprecated and will be removed in a future version
+  FlexibleRadarChart,
+  FlexibleRadialChart,
+  FlexibleSunburst,
+  FlexibleTreemap,
+  FlexibleSankey
 } from 'react-vis';
 ```
 
-`FlexibleWidthXYPlot` modifies `XYPlot` so that it no longer requires a width, since it will take all the with in its container div.
-Likewise, `FlexibleHeightXYPlot` modifies `XYPlot` so that is no longer requires a height, and its height will be that of its container div.
-Finally, `FlexibleXYPlot` modifies `XYPlot` so that it no longer requires eiter a width and a height, its dimensions will be that of its container.
+`Flexible[Component]` modifies `[Component]` so that it no longer requires eiter a width and a height, its dimensions will be that of its container. But you still can define a width and a height.
 
-These components can be used exactly as `XYPlot`:
-
+`FlexibleXYPlot`
 ```jsx
-<FlexibleWidthXYPlot height={100}>
+<FlexibleXYPlot height={100}>
   <VerticalBarSeries data={data} />
-</FlexibleWidthXYPlot>
+</FlexibleXYPlot>
 
-<FlexibleHeightXYPlot width={100}>
+<FlexibleXYPlot width={100}>
   <VerticalBarSeries data={data} />
-</FlexibleHeightXYPlot>
+</FlexibleXYPlot>
 
 <FlexibleXYPlot>
   <VerticalBarSeries data={data} />
 </FlexibleXYPlot>
+```
+
+`FlexibleSankey`
+```jsx
+<FlexibleSankey height={100} data={data} />
+
+<FlexibleSankey width={100} data={data} />
+
+<FlexibleSankey data={data} />
+```
+
+`FlexibleTreemap`
+```jsx
+<FlexibleTreemap height={100} data={data} />
+
+<FlexibleTreemap width={100} data={data} />
+
+<FlexibleTreemap data={data} />
+```
+
+`FlexibleRadarChart`
+```jsx
+<FlexibleRadarChart height={100} data={data} />
+
+<FlexibleRadarChart width={100} data={data} />
+
+<FlexibleRadarChart data={data} />
+```
+
+`FlexibleRadialChart`
+```jsx
+<FlexibleRadialChart height={100} data={data} />
+
+<FlexibleRadialChart width={100} data={data} />
+
+<FlexibleRadialChart data={data} />
+```
+
+`FlexibleSunburst`
+```jsx
+<FlexibleSunburst height={100} data={data} />
+
+<FlexibleSunburst width={100} data={data} />
+
+<FlexibleSunburst data={data} />
 ```
 
 ### No worries about resizing
@@ -56,17 +108,20 @@ See the example [responsive visualizations](#/examples/charts/responsive-vis)
 
 ### Custom flexible components
 
-By using the provided flexible helpers, you can use them to make your own components flexible, like we did to create `XYPlot` flexible alternatives:
+By using the provided flexible helpers, you can use them to make your own components flexible, like we did to create `XYPlot, RadarChart, RadialChart, Sunburst, Treemap, Sankey` flexible alternatives:
 
 ```jsx
 import {
   XYPlot,
+  RadialChart
   makeVisFlexible,
-  makeWidthFlexible,
-  makeHeightFlexible,
+  makeWidthFlexible, // has been deprecated and will be removed in a future version
+  makeHeightFlexible, // has been deprecated and will be removed in a future version
 } from 'react-vis';
 
 const FlexibleXYPlot = makeVisFlexible(XYPlot);
-const FlexibleWidthXYPlot = makeWidthFlexible(XYPlot);
-const FlexibleHeightXYPlot = makeHeightFlexible(XYPlot);
+const FlexibleRadialChart = makeVisFlexible(RadialChart);
+
+const FlexibleWidthXYPlot = makeWidthFlexible(XYPlot); // has been deprecated and will be removed in a future version
+const FlexibleHeightXYPlot = makeHeightFlexible(XYPlot); // has been deprecated and will be removed in a future version
 ```

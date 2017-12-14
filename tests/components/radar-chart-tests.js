@@ -5,6 +5,7 @@ import RadialChart from 'radial-chart';
 import BasicRadarChart from '../../showcase/radar-chart/basic-radar-chart';
 import AnimatedRadarChart from '../../showcase/radar-chart/animated-radar-chart';
 
+import {FlexibleCharts} from '../../showcase/flexible/flexible-examples';
 import {testRenderWithProps} from '../test-utils';
 
 const RADAR_PROPS = {
@@ -50,5 +51,15 @@ test('Radar: Showcase Example - Animated Radial ', t => {
   t.equal($.find('.rv-radar-chart-polygon').length, 1, 'should find the right number of axes');
   t.equal($.find('.rv-radar-chart').text(), '20406080100niceexplosionswowdogsickMoves', 'should find the right text content');
 
+  t.end();
+});
+
+test('testing flexible charts', t => {
+  const $ = mount(FlexibleCharts({height: 200, width: 400}));
+
+  const v = $.find('.flexible-radar-chart .rv-xy-plot').prop('style');
+
+  t.notEqual(v.width, '100px', 'flexible vis - width is not 100px');
+  t.notEqual(v.height, '100px', 'flexible vis - height is not 100px');
   t.end();
 });

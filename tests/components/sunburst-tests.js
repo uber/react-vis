@@ -6,6 +6,7 @@ import BasicSunburst from '../../showcase/sunbursts/basic-sunburst';
 import SunburstWithTooltips from '../../showcase/sunbursts/sunburst-with-tooltips';
 import AnimatedSunburst from '../../showcase/sunbursts/animated-sunburst';
 
+import {FlexibleCharts} from '../../showcase/flexible/flexible-examples';
 import {testRenderWithProps} from '../test-utils';
 
 const INTERPOLATE_DATA = {
@@ -102,5 +103,15 @@ test('Sunburst: AnimatedSunburst', t => {
   $.find('.rv-xy-plot__series--arc-path').at(1).simulate('mouseOver');
   t.equal($.text(), 'UPDATECURRENTLY HOVERING', 'should find the sunburst is now hovered');
 
+  t.end();
+});
+
+test('testing flexible charts', t => {
+  const $ = mount(FlexibleCharts({height: 200, width: 400}));
+
+  const v = $.find('.flexible-sunburst .rv-xy-plot').prop('style');
+
+  t.notEqual(v.width, '100px', 'flexible vis - width is not 100px');
+  t.notEqual(v.height, '100px', 'flexible vis - height is not 100px');
   t.end();
 });
