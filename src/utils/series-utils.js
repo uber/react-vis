@@ -108,13 +108,7 @@ function prepareData(data) {
  * @returns {Array} New array of children for the series.
  */
 export function getStackedData(children, attr) {
-  let areSomeSeriesStacked = false;
-
-  children.forEach((series) => {
-    if (series && series.props.stack) {
-      areSomeSeriesStacked = true;
-    }
-  });
+  const areSomeSeriesStacked = children.some(series => series && series.props.stack);
 
   return children.reduce((accumulator, series, seriesIndex) => {
     // Skip the children that are not series (e.g. don't have any data).
