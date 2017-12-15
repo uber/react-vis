@@ -227,7 +227,7 @@ The function that is triggered each time a wheel button is rotated on the compon
 #### animation (optional)
 Type: `{duration: number}|boolean`
 Default: `false`  
-Animation config, which is automatically passed to all children, but can be overrided for the each child.  
+Animation config, which is automatically passed to all children, but can be overridden for the each child.  
 If `false` is passed, then the child components *will not be* animated.  
 If `true` is passed then the child components *will be* animated with the default settings.  
 If an object is passed, then the child components *will be* animated with the given settings.

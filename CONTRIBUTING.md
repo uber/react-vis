@@ -18,7 +18,7 @@ Want to make sure your PR gets a speedy review and a quick merge? Here are some 
 - Add Tests
 - Add documentation about the feature you added
 - Make sure you have a clear description of what your PR is about
-- Inlcude screenshots
+- Include screenshots
 - Add Tests
 
 ## Releases

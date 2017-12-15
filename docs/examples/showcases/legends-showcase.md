@@ -1,1 +1,1 @@
-<!-- INJECT:"LegendsShowcaseWithLink" -->
+<!-- INJECT:"LegendsShowcase" -->
