@@ -153,14 +153,9 @@ test('Render a bar chart with some nonAnimatedProps', t => {
 
 test('testing flexible charts', t => {
   const $ = mount(FlexibleCharts({height: 200, width: 400}));
-  const w = $.find('.flexible-width .rv-xy-plot').prop('style');
-  const h = $.find('.flexible-height .rv-xy-plot').prop('style');
-  const v = $.find('.flexible-vis .rv-xy-plot').prop('style');
 
-  t.notEqual(w.width, '100px', 'flexible width - width is not 100px');
-  t.deepEqual(w.height, '100px', 'flexible width - height is 100px');
-  t.deepEqual(h.width, '100px', 'flexible height - width is 100px');
-  t.notEqual(h.height, '100px', 'flexible height - height is not 100px');
+  const v = $.find('.flexible-xyplot .rv-xy-plot').prop('style');
+
   t.notEqual(v.width, '100px', 'flexible vis - width is not 100px');
   t.notEqual(v.height, '100px', 'flexible vis - height is not 100px');
   t.end();

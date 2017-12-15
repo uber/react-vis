@@ -19,177 +19,92 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import window from 'global/window';
-
+import PropTypes from 'prop-types';
+import ResizeObserver from 'resize-observer-polyfill';
 import XYPlot from 'plot/xy-plot';
-import {getDOMNode} from 'utils/react-utils';
+import RadarChart from 'radar-chart';
+import RadialChart from 'radial-chart';
+import Sunburst from 'sunburst';
+import Treemap from 'treemap';
+import Sankey from 'sankey';
 
-const CONTAINER_REF = 'container';
+export const makeVisFlexible = Component => {
+  return class extends React.Component {
+    static propTypes = {
+      ...Component.propTypes,
+      height: PropTypes.number,
+      width: PropTypes.number
+    };
 
-// As a performance enhancement, we want to only listen once
-const resizeSubscribers = [];
-const DEBOUNCE_DURATION = 100;
-let timeoutId = null;
-
-/**
- * Calls each subscriber, debounced to the
- */
-function debounceEmitResize() {
-  window.clearTimeout(timeoutId);
-  timeoutId = window.setTimeout(emitResize, DEBOUNCE_DURATION);
-}
-
-/**
- * Calls each subscriber once syncronously.
- */
-function emitResize() {
-  resizeSubscribers.forEach(cb => cb());
-}
-
-/**
- * Add the given callback to the list of subscribers to be caled when the
- * window resizes. Returns a function that, when called, removes the given
- * callback from the list of subscribers. This function is also resposible for
- * adding and removing the resize listener on `window`.
- *
- * @param {Function} cb - Subscriber callback function
- * @returns {Function} Unsubscribe function
- */
-function subscribeToDebouncedResize(cb) {
-  resizeSubscribers.push(cb);
-
-  // if we go from zero to one Flexible components instances, add the listener
-  if (resizeSubscribers.length === 1) {
-    window.addEventListener('resize', debounceEmitResize);
-  }
-  return function unsubscribe() {
-    removeSubscriber(cb);
-
-    // if we have no Flexible components, remove the listener
-    if (resizeSubscribers.length === 0) {
-      window.clearTimeout(timeoutId);
-      window.removeEventListener('resize', debounceEmitResize);
-    }
-  };
-}
-
-/**
- * Helper for removing the given callback from the list of subscribers.
- *
- * @param {Function} cb - Subscriber callback function
- */
-function removeSubscriber(cb) {
-  const index = resizeSubscribers.indexOf(cb);
-  if (index > -1) {
-    resizeSubscribers.splice(index, 1);
-  }
-}
-
-/**
- * Helper for getting a display name for the child component
- * @param {*} Component React class for the child component.
- * @returns {String} The child components name
- */
-function getDisplayName(Component) {
-  return Component.displayName || Component.name || 'Component';
-}
-
-/**
- * Add the ability to stretch the visualization on window resize.
- * @param {*} Component React class for the child component.
- * @returns {*} Flexible component.
- */
-
-function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
-
-  const ResultClass = class extends React.Component {
-
-    static get propTypes() {
-      const {height, width, ...otherPropTypes} = Component.propTypes; // eslint-disable-line no-unused-vars
-      return otherPropTypes;
-    }
+    static displayName = `Flexible${Component.displayName || Component.name || 'Component'}`;
 
     constructor(props) {
       super(props);
+
       this.state = {
         height: 0,
         width: 0
       };
-      this._onResize = this._onResize.bind(this);
-    }
-
-    /**
-     * Get the width of the container and assign the width.
-     * @private
-     */
-    _onResize() {
-      const containerElement = getDOMNode(this.refs[CONTAINER_REF]);
-      const {offsetHeight, offsetWidth} = containerElement;
-
-      const newHeight = this.state.height === offsetHeight ? {} :
-        {height: offsetHeight};
-
-      const newWidth = this.state.width === offsetWidth ? {} :
-        {width: offsetWidth};
-
-      this.setState({
-        ...newHeight,
-        ...newWidth
-      });
     }
 
     componentDidMount() {
-      this._onResize();
-      this.cancelSubscription = subscribeToDebouncedResize(this._onResize);
-    }
+      this.setSize();
 
-    componentWillReceiveProps() {
-      this._onResize();
+      this.observer = new ResizeObserver(() => this.setSize());
+
+      this.observer.observe(this.node);
     }
 
     componentWillUnmount() {
-      this.cancelSubscription();
+      this.observer.disconnect();
     }
+
+    setSize = () => {
+      const {height, width} = this.node.getBoundingClientRect();
+
+      this.setState({height, width});
+    };
 
     render() {
       const {height, width} = this.state;
-      const props = {...this.props, animation: height === 0 && width === 0 ? null : this.props.animation};
-
-      const updatedDimensions = {
-        ...(isHeightFlexible ? {height} : {}),
-        ...(isWidthFlexible ? {width} : {})
-      };
 
       return (
         <div
-          ref={CONTAINER_REF}
-          style={{width: '100%', height: '100%'}}>
-          <Component
-            {...updatedDimensions}
-            {...props}
-          />
+          ref={node => {
+            if (node) {
+              this.node = node;
+            }
+          }}
+          style={{width: '100%', height: '100%'}}
+        >
+          <Component height={height} width={width} {...this.props} />
         </div>
       );
     }
   };
+};
 
-  ResultClass.displayName = `Flexible${getDisplayName(Component)}`;
-
-  return ResultClass;
-}
-
-export function makeHeightFlexible(component) {
-  return makeFlexible(component, false, true);
-}
-
-export function makeVisFlexible(component) {
-  return makeFlexible(component, true, true);
-}
-
-export function makeWidthFlexible(component) {
-  return makeFlexible(component, true, false);
-}
-
-export const FlexibleWidthXYPlot = makeWidthFlexible(XYPlot);
-export const FlexibleHeightXYPlot = makeHeightFlexible(XYPlot);
 export const FlexibleXYPlot = makeVisFlexible(XYPlot);
+export const FlexibleRadarChart = makeVisFlexible(RadarChart);
+export const FlexibleRadialChart = makeVisFlexible(RadialChart);
+export const FlexibleSunburst = makeVisFlexible(Sunburst);
+export const FlexibleTreemap = makeVisFlexible(Treemap);
+export const FlexibleSankey = makeVisFlexible(Sankey);
+
+// This code has been deprecated
+export const makeHeightFlexible = component => {
+  // eslint-disable-next-line no-console
+  console.warn('[WARNING]: makeHeightFlexible has been deprecated and will be removed in a future version');
+
+  return makeVisFlexible(component);
+};
+
+export const makeWidthFlexible = component => {
+  // eslint-disable-next-line no-console
+  console.warn('[WARNING]: makeWidthFlexible has been deprecated and will be removed in a future version');
+
+  return makeVisFlexible(component);
+};
+
+export const FlexibleWidthXYPlot = makeVisFlexible(XYPlot);
+export const FlexibleHeightXYPlot = makeVisFlexible(XYPlot);
