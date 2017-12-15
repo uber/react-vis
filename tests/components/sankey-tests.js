@@ -17,6 +17,7 @@ const SANKEY_PROPS = {
   height: 200
 };
 
+import {FlexibleCharts} from '../../showcase/flexible/flexible-examples';
 import {testRenderWithProps} from '../test-utils';
 
 // make sure that the components render at all
@@ -125,5 +126,15 @@ test('Sankey: Showcase Example - LinkHintSankey', t => {
   $.find('.rv-sankey__link').at(0).simulate('mouseOut');
   t.equal($.find(Hint).length, 0, 'should find that no hint is shown if link is not hovered anymore');
 
+  t.end();
+});
+
+test('testing flexible charts', t => {
+  const $ = mount(FlexibleCharts({height: 200, width: 400}));
+
+  const v = $.find('.flexible-sankey .rv-xy-plot').prop('style');
+
+  t.notEqual(v.width, '100px', 'flexible vis - width is not 100px');
+  t.notEqual(v.height, '100px', 'flexible vis - height is not 100px');
   t.end();
 });
