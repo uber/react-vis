@@ -1,1 +1,1 @@
-<!-- INJECT:"SankeysShowcaseWithLink" -->
+<!-- INJECT:"SankeysShowcase" -->
