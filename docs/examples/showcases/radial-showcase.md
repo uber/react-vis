@@ -1,1 +1,1 @@
-<!-- INJECT:"RadialShowcaseWithLink" -->
+<!-- INJECT:"RadialShowcase" -->

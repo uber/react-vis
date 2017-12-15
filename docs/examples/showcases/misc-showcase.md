@@ -1,1 +1,1 @@
-<!-- INJECT:"MiscShowcaseWithLink" -->
+<!-- INJECT:"MiscShowcase" -->

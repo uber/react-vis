@@ -62,7 +62,7 @@ Array of data for the series. See above data format reference.
 
 #### style
 Type: `object`
-Paths accept a ton of different styles, so rather than prescribe every single one we just accept a general grab bag pf the styles. check out the [w3](https://www.w3schools.com/graphics/svg_path.asp) page for more details and the [style] documnetation (style.md).
+Paths accept a ton of different styles, so rather than prescribe every single one we just accept a general grab bag pf the styles. check out the [w3](https://www.w3schools.com/graphics/svg_path.asp) page for more details and the [style] documentation (style.md).
 
 ## Interaction handlers
 
