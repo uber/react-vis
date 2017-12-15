@@ -27,7 +27,7 @@ import {
   XYPlot,
   XAxis,
   YAxis,
-  makeWidthFlexible,
+  makeVisFlexible,
   Voronoi,
   LineSeries,
   VerticalGridLines
@@ -114,4 +114,4 @@ DragableChartExample.propTypes = {
   width: PropTypes.number
 };
 
-export default makeWidthFlexible(DragableChartExample);
+export default makeVisFlexible(DragableChartExample);

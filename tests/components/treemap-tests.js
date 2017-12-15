@@ -6,6 +6,7 @@ import Treemap from 'treemap';
 import SimpleTreemap from '../../showcase/treemap/simple-treemap';
 import DynamicTreemap from '../../showcase/treemap/dynamic-treemap';
 
+import {FlexibleCharts} from '../../showcase/flexible/flexible-examples';
 import {testRenderWithProps} from '../test-utils';
 
 const INTERPOLATE_DATA = {
@@ -192,5 +193,15 @@ test('Treemap: DynamicTreemap', t => {
   t.equal($.find('.rv-treemap__leaf').length, 21, 'should find the right number of children');
   t.equal($.find('.rv-treemap').text(), '2020202020202020202020202020202020202020', 'should find the correct text shown');
 
+  t.end();
+});
+
+test('testing flexible charts', t => {
+  const $ = mount(FlexibleCharts({height: 200, width: 400}));
+
+  const v = $.find('.flexible-treemap .rv-treemap').prop('style');
+
+  t.notEqual(v.width, '100px', 'flexible vis - width is not 100px');
+  t.notEqual(v.height, '100px', 'flexible vis - height is not 100px');
   t.end();
 });
