@@ -2,7 +2,7 @@
 
 <!-- INJECT:"AreaChartWithLink" -->
 
-In addition to the the LineSeries, react-vis offers a similar chart type for area charts. 
+In addition to the LineSeries, react-vis offers a similar chart type for area charts.
 Like LineSeries, AreaSeries:
 - are styled at the series level, not at the mark level. 
 - can have a curve property for a different interpolation between points.
@@ -161,4 +161,3 @@ This handler fires when the user mouses over an AreaSeries, and provides the cor
   	// you can access the value of the event
   }}
 ```
-

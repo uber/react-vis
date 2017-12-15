@@ -1,7 +1,7 @@
 # Treemap
 
 Treemaps are a splendid way to represent data that has a nested aspect to it. They allow for the easy display of complicated
-relative information, such as nested-part-to-whole relationships in a easy to grock fashion. Checkout [the wikipedia page](https://en.wikipedia.org/wiki/Treemapping) or Ben Shneiderman's excellent [History of treemaps](http://www.cs.umd.edu/hcil/treemap-history/index.shtml) for more information.
+relative information, such as nested-part-to-whole relationships in a easy to grok fashion. Checkout [the wikipedia page](https://en.wikipedia.org/wiki/Treemapping) or Ben Shneiderman's excellent [History of treemaps](http://www.cs.umd.edu/hcil/treemap-history/index.shtml) for more information.
 
 <!-- INJECT:"SimpleTreemapWithLink" -->
 
@@ -73,7 +73,7 @@ the "cluster" node has  3938 + 3812 + 6714 + 743 = 15207 size units.
 over all of the nodes.
 
 - It can useful to encode opacity to indicate tree depth, however because each tree leaf is a nested div this gets a little
-tricky. One technique is to to compute the effective RGBA to hex value, check out [this link](viget.com/inspire/equating-color-and-transparency)
+tricky. One technique is to compute the effective RGBA to hex value, check out [this link](viget.com/inspire/equating-color-and-transparency)
 for more details.
 
 - If your not sure when to use a treemap, remember they provide an easy drop in relationship for pie charts.

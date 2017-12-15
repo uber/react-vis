@@ -5,7 +5,7 @@ at a glance understanding of deeply nested systems. This could be useful for und
 
 <!-- INJECT:"BasicSunburstWithLink" -->
 
-The `Sunburst` is a thin data processing wrapper on an XYPlotted [ArcSeries](arc-series.md), it generates highly re-stylable SVG! Any props that are available in the arc series are also available here. Additionally it copies the data format of the treemap, so if you have data prepped to drop into the tree map, you can use that same data to get a sunbrust.
+The `Sunburst` is a thin data processing wrapper on an XYPlotted [ArcSeries](arc-series.md), it generates highly re-stylable SVG! Any props that are available in the arc series are also available here. Additionally it copies the data format of the treemap, so if you have data prepped to drop into the tree map, you can use that same data to get a sunburst.
 
 ## Usage
 
@@ -115,7 +115,7 @@ Each point consists of following properties:
   The style of the attached label. Example `{labelStyle: {fontSize: 15}, ...}`
 * `dontRotateLabel` (optional)  
   Type: `boolean`
-  Dont rotate this label
+  Don't rotate this label
 * `children` (optional)  
   Type: `Array`  
   The children for the leaf.
@@ -128,7 +128,7 @@ Simple boolean on whether or not to show the root node of the tree.
 
 #### children (optional)
 Type: `react components`
-Sunburst can accept react components as children if you wish to to annotate your diagram.
+Sunburst can accept react components as children if you wish to annotate your diagram.
 
 #### animation (optional)
 Type: `boolean|Object`

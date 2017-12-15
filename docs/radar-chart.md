@@ -57,7 +57,7 @@ Let's looks at each member of the object
 - name: generates a member of a labelSeries that shows at the end of the corresponding axis
 - getValue: an accessor function that grabs a value from the row being accessed, if this is not provided a default one that uses the name property is used.
 - domain: a pair of numbers that are interpolated between. Setting these values correctly is essential for making your graphic legible! Because it is often the case that there will only be one or two data rows in a radar chart, react-vis requires the user to specify the exact domain for each variable. Without which we would be unable to plot the variables well.
-- tickFormat: allows the user to provide a formatting function for prettifiying the the way that axis interpolates between the domain values.
+- tickFormat: allows the user to provide a formatting function for prettifying the way that axis interpolates between the domain values.
 
 #### width
 Type: `number`  

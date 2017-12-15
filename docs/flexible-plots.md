@@ -21,7 +21,7 @@ import {
 
 `FlexibleWidthXYPlot` modifies `XYPlot` so that it no longer requires a width, since it will take all the with in its container div.
 Likewise, `FlexibleHeightXYPlot` modifies `XYPlot` so that is no longer requires a height, and its height will be that of its container div.
-Finally, `FlexibleXYPlot` modifies `XYPlot` so that it no longer requires eiter a width and a height, its dimensions will be that of its container.
+Finally, `FlexibleXYPlot` modifies `XYPlot` so that it no longer requires either a width and a height, its dimensions will be that of its container.
 
 These components can be used exactly as `XYPlot`:
 
