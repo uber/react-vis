@@ -1,1 +1,1 @@
-<!-- INJECT:"PlotsShowcaseWithLink" -->
+<!-- INJECT:"PlotsShowcase" -->

@@ -2,7 +2,7 @@
 
 Voronoi diagrams are useful for making a chart interactive by creating target areas for events like hover and click.
 
-<!-- INJECT:"VoronoiLineChart" -->
+<!-- INJECT:"VoronoiLineChartWithLink" -->
 
 ```jsx
 <Voronoi

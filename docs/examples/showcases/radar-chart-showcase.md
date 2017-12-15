@@ -1,1 +1,1 @@
-<!-- INJECT:"RadarShowcaseWithLink" -->
+<!-- INJECT:"RadarShowcase" -->
