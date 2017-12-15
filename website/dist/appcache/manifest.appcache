@@ -1,23 +1,23 @@
 CACHE MANIFEST
-#ver:2017-12-14 10:11:17
+#ver:12/15/2017, 11:44:59 AM
 #plugin:4.8.3
 
 CACHE:
-../bundle-a1c033153b86467d08e5.js
-../styles-a1c033153b86467d08e5.css
+../bundle-b9af382ba0b3a4e534a9.js
+../styles-b9af382ba0b3a4e534a9.css
 ../
-../favicon.ico
-../fonts/uber.woff
 ../fonts/uber.svg
 ../fonts/uber.ttf
-../images/footer-pattern.gif
-../images/hero.jpg
-../images/icon-high-precision.svg
-../images/icon-custom.svg
-../images/icon-layers.svg
+../fonts/uber.woff
 ../images/icon-chart.svg
-../images/uber-logo.png
+../images/icon-custom.svg
+../images/footer-pattern.gif
+../images/icon-high-precision.svg
+../favicon.ico
+../images/icon-layers.svg
+../images/hero.jpg
 ../images/icon-react.svg
+../images/uber-logo.png
 
 NETWORK:
 *
