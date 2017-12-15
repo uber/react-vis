@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import ResizeObserver from 'resize-observer-polyfill';
 import XYPlot from 'plot/xy-plot';
 import RadarChart from 'radar-chart';
@@ -29,11 +30,11 @@ import Sankey from 'sankey';
 
 export const makeVisFlexible = Component => {
   return class extends React.Component {
-    static get propTypes() {
-      // eslint-disable-next-line no-unused-vars
-      const {height, width, ...otherPropTypes} = Component.propTypes;
-      return otherPropTypes;
-    }
+    static propTypes = {
+      ...Component.propTypes,
+      height: PropTypes.number,
+      width: PropTypes.number
+    };
 
     static displayName = `Flexible${Component.displayName || Component.name || 'Component'}`;
 
