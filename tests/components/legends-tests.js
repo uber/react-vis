@@ -10,6 +10,16 @@ import SearchableDiscreteLegend from '../../showcase/legends/searchable-discrete
 import HorizontalDiscreteCustomPalette from
   '../../showcase/legends/horizontal-discrete-custom-palette';
 
+test('Discrete Legend has no clickable className while onItemClick is not passing', t => {
+  const withOnClick$ = mount(<VerticalDiscreteLegend />);
+  const withoutOnClick$ = mount(<SearchableDiscreteLegend />);
+
+  t.equal(withOnClick$.find('.rv-discrete-color-legend-item .vertical').first().props().onClick, null, 'should not have onClick prop');
+  t.notEqual(withoutOnClick$.find('.rv-discrete-color-legend-item .vertical .clickable').first().props().onClick, Function, 'should have onClick prop');
+
+  t.end();
+});
+
 test('Continuous Size Legend', t => {
   const $ = mount(<ContinuousSizeLegend/>);
   t.equal($.text(), '          100200', 'should find the correct text content');
