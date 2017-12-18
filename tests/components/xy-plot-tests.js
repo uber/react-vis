@@ -23,10 +23,12 @@ import React from 'react';
 import {mount, shallow} from 'enzyme';
 
 import VerticalBarSeries from 'plot/series/vertical-bar-series';
+import BarSeries from 'plot/series/bar-series';
 import LineSeries from 'plot/series/line-series';
 import XAxis from 'plot/axis/x-axis';
 import XYPlot from 'plot/xy-plot';
 
+import MixedStackedChart from '../../showcase/plot/mixed-stacked-chart';
 import {FlexibleCharts} from '../../showcase/flexible/flexible-examples';
 import {testRenderWithProps} from '../test-utils';
 
@@ -168,44 +170,27 @@ test('testing flexible charts', t => {
 });
 
 test('Render two stacked bar series with a non-stacked line series chart', t => {
-  const wrapper = shallow(
-    <XYPlot width={300} height={300} stackBy="y">
-      <XAxis />
-      <VerticalBarSeries
-        data={[
-          {x: 1, y: 0}
-        ]}
-        stack
-      />
-      <LineSeries
-        data={[
-          {x: 1, y: 3}
-        ]}
-      />
-      <VerticalBarSeries
-        data={[
-          {x: 1, y: 2}
-        ]}
-        stack
-      />
-    </XYPlot>
-  );
+  const $ = mount(<MixedStackedChart />);
 
-  const renderedVerticalBarsWrapper = wrapper.find(VerticalBarSeries);
-  const renderedLineWrapper = wrapper.find(LineSeries);
+  const renderedBarsWrapper = $.find(BarSeries);
+  const renderedLineWrapper = $.find(LineSeries);
 
   t.deepEqual(
-    renderedVerticalBarsWrapper.at(0).prop('data'),
+    renderedBarsWrapper.at(0).prop('data'),
     [
-      {x: 1, y: 0}
+      {x: 2, y: 10},
+      {x: 4, y: 5},
+      {x: 5, y: 15}
     ],
     'First bar series data is the same'
   );
 
   t.deepEqual(
-    renderedVerticalBarsWrapper.at(1).prop('data'),
+    renderedBarsWrapper.at(1).prop('data'),
     [
-      {x: 1, y: 2, y0: 0}
+      {x: 2, y: 22, y0: 10},
+      {x: 4, y: 7, y0: 5},
+      {x: 5, y: 26, y0: 15}
     ],
     'Second bar series data contains y0 values'
   );
@@ -213,7 +198,9 @@ test('Render two stacked bar series with a non-stacked line series chart', t => 
   t.deepEqual(
     renderedLineWrapper.at(0).prop('data'),
     [
-      {x: 1, y: 3}
+      {x: 2, y: 26},
+      {x: 4, y: 8},
+      {x: 5, y: 30}
     ],
     'Line series data does not contain y0 values'
   );
