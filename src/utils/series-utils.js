@@ -130,7 +130,7 @@ export function getStackedData(children, attr) {
     const baseAttr = attr === 'y' ? 'x' : 'y';
 
     accumulator.push(preppedData.map((d, dIndex) => {
-      if (!(cluster in latestAttrPositions)) {
+      if (!latestAttrPositions[cluster]) {
         latestAttrPositions[cluster] = {};
       }
 

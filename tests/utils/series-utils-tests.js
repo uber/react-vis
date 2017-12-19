@@ -30,7 +30,8 @@ import {
 } from 'utils/series-utils';
 import LineSeries from 'plot/series/line-series';
 import XAxis from 'plot/axis/x-axis';
-import HorizontalBarSeries from 'plot/series/vertical-rect-series';
+import HorizontalBarSeries from 'plot/series/horizontal-rect-series';
+import VerticalBarSeries from 'plot/series/vertical-rect-series';
 
 test('series-utils #isSeriesChild', t => {
   const series = React.createElement(LineSeries, {data: []});
@@ -100,7 +101,7 @@ test('series-utils #seriesClusterProps', t => {
   t.end();
 });
 
-test('series-utils #getStackedData', t => {
+test('series-utils #getStackedData', t => { // eslint-disable-line max-statements
   const yData = [
     [
       {y: 2, x: 10},
@@ -114,49 +115,79 @@ test('series-utils #getStackedData', t => {
     ]
   ];
 
+  const stackByYExpected = [
+    [
+      {x: 2, y: 10},
+      {x: 4, y: 5},
+      {x: 5, y: 15}
+    ],
+    [
+      {x: 2, y: 22, y0: 10},
+      {x: 4, y: 7, y0: 5},
+      {x: 5, y: 26, y0: 15}
+    ], undefined];
+
+  const stackByXExpected = [
+    [
+      {y: 2, x: 10},
+      {y: 4, x: 5},
+      {y: 5, x: 15}
+    ],
+    [
+      {y: 2, x: 22, x0: 10},
+      {y: 4, x: 7, x0: 5},
+      {y: 5, x: 26, x0: 15}
+    ], null];
+
+  const stackByYExpectedPartial = [
+    [
+      {x: 2, y: 10},
+      {x: 4, y: 5}
+    ],
+    [
+      {x: 4, y: 7, y0: 5},
+      {x: 5, y: 11}
+    ]];
+
+  const stackByXExpectedPartial = [
+    [
+        {y: 2, x: 10},
+        {y: 4, x: 5}
+    ],
+    [
+        {y: 4, x: 7, x0: 5},
+        {y: 5, x: 11}
+    ]];
+
   // Transpose data to flip stacking
   const xData = yData.map(arr => arr.map(d => ({x: d.y, y: d.x})));
 
+  const partialYData = [yData[0].slice(0, 2), yData[1].slice(1)];
+  const partialXData = partialYData.map(arr => arr.map(d => ({x: d.y, y: d.x})));
+
   let children = [
+    (<VerticalBarSeries
+      data={xData[0]}
+    />),
+    (<VerticalBarSeries
+      data={xData[1]}/>),
+    (<div> i think i will by that lamp </div>)
+  ];
+
+  let results = getStackedData(children, 'y');
+  t.deepEqual(results, stackByYExpected, 'should find the correct results for stacking by y');
+
+  children = [
     (<HorizontalBarSeries
       data={yData[0]}
     />),
     (<HorizontalBarSeries
       data={yData[1]}/>),
-    (<div> i think i will by that lamp </div>)
-  ];
-  let results = getStackedData(children, 'y');
-  let expectedResults = [[
-    {x: 10, y: 2},
-    {x: 5, y: 4},
-    {x: 15, y: 5}
-  ], [
-    {x: 12, y: 4, y0: 2},
-    {x: 2, y: 8, y0: 4},
-    {x: 11, y: 10, y0: 5}
-  ], undefined];
-  t.deepEqual(results, expectedResults, 'should find the correct results for stacking by y');
-
-  children = [
-    (<HorizontalBarSeries
-      data={xData[0]}
-    />),
-    (<HorizontalBarSeries
-      data={xData[1]}/>),
     null
   ];
   results = getStackedData(children, 'x');
-  expectedResults = [[
-    {x: 2, y: 10},
-    {x: 4, y: 5},
-    {x: 5, y: 15}
-  ], [
-    {x: 4, x0: 2, y: 12},
-    {x: 8, x0: 4, y: 2},
-    {x: 10, x0: 5, y: 11}
-  ], null];
 
-  t.deepEqual(results, expectedResults, 'should find the correct results for stacking by x');
+  t.deepEqual(results, stackByXExpected, 'should find the correct results for stacking by x');
 
   children = [
     <HorizontalBarSeries
@@ -176,72 +207,90 @@ test('series-utils #getStackedData', t => {
       data={yData[1]}
     />
   ];
+  results = getStackedData(children, 'x');
+  let expectedResults = [
+    ...stackByXExpected.slice(0, 2),
+    ...stackByXExpected.slice(0, 2)
+  ];
+
+  t.deepEqual(results, expectedResults, 'should find the correct results for stacking bar clusters by x');
+
+  children = [
+    <VerticalBarSeries
+      cluster="alpha"
+      data={xData[0]}
+    />,
+    <VerticalBarSeries
+      cluster="alpha"
+      data={xData[1]}
+    />,
+    <VerticalBarSeries
+      cluster="beta"
+      data={xData[0]}
+    />,
+    <VerticalBarSeries
+      cluster="beta"
+      data={xData[1]}
+    />
+  ];
   results = getStackedData(children, 'y');
   expectedResults = [
-    [
-      {x: 10, y: 2},
-      {x: 5, y: 4},
-      {x: 15, y: 5}
-    ],
-    [
-      {x: 12, y: 4, y0: 2},
-      {x: 2, y: 8, y0: 4},
-      {x: 11, y: 10, y0: 5}
-    ],
-    [
-      {x: 10, y: 2},
-      {x: 5, y: 4},
-      {x: 15, y: 5}
-    ],
-    [
-      {x: 12, y: 4, y0: 2},
-      {x: 2, y: 8, y0: 4},
-      {x: 11, y: 10, y0: 5}
-    ]
+    ...stackByYExpected.slice(0, 2),
+    ...stackByYExpected.slice(0, 2)
   ];
   t.deepEqual(results, expectedResults, 'should find the correct results for stacking bar clusters by y');
 
   children = [
     <HorizontalBarSeries
       cluster="alpha"
-      data={xData[0]}
+      data={partialYData[0]}
     />,
     <HorizontalBarSeries
       cluster="alpha"
-      data={xData[1]}
+      data={partialYData[1]}
     />,
     <HorizontalBarSeries
       cluster="beta"
-      data={xData[0]}
+      data={partialYData[0]}
     />,
     <HorizontalBarSeries
       cluster="beta"
-      data={xData[1]}
+      data={partialYData[1]}
     />
   ];
   results = getStackedData(children, 'x');
   expectedResults = [
-    [
-      {x: 2, y: 10},
-      {x: 4, y: 5},
-      {x: 5, y: 15}
-    ],
-    [
-      {x: 4, x0: 2, y: 12},
-      {x: 8, x0: 4, y: 2},
-      {x: 10, x0: 5, y: 11}
-    ],
-    [
-      {x: 2, y: 10},
-      {x: 4, y: 5},
-      {x: 5, y: 15}
-    ],
-    [
-      {x: 4, x0: 2, y: 12},
-      {x: 8, x0: 4, y: 2},
-      {x: 10, x0: 5, y: 11}
-    ]
+    ...stackByXExpectedPartial,
+    ...stackByXExpectedPartial
   ];
-  t.deepEqual(results, expectedResults, 'should find the correct results for stacking bar clusters by x');
+
+  t.deepEqual(results, expectedResults, 'should find the correct results for stacking bar clusters by x with incomplete data');
+
+  children = [
+    <VerticalBarSeries
+        cluster="alpha"
+        data={partialXData[0]}
+      />,
+    <VerticalBarSeries
+        cluster="alpha"
+        data={partialXData[1]}
+      />,
+    <VerticalBarSeries
+        cluster="beta"
+        data={partialXData[0]}
+      />,
+    <VerticalBarSeries
+        cluster="beta"
+        data={partialXData[1]}
+      />
+  ];
+  results = getStackedData(children, 'y');
+  expectedResults = [
+    ...stackByYExpectedPartial,
+    ...stackByYExpectedPartial
+  ];
+
+  t.deepEqual(results, expectedResults, 'should find the correct results for stacking bar clusters by y with incomplete data');
+
   t.end();
 });
