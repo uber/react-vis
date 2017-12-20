@@ -1,6 +1,6 @@
 {
   "name": "react-vis",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "license": "MIT",
   "author": "Visualization Team <visualization@uber.com>",
   "description": "Data visualization library based on React and d3.",
