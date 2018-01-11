@@ -118,7 +118,7 @@ export default class Example extends React.Component {
             buttonContent={'TOGGLE STROKEWIDTH'} />
           <ShowcaseButton
             onClick={() => this.setState({hideComponent: !hideComponent})}
-            buttonContent={hideComponent ? 'SHOW' : 'HDE'} />
+            buttonContent={hideComponent ? 'SHOW' : 'HIDE'} />
         </div>
         {!hideComponent && <XYPlot
           onMouseLeave={() => this.setState({value: false})}
