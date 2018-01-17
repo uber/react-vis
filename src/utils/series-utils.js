@@ -108,10 +108,13 @@ function prepareData(data) {
  * @returns {Array} New array of children for the series.
  */
 export function getStackedData(children, attr) {
+  // It stores the last segment position added to each bar, separated by cluster.
+  const latestAttrPositions = {};
+
   return children.reduce((accumulator, series, seriesIndex) => {
     // Skip the children that are not series (e.g. don't have any data).
     if (!series) {
-      accumulator.result.push(null);
+      accumulator.push(null);
       return accumulator;
     }
 
@@ -119,33 +122,46 @@ export function getStackedData(children, attr) {
     const preppedData = prepareData(data, attr);
 
     if (!attr || !preppedData || !preppedData.length) {
-      accumulator.result.push(preppedData);
+      accumulator.push(preppedData);
       return accumulator;
     }
 
     const attr0 = `${attr}0`;
+    const baseAttr = attr === 'y' ? 'x' : 'y';
 
-    accumulator.result.push(preppedData.map((d, dIndex) => {
-      // In case if it's the first series don't try to override any values.
-      if (!accumulator.seriesPointers[cluster]) {
+    accumulator.push(preppedData.map((d, dIndex) => {
+      if (!latestAttrPositions[cluster]) {
+        latestAttrPositions[cluster] = {};
+      }
+
+      const prevD = latestAttrPositions[cluster][d[baseAttr]];
+      // It is the first segment of a bar.
+      if (!prevD) {
+        latestAttrPositions[cluster][d[baseAttr]] = {
+          [attr0]: d[attr0],
+          [attr]: d[attr]
+        };
+
         return {...d};
       }
-      // get the previous series in this cluster
-      const prevSeries = accumulator.seriesPointers[cluster].slice().pop();
-      // get the previous data point in that series
-      const prevD = accumulator.result[prevSeries][dIndex];
-      return {
+
+      // Calculate the position of the next segment in a bar.
+      const nextD = {
         ...d,
         [attr0]: prevD[attr],
         [attr]: prevD[attr] + d[attr] - (d[attr0] || 0)
       };
+
+      latestAttrPositions[cluster][d[baseAttr]] = {
+        [attr0]: nextD[attr0],
+        [attr]: nextD[attr]
+      };
+
+      return nextD;
     }));
-    accumulator.seriesPointers[cluster] = (accumulator.seriesPointers[cluster] || []).concat([seriesIndex]);
+
     return accumulator;
-  }, {
-    result: [],
-    seriesPointers: {}
-  }).result;
+  }, []);
 }
 
 /**
