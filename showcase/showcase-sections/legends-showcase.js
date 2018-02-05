@@ -9,29 +9,36 @@ const {
   SearchableDiscreteColorLegendExample,
   VerticalDiscreteColorLegendExample
 } = showCase;
-
+/* eslint-disable max-len */
 const DISCRETE_LEGENDS = [{
   name: 'Vertical legend',
-  component: VerticalDiscreteColorLegendExample
+  component: VerticalDiscreteColorLegendExample,
+  componentName: 'VerticalDiscreteColorLegendExample'
 }, {
   name: 'Horizontal legend',
-  component: HorizontalDiscreteColorLegendExample
+  component: HorizontalDiscreteColorLegendExample,
+  componentName: 'HorizontalDiscreteColorLegendExample'
 }, {
   name: 'Custom palette with hover interaction',
-  component: HorizontalDiscreteCustomPalette
+  component: HorizontalDiscreteCustomPalette,
+  componentName: 'HorizontalDiscreteCustomPalette'
 }, {
   name: 'Discrete color legend with search',
-  component: SearchableDiscreteColorLegendExample
+  component: SearchableDiscreteColorLegendExample,
+  componentName: 'SearchableDiscreteColorLegendExample'
 }];
+/* eslint-enable max-len */
 
 const CONTINOUS_COLOR_LEGEND = [{
   name: 'Default legend',
-  component: ContinuousColorLegendExample
+  component: ContinuousColorLegendExample,
+  componentName: 'ContinuousColorLegendExample'
 }];
 
 const CONTINOUS_SIZE_LEGEND = [{
   name: 'Default legend',
-  component: ContinuousSizeLegendExample
+  component: ContinuousSizeLegendExample,
+  componentName: 'ContinuousSizeLegendExample'
 }];
 
 class LegendsExample extends Component {

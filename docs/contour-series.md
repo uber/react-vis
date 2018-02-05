@@ -2,7 +2,7 @@
 
 The contour series allows for the easy creation of contour density plots. These can be more effective for visualizing heat map data than a rectangular heat map! Given a number of points in a space the relative contour lines are computed, so as to simplify the output into a more legible format!
 
-<!-- INJECT:"ContourSeriesExample" -->
+<!-- INJECT:"ContourSeriesExampleWithLink" -->
 
 The ContourSeries expects a similar data input as would be fed to either the MarkSeries or the HeatmapSeries. It can be as easy as just providing a well formatted data prop (an array of object containing numerically valued x and y keys), or more complex such as below:
 

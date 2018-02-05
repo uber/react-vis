@@ -4,11 +4,11 @@
 
 Bar series allows users to construct charts that contain rectangles that are oriented either left-right or top-bottom. This type of series is generally used to visualize mappings of categorical data to quantitative data. For instance if you had counts of pigeon sightings by season, that would be a perfect bar series (`[{x: 'winter', y: 10}, {x: 'spring', y: 100}, {x: 'summer', y: 10000}, {x: 'fall', y: 10}]`), while if that data was represented as the individual records of your sightings of pigeons (`[{x: May 1st 2pm}, {x: May 12th 1am}]`) you might either want a mark-series (to make a scatterplot) or a rect-series (to make a histogram).
 
-<!-- INJECT:"BarChart" -->
+<!-- INJECT:"BarChartWithLink" -->
 
 Bar series come in two flavors, `HorizontalBarSeries` and `VerticalBarSeries`. VerticalBarSeries have vertical bars, HorizontalBarSeries have horizontal bars, plain and simple!
 
-<!-- INJECT:"StackedHorizontalBarChart" -->
+<!-- INJECT:"StackedHorizontalBarChartWithLink" -->
 
 ## Data format Reference
 
@@ -68,7 +68,7 @@ Provide an additional class name for the series.
 Supply a clustering key for this series.
 When used with the `stackBy` attribute, creates a clustered stacked bar chart. Returning to our pigeon example from earlier, if you had multiple years of pigeon sightings by season and you wanted to compare the season, clustering would be a great way to do that.
 
-<!-- INJECT:"ClusteredStackedVerticalBarChart" -->
+<!-- INJECT:"ClusteredStackedVerticalBarChartWithLink" -->
 
 #### data
 Type: `Array<Object>`

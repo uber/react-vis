@@ -10,11 +10,13 @@ const {
 const TREEMAPS = [{
   name: 'Simple Treemap',
   component: SimpleTreemap,
+  componentName: 'SimpleTreemap',
   docsLink: 'http://uber.github.io/react-vis/documentation/other-charts/treemap',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/treemap/index.js'
 }, {
   name: 'Animated Treemap',
-  component: TreemapExample
+  component: TreemapExample,
+  componentName: 'TreemapExample'
 }];
 
 class TreemapShowcase extends Component {

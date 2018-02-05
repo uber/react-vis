@@ -1,6 +1,6 @@
 ## ArcSeries:
 
-<!-- INJECT:"ArcSeriesExample" -->
+<!-- INJECT:"ArcSeriesExampleWithLink" -->
 
 The arc series allows users to specify arbitrary arcs in the plane! This is useful for making pie charts, sunbursts, and anything else circular.
 
@@ -37,7 +37,7 @@ const myData = [
 ]
 ```
 
-angle0 describes the start of the arc in radians, and angle describes the end of the arc, again in radians. radius0 describes the inner distance from the origin, while radius describes the outer distance to the origin. It is recomended to provide all four of these quantities to format your arcs well.
+angle0 describes the start of the arc in radians, and angle describes the end of the arc, again in radians. radius0 describes the inner distance from the origin, while radius describes the outer distance to the origin. It is recommended to provide all four of these quantities to format your arcs well.
 
 #### angle0
 Type: `number`  
@@ -72,7 +72,7 @@ Type: `string|number`
 Default: 1  
 The opacity of an arc in the series, from 0 (transparent) to 1 (opaque).
 
-<!-- INJECT:"ClockExample" -->
+<!-- INJECT:"ClockExampleWithLink" -->
 
 ## Series API Reference
 

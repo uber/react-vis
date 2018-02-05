@@ -1,6 +1,6 @@
 ## WhiskerSeries
 
-<!-- INJECT:"WhiskerChart" -->
+<!-- INJECT:"WhiskerChartWithLink" -->
 
 WhiskerSeries plots variance "whiskers" for each data point. Often this is used in combination with another series (e.g. a MarkSeries or LineSeries) to represent the variance (or alternately standard deviation) associated with each value. Variance lines can be in the Y dimension, X dimension, or both.
 
@@ -20,7 +20,7 @@ render() {
 ```
 
 Just like other series, WhiskerSeries expects its data to be formatted as an array of
-objects. These data points may incude an `xVariance` property, a `yVariance` property,
+objects. These data points may include an `xVariance` property, a `yVariance` property,
 or both:
 
 ```javascript
@@ -34,7 +34,7 @@ const myData = [
 ```
 
 WhiskerSeries also accepts a `size` value that specifies an empty "buffer" region.
-This is especially useful if you are combinging the whiskers with another series, and
+This is especially useful if you are combining the whiskers with another series, and
 the marks of that series include transparent regions. The buffer region prevents
 whisker lines from being drawn behind that other mark.
 

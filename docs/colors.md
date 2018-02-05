@@ -35,11 +35,11 @@ So it goes like this:
 
 #### We do nothing:
 
-<!-- INJECT:"SensibleDefaults" -->
+<!-- INJECT:"SensibleDefaultsWithLink" -->
 
 With no color instruction, colors are automatically set by series according to the default react-vis palette, which is: 
 
-<!-- INJECT:"ReactVis5" -->
+<!-- INJECT:"ReactVis5WithLink" -->
 
 #### We specify color in XYPlot
 
@@ -61,7 +61,7 @@ With no color instruction, colors are automatically set by series according to t
 </XYPlot>
 ```
 
-<!-- INJECT:"ColorInXYPlot" -->
+<!-- INJECT:"ColorInXYPlotWithLink" -->
 
 Without any further instruction, all the series are red. Note that in the case of LineSeries, we have to use stroke instead of color for this effect to work. 
 
@@ -95,7 +95,7 @@ Finally, the literal color scale just returns whatever is provided as is. With a
 
 ##### Categorical colors at series level
 
-<!-- INJECT:"CategoryColorAtSeriesLevel" -->
+<!-- INJECT:"CategoryColorAtSeriesLevelWithLink" -->
 
 For this example, the XYPlot props are:
 
@@ -133,7 +133,7 @@ As you can see, __using categorical color at the series level doesn't work for b
 
 ##### Linear colors at series level
 
-<!-- INJECT:"LinearColorAtSeriesLevel" -->
+<!-- INJECT:"LinearColorAtSeriesLevelWithLink" -->
 
 ```jsx
 <XYPlot height={200} width={200}
@@ -169,7 +169,7 @@ Likewise, __using linear color at the series level only works for line charts__.
 
 ##### Literal colors at series level
 
-<!-- INJECT:"LiteralColorAtSeriesLevel" -->
+<!-- INJECT:"LiteralColorAtSeriesLevelWithLink" -->
 
 ```jsx
 <XYPlot height={200} width={200}>
@@ -209,7 +209,7 @@ Now, they will have a color information as well.
 
 
 ##### Categorical colors at mark level
-<!-- INJECT:"CategoryColorAtMarkLevel" -->
+<!-- INJECT:"CategoryColorAtMarkLevelWithLink" -->
 
 ```jsx
 <XYPlot height={200} width={200} colorType="category">
@@ -235,7 +235,7 @@ For line charts, __nothing!__ They ignore colors at mark level. So they behave j
 
 For the 2 other charts, marks are colored according to the default extended palette:
 
-<!-- INJECT:"ReactVis20" -->
+<!-- INJECT:"ReactVis20WithLink" -->
 
 Here, I have specified the colorType prop at the XYPlot level. I could have done so at the series level, inside of each series component (it cascades down). However, I haven't specified a colorRange or a colorDomain. 
 
@@ -243,7 +243,7 @@ It's going to use the default extended palette as the color range. We'll overrid
 With this syntax, we'll render marks which have different color information in different colors, but we don't control which color. If we want to control which color a specific value is going to be associated with, we have to pass a colorDomain.
 
 ##### Categorical colors at mark level, custom palette
-<!-- INJECT:"CategoryColorAtMarkLevelCustomPalette" -->
+<!-- INJECT:"CategoryColorAtMarkLevelCustomPaletteWithLink" -->
 
 ```jsx
 <XYPlot height={200} width={200} colorType="category" colorRange={myPalette}>
@@ -265,13 +265,13 @@ With this syntax, we'll render marks which have different color information in d
 
 This time, I'm passing a custom palette: 
 
-<!-- INJECT:"CustomPalette" -->
+<!-- INJECT:"CustomPaletteWithLink" -->
 
 Behavior for line chart is still identical, but the colors are different for our bar charts and scatterplots. As I'm not passing a color domain, I still don't control which value will be associated with which color - not super important since my color values are random numbers. But if order matters, a colorDomain is required.
 
 ##### Linear colors at mark level, default palette
 
-<!-- INJECT:"LinearColorAtMarkLevelNoPalette" -->
+<!-- INJECT:"LinearColorAtMarkLevelNoPaletteWithLink" -->
 
 ```jsx
 <XYPlot height={200} width={200}>
@@ -293,7 +293,7 @@ Behavior for line chart is still identical, but the colors are different for our
 
 The linear color scale is the default color scale. So, to get that behavior, we don't need to specify this colorType in XYPlot. Its associated color range was conceived by someone who really likes orange:
 
-<!-- INJECT:"Continuous" -->
+<!-- INJECT:"ContinuousWithLink" -->
 
 I haven't specified the color range either. React-Vis will compute it by looking at the minimum and maximum value associated with color in all the series of a given XYPlot, and use that as the domain. 
 
@@ -301,7 +301,7 @@ The line charts are still unaffected.
 
 ##### Linear colors at mark level, custom palette
 
-<!-- INJECT:"LinearColorAtMarkLevel" -->
+<!-- INJECT:"LinearColorAtMarkLevelWithLink" -->
 
 ```jsx
 <XYPlot height={200} width={200} colorRange={['#c7e9c0', '#00441b']}>
@@ -325,7 +325,7 @@ Here's the same code, but we define the color range. This green palette comes fr
 
 ##### Literal colors at mark level, default palette
 
-<!-- INJECT:"LiteralColorAtMarkLevel" -->
+<!-- INJECT:"LiteralColorAtMarkLevelWithLink" -->
 
 ```jsx
 <XYPlot height={200} width={200} colorType="literal"}>
@@ -359,7 +359,7 @@ When we pass color information, we set both the fill and stroke. However, we can
 
 As of this writing, ContourSeries and PolygonSeries don't follow this model and their color can only be controlled by "color". 
 
-<!-- INJECT:"CategoryColorAtMarkLevelFixedStroke" -->
+<!-- INJECT:"CategoryColorAtMarkLevelFixedStrokeWithLink" -->
 
 ```jsx
 <XYPlot height={200} width={200} colorType="category" stroke="#f70">
@@ -389,7 +389,7 @@ The scatterplot dots are also now surrounded with that color.
 
 Note that in the case of a LineMarkSeries (a combination of a LineSeries and a MarkSeries) the stroke property will control both the color of the line and the stroke of the marks. If you want a different color, you can just instead create a LineSeries and a MarkSeries with the same data:
 
-<!-- INJECT:"LineSeriesMarkSeries" -->
+<!-- INJECT:"LineSeriesMarkSeriesWithLink" -->
 
 ```jsx
 <XYPlot height={200} width={600}>
@@ -415,7 +415,7 @@ We've seen that we can set color information at the plot level, at the series le
 
 If you need to color one element (say, one mark) differently from all the others, you can specify color at a higher level (say, the series or the plot) and only pass color information to the exception, rather than pass color information to all elements. 
 
-<!-- INJECT:"ColorSpecificity" -->
+<!-- INJECT:"ColorSpecificityWithLink" -->
 
 ```jsx
   <XYPlot {...defaultXYPlotProps} color="#12939A" colorType="literal">
@@ -443,7 +443,7 @@ Notes:
 
 Why use a boring solid color when you can use gradients? We're not sure either! Once you define gradients (see [gradients](gradients.md)) you can use them instead of color (or fill, or stroke) at the series level.
 
-<!-- INJECT:"GradientCharts" -->
+<!-- INJECT:"GradientChartsWithLink" -->
 
 ```jsx
   const gradient = (<GradientDefs>

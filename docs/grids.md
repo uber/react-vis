@@ -1,6 +1,6 @@
 ## Cartesian Grids
 
-<!-- INJECT:"CustomAxisChart" -->
+<!-- INJECT:"CustomAxisChartWithLink" -->
 
 `VerticalGridLines` and `HorizontalGridLines` show a grid inside the chart. Here is a short example:
 
@@ -48,7 +48,7 @@ An CSS object that will style these gridlines.
 
 ## Polar Grids
 
-<!-- INJECT:"FauxScatterplotChart" -->
+<!-- INJECT:"FauxScatterplotChartWithLink" -->
 
 `CircularGridLines` allows you to draw circular grid lines. This might be useful for a polar scatterplot, as shown above, or a radar chart or any of a wide host of additional contexts. Usage example
 

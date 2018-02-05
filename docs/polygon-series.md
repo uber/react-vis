@@ -1,6 +1,6 @@
 ## PolygonSeries:
 
-<!-- INJECT:"TriangleExample" -->
+<!-- INJECT:"TriangleExampleWithLink" -->
 
 The polygon series allows users to specify arbitrary polygons in coordinates. This may seem un-useful, but it allows for
 easy creation of radar charts, fancy mark series dots, and any variety of additional things you might need polygons for!
@@ -62,7 +62,7 @@ Array of data for the series. See above data format reference.
 
 #### style
 Type: `object`
-Paths accept a ton of different styles, so rather than prescribe every single one we just accept a general grab bag pf the styles. check out the [w3](https://www.w3schools.com/graphics/svg_path.asp) page for more details and the [style] documnetation (style.md).
+Paths accept a ton of different styles, so rather than prescribe every single one we just accept a general grab bag pf the styles. check out the [w3](https://www.w3schools.com/graphics/svg_path.asp) page for more details and the [style] documentation (style.md).
 
 ## Interaction handlers
 

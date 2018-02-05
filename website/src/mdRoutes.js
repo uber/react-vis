@@ -22,6 +22,7 @@ import decorativeAxis from '../../docs/decorative-axis.md';
 import gradients from '../../docs/gradients.md';
 import flexiblePlots from '../../docs/flexible-plots.md';
 import borders from '../../docs/borders.md';
+import voronoi from '../../docs/voronoi.md';
 
 import arcSeries from '../../docs/arc-series.md';
 import areaSeries from '../../docs/area-series.md';
@@ -190,6 +191,9 @@ export default [{
       }, {
         name: 'Borders',
         markdown: borders,
+      }, {
+        name: 'Voronoi',
+        markdown: voronoi,
       },
     ],
   }, {
