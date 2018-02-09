@@ -94,6 +94,7 @@ class BarSeriesCanvas extends AbstractSeries {
 
 BarSeriesCanvas.displayName = 'BarSeriesCanvas';
 BarSeriesCanvas.defaultProps = {
+  ...AbstractSeries.defaultProps,
   linePosAttr: PropTypes.string.isRequired,
   valuePosAttr: PropTypes.string.isRequired,
   lineSizeAttr: PropTypes.string.isRequired,

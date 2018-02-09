@@ -108,6 +108,7 @@ function prepareData(data) {
  * @returns {Array} New array of children for the series.
  */
 export function getStackedData(children, attr) {
+  const areSomeSeriesStacked = children.some(series => series && series.props.stack);
   // It stores the last segment position added to each bar, separated by cluster.
   const latestAttrPositions = {};
 
@@ -118,10 +119,10 @@ export function getStackedData(children, attr) {
       return accumulator;
     }
 
-    const {data, cluster = 'default'} = series.props;
+    const {data, cluster = 'default', stack} = series.props;
     const preppedData = prepareData(data, attr);
 
-    if (!attr || !preppedData || !preppedData.length) {
+    if (!attr || !preppedData || !preppedData.length || (areSomeSeriesStacked && !stack)) {
       accumulator.push(preppedData);
       return accumulator;
     }

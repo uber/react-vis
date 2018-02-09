@@ -23,9 +23,12 @@ import React from 'react';
 import {mount, shallow} from 'enzyme';
 
 import VerticalBarSeries from 'plot/series/vertical-bar-series';
+import BarSeries from 'plot/series/bar-series';
+import LineSeries from 'plot/series/line-series';
 import XAxis from 'plot/axis/x-axis';
 import XYPlot from 'plot/xy-plot';
 
+import MixedStackedChart from '../../showcase/plot/mixed-stacked-chart';
 import {FlexibleCharts} from '../../showcase/flexible/flexible-examples';
 import {testRenderWithProps} from '../test-utils';
 
@@ -163,5 +166,44 @@ test('testing flexible charts', t => {
   t.notEqual(h.height, '100px', 'flexible height - height is not 100px');
   t.notEqual(v.width, '100px', 'flexible vis - width is not 100px');
   t.notEqual(v.height, '100px', 'flexible vis - height is not 100px');
+  t.end();
+});
+
+test('Render two stacked bar series with a non-stacked line series chart', t => {
+  const $ = mount(<MixedStackedChart />);
+
+  const renderedBarsWrapper = $.find(BarSeries);
+  const renderedLineWrapper = $.find(LineSeries);
+
+  t.deepEqual(
+    renderedBarsWrapper.at(0).prop('data'),
+    [
+      {x: 2, y: 10},
+      {x: 4, y: 5},
+      {x: 5, y: 15}
+    ],
+    'First bar series data is the same'
+  );
+
+  t.deepEqual(
+    renderedBarsWrapper.at(1).prop('data'),
+    [
+      {x: 2, y: 22, y0: 10},
+      {x: 4, y: 7, y0: 5},
+      {x: 5, y: 26, y0: 15}
+    ],
+    'Second bar series data contains y0 values'
+  );
+
+  t.deepEqual(
+    renderedLineWrapper.at(0).prop('data'),
+    [
+      {x: 2, y: 26},
+      {x: 4, y: 8},
+      {x: 5, y: 30}
+    ],
+    'Line series data does not contain y0 values'
+  );
+
   t.end();
 });

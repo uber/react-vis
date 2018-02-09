@@ -118,6 +118,7 @@ LineSeries.propTypes = {
   getNull: PropTypes.func
 };
 LineSeries.defaultProps = {
+  ...AbstractSeries.defaultProps,
   strokeStyle: 'solid',
   style: {},
   opacity: 1,

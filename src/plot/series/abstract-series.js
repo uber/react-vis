@@ -51,11 +51,13 @@ const propTypes = {
   onNearestX: PropTypes.func,
   onNearestXY: PropTypes.func,
   style: PropTypes.object,
-  animation: AnimationPropType
+  animation: AnimationPropType,
+  stack: PropTypes.bool
 };
 
 const defaultProps = {
   className: '',
+  stack: false,
   style: {}
 };
 

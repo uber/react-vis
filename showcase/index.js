@@ -48,6 +48,7 @@ import ContourSeriesExample from './plot/contour-series-example';
 import WidthHeightMarginChart from './plot/width-height-margin';
 import CustomScales from './plot/custom-scales';
 import AxisWithTurnedLabels from './plot/axis-with-turned-labels';
+import MixedStackedChart from './plot/mixed-stacked-chart';
 import GridLinesChart from './plot/grid';
 import EnergySankey from './sankey/energy-sankey';
 import VornoiSankey from './sankey/voronoi';
@@ -156,6 +157,7 @@ const mainShowCase = {
   BarChart,
   BigBaseBarChart,
   StackedVerticalBarChart,
+  MixedStackedChart,
   StackedHorizontalBarChart,
   ClusteredStackedVerticalBarChart,
   StackedHistogram,

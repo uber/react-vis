@@ -159,6 +159,7 @@ CustomSVGSeries.propTypes = {
 };
 
 CustomSVGSeries.defaultProps = {
+  ...AbstractSeries.defaultProps,
   animation: false,
   customComponent: 'circle',
   style: {}

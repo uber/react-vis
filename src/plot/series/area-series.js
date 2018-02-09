@@ -114,6 +114,7 @@ AreaSeries.propTypes = {
   getNull: PropTypes.func
 };
 AreaSeries.defaultProps = {
+  ...AbstractSeries.defaultProps,
   getNull: () => true
 };
 

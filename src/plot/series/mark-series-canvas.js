@@ -63,7 +63,6 @@ class MarkSeriesCanvas extends AbstractSeries {
 }
 
 MarkSeriesCanvas.displayName = 'MarkSeriesCanvas';
-MarkSeriesCanvas.defaultProps = {};
 
 MarkSeriesCanvas.propTypes = {
   ...AbstractSeries.propTypes

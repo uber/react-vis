@@ -263,7 +263,6 @@ test('series-utils #getStackedData', t => { // eslint-disable-line max-statement
     ...stackByXExpectedPartial,
     ...stackByXExpectedPartial
   ];
-
   t.deepEqual(results, expectedResults, 'should find the correct results for stacking bar clusters by x with incomplete data');
 
   children = [
@@ -291,6 +290,68 @@ test('series-utils #getStackedData', t => { // eslint-disable-line max-statement
   ];
 
   t.deepEqual(results, expectedResults, 'should find the correct results for stacking bar clusters by y with incomplete data');
+
+  children = [
+    <VerticalBarSeries
+      data={yData[0]}
+      stack
+    />,
+    <VerticalBarSeries
+      data={[
+        {x: 10, y: 3},
+        {x: 5, y: 6},
+        {x: 15, y: 7}
+      ]}
+      stack
+    />,
+    <LineSeries
+      data={yData[1]}
+    />
+  ];
+  results = getStackedData(children, 'y');
+  expectedResults = [
+    yData[0],
+    [
+      {x: 10, y: 5, y0: 2},
+      {x: 5, y: 10, y0: 4},
+      {x: 15, y: 12, y0: 5}
+    ],
+    yData[1]
+  ];
+  t.deepEqual(results, expectedResults, 'should find the correct results for stacking by y only the bars');
+
+  children = [
+    <VerticalBarSeries
+      cluster="alpha"
+      data={xData[0]}
+      stack
+    />,
+    <VerticalBarSeries
+      cluster="alpha"
+      data={xData[1]}
+      stack
+    />,
+    <VerticalBarSeries
+      cluster="beta"
+      data={xData[0]}
+      stack
+    />,
+    <VerticalBarSeries
+      cluster="beta"
+      data={xData[1]}
+      stack
+    />,
+    <LineSeries
+      data={xData[1]}
+    />
+  ];
+  results = getStackedData(children, 'y');
+  expectedResults = [
+    ...stackByYExpected.slice(0, 2),
+    ...stackByYExpected.slice(0, 2),
+    xData[1]
+  ];
+  t.deepEqual(results, expectedResults, 'should find the correct results for stacking bar clusters by y with a non stacked line');
 
   t.end();
 });

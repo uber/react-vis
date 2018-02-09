@@ -119,3 +119,9 @@ Note that style information passed through the style property will override thos
 
 #### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
+
+#### stack (optional)
+Type: `Boolean`
+Default: `false`
+Opt-in for stacking series and mix stacked and non-stacked series in a single chart. If all series have the `stack` prop set to `false` (which is default behaviour), they will all be considered stackable. Otherwise if at least two of the series have the `stack` prop set to `true`, they will be stacked together and the other series will be considered non stackable.
+See the [XYPlot](xy-plot.md)'s `stackBy` section for more information.
