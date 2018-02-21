@@ -100,7 +100,7 @@ function getCSSRules(styleSheet) {
 const MAGIC_CSS_RULE = '.react-vis-magic-css-import-rule';
 export function checkIfStyleSheetIsImported() {
   /* eslint-disable no-undef, no-process-env */
-  if (process && HIDDEN_PROCESSES[process.env.NODE_ENV]) {
+  if (global.process && HIDDEN_PROCESSES[process.env.NODE_ENV]) {
     return;
   }
   /* eslint-enable no-undef, no-process-env */
