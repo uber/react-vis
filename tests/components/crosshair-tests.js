@@ -4,7 +4,7 @@ import {mount} from 'enzyme';
 
 import DynamicCrosshair from '../../showcase/axes/dynamic-crosshair';
 
-test.only('Crosshair: Dynamic Crosshair exmaple', t => {
+test('Crosshair: Dynamic Crosshair exmaple', t => {
   const $ = mount(<DynamicCrosshair />);
   simulateMouseMove(100);
   t.equal($.find('.rv-crosshair').hasClass('test-class-name'), true, 'should find the class name passed as a prop');
