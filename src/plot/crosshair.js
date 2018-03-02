@@ -65,6 +65,7 @@ class Crosshair extends PureComponent {
 
   static get propTypes() {
     return {
+      className: PropTypes.string,
       values: PropTypes.array,
       series: PropTypes.object,
       innerWidth: PropTypes.number,
@@ -139,6 +140,7 @@ class Crosshair extends PureComponent {
   render() {
     const {
       children,
+      className,
       values,
       marginTop,
       marginLeft,
@@ -160,7 +162,7 @@ class Crosshair extends PureComponent {
 
     return (
       <div
-        className="rv-crosshair"
+        className={`rv-crosshair ${className}`}
         style={{left: `${left}px`, top: `${top}px`}}>
 
         <div

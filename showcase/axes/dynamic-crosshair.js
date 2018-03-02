@@ -87,7 +87,7 @@ export default class DynamicCrosshair extends React.Component {
           data={DATA[0]}/>
         <LineSeries
           data={DATA[1]}/>
-        <Crosshair values={this.state.crosshairValues}/>
+        <Crosshair values={this.state.crosshairValues} className={'test-class-name'}/>
       </XYPlot>
     );
   }
