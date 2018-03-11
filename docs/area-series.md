@@ -18,7 +18,7 @@ The stroke property of an AreaChart creates an outline around the whole shape of
 ## Data format reference
 
 #### x
-Type: `mumber`  
+Type: `number`  
 Left-to-right position of marks in the series.
 
 #### y
