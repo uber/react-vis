@@ -30,7 +30,6 @@ import {
 } from 'utils/scales-utils';
 import {getStackedData, getSeriesChildren, getSeriesPropsFromChildren} from 'utils/series-utils';
 import {getInnerDimensions, MarginPropType} from 'utils/chart-utils';
-import {checkIfStyleSheetIsImported} from 'utils/react-utils';
 import {AnimationPropType} from 'animation';
 import {
   CONTINUOUS_COLOR_RANGE,
@@ -139,10 +138,6 @@ class XYPlot extends React.Component {
       scaleMixins: this._getScaleMixins(data, props),
       data
     };
-  }
-
-  componentDidMount() {
-    checkIfStyleSheetIsImported();
   }
 
   componentWillReceiveProps(nextProps) {
