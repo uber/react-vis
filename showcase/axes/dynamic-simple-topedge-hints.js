@@ -76,7 +76,7 @@ export default class Example extends React.Component {
         {value ?
           <Hint
             value={value}
-            align={ {horizontal: Hint.AUTO, vertical: Hint.ALIGN.TOP_EDGE} }
+            align={ {horizontal: Hint.ALIGN.AUTO, vertical: Hint.ALIGN.TOP_EDGE} }
           >
             <div className="rv-hint__content">
               { `(${value.x}, ${value.y})` }
