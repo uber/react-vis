@@ -81,6 +81,13 @@ export const SHOWCASE_LINKS = {
   SunburstWithTooltips: 'https://github.com/uber/react-vis/blob/master/showcase/sunbursts/sunburst-with-tooltips.js',
   // TREEMAP SHOWCASE LINKS
   SimpleTreemap: 'https://github.com/uber/react-vis/blob/master/showcase/treemap/simple-treemap.js',
-  TreemapExample: 'https://github.com/uber/react-vis/blob/master/showcase/treemap/dynamic-treemap.js'
+  TreemapExample: 'https://github.com/uber/react-vis/blob/master/showcase/treemap/dynamic-treemap.js',
+  // LEGENDS SHOWCASE LINKS
+  VerticalDiscreteColorLegendExample: 'https://github.com/uber/react-vis/blob/master/showcase/legends/vertical-discrete-color.js',
+  HorizontalDiscreteColorLegendExample: 'https://github.com/uber/react-vis/blob/master/showcase/legends/horizontal-discrete-color.js',
+  HorizontalDiscreteCustomPalette: 'https://github.com/uber/react-vis/blob/master/showcase/legends/horizontal-discrete-custom-palette.js',
+  SearchableDiscreteColorLegendExample: 'https://github.com/uber/react-vis/blob/master/showcase/legends/searchable-discrete-color.js',
+  ContinuousColorLegendExample: 'https://github.com/uber/react-vis/blob/master/showcase/legends/continuous-color.js',
+  ContinuousSizeLegendExample: 'https://github.com/uber/react-vis/blob/master/showcase/legends/continuous-size.js'
 };
 /* eslint-enable max-len */
