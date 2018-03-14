@@ -52,7 +52,7 @@ const HIDDEN_PROCESSES = {
  */
 export function warning(message, onlyShowMessageOnce = false) {
   /* eslint-disable no-undef, no-process-env */
-  if (process && HIDDEN_PROCESSES[process.env.NODE_ENV]) {
+  if (global.process && HIDDEN_PROCESSES[process.env.NODE_ENV]) {
     return;
   }
   /* eslint-enable no-undef, no-process-env */
