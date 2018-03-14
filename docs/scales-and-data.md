@@ -147,3 +147,23 @@ This of course applies for all types of series.
 Scales can also be used in [Axes](axes.md) and in [Gridlines](grids.md). You can pass an x-scale (so xDomain, xRange, xPadding, xType) to an XAxis or a VerticalGridLines component, and a y-scale (so yDomain, yRange, yPadding, yType) to a YAxis or HorizontalGridLines component. These scale parameters don't have to be the same as the ones passed to your series.
 
 Did you guess that this data set was the digits sorted alphabetically? eight, five, four...
+
+### Time scale localization
+
+The locale used by d3 to format the time series tick labels is `en-US` by default. You can override it by providing a locale object to the `timeFormatDefaultLocale` function of [d3-time-format](https://github.com/d3/d3-time-format#timeFormatDefaultLocale) which you need to have as a dependency. [Various locale files](https://github.com/d3/d3-time-format/tree/master/locale) are available in the [d3-time-format git repository](https://github.com/d3/d3-time-format#timeFormatDefaultLocale).
+
+eg for including the french locale :
+```javascript
+import {timeFormatDefaultLocale} from 'd3-time-format';
+timeFormatDefaultLocale({
+    dateTime    : '%a %b %e %X %Y',
+    date        : '%d/%m/%Y',
+    time        : '%H : %M : %S',
+    periods     : ['AM', 'PM'],
+    days        : ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+    shortDays   : ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
+    months      : ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+    shortMonths : ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jui', 'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec']
+});
+```
+If you do not want to add d3-time-format as a dependency, you can still use the `tickFormat` prop that can be passed to [Axes](axes.md) to handle the localization yourself, although you will lose the benefits of d3-scale formatting.
