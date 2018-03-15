@@ -43,6 +43,10 @@ Type: `'top'|'left'|'bottom'|'right'`
 The position of the axis inside the chart.
 By default **it is already set** to `'bottom'` for `XAxis` and to `'left'` for `YAxis`. Similar to how the axis are oriented in d3-axis.
 
+#### position (optional)
+Type: `'end'|'middle'|'start'`
+The position of the title relative to the axis. This value is set to `'end'` by default (i.e. towards the left of a horizontal axis, towards the top of a vertical axis.) 
+ 
 #### tickTotal (optional)
 Type: `number`  
 Total number of ticks on the axis. Already set by default. Similar to the `tickTotal()` method of d3-axis.

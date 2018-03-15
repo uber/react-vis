@@ -25,7 +25,8 @@ test('AxisTitle: horizontal bottom axis title', t => {
 
 test('AxisTitle: horizontal top axis title', t => {
   const props = Object.assign({}, baseProps, {
-    orientation: TOP
+    orientation: TOP,
+    position: 'start'
   });
   const $ = mount(<AxisTitle {...props} />);
   const innerGroupHtml = $.find('g > g').html();
@@ -47,7 +48,8 @@ test('AxisTitle: vertical left title', t => {
 
 test('AxisTitle: vertical right title', t => {
   const props = Object.assign({}, baseProps, {
-    orientation: RIGHT
+    orientation: RIGHT,
+    position: 'start'
   });
   const $ = mount(<AxisTitle {...props} />);
   const innerGroupHtml = $.find('g > g').html();

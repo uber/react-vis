@@ -26,7 +26,11 @@ import {ORIENTATION} from 'utils/axis-utils';
 
 // Assuming that 16px = 1em
 const ADJUSTMENT_FOR_TEXT_SIZE = 16;
+const MARGIN = 6;
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
+const defaultProps = {
+  position: 'end'
+};
 
 /**
  * Compute transformations, keyed by orientation
@@ -36,46 +40,100 @@ const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
  */
 const transformation = (width, height) => ({
   [LEFT]: {
-    x: ADJUSTMENT_FOR_TEXT_SIZE,
-    y: 0,
-    rotation: -90,
-    textAnchor: 'end'
+    end: {
+      x: ADJUSTMENT_FOR_TEXT_SIZE,
+      y: MARGIN,
+      rotation: -90,
+      textAnchor: 'end'
+    },
+    middle: {
+      x: ADJUSTMENT_FOR_TEXT_SIZE,
+      y: height / 2 - MARGIN,
+      rotation: -90,
+      textAnchor: 'middle'
+    },
+    start: {
+      x: ADJUSTMENT_FOR_TEXT_SIZE,
+      y: height - MARGIN,
+      rotation: -90,
+      textAnchor: 'start'
+    }
   },
   [RIGHT]: {
-    x: ADJUSTMENT_FOR_TEXT_SIZE * -0.5,
-    y: height,
-    rotation: -90,
-    textAnchor: 'start'
+    end: {
+      x: ADJUSTMENT_FOR_TEXT_SIZE * -0.5,
+      y: MARGIN,
+      rotation: -90,
+      textAnchor: 'end'
+    },
+    middle: {
+      x: ADJUSTMENT_FOR_TEXT_SIZE * -0.5,
+      y: height / 2 - MARGIN,
+      rotation: -90,
+      textAnchor: 'middle'
+    },
+    start: {
+      x: ADJUSTMENT_FOR_TEXT_SIZE * -0.5,
+      y: height - MARGIN,
+      rotation: -90,
+      textAnchor: 'start'
+    }
   },
   [TOP]: {
-    x: 0,
-    y: ADJUSTMENT_FOR_TEXT_SIZE,
-    rotation: 0,
-    textAnchor: 'start'
+    start: {
+      x: MARGIN,
+      y: ADJUSTMENT_FOR_TEXT_SIZE,
+      rotation: 0,
+      textAnchor: 'start'
+    },
+    middle: {
+      x: width / 2 - MARGIN,
+      y: ADJUSTMENT_FOR_TEXT_SIZE,
+      rotation: 0,
+      textAnchor: 'middle'
+    },
+    end: {
+      x: width - MARGIN,
+      y: ADJUSTMENT_FOR_TEXT_SIZE,
+      rotation: 0,
+      textAnchor: 'end'
+    }
   },
   [BOTTOM]: {
-    x: width,
-    y: -6,
-    rotation: 0,
-    textAnchor: 'end'
+    start: {
+      x: MARGIN,
+      y: -MARGIN,
+      rotation: 0,
+      textAnchor: 'start'
+    },
+    middle: {
+      x: width / 2 - MARGIN,
+      y: -MARGIN,
+      rotation: 0,
+      textAnchor: 'middle'
+    },
+    end: {
+      x: width - MARGIN,
+      y: -MARGIN,
+      rotation: 0,
+      textAnchor: 'end'
+    }
   }
 });
 
 const propTypes = {
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
-  orientation: PropTypes.oneOf([
-    LEFT, RIGHT, TOP, BOTTOM
-  ]).isRequired,
+  orientation: PropTypes.oneOf([LEFT, RIGHT, TOP, BOTTOM]).isRequired,
   style: PropTypes.object,
   title: PropTypes.string.isRequired
 };
 
-function AxisTitle({orientation, width, height, style, title}) {
+function AxisTitle({orientation, position, width, height, style, title}) {
   const outerGroupTranslateX = orientation === LEFT ? width : 0;
   const outerGroupTranslateY = orientation === TOP ? height : 0;
   const outerGroupTransform = `translate(${outerGroupTranslateX}, ${outerGroupTranslateY})`;
-  const {x, y, rotation, textAnchor} = transformation(width, height)[orientation];
+  const {x, y, rotation, textAnchor} = transformation(width, height)[orientation][position];
   const innerGroupTransform = `translate(${x}, ${y}) rotate(${rotation})`;
 
   return (
@@ -89,5 +147,5 @@ function AxisTitle({orientation, width, height, style, title}) {
 
 AxisTitle.displayName = 'AxisTitle';
 AxisTitle.propTypes = propTypes;
-
+AxisTitle.defaultProps = defaultProps;
 export default AxisTitle;

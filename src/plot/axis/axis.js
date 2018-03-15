@@ -170,6 +170,7 @@ class Axis extends PureComponent {
       marginTop,
       on0,
       orientation,
+      position,
       style,
       title,
       top,
@@ -204,6 +205,7 @@ class Axis extends PureComponent {
         {!hideTicks && (<AxisTicks {...props} style={{...style, ...style.ticks}}/>)}
         {title ?
           <AxisTitle
+            position={position}
             title={title}
             height={height}
             width={width}

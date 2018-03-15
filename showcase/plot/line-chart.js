@@ -38,8 +38,8 @@ export default class Example extends React.Component {
         height={300}>
         <HorizontalGridLines />
         <VerticalGridLines />
-        <XAxis title="X Axis" />
-        <YAxis title="Y Axis" />
+        <XAxis title="X Axis" position="start"/>
+        <YAxis title="Y Axis"/>
         <LineSeries
           className="first-series"
           data={[
