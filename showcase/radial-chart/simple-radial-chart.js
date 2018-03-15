@@ -38,7 +38,10 @@ export default class SimpleRadialChart extends React.Component {
           {angle: 3, color: '#DA70BF', name: 'magenta'},
           {angle: 5, color: '#F6D18A', name: 'yellow again'}
         ]}
+        labelsRadiusMultiplier={1.1}
+        labelsStyle={{fontSize: 16, fill: '#222'}}
         showLabels
+        style={{stroke: '#fff', strokeWidth: 2}}
         width={400}
         height={300} />
     );

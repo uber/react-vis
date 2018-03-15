@@ -106,9 +106,19 @@ If radius is not set on the data then this can be used to set the innerRadius fo
 
 ##### width (required, pixels)
 
-#### labelsAboveChildren
+##### labelsAboveChildren
 Type: `boolean`
 Whether or not to position the labels on top of the children. This can be useful if you have circular gridline and you want your labels to be legible on top of your grids.
+
+##### labelsRadiusMultiplier
+Type: `number`
+How far the labels should be from the center of the chart as a function of the radius of the chart. If not specified, the default value of 1.1 is used (slightly outside of the chart). 
+Note that the property is labelsRadiusMultiplier (labels plural, not labelRadiusMultiplier)
+
+##### labelsStyle
+Type: 'Object'
+A style object specifically for the labels.
+Note that the property is labelsStyle (labels plural, not labelStyle)
 
 ##### margin (optional, pixels)
 Type: `Object`

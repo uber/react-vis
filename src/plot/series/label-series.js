@@ -26,7 +26,6 @@ import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--label';
 
 class LabelSeries extends AbstractSeries {
-
   render() {
     const {
       animation,
@@ -38,10 +37,10 @@ class LabelSeries extends AbstractSeries {
       marginLeft,
       marginTop,
       rotation,
+      style,
       xRange,
       yRange
     } = this.props;
-
     if (!data) {
       return null;
     }
@@ -49,7 +48,7 @@ class LabelSeries extends AbstractSeries {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <LabelSeries {...this.props} animation={null} _data={data}/>
+          <LabelSeries {...this.props} animation={null} _data={data} />
         </Animation>
       );
     }
@@ -58,11 +57,14 @@ class LabelSeries extends AbstractSeries {
     const yFunctor = this._getAttributeFunctor('y');
 
     return (
-      <g className={`${predefinedClassName} ${className}`}
-         ref="container"
-         transform={`translate(${marginLeft},${marginTop})`}>
+      <g
+        className={`${predefinedClassName} ${className}`}
+        ref="container"
+        transform={`translate(${marginLeft},${marginTop})`}
+        style={style}
+      >
         {data.reduce((res, d, i) => {
-          const {style, xOffset, yOffset} = d;
+          const {style: markStyle, xOffset, yOffset} = d;
           if (!getLabel(d)) {
             return res;
           }
@@ -71,8 +73,8 @@ class LabelSeries extends AbstractSeries {
           const leftOfMiddle = xVal < (xRange[1] - xRange[0]) / 2;
           const aboveMiddle = yVal < Math.abs(yRange[1] - yRange[0]) / 2;
 
-          const x = xVal + ((allowOffsetToBeReversed && leftOfMiddle) ? -1 : 1) * (xOffset || 0);
-          const y = yVal + ((allowOffsetToBeReversed && aboveMiddle) ? -1 : 1) * (yOffset || 0);
+          const x = xVal + (allowOffsetToBeReversed && leftOfMiddle ? -1 : 1) * (xOffset || 0);
+          const y = yVal + (allowOffsetToBeReversed && aboveMiddle ? -1 : 1) * (yOffset || 0);
           const attrs = {
             alignmentBaseline: aboveMiddle ? 'text-before-edge' : 'text-after-edge',
             className: 'rv-xy-plot__series--label-text',
@@ -85,10 +87,10 @@ class LabelSeries extends AbstractSeries {
             x,
             y,
             transform: `rotate(${d.rotation || rotation},${x},${y})`,
-            ...style
+            ...markStyle
           };
           const textContent = getLabel(_data ? _data[i] : d);
-          return res.concat([<text {...attrs} >{textContent}</text>]);
+          return res.concat([<text {...attrs}>{textContent}</text>]);
         }, [])}
       </g>
     );
@@ -99,19 +101,22 @@ LabelSeries.propTypes = {
   animation: PropTypes.bool,
   allowOffsetToBeReversed: PropTypes.bool,
   className: PropTypes.string,
-  data: PropTypes.arrayOf(PropTypes.shape({
-    x: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    y: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    angle: PropTypes.number,
-    radius: PropTypes.number,
-    label: PropTypes.string,
-    xOffset: PropTypes.number,
-    yOffset: PropTypes.number,
-    style: PropTypes.object
-  })).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      x: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+      y: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+      angle: PropTypes.number,
+      radius: PropTypes.number,
+      label: PropTypes.string,
+      xOffset: PropTypes.number,
+      yOffset: PropTypes.number,
+      style: PropTypes.object
+    })
+  ).isRequired,
   marginLeft: PropTypes.number,
   marginTop: PropTypes.number,
   rotation: PropTypes.number,
+  style: PropTypes.object,
   xRange: PropTypes.arrayOf(PropTypes.number),
   yRange: PropTypes.arrayOf(PropTypes.number)
 };
