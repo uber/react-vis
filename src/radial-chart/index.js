@@ -196,7 +196,7 @@ RadialChart.propTypes = {
   getLabel: PropTypes.func,
   height: PropTypes.number.isRequired,
   labelsAboveChildren: PropTypes.bool,
-  labelStle: PropTypes.object,
+  labelsStyle: PropTypes.object,
   margin: MarginPropType,
   onValueClick: PropTypes.func,
   onValueMouseOver: PropTypes.func,
