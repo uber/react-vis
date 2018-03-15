@@ -41,7 +41,9 @@ const DEFAULT_RADIUS_MARGIN = 15;
  * @returns {Array} Array of nodes.
  */
 function getWedgesToRender({data, getAngle}) {
-  const pie = pieBuilder().sort(null).value(getAngle);
+  const pie = pieBuilder()
+    .sort(null)
+    .value(getAngle);
   const pieData = pie(data).reverse();
   return pieData.map((row, index) => {
     return {
@@ -55,11 +57,8 @@ function getWedgesToRender({data, getAngle}) {
   });
 }
 
-function generateLabels(mappedData, accessors) {
-  const {
-    getLabel,
-    getSubLabel
-  } = accessors;
+function generateLabels(mappedData, accessors, labelsRadiusMultiplier = 1.1) {
+  const {getLabel, getSubLabel} = accessors;
   return mappedData.reduce((res, row) => {
     const {angle, angle0, radius} = row;
     const centeredAngle = (angle + angle0) / 2;
@@ -71,19 +70,18 @@ function generateLabels(mappedData, accessors) {
     if (getLabel(row)) {
       newLabels.push({
         angle: updatedAngle,
-        radius: radius * 1.1,
-        label: getLabel(row),
-        style: {fontSize: '12px'}
+        radius: radius * labelsRadiusMultiplier,
+        label: getLabel(row)
       });
     }
 
     if (getSubLabel(row)) {
       newLabels.push({
         angle: updatedAngle,
-        radius: radius * 1.1,
+        radius: radius * labelsRadiusMultiplier,
         label: getSubLabel(row),
-        yOffset: 12,
-        style: {fontSize: '10px'}
+        style: {fontSize: 10},
+        yOffset: 12
       });
     }
     return res.concat(newLabels);
@@ -107,21 +105,24 @@ class RadialChart extends Component {
       animation,
       className,
       children,
+      colorType,
       data,
+      getAngle,
+      getLabel,
+      getSubLabel,
       height,
       hideRootNode,
-      width,
-      colorType,
-      radius,
       innerRadius,
-      showLabels,
+      labelsAboveChildren,
+      labelsRadiusMultiplier,
+      labelsStyle,
       margin,
       onMouseLeave,
       onMouseEnter,
-      labelsAboveChildren,
-      getAngle,
-      getLabel,
-      getSubLabel
+      radius,
+      showLabels,
+      style,
+      width
     } = this.props;
     const mappedData = getWedgesToRender({data, height, hideRootNode, width, getAngle});
     const radialDomain = getRadialDomain(mappedData);
@@ -132,6 +133,7 @@ class RadialChart extends Component {
       radiusDomain: [0, radialDomain],
       data: mappedData,
       radiusNoFallBack: true,
+      style,
       arcClassName: 'rv-radial-chart__series--pie__slice'
     };
     if (radius) {
@@ -142,10 +144,14 @@ class RadialChart extends Component {
     const maxRadius = radius ? radius : getMaxRadius(width, height);
     const defaultMargin = getRadialLayoutMargin(width, height, maxRadius);
 
-    const labels = generateLabels(mappedData, {
-      getLabel,
-      getSubLabel
-    });
+    const labels = generateLabels(
+      mappedData,
+      {
+        getLabel,
+        getSubLabel
+      },
+      labelsRadiusMultiplier
+    );
     return (
       <XYPlot
         height={height}
@@ -158,11 +164,12 @@ class RadialChart extends Component {
         onMouseLeave={onMouseLeave}
         onMouseEnter={onMouseEnter}
         xDomain={[-radialDomain, radialDomain]}
-        yDomain={[-radialDomain, radialDomain]}>
-        <ArcSeries {...arcProps} getAngle={d => d.angle}/>
-        {showLabels && !labelsAboveChildren && <LabelSeries data={labels}/>}
+        yDomain={[-radialDomain, radialDomain]}
+      >
+        <ArcSeries {...arcProps} getAngle={d => d.angle} />
+        {showLabels && !labelsAboveChildren && <LabelSeries data={labels} style={labelsStyle} />}
         {children}
-        {showLabels && labelsAboveChildren && <LabelSeries data={labels}/>}
+        {showLabels && labelsAboveChildren && <LabelSeries data={labels} style={labelsStyle} />}
       </XYPlot>
     );
   }
@@ -173,13 +180,15 @@ RadialChart.propTypes = {
   animation: AnimationPropType,
   className: PropTypes.string,
   colorType: PropTypes.string,
-  data: PropTypes.arrayOf(PropTypes.shape({
-    angle: PropTypes.number,
-    className: PropTypes.string,
-    label: PropTypes.string,
-    radius: PropTypes.number,
-    style: PropTypes.object
-  })).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      angle: PropTypes.number,
+      className: PropTypes.string,
+      label: PropTypes.string,
+      radius: PropTypes.number,
+      style: PropTypes.object
+    })
+  ).isRequired,
   getAngle: PropTypes.func,
   getAngle0: PropTypes.func,
   getRadius: PropTypes.func,
@@ -187,13 +196,15 @@ RadialChart.propTypes = {
   getLabel: PropTypes.func,
   height: PropTypes.number.isRequired,
   labelsAboveChildren: PropTypes.bool,
+  labelsStyle: PropTypes.object,
   margin: MarginPropType,
   onValueClick: PropTypes.func,
   onValueMouseOver: PropTypes.func,
   onValueMouseOut: PropTypes.func,
-  width: PropTypes.number.isRequired,
   showLabels: PropTypes.bool,
-  subLabel: PropTypes.func
+  style: PropTypes.object,
+  subLabel: PropTypes.func,
+  width: PropTypes.number.isRequired
 };
 RadialChart.defaultProps = {
   className: '',
