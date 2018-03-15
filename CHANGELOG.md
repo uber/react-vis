@@ -1,3 +1,10 @@
+## v1.9.2
+- we removed the check-stylesheets warnings.
+- it's now possible to pass better styling options for radial charts labels. It's also possible to position axis titles along the axis.
+- react-motion and react minimal versions have been updated. 
+
+---
+
 ## v1.0.0 Breaking changes
 
 We recently made a major jump to version v1, which naturally includes some breaking changes. Specifically these include
