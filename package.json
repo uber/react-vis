@@ -48,7 +48,7 @@
     "deep-equal": "^1.0.1",
     "global": "^4.3.1",
     "prop-types": "^15.5.8",
-    "react-motion": "^0.4.8"
+    "react-motion": "^0.5.2"
   },
   "devDependencies": {
     "babel-cli": "6.18.0",
