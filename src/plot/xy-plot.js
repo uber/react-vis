@@ -130,6 +130,8 @@ class XYPlot extends React.Component {
     this._mouseLeaveHandler = this._mouseLeaveHandler.bind(this);
     this._mouseEnterHandler = this._mouseEnterHandler.bind(this);
     this._mouseMoveHandler = this._mouseMoveHandler.bind(this);
+    this._touchStartHandler = this._touchStartHandler.bind(this);
+    this._touchMoveHandler = this._touchMoveHandler.bind(this);
     this._wheelHandler = this._wheelHandler.bind(this);
     const {stackBy} = props;
     const children = getSeriesChildren(props.children);
@@ -211,6 +213,44 @@ class XYPlot extends React.Component {
       const component = this.refs[`series${index}`];
       if (component && component.onParentMouseMove) {
         component.onParentMouseMove(event);
+      }
+    });
+  }
+
+  /**
+   * Trigger touch-start related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Touch start event.
+   * @private
+   */
+  _touchStartHandler(event) {
+    const {onMouseDown, children} = this.props;
+    if (onMouseDown) {
+      onMouseDown(event);
+    }
+    const seriesChildren = getSeriesChildren(children);
+    seriesChildren.forEach((child, index) => {
+      const component = this.refs[`series${index}`];
+      if (component && component.onParentTouchStart) {
+        component.onParentTouchStart(event);
+      }
+    });
+  }
+
+  /**
+   * Trigger touch movement-related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Touch move event.
+   * @private
+   */
+  _touchMoveHandler(event) {
+    const {onTouchMove, children} = this.props;
+    if (onTouchMove) {
+      onTouchMove(event);
+    }
+    const seriesChildren = getSeriesChildren(children);
+    seriesChildren.forEach((child, index) => {
+      const component = this.refs[`series${index}`];
+      if (component && component.onParentTouchMove) {
+        component.onParentTouchMove(event);
       }
     });
   }
@@ -447,6 +487,8 @@ class XYPlot extends React.Component {
           onMouseMove={this._mouseMoveHandler}
           onMouseLeave={this._mouseLeaveHandler}
           onMouseEnter={this._mouseEnterHandler}
+          onTouchStart={this._mouseDownHandler}
+          onTouchMove={this._touchMoveHandler}
           onWheel={this._wheelHandler}>
           {components.filter(c => c && c.type.requiresSVG)}
         </svg>
