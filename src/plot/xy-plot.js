@@ -109,6 +109,10 @@ class XYPlot extends React.Component {
       onMouseEnter: PropTypes.func,
       onMouseLeave: PropTypes.func,
       onMouseMove: PropTypes.func,
+      onTouchStart: PropTypes.func,
+      onTouchMove: PropTypes.func,
+      onTouchEnd: PropTypes.func,
+      onTouchCancel: PropTypes.func,
       onWheel: PropTypes.func,
       stackBy: PropTypes.oneOf(ATTRIBUTES),
       style: PropTypes.object,
@@ -132,6 +136,8 @@ class XYPlot extends React.Component {
     this._mouseMoveHandler = this._mouseMoveHandler.bind(this);
     this._touchStartHandler = this._touchStartHandler.bind(this);
     this._touchMoveHandler = this._touchMoveHandler.bind(this);
+    this._touchEndHandler = this._touchEndHandler.bind(this);
+    this._touchCancelHandler = this._touchCancelHandler.bind(this);
     this._wheelHandler = this._wheelHandler.bind(this);
     const {stackBy} = props;
     const children = getSeriesChildren(props.children);
@@ -218,6 +224,30 @@ class XYPlot extends React.Component {
   }
 
   /**
+   * Trigger onMouseLeave handler if it was passed in props.
+   * @param {Event} event Native event.
+   * @private
+   */
+  _mouseLeaveHandler(event) {
+    const {onMouseLeave} = this.props;
+    if (onMouseLeave) {
+      onMouseLeave({event});
+    }
+  }
+
+  /**
+   * Trigger onMouseEnter handler if it was passed in props.
+   * @param {Event} event Native event.
+   * @private
+   */
+  _mouseEnterHandler(event) {
+    const {onMouseEnter} = this.props;
+    if (onMouseEnter) {
+      onMouseEnter({event});
+    }
+  }
+
+  /**
    * Trigger touch-start related callbacks if they are available.
    * @param {React.SyntheticEvent} event Touch start event.
    * @private
@@ -256,26 +286,26 @@ class XYPlot extends React.Component {
   }
 
   /**
-   * Trigger onMouseLeave handler if it was passed in props.
+   * Trigger onTouchEnd handler if it was passed in props.
    * @param {Event} event Native event.
    * @private
    */
-  _mouseLeaveHandler(event) {
-    const {onMouseLeave} = this.props;
-    if (onMouseLeave) {
-      onMouseLeave({event});
+  _touchEndHandler(event) {
+    const {onTouchEnd} = this.props;
+    if (onTouchEnd) {
+      onTouchEnd({event});
     }
   }
 
   /**
-   * Trigger onMouseEnter handler if it was passed in props.
+   * Trigger onTouchCancel handler if it was passed in props.
    * @param {Event} event Native event.
    * @private
    */
-  _mouseEnterHandler(event) {
-    const {onMouseEnter} = this.props;
-    if (onMouseEnter) {
-      onMouseEnter({event});
+  _touchCancelHandler(event) {
+    const {onTouchCancel} = this.props;
+    if (onTouchCancel) {
+      onTouchCancel({event});
     }
   }
 
@@ -489,6 +519,8 @@ class XYPlot extends React.Component {
           onMouseEnter={this._mouseEnterHandler}
           onTouchStart={this._mouseDownHandler}
           onTouchMove={this._touchMoveHandler}
+          onTouchEnd={this._touchEndHandler}
+          onTouchCancel={this._touchCancelHandler}
           onWheel={this._wheelHandler}>
           {components.filter(c => c && c.type.requiresSVG)}
         </svg>
