@@ -36,7 +36,11 @@ export default class Highlight extends AbstractSeries {
 
   onParentMouseDown(e) {
     const {marginLeft, innerHeight, onBrushStart} = this.props;
-    const location = e.nativeEvent.offsetX - marginLeft;
+    let offsetX = e.nativeEvent.offsetX;
+    if (e.nativeEvent.type === 'touchstart') {
+      offsetX = e.nativeEvent.pageX;
+    }
+    const location = offsetX - marginLeft;
 
     // TODO: Eventually support drawing as a full rectangle, if desired. Currently the code supports 'x' only
     this.setState({
@@ -53,6 +57,11 @@ export default class Highlight extends AbstractSeries {
     if (onBrushStart) {
       onBrushStart(e);
     }
+  }
+
+  onParentTouchStart(e) {
+    e.preventDefault();
+    this.onParentMouseDown(e);
   }
 
   stopDrawing() {
@@ -95,7 +104,11 @@ export default class Highlight extends AbstractSeries {
   onParentMouseMove(e) {
     const {marginLeft, onBrush} = this.props;
     const {drawing} = this.state;
-    const loc = e.nativeEvent.offsetX - marginLeft;
+    let offsetX = e.nativeEvent.offsetX;
+    if (e.nativeEvent.type === 'touchmove') {
+      offsetX = e.nativeEvent.pageX;
+    }
+    const loc = offsetX - marginLeft;
 
     if (drawing) {
       const newDrawArea = this._getDrawArea(loc);
@@ -107,6 +120,11 @@ export default class Highlight extends AbstractSeries {
     }
   }
 
+  onParentTouchMove(e) {
+    e.preventDefault();
+    this.onParentMouseMove(e);
+  }
+
   render() {
     const {marginLeft, marginTop, innerWidth, innerHeight, color, opacity} = this.props;
     const {drawArea: {left, right, top, bottom}} = this.state;
@@ -114,8 +132,17 @@ export default class Highlight extends AbstractSeries {
     return (
       <g transform={`translate(${marginLeft}, ${marginTop})`}
          className="highlight-container"
-         onMouseUp={(e) => this.stopDrawing()}
-         onMouseLeave={(e) => this.stopDrawing()}
+         onMouseUp={() => this.stopDrawing()}
+         onMouseLeave={() => this.stopDrawing()}
+         // preventDefault() so that mouse event emulation does not happen
+         onTouchEnd={(e) => {
+           e.preventDefault();
+           this.stopDrawing();
+         }}
+         onTouchCancel={(e) => {
+           e.preventDefault();
+           this.stopDrawing();
+         }}
       >
         <rect
           className="mouse-target"

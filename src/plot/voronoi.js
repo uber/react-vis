@@ -4,6 +4,17 @@ import {voronoi} from 'd3-voronoi';
 
 const NOOP = f => f;
 
+// Find the index of the node at coordinates of a touch point
+function getNodeIndex(evt) {
+  const {nativeEvent: {pageX, pageY}} = evt;
+  const target = document.elementFromPoint(pageX, pageY);
+  if (!target) {
+    return -1;
+  }
+  const {parentNode} = target;
+  return Array.prototype.indexOf.call(parentNode.childNodes, target);
+}
+
 function Voronoi({
   className,
   extent,
@@ -24,9 +35,31 @@ function Voronoi({
     .y(y)
     .extent(extent);
 
+  // Create an array of polygons corresponding to the cells in voronoi
+  const polygons = voronoiInstance.polygons(nodes);
+
+  // Create helper function to handle special logic for touch events
+  const handleTouchEvent = (handler) => (evt) => {
+    evt.preventDefault();
+    const index = getNodeIndex(evt);
+    if (index > -1 && index < polygons.length) {
+      const d = polygons[index];
+      handler(d.data);
+    }
+  };
+
   return (
-    <g className={`${className} rv-voronoi`} style={style}>
-      {voronoiInstance.polygons(nodes).map((d, i) => (
+    <g
+      className={`${className} rv-voronoi`}
+      style={style}
+      // Because of the nature of how touch events, and more specifically touchmove
+      // and how it differs from mouseover, we must manage touch events on the parent
+      onTouchEnd={handleTouchEvent(onMouseUp)}
+      onTouchStart={handleTouchEvent(onMouseDown)}
+      onTouchMove={handleTouchEvent(onHover)}
+      onTouchCancel={handleTouchEvent(onBlur)}
+    >
+      {polygons.map((d, i) => (
         <path
           className={`rv-voronoi__cell ${d.data && d.data.className || ''}`}
           d={`M${d.join('L')}Z`}

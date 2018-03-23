@@ -104,19 +104,19 @@ The TLDR here is that *ORDER MATTERS*! If you want the elements to appear in a d
 
 ### XYPlot
 
-`XYPlot` is a component that wraps series, axis and grids, hints, etc and seamlessly provides necessary dimensions, sizes and scales into its children.  
+`XYPlot` is a component that wraps series, axis and grids, hints, etc and seamlessly provides necessary dimensions, sizes and scales into its children.
 `XYPlot` may or may not contain axes, grids, hints, crosshairs or series.
 
 #### width
-Type: `number`  
+Type: `number`
 Width of the chart. The width should be passed.
 
 #### height
-Type: `number`  
+Type: `number`
 Height of the component. The height should be passed.
 
 #### className (optional)
-Type: `string`  
+Type: `string`
 DOM classNames to be added to the wrapper component.
 
 #### hasTreeStructure (optional)
@@ -124,17 +124,17 @@ Type: `Boolean`
 Flag declaring whether or not react-vis should try to remove potential cyclic deps from tree structures created by d3. Specifically references to "parent" are removed. This is generally used as an internal prop, checkout the treemap or sunburst if you are curious.
 
 #### margin (optional)
-Type: `Object`  
+Type: `Object`
 Default: `{left: 40, right: 10, top: 10, bottom: 40}`
 Margin around the chart.
 
 #### stackBy (optional)
-Type: `string`  
+Type: `string`
 Stack the chart by the given attribute. If the attribute is `y`, the chart is stacked vertically; if the attribute is `x` then it's stacked horizontally. See the [Series](series.md) API reference for series level stack opt-in.
 
 ### style (optional)
 Type: `object`
-CSS properties that will affect this wrapper component. Those will be applied to the SVG element in which other react-vis components will be created.  
+CSS properties that will affect this wrapper component. Those will be applied to the SVG element in which other react-vis components will be created.
 
 ```jsx
 <XYPlot
@@ -201,33 +201,49 @@ const seriesThree = [
 Will render beautifully!
 
 #### onClick (optional)
-Type: `function()`  
+Type: `function()`
 The function that is triggered each time the mouse clicks the component.
 
 #### onDoubleClick (optional)
-Type: `function()`  
+Type: `function()`
 The function that is triggered each time the mouse double-clicks the component.
 
 #### onMouseLeave (optional)
-Type: `function()`  
+Type: `function()`
 The function that is triggered each time the mouse leaves the component.
 
 #### onMouseMove (optional)
-Type: `function()`  
+Type: `function()`
 The function that is triggered each time mouse moves over at the component.
 
 #### onMouseEnter (optional)
-Type: `function()`  
+Type: `function()`
 The function that is triggered each time the mouse enters the component.
 
+#### onTouchStart (optional)
+Type: `function()`
+The function that is triggered each time the touch starts.
+
+#### onTouchMove (optional)
+Type: `function()`
+The function that is triggered each time the touch moves.
+
+#### onTouchEnd (optional)
+Type: `function()`
+The function that is triggered each time the touch ends.
+
+#### onTouchCancel (optional)
+Type: `function()`
+The function that is triggered each time the touch cancels.
+
 #### onWheel (optional)
-Type: `function()`  
+Type: `function()`
 The function that is triggered each time a wheel button is rotated on the component.
 
 #### animation (optional)
 Type: `{duration: number}|boolean`
-Default: `false`  
-Animation config, which is automatically passed to all children, but can be overridden for the each child.  
-If `false` is passed, then the child components *will not be* animated.  
-If `true` is passed then the child components *will be* animated with the default settings.  
+Default: `false`
+Animation config, which is automatically passed to all children, but can be overridden for the each child.
+If `false` is passed, then the child components *will not be* animated.
+If `true` is passed then the child components *will be* animated with the default settings.
 If an object is passed, then the child components *will be* animated with the given settings.

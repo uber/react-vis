@@ -246,11 +246,17 @@ class AbstractSeries extends PureComponent {
 
   _getXYCoordinateInContainer(event) {
     const {marginTop = 0, marginLeft = 0} = this.props;
-    const {nativeEvent: {clientX, clientY}, currentTarget} = event;
+    const {nativeEvent: evt, currentTarget} = event;
     const rect = currentTarget.getBoundingClientRect();
+    let x = evt.clientX;
+    let y = evt.clientY;
+    if (evt.type === 'touchmove') {
+      x = evt.touches[0].pageX;
+      y = evt.touches[0].pageY;
+    }
     return {
-      x: clientX - rect.left - currentTarget.clientLeft - marginLeft,
-      y: clientY - rect.top - currentTarget.clientTop - marginTop
+      x: x - rect.left - currentTarget.clientLeft - marginLeft,
+      y: y - rect.top - currentTarget.clientTop - marginTop
     };
   }
 
@@ -318,6 +324,16 @@ class AbstractSeries extends PureComponent {
     } else {
       this._handleNearestX(event);
     }
+  }
+
+  onParentTouchMove(e) {
+    e.preventDefault();
+    this.onParentMouseMove(e);
+  }
+
+  onParentTouchStart(e) {
+    // prevent mouse event emulation
+    e.preventDefault();
   }
 }
 
