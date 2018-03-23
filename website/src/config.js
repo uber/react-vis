@@ -13,7 +13,7 @@ export const HOME_RIGHT = null;
 
 export const HOME_BULLETS = [];
 
-export const ADDITIONAL_LINKS = [];
+export const ADDITIONAL_LINKS = [{name: 'Storybook', href: './storybook/index.html'}];
 
 export const BASENAME = '/react-vis';
 export const HISTORY = 'browser';
