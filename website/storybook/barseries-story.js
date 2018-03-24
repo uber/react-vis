@@ -29,7 +29,7 @@ function addBarSeriesStory(isVertical = true) {
     return generateLinearData({...params, flipXY: !isVertical});
   }
 
-  storiesOf(seriesName, module)
+  storiesOf(`Series/${seriesName}/Base`, module)
     .addDecorator(withKnobs)
     .add(`single ${seriesName}`, () => {
       return (
@@ -76,8 +76,11 @@ function addBarSeriesStory(isVertical = true) {
           />
         </SimpleChartWrapper>
       );
-    })
-    .add(`${seriesName} - color vary by datapoint`, () => {
+    });
+
+  storiesOf(`Series/${seriesName}/Styling/By datapoint`, module)
+    .addDecorator(withKnobs)
+    .add('color', () => {
       const {colorScale, colorRange} = chooseColorScale();
 
       return (
@@ -93,7 +96,7 @@ function addBarSeriesStory(isVertical = true) {
         </SimpleChartWrapper>
       );
     })
-    .add(`${seriesName} - opacity vary by datapoint`, () => {
+    .add('opacity', () => {
       return (
         <SimpleChartWrapper {...xyPlotParams}>
           <Series
@@ -106,8 +109,11 @@ function addBarSeriesStory(isVertical = true) {
           />
         </SimpleChartWrapper>
       );
-    })
-    .add(`${seriesName} - styling - fill`, () => {
+    });
+
+  storiesOf(`Series/${seriesName}/Styling/At series level`, module)
+    .addDecorator(withKnobs)
+    .add('fill', () => {
       return (
         <SimpleChartWrapper {...xyPlotParams}>
           {styledSeries({
@@ -117,7 +123,7 @@ function addBarSeriesStory(isVertical = true) {
         </SimpleChartWrapper>
       );
     })
-    .add(`${seriesName} - styling - opacity`, () => {
+    .add('opacity', () => {
       return (
         <SimpleChartWrapper {...xyPlotParams}>
           {styledSeries({
@@ -127,7 +133,7 @@ function addBarSeriesStory(isVertical = true) {
         </SimpleChartWrapper>
       );
     })
-    .add(`${seriesName} - styling - stroke`, () => {
+    .add('stroke', () => {
       return (
         <SimpleChartWrapper {...xyPlotParams}>
           {styledSeries({
@@ -137,7 +143,7 @@ function addBarSeriesStory(isVertical = true) {
         </SimpleChartWrapper>
       );
     })
-    .add(`${seriesName} - styling - style`, () => {
+    .add('style', () => {
       return (
         <SimpleChartWrapper {...xyPlotParams}>
           {styledSeries({
