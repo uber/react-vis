@@ -93,7 +93,7 @@ storiesOf('Series/LineSeries/Styling', module)
     );
   });
 
-storiesOf('Series/LineSeries/Curve')
+storiesOf('Series/LineSeries/Curve', module)
   .addDecorator(withKnobs)
   .add('Curve', () => {
     return (
