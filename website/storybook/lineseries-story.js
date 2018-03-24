@@ -22,7 +22,7 @@ function styledLineSeries(props) {
   );
 }
 
-storiesOf('LineSeries', module)
+storiesOf('Series/LineSeries/Base', module)
   .addDecorator(withKnobs)
   .add('Single Line chart', () => {
     return (
@@ -39,43 +39,46 @@ storiesOf('LineSeries', module)
         <LineSeries data={generateLinearData({key: 'line3'})} />
       </SimpleChartWrapper>
     );
-  })
-  .add('Styling - opacity', () => {
+  });
+
+storiesOf('Series/LineSeries/Styling', module)
+  .addDecorator(withKnobs)
+  .add('opacity', () => {
     return (
       <SimpleChartWrapper>
         {styledLineSeries({data: generateLinearData({key: 'line1'}), opacity: 0.5})}
       </SimpleChartWrapper>
     );
   })
-  .add('Styling - stroke color', () => {
+  .add('stroke', () => {
     return (
       <SimpleChartWrapper>
         {styledLineSeries({data: generateLinearData({key: 'line1'}), stroke: '#2c51be'})}
       </SimpleChartWrapper>
     );
   })
-  .add('Styling - stroke dash array', () => {
+  .add('strokeDasharray', () => {
     return (
       <SimpleChartWrapper>
         {styledLineSeries({data: generateLinearData({key: 'line1'}), strokeDasharray: '5, 5, 1, 5'})}
       </SimpleChartWrapper>
     );
   })
-  .add('Styling - stroke style', () => {
+  .add('strokeStyle', () => {
     return (
       <SimpleChartWrapper>
         {styledLineSeries({data: generateLinearData({key: 'line1'}), strokeStyle: 'dashed'})}
       </SimpleChartWrapper>
     );
   })
-  .add('Styling - stroke width', () => {
+  .add('strokeWidth', () => {
     return (
       <SimpleChartWrapper>
         {styledLineSeries({data: generateLinearData({key: 'line1'}), strokeWidth: '5px'})}
       </SimpleChartWrapper>
     );
   })
-  .add('Styling - style object', () => {
+  .add('style object', () => {
     return (
       <SimpleChartWrapper>
         {styledLineSeries({
@@ -88,7 +91,10 @@ storiesOf('LineSeries', module)
         })}
       </SimpleChartWrapper>
     );
-  })
+  });
+
+storiesOf('Series/LineSeries/Curve', module)
+  .addDecorator(withKnobs)
   .add('Curve', () => {
     return (
       <SimpleChartWrapper>

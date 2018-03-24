@@ -11,24 +11,34 @@ export function SimpleChartWrapper(props) {
           height={height}
           width={width}
           colorRange={props.colorRange}
-          colorScale={props.colorScale}
+          colorScale={props.colorType}
           fillRange={props.fillRange}
           fillScale={props.fillScale}
+          margin={props.margin}
           strokeRange={props.strokeRange}
-          strokeScale={props.strokeScale}
+          strokeType={props.strokeType}
           xDomain={props.xDomain}
+          xType={props.xType}
           yDomain={props.yDomain || [0, 20]}
           stackBy={props.stackBy}
         >
-          {boolean('X Axis', true, 'All') && <XAxis />}
-          {boolean('Y Axis', true, 'All') && <YAxis />}
-          {boolean('vertical gridlines', true, 'All') && <VerticalGridLines />}
-          {boolean('horizontal gridlines', true, 'All') && <HorizontalGridLines />}
+          {props.noXAxis ? null : boolean('X Axis', true, 'All') && <XAxis />}
+          {props.noYAxis ? null : boolean('Y Axis', true, 'All') && <YAxis />}
+          {props.noVerticalGridLines ?
+            null :
+            boolean('vertical gridlines', true, 'All') && <VerticalGridLines />}
+          {props.noHorizontalGridLines ?
+            null :
+            boolean('horizontal gridlines', true, 'All') && <HorizontalGridLines />}
           {props.children}
         </XYPlot>
       )}
     </AutoSizer>
   );
+}
+
+export function SimpleChartWrapperNoAxes(props) {
+  return SimpleChartWrapper({...props, noXAxis: true, noYAxis: true});
 }
 
 export function chooseColorScale() {

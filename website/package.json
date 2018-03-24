@@ -22,6 +22,6 @@
     "d3-force": "^1.0.6",
     "d3-random": "^1.1.0",
     "react-virtualized": "^9.18.5",
-    "react-vis": "^1.7.7"
+    "react-vis": "^1.9.2"
   }
 }

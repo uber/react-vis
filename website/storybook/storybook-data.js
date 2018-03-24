@@ -1,5 +1,6 @@
 const data = {};
-
+const DEC23 = 1513987200000;
+const DAY_IN_MS = 86400000;
 export function generateLinearData({
   nbPoints = 20,
   startValue = 10,
@@ -19,10 +20,12 @@ export function generateLinearData({
         datapoint: {
           x: i + 1,
           y: prev[i].y * (1 + (Math.random() - 0.5) * changeRatio)
-        }
+        },
+        nbPoints,
+        i
       })
     ],
-    [enrich({extraParams, datapoint: {x: 0, y: startValue}})]
+    [enrich({extraParams, datapoint: {x: 0, y: startValue}, nbPoints, i: 0})]
   );
   if (key !== undefined) {
     data[key] = result;
@@ -43,9 +46,9 @@ export function xyFlip(arr) {
   }));
 }
 
-export function enrich({datapoint, extraParams}) {
+export function enrich({datapoint, extraParams, nbPoints, i}) {
   return extraParams.reduce((result, param) => {
-    result[param[0]] = param[1]({...datapoint});
+    result[param[0]] = param[1]({...datapoint, nbPoints, i});
     return result;
   }, datapoint);
 }
@@ -56,4 +59,21 @@ export function random({max = 1, min = 0}) {
 
 export function intRandom({max = 10, min = 0}) {
   return () => Math.floor(min + Math.random() * (max - min));
+}
+
+export function getTime({startTime = DEC23}) {
+  return ({i}) => startTime + i * DAY_IN_MS;
+}
+
+export function getWord() {
+  return ({i}) => [
+    'deck.gl',
+    'math.gl',
+    'probe.gl',
+    'vis.gl',
+    'react-map-gl',
+    'vis-academy',
+    'luma.gl',
+    'kepler.gl'
+  ][i];
 }

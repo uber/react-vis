@@ -22,7 +22,7 @@ function styledMarkSeries(props) {
   );
 }
 
-storiesOf('MarkSeries', module)
+storiesOf('Series/MarkSeries/Base', module)
   .addDecorator(withKnobs)
   .add('Single scatterplot', () => {
     return (
@@ -39,20 +39,11 @@ storiesOf('MarkSeries', module)
         <MarkSeries data={generateScatterplotData({key: 'scatter3'})} />
       </SimpleChartWrapper>
     );
-  })
-  .add('Size varies by datapoint', () => {
-    return (
-      <SimpleChartWrapper>
-        <MarkSeries
-          data={generateScatterplotData({
-            key: 'scatter-size-1',
-            extraParams: [['size', random({min: 5, max: 20})]]
-          })}
-        />
-      </SimpleChartWrapper>
-    );
-  })
-  .add('Color varies by datapoint', () => {
+  });
+
+storiesOf('Series/MarkSeries/Styling/By Datapoint', module)
+  .addDecorator(withKnobs)
+  .add('color', () => {
     const {colorScale, colorRange} = chooseColorScale();
     return (
       <SimpleChartWrapper colorScale={colorScale} colorRange={colorRange}>
@@ -65,7 +56,7 @@ storiesOf('MarkSeries', module)
       </SimpleChartWrapper>
     );
   })
-  .add('Fill varies by datapoint', () => {
+  .add('fill', () => {
     const {colorScale, colorRange} = chooseColorScale();
     return (
       <SimpleChartWrapper fillScale={colorScale} fillRange={colorRange}>
@@ -78,7 +69,31 @@ storiesOf('MarkSeries', module)
       </SimpleChartWrapper>
     );
   })
-  .add('Stroke varies by datapoint', () => {
+  .add('opacity', () => {
+    return (
+      <SimpleChartWrapper>
+        <MarkSeries
+          data={generateScatterplotData({
+            key: 'scatter-opacity-1',
+            extraParams: [['opacity', random({min: 0.5})]]
+          })}
+        />
+      </SimpleChartWrapper>
+    );
+  })
+  .add('size', () => {
+    return (
+      <SimpleChartWrapper>
+        <MarkSeries
+          data={generateScatterplotData({
+            key: 'scatter-size-1',
+            extraParams: [['size', random({min: 5, max: 20})]]
+          })}
+        />
+      </SimpleChartWrapper>
+    );
+  })
+  .add('stroke', () => {
     const {colorScale, colorRange} = chooseColorScale();
     return (
       <SimpleChartWrapper strokeScale={colorScale} strokeRange={colorRange}>
@@ -91,40 +106,11 @@ storiesOf('MarkSeries', module)
         />
       </SimpleChartWrapper>
     );
-  })
-  .add('Opacity varies by datapoint', () => {
-    return (
-      <SimpleChartWrapper>
-        <MarkSeries
-          data={generateScatterplotData({
-            key: 'scatter-opacity-1',
-            extraParams: [['opacity', random({min: 0.5})]]
-          })}
-        />
-      </SimpleChartWrapper>
-    );
-  })
-  .add('Styling - opacity', () => {
-    return (
-      <SimpleChartWrapper>
-        {styledMarkSeries({
-          data: generateScatterplotData({key: 'scatter1'}),
-          opacity: 0.5
-        })}
-      </SimpleChartWrapper>
-    );
-  })
-  .add('Styling - stroke', () => {
-    return (
-      <SimpleChartWrapper>
-        {styledMarkSeries({
-          data: generateScatterplotData({key: 'scatter1'}),
-          stroke: '#2c51be'
-        })}
-      </SimpleChartWrapper>
-    );
-  })
-  .add('Styling - fill', () => {
+  });
+
+storiesOf('Series/MarkSeries/Styling/At series level', module)
+  .addDecorator(withKnobs)
+  .add('fill', () => {
     return (
       <SimpleChartWrapper>
         {styledMarkSeries({
@@ -134,8 +120,27 @@ storiesOf('MarkSeries', module)
       </SimpleChartWrapper>
     );
   })
-
-  .add('Styling - strokeWidth', () => {
+  .add('opacity', () => {
+    return (
+      <SimpleChartWrapper>
+        {styledMarkSeries({
+          data: generateScatterplotData({key: 'scatter1'}),
+          opacity: 0.5
+        })}
+      </SimpleChartWrapper>
+    );
+  })
+  .add('stroke', () => {
+    return (
+      <SimpleChartWrapper>
+        {styledMarkSeries({
+          data: generateScatterplotData({key: 'scatter1'}),
+          stroke: '#2c51be'
+        })}
+      </SimpleChartWrapper>
+    );
+  })
+  .add('strokeWidth', () => {
     return (
       <SimpleChartWrapper>
         {styledMarkSeries({
@@ -145,7 +150,7 @@ storiesOf('MarkSeries', module)
       </SimpleChartWrapper>
     );
   })
-  .add('Styling - style object', () => {
+  .add('style', () => {
     return (
       <SimpleChartWrapper>
         {styledMarkSeries({
