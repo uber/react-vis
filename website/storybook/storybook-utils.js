@@ -71,3 +71,14 @@ export function chooseColorScale() {
   }[colorScale];
   return {colorRange, colorScale};
 }
+
+export const jsxOptions = {
+  defaultProps: false,
+  displayName: component => {
+    if (component.type.name === 'SimpleChartWrapper' || component.type.name === 'SimpleChartWrapperNoAxes') {
+      return 'XYPlot';
+    }
+    return component.type.displayName;
+  },
+  filterProps: ['className', 'nullAccessor']
+};

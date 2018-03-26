@@ -6,7 +6,7 @@ import {withKnobs, color, number, object, select, text} from '@storybook/addon-k
 import {LineSeries} from 'react-vis';
 
 import {generateLinearData} from './storybook-data.js';
-import {SimpleChartWrapper} from './storybook-utils.js';
+import {SimpleChartWrapper, jsxOptions} from './storybook-utils.js';
 
 function styledLineSeries(props) {
   return (
@@ -24,14 +24,18 @@ function styledLineSeries(props) {
 
 storiesOf('Series/LineSeries/Base', module)
   .addDecorator(withKnobs)
-  .add('Single Line chart', () => {
-    return (
-      <SimpleChartWrapper>
-        <LineSeries data={generateLinearData({key: 'line1'})} />
-      </SimpleChartWrapper>
-    );
-  })
-  .add('Multiple Line series', () => {
+  .addWithJSX(
+    'Single Line chart',
+    () => {
+      return (
+        <SimpleChartWrapper>
+          <LineSeries data={generateLinearData({key: 'line1'})} />
+        </SimpleChartWrapper>
+      );
+    },
+    jsxOptions
+  )
+  .addWithJSX('Multiple Line series', () => {
     return (
       <SimpleChartWrapper>
         <LineSeries data={generateLinearData({key: 'line1'})} />
@@ -39,46 +43,46 @@ storiesOf('Series/LineSeries/Base', module)
         <LineSeries data={generateLinearData({key: 'line3'})} />
       </SimpleChartWrapper>
     );
-  });
+  }, jsxOptions);
 
 storiesOf('Series/LineSeries/Styling', module)
   .addDecorator(withKnobs)
-  .add('opacity', () => {
+  .addWithJSX('opacity', () => {
     return (
       <SimpleChartWrapper>
         {styledLineSeries({data: generateLinearData({key: 'line1'}), opacity: 0.5})}
       </SimpleChartWrapper>
     );
-  })
-  .add('stroke', () => {
+  }, jsxOptions)
+  .addWithJSX('stroke', () => {
     return (
       <SimpleChartWrapper>
         {styledLineSeries({data: generateLinearData({key: 'line1'}), stroke: '#2c51be'})}
       </SimpleChartWrapper>
     );
-  })
-  .add('strokeDasharray', () => {
+  }, jsxOptions)
+  .addWithJSX('strokeDasharray', () => {
     return (
       <SimpleChartWrapper>
         {styledLineSeries({data: generateLinearData({key: 'line1'}), strokeDasharray: '5, 5, 1, 5'})}
       </SimpleChartWrapper>
     );
-  })
-  .add('strokeStyle', () => {
+  }, jsxOptions)
+  .addWithJSX('strokeStyle', () => {
     return (
       <SimpleChartWrapper>
         {styledLineSeries({data: generateLinearData({key: 'line1'}), strokeStyle: 'dashed'})}
       </SimpleChartWrapper>
     );
-  })
-  .add('strokeWidth', () => {
+  }, jsxOptions)
+  .addWithJSX('strokeWidth', () => {
     return (
       <SimpleChartWrapper>
         {styledLineSeries({data: generateLinearData({key: 'line1'}), strokeWidth: '5px'})}
       </SimpleChartWrapper>
     );
-  })
-  .add('style object', () => {
+  }, jsxOptions)
+  .addWithJSX('style object', () => {
     return (
       <SimpleChartWrapper>
         {styledLineSeries({
@@ -91,11 +95,11 @@ storiesOf('Series/LineSeries/Styling', module)
         })}
       </SimpleChartWrapper>
     );
-  });
+  }, jsxOptions);
 
 storiesOf('Series/LineSeries/Curve', module)
   .addDecorator(withKnobs)
-  .add('Curve', () => {
+  .addWithJSX('Curve', () => {
     return (
       <SimpleChartWrapper>
         <LineSeries
@@ -117,4 +121,4 @@ storiesOf('Series/LineSeries/Curve', module)
         />
       </SimpleChartWrapper>
     );
-  });
+  }, jsxOptions);
