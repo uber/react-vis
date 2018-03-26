@@ -12,7 +12,7 @@ export const HOME_HEADING = 'A composable charting library';
 export const HOME_RIGHT = null;
 
 export const HOME_BULLETS = [];
-
+export const GA_TRACKING = 'UA-64694404-13';
 export const ADDITIONAL_LINKS = [{name: 'Storybook', href: './storybook/index.html'}];
 
 export const BASENAME = '/react-vis';
