@@ -46,9 +46,18 @@ header {
 }
 
 .docs-link {
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 11px;
   margin-right: 5px;
   text-transform: uppercase;
+  border-left: 1px solid #c0c0c0;
+  padding-left: 5px;
+  line-height: 1;
+}
+
+.docs-link:first-child {
+  border-left: 0px;
+  padding-left: 0px;
 }
 
 .docs-comment {
@@ -147,6 +156,14 @@ article {
     flex-basis: 400px;
     flex-grow: 1;
     margin: 0 0 40px;
+  }
+
+  .section-title {
+    margin-bottom: 5px;
+  }
+
+  .section-header {
+    margin-bottom: 1em;
   }
 }
 
