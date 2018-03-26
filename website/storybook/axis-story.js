@@ -1,15 +1,16 @@
 import React from 'react';
 
 import {storiesOf} from '@storybook/react';
-import {withKnobs, color, number, object, select, text} from '@storybook/addon-knobs/react';
-import {LineSeries, HorizontalBarSeries, VerticalBarSeries, XAxis, YAxis} from 'react-vis';
+import {withKnobs, number, select} from '@storybook/addon-knobs/react';
+
+import {LineSeries, VerticalBarSeries, XAxis, YAxis} from 'react-vis';
 import {generateLinearData, getTime, getWord} from './storybook-data.js';
 
-import {SimpleChartWrapperNoAxes} from './storybook-utils';
+import {SimpleChartWrapperNoAxes, jsxOptions} from './storybook-utils';
 
 storiesOf('Axes and scales/Axis Formatting/Base', module)
   .addDecorator(withKnobs)
-  .add('Axis orientation', () => {
+  .addWithJSX('Axis orientation', () => {
     const XAxisOrientation = select('XAxis.orientation', {bottom: 'bottom', top: 'top'}, 'bottom');
     const YAxisOrientation = select('YAxis.orientation', {left: 'left', right: 'right'}, 'left');
     return (
@@ -24,8 +25,8 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         <LineSeries data={generateLinearData({key: 'line1'})} />
       </SimpleChartWrapperNoAxes>
     );
-  })
-  .add('Axis titles', () => {
+  }, jsxOptions)
+  .addWithJSX('Axis titles', () => {
     const XAxisPosition = select('XAxis.position', {start: 'start', middle: 'middle', end: 'end'}, 'end');
     const YAxisPosition = select('YAxis.position', {start: 'start', middle: 'middle', end: 'end'}, 'end');
 
@@ -36,8 +37,8 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         <LineSeries data={generateLinearData({key: 'line1'})} />
       </SimpleChartWrapperNoAxes>
     );
-  })
-  .add('Tick total', () => {
+  }, jsxOptions)
+  .addWithJSX('Tick total', () => {
     const xTickTotal = number('XAxis.tickTotal', 10, {max: 20, min: 0, range: true});
     const yTickTotal = number('YAxis.tickTotal', 10, {max: 20, min: 0, range: true});
 
@@ -48,8 +49,8 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         <LineSeries data={generateLinearData({key: 'line1'})} />
       </SimpleChartWrapperNoAxes>
     );
-  })
-  .add('Tick Size', () => {
+  }, jsxOptions)
+  .addWithJSX('Tick Size', () => {
     const xTickSize = number('XAxis.tickSize', 6, {max: 10, min: 0, range: true});
     const yTickSize = number('YAxis.tickSize', 6, {max: 10, min: 0, range: true});
 
@@ -60,8 +61,8 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         <LineSeries data={generateLinearData({key: 'line1'})} />
       </SimpleChartWrapperNoAxes>
     );
-  })
-  .add('Tick Size (Inner)', () => {
+  }, jsxOptions)
+  .addWithJSX('Tick Size (Inner)', () => {
     const xTickSize = number('XAxis.tickSizeInner', 6, {max: 10, min: 0, range: true});
     const yTickSize = number('YAxis.tickSizeInner', 6, {max: 10, min: 0, range: true});
 
@@ -72,8 +73,8 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         <LineSeries data={generateLinearData({key: 'line1'})} />
       </SimpleChartWrapperNoAxes>
     );
-  })
-  .add('Tick Size (Outer)', () => {
+  }, jsxOptions)
+  .addWithJSX('Tick Size (Outer)', () => {
     const xTickSize = number('XAxis.tickSizeOuter', 6, {max: 10, min: 0, range: true});
     const yTickSize = number('YAxis.tickSizeOuter', 6, {max: 10, min: 0, range: true});
 
@@ -84,8 +85,8 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         <LineSeries data={generateLinearData({key: 'line1'})} />
       </SimpleChartWrapperNoAxes>
     );
-  })
-  .add('Tick orientation', () => {
+  }, jsxOptions)
+  .addWithJSX('Tick orientation', () => {
     const tickLabelAngle = number('tickLabelAngle', 0, {max: 90, min: -90, range: true});
     return (
       <SimpleChartWrapperNoAxes margin={{bottom: 80}}>
@@ -99,10 +100,10 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         />
       </SimpleChartWrapperNoAxes>
     );
-  });
+  }, jsxOptions);
 storiesOf('Axes and scales/Scales', module)
   .addDecorator(withKnobs)
-  .add('time Scale', () => {
+  .addWithJSX('time Scale', () => {
     return (
       <SimpleChartWrapperNoAxes margin={{right: 20}}>
         <XAxis tickFormat={d => new Date(d).toLocaleDateString()} />
@@ -115,8 +116,8 @@ storiesOf('Axes and scales/Scales', module)
         />
       </SimpleChartWrapperNoAxes>
     );
-  })
-  .add('category scale', () => {
+  }, jsxOptions)
+  .addWithJSX('category scale', () => {
     const data = generateLinearData({
       nbPoints: 8,
       changeRatio: 0.4,
@@ -129,8 +130,8 @@ storiesOf('Axes and scales/Scales', module)
         <VerticalBarSeries data={data} />
       </SimpleChartWrapperNoAxes>
     );
-  })
-  .add('ordinal scale', () => {
+  }, jsxOptions)
+  .addWithJSX('ordinal scale', () => {
     const data = generateLinearData({
       nbPoints: 8,
       changeRatio: 0.4,
@@ -144,4 +145,4 @@ storiesOf('Axes and scales/Scales', module)
         <VerticalBarSeries data={data} />
       </SimpleChartWrapperNoAxes>
     );
-  });
+  }, jsxOptions);

@@ -6,7 +6,7 @@ import {withKnobs, color, number, object, text} from '@storybook/addon-knobs/rea
 import {HorizontalBarSeries, VerticalBarSeries} from 'react-vis';
 
 import {generateLinearData, intRandom, random} from './storybook-data.js';
-import {chooseColorScale, SimpleChartWrapper} from './storybook-utils.js';
+import {chooseColorScale, SimpleChartWrapper, jsxOptions} from './storybook-utils.js';
 
 function addBarSeriesStory(isVertical = true) {
   const seriesName = isVertical ? 'VerticalBarSeries' : 'HorizontalBarSeries';
@@ -31,14 +31,14 @@ function addBarSeriesStory(isVertical = true) {
 
   storiesOf(`Series/${seriesName}/Base`, module)
     .addDecorator(withKnobs)
-    .add(`single ${seriesName}`, () => {
+    .addWithJSX(`single ${seriesName}`, () => {
       return (
         <SimpleChartWrapper {...xyPlotParams}>
           <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'})} />
         </SimpleChartWrapper>
       );
-    })
-    .add(`multiple ${seriesName} - clustered`, () => {
+    }, jsxOptions)
+    .addWithJSX(`multiple ${seriesName} - clustered`, () => {
       return (
         <SimpleChartWrapper {...xyPlotParams}>
           <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'})} />
@@ -46,8 +46,8 @@ function addBarSeriesStory(isVertical = true) {
           <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar3'})} />
         </SimpleChartWrapper>
       );
-    })
-    .add(`multiple ${seriesName} - stacked`, () => {
+    }, jsxOptions)
+    .addWithJSX(`multiple ${seriesName} - stacked`, () => {
       return (
         <SimpleChartWrapper
           {...(isVertical ?
@@ -76,11 +76,11 @@ function addBarSeriesStory(isVertical = true) {
           />
         </SimpleChartWrapper>
       );
-    });
+    }, jsxOptions);
 
   storiesOf(`Series/${seriesName}/Styling/By datapoint`, module)
     .addDecorator(withKnobs)
-    .add('color', () => {
+    .addWithJSX('color', () => {
       const {colorScale, colorRange} = chooseColorScale();
 
       return (
@@ -96,7 +96,7 @@ function addBarSeriesStory(isVertical = true) {
         </SimpleChartWrapper>
       );
     })
-    .add('opacity', () => {
+    .addWithJSX('opacity', () => {
       return (
         <SimpleChartWrapper {...xyPlotParams}>
           <Series
@@ -109,11 +109,11 @@ function addBarSeriesStory(isVertical = true) {
           />
         </SimpleChartWrapper>
       );
-    });
+    }, jsxOptions);
 
   storiesOf(`Series/${seriesName}/Styling/At series level`, module)
     .addDecorator(withKnobs)
-    .add('fill', () => {
+    .addWithJSX('fill', () => {
       return (
         <SimpleChartWrapper {...xyPlotParams}>
           {styledSeries({
@@ -122,8 +122,8 @@ function addBarSeriesStory(isVertical = true) {
           })}
         </SimpleChartWrapper>
       );
-    })
-    .add('opacity', () => {
+    }, jsxOptions)
+    .addWithJSX('opacity', () => {
       return (
         <SimpleChartWrapper {...xyPlotParams}>
           {styledSeries({
@@ -132,8 +132,8 @@ function addBarSeriesStory(isVertical = true) {
           })}
         </SimpleChartWrapper>
       );
-    })
-    .add('stroke', () => {
+    }, jsxOptions)
+    .addWithJSX('stroke', () => {
       return (
         <SimpleChartWrapper {...xyPlotParams}>
           {styledSeries({
@@ -142,8 +142,8 @@ function addBarSeriesStory(isVertical = true) {
           })}
         </SimpleChartWrapper>
       );
-    })
-    .add('style', () => {
+    }, jsxOptions)
+    .addWithJSX('style', () => {
       return (
         <SimpleChartWrapper {...xyPlotParams}>
           {styledSeries({
@@ -155,7 +155,7 @@ function addBarSeriesStory(isVertical = true) {
           })}
         </SimpleChartWrapper>
       );
-    });
+    }, jsxOptions);
 }
 addBarSeriesStory();
 addBarSeriesStory(false);

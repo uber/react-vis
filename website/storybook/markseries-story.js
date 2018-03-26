@@ -6,7 +6,7 @@ import {withKnobs, color, number, object, select} from '@storybook/addon-knobs/r
 import {MarkSeries} from 'react-vis';
 
 import {generateScatterplotData, intRandom, random} from './storybook-data.js';
-import {chooseColorScale, SimpleChartWrapper} from './storybook-utils.js';
+import {chooseColorScale, SimpleChartWrapper, jsxOptions} from './storybook-utils.js';
 
 function styledMarkSeries(props) {
   return (
@@ -24,14 +24,14 @@ function styledMarkSeries(props) {
 
 storiesOf('Series/MarkSeries/Base', module)
   .addDecorator(withKnobs)
-  .add('Single scatterplot', () => {
+  .addWithJSX('Single scatterplot', () => {
     return (
       <SimpleChartWrapper>
         <MarkSeries data={generateScatterplotData({key: 'scatter1'})} />
       </SimpleChartWrapper>
     );
-  })
-  .add('Multiple MarkSeries', () => {
+  }, jsxOptions)
+  .addWithJSX('Multiple MarkSeries', () => {
     return (
       <SimpleChartWrapper>
         <MarkSeries data={generateScatterplotData({key: 'scatter1'})} />
@@ -39,11 +39,11 @@ storiesOf('Series/MarkSeries/Base', module)
         <MarkSeries data={generateScatterplotData({key: 'scatter3'})} />
       </SimpleChartWrapper>
     );
-  });
+  }, jsxOptions);
 
 storiesOf('Series/MarkSeries/Styling/By Datapoint', module)
   .addDecorator(withKnobs)
-  .add('color', () => {
+  .addWithJSX('color', () => {
     const {colorScale, colorRange} = chooseColorScale();
     return (
       <SimpleChartWrapper colorScale={colorScale} colorRange={colorRange}>
@@ -55,8 +55,8 @@ storiesOf('Series/MarkSeries/Styling/By Datapoint', module)
         />
       </SimpleChartWrapper>
     );
-  })
-  .add('fill', () => {
+  }, jsxOptions)
+  .addWithJSX('fill', () => {
     const {colorScale, colorRange} = chooseColorScale();
     return (
       <SimpleChartWrapper fillScale={colorScale} fillRange={colorRange}>
@@ -68,8 +68,8 @@ storiesOf('Series/MarkSeries/Styling/By Datapoint', module)
         />
       </SimpleChartWrapper>
     );
-  })
-  .add('opacity', () => {
+  }, jsxOptions)
+  .addWithJSX('opacity', () => {
     return (
       <SimpleChartWrapper>
         <MarkSeries
@@ -80,8 +80,8 @@ storiesOf('Series/MarkSeries/Styling/By Datapoint', module)
         />
       </SimpleChartWrapper>
     );
-  })
-  .add('size', () => {
+  }, jsxOptions)
+  .addWithJSX('size', () => {
     return (
       <SimpleChartWrapper>
         <MarkSeries
@@ -92,8 +92,8 @@ storiesOf('Series/MarkSeries/Styling/By Datapoint', module)
         />
       </SimpleChartWrapper>
     );
-  })
-  .add('stroke', () => {
+  }, jsxOptions)
+  .addWithJSX('stroke', () => {
     const {colorScale, colorRange} = chooseColorScale();
     return (
       <SimpleChartWrapper strokeScale={colorScale} strokeRange={colorRange}>
@@ -106,11 +106,11 @@ storiesOf('Series/MarkSeries/Styling/By Datapoint', module)
         />
       </SimpleChartWrapper>
     );
-  });
+  }, jsxOptions);
 
 storiesOf('Series/MarkSeries/Styling/At series level', module)
   .addDecorator(withKnobs)
-  .add('fill', () => {
+  .addWithJSX('fill', () => {
     return (
       <SimpleChartWrapper>
         {styledMarkSeries({
@@ -119,8 +119,8 @@ storiesOf('Series/MarkSeries/Styling/At series level', module)
         })}
       </SimpleChartWrapper>
     );
-  })
-  .add('opacity', () => {
+  }, jsxOptions)
+  .addWithJSX('opacity', () => {
     return (
       <SimpleChartWrapper>
         {styledMarkSeries({
@@ -129,8 +129,8 @@ storiesOf('Series/MarkSeries/Styling/At series level', module)
         })}
       </SimpleChartWrapper>
     );
-  })
-  .add('stroke', () => {
+  }, jsxOptions)
+  .addWithJSX('stroke', () => {
     return (
       <SimpleChartWrapper>
         {styledMarkSeries({
@@ -139,8 +139,8 @@ storiesOf('Series/MarkSeries/Styling/At series level', module)
         })}
       </SimpleChartWrapper>
     );
-  })
-  .add('strokeWidth', () => {
+  }, jsxOptions)
+  .addWithJSX('strokeWidth', () => {
     return (
       <SimpleChartWrapper>
         {styledMarkSeries({
@@ -149,8 +149,8 @@ storiesOf('Series/MarkSeries/Styling/At series level', module)
         })}
       </SimpleChartWrapper>
     );
-  })
-  .add('style', () => {
+  }, jsxOptions)
+  .addWithJSX('style', () => {
     return (
       <SimpleChartWrapper>
         {styledMarkSeries({
@@ -163,4 +163,4 @@ storiesOf('Series/MarkSeries/Styling/At series level', module)
         })}
       </SimpleChartWrapper>
     );
-  });
+  }, jsxOptions);

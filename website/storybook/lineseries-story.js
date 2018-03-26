@@ -1,9 +1,7 @@
 import React from 'react';
 
-import {setAddon, storiesOf} from '@storybook/react';
+import {storiesOf} from '@storybook/react';
 import {withKnobs, color, number, object, select, text} from '@storybook/addon-knobs/react';
-import JSXAddon from 'storybook-addon-jsx';
-setAddon(JSXAddon);
 
 import {LineSeries} from 'react-vis';
 
