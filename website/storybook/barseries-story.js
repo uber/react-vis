@@ -1,6 +1,9 @@
 import React from 'react';
 
-import {storiesOf} from '@storybook/react';
+import {setAddon, storiesOf} from '@storybook/react';
+import JSXAddon from 'storybook-addon-jsx';
+
+setAddon(JSXAddon);
 import {withKnobs, color, number, object, text} from '@storybook/addon-knobs/react';
 
 import {HorizontalBarSeries, VerticalBarSeries} from 'react-vis';
@@ -31,52 +34,64 @@ function addBarSeriesStory(isVertical = true) {
 
   storiesOf(`Series/${seriesName}/Base`, module)
     .addDecorator(withKnobs)
-    .addWithJSX(`single ${seriesName}`, () => {
-      return (
-        <SimpleChartWrapper {...xyPlotParams}>
-          <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'})} />
-        </SimpleChartWrapper>
-      );
-    }, jsxOptions)
-    .addWithJSX(`multiple ${seriesName} - clustered`, () => {
-      return (
-        <SimpleChartWrapper {...xyPlotParams}>
-          <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'})} />
-          <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar2'})} />
-          <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar3'})} />
-        </SimpleChartWrapper>
-      );
-    }, jsxOptions)
-    .addWithJSX(`multiple ${seriesName} - stacked`, () => {
-      return (
-        <SimpleChartWrapper
-          {...(isVertical ?
-            {
-              stackBy: 'y',
-              xDomain: [0, 8],
-              yDomain: [0, 50]
-            } :
-            {
-              stackBy: 'x',
-              xDomain: [0, 50],
-              yDomain: [0, 8]
-            })}
-        >
-          <Series
-            cluster={text('BarSeries.1.cluster', 'stack 1')}
-            data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'})}
-          />
-          <Series
-            cluster={text('BarSeries.2.cluster', 'stack 1')}
-            data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar2'})}
-          />
-          <Series
-            cluster={text('BarSeries.3.cluster', 'stack 1')}
-            data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar3'})}
-          />
-        </SimpleChartWrapper>
-      );
-    }, jsxOptions);
+    .addWithJSX(
+      `single ${seriesName}`,
+      () => {
+        return (
+          <SimpleChartWrapper {...xyPlotParams}>
+            <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'})} />
+          </SimpleChartWrapper>
+        );
+      },
+      jsxOptions
+    )
+    .addWithJSX(
+      `multiple ${seriesName} - clustered`,
+      () => {
+        return (
+          <SimpleChartWrapper {...xyPlotParams}>
+            <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'})} />
+            <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar2'})} />
+            <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar3'})} />
+          </SimpleChartWrapper>
+        );
+      },
+      jsxOptions
+    )
+    .addWithJSX(
+      `multiple ${seriesName} - stacked`,
+      () => {
+        return (
+          <SimpleChartWrapper
+            {...(isVertical ?
+              {
+                stackBy: 'y',
+                xDomain: [0, 8],
+                yDomain: [0, 50]
+              } :
+              {
+                stackBy: 'x',
+                xDomain: [0, 50],
+                yDomain: [0, 8]
+              })}
+          >
+            <Series
+              cluster={text('BarSeries.1.cluster', 'stack 1')}
+              data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'})}
+            />
+            <Series
+              cluster={text('BarSeries.2.cluster', 'stack 1')}
+              data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar2'})}
+            />
+            <Series
+              cluster={text('BarSeries.3.cluster', 'stack 1')}
+              data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar3'})}
+            />
+          </SimpleChartWrapper>
+        );
+      },
+      jsxOptions
+    );
 
   storiesOf(`Series/${seriesName}/Styling/By datapoint`, module)
     .addDecorator(withKnobs)
@@ -96,66 +111,86 @@ function addBarSeriesStory(isVertical = true) {
         </SimpleChartWrapper>
       );
     })
-    .addWithJSX('opacity', () => {
-      return (
-        <SimpleChartWrapper {...xyPlotParams}>
-          <Series
-            data={dataGenerator({
-              nbPoints: 8,
-              changeRatio: 0.4,
-              extraParams: [['opacity', random({min: 0.5, max: 1})]],
-              key: 'bar-opacity-1'
-            })}
-          />
-        </SimpleChartWrapper>
-      );
-    }, jsxOptions);
+    .addWithJSX(
+      'opacity',
+      () => {
+        return (
+          <SimpleChartWrapper {...xyPlotParams}>
+            <Series
+              data={dataGenerator({
+                nbPoints: 8,
+                changeRatio: 0.4,
+                extraParams: [['opacity', random({min: 0.5, max: 1})]],
+                key: 'bar-opacity-1'
+              })}
+            />
+          </SimpleChartWrapper>
+        );
+      },
+      jsxOptions
+    );
 
   storiesOf(`Series/${seriesName}/Styling/At series level`, module)
     .addDecorator(withKnobs)
-    .addWithJSX('fill', () => {
-      return (
-        <SimpleChartWrapper {...xyPlotParams}>
-          {styledSeries({
-            data: dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'}),
-            fill: '#2c51be'
-          })}
-        </SimpleChartWrapper>
-      );
-    }, jsxOptions)
-    .addWithJSX('opacity', () => {
-      return (
-        <SimpleChartWrapper {...xyPlotParams}>
-          {styledSeries({
-            data: dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'}),
-            opacity: 0.5
-          })}
-        </SimpleChartWrapper>
-      );
-    }, jsxOptions)
-    .addWithJSX('stroke', () => {
-      return (
-        <SimpleChartWrapper {...xyPlotParams}>
-          {styledSeries({
-            data: dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'}),
-            stroke: '#2c51be'
-          })}
-        </SimpleChartWrapper>
-      );
-    }, jsxOptions)
-    .addWithJSX('style', () => {
-      return (
-        <SimpleChartWrapper {...xyPlotParams}>
-          {styledSeries({
-            data: dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'}),
-            style: {
-              stroke: '#2c51be',
-              strokeWidth: '3px'
-            }
-          })}
-        </SimpleChartWrapper>
-      );
-    }, jsxOptions);
+    .addWithJSX(
+      'fill',
+      () => {
+        return (
+          <SimpleChartWrapper {...xyPlotParams}>
+            {styledSeries({
+              data: dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'}),
+              fill: '#2c51be'
+            })}
+          </SimpleChartWrapper>
+        );
+      },
+      jsxOptions
+    )
+    .addWithJSX(
+      'opacity',
+      () => {
+        return (
+          <SimpleChartWrapper {...xyPlotParams}>
+            {styledSeries({
+              data: dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'}),
+              opacity: 0.5
+            })}
+          </SimpleChartWrapper>
+        );
+      },
+      jsxOptions
+    )
+    .addWithJSX(
+      'stroke',
+      () => {
+        return (
+          <SimpleChartWrapper {...xyPlotParams}>
+            {styledSeries({
+              data: dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'}),
+              stroke: '#2c51be'
+            })}
+          </SimpleChartWrapper>
+        );
+      },
+      jsxOptions
+    )
+    .addWithJSX(
+      'style',
+      () => {
+        return (
+          <SimpleChartWrapper {...xyPlotParams}>
+            {styledSeries({
+              data: dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'}),
+              style: {
+                stroke: '#2c51be',
+                strokeWidth: '3px'
+              }
+            })}
+          </SimpleChartWrapper>
+        );
+      },
+      jsxOptions
+    );
 }
 addBarSeriesStory();
 addBarSeriesStory(false);
