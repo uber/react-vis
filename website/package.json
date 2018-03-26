@@ -16,7 +16,8 @@
   "devDependencies": {
     "@storybook/addon-knobs": "^3.3.15",
     "@storybook/react": "^3.3.15",
-    "ocular": "^0.2.3"
+    "ocular": "^0.2.3",
+    "storybook-addon-jsx": "^5.3.0"
   },
   "dependencies": {
     "d3-force": "^1.0.6",
