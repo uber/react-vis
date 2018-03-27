@@ -2,13 +2,13 @@ import React from 'react';
 
 import {setAddon, storiesOf} from '@storybook/react';
 import JSXAddon from 'storybook-addon-jsx';
-
 setAddon(JSXAddon);
+
 import {withKnobs, color, number, object, select, text} from '@storybook/addon-knobs/react';
 
 import {LineSeries} from 'react-vis';
 
-import {generateLinearData} from './storybook-data.js';
+import {generateLinearData, nonUniformX} from './storybook-data.js';
 import {SimpleChartWrapper, jsxOptions} from './storybook-utils.js';
 
 function styledLineSeries(props) {
@@ -33,6 +33,28 @@ storiesOf('Series/LineSeries/Base', module)
       return (
         <SimpleChartWrapper>
           <LineSeries data={generateLinearData({key: 'line1'})} />
+        </SimpleChartWrapper>
+      );
+    },
+    jsxOptions
+  )
+  .addWithJSX(
+    'With negative numbers',
+    () => {
+      return (
+        <SimpleChartWrapper>
+          <LineSeries data={generateLinearData({startValue: 0, key: 'line-neg'})} />
+        </SimpleChartWrapper>
+      );
+    },
+    jsxOptions
+  )
+  .addWithJSX(
+    'With non-consecutive x numbers',
+    () => {
+      return (
+        <SimpleChartWrapper>
+          <LineSeries data={generateLinearData({key: 'line-random-x', extraParams: [['x', nonUniformX()]]})} />
         </SimpleChartWrapper>
       );
     },

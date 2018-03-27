@@ -48,9 +48,18 @@ export function xyFlip(arr) {
 
 export function enrich({datapoint, extraParams, nbPoints, i}) {
   return extraParams.reduce((result, param) => {
-    result[param[0]] = param[1]({...datapoint, nbPoints, i});
+    result[param[0]] = param[1]({...datapoint, result, nbPoints, i});
     return result;
   }, datapoint);
+}
+
+export function nonUniformX() {
+  return ({result, i}) => {
+    if (!i) {
+      return result.x;
+    }
+    return result[i - 1].x + Math.random() + Math.random() + Math.random();
+  }
 }
 
 export function random({max = 1, min = 0}) {
@@ -75,5 +84,5 @@ export function getWord() {
     'vis-academy',
     'luma.gl',
     'kepler.gl'
-  ][i];
+  ][i % 8];
 }
