@@ -3,7 +3,7 @@ import React from 'react';
 import {SHOWCASE_LINKS} from '../showcase-links';
 
 export function mapSection(section, index) {
-  const {sourceLink, docsLink, comment, name, componentName} = section;
+  const {docsLink, comment, name, componentName} = section;
   const SectionComponent = section.component;
   const linkProps = {
     className: 'docs-link',
@@ -13,13 +13,14 @@ export function mapSection(section, index) {
   const exampleLink = SHOWCASE_LINKS[componentName];
   return (
     <section key={`${name}-index`}>
-      <h3>{name}</h3>
-      <div className="flex">
-        {sourceLink && <a {...linkProps} href={sourceLink}>> Source</a>}
-        {docsLink && <a {...linkProps} href={docsLink}>> Docs</a>}
-        {exampleLink && <a {...linkProps} href={exampleLink}>> View Code</a>}
-        {comment && <p className="docs-comment">{comment}</p>}
+      <div className="section-header">
+        <h3 className="section-title">{name}</h3>
+        <div className="flex">
+          {exampleLink && <a {...linkProps} href={exampleLink}> View Code</a>}
+          {docsLink && <a {...linkProps} href={docsLink}> Documentation </a>}
+        </div>
       </div>
+      {comment && <p className="docs-comment">{comment}</p>}
       <SectionComponent />
     </section>
   );
