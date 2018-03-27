@@ -54,6 +54,24 @@ XYPlot is a wrapper for series, hints, axes and other components. Most of these 
 * `size` (optional)
 * `style` (optional) - css properties as an object.
 
+Accessors can also be used to retreieve the properties above from the `data` object. For instance, the `getX` and `getY` accessors can be passed to the XYPlot object to access the `x` and `y` properties from `data` for each series. 
+
+```jsx
+<XYPlot
+  width={300}
+  height={300}
+  getX={d => d[0]}
+  getY={d => d[1]>
+  <LineSeries
+    color="red"
+    data={[
+      [1, 0],
+      [2, 1],
+      [3, 2]
+    ]}/>
+</XYPlot>
+```
+
 If the property is not passed in any of the objects, the property is not visualized. The user can override the way how properties are visualized by passing custom range, domain or type of scales to the series or the entire chart (please see [Series](series.md) for more info).
 
 Not all properties can be visualized in each series. Here's a short comparison of them:

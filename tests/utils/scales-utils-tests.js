@@ -209,14 +209,18 @@ test('scales-utils #extractScalePropsFromProps', t => {
     aRange: [1, 2],
     _aValue: 10,
     somethingElse: [],
-    bDomain: [1, 2, 3]
+    bDomain: [1, 2, 3],
+    getA: d => d.a
   };
 
   const result = extractScalePropsFromProps(props, ['a', 'b']);
-
-  t.ok(Object.keys(result).length === 4 && result.aType === props.aType &&
-    result.aRange === props.aRange && result._aValue === props._aValue &&
-    result.bDomain === props.bDomain,
+  t.ok(
+    Object.keys(result).length === 5 &&
+    result.aType === props.aType &&
+    result.aRange === props.aRange &&
+    result._aValue === props._aValue &&
+    result.bDomain === props.bDomain &&
+    result.getA === props.getA,
     'Should return valid object');
   t.end();
 });

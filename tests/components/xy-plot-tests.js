@@ -207,3 +207,37 @@ test('Render two stacked bar series with a non-stacked line series chart', t => 
 
   t.end();
 });
+
+test('Render a line series with data accessors', t => {
+  const $ = mount(
+    <XYPlot
+      width={300}
+      height={300}
+      getX={d => d[0]}
+      getY={d => d[1]}>
+      <LineSeries
+        data={[
+          [1, 0],
+          [2, 1],
+          [3, 2]
+        ]}
+      />
+    </XYPlot>
+  );
+
+  const renderedLineWrapper = $.find(LineSeries);
+  const dataProp = renderedLineWrapper.at(0).prop('data');
+  const getXProp = renderedLineWrapper.at(0).prop('getX');
+  const getYProp = renderedLineWrapper.at(0).prop('getY');
+  t.deepEqual(
+    dataProp.map(getXProp),
+    [1, 2, 3],
+    'X values should be mapped correctly'
+  );
+  t.deepEqual(
+    dataProp.map(getYProp),
+    [0, 1, 2],
+    'Y values should be mapped correctly'
+  );
+  t.end();
+});

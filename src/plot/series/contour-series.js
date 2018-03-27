@@ -103,13 +103,10 @@ class ContourSeries extends AbstractSeries {
 }
 
 ContourSeries.propTypes = {
+  ...AbstractSeries.propTypes,
   animation: PropTypes.bool,
   bandwidth: PropTypes.number,
   className: PropTypes.string,
-  data: PropTypes.arrayOf(PropTypes.shape({
-    x: PropTypes.number.isRequired,
-    y: PropTypes.number.isRequired
-  })).isRequired,
   marginLeft: PropTypes.number,
   marginTop: PropTypes.number,
   style: PropTypes.object
