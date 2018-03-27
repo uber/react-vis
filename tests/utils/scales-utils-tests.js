@@ -214,7 +214,6 @@ test('scales-utils #extractScalePropsFromProps', t => {
   };
 
   const result = extractScalePropsFromProps(props, ['a', 'b']);
-  console.log(result.getA, props.getA);
   t.ok(
     Object.keys(result).length === 5 &&
     result.aType === props.aType &&
