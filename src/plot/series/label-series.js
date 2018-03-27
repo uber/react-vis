@@ -26,6 +26,12 @@ import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--label';
 
 class LabelSeries extends AbstractSeries {
+  getTextAnchor = (labelAnchorX, leftOfMiddle) => {
+    return labelAnchorX ? labelAnchorX : (leftOfMiddle ? 'start' : 'end');
+  };
+  getAlignmentBaseline = (labelAnchorY, aboveMiddle) => {
+    return labelAnchorY ? labelAnchorY : (aboveMiddle ? 'text-before-edge' : 'text-after-edge');
+  };
   render() {
     const {
       animation,
@@ -39,7 +45,9 @@ class LabelSeries extends AbstractSeries {
       rotation,
       style,
       xRange,
-      yRange
+      yRange,
+      labelAnchorX,
+      labelAnchorY
     } = this.props;
     if (!data) {
       return null;
@@ -75,15 +83,19 @@ class LabelSeries extends AbstractSeries {
 
           const x = xVal + (allowOffsetToBeReversed && leftOfMiddle ? -1 : 1) * (xOffset || 0);
           const y = yVal + (allowOffsetToBeReversed && aboveMiddle ? -1 : 1) * (yOffset || 0);
+
+          const textAnchor = this.getTextAnchor(labelAnchorX, leftOfMiddle);
+          const alignmentBaseline = this.getAlignmentBaseline(labelAnchorY, aboveMiddle);
+
           const attrs = {
-            alignmentBaseline: aboveMiddle ? 'text-before-edge' : 'text-after-edge',
+            alignmentBaseline,
             className: 'rv-xy-plot__series--label-text',
             key: i,
             onClick: e => this._valueClickHandler(d, e),
             onContextMenu: e => this._valueRightClickHandler(d, e),
             onMouseOver: e => this._valueMouseOverHandler(d, e),
             onMouseOut: e => this._valueMouseOutHandler(d, e),
-            textAnchor: leftOfMiddle ? 'start' : 'end',
+            textAnchor,
             x,
             y,
             transform: `rotate(${d.rotation || rotation},${x},${y})`,
@@ -118,7 +130,9 @@ LabelSeries.propTypes = {
   rotation: PropTypes.number,
   style: PropTypes.object,
   xRange: PropTypes.arrayOf(PropTypes.number),
-  yRange: PropTypes.arrayOf(PropTypes.number)
+  yRange: PropTypes.arrayOf(PropTypes.number),
+  labelAnchorX: PropTypes.string,
+  labelAnchorY: PropTypes.string
 };
 LabelSeries.defaultProps = {
   ...AbstractSeries.defaultProps,
