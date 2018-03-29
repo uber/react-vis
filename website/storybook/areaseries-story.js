@@ -6,33 +6,44 @@ setAddon(JSXAddon);
 
 import {withKnobs, color, number, object, select, text} from '@storybook/addon-knobs/react';
 
-import {LineSeries} from 'react-vis';
+import {AreaSeries, LineSeries} from 'react-vis';
 
 import {generateLinearData, nonUniformX} from './storybook-data.js';
 import {SimpleChartWrapper, jsxOptions} from './storybook-utils.js';
 
-function styledLineSeries(props) {
+function styledAreaSeries(props) {
   return (
-    <LineSeries
+    <AreaSeries
       data={props.data}
+      fill={color('fill', props.stroke || '#12939a')}
       opacity={number('opacity', props.opacity || 1, {max: 1, min: 0, range: true, step: 0.01})}
       stroke={color('stroke', props.stroke || '#12939a')}
-      strokeDasharray={text('strokeDasharray', props.strokeDasharray || '')}
-      strokeStyle={select('strokeStyle', {solid: 'solid', dashed: 'dashed'}, props.strokeStyle || 'solid')}
-      strokeWidth={text('strokeWidth', props.strokeWidth || '')}
       style={object('style', props.style || {})}
     />
   );
 }
 
-storiesOf('Series/LineSeries/Base', module)
+storiesOf('Series/AreaSeries/Base', module)
   .addDecorator(withKnobs)
   .addWithJSX(
-    'Single Line chart',
+    'Single Area chart',
     () => {
       return (
         <SimpleChartWrapper>
-          <LineSeries data={generateLinearData({key: 'line1'})} />
+          <AreaSeries opacity={0.5} data={generateLinearData({key: 'area1'})} />
+        </SimpleChartWrapper>
+      );
+    },
+    jsxOptions
+  )
+  .addDecorator(withKnobs)
+  .addWithJSX(
+    'Single Area chart paired with LineSeries',
+    () => {
+      return (
+        <SimpleChartWrapper>
+          <AreaSeries opacity={0.25} data={generateLinearData({key: 'area1'})} stroke="transparent" />
+          <LineSeries stroke="#12939a" data={generateLinearData({key: 'area1'})} />
         </SimpleChartWrapper>
       );
     },
@@ -43,7 +54,7 @@ storiesOf('Series/LineSeries/Base', module)
     () => {
       return (
         <SimpleChartWrapper yDomain={[-3, 3]}>
-          <LineSeries data={generateLinearData({startValue: 0, key: 'line-neg'})} />
+          <AreaSeries opacity={0.5} data={generateLinearData({startValue: 0, key: 'area-neg'})} />
         </SimpleChartWrapper>
       );
     },
@@ -54,34 +65,50 @@ storiesOf('Series/LineSeries/Base', module)
     () => {
       return (
         <SimpleChartWrapper>
-          <LineSeries data={generateLinearData({key: 'line-random-x', extraParams: [['x', nonUniformX()]]})} />
+          <AreaSeries
+            opacity={0.5}
+            data={generateLinearData({key: 'area-random-x', extraParams: [['x', nonUniformX()]]})}
+          />
         </SimpleChartWrapper>
       );
     },
     jsxOptions
   )
   .addWithJSX(
-    'Multiple Line series',
+    'Multiple Area series',
     () => {
       return (
         <SimpleChartWrapper>
-          <LineSeries data={generateLinearData({key: 'line1'})} />
-          <LineSeries data={generateLinearData({key: 'line2'})} />
-          <LineSeries data={generateLinearData({key: 'line3'})} />
+          <AreaSeries opacity={0.25} data={generateLinearData({key: 'area1'})} />
+          <AreaSeries opacity={0.25} data={generateLinearData({key: 'area2'})} />
+          <AreaSeries opacity={0.25} data={generateLinearData({key: 'area3'})} />
+        </SimpleChartWrapper>
+      );
+    },
+    jsxOptions
+  )
+  .addWithJSX(
+    'Multiple stacked Area series',
+    () => {
+      return (
+        <SimpleChartWrapper stackBy="y" yDomain={[0, 50]}>
+          <AreaSeries opacity={0.5} data={generateLinearData({key: 'area1'})} />
+          <AreaSeries opacity={0.5} data={generateLinearData({key: 'area2'})} />
+          <AreaSeries opacity={0.5} data={generateLinearData({key: 'area3'})} />
         </SimpleChartWrapper>
       );
     },
     jsxOptions
   );
 
-storiesOf('Series/LineSeries/Styling', module)
+storiesOf('Series/AreaSeries/Styling', module)
   .addDecorator(withKnobs)
   .addWithJSX(
     'opacity',
     () => {
       return (
         <SimpleChartWrapper>
-          {styledLineSeries({data: generateLinearData({key: 'line1'}), opacity: 0.5})}
+          {styledAreaSeries({data: generateLinearData({key: 'area1'}), opacity: 0.75})}
         </SimpleChartWrapper>
       );
     },
@@ -92,40 +119,7 @@ storiesOf('Series/LineSeries/Styling', module)
     () => {
       return (
         <SimpleChartWrapper>
-          {styledLineSeries({data: generateLinearData({key: 'line1'}), stroke: '#2c51be'})}
-        </SimpleChartWrapper>
-      );
-    },
-    jsxOptions
-  )
-  .addWithJSX(
-    'strokeDasharray',
-    () => {
-      return (
-        <SimpleChartWrapper>
-          {styledLineSeries({data: generateLinearData({key: 'line1'}), strokeDasharray: '5, 5, 1, 5'})}
-        </SimpleChartWrapper>
-      );
-    },
-    jsxOptions
-  )
-  .addWithJSX(
-    'strokeStyle',
-    () => {
-      return (
-        <SimpleChartWrapper>
-          {styledLineSeries({data: generateLinearData({key: 'line1'}), strokeStyle: 'dashed'})}
-        </SimpleChartWrapper>
-      );
-    },
-    jsxOptions
-  )
-  .addWithJSX(
-    'strokeWidth',
-    () => {
-      return (
-        <SimpleChartWrapper>
-          {styledLineSeries({data: generateLinearData({key: 'line1'}), strokeWidth: '5px'})}
+          {styledAreaSeries({data: generateLinearData({key: 'area1'}), stroke: '#2c51be'})}
         </SimpleChartWrapper>
       );
     },
@@ -136,11 +130,11 @@ storiesOf('Series/LineSeries/Styling', module)
     () => {
       return (
         <SimpleChartWrapper>
-          {styledLineSeries({
-            data: generateLinearData({key: 'line1'}),
+          {styledAreaSeries({
+            data: generateLinearData({key: 'area1'}),
             style: {
               stroke: '#E48000',
-              strokeLinejoin: 'round',
+              strokeAreajoin: 'round',
               strokeWidth: '3px'
             }
           })}
@@ -150,22 +144,23 @@ storiesOf('Series/LineSeries/Styling', module)
     jsxOptions
   );
 
-storiesOf('Series/LineSeries/Curve', module)
+storiesOf('Series/AreaSeries/Curve', module)
   .addDecorator(withKnobs)
   .addWithJSX(
     'Curve',
     () => {
       return (
         <SimpleChartWrapper>
-          <LineSeries
-            data={generateLinearData({key: 'line1'})}
+          <AreaSeries
+            opacity={0.5}
+            data={generateLinearData({key: 'area1'})}
             curve={select(
               'curve',
               {
                 curveBasis: 'curveBasis',
                 curveCatmullRom: 'curveCatmullRom',
                 curveCardinal: 'curveCardinal',
-                curveLinear: 'curveLinear',
+                curveAreaar: 'curveAreaar',
                 curveStep: 'curveStep',
                 curveStepAfter: 'curveStepAfter',
                 curveStepBefore: 'curveStepBefore',

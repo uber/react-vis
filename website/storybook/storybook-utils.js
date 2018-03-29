@@ -80,5 +80,5 @@ export const jsxOptions = {
     }
     return component.type.displayName;
   },
-  filterProps: ['className', 'getNull', 'nullAccessor']
+  filterProps: ['className', 'getNull', 'nullAccessor', 'stack']
 };
