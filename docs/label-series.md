@@ -74,6 +74,14 @@ Array of data for the series. See above data format reference.
 Type: `object`
 SVG text objects (which is what the labelSeries is made up of) accept a ton of different styles, so rather than prescribe every single one we just accept a general grab bag pf the styles. check out the [w3](https://www.w3schools.com/graphics/svg_path.asp) page for more details.
 
+#### labelAnchorX
+Type `string`
+This attribute is used to align (start-, middle- or end-alignment) the label text horizontally relative to the data point. (Sets the text-anchor attribute for the element https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor)
+
+#### labelAnchorY
+Type `string`
+This attribute is used to align the label text vertically relative to the datapoint. (Sets the alignment-baseline attribute for the element https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/alignment-baseline)
+
 ## Interaction handlers
 #### onNearestX (optional)
 Type: `function(value, {event, innerX, index})`  
