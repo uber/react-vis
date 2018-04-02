@@ -148,7 +148,7 @@ Type: `string`
 
 This modifies the tiling strategy for the treemap, for more information see the [d3 hierarchy docs](https://github.com/d3/d3-hierarchy).
 
-#### sortFuncion (optional)
+#### sortFunction (optional)
 Type: `function`
 - Should accept arguments (a, b)
 
