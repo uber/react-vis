@@ -10,3 +10,4 @@ import './axis-story';
 import './barseries-story';
 import './lineseries-story';
 import './markseries-story';
+import './legend-story';
