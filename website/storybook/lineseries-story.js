@@ -54,7 +54,9 @@ storiesOf('Series/LineSeries/Base', module)
     () => {
       return (
         <SimpleChartWrapper>
-          <LineSeries data={generateLinearData({key: 'line-random-x', extraParams: [['x', nonUniformX()]]})} />
+          <LineSeries data={
+            generateLinearData({key: 'line-random-x',
+              extraParams: [['x', nonUniformX()]]})} />
         </SimpleChartWrapper>
       );
     },
