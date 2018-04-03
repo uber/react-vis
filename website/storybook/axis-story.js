@@ -16,8 +16,13 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
   .addWithJSX(
     'Axis orientation',
     () => {
-      const XAxisOrientation = select('XAxis.orientation', {bottom: 'bottom', top: 'top'}, 'bottom');
-      const YAxisOrientation = select('YAxis.orientation', {left: 'left', right: 'right'}, 'left');
+      const XAxisOrientation = select(
+        'XAxis.orientation',
+        {bottom: 'bottom', top: 'top'},
+        'bottom',
+        'XAxis'
+      );
+      const YAxisOrientation = select('YAxis.orientation', {left: 'left', right: 'right'}, 'left', 'YAxis');
       return (
         <SimpleChartWrapperNoAxes
           margin={{
@@ -36,8 +41,18 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
   .addWithJSX(
     'Axis titles',
     () => {
-      const XAxisPosition = select('XAxis.position', {start: 'start', middle: 'middle', end: 'end'}, 'end');
-      const YAxisPosition = select('YAxis.position', {start: 'start', middle: 'middle', end: 'end'}, 'end');
+      const XAxisPosition = select(
+        'XAxis.position',
+        {start: 'start', middle: 'middle', end: 'end'},
+        'end',
+        'XAxis'
+      );
+      const YAxisPosition = select(
+        'YAxis.position',
+        {start: 'start', middle: 'middle', end: 'end'},
+        'end',
+        'YAxis'
+      );
 
       return (
         <SimpleChartWrapperNoAxes>
@@ -52,8 +67,8 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
   .addWithJSX(
     'Tick total',
     () => {
-      const xTickTotal = number('XAxis.tickTotal', 10, {max: 20, min: 0, range: true});
-      const yTickTotal = number('YAxis.tickTotal', 10, {max: 20, min: 0, range: true});
+      const xTickTotal = number('XAxis.tickTotal', 10, {max: 20, min: 0, range: true}, 'XAxis');
+      const yTickTotal = number('YAxis.tickTotal', 10, {max: 20, min: 0, range: true}, 'YAxis');
 
       return (
         <SimpleChartWrapperNoAxes>
@@ -68,8 +83,8 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
   .addWithJSX(
     'Tick Size',
     () => {
-      const xTickSize = number('XAxis.tickSize', 6, {max: 10, min: 0, range: true});
-      const yTickSize = number('YAxis.tickSize', 6, {max: 10, min: 0, range: true});
+      const xTickSize = number('XAxis.tickSize', 6, {max: 10, min: 0, range: true}, 'XAxis');
+      const yTickSize = number('YAxis.tickSize', 6, {max: 10, min: 0, range: true}, 'YAxis');
 
       return (
         <SimpleChartWrapperNoAxes noHorizontalGridLines noVerticalGridLines>
@@ -84,8 +99,8 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
   .addWithJSX(
     'Tick Size (Inner)',
     () => {
-      const xTickSize = number('XAxis.tickSizeInner', 6, {max: 10, min: 0, range: true});
-      const yTickSize = number('YAxis.tickSizeInner', 6, {max: 10, min: 0, range: true});
+      const xTickSize = number('XAxis.tickSizeInner', 6, {max: 10, min: 0, range: true}, 'XAxis');
+      const yTickSize = number('YAxis.tickSizeInner', 6, {max: 10, min: 0, range: true}, 'YAxis');
 
       return (
         <SimpleChartWrapperNoAxes noHorizontalGridLines noVerticalGridLines>
@@ -100,8 +115,8 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
   .addWithJSX(
     'Tick Size (Outer)',
     () => {
-      const xTickSize = number('XAxis.tickSizeOuter', 6, {max: 10, min: 0, range: true});
-      const yTickSize = number('YAxis.tickSizeOuter', 6, {max: 10, min: 0, range: true});
+      const xTickSize = number('XAxis.tickSizeOuter', 6, {max: 10, min: 0, range: true}, 'XAxis');
+      const yTickSize = number('YAxis.tickSizeOuter', 6, {max: 10, min: 0, range: true}, 'YAxis');
 
       return (
         <SimpleChartWrapperNoAxes noHorizontalGridLines noVerticalGridLines>
@@ -116,7 +131,7 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
   .addWithJSX(
     'Tick orientation',
     () => {
-      const tickLabelAngle = number('tickLabelAngle', 0, {max: 90, min: -90, range: true});
+      const tickLabelAngle = number('tickLabelAngle', 0, {max: 90, min: -90, range: true}, 'XAxis');
       return (
         <SimpleChartWrapperNoAxes margin={{bottom: 80}}>
           <XAxis tickFormat={d => new Date(d).toLocaleDateString()} tickLabelAngle={tickLabelAngle} />

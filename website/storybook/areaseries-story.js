@@ -4,7 +4,7 @@ import {setAddon, storiesOf} from '@storybook/react';
 import JSXAddon from 'storybook-addon-jsx';
 setAddon(JSXAddon);
 
-import {withKnobs, color, number, object, select, text} from '@storybook/addon-knobs/react';
+import {withKnobs, color, number, object, select} from '@storybook/addon-knobs/react';
 
 import {AreaSeries, LineSeries} from 'react-vis';
 
@@ -15,10 +15,15 @@ function styledAreaSeries(props) {
   return (
     <AreaSeries
       data={props.data}
-      fill={color('fill', props.stroke || '#12939a')}
-      opacity={number('opacity', props.opacity || 1, {max: 1, min: 0, range: true, step: 0.01})}
-      stroke={color('stroke', props.stroke || '#12939a')}
-      style={object('style', props.style || {})}
+      fill={color('fill', props.stroke || '#12939a', 'AreaSeries style')}
+      opacity={number(
+        'opacity',
+        props.opacity || 1,
+        {max: 1, min: 0, range: true, step: 0.01},
+        'AreaSeries style'
+      )}
+      stroke={color('stroke', props.stroke || '#12939a', 'AreaSeries style')}
+      style={object('style', props.style || {}, 'AreaSeries style')}
     />
   );
 }
@@ -166,7 +171,8 @@ storiesOf('Series/AreaSeries/Curve', module)
                 curveStepBefore: 'curveStepBefore',
                 none: null
               },
-              'curveBasis'
+              'curveBasis',
+              'AreaSeries curve'
             )}
           />
         </SimpleChartWrapper>

@@ -15,12 +15,17 @@ function styledLineSeries(props) {
   return (
     <LineSeries
       data={props.data}
-      opacity={number('opacity', props.opacity || 1, {max: 1, min: 0, range: true, step: 0.01})}
-      stroke={color('stroke', props.stroke || '#12939a')}
-      strokeDasharray={text('strokeDasharray', props.strokeDasharray || '')}
-      strokeStyle={select('strokeStyle', {solid: 'solid', dashed: 'dashed'}, props.strokeStyle || 'solid')}
-      strokeWidth={text('strokeWidth', props.strokeWidth || '')}
-      style={object('style', props.style || {})}
+      opacity={number('opacity', props.opacity || 1, {max: 1, min: 0, range: true, step: 0.01}, 'style')}
+      stroke={color('stroke', props.stroke || '#12939a', 'style')}
+      strokeDasharray={text('strokeDasharray', props.strokeDasharray || '', 'style')}
+      strokeStyle={select(
+        'strokeStyle',
+        {solid: 'solid', dashed: 'dashed'},
+        props.strokeStyle || 'solid',
+        'style'
+      )}
+      strokeWidth={text('strokeWidth', props.strokeWidth || '', 'style')}
+      style={object('style', props.style || {}, 'style')}
     />
   );
 }
@@ -54,9 +59,12 @@ storiesOf('Series/LineSeries/Base', module)
     () => {
       return (
         <SimpleChartWrapper>
-          <LineSeries data={
-            generateLinearData({key: 'line-random-x',
-              extraParams: [['x', nonUniformX()]]})} />
+          <LineSeries
+            data={generateLinearData({
+              key: 'line-random-x',
+              extraParams: [['x', nonUniformX()]]
+            })}
+          />
         </SimpleChartWrapper>
       );
     },
@@ -173,7 +181,8 @@ storiesOf('Series/LineSeries/Curve', module)
                 curveStepBefore: 'curveStepBefore',
                 none: null
               },
-              'curveBasis'
+              'curveBasis',
+              'LineSeries curve'
             )}
           />
         </SimpleChartWrapper>
