@@ -26,7 +26,6 @@ import {scaleLinear} from 'd3-scale';
 
 import AbstractSeries from './abstract-series';
 import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import {CONTINUOUS_COLOR_RANGE} from 'theme';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--contour';
@@ -61,7 +60,7 @@ class ContourSeries extends AbstractSeries {
 
     if (animation) {
       return (
-        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+        <Animation {...this.props} animatedProps={Animation.ANIMATED_SERIES_PROPS}>
           <ContourSeries {...this.props} animation={null}/>
         </Animation>
       );

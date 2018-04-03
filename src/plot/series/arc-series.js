@@ -23,7 +23,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import {arc as arcBuilder} from 'd3-shape';
 
 import AbstractSeries from './abstract-series';
@@ -138,7 +137,7 @@ class ArcSeries extends AbstractSeries {
       const cloneData = data.map(d => ({...d}));
       return (
         <g className="rv-xy-plot__series--arc__animation-wrapper">
-          <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS} data={cloneData}>
+          <Animation {...this.props} animatedProps={Animation.ANIMATED_SERIES_PROPS} data={cloneData}>
             <ArcSeries {...this.props} animation={null} disableSeries={true} data={cloneData}/>
           </Animation>
           <ArcSeries {...this.props} animation={null} hideSeries style={{stroke: 'red'}}/>

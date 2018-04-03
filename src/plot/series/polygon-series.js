@@ -21,7 +21,6 @@
 import React from 'react';
 
 import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 
 import AbstractSeries from './abstract-series';
 
@@ -56,7 +55,7 @@ class PolygonSeries extends AbstractSeries {
 
     if (animation) {
       return (
-        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+        <Animation {...this.props} animatedProps={Animation.ANIMATED_SERIES_PROPS}>
           <PolygonSeries {...this.props} animation={null}/>
         </Animation>
       );

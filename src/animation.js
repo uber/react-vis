@@ -20,6 +20,21 @@ const propTypes = {
   onEnd: PropTypes.func
 };
 
+export const ANIMATED_SERIES_PROPS = [
+  'xRange', 'xDomain', 'x',
+  'yRange', 'yDomain', 'y',
+  'colorRange', 'colorDomain', 'color',
+  'opacityRange', 'opacityDomain', 'opacity',
+  'strokeRange', 'strokeDomain', 'stroke',
+  'fillRange', 'fillDomain', 'fill',
+  'width', 'height',
+  'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
+  'data',
+  'angleDomain', 'angleRange', 'angle',
+  'radiusDomain', 'radiusRange', 'radius',
+  'innerRadiusDomain', 'innerRadiusRange', 'innerRadius'
+];
+
 /**
  * Format the animation style object
  * @param {Object|String} animationStyle - The animation style property, either the name of a
@@ -54,6 +69,8 @@ export function extractAnimatedPropValues(props) {
 }
 
 class Animation extends PureComponent {
+  static ANIMATED_SERIES_PROPS = ANIMATED_SERIES_PROPS;
+
   constructor(props) {
     super(props);
     this._updateInterpolator(props);

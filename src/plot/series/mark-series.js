@@ -23,7 +23,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import {warning} from 'utils/react-utils';
 import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
 
@@ -86,7 +85,7 @@ class MarkSeries extends AbstractSeries {
 
     if (animation) {
       return (
-        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+        <Animation {...this.props} animatedProps={Animation.ANIMATED_SERIES_PROPS}>
           <MarkSeries {...this.props} animation={null} />
         </Animation>
       );

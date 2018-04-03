@@ -24,7 +24,6 @@ import * as d3Shape from 'd3-shape';
 
 import Animation from 'animation';
 import {DEFAULT_OPACITY} from 'theme';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import {warning} from 'utils/react-utils';
 
 import AbstractSeries from './abstract-series';
@@ -64,7 +63,7 @@ class LineSeries extends AbstractSeries {
 
     if (animation) {
       return (
-        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+        <Animation {...this.props} animatedProps={Animation.ANIMATED_SERIES_PROPS}>
           <LineSeries {...this.props} animation={null} />
         </Animation>
       );

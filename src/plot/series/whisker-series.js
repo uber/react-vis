@@ -23,7 +23,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import {DEFAULT_OPACITY} from 'theme';
 
 import AbstractSeries from './abstract-series';
@@ -168,7 +167,7 @@ class WhiskerSeries extends AbstractSeries {
     }
     if (animation) {
       return (
-        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+        <Animation {...this.props} animatedProps={Animation.ANIMATED_SERIES_PROPS}>
           <WhiskerSeries {...this.props} animation={null}/>
         </Animation>
       );

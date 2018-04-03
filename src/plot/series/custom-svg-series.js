@@ -23,7 +23,6 @@ import PropTypes from 'prop-types';
 
 import AbstractSeries from './abstract-series';
 import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--custom-svg-wrapper';
 
@@ -105,7 +104,7 @@ class CustomSVGSeries extends AbstractSeries {
 
     if (animation) {
       return (
-        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+        <Animation {...this.props} animatedProps={Animation.ANIMATED_SERIES_PROPS}>
           <CustomSVGSeries {...this.props} animation={false}/>
         </Animation>
       );

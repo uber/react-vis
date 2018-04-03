@@ -215,21 +215,6 @@ export function getRadialDomain(data) {
   return data.reduce((res, row) => Math.max(row.radius, res), 0);
 }
 
-export const ANIMATED_SERIES_PROPS = [
-  'xRange', 'xDomain', 'x',
-  'yRange', 'yDomain', 'y',
-  'colorRange', 'colorDomain', 'color',
-  'opacityRange', 'opacityDomain', 'opacity',
-  'strokeRange', 'strokeDomain', 'stroke',
-  'fillRange', 'fillDomain', 'fill',
-  'width', 'height',
-  'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
-  'data',
-  'angleDomain', 'angleRange', 'angle',
-  'radiusDomain', 'radiusRange', 'radius',
-  'innerRadiusDomain', 'innerRadiusRange', 'innerRadius'
-];
-
 export function getStackParams(props) {
   const {_stackBy, valuePosAttr, cluster} = props;
   let {

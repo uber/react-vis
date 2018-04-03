@@ -85,3 +85,7 @@ export const MarginPropType = PropTypes.oneOfType([
   }),
   PropTypes.number
 ]);
+
+export default {
+  getInnerDimensions
+};

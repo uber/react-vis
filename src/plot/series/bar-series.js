@@ -23,7 +23,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS, getStackParams} from 'utils/series-utils';
+import {getStackParams} from 'utils/series-utils';
 
 import AbstractSeries from './abstract-series';
 
@@ -62,7 +62,7 @@ class BarSeries extends AbstractSeries {
 
     if (animation) {
       return (
-        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
+        <Animation {...this.props} animatedProps={Animation.ANIMATED_SERIES_PROPS}>
           <BarSeries {...this.props} animation={null}/>
         </Animation>
       );

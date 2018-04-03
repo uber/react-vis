@@ -66,7 +66,6 @@ export Treemap from 'treemap';
 export RadialChart from 'radial-chart';
 export RadarChart from 'radar-chart';
 export ParallelCoordinates from 'parallel-coordinates';
-export Sankey from 'sankey';
 export Sunburst from 'sunburst';
 
 export {
@@ -78,5 +77,8 @@ export {
   FlexibleHeightXYPlot
 } from './make-vis-flexible';
 
+export Animation from 'animation';
+export Theme from 'theme';
 export AxisUtils from 'utils/axis-utils';
+export ChartUtils from 'utils/chart-utils';
 export ScaleUtils from 'utils/scales-utils';
