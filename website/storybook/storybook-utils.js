@@ -1,6 +1,6 @@
 import React from 'react';
 import {AutoSizer} from 'react-virtualized';
-import {XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines} from 'react-vis';
+import {XYPlot, RadialChart, XAxis, YAxis, VerticalGridLines, HorizontalGridLines} from 'react-vis';
 import {boolean, select} from '@storybook/addon-knobs/react';
 
 export const CATEGORY_PALETTE = [
@@ -63,6 +63,12 @@ export function SimpleChartWrapper(props) {
   );
 }
 
+export function SimpleRadialChartWrapper(props) {
+  return (
+    <AutoSizer>{({height, width}) => <RadialChart height={height} width={width} {...props} />}</AutoSizer>
+  );
+}
+
 export function SimpleChartWrapperNoAxes(props) {
   return SimpleChartWrapper({...props, noXAxis: true, noYAxis: true});
 }
@@ -81,6 +87,11 @@ export const jsxOptions = {
   displayName: component => {
     if (component.type.name === 'SimpleChartWrapper' || component.type.name === 'SimpleChartWrapperNoAxes') {
       return 'XYPlot';
+    }
+    if (
+      component.type.name === 'SimpleRadialChartWrapper'
+    ) {
+      return 'RadialChart';
     }
     return component.type.displayName;
   },

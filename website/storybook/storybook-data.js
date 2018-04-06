@@ -40,6 +40,16 @@ export function generateScatterplotData(args) {
   return generateLinearData({...args, extraParams});
 }
 
+export function generateRadialData(args) {
+  return generateScatterplotData(args).map(({x, y, ...d}, i) => {
+    return {
+      angle: Math.round(x + y),
+      label: getWord()({i}),
+      ...d
+    };
+  });
+}
+
 export function xyFlip(arr) {
   return arr.map(d => ({
     ...d,
