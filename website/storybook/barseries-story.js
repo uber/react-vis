@@ -17,12 +17,12 @@ function addBarSeriesStory(isVertical = true) {
   function styledSeries(props) {
     return (
       <Series
-        color={color('color', props.color || null)}
+        color={color('color', props.color || null, 'style')}
         data={props.data}
-        fill={color('fill', props.fill || '#12939a')}
-        opacity={number('opacity', props.opacity || 1, {max: 1, min: 0, range: true, step: 0.01})}
-        stroke={color('stroke', props.stroke || '#12939a')}
-        style={object('style', props.style || {})}
+        fill={(color('fill', props.fill || '#12939a'), 'style')}
+        opacity={number('opacity', props.opacity || 1, {max: 1, min: 0, range: true, step: 0.01}, 'style')}
+        stroke={color('stroke', props.stroke || '#12939a', 'style')}
+        style={object('style', props.style || {}, 'style')}
       />
     );
   }

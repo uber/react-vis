@@ -15,12 +15,12 @@ function styledMarkSeries(props) {
   return (
     <MarkSeries
       data={props.data}
-      opacity={number('opacity', props.opacity || 1, {max: 1, min: 0, range: true, step: 0.01})}
-      fill={color('fill', props.fill || '#12939a')}
-      stroke={color('stroke', props.stroke || '#12939a')}
-      strokeStyle={select('strokeStyle', {solid: 'solid', dashed: 'dashed'}, props.strokeStyle || 'solid')}
-      strokeWidth={number('strokeWidth', props.strokeWidth || 2)}
-      style={object('style', props.style || {})}
+      opacity={number('opacity', props.opacity || 1, {max: 1, min: 0, range: true, step: 0.01}, 'style')}
+      fill={color('fill', props.fill || '#12939a', 'style')}
+      stroke={color('stroke', props.stroke || '#12939a', 'style')}
+      strokeStyle={select('strokeStyle', {solid: 'solid', dashed: 'dashed'}, props.strokeStyle || 'solid', 'style')}
+      strokeWidth={number('strokeWidth', props.strokeWidth || 2, 'style')}
+      style={object('style', props.style || {}, 'style')}
     />
   );
 }
