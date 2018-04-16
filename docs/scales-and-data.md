@@ -95,7 +95,7 @@ To redefine a scale, you must pass a prop to the series that uses that scale. Th
 
 * `get[name]` (optional)  
   Type: `function`  
-  A accessor function that gets the value to be compute from the data. For instance if you were keeping your data as rows like {a: 1, b: 2, c: 3}, you could define an x accessor like `getX: d => d.a`.
+  An accessor function that gets the value to be compute from the data. For instance if you were keeping your data as rows like {a: 1, b: 2, c: 3}, you could define an x accessor like `getX: d => d.a`.
 * `[name]Domain` (optional)  
   Type: `Array`  
   Array of values to visualize from. If domain is not passed, it will be calculated from the values which are passed to component.
