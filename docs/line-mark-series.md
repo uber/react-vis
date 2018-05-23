@@ -99,7 +99,8 @@ An object which holds CSS properties that will be applied to the SVG element(s) 
 ```jsx
 <LineMarkSeries
   data={data}
-  style={{line: {stroke:"blue"}, mark: {stroke:"red"}}}
+  lineStyle={{stroke:"red"}}
+  markStyle={{stroke:"blue"}}
 />
 ```
 
