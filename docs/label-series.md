@@ -21,7 +21,7 @@ Like other series the `labelSeries` requires the data be formatted as an array o
 
 ```javascript
 const myData = [
-  {x: 0, y: 0, label: 'woah!', style={fontSize: 10}},
+  {x: 0, y: 0, label: 'woah!', style: {fontSize: 10}},
   {x: 1, y: 0, label: 'dope city', yOffset: 5},
   {x: 0, y: 1, label: 'cool Dog friend', xOffset: 5, rotation: 34}
 ]
