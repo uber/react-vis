@@ -176,7 +176,7 @@ class AxisTicks extends React.Component {
 
     const ticks = values.map((v, i) => {
       const pos = scale(v);
-      const text = tickFormatFn(v, i);
+      const text = tickFormatFn(v, i, scale, tickTotal);
 
       return (
         <g key={i} {...translateFn(pos, 0)}
