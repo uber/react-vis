@@ -27,11 +27,10 @@ Type: `function`
 Format function for a tooltip. Receives the data point, should return an array of objects containing `title` and `value` properties. Each item of an array is shown on a separate line by default.
 _Note: please pass custom contents in case if you need different look for the hint._
 
-#### orientation (optional)
-Type: `(auto|topleft|topright|bottomleft|bottomright)`
-Default: `auto`
-The way to align the hint inside the chart. When `auto` is set the hint is trying to stay inside the bounding box of the chart.
-Set the hint to `topleft` if you want to see a "conventional" hint alignment.
+#### align (optional)
+Type: `Object`
+Default: `{horizontal: 'auto', vertical: 'auto'}`
+The way to align the hint inside the chart. Within the object, specify the horizontal alignment `(auto|left|right)` and the vertical alignment `(auto|top|bottom)`. For example, to see a "conventional" hint alignment: `{vertical: 'top', horizontal: 'left'}`. 
 
 ### Style (optional)
 Type: `Object`
