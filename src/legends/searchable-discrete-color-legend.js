@@ -23,6 +23,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import DiscreteColorLegend from 'legends/discrete-color-legend';
+import LegendContainer from './legend-container';
 
 const propTypes = {
   ...DiscreteColorLegend.propTypes,
@@ -59,24 +60,26 @@ function SearchableDiscreteColorLegend(props) {
     null;
   const filteredItems = searchFn(items, searchText);
   return (
-    <div className={`rv-search-wrapper ${className}`} style={{width, height}}>
-      <form className="rv-search-wrapper__form">
-        <input
-          type="search"
-          placeholder={searchPlaceholder}
-          className="rv-search-wrapper__form__input"
-          value={searchText}
-          onChange={onChange}/>
-      </form>
-      <div className="rv-search-wrapper__contents">
-        <DiscreteColorLegend
-          colors={colors}
-          items={filteredItems}
-          onItemClick={onItemClick}
-          orientation={orientation}
-        />
+    <LegendContainer>
+      <div className={`rv-search-wrapper ${className}`} style={{width, height}}>
+        <form className="rv-search-wrapper__form">
+          <input
+            type="search"
+            placeholder={searchPlaceholder}
+            className="rv-search-wrapper__form__input"
+            value={searchText}
+            onChange={onChange}/>
+        </form>
+        <div className="rv-search-wrapper__contents">
+          <DiscreteColorLegend
+            colors={colors}
+            items={filteredItems}
+            onItemClick={onItemClick}
+            orientation={orientation}
+          />
+        </div>
       </div>
-    </div>
+    </LegendContainer>
   );
 }
 

@@ -1,6 +1,9 @@
-$rv-legend-enabled-color: #3a3a48;
-$rv-legend-disabled-color: #b8b8b8;
+import styled from 'styled-components';
 
+const ENABLED_COLOR = '#3a3a48';
+const DISABLED_COLOR = '#b8b8b8';
+
+const LegendContainer = styled.div`
 .rv-discrete-color-legend {
   box-sizing: border-box;
   overflow-y: auto;
@@ -12,7 +15,7 @@ $rv-legend-disabled-color: #b8b8b8;
 }
 
 .rv-discrete-color-legend-item {
-  color: $rv-legend-enabled-color;
+  color: ${ENABLED_COLOR};
   border-radius: 1px;
   padding: 9px 10px;
 
@@ -39,7 +42,7 @@ $rv-legend-disabled-color: #b8b8b8;
 }
 
 .rv-discrete-color-legend-item.disabled {
-  color: $rv-legend-disabled-color;
+  color: ${DISABLED_COLOR};
 }
 
 .rv-discrete-color-legend-item.clickable {
@@ -132,3 +135,6 @@ $rv-legend-disabled-color: #b8b8b8;
 .rv-legend-titles__right {
   right: 0;
 }
+`;
+
+export default LegendContainer;

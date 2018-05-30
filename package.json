@@ -49,7 +49,8 @@
     "global": "^4.3.1",
     "hoek": "4.2.1",
     "prop-types": "^15.5.8",
-    "react-motion": "^0.5.2"
+    "react-motion": "^0.5.2",
+    "styled-components": "3.3.0"
   },
   "devDependencies": {
     "babel-cli": "6.18.0",

@@ -24,6 +24,7 @@ import PropTypes from 'prop-types';
 
 import DiscreteColorLegendItem from 'legends/discrete-color-legend-item';
 import {DISCRETE_COLOR_RANGE} from 'theme';
+import LegendContainer from './legend-container';
 
 function DiscreteColorLegend({
   className,
@@ -37,9 +38,10 @@ function DiscreteColorLegend({
   width
 }) {
   return (
-    <div className={`rv-discrete-color-legend ${orientation} ${className}`} style={{width, height}}>
-      {items.map((item, i) => (
-        <DiscreteColorLegendItem
+    <LegendContainer>
+      <div className={`rv-discrete-color-legend ${orientation} ${className}`} style={{width, height}}>
+        {items.map((item, i) => (
+          <DiscreteColorLegendItem
           title={item.title ? item.title : item}
           color={item.color ? item.color : colors[i % colors.length]}
           disabled={Boolean(item.disabled)}
@@ -50,7 +52,8 @@ function DiscreteColorLegend({
           onMouseLeave={onItemMouseEnter ? e => onItemMouseLeave(item, i, e) : null}
         />
       ))}
-    </div>
+      </div>
+    </LegendContainer>
   );
 }
 

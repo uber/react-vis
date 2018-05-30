@@ -21,6 +21,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
+import LegendContainer from './legend-container';
 
 const propTypes = {
   className: PropTypes.string,
@@ -65,20 +66,22 @@ function ContinuousSizeLegend({startTitle, endTitle, startSize, endSize,
     circles.push(' ');
   }
   return (
-    <div className={`rv-continuous-size-legend ${className}`} style={{width, height}}>
-      <div className="rv-bubbles" style={{height: endSize}}>
-        {circles}
-        <div className="rv-spacer" />
+    <LegendContainer>
+      <div className={`rv-continuous-size-legend ${className}`} style={{width, height}}>
+        <div className="rv-bubbles" style={{height: endSize}}>
+          {circles}
+          <div className="rv-spacer" />
+        </div>
+        <div className="rv-legend-titles">
+          <span className="rv-legend-titles__left">
+            {startTitle}
+          </span>
+          <span className="rv-legend-titles__right">
+            {endTitle}
+          </span>
+        </div>
       </div>
-      <div className="rv-legend-titles">
-        <span className="rv-legend-titles__left">
-          {startTitle}
-        </span>
-        <span className="rv-legend-titles__right">
-          {endTitle}
-        </span>
-      </div>
-    </div>
+    </LegendContainer>
   );
 }
 
