@@ -38,8 +38,8 @@ function DiscreteColorLegend({
   width
 }) {
   return (
-    <LegendContainer>
-      <div className={`rv-discrete-color-legend ${orientation} ${className}`} style={{width, height}}>
+    <LegendContainer className={className}>
+      <div className={`rv-discrete-color-legend ${orientation}`} style={{width, height}}>
         {items.map((item, i) => (
           <DiscreteColorLegendItem
           title={item.title ? item.title : item}

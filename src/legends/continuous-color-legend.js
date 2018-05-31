@@ -60,8 +60,8 @@ function ContinuousColorLegend({startColor, midColor, endColor, startTitle,
   }
   colors.push(endColor);
   return (
-    <LegendContainer>
-      <div className={`rv-continuous-color-legend ${className}`} style={{width, height}}>
+    <LegendContainer className={className}>
+      <div className="rv-continuous-color-legend" style={{width, height}}>
         <div
         className="rv-gradient"
         style={{background: `linear-gradient(to right, ${colors.join(',')})`}} />
@@ -72,11 +72,10 @@ function ContinuousColorLegend({startColor, midColor, endColor, startTitle,
           <span className="rv-legend-titles__right">
             {endTitle}
           </span>
-          {midTitle ?
-            <span className="rv-legend-titles__center">
-              {midTitle}
-            </span> :
-          null}
+          {Boolean(midTitle) &&
+          <span className="rv-legend-titles__center">
+            {midTitle}
+          </span>}
         </div>
       </div>
     </LegendContainer>

@@ -66,8 +66,8 @@ function ContinuousSizeLegend({startTitle, endTitle, startSize, endSize,
     circles.push(' ');
   }
   return (
-    <LegendContainer>
-      <div className={`rv-continuous-size-legend ${className}`} style={{width, height}}>
+    <LegendContainer className={className}>
+      <div className="rv-continuous-size-legend" style={{width, height}}>
         <div className="rv-bubbles" style={{height: endSize}}>
           {circles}
           <div className="rv-spacer" />
