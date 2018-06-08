@@ -85,7 +85,7 @@ For Heatmap series, while you can pass a colorDomain and a colorRange, you canno
 
 "Per series" means that it's possible to pass a value to the series as a whole, but not per data point.
 
-If am attribute is not available as a scale for a given series, all values passed in the corresponding property will be ignored. For instance, if you use a dataset that has fill properties, it will be ignored for LineSeries.
+If an attribute is not available as a scale for a given series, all values passed in the corresponding property will be ignored. For instance, if you use a dataset that has fill properties, it will be ignored for LineSeries.
 
 This table is also meant to be used for derived series. Canvas series have the same interface as SVG series. HorizontalRectSeries and VerticalRectSeries take the same attribute as RectSeries. And LineMarkSeries take the same attribute as Line and Mark series.
 

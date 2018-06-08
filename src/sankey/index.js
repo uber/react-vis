@@ -126,9 +126,12 @@ class Sankey extends Component {
             data={nodesCopy.map(node => {
               return {
                 x: node.x0 + (node.x0 < width / 2 ? nWidth + 10 : -10),
-                y: node.y0 + (node.y1 - node.y0) / 2 - marginTop,
+                y: (node.y0 + node.y1) / 2 - marginTop,
                 label: node.name,
-                style: style.labels
+                style: {
+                  dy: '-.5em',
+                  ...style.labels
+                }
               };
             })}
             />
