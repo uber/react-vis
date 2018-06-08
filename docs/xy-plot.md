@@ -6,7 +6,7 @@ Currently following components are used for this purpose:
 
 * XYPlot to wrap all the items.
 * [Grids](documentation/api-reference/grids.md) to show vertical and horizontal grids.
-* [Axes](/documentation/api-reference/axes) to show X and Y axis.
+* [Axes](/documentation/api-reference/axes.md) to show X and Y axis.
 * [Different kinds of series](documentation/api-reference/series.md) for line/area/bar charts, scatterplots, heat maps, etc.
 * [Hint](documentation/api-reference/hint.md) to show the selected hint.
 * [Crosshair](documentation/api-reference/crosshair.md) for crosshairs.
