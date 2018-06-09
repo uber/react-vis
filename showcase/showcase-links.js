@@ -5,7 +5,7 @@ export const SHOWCASE_LINKS = {
   CustomAxesOrientation: 'https://github.com/uber/react-vis/blob/master/showcase/axes/custom-axes-orientation.js',
   CustomAxisChart: 'https://github.com/uber/react-vis/blob/master/showcase/axes/custom-axis.js',
   CustomAxes: 'https://github.com/uber/react-vis/blob/master/showcase/axes/custom-axes.js',
-  AxisWithTurnedLabels: 'https://github.com/uber/react-vis/blob/master/showcase/plot/axis-with-turned-labels',
+  AxisWithTurnedLabels: 'https://github.com/uber/react-vis/blob/master/showcase/plot/axis-with-turned-labels.js',
   PaddedAxis: 'https://github.com/uber/react-vis/blob/master/showcase/axes/padded-axis.js',
   // AXES - TOOLTIPS SHOW CASE LINKS
   StaticHints: 'https://github.com/uber/react-vis/blob/master/showcase/axes/static-hints.js',
