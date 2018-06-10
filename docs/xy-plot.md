@@ -5,11 +5,11 @@ XYPlot allows you to make line charts, area charts, scatterplots, heat maps, etc
 Currently following components are used for this purpose:
 
 * XYPlot to wrap all the items.
-* [Grids](grids.md) to show vertical and horizontal grids.
-* [Axes](axes.md) to show X and Y axis.
-* [Different kinds of series](series.md) for line/area/bar charts, scatterplots, heat maps, etc.
-* [Hint](hint.md) to show the selected hint.
-* [Crosshair](crosshair.md) for crosshairs.
+* [Grids](documentation/api-reference/grids.md) to show vertical and horizontal grids.
+* [Axes](documentation/api-reference/axes.md) to show X and Y axis.
+* [Different kinds of series](documentation/api-reference/series.md) for line/area/bar charts, scatterplots, heat maps, etc.
+* [Hint](documentation/api-reference/hint.md) to show the selected hint.
+* [Crosshair](documentation/api-reference/crosshair.md) for crosshairs.
 
 ## Usage
 
@@ -72,21 +72,21 @@ Accessors can also be used to retreieve the properties above from the `data` obj
 </XYPlot>
 ```
 
-If the property is not passed in any of the objects, the property is not visualized. The user can override the way how properties are visualized by passing custom range, domain or type of scales to the series or the entire chart (please see [Series](series.md) for more info).
+If the property is not passed in any of the objects, the property is not visualized. The user can override the way how properties are visualized by passing custom range, domain or type of scales to the series or the entire chart (please see [Series](/documentation/api-reference/series.md) for more info).
 
 Not all properties can be visualized in each series. Here's a short comparison of them:
 
 |                      | `x` | `y` | `color` | `opacity` | `size` |
 |----------------------|-----|-----|---------|-----------|--------|
-| [LineSeries](line-series.md)  |  +  |  +  | +       |           |        |
+| [LineSeries](/documentation/series-reference/line-series.md)  |  +  |  +  | +       |           |        |
 | `AreaSeries`         |  +  |  +  | +       |           |        |
-| [LineMarkSeries](line-series.md)     |  +  |  +  | +       |     +     | +      |
+| [LineMarkSeries](/documentation/series-reference/line-series.md)     |  +  |  +  | +       |     +     | +      |
 | `MarkSeries`         |  +  |  +  | +       |     +     | +      |
-| [VerticalBarSeries](bar-series.md)  |  +  |  +  | +       |     +     |        |
-| [HorizontalBarSeries](bar-series.md)|  +  |  +  | +       |     +     |        |
+| [VerticalBarSeries](/documentation/series-reference/bar-series.md)  |  +  |  +  | +       |     +     |        |
+| [HorizontalBarSeries](/documentation/series-reference/bar-series.md)|  +  |  +  | +       |     +     |        |
 | `VerticalRectSeries`  |  +  |  +  | +       |     +     |        |
 | `HorizontalRectSeries`|  +  |  +  | +       |     +     |        |
-| [HeatmapSeries](heatmap-series.md)      |  +  |  +  | +       |     +     |        |      |
+| [HeatmapSeries](/documentation/series-reference/heatmap-series.md)      |  +  |  +  | +       |     +     |        |      |
 
 
 ### A note on ordering
@@ -113,7 +113,7 @@ Would generate HTML something like:
   </svg>
   <div class="rv-hint first-hint">...</div>
   <div class="rv-hint second-hint">...</div>
-</divt>
+</div>
 ```
 
 The TLDR here is that *ORDER MATTERS*! If you want the elements to appear in a different order, reorder them!
@@ -148,7 +148,7 @@ Margin around the chart.
 
 #### stackBy (optional)
 Type: `string`
-Stack the chart by the given attribute. If the attribute is `y`, the chart is stacked vertically; if the attribute is `x` then it's stacked horizontally. See the [Series](series.md) API reference for series level stack opt-in.
+Stack the chart by the given attribute. If the attribute is `y`, the chart is stacked vertically; if the attribute is `x` then it's stacked horizontally. See the [Series](/documentation/api-reference/series.md) API reference for series level stack opt-in.
 
 ### style (optional)
 Type: `object`
