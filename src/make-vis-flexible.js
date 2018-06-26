@@ -123,7 +123,7 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
      * @private
      */
     _onResize() {
-      const containerElement = getDOMNode(this.refs[CONTAINER_REF]);
+      const containerElement = getDOMNode(this[CONTAINER_REF]);
       const {offsetHeight, offsetWidth} = containerElement;
 
       const newHeight = this.state.height === offsetHeight ? {} :
@@ -162,7 +162,7 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
 
       return (
         <div
-          ref={CONTAINER_REF}
+          ref={ref => (this[CONTAINER_REF] = ref)}
           style={{width: '100%', height: '100%'}}>
           <Component
             {...updatedDimensions}

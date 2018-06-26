@@ -112,7 +112,7 @@ class CanvasWrapper extends Component {
   }
 
   componentDidMount() {
-    const ctx = this.refs.canvas.getContext('2d');
+    const ctx = this.canvas.getContext('2d');
     if (!ctx) {
       return;
     }
@@ -126,7 +126,7 @@ class CanvasWrapper extends Component {
   }
 
   componentDidUpdate(nextProps) {
-    this.drawChildren(nextProps, this.props, this.refs.canvas.getContext('2d'));
+    this.drawChildren(nextProps, this.props, this.canvas.getContext('2d'));
   }
 
   /**
@@ -188,7 +188,8 @@ class CanvasWrapper extends Component {
             height: `${height}px`,
             width: `${width}px`
           }}
-          ref="canvas" />
+          ref={ref => (this.canvas = ref)}
+        />
       </div>
     );
   }
