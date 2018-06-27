@@ -120,6 +120,7 @@ export function generatePoints({axisStart, axisEnd, numberOfTicks, axisDomain}) 
         }
         return {x: val, y: slope * val + offset, text: axisScale(val)};
       })
+      .slice(0, numberOfTicks + 1)
   };
 }
 
