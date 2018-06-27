@@ -54,7 +54,7 @@ export default class ResponsiveVisDemo extends React.Component {
     const width = visSize;
     const height = visSize * ASPECT_RATIO;
     const ppp = getPPP(width, height, data, 'TWOD');
-    const featuresToRender = this.refs.responsiveExample && this.refs.responsiveExample.getFeatures() || {};
+    const featuresToRender = this.responsiveExample && this.responsiveExample.getFeatures() || {};
 
     return (<div className="responsive-controls">
       <div className="points-per-pixel-label">{`Points Per Pixel: ${ppp}`}</div>
@@ -111,7 +111,7 @@ export default class ResponsiveVisDemo extends React.Component {
         </div>
         <ResponsiveChartType
             data={data}
-            ref="responsiveExample"
+            ref={ref => (this.responsiveExample = ref)}
             margin={EXAMPLE_MARGIN}
             height={ASPECT_RATIO * visSize}
             width={visSize} />
