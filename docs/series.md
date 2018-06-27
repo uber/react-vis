@@ -2,17 +2,17 @@
 
 The library supports several types of series:
 
-* [ArcSeries](documentation/series-reference/arc-series.md) for radial arcs such as might be found in pie charts.
-* [AreaSeries](documentation/series-reference/area-series.md) for area charts;
-* [BarSeries](documentation/series-reference/bar-series.md) for discrete bar charts, covers (covers HorizontalBarSeries and VerticalBarSeries);
-* [ContourSeries](documentation/series-reference/contour-series.md) for making contour density plots;
-* [HeatmapSeries](documentation/series-reference/heatmap-series.md) for heat maps.
-* [LabelSeries](documentation/series-reference/label-series.md) for adding annotations to charts
-* [LineMarkSeries](documentation/series-reference/line-series.md) is a shorthand to place marks (e.g. circles) on lines;
-* [LineSeries](documentation/series-reference/line-series.md) for lines;
-* [MarkSeries](documentation/series-reference/mark-series.md) for scatterplots;
-* [PolygonSeries](documentation/series-reference/polygon-series.md) for arbitrary SVG shapes
-* [RectSeries](documentation/series-reference/rect-series.md) for arbitrary histograms and other continuous variable boxes. (covers HorizontalRectSeries and VerticalRectSeries)
+* [ArcSeries](arc-series.md) for radial arcs such as might be found in pie charts.
+* [AreaSeries](area-series.md) for area charts;
+* [BarSeries](bar-series.md) for discrete bar charts, covers (covers HorizontalBarSeries and VerticalBarSeries);
+* [ContourSeries](contour-series.md) for making contour density plots;
+* [HeatmapSeries](heatmap-series.md) for heat maps.
+* [LabelSeries](label-series.md) for adding annotations to charts
+* [LineMarkSeries](line-series.md) is a shorthand to place marks (e.g. circles) on lines;
+* [LineSeries](line-series.md) for lines;
+* [MarkSeries](mark-series.md) for scatterplots;
+* [PolygonSeries](polygon-series.md) for arbitrary SVG shapes
+* [RectSeries](rect-series.md) for arbitrary histograms and other continuous variable boxes. (covers HorizontalRectSeries and VerticalRectSeries)
 
 Each series provides following API:
 
@@ -118,10 +118,10 @@ Note that style information passed through the style property will override thos
 ```
 
 #### animation (optional)
-See the [XYPlot](documentation/api-reference/xy-plot.md)'s `animation` section for more information.
+See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
 #### stack (optional)
 Type: `Boolean`
 Default: `false`
 Opt-in for stacking series and mix stacked and non-stacked series in a single chart. If all series have the `stack` prop set to `false` (which is default behaviour), they will all be considered stackable. Otherwise if at least two of the series have the `stack` prop set to `true`, they will be stacked together and the other series will be considered non stackable.
-See the [XYPlot](documentation/api-reference/xy-plot.md)'s `stackBy` section for more information.
+See the [XYPlot](xy-plot.md)'s `stackBy` section for more information.
