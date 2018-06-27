@@ -68,7 +68,7 @@ function getAxes(props) {
         animation={animation}
         key={`${index}-axis`}
         axisStart={{x: 0, y: 0}}
-        axisEnd={{x: Math.cos(angle), y: Math.sin(angle)}}
+        axisEnd={{x: getCoordinate(Math.cos(angle)), y: getCoordinate(Math.sin(angle))}}
         axisDomain={sortedDomain}
         numberOfTicks={5}
         tickValue={domainTickFormat}
@@ -76,6 +76,29 @@ function getAxes(props) {
         />
     );
   });
+}
+
+/**
+ * Generate x or y coordinate for axisEnd
+ * @param {Number} axisEndPoint
+ - epsilon is an arbitrarily chosen small number to approximate axisEndPoints
+ - to true values resulting from trigonometry functions (sin, cos) on angles
+ * @return {Number} the x or y coordinate accounting for exact trig values
+ */
+function getCoordinate(axisEndPoint) {
+  const epsilon = 10e-13;
+  if (Math.abs(axisEndPoint) <= epsilon) {
+    axisEndPoint = 0;
+  } else if (axisEndPoint > 0) {
+    if (Math.abs(axisEndPoint - 0.5) <= epsilon) {
+      axisEndPoint = 0.5;
+    }
+  } else if (axisEndPoint < 0) {
+    if (Math.abs(axisEndPoint + 0.5) <= epsilon) {
+      axisEndPoint = -0.5;
+    }
+  }
+  return axisEndPoint;
 }
 
 /**
