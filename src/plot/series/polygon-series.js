@@ -75,7 +75,7 @@ class PolygonSeries extends AbstractSeries {
         style,
         d: generatePath(data, xFunctor, yFunctor),
         transform: `translate(${marginLeft},${marginTop})`,
-        ref: 'container'
+        ref: (ref) => (this.container = ref)
       }}/>
     );
   }

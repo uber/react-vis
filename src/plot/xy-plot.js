@@ -442,6 +442,11 @@ class XYPlot extends React.Component {
       return React.cloneElement(child, {
         ...dimensions,
         animation,
+        ref: (ref) => {
+          if (dataProps) {
+            this.container[`series${seriesProps[index].seriesIndex}`] = ref;
+          }
+        },
         ...seriesProps[index],
         ...scaleMixins,
         ...child.props,
@@ -498,7 +503,6 @@ class XYPlot extends React.Component {
       );
     }
     const components = this._getClonedChildComponents();
-
     return (
       <div
         style={{
