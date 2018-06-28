@@ -63,6 +63,7 @@ class PolygonSeries extends AbstractSeries {
     }
     const xFunctor = this._getAttributeFunctor('x');
     const yFunctor = this._getAttributeFunctor('y');
+
     return (
       <path {...{
         className: `${predefinedClassName} ${className}`,
@@ -73,7 +74,8 @@ class PolygonSeries extends AbstractSeries {
         fill: color || DEFAULT_COLOR,
         style,
         d: generatePath(data, xFunctor, yFunctor),
-        transform: `translate(${marginLeft},${marginTop})`
+        transform: `translate(${marginLeft},${marginTop})`,
+        ref: 'container'
       }}/>
     );
   }

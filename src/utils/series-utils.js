@@ -185,6 +185,7 @@ export function getSeriesPropsFromChildren(children) {
       props = {
         ...seriesTypeInfo,
         seriesIndex,
+        ref: `series${seriesIndex}`,
         _colorValue,
         _opacityValue
       };
