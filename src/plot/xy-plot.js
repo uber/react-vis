@@ -444,7 +444,6 @@ class XYPlot extends React.Component {
         animation,
         ref: (ref) => {
           if (dataProps) {
-            // console.log('XXX SETTING', `series${seriesProps[index].seriesIndex}`);
             this[`series${seriesProps[index].seriesIndex}`] = ref;
           }
         },
