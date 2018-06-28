@@ -137,7 +137,7 @@ class CustomSVGSeries extends AbstractSeries {
     });
     return (
       <g className={`${predefinedClassName} ${className}`}
-         ref={ref => (this.container = ref)}
+         
          transform={`translate(${marginLeft},${marginTop})`}>
         {contents}
       </g>
