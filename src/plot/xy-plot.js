@@ -197,7 +197,7 @@ class XYPlot extends React.Component {
     }
     const seriesChildren = getSeriesChildren(children);
     seriesChildren.forEach((child, index) => {
-      const component = this.refs[`series${index}`];
+      const component = this[`series${index}`];
       if (component && component.onParentMouseDown) {
         component.onParentMouseDown(event);
       }
@@ -216,7 +216,7 @@ class XYPlot extends React.Component {
     }
     const seriesChildren = getSeriesChildren(children);
     seriesChildren.forEach((child, index) => {
-      const component = this.refs[`series${index}`];
+      const component = this[`series${index}`];
       if (component && component.onParentMouseMove) {
         component.onParentMouseMove(event);
       }
@@ -259,7 +259,7 @@ class XYPlot extends React.Component {
     }
     const seriesChildren = getSeriesChildren(children);
     seriesChildren.forEach((child, index) => {
-      const component = this.refs[`series${index}`];
+      const component = this[`series${index}`];
       if (component && component.onParentTouchStart) {
         component.onParentTouchStart(event);
       }
@@ -278,7 +278,7 @@ class XYPlot extends React.Component {
     }
     const seriesChildren = getSeriesChildren(children);
     seriesChildren.forEach((child, index) => {
-      const component = this.refs[`series${index}`];
+      const component = this[`series${index}`];
       if (component && component.onParentTouchMove) {
         component.onParentTouchMove(event);
       }
@@ -444,7 +444,8 @@ class XYPlot extends React.Component {
         animation,
         ref: (ref) => {
           if (dataProps) {
-            this.container[`series${seriesProps[index].seriesIndex}`] = ref;
+            // console.log('XXX SETTING', `series${seriesProps[index].seriesIndex}`);
+            this[`series${seriesProps[index].seriesIndex}`] = ref;
           }
         },
         ...seriesProps[index],

@@ -68,7 +68,6 @@ test('series-utils #getSeriesChildren', t => {
 const arePropsValid = seriesProps => {
   return typeof seriesProps._colorValue !== 'undefined' &&
     typeof seriesProps._opacityValue !== 'undefined' &&
-    typeof seriesProps.ref === 'string' &&
     typeof seriesProps.sameTypeIndex === 'number' &&
     typeof seriesProps.sameTypeTotal === 'number' &&
     typeof seriesProps.seriesIndex === 'number';
