@@ -20,6 +20,7 @@
 
 import test from 'tape';
 import {scaleLinear} from 'd3-scale';
+import {range} from 'd3-array';
 
 import {
   getTicksTotalFromSize,
@@ -60,6 +61,13 @@ test('axis-utils #generateFit', t => {
   t.deepEqual(generateFit({x: 0, y: 0}, {x: 1, y: 1}), {left: 0, offset: 0, right: 1, slope: 1});
   t.deepEqual(generateFit({x: 0, y: 0}, {x: 0, y: 1}), {left: 0, offset: 0, right: 1, slope: 0});
   t.deepEqual(generateFit({x: 0, y: 0}, {x: 0, y: -1}), {left: 0, offset: 0, right: -1, slope: 0});
+  const result = generateFit({x: 175, y: 125}, {x: 17.33044811707665, y: 179.23546738969475});
+  const numberOfTicks = 5;
+  const left = result.left;
+  const right = result.right;
+  const pointSlope = (right - left) / numberOfTicks;
+  const lengthOfGeneratedPoints = range(left, right + pointSlope, pointSlope).length;
+  t.equal(lengthOfGeneratedPoints, 7, 'should be 7, incorrect length of generated points');
   t.end();
 });
 
@@ -81,6 +89,60 @@ test('axis-utils #generatePoints', t => {
     ],
     slope: -0
   };
+  const result2 = generatePoints({
+    axisStart: {x: 175, y: 125},
+    axisEnd: {x: 17.33044811707665, y: 179.23546738969475},
+    numberOfTicks: 5,
+    axisDomain: [0, 100]
+  });
+  const expectedResult2 = {
+    points: [
+      {text: 0, y: 125.00000000000001, x: 175},
+      {text: 20, y: 135.84709347793896, x: 143.46608962341534},
+      {text: 40, y: 146.6941869558779, x: 111.93217924683066},
+      {text: 59.99999999999999, y: 157.54128043381687, x: 80.398268870246},
+      {text: 80, y: 168.38837391175582, x: 48.86435849366133},
+      {text: 100, y: 179.23546738969478, x: 17.330448117076656}
+    ],
+    slope: -0.34398187057680607
+  };
+  const result3 = generatePoints({
+    axisStart: {x: 175, y: 125},
+    axisEnd: {x: 175, y: 250},
+    numberOfTicks: 5,
+    axisDomain: [0, 100]
+  });
+  const expectedResult3 = {
+    points: [
+      {text: 0, y: 125, x: 175},
+      {text: 20, y: 150, x: 175},
+      {text: 40, y: 175, x: 175},
+      {text: 60, y: 200, x: 175},
+      {text: 80, y: 225, x: 175},
+      {text: 100, y: 250, x: 175}
+    ],
+    slope: Infinity
+  };
+  const result4 = generatePoints({
+    axisStart: {x: 175, y: 125},
+    axisEnd: {x: 174.99999999999997, y: 250},
+    numberOfTicks: 5,
+    axisDomain: [0, 100]
+  });
+  const expectedResult4 = {
+    points: [
+      {text: 0, y: 128, x: 175},
+      {text: 0, y: 128, x: 175},
+      {text: 0, y: 128, x: 175},
+      {text: 100, y: 256, x: 174.99999999999997},
+      {text: 100, y: 256, x: 174.99999999999997}
+    ],
+    slope: -4398046511104000
+  };
   t.deepEqual(result, expectedResult);
+  t.deepEqual(result2, expectedResult2);
+  t.equal(expectedResult2.points.length, 6, 'should be 6, correct length of generated points');
+  t.deepEqual(result3, expectedResult3, 'should return correct points when accounting for floating point errors');
+  t.deepEqual(result4, expectedResult4, 'should not return correct points when not accounting for floating point errors');
   t.end();
 });

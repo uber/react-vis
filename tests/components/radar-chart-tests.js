@@ -4,6 +4,7 @@ import {mount} from 'enzyme';
 import RadialChart from 'radial-chart';
 import BasicRadarChart from '../../showcase/radar-chart/basic-radar-chart';
 import AnimatedRadarChart from '../../showcase/radar-chart/animated-radar-chart';
+import FourQuadrantRadarChart from '../../showcase/radar-chart/four-quadrant-radar-chart';
 
 import {testRenderWithProps} from '../test-utils';
 
@@ -50,5 +51,15 @@ test('Radar: Showcase Example - Animated Radial ', t => {
   t.equal($.find('.rv-radar-chart-polygon').length, 1, 'should find the right number of axes');
   t.equal($.find('.rv-radar-chart').text(), '20406080100niceexplosionswowdogsickMoves', 'should find the right text content');
 
+  t.end();
+});
+
+test('Radar: Showcase Example - Four Quadrant Radar Chart', t => {
+  const $ = mount(<FourQuadrantRadarChart />);
+  t.equals($.find('.rv-radar-chart').length, 1, 'should find a radar chart');
+  t.equals($.find('.rv-xy-manipulable-axis__ticks').length, 4, 'should find the right number of total axes');
+  t.equals($.find('.rv-xy-manipulable-axis__ticks').children().length, 24, 'should find the right number of total ticks');
+  t.equal($.find('.rv-radar-chart-polygon').length, 1, 'should find the right number of polygons');
+  t.equal($.find('.rv-radar-chart').text(), '20406080100204060801002040608010020406080100CVisualBasicsExcelAccess', 'should find the right text content');
   t.end();
 });
