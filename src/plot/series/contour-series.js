@@ -82,7 +82,6 @@ class ContourSeries extends AbstractSeries {
       .domain([min, max]).range(colorRange || CONTINUOUS_COLOR_RANGE);
     return (
       <g className={`${predefinedClassName} ${className}`}
-         
          transform={`translate(${marginLeft},${marginTop})`} >
         {contouredData.map((polygon, index) => {
           return (

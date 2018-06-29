@@ -63,7 +63,6 @@ class DecorativeAxis extends AbstractSeries {
 
     return (
       <g className={`${predefinedClassName} ${className}`}
-         
          transform={`translate(${marginLeft},${marginTop})`}>
         <line {...{
           x1: x({x: axisStart.x}),

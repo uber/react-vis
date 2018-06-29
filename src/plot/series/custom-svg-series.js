@@ -137,7 +137,6 @@ class CustomSVGSeries extends AbstractSeries {
     });
     return (
       <g className={`${predefinedClassName} ${className}`}
-         
          transform={`translate(${marginLeft},${marginTop})`}>
         {contents}
       </g>

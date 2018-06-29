@@ -104,7 +104,6 @@ class MarkSeries extends AbstractSeries {
     return (
       <g
         className={`${predefinedClassName} ${className}`}
-        
         transform={`translate(${marginLeft},${marginTop})`}
       >
         {data.map((d, i) => {

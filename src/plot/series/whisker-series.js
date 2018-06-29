@@ -192,7 +192,6 @@ class WhiskerSeries extends AbstractSeries {
 
     return (
       <g className={`${predefinedClassName} ${className}`}
-         
          transform={`translate(${marginLeft},${marginTop})`}>
         {data.map(renderWhiskerMark(whiskerMarkProps))}
       </g>

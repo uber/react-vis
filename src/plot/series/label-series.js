@@ -68,7 +68,6 @@ class LabelSeries extends AbstractSeries {
     return (
       <g
         className={`${predefinedClassName} ${className}`}
-        
         transform={`translate(${marginLeft},${marginTop})`}
         style={style}
       >
