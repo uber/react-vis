@@ -4,7 +4,8 @@ import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
 const {
   AnimatedRadarChart,
-  BasicRadarChart
+  BasicRadarChart,
+  FourQuadrantRadarChart
 } = showCase;
 
 const RADAR = [{
@@ -17,6 +18,10 @@ const RADAR = [{
   name: 'Animated Radar Chart',
   component: AnimatedRadarChart,
   componentName: 'AnimatedRadarChart'
+}, {
+  name: 'Four Quadrant Radar Chart',
+  component: FourQuadrantRadarChart,
+  componentName: 'FourQuadrantRadarChart'
 }];
 
 class RadarShowcase extends Component {
