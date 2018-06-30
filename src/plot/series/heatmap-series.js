@@ -60,7 +60,6 @@ class HeatmapSeries extends AbstractSeries {
     return (
       <g
         className={`${predefinedClassName} ${className}`}
-        ref={ref => (this.container = ref)}
         transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {
           const attrs = {

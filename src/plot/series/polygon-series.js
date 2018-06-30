@@ -74,8 +74,7 @@ class PolygonSeries extends AbstractSeries {
         fill: color || DEFAULT_COLOR,
         style,
         d: generatePath(data, xFunctor, yFunctor),
-        transform: `translate(${marginLeft},${marginTop})`,
-        ref: 'container'
+        transform: `translate(${marginLeft},${marginTop})`
       }}/>
     );
   }

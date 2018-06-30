@@ -168,7 +168,6 @@ class ArcSeries extends AbstractSeries {
         onMouseOut={this._seriesMouseOutHandler}
         onClick={this._seriesClickHandler}
         onContextMenu={this._seriesRightClickHandler}
-        ref={ref => (this.container = ref)}
         opacity={hideSeries ? 0 : 1}
         pointerEvents={disableSeries ? 'none' : 'all'}
         transform={`translate(${marginLeft + x(center)},${marginTop + y(center)})`}>

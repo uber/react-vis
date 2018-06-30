@@ -197,7 +197,7 @@ class XYPlot extends React.Component {
     }
     const seriesChildren = getSeriesChildren(children);
     seriesChildren.forEach((child, index) => {
-      const component = this.refs[`series${index}`];
+      const component = this[`series${index}`];
       if (component && component.onParentMouseDown) {
         component.onParentMouseDown(event);
       }
@@ -216,7 +216,7 @@ class XYPlot extends React.Component {
     }
     const seriesChildren = getSeriesChildren(children);
     seriesChildren.forEach((child, index) => {
-      const component = this.refs[`series${index}`];
+      const component = this[`series${index}`];
       if (component && component.onParentMouseMove) {
         component.onParentMouseMove(event);
       }
@@ -259,7 +259,7 @@ class XYPlot extends React.Component {
     }
     const seriesChildren = getSeriesChildren(children);
     seriesChildren.forEach((child, index) => {
-      const component = this.refs[`series${index}`];
+      const component = this[`series${index}`];
       if (component && component.onParentTouchStart) {
         component.onParentTouchStart(event);
       }
@@ -278,7 +278,7 @@ class XYPlot extends React.Component {
     }
     const seriesChildren = getSeriesChildren(children);
     seriesChildren.forEach((child, index) => {
-      const component = this.refs[`series${index}`];
+      const component = this[`series${index}`];
       if (component && component.onParentTouchMove) {
         component.onParentTouchMove(event);
       }
@@ -442,6 +442,11 @@ class XYPlot extends React.Component {
       return React.cloneElement(child, {
         ...dimensions,
         animation,
+        ref: (ref) => {
+          if (dataProps) {
+            this[`series${seriesProps[index].seriesIndex}`] = ref;
+          }
+        },
         ...seriesProps[index],
         ...scaleMixins,
         ...child.props,
@@ -498,7 +503,6 @@ class XYPlot extends React.Component {
       );
     }
     const components = this._getClonedChildComponents();
-
     return (
       <div
         style={{
