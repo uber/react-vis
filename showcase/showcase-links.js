@@ -63,6 +63,7 @@ export const SHOWCASE_LINKS = {
   // RADAR CHART SHOWCASE LINKS
   AnimatedRadarChart: 'https://github.com/uber/react-vis/blob/master/showcase/radar-chart/animated-radar-chart.js',
   BasicRadarChart: 'https://github.com/uber/react-vis/blob/master/showcase/radar-chart/basic-radar-chart.js',
+  FourQuadrantRadarChart: 'https://github.com/uber/react-vis/blob/master/showcase/radar-chart/four-quadrant-radar-chart.js',
   // RADIAL CHART SHOWCASE LINKS
   SimpleRadialChart: 'https://github.com/uber/react-vis/blob/master/showcase/radial-chart/simple-radial-chart.js',
   DonutChartExample: 'https://github.com/uber/react-vis/blob/master/showcase/radial-chart/donut-chart.js',
