@@ -107,6 +107,16 @@ declare module "react-vis" {
     export class HorizontalRectSeriesCanvas extends React.Component<PropsHorizontalRectSeriesCanvas> {
 
     }
+    export class infoObject {
+
+        event: MouseEvent;
+
+        index: number;
+        
+        innerX: number;
+
+        innerY: number;
+    }
 
     export class LabelSeries extends React.Component<PropsLabelSeries> {
 
@@ -209,245 +219,245 @@ declare module "react-vis" {
 
     export type PropsAbstractSeries = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
     export type PropsArcSeries = {
 
-        angleBaseValue?: any;
+        angleBaseValue?: number;
 
-        angleDistance?: any;
+        angleDistance?: number;
 
-        angleDomain?: any;
+        angleDomain?: Array<number>;
 
-        angleRange?: any;
+        angleRange?: Array<number>;
 
-        angleType?: any;
+        angleType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        arcClassName?: any;
+        arcClassName?: string;
 
-        center?: any;
+        center?: (datapoint: number, info: infoObject) => any;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getAngle?: any;
+        getAngle?: (datapoint: number, info: infoObject) => any;
 
-        getAngle0?: any;
+        getAngle0?: (datapoint: number, info: infoObject) => any;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getRadius?: any;
+        getRadius?: (datapoint: number, info: infoObject) => any;
 
-        getRadius0?: any;
+        getRadius0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        radiusBaseValue?: any;
+        radiusBaseValue?: number;
 
-        radiusDistance?: any;
+        radiusDistance?: number;
 
-        radiusDomain?: any;
+        radiusDomain?: Array<number>;
 
-        radiusRange?: any;
+        radiusRange?: Array<number>;
 
-        radiusType?: any;
+        radiusType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
@@ -460,107 +470,107 @@ declare module "react-vis" {
 
         getNull(d: any, i: number, array: number[]): any;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
         stroke?: number | string;
 
@@ -592,57 +602,57 @@ declare module "react-vis" {
 
     export type PropsBorders = {
 
-        innerHeight?: any;
+        innerHeight?: number;
 
-        innerWidth?: any;
+        innerWidth?: number;
 
-        marginBottom?: any;
+        marginBottom?: number;
 
-        marginLeft?: any;
+        marginLeft?: number;
 
-        marginRight?: any;
+        marginRight?: number;
 
-        marginTop?: any;
+        marginTop?: number;
 
-        style?: any;
+        style?: Object;
 
     };
 
     export type PropsCircularGridLines = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        centerX?: any;
+        centerX?: number;
 
-        centerY?: any;
+        centerY?: number;
 
-        height?: any;
+        height?: number;
 
-        innerHeight?: any;
+        innerHeight?: number;
 
-        innerWidth?: any;
+        innerWidth?: number;
 
-        left?: any;
+        left?: number;
 
-        marginBottom?: any;
+        marginBottom?: number;
 
-        marginLeft?: any;
+        marginLeft?: number;
 
-        marginRight?: any;
+        marginRight?: number;
 
-        marginTop?: any;
+        marginTop?: number;
 
-        rRange?: any;
+        rRange?: Array<number>;
 
-        style?: any;
+        style?: Object;
 
-        tickTotal?: any;
+        tickTotal?: number;
 
-        tickValues?: any;
+        tickValues?: Array<any>;
 
-        top?: any;
+        top?: number;
 
-        width?: any;
+        width?: number;
 
     };
 
@@ -650,23 +660,23 @@ declare module "react-vis" {
 
         displayName?: string;
 
-        className?: any;
+        className?: string;
 
-        endColor?: any;
+        endColor?: string;
 
-        endTitle?: any;
+        endTitle?: string | number;
 
-        height?: any;
+        height?: number;
 
-        midColor?: any;
+        midColor?: string;
 
-        midTitle?: any;
+        midTitle?: string | number;
 
-        startColor?: any;
+        startColor?: string;
 
-        startTitle?: any;
+        startTitle?: string | number;
 
-        width?: any;
+        width?: number;
 
     };
 
@@ -674,83 +684,81 @@ declare module "react-vis" {
 
         displayName?: string;
 
-        circlesTotal?: any;
+        circlesTotal?: number;
 
-        className?: any;
+        className?: string;
 
-        endSize?: any;
+        endSize?: number;
 
-        endTitle?: any;
+        endTitle?: string | number;
 
-        height?: any;
+        height?: number;
 
-        startSize?: any;
+        startSize?: number;
 
-        startTitle?: any;
+        startTitle?: string | number;
 
-        width?: any;
+        width?: number;
 
     };
 
     export type PropsContourSeries = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        bandwidth?: any;
+        bandwidth?: number;
 
-        className?: any;
+        className?: string;
 
-        data?: any;
+        data?: Array<Object>;
 
-        marginLeft?: any;
+        marginLeft?: number;
 
-        marginTop?: any;
+        marginTop?: number;
 
-        style?: any;
+        style?: Object;
 
     };
 
     export type PropsCrosshair = {
 
-        className?: any;
+        className?: string;
 
-        innerHeight?: any;
+        innerHeight?: number;
 
-        innerWidth?: any;
+        innerWidth?: number;
 
-        itemsFormat?: any;
+        itemsFormat?: (datapoint: number, info: infoObject) => any;
 
-        marginLeft?: any;
+        marginLeft?: number;
 
-        marginTop?: any;
+        marginTop?: number;
 
-        orientation?: any;
+        orientation?: 'top'|'left'|'bottom'|'right';
 
-        series?: any;
+        style?: Object;
 
-        style?: any;
+        titleFormat?: (datapoint: number, info: infoObject) => any;
 
-        titleFormat?: any;
-
-        values?: any;
+        values?: Array<Object>;
 
     };
 
     export type PropsCustomSVGSeries = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        className?: any;
+        className?: string;
 
         customComponent?: any;
 
-        data?: any;
+        data?: Array<Object>;
 
-        marginLeft?: any;
+        marginLeft?: number;
 
-        marginTop?: any;
+        marginTop?: number;
 
-        style?: any;
+        style?: Object;
 
     };
 
@@ -760,117 +768,117 @@ declare module "react-vis" {
 
         tickValue(d?: any): any;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        axisDomain?: any;
+        axisDomain?: Array<number>;
 
-        axisEnd?: any;
+        axisEnd?: Object;
 
-        axisStart?: any;
+        axisStart?: Array<Object>;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        numberOfTicks?: any;
+        numberOfTicks?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        tickSize?: any;
+        tickSize?: number;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
 
     };
@@ -879,134 +887,134 @@ declare module "react-vis" {
 
         displayName?: string;
 
-        className?: any;
+        className?: string;
 
-        height?: any;
+        height?: number;
 
-        items?: any;
+        items?: Array<string|{title: string, color: String, disabled: boolean}| Element>;
 
-        onItemClick?: any;
+        onItemClick?: ((arg0: any, arg1: Object, arg2: any, arg3: number) => any) | undefined;
 
-        onItemMouseEnter?: any;
+        onItemMouseEnter?: (datapoint: number, info: infoObject) => any;
 
-        onItemMouseLeave?: any;
+        onItemMouseLeave?: (datapoint: number, info: infoObject) => any;
 
-        orientation?: any;
+        orientation?: ('vertical' | 'horizontal');
 
-        width?: any;
+        width?: number;
 
     };
 
     export type PropsFlexibleHeightXYPlot = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        className?: any;
+        className?: string;
 
-        dontCheckIfEmpty?: any;
+        dontCheckIfEmpty?: boolean;
 
-        margin?: any;
+        margin?: number | Object;
 
-        onClick?: any;
+        onClick?: (datapoint: number, info: infoObject) => any;
 
-        onDoubleClick?: any;
+        onDoubleClick?: (datapoint: number, info: infoObject) => any;
 
-        onMouseDown?: any;
+        onMouseDown?: (datapoint: number, info: infoObject) => any;
 
-        onMouseEnter?: any;
+        onMouseEnter?: (datapoint: number, info: infoObject) => any;
 
-        onMouseLeave?: any;
+        onMouseLeave?: (datapoint: number, info: infoObject) => any;
 
-        onMouseMove?: any;
+        onMouseMove?: (datapoint: number, info: infoObject) => any;
 
-        onWheel?: any;
+        onWheel?: (datapoint: number, info: infoObject) => any;
 
-        stackBy?: any;
+        stackBy?: string;
 
-        style?: any;
+        style?: Object;
 
     };
 
     export type PropsFlexibleWidthXYPlot = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        className?: any;
+        className?: string;
 
-        dontCheckIfEmpty?: any;
+        dontCheckIfEmpty?: boolean;
 
-        margin?: any;
+        margin?: number | Object;
 
-        onClick?: any;
+        onClick?: (datapoint: number, info: infoObject) => any;
 
-        onDoubleClick?: any;
+        onDoubleClick?: (datapoint: number, info: infoObject) => any;
 
-        onMouseDown?: any;
+        onMouseDown?: (datapoint: number, info: infoObject) => any;
 
-        onMouseEnter?: any;
+        onMouseEnter?: (datapoint: number, info: infoObject) => any;
 
-        onMouseLeave?: any;
+        onMouseLeave?: (datapoint: number, info: infoObject) => any;
 
-        onMouseMove?: any;
+        onMouseMove?: (datapoint: number, info: infoObject) => any;
 
-        onWheel?: any;
+        onWheel?: (datapoint: number, info: infoObject) => any;
 
-        stackBy?: any;
+        stackBy?: string;
 
-        style?: any;
+        style?: Object;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        yPadding?: any;
+        yPadding?: number;
 
     };
 
     export type PropsFlexibleXYPlot = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        className?: any;
+        className?: string;
 
-        dontCheckIfEmpty?: any;
+        dontCheckIfEmpty?: boolean;
 
-        margin?: any;
+        margin?: number | Object;
 
-        onClick?: any;
+        onClick?: (datapoint: number, info: infoObject) => any;
 
-        onDoubleClick?: any;
+        onDoubleClick?: (datapoint: number, info: infoObject) => any;
 
-        onMouseDown?: any;
+        onMouseDown?: (datapoint: number, info: infoObject) => any;
 
-        onMouseEnter?: any;
+        onMouseEnter?: (datapoint: number, info: infoObject) => any;
 
-        onTouchStart?: any;
+        onTouchStart?: (datapoint: number, info: infoObject) => any;
 
         
-        onTouchEnd?: any;
+        onTouchEnd?: (datapoint: number, info: infoObject) => any;
 
-        onMouseUp?: any;
+        onMouseUp?: (datapoint: number, info: infoObject) => any;
 
-        onMouseLeave?: any;
+        onMouseLeave?: (datapoint: number, info: infoObject) => any;
 
-        onMouseMove?: any;
+        onMouseMove?: (datapoint: number, info: infoObject) => any;
 
-        onWheel?: any;
+        onWheel?: (datapoint: number, info: infoObject) => any;
 
-        stackBy?: any;
+        stackBy?: string;
 
-        style?: any;        
+        style?: Object;        
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yPadding?: any;
+        yPadding?: number;
 
-        xPadding?: any;
+        xPadding?: number;
 
         color?: string;
 
@@ -1014,149 +1022,149 @@ declare module "react-vis" {
 
     export type PropsGradientDefs = {
 
-        className?: any;
+        className?: string;
 
     };
 
     export type PropsGridLines = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        attr?: any;
+        attr?: string;
 
-        direction?: any;
+        direction?: string;
 
-        height?: any;
+        height?: number;
 
-        innerHeight?: any;
+        innerHeight?: number;
 
-        innerWidth?: any;
+        innerWidth?: number;
 
-        left?: any;
+        left?: number;
 
-        marginBottom?: any;
+        marginBottom?: number;
 
-        marginLeft?: any;
+        marginLeft?: number;
 
-        marginRight?: any;
+        marginRight?: number;
 
-        marginTop?: any;
+        marginTop?: number;
 
-        style?: any;
+        style?: Object;
 
-        tickTotal?: any;
+        tickTotal?: number;
 
-        tickValues?: any;
+        tickValues?: Array<any>;
 
-        top?: any;
+        top?: number;
 
-        width?: any;
+        width?: number;
 
     };
 
     export type PropsHeatmapSeries = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
@@ -1165,241 +1173,240 @@ declare module "react-vis" {
         horizontalAlign?: string;
 
         verticalAlign?: string;
-
         
-        align?: any;
+        align?: string;
 
-        format?: any;
+        format?: (datapoint: number, info: infoObject) => any;
 
-        getAlignStyle?: any;
+        getAlignStyle?: (datapoint: number, info: infoObject) => any;
 
-        innerHeight?: any;
+        innerHeight?: number;
 
-        innerWidth?: any;
+        innerWidth?: number;
 
-        marginLeft?: any;
+        marginLeft?: number;
 
-        marginTop?: any;
+        marginTop?: number;
 
-        orientation?: any;
+        orientation?: 'top'|'left'|'bottom'|'right';
 
-        scales?: any;
+        scales?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        value?: any;
+        value?: Object;
 
     };
 
     export type PropsHorizontalBarSeries = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
     export type PropsHorizontalBarSeriesCanvas = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
@@ -1409,249 +1416,249 @@ declare module "react-vis" {
 
         requiresSVG?: boolean;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        attr?: any;
+        attr?: string;
 
-        direction?: any;
+        direction?: string;
 
-        height?: any;
+        height?: number;
 
-        innerHeight?: any;
+        innerHeight?: number;
 
-        innerWidth?: any;
+        innerWidth?: number;
 
-        left?: any;
+        left?: number;
 
-        marginBottom?: any;
+        marginBottom?: number;
 
-        marginLeft?: any;
+        marginLeft?: number;
 
-        marginRight?: any;
+        marginRight?: number;
 
-        marginTop?: any;
+        marginTop?: number;
 
-        style?: any;
+        style?: Object;
 
-        tickTotal?: any;
+        tickTotal?: number;
 
-        tickValues?: any;
+        tickValues?: Array<any>;
 
-        top?: any;
+        top?: number;
 
-        width?: any;
+        width?: number;
 
     };
 
     export type PropsHorizontalRectSeries = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
     export type PropsHorizontalRectSeriesCanvas = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
@@ -1665,19 +1672,23 @@ declare module "react-vis" {
 
         stack?: boolean;
 
-        allowOffsetToBeReversed?: any;
+        allowOffsetToBeReversed?: boolean;
 
-        data?: any;
+        data?: Array<Object>;
 
-        marginLeft?: any;
+        labelAnchorX?: string;
 
-        marginTop?: any;
+        labelAnchorY?: string;
 
-        style?: any;
+        marginLeft?: number;
 
-        xRange?: any;
+        marginTop?: number;
 
-        yRange?: any;
+        style?: Object;
+
+        xRange?: Array<number>;
+
+        yRange?: Array<number>;
 
     };
 
@@ -1685,119 +1696,119 @@ declare module "react-vis" {
 
         className?: string;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        curve?: any;
+        curve?: string | (() => any);
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getNull?: any;
+        getNull?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
         size?:number;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        lineStyle?: any;
+        lineStyle?: Object;
 
-        markStyle?: any;
+        markStyle?: Object;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        strokeStyle?: any;
+        strokeStyle?: Object;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
         strokeWidth?: number;
 
@@ -1807,107 +1818,113 @@ declare module "react-vis" {
 
     export type PropsLineMarkSeriesCanvas = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        color?: string;
 
-        colorDistance?: any;
+        colorBaseValue?: string;
 
-        colorDomain?: any;
+        colorDistance?: number;
 
-        colorRange?: any;
+        colorDomain?: Array<string | number>;
 
-        colorType?: any;
+        colorRange?: Array<string | number>;
 
-        data?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        getColor?: any;
+        data?: Array<Object>;
 
-        getColor0?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
-
-        getSize0?: any;
-
-        getX?: any;
-
-        getX0?: any;
-
-        getY?: any;
-
-        getY0?: any;
-
-        height?: any;
-
-        onNearestX?: any;
-
-        onNearestXY?: any;
-
-        onSeriesClick?: any;
-
-        onSeriesMouseOut?: any;
-
-        onSeriesMouseOver?: any;
-
-        onSeriesRightClick?: any;
-
-        onValueClick?: any;
-
-        onValueMouseOut?: any;
-
-        onValueMouseOver?: any;
-
-        onValueRightClick?: any;
-
-        opacityBaseValue?: any;
-
-        opacityDistance?: any;
-
-        opacityDomain?: any;
-
-        opacityRange?: any;
-
-        opacityType?: any;
-
-        sizeBaseValue?: any;
-
-        sizeDistance?: any;
-
-        sizeDomain?: any;
-
-        sizeRange?: any;
-
-        sizeType?: any;
-
-        stack?: any;
-
-        style?: any;
-
-        width?: any;
-
-        xBaseValue?: any;
-
-        xDistance?: any;
-
-        xDomain?: any;
-
-        xRange?: any;
-
-        xType?: any;
-
-        yBaseValue?: any;
-
-        yDistance?: any;
-
-        yDomain?: any;
-
-        yRange?: any;
-
-        yType?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
+        
+        getSize?: (datapoint: number, info: infoObject) => any;
+        
+        getSize0?: (datapoint: number, info: infoObject) => any;
+        
+        getX?: (datapoint: number, info: infoObject) => any;
+        
+        getX0?: (datapoint: number, info: infoObject) => any;
+        
+        getY?: (datapoint: number, info: infoObject) => any;
+        
+        getY0?: (datapoint: number, info: infoObject) => any;
+        
+        height?: number;
+        
+        onNearestX?: (datapoint: number, info: infoObject) => any;
+        
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
+        
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
+        
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
+        
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
+        
+        onValueClick?: (datapoint: number, info: infoObject) => any;
+        
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
+        
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
+        
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
+        
+        opacityBaseValue?: number;
+        
+        opacityDistance?: number;
+        
+        opacityDomain?: Array<number>;
+        
+        opacityRange?: Array<number>;
+        
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        
+        size?: number;
+        
+        sizeBaseValue?: number;
+        
+        sizeDistance?: number;
+        
+        sizeDomain?: Array<number>;
+        
+        sizeRange?: Array<number>;
+        
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        
+        stack?: boolean;
+        
+        strokeWidth?: number;
+        
+        style?: Object;
+        
+        width?: number;
+        
+        xBaseValue?: number;
+        
+        xDistance?: number;
+        
+        xDomain?: Array<number | Date>;
+        
+        xRange?: Array<number>;
+        
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        
+        yBaseValue?: number;
+        
+        yDistance?: number;
+        
+        yDomain?: Array<number>;
+        
+        yRange?: Array<number>;
+        
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
@@ -1921,111 +1938,111 @@ declare module "react-vis" {
 
         strokeStyle?: string;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        curve?: any;
+        curve?: string | (() => any);
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getNull?: any;
+        getNull?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        color?: any;
+        color?: string | number;
 
         strokeWidth?: string|number;
 
@@ -2035,111 +2052,111 @@ declare module "react-vis" {
 
         size?: number;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
         curve?: string;
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        strokeWidth?: any;
+        strokeWidth?: string | number;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
         color?: string;
 
@@ -2148,221 +2165,221 @@ declare module "react-vis" {
     export type PropsMarkSeries = {
         size?: number;
 
-        color?:any;
+        color?: string | number;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getNull?: any;
+        getNull?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
         
         stroke?: string;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        strokeWidth?: any;
+        strokeWidth?: string | number;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
     export type PropsMarkSeriesCanvas = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
@@ -2374,129 +2391,129 @@ declare module "react-vis" {
 
         colorType?: string;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        data?: any;
+        data?: Array<Object>;
 
-        domains?: any;
+        domains?: Array<Object>;
 
-        height?: any;
+        height?: number;
 
-        margin?: any;
+        margin?: number | Object;
 
-        showMarks?: any;
+        showMarks?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        tickFormat?: any;
+        tickFormat?: (tickValue: Date | number ) => string | number;
 
-        width?: any;
+        width?: number;
 
     };
 
     export type PropsPolygonSeries = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
@@ -2512,21 +2529,21 @@ declare module "react-vis" {
 
         startingAngle?: number;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        data?: any;
+        data?: Array<Object>;
 
-        domains?: any;
+        domains?: Array<Object>;
 
-        height?: any;
+        height?: number;
 
-        margin?: any;
+        margin?: number | Object;
 
-        style?: any;
+        style?: Object;
 
-        tickFormat?: any;
+        tickFormat?: (tickValue: Date | number ) => string | number;
 
-        width?: any;
+        width?: number;
 
     };
 
@@ -2550,145 +2567,137 @@ declare module "react-vis" {
 
         getSubLabel?(d?: any): any;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        data?: any;
+        data?: Array<Object>;
 
-        height?: any;
+        height?: number;
 
-        labelsAboveChildren?: any;
+        labelsAboveChildren?: boolean;
 
-        labelsStyle?: any;
+        labelsStyle?: Object;
 
-        margin?: any;
+        margin?: number | Object;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        showLabels?: any;
+        showLabels?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        subLabel?: any;
+        subLabel?: string;
 
-        width?: any;
+        width?: number;
 
     };
 
     export type PropsRectSeries = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        linePosAttr?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        lineSizeAttr?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onNearestX?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        opacityBaseValue?: number;
 
-        onValueRightClick?: any;
+        opacityDistance?: number;
 
-        opacityBaseValue?: any;
+        opacityDomain?: Array<number>;
 
-        opacityDistance?: any;
+        opacityRange?: Array<number>;
 
-        opacityDomain?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        opacityRange?: any;
+        sizeBaseValue?: number;
 
-        opacityType?: any;
+        sizeDistance?: number;
 
-        sizeBaseValue?: any;
+        sizeDomain?: Array<number>;
 
-        sizeDistance?: any;
+        sizeRange?: Array<number>;
 
-        sizeDomain?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeRange?: any;
+        stack?: boolean;
 
-        sizeType?: any;
+        style?: Object;
 
-        stack?: any;
+        width?: number;
 
-        style?: any;
+        xBaseValue?: number;
 
-        valuePosAttr?: any;
+        xDistance?: number;
 
-        valueSizeAttr?: any;
+        xDomain?: Array<number | Date>;
 
-        width?: any;
+        xRange?: Array<number>;
 
-        xBaseValue?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        xDistance?: any;
+        yBaseValue?: number;
 
-        xDomain?: any;
+        yDistance?: number;
 
-        xRange?: any;
+        yDomain?: Array<number>;
 
-        xType?: any;
+        yRange?: Array<number>;
 
-        yBaseValue?: any;
-
-        yDistance?: any;
-
-        yDomain?: any;
-
-        yRange?: any;
-
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
@@ -2698,105 +2707,105 @@ declare module "react-vis" {
 
         stack?: boolean;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
@@ -2812,33 +2821,33 @@ declare module "react-vis" {
 
         layout?: number;
 
-        height?: any;
+        height?: number;
 
-        links?: any;
+        links?: Object;
 
-        margin?: any;
+        margin?: number | Object;
 
-        nodePadding?: any;
+        nodePadding?: number;
 
-        nodeWidth?: any;
+        nodeWidth?: number;
 
-        nodes?: any;
+        nodes?: Array<Object>;
 
-        onLinkClick?: any;
+        onLinkClick?: (datapoint: number, info: infoObject) => any;
 
-        onLinkMouseOut?: any;
+        onLinkMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onLinkMouseOver?: any;
+        onLinkMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
     };
 
@@ -2878,25 +2887,25 @@ declare module "react-vis" {
 
         searchText?: string;
 
-        searchFn?(items?: any, s?: any): any;
+        searchFn?(items?: any, s?: string): any;
 
-        height?: any;
+        height?: number;
 
-        items?: any;
+        items?: Array<string|{title: string, color: String, disabled: boolean}| Element>;
 
-        onItemClick?: any;
+        onItemClick?: ((arg0: any, arg1: Object, arg2: any, arg3: number) => any) | undefined;
 
-        onItemMouseEnter?: any;
+        onItemMouseEnter?: (datapoint: number, info: infoObject) => any;
 
-        onItemMouseLeave?: any;
+        onItemMouseLeave?: (datapoint: number, info: infoObject) => any;
 
-        onSearchChange?: any;
+        onSearchChange?: (datapoint: number, info: infoObject) => any;
 
-        orientation?: any;
+        orientation?: ('vertical' | 'horizontal');
 
-        searchPlaceholder?: any;
+        searchPlaceholder?: string;
 
-        width?: any;
+        width?: number;
 
     };
 
@@ -2918,19 +2927,19 @@ declare module "react-vis" {
 
         getSize?(d?: any): any;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        data?: any;
+        data?: Array<Object>;
 
-        height?: any;
+        height?: number;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        width?: any;
+        width?: number;
 
     };
 
@@ -2946,493 +2955,494 @@ declare module "react-vis" {
 
         hideRootNode?: boolean;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        margin?: any;
+        margin?: number | Object;
 
-        mode?: any;
+        mode?: string;
 
-        onLeafClick?: any;
+        onLeafClick?: (datapoint: number, info: infoObject) => any;
 
-        onLeafMouseOut?: any;
+        onLeafMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onLeafMouseOver?: any;
+        onLeafMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        padding?: any;
+        padding?: number;
 
-        sortFunction?: any;
+        sortFunction?: (datapoint: number, info: infoObject) => any;
 
-        useCirclePacking?: any;
+        useCirclePacking?: boolean;
 
-        width?: any;
+        width?: number;
 
     };
     export type PropsVerticalBarSeries = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
     export type PropsVerticalBarSeriesCanvas = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
     export type PropsVerticalGridLines = {
 
         attr?: string;
+
         direction?: string;
 
         displayName?: string;
 
         requiresSVG?: boolean;
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        height?: any;
+        height?: number;
 
-        innerHeight?: any;
+        innerHeight?: number;
 
-        innerWidth?: any;
+        innerWidth?: number;
 
-        left?: any;
+        left?: number;
 
-        marginBottom?: any;
+        marginBottom?: number;
 
-        marginLeft?: any;
+        marginLeft?: number;
 
-        marginRight?: any;
+        marginRight?: number;
 
-        marginTop?: any;
+        marginTop?: number;
 
-        style?: any;
+        style?: Object;
 
-        tickTotal?: any;
+        tickTotal?: number;
 
-        tickValues?: any;
+        tickValues?: Array<any>;
 
-        top?: any;
+        top?: number;
 
-        width?: any;
+        width?: number;
 
     };
 
     export type PropsVerticalRectSeries = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
     export type PropsVerticalRectSeriesCanvas = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
@@ -3456,119 +3466,121 @@ declare module "react-vis" {
 
         y?(d?: any): any;
 
-        extent?: any;
+        extent?: boolean;
 
-        nodes?: any;
+        nodes?: Array<Object>;
+
+        polygonStyle?: any,
 
     };
 
     export type PropsWhiskerSeries = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
         position?: string;
 
-        colorBaseValue?: any;
+        colorBaseValue?: string;
 
-        colorDistance?: any;
+        colorDistance?: number;
 
-        colorDomain?: any;
+        colorDomain?: Array<string | number>;
 
-        colorRange?: any;
+        colorRange?: Array<string | number>;
 
-        colorType?: any;
+        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        data?: any;
+        data?: Array<Object>;
 
-        getColor?: any;
+        getColor?: (datapoint: number, info: infoObject) => any;
 
-        getColor0?: any;
+        getColor0?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity?: any;
+        getOpacity?: (datapoint: number, info: infoObject) => any;
 
-        getOpacity0?: any;
+        getOpacity0?: (datapoint: number, info: infoObject) => any;
 
-        getSize?: any;
+        getSize?: (datapoint: number, info: infoObject) => any;
 
-        getSize0?: any;
+        getSize0?: (datapoint: number, info: infoObject) => any;
 
-        getX?: any;
+        getX?: (datapoint: number, info: infoObject) => any;
 
-        getX0?: any;
+        getX0?: (datapoint: number, info: infoObject) => any;
 
-        getY?: any;
+        getY?: (datapoint: number, info: infoObject) => any;
 
-        getY0?: any;
+        getY0?: (datapoint: number, info: infoObject) => any;
 
-        height?: any;
+        height?: number;
 
-        onNearestX?: any;
+        onNearestX?: (datapoint: number, info: infoObject) => any;
 
-        onNearestXY?: any;
+        onNearestXY?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesClick?: any;
+        onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOut?: any;
+        onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesMouseOver?: any;
+        onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onSeriesRightClick?: any;
+        onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueClick?: any;
+        onValueClick?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOut?: any;
+        onValueMouseOut?: (datapoint: number, info: infoObject) => any;
 
-        onValueMouseOver?: any;
+        onValueMouseOver?: (datapoint: number, info: infoObject) => any;
 
-        onValueRightClick?: any;
+        onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
-        opacityBaseValue?: any;
+        opacityBaseValue?: number;
 
-        opacityDistance?: any;
+        opacityDistance?: number;
 
-        opacityDomain?: any;
+        opacityDomain?: Array<number>;
 
-        opacityRange?: any;
+        opacityRange?: Array<number>;
 
-        opacityType?: any;
+        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        sizeBaseValue?: any;
+        sizeBaseValue?: number;
 
-        sizeDistance?: any;
+        sizeDistance?: number;
 
-        sizeDomain?: any;
+        sizeDomain?: Array<number>;
 
-        sizeRange?: any;
+        sizeRange?: Array<number>;
 
-        sizeType?: any;
+        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        stack?: any;
+        stack?: boolean;
 
-        strokeWidth?: any;
+        strokeWidth?: string | number;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xBaseValue?: any;
+        xBaseValue?: number;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        yBaseValue?: any;
+        yBaseValue?: number;
 
-        yDistance?: any;
+        yDistance?: number;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yType?: any;
+        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
     };
 
@@ -3584,137 +3596,137 @@ declare module "react-vis" {
 
         requiresSVG?: boolean;
 
-        className?: any;
+        className?: string;
 
-        height?: any;
+        height?: number;
 
-        hideLine?: any;
+        hideLine?: boolean;
 
-        hideTicks?: any;
+        hideTicks?: boolean;
 
-        innerHeight?: any;
+        innerHeight?: number;
 
-        innerWidth?: any;
+        innerWidth?: number;
 
-        left?: any;
+        left?: number;
 
-        marginBottom?: any;
+        marginBottom?: number;
 
-        marginLeft?: any;
+        marginLeft?: number;
 
-        marginRight?: any;
+        marginRight?: number;
 
-        marginTop?: any;
+        marginTop?: number;
 
-        on0?: any;
+        on0?: (datapoint: number, info: infoObject) => any;
 
-        style?: any;
+        style?: Object;
 
-        tickFormat?: any;
+        tickFormat?: (tickValue: Date | number ) => string | number;
 
-        tickLabelAngle?: any;
+        tickLabelAngle?: number;
 
-        tickPadding?: any;
+        tickPadding?: number;
 
-        tickSize?: any;
+        tickSize?: number;
 
-        tickSizeInner?: any;
+        tickSizeInner?: number;
 
-        tickSizeOuter?: any;
+        tickSizeOuter?: number;
 
-        tickTotal?: any;
+        tickTotal?: number;
 
-        tickValues?: any;
+        tickValues?: Array<any>;
 
-        title?: any;
+        title?: string;
 
-        top?: any;
+        top?: number;
 
-        width?: any;
+        width?: number;
 
     };
 
     export type PropsXYPlot = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        className?: any;
+        className?: string;
 
-        dontCheckIfEmpty?: any;
+        dontCheckIfEmpty?: boolean;
 
-        height?: any;
+        height?: number;
 
-        margin?: any;
+        margin?: number | Object;
 
-        onClick?: any;
+        onClick?: (datapoint: number, info: infoObject) => any;
 
-        onDoubleClick?: any;
+        onDoubleClick?: (datapoint: number, info: infoObject) => any;
 
-        onMouseDown?: any;
+        onMouseDown?: (datapoint: number, info: infoObject) => any;
 
-        onMouseEnter?: any;
+        onMouseEnter?: (datapoint: number, info: infoObject) => any;
 
-        onMouseLeave?: any;
+        onMouseLeave?: (datapoint: number, info: infoObject) => any;
 
-        onMouseMove?: any;
+        onMouseMove?: (datapoint: number, info: infoObject) => any;
 
-        onWheel?: any;
+        onWheel?: (datapoint: number, info: infoObject) => any;
 
-        stackBy?: any;
+        stackBy?: string;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
-        xType?: any;
+        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
 
-        xDomain?: any;
+        xDomain?: Array<number | Date>;
 
-        xDistance?: any;
+        xDistance?: number;
 
-        xPadding?: any;
+        xPadding?: number;
 
-        xRange?: any;
+        xRange?: Array<number>;
 
-        yPadding?: any;
+        yPadding?: number;
 
-        yRange?: any;
+        yRange?: Array<number>;
 
-        yDomain?: any;
+        yDomain?: Array<number>;
 
     };
 
     export type PropsXYPlotNameSpace = {
 
-        animation?: any;
+        animation?: {duration: number}|boolean;
 
-        className?: any;
+        className?: string;
 
-        dontCheckIfEmpty?: any;
+        dontCheckIfEmpty?: boolean;
 
-        height?: any;
+        height?: number;
 
-        margin?: any;
+        margin?: number | Object;
 
-        onClick?: any;
+        onClick?: (datapoint: number, info: infoObject) => any;
 
-        onDoubleClick?: any;
+        onDoubleClick?: (datapoint: number, info: infoObject) => any;
 
-        onMouseDown?: any;
+        onMouseDown?: (datapoint: number, info: infoObject) => any;
 
-        onMouseEnter?: any;
+        onMouseEnter?: (datapoint: number, info: infoObject) => any;
 
-        onMouseLeave?: any;
+        onMouseLeave?: (datapoint: number, info: infoObject) => any;
 
-        onMouseMove?: any;
+        onMouseMove?: (datapoint: number, info: infoObject) => any;
 
-        onWheel?: any;
+        onWheel?: (datapoint: number, info: infoObject) => any;
 
-        stackBy?: any;
+        stackBy?: string;
 
-        style?: any;
+        style?: Object;
 
-        width?: any;
+        width?: number;
 
     };
 
@@ -3730,53 +3742,53 @@ declare module "react-vis" {
 
         requiresSVG?: boolean;
 
-        className?: any;
+        className?: string;
 
-        height?: any;
+        height?: number;
 
-        hideLine?: any;
+        hideLine?: boolean;
 
-        hideTicks?: any;
+        hideTicks?: boolean;
 
-        innerHeight?: any;
+        innerHeight?: number;
 
-        innerWidth?: any;
+        innerWidth?: number;
 
-        left?: any;
+        left?: number;
 
-        marginBottom?: any;
+        marginBottom?: number;
 
-        marginLeft?: any;
+        marginLeft?: number;
 
-        marginRight?: any;
+        marginRight?: number;
 
-        marginTop?: any;
+        marginTop?: number;
 
-        on0?: any;
+        on0?: (datapoint: number, info: infoObject) => any;
 
-        style?: any;
+        style?: Object;
 
-        tickFormat?: any;
+        tickFormat?: (tickValue: Date | number ) => string | number;
 
-        tickLabelAngle?: any;
+        tickLabelAngle?: number;
 
-        tickPadding?: any;
+        tickPadding?: number;
 
-        tickSize?: any;
+        tickSize?: number;
 
-        tickSizeInner?: any;
+        tickSizeInner?: number;
 
-        tickSizeOuter?: any;
+        tickSizeOuter?: number;
 
-        tickTotal?: any;
+        tickTotal?: number;
 
-        tickValues?: any;
+        tickValues?: Array<any>;
 
-        title?: any;
+        title?: string;
 
-        top?: any;
+        top?: number;
 
-        width?: any;
+        width?: number;
 
         position?: string;
 
