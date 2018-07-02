@@ -49,7 +49,7 @@ declare module "react-vis" {
     }
 
     export class FlexibleXYPlot extends React.Component<PropsFlexibleXYPlot> {
-        
+
     }
 
     export class GradientDefs extends React.Component<PropsGradientDefs> {
@@ -112,7 +112,7 @@ declare module "react-vis" {
         event: MouseEvent;
 
         index: number;
-        
+
         innerX: number;
 
         innerY: number;
@@ -184,12 +184,12 @@ declare module "react-vis" {
 
     export class VerticalBarSeries extends React.Component<PropsVerticalBarSeries> {
 
-    }    
+    }
 
     export class VerticalGridLines extends React.Component<PropsVerticalGridLines> {
 
     }
-    
+
     export class VerticalBarSeriesCanvas extends React.Component<PropsVerticalBarSeriesCanvas> {
 
     }
@@ -219,7 +219,7 @@ declare module "react-vis" {
 
     export type PropsAbstractSeries = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -229,7 +229,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -283,7 +283,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -293,7 +293,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -309,7 +309,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -319,7 +319,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
@@ -333,9 +333,9 @@ declare module "react-vis" {
 
         angleRange?: Array<number>;
 
-        angleType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        angleType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         arcClassName?: string;
 
@@ -349,7 +349,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -411,7 +411,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         radiusBaseValue?: number;
 
@@ -421,7 +421,7 @@ declare module "react-vis" {
 
         radiusRange?: Array<number>;
 
-        radiusType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        radiusType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -431,7 +431,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -447,7 +447,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -457,7 +457,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
@@ -470,7 +470,7 @@ declare module "react-vis" {
 
         getNull(d: any, i: number, array: number[]): any;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -480,7 +480,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -534,7 +534,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -544,7 +544,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -560,7 +560,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -570,7 +570,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stroke?: number | string;
 
@@ -620,7 +620,7 @@ declare module "react-vis" {
 
     export type PropsCircularGridLines = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         centerX?: number;
 
@@ -704,7 +704,7 @@ declare module "react-vis" {
 
     export type PropsContourSeries = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         bandwidth?: number;
 
@@ -734,7 +734,7 @@ declare module "react-vis" {
 
         marginTop?: number;
 
-        orientation?: 'top'|'left'|'bottom'|'right';
+        orientation?: 'top' | 'left' | 'bottom' | 'right';
 
         style?: Object;
 
@@ -746,7 +746,7 @@ declare module "react-vis" {
 
     export type PropsCustomSVGSeries = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         className?: string;
 
@@ -768,7 +768,7 @@ declare module "react-vis" {
 
         tickValue(d?: any): any;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         axisDomain?: Array<number>;
 
@@ -784,7 +784,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -840,7 +840,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -850,7 +850,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -868,7 +868,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -878,7 +878,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
 
     };
@@ -891,7 +891,7 @@ declare module "react-vis" {
 
         height?: number;
 
-        items?: Array<string|{title: string, color: String, disabled: boolean}| Element>;
+        items?: Array<string | { title: string, color: String, disabled: boolean } | Element>;
 
         onItemClick?: ((arg0: any, arg1: Object, arg2: any, arg3: number) => any) | undefined;
 
@@ -907,7 +907,7 @@ declare module "react-vis" {
 
     export type PropsFlexibleHeightXYPlot = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         className?: string;
 
@@ -937,7 +937,7 @@ declare module "react-vis" {
 
     export type PropsFlexibleWidthXYPlot = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         className?: string;
 
@@ -963,7 +963,7 @@ declare module "react-vis" {
 
         style?: Object;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         xDomain?: Array<number | Date>;
 
@@ -973,7 +973,7 @@ declare module "react-vis" {
 
     export type PropsFlexibleXYPlot = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         className?: string;
 
@@ -991,7 +991,7 @@ declare module "react-vis" {
 
         onTouchStart?: (datapoint: number, info: infoObject) => any;
 
-        
+
         onTouchEnd?: (datapoint: number, info: infoObject) => any;
 
         onMouseUp?: (datapoint: number, info: infoObject) => any;
@@ -1004,9 +1004,9 @@ declare module "react-vis" {
 
         stackBy?: string;
 
-        style?: Object;        
+        style?: Object;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         xDomain?: Array<number | Date>;
 
@@ -1028,7 +1028,7 @@ declare module "react-vis" {
 
     export type PropsGridLines = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         attr?: string;
 
@@ -1064,7 +1064,7 @@ declare module "react-vis" {
 
     export type PropsHeatmapSeries = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -1074,7 +1074,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -1128,7 +1128,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -1138,7 +1138,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -1154,7 +1154,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -1164,7 +1164,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
@@ -1173,7 +1173,7 @@ declare module "react-vis" {
         horizontalAlign?: string;
 
         verticalAlign?: string;
-        
+
         align?: string;
 
         format?: (datapoint: number, info: infoObject) => any;
@@ -1188,7 +1188,7 @@ declare module "react-vis" {
 
         marginTop?: number;
 
-        orientation?: 'top'|'left'|'bottom'|'right';
+        orientation?: 'top' | 'left' | 'bottom' | 'right';
 
         scales?: boolean;
 
@@ -1200,7 +1200,7 @@ declare module "react-vis" {
 
     export type PropsHorizontalBarSeries = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -1210,7 +1210,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -1264,7 +1264,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -1274,7 +1274,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -1290,7 +1290,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -1300,13 +1300,13 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
     export type PropsHorizontalBarSeriesCanvas = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -1316,7 +1316,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -1370,7 +1370,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -1380,7 +1380,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -1396,7 +1396,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -1406,7 +1406,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
@@ -1416,7 +1416,7 @@ declare module "react-vis" {
 
         requiresSVG?: boolean;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         attr?: string;
 
@@ -1452,7 +1452,7 @@ declare module "react-vis" {
 
     export type PropsHorizontalRectSeries = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -1462,7 +1462,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -1516,7 +1516,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -1526,7 +1526,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -1542,7 +1542,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -1552,13 +1552,13 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
     export type PropsHorizontalRectSeriesCanvas = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -1568,7 +1568,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -1622,7 +1622,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -1632,7 +1632,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -1648,7 +1648,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -1658,7 +1658,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
@@ -1696,7 +1696,7 @@ declare module "react-vis" {
 
         className?: string;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -1706,7 +1706,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         curve?: string | (() => any);
 
@@ -1728,7 +1728,7 @@ declare module "react-vis" {
 
         getX?: (datapoint: number, info: infoObject) => any;
 
-        size?:number;
+        size?: number;
 
         getX0?: (datapoint: number, info: infoObject) => any;
 
@@ -1770,7 +1770,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -1780,7 +1780,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -1798,7 +1798,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -1808,7 +1808,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         strokeWidth?: number;
 
@@ -1818,7 +1818,7 @@ declare module "react-vis" {
 
     export type PropsLineMarkSeriesCanvas = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         color?: string;
 
@@ -1830,7 +1830,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -1841,90 +1841,90 @@ declare module "react-vis" {
         getOpacity?: (datapoint: number, info: infoObject) => any;
 
         getOpacity0?: (datapoint: number, info: infoObject) => any;
-        
+
         getSize?: (datapoint: number, info: infoObject) => any;
-        
+
         getSize0?: (datapoint: number, info: infoObject) => any;
-        
+
         getX?: (datapoint: number, info: infoObject) => any;
-        
+
         getX0?: (datapoint: number, info: infoObject) => any;
-        
+
         getY?: (datapoint: number, info: infoObject) => any;
-        
+
         getY0?: (datapoint: number, info: infoObject) => any;
-        
+
         height?: number;
-        
+
         onNearestX?: (datapoint: number, info: infoObject) => any;
-        
+
         onNearestXY?: (datapoint: number, info: infoObject) => any;
-        
+
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
-        
+
         onSeriesMouseOut?: (datapoint: number, info: infoObject) => any;
-        
+
         onSeriesMouseOver?: (datapoint: number, info: infoObject) => any;
-        
+
         onSeriesRightClick?: (datapoint: number, info: infoObject) => any;
-        
+
         onValueClick?: (datapoint: number, info: infoObject) => any;
-        
+
         onValueMouseOut?: (datapoint: number, info: infoObject) => any;
-        
+
         onValueMouseOver?: (datapoint: number, info: infoObject) => any;
-        
+
         onValueRightClick?: (datapoint: number, info: infoObject) => any;
-        
+
         opacityBaseValue?: number;
-        
+
         opacityDistance?: number;
-        
+
         opacityDomain?: Array<number>;
-        
+
         opacityRange?: Array<number>;
-        
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
-        
+
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
+
         size?: number;
-        
+
         sizeBaseValue?: number;
-        
+
         sizeDistance?: number;
-        
+
         sizeDomain?: Array<number>;
-        
+
         sizeRange?: Array<number>;
-        
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
-        
+
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
+
         stack?: boolean;
-        
+
         strokeWidth?: number;
-        
+
         style?: Object;
-        
+
         width?: number;
-        
+
         xBaseValue?: number;
-        
+
         xDistance?: number;
-        
+
         xDomain?: Array<number | Date>;
-        
+
         xRange?: Array<number>;
-        
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
-        
+
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
+
         yBaseValue?: number;
-        
+
         yDistance?: number;
-        
+
         yDomain?: Array<number>;
-        
+
         yRange?: Array<number>;
-        
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
@@ -1938,7 +1938,7 @@ declare module "react-vis" {
 
         strokeStyle?: string;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -1948,7 +1948,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         curve?: string | (() => any);
 
@@ -2006,7 +2006,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -2016,7 +2016,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         style?: Object;
 
@@ -2030,7 +2030,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -2040,11 +2040,11 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         color?: string | number;
 
-        strokeWidth?: string|number;
+        strokeWidth?: string | number;
 
     };
 
@@ -2052,7 +2052,7 @@ declare module "react-vis" {
 
         size?: number;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -2062,7 +2062,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         curve?: string;
 
@@ -2118,7 +2118,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -2128,7 +2128,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -2146,7 +2146,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -2156,7 +2156,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         color?: string;
 
@@ -2167,7 +2167,7 @@ declare module "react-vis" {
 
         color?: string | number;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -2177,7 +2177,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -2194,7 +2194,7 @@ declare module "react-vis" {
         getSize?: (datapoint: number, info: infoObject) => any;
 
         getSize0?: (datapoint: number, info: infoObject) => any;
-        
+
         stroke?: string;
 
         getX?: (datapoint: number, info: infoObject) => any;
@@ -2235,7 +2235,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -2245,7 +2245,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -2263,7 +2263,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -2273,13 +2273,13 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
     export type PropsMarkSeriesCanvas = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -2289,7 +2289,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -2343,7 +2343,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -2353,7 +2353,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -2369,7 +2369,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -2379,7 +2379,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
@@ -2391,7 +2391,7 @@ declare module "react-vis" {
 
         colorType?: string;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         data?: Array<Object>;
 
@@ -2405,7 +2405,7 @@ declare module "react-vis" {
 
         style?: Object;
 
-        tickFormat?: (tickValue: Date | number ) => string | number;
+        tickFormat?: (tickValue: Date | number) => string | number;
 
         width?: number;
 
@@ -2413,7 +2413,7 @@ declare module "react-vis" {
 
     export type PropsPolygonSeries = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -2423,7 +2423,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -2477,7 +2477,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -2487,7 +2487,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -2503,7 +2503,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -2513,7 +2513,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
@@ -2529,7 +2529,7 @@ declare module "react-vis" {
 
         startingAngle?: number;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         data?: Array<Object>;
 
@@ -2541,7 +2541,7 @@ declare module "react-vis" {
 
         style?: Object;
 
-        tickFormat?: (tickValue: Date | number ) => string | number;
+        tickFormat?: (tickValue: Date | number) => string | number;
 
         width?: number;
 
@@ -2567,7 +2567,7 @@ declare module "react-vis" {
 
         getSubLabel?(d?: any): any;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         data?: Array<Object>;
 
@@ -2597,7 +2597,7 @@ declare module "react-vis" {
 
     export type PropsRectSeries = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -2607,7 +2607,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -2661,7 +2661,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -2671,7 +2671,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -2687,7 +2687,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -2697,7 +2697,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
@@ -2707,7 +2707,7 @@ declare module "react-vis" {
 
         stack?: boolean;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -2717,7 +2717,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -2771,7 +2771,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -2781,7 +2781,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         style?: Object;
 
@@ -2795,7 +2795,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -2805,7 +2805,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
@@ -2891,7 +2891,7 @@ declare module "react-vis" {
 
         height?: number;
 
-        items?: Array<string|{title: string, color: String, disabled: boolean}| Element>;
+        items?: Array<string | { title: string, color: String, disabled: boolean } | Element>;
 
         onItemClick?: ((arg0: any, arg1: Object, arg2: any, arg3: number) => any) | undefined;
 
@@ -2927,7 +2927,7 @@ declare module "react-vis" {
 
         getSize?(d?: any): any;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         data?: Array<Object>;
 
@@ -2955,7 +2955,7 @@ declare module "react-vis" {
 
         hideRootNode?: boolean;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         getColor?: (datapoint: number, info: infoObject) => any;
 
@@ -2984,7 +2984,7 @@ declare module "react-vis" {
     };
     export type PropsVerticalBarSeries = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -2994,7 +2994,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -3048,7 +3048,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -3058,7 +3058,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -3074,7 +3074,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -3084,13 +3084,13 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
     export type PropsVerticalBarSeriesCanvas = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -3100,7 +3100,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -3154,7 +3154,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -3164,7 +3164,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -3180,7 +3180,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -3190,7 +3190,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
@@ -3204,7 +3204,7 @@ declare module "react-vis" {
 
         requiresSVG?: boolean;
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         height?: number;
 
@@ -3236,7 +3236,7 @@ declare module "react-vis" {
 
     export type PropsVerticalRectSeries = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -3246,7 +3246,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -3300,7 +3300,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -3310,7 +3310,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -3326,7 +3326,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -3336,13 +3336,13 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
     export type PropsVerticalRectSeriesCanvas = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         colorBaseValue?: string;
 
@@ -3352,7 +3352,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -3406,7 +3406,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -3416,7 +3416,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -3432,7 +3432,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -3442,7 +3442,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
@@ -3466,7 +3466,7 @@ declare module "react-vis" {
 
         y?(d?: any): any;
 
-        extent?: boolean;
+        extent?: [number[], Date[] | number[]];
 
         nodes?: Array<Object>;
 
@@ -3476,7 +3476,7 @@ declare module "react-vis" {
 
     export type PropsWhiskerSeries = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         position?: string;
 
@@ -3488,7 +3488,7 @@ declare module "react-vis" {
 
         colorRange?: Array<string | number>;
 
-        colorType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        colorType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         data?: Array<Object>;
 
@@ -3542,7 +3542,7 @@ declare module "react-vis" {
 
         opacityRange?: Array<number>;
 
-        opacityType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        opacityType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         sizeBaseValue?: number;
 
@@ -3552,7 +3552,7 @@ declare module "react-vis" {
 
         sizeRange?: Array<number>;
 
-        sizeType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        sizeType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         stack?: boolean;
 
@@ -3570,7 +3570,7 @@ declare module "react-vis" {
 
         xRange?: Array<number>;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         yBaseValue?: number;
 
@@ -3580,7 +3580,7 @@ declare module "react-vis" {
 
         yRange?: Array<number>;
 
-        yType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        yType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
     };
 
@@ -3591,7 +3591,7 @@ declare module "react-vis" {
         orientation?: string;
 
         position?: string;
-        
+
         displayName?: string;
 
         requiresSVG?: boolean;
@@ -3622,7 +3622,7 @@ declare module "react-vis" {
 
         style?: Object;
 
-        tickFormat?: (tickValue: Date | number ) => string | number;
+        tickFormat?: (tickValue: Date | number) => string | number;
 
         tickLabelAngle?: number;
 
@@ -3648,7 +3648,7 @@ declare module "react-vis" {
 
     export type PropsXYPlot = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         className?: string;
 
@@ -3678,7 +3678,7 @@ declare module "react-vis" {
 
         width?: number;
 
-        xType?: ('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal');
+        xType?: ('linear' | 'ordinal' | 'category' | 'time' | 'time-utc' | 'log' | 'literal');
 
         xDomain?: Array<number | Date>;
 
@@ -3698,7 +3698,7 @@ declare module "react-vis" {
 
     export type PropsXYPlotNameSpace = {
 
-        animation?: {duration: number}|boolean;
+        animation?: { duration: number } | boolean;
 
         className?: string;
 
@@ -3768,7 +3768,7 @@ declare module "react-vis" {
 
         style?: Object;
 
-        tickFormat?: (tickValue: Date | number ) => string | number;
+        tickFormat?: (tickValue: Date | number) => string | number;
 
         tickLabelAngle?: number;
 
@@ -3805,5 +3805,5 @@ declare module "react-vis" {
     export type PropsmakeWidthFlexible = {
 
     };
-   
+
 }
