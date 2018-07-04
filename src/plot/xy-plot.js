@@ -287,9 +287,9 @@ class XYPlot extends React.Component {
    * @private
    */
   _touchStartHandler(event) {
-    const {onMouseDown, children} = this.props;
-    if (onMouseDown) {
-      onMouseDown(event);
+    const {onTouchStart, children} = this.props;
+    if (onTouchStart) {
+      onTouchStart(event);
     }
     const seriesChildren = getSeriesChildren(children);
     seriesChildren.forEach((child, index) => {
