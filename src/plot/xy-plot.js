@@ -225,25 +225,25 @@ class XYPlot extends React.Component {
 
   /**
    * Trigger onMouseLeave handler if it was passed in props.
-   * @param {Event} event Native event.
+   * @param {React.SyntheticEvent} event Mouse leave event.
    * @private
    */
   _mouseLeaveHandler(event) {
     const {onMouseLeave} = this.props;
     if (onMouseLeave) {
-      onMouseLeave({event});
+      onMouseLeave(event);
     }
   }
 
   /**
    * Trigger onMouseEnter handler if it was passed in props.
-   * @param {Event} event Native event.
+   * @param {React.SyntheticEvent} event Mouse enter event.
    * @private
    */
   _mouseEnterHandler(event) {
     const {onMouseEnter} = this.props;
     if (onMouseEnter) {
-      onMouseEnter({event});
+      onMouseEnter(event);
     }
   }
 
@@ -287,25 +287,25 @@ class XYPlot extends React.Component {
 
   /**
    * Trigger onTouchEnd handler if it was passed in props.
-   * @param {Event} event Native event.
+   * @param {React.SyntheticEvent} event Touch End event.
    * @private
    */
   _touchEndHandler(event) {
     const {onTouchEnd} = this.props;
     if (onTouchEnd) {
-      onTouchEnd({event});
+      onTouchEnd(event);
     }
   }
 
   /**
    * Trigger onTouchCancel handler if it was passed in props.
-   * @param {Event} event Native event.
+   * @param {React.SyntheticEvent} event Touch Cancel event.
    * @private
    */
   _touchCancelHandler(event) {
     const {onTouchCancel} = this.props;
     if (onTouchCancel) {
-      onTouchCancel({event});
+      onTouchCancel(event);
     }
   }
 
