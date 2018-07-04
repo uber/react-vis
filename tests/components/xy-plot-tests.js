@@ -22,6 +22,7 @@ import test from 'tape';
 import React from 'react';
 import {mount, shallow} from 'enzyme';
 
+import AbstractSeries from 'plot/series/abstract-series';
 import VerticalBarSeries from 'plot/series/vertical-bar-series';
 import BarSeries from 'plot/series/bar-series';
 import LineSeries from 'plot/series/line-series';
@@ -240,4 +241,65 @@ test('Render a line series with data accessors', t => {
     'Y values should be mapped correctly'
   );
   t.end();
+});
+
+test('Trigger all onParentMouse handlers on Series components', t => {
+  t.plan(14);
+  class ExtendedSeries extends AbstractSeries {
+    onParentMouseUp(event) {
+      t.pass(`onParentMouseUp on ${this.props.name} is called correctly`);
+    }
+    onParentMouseDown(event) {
+      t.pass(`onParentMouseDown on ${this.props.name} is called correctly`);
+    }
+    onParentMouseMove(event) {
+      t.pass(`onParentMouseMove on ${this.props.name} is called correctly`);
+    }
+    onParentMouseLeave(event) {
+      t.pass(`onParentMouseLeave on ${this.props.name} is called correctly`);
+    }
+    onParentMouseEnter(event) {
+      t.pass(`onParentMouseEnter on ${this.props.name} is called correctly`);
+    }
+    onParentTouchStart(event) {
+      t.pass(`onParentTouchStart on ${this.props.name} is called correctly`);
+    }
+    onParentTouchMove(event) {
+      t.pass(`onParentTouchMove on ${this.props.name} is called correctly`);
+    }
+    render() {
+      return null;
+    }
+  }
+  const $ = mount(
+    <XYPlot
+      width={300}
+      height={300}
+      getX={d => d[0]}
+      getY={d => d[1]}>
+      <ExtendedSeries
+        name="series-1"
+        data={[
+          [1, 0],
+          [2, 1],
+          [3, 2]
+        ]}
+      />
+      <ExtendedSeries
+        name="series-2"
+        data={[
+          [1, 0],
+          [2, 1],
+          [3, 2]
+        ]}
+      />
+    </XYPlot>
+  );
+  $.find('svg').at(0).simulate('mouseenter');
+  $.find('svg').at(0).simulate('mousedown');
+  $.find('svg').at(0).simulate('mousemove');
+  $.find('svg').at(0).simulate('mouseup');
+  $.find('svg').at(0).simulate('mouseleave');
+  $.find('svg').at(0).simulate('touchstart');
+  $.find('svg').at(0).simulate('touchmove');
 });
