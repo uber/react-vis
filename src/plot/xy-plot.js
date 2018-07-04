@@ -106,6 +106,7 @@ class XYPlot extends React.Component {
       onClick: PropTypes.func,
       onDoubleClick: PropTypes.func,
       onMouseDown: PropTypes.func,
+      onMouseUp: PropTypes.func,
       onMouseEnter: PropTypes.func,
       onMouseLeave: PropTypes.func,
       onMouseMove: PropTypes.func,
@@ -131,6 +132,7 @@ class XYPlot extends React.Component {
     this._clickHandler = this._clickHandler.bind(this);
     this._doubleClickHandler = this._doubleClickHandler.bind(this);
     this._mouseDownHandler = this._mouseDownHandler.bind(this);
+    this._mouseUpHandler = this._mouseUpHandler.bind(this);
     this._mouseLeaveHandler = this._mouseLeaveHandler.bind(this);
     this._mouseEnterHandler = this._mouseEnterHandler.bind(this);
     this._mouseMoveHandler = this._mouseMoveHandler.bind(this);
@@ -200,6 +202,24 @@ class XYPlot extends React.Component {
       const component = this[`series${index}`];
       if (component && component.onParentMouseDown) {
         component.onParentMouseDown(event);
+      }
+    });
+  }
+  /**
+   * Trigger mouse-up related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Mouse up event.
+   * @private
+   */
+  _mouseUpHandler(event) {
+    const {onMouseUp, children} = this.props;
+    if (onMouseUp) {
+      onMouseUp(event);
+    }
+    const seriesChildren = getSeriesChildren(children);
+    seriesChildren.forEach((child, index) => {
+      const component = this[`series${index}`];
+      if (component && component.onParentMouseUp) {
+        component.onParentMouseUp(event);
       }
     });
   }
@@ -532,6 +552,7 @@ class XYPlot extends React.Component {
           onClick={this._clickHandler}
           onDoubleClick={this._doubleClickHandler}
           onMouseDown={this._mouseDownHandler}
+          onMouseUp={this._mouseUpHandler}
           onMouseMove={this._mouseMoveHandler}
           onMouseLeave={this._mouseLeaveHandler}
           onMouseEnter={this._mouseEnterHandler}
