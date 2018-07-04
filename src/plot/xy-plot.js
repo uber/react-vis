@@ -229,10 +229,17 @@ class XYPlot extends React.Component {
    * @private
    */
   _mouseLeaveHandler(event) {
-    const {onMouseLeave} = this.props;
+    const {onMouseLeave, children} = this.props;
     if (onMouseLeave) {
       onMouseLeave(event);
     }
+    const seriesChildren = getSeriesChildren(children);
+    seriesChildren.forEach((child, index) => {
+      const component = this[`series${index}`];
+      if (component && component.onParentMouseLeave) {
+        component.onParentMouseLeave(event);
+      }
+    });
   }
 
   /**
@@ -241,10 +248,17 @@ class XYPlot extends React.Component {
    * @private
    */
   _mouseEnterHandler(event) {
-    const {onMouseEnter} = this.props;
+    const {onMouseEnter, children} = this.props;
     if (onMouseEnter) {
       onMouseEnter(event);
     }
+    const seriesChildren = getSeriesChildren(children);
+    seriesChildren.forEach((child, index) => {
+      const component = this[`series${index}`];
+      if (component && component.onParentMouseEnter) {
+        component.onParentMouseEnter(event);
+      }
+    });
   }
 
   /**
