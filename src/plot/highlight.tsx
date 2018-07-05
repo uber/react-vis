@@ -157,7 +157,7 @@ export default class Highlight extends AbstractSeries {
         <rect
           className="mouse-target"
           fill="black"
-          opacity="0.5"
+          opacity="0"
           x={0}
           y={0}
           width={innerWidth}
