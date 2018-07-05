@@ -48,6 +48,11 @@ declare module "react-vis" {
 
     }
 
+    export class ScaleUtils extends React.Component<PropsScaleUtils> {
+      static getAttributeScale: any;
+
+    }
+
     export class FlexibleXYPlot extends React.Component<PropsFlexibleXYPlot> {
 
     }
@@ -255,9 +260,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -276,6 +281,24 @@ declare module "react-vis" {
         onValueRightClick?: (datapoint: number, info: infoObject) => any;
 
         opacityBaseValue?: number;
+
+        innerWidth: number;
+
+        color?: string;
+
+        opacity?: number;
+
+        marginTop: number;
+
+        marginLeft: number;
+
+        innerHeight: number;
+
+        onBrushStart?: (e: any) => any;
+
+        onBrushEnd: (e: any) => any;
+
+        onBrush?: (e: any) => any;
 
         opacityDistance?: number;
 
@@ -383,9 +406,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: any, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: any, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -506,9 +529,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -812,9 +835,9 @@ declare module "react-vis" {
 
         numberOfTicks?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -1100,9 +1123,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -1236,9 +1259,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -1342,9 +1365,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -1488,9 +1511,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -1594,9 +1617,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -1742,9 +1765,9 @@ declare module "react-vis" {
 
         markStyle?: Object;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -1856,9 +1879,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -1978,9 +2001,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -2090,9 +2113,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -2207,9 +2230,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -2315,9 +2338,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -2449,9 +2472,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -2633,9 +2656,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -2743,9 +2766,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -2877,6 +2900,8 @@ declare module "react-vis" {
         getXYPlotValues?(props?: any, children?: any): any;
 
         literalScale?(defaultValue?: any): any;
+
+        getAttributeScale?(props?: any, attr?: any): any;
 
     };
 
@@ -3020,9 +3045,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -3126,9 +3151,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -3272,9 +3297,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -3378,9 +3403,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
@@ -3466,7 +3491,7 @@ declare module "react-vis" {
 
         y?(d?: any): any;
 
-        extent?: [number[], Date[] | number[]];
+        extent?: [any[], Date[] | number[]]
 
         nodes?: Array<Object>;
 
@@ -3514,9 +3539,9 @@ declare module "react-vis" {
 
         height?: number;
 
-        onNearestX?: (datapoint: number, info: infoObject) => any;
+        onNearestX?: (datapoint: object, info: infoObject) => any;
 
-        onNearestXY?: (datapoint: number, info: infoObject) => any;
+        onNearestXY?: (datapoint: object, info: infoObject) => any;
 
         onSeriesClick?: (datapoint: number, info: infoObject) => any;
 
