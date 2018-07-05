@@ -1,5 +1,6 @@
 import React from 'react';
-import { AbstractSeries, ScaleUtils } from 'react-vis';
+import { AbstractSeries, ScaleUtils } from 'plot/series/abstract-series';
+import { ScaleUtils } from 'utils/scales-utils';
 
 
 export default class Highlight extends AbstractSeries {
@@ -24,14 +25,14 @@ export default class Highlight extends AbstractSeries {
 
 
   public _getDrawArea(xLoc: number, yLoc: number): any {
-    const { innerWidth, innerHeight } = this.props;
+    const {marginLeft,marginTop, innerWidth, innerHeight } = this.props;
     const { startLocX, startLocY } = this.state;
 
-    const leftBorder = xLoc < startLocX ? Math.max(xLoc, 0) : startLocX;  
-    const rightBorder = xLoc < startLocX ? startLocX : Math.min(xLoc, innerWidth);
+    const leftBorder = xLoc < startLocX ? Math.max(xLoc, marginLeft) : startLocX;  
+    const rightBorder = xLoc < startLocX ? startLocX : Math.min(xLoc, innerWidth-marginLeft);
 
-    const topBorder = yLoc < startLocY ? Math.max(yLoc, 0) : startLocY;
-    const bottomBorder = yLoc < startLocY ? startLocY : Math.min(yLoc, innerHeight);
+    const topBorder = yLoc < startLocY ? Math.max(yLoc, marginTop) : startLocY;
+    const bottomBorder = yLoc < startLocY ? startLocY : Math.min(yLoc, innerHeight-marginTop);
 
     return {
       bottom: bottomBorder,
@@ -43,15 +44,15 @@ export default class Highlight extends AbstractSeries {
   }
 
   public onParentMouseDown(e: any): void {
-    const { marginLeft, marginTop, onBrushStart } = this.props;
+    const {onBrushStart } = this.props;
     let offsetX = e.nativeEvent.offsetX;
     let offsetY = e.nativeEvent.offsetY;
     if (e.nativeEvent.type === 'touchstart') {
       offsetX = e.nativeEvent.pageX;
       offsetY = e.nativeEvent.pageY;
     }
-    const Xlocation = offsetX - marginLeft;
-    const Ylocation = offsetY - marginTop;
+    const Xlocation = offsetX;
+    const Ylocation = offsetY;
 
     // TODO: Eventually support drawing as a full rectangle, if desired. Currently the code supports 'x' only
     this.setState({
@@ -114,7 +115,7 @@ export default class Highlight extends AbstractSeries {
   }
 
   public onParentMouseMove(e: any): void {
-    const { marginLeft, onBrush, marginTop } = this.props;
+    const {  onBrush } = this.props;
     const { drawing } = this.state;
     let offsetX = e.nativeEvent.offsetX;
     let offsetY = e.nativeEvent.offsetY;
@@ -122,8 +123,8 @@ export default class Highlight extends AbstractSeries {
       offsetX = e.nativeEvent.pageX;
       offsetY = e.nativeEvent.pageY;
     }
-    const xLoc = offsetX - marginLeft;
-    const yLoc = offsetY - marginTop;
+    const xLoc = offsetX;
+    const yLoc = offsetY;
 
     if (drawing) {
       const newDrawArea = this._getDrawArea(xLoc, yLoc);
@@ -141,11 +142,11 @@ export default class Highlight extends AbstractSeries {
   }
 
   public render(): React.ReactNode {
-    const { marginLeft, marginTop, innerWidth, innerHeight, color, opacity } = this.props;
+    const { innerWidth, innerHeight, color, opacity, marginBottom } = this.props;
     const { drawArea: { left, right, top, bottom } } = this.state;
 
     return (
-      <g transform={`translate(${marginLeft}, ${marginTop})`}
+      <g transform={`translate(${0}, ${0})`}
         className="highlight-container"
         onMouseUp={this.stopDrawing}
         onMouseLeave={this.stopDrawing}
@@ -156,11 +157,11 @@ export default class Highlight extends AbstractSeries {
         <rect
           className="mouse-target"
           fill="black"
-          opacity="0"
+          opacity="0.5"
           x={0}
           y={0}
           width={innerWidth}
-          height={innerHeight}
+          height={innerHeight-marginBottom}
         />
         <rect
           className="highlight"
