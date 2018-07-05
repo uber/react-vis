@@ -33,9 +33,6 @@ export default class Highlight extends AbstractSeries {
     const topBorder = yLoc < startLocY ? Math.max(yLoc, 0) : startLocY;
     const bottomBorder = yLoc < startLocY ? startLocY : Math.min(yLoc, innerHeight);
 
-    // tslint:disable:no-console
-    console.log("start:" + startLocY + "/Loc:" + yLoc+"/"+(yLoc < startLocY));
-    console.log("B:" + bottomBorder + "/T:" + topBorder);
     return {
       bottom: bottomBorder,
       left: leftBorder,
