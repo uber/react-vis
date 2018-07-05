@@ -292,6 +292,8 @@ declare module "react-vis" {
 
         marginLeft: number;
 
+        marginBottom: number;
+
         innerHeight: number;
 
         onBrushStart?: (e: any) => any;
