@@ -54,7 +54,7 @@ XYPlot is a wrapper for series, hints, axes and other components. Most of these 
 * `size` (optional)
 * `style` (optional) - css properties as an object.
 
-Accessors can also be used to retreieve the properties above from the `data` object. For instance, the `getX` and `getY` accessors can be passed to the XYPlot object to access the `x` and `y` properties from `data` for each series. 
+Accessors can also be used to retreieve the properties above from the `data` object. For instance, the `getX` and `getY` accessors can be passed to the XYPlot object to access the `x` and `y` properties from `data` for each series.
 
 ```jsx
 <XYPlot
@@ -237,6 +237,14 @@ The function that is triggered each time mouse moves over at the component.
 #### onMouseEnter (optional)
 Type: `function()`
 The function that is triggered each time the mouse enters the component.
+
+#### onMouseDown (optional)
+Type: `function()`
+The function that is triggered each time the mouse button is pressed over the component.
+
+#### onMouseUp (optional)
+Type: `function()`
+The function that is triggered each time the mouse button is released over the component.
 
 #### onTouchStart (optional)
 Type: `function()`

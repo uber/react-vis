@@ -48,6 +48,11 @@ Type: `function`
 Default: none
 This event handler is triggered whenever the mousebutton of the user is down while their mouse cursor is in the plot area. It passes a mouse event.
 
+### onMouseUp
+Type: `function`
+Default: none
+This event handler is triggered whenever the user release the mouse button while their mouse cursor is in the plot area. It passes a mouse event.
+
 ### onMouseEnter
 Type: `function`
 Default: none
