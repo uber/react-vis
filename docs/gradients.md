@@ -4,6 +4,7 @@ Sometimes it is useful to style our svg components using gradients. The way that
 
 
 <!-- INJECT:"GradientExampleWithLink" -->
+<!-- INJECT:"GradientPieWithLink" -->
 
 Simply write gradient commands as you would normally as children of the GradientDefs component, and reference them from your series!
 
