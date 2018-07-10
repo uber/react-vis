@@ -71,7 +71,7 @@ test('RadialChart: Showcase Example - Custom radius example', t => {
   t.end();
 });
 
-test.only('RadialChart: Showcase Example - Gradient Pie Example', t => {
+test('RadialChart: Showcase Example - Gradient Pie Example', t => {
   const $ = mount(<GradientPie />);
   // multiplied by two to account for the shadow listeners
   t.equal($.find('.rv-radial-chart__series--pie__slice').length, 3, 'should find the same number of slices as data entries');
