@@ -12,11 +12,13 @@
     "max-len": [1, 110, 4],
     "max-params": ["error", 6],
     "object-curly-spacing": 0,
-    "babel/object-curly-spacing": 2
+    "babel/object-curly-spacing": 2,
+    "no-only-tests/no-only-tests": 2
   },
   "parser": "babel-eslint",
   "plugins": [
     "react",
-    "babel"
+    "babel",
+    "no-only-tests"
   ]
 }

@@ -2008,6 +2008,10 @@ eslint-plugin-babel@^4.0.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-babel/-/eslint-plugin-babel-4.1.1.tgz#ef285c87039b67beb3bbd227f5b0eed4fb376b87"
 
+eslint-plugin-no-only-tests@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-no-only-tests/-/eslint-plugin-no-only-tests-2.0.1.tgz#c7bfa82a46be791f9625d720e990632b5dec3c7d"
+
 eslint-plugin-react@^6.7.1, eslint-plugin-react@^6.9.0:
   version "6.10.3"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-6.10.3.tgz#c5435beb06774e12c7db2f6abaddcbf900cd3f78"
