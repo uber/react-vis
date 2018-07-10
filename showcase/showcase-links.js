@@ -66,6 +66,7 @@ export const SHOWCASE_LINKS = {
   FourQuadrantRadarChart: 'https://github.com/uber/react-vis/blob/master/showcase/radar-chart/four-quadrant-radar-chart.js',
   // RADIAL CHART SHOWCASE LINKS
   SimpleRadialChart: 'https://github.com/uber/react-vis/blob/master/showcase/radial-chart/simple-radial-chart.js',
+  GradientPie: 'https://github.com/uber/react-vis/blob/master/showcase/radial-chart/gradient-pie.js',
   DonutChartExample: 'https://github.com/uber/react-vis/blob/master/showcase/radial-chart/donut-chart.js',
   CustomRadiusRadialChart: 'https://github.com/uber/react-vis/blob/master/showcase/radial-chart/custom-radius-radial-chart.js',
   // SANKEY SHOWCASE LINKS

@@ -5,7 +5,8 @@ import {showCase} from '../index';
 const {
   CustomRadiusRadialChart,
   DonutChartExample,
-  SimpleRadialChart
+  SimpleRadialChart,
+  GradientPie
 } = showCase;
 /* eslint-disable max-len */
 const RADIAL = [{
@@ -22,6 +23,10 @@ const RADIAL = [{
   name: 'Custom Radius',
   component: CustomRadiusRadialChart,
   componentName: CustomRadiusRadialChart
+}, {
+  name: 'Gradient Pie',
+  component: GradientPie,
+  componentName: GradientPie
 }];
 /* eslint-enable max-len */
 

@@ -125,6 +125,7 @@ import VoronoiLineChart from './misc/voronoi-line-chart';
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import DonutChartExample from './radial-chart/donut-chart';
 import CustomRadiusRadialChart from './radial-chart/custom-radius-radial-chart';
+import GradientPie from './radial-chart/gradient-pie';
 import ArcSeriesExample from './radial-chart/arc-series-example';
 
 import BasicRadarChart from './radar-chart/basic-radar-chart';
@@ -243,6 +244,7 @@ const mainShowCase = {
   SimpleRadialChart,
   DonutChartExample,
   CustomRadiusRadialChart,
+  GradientPie,
   ArcSeriesExample,
 
   AnimatedRadarChart,
