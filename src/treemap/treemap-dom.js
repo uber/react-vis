@@ -23,7 +23,18 @@ import TreemapLeaf from './treemap-leaf';
 
 class TreemapDOM extends React.Component {
   render() {
-    const {animation, className, height, hideRootNode, getLabel, mode, nodes, width, scales, style} = this.props;
+    const {
+      animation,
+      className,
+      height,
+      hideRootNode,
+      getLabel,
+      mode,
+      nodes,
+      width,
+      scales,
+      style
+    } = this.props;
     const useCirclePacking = mode === 'circlePack';
     return (
       <div

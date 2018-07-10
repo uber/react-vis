@@ -45,12 +45,12 @@ export default function AxisOn0({
       >
       {!verticalTickValues ||
         verticalTickValues.length ?
-        <VerticalGridLines tickValues={verticalTickValues}/> :
-        null}
+          <VerticalGridLines tickValues={verticalTickValues}/> :
+          null}
       {!horizontalTickValues ||
         horizontalTickValues.length ?
-        <HorizontalGridLines tickValues={horizontalTickValues}/> :
-        null}
+          <HorizontalGridLines tickValues={horizontalTickValues}/> :
+          null}
       <XAxis on0={xAxisOn0} />
       <YAxis on0={yAxisOn0} />
       <LineSeries
