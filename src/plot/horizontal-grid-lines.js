@@ -29,7 +29,9 @@ const {HORIZONTAL} = DIRECTION;
 
 const propTypes = {
   ...GridLines.propTypes,
-  direction: PropTypes.oneOf([HORIZONTAL])
+  direction: PropTypes.oneOf([
+    HORIZONTAL
+  ])
 };
 
 const defaultProps = {
