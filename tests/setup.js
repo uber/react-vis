@@ -8,6 +8,9 @@ Object.keys(document.defaultView).forEach(function mapProperties(property) {
     global[property] = document.defaultView[property];
   }
 });
+console.error = (message) => {
+  throw new Error(message);
+};
 
 global.navigator = {
   userAgent: 'node.js'
