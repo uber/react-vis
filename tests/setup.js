@@ -8,6 +8,7 @@ Object.keys(document.defaultView).forEach(function mapProperties(property) {
     global[property] = document.defaultView[property];
   }
 });
+// eslint-disable-next-line no-console
 console.error = (message) => {
   throw new Error(message);
 };
