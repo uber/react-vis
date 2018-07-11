@@ -72,7 +72,9 @@ class Crosshair extends PureComponent {
       innerHeight: PropTypes.number,
       marginLeft: PropTypes.number,
       marginTop: PropTypes.number,
-      orientation: PropTypes.oneOf(['left', 'right']),
+      orientation: PropTypes.oneOf([
+        'left', 'right'
+      ]),
       itemsFormat: PropTypes.func,
       titleFormat: PropTypes.func,
       style: PropTypes.shape({
