@@ -40,7 +40,7 @@ export default class Example extends React.Component {
     const {useCanvas} = this.state;
     const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
     const Line = useCanvas ? LineSeriesCanvas : LineSeries;
-    
+
     return (
       <div>
         <ShowcaseButton
@@ -73,7 +73,7 @@ export default class Example extends React.Component {
               {x: 3, y: 2},
               {x: 4, y: 15}
             ]}
-            strokeDasharray={useCanvas ? [7, 3] : "7, 3"}
+            strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
             />
           <Line
             className="fourth-series"

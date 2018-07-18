@@ -59,12 +59,12 @@ test('LineSeries: Showcase Example - LineChart', t => {
   });
   t.equal($.find('.second-series').length, 0,
     'there should be no line with the class second series bc it has null data and should be filtered out');
-  
+
   $.find('button').simulate('click');
-  t.equal($.find('.rv-xy-plot__series--line').length, 0, 'should find no more line series'); 
-  
+  t.equal($.find('.rv-xy-plot__series--line').length, 0, 'should find no more line series');
+
   $.find('button').simulate('click');
-  t.equal($.find('.rv-xy-plot__series--line').length, 3, 'should find no more line series'); 
+  t.equal($.find('.rv-xy-plot__series--line').length, 3, 'should find no more line series');
   t.end();
 });
 

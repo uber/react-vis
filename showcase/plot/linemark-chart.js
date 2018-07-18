@@ -44,8 +44,8 @@ export default class Example extends React.Component {
           style={{
             strokeWidth: '3px'
           }}
-          lineStyle={{stroke:"red"}}
-          markStyle={{stroke:"blue"}}
+          lineStyle={{stroke: 'red'}}
+          markStyle={{stroke: 'blue'}}
           data={[
             {x: 1, y: 10},
             {x: 2, y: 5},
