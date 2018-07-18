@@ -2,7 +2,7 @@
 
 <!-- INJECT:"HeatmapChartWithLink" -->
 
-The heatmap series enables users to create a 2d binning of the cartesian plane. These series often come in useful in situations when you might be using a scatterplot, but have too many rows of data for the reader to easily understand what is going on. So arises HeatmapSeries!
+The heatmap series enables users to create a 2d binning of the plane. These series often come in useful in situations when you might be using a scatterplot, but have too many rows of data for the reader to easily understand what is going on. So arises HeatmapSeries!
 
 ```javascript
 <XYPlot
@@ -16,9 +16,11 @@ The heatmap series enables users to create a 2d binning of the cartesian plane. 
 </XYPlot>
 ```
 
-Another way to think of the heatmap, is as a 2D histogram, where each cell is colored by it's value rather than heighted or widthed.
+Another way to think of the heatmap, is as a 2D histogram, where each cell is colored by it's value rather than height-ed or width-ed.
 
 #### Color in heatmaps
+
+<!-- INJECT:"LabeledHeatmap" -->
 
 The Heatmap's color can be manipulated in two data driven ways, first by setting the setting colorRange on the series
 
@@ -33,12 +35,23 @@ Which assumes that each row of data has a number specifying it's color attribute
 
 ```javascript
 <HeatmapSeries
-  className="heatmap-series-example"
   colorType="literal"
   data={[
     {x: 1, y: 0, color: "#f00"},
     {x: 1, y: 5, color: "#f00"},
     {x: 1, y: 10, color: "#0f0"}
+  ]}/>
+```
+
+The color can also usefully be set using a color accessor,
+```javascript
+<HeatmapSeries
+  colorType="literal"
+  getColor={d => d.color === 'bad' ? '#f00' : '#0f0'}
+  data={[
+    {x: 1, y: 0, color: 'bad'},
+    {x: 1, y: 5, color: 'bad'},
+    {x: 1, y: 10, color: 'good'}
   ]}/>
 ```
 
@@ -117,7 +130,7 @@ A list of CSS properties to style the series outside of the explicitly set prope
 ## Interaction handlers
 #### onNearestX (optional)
 Type: `function(value, {event, innerX, index})`  
-A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor. 
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
 - `index` is the index of the data point in the array of data;
@@ -126,7 +139,7 @@ See [interaction](interaction.md)
 
 #### onNearestXY (optional)
 Type: `function(value, {event, innerX, innerY, index})`  
-A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor. 
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
 - `innerY` is the top position of the mark;
@@ -148,4 +161,4 @@ Type: `function(d, {event})`
 
 #### onValueRightClick (optional)
 Type: `function(d, {event})`  
-`right-click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property. 
+`right-click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
