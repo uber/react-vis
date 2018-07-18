@@ -23,10 +23,34 @@ import {format} from 'd3-format';
 
 import {ParallelCoordinates} from 'index';
 
-const DATA = [
-  {name: 'Mercedes', mileage: 7, price: 10, safety: 8, performance: 9, interior: 7, warranty: 7},
-  {name: 'Honda', mileage: 8, price: 6, safety: 9, performance: 6, interior: 3, warranty: 9},
-  {name: 'Chevrolet', mileage: 5, price: 4, safety: 6, performance: 4, interior: 5, warranty: 6}
+const DATA = [{
+  name: 'Mercedes',
+  mileage: 7,
+  price: 10,
+  safety: 8,
+  performance: 9,
+  interior: 7,
+  warranty: 7
+}, {
+  name: 'Honda',
+  mileage: 8,
+  price: 6,
+  safety: 9,
+  performance: 6,
+  interior: 3,
+  warranty: 9,
+  style: {
+    strokeWidth: 3,
+    strokeDasharray: '2, 2'
+  }
+}, {
+  name: 'Chevrolet',
+  mileage: 5,
+  price: 4,
+  safety: 6,
+  performance: 4,
+  interior: 5,
+  warranty: 6}
 ];
 
 const basicFormat = format('.2r');

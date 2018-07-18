@@ -129,7 +129,7 @@ function getLines(props) {
       key: `${rowIndex}-polygon`,
       data: mappedData,
       color: row.color || colorRange[rowIndex % colorRange.length],
-      style: style.lines
+      style: {...style.lines, ...(row.style || {})}
     };
     return showMarks ? <LineMarkSeries {...lineProps} /> : <LineSeries {...lineProps} />;
   });

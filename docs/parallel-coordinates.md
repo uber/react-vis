@@ -36,6 +36,26 @@ In such a case, there would be ONE polygon rendered for four variables (nice/exp
 ## API Reference
 #### data
 Type: `arrayOf(Objects)`
+Each object must have keys for each of the intended display domains (eg in the above example any input row should have at neatExplosions/wow/dog/sickMoves/nice). Additional a style prop can be provided on the row of the data itself to style the line series that it corresponds to, for instance here's one of the rows from the car example:
+
+```javascript
+{
+  name: 'Honda',
+  mileage: 8,
+  price: 6,
+  safety: 9,
+  performance: 6,
+  interior: 3,
+  warranty: 9,
+  style: {
+    strokeWidth: 3,
+    strokeDasharray: '2, 2'
+  }
+}
+```
+
+It is not necessary to provide style, but it can be helpful!
+
 
 #### domains
 Type: `arrayOf(Objects)`
