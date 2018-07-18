@@ -278,3 +278,5 @@ If an object is passed, then the child components *will be* animated with the gi
 Type: `Boolean`
 Default: `false`
 If this prop is provided then the XYPlot with not check if the plot is empty before rendering. This can be useful if you have a variable amount of data, especially when that variable can be zero.
+
+<!-- INJECT:"EmptyChartWithLink" -->
