@@ -14,6 +14,7 @@ const {
   CustomSVGExample,
   CustomSVGAllTheMarks,
   CustomSVGRootLevel,
+  EmptyChart,
   FauxScatterplotChart,
   GridLinesChart,
   HeatmapChart,
@@ -151,6 +152,10 @@ const BASIC_COMPONENTS = [{
   name: 'Custom scales',
   component: CustomScales,
   componentName: 'CustomScales'
+}, {
+  name: 'Empty Chart',
+  component: EmptyChart,
+  componentName: 'EmptyChart'
 }, {
   name: 'Custom GridLines',
   component: GridLinesChart,

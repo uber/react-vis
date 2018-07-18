@@ -94,6 +94,7 @@ import CustomAxisChart from './axes/custom-axis';
 import CustomAxisTickFormat from './axes/custom-axis-tick-format';
 import CustomAxes from './axes/custom-axes';
 import DecorativeAxisCrissCross from './axes/decorative-axes-criss-cross';
+import EmptyChart from './axes/empty-chart';
 import StaticHints from './axes/static-hints';
 import DynamicHints from './axes/dynamic-hints';
 import DynamicComplexEdgeHints from './axes/dynamic-complex-edge-hints';
@@ -191,6 +192,7 @@ const mainShowCase = {
   DynamicSimpleEdgeHints,
   DynamicSimpleTopEdgeHints,
   DynamicProgrammaticRightEdgeHints,
+  EmptyChart,
   StaticCrosshair,
   DynamicCrosshair,
   DynamicCrosshairScatterplot,

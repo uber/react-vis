@@ -60,6 +60,7 @@ export const SHOWCASE_LINKS = {
   CustomScales: 'https://github.com/uber/react-vis/blob/master/showcase/plot/custom-scales.js',
   GridLinesChart: 'https://github.com/uber/react-vis/blob/master/showcase/plot/grid.js',
   FauxScatterplotChart: 'https://github.com/uber/react-vis/blob/master/showcase/plot/faux-radial-scatterplot.js',
+  EmptyChart: 'https://github.com/uber/react-vis/blob/master/showcase/plot/empty-chart.js',
   // RADAR CHART SHOWCASE LINKS
   AnimatedRadarChart: 'https://github.com/uber/react-vis/blob/master/showcase/radar-chart/animated-radar-chart.js',
   BasicRadarChart: 'https://github.com/uber/react-vis/blob/master/showcase/radar-chart/basic-radar-chart.js',
