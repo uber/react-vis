@@ -476,7 +476,7 @@ class XYPlot extends React.Component {
       return React.cloneElement(child, {
         ...dimensions,
         animation,
-        ...(dataProps && (!child.prototype || !child.prototype.render) ?
+        ...(dataProps && child.type.prototype && child.type.prototype.render ?
         {
           ref: ref => (this[`series${seriesProps[index].seriesIndex}`] = ref)
         } :

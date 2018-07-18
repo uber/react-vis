@@ -28,6 +28,7 @@ import BarSeries from 'plot/series/bar-series';
 import LineSeries from 'plot/series/line-series';
 import XAxis from 'plot/axis/x-axis';
 import XYPlot from 'plot/xy-plot';
+import HorizontalGridLines from 'plot/horizontal-grid-lines';
 
 import MixedStackedChart from '../../showcase/plot/mixed-stacked-chart';
 import {FlexibleCharts} from '../../showcase/flexible/flexible-examples';
@@ -302,4 +303,37 @@ test('Trigger all onParentMouse handlers on Series components', t => {
   $.find('svg').at(0).simulate('mouseleave');
   $.find('svg').at(0).simulate('touchstart');
   $.find('svg').at(0).simulate('touchmove');
+});
+
+test('XYPlot attach ref only to series components', t => {
+  const Stateless = () => {
+    return <div>stateless</div>;
+  };
+  const $ = mount(
+    <XYPlot
+      width={300}
+      height={300}>
+      <HorizontalGridLines />
+      <XAxis />
+      <LineSeries
+        data={[
+          {x: 1, y: 3},
+          {x: 2, y: 5},
+          {x: 3, y: 15},
+          {x: 4, y: 12}
+        ]}/>
+      <Stateless />
+    </XYPlot>
+  );
+
+  const clonedChilds = $.instance()._getClonedChildComponents();
+  const horizontalGridLinesChild = clonedChilds.find(element => element.type === HorizontalGridLines);
+  const axisChild = clonedChilds.find(element => element.type === XAxis);
+  const lineSeriesChild = clonedChilds.find(element => element.type === LineSeries);
+  const statelessChild = clonedChilds.find(element => element.type === Stateless);
+  t.ok(horizontalGridLinesChild.ref === null, 'Ref not attached to non series components');
+  t.ok(axisChild.ref === null, 'Ref not attached to axis');
+  t.ok(typeof lineSeriesChild.ref === 'function', 'Ref attached to series components');
+  t.ok(statelessChild.ref === null, 'Ref not attached to stateless components');
+  t.end();
 });
