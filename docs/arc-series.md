@@ -55,6 +55,10 @@ The distance between the origin and the inside of the arc. This values is scaled
 Type: `number`    
 The distance between the origin and the outside of the arc. This values is scaled linearly by default
 
+#### radiusDomain
+Type: `array of numbers`
+The domain over which the radius is scaled. This can be an essential element in getting your arcs to look right, the automatic inference for the prop tends to be somewhat inaccurate, so it is highly encourage that you set it for your self as appropriate. For example: [0, 3]. See the code for ArcSeriesExample for more. 
+
 #### color (optional)
 Type: `string|number`  
 The color of an arc in the series. By default, the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop colorType="literal" to the series itself. This property can also be defined on the series level. See [colors](colors.md)
