@@ -38,11 +38,12 @@ import polygonSeries from '../../docs/polygon-series.md';
 import rectSeries from '../../docs/rect-series.md';
 import whiskerSeries from '../../docs/whisker-series.md';
 
-import sankey from '../../docs/sankey.md';
-import treemap from '../../docs/treemap.md';
+import parallel from '../../docs/parallel-coordinates';
 import radar from '../../docs/radar-chart.md';
 import radial from '../../docs/radial-chart.md';
+import sankey from '../../docs/sankey.md';
 import sunburst from '../../docs/sunburst.md';
+import treemap from '../../docs/treemap.md';
 
 import plotsEx from '../../docs/examples/showcases/plots-showcase.md';
 import axesEx from '../../docs/examples/showcases/axes-showcase.md';
@@ -243,11 +244,8 @@ export default [{
   }, {
     name: 'Other Charts',
     children: [{
-      name: 'Sankey Diagram',
-      markdown: sankey,
-    }, {
-      name: 'Treemap',
-      markdown: treemap,
+      name: 'Parallel Coordinates',
+      markdown: parallel
     }, {
       name: 'Radar Chart',
       markdown: radar,
@@ -255,8 +253,15 @@ export default [{
       name: 'Radial Chart',
       markdown: radial,
     }, {
+      name: 'Sankey Diagram',
+      markdown: sankey,
+    }, {
       name: 'Sunburst Diagram',
       markdown: sunburst,
-    }],
+    }, {
+      name: 'Treemap',
+      markdown: treemap,
+    },
+  ],
   }],
 }];
