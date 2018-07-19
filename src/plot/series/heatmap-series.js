@@ -48,12 +48,13 @@ class HeatmapSeries extends AbstractSeries {
         </Animation>
       );
     }
-    const xFunctor = this._getAttributeFunctor('x');
-    const yFunctor = this._getAttributeFunctor('y');
-    const opacityFunctor = this._getAttributeFunctor('opacity');
-    const fillFunctor = this._getAttributeFunctor('fill') ||
+    const {rectStyle} = {rectStyle: {}, ...style};
+    const x = this._getAttributeFunctor('x');
+    const y = this._getAttributeFunctor('y');
+    const opacity = this._getAttributeFunctor('opacity');
+    const fill = this._getAttributeFunctor('fill') ||
       this._getAttributeFunctor('color');
-    const strokeFunctor = this._getAttributeFunctor('stroke') ||
+    const stroke = this._getAttributeFunctor('stroke') ||
       this._getAttributeFunctor('color');
     const xDistance = this._getScaleDistance('x');
     const yDistance = this._getScaleDistance('y');
@@ -64,13 +65,14 @@ class HeatmapSeries extends AbstractSeries {
         {data.map((d, i) => {
           const attrs = {
             style: {
-              stroke: strokeFunctor && strokeFunctor(d),
-              fill: fillFunctor && fillFunctor(d),
-              opacity: opacityFunctor && opacityFunctor(d),
+              stroke: stroke && stroke(d),
+              fill: fill && fill(d),
+              opacity: opacity && opacity(d),
               ...style
             },
-            x: xFunctor(d) - xDistance / 2,
-            y: yFunctor(d) - yDistance / 2,
+            ...rectStyle,
+            x: x(d) - xDistance / 2,
+            y: y(d) - yDistance / 2,
             width: xDistance,
             height: yDistance,
             key: i,

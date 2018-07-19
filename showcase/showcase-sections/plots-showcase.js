@@ -19,6 +19,7 @@ const {
   GridLinesChart,
   HeatmapChart,
   Histogram,
+  LabeledHeatmap,
   LineChart,
   LineChartManyColors,
   LineChartWithStyle,
@@ -127,6 +128,11 @@ const PLOTS = [{
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/heatmap-series.js',
   docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/heatmap-series'
 }, {
+  name: 'Labeled Heatmap',
+  component: LabeledHeatmap,
+  componentName: 'LabeledHeatmap',
+  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/heatmap-series.js'
+}, {
   name: 'Contour Series',
   component: ContourSeriesExample,
   componentName: 'ContourSeriesExample'
@@ -174,9 +180,11 @@ class PlotsShowcase extends Component {
     return (
       <article id="plots">
         <h1>Plots</h1>
-        {!forExample && (<section>
-          <ComplexChart />
-        </section>)}
+        {
+          !forExample && (<section>
+            <ComplexChart />
+          </section>)
+        }
         <h2>Series Types</h2>
         {PLOTS.map(mapSection)}
         <h2>Basic Components</h2>
