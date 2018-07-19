@@ -28,25 +28,22 @@ import {
   HorizontalGridLines
 } from 'index';
 
-export default class EmptyChart extends React.Component {
-  render() {
-
-    return (
-      <XYPlot
-        dontCheckIfEmpty
-        xDomain={[0, 3]}
-        yDomain={[10, 3]}
-        width={300}
-        height={300}>
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <XAxis
-          hideLine
-          title="Empty Chart Right Here"
-          tickFormat={v => `${v}!`}
-          tickValues={[1, 1.5, 2, 3]} />
-        <YAxis hideTicks/>
-      </XYPlot>
-    );
-  }
+export default function EmptyChart(){
+  return (
+    <XYPlot
+      dontCheckIfEmpty
+      xDomain={[0, 3]}
+      yDomain={[10, 3]}
+      width={300}
+      height={300}>
+      <VerticalGridLines />
+      <HorizontalGridLines />
+      <XAxis
+        hideLine
+        title="Empty Chart Right Here"
+        tickFormat={v => `${v}!`}
+        tickValues={[1, 1.5, 2, 3]} />
+      <YAxis hideTicks/>
+    </XYPlot>
+  );
 }
