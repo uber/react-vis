@@ -32,6 +32,7 @@ import HorizontalGridLines from 'plot/horizontal-grid-lines';
 
 import MixedStackedChart from '../../showcase/plot/mixed-stacked-chart';
 import {FlexibleCharts} from '../../showcase/flexible/flexible-examples';
+import EmptyChart from '../../showcase/axes/empty-chart';
 import {testRenderWithProps} from '../test-utils';
 
 const XYPLOT_PROPS = {width: 10, height: 10};
@@ -303,6 +304,15 @@ test('Trigger all onParentMouse handlers on Series components', t => {
   $.find('svg').at(0).simulate('mouseleave');
   $.find('svg').at(0).simulate('touchstart');
   $.find('svg').at(0).simulate('touchmove');
+
+  t.end();
+});
+
+test('XYPlot dontCheckIfEmpty - Showcase example EmptyChart', t => {
+  const $ = mount(<EmptyChart />);
+  t.equal($.find('.rv-xy-plot__series').length, 0, 'should find no series');
+  t.equal($.text(), '1!1.5!2!3!Empty Chart Right Here', 'should find the correct text');
+  t.end();
 });
 
 test('XYPlot attach ref only to series components', t => {

@@ -273,3 +273,10 @@ Animation config, which is automatically passed to all children, but can be over
 If `false` is passed, then the child components *will not be* animated.
 If `true` is passed then the child components *will be* animated with the default settings.
 If an object is passed, then the child components *will be* animated with the given settings.
+
+#### dontCheckIfEmpty (optional)
+Type: `Boolean`
+Default: `false`
+If this prop is provided then the XYPlot with not check if the plot is empty before rendering. This can be useful if you have a variable amount of data, especially when that variable can be zero.
+
+<!-- INJECT:"EmptyChartWithLink" -->
