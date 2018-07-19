@@ -28,7 +28,7 @@ import {
   HorizontalGridLines
 } from 'index';
 
-export default function EmptyChart(){
+export default function EmptyChart() {
   return (
     <XYPlot
       dontCheckIfEmpty
