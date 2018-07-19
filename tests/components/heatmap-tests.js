@@ -59,6 +59,6 @@ test('Heatmap: Showcase Example - LabeledHeatmap', t => {
   t.equal($.find('.rv-xy-plot__series--label').length, 1, 'should find the right number of series');
   t.equal($.find('.rv-xy-plot__series--heatmap rect').length, 100, 'should find the right number of series');
   t.equal($.find('.heatmap-series-example').length, 1, 'should find the correct custom class name');
-  t.equal($.text(), 'A1B1C1D1E1F1G1H1I1J1A2B2C2D2E2F2G2H2I2J20123456789111111111122222122233333331313444444444155555555556666666666777777777788888888889999999999', 'should find the correct text');
+  t.equal($.text(), 'A1B1C1D1E1F1G1H1I1J1J2I2H2G2F2E2D2C2B2A20123456789111111111122222122233333331313444444444155555555556666666666777777777788888888889999999999', 'should find the correct text');
   t.end();
 });
