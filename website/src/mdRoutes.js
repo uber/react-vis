@@ -1,138 +1,138 @@
-import presentation from "../../docs/presentation.md";
+import presentation from '../../docs/presentation.md';
 
-import codepen from "../../docs/getting-started/react-vis-in-codepen.md";
-import install from "../../docs/getting-started/installing-react-vis.md";
-import newProject from "../../docs/getting-started/new-react-vis-project.md";
-import first from "../../docs/getting-started/your-first-chart.md";
+import codepen from '../../docs/getting-started/react-vis-in-codepen.md';
+import install from '../../docs/getting-started/installing-react-vis.md';
+import newProject from '../../docs/getting-started/new-react-vis-project.md';
+import first from '../../docs/getting-started/your-first-chart.md';
 
-import scalesAndData from "../../docs/scales-and-data.md";
-import colors from "../../docs/colors.md";
-import interaction from "../../docs/interaction.md";
-import animation from "../../docs/animation.md";
-import style from "../../docs/style.md";
+import scalesAndData from '../../docs/scales-and-data.md';
+import colors from '../../docs/colors.md';
+import interaction from '../../docs/interaction.md';
+import animation from '../../docs/animation.md';
+import style from '../../docs/style.md';
 
-import xy from "../../docs/xy-plot.md";
-import series from "../../docs/series.md";
-import legends from "../../docs/legends.md";
-import crosshair from "../../docs/crosshair.md";
-import grids from "../../docs/grids.md";
-import hint from "../../docs/hint.md";
-import axes from "../../docs/axes.md";
-import decorativeAxis from "../../docs/decorative-axis.md";
-import gradients from "../../docs/gradients.md";
-import flexiblePlots from "../../docs/flexible-plots.md";
-import borders from "../../docs/borders.md";
-import voronoi from "../../docs/voronoi.md";
+import xy from '../../docs/xy-plot.md';
+import series from '../../docs/series.md';
+import legends from '../../docs/legends.md';
+import crosshair from '../../docs/crosshair.md';
+import grids from '../../docs/grids.md';
+import hint from '../../docs/hint.md';
+import axes from '../../docs/axes.md';
+import decorativeAxis from '../../docs/decorative-axis.md';
+import gradients from '../../docs/gradients.md';
+import flexiblePlots from '../../docs/flexible-plots.md';
+import borders from '../../docs/borders.md';
+import voronoi from '../../docs/voronoi.md';
 
-import arcSeries from "../../docs/arc-series.md";
-import areaSeries from "../../docs/area-series.md";
-import barSeries from "../../docs/bar-series.md";
-import contourSeries from "../../docs/contour-series.md";
-import customSvgSeries from "../../docs/custom-svg-series.md";
-import heatmapSeries from "../../docs/heatmap-series.md";
-import labelSeries from "../../docs/label-series.md";
-import lineSeries from "../../docs/line-series.md";
-import lineMarkSeries from "../../docs/line-mark-series.md";
-import markSeries from "../../docs/mark-series.md";
-import polygonSeries from "../../docs/polygon-series.md";
-import rectSeries from "../../docs/rect-series.md";
-import whiskerSeries from "../../docs/whisker-series.md";
+import arcSeries from '../../docs/arc-series.md';
+import areaSeries from '../../docs/area-series.md';
+import barSeries from '../../docs/bar-series.md';
+import contourSeries from '../../docs/contour-series.md';
+import customSvgSeries from '../../docs/custom-svg-series.md';
+import heatmapSeries from '../../docs/heatmap-series.md';
+import labelSeries from '../../docs/label-series.md';
+import lineSeries from '../../docs/line-series.md';
+import lineMarkSeries from '../../docs/line-mark-series.md';
+import markSeries from '../../docs/mark-series.md';
+import polygonSeries from '../../docs/polygon-series.md';
+import rectSeries from '../../docs/rect-series.md';
+import whiskerSeries from '../../docs/whisker-series.md';
 
-import parallel from "../../docs/parallel-coordinates.md";
-import radar from "../../docs/radar-chart.md";
-import radial from "../../docs/radial-chart.md";
-import sankey from "../../docs/sankey.md";
-import sunburst from "../../docs/sunburst.md";
-import treemap from "../../docs/treemap.md";
+import parallel from '../../docs/parallel-coordinates.md';
+import radar from '../../docs/radar-chart.md';
+import radial from '../../docs/radial-chart.md';
+import sankey from '../../docs/sankey.md';
+import sunburst from '../../docs/sunburst.md';
+import treemap from '../../docs/treemap.md';
 
-import plotsEx from "../../docs/examples/showcases/plots-showcase.md";
-import axesEx from "../../docs/examples/showcases/axes-showcase.md";
-import legendsEx from "../../docs/examples/showcases/legends-showcase.md";
-import sunburstEx from "../../docs/examples/showcases/sunburst-showcase.md";
-import radialEx from "../../docs/examples/showcases/radial-showcase.md";
-import sankeyEx from "../../docs/examples/showcases/sankeys-showcase.md";
-import treemapEx from "../../docs/examples/showcases/treemaps-showcase.md";
-import radarEx from "../../docs/examples/showcases/radar-chart-showcase.md";
-import miscEx from "../../docs/examples/showcases/misc-showcase.md";
+import plotsEx from '../../docs/examples/showcases/plots-showcase.md';
+import axesEx from '../../docs/examples/showcases/axes-showcase.md';
+import legendsEx from '../../docs/examples/showcases/legends-showcase.md';
+import sunburstEx from '../../docs/examples/showcases/sunburst-showcase.md';
+import radialEx from '../../docs/examples/showcases/radial-showcase.md';
+import sankeyEx from '../../docs/examples/showcases/sankeys-showcase.md';
+import treemapEx from '../../docs/examples/showcases/treemaps-showcase.md';
+import radarEx from '../../docs/examples/showcases/radar-chart-showcase.md';
+import miscEx from '../../docs/examples/showcases/misc-showcase.md';
 
-import extensibility from "../../docs/examples/extensibility.md";
-import otherThings from "../../docs/examples/building-things-other-than-charts.md";
-import streamGraph from "../../docs/examples/stream-graph.md";
-import responsiveVis from "../../docs/examples/responsive-vis.md";
-import zoomableChart from "../../docs/examples/zoomable-chart.md";
-import gitHistory from "../../docs/examples/history-example.md";
+import extensibility from '../../docs/examples/extensibility.md';
+import otherThings from '../../docs/examples/building-things-other-than-charts.md';
+import streamGraph from '../../docs/examples/stream-graph.md';
+import responsiveVis from '../../docs/examples/responsive-vis.md';
+import zoomableChart from '../../docs/examples/zoomable-chart.md';
+import gitHistory from '../../docs/examples/history-example.md';
 
 export default [
   {
-    name: "Examples",
-    path: "/examples",
+    name: 'Examples',
+    path: '/examples',
     data: [
       {
-        name: "Showcases",
+        name: 'Showcases',
         children: [
           {
-            name: "Plots",
+            name: 'Plots',
             markdown: plotsEx
           },
           {
-            name: "Axes",
+            name: 'Axes',
             markdown: axesEx
           },
           {
-            name: "Legends",
+            name: 'Legends',
             markdown: legendsEx
           },
           {
-            name: "Sunbursts",
+            name: 'Sunbursts',
             markdown: sunburstEx
           },
           {
-            name: "Radial",
+            name: 'Radial',
             markdown: radialEx
           },
           {
-            name: "Sankeys",
+            name: 'Sankeys',
             markdown: sankeyEx
           },
           {
-            name: "Treemaps",
+            name: 'Treemaps',
             markdown: treemapEx
           },
           {
-            name: "Radar Charts",
+            name: 'Radar Charts',
             markdown: radarEx
           },
           {
-            name: "Misc",
+            name: 'Misc',
             markdown: miscEx
           }
         ]
       },
       {
-        name: "Charts",
+        name: 'Charts',
         children: [
           {
-            name: "Candlestick",
+            name: 'Candlestick',
             markdown: extensibility
           },
           {
-            name: "Force Directed Graph",
+            name: 'Force Directed Graph',
             markdown: otherThings
           },
           {
-            name: "Streamgraph",
+            name: 'Streamgraph',
             markdown: streamGraph
           },
           {
-            name: "Responsive Vis",
+            name: 'Responsive Vis',
             markdown: responsiveVis
           },
           {
-            name: "Zoomable Chart",
+            name: 'Zoomable Chart',
             markdown: zoomableChart
           },
           {
-            name: "Git History",
+            name: 'Git History',
             markdown: gitHistory
           }
         ]
@@ -140,194 +140,194 @@ export default [
     ]
   },
   {
-    name: "Documentation",
-    path: "/documentation",
+    name: 'Documentation',
+    path: '/documentation',
     data: [
       {
-        name: "Welcome to React-vis",
+        name: 'Welcome to React-vis',
         markdown: presentation
       },
       {
-        name: "Getting Started",
+        name: 'Getting Started',
         children: [
           {
-            name: "React-vis in codepen",
+            name: 'React-vis in codepen',
             markdown: codepen
           },
           {
-            name: "Installing react-vis",
+            name: 'Installing react-vis',
             markdown: install
           },
           {
-            name: "Creating a new react-vis project",
+            name: 'Creating a new react-vis project',
             markdown: newProject
           },
           {
-            name: "Your first chart",
+            name: 'Your first chart',
             markdown: first
           }
         ]
       },
       {
-        name: "General principles",
+        name: 'General principles',
         children: [
           {
-            name: "Scales and data",
+            name: 'Scales and data',
             markdown: scalesAndData
           },
           {
-            name: "Colors",
+            name: 'Colors',
             markdown: colors
           },
           {
-            name: "Interaction",
+            name: 'Interaction',
             markdown: interaction
           },
           {
-            name: "Animation",
+            name: 'Animation',
             markdown: animation
           },
           {
-            name: "Style",
+            name: 'Style',
             markdown: style
           }
         ]
       },
       {
-        name: "API Reference",
+        name: 'API Reference',
         children: [
           {
-            name: "XY-Plot",
+            name: 'XY-Plot',
             markdown: xy
           },
           {
-            name: "Series",
+            name: 'Series',
             markdown: series
           },
           {
-            name: "Legends",
+            name: 'Legends',
             markdown: legends
           },
           {
-            name: "Crosshair",
+            name: 'Crosshair',
             markdown: crosshair
           },
           {
-            name: "Grids",
+            name: 'Grids',
             markdown: grids
           },
           {
-            name: "Hint",
+            name: 'Hint',
             markdown: hint
           },
           {
-            name: "Axes",
+            name: 'Axes',
             markdown: axes
           },
           {
-            name: "DecorativeAxis",
+            name: 'DecorativeAxis',
             markdown: decorativeAxis
           },
           {
-            name: "Gradients",
+            name: 'Gradients',
             markdown: gradients
           },
           {
-            name: "Flexible plots",
+            name: 'Flexible plots',
             markdown: flexiblePlots
           },
           {
-            name: "Borders",
+            name: 'Borders',
             markdown: borders
           },
           {
-            name: "Voronoi",
+            name: 'Voronoi',
             markdown: voronoi
           }
         ]
       },
       {
-        name: "Series reference",
+        name: 'Series reference',
         children: [
           {
-            name: "Arc Series",
+            name: 'Arc Series',
             markdown: arcSeries
           },
           {
-            name: "Area Series",
+            name: 'Area Series',
             markdown: areaSeries
           },
           {
-            name: "Bar Series",
+            name: 'Bar Series',
             markdown: barSeries
           },
           {
-            name: "Contour Series",
+            name: 'Contour Series',
             markdown: contourSeries
           },
           {
-            name: "Custom SVG Series",
+            name: 'Custom SVG Series',
             markdown: customSvgSeries
           },
           {
-            name: "Heatmap Series",
+            name: 'Heatmap Series',
             markdown: heatmapSeries
           },
           {
-            name: "Label Series",
+            name: 'Label Series',
             markdown: labelSeries
           },
           {
-            name: "Line Series",
+            name: 'Line Series',
             markdown: lineSeries
           },
           {
-            name: "Line-Mark Series",
+            name: 'Line-Mark Series',
             markdown: lineMarkSeries
           },
           {
-            name: "Mark Series",
+            name: 'Mark Series',
             markdown: markSeries
           },
           {
-            name: "Polygon Series",
+            name: 'Polygon Series',
             markdown: polygonSeries
           },
           {
-            name: "Rect Series",
+            name: 'Rect Series',
             markdown: rectSeries
           },
           {
-            name: "Whisker Series",
+            name: 'Whisker Series',
             markdown: whiskerSeries
           }
         ]
       },
       {
-        name: "Other Charts",
+        name: 'Other Charts',
         children: [
           {
-            name: "Parallel Coordinates",
+            name: 'Parallel Coordinates',
             markdown: parallel
           },
           {
-            name: "Radar Chart",
+            name: 'Radar Chart',
             markdown: radar
           },
           {
-            name: "Radial Chart",
+            name: 'Radial Chart',
             markdown: radial
           },
           {
-            name: "Sankey Diagram",
+            name: 'Sankey Diagram',
             markdown: sankey
           },
           {
-            name: "Sunburst Diagram",
+            name: 'Sunburst Diagram',
             markdown: sunburst
           },
           {
-            name: "Treemap",
+            name: 'Treemap',
             markdown: treemap
           }
         ]
