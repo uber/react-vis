@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ocular start",
     "clean": "rm -rf dist/*{.js,.css,index.html,appcache,fonts,images}",
-    "build": "npm run clean && npm run build-storybook && ocular build",
+    "build": "npm run clean && ocular build && npm run build-storybook",
     "build-storybook": "build-storybook -c .storybook -o ./dist/storybook",
     "lint": "ocular lint",
     "storybook": "start-storybook -p 9001 -c .storybook"

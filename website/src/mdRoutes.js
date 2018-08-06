@@ -38,7 +38,7 @@ import polygonSeries from '../../docs/polygon-series.md';
 import rectSeries from '../../docs/rect-series.md';
 import whiskerSeries from '../../docs/whisker-series.md';
 
-import parallel from '../../docs/parallel-coordinates';
+import parallel from '../../docs/parallel-coordinates.md';
 import radar from '../../docs/radar-chart.md';
 import radial from '../../docs/radial-chart.md';
 import sankey from '../../docs/sankey.md';
@@ -62,206 +62,276 @@ import responsiveVis from '../../docs/examples/responsive-vis.md';
 import zoomableChart from '../../docs/examples/zoomable-chart.md';
 import gitHistory from '../../docs/examples/history-example.md';
 
-export default [{
-  name: 'Examples',
-  path: '/examples',
-  data: [{
-    name: 'Showcases',
-    children: [{
-      name: 'Plots',
-      markdown: plotsEx,
-    }, {
-      name: 'Axes',
-      markdown: axesEx,
-    }, {
-      name: 'Legends',
-      markdown: legendsEx,
-    }, {
-      name: 'Sunbursts',
-      markdown: sunburstEx,
-    }, {
-      name: 'Radial',
-      markdown: radialEx,
-    }, {
-      name: 'Sankeys',
-      markdown: sankeyEx,
-    }, {
-      name: 'Treemaps',
-      markdown: treemapEx,
-    }, {
-      name: 'Radar Charts',
-      markdown: radarEx,
-    }, {
-      name: 'Misc',
-      markdown: miscEx,
-    }],
-  }, {
-    name: 'Charts',
-    children: [{
-      name: 'Candlestick',
-      markdown: extensibility,
-    }, {
-      name: 'Force Directed Graph',
-      markdown: otherThings,
-    }, {
-      name: 'Streamgraph',
-      markdown: streamGraph,
-    }, {
-      name: 'Responsive Vis',
-      markdown: responsiveVis,
-    }, {
-      name: 'Zoomable Chart',
-      markdown: zoomableChart,
-    }, {
-      name: 'Git History',
-      markdown: gitHistory,
-    }],
-  }],
-}, {
-  name: 'Documentation',
-  path: '/documentation',
-  data: [{
-    name: 'Welcome to React-vis',
-    markdown: presentation,
-  }, {
-    name: 'Getting Started',
-    children: [{
-      name: 'React-vis in codepen',
-      markdown: codepen
-    }, {
-      name: 'Installing react-vis',
-      markdown: install,
-    }, {
-      name: 'Creating a new react-vis project',
-      markdown: newProject,
-    }, {
-      name: 'Your first chart',
-      markdown: first,
-    }],
-  }, {
-    name: 'General principles',
-    children: [{
-      name: 'Scales and data',
-      markdown: scalesAndData
-    }, {
-      name: 'Colors',
-      markdown: colors,
-    }, {
-      name: 'Interaction',
-      markdown: interaction,
-    }, {
-      name: 'Animation',
-      markdown: animation,
-    }, {
-      name: 'Style',
-      markdown: style,
-    }],
-  }, {
-    name: 'API Reference',
-    children: [
+export default [
+  {
+    name: 'Examples',
+    path: '/examples',
+    data: [
       {
-        name: 'XY-Plot',
-        markdown: xy,
-      }, {
-        name: 'Series',
-        markdown: series,
-      }, {
-        name: 'Legends',
-        markdown: legends,
-      }, {
-        name: 'Crosshair',
-        markdown: crosshair,
-      }, {
-        name: 'Grids',
-        markdown: grids,
-      }, {
-        name: 'Hint',
-        markdown: hint,
-      }, {
-        name: 'Axes',
-        markdown: axes,
-      }, {
-        name: 'DecorativeAxis',
-        markdown: decorativeAxis,
-      }, {
-        name: 'Gradients',
-        markdown: gradients,
-      }, {
-        name: 'Flexible plots',
-        markdown: flexiblePlots,
-      }, {
-        name: 'Borders',
-        markdown: borders,
-      }, {
-        name: 'Voronoi',
-        markdown: voronoi,
+        name: 'Showcases',
+        children: [
+          {
+            name: 'Plots',
+            markdown: plotsEx
+          },
+          {
+            name: 'Axes',
+            markdown: axesEx
+          },
+          {
+            name: 'Legends',
+            markdown: legendsEx
+          },
+          {
+            name: 'Sunbursts',
+            markdown: sunburstEx
+          },
+          {
+            name: 'Radial',
+            markdown: radialEx
+          },
+          {
+            name: 'Sankeys',
+            markdown: sankeyEx
+          },
+          {
+            name: 'Treemaps',
+            markdown: treemapEx
+          },
+          {
+            name: 'Radar Charts',
+            markdown: radarEx
+          },
+          {
+            name: 'Misc',
+            markdown: miscEx
+          }
+        ]
       },
-    ],
-  }, {
-    name: 'Series reference',
-    children: [
       {
-        name: 'Arc Series',
-        markdown: arcSeries,
-      }, {
-        name: 'Area Series',
-        markdown: areaSeries,
-      }, {
-        name: 'Bar Series',
-        markdown: barSeries,
-      }, {
-        name: 'Contour Series',
-        markdown: contourSeries,
-      }, {
-        name: 'Custom SVG Series',
-        markdown: customSvgSeries,
-      }, {
-        name: 'Heatmap Series',
-        markdown: heatmapSeries,
-      }, {
-        name: 'Label Series',
-        markdown: labelSeries,
-      }, {
-        name: 'Line Series',
-        markdown: lineSeries,
-      }, {
-        name: 'Line-Mark Series',
-        markdown: lineMarkSeries,
-      }, {
-        name: 'Mark Series',
-        markdown: markSeries,
-      }, {
-        name: 'Polygon Series',
-        markdown: polygonSeries,
-      }, {
-        name: 'Rect Series',
-        markdown: rectSeries,
-      }, {
-        name: 'Whisker Series',
-        markdown: whiskerSeries,
+        name: 'Charts',
+        children: [
+          {
+            name: 'Candlestick',
+            markdown: extensibility
+          },
+          {
+            name: 'Force Directed Graph',
+            markdown: otherThings
+          },
+          {
+            name: 'Streamgraph',
+            markdown: streamGraph
+          },
+          {
+            name: 'Responsive Vis',
+            markdown: responsiveVis
+          },
+          {
+            name: 'Zoomable Chart',
+            markdown: zoomableChart
+          },
+          {
+            name: 'Git History',
+            markdown: gitHistory
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'Documentation',
+    path: '/documentation',
+    data: [
+      {
+        name: 'Welcome to React-vis',
+        markdown: presentation
       },
-    ],
-  }, {
-    name: 'Other Charts',
-    children: [{
-      name: 'Parallel Coordinates',
-      markdown: parallel
-    }, {
-      name: 'Radar Chart',
-      markdown: radar,
-    }, {
-      name: 'Radial Chart',
-      markdown: radial,
-    }, {
-      name: 'Sankey Diagram',
-      markdown: sankey,
-    }, {
-      name: 'Sunburst Diagram',
-      markdown: sunburst,
-    }, {
-      name: 'Treemap',
-      markdown: treemap,
-    },
-  ],
-  }],
-}];
+      {
+        name: 'Getting Started',
+        children: [
+          {
+            name: 'React-vis in codepen',
+            markdown: codepen
+          },
+          {
+            name: 'Installing react-vis',
+            markdown: install
+          },
+          {
+            name: 'Creating a new react-vis project',
+            markdown: newProject
+          },
+          {
+            name: 'Your first chart',
+            markdown: first
+          }
+        ]
+      },
+      {
+        name: 'General principles',
+        children: [
+          {
+            name: 'Scales and data',
+            markdown: scalesAndData
+          },
+          {
+            name: 'Colors',
+            markdown: colors
+          },
+          {
+            name: 'Interaction',
+            markdown: interaction
+          },
+          {
+            name: 'Animation',
+            markdown: animation
+          },
+          {
+            name: 'Style',
+            markdown: style
+          }
+        ]
+      },
+      {
+        name: 'API Reference',
+        children: [
+          {
+            name: 'XY-Plot',
+            markdown: xy
+          },
+          {
+            name: 'Series',
+            markdown: series
+          },
+          {
+            name: 'Legends',
+            markdown: legends
+          },
+          {
+            name: 'Crosshair',
+            markdown: crosshair
+          },
+          {
+            name: 'Grids',
+            markdown: grids
+          },
+          {
+            name: 'Hint',
+            markdown: hint
+          },
+          {
+            name: 'Axes',
+            markdown: axes
+          },
+          {
+            name: 'DecorativeAxis',
+            markdown: decorativeAxis
+          },
+          {
+            name: 'Gradients',
+            markdown: gradients
+          },
+          {
+            name: 'Flexible plots',
+            markdown: flexiblePlots
+          },
+          {
+            name: 'Borders',
+            markdown: borders
+          },
+          {
+            name: 'Voronoi',
+            markdown: voronoi
+          }
+        ]
+      },
+      {
+        name: 'Series reference',
+        children: [
+          {
+            name: 'Arc Series',
+            markdown: arcSeries
+          },
+          {
+            name: 'Area Series',
+            markdown: areaSeries
+          },
+          {
+            name: 'Bar Series',
+            markdown: barSeries
+          },
+          {
+            name: 'Contour Series',
+            markdown: contourSeries
+          },
+          {
+            name: 'Custom SVG Series',
+            markdown: customSvgSeries
+          },
+          {
+            name: 'Heatmap Series',
+            markdown: heatmapSeries
+          },
+          {
+            name: 'Label Series',
+            markdown: labelSeries
+          },
+          {
+            name: 'Line Series',
+            markdown: lineSeries
+          },
+          {
+            name: 'Line-Mark Series',
+            markdown: lineMarkSeries
+          },
+          {
+            name: 'Mark Series',
+            markdown: markSeries
+          },
+          {
+            name: 'Polygon Series',
+            markdown: polygonSeries
+          },
+          {
+            name: 'Rect Series',
+            markdown: rectSeries
+          },
+          {
+            name: 'Whisker Series',
+            markdown: whiskerSeries
+          }
+        ]
+      },
+      {
+        name: 'Other Charts',
+        children: [
+          {
+            name: 'Parallel Coordinates',
+            markdown: parallel
+          },
+          {
+            name: 'Radar Chart',
+            markdown: radar
+          },
+          {
+            name: 'Radial Chart',
+            markdown: radial
+          },
+          {
+            name: 'Sankey Diagram',
+            markdown: sankey
+          },
+          {
+            name: 'Sunburst Diagram',
+            markdown: sunburst
+          },
+          {
+            name: 'Treemap',
+            markdown: treemap
+          }
+        ]
+      }
+    ]
+  }
+];
