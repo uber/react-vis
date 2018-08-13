@@ -50,7 +50,7 @@ test('LineSeries: basic rendering', t => {
 
 test('LineSeries: Showcase Example - LineChart', t => {
   const $ = mount(<LineChart />);
-  t.equal($.text(), '1.01.52.02.53.03.54.0X Axis2468101214Y Axis', 'should find the right text content');
+  t.equal($.text(), 'TOGGLE TO CANVAS1.01.52.02.53.03.54.0X Axis2468101214Y Axis', 'should find the right text content');
   t.equal($.find('.rv-xy-plot__series--line').length, 3, 'should find the right number of series');
 
   ['first-series', 'third-series', 'fourth-series'].forEach(customClassName => {
@@ -59,6 +59,12 @@ test('LineSeries: Showcase Example - LineChart', t => {
   });
   t.equal($.find('.second-series').length, 0,
     'there should be no line with the class second series bc it has null data and should be filtered out');
+
+  $.find('button').simulate('click');
+  t.equal($.find('.rv-xy-plot__series--line').length, 0, 'should find no more line series');
+
+  $.find('button').simulate('click');
+  t.equal($.find('.rv-xy-plot__series--line').length, 3, 'should find no more line series');
   t.end();
 });
 

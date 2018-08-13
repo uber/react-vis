@@ -23,7 +23,7 @@ Top-to-bottom position of the top edge of the series.
 #### color (optional)
 Type: `string|number`  
 Default: see [colors](colors.md)
-Color of the line series. 
+Color of the line series.
 By default, you can pass a literal color to the series (i.e. "red" or "#f70"). You can also define a color scale at the top level, and pass a number which will be interpolated by the scale. If nothing is provided, lineSeries will be colored according to react-vis default scale.
 
 #### curve (optional)
@@ -65,7 +65,7 @@ A color for the series. Will override color if both are provided.
 
 ##### strokeDasharray (optional)
 Type: `string`
-Specify a custom `stroke-dasharray` attribute which controls the pattern of dashes and gaps used to stroke paths.
+Specify a custom `stroke-dasharray` attribute which controls the pattern of dashes and gaps used to stroke paths. For the canvas version of this series, this should be an array of values, ala [7, 5].
 
 ##### strokeStyle (optional)
 Type: `string`
@@ -91,11 +91,11 @@ An object which holds CSS properties that will be applied to the SVG element(s) 
 Note - interacting with a line may be difficult especially with the standard width. To address that, consider:
 - the proximity handlers - onNearestX, onNearestXY;
 - increasing the width of your line to make it easier to reach with the mouse,
-- creating a near-transparent line series with extra width to catch mouse events. 
+- creating a near-transparent line series with extra width to catch mouse events.
 
 #### onNearestX (optional)
 Type: `function(value, {event, innerX, index})`  
-A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor. 
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
 - `index` is the index of the data point in the array of data;
@@ -104,7 +104,7 @@ See [interaction](interaction.md)
 
 #### onNearestXY (optional)
 Type: `function(value, {event, innerX, innerY, index})`  
-A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor. 
+A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
 - `innerY` is the top position of the mark;

@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 import PropTypes from 'prop-types';
 import {rgb} from 'd3-color';
+import * as d3Shape from 'd3-shape';
 
 import {DEFAULT_OPACITY} from 'theme';
 import {getAttributeFunctor, getAttributeValue} from 'utils/scales-utils';
@@ -36,6 +37,7 @@ class LineSeriesCanvas extends AbstractSeries {
 
   static renderLayer(props, ctx) {
     const {
+      curve,
       data,
       marginLeft,
       marginTop,
@@ -52,19 +54,29 @@ class LineSeriesCanvas extends AbstractSeries {
     const strokeColor = rgb(stroke);
     const newOpacity = getAttributeValue(props, 'opacity');
     const opacity = Number.isFinite(newOpacity) ? newOpacity : DEFAULT_OPACITY;
+    let line = d3Shape.line()
+      .x(row => x(row) + marginLeft)
+      .y(row => y(row) + marginTop);
+    if (typeof curve === 'string' && d3Shape[curve]) {
+      line = line.curve(d3Shape[curve]);
+    } else if (typeof curve === 'function') {
+      line = line.curve(curve);
+    }
 
     ctx.beginPath();
-    ctx.moveTo(x(data[0]) + marginLeft, y(data[0]) + marginTop);
-    data.forEach(row => ctx.lineTo(x(row) + marginLeft, y(row) + marginTop));
-
     ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${strokeColor.b}, ${opacity})`;
     ctx.lineWidth = strokeWidth;
+
     if (strokeDasharray) {
       ctx.setLineDash(strokeDasharray);
     }
+
+    line.context(ctx)(data);
     ctx.stroke();
+    ctx.closePath();
     // set back to default
     ctx.lineWidth = 1;
+    ctx.setLineDash([]);
   }
 
   render() {
@@ -75,8 +87,7 @@ class LineSeriesCanvas extends AbstractSeries {
 LineSeriesCanvas.displayName = 'LineSeriesCanvas';
 LineSeriesCanvas.defaultProps = {
   ...AbstractSeries.defaultProps,
-  strokeWidth: 1,
-  strokeDasharray: ''
+  strokeWidth: 2
 };
 
 LineSeriesCanvas.propTypes = {
