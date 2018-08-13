@@ -57,12 +57,10 @@ class LineSeriesCanvas extends AbstractSeries {
     let line = d3Shape.line()
       .x(row => x(row) + marginLeft)
       .y(row => y(row) + marginTop);
-    if (curve !== null) {
-      if (typeof curve === 'string' && d3Shape[curve]) {
-        line = line.curve(d3Shape[curve]);
-      } else if (typeof curve === 'function') {
-        line = line.curve(curve);
-      }
+    if (typeof curve === 'string' && d3Shape[curve]) {
+      line = line.curve(d3Shape[curve]);
+    } else if (typeof curve === 'function') {
+      line = line.curve(curve);
     }
 
     ctx.beginPath();
