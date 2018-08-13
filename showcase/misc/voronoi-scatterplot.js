@@ -27,7 +27,6 @@ import {
   YAxis,
   HorizontalGridLines,
   VerticalGridLines,
-  LineSeries,
   MarkSeries,
   Voronoi
 } from 'index';
