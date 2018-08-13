@@ -25,6 +25,7 @@ export const SHOWCASE_LINKS = {
   TimeChart: 'https://github.com/uber/react-vis/blob/master/showcase/misc/time-chart.js',
   TriangleExample: 'https://github.com/uber/react-vis/blob/master/showcase/misc/triangle-example.js',
   VoronoiLineChart: 'https://github.com/uber/react-vis/blob/master/showcase/misc/voronoi-line-chart.js',
+  VoronoiScatterplot: 'https://github.com/uber/react-vis/blob/master/showcase/misc/voronoi-scatterplot.js',
   GradientExample: 'https://github.com/uber/react-vis/blob/master/showcase/misc/gradient-example.js',
   AnimationExample: 'https://github.com/uber/react-vis/blob/master/showcase/misc/animation-example.js',
   LabelSeriesExample: 'https://github.com/uber/react-vis/blob/master/showcase/misc/label-series-example.js',

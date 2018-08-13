@@ -3,7 +3,10 @@ import React from 'react';
 import {mount} from 'enzyme';
 import Voronoi from '../../src/plot/voronoi.js';
 
-test('Voronoi: ', t => {
+import VoronoiLineChart from '../../showcase/misc/voronoi-line-chart';
+import VoronoiScatterplot from '../../showcase/misc/voronoi-scatterplot';
+
+test('Voronoi: Basic Chart', t => {
   const $ = mount(<Voronoi
     extent={[[0, 0], [200, 200]]}
     nodes={Array(100).fill().map((e, x) => ({
@@ -21,3 +24,45 @@ test('Voronoi: ', t => {
   t.end();
 });
 
+test('Voronoi: Showcase Example - VoronoiLineChart', t => {
+  const $ = mount(<VoronoiLineChart/>);
+
+  t.equal($.text(), 'Show Voronoi1.01.52.02.53.03.54.0X Axis2468101214Y Axis', 'should find the correct text');
+  t.equal($.find('.rv-voronoi__cell').length, 12, 'should find the right number of voronoi cells');
+  t.equal($.find('.rv-xy-plot__series--line').length, 3, 'should find the right number of line series');
+  t.equal($.find('circle').length, 0, 'should initially find no scatterplot dots');
+
+  $.find('input').simulate('click');
+  $.find('.rv-voronoi__cell').at(0).simulate('mouseOver');
+
+  t.equal($.find('circle').length, 1, 'should now find a single hover dot');
+
+  $.find('.rv-voronoi__cell').at(0).simulate('mouseOut');
+
+  t.equal($.find('circle').length, 0, 'after mouse out should find no hover dots');
+
+  t.end();
+});
+
+test('Voronoi: Showcase Example - VoronoiScatterplot', t => {
+  const $ = mount(<VoronoiScatterplot/>);
+
+  const countRedDots = () => $.find('circle').filterWhere(d => d.prop('style').fill === 'red').length;
+
+  t.equal($.text(), 'Show Voronoi1.01.52.02.53.03.54.0X Axis2468101214Y Axis', 'should find the correct text');
+  t.equal($.find('.rv-voronoi__cell').length, 12, 'should find the right number of voronoi cells');
+  t.equal($.find('circle').length, 12, 'should initially find the right number of dots');
+  t.equal(countRedDots(), 0, 'should find no red dots');
+
+  $.find('input').simulate('click');
+  $.find('.rv-voronoi__cell').at(0).simulate('mouseOver');
+
+  t.equal($.find('circle').length, 12, 'should still find the right number of dots');
+  t.equal(countRedDots(), 1, 'should find a single red dot');
+
+  $.find('.rv-voronoi__cell').at(0).simulate('mouseOut');
+
+  t.equal(countRedDots(), 0, 'should find no red dots');
+
+  t.end();
+});

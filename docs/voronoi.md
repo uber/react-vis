@@ -13,6 +13,8 @@ Voronoi diagrams are useful for making a chart interactive by creating target ar
 />
 ```
 
+<!-- INJECT:"VoronoiScatterplotWithLink" -->
+
 ## API Reference
 
 ### extend (required)
@@ -81,4 +83,3 @@ Add css styles to Voronoi cells.
 For example:
 `polygonStyle={{stroke: 'red'}}`
 This will add a red border around cell which is very useful for debugging the Voronoi diagram.
-
