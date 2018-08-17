@@ -122,11 +122,11 @@ class CanvasWrapper extends Component {
     }
     ctx.scale(pixelRatio, pixelRatio);
 
-    this.drawChildren(this.props, null, ctx);
+    this.drawChildren(null, this.props, ctx);
   }
 
-  componentDidUpdate(nextProps) {
-    this.drawChildren(nextProps, this.props, this.canvas.getContext('2d'));
+  componentDidUpdate(oldProps) {
+    this.drawChildren(oldProps, this.props, this.canvas.getContext('2d'));
   }
 
   /**
@@ -136,7 +136,7 @@ class CanvasWrapper extends Component {
    * @param {DomRef} ctx the canvas context to be drawn on.
    * @returns {Array} Object for rendering
    */
-  drawChildren(newProps, oldProps, ctx) {
+  drawChildren(oldProps, newProps, ctx) {
     const {
       children,
       innerHeight,
