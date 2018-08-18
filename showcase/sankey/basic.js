@@ -16,6 +16,7 @@ export default function BasicSankeyExample() {
       links={links}
       width={200}
       height={200}
+      labelRotation={45}
     />
   );
 }

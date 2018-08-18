@@ -105,6 +105,11 @@ Defaults: `false`.
 Hide the display of the node names if specified to true.
 
 
+#### labelRotation (optional)
+Type: `Number`
+Default: `0`
+Rotate the angle of the labels in the sankey
+
 ##### onValueClick (optional)
 Type: `function`
 Default: noop

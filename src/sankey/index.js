@@ -44,6 +44,7 @@ class Sankey extends Component {
       hasVoronoi,
       height,
       hideLabels,
+      labelRotation,
       layout,
       links,
       linkOpacity,
@@ -123,6 +124,7 @@ class Sankey extends Component {
           <LabelSeries
             animation={animation}
             className={className}
+            rotation={labelRotation}
             data={nodesCopy.map(node => {
               return {
                 x: node.x0 + (node.x0 < width / 2 ? nWidth + 10 : -10),
@@ -162,6 +164,7 @@ Sankey.defaultProps = {
   className: '',
   hasVoronoi: false,
   hideLabels: false,
+  labelRotation: 0,
   layout: 50,
   margin: DEFAULT_MARGINS,
   nodePadding: 10,
@@ -178,12 +181,14 @@ Sankey.defaultProps = {
     labels: {}
   }
 };
+
 Sankey.propTypes = {
   align: PropTypes.oneOf(['justify', 'left', 'right', 'center']),
   className: PropTypes.string,
   hasVoronoi: PropTypes.bool,
   height: PropTypes.number.isRequired,
   hideLabels: PropTypes.bool,
+  labelRotation: PropTypes.number,
   layout: PropTypes.number,
   links: PropTypes.arrayOf(PropTypes.shape({
     source: PropTypes.oneOfType([
