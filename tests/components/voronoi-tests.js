@@ -3,16 +3,15 @@ import React from 'react';
 import {mount} from 'enzyme';
 import Voronoi from '../../src/plot/voronoi.js';
 import XYPlot from 'plot/xy-plot';
-import WhiskerChart from '../../showcase/plot/whisker-chart';
 
 import VoronoiLineChart from '../../showcase/misc/voronoi-line-chart';
 
 const StatelessVoronoiWrapper = () => (
-  <XYPlot 
+  <XYPlot
   height={300}
   width={300}
   dontCheckIfEmpty
-  xDomain={[-50, 250]} 
+  xDomain={[-50, 250]}
   yDomain={[-50, 250]}>
     <Voronoi
     extent={[[0, 0], [200, 200]]}

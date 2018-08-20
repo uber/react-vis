@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {voronoi} from 'd3-voronoi';
-import {scaleLinear} from 'd3-scale';
 
-import {
-  getAttributeFunctor
-} from 'utils/scales-utils';
+import {getAttributeFunctor} from 'utils/scales-utils';
 
 const NOOP = f => f;
 
@@ -22,12 +19,10 @@ function getNodeIndex(evt) {
 
 function getExtent(props) {
   const {
-    innerWidth, 
-    innerHeight, 
-    marginBottom, 
-    marginLeft, 
-    marginTop, 
-    marginRight
+    innerWidth,
+    innerHeight,
+    marginLeft,
+    marginTop
   } = props;
   return [
     [marginLeft, marginTop],
@@ -49,7 +44,7 @@ function Voronoi(props) {
     style,
     x,
     y
-  } = props
+  } = props;
   // Create a voronoi with each node center points
   const voronoiInstance = voronoi()
     .x(x || getAttributeFunctor(props, 'x'))
