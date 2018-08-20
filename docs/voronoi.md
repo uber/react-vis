@@ -15,12 +15,13 @@ Voronoi diagrams are useful for making a chart interactive by creating target ar
 
 ## API Reference
 
+
 <!-- INJECT:"DynamicCrosshairScatterplotLink" -->
 
-### extend (required)
+### extent
 Type: `Array`
 Sets the clip extent of the Voronoi layout to the specified bounds. The extent bounds are specified as an array [[x0, y0], [x1, y1]], where x0 is the left side of the extent, y0 is the top, x1 is the right and y1 is the bottom.
-Extent should take the dimensions of the accompanying XYPlot into account, so using the plot's width, height and margins: `[[marginLeft, marginTop], [width, height]]`
+Extent should take the dimensions of the accompanying XYPlot into account, so using the plot's width, height and margins: `[[marginLeft, marginTop], [width, height]]`, which coincidentally is the default extent.
 
 ### nodes (required)
 Type: `Array`
@@ -41,12 +42,12 @@ Example:
 ### x (optional)
 Type: `Function`
 Sets the x-coordinate accessor. Often you want to convert the coordinate-values to pixel values like
-`x={d => x(d.x)}`
+`x={d => x(d.x)}`. If not provided defaults to wrapping XYPlot's xScale.
 
 ### y (optional)
 Type: `Function`
 Sets the y-coordinate accessor. Often you want to convert the coordinate-values to pixel values like
-`y={d => y(d.y)}`
+`y={d => y(d.y)}`. If not provided defaults to wrapping XYPlot's yScale.
 
 ### onBlur (optional)
 Type: `Function`

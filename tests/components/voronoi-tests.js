@@ -2,11 +2,18 @@ import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import Voronoi from '../../src/plot/voronoi.js';
+import XYPlot from 'plot/xy-plot';
 
 import VoronoiLineChart from '../../showcase/misc/voronoi-line-chart';
 
-test('Voronoi: Basic Chart', t => {
-  const $ = mount(<Voronoi
+const StatelessVoronoiWrapper = () => (
+  <XYPlot
+  height={300}
+  width={300}
+  dontCheckIfEmpty
+  xDomain={[-50, 250]}
+  yDomain={[-50, 250]}>
+    <Voronoi
     extent={[[0, 0], [200, 200]]}
     nodes={Array(100).fill().map((e, x) => ({
       x,
@@ -14,7 +21,12 @@ test('Voronoi: Basic Chart', t => {
       className: `my-class-${x}`,
       style: {color: 'red'}
     }))}
-  />);
+    />
+  </XYPlot>
+);
+
+test('Voronoi: Basic Chart', t => {
+  const $ = mount(<StatelessVoronoiWrapper/>);
 
   t.equal($.find('.rv-voronoi__cell').at(30).prop('style').color, 'red', 'should apply inline styles');
   t.equal($.find('.rv-voronoi__cell').at(30).hasClass('my-class-30'), true, 'should apply css class');

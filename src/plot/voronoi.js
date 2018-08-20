@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {voronoi} from 'd3-voronoi';
 
+import {getAttributeFunctor} from 'utils/scales-utils';
+
 const NOOP = f => f;
 
 // Find the index of the node at coordinates of a touch point
@@ -15,25 +17,33 @@ function getNodeIndex(evt) {
   return Array.prototype.indexOf.call(parentNode.childNodes, target);
 }
 
-function Voronoi({
-  className,
-  extent,
-  nodes,
-  onBlur,
-  onClick,
-  onMouseUp,
-  onMouseDown,
-  onHover,
-  polygonStyle,
-  style,
-  x,
-  y
-}) {
+function getExtent({innerWidth, innerHeight, marginLeft, marginTop}) {
+  return [
+    [marginLeft, marginTop],
+    [innerWidth + marginLeft, innerHeight + marginTop]
+  ];
+}
+
+function Voronoi(props) {
+  const {
+    className,
+    extent,
+    nodes,
+    onBlur,
+    onClick,
+    onMouseUp,
+    onMouseDown,
+    onHover,
+    polygonStyle,
+    style,
+    x,
+    y
+  } = props;
   // Create a voronoi with each node center points
   const voronoiInstance = voronoi()
-    .x(x)
-    .y(y)
-    .extent(extent);
+    .x(x || getAttributeFunctor(props, 'x'))
+    .y(y || getAttributeFunctor(props, 'y'))
+    .extent(extent || getExtent(props));
 
   // Create an array of polygons corresponding to the cells in voronoi
   const polygons = voronoiInstance.polygons(nodes);
@@ -81,23 +91,21 @@ function Voronoi({
 }
 
 Voronoi.requiresSVG = true;
-
+Voronoi.displayName = 'Voronoi';
 Voronoi.defaultProps = {
   className: '',
   onBlur: NOOP,
   onClick: NOOP,
   onHover: NOOP,
   onMouseDown: NOOP,
-  onMouseUp: NOOP,
-  x: d => d.x,
-  y: d => d.y
+  onMouseUp: NOOP
 };
 
 Voronoi.propTypes = {
   className: PropTypes.string,
   extent: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.number)
-  ).isRequired,
+  ),
   nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
   onBlur: PropTypes.func,
   onClick: PropTypes.func,

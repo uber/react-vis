@@ -64,6 +64,7 @@ const margin = {top: 10, left: 40, bottom: 40, right: 10};
 const width = 300;
 const height = 300;
 
+// Intentionally using explicit sales here to show another way of using the voronoi
 const x = scaleLinear().domain(getDomain(DATA, 'x')).range([0, width]);
 const y = scaleLinear().domain(getDomain(DATA, 'y')).range([height, 0]);
 
