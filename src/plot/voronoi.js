@@ -17,13 +17,7 @@ function getNodeIndex(evt) {
   return Array.prototype.indexOf.call(parentNode.childNodes, target);
 }
 
-function getExtent(props) {
-  const {
-    innerWidth,
-    innerHeight,
-    marginLeft,
-    marginTop
-  } = props;
+function getExtent({innerWidth, innerHeight, marginLeft, marginTop}) {
   return [
     [marginLeft, marginTop],
     [innerWidth + marginLeft, innerHeight + marginTop]
