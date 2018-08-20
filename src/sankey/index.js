@@ -132,6 +132,7 @@ class Sankey extends Component {
                 y: (node.y0 + node.y1) / 2 - marginTop,
                 label: node.name,
                 style: {
+                  textAnchor: node.x0 < width / 2 ? 'start' : 'end',
                   dy: '-.5em',
                   ...style.labels
                 }
