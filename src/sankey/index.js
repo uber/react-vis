@@ -127,7 +127,7 @@ class Sankey extends Component {
             rotation={labelRotation}
             labelAnchorY="text-before-edge"
             data={nodesCopy.map((node, i) => {
-              console.log(nodes[i].rotation)
+
               return {
                 x: node.x0 + (node.x0 < width / 2 ? nWidth + 10 : -10),
                 y: (node.y0 + node.y1) / 2 - marginTop,
