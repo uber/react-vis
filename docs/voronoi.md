@@ -15,6 +15,8 @@ Voronoi diagrams are useful for making a chart interactive by creating target ar
 
 ## API Reference
 
+<!-- INJECT:"DynamicCrosshairScatterplotLink" -->
+
 ### extend (required)
 Type: `Array`
 Sets the clip extent of the Voronoi layout to the specified bounds. The extent bounds are specified as an array [[x0, y0], [x1, y1]], where x0 is the left side of the extent, y0 is the top, x1 is the right and y1 is the bottom.
@@ -81,4 +83,3 @@ Add css styles to Voronoi cells.
 For example:
 `polygonStyle={{stroke: 'red'}}`
 This will add a red border around cell which is very useful for debugging the Voronoi diagram.
-

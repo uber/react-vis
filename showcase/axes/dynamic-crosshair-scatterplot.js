@@ -48,54 +48,51 @@ const DATA = [
   {x: 2.7, y: 13.7, size: 14},
   {x: 2.9, y: 7.7, size: 26},
   {x: 3, y: 5.4, size: 6}
-];
+].map((d, id) => ({...d, id}));
 
-const x = scaleLinear()
-  .domain([1, 3])
-  .range([40, 290]);
-const y = scaleLinear()
-  .domain([4, 14])
-  .range([260, 10]);
+const getDomain = (data, key) => {
+  const {min, max} = data.reduce((acc, row) => ({
+    min: Math.min(acc.min, row[key]),
+    max: Math.max(acc.max, row[key])
+  }), {min: Infinity, max: -Infinity});
+  return [min, max];
+};
+
+// magic numbers chosen for design
+const sizeRange = [5, 13];
+const margin = {top: 10, left: 40, bottom: 40, right: 10};
+const width = 300;
+const height = 300;
+
+const x = scaleLinear().domain(getDomain(DATA, 'x')).range([0, width]);
+const y = scaleLinear().domain(getDomain(DATA, 'y')).range([height, 0]);
 
 export default class Example extends React.Component {
   state = {
-    data: DATA,
     selectedPointId: null,
-    showVoronoi: false
-  }
-
-  /**
-   * Event handler for onNearestXY.
-   * @param {Object} value Selected value.
-   * @private
-   */
-  _onNearestXY = (value, {index}) => {
-    this.setState({selectedPointId: index});
-  }
-
-  /**
-   * Event handler for onMouseLeave.
-   * @private
-   */
-  _onMouseLeave = () => {
-    this.setState({selectedPointId: null});
+    showVoronoi: true
   }
 
   render() {
-    const {data, selectedPointId, showVoronoi} = this.state;
+    const {
+      crosshairValues,
+      selectedPointId,
+      showVoronoi
+    } = this.state;
+
     return (
       <div>
         <label style={{display: 'block'}}>
           <input type="checkbox"
             checked={showVoronoi}
-            onChange={e => this.setState({showVoronoi: !showVoronoi})}
+            onChange={() => this.setState({showVoronoi: !showVoronoi})}
           />
           Show Voronoi
         </label>
         <XYPlot
-          onMouseLeave={this._onMouseLeave}
-          width={300}
-          height={300}>
+          onMouseLeave={() => this.setState({selectedPointId: null, crosshairValues: null})}
+          width={width}
+          height={height}>
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
@@ -103,18 +100,24 @@ export default class Example extends React.Component {
           <MarkSeries
             className="mark-series-example"
             colorType="literal"
-            data={data.map((point, index) =>
-              ({...point, color: selectedPointId === index ? '#FF9833' : '#12939A'}))}
-            onNearestXY={this._onNearestXY}
-            sizeRange={[5, 13]} />
-          <Crosshair values={this.state.crosshairValues}/>
-          <Voronoi
-            extent={[[40, 10], [290, 260]]}
-            nodes={data}
-            polygonStyle={{stroke: showVoronoi ? 'rgba(0, 0, 0, .2)' : null}}
+            data={DATA}
+            onNearestXY={(value, {index}) => this.setState({
+              selectedPointId: index,
+              crosshairValues: [value]
+            })}
+            getColor={({id}) => selectedPointId === id ? '#FF9833' : '#12939A'}
+            sizeRange={sizeRange} />
+          {crosshairValues && <Crosshair values={crosshairValues}/>}
+          {showVoronoi && <Voronoi
+            extent={[
+              [margin.left, margin.top],
+              [width - margin.right, height - margin.bottom]
+            ]}
+            nodes={DATA}
+            polygonStyle={{stroke: 'rgba(0, 0, 0, .2)'}}
             x={d => x(d.x)}
             y={d => y(d.y)}
-          />
+          />}
         </XYPlot>
       </div>
     );
