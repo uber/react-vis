@@ -9,7 +9,8 @@ const {
   SyncedCharts,
   TimeChart,
   TriangleExample,
-  VoronoiLineChart
+  VoronoiLineChart,
+  VoronoiScatterplot
 } = showCase;
 
 const MISC = [{
@@ -30,6 +31,10 @@ const MISC = [{
   name: 'Voronoi Line Chart',
   component: VoronoiLineChart,
   componentName: 'VoronoiLineChart'
+}, {
+  name: 'Voronoi Scatterplot',
+  component: VoronoiScatterplot,
+  componentName: 'VoronoiScatterplot'
 }, {
   name: 'Gradient & Custom Border Example',
   component: GradientExample,
