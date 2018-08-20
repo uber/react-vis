@@ -38,6 +38,10 @@ The SVG mode is accessed by using the normal `MarkSeries`, just as above, while 
 
 -**NOTE**: using the Canvas version of this layer disables animation
 
+Mark series can usefully be deployed with voronois for fast and accurate mouse overs!
+
+<!-- INJECT:"DynamicCrosshairScatterplotLink" -->
+
 ## Data format reference
 
 #### x

@@ -81,4 +81,3 @@ Add css styles to Voronoi cells.
 For example:
 `polygonStyle={{stroke: 'red'}}`
 This will add a red border around cell which is very useful for debugging the Voronoi diagram.
-
