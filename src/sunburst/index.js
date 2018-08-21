@@ -205,7 +205,11 @@ Sunburst.propTypes = {
   onValueMouseOver: PropTypes.func,
   onValueMouseOut: PropTypes.func,
   getSize: PropTypes.func,
-  width: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired,
+  padAngle: PropTypes.oneOfType([
+    PropTypes.function,
+    PropTypes.number
+  ])
 };
 Sunburst.defaultProps = {
   getAngle: d => d.angle,
@@ -215,7 +219,8 @@ Sunburst.defaultProps = {
   getColor: d => d.color,
   hideRootNode: false,
   getLabel: d => d.label,
-  getSize: d => d.size
+  getSize: d => d.size,
+  padAngle: 0
 };
 
 export default Sunburst;
