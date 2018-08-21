@@ -84,7 +84,8 @@ class LabelSeries extends AbstractSeries {
           const x = xVal + (allowOffsetToBeReversed && leftOfMiddle ? -1 : 1) * (xOffset || 0);
           const y = yVal + (allowOffsetToBeReversed && aboveMiddle ? -1 : 1) * (yOffset || 0);
 
-          const labelRotation = (d.rotation === 0 || d.rotation) ? d.rotation : rotation;
+          const hasRotationValueSet = d.rotation === 0 || d.rotation;
+          const labelRotation = hasRotationValueSet ? d.rotation : rotation;
           const attrs = {
             alignmentBaseline: getAlignmentBaseline(labelAnchorY, aboveMiddle),
             className: 'rv-xy-plot__series--label-text',
