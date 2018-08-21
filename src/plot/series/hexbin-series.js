@@ -25,7 +25,7 @@ import {hexbin} from 'd3-hexbin';
 import {scaleLinear} from 'd3-scale';
 
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
-
+import {CONTINUOUS_COLOR_RANGE} from 'theme';
 import AbstractSeries from './abstract-series';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--hexbin';
@@ -75,6 +75,7 @@ class HexbinSeries extends AbstractSeries {
 
     const hexagonPath = hex.hexagon();
     const hexes = hex(data);
+
     const color = scaleLinear()
       .domain(getColorDomain(this.props, hexes)).range(colorRange);
     return (
@@ -109,7 +110,8 @@ HexbinSeries.propTypes = {
 };
 
 HexbinSeries.defaultProps = {
-  radius: 20
+  radius: 20,
+  colorRange: CONTINUOUS_COLOR_RANGE
 };
 
 HexbinSeries.displayName = 'HexbinSeries';
