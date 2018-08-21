@@ -170,7 +170,7 @@ export default class Example extends React.Component {
             getX={d => d.left}
             getY={d => d.top}
             onMouseLeave={this._mouseLeaveHandler}
-            xDomain={[0, series[0].data.length - 1]}
+            xDomain={[-0.5, series[0].data.length - 1]}
             height={300}>
             <HorizontalGridLines />
             <YAxis
