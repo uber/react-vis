@@ -123,7 +123,7 @@ See [interaction](interaction.md)
 #### onSeriesClick
 Type: `function`  
 Default: none  
-This handler fires when the user clicks somewhere on an AreaSeries, and provides the corresponding event. See [interaction](interaction.nd)
+This handler fires when the user clicks somewhere on an AreaSeries, and provides the corresponding event. See [interaction](interaction.md)
 
 ```jsx
 <AreaSeries
@@ -137,7 +137,7 @@ This handler fires when the user clicks somewhere on an AreaSeries, and provides
 #### onSeriesMouseOut
 Type: `function`  
 Default: none  
-This handler fires when the user's mouse cursor leaves an AreaSeries, and provides the corresponding event. See [interaction](interaction.nd)
+This handler fires when the user's mouse cursor leaves an AreaSeries, and provides the corresponding event. See [interaction](interaction.md)
 
 ```jsx
 <AreaSeries
@@ -151,7 +151,7 @@ This handler fires when the user's mouse cursor leaves an AreaSeries, and provid
 #### onSeriesMouseOver
 Type: `function`
 Default: none  
-This handler fires when the user mouses over an AreaSeries, and provides the corresponding event. See [interaction](interaction.nd)
+This handler fires when the user mouses over an AreaSeries, and provides the corresponding event. See [interaction](interaction.md)
 
 ```jsx
 <AreaSeries
