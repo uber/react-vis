@@ -217,7 +217,7 @@ ArcSeries.propTypes = {
   padAngle: PropTypes.oneOfType([
     PropTypes.function,
     PropTypes.number
-  ]),
+  ])
 };
 ArcSeries.defaultProps = defaultProps;
 ArcSeries.displayName = 'ArcSeries';
