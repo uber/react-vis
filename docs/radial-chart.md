@@ -69,7 +69,7 @@ The className to be added to an individual arc in the series.
 
 #### padAngle (optional)
 Type: `number|function`
-The padding to be applied between arcs.
+The padding to be applied between arcs. See above donut chart for an example of a padded angle.
 
 ## Api
 
