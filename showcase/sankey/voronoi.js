@@ -29,12 +29,13 @@ export default class VoronoiSankeyExample extends React.Component {
         <div>{`${activeNode ? activeNode.name : 'None'} selected`}</div>
         <Sankey
           nodes={nodes.map(d => {
-            const isActiveNode = activeNode && d.name === activeNode.name;
+            const isActiveNode = activeNode && d.name ===
+             activeNode.name;
             return {
               ...d,
               opacity: isActiveNode ? FOCUSED_NODE_OPACITY : BLURRED_NODE_OPACITY,
               name: isActiveNode ? `!${d.name}!` : d.name
-            }
+            };
           })}
           links={links.map(d => ({...d}))}
           width={200}

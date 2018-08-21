@@ -73,7 +73,7 @@ test('Sankey: Showcase Example - VoronoiSankey', t => {
 
   t.equal($.text(), 'None selectedabc', 'should find that no bar is hovered');
   $.find('.rv-voronoi__cell').at(0).simulate('mouseOver');
-  t.equal($.text(), 'a selectedabc', 'should find that the first bar is hovered bar is hovered');
+  t.equal($.text(), 'a selected!a!bc', 'should find that the first bar is hovered bar is hovered');
   $.find('.rv-voronoi__cell').at(0).simulate('mouseLeave');
 
   t.end();
