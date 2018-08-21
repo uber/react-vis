@@ -136,7 +136,7 @@ class Sankey extends Component {
                   dy: '-.5em',
                   ...style.labels
                 },
-                // unfortunately this can not be ...node as the version 
+                // unfortunately this can not be ...node as the version
                 // found in nodesCopy is modified by the sankey process
                 ...nodes[i]
               };
