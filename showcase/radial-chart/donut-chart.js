@@ -47,7 +47,8 @@ export default class SimpleRadialChart extends Component {
         onValueMouseOver={v => this.setState({value: v})}
         onSeriesMouseOut={v => this.setState({value: false})}
         width={300}
-        height={300}>
+        height={300}
+        padAngle={0.04} >
         {value && <Hint value={value}/>}
       </RadialChart>
     );
