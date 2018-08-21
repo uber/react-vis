@@ -89,7 +89,8 @@ export default class SunburstWithTooltips extends React.Component {
         getLabel={d => d.name}
         getSize={d => d.bigness}
         getColor={d => d.clr}
-        width={350}>
+        width={350}
+        padAngle={() => 0.02}>
         {hoveredCell ? <Hint value={buildValue(hoveredCell)}>
           <div style={tipStyle}>
             <div style={{...boxStyle, background: hoveredCell.clr}}/>
