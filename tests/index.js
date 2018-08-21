@@ -46,6 +46,7 @@ import './components/decorative-axis-tests';
 import './components/dragable-chart-tests';
 import './components/gradient-tests';
 import './components/heatmap-tests';
+import './components/hexbin-series-tests';
 import './components/interaction-article-tests';
 import './components/legends-tests';
 import './components/label-series-tests';
