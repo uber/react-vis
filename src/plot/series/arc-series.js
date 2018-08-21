@@ -43,7 +43,8 @@ const defaultProps = {
   center: {x: 0, y: 0},
   arcClassName: '',
   className: '',
-  style: {}
+  style: {},
+  padAngle: 0
 };
 
 /**
@@ -127,6 +128,7 @@ class ArcSeries extends AbstractSeries {
       hideSeries,
       marginLeft,
       marginTop,
+      padAngle,
       style
     } = this.props;
 
@@ -179,7 +181,7 @@ class ArcSeries extends AbstractSeries {
             startAngle: angle0(row) || 0,
             endAngle: angle(row)
           };
-          const arcedData = arcBuilder();
+          const arcedData = arcBuilder().padAngle(padAngle);
           const rowStyle = row.style || {};
           const rowClassName = row.className || '';
           return (<path {...{
@@ -211,7 +213,11 @@ ArcSeries.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number
   }),
-  arcClassName: PropTypes.string
+  arcClassName: PropTypes.string,
+  padAngle: PropTypes.oneOfType([
+    PropTypes.function,
+    PropTypes.number
+  ])
 };
 ArcSeries.defaultProps = defaultProps;
 ArcSeries.displayName = 'ArcSeries';

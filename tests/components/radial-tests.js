@@ -19,7 +19,8 @@ const RADIAL_PROPS = {
   ],
   height: 300,
   showLabels: true,
-  width: 400
+  width: 400,
+  padAngle: 0.3
 };
 // make sure that the components render at all
 testRenderWithProps(RadialChart, RADIAL_PROPS);

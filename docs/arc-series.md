@@ -76,6 +76,10 @@ Type: `string|number`
 Default: 1  
 The opacity of an arc in the series, from 0 (transparent) to 1 (opaque).
 
+#### padAngle (optional)
+Type: `number|function`
+The padding to be applied between arcs.
+
 <!-- INJECT:"ClockExampleWithLink" -->
 
 ## Series API Reference

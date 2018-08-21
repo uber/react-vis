@@ -67,6 +67,10 @@ SVG paths (which is what the arc series is made up of) have numerous manipulable
 Type: `string`
 The className to be added to an individual arc in the series.
 
+#### padAngle (optional)
+Type: `number|function`
+The padding to be applied between arcs. See above donut chart for an example of a padded angle.
+
 ## Api
 
 ##### angleDomain, angleRange, angleType
