@@ -126,7 +126,8 @@ class Sankey extends Component {
             className={className}
             rotation={labelRotation}
             labelAnchorY="text-before-edge"
-            data={nodesCopy.map(node => {
+            data={nodesCopy.map((node, i) => {
+
               return {
                 x: node.x0 + (node.x0 < width / 2 ? nWidth + 10 : -10),
                 y: (node.y0 + node.y1) / 2 - marginTop,
@@ -135,7 +136,10 @@ class Sankey extends Component {
                   textAnchor: node.x0 < width / 2 ? 'start' : 'end',
                   dy: '-.5em',
                   ...style.labels
-                }
+                },
+                // unfortunately this can not be ...node as the version
+                // found in nodesCopy is modified by the sankey process
+                ...nodes[i]
               };
             })}
             />
