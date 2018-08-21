@@ -159,3 +159,7 @@ Type: `function`
 - Should accept arguments (arc node, domEvent)
 
 Pass in a function that will be called on mouseOut on a given arc.
+
+#### padAngle (optional)
+Type: `number|function`
+The padding to be applied between arcs.
