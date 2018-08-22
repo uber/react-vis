@@ -20,7 +20,7 @@
 import PropTypes from 'prop-types';
 import {rgb} from 'd3-color';
 import * as d3Shape from 'd3-shape';
-
+import React from 'react';
 import {DEFAULT_OPACITY} from 'theme';
 import {getAttributeFunctor, getAttributeValue} from 'utils/scales-utils';
 
@@ -80,7 +80,7 @@ class LineSeriesCanvas extends AbstractSeries {
   }
 
   render() {
-    return null;
+    return <div></div>;
   }
 }
 
