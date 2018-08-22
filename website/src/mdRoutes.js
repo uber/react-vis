@@ -62,16 +62,7 @@ import responsiveVis from '../../docs/examples/responsive-vis.md';
 import zoomableChart from '../../docs/examples/zoomable-chart.md';
 import gitHistory from '../../docs/examples/history-example.md';
 
-// Ocular searches for links with at least one '/' and replaces them
-// with the first route it finds that includes the same markdown name
-// (that is error prone, and that's why current Axes links will all
-// point to Example Axes page instead of Documentation Axes page)
-const fixMarkdownLinks = (markdown) => {
-  const markdownLinksRegex = /(?:\(([^()/\n]+\.md)\))/g;
-  return markdown.replace(markdownLinksRegex, '(/$1)');
-};
-
-export default [
+const mdRoutes = [
   {
     name: 'Examples',
     path: '/examples',
@@ -81,39 +72,39 @@ export default [
         children: [
           {
             name: 'Plots',
-            markdown: fixMarkdownLinks(plotsEx)
+            markdown: plotsEx
           },
           {
             name: 'Axes',
-            markdown: fixMarkdownLinks(axesEx)
+            markdown: axesEx
           },
           {
             name: 'Legends',
-            markdown: fixMarkdownLinks(legendsEx)
+            markdown: legendsEx
           },
           {
             name: 'Sunbursts',
-            markdown: fixMarkdownLinks(sunburstEx)
+            markdown: sunburstEx
           },
           {
             name: 'Radial',
-            markdown: fixMarkdownLinks(radialEx)
+            markdown: radialEx
           },
           {
             name: 'Sankeys',
-            markdown: fixMarkdownLinks(sankeyEx)
+            markdown: sankeyEx
           },
           {
             name: 'Treemaps',
-            markdown: fixMarkdownLinks(treemapEx)
+            markdown: treemapEx
           },
           {
             name: 'Radar Charts',
-            markdown: fixMarkdownLinks(radarEx)
+            markdown: radarEx
           },
           {
             name: 'Misc',
-            markdown: fixMarkdownLinks(miscEx)
+            markdown: miscEx
           }
         ]
       },
@@ -122,27 +113,27 @@ export default [
         children: [
           {
             name: 'Candlestick',
-            markdown: fixMarkdownLinks(extensibility)
+            markdown: extensibility
           },
           {
             name: 'Force Directed Graph',
-            markdown: fixMarkdownLinks(otherThings)
+            markdown: otherThings
           },
           {
             name: 'Streamgraph',
-            markdown: fixMarkdownLinks(streamGraph)
+            markdown: streamGraph
           },
           {
             name: 'Responsive Vis',
-            markdown: fixMarkdownLinks(responsiveVis)
+            markdown: responsiveVis
           },
           {
             name: 'Zoomable Chart',
-            markdown: fixMarkdownLinks(zoomableChart)
+            markdown: zoomableChart
           },
           {
             name: 'Git History',
-            markdown: fixMarkdownLinks(gitHistory)
+            markdown: gitHistory
           }
         ]
       }
@@ -154,26 +145,26 @@ export default [
     data: [
       {
         name: 'Welcome to React-vis',
-        markdown: fixMarkdownLinks(presentation)
+        markdown: presentation
       },
       {
         name: 'Getting Started',
         children: [
           {
             name: 'React-vis in codepen',
-            markdown: fixMarkdownLinks(codepen)
+            markdown: codepen
           },
           {
             name: 'Installing react-vis',
-            markdown: fixMarkdownLinks(install)
+            markdown: install
           },
           {
             name: 'Creating a new react-vis project',
-            markdown: fixMarkdownLinks(newProject)
+            markdown: newProject
           },
           {
             name: 'Your first chart',
-            markdown: fixMarkdownLinks(first)
+            markdown: first
           }
         ]
       },
@@ -182,23 +173,23 @@ export default [
         children: [
           {
             name: 'Scales and data',
-            markdown: fixMarkdownLinks(scalesAndData)
+            markdown: scalesAndData
           },
           {
             name: 'Colors',
-            markdown: fixMarkdownLinks(colors)
+            markdown: colors
           },
           {
             name: 'Interaction',
-            markdown: fixMarkdownLinks(interaction)
+            markdown: interaction
           },
           {
             name: 'Animation',
-            markdown: fixMarkdownLinks(animation)
+            markdown: animation
           },
           {
             name: 'Style',
-            markdown: fixMarkdownLinks(style)
+            markdown: style
           }
         ]
       },
@@ -207,51 +198,51 @@ export default [
         children: [
           {
             name: 'XY-Plot',
-            markdown: fixMarkdownLinks(xy)
+            markdown: xy
           },
           {
             name: 'Series',
-            markdown: fixMarkdownLinks(series)
+            markdown: series
           },
           {
             name: 'Legends',
-            markdown: fixMarkdownLinks(legends)
+            markdown: legends
           },
           {
             name: 'Crosshair',
-            markdown: fixMarkdownLinks(crosshair)
+            markdown: crosshair
           },
           {
             name: 'Grids',
-            markdown: fixMarkdownLinks(grids)
+            markdown: grids
           },
           {
             name: 'Hint',
-            markdown: fixMarkdownLinks(hint)
+            markdown: hint
           },
           {
             name: 'Axes',
-            markdown: fixMarkdownLinks(axes)
+            markdown: axes
           },
           {
             name: 'DecorativeAxis',
-            markdown: fixMarkdownLinks(decorativeAxis)
+            markdown: decorativeAxis
           },
           {
             name: 'Gradients',
-            markdown: fixMarkdownLinks(gradients)
+            markdown: gradients
           },
           {
             name: 'Flexible plots',
-            markdown: fixMarkdownLinks(flexiblePlots)
+            markdown: flexiblePlots
           },
           {
             name: 'Borders',
-            markdown: fixMarkdownLinks(borders)
+            markdown: borders
           },
           {
             name: 'Voronoi',
-            markdown: fixMarkdownLinks(voronoi)
+            markdown: voronoi
           }
         ]
       },
@@ -260,55 +251,55 @@ export default [
         children: [
           {
             name: 'Arc Series',
-            markdown: fixMarkdownLinks(arcSeries)
+            markdown: arcSeries
           },
           {
             name: 'Area Series',
-            markdown: fixMarkdownLinks(areaSeries)
+            markdown: areaSeries
           },
           {
             name: 'Bar Series',
-            markdown: fixMarkdownLinks(barSeries)
+            markdown: barSeries
           },
           {
             name: 'Contour Series',
-            markdown: fixMarkdownLinks(contourSeries)
+            markdown: contourSeries
           },
           {
             name: 'Custom SVG Series',
-            markdown: fixMarkdownLinks(customSvgSeries)
+            markdown: customSvgSeries
           },
           {
             name: 'Heatmap Series',
-            markdown: fixMarkdownLinks(heatmapSeries)
+            markdown: heatmapSeries
           },
           {
             name: 'Label Series',
-            markdown: fixMarkdownLinks(labelSeries)
+            markdown: labelSeries
           },
           {
             name: 'Line Series',
-            markdown: fixMarkdownLinks(lineSeries)
+            markdown: lineSeries
           },
           {
             name: 'Line-Mark Series',
-            markdown: fixMarkdownLinks(lineMarkSeries)
+            markdown: lineMarkSeries
           },
           {
             name: 'Mark Series',
-            markdown: fixMarkdownLinks(markSeries)
+            markdown: markSeries
           },
           {
             name: 'Polygon Series',
-            markdown: fixMarkdownLinks(polygonSeries)
+            markdown: polygonSeries
           },
           {
             name: 'Rect Series',
-            markdown: fixMarkdownLinks(rectSeries)
+            markdown: rectSeries
           },
           {
             name: 'Whisker Series',
-            markdown: fixMarkdownLinks(whiskerSeries)
+            markdown: whiskerSeries
           }
         ]
       },
@@ -317,30 +308,53 @@ export default [
         children: [
           {
             name: 'Parallel Coordinates',
-            markdown: fixMarkdownLinks(parallel)
+            markdown: parallel
           },
           {
             name: 'Radar Chart',
-            markdown: fixMarkdownLinks(radar)
+            markdown: radar
           },
           {
             name: 'Radial Chart',
-            markdown: fixMarkdownLinks(radial)
+            markdown: radial
           },
           {
             name: 'Sankey Diagram',
-            markdown: fixMarkdownLinks(sankey)
+            markdown: sankey
           },
           {
             name: 'Sunburst Diagram',
-            markdown: fixMarkdownLinks(sunburst)
+            markdown: sunburst
           },
           {
             name: 'Treemap',
-            markdown: fixMarkdownLinks(treemap)
+            markdown: treemap
           }
         ]
       }
     ]
   }
 ];
+
+// Ocular searches for links with at least one '/' and replaces them
+// with the first route it finds that includes the same markdown name
+// (that is error prone, and that's why current Axes links will all
+// point to Example Axes page instead of Documentation Axes page)
+const fixMarkdownLinks = (markdown) => {
+  const markdownLinksRegex = /(?:\(([^()/\n]+\.md)\))/g;
+  return markdown.replace(markdownLinksRegex, '(/$1)');
+};
+
+mdRoutes.forEach(section => {
+  section.data.forEach(subsection => {
+    if (subsection.markdown) {
+      subsection.markdown = fixMarkdownLinks(subsection.markdown);
+    } else {
+      subsection.children.forEach(child => {
+        child.markdown = fixMarkdownLinks(child.markdown);
+      });
+    }
+  });
+});
+
+export default mdRoutes;
