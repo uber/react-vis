@@ -62,7 +62,7 @@ import responsiveVis from '../../docs/examples/responsive-vis.md';
 import zoomableChart from '../../docs/examples/zoomable-chart.md';
 import gitHistory from '../../docs/examples/history-example.md';
 
-export default [
+const mdRoutes = [
   {
     name: 'Examples',
     path: '/examples',
@@ -335,3 +335,26 @@ export default [
     ]
   }
 ];
+
+// Ocular searches for links with at least one '/' and replaces them
+// with the first route it finds that includes the same markdown name
+// (that is error prone, and that's why current Axes links will all
+// point to Example Axes page instead of Documentation Axes page)
+const fixMarkdownLinks = (markdown) => {
+  const markdownLinksRegex = /(?:\(([^()/\n]+\.md)\))/g;
+  return markdown.replace(markdownLinksRegex, '(/$1)');
+};
+
+mdRoutes.forEach(section => {
+  section.data.forEach(subsection => {
+    if (subsection.markdown) {
+      subsection.markdown = fixMarkdownLinks(subsection.markdown);
+    } else {
+      subsection.children.forEach(child => {
+        child.markdown = fixMarkdownLinks(child.markdown);
+      });
+    }
+  });
+});
+
+export default mdRoutes;

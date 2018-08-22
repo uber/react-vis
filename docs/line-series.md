@@ -115,7 +115,7 @@ See [interaction](interaction.md)
 #### onSeriesClick
 Type: `function`  
 Default: none  
-This handler fires when the user clicks somewhere on a LineSeries, and provides the corresponding event. See [interaction](interaction.nd)
+This handler fires when the user clicks somewhere on a LineSeries, and provides the corresponding event. See [interaction](interaction.md)
 
 ```jsx
 <LineSeries
@@ -129,7 +129,7 @@ This handler fires when the user clicks somewhere on a LineSeries, and provides 
 #### onSeriesMouseOut
 Type: `function`  
 Default: none  
-This handler fires when the user's mouse cursor leaves a LineSeries, and provides the corresponding event. See [interaction](interaction.nd)
+This handler fires when the user's mouse cursor leaves a LineSeries, and provides the corresponding event. See [interaction](interaction.md)
 
 ```jsx
 LineSeries
@@ -143,7 +143,7 @@ LineSeries
 #### onSeriesMouseOver
 Type: `function`
 Default: none  
-This handler fires when the user mouses over a LineSeries, and provides the corresponding event. See [interaction](interaction.nd)
+This handler fires when the user mouses over a LineSeries, and provides the corresponding event. See [interaction](interaction.md)
 
 ```jsx
 <LineSeries
@@ -157,7 +157,7 @@ This handler fires when the user mouses over a LineSeries, and provides the corr
 #### onSeriesRightClick
 Type: `function`  
 Default: none  
-This handler fires when the user right-clicks somewhere on a LineSeries, and provides the corresponding event. See [interaction](interaction.nd)
+This handler fires when the user right-clicks somewhere on a LineSeries, and provides the corresponding event. See [interaction](interaction.md)
 
 ```jsx
 <LineSeries
