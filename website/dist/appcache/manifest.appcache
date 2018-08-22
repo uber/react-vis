@@ -1,19 +1,19 @@
 CACHE MANIFEST
-#ver:2018-7-27 18:10:32
+#ver:2018-8-21 23:24:10
 #plugin:4.9.1
 
 CACHE:
-../bundle-7cf4b1425c1ca31bedeb.js
-../styles-7cf4b1425c1ca31bedeb.css
+../bundle-ee5d6995fffa68cbe296.js
+../styles-ee5d6995fffa68cbe296.css
 ../
-../favicon.ico
 ../images/footer-pattern.gif
 ../images/icon-chart.svg
 ../images/icon-custom.svg
-../images/hero.jpg
 ../images/icon-high-precision.svg
+../favicon.ico
 ../images/icon-layers.svg
 ../images/icon-react.svg
+../images/hero.jpg
 
 NETWORK:
 *
