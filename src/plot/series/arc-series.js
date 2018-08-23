@@ -215,7 +215,7 @@ ArcSeries.propTypes = {
   }),
   arcClassName: PropTypes.string,
   padAngle: PropTypes.oneOfType([
-    PropTypes.function,
+    PropTypes.func,
     PropTypes.number
   ])
 };
