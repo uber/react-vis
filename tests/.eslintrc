@@ -8,13 +8,11 @@
     "uber-jsx"
   ],
   "rules": {
-    "max-len": 0,
-    "linebreak-style": ["error", "windows"]
+    "max-len": 0
   },
   "parser": "babel-eslint",
   "plugins": [
     "react",
     "babel"
-  ],
-  "linebreak-style": ["error", "windows"]
+  ]
 }
