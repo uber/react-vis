@@ -207,7 +207,7 @@ Sunburst.propTypes = {
   getSize: PropTypes.func,
   width: PropTypes.number.isRequired,
   padAngle: PropTypes.oneOfType([
-    PropTypes.function,
+    PropTypes.func,
     PropTypes.number
   ])
 };

@@ -192,7 +192,7 @@ RadialChart.propTypes = {
   getAngle: PropTypes.func,
   getAngle0: PropTypes.func,
   padAngle: PropTypes.oneOfType([
-    PropTypes.function,
+    PropTypes.func,
     PropTypes.number
   ]),
   getRadius: PropTypes.func,
