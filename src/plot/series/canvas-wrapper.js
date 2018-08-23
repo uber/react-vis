@@ -184,7 +184,10 @@ class CanvasWrapper extends Component {
           className="rv-xy-canvas-element"
           height={height * pixelRatio}
           width={width * pixelRatio}
-          style={{height: `${height}px`,width: `${width}px`}}
+          style={{
+            height: `${height}px`,
+            width: `${width}px`
+          }}
           ref={ref => (this.canvas = ref)}
         />
         {this.props.children}

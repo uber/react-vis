@@ -80,7 +80,7 @@ class LineSeriesCanvas extends AbstractSeries {
   }
 
   render() {
-    return <div></div>;
+    return (<div />);
   }
 }
 
