@@ -79,13 +79,13 @@ Not all properties can be visualized in each series. Here's a short comparison o
 |                      | `x` | `y` | `color` | `opacity` | `size` |
 |----------------------|-----|-----|---------|-----------|--------|
 | [LineSeries](line-series.md)  |  +  |  +  | +       |           |        |
-| `AreaSeries`         |  +  |  +  | +       |           |        |
-| [LineMarkSeries](line-series.md)     |  +  |  +  | +       |     +     | +      |
-| `MarkSeries`         |  +  |  +  | +       |     +     | +      |
+| [AreaSeries](area-series.md)         |  +  |  +  | +       |           |        |
+| [LineMarkSeries](line-mark-series.md)     |  +  |  +  | +       |     +     | +      |
+| [MarkSeries](mark-series.md)         |  +  |  +  | +       |     +     | +      |
 | [VerticalBarSeries](bar-series.md)  |  +  |  +  | +       |     +     |        |
 | [HorizontalBarSeries](bar-series.md)|  +  |  +  | +       |     +     |        |
-| `VerticalRectSeries`  |  +  |  +  | +       |     +     |        |
-| `HorizontalRectSeries`|  +  |  +  | +       |     +     |        |
+| [VerticalRectSeries](rect-series.md)  |  +  |  +  | +       |     +     |        |
+| [HorizontalRectSeries](rect-series.md)|  +  |  +  | +       |     +     |        |
 | [HeatmapSeries](heatmap-series.md)      |  +  |  +  | +       |     +     |        |      |
 
 
