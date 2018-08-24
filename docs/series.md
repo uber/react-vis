@@ -8,7 +8,7 @@ The library supports several types of series:
 * [ContourSeries](contour-series.md) for making contour density plots;
 * [HeatmapSeries](heatmap-series.md) for heat maps.
 * [LabelSeries](label-series.md) for adding annotations to charts
-* [LineMarkSeries](line-series.md) is a shorthand to place marks (e.g. circles) on lines;
+* [LineMarkSeries](line-mark-series.md) is a shorthand to place marks (e.g. circles) on lines;
 * [LineSeries](line-series.md) for lines;
 * [MarkSeries](mark-series.md) for scatterplots;
 * [PolygonSeries](polygon-series.md) for arbitrary SVG shapes
