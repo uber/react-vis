@@ -6,7 +6,10 @@ import BasicSunburst from '../../showcase/sunbursts/basic-sunburst';
 import SunburstWithTooltips from '../../showcase/sunbursts/sunburst-with-tooltips';
 import AnimatedSunburst from '../../showcase/sunbursts/animated-sunburst';
 
-import {testRenderWithProps} from '../test-utils';
+import FlexibleSunburstExample from '../../showcase/flexible/flexible-sunburst';
+import {testRenderWithProps, testFlexible} from '../test-utils';
+
+testFlexible(FlexibleSunburstExample, 'Sunburst');
 
 const INTERPOLATE_DATA = {
   title: 'interpolate',

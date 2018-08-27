@@ -17,10 +17,13 @@ const SANKEY_PROPS = {
   height: 200
 };
 
-import {testRenderWithProps} from '../test-utils';
+import FlexibleSankeyEx from '../../showcase/flexible/flexible-sankey';
+import {testRenderWithProps, testFlexible} from '../test-utils';
 
 // make sure that the components render at all
 testRenderWithProps(Sankey, SANKEY_PROPS);
+
+testFlexible(FlexibleSankeyEx, 'Sankey');
 
 test('Sankey: labels', t => {
   const wrap = mount(

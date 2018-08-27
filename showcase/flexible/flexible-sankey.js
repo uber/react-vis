@@ -20,44 +20,27 @@
 
 import React from 'react';
 
-import {
-  XYPlot,
-  LineSeries,
-  MarkSeries,
-  VerticalBarSeries
-} from 'index';
+import {FlexibleSankey} from 'index';
 
-const data = [
-  {x: 0, y: 8},
-  {x: 1, y: 5},
-  {x: 2, y: 4},
-  {x: 3, y: 9},
-  {x: 4, y: 1},
-  {x: 5, y: 7},
-  {x: 6, y: 6},
-  {x: 7, y: 3},
-  {x: 8, y: 2},
-  {x: 9, y: 0}
-];
-
-const defaultProps = {
-  width: 200,
-  height: 200,
-  margin: {top: 5, left: 5, right: 5, bottom: 5}
+const SANKEY_PROPS = {
+  nodes: [{name: 'a'}, {name: 'b'}, {name: 'c'}],
+  links: [
+    {source: 0, target: 1, value: 10},
+    {source: 0, target: 2, value: 20},
+    {source: 1, target: 2, value: 20}
+  ]
 };
 
-export function MiniCharts() {
-  return (<div style={{display: 'flex'}}>
-    <XYPlot {...defaultProps}>
-      <VerticalBarSeries data={data} />
-    </XYPlot>
-    <XYPlot {...defaultProps}>
-      <LineSeries data={data} />
-    </XYPlot>
-    <XYPlot {...defaultProps}>
-      <MarkSeries data={data} />
-    </XYPlot>
-  </div>);
-}
+const defaultProps = {
+  margin: {top: 10, left: 10, right: 10, bottom: 10}
+};
 
-export default MiniCharts;
+const FlexibleSankeyExample = ({height, width}) => (
+  <div style={{width: '100%', height: '100%'}}>
+    <div className="flexible-sankey" style={{width: '30%', height: '100%', border: '1px solid #ccc'}}>
+      <FlexibleSankey {...SANKEY_PROPS} {...defaultProps} />
+    </div>
+  </div>
+);
+
+export default FlexibleSankeyExample;

@@ -20,44 +20,36 @@
 
 import React from 'react';
 
-import {
-  XYPlot,
-  LineSeries,
-  MarkSeries,
-  VerticalBarSeries
-} from 'index';
+import {FlexibleRadarChart} from 'index';
 
-const data = [
-  {x: 0, y: 8},
-  {x: 1, y: 5},
-  {x: 2, y: 4},
-  {x: 3, y: 9},
-  {x: 4, y: 1},
-  {x: 5, y: 7},
-  {x: 6, y: 6},
-  {x: 7, y: 3},
-  {x: 8, y: 2},
-  {x: 9, y: 0}
-];
-
-const defaultProps = {
-  width: 200,
-  height: 200,
-  margin: {top: 5, left: 5, right: 5, bottom: 5}
+const RADAR_PROPS = {
+  data: [
+    {
+      neatExplosions: 7,
+      wow: 10,
+      dog: 8,
+      sickMoves: 9,
+      nice: 7
+    }
+  ],
+  domains: [
+    {name: 'nice', domain: [0, 100]},
+    {name: 'explosions', domain: [6.9, 7.1], getValue: d => d.neatExplosions},
+    {name: 'wow', domain: [0, 11]},
+    {name: 'sickMoves', domain: [0, 20]}
+  ]
 };
 
-export function MiniCharts() {
-  return (<div style={{display: 'flex'}}>
-    <XYPlot {...defaultProps}>
-      <VerticalBarSeries data={data} />
-    </XYPlot>
-    <XYPlot {...defaultProps}>
-      <LineSeries data={data} />
-    </XYPlot>
-    <XYPlot {...defaultProps}>
-      <MarkSeries data={data} />
-    </XYPlot>
-  </div>);
-}
+const defaultProps = {
+  margin: {top: 10, left: 10, right: 10, bottom: 10}
+};
 
-export default MiniCharts;
+const FlexibleRadarChartExample = ({height, width}) => (
+  <div style={{width: '100%', height: '100%'}}>
+    <div className="flexible-radar-chart" style={{width: '30%', height: '100%', border: '1px solid #ccc'}}>
+      <FlexibleRadarChart {...RADAR_PROPS} {...defaultProps} />
+    </div>
+  </div>
+);
+
+export default FlexibleRadarChartExample;

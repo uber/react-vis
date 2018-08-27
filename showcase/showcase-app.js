@@ -13,6 +13,7 @@ import {
   TreemapShowcase,
   ParallelCoordinatesShowcase,
   MiscShowcase,
+  FlexibleShowcase,
 
   Candlestick,
   ForceDirectedGraph,
@@ -51,7 +52,9 @@ const sectionNames = [
   {showByDefault: false, link: 'responsive', name: 'ResponsiveVis', showcase: ResponsiveVis},
   {showByDefault: false, link: 'history', name: 'HistoryExample', showcase: HistoryExample},
   {showByDefault: false, link: 'zoomable', name: 'ZoomableChart', showcase: ZoomableChart},
-  {showByDefault: false, link: 'dragable', name: 'DragableChart', showcase: DragableChart}
+  {showByDefault: false, link: 'dragable', name: 'DragableChart', showcase: DragableChart},
+
+  {showByDefault: false, link: 'flexible', name: 'FlexibleShowcase', showcase: FlexibleShowcase}
 ];
 
 class App extends Component {

@@ -75,7 +75,12 @@ export {
   makeWidthFlexible,
   FlexibleXYPlot,
   FlexibleWidthXYPlot,
-  FlexibleHeightXYPlot
+  FlexibleHeightXYPlot,
+  FlexibleRadarChart,
+  FlexibleRadialChart,
+  FlexibleSunburst,
+  FlexibleTreemap,
+  FlexibleSankey
 } from './make-vis-flexible';
 
 export AxisUtils from 'utils/axis-utils';

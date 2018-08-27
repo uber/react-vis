@@ -87,8 +87,6 @@ import {
   ScatterPlotOnNearestXY
 } from './interaction/interaction-examples';
 
-import {FlexibleCharts} from './flexible/flexible-examples';
-
 import AxisOn0 from './axes/axis-on-0';
 import CustomAxesOrientation from './axes/custom-axes-orientation';
 import CustomAxisChart from './axes/custom-axis';
@@ -150,6 +148,13 @@ import LinkHintSankeyExample from './sankey/link-hint';
 
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
+
+import FlexibleBarChartExample from './flexible/flexible-bar-chart.js';
+import FlexibleRadarChartExample from './flexible/flexible-radar.js';
+import FlexibleRadialChartExample from './flexible/flexible-radial.js';
+import FlexibleSankeyExample from './flexible/flexible-sankey.js';
+import FlexibleSunburstExample from './flexible/flexible-sunburst.js';
+import FlexibleTreemapExample from './flexible/flexible-treemap.js';
 
 const mainShowCase = {
   AxisOn0,
@@ -230,8 +235,6 @@ const mainShowCase = {
 
   MiniCharts,
 
-  FlexibleCharts,
-
   LineChartMouseOverSeries,
   LineChartMouseOverXY,
   LinkedCharts,
@@ -273,7 +276,14 @@ const mainShowCase = {
 
   EnergySankey,
   BasicSankey,
-  VornoiSankey
+  VornoiSankey,
+
+  FlexibleBarChartExample,
+  FlexibleRadarChartExample,
+  FlexibleRadialChartExample,
+  FlexibleSankeyExample,
+  FlexibleSunburstExample,
+  FlexibleTreemapExample
 };
 
 const showCaseWithLinks = Object.keys(mainShowCase).reduce((acc, showCaseExample) => {

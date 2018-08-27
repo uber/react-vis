@@ -31,13 +31,15 @@ import XYPlot from 'plot/xy-plot';
 import HorizontalGridLines from 'plot/horizontal-grid-lines';
 
 import MixedStackedChart from '../../showcase/plot/mixed-stacked-chart';
-import {FlexibleCharts} from '../../showcase/flexible/flexible-examples';
+import FlexibleBarChartExample from '../../showcase/flexible/flexible-bar-chart';
 import EmptyChart from '../../showcase/axes/empty-chart';
-import {testRenderWithProps} from '../test-utils';
+import {testRenderWithProps, testFlexible} from '../test-utils';
 
 const XYPLOT_PROPS = {width: 10, height: 10};
 
 testRenderWithProps(XYPlot, XYPLOT_PROPS);
+
+testFlexible(FlexibleBarChartExample, 'XYPlot - Barchart');
 
 test('Render a stacked bar chart', t => {
   const wrapper = shallow(
@@ -154,21 +156,6 @@ test('Render a bar chart with some nonAnimatedProps', t => {
     'VerticalBarSeries has nonAnimatedProps'
   );
 
-  t.end();
-});
-
-test('testing flexible charts', t => {
-  const $ = mount(FlexibleCharts({height: 200, width: 400}));
-  const w = $.find('.flexible-width .rv-xy-plot').prop('style');
-  const h = $.find('.flexible-height .rv-xy-plot').prop('style');
-  const v = $.find('.flexible-vis .rv-xy-plot').prop('style');
-
-  t.notEqual(w.width, '100px', 'flexible width - width is not 100px');
-  t.deepEqual(w.height, '100px', 'flexible width - height is 100px');
-  t.deepEqual(h.width, '100px', 'flexible height - width is 100px');
-  t.notEqual(h.height, '100px', 'flexible height - height is not 100px');
-  t.notEqual(v.width, '100px', 'flexible vis - width is not 100px');
-  t.notEqual(v.height, '100px', 'flexible vis - height is not 100px');
   t.end();
 });
 

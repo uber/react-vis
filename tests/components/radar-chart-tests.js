@@ -6,7 +6,8 @@ import BasicRadarChart from '../../showcase/radar-chart/basic-radar-chart';
 import AnimatedRadarChart from '../../showcase/radar-chart/animated-radar-chart';
 import FourQuadrantRadarChart from '../../showcase/radar-chart/four-quadrant-radar-chart';
 
-import {testRenderWithProps} from '../test-utils';
+import FlexibleRadarExample from '../../showcase/flexible/flexible-radar';
+import {testRenderWithProps, testFlexible} from '../test-utils';
 
 const RADAR_PROPS = {
   data: [{
@@ -28,6 +29,8 @@ const RADAR_PROPS = {
 };
 // make sure that the components render at all
 testRenderWithProps(RadialChart, RADAR_PROPS);
+
+testFlexible(FlexibleRadarExample, 'Radial Chart');
 
 test('Radar: Showcase Example - Basic Radar Chart', t => {
   const $ = mount(<BasicRadarChart />);

@@ -46,3 +46,14 @@ export const testRenderWithProps = (Component, props) =>
     });
     assert.end();
   });
+
+export const testFlexible = (Component, name, customSelector = '.rv-xy-plot') =>
+  test(`${name}: testing flexible charts`, t => {
+    const $ = mount(<div style={{height: 200, width: 400}}><Component /></div>);
+
+    const {height, width} = $.find(customSelector).prop('style');
+
+    t.notEqual(width, '100px', 'flexible vis - width is not 100px');
+    t.notEqual(height, '100px', 'flexible vis - height is not 100px');
+    t.end();
+  });

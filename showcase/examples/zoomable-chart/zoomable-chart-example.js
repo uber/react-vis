@@ -61,14 +61,14 @@ export default class ZoomableChartExample extends React.Component {
     lastDrawLocation: null,
     series: [
       {
-        title: 'Apples',
+        data: getRandomSeriesData(totalValues),
         disabled: false,
-        data: getRandomSeriesData(totalValues)
+        title: 'Apples'
       },
       {
-        title: 'Bananas',
+        data: getRandomSeriesData(totalValues),
         disabled: false,
-        data: getRandomSeriesData(totalValues)
+        title: 'Bananas'
       }
     ]
   }
@@ -87,6 +87,7 @@ export default class ZoomableChartExample extends React.Component {
           <FlexibleWidthXYPlot
             animation
             xDomain={lastDrawLocation && [lastDrawLocation.left, lastDrawLocation.right]}
+            yDomain={lastDrawLocation && [lastDrawLocation.bottom, lastDrawLocation.top]}
             height={300}>
 
             <HorizontalGridLines />
@@ -101,11 +102,17 @@ export default class ZoomableChartExample extends React.Component {
               />
             ))}
 
-            <Highlight onBrushEnd={(area) => {
-              this.setState({
-                lastDrawLocation: area
-              });
-            }} />
+            <Highlight onBrushEnd={area => this.setState({lastDrawLocation: area})}
+              onDrag={(area) => {
+                this.setState({
+                  lastDrawLocation: {
+                    bottom: this.state.lastDrawLocation.bottom + (area.top - area.bottom),
+                    left: this.state.lastDrawLocation.left - (area.right - area.left),
+                    right: this.state.lastDrawLocation.right - (area.right - area.left),
+                    top: this.state.lastDrawLocation.top + (area.top - area.bottom)
+                  }
+                });
+              }} />
 
           </FlexibleWidthXYPlot>
         </div>

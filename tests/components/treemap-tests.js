@@ -6,7 +6,10 @@ import Treemap from 'treemap';
 import SimpleTreemap from '../../showcase/treemap/simple-treemap';
 import DynamicTreemap from '../../showcase/treemap/dynamic-treemap';
 
-import {testRenderWithProps} from '../test-utils';
+import FlexibleTreemapEx from '../../showcase/flexible/flexible-treemap';
+import {testRenderWithProps, testFlexible} from '../test-utils';
+
+testFlexible(FlexibleTreemapEx, 'Treemap', '.rv-treemap');
 
 const INTERPOLATE_DATA = {
   title: 'interpolate',

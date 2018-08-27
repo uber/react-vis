@@ -7,7 +7,8 @@ import DonutChart from '../../showcase/radial-chart/donut-chart';
 import CustomRadiusRadialChart from '../../showcase/radial-chart/custom-radius-radial-chart';
 import GradientPie from '../../showcase/radial-chart/gradient-pie';
 
-import {testRenderWithProps} from '../test-utils';
+import FlexibleRadialExample from '../../showcase/flexible/flexible-radial';
+import {testRenderWithProps, testFlexible} from '../test-utils';
 
 const RADIAL_PROPS = {
   data: [
@@ -24,6 +25,8 @@ const RADIAL_PROPS = {
 };
 // make sure that the components render at all
 testRenderWithProps(RadialChart, RADIAL_PROPS);
+
+testFlexible(FlexibleRadialExample, 'Radial Chart');
 
 test('RadialChart: Basic rendering', t => {
   const $ = mount(<RadialChart {...RADIAL_PROPS}/>);

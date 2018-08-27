@@ -21,10 +21,8 @@
 import React from 'react';
 
 import {
-  XYPlot,
-  LineSeries,
-  MarkSeries,
-  VerticalBarSeries
+  VerticalBarSeries,
+  FlexibleXYPlot
 } from 'index';
 
 const data = [
@@ -36,28 +34,15 @@ const data = [
   {x: 5, y: 7},
   {x: 6, y: 6},
   {x: 7, y: 3},
-  {x: 8, y: 2},
-  {x: 9, y: 0}
+  {x: 8, y: 2}
 ];
 
-const defaultProps = {
-  width: 200,
-  height: 200,
-  margin: {top: 5, left: 5, right: 5, bottom: 5}
-};
-
-export function MiniCharts() {
-  return (<div style={{display: 'flex'}}>
-    <XYPlot {...defaultProps}>
+const FlexibleBarChartExample = () => (
+  <div style={{width: '100%', height: '100%'}}>
+    <FlexibleXYPlot margin={{top: 10, left: 10, right: 10, bottom: 10}}>
       <VerticalBarSeries data={data} />
-    </XYPlot>
-    <XYPlot {...defaultProps}>
-      <LineSeries data={data} />
-    </XYPlot>
-    <XYPlot {...defaultProps}>
-      <MarkSeries data={data} />
-    </XYPlot>
-  </div>);
-}
+    </FlexibleXYPlot>
+  </div>
+);
 
-export default MiniCharts;
+export default FlexibleBarChartExample;
