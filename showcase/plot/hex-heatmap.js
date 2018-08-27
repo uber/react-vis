@@ -43,10 +43,11 @@ export default class HexHeatmap extends Component {
   state = {
     data: DATA,
     hoveredNode: null,
-    radius: 10
+    radius: 10,
+    offset: 0
   }
   render() {
-    const {data, radius, hoveredNode} = this.state;
+    const {data, radius, hoveredNode, offset} = this.state;
 
     return (
       <div>
@@ -66,7 +67,8 @@ export default class HexHeatmap extends Component {
               strokeLinejoin: 'round'
             }}
             onValueMouseOver={d => this.setState({hoveredNode: d})}
-
+            xOffset={offset}
+            yOffset={offset}
             colorRange={['orange', 'cyan']}
             radius={radius}
             data={data}/>
@@ -86,11 +88,14 @@ export default class HexHeatmap extends Component {
             />}
         </XYPlot>
         <ShowcaseButton
-          onClick={() => this.setState({
-            data: updateData(),
-            radius: (Math.random() - 0.5) * 10 + 10
-          })}
-          buttonContent={'UPDATE'} />
+          onClick={() => this.setState({data: updateData()})}
+          buttonContent={'UPDATE DATA'} />
+        <ShowcaseButton
+          onClick={() => this.setState({radius: (Math.random() - 0.5) * 10 + 10})}
+          buttonContent={'UPDATE RADIUS'} />
+        <ShowcaseButton
+          onClick={() => this.setState({offset: (Math.random() - 0.5) * 10 + 10})}
+          buttonContent={'UPDATE OFFSET'} />
       </div>
     );
   }

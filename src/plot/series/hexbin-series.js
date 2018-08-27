@@ -50,7 +50,9 @@ class HexbinSeries extends AbstractSeries {
       marginTop,
       radius,
       sizeHexagonsWithCount,
-      style
+      style,
+      xOffset,
+      yOffset
     } = this.props;
 
     if (!data) {
@@ -67,7 +69,7 @@ class HexbinSeries extends AbstractSeries {
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
 
-    const hex = hexbin().x(x).y(y)
+    const hex = hexbin().x(d => x(d) + xOffset).y(d => y(d) + yOffset)
       .radius(radius)
       .size([innerWidth, innerHeight]);
 
@@ -107,7 +109,9 @@ HexbinSeries.propTypes = {
 
 HexbinSeries.defaultProps = {
   radius: 20,
-  colorRange: CONTINUOUS_COLOR_RANGE
+  colorRange: CONTINUOUS_COLOR_RANGE,
+  xOffset: 0,
+  yOffset: 0
 };
 
 HexbinSeries.displayName = 'HexbinSeries';

@@ -67,6 +67,16 @@ A list of CSS properties to style the series outside of the explicitly set prope
 Type: `Boolean`
 Size the hexagons based on the number of values in side of the hexagon. Ranges between [0, <radius prop>].
 
+### xOffset (optional)
+Type: `Number`
+Default: 0
+Size of aggregation offset form base value, this enables fine tuning along the x axis.
+
+### yOffset (optional)
+Type: `Number`
+Default: 0
+Size of aggregation offset form base value, this enables fine tuning along the y axis.
+
 ## Interaction handlers
 #### onValueClick
 Type: `function`
