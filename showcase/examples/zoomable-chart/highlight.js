@@ -1,14 +1,7 @@
 import React from 'react';
 import {ScaleUtils, AbstractSeries} from 'index';
 
-export default class Highlight extends AbstractSeries {
-
-  static displayName = 'HighlightOverlay';
-  static defaultProps = {
-    allow: 'x',
-    color: 'rgb(77, 182, 172)',
-    opacity: 0.3
-  };
+class Highlight extends AbstractSeries {
   state = {
     dragging: false,
     drawArea: {top: 0, right: 0, bottom: 0, left: 0},
@@ -18,26 +11,26 @@ export default class Highlight extends AbstractSeries {
   };
 
   _getDrawArea(xLoc, yLoc) {
-    const { marginLeft, marginTop, innerWidth, innerHeight } = this.props;
-    const { startLocX, startLocY } = this.state;
+    const {marginLeft, marginTop, innerWidth, innerHeight} = this.props;
+    const {startLocX, startLocY} = this.state;
 
     const leftBorder = xLoc < startLocX ? Math.max(xLoc, marginLeft) : startLocX;
     const rightBorder = xLoc < startLocX ? startLocX : Math.min(xLoc, innerWidth - marginLeft);
 
     const topBorder = yLoc < startLocY ? Math.max(yLoc, marginTop) : startLocY;
     const bottomBorder = yLoc < startLocY ? startLocY : Math.min(yLoc, innerHeight - marginTop);
-    
+
     return {
       bottom: bottomBorder,
       left: leftBorder,
       right: rightBorder,
       top: topBorder
-    };    
+    };
   }
 
   _getDragArea(xLoc, yLoc) {
-    const { marginLeft, marginTop, innerWidth, innerHeight } = this.props;
-    const { startLocX, startLocY } = this.state;
+    const {marginLeft, marginTop, innerWidth, innerHeight} = this.props;
+    const {startLocX, startLocY} = this.state;
 
     const leftBorder = startLocX;
     const rightBorder = Math.max(marginLeft, Math.min(xLoc, innerWidth - marginLeft));
@@ -50,11 +43,11 @@ export default class Highlight extends AbstractSeries {
       left: leftBorder,
       right: rightBorder,
       top: topBorder
-    };    
+    };
   }
 
   onParentMouseDown(e) {
-    const { onBrushStart, onDragStart } = this.props;
+    const {onBrushStart, onDragStart} = this.props;
     let Xlocation = e.nativeEvent.offsetX;
     let Ylocation = e.nativeEvent.offsetY;
     if (e.nativeEvent.type === 'touchstart') {
@@ -86,11 +79,11 @@ export default class Highlight extends AbstractSeries {
           bottom: Ylocation,
           left: Xlocation,
           right: Xlocation,
-          top: Ylocation,
+          top: Ylocation
         },
         drawing: false,
         startLocX: Xlocation,
-        startLocY: Ylocation,
+        startLocY: Ylocation
       });
       if (onDragStart) {
         onDragStart();
@@ -123,9 +116,13 @@ export default class Highlight extends AbstractSeries {
       startLocX: 0,
       startLocY: 0
     });
+
     if (this.state.drawing) {
       // Invoke the callback with null if the selected area was < 5px
-      if (onBrushEnd && Math.abs(drawArea.right - drawArea.left) < 5 && Math.abs(drawArea.top - drawArea.bottom) < 5) {
+
+      const noHorizontal = Math.abs(drawArea.right - drawArea.left) < 5;
+      const noVertical = Math.abs(drawArea.top - drawArea.bottom) < 5;
+      if (onBrushEnd && noHorizontal && noVertical) {
         onBrushEnd(null);
         return;
       }
@@ -134,7 +131,7 @@ export default class Highlight extends AbstractSeries {
         bottom: yScale.invert(drawArea.bottom),
         left: xScale.invert(drawArea.left - marginLeft),
         right: xScale.invert(drawArea.right - marginLeft),
-        top: yScale.invert(drawArea.top),
+        top: yScale.invert(drawArea.top)
       };
 
       if (onBrushEnd) {
@@ -145,9 +142,8 @@ export default class Highlight extends AbstractSeries {
     }
   }
 
-
   onParentMouseMove(e) {
-    const { onBrush, onDrag} = this.props;
+    const {onBrush, onDrag} = this.props;
     const {drawing, dragging} = this.state;
     let xLoc = e.nativeEvent.offsetX;
     let yLoc = e.nativeEvent.offsetY;
@@ -172,13 +168,14 @@ export default class Highlight extends AbstractSeries {
           bottom: yScale.invert(newDrawArea.bottom),
           left: xScale.invert(newDrawArea.left),
           right: xScale.invert(newDrawArea.right),
-          top: yScale.invert(newDrawArea.top),
+          top: yScale.invert(newDrawArea.top)
         };
         this.setState({
           startLocX: xLoc,
-          startLocY: yLoc,
+          startLocY: yLoc
         });
-        if( onDrag ){
+
+        if (onDrag) {
           onDrag(domainArea);
         }
       }
@@ -191,7 +188,7 @@ export default class Highlight extends AbstractSeries {
   }
 
   render() {
-    const {innerWidth, marginLeft, innerHeight, color, opacity } = this.props;
+    const {innerWidth, marginLeft, innerHeight, color, opacity} = this.props;
     const {drawArea: {left, right, top, bottom}} = this.state;
 
     return (
@@ -207,7 +204,7 @@ export default class Highlight extends AbstractSeries {
          onTouchCancel={(e) => {
            e.preventDefault();
            this.stopDrawing();
-         }}         
+         }}
         onContextMenu={(e) => {
           e.preventDefault();
         }}
@@ -238,3 +235,12 @@ export default class Highlight extends AbstractSeries {
     );
   }
 }
+
+Highlight.displayName = 'HighlightOverlay';
+Highlight.defaultProps = {
+  allow: 'x',
+  color: 'rgb(77, 182, 172)',
+  opacity: 0.3
+};
+
+export default Highlight;

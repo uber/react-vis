@@ -102,23 +102,17 @@ export default class ZoomableChartExample extends React.Component {
               />
             ))}
 
-            <Highlight onBrushEnd={(area) => {
-                this.setState({
-                  lastDrawLocation: area
-                });
-              }}
+            <Highlight onBrushEnd={area => this.setState({lastDrawLocation: area})}
               onDrag={(area) => {
                 this.setState({
-                  lastDrawLocation: {                    
+                  lastDrawLocation: {
                     bottom: this.state.lastDrawLocation.bottom + (area.top - area.bottom),
                     left: this.state.lastDrawLocation.left - (area.right - area.left),
                     right: this.state.lastDrawLocation.right - (area.right - area.left),
                     top: this.state.lastDrawLocation.top + (area.top - area.bottom)
                   }
-                })
-              }
-
-              } />
+                });
+              }} />
 
           </FlexibleWidthXYPlot>
         </div>
