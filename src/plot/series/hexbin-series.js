@@ -49,6 +49,7 @@ class HexbinSeries extends AbstractSeries {
       marginLeft,
       marginTop,
       radius,
+      sizeHexagonsWithCount,
       style
     } = this.props;
 
@@ -63,32 +64,27 @@ class HexbinSeries extends AbstractSeries {
         </Animation>
       );
     }
-    const {hexStyle} = {hexStyle: {}, ...style};
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
 
-    const hex = hexbin()
-      .x(d => x(d))
-      .y(d => y(d))
+    const hex = hexbin().x(x).y(y)
       .radius(radius)
       .size([innerWidth, innerHeight]);
 
     const hexagonPath = hex.hexagon();
     const hexes = hex(data);
 
-    const color = scaleLinear()
-      .domain(getColorDomain(this.props, hexes)).range(colorRange);
+    const countDomain = getColorDomain(this.props, hexes);
+    const color = scaleLinear().domain(countDomain).range(colorRange);
+    const size = scaleLinear().domain(countDomain).range([0, radius]);
     return (
       <g
         className={`${predefinedClassName} ${className}`}
         transform={`translate(${marginLeft},${marginTop})`}>
         {hexes.map((d, i) => {
           const attrs = {
-            style: {
-              ...style
-            },
-            ...hexStyle,
-            d: hexagonPath,
+            style,
+            d: sizeHexagonsWithCount ? hex.hexagon(size(d.length)) : hexagonPath,
             fill: color(d.length),
             transform: `translate(${d.x}, ${d.y})`,
             key: i,

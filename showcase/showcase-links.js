@@ -52,6 +52,7 @@ export const SHOWCASE_LINKS = {
   Histogram: 'https://github.com/uber/react-vis/blob/master/showcase/plot/histogram.js',
   HeatmapChart: 'https://github.com/uber/react-vis/blob/master/showcase/plot/heatmap-chart.js',
   HexHeatmap: 'https://github.com/uber/react-vis/blob/master/showcase/plot/hex-heatmap.js',
+  HexbinSizeExample: 'https://github.com/uber/react-vis/blob/master/showcase/plot/hexbin-size-example.js',
   LabeledHeatmap: 'https://github.com/uber/react-vis/blob/master/showcase/plot/labeled-heatmap.js',
   ContourSeriesExample: 'https://github.com/uber/react-vis/blob/master/showcase/plot/contour-series-example.js',
   CustomSVGExample: 'https://github.com/uber/react-vis/blob/master/showcase/plot/custom-svg-example.js',

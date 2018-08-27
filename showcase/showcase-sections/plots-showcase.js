@@ -19,6 +19,7 @@ const {
   GridLinesChart,
   HeatmapChart,
   HexHeatmap,
+  HexbinSizeExample,
   Histogram,
   LabeledHeatmap,
   LineChart,
@@ -134,6 +135,10 @@ const PLOTS = [{
   componentName: 'HexHeatmap',
   sourceLink: 'https://github.com/uber/react-vis/blob/master/src/plot/series/hexbin-series.js',
   docsLink: 'http://uber.github.io/react-vis/documentation/series-reference/hexbin-series'
+}, {
+  name: 'Hexbin Size',
+  component: HexbinSizeExample,
+  componentName: 'HexbinSizeExample'
 }, {
   name: 'Labeled Heatmap',
   component: LabeledHeatmap,

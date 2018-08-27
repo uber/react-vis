@@ -26,71 +26,67 @@ import {
   XYPlot,
   XAxis,
   YAxis,
-  HexbinSeries,
-  Borders,
-  Hint
+  HexbinSeries
 } from 'index';
 
-import DATA from './old-faithful.json';
+import DATA from '../axes/car-data.json';
 
-function updateData() {
-  return DATA.map(row => ({
-    waiting: row.waiting + (Math.random() - 0.5) * 10,
-    eruptions: row.eruptions + (Math.random() - 0.5) * 2
-  }));
-}
-export default class HexHeatmap extends Component {
+const DIMENSIONS = [
+  'economy (mpg)',
+  'cylinders',
+  'displacement (cc)',
+  'power (hp)',
+  'weight (lb)',
+  '0-60 mph (s)',
+  'year'
+];
+
+export default class HexbinSizeExample extends Component {
   state = {
-    data: DATA,
-    hoveredNode: null,
-    radius: 10
+    xAxis: 0,
+    yAxis: 3
   }
+
+  updateX(increment) {
+    this.setState({xAxis: (this.state.xAxis + (increment ? 1 : -1)) % DIMENSIONS.length});
+  }
+
+  updateY(increment) {
+    this.setState({yAxis: (this.state.yAxis + (increment ? 1 : -1)) % DIMENSIONS.length});
+  }
+
   render() {
-    const {data, radius, hoveredNode} = this.state;
+    const {xAxis, yAxis} = this.state;
+    const data = DATA.map(d => ({
+      x: Number(d[DIMENSIONS[xAxis]]),
+      y: Number(d[DIMENSIONS[yAxis]])
+    }));
 
     return (
-      <div>
+      <div className="centered-and-flexed">
+        <div className="centered-and-flexed-controls">
+          <ShowcaseButton onClick={() => this.updateX(false)} buttonContent={'PREV X'} />
+          <div> {`X AXIS ${DIMENSIONS[xAxis]}`} </div>
+          <ShowcaseButton onClick={() => this.updateX(true)} buttonContent={'NEXT X'} />
+        </div>
+        <div className="centered-and-flexed-controls">
+          <ShowcaseButton onClick={() => this.updateY(false)} buttonContent={'PREV Y'} />
+          <div> {`Y AXIS ${DIMENSIONS[yAxis]}`} </div>
+          <ShowcaseButton onClick={() => this.updateY(true)} buttonContent={'NEXT Y'} />
+        </div>
         <XYPlot
-          xDomain={[40, 100]}
-          yDomain={[1.5, 8]}
-          width={300}
-          getX={d => d.waiting}
-          getY={d => d.eruptions}
+          width={500}
           onMouseLeave={() => this.setState({hoveredNode: null})}
           height={300}>
           <HexbinSeries
             animation
-            className="hexbin-example"
-            style={{
-              stroke: '#125C77',
-              strokeLinejoin: 'round'
-            }}
-            onValueMouseOver={d => this.setState({hoveredNode: d})}
-
-            colorRange={['orange', 'cyan']}
-            radius={radius}
+            sizeHexagonsWithCount
+            className="hexbin-size-example"
+            radius={15}
             data={data}/>
-          <Borders style={{all: {fill: '#fff'}}}/>
-          <XAxis />
-          <YAxis />
-          {hoveredNode && <Hint
-            xType="literal"
-            yType="literal"
-            getX={d => d.x}
-            getY={d => d.y}
-            value={{
-              x: hoveredNode.x,
-              y: hoveredNode.y,
-              value: hoveredNode.length
-            }}
-            />}
+          <XAxis title={DIMENSIONS[xAxis]}/>
+          <YAxis title={DIMENSIONS[yAxis]}/>
         </XYPlot>
-        <ShowcaseButton
-          onClick={() => this.setState({
-            data: updateData(),
-            radius: (Math.random() - 0.5) * 10 + 10
-          })}
-          buttonContent={'UPDATE'} />
       </div>
     );
   }

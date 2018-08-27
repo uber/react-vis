@@ -223,7 +223,7 @@ Default: none
 This handler is triggered either when the user's mouse enters a mark.
 The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx
-<BarSeries
+<MarkSeries
 ...
   onValueMouseOver={(datapoint, event)=>{
     // does something on click
