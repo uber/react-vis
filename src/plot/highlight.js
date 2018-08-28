@@ -1,5 +1,7 @@
 import React from 'react';
-import {ScaleUtils, AbstractSeries} from 'index';
+import AbstractSeries from './series/abstract-series';
+import {getAttributeScale} from 'utils/scales-utils';
+import PropTypes from 'prop-types';
 
 class Highlight extends AbstractSeries {
   state = {
@@ -47,7 +49,7 @@ class Highlight extends AbstractSeries {
   }
 
   onParentMouseDown(e) {
-    const {onBrushStart, onDragStart} = this.props;
+    const {onBrushStart, onDragStart, allow} = this.props;
     let Xlocation = e.nativeEvent.offsetX;
     let Ylocation = e.nativeEvent.offsetY;
     if (e.nativeEvent.type === 'touchstart') {
@@ -105,8 +107,8 @@ class Highlight extends AbstractSeries {
 
     const {onBrushEnd, onDragEnd, marginLeft} = this.props;
     const {drawArea} = this.state;
-    const xScale = ScaleUtils.getAttributeScale(this.props, 'x');
-    const yScale = ScaleUtils.getAttributeScale(this.props, 'y');
+    const xScale = getAttributeScale(this.props, 'x');
+    const yScale = getAttributeScale(this.props, 'y');
 
     // Clear the draw area
     this.setState({
@@ -162,8 +164,8 @@ class Highlight extends AbstractSeries {
     } else if (dragging) {
       const newDrawArea = this._getDragArea(xLoc, yLoc);
       if (onDrag) {
-        const xScale = ScaleUtils.getAttributeScale(this.props, 'x');
-        const yScale = ScaleUtils.getAttributeScale(this.props, 'y');
+        const xScale = getAttributeScale(this.props, 'x');
+        const yScale = getAttributeScale(this.props, 'y');
         const domainArea = {
           bottom: yScale.invert(newDrawArea.bottom),
           left: xScale.invert(newDrawArea.left),
@@ -188,12 +190,21 @@ class Highlight extends AbstractSeries {
   }
 
   render() {
-    const {innerWidth, marginLeft, innerHeight, color, opacity} = this.props;
+    const {
+      color,
+      coverArea,
+      innerWidth,
+      innerHeight,
+      marginLeft,
+      marginRight,
+      marginTop,
+      marginBottom,
+      opacity
+    } = this.props;
     const {drawArea: {left, right, top, bottom}} = this.state;
-
+    console.log(right - left)
     return (
-      <g transform={`translate(${0}, ${0})`}
-         className="highlight-container"
+      <g className="rv-highlight-container"
          onMouseUp={() => this.stopDrawing()}
          onMouseLeave={() => this.stopDrawing()}
          // preventDefault() so that mouse event emulation does not happen
@@ -205,24 +216,20 @@ class Highlight extends AbstractSeries {
            e.preventDefault();
            this.stopDrawing();
          }}
-        onContextMenu={(e) => {
-          e.preventDefault();
-        }}
-        onContextMenuCapture={(e) => {
-          e.preventDefault();
-        }}
+        onContextMenu={e => e.preventDefault()}
+        onContextMenuCapture={e => e.preventDefault()}
       >
         <rect
-          className="mouse-target"
+          className="rv-mouse-target"
           fill="black"
-          opacity="0"
-          x={Math.max(0, marginLeft)}
+          opacity="0.5"
+          x={coverArea ? 0 : Math.max(0, marginLeft)}
           y={0}
-          width={innerWidth}
-          height={Math.max(0, innerHeight)}
+          width={(coverArea ? (marginLeft + marginRight) : 0) + innerWidth}
+          height={Math.max(0, (coverArea ? (marginTop + marginBottom) : 0) + innerHeight)}
         />
         <rect
-          className="highlight"
+          className="rv-highlight"
           pointerEvents="none"
           opacity={opacity}
           fill={color}
@@ -238,9 +245,16 @@ class Highlight extends AbstractSeries {
 
 Highlight.displayName = 'HighlightOverlay';
 Highlight.defaultProps = {
-  allow: 'x',
+  allow: ['x', 'y'],
   color: 'rgb(77, 182, 172)',
   opacity: 0.3
+};
+
+Highlight.propTypes = {
+  ...AbstractSeries.propTypes,
+  onBrushStart: PropTypes.func,
+  onDragStart: PropTypes.func,
+  allow: PropTypes.arrayOf(PropTypes.oneOf(['x', 'y']))
 };
 
 export default Highlight;

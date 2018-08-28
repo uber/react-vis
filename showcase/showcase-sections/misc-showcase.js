@@ -9,7 +9,10 @@ const {
   SyncedCharts,
   TimeChart,
   TriangleExample,
-  VoronoiLineChart
+  VoronoiLineChart,
+  ZoomableChartExample,
+  SelectionPlotExample,
+  DragableChartExample
 } = showCase;
 
 const MISC = [{
@@ -51,6 +54,18 @@ const MISC = [{
   name: 'Null Data Example',
   component: NullDataExample,
   componentName: 'NullDataExample'
+}, {
+  name: 'Zoomable Chart example',
+  component: ZoomableChartExample,
+  componentName: 'ZoomableChartExample'
+}, {
+  name: 'Selection plot example',
+  component: SelectionPlotExample,
+  componentName: 'SelectionPlotExample'
+}, {
+  name: 'Dragable Chart Example',
+  component: DragableChartExample,
+  componentName: 'DragableChartExample'
 }];
 
 class MiscShowcase extends Component {

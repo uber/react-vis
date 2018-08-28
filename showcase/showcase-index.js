@@ -14,5 +14,3 @@ export ForceDirectedGraph from './examples/force-directed-graph/force-directed-e
 export ResponsiveVis from './examples/responsive-vis/responsive-vis-example';
 export StreamgraphExample from './examples/streamgraph/streamgraph-example';
 export HistoryExample from './examples/history/history-example';
-export ZoomableChart from './examples/zoomable-chart/zoomable-chart-example';
-export DragableChart from './examples/dragable-chart/dragable-chart-example';

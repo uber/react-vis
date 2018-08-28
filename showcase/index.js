@@ -53,6 +53,7 @@ import CustomScales from './plot/custom-scales';
 import AxisWithTurnedLabels from './plot/axis-with-turned-labels';
 import MixedStackedChart from './plot/mixed-stacked-chart';
 import GridLinesChart from './plot/grid';
+
 import EnergySankey from './sankey/energy-sankey';
 import VornoiSankey from './sankey/voronoi';
 import BasicSankey from './sankey/basic';
@@ -125,6 +126,9 @@ import SyncedCharts from './misc/synced-charts';
 import TimeChart from './misc/time-chart';
 import TriangleExample from './misc/triangle-example';
 import VoronoiLineChart from './misc/voronoi-line-chart';
+import ZoomableChartExample from './misc/zoomable-chart-example';
+import SelectionPlotExample from './misc/selection-plot-example';
+import DragableChartExample from './misc/dragable-chart-example';
 
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import DonutChartExample from './radial-chart/donut-chart';
@@ -212,6 +216,9 @@ const mainShowCase = {
   LabelSeriesExample,
   GradientExample,
   NullDataExample,
+  ZoomableChartExample,
+  SelectionPlotExample,
+  DragableChartExample,
 
   SensibleDefaults,
   ColorInXYPlot,

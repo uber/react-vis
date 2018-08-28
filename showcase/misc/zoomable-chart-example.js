@@ -24,11 +24,10 @@ import {
   XAxis,
   YAxis,
   HorizontalGridLines,
-  FlexibleWidthXYPlot,
+  XYPlot,
   LineSeries,
-  DiscreteColorLegend
+  Highlight
 } from 'index';
-import Highlight from './highlight';
 
 const totalValues = 100;
 
@@ -76,18 +75,13 @@ export default class ZoomableChartExample extends React.Component {
   render() {
     const {series, lastDrawLocation} = this.state;
     return (
-      <div className="example-with-click-me">
-        <div className="legend">
-          <DiscreteColorLegend
-            width={180}
-            items={series}/>
-        </div>
-
-        <div className="chart no-select">
-          <FlexibleWidthXYPlot
+      <div>
+        <div>
+          <XYPlot
             animation
             xDomain={lastDrawLocation && [lastDrawLocation.left, lastDrawLocation.right]}
             yDomain={lastDrawLocation && [lastDrawLocation.bottom, lastDrawLocation.top]}
+            width={500}
             height={300}>
 
             <HorizontalGridLines />
@@ -95,26 +89,19 @@ export default class ZoomableChartExample extends React.Component {
             <YAxis />
             <XAxis />
 
-            {series.map(entry => (
-              <LineSeries
-                key={entry.title}
-                data={entry.data}
-              />
-            ))}
+            {series.map(entry => <LineSeries key={entry.title} data={entry.data} />)}
 
             <Highlight onBrushEnd={area => this.setState({lastDrawLocation: area})}
-              onDrag={(area) => {
-                this.setState({
-                  lastDrawLocation: {
-                    bottom: this.state.lastDrawLocation.bottom + (area.top - area.bottom),
-                    left: this.state.lastDrawLocation.left - (area.right - area.left),
-                    right: this.state.lastDrawLocation.right - (area.right - area.left),
-                    top: this.state.lastDrawLocation.top + (area.top - area.bottom)
-                  }
-                });
-              }} />
+              onDrag={area => this.setState({
+                lastDrawLocation: {
+                  bottom: lastDrawLocation.bottom + (area.top - area.bottom),
+                  left: lastDrawLocation.left - (area.right - area.left),
+                  right: lastDrawLocation.right - (area.right - area.left),
+                  top: lastDrawLocation.top + (area.top - area.bottom)
+                }
+              })} />
 
-          </FlexibleWidthXYPlot>
+          </XYPlot>
         </div>
 
         <button className="showcase-button" onClick={() => {

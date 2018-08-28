@@ -19,18 +19,15 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import DragMarker from './drag-marker';
 
-import {scaleLinear} from 'd3-scale';
 import {
   XYPlot,
   XAxis,
   YAxis,
-  makeWidthFlexible,
   Voronoi,
   LineSeries,
-  VerticalGridLines
+  VerticalGridLines,
+  Highlight
 } from 'index';
 
 function getRandomSeriesData(xMax, yMax) {
@@ -39,12 +36,6 @@ function getRandomSeriesData(xMax, yMax) {
   .map((e, x) => ({x, y: Math.floor(Math.random() * yMax) + 1}));
 }
 
-const PLOT_MARGIN = {
-  top: 50,
-  left: 50,
-  right: 10
-};
-const PLOT_HEIGHT = 300;
 const PLOT_DOMAIN = {
   x: [0, 100],
   y: [0, 10]
@@ -59,45 +50,29 @@ class DragableChartExample extends React.Component {
     hoveredX: null
   };
 
-  onMouseLeave = () => this.setState({isDrawing: false})
-  onMouseDown = node => this.setState({isDrawing: true, selectionStart: node.x, selectionEnd: null});
-  onMouseUp = node => this.setState({isDrawing: false});
-  onHover = node => this.setState(nextState =>
-    ({selectionEnd: nextState.isDrawing ? node.x : nextState.selectionEnd, hoveredX: node.x}));
-
   render() {
-    const PLOT_WIDTH = this.props.width;
-    const x = scaleLinear().domain(PLOT_DOMAIN.x).range([PLOT_MARGIN.left, PLOT_WIDTH - PLOT_MARGIN.right]);
-    const y = scaleLinear().domain(PLOT_DOMAIN.y).range([PLOT_HEIGHT, 0]);
     return (
       <div>
         <XYPlot
           onMouseLeave={this.onMouseLeave}
-          width={PLOT_WIDTH}
-          height={PLOT_HEIGHT}
-          margin={PLOT_MARGIN}
-          xDomain={x.domain()}
-          yDomain={y.domain()}
+          width={500}
+          height={500}
+          margin={{
+            top: 50,
+            left: 50,
+            right: 10
+          }}
+          xDomain={PLOT_DOMAIN.x}
+          yDomain={PLOT_DOMAIN.y}
         >
           <XAxis />
           <YAxis />
           <LineSeries curve={'curveMonotoneX'} data={seriesData} />
           {this.state.hoveredX !== null && <VerticalGridLines tickValues={[this.state.hoveredX]} />}
 
-          <Voronoi
-            extent={[[PLOT_MARGIN.left, PLOT_MARGIN.top], [PLOT_WIDTH, PLOT_HEIGHT]]}
-            nodes={seriesData}
-            onHover={this.onHover}
-            onMouseDown={this.onMouseDown}
-            onMouseUp={this.onMouseUp}
-            x={d => x(d.x)}
-            y={d => 0}
-          />
+          <Voronoi nodes={seriesData} />
 
-          {this.state.isDrawing && this.state.selectionEnd !== null &&
-            <DragMarker
-              selectionStart={x(this.state.selectionStart)}
-              selectionEnd={x(this.state.selectionEnd)} />}
+          <Highlight />
         </XYPlot>
 
         <div style={{marginLeft: '50px'}}>
@@ -110,8 +85,4 @@ class DragableChartExample extends React.Component {
   }
 }
 
-DragableChartExample.propTypes = {
-  width: PropTypes.number
-};
-
-export default makeWidthFlexible(DragableChartExample);
+export default DragableChartExample;
