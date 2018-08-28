@@ -1,65 +1,32 @@
 import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
-import DragableExample from '../../showcase/examples/dragable-chart/dragable-chart-example';
+import Highlight from 'plot/highlight';
+import DragableExample from '../../showcase/misc/dragable-chart-example';
+import ZoomableChartExample from '../../showcase/misc/zoomable-chart-example';
+import SelectionPlotExample from '../../showcase/misc/selection-plot-example';
 
-test('Showcase Examples: DragableExample', t => {
-  const $ = mount(<DragableExample />).setState({width: 500});
+import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 
-  t.equal($.find('.drag-marker').exists(), false, 'should not have drag marker before clicking');
+testRenderWithProps(Highlight, GENERIC_XYPLOT_SERIES_PROPS);
 
-  $.find('.rv-voronoi__cell').at(25).simulate('mouseDown', {});
-  $.find('.rv-voronoi__cell').at(50).simulate('mouseOver', {});
+test('Highlight: DragableExample', t => {
+  const $ = mount(<DragableExample />);
+  t.equal($.text(), '0.00.51.01.52.02.53.03.54.04.55.05.56.06.57.00246810selectionStart: 0,selectionEnd: 0,', 'should find the correct text initially');
 
-  t.equal($.find('.drag-marker').exists(), true, 'should have drag marker after clicking');
-  t.equal($.find('.drag-marker').props().x, 160, 'should have correct x position for drag marker');
-  t.equal($.find('.drag-marker').props().width, 110, 'should have correct width for drag marker');
-
-  $.find('.rv-voronoi__cell').at(75).simulate('mouseOver', {});
-
-  t.equal($.find('.drag-marker').props().x, 160, 'should keep the x position for drag marker');
-  t.equal($.find('.drag-marker').props().width, 220, 'should increase the with for drag marker');
-
-  $.find('.rv-voronoi__cell').at(75).simulate('mouseUp', {});
-
-  t.equal($.find('.drag-marker').exists(), false, 'should not have drag marker after releasing');
   t.end();
 });
 
-test('Showcase Examples: DragableExample - Touch Example', t => {
-  const $ = mount(<DragableExample />).setState({width: 500});
+test('Highlight: ZoomableChartExample', t => {
+  const $ = mount(<ZoomableChartExample />);
+  t.equal($.text(), '-40-30-20-100100102030405060708090Reset ZoomLast Draw AreaN/A', 'should find the correct text initially');
 
-  // Because JSDOM has no layout engine, there is no way to implement a polyfill
-  // for document.elementFromPoint(). To get around this issue we monkey patch the
-  // function and return the voronoi cell at the provided x/y.
-  //
-  // See https://github.com/jsdom/jsdom/issues/1435 for JSDOM limitation
-  const monkeyPatchElementFromPoint = (at) => {
-    document.elementFromPoint = () => $.find('.rv-voronoi__cell').at(at).getDOMNode();
-  };
-
-  t.equal($.find('.drag-marker').exists(), false, 'should not have drag marker before clicking');
-
-  monkeyPatchElementFromPoint(25);
-  $.find('.rv-voronoi').simulate('touchStart', {nativeEvent: {pageX: 125, pageY: 100}});
-  monkeyPatchElementFromPoint(50);
-  $.find('.rv-voronoi').simulate('touchMove', {nativeEvent: {pageX: 250, pageY: 100}});
-
-  t.equal($.find('.drag-marker').exists(), true, 'should have drag marker after clicking');
-  t.equal($.find('.drag-marker').props().x, 160, 'should have correct x position for drag marker');
-  t.equal($.find('.drag-marker').props().width, 110, 'should have correct width for drag marker');
-
-  monkeyPatchElementFromPoint(75);
-  $.find('.rv-voronoi').simulate('touchMove', {nativeEvent: {pageX: 375, pageY: 100}});
-
-  t.equal($.find('.drag-marker').props().x, 160, 'should keep the x position for drag marker');
-  t.equal($.find('.drag-marker').props().width, 220, 'should increase the with for drag marker');
-
-  monkeyPatchElementFromPoint(75);
-  $.find('.rv-voronoi').simulate('touchEnd', {nativeEvent: {pageX: 375, pageY: 100}});
-
-  t.equal($.find('.drag-marker').exists(), false, 'should not have drag marker after releasing');
   t.end();
+});
 
-  document.elementFromPoint = null;
+test('Highlight: DragableExample', t => {
+  const $ = mount(<SelectionPlotExample />);
+  t.equal($.text(), '1.01.52.02.53.0468101214', 'should find the correct text initially');
+
+  t.end();
 });

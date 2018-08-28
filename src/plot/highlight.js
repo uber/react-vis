@@ -3,6 +3,12 @@ import AbstractSeries from './series/abstract-series';
 import {getAttributeScale} from 'utils/scales-utils';
 import PropTypes from 'prop-types';
 
+function getLocs(evt) {
+  const xLoc = evt.type === 'touchstart' ? evt.pageX : evt.offsetX;
+  const yLoc = evt.type === 'touchstart' ? evt.pageY : evt.offsetY;
+  return {xLoc, yLoc};
+}
+
 class Highlight extends AbstractSeries {
   state = {
     dragging: false,
@@ -28,15 +34,10 @@ class Highlight extends AbstractSeries {
   }
 
   _getDragArea(xLoc, yLoc) {
-    const {marginLeft, marginTop, innerWidth, innerHeight, allow} = this.props;
-    const {startLocX, startLocY, drawArea, dragArea} = this.state;
-    // i have a feel this is wrong
+    const {allow} = this.props;
+    const {startLocX, startLocY, dragArea} = this.state;
+
     return {
-      // bottom: Math.max(marginTop, Math.min(yLoc, innerHeight - marginTop)),
-      // left: startLocX,
-      // right: Math.max(marginLeft, Math.min(xLoc, innerWidth - marginLeft)),
-      // top: startLocY
-      //
       bottom: dragArea.bottom + (allow.includes('y') ? (yLoc - startLocY) : 0),
       left: dragArea.left + (allow.includes('x') ? (xLoc - startLocX) : 0),
       right: dragArea.right + (allow.includes('x') ? (xLoc - startLocX) : 0),
@@ -48,7 +49,7 @@ class Highlight extends AbstractSeries {
     const {marginLeft} = this.props;
     const xScale = getAttributeScale(this.props, 'x');
     const yScale = getAttributeScale(this.props, 'y');
-    // NOTE only continuous scales are supported for this dragger
+    // NOTE only continuous scales are supported for brushing/getting coordinates back
     return {
       bottom: yScale.invert(drawArea.bottom),
       left: xScale.invert(drawArea.left - marginLeft),
@@ -60,9 +61,7 @@ class Highlight extends AbstractSeries {
   onParentMouseDown(e) {
     const {onBrushStart, onDragStart, drag} = this.props;
     const {dragArea, drawArea} = this.state;
-    const evt = e.nativeEvent;
-    const xLoc = evt.type === 'touchstart' ? evt.pageX : evt.offsetX;
-    const yLoc = evt.type === 'touchstart' ? evt.pageY : evt.offsetY;
+    const {xLoc, yLoc} = getLocs(e.nativeEvent);
 
     const startArea = dragging => {
       this.setState({
@@ -141,9 +140,8 @@ class Highlight extends AbstractSeries {
   onParentMouseMove(e) {
     const {onBrush, onDrag, drag} = this.props;
     const {drawing, dragging} = this.state;
-    const evt = e.nativeEvent;
-    const xLoc = evt.type === 'touchstart' ? evt.pageX : evt.offsetX;
-    const yLoc = evt.type === 'touchstart' ? evt.pageY : evt.offsetY;
+    const {xLoc, yLoc} = getLocs(e.nativeEvent);
+
     if (drawing) {
       const drawArea = this._getDrawArea(xLoc, yLoc);
       this.setState({drawArea});
