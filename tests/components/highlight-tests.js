@@ -18,7 +18,7 @@ test('Highlight: DragableExample', t => {
   t.end();
 });
 
-test.only('Highlight: ZoomableChartExample', t => {
+test('Highlight: ZoomableChartExample', t => {
   const $ = mount(<ZoomableChartExample />);
   const initialText = '-5051015200102030405060708090Reset ZoomLast Draw AreaN/A';
   t.equal($.text(), initialText, 'should find the correct text initially');

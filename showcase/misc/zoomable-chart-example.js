@@ -28,23 +28,10 @@ import {
   LineSeries,
   Highlight
 } from 'index';
+import {generateSeededRandom} from '../showcase-utils';
 
+const seededRandom = generateSeededRandom(9);
 const totalValues = 100;
-
-// sourced from
-// http://indiegamr.com/generate-repeatable-random-numbers-in-js/
-Math.seed = 9;
-// in order to work 'Math.seed' must NOT be undefined,
-// so in any case, you HAVE to provide a Math.seed
-Math.seededRandom = function seededRandom(max, min) {
-  max = max || 1;
-  min = min || 0;
-
-  Math.seed = (Math.seed * 9301 + 49297) % 233280;
-  const rnd = Math.seed / 233280;
-
-  return min + rnd * (max - min);
-};
 
 /**
  * Get the array of x and y pairs.
@@ -55,11 +42,11 @@ Math.seededRandom = function seededRandom(max, min) {
  */
 function getRandomSeriesData(total) {
   const result = [];
-  let lastY = Math.seededRandom() * 40 - 20;
+  let lastY = seededRandom() * 40 - 20;
   let y;
   const firstY = lastY;
   for (let i = 0; i < total; i++) {
-    y = Math.seededRandom() * firstY - firstY / 2 + lastY;
+    y = seededRandom() * firstY - firstY / 2 + lastY;
     result.push({
       x: i,
       y
