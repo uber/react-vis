@@ -94,7 +94,6 @@ export default class ZoomableChartExample extends React.Component {
             <Highlight
               onBrushEnd={area => this.setState({lastDrawLocation: area})}
               onDrag={area => {
-                console.log('dragged')
                 this.setState({
                   lastDrawLocation: {
                     bottom: lastDrawLocation.bottom + (area.top - area.bottom),
@@ -102,7 +101,7 @@ export default class ZoomableChartExample extends React.Component {
                     right: lastDrawLocation.right - (area.right - area.left),
                     top: lastDrawLocation.top + (area.top - area.bottom)
                   }
-                })
+                });
               }
               } />
 

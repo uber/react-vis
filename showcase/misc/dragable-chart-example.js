@@ -25,8 +25,8 @@ import {
   XAxis,
   YAxis,
   VerticalRectSeries,
-  VerticalGridLines,
-  Highlight
+  Highlight,
+  Borders
 } from 'index';
 
 const DATA = [
@@ -47,6 +47,7 @@ class DragableChartExample extends React.Component {
 
   render() {
     const {selectionStart, selectionEnd} = this.state;
+
     return (
       <div>
         <XYPlot width={500} height={300}>
@@ -60,19 +61,25 @@ class DragableChartExample extends React.Component {
               if (selectionStart === null || selectionEnd === null) {
                 return '#1E96BE';
               }
-              const inXRange = d.x >= selectionStart && d.x <= selectionEnd;
-              const inX0Range = d.x0 >= selectionStart && d.x0 <= selectionEnd;
-              return (inXRange || inX0Range) ? '#12939A' : '#1E96BE';
+              const inX = d.x >= selectionStart && d.x <= selectionEnd;
+              const inX0 = d.x0 >= selectionStart && d.x0 <= selectionEnd;
+              const inStart = selectionStart >= d.x0 && selectionStart <= d.x;
+              const inEnd = selectionEnd >= d.x0 && selectionEnd <= d.x;
+
+              return (inStart || inEnd || inX || inX0) ? '#12939A' : '#1E96BE';
             }}/>
 
           <Highlight
+            color="#829AE3"
             allow={['x']}
-            onBrushEnd={area => {
+            drag
+            onDragEnd={area => {
               this.setState({
                 selectionStart: area && area.left,
                 selectionEnd: area && area.right
               });
-            }}/>
+            }}
+              />
         </XYPlot>
 
         <div>
