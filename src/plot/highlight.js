@@ -12,8 +12,8 @@ function getLocs(evt) {
 class Highlight extends AbstractSeries {
   state = {
     dragging: false,
-    drawArea: {top: 0, right: 0, bottom: 0, left: 0},
-    drawing: false,
+    brushArea: {top: 0, right: 0, bottom: 0, left: 0},
+    brushing: false,
     startLocX: 0,
     startLocY: 0,
     dragArea: null
@@ -45,41 +45,41 @@ class Highlight extends AbstractSeries {
     };
   }
 
-  _convertAreaToCoordinates(drawArea) {
+  _convertAreaToCoordinates(brushArea) {
     const {marginLeft} = this.props;
     const xScale = getAttributeScale(this.props, 'x');
     const yScale = getAttributeScale(this.props, 'y');
     // NOTE only continuous scales are supported for brushing/getting coordinates back
     return {
-      bottom: yScale.invert(drawArea.bottom),
-      left: xScale.invert(drawArea.left - marginLeft),
-      right: xScale.invert(drawArea.right - marginLeft),
-      top: yScale.invert(drawArea.top)
+      bottom: yScale.invert(brushArea.bottom),
+      left: xScale.invert(brushArea.left - marginLeft),
+      right: xScale.invert(brushArea.right - marginLeft),
+      top: yScale.invert(brushArea.top)
     };
   }
 
   onParentMouseDown(e) {
     const {onBrushStart, onDragStart, drag} = this.props;
-    const {dragArea, drawArea} = this.state;
+    const {dragArea, brushArea} = this.state;
     const {xLoc, yLoc} = getLocs(e.nativeEvent);
 
     const startArea = dragging => {
       this.setState({
         dragging,
-        drawArea: dragArea || {
+        brushArea: dragArea || {
           bottom: yLoc,
           left: xLoc,
           right: xLoc,
           top: yLoc
         },
-        drawing: !dragging,
+        brushing: !dragging,
         startLocX: xLoc,
         startLocY: yLoc
       });
     };
 
-    const clickedOutsideDragX = dragArea && ((xLoc < drawArea.left) || (xLoc > drawArea.right));
-    const clickedOutsideDragY = dragArea && ((yLoc < drawArea.top) || (yLoc > drawArea.bottom));
+    const clickedOutsideDragX = dragArea && ((xLoc < brushArea.left) || (xLoc > brushArea.right));
+    const clickedOutsideDragY = dragArea && ((yLoc < brushArea.top) || (yLoc > brushArea.bottom));
     const clickedOutsideDrag = clickedOutsideDragX || clickedOutsideDragY;
 
     if ((drag && !dragArea) || !drag || clickedOutsideDrag) {
@@ -104,58 +104,57 @@ class Highlight extends AbstractSeries {
     this.onParentMouseDown(e);
   }
 
-  stopDrawing() {
-    const {drawing, dragging, drawArea} = this.state;
-    // Quickly short-circuit if the user isn't drawing in our component
-    if (!drawing && !dragging) {
+  stopBrushing() {
+    const {brushing, dragging, brushArea} = this.state;
+    // Quickly short-circuit if the user isn't brushing in our component
+    if (!brushing && !dragging) {
       return;
     }
 
     const {onBrushEnd, onDragEnd, drag} = this.props;
 
-    const noHorizontal = Math.abs(drawArea.right - drawArea.left) < 5;
-    const noVertical = Math.abs(drawArea.top - drawArea.bottom) < 5;
-
+    const noHorizontal = Math.abs(brushArea.right - brushArea.left) < 5;
+    const noVertical = Math.abs(brushArea.top - brushArea.bottom) < 5;
     // Clear the draw area
     this.setState({
-      drawing: false,
+      brushing: false,
       dragging: false,
-      drawArea: drag ? drawArea : {top: 0, right: 0, bottom: 0, left: 0},
+      brushArea: drag ? brushArea : {top: 0, right: 0, bottom: 0, left: 0},
       startLocX: 0,
       startLocY: 0,
-      dragArea: drag && !noHorizontal && !noVertical && drawArea
+      dragArea: drag && !noHorizontal && !noVertical && brushArea
     });
 
     // Invoke the callback with null if the selected area was < 5px
     const isNulled = noVertical && noHorizontal;
-    if (!drag && drawing && onBrushEnd) {
-      onBrushEnd(!isNulled ? this._convertAreaToCoordinates(drawArea) : null);
+    if (!drag && brushing && onBrushEnd) {
+      onBrushEnd(!isNulled ? this._convertAreaToCoordinates(brushArea) : null);
     }
 
     if (drag && onDragEnd) {
-      onDragEnd(!isNulled ? this._convertAreaToCoordinates(drawArea) : null);
+      onDragEnd(!isNulled ? this._convertAreaToCoordinates(brushArea) : null);
     }
   }
 
   onParentMouseMove(e) {
     const {onBrush, onDrag, drag} = this.props;
-    const {drawing, dragging} = this.state;
+    const {brushing, dragging} = this.state;
     const {xLoc, yLoc} = getLocs(e.nativeEvent);
 
-    if (drawing) {
-      const drawArea = this._getDrawArea(xLoc, yLoc);
-      this.setState({drawArea});
+    if (brushing) {
+      const brushArea = this._getDrawArea(xLoc, yLoc);
+      this.setState({brushArea});
 
       if (onBrush) {
-        onBrush(this._convertAreaToCoordinates(drawArea));
+        onBrush(this._convertAreaToCoordinates(brushArea));
       }
     }
 
     if (drag && dragging) {
-      const drawArea = this._getDragArea(xLoc, yLoc);
-      this.setState({drawArea});
+      const brushArea = this._getDragArea(xLoc, yLoc);
+      this.setState({brushArea});
       if (onDrag) {
-        onDrag(this._convertAreaToCoordinates(drawArea));
+        onDrag(this._convertAreaToCoordinates(brushArea));
       }
     }
   }
@@ -176,21 +175,21 @@ class Highlight extends AbstractSeries {
       marginBottom,
       opacity
     } = this.props;
-    const {drawArea: {left, right, top, bottom}} = this.state;
+    const {brushArea: {left, right, top, bottom}} = this.state;
 
     return (
       <g
         className="rv-highlight-container"
-        onMouseUp={() => this.stopDrawing()}
-        onMouseLeave={() => this.stopDrawing()}
+        onMouseUp={() => this.stopBrushing()}
+        onMouseLeave={() => this.stopBrushing()}
         // preventDefault() so that mouse event emulation does not happen
         onTouchEnd={e => {
           e.preventDefault();
-          this.stopDrawing();
+          this.stopBrushing();
         }}
         onTouchCancel={e => {
           e.preventDefault();
-          this.stopDrawing();
+          this.stopBrushing();
         }}
         onContextMenu={e => e.preventDefault()}
         onContextMenuCapture={e => e.preventDefault()}

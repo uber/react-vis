@@ -129,6 +129,7 @@ import VoronoiLineChart from './misc/voronoi-line-chart';
 import ZoomableChartExample from './misc/zoomable-chart-example';
 import SelectionPlotExample from './misc/selection-plot-example';
 import DragableChartExample from './misc/dragable-chart-example';
+import BidirectionDragChart from './misc/2d-dragable-plot';
 
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import DonutChartExample from './radial-chart/donut-chart';
@@ -219,6 +220,7 @@ const mainShowCase = {
   ZoomableChartExample,
   SelectionPlotExample,
   DragableChartExample,
+  BidirectionDragChart,
 
   SensibleDefaults,
   ColorInXYPlot,

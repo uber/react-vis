@@ -32,6 +32,7 @@ export const SHOWCASE_LINKS = {
   ZoomableChartExample: 'https://github.com/uber/react-vis/blob/master/showcase/misc/zoomable-chart-example.js',
   SelectionPlotExample: 'https://github.com/uber/react-vis/blob/master/showcase/misc/selection-plot-example.js',
   DragableChartExample: 'https://github.com/uber/react-vis/blob/master/showcase/misc/dragable-chart-example.js',
+  BidirectionDragChart: 'https://github.com/uber/react-vis/blob/master/showcase/misc/2d-dragable-plot.js',
   // PARALLEL COORDS LINKS
   BasicParallelCoordinates: 'https://github.com/uber/react-vis/blob/master/showcase/parallel-coordinates/animated-parallel-coordinates.js',
   AnimatedParallelCoordinates: 'https://github.com/uber/react-vis/blob/master/showcase/parallel-coordinates/basic-parallel-coordinates.js',

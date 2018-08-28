@@ -12,7 +12,8 @@ const {
   VoronoiLineChart,
   ZoomableChartExample,
   SelectionPlotExample,
-  DragableChartExample
+  DragableChartExample,
+  BidirectionDragChart
 } = showCase;
 
 const MISC = [{
@@ -66,6 +67,10 @@ const MISC = [{
   name: 'Dragable Chart Example',
   component: DragableChartExample,
   componentName: 'DragableChartExample'
+}, {
+  name: '2d Dragable Chart',
+  component: BidirectionDragChart,
+  componentName: 'BidirectionDragChart'
 }];
 
 class MiscShowcase extends Component {
