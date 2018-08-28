@@ -27,8 +27,7 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   MarkSeries,
-  Highlight,
-  PolygonSeries
+  Highlight
 } from 'index';
 
 const data = [
@@ -48,7 +47,6 @@ export default class SelectionPlotExample extends React.Component {
   }
   render() {
     const {filter} = this.state;
-
     return (
       <XYPlot
         width={300}
@@ -73,9 +71,7 @@ export default class SelectionPlotExample extends React.Component {
             return leftRight && upDown ? '#EF5D28' : '#12939A';
           }}
           data={data}/>
-        <Highlight
-          onBrushEnd={area => this.setState({filter: area})}
-          />
+        <Highlight allow={['y']} onBrush={area => this.setState({filter: area})}/>
       </XYPlot>
     );
   }

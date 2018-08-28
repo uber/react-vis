@@ -24,61 +24,60 @@ import {
   XYPlot,
   XAxis,
   YAxis,
-  Voronoi,
-  LineSeries,
+  VerticalRectSeries,
   VerticalGridLines,
   Highlight
 } from 'index';
 
-function getRandomSeriesData(xMax, yMax) {
-  return Array(xMax)
-  .fill()
-  .map((e, x) => ({x, y: Math.floor(Math.random() * yMax) + 1}));
-}
-
-const PLOT_DOMAIN = {
-  x: [0, 100],
-  y: [0, 10]
-};
-const seriesData = getRandomSeriesData(PLOT_DOMAIN.x[1], PLOT_DOMAIN.y[1]);
+const DATA = [
+  {x0: 0, x: 1, y: 1},
+  {x0: 1, x: 2, y: 2},
+  {x0: 2, x: 3, y: 10},
+  {x0: 3, x: 4, y: 6},
+  {x0: 4, x: 5, y: 5},
+  {x0: 5, x: 6, y: 3},
+  {x0: 6, x: 7, y: 1}
+];
 
 class DragableChartExample extends React.Component {
   state = {
-    isDrawing: false,
     selectionStart: null,
-    selectionEnd: null,
-    hoveredX: null
+    selectionEnd: null
   };
 
   render() {
+    const {selectionStart, selectionEnd} = this.state;
     return (
       <div>
-        <XYPlot
-          onMouseLeave={this.onMouseLeave}
-          width={500}
-          height={500}
-          margin={{
-            top: 50,
-            left: 50,
-            right: 10
-          }}
-          xDomain={PLOT_DOMAIN.x}
-          yDomain={PLOT_DOMAIN.y}
-        >
+        <XYPlot width={500} height={300}>
           <XAxis />
           <YAxis />
-          <LineSeries curve={'curveMonotoneX'} data={seriesData} />
-          {this.state.hoveredX !== null && <VerticalGridLines tickValues={[this.state.hoveredX]} />}
+          <VerticalRectSeries
+            data={DATA}
+            stroke="white"
+            colorType="literal"
+            getColor={d => {
+              if (selectionStart === null || selectionEnd === null) {
+                return '#1E96BE';
+              }
+              const inXRange = d.x >= selectionStart && d.x <= selectionEnd;
+              const inX0Range = d.x0 >= selectionStart && d.x0 <= selectionEnd;
+              return (inXRange || inX0Range) ? '#12939A' : '#1E96BE';
+            }}/>
 
-          <Voronoi nodes={seriesData} />
-
-          <Highlight />
+          <Highlight
+            allow={['x']}
+            onBrushEnd={area => {
+              this.setState({
+                selectionStart: area && area.left,
+                selectionEnd: area && area.right
+              });
+            }}/>
         </XYPlot>
 
-        <div style={{marginLeft: '50px'}}>
-          <p><strong>selectionStart:</strong> {this.state.selectionStart}</p>
-          <p><strong>selectionEnd:</strong> {this.state.selectionEnd}</p>
-          <p><strong>isDrawing:</strong> {this.state.isDrawing.toString()}</p>
+        <div>
+          <b>selectionStart:</b> {`${selectionStart},`}
+          <b>selectionEnd:</b> {`${selectionEnd},`}
         </div>
       </div>
     );

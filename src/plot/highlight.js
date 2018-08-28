@@ -13,80 +13,72 @@ class Highlight extends AbstractSeries {
   };
 
   _getDrawArea(xLoc, yLoc) {
-    const {marginLeft, marginTop, innerWidth, innerHeight} = this.props;
     const {startLocX, startLocY} = this.state;
-
-    const leftBorder = xLoc < startLocX ? Math.max(xLoc, marginLeft) : startLocX;
-    const rightBorder = xLoc < startLocX ? startLocX : Math.min(xLoc, innerWidth - marginLeft);
-
-    const topBorder = yLoc < startLocY ? Math.max(yLoc, marginTop) : startLocY;
-    const bottomBorder = yLoc < startLocY ? startLocY : Math.min(yLoc, innerHeight - marginTop);
+    const {allow, innerWidth, innerHeight, marginLeft, marginRight, marginBottom, marginTop} = this.props;
+    const plotHeight = innerHeight + marginTop + marginBottom;
+    const plotWidth = innerWidth + marginLeft + marginRight;
 
     return {
-      bottom: bottomBorder,
-      left: leftBorder,
-      right: rightBorder,
-      top: topBorder
+      bottom: allow.includes('y') ? Math.max(startLocY, yLoc) : plotHeight,
+      left: allow.includes('x') ? Math.min(xLoc, startLocX) : 0,
+      right: allow.includes('x') ? Math.max(startLocX, xLoc) : plotWidth,
+      top: allow.includes('y') ? Math.min(yLoc, startLocY) : 0
     };
   }
 
   _getDragArea(xLoc, yLoc) {
     const {marginLeft, marginTop, innerWidth, innerHeight} = this.props;
     const {startLocX, startLocY} = this.state;
-
-    const leftBorder = startLocX;
-    const rightBorder = Math.max(marginLeft, Math.min(xLoc, innerWidth - marginLeft));
-
-    const topBorder = startLocY;
-    const bottomBorder = Math.max(marginTop, Math.min(yLoc, innerHeight - marginTop));
-
+    // i have a feel this is wrong
     return {
-      bottom: bottomBorder,
-      left: leftBorder,
-      right: rightBorder,
-      top: topBorder
+      bottom: Math.max(marginTop, Math.min(yLoc, innerHeight - marginTop)),
+      left: startLocX,
+      right: Math.max(marginLeft, Math.min(xLoc, innerWidth - marginLeft)),
+      top: startLocY
+    };
+  }
+
+  _convertAreaToCoordinates(drawArea) {
+    const {marginLeft} = this.props;
+    const xScale = getAttributeScale(this.props, 'x');
+    const yScale = getAttributeScale(this.props, 'y');
+    // NOTE only continuous scales are supported for this dragger
+    return {
+      bottom: yScale.invert(drawArea.bottom),
+      left: xScale.invert(drawArea.left - marginLeft),
+      right: xScale.invert(drawArea.right - marginLeft),
+      top: yScale.invert(drawArea.top)
     };
   }
 
   onParentMouseDown(e) {
-    const {onBrushStart, onDragStart, allow} = this.props;
-    let Xlocation = e.nativeEvent.offsetX;
-    let Ylocation = e.nativeEvent.offsetY;
-    if (e.nativeEvent.type === 'touchstart') {
-      Xlocation = e.nativeEvent.pageX;
-      Ylocation = e.nativeEvent.pageY;
-    }
-    if (e.nativeEvent.button === 0) {
+    const {onBrushStart, onDragStart} = this.props;
+    const evt = e.nativeEvent;
+    const xLoc = evt.type === 'touchstart' ? evt.pageX : evt.offsetX;
+    const yLoc = evt.type === 'touchstart' ? evt.pageY : evt.offsetY;
+    const startArea = dragging => {
       this.setState({
-        dragging: false,
+        dragging,
         drawArea: {
-          bottom: Ylocation,
-          left: Xlocation,
-          right: Xlocation,
-          top: Ylocation
+          bottom: yLoc,
+          left: xLoc,
+          right: xLoc,
+          top: yLoc
         },
-        drawing: true,
-        startLocX: Xlocation,
-        startLocY: Ylocation
+        drawing: !dragging,
+        startLocX: xLoc,
+        startLocY: yLoc
       });
+    };
+    if (e.nativeEvent.button === 0) {
+      startArea(false);
 
       if (onBrushStart) {
         onBrushStart(e);
       }
     } else if (e.nativeEvent.button === 2) {
       e.preventDefault();
-      this.setState({
-        dragging: true,
-        drawArea: {
-          bottom: Ylocation,
-          left: Xlocation,
-          right: Xlocation,
-          top: Ylocation
-        },
-        drawing: false,
-        startLocX: Xlocation,
-        startLocY: Ylocation
-      });
+      startArea(true);
       if (onDragStart) {
         onDragStart();
       }
@@ -100,15 +92,13 @@ class Highlight extends AbstractSeries {
   }
 
   stopDrawing() {
+    const {drawing, dragging, drawArea} = this.state;
     // Quickly short-circuit if the user isn't drawing in our component
-    if (!this.state.drawing && !this.state.dragging) {
+    if (!drawing && !dragging) {
       return;
     }
 
-    const {onBrushEnd, onDragEnd, marginLeft} = this.props;
-    const {drawArea} = this.state;
-    const xScale = getAttributeScale(this.props, 'x');
-    const yScale = getAttributeScale(this.props, 'y');
+    const {onBrushEnd, onDragEnd} = this.props;
 
     // Clear the draw area
     this.setState({
@@ -119,27 +109,13 @@ class Highlight extends AbstractSeries {
       startLocY: 0
     });
 
-    if (this.state.drawing) {
+    if (drawing && onBrushEnd) {
       // Invoke the callback with null if the selected area was < 5px
-
       const noHorizontal = Math.abs(drawArea.right - drawArea.left) < 5;
       const noVertical = Math.abs(drawArea.top - drawArea.bottom) < 5;
-      if (onBrushEnd && noHorizontal && noVertical) {
-        onBrushEnd(null);
-        return;
-      }
-      // Compute the corresponding domain drawn
-      const domainArea = {
-        bottom: yScale.invert(drawArea.bottom),
-        left: xScale.invert(drawArea.left - marginLeft),
-        right: xScale.invert(drawArea.right - marginLeft),
-        top: yScale.invert(drawArea.top)
-      };
-
-      if (onBrushEnd) {
-        onBrushEnd(domainArea);
-      }
-    } else if (this.state.dragging && onDragEnd) {
+      const isNulled = noVertical && noHorizontal;
+      onBrushEnd(!isNulled ? this._convertAreaToCoordinates(drawArea) : null);
+    } else if (dragging && onDragEnd) {
       onDragEnd();
     }
   }
@@ -147,39 +123,22 @@ class Highlight extends AbstractSeries {
   onParentMouseMove(e) {
     const {onBrush, onDrag} = this.props;
     const {drawing, dragging} = this.state;
-    let xLoc = e.nativeEvent.offsetX;
-    let yLoc = e.nativeEvent.offsetY;
-    if (e.nativeEvent.type === 'touchmove') {
-      xLoc = e.nativeEvent.pageX;
-      yLoc = e.nativeEvent.pageY;
-    }
+    const evt = e.nativeEvent;
+    const xLoc = evt.type === 'touchstart' ? evt.pageX : evt.offsetX;
+    const yLoc = evt.type === 'touchstart' ? evt.pageY : evt.offsetY;
 
     if (drawing) {
       const newDrawArea = this._getDrawArea(xLoc, yLoc);
       this.setState({drawArea: newDrawArea});
 
       if (onBrush) {
-        onBrush(e);
+        onBrush(this._convertAreaToCoordinates(newDrawArea));
       }
     } else if (dragging) {
       const newDrawArea = this._getDragArea(xLoc, yLoc);
+      this.setState({startLocX: xLoc, startLocY: yLoc});
       if (onDrag) {
-        const xScale = getAttributeScale(this.props, 'x');
-        const yScale = getAttributeScale(this.props, 'y');
-        const domainArea = {
-          bottom: yScale.invert(newDrawArea.bottom),
-          left: xScale.invert(newDrawArea.left),
-          right: xScale.invert(newDrawArea.right),
-          top: yScale.invert(newDrawArea.top)
-        };
-        this.setState({
-          startLocX: xLoc,
-          startLocY: yLoc
-        });
-
-        if (onDrag) {
-          onDrag(domainArea);
-        }
+        onDrag(this._convertAreaToCoordinates(newDrawArea));
       }
     }
   }
@@ -192,7 +151,6 @@ class Highlight extends AbstractSeries {
   render() {
     const {
       color,
-      coverArea,
       innerWidth,
       innerHeight,
       marginLeft,
@@ -202,31 +160,32 @@ class Highlight extends AbstractSeries {
       opacity
     } = this.props;
     const {drawArea: {left, right, top, bottom}} = this.state;
-    console.log(right - left)
+
     return (
-      <g className="rv-highlight-container"
-         onMouseUp={() => this.stopDrawing()}
-         onMouseLeave={() => this.stopDrawing()}
-         // preventDefault() so that mouse event emulation does not happen
-         onTouchEnd={(e) => {
-           e.preventDefault();
-           this.stopDrawing();
-         }}
-         onTouchCancel={(e) => {
-           e.preventDefault();
-           this.stopDrawing();
-         }}
+      <g
+        className="rv-highlight-container"
+        onMouseUp={() => this.stopDrawing()}
+        onMouseLeave={() => this.stopDrawing()}
+        // preventDefault() so that mouse event emulation does not happen
+        onTouchEnd={e => {
+          e.preventDefault();
+          this.stopDrawing();
+        }}
+        onTouchCancel={e => {
+          e.preventDefault();
+          this.stopDrawing();
+        }}
         onContextMenu={e => e.preventDefault()}
         onContextMenuCapture={e => e.preventDefault()}
-      >
+        >
         <rect
           className="rv-mouse-target"
           fill="black"
           opacity="0.5"
-          x={coverArea ? 0 : Math.max(0, marginLeft)}
+          x={0}
           y={0}
-          width={(coverArea ? (marginLeft + marginRight) : 0) + innerWidth}
-          height={Math.max(0, (coverArea ? (marginTop + marginBottom) : 0) + innerHeight)}
+          width={Math.max((marginLeft + marginRight) + innerWidth, 0)}
+          height={Math.max((marginTop + marginBottom) + innerHeight, 0)}
         />
         <rect
           className="rv-highlight"
@@ -252,9 +211,13 @@ Highlight.defaultProps = {
 
 Highlight.propTypes = {
   ...AbstractSeries.propTypes,
+  allow: PropTypes.arrayOf(PropTypes.oneOf(['x', 'y'])),
   onBrushStart: PropTypes.func,
   onDragStart: PropTypes.func,
-  allow: PropTypes.arrayOf(PropTypes.oneOf(['x', 'y']))
+  onBrush: PropTypes.func,
+  onDrag: PropTypes.func,
+  onBrushEnd: PropTypes.func,
+  onDragEnd: PropTypes.func
 };
 
 export default Highlight;

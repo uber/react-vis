@@ -91,22 +91,27 @@ export default class ZoomableChartExample extends React.Component {
 
             {series.map(entry => <LineSeries key={entry.title} data={entry.data} />)}
 
-            <Highlight onBrushEnd={area => this.setState({lastDrawLocation: area})}
-              onDrag={area => this.setState({
-                lastDrawLocation: {
-                  bottom: lastDrawLocation.bottom + (area.top - area.bottom),
-                  left: lastDrawLocation.left - (area.right - area.left),
-                  right: lastDrawLocation.right - (area.right - area.left),
-                  top: lastDrawLocation.top + (area.top - area.bottom)
-                }
-              })} />
+            <Highlight
+              onBrushEnd={area => this.setState({lastDrawLocation: area})}
+              onDrag={area => {
+                console.log('dragged')
+                this.setState({
+                  lastDrawLocation: {
+                    bottom: lastDrawLocation.bottom + (area.top - area.bottom),
+                    left: lastDrawLocation.left - (area.right - area.left),
+                    right: lastDrawLocation.right - (area.right - area.left),
+                    top: lastDrawLocation.top + (area.top - area.bottom)
+                  }
+                })
+              }
+              } />
 
           </XYPlot>
         </div>
 
-        <button className="showcase-button" onClick={() => {
-          this.setState({lastDrawLocation: null});
-        }}>
+        <button
+          className="showcase-button"
+          onClick={() => this.setState({lastDrawLocation: null})}>
           Reset Zoom
         </button>
 
