@@ -1,15 +1,12 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 const entry = {app: './app'};
 const jsRule = {
   test: /\.js$/,
   loader: 'babel-loader',
   exclude: [/node_modules/]
 };
-
 const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
-
 const config = isProd ? {
 
   entry,
@@ -19,14 +16,24 @@ const config = isProd ? {
     filename: 'bundle.js'
   },
 
+  resolve: {
+    alias: {
+      // 'index':path.join(__dirname,'..', 'src', 'index.js'),
+      // 'theme':path.join(__dirname,'..', 'src', 'theme.js')
+    }
+  },
+
   module: {
-    rules: [jsRule, {
-      test: /\.scss$/,
-      loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: ['css-loader', 'sass-loader']
-      })
-    }]
+    rules: [
+      jsRule,
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: ['css-loader', 'sass-loader']
+        })
+      }
+    ]
   },
 
   plugins: [
