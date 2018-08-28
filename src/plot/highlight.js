@@ -70,15 +70,16 @@ class Highlight extends AbstractSeries {
     const {dragArea} = this.state;
     const {xLoc, yLoc} = getLocs(e.nativeEvent);
 
-    const startArea = dragging => {
+    const startArea = (dragging, resetDrag) => {
+      const emptyBrush = {
+        bottom: yLoc,
+        left: xLoc,
+        right: xLoc,
+        top: yLoc
+      };
       this.setState({
         dragging,
-        brushArea: dragArea || {
-          bottom: yLoc,
-          left: xLoc,
-          right: xLoc,
-          top: yLoc
-        },
+        brushArea: dragArea && !resetDrag ? dragArea : emptyBrush,
         brushing: !dragging,
         startLocX: xLoc,
         startLocY: yLoc
@@ -88,7 +89,7 @@ class Highlight extends AbstractSeries {
     const clickedOutsideDrag = this._clickedOutsideDrag(xLoc, yLoc);
 
     if ((drag && !dragArea) || !drag || clickedOutsideDrag) {
-      startArea(false);
+      startArea(false, clickedOutsideDrag);
 
       if (onBrushStart) {
         onBrushStart(e);
@@ -97,7 +98,7 @@ class Highlight extends AbstractSeries {
     }
 
     if (drag && dragArea) {
-      startArea(true);
+      startArea(true, clickedOutsideDrag);
       if (onDragStart) {
         onDragStart(e);
       }
@@ -115,14 +116,12 @@ class Highlight extends AbstractSeries {
     if (!brushing && !dragging) {
       return;
     }
-
     const {onBrushEnd, onDragEnd, drag} = this.props;
 
     const noHorizontal = Math.abs(brushArea.right - brushArea.left) < 5;
     const noVertical = Math.abs(brushArea.top - brushArea.bottom) < 5;
     // Invoke the callback with null if the selected area was < 5px
-    const isNulled = noVertical && noHorizontal;
-
+    const isNulled = noVertical || noHorizontal;
     // Clear the draw area
     this.setState({
       brushing: false,
@@ -146,7 +145,6 @@ class Highlight extends AbstractSeries {
     const {onBrush, onDrag, drag} = this.props;
     const {brushing, dragging} = this.state;
     const {xLoc, yLoc} = getLocs(e.nativeEvent);
-
     if (brushing) {
       const brushArea = this._getDrawArea(xLoc, yLoc);
       this.setState({brushArea});
@@ -173,6 +171,7 @@ class Highlight extends AbstractSeries {
   render() {
     const {
       color,
+      className,
       innerWidth,
       innerHeight,
       marginLeft,
@@ -185,7 +184,7 @@ class Highlight extends AbstractSeries {
 
     return (
       <g
-        className="rv-highlight-container"
+        className={`${className} rv-highlight-container`}
         onMouseUp={e => this.stopBrushing(e)}
         onMouseLeave={e => this.stopBrushing(e)}
         // preventDefault() so that mouse event emulation does not happen

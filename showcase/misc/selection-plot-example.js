@@ -46,32 +46,39 @@ export default class SelectionPlotExample extends React.Component {
   }
   render() {
     const {filter} = this.state;
+    const highlightPoint = d => {
+      if (!filter) {
+        return false;
+      }
+      const leftRight = d.x <= filter.right && d.x >= filter.left;
+      const upDown = d.y <= filter.top && d.y >= filter.bottom;
+      return leftRight && upDown;
+    };
+    const numSelectedPoints = filter ? data.filter(highlightPoint).length : 0;
     return (
-      <XYPlot
-        width={300}
-        height={300}>
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <XAxis />
-        <YAxis />
+      <div>
+        <XYPlot
+          width={300}
+          height={300}>
+          <VerticalGridLines />
+          <HorizontalGridLines />
+          <XAxis />
+          <YAxis />
 
-        <MarkSeries
-          className="mark-series-example"
-          strokeWidth={2}
-          opacity="0.8"
-          sizeRange={[5, 15]}
-          colorType="literal"
-          getColor={d => {
-            if (!filter) {
-              return '#12939A';
-            }
-            const leftRight = d.x <= filter.right && d.x >= filter.left;
-            const upDown = d.y <= filter.top && d.y >= filter.bottom;
-            return leftRight && upDown ? '#EF5D28' : '#12939A';
-          }}
-          data={data}/>
-        <Highlight allow={['y']} onBrush={area => this.setState({filter: area})}/>
-      </XYPlot>
+          <MarkSeries
+            className="mark-series-example"
+            sizeRange={[5, 15]}
+            colorType="literal"
+            getColor={d => highlightPoint(d) ? '#EF5D28' : '#12939A'}
+            data={data}/>
+          <Highlight
+            allow={['y']}
+            className="selection-example"
+            onBrush={area => this.setState({filter: area})}
+            onBrushEnd={area => this.setState({filter: area})}/>
+        </XYPlot>
+        <p>{`There are ${numSelectedPoints} selected points`}</p>
+      </div>
     );
   }
 }

@@ -1,10 +1,10 @@
 ## Highlight
 
-The highlight component enables use interaction via direct manipulation of chart through dragging and brushing.
+The highlight component enables use interaction via direct manipulation of chart through dragging and brushing. This component is stateful and can maintain a notion of a dragged box. It can be applied either in two directions or in one!
 
 <!-- INJECT:"ZoomableChartExampleWithLink" -->
 
-
+It is quite easy to drop this functionality into an existing chart, for example:
 
 ```jsx
 <XYPlot
@@ -33,7 +33,16 @@ The highlight component enables use interaction via direct manipulation of chart
 
 
 <!-- INJECT:"DragableChartExampleWithLink" -->
+
+In drag mode (activated by including the prop drag) you are able to drag a selection box around in the chart space. When putting this shape you first execute a drag action to define the size of the box and then are able to move it around. See above and below for examples.
+
 <!-- INJECT:"BidirectionDragChartWithLink" -->
+
+When designing your listeners it is important to be mindful the lifecycle of this component as there are a lot of edge cases. To wit, if you NOT using drag mode then the life cycle will always be brushStart > brush > brushEnd. While if you are in drag mode it will be brushStart > brush > brushEnd when you are making the box and then dragStart > drag > dragEnd while dragging the box.
+
+The biggest gotchas revolve around click to clear type events. In order to implement this, make sure to include an on End listener to set update your state. In click events there isn't a middle state between start and end because your user does not move the mouse. Be aware! See the code for the examples for more details.
+
+
 
 ## API Reference
 

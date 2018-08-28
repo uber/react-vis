@@ -27,7 +27,8 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   MarkSeries,
-  Highlight
+  Highlight,
+  Hint
 } from 'index';
 
 import {generateSeededRandom} from '../showcase-utils';
@@ -38,10 +39,13 @@ const data = [...new Array(30)].map(row => ({x: seededRandom() * 5, y: seededRan
 
 export default class BidirectionDragChart extends React.Component {
   state = {
-    filter: null
+    filter: null,
+    hovered: null,
+    highlighting: false
   }
+
   render() {
-    const {filter} = this.state;
+    const {filter, hovered, highlighting} = this.state;
 
     const highlightPoint = d => {
       if (!filter) {
@@ -62,20 +66,27 @@ export default class BidirectionDragChart extends React.Component {
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-
+          <Highlight
+            allow={['y', 'x']}
+            drag
+            onBrushStart={() => this.setState({highlighting: true})}
+            onBrush={area => this.setState({filter: area})}
+            onBrushEnd={area => this.setState({highlighting: false, filter: area})}
+            onDragStart={area => this.setState({highlighting: true})}
+            onDrag={area => this.setState({filter: area})}
+            onDragEnd={area => this.setState({highlighting: false, filter: area})}/>
           <MarkSeries
             className="mark-series-example"
             strokeWidth={2}
             opacity="0.8"
             sizeRange={[5, 15]}
+            style={{pointerEvents: highlighting ? 'none' : ''}}
             colorType="literal"
             getColor={d => highlightPoint(d) ? '#EF5D28' : '#12939A'}
+            onValueMouseOver={d => this.setState({hovered: d})}
+            onValueMouseOut={d => this.setState({hovered: false})}
             data={data}/>
-          <Highlight
-            allow={['y', 'x']}
-            drag
-            onBrush={area => this.setState({filter: area})}
-            onDrag={area => this.setState({filter: area})}/>
+          {hovered && <Hint value={hovered}/>}
         </XYPlot>
         <p>{`There are ${numSelectedPoints} selected points`}</p>
       </div>
