@@ -59,7 +59,6 @@ export const makeVisFlexible = Component => {
         {height: offsetHeight};
 
       this.observer = new ResizeObserver(() => this.setSize());
-
       this.observer.observe(this.node);
     }
 

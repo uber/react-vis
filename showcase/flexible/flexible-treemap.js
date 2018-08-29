@@ -55,10 +55,8 @@ const TREEMAP_PROPS = {
 };
 
 const FlexibleTreemapExample = ({height, width}) => (
-  <div style={{width: '100%', height: '100%'}}>
-    <div className="flexible-treemap" style={{width: '30%', height: '100%', border: '1px solid #ccc'}}>
-      <FlexibleTreemap {...TREEMAP_PROPS} padding={0} />
-    </div>
+  <div style={{width: '100%', height: '100%'}} className="flexible-treemap">
+    <FlexibleTreemap {...TREEMAP_PROPS} padding={0} />
   </div>
 );
 export default FlexibleTreemapExample;

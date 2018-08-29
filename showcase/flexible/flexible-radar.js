@@ -45,10 +45,8 @@ const defaultProps = {
 };
 
 const FlexibleRadarChartExample = ({height, width}) => (
-  <div style={{width: '100%', height: '100%'}}>
-    <div className="flexible-radar-chart" style={{width: '30%', height: '100%', border: '1px solid #ccc'}}>
-      <FlexibleRadarChart {...RADAR_PROPS} {...defaultProps} />
-    </div>
+  <div style={{width: '100%', height: '100%'}} className="flexible-radar-chart">
+    <FlexibleRadarChart {...RADAR_PROPS} {...defaultProps} />
   </div>
 );
 

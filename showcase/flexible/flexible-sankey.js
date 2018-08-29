@@ -36,10 +36,8 @@ const defaultProps = {
 };
 
 const FlexibleSankeyExample = ({height, width}) => (
-  <div style={{width: '100%', height: '100%'}}>
-    <div className="flexible-sankey" style={{width: '30%', height: '100%', border: '1px solid #ccc'}}>
-      <FlexibleSankey {...SANKEY_PROPS} {...defaultProps} />
-    </div>
+  <div style={{width: '100%', height: '100%'}} className="flexible-sankey">
+    <FlexibleSankey {...SANKEY_PROPS} {...defaultProps} />
   </div>
 );
 

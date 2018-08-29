@@ -12,35 +12,40 @@ const {
 } = showCase;
 
 /* eslint-disable max-len */
-const FLEXIBLE_ROWS = [
-  [{
+const FLEXIBLE_ROWS = [[
+  {
     name: 'FlexibleBarChartExample',
     component: FlexibleBarChartExample,
     componentName: 'FlexibleBarChartExample'
-  }, {
+  },
+  {
     name: 'FlexibleRadarChartExample',
     component: FlexibleRadarChartExample,
     componentName: 'FlexibleRadarChartExample'
-  }],
-  [{
+  }
+], [
+  {
     name: 'FlexibleRadialChartExample',
     component: FlexibleRadialChartExample,
     componentName: 'FlexibleRadialChartExample'
-  }, {
+  },
+  {
     name: 'FlexibleSankeyExample',
     component: FlexibleSankeyExample,
     componentName: 'FlexibleSankeyExample'
-  }],
-  [{
+  }
+], [
+  {
     name: 'FlexibleSunburstExample',
     component: FlexibleSunburstExample,
     componentName: 'FlexibleSunburstExample'
-  }, {
+  },
+  {
     name: 'FlexibleTreemapExample',
     component: FlexibleTreemapExample,
     componentName: 'FlexibleTreemapExample'
-  }]
-];
+  }
+]];
 
 const rowStyle = {
   display: 'flex',
@@ -48,10 +53,6 @@ const rowStyle = {
   width: '100%',
   height: '100%',
   maxHeight: '400px'
-  // justifyContent: 'space-between',
-  // position: 'relative',
-  // width: '60vw',
-  // height: '30vh'
 };
 
 class FlexibleShowcase extends Component {
@@ -62,7 +63,10 @@ class FlexibleShowcase extends Component {
         {
           FLEXIBLE_ROWS.map((row, idx) => (
             <div style={rowStyle} key={idx}>
-              {row.map(mapSection)}
+              {row.map((d, i) => mapSection(d, i, {
+                minHeight: '100%',
+                minWidth: `${100 / row.length}%`
+              }))}
             </div>
           ))
         }

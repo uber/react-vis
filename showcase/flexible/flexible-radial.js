@@ -31,10 +31,8 @@ const defaultProps = {
 };
 
 const FlexibleRadialChartExample = ({height, width}) => (
-  <div style={{width: '100%', height: '100%'}}>
-    <div className="flexible-radial-chart" style={{width: '30%', height: '100%', border: '1px solid #ccc'}}>
-      <FlexibleRadialChart {...RADIAL_PROPS} {...defaultProps} />
-    </div>
+  <div className="flexible-radial-chart" style={{width: '100%', height: '100%'}}>
+    <FlexibleRadialChart {...RADIAL_PROPS} {...defaultProps} />
   </div>
 );
 
