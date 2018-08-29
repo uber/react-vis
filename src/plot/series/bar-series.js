@@ -94,8 +94,9 @@ class BarSeries extends AbstractSeries {
               ...style
             },
             [linePosAttr]: lineFunctor(d) - itemSize +
-            (itemSize * 2 / sameTypeTotal * sameTypeIndex),
-            [lineSizeAttr]: itemSize * 2 / sameTypeTotal,
+            (((itemSize * 2 / sameTypeTotal) - (1 - (1 / sameTypeTotal))) * sameTypeIndex) +
+            sameTypeIndex,
+            [lineSizeAttr]: ((itemSize * 2 / sameTypeTotal) - (1 - (1 / sameTypeTotal))),
             [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
             [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
             onClick: e => this._valueClickHandler(d, e),

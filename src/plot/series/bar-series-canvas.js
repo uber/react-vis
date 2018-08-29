@@ -68,12 +68,14 @@ class BarSeriesCanvas extends AbstractSeries {
       const strokeColor = rgb(stroke(row));
       const rowOpacity = opacity(row) || DEFAULT_OPACITY;
 
-      const linePos = line(row) - itemSize + (itemSize * 2 / sameTypeTotal * sameTypeIndex);
+      const linePos = line(row) - itemSize +
+        (((itemSize * 2 / sameTypeTotal) - (1 - (1 / sameTypeTotal))) * sameTypeIndex) +
+        sameTypeIndex;
       const valuePos = Math.min(value0(row), value(row));
       const x = valuePosAttr === 'x' ? valuePos : linePos;
       const y = valuePosAttr === 'y' ? valuePos : linePos;
 
-      const lineSize = itemSize * 2 / sameTypeTotal;
+      const lineSize = ((itemSize * 2 / sameTypeTotal) - (1 - (1 / sameTypeTotal)));
       const valueSize = Math.abs(-value0(row) + value(row));
       const height = lineSizeAttr === 'height' ? lineSize : valueSize;
       const width = lineSizeAttr === 'width' ? lineSize : valueSize;
