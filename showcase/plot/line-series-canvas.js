@@ -19,33 +19,35 @@
 // THE SOFTWARE.
 import React from 'react';
 import {XYPlot, LineSeriesCanvas, MarkSeriesCanvas} from 'index';
-
+const k = 20000;
 export default class Example extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      nearestXY: null
+      nearestXY: {x: 0, y: 0},
+      data: Array(k).fill(0).map((n, idx) => ({x: idx, y: idx % 2 ? 180 : -180}))
     };
   }
 
   render() {
-    const k = 100;
     return (
       <XYPlot
         width={500}
         height={300}
+        domainX={[0, k]}
+        domainY={[-200, 200]}
       >
+        {<LineSeriesCanvas
+          onNearestXY={(nearestXY, {event}) => this.setState({nearestXY})}
+          data={this.state.data}
+        />}
         {<MarkSeriesCanvas
           size={5}
           fill={'yellow'}
           stroke={'red'}
           style={{pointerEvents: 'none'}}
           data={[this.state.nearestXY]}
-        />}
-        {<LineSeriesCanvas
-          onNearestXY={(nearestXY, {event}) => this.setState({nearestXY})}
-          data={Array(k).fill(0).map((n, idx) => ({x: idx, y: idx % 2 ? idx + 20 : idx - 20}))}
         />}
       </XYPlot>
     );

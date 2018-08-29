@@ -8,7 +8,8 @@
     "uber-jsx"
   ],
   "rules": {
-    "max-len": 0
+    "max-len": 0,
+    "linebreak-style": ["error", "windows"]
   },
   "parser": "babel-eslint",
   "plugins": [
