@@ -143,6 +143,7 @@ import FourQuadrantRadarChart from './radar-chart/four-quadrant-radar-chart';
 
 import BasicParallelCoordinates from './parallel-coordinates/basic-parallel-coordinates';
 import AnimatedParallelCoordinates from './parallel-coordinates/animated-parallel-coordinates';
+import BrushedParallelCoordinates from './parallel-coordinates/brushed-parallel-coordinates';
 
 import BasicSunburst from './sunbursts/basic-sunburst';
 import ClockExample from './sunbursts/clock-example';
@@ -270,6 +271,7 @@ const mainShowCase = {
 
   BasicParallelCoordinates,
   AnimatedParallelCoordinates,
+  BrushedParallelCoordinates,
 
   BasicSankeyExample,
   VoronoiSankeyExample,

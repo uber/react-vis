@@ -24,6 +24,8 @@ class Highlight extends AbstractSeries {
     const {
       disableX,
       disableY,
+      highlightWidth,
+      highlightHeight,
       innerWidth,
       innerHeight,
       marginLeft,
@@ -33,11 +35,13 @@ class Highlight extends AbstractSeries {
     } = this.props;
     const plotHeight = innerHeight + marginTop + marginBottom;
     const plotWidth = innerWidth + marginLeft + marginRight;
+    const touchWidth = highlightWidth || plotWidth;
+    const touchHeight = highlightHeight || plotHeight;
 
     return {
-      bottom: disableY ? plotHeight : Math.max(startLocY, yLoc),
+      bottom: disableY ? touchHeight : Math.max(startLocY, yLoc),
       left: disableX ? 0 : Math.min(xLoc, startLocX),
-      right: disableX ? plotWidth : Math.max(startLocX, xLoc),
+      right: disableX ? touchWidth : Math.max(startLocX, xLoc),
       top: disableY ? 0 : Math.min(yLoc, startLocY)
     };
   }
@@ -97,7 +101,7 @@ class Highlight extends AbstractSeries {
     };
   }
 
-  onParentMouseDown(e) {
+  startBrushing(e) {
     const {onBrushStart, onDragStart, drag} = this.props;
     const {dragArea} = this.state;
     const {xLoc, yLoc} = getLocs(e.nativeEvent);
@@ -137,9 +141,9 @@ class Highlight extends AbstractSeries {
     }
   }
 
-  onParentTouchStart(e) {
+  onParentXXXTouchStart(e) {
     e.preventDefault();
-    this.onParentMouseDown(e);
+    this.onMouseDown(e);
   }
 
   stopBrushing(e) {
@@ -173,7 +177,7 @@ class Highlight extends AbstractSeries {
     }
   }
 
-  onParentMouseMove(e) {
+  onBrush(e) {
     const {onBrush, onDrag, drag} = this.props;
     const {brushing, dragging} = this.state;
     const {xLoc, yLoc} = getLocs(e.nativeEvent);
@@ -195,15 +199,19 @@ class Highlight extends AbstractSeries {
     }
   }
 
-  onParentTouchMove(e) {
+  onParentXXXXTouchMove(e) {
     e.preventDefault();
-    this.onParentMouseMove(e);
+    this.onBrush(e);
   }
 
   render() {
     const {
       color,
       className,
+      highlightHeight,
+      highlightWidth,
+      highlightX,
+      highlightY,
       innerWidth,
       innerHeight,
       marginLeft,
@@ -214,22 +222,27 @@ class Highlight extends AbstractSeries {
     } = this.props;
     const {brushArea: {left, right, top, bottom}} = this.state;
 
+    let leftPos = 0;
+    if (highlightX) {
+      const xScale = getAttributeScale(this.props, 'x');
+      leftPos = xScale(highlightX);
+    }
+
+    let topPos = 0;
+    if (highlightY) {
+      const yScale = getAttributeScale(this.props, 'y');
+      topPos = yScale(highlightY);
+    }
+
+    const plotWidth = (marginLeft + marginRight) + innerWidth;
+    const plotHeight = (marginTop + marginBottom) + innerHeight;
+    const touchWidth = highlightWidth || plotWidth;
+    const touchHeight = highlightHeight || plotHeight;
+
     return (
       <g
+        transform={`translate(${leftPos}, ${topPos})`}
         className={`${className} rv-highlight-container`}
-        onMouseUp={e => this.stopBrushing(e)}
-        onMouseLeave={e => this.stopBrushing(e)}
-        // preventDefault() so that mouse event emulation does not happen
-        onTouchEnd={e => {
-          e.preventDefault();
-          this.stopBrushing(e);
-        }}
-        onTouchCancel={e => {
-          e.preventDefault();
-          this.stopBrushing(e);
-        }}
-        onContextMenu={e => e.preventDefault()}
-        onContextMenuCapture={e => e.preventDefault()}
         >
         <rect
           className="rv-mouse-target"
@@ -237,8 +250,23 @@ class Highlight extends AbstractSeries {
           opacity="0"
           x="0"
           y="0"
-          width={Math.max((marginLeft + marginRight) + innerWidth, 0)}
-          height={Math.max((marginTop + marginBottom) + innerHeight, 0)}
+          width={Math.max(touchWidth, 0)}
+          height={Math.max(touchHeight, 0)}
+          onMouseDown={e => this.startBrushing(e)}
+          onMouseMove={e => this.onBrush(e)}
+          onMouseUp={e => this.stopBrushing(e)}
+          onMouseLeave={e => this.stopBrushing(e)}
+          // preventDefault() so that mouse event emulation does not happen
+          onTouchEnd={e => {
+            e.preventDefault();
+            this.stopBrushing(e);
+          }}
+          onTouchCancel={e => {
+            e.preventDefault();
+            this.stopBrushing(e);
+          }}
+          onContextMenu={e => e.preventDefault()}
+          onContextMenuCapture={e => e.preventDefault()}
         />
         <rect
           className="rv-highlight"
@@ -247,8 +275,8 @@ class Highlight extends AbstractSeries {
           fill={color}
           x={left}
           y={top}
-          width={Math.max(0, right - left)}
-          height={Math.max(0, bottom - top)}
+          width={Math.min(Math.max(0, right - left), touchWidth)}
+          height={Math.min(Math.max(0, bottom - top), touchWidth)}
         />
       </g>
     );
@@ -258,6 +286,7 @@ class Highlight extends AbstractSeries {
 Highlight.displayName = 'HighlightOverlay';
 Highlight.defaultProps = {
   color: 'rgb(77, 182, 172)',
+  className: '',
   disableX: false,
   disableY: false,
   opacity: 0.3
@@ -267,6 +296,10 @@ Highlight.propTypes = {
   ...AbstractSeries.propTypes,
   disableX: PropTypes.bool,
   disableY: PropTypes.bool,
+  highlightHeight: PropTypes.number,
+  highlightWidth: PropTypes.number,
+  // highlightX: PropTypes.number,
+  // highlightY: PropTypes.number,
   onBrushStart: PropTypes.func,
   onDragStart: PropTypes.func,
   onBrush: PropTypes.func,

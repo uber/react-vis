@@ -85,3 +85,10 @@ export const MarginPropType = PropTypes.oneOfType([
   }),
   PropTypes.number
 ]);
+
+export const DEFAULT_MARGINS = {
+  left: 40,
+  right: 10,
+  top: 10,
+  bottom: 40
+};

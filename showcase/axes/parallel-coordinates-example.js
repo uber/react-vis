@@ -21,7 +21,7 @@
 import React from 'react';
 import {scaleLinear} from 'd3-scale';
 
-import CarData from './car-data.json';
+import CarData from '../datasets/car-data.json';
 
 import {
   XYPlot,

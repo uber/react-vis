@@ -2,7 +2,7 @@ import React from 'react';
 
 import Sankey from 'sankey';
 
-import Energy from './energy.json';
+import Energy from '../datasets/energy.json';
 import ShowcaseButton from '../showcase-components/showcase-button';
 
 const MODE = [

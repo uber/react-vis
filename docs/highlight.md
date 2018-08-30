@@ -63,7 +63,7 @@ Type: `Boolean`
 Defaults to `false`
 Disable brushing and dragging in the x direction
 
-### disableT (optional)
+### disableY (optional)
 Type: `Boolean`
 Defaults to `false`
 Disable brushing and dragging in the y direction
