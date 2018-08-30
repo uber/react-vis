@@ -50,10 +50,9 @@ export default class SelectionPlotExample extends React.Component {
       if (!filter) {
         return false;
       }
-      const leftRight = d.x <= filter.right && d.x >= filter.left;
-      const upDown = d.y <= filter.top && d.y >= filter.bottom;
-      return leftRight && upDown;
+      return d.y <= filter.top && d.y >= filter.bottom;
     };
+
     const numSelectedPoints = filter ? data.filter(highlightPoint).length : 0;
     return (
       <div>

@@ -53,9 +53,35 @@ class Highlight extends AbstractSeries {
   }
 
   _convertAreaToCoordinates(brushArea) {
-    const {marginLeft} = this.props;
+    const {marginLeft, allow} = this.props;
     const xScale = getAttributeScale(this.props, 'x');
     const yScale = getAttributeScale(this.props, 'y');
+
+    const allowX = allow.includes('x');
+    const allowY = allow.includes('y');
+
+    // Ensure that users wishes are being respected about which scales are evaluated
+    // this is specifically enabled to ensure brushing on mixed categorical and linear
+    // charts will run as expected
+
+    if (!allowX && !allowY) {
+      return {};
+    }
+
+    if (!allowX) {
+      return {
+        bottom: yScale.invert(brushArea.bottom),
+        top: yScale.invert(brushArea.top)
+      };
+    }
+
+    if (!allowY) {
+      return {
+        left: xScale.invert(brushArea.left - marginLeft),
+        right: xScale.invert(brushArea.right - marginLeft)
+      };
+    }
+
     // NOTE only continuous scales are supported for brushing/getting coordinates back
     return {
       bottom: yScale.invert(brushArea.bottom),
