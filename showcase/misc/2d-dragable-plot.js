@@ -67,7 +67,6 @@ export default class BidirectionDragChart extends React.Component {
           <XAxis />
           <YAxis />
           <Highlight
-            allow={['y', 'x']}
             drag
             onBrushStart={() => this.setState({highlighting: true})}
             onBrush={area => this.setState({filter: area})}

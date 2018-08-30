@@ -21,27 +21,36 @@ class Highlight extends AbstractSeries {
 
   _getDrawArea(xLoc, yLoc) {
     const {startLocX, startLocY} = this.state;
-    const {allow, innerWidth, innerHeight, marginLeft, marginRight, marginBottom, marginTop} = this.props;
+    const {
+      disableX,
+      disableY,
+      innerWidth,
+      innerHeight,
+      marginLeft,
+      marginRight,
+      marginBottom,
+      marginTop
+    } = this.props;
     const plotHeight = innerHeight + marginTop + marginBottom;
     const plotWidth = innerWidth + marginLeft + marginRight;
 
     return {
-      bottom: allow.includes('y') ? Math.max(startLocY, yLoc) : plotHeight,
-      left: allow.includes('x') ? Math.min(xLoc, startLocX) : 0,
-      right: allow.includes('x') ? Math.max(startLocX, xLoc) : plotWidth,
-      top: allow.includes('y') ? Math.min(yLoc, startLocY) : 0
+      bottom: disableY ? plotHeight : Math.max(startLocY, yLoc),
+      left: disableX ? 0 : Math.min(xLoc, startLocX),
+      right: disableX ? plotWidth : Math.max(startLocX, xLoc),
+      top: disableY ? 0 : Math.min(yLoc, startLocY)
     };
   }
 
   _getDragArea(xLoc, yLoc) {
-    const {allow} = this.props;
+    const {disableX, disableY} = this.props;
     const {startLocX, startLocY, dragArea} = this.state;
 
     return {
-      bottom: dragArea.bottom + (allow.includes('y') ? (yLoc - startLocY) : 0),
-      left: dragArea.left + (allow.includes('x') ? (xLoc - startLocX) : 0),
-      right: dragArea.right + (allow.includes('x') ? (xLoc - startLocX) : 0),
-      top: dragArea.top + (allow.includes('y') ? (yLoc - startLocY) : 0)
+      bottom: dragArea.bottom + (disableY ? 0 : (yLoc - startLocY)),
+      left: dragArea.left + (disableX ? 0 : (xLoc - startLocX)),
+      right: dragArea.right + (disableX ? 0 : (xLoc - startLocX)),
+      top: dragArea.top + (disableY ? 0 : (yLoc - startLocY))
     };
   }
 
@@ -53,29 +62,26 @@ class Highlight extends AbstractSeries {
   }
 
   _convertAreaToCoordinates(brushArea) {
-    const {marginLeft, allow} = this.props;
+    const {disableX, disableY, marginLeft} = this.props;
     const xScale = getAttributeScale(this.props, 'x');
     const yScale = getAttributeScale(this.props, 'y');
-
-    const allowX = allow.includes('x');
-    const allowY = allow.includes('y');
 
     // Ensure that users wishes are being respected about which scales are evaluated
     // this is specifically enabled to ensure brushing on mixed categorical and linear
     // charts will run as expected
 
-    if (!allowX && !allowY) {
+    if (disableX && disableY) {
       return {};
     }
 
-    if (!allowX) {
+    if (disableX) {
       return {
         bottom: yScale.invert(brushArea.bottom),
         top: yScale.invert(brushArea.top)
       };
     }
 
-    if (!allowY) {
+    if (disableY) {
       return {
         left: xScale.invert(brushArea.left - marginLeft),
         right: xScale.invert(brushArea.right - marginLeft)
@@ -251,14 +257,16 @@ class Highlight extends AbstractSeries {
 
 Highlight.displayName = 'HighlightOverlay';
 Highlight.defaultProps = {
-  allow: ['x', 'y'],
   color: 'rgb(77, 182, 172)',
+  disableX: false,
+  disableY: false,
   opacity: 0.3
 };
 
 Highlight.propTypes = {
   ...AbstractSeries.propTypes,
-  allow: PropTypes.arrayOf(PropTypes.oneOf(['x', 'y'])),
+  disableX: PropTypes.bool,
+  disableY: PropTypes.bool,
   onBrushStart: PropTypes.func,
   onDragStart: PropTypes.func,
   onBrush: PropTypes.func,

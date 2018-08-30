@@ -74,8 +74,8 @@ class DragableChartExample extends React.Component {
 
           <Highlight
             color="#829AE3"
-            allow={['x']}
             drag
+            disableY
             onDrag={updateDragState}
             onDragEnd={updateDragState}
               />

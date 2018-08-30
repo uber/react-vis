@@ -24,7 +24,6 @@ It is quite easy to drop this functionality into an existing chart, for example:
     getColor={d => highlightPoint(d) ? '#EF5D28' : '#12939A'}
     data={data}/>
   <Highlight
-    allow={['y', 'x']}
     drag
     onBrush={area => this.setState({filter: area})}
     onDrag={area => this.setState({filter: area})}/>
@@ -42,16 +41,14 @@ When designing your listeners it is important to be mindful the lifecycle of thi
 
 The biggest gotchas revolve around click to clear type events. In order to implement this, make sure to include an on End listener to set update your state. In click events there isn't a middle state between start and end because your user does not move the mouse. Be aware! See the code for the examples for more details.
 
+It is important to note that brushing over non-continuous scales is not supported! Specifically this means that you can not brush over category or ordinal scales.
+
 
 
 ## API Reference
 
 <!-- INJECT:"SelectionPlotExampleWithLink" -->
 
-### allow (optional)
-Type: `One of ['x'] ['y'] ['x', 'y']`
-Defaults to ['x', 'y']
-Determine what types of dragging and brushing interactions are allowed.
 
 ### className (optional)
 Type: `String`
@@ -60,6 +57,16 @@ Add css class to Voronoi container
 ### drag (optional)
 Type: `Boolean`
 Enable dragging interactions
+
+### disableX (optional)
+Type: `Boolean`
+Defaults to `false`
+Disable brushing and dragging in the x direction
+
+### disableT (optional)
+Type: `Boolean`
+Defaults to `false`
+Disable brushing and dragging in the y direction
 
 ### onBrushStart (optional)
 Type: `Function`
