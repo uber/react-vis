@@ -80,12 +80,42 @@ class BarSeries extends AbstractSeries {
       this._getAttributeFunctor('color');
     const opacityFunctor = this._getAttributeFunctor('opacity');
 
-    const itemSize = (distance / 2) * 0.85;
+    const halfSpace = (distance / 2) * 0.85;
 
     return (
       <g className={`${predefinedClassName} ${className}`}
         transform={`translate(${marginLeft},${marginTop})`}>
         {data.map((d, i) => {
+          // totalSpaceAvailable is the space we have available to draw all the
+          // bars of a same 'linePosAttr' value (a.k.a. sameTypeTotal)
+          const totalSpaceAvailable = halfSpace * 2;
+          const totalSpaceCenter = lineFunctor(d);
+          // totalSpaceStartingPoint is the first pixel were we can start
+          // drawing bars
+          const totalSpaceStartingPoint = totalSpaceCenter - halfSpace;
+
+          // When sameTypeTotal > 1, we want to provide equal space per each
+          // bar we want to draw. The initial idea would be to divide the
+          // totalSpaceAvailable by the number of bars we need to draw (sameTypeTotal).
+          // If we do that, the pixel where one bar ends would be the same pixel were
+          // the next bar starts (so the bars would be overlapped by 1 pixel).
+          // To avoid that, we need to move the second bar 1 pixel to the right. But then
+          // the third bar would overlap with the second one by 2 pixels.
+          // We move the third bar 2 pixels to the right, but then the fourth one gets
+          // overlapped by 3 pixels. By continuing with this movements, the last
+          // bar of the sequence should get moved sameTypeTotal-1 pixels to the right.
+          // But now the issue is that the last bar would be exceeding (by
+          // sameTypeTotal-1 pixels) the space we had available for all bars (totalSpaceAvailable).
+
+          // The solution then is to extract an equal portion of that exceeding space
+          // from the space available for each bar. That's what we are calculating
+          // into spaceTakenByInterBarsPixels, and we then use it to calculate
+          // the space available per each bar (spacePerBar)
+          const spaceTakenByInterBarsPixels = (sameTypeTotal - 1) / sameTypeTotal;
+          const spacePerBar = (totalSpaceAvailable / sameTypeTotal) - spaceTakenByInterBarsPixels;
+          const barStartingPoint = totalSpaceStartingPoint + spacePerBar * sameTypeIndex +
+            sameTypeIndex;
+
           const attrs = {
             style: {
               opacity: opacityFunctor && opacityFunctor(d),
@@ -93,10 +123,8 @@ class BarSeries extends AbstractSeries {
               fill: fillFunctor && fillFunctor(d),
               ...style
             },
-            [linePosAttr]: lineFunctor(d) - itemSize +
-            (((itemSize * 2 / sameTypeTotal) - (1 - (1 / sameTypeTotal))) * sameTypeIndex) +
-            sameTypeIndex,
-            [lineSizeAttr]: ((itemSize * 2 / sameTypeTotal) - (1 - (1 / sameTypeTotal))),
+            [linePosAttr]: barStartingPoint,
+            [lineSizeAttr]: spacePerBar,
             [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
             [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
             onClick: e => this._valueClickHandler(d, e),
