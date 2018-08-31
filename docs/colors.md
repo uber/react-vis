@@ -351,7 +351,7 @@ Finally, we can pass literal color names in our dataset from our custom palette.
 
 #### Independently control fill and stroke
 
-The line chart series (LineSeries) is only a line, but most other series (AreaSeries, ArcSeries, BarSeries, HeatmapSeries, MarkSeries, RectSeries and their derivatives, including LineMarkSeries) involve 2D shapes that have both a fill color and a stroke color.
+The line chart series (LineSeries) is only a line, but most other series (AreaSeries, ArcSeries, BarSeries, HeatmapSeries, HexbinSeries, MarkSeries, RectSeries and their derivatives, including LineMarkSeries) involve 2D shapes that have both a fill color and a stroke color.
 
 In SVG, those correspond to the fill and the stroke css properties (fillStyle and strokeStyle in canvas).
 

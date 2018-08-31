@@ -44,6 +44,8 @@ import CustomSVGAllTheMarks from './plot/custom-svg-all-the-marks';
 import FauxScatterplotChart from './plot/faux-radial-scatterplot';
 import ScatterplotCanvas from './plot/scatterplot-canvas';
 import HeatmapChart from './plot/heatmap-chart';
+import HexHeatmap from './plot/hex-heatmap';
+import HexbinSizeExample from './plot/hexbin-size-example';
 import LabeledHeatmap from './plot/labeled-heatmap';
 import ContourSeriesExample from './plot/contour-series-example';
 import WidthHeightMarginChart from './plot/width-height-margin';
@@ -178,6 +180,8 @@ const mainShowCase = {
   ScatterplotCanvas,
   WhiskerChart,
   HeatmapChart,
+  HexHeatmap,
+  HexbinSizeExample,
   LabeledHeatmap,
   ContourSeriesExample,
   WidthHeightMarginChart,

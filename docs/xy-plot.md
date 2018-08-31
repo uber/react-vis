@@ -87,6 +87,7 @@ Not all properties can be visualized in each series. Here's a short comparison o
 | [VerticalRectSeries](rect-series.md)  |  +  |  +  | +       |     +     |        |
 | [HorizontalRectSeries](rect-series.md)|  +  |  +  | +       |     +     |        |
 | [HeatmapSeries](heatmap-series.md)      |  +  |  +  | +       |     +     |        |      |
+| [HexbinSeries](hexbin-series.md)      |  +  |  +  | +       |     +     |        |      |
 
 
 ### A note on ordering

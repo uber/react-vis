@@ -7,6 +7,7 @@ The library supports several types of series:
 * [BarSeries](bar-series.md) for discrete bar charts, covers (covers HorizontalBarSeries and VerticalBarSeries);
 * [ContourSeries](contour-series.md) for making contour density plots;
 * [HeatmapSeries](heatmap-series.md) for heat maps.
+* [HexbinSeries](hexbin-series.md) for aggregate hexagonal binning heatmaps.
 * [LabelSeries](label-series.md) for adding annotations to charts
 * [LineMarkSeries](line-mark-series.md) is a shorthand to place marks (e.g. circles) on lines;
 * [LineSeries](line-series.md) for lines;

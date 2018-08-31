@@ -37,6 +37,7 @@ export MarkSeries from 'plot/series/mark-series';
 export MarkSeriesCanvas from 'plot/series/mark-series-canvas';
 export WhiskerSeries from 'plot/series/whisker-series';
 export HeatmapSeries from 'plot/series/heatmap-series';
+export HexbinSeries from 'plot/series/hexbin-series';
 export ContourSeries from 'plot/series/contour-series';
 export CustomSVGSeries from 'plot/series/custom-svg-series';
 export AreaSeries from 'plot/series/area-series';
