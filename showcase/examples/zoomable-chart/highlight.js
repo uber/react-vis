@@ -36,7 +36,7 @@ export default class Highlight extends AbstractSeries {
 
   onParentMouseDown(e) {
     const {marginLeft, innerHeight, onBrushStart} = this.props;
-    let offsetX = e.nativeEvent.offsetX;
+    let offsetX = e.nativeEvent.layerX;
     if (e.nativeEvent.type === 'touchstart') {
       offsetX = e.nativeEvent.pageX;
     }
