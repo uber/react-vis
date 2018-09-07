@@ -40,8 +40,8 @@ class Highlight extends AbstractSeries {
 
     return {
       bottom: disableY ? touchHeight : Math.max(startLocY, yLoc),
-      left: disableX ? 0 : Math.min(xLoc, startLocX),
       right: disableX ? touchWidth : Math.max(startLocX, xLoc),
+      left: disableX ? 0 : Math.min(xLoc, startLocX),
       top: disableY ? 0 : Math.min(yLoc, startLocY)
     };
   }
@@ -66,7 +66,7 @@ class Highlight extends AbstractSeries {
   }
 
   _convertAreaToCoordinates(brushArea) {
-    const {disableX, disableY, marginLeft} = this.props;
+    const {disableX, disableY, marginLeft, marginTop} = this.props;
     const xScale = getAttributeScale(this.props, 'x');
     const yScale = getAttributeScale(this.props, 'y');
 
@@ -80,8 +80,8 @@ class Highlight extends AbstractSeries {
 
     if (disableX) {
       return {
-        bottom: yScale.invert(brushArea.bottom),
-        top: yScale.invert(brushArea.top)
+        bottom: yScale.invert(brushArea.bottom - marginTop),
+        top: yScale.invert(brushArea.top - marginTop)
       };
     }
 
@@ -141,11 +141,6 @@ class Highlight extends AbstractSeries {
     }
   }
 
-  onParentXXXTouchStart(e) {
-    e.preventDefault();
-    this.onMouseDown(e);
-  }
-
   stopBrushing(e) {
     const {brushing, dragging, brushArea} = this.state;
     // Quickly short-circuit if the user isn't brushing in our component
@@ -153,7 +148,6 @@ class Highlight extends AbstractSeries {
       return;
     }
     const {onBrushEnd, onDragEnd, drag} = this.props;
-
     const noHorizontal = Math.abs(brushArea.right - brushArea.left) < 5;
     const noVertical = Math.abs(brushArea.top - brushArea.bottom) < 5;
     // Invoke the callback with null if the selected area was < 5px
@@ -168,7 +162,7 @@ class Highlight extends AbstractSeries {
       dragArea: drag && !isNulled && brushArea
     });
 
-    if (!drag && brushing && onBrushEnd) {
+    if (brushing && onBrushEnd) {
       onBrushEnd(!isNulled ? this._convertAreaToCoordinates(brushArea) : null);
     }
 
@@ -197,11 +191,6 @@ class Highlight extends AbstractSeries {
         onDrag(this._convertAreaToCoordinates(brushArea));
       }
     }
-  }
-
-  onParentXXXXTouchMove(e) {
-    e.preventDefault();
-    this.onBrush(e);
   }
 
   render() {
@@ -276,7 +265,7 @@ class Highlight extends AbstractSeries {
           x={left}
           y={top}
           width={Math.min(Math.max(0, right - left), touchWidth)}
-          height={Math.min(Math.max(0, bottom - top), touchWidth)}
+          height={Math.min(Math.max(0, bottom - top), touchHeight)}
         />
       </g>
     );
@@ -298,8 +287,8 @@ Highlight.propTypes = {
   disableY: PropTypes.bool,
   highlightHeight: PropTypes.number,
   highlightWidth: PropTypes.number,
-  // highlightX: PropTypes.number,
-  // highlightY: PropTypes.number,
+  highlightX: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  highlightY: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onBrushStart: PropTypes.func,
   onDragStart: PropTypes.func,
   onBrush: PropTypes.func,

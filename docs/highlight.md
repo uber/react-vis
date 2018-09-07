@@ -68,6 +68,26 @@ Type: `Boolean`
 Defaults to `false`
 Disable brushing and dragging in the y direction
 
+### highlightX (optional)
+Type: `String or Number`
+Defaults to left edge
+Position in x coordinate space to place the left edge of the highlight bar.
+
+### highlightY (optional)
+Type: `String or Number`
+Defaults to top edge
+Position in y coordinate space to place the top edge of the highlight bar.
+
+### highlightHeight (optional)
+Type: `Number`
+Defaults to full height
+The height of highlight bar in pixels.
+
+### highlightWidth (optional)
+Type: `Number`
+Defaults to full width
+The width of highlight bar in pixels.
+
 ### onBrushStart (optional)
 Type: `Function`
 Function called on the start of brushing.

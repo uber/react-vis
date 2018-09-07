@@ -52,11 +52,12 @@ export default class BrushedParallelCoordinates extends Component {
     return (
       <ParallelCoordinates
         animation
+        brushing
         data={IrisData.map(d => ({...d, color: SPECIES_COLORS[d.species]}))}
         domains={domains}
         margin={60}
         width={600}
-        height={350} />
+        height={400} />
     );
   }
 }
