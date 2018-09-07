@@ -10,6 +10,8 @@ These events can be implemented either at the XYPlot level or at the plot level:
     * The above series, and some others (area, line, polygon) support interaction at the series level. These series have handlers like onSeriesClick, onSeriesMouseOut, onSeriesMouseOver. Those handlers only pass the mouseevent that triggered them.
     * Finally, all series support onNearestX and onNearestXY. These two special handlers are triggered when the user moves their mouse on the plot area, and can access the datapoint of the nearest mark, in addition to the mouse event.
 
+* You can also interact with your plot through specialized components, such as the [highlight](highlight.md) for brushing and dragging or the [voronoi](voronoi.md) for mouse overs.
+
 ### What handlers are implemented by series type
 
 | Series                                | Proximity handlers (onNearestX, onNearestY) | series level handlers (onSeriesClick, onSeriesRightClick, onSeriesMouseOver, onSeriesMouseOut) | mark-level handlers (onValueClick, onValueRightClick, onValueMouseOver, onValueMouseOut) |
@@ -37,7 +39,6 @@ In all cases, onNearestX and onNearestXY can be implemented at the series level,
 
 ### Note
 - the contour series doesn't support interaction other than onNearestX or onNearestXY
-- react-vis doesn't yet support interactions such as dragging, zooming or scrolling.
 - whenever the datapoint-level handlers are supported, they can also catch all the events happening at the series level.
 
 ## API

@@ -53,6 +53,7 @@ import CustomScales from './plot/custom-scales';
 import AxisWithTurnedLabels from './plot/axis-with-turned-labels';
 import MixedStackedChart from './plot/mixed-stacked-chart';
 import GridLinesChart from './plot/grid';
+
 import EnergySankey from './sankey/energy-sankey';
 import VornoiSankey from './sankey/voronoi';
 import BasicSankey from './sankey/basic';
@@ -125,6 +126,10 @@ import SyncedCharts from './misc/synced-charts';
 import TimeChart from './misc/time-chart';
 import TriangleExample from './misc/triangle-example';
 import VoronoiLineChart from './misc/voronoi-line-chart';
+import ZoomableChartExample from './misc/zoomable-chart-example';
+import SelectionPlotExample from './misc/selection-plot-example';
+import DragableChartExample from './misc/dragable-chart-example';
+import BidirectionDragChart from './misc/2d-dragable-plot';
 
 import SimpleRadialChart from './radial-chart/simple-radial-chart';
 import DonutChartExample from './radial-chart/donut-chart';
@@ -138,6 +143,7 @@ import FourQuadrantRadarChart from './radar-chart/four-quadrant-radar-chart';
 
 import BasicParallelCoordinates from './parallel-coordinates/basic-parallel-coordinates';
 import AnimatedParallelCoordinates from './parallel-coordinates/animated-parallel-coordinates';
+import BrushedParallelCoordinates from './parallel-coordinates/brushed-parallel-coordinates';
 
 import BasicSunburst from './sunbursts/basic-sunburst';
 import ClockExample from './sunbursts/clock-example';
@@ -212,6 +218,10 @@ const mainShowCase = {
   LabelSeriesExample,
   GradientExample,
   NullDataExample,
+  ZoomableChartExample,
+  SelectionPlotExample,
+  DragableChartExample,
+  BidirectionDragChart,
 
   SensibleDefaults,
   ColorInXYPlot,
@@ -261,6 +271,7 @@ const mainShowCase = {
 
   BasicParallelCoordinates,
   AnimatedParallelCoordinates,
+  BrushedParallelCoordinates,
 
   BasicSankeyExample,
   VoronoiSankeyExample,

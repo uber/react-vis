@@ -32,6 +32,9 @@ const PARALLEL_COORDINATES_PROPS = {
 
 In such a case, there would be ONE polygon rendered for four variables (nice/explosions/wow/sickMoves), because those values are listed in the domains prop.
 
+The ParallelCoordinates also features a stateful brushing mode in which your user can brush and drag on the the chart to selected and unselected lines. See the [highlight](highlight.md) component for more details.
+
+<!-- INJECT:"BrushedParallelCoordinatesWithLink" -->
 
 ## API Reference
 #### data
@@ -90,6 +93,11 @@ Type: `Object`
 Default: `{left: 40, right: 10, top: 10, bottom: 40}`
 Margin around the chart.
 
+#### brushing
+Type: `Boolean`
+Default: false
+Enable stateful brushing on parallel coordinates
+
 ### style (optional)
 Type: `object`
 An object that contains CSS properties with which the axis component can be entirely re-styled.
@@ -108,9 +116,14 @@ Most generally, there are three top level components `axes`, `labels`, and `line
   },
   line: {
     strokeOpacity: 1
+  },
+  deselectedLineStyle: {
+    strokeOpacity: 0.1
   }
 }}/>
 ```
+
+If you are using the stateful brushing mode and have filtered out a line then, in addition to the previous styles that were applied to a particular line, deselectedLineStyle will also be applied.
 
 #### animation (optional)
 Type: `boolean|Object`

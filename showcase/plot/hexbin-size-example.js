@@ -29,7 +29,7 @@ import {
   HexbinSeries
 } from 'index';
 
-import DATA from '../axes/car-data.json';
+import DATA from '../datasets/car-data.json';
 
 const DIMENSIONS = [
   'economy (mpg)',

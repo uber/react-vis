@@ -29,7 +29,7 @@ import {
   getXYPlotValues
 } from 'utils/scales-utils';
 import {getStackedData, getSeriesChildren, getSeriesPropsFromChildren} from 'utils/series-utils';
-import {getInnerDimensions, MarginPropType} from 'utils/chart-utils';
+import {getInnerDimensions, MarginPropType, DEFAULT_MARGINS} from 'utils/chart-utils';
 import {AnimationPropType} from 'animation';
 import {
   CONTINUOUS_COLOR_RANGE,
@@ -51,13 +51,6 @@ const ATTRIBUTES = [
   'opacity',
   'size'
 ];
-
-const DEFAULT_MARGINS = {
-  left: 40,
-  right: 10,
-  top: 10,
-  bottom: 40
-};
 
 /**
  * Remove parents from tree formatted data. deep-equal doesnt play nice with data

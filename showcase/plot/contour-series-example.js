@@ -24,7 +24,7 @@ import ShowcaseButton from '../showcase-components/showcase-button';
 
 import {XYPlot, XAxis, YAxis, ContourSeries, MarkSeriesCanvas, Borders} from 'index';
 
-import DATA from './old-faithful.json';
+import DATA from '../datasets/old-faithful.json';
 
 function updateData() {
   return DATA.map(row => ({

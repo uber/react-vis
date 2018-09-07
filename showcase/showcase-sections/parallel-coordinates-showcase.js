@@ -4,7 +4,8 @@ import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
 const {
   AnimatedParallelCoordinates,
-  BasicParallelCoordinates
+  BasicParallelCoordinates,
+  BrushedParallelCoordinates
 } = showCase;
 
 /* eslint-disable max-len */
@@ -18,6 +19,10 @@ const PARALLEL_COORDINATES = [{
   name: 'Animated Parallel Coordinates',
   component: AnimatedParallelCoordinates,
   componentName: 'AnimatedParallelCoordinates'
+}, {
+  name: 'Brushed Parallel Coordinates',
+  component: BrushedParallelCoordinates,
+  componentName: 'BrushedParallelCoordinates'
 }];
 /* eslint-enable max-len */
 

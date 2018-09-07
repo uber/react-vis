@@ -19,62 +19,45 @@
 // THE SOFTWARE.
 
 import React, {Component} from 'react';
-import {format} from 'd3-format';
 
 import {ParallelCoordinates} from 'index';
+import IrisData from '../datasets/iris.json';
 
-const DATA = [{
-  name: 'Mercedes',
-  mileage: 7,
-  price: 10,
-  safety: 8,
-  performance: 9,
-  interior: 7,
-  warranty: 7
-}, {
-  name: 'Honda',
-  mileage: 8,
-  price: 6,
-  safety: 9,
-  performance: 6,
-  interior: 3,
-  warranty: 9,
-  style: {
-    strokeWidth: 3,
-    strokeDasharray: '2, 2'
-  }
-}, {
-  name: 'Chevrolet',
-  mileage: 5,
-  price: 4,
-  safety: 6,
-  performance: 4,
-  interior: 5,
-  warranty: 6}
-];
+// {"sepal length": 5.1, "sepal width": 3.5, "petal length": 1.4, "petal width": 0.2, "species": "setosa"},
 
-const basicFormat = format('.2r');
-const wideFormat = format('.3r');
+const SPECIES_COLORS = {
+  setosa: '#12939A',
+  virginica: '#79C7E3',
+  versicolor: '#1A3177'
+};
 
-export default class BasicParallelCoordinates extends Component {
+const domainStructure = Object.keys(IrisData[0])
+  .filter(name => name !== 'species')
+  .map(name => ({name, domain: [Infinity, -Infinity]}));
+
+const domains = IrisData.reduce((acc, row) => {
+  return acc.map(d => {
+    return {
+      name: d.name,
+      domain: [
+        Math.min(d.domain[0], row[d.name]),
+        Math.max(d.domain[1], row[d.name])
+      ]
+    };
+  });
+}, domainStructure);
+
+export default class BrushedParallelCoordinates extends Component {
   render() {
     return (
       <ParallelCoordinates
-        data={DATA}
-        tickFormat={t => wideFormat(t)}
-        margin={50}
-        colorRange={['#172d47', '#911116', '#998965']}
-        domains={[
-          {name: 'mileage', domain: [0, 10]},
-          {name: 'price', domain: [2, 16], tickFormat: t => `$${basicFormat(t)}`, getValue: d => d.price},
-          {name: 'safety', domain: [5, 10], getValue: d => d.safety},
-          {name: 'performance', domain: [0, 10], getValue: d => d.performance},
-          {name: 'interior', domain: [0, 7], getValue: d => d.interior},
-          {name: 'warranty', domain: [10, 2], getValue: d => d.warranty}
-        ]}
-        showMarks
-        width={400}
-        height={300} />
+        animation
+        brushing
+        data={IrisData.map(d => ({...d, color: SPECIES_COLORS[d.species]}))}
+        domains={domains}
+        margin={60}
+        width={600}
+        height={400} />
     );
   }
 }
