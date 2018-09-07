@@ -65,7 +65,7 @@ class Highlight extends AbstractSeries {
     const clickedOutsideDragY = dragArea && ((yLoc < top) || (yLoc > bottom));
     if (enableX && enableY) {
       return clickedOutsideDragX || clickedOutsideDragY;
-    } 
+    }
     if (enableX) {
       return clickedOutsideDragX;
     }
@@ -133,7 +133,6 @@ class Highlight extends AbstractSeries {
     };
 
     const clickedOutsideDrag = this._clickedOutsideDrag(xLoc, yLoc);
-    console.log(clickedOutsideDrag)
     if ((drag && !dragArea) || !drag || clickedOutsideDrag) {
       startArea(false, clickedOutsideDrag);
 
