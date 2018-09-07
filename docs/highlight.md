@@ -25,13 +25,13 @@ It is quite easy to drop this functionality into an existing chart, for example:
     data={data}/>
   <Highlight
     drag
-    enableY
+    enableX={false}
     onBrush={area => this.setState({filter: area})}
     onDrag={area => this.setState({filter: area})}/>
 </XYPlot>
 ```
 
-An important point to notice here is that direction responsiveness (the thing that makes calling on brush and on drag return meaningful values) is OPT IN. This means that if you want the highlight component to tell you where it's been, you need to given it explicit permission to do so. VERY IMPORTANT! 
+An important point to notice here is that direction responsiveness (the thing that makes calling on brush and on drag return meaningful values) is OPT OUT. VERY IMPORTANT! See examples for more details.
 
 
 <!-- INJECT:"DragableChartExampleWithLink" -->
@@ -63,12 +63,12 @@ Enable dragging interactions
 
 ### enableX (optional)
 Type: `Boolean`
-Defaults to `false`
+Defaults to `true`
 Enable brushing and dragging in the x direction
 
 ### enableY (optional)
 Type: `Boolean`
-Defaults to `false`
+Defaults to `true`
 Enable brushing and dragging in the y direction
 
 ### highlightX (optional)

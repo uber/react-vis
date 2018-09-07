@@ -59,10 +59,20 @@ class Highlight extends AbstractSeries {
   }
 
   _clickedOutsideDrag(xLoc, yLoc) {
-    const {dragArea, brushArea} = this.state;
-    const clickedOutsideDragX = dragArea && ((xLoc < brushArea.left) || (xLoc > brushArea.right));
-    const clickedOutsideDragY = dragArea && ((yLoc < brushArea.top) || (yLoc > brushArea.bottom));
-    return clickedOutsideDragX || clickedOutsideDragY;
+    const {enableX, enableY} = this.props;
+    const {dragArea, brushArea: {left, right, top, bottom}} = this.state;
+    const clickedOutsideDragX = dragArea && ((xLoc < left) || (xLoc > right));
+    const clickedOutsideDragY = dragArea && ((yLoc < top) || (yLoc > bottom));
+    if (enableX && enableY) {
+      return clickedOutsideDragX || clickedOutsideDragY;
+    } 
+    if (enableX) {
+      return clickedOutsideDragX;
+    }
+    if (enableY) {
+      return clickedOutsideDragY;
+    }
+    return true;
   }
 
   _convertAreaToCoordinates(brushArea) {
@@ -123,7 +133,7 @@ class Highlight extends AbstractSeries {
     };
 
     const clickedOutsideDrag = this._clickedOutsideDrag(xLoc, yLoc);
-
+    console.log(clickedOutsideDrag)
     if ((drag && !dragArea) || !drag || clickedOutsideDrag) {
       startArea(false, clickedOutsideDrag);
 
@@ -276,8 +286,8 @@ Highlight.displayName = 'HighlightOverlay';
 Highlight.defaultProps = {
   color: 'rgb(77, 182, 172)',
   className: '',
-  enableX: false,
-  enableY: false,
+  enableX: true,
+  enableY: true,
   opacity: 0.3
 };
 

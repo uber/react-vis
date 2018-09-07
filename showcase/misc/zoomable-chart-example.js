@@ -94,8 +94,6 @@ export default class ZoomableChartExample extends React.Component {
             {series.map(entry => <LineSeries key={entry.title} data={entry.data} />)}
 
             <Highlight
-              enableX
-              enableY
               onBrushEnd={area => this.setState({lastDrawLocation: area})}
               onDrag={area => {
                 this.setState({

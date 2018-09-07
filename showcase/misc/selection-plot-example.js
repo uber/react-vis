@@ -71,7 +71,7 @@ export default class SelectionPlotExample extends React.Component {
             getColor={d => highlightPoint(d) ? '#EF5D28' : '#12939A'}
             data={data}/>
           <Highlight
-            enableY
+            enableX={false}
             className="selection-example"
             onBrush={area => this.setState({filter: area})}
             onBrushEnd={area => this.setState({filter: area})}/>
