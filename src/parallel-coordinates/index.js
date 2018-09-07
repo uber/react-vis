@@ -235,7 +235,7 @@ class ParallelCoordinates extends Component {
             onBrushEnd={trigger}
             onDragEnd={trigger}
             highlightWidth={(width - marginLeft - marginRight) / domains.length}
-            disableX />);
+            enableY />);
         })}
       </XYPlot>
     );

@@ -31,7 +31,7 @@ import {
   Hint
 } from 'index';
 
-import DATA from './old-faithful.json';
+import DATA from '../datasets/old-faithful.json';
 
 function updateData() {
   return DATA.map(row => ({

@@ -22,8 +22,8 @@ class Highlight extends AbstractSeries {
   _getDrawArea(xLoc, yLoc) {
     const {startLocX, startLocY} = this.state;
     const {
-      disableX,
-      disableY,
+      enableX,
+      enableY,
       highlightWidth,
       highlightHeight,
       innerWidth,
@@ -39,22 +39,22 @@ class Highlight extends AbstractSeries {
     const touchHeight = highlightHeight || plotHeight;
 
     return {
-      bottom: disableY ? touchHeight : Math.max(startLocY, yLoc),
-      right: disableX ? touchWidth : Math.max(startLocX, xLoc),
-      left: disableX ? 0 : Math.min(xLoc, startLocX),
-      top: disableY ? 0 : Math.min(yLoc, startLocY)
+      bottom: enableY ? Math.max(startLocY, yLoc) : touchHeight,
+      right: enableX ? Math.max(startLocX, xLoc) : touchWidth,
+      left: enableX ? Math.min(xLoc, startLocX) : 0,
+      top: enableY ? Math.min(yLoc, startLocY) : 0
     };
   }
 
   _getDragArea(xLoc, yLoc) {
-    const {disableX, disableY} = this.props;
+    const {enableX, enableY} = this.props;
     const {startLocX, startLocY, dragArea} = this.state;
 
     return {
-      bottom: dragArea.bottom + (disableY ? 0 : (yLoc - startLocY)),
-      left: dragArea.left + (disableX ? 0 : (xLoc - startLocX)),
-      right: dragArea.right + (disableX ? 0 : (xLoc - startLocX)),
-      top: dragArea.top + (disableY ? 0 : (yLoc - startLocY))
+      bottom: dragArea.bottom + (enableY ? (yLoc - startLocY) : 0),
+      left: dragArea.left + (enableX ? (xLoc - startLocX) : 0),
+      right: dragArea.right + (enableX ? (xLoc - startLocX) : 0),
+      top: dragArea.top + (enableY ? (yLoc - startLocY) : 0)
     };
   }
 
@@ -66,7 +66,8 @@ class Highlight extends AbstractSeries {
   }
 
   _convertAreaToCoordinates(brushArea) {
-    const {disableX, disableY, marginLeft, marginTop} = this.props;
+    // NOTE only continuous scales are supported for brushing/getting coordinates back
+    const {enableX, enableY, marginLeft, marginTop} = this.props;
     const xScale = getAttributeScale(this.props, 'x');
     const yScale = getAttributeScale(this.props, 'y');
 
@@ -74,31 +75,30 @@ class Highlight extends AbstractSeries {
     // this is specifically enabled to ensure brushing on mixed categorical and linear
     // charts will run as expected
 
-    if (disableX && disableY) {
-      return {};
+    if (enableX && enableY) {
+      return {
+        bottom: yScale.invert(brushArea.bottom),
+        left: xScale.invert(brushArea.left - marginLeft),
+        right: xScale.invert(brushArea.right - marginLeft),
+        top: yScale.invert(brushArea.top)
+      };
     }
 
-    if (disableX) {
+    if (enableY) {
       return {
         bottom: yScale.invert(brushArea.bottom - marginTop),
         top: yScale.invert(brushArea.top - marginTop)
       };
     }
 
-    if (disableY) {
+    if (enableX) {
       return {
         left: xScale.invert(brushArea.left - marginLeft),
         right: xScale.invert(brushArea.right - marginLeft)
       };
     }
 
-    // NOTE only continuous scales are supported for brushing/getting coordinates back
-    return {
-      bottom: yScale.invert(brushArea.bottom),
-      left: xScale.invert(brushArea.left - marginLeft),
-      right: xScale.invert(brushArea.right - marginLeft),
-      top: yScale.invert(brushArea.top)
-    };
+    return {};
   }
 
   startBrushing(e) {
@@ -276,15 +276,15 @@ Highlight.displayName = 'HighlightOverlay';
 Highlight.defaultProps = {
   color: 'rgb(77, 182, 172)',
   className: '',
-  disableX: false,
-  disableY: false,
+  enableX: false,
+  enableY: false,
   opacity: 0.3
 };
 
 Highlight.propTypes = {
   ...AbstractSeries.propTypes,
-  disableX: PropTypes.bool,
-  disableY: PropTypes.bool,
+  enableX: PropTypes.bool,
+  enableY: PropTypes.bool,
   highlightHeight: PropTypes.number,
   highlightWidth: PropTypes.number,
   highlightX: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
