@@ -90,29 +90,13 @@ class BarSeries extends AbstractSeries {
           // bars of a same 'linePosAttr' value (a.k.a. sameTypeTotal)
           const totalSpaceAvailable = halfSpace * 2;
           const totalSpaceCenter = lineFunctor(d);
-          // totalSpaceStartingPoint is the first pixel were we can start
-          // drawing bars
+          // totalSpaceStartingPoint is the first pixel were we can start drawing
           const totalSpaceStartingPoint = totalSpaceCenter - halfSpace;
-
-          // When sameTypeTotal > 1, we want to provide equal space per each
-          // bar we want to draw. The initial idea would be to divide the
-          // totalSpaceAvailable by the number of bars we need to draw (sameTypeTotal).
-          // If we do that, the pixel where one bar ends would be the same pixel were
-          // the next bar starts (so the bars would be overlapped by 1 pixel).
-          // To avoid that, we need to move the second bar 1 pixel to the right. But then
-          // the third bar would overlap with the second one by 2 pixels.
-          // We move the third bar 2 pixels to the right, but then the fourth one gets
-          // overlapped by 3 pixels. By continuing with this movements, the last
-          // bar of the sequence should get moved sameTypeTotal-1 pixels to the right.
-          // But now the issue is that the last bar would be exceeding (by
-          // sameTypeTotal-1 pixels) the space we had available for all bars (totalSpaceAvailable).
-
-          // The solution then is to extract an equal portion of that exceeding space
-          // from the space available for each bar. That's what we are calculating
-          // into spaceTakenByInterBarsPixels, and we then use it to calculate
-          // the space available per each bar (spacePerBar)
+          // spaceTakenByInterBarsPixels has the overhead space consumed by each bar of sameTypeTotal
           const spaceTakenByInterBarsPixels = (sameTypeTotal - 1) / sameTypeTotal;
+          // spacePerBar is the space we have available to draw sameTypeIndex bar
           const spacePerBar = (totalSpaceAvailable / sameTypeTotal) - spaceTakenByInterBarsPixels;
+          // barStartingPoint is the first pixel were we can start drawing sameTypeIndex bar
           const barStartingPoint = totalSpaceStartingPoint + spacePerBar * sameTypeIndex +
             sameTypeIndex;
 
