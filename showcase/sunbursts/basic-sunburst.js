@@ -24,7 +24,7 @@ import Sunburst from 'sunburst';
 import {EXTENDED_DISCRETE_COLOR_RANGE} from 'theme';
 import {LabelSeries} from 'index';
 
-import D3FlareData from '../treemap/d3-flare-example.json';
+import D3FlareData from '../datasets/d3-flare-example.json';
 
 const LABEL_STYLE = {
   fontSize: '8px',
