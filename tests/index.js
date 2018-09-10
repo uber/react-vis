@@ -28,6 +28,7 @@ import './utils/scales-utils-tests';
 import './utils/series-utils-tests';
 
 import './components';
+import './components/line-series-canvas-test';
 import './components/animation-tests';
 import './components/area-series-tests';
 import './components/arc-series-tests';

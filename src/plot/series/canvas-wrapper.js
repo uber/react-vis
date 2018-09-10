@@ -190,6 +190,7 @@ class CanvasWrapper extends Component {
           }}
           ref={ref => (this.canvas = ref)}
         />
+        {this.props.children}
       </div>
     );
   }

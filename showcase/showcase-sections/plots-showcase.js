@@ -26,6 +26,7 @@ const {
   LineChartManyColors,
   LineChartWithStyle,
   LineChartCanvas,
+  LineSeriesCanvas,
   LineMarkChart,
   MixedStackedChart,
   StackedVerticalBarChart,
@@ -59,6 +60,10 @@ const PLOTS = [{
 }, {
   component: LineChartCanvas,
   componentName: 'LineChartCanvas',
+  name: 'Line Series Canvas'
+}, {
+  component: LineSeriesCanvas,
+  componentName: 'LineSeriesCanvas',
   name: 'Line Series Canvas'
 }, {
   component: LineChartManyColors,

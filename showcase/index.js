@@ -27,6 +27,7 @@ import LineChartManyColors from './color/line-chart-many-colors';
 import LineChartCanvas from './plot/line-chart-canvas';
 import LineChartWithStyle from './plot/line-chart-with-style';
 import LineMarkChart from './plot/linemark-chart';
+import LineSeriesCanvas from './plot/line-series-canvas';
 import BarChart from './plot/bar-chart';
 import BigBaseBarChart from './plot/big-base-bar-chart';
 import StackedVerticalBarChart from './plot/stacked-vertical-bar-chart';
@@ -167,6 +168,7 @@ const mainShowCase = {
   LineChartCanvas,
   LineChartWithStyle,
   LineMarkChart,
+  LineSeriesCanvas,
   BarChart,
   BigBaseBarChart,
   StackedVerticalBarChart,
