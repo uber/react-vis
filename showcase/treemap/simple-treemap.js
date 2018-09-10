@@ -22,7 +22,7 @@ import React from 'react';
 
 import Treemap from 'treemap';
 
-import D3FlareData from './d3-flare-example.json';
+import D3FlareData from '../datasets/d3-flare-example.json';
 import ShowcaseButton from '../showcase-components/showcase-button';
 
 const MODE = [
