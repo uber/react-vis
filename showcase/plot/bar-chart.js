@@ -27,8 +27,26 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   VerticalBarSeries,
-  VerticalBarSeriesCanvas
+  VerticalBarSeriesCanvas,
+  LabelSeries
 } from 'index';
+
+const greenData = [
+  {x: 'A', y: 10},
+  {x: 'B', y: 5},
+  {x: 'C', y: 15}
+];
+
+const blueData = [
+  {x: 'A', y: 12},
+  {x: 'B', y: 2},
+  {x: 'C', y: 11}
+];
+
+const labelData = greenData.map((d, idx) => ({
+  x: d.x,
+  y: Math.max(greenData[idx].y, blueData[idx].y)
+}));
 
 export default class Example extends React.Component {
   state = {
@@ -56,17 +74,9 @@ export default class Example extends React.Component {
           <YAxis />
           <BarSeries
             className="vertical-bar-series-example"
-            data={[
-              {x: 'A', y: 10},
-              {x: 'B', y: 5},
-              {x: 'C', y: 15}
-            ]}/>
-          <BarSeries
-            data={[
-              {x: 'A', y: 12},
-              {x: 'B', y: 2},
-              {x: 'C', y: 11}
-            ]}/>
+            data={greenData}/>
+          <BarSeries data={blueData}/>
+          <LabelSeries data={labelData} getLabel={d => d.x}/>
         </XYPlot>
       </div>
     );
