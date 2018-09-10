@@ -160,6 +160,7 @@ const mainShowCase = {
   LineChartCanvas,
   LineChartWithStyle,
   LineMarkChart,
+  LineSeriesCanvas,
   BarChart,
   BigBaseBarChart,
   StackedVerticalBarChart,
