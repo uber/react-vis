@@ -16,7 +16,7 @@ testRenderWithProps(VerticalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
 test('BarSeries: Showcase Example - BarChart', t => {
   const $ = mount(<BarChart />);
-  t.equal($.text(), 'TOGGLE TO CANVASABC02468101214', 'should fine the right text content');
+  t.equal($.text(), 'TOGGLE TO CANVASABC02468101214ABC', 'should fine the right text content');
   t.equal($.find('.rv-xy-plot__series--bar rect').length, 6, 'should find the right number of bars');
   t.equal($.find('.vertical-bar-series-example').length, 1, 'should find the right number of custom named series');
 
