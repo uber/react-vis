@@ -7,10 +7,7 @@
   "main": "dist",
   "module": "es",
   "jsnext:main": "es",
-  "files": [
-    "dist",
-    "es"
-  ],
+  "files": ["dist", "es"],
   "repository": {
     "type": "git",
     "url": "https://github.com/uber-common/react-vis.git"
@@ -31,6 +28,7 @@
     "test": "node --inspect ./node_modules/.bin/babel-node ./tests/index.js",
     "full-test": "npm run lint && npm run cover",
     "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test",
+    "prettier": "prettier --write $(git ls-files | grep '.js$')",
     "remove-unpm-rfs": "./remove-refs-to-unpm.pl"
   },
   "dependencies": {
@@ -88,39 +86,22 @@
   "peerDependencies": {
     "react": "15.3.0 - 16.x"
   },
-  "keywords": [
-    "d3",
-    "react",
-    "visualization",
-    "chart",
-    "es6",
-    "babel"
-  ],
+  "keywords": ["d3", "react", "visualization", "chart", "es6", "babel"],
   "babel": {
     "plugins": [
       [
         "module-resolver",
         {
-          "root": [
-            "./src"
-          ]
+          "root": ["./src"]
         }
       ]
     ],
     "env": {
       "production": {
-        "presets": [
-          "es2015",
-          "stage-0",
-          "react"
-        ]
+        "presets": ["es2015", "stage-0", "react"]
       },
       "development": {
-        "presets": [
-          "es2015",
-          "stage-0",
-          "react"
-        ]
+        "presets": ["es2015", "stage-0", "react"]
       },
       "es": {
         "presets": [
@@ -137,10 +118,7 @@
     }
   },
   "nyc": {
-    "exclude": [
-      "tests/**/*.js",
-      "src/utils/react-utils.js"
-    ]
+    "exclude": ["tests/**/*.js", "src/utils/react-utils.js"]
   },
   "engines": {
     "node": ">=0.10.0",
