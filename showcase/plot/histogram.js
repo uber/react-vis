@@ -50,12 +50,13 @@ export default class Example extends React.Component {
         yDomain={[0.1, 2.1]}
         xType="time"
         width={300}
-        height={300} >
+        height={300}
+      >
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis />
         <YAxis />
-        <VerticalRectSeries data={DATA} style={{stroke: '#fff'}}/>
+        <VerticalRectSeries data={DATA} style={{stroke: '#fff'}} />
       </XYPlot>
     );
   }

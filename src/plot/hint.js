@@ -75,7 +75,6 @@ function defaultFormat(value) {
 }
 
 class Hint extends PureComponent {
-
   static get propTypes() {
     return {
       marginTop: PropTypes.number,
@@ -137,10 +136,7 @@ class Hint extends PureComponent {
       };
     }
 
-    const {
-      innerWidth,
-      marginRight
-    } = this.props;
+    const {innerWidth, marginRight} = this.props;
     return {
       right: marginRight + innerWidth - x
     };
@@ -180,10 +176,7 @@ class Hint extends PureComponent {
       };
     }
 
-    const {
-      innerHeight,
-      marginBottom
-    } = this.props;
+    const {innerHeight, marginBottom} = this.props;
     return {
       bottom: marginBottom + innerHeight - y
     };
@@ -213,30 +206,30 @@ class Hint extends PureComponent {
     // TODO: print warning that this feature is deprecated and support will be
     // removed in next major release.
     switch (orientation) {
-    case ORIENTATION.BOTTOM_LEFT:
-      return {
-        horizontal: ALIGN.LEFT,
-        vertical: ALIGN.BOTTOM
-      };
-    case ORIENTATION.BOTTOM_RIGHT:
-      return {
-        horizontal: ALIGN.RIGHT,
-        vertical: ALIGN.BOTTOM
-      };
-    case ORIENTATION.TOP_LEFT:
-      return {
-        horizontal: ALIGN.LEFT,
-        vertical: ALIGN.TOP
-      };
-    case ORIENTATION.TOP_RIGHT:
-      return {
-        horizontal: ALIGN.RIGHT,
-        vertical: ALIGN.TOP
-      };
-    default:
-      // fall back to horizontalAlign, verticalAlign that are either
-      // provided or defaulted to AUTO.  So, don't change things
-      break;
+      case ORIENTATION.BOTTOM_LEFT:
+        return {
+          horizontal: ALIGN.LEFT,
+          vertical: ALIGN.BOTTOM
+        };
+      case ORIENTATION.BOTTOM_RIGHT:
+        return {
+          horizontal: ALIGN.RIGHT,
+          vertical: ALIGN.BOTTOM
+        };
+      case ORIENTATION.TOP_LEFT:
+        return {
+          horizontal: ALIGN.LEFT,
+          vertical: ALIGN.TOP
+        };
+      case ORIENTATION.TOP_RIGHT:
+        return {
+          horizontal: ALIGN.RIGHT,
+          vertical: ALIGN.TOP
+        };
+      default:
+        // fall back to horizontalAlign, verticalAlign that are either
+        // provided or defaulted to AUTO.  So, don't change things
+        break;
     }
   }
 
@@ -251,17 +244,19 @@ class Hint extends PureComponent {
    */
   _getAlign(x, y) {
     const {
-      innerWidth, innerHeight,
+      innerWidth,
+      innerHeight,
       orientation,
       align: {horizontal, vertical}
     } = this.props;
-    const align = orientation ?
-      this._mapOrientationToAlign(orientation) : {horizontal, vertical};
+    const align = orientation
+      ? this._mapOrientationToAlign(orientation)
+      : {horizontal, vertical};
     if (horizontal === ALIGN.AUTO) {
-      align.horizontal = (x > innerWidth / 2) ? ALIGN.LEFT : ALIGN.RIGHT;
+      align.horizontal = x > innerWidth / 2 ? ALIGN.LEFT : ALIGN.RIGHT;
     }
     if (vertical === ALIGN.AUTO) {
-      align.vertical = (y > innerHeight / 2) ? ALIGN.TOP : ALIGN.BOTTOM;
+      align.vertical = y > innerHeight / 2 ? ALIGN.TOP : ALIGN.BOTTOM;
     }
     return align;
   }
@@ -285,40 +280,40 @@ class Hint extends PureComponent {
   _getYCSS(verticalAlign, y) {
     // obtain yCSS
     switch (verticalAlign) {
-    case ALIGN.TOP_EDGE:
-      // this pins x to top edge
-      return this._getCSSTop(null);
-    case ALIGN.BOTTOM_EDGE:
-      // this pins x to bottom edge
-      return this._getCSSBottom(null);
-    case ALIGN.BOTTOM:
-      // this places hint text to the bottom of center, so set its top edge
-      return this._getCSSTop(y);
-    case ALIGN.TOP:
-    default:
-      // this places hint text to the top of center, so set its bottom edge
-      // default case should not be possible but if it happens set to BOTTOM
-      return this._getCSSBottom(y);
+      case ALIGN.TOP_EDGE:
+        // this pins x to top edge
+        return this._getCSSTop(null);
+      case ALIGN.BOTTOM_EDGE:
+        // this pins x to bottom edge
+        return this._getCSSBottom(null);
+      case ALIGN.BOTTOM:
+        // this places hint text to the bottom of center, so set its top edge
+        return this._getCSSTop(y);
+      case ALIGN.TOP:
+      default:
+        // this places hint text to the top of center, so set its bottom edge
+        // default case should not be possible but if it happens set to BOTTOM
+        return this._getCSSBottom(y);
     }
   }
 
   _getXCSS(horizontal, x) {
     // obtain xCSS
     switch (horizontal) {
-    case ALIGN.LEFT_EDGE:
-      // this pins x to left edge
-      return this._getCSSLeft(null);
-    case ALIGN.RIGHT_EDGE:
-      // this pins x to left edge
-      return this._getCSSRight(null);
-    case ALIGN.LEFT:
-      // this places hint text to the left of center, so set its right edge
-      return this._getCSSRight(x);
-    case ALIGN.RIGHT:
-    default:
-      // this places hint text to the right of center, so set its left edge
-      // default case should not be possible but if it happens set to RIGHT
-      return this._getCSSLeft(x);
+      case ALIGN.LEFT_EDGE:
+        // this pins x to left edge
+        return this._getCSSLeft(null);
+      case ALIGN.RIGHT_EDGE:
+        // this pins x to left edge
+        return this._getCSSRight(null);
+      case ALIGN.LEFT:
+        // this places hint text to the left of center, so set its right edge
+        return this._getCSSRight(x);
+      case ALIGN.RIGHT:
+      default:
+        // this places hint text to the right of center, so set its left edge
+        // default case should not be possible but if it happens set to RIGHT
+        return this._getCSSLeft(x);
     }
   }
 
@@ -330,8 +325,9 @@ class Hint extends PureComponent {
    */
   _getAlignClassNames(align) {
     const {orientation} = this.props;
-    const orientationClass = orientation ?
-      `rv-hint--orientation-${orientation}` : '';
+    const orientationClass = orientation
+      ? `rv-hint--orientation-${orientation}`
+      : '';
     return `${orientationClass} rv-hint--horizontalAlign-${align.horizontal}
      rv-hint--verticalAlign-${align.vertical}`;
   }
@@ -343,10 +339,7 @@ class Hint extends PureComponent {
    * @private
    */
   _getPositionInfo() {
-    const {
-      value,
-      getAlignStyle
-    } = this.props;
+    const {value, getAlignStyle} = this.props;
 
     const x = getAttributeFunctor(this.props, 'x')(value);
     const y = getAttributeFunctor(this.props, 'y')(value);
@@ -354,19 +347,15 @@ class Hint extends PureComponent {
     const align = this._getAlign(x, y);
 
     return {
-      position: getAlignStyle ? getAlignStyle(align, x, y) :
-        this._getAlignStyle(align, x, y),
+      position: getAlignStyle
+        ? getAlignStyle(align, x, y)
+        : this._getAlignStyle(align, x, y),
       className: this._getAlignClassNames(align)
     };
   }
 
   render() {
-    const {
-      value,
-      format,
-      children,
-      style
-    } = this.props;
+    const {value, format, children, style} = this.props;
 
     const {position, className} = this._getPositionInfo();
     return (
@@ -376,19 +365,25 @@ class Hint extends PureComponent {
           ...style,
           ...position,
           position: 'absolute'
-        }}>
-        {children ?
-          children :
+        }}
+      >
+        {children ? (
+          children
+        ) : (
           <div className="rv-hint__content" style={style.content}>
-            {format(value).map((formattedProp, i) =>
+            {format(value).map((formattedProp, i) => (
               <div key={`rv-hint${i}`} style={style.row}>
-                <span className="rv-hint__title" style={style.title}>{formattedProp.title}</span>
+                <span className="rv-hint__title" style={style.title}>
+                  {formattedProp.title}
+                </span>
                 {': '}
-                <span className="rv-hint__value" style={style.value}>{formattedProp.value}</span>
+                <span className="rv-hint__value" style={style.value}>
+                  {formattedProp.value}
+                </span>
               </div>
-            )}
+            ))}
           </div>
-        }
+        )}
       </div>
     );
   }

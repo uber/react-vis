@@ -39,32 +39,40 @@ const blobbedHistry = HistoryLog.reduce((acc, row) => {
   return acc;
 }, {});
 
-const commitsByAuthor = Object.keys(blobbedHistry).map((email, index) => {
-  return blobbedHistry[email].sort((a, b) => {
-    return new Date(a.date).getTime() - new Date(b.date).getTime();
-  }).reduce((acc, commit) => {
-    const x = new Date(commit.date).getTime();
-    if (!x) {
-      return acc;
-    }
-    const previousLog = acc[acc.length - 1];
-    acc.push({
-      x,
-      y: (previousLog ? previousLog.y : 0) + 1,
-      commiter: commit.author,
-      rotation: 30
-    });
-    return acc;
-  }, []);
-}).filter(commits => commits.length > 0);
+const commitsByAuthor = Object.keys(blobbedHistry)
+  .map((email, index) => {
+    return blobbedHistry[email]
+      .sort((a, b) => {
+        return new Date(a.date).getTime() - new Date(b.date).getTime();
+      })
+      .reduce((acc, commit) => {
+        const x = new Date(commit.date).getTime();
+        if (!x) {
+          return acc;
+        }
+        const previousLog = acc[acc.length - 1];
+        acc.push({
+          x,
+          y: (previousLog ? previousLog.y : 0) + 1,
+          commiter: commit.author,
+          rotation: 30
+        });
+        return acc;
+      }, []);
+  })
+  .filter(commits => commits.length > 0);
 
 const lines = commitsByAuthor.map((commits, index) => {
   return (
     <LineMarkSeries
       data={commits}
       key={index}
-      color={EXTENDED_DISCRETE_COLOR_RANGE[index % EXTENDED_DISCRETE_COLOR_RANGE.length]}
-      />
+      color={
+        EXTENDED_DISCRETE_COLOR_RANGE[
+          index % EXTENDED_DISCRETE_COLOR_RANGE.length
+        ]
+      }
+    />
   );
 });
 
@@ -89,9 +97,10 @@ export default class HistoryExample extends React.Component {
             margin={50}
             yType="log"
             xType="time"
-            height={500}>
+            height={500}
+          >
             <XAxis />
-            <YAxis tickFormat={t => t}/>
+            <YAxis tickFormat={t => t} />
             {lines}
             <LabelSeries data={authors} />
           </FlexibleWidthXYPlot>

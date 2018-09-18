@@ -32,9 +32,7 @@ import {
 export default class Example extends React.Component {
   render() {
     return (
-      <XYPlot
-        width={300}
-        height={300}>
+      <XYPlot width={300} height={300}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis />
@@ -47,7 +45,8 @@ export default class Example extends React.Component {
             {x: 2, y: 5, xVariance: 0.1, yVariance: 3},
             {x: 3, y: 15, xVariance: 0.4, yVariance: 10},
             {x: 2.5, y: 7, xVariance: 0.3, yVariance: 4}
-          ]}/>
+          ]}
+        />
       </XYPlot>
     );
   }

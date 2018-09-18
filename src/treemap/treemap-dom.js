@@ -38,8 +38,11 @@ class TreemapDOM extends React.Component {
     const useCirclePacking = mode === 'circlePack';
     return (
       <div
-        className={`rv-treemap ${useCirclePacking ? 'rv-treemap-circle-packed' : ''} ${className}`}
-        style={{height, width}}>
+        className={`rv-treemap ${
+          useCirclePacking ? 'rv-treemap-circle-packed' : ''
+        } ${className}`}
+        style={{height, width}}
+      >
         {nodes.map((node, index) => {
           // throw out the rootest node
           if (hideRootNode && !index) {
@@ -59,12 +62,11 @@ class TreemapDOM extends React.Component {
             scales,
             style
           };
-          return (<TreemapLeaf {...nodeProps} key={`leaf-${index}`} />);
+          return <TreemapLeaf {...nodeProps} key={`leaf-${index}`} />;
         })}
       </div>
     );
   }
-
 }
 
 TreemapDOM.displayName = 'TreemapDOM';

@@ -32,23 +32,21 @@ import {
 import ShowcaseButton from '../showcase-components/showcase-button';
 
 function generateData(reversed) {
-  return [
-    'star',
-    'square',
-    'circle',
-    'diamond'
-  ].reduce((acc, row, rowIndex) => {
-    const cellsInRow = [...new Array(5)].map((cell, index) => {
-      return ({
-        x: index,
-        y: reversed ? (5 - rowIndex) * 5 : rowIndex * 5,
-        size: (index + 1) * 3,
-        customComponent: row
+  return ['star', 'square', 'circle', 'diamond'].reduce(
+    (acc, row, rowIndex) => {
+      const cellsInRow = [...new Array(5)].map((cell, index) => {
+        return {
+          x: index,
+          y: reversed ? (5 - rowIndex) * 5 : rowIndex * 5,
+          size: (index + 1) * 3,
+          customComponent: row
+        };
       });
-    });
 
-    return acc.concat(cellsInRow);
-  }, []);
+      return acc.concat(cellsInRow);
+    },
+    []
+  );
 }
 
 const DATA = generateData(false);
@@ -57,18 +55,16 @@ const REVERSED_DATA = generateData(true);
 export default class Example extends React.Component {
   state = {
     reverse: false
-  }
+  };
   render() {
     const {reverse} = this.state;
     return (
       <div>
         <ShowcaseButton
           buttonContent="REVERSE"
-          onClick={() => this.setState({reverse: !reverse})} />
-        <XYPlot
-          margin={50}
-          width={300}
-          height={300}>
+          onClick={() => this.setState({reverse: !reverse})}
+        />
+        <XYPlot margin={50} width={300} height={300}>
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
@@ -76,7 +72,8 @@ export default class Example extends React.Component {
           <CustomSVGSeries
             animation
             style={{stroke: 'red', fill: 'orange'}}
-            data={reverse ? REVERSED_DATA : DATA}/>
+            data={reverse ? REVERSED_DATA : DATA}
+          />
         </XYPlot>
       </div>
     );

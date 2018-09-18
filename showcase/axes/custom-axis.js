@@ -43,9 +43,7 @@ export default class Example extends React.Component {
     };
 
     return (
-      <XYPlot
-        width={300}
-        height={300}>
+      <XYPlot width={300} height={300}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis
@@ -54,14 +52,10 @@ export default class Example extends React.Component {
           labelFormat={v => `Value is ${v}`}
           labelValues={[2]}
           tickValues={[1, 1.5, 2, 3]}
-          style={axisStyle}/>
-        <YAxis hideTicks/>
-        <LineSeries
-          data={[
-            {x: 1, y: 10},
-            {x: 2, y: 5},
-            {x: 3, y: 15}
-          ]}/>
+          style={axisStyle}
+        />
+        <YAxis hideTicks />
+        <LineSeries data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]} />
       </XYPlot>
     );
   }

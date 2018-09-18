@@ -13,14 +13,8 @@ export const GENERIC_XYPLOT_SERIES_PROPS = {
   yRange: [0, 1],
   yDistance: 1,
   yType: 'linear',
-  data: [
-    {x: 1, y: 1},
-    {x: 2, y: 2}
-  ],
-  _allData: [[
-    {x: 1, y: 1},
-    {x: 2, y: 2}
-  ]],
+  data: [{x: 1, y: 1}, {x: 2, y: 2}],
+  _allData: [[{x: 1, y: 1}, {x: 2, y: 2}]],
   onSeriesMouseOver: NOOP,
   onSeriesMouseOut: NOOP,
   onSeriesClick: NOOP,
@@ -42,7 +36,8 @@ export const testRenderWithProps = (Component, props) =>
     Object.keys(props).forEach(propName => {
       assert.ok(
         wrapperProps[propName] === props[propName],
-        `${propName} is set`);
+        `${propName} is set`
+      );
     });
     assert.end();
   });

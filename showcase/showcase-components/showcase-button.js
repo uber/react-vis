@@ -25,9 +25,7 @@ class ShowcaseButton extends React.Component {
   render() {
     const {buttonContent, onClick} = this.props;
     return (
-      <button
-        className="showcase-button"
-        onClick={onClick}>
+      <button className="showcase-button" onClick={onClick}>
         {buttonContent}
       </button>
     );

@@ -31,17 +31,26 @@ import AxisTicks from './axis-ticks';
 import AxisTitle from './axis-title';
 
 const defaultAnimatedProps = [
-  'xRange', 'yRange', 'xDomain', 'yDomain',
-  'width', 'height', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
-  'tickSize', 'tickTotal', 'tickSizeInner', 'tickSizeOuter'
+  'xRange',
+  'yRange',
+  'xDomain',
+  'yDomain',
+  'width',
+  'height',
+  'marginLeft',
+  'marginTop',
+  'marginRight',
+  'marginBottom',
+  'tickSize',
+  'tickTotal',
+  'tickSizeInner',
+  'tickSizeOuter'
 ];
 
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 
 const propTypes = {
-  orientation: PropTypes.oneOf([
-    LEFT, RIGHT, TOP, BOTTOM
-  ]),
+  orientation: PropTypes.oneOf([LEFT, RIGHT, TOP, BOTTOM]),
   attr: PropTypes.string.isRequired,
   attrAxis: PropTypes.string,
   width: PropTypes.number,
@@ -89,7 +98,6 @@ const VERTICAL_CLASS_NAME = 'rv-xy-plot__axis--vertical';
 const HORIZONTAL_CLASS_NAME = 'rv-xy-plot__axis--horizontal';
 
 class Axis extends PureComponent {
-
   /**
    * Define the default values depending on the data passed from the outside.
    * @returns {*} Object of default properties.
@@ -140,17 +148,18 @@ class Axis extends PureComponent {
   }
 
   render() {
-
     const {animation} = this.props;
 
     if (animation) {
-      const animatedProps = animation.nonAnimatedProps ? defaultAnimatedProps.filter(
-        prop => animation.nonAnimatedProps.indexOf(prop) < 0
-      ) : defaultAnimatedProps;
+      const animatedProps = animation.nonAnimatedProps
+        ? defaultAnimatedProps.filter(
+            prop => animation.nonAnimatedProps.indexOf(prop) < 0
+          )
+        : defaultAnimatedProps;
 
       return (
         <Animation {...this.props} {...{animatedProps}}>
-          <Axis {...this.props} animation={null}/>
+          <Axis {...this.props} animation={null} />
         </Animation>
       );
     }
@@ -177,8 +186,9 @@ class Axis extends PureComponent {
       width
     } = props;
     const isVertical = [LEFT, RIGHT].indexOf(orientation) > -1;
-    const axisClassName = isVertical ? VERTICAL_CLASS_NAME :
-      HORIZONTAL_CLASS_NAME;
+    const axisClassName = isVertical
+      ? VERTICAL_CLASS_NAME
+      : HORIZONTAL_CLASS_NAME;
 
     let leftPos = left;
     let topPos = top;
@@ -195,23 +205,29 @@ class Axis extends PureComponent {
       <g
         transform={`translate(${leftPos},${topPos})`}
         className={`${predefinedClassName} ${axisClassName} ${className}`}
-        style={style}>
-        {!hideLine && (<AxisLine
-          height={height}
-          width={width}
-          orientation={orientation}
-          style={{...style, ...style.line}}
-          />)}
-        {!hideTicks && (<AxisTicks {...props} style={{...style, ...style.ticks}}/>)}
-        {title ?
+        style={style}
+      >
+        {!hideLine && (
+          <AxisLine
+            height={height}
+            width={width}
+            orientation={orientation}
+            style={{...style, ...style.line}}
+          />
+        )}
+        {!hideTicks && (
+          <AxisTicks {...props} style={{...style, ...style.ticks}} />
+        )}
+        {title ? (
           <AxisTitle
             position={position}
             title={title}
             height={height}
             width={width}
             style={{...style, ...style.title}}
-            orientation={orientation}/> :
-          null}
+            orientation={orientation}
+          />
+        ) : null}
       </g>
     );
   }

@@ -57,7 +57,8 @@ export default class BrushedParallelCoordinates extends Component {
         domains={domains}
         margin={60}
         width={600}
-        height={400} />
+        height={400}
+      />
     );
   }
 }

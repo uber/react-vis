@@ -51,10 +51,13 @@ const DATA = [
 ].map((d, id) => ({...d, id}));
 
 const getDomain = (data, key) => {
-  const {min, max} = data.reduce((acc, row) => ({
-    min: Math.min(acc.min, row[key]),
-    max: Math.max(acc.max, row[key])
-  }), {min: Infinity, max: -Infinity});
+  const {min, max} = data.reduce(
+    (acc, row) => ({
+      min: Math.min(acc.min, row[key]),
+      max: Math.max(acc.max, row[key])
+    }),
+    {min: Infinity, max: -Infinity}
+  );
   return [min, max];
 };
 
@@ -65,35 +68,39 @@ const width = 300;
 const height = 300;
 
 // Intentionally using explicit sales here to show another way of using the voronoi
-const x = scaleLinear().domain(getDomain(DATA, 'x')).range([0, width]);
-const y = scaleLinear().domain(getDomain(DATA, 'y')).range([height, 0]);
+const x = scaleLinear()
+  .domain(getDomain(DATA, 'x'))
+  .range([0, width]);
+const y = scaleLinear()
+  .domain(getDomain(DATA, 'y'))
+  .range([height, 0]);
 
 export default class Example extends React.Component {
   state = {
     selectedPointId: null,
     showVoronoi: true
-  }
+  };
 
   render() {
-    const {
-      crosshairValues,
-      selectedPointId,
-      showVoronoi
-    } = this.state;
+    const {crosshairValues, selectedPointId, showVoronoi} = this.state;
 
     return (
       <div>
         <label style={{display: 'block'}}>
-          <input type="checkbox"
+          <input
+            type="checkbox"
             checked={showVoronoi}
             onChange={() => this.setState({showVoronoi: !showVoronoi})}
           />
           Show Voronoi
         </label>
         <XYPlot
-          onMouseLeave={() => this.setState({selectedPointId: null, crosshairValues: null})}
+          onMouseLeave={() =>
+            this.setState({selectedPointId: null, crosshairValues: null})
+          }
           width={width}
-          height={height}>
+          height={height}
+        >
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
@@ -102,23 +109,30 @@ export default class Example extends React.Component {
             className="mark-series-example"
             colorType="literal"
             data={DATA}
-            onNearestXY={(value, {index}) => this.setState({
-              selectedPointId: index,
-              crosshairValues: [value]
-            })}
-            getColor={({id}) => selectedPointId === id ? '#FF9833' : '#12939A'}
-            sizeRange={sizeRange} />
-          {crosshairValues && <Crosshair values={crosshairValues}/>}
-          {showVoronoi && <Voronoi
-            extent={[
-              [margin.left, margin.top],
-              [width - margin.right, height - margin.bottom]
-            ]}
-            nodes={DATA}
-            polygonStyle={{stroke: 'rgba(0, 0, 0, .2)'}}
-            x={d => x(d.x)}
-            y={d => y(d.y)}
-          />}
+            onNearestXY={(value, {index}) =>
+              this.setState({
+                selectedPointId: index,
+                crosshairValues: [value]
+              })
+            }
+            getColor={({id}) =>
+              selectedPointId === id ? '#FF9833' : '#12939A'
+            }
+            sizeRange={sizeRange}
+          />
+          {crosshairValues && <Crosshair values={crosshairValues} />}
+          {showVoronoi && (
+            <Voronoi
+              extent={[
+                [margin.left, margin.top],
+                [width - margin.right, height - margin.bottom]
+              ]}
+              nodes={DATA}
+              polygonStyle={{stroke: 'rgba(0, 0, 0, .2)'}}
+              x={d => x(d.x)}
+              y={d => y(d.y)}
+            />
+          )}
         </XYPlot>
       </div>
     );

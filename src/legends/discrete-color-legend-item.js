@@ -42,10 +42,9 @@ function DiscreteColorLegendItem({
     <div {...{className, onClick, onMouseEnter, onMouseLeave}}>
       <span
         className="rv-discrete-color-legend-item__color"
-        style={disabled ? null : {background: color}} />
-      <span className="rv-discrete-color-legend-item__title">
-        {title}
-      </span>
+        style={disabled ? null : {background: color}}
+      />
+      <span className="rv-discrete-color-legend-item__title">{title}</span>
     </div>
   );
 }
@@ -53,10 +52,7 @@ function DiscreteColorLegendItem({
 DiscreteColorLegendItem.propTypes = {
   color: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
-  title: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element
-  ]).isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   onClick: PropTypes.func,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,

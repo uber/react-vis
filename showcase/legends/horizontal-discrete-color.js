@@ -34,10 +34,6 @@ const ITEMS = [
 
 export default function DiscreteColorExample() {
   return (
-    <DiscreteColorLegend
-      orientation="horizontal"
-      width={300}
-      items={ITEMS}
-    />
+    <DiscreteColorLegend orientation="horizontal" width={300} items={ITEMS} />
   );
 }

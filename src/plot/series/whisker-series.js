@@ -37,11 +37,20 @@ const DEFAULT_CROSS_BAR_WIDTH = 6;
  * @param {Object} whiskerMarkProps All the properties of the whisker mark.
  * @private
  */
-const renderWhiskerMark = (whiskerMarkProps) => (d, i) => {
+const renderWhiskerMark = whiskerMarkProps => (d, i) => {
   const {
-    crossBarWidth, opacityFunctor, sizeFunctor, strokeFunctor, strokeWidth,
-    style, valueClickHandler, valueMouseOutHandler, valueMouseOverHandler,
-    valueRightClickHandler, xFunctor, yFunctor
+    crossBarWidth,
+    opacityFunctor,
+    sizeFunctor,
+    strokeFunctor,
+    strokeWidth,
+    style,
+    valueClickHandler,
+    valueMouseOutHandler,
+    valueMouseOverHandler,
+    valueRightClickHandler,
+    xFunctor,
+    yFunctor
   } = whiskerMarkProps;
 
   const r = sizeFunctor ? sizeFunctor(d) : 0;
@@ -56,8 +65,8 @@ const renderWhiskerMark = (whiskerMarkProps) => (d, i) => {
    * We need to see an actual variance value, and also have that value extend past the
    * radius "buffer" region in which we won't be drawing (if any).
    */
-  const hasXWhiskers = positiveXVariance && (cx + r) < positiveXVariance;
-  const hasYWhiskers = positiveYVariance && (cy - r) > positiveYVariance;
+  const hasXWhiskers = positiveXVariance && cx + r < positiveXVariance;
+  const hasYWhiskers = positiveYVariance && cy - r > positiveYVariance;
   if (!hasXWhiskers && !hasYWhiskers) {
     return null;
   }
@@ -129,30 +138,30 @@ const renderWhiskerMark = (whiskerMarkProps) => (d, i) => {
   };
 
   return (
-    <g className="mark-whiskers" key={i}
+    <g
+      className="mark-whiskers"
+      key={i}
       onClick={e => valueClickHandler(d, e)}
       onContextMenu={e => valueRightClickHandler(d, e)}
       onMouseOver={e => valueMouseOverHandler(d, e)}
       onMouseOut={e => valueMouseOutHandler(d, e)}
     >
-      {hasXWhiskers ?
+      {hasXWhiskers ? (
         <g className="x-whiskers">
           <line {...rightLineAttrs} />
           <line {...leftLineAttrs} />
           <line {...rightCrossBarAttrs} />
           <line {...leftCrossBarAttrs} />
-        </g> :
-        null
-      }
-      {hasYWhiskers ?
+        </g>
+      ) : null}
+      {hasYWhiskers ? (
         <g className="y-whiskers">
           <line {...upperLineAttrs} />
           <line {...lowerLineAttrs} />
           <line {...upperCrossBarAttrs} />
           <line {...lowerCrossBarAttrs} />
-        </g> :
-        null
-      }
+        </g>
+      ) : null}
     </g>
   );
 };
@@ -160,8 +169,14 @@ const renderWhiskerMark = (whiskerMarkProps) => (d, i) => {
 class WhiskerSeries extends AbstractSeries {
   render() {
     const {
-      animation, className, crossBarWidth, data, marginLeft, marginTop,
-      strokeWidth, style
+      animation,
+      className,
+      crossBarWidth,
+      data,
+      marginLeft,
+      marginTop,
+      strokeWidth,
+      style
     } = this.props;
     if (!data) {
       return null;
@@ -169,7 +184,7 @@ class WhiskerSeries extends AbstractSeries {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <WhiskerSeries {...this.props} animation={null}/>
+          <WhiskerSeries {...this.props} animation={null} />
         </Animation>
       );
     }
@@ -178,7 +193,8 @@ class WhiskerSeries extends AbstractSeries {
       crossBarWidth,
       opacityFunctor: this._getAttributeFunctor('opacity'),
       sizeFunctor: this._getAttributeFunctor('size'),
-      strokeFunctor: this._getAttributeFunctor('stroke') ||
+      strokeFunctor:
+        this._getAttributeFunctor('stroke') ||
         this._getAttributeFunctor('color'),
       strokeWidth,
       style,
@@ -191,8 +207,10 @@ class WhiskerSeries extends AbstractSeries {
     };
 
     return (
-      <g className={`${predefinedClassName} ${className}`}
-         transform={`translate(${marginLeft},${marginTop})`}>
+      <g
+        className={`${predefinedClassName} ${className}`}
+        transform={`translate(${marginLeft},${marginTop})`}
+      >
         {data.map(renderWhiskerMark(whiskerMarkProps))}
       </g>
     );

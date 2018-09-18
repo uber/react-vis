@@ -35,7 +35,6 @@ const DEFAULT_MARGINS = {
 
 class Sankey extends Component {
   render() {
-
     const {
       align,
       animation,
@@ -61,12 +60,26 @@ class Sankey extends Component {
       style,
       width
     } = this.props;
-    const nodesCopy = [...new Array(nodes.length)].map((e, i) => ({...nodes[i]}));
-    const linksCopy = [...new Array(links.length)].map((e, i) => ({...links[i]}));
+    const nodesCopy = [...new Array(nodes.length)].map((e, i) => ({
+      ...nodes[i]
+    }));
+    const linksCopy = [...new Array(links.length)].map((e, i) => ({
+      ...links[i]
+    }));
 
-    const {marginLeft, marginTop, marginRight, marginBottom} = getInnerDimensions({
-      margin, height, width
-    }, DEFAULT_MARGINS);
+    const {
+      marginLeft,
+      marginTop,
+      marginRight,
+      marginBottom
+    } = getInnerDimensions(
+      {
+        margin,
+        height,
+        width
+      },
+      DEFAULT_MARGINS
+    );
     const sankeyInstance = sankey()
       .extent([
         [marginLeft, marginTop],
@@ -87,7 +100,8 @@ class Sankey extends Component {
       <XYPlot
         {...this.props}
         yType="literal"
-        className={`rv-sankey ${className}`}>
+        className={`rv-sankey ${className}`}
+      >
         {linksCopy.map((link, i) => (
           <SankeyLink
             style={style.links}
@@ -100,7 +114,8 @@ class Sankey extends Component {
             strokeWidth={Math.max(link.width, 1)}
             node={link}
             nWidth={nWidth}
-            key={`link-${i}`}/>
+            key={`link-${i}`}
+          />
         ))}
         <VerticalRectSeries
           animation={animation}
@@ -119,7 +134,8 @@ class Sankey extends Component {
           onValueClick={onValueClick}
           onValueMouseOver={onValueMouseOver}
           onValueMouseOut={onValueMouseOut}
-          colorType="literal" />
+          colorType="literal"
+        />
         {!hideLabels && (
           <LabelSeries
             animation={animation}
@@ -127,7 +143,6 @@ class Sankey extends Component {
             rotation={labelRotation}
             labelAnchorY="text-before-edge"
             data={nodesCopy.map((node, i) => {
-
               return {
                 x: node.x0 + (node.x0 < width / 2 ? nWidth + 10 : -10),
                 y: (node.y0 + node.y1) / 2 - marginTop,
@@ -142,14 +157,15 @@ class Sankey extends Component {
                 ...nodes[i]
               };
             })}
-            />
+          />
         )}
         {hasVoronoi && (
           <Voronoi
             className="rv-sankey__voronoi"
             extent={[
               [-marginLeft, -marginTop],
-              [width + marginRight, height + marginBottom]]}
+              [width + marginRight, height + marginBottom]
+            ]}
             nodes={nodesCopy}
             onClick={onValueClick}
             onHover={onValueMouseOver}
@@ -162,7 +178,6 @@ class Sankey extends Component {
       </XYPlot>
     );
   }
-
 }
 
 Sankey.defaultProps = {
@@ -196,16 +211,14 @@ Sankey.propTypes = {
   hideLabels: PropTypes.bool,
   labelRotation: PropTypes.number,
   layout: PropTypes.number,
-  links: PropTypes.arrayOf(PropTypes.shape({
-    source: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object
-    ]).isRequired,
-    target: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.object
-    ]).isRequired
-  })).isRequired,
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      source: PropTypes.oneOfType([PropTypes.number, PropTypes.object])
+        .isRequired,
+      target: PropTypes.oneOfType([PropTypes.number, PropTypes.object])
+        .isRequired
+    })
+  ).isRequired,
   margin: MarginPropType,
   nodePadding: PropTypes.number,
   nodes: PropTypes.arrayOf(PropTypes.object).isRequired,

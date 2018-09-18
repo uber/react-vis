@@ -20,10 +20,7 @@
 
 import React, {Component} from 'react';
 
-import {
-  XYPlot,
-  DecorativeAxis
-} from 'index';
+import {XYPlot, DecorativeAxis} from 'index';
 
 const MARGIN = {
   left: 30,
@@ -41,19 +38,20 @@ export default class Example extends Component {
         xDomain={[0, 1]}
         yDomain={[0, 1]}
         width={300}
-        height={300}>
+        height={300}
+      >
         <DecorativeAxis
           axisStart={{x: 0, y: 0}}
           axisEnd={{x: 1, y: 1}}
           axisDomain={[-10, 100]}
-          />
+        />
         <DecorativeAxis
           axisStart={{x: 1, y: 0}}
           axisEnd={{x: 0, y: 1}}
           axisDomain={[1000, 900]}
           tickSize={-10}
           tickValue={t => `¡${t}!`}
-          />
+        />
       </XYPlot>
     );
   }

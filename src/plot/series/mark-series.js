@@ -34,14 +34,7 @@ const DEFAULT_STROKE_WIDTH = 1;
 
 class MarkSeries extends AbstractSeries {
   _renderCircle(d, i, strokeWidth, style, scalingFunctions) {
-    const {
-      fill,
-      opacity,
-      size,
-      stroke,
-      x,
-      y
-    } = scalingFunctions;
+    const {fill, opacity, size, stroke, x, y} = scalingFunctions;
 
     const attrs = {
       r: size ? size(d) : DEFAULT_SIZE,
@@ -93,10 +86,13 @@ class MarkSeries extends AbstractSeries {
     }
 
     const scalingFunctions = {
-      fill: this._getAttributeFunctor('fill') || this._getAttributeFunctor('color'),
+      fill:
+        this._getAttributeFunctor('fill') || this._getAttributeFunctor('color'),
       opacity: this._getAttributeFunctor('opacity'),
       size: this._getAttributeFunctor('size'),
-      stroke: this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color'),
+      stroke:
+        this._getAttributeFunctor('stroke') ||
+        this._getAttributeFunctor('color'),
       x: this._getAttributeFunctor('x'),
       y: this._getAttributeFunctor('y')
     };
@@ -107,7 +103,10 @@ class MarkSeries extends AbstractSeries {
         transform={`translate(${marginLeft},${marginTop})`}
       >
         {data.map((d, i) => {
-          return getNull(d) && this._renderCircle(d, i, strokeWidth, style, scalingFunctions);
+          return (
+            getNull(d) &&
+            this._renderCircle(d, i, strokeWidth, style, scalingFunctions)
+          );
         })}
       </g>
     );

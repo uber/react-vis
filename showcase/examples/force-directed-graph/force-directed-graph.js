@@ -20,18 +20,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  forceSimulation,
-  forceLink,
-  forceManyBody,
-  forceCenter
-} from 'd3-force';
+import {forceSimulation, forceLink, forceManyBody, forceCenter} from 'd3-force';
 
-import {
-  XYPlot,
-  MarkSeriesCanvas,
-  LineSeriesCanvas
-} from 'index';
+import {XYPlot, MarkSeriesCanvas, LineSeriesCanvas} from 'index';
 
 const colors = [
   '#19CDD7',
@@ -72,7 +63,9 @@ function generateSimulation(props) {
 
   simulation.force('link').links(links);
 
-  const upperBound = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay()));
+  const upperBound = Math.ceil(
+    Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())
+  );
   for (let i = 0; i < Math.min(maxSteps, upperBound); ++i) {
     simulation.tick();
   }
@@ -81,7 +74,6 @@ function generateSimulation(props) {
 }
 
 class ForceDirectedGraph extends React.Component {
-
   static get propTypes() {
     return {
       className: PropTypes.string,
@@ -127,7 +119,7 @@ class ForceDirectedGraph extends React.Component {
               key={`link-${index}`}
               opacity={0.3}
               data={[{...source, color: null}, {...target, color: null}]}
-              />
+            />
           );
         })}
         <MarkSeriesCanvas
@@ -137,11 +129,10 @@ class ForceDirectedGraph extends React.Component {
           stroke={'#ddd'}
           strokeWidth={2}
           colorRange={colors}
-          />
+        />
       </XYPlot>
     );
   }
-
 }
 
 ForceDirectedGraph.displayName = 'ForceDirectedGraph';

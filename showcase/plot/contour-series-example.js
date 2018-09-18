@@ -22,7 +22,14 @@ import React, {Component} from 'react';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
 
-import {XYPlot, XAxis, YAxis, ContourSeries, MarkSeriesCanvas, Borders} from 'index';
+import {
+  XYPlot,
+  XAxis,
+  YAxis,
+  ContourSeries,
+  MarkSeriesCanvas,
+  Borders
+} from 'index';
 
 import DATA from '../datasets/old-faithful.json';
 
@@ -35,7 +42,7 @@ function updateData() {
 export default class ContourSeriesExample extends Component {
   state = {
     data: DATA
-  }
+  };
   render() {
     const {data} = this.state;
     return (
@@ -46,7 +53,8 @@ export default class ContourSeriesExample extends Component {
           width={600}
           getX={d => d.waiting}
           getY={d => d.eruptions}
-          height={300}>
+          height={300}
+        >
           <ContourSeries
             animation
             className="contour-series-example"
@@ -54,20 +62,18 @@ export default class ContourSeriesExample extends Component {
               stroke: '#125C77',
               strokeLinejoin: 'round'
             }}
-            colorRange={[
-              '#79C7E3',
-              '#FF9833'
-            ]}
-            data={data}/>
-          <MarkSeriesCanvas animation data={data} size={1} color={'#125C77'}/>
-          <Borders style={{all: {fill: '#fff'}}}/>
+            colorRange={['#79C7E3', '#FF9833']}
+            data={data}
+          />
+          <MarkSeriesCanvas animation data={data} size={1} color={'#125C77'} />
+          <Borders style={{all: {fill: '#fff'}}} />
           <XAxis />
           <YAxis />
-
         </XYPlot>
         <ShowcaseButton
           onClick={() => this.setState({data: updateData()})}
-          buttonContent={'UPDATE'} />
+          buttonContent={'UPDATE'}
+        />
       </div>
     );
   }

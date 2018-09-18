@@ -20,14 +20,24 @@ export function generateLinearData({
         extraParams,
         datapoint: {
           x: i + 1,
-          y: series[i].y * (1 + (Math.random() - 0.5) * changeRatio) + (Math.random() - 0.5) * randomFactor
+          y:
+            series[i].y * (1 + (Math.random() - 0.5) * changeRatio) +
+            (Math.random() - 0.5) * randomFactor
         },
         nbPoints,
         series,
         i
       })
     ],
-    [enrich({extraParams, datapoint: {x: 0, y: startValue}, nbPoints, series: [], i: 0})]
+    [
+      enrich({
+        extraParams,
+        datapoint: {x: 0, y: startValue},
+        nbPoints,
+        series: [],
+        i: 0
+      })
+    ]
   );
   if (key !== undefined) {
     data[key] = result;
@@ -36,7 +46,10 @@ export function generateLinearData({
 }
 
 export function generateScatterplotData(args) {
-  const extraParams = [['x', random({max: 20})], ['y', random({max: 20})]].concat(args.extraParams || []);
+  const extraParams = [
+    ['x', random({max: 20})],
+    ['y', random({max: 20})]
+  ].concat(args.extraParams || []);
   return generateLinearData({...args, extraParams});
 }
 
@@ -88,7 +101,14 @@ export function getTime({startTime = DEC23}) {
 
 export function getWord() {
   return ({i}) =>
-    ['deck.gl', 'math.gl', 'probe.gl', 'vis.gl', 'react-map-gl', 'vis-academy', 'luma.gl', 'kepler.gl'][
-      i % 8
-    ];
+    [
+      'deck.gl',
+      'math.gl',
+      'probe.gl',
+      'vis.gl',
+      'react-map-gl',
+      'vis-academy',
+      'luma.gl',
+      'kepler.gl'
+    ][i % 8];
 }

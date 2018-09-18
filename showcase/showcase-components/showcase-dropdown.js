@@ -42,7 +42,9 @@ class ShowcaseDropdown extends React.Component {
         <div className="dropdown-button" onClick={this.toggleState}>
           {'SELECT SECTION'}
         </div>
-        {open && <div className="background-overlay" onClick={this.toggleState} />}
+        {open && (
+          <div className="background-overlay" onClick={this.toggleState} />
+        )}
         {open && <ul className="dropdown-inner-wrapper">{items}</ul>}
       </div>
     );

@@ -4,7 +4,13 @@ import {setAddon, storiesOf} from '@storybook/react';
 import JSXAddon from 'storybook-addon-jsx';
 setAddon(JSXAddon);
 
-import {withKnobs, color, number, object, select} from '@storybook/addon-knobs/react';
+import {
+  withKnobs,
+  color,
+  number,
+  object,
+  select
+} from '@storybook/addon-knobs/react';
 
 import {AreaSeries, LineSeries} from 'react-vis';
 
@@ -47,8 +53,15 @@ storiesOf('Series/AreaSeries/Base', module)
     () => {
       return (
         <SimpleChartWrapper>
-          <AreaSeries opacity={0.25} data={generateLinearData({key: 'area1'})} stroke="transparent" />
-          <LineSeries stroke="#12939a" data={generateLinearData({key: 'area1'})} />
+          <AreaSeries
+            opacity={0.25}
+            data={generateLinearData({key: 'area1'})}
+            stroke="transparent"
+          />
+          <LineSeries
+            stroke="#12939a"
+            data={generateLinearData({key: 'area1'})}
+          />
         </SimpleChartWrapper>
       );
     },
@@ -59,7 +72,10 @@ storiesOf('Series/AreaSeries/Base', module)
     () => {
       return (
         <SimpleChartWrapper yDomain={[-3, 3]}>
-          <AreaSeries opacity={0.5} data={generateLinearData({startValue: 0, key: 'area-neg'})} />
+          <AreaSeries
+            opacity={0.5}
+            data={generateLinearData({startValue: 0, key: 'area-neg'})}
+          />
         </SimpleChartWrapper>
       );
     },
@@ -72,7 +88,10 @@ storiesOf('Series/AreaSeries/Base', module)
         <SimpleChartWrapper>
           <AreaSeries
             opacity={0.5}
-            data={generateLinearData({key: 'area-random-x', extraParams: [['x', nonUniformX()]]})}
+            data={generateLinearData({
+              key: 'area-random-x',
+              extraParams: [['x', nonUniformX()]]
+            })}
           />
         </SimpleChartWrapper>
       );
@@ -84,9 +103,18 @@ storiesOf('Series/AreaSeries/Base', module)
     () => {
       return (
         <SimpleChartWrapper>
-          <AreaSeries opacity={0.25} data={generateLinearData({key: 'area1'})} />
-          <AreaSeries opacity={0.25} data={generateLinearData({key: 'area2'})} />
-          <AreaSeries opacity={0.25} data={generateLinearData({key: 'area3'})} />
+          <AreaSeries
+            opacity={0.25}
+            data={generateLinearData({key: 'area1'})}
+          />
+          <AreaSeries
+            opacity={0.25}
+            data={generateLinearData({key: 'area2'})}
+          />
+          <AreaSeries
+            opacity={0.25}
+            data={generateLinearData({key: 'area3'})}
+          />
         </SimpleChartWrapper>
       );
     },
@@ -113,7 +141,10 @@ storiesOf('Series/AreaSeries/Styling', module)
     () => {
       return (
         <SimpleChartWrapper>
-          {styledAreaSeries({data: generateLinearData({key: 'area1'}), opacity: 0.75})}
+          {styledAreaSeries({
+            data: generateLinearData({key: 'area1'}),
+            opacity: 0.75
+          })}
         </SimpleChartWrapper>
       );
     },
@@ -124,7 +155,10 @@ storiesOf('Series/AreaSeries/Styling', module)
     () => {
       return (
         <SimpleChartWrapper>
-          {styledAreaSeries({data: generateLinearData({key: 'area1'}), stroke: '#2c51be'})}
+          {styledAreaSeries({
+            data: generateLinearData({key: 'area1'}),
+            stroke: '#2c51be'
+          })}
         </SimpleChartWrapper>
       );
     },

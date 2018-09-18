@@ -133,7 +133,9 @@ function AxisTitle({orientation, position, width, height, style, title}) {
   const outerGroupTranslateX = orientation === LEFT ? width : 0;
   const outerGroupTranslateY = orientation === TOP ? height : 0;
   const outerGroupTransform = `translate(${outerGroupTranslateX}, ${outerGroupTranslateY})`;
-  const {x, y, rotation, textAnchor} = transformation(width, height)[orientation][position];
+  const {x, y, rotation, textAnchor} = transformation(width, height)[
+    orientation
+  ][position];
   const innerGroupTransform = `translate(${x}, ${y}) rotate(${rotation})`;
 
   return (

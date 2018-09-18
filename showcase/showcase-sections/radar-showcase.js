@@ -2,27 +2,29 @@ import React, {Component} from 'react';
 
 import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
-const {
-  AnimatedRadarChart,
-  BasicRadarChart,
-  FourQuadrantRadarChart
-} = showCase;
+const {AnimatedRadarChart, BasicRadarChart, FourQuadrantRadarChart} = showCase;
 
-const RADAR = [{
-  name: 'Basic Radar Chart',
-  component: BasicRadarChart,
-  componentName: 'BasicRadarChart',
-  sourceLink: 'https://github.com/uber/react-vis/blob/master/src/radar-chart/index.js',
-  docsLink: 'http://uber.github.io/react-vis/documentation/other-charts/radar-chart'
-}, {
-  name: 'Animated Radar Chart',
-  component: AnimatedRadarChart,
-  componentName: 'AnimatedRadarChart'
-}, {
-  name: 'Four Quadrant Radar Chart',
-  component: FourQuadrantRadarChart,
-  componentName: 'FourQuadrantRadarChart'
-}];
+const RADAR = [
+  {
+    name: 'Basic Radar Chart',
+    component: BasicRadarChart,
+    componentName: 'BasicRadarChart',
+    sourceLink:
+      'https://github.com/uber/react-vis/blob/master/src/radar-chart/index.js',
+    docsLink:
+      'http://uber.github.io/react-vis/documentation/other-charts/radar-chart'
+  },
+  {
+    name: 'Animated Radar Chart',
+    component: AnimatedRadarChart,
+    componentName: 'AnimatedRadarChart'
+  },
+  {
+    name: 'Four Quadrant Radar Chart',
+    component: FourQuadrantRadarChart,
+    componentName: 'FourQuadrantRadarChart'
+  }
+];
 
 class RadarShowcase extends Component {
   render() {

@@ -23,11 +23,7 @@ import {scaleLinear} from 'd3-scale';
 
 import CarData from '../datasets/car-data.json';
 
-import {
-  XYPlot,
-  DecorativeAxis,
-  LineSeries
-} from 'index';
+import {XYPlot, DecorativeAxis, LineSeries} from 'index';
 
 const DEFAULT_DOMAIN = {min: Infinity, max: -Infinity};
 // begin by figuring out the domain of each of the columns
@@ -46,16 +42,20 @@ const domains = CarData.reduce((res, row) => {
 // use that to generate columns that map the data to a unit scale
 const scales = Object.keys(domains).reduce((res, key) => {
   const domain = domains[key];
-  res[key] = scaleLinear().domain([domain.min, domain.max]).range([0, 1]);
+  res[key] = scaleLinear()
+    .domain([domain.min, domain.max])
+    .range([0, 1]);
   return res;
 }, {});
 
 // break each object into an array and rescale it
 const mappedData = CarData.map(row => {
-  return Object.keys(row).filter(key => key !== 'name').map(key => ({
-    x: key,
-    y: scales[key](Number(row[key]))
-  }));
+  return Object.keys(row)
+    .filter(key => key !== 'name')
+    .map(key => ({
+      x: key,
+      y: scales[key](Number(row[key]))
+    }));
 });
 
 const MARGIN = {
@@ -74,19 +74,20 @@ class ParallelCoordinatesExample extends React.Component {
         height={300}
         xType="ordinal"
         margin={MARGIN}
-        className="parallel-coordinates-example">
+        className="parallel-coordinates-example"
+      >
         {mappedData.map((series, index) => {
-          return (<LineSeries
-            data={series}
-            key={`series-${index}`}/>);
+          return <LineSeries data={series} key={`series-${index}`} />;
         })}
         {mappedData[0].map((cell, index) => {
-          return (<DecorativeAxis
-            key={`${index}-axis`}
-            axisStart={{x: cell.x, y: 0}}
-            axisEnd={{x: cell.x, y: 1}}
-            axisDomain={[domains[cell.x].min, domains[cell.x].max]}
-          />);
+          return (
+            <DecorativeAxis
+              key={`${index}-axis`}
+              axisStart={{x: cell.x, y: 0}}
+              axisEnd={{x: cell.x, y: 1}}
+              axisDomain={[domains[cell.x].min, domains[cell.x].max]}
+            />
+          );
         })}
       </XYPlot>
     );

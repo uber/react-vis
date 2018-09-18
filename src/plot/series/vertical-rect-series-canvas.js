@@ -40,13 +40,16 @@ class HorizontalRectSeriesCanvas extends AbstractSeries {
   }
 
   static renderLayer(props, ctx) {
-    RectSeries.renderLayer({
-      ...props,
-      linePosAttr: 'x',
-      valuePosAttr: 'y',
-      lineSizeAttr: 'width',
-      valueSizeAttr: 'height'
-    }, ctx);
+    RectSeries.renderLayer(
+      {
+        ...props,
+        linePosAttr: 'x',
+        valuePosAttr: 'y',
+        lineSizeAttr: 'width',
+        valueSizeAttr: 'height'
+      },
+      ctx
+    );
   }
 
   render() {

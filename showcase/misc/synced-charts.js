@@ -30,7 +30,6 @@ import {
 } from 'index';
 
 export default class Example extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -62,10 +61,7 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
-        <XYPlot
-          onMouseLeave={this._onChartMouseLeave}
-          width={300}
-          height={150}>
+        <XYPlot onMouseLeave={this._onChartMouseLeave} width={300} height={150}>
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
@@ -73,44 +69,29 @@ export default class Example extends React.Component {
           <LineSeries
             color={this._getSeriesColor(0)}
             onSeriesMouseOver={this._onSeriesMouseOvers[0]}
-            data={[
-              {x: 1, y: 15},
-              {x: 2, y: 8},
-              {x: 3, y: 1}
-            ]}/>
+            data={[{x: 1, y: 15}, {x: 2, y: 8}, {x: 3, y: 1}]}
+          />
           <LineSeries
             color={this._getSeriesColor(1)}
             onSeriesMouseOver={this._onSeriesMouseOvers[1]}
-            data={[
-              {x: 1, y: 10},
-              {x: 2, y: 5},
-              {x: 3, y: 15}
-            ]}/>
+            data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]}
+          />
         </XYPlot>
-        <XYPlot
-          onMouseLeave={this._onChartMouseLeave}
-          width={300}
-          height={150}>
+        <XYPlot onMouseLeave={this._onChartMouseLeave} width={300} height={150}>
           <VerticalGridLines />
           <HorizontalGridLines />
-          <XAxis/>
+          <XAxis />
           <YAxis />
           <LineSeries
             color={this._getSeriesColor(0)}
             onSeriesMouseOver={this._onSeriesMouseOvers[0]}
-            data={[
-              {x: 1, y: 4},
-              {x: 2, y: 11},
-              {x: 3, y: 9}
-            ]}/>
+            data={[{x: 1, y: 4}, {x: 2, y: 11}, {x: 3, y: 9}]}
+          />
           <LineSeries
             color={this._getSeriesColor(1)}
             onSeriesMouseOver={this._onSeriesMouseOvers[1]}
-            data={[
-              {x: 1, y: 2},
-              {x: 2, y: 3},
-              {x: 3, y: 11}
-            ]}/>
+            data={[{x: 1, y: 2}, {x: 2, y: 3}, {x: 3, y: 11}]}
+          />
         </XYPlot>
       </div>
     );

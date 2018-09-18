@@ -97,24 +97,25 @@ class Animation extends PureComponent {
     // so we expose an additional prop for situations like these, soit _data,
     // which stores the full tree and can be recombined with the sanitized version
     // after interpolation
-    let data = interpolatedProps && interpolatedProps.data || null;
+    let data = (interpolatedProps && interpolatedProps.data) || null;
     if (data && child.props._data) {
       data = data.map((row, index) => {
         const correspondingCell = child.props._data[index];
-        return {...row, parent: correspondingCell.parent, children: correspondingCell.children};
+        return {
+          ...row,
+          parent: correspondingCell.parent,
+          children: correspondingCell.children
+        };
       });
     }
 
-    return React.cloneElement(
-      child,
-      {
-        ...child.props,
-        ...interpolatedProps,
-        data: data || child.props.data || null,
-        // enforce re-rendering
-        _animation: Math.random()
-      }
-    );
+    return React.cloneElement(child, {
+      ...child.props,
+      ...interpolatedProps,
+      data: data || child.props.data || null,
+      // enforce re-rendering
+      _animation: Math.random()
+    });
   }
 
   _motionEndHandler() {

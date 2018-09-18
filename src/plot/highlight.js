@@ -51,18 +51,21 @@ class Highlight extends AbstractSeries {
     const {startLocX, startLocY, dragArea} = this.state;
 
     return {
-      bottom: dragArea.bottom + (enableY ? (yLoc - startLocY) : 0),
-      left: dragArea.left + (enableX ? (xLoc - startLocX) : 0),
-      right: dragArea.right + (enableX ? (xLoc - startLocX) : 0),
-      top: dragArea.top + (enableY ? (yLoc - startLocY) : 0)
+      bottom: dragArea.bottom + (enableY ? yLoc - startLocY : 0),
+      left: dragArea.left + (enableX ? xLoc - startLocX : 0),
+      right: dragArea.right + (enableX ? xLoc - startLocX : 0),
+      top: dragArea.top + (enableY ? yLoc - startLocY : 0)
     };
   }
 
   _clickedOutsideDrag(xLoc, yLoc) {
     const {enableX, enableY} = this.props;
-    const {dragArea, brushArea: {left, right, top, bottom}} = this.state;
-    const clickedOutsideDragX = dragArea && ((xLoc < left) || (xLoc > right));
-    const clickedOutsideDragY = dragArea && ((yLoc < top) || (yLoc > bottom));
+    const {
+      dragArea,
+      brushArea: {left, right, top, bottom}
+    } = this.state;
+    const clickedOutsideDragX = dragArea && (xLoc < left || xLoc > right);
+    const clickedOutsideDragY = dragArea && (yLoc < top || yLoc > bottom);
     if (enableX && enableY) {
       return clickedOutsideDragX || clickedOutsideDragY;
     }
@@ -218,7 +221,9 @@ class Highlight extends AbstractSeries {
       marginBottom,
       opacity
     } = this.props;
-    const {brushArea: {left, right, top, bottom}} = this.state;
+    const {
+      brushArea: {left, right, top, bottom}
+    } = this.state;
 
     let leftPos = 0;
     if (highlightX) {
@@ -232,8 +237,8 @@ class Highlight extends AbstractSeries {
       topPos = yScale(highlightY);
     }
 
-    const plotWidth = (marginLeft + marginRight) + innerWidth;
-    const plotHeight = (marginTop + marginBottom) + innerHeight;
+    const plotWidth = marginLeft + marginRight + innerWidth;
+    const plotHeight = marginTop + marginBottom + innerHeight;
     const touchWidth = highlightWidth || plotWidth;
     const touchHeight = highlightHeight || plotHeight;
 
@@ -241,7 +246,7 @@ class Highlight extends AbstractSeries {
       <g
         transform={`translate(${leftPos}, ${topPos})`}
         className={`${className} rv-highlight-container`}
-        >
+      >
         <rect
           className="rv-mouse-target"
           fill="black"

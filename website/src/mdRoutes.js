@@ -340,7 +340,7 @@ const mdRoutes = [
 // with the first route it finds that includes the same markdown name
 // (that is error prone, and that's why current Axes links will all
 // point to Example Axes page instead of Documentation Axes page)
-const fixMarkdownLinks = (markdown) => {
+const fixMarkdownLinks = markdown => {
   const markdownLinksRegex = /(?:\(([^()/\n]+\.md)\))/g;
   return markdown.replace(markdownLinksRegex, '(/$1)');
 };

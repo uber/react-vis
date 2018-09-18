@@ -4,7 +4,14 @@ import {setAddon, storiesOf} from '@storybook/react';
 import JSXAddon from 'storybook-addon-jsx';
 setAddon(JSXAddon);
 
-import {withKnobs, color, number, object, select, text} from '@storybook/addon-knobs/react';
+import {
+  withKnobs,
+  color,
+  number,
+  object,
+  select,
+  text
+} from '@storybook/addon-knobs/react';
 
 import {LineSeries} from 'react-vis';
 
@@ -15,9 +22,18 @@ function styledLineSeries(props) {
   return (
     <LineSeries
       data={props.data}
-      opacity={number('opacity', props.opacity || 1, {max: 1, min: 0, range: true, step: 0.01}, 'style')}
+      opacity={number(
+        'opacity',
+        props.opacity || 1,
+        {max: 1, min: 0, range: true, step: 0.01},
+        'style'
+      )}
       stroke={color('stroke', props.stroke || '#12939a', 'style')}
-      strokeDasharray={text('strokeDasharray', props.strokeDasharray || '', 'style')}
+      strokeDasharray={text(
+        'strokeDasharray',
+        props.strokeDasharray || '',
+        'style'
+      )}
       strokeStyle={select(
         'strokeStyle',
         {solid: 'solid', dashed: 'dashed'},
@@ -48,7 +64,9 @@ storiesOf('Series/LineSeries/Base', module)
     () => {
       return (
         <SimpleChartWrapper yDomain={[-3, 3]}>
-          <LineSeries data={generateLinearData({startValue: 0, key: 'line-neg'})} />
+          <LineSeries
+            data={generateLinearData({startValue: 0, key: 'line-neg'})}
+          />
         </SimpleChartWrapper>
       );
     },
@@ -91,7 +109,10 @@ storiesOf('Series/LineSeries/Styling', module)
     () => {
       return (
         <SimpleChartWrapper>
-          {styledLineSeries({data: generateLinearData({key: 'line1'}), opacity: 0.5})}
+          {styledLineSeries({
+            data: generateLinearData({key: 'line1'}),
+            opacity: 0.5
+          })}
         </SimpleChartWrapper>
       );
     },
@@ -102,7 +123,10 @@ storiesOf('Series/LineSeries/Styling', module)
     () => {
       return (
         <SimpleChartWrapper>
-          {styledLineSeries({data: generateLinearData({key: 'line1'}), stroke: '#2c51be'})}
+          {styledLineSeries({
+            data: generateLinearData({key: 'line1'}),
+            stroke: '#2c51be'
+          })}
         </SimpleChartWrapper>
       );
     },
@@ -113,7 +137,10 @@ storiesOf('Series/LineSeries/Styling', module)
     () => {
       return (
         <SimpleChartWrapper>
-          {styledLineSeries({data: generateLinearData({key: 'line1'}), strokeDasharray: '5, 5, 1, 5'})}
+          {styledLineSeries({
+            data: generateLinearData({key: 'line1'}),
+            strokeDasharray: '5, 5, 1, 5'
+          })}
         </SimpleChartWrapper>
       );
     },
@@ -124,7 +151,10 @@ storiesOf('Series/LineSeries/Styling', module)
     () => {
       return (
         <SimpleChartWrapper>
-          {styledLineSeries({data: generateLinearData({key: 'line1'}), strokeStyle: 'dashed'})}
+          {styledLineSeries({
+            data: generateLinearData({key: 'line1'}),
+            strokeStyle: 'dashed'
+          })}
         </SimpleChartWrapper>
       );
     },
@@ -135,7 +165,10 @@ storiesOf('Series/LineSeries/Styling', module)
     () => {
       return (
         <SimpleChartWrapper>
-          {styledLineSeries({data: generateLinearData({key: 'line1'}), strokeWidth: '5px'})}
+          {styledLineSeries({
+            data: generateLinearData({key: 'line1'}),
+            strokeWidth: '5px'
+          })}
         </SimpleChartWrapper>
       );
     },

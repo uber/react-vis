@@ -23,7 +23,6 @@ import React from 'react';
 import SearchableDiscreteColorLegend from 'legends/searchable-discrete-color-legend';
 
 export default class Example extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {

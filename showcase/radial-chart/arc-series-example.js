@@ -21,12 +21,7 @@
 import React from 'react';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
-import {
-  XYPlot,
-  ArcSeries,
-  XAxis,
-  YAxis
-} from 'index';
+import {XYPlot, ArcSeries, XAxis, YAxis} from 'index';
 
 import {EXTENDED_DISCRETE_COLOR_RANGE as COLORS} from 'theme';
 
@@ -39,18 +34,32 @@ function updateData() {
       color: index,
       radius0: Math.random() > 0.8 ? Math.random() + 1 : 0,
       radius: Math.random() * 3 + 1,
-      angle: (index + 1) * PI / divider,
-      angle0: index * PI / divider
+      angle: ((index + 1) * PI) / divider,
+      angle0: (index * PI) / divider
     };
   });
-  return newData.concat([{angle0: 0, angle: PI * 2 * Math.random(), radius: 1.1, radius0: 0.8}]);
+  return newData.concat([
+    {angle0: 0, angle: PI * 2 * Math.random(), radius: 1.1, radius0: 0.8}
+  ]);
 }
 
 function updateLittleData() {
   const portion = Math.random();
   return [
-    {angle0: 0, angle: portion * PI * 2, radius0: 0, radius: 10, color: COLORS[13]},
-    {angle0: portion * PI * 2, angle: 2 * PI, radius0: 0, radius: 10, color: COLORS[12]}
+    {
+      angle0: 0,
+      angle: portion * PI * 2,
+      radius0: 0,
+      radius: 10,
+      color: COLORS[13]
+    },
+    {
+      angle0: portion * PI * 2,
+      angle: 2 * PI,
+      radius0: 0,
+      radius: 10,
+      color: COLORS[12]
+    }
   ];
 }
 
@@ -59,21 +68,20 @@ export default class Example extends React.Component {
     data: updateData(),
     littleData: updateLittleData(),
     value: false
-  }
+  };
   render() {
     return (
       <div>
         <ShowcaseButton
-          onClick={() => this.setState({
-            data: updateData(),
-            littleData: updateLittleData()
-          })}
-          buttonContent={'UPDATE'} />
-        <XYPlot
-          xDomain={[-5, 5]}
-          yDomain={[-5, 5]}
-          width={300}
-          height={300}>
+          onClick={() =>
+            this.setState({
+              data: updateData(),
+              littleData: updateLittleData()
+            })
+          }
+          buttonContent={'UPDATE'}
+        />
+        <XYPlot xDomain={[-5, 5]} yDomain={[-5, 5]} width={300} height={300}>
           <XAxis />
           <YAxis />
           <ArcSeries
@@ -88,14 +96,15 @@ export default class Example extends React.Component {
             colorRange={COLORS}
             onValueMouseOver={row => this.setState({value: row})}
             onSeriesMouseOut={() => this.setState({value: false})}
-            colorType={'category'}/>
+            colorType={'category'}
+          />
           <ArcSeries
             animation
             radiusType={'literal'}
             center={{x: -2, y: 2}}
             data={this.state.littleData}
-            colorType={'literal'}/>
-
+            colorType={'literal'}
+          />
         </XYPlot>
       </div>
     );

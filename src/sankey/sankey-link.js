@@ -43,7 +43,7 @@ class SankeyLink extends PureComponent {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <SankeyLink {...this.props} animation={null}/>
+          <SankeyLink {...this.props} animation={null} />
         </Animation>
       );
     }
@@ -58,7 +58,8 @@ class SankeyLink extends PureComponent {
         onMouseOver={e => onLinkMouseOver(node, e)}
         onMouseOut={e => onLinkMouseOut(node, e)}
         strokeWidth={strokeWidth}
-        fill="none" />
+        fill="none"
+      />
     );
   }
 }

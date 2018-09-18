@@ -30,16 +30,14 @@ export function getInnerDimensions(props, defaultMargins) {
   const {margin, width, height} = props;
   const marginProps = {
     ...defaultMargins,
-    ...(
-      typeof margin === 'number' ?
-      {
-        left: margin,
-        right: margin,
-        top: margin,
-        bottom: margin
-      } :
-        margin
-    )
+    ...(typeof margin === 'number'
+      ? {
+          left: margin,
+          right: margin,
+          top: margin,
+          bottom: margin
+        }
+      : margin)
   };
   const {
     left: marginLeft = 0,
@@ -66,8 +64,8 @@ export function getInnerDimensions(props, defaultMargins) {
  * @return {Object} an object includes {bottom, left, right, top}
  */
 export function getRadialLayoutMargin(width, height, radius) {
-  const marginX = (width / 2) - radius;
-  const marginY = (height / 2) - radius;
+  const marginX = width / 2 - radius;
+  const marginY = height / 2 - radius;
   return {
     bottom: marginY,
     left: marginX,

@@ -75,6 +75,7 @@
     "jsdom": "^9.9.1",
     "node-sass": "^4.9.3",
     "nyc": "^13.0.1",
+    "prettier": "^1.14.2",
     "react": "^15.5.4",
     "react-addons-test-utils": ">=15.4.2",
     "react-dom": "^15.5.4",

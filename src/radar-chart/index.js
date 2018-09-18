@@ -53,7 +53,7 @@ function getAxes(props) {
     hideInnerMostValues
   } = props;
   return domains.map((domain, index) => {
-    const angle = index / domains.length * Math.PI * 2 + startingAngle;
+    const angle = (index / domains.length) * Math.PI * 2 + startingAngle;
     const sortedDomain = domain.domain;
 
     const domainTickFormat = t => {
@@ -68,12 +68,15 @@ function getAxes(props) {
         animation={animation}
         key={`${index}-axis`}
         axisStart={{x: 0, y: 0}}
-        axisEnd={{x: getCoordinate(Math.cos(angle)), y: getCoordinate(Math.sin(angle))}}
+        axisEnd={{
+          x: getCoordinate(Math.cos(angle)),
+          y: getCoordinate(Math.sin(angle))
+        }}
         axisDomain={sortedDomain}
         numberOfTicks={5}
         tickValue={domainTickFormat}
         style={style.axes}
-        />
+      />
     );
   });
 }
@@ -112,7 +115,7 @@ function getCoordinate(axisEndPoint) {
 function getLabels(props) {
   const {domains, startingAngle, style} = props;
   return domains.map(({name}, index) => {
-    const angle = index / domains.length * Math.PI * 2 + startingAngle;
+    const angle = (index / domains.length) * Math.PI * 2 + startingAngle;
     const radius = 1.2;
     return {
       x: radius * Math.cos(angle),
@@ -134,16 +137,11 @@ function getLabels(props) {
  * @return {Array} the plotted axis components
  */
 function getPolygons(props) {
-  const {
-    animation,
-    colorRange,
-    domains,
-    data,
-    style,
-    startingAngle
-  } = props;
+  const {animation, colorRange, domains, data, style, startingAngle} = props;
   const scales = domains.reduce((acc, {domain, name}) => {
-    acc[name] = scaleLinear().domain(domain).range([0, 1]);
+    acc[name] = scaleLinear()
+      .domain(domain)
+      .range([0, 1]);
     return acc;
   }, {});
 
@@ -151,23 +149,27 @@ function getPolygons(props) {
     const mappedData = domains.map(({name, getValue}, index) => {
       const dataPoint = getValue ? getValue(row) : row[name];
       // error handling if point doesn't exist
-      const angle = index / domains.length * Math.PI * 2 + startingAngle;
+      const angle = (index / domains.length) * Math.PI * 2 + startingAngle;
       // dont let the radius become negative
       const radius = Math.max(scales[name](dataPoint), 0);
       return {x: radius * Math.cos(angle), y: radius * Math.sin(angle)};
     });
 
-    return (<PolygonSeries
-      animation={animation}
-      className={`${predefinedClassName}-polygon`}
-      key={`${rowIndex}-polygon`}
-      data={mappedData}
-      style={{
-        stroke: row.color || row.stroke || colorRange[rowIndex % colorRange.length],
-        fill: row.color || row.fill || colorRange[rowIndex % colorRange.length],
-        ...style.polygons
-      }}
-      />);
+    return (
+      <PolygonSeries
+        animation={animation}
+        className={`${predefinedClassName}-polygon`}
+        key={`${rowIndex}-polygon`}
+        data={mappedData}
+        style={{
+          stroke:
+            row.color || row.stroke || colorRange[rowIndex % colorRange.length],
+          fill:
+            row.color || row.fill || colorRange[rowIndex % colorRange.length],
+          ...style.polygons
+        }}
+      />
+    );
   });
 }
 
@@ -213,7 +215,8 @@ class RadarChart extends Component {
         animation={animation}
         key={className}
         className={`${predefinedClassName}-label`}
-        data={getLabels({domains, style: style.labels, startingAngle})} />
+        data={getLabels({domains, style: style.labels, startingAngle})}
+      />
     );
     return (
       <XYPlot
@@ -225,7 +228,8 @@ class RadarChart extends Component {
         onMouseLeave={onMouseLeave}
         onMouseEnter={onMouseEnter}
         xDomain={[-1, 1]}
-        yDomain={[-1, 1]}>
+        yDomain={[-1, 1]}
+      >
         {children}
         {axes.concat(polygons).concat(labelSeries)}
       </XYPlot>

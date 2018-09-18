@@ -32,12 +32,7 @@ import {
 } from 'index';
 
 const CHART_MARGINS = {left: 50, right: 10, top: 10, bottom: 25};
-const DATA = [
-  {x: 1, y: 5},
-  {x: 2, y: 12},
-  {x: 3, y: 8},
-  {x: 4, y: 15}
-];
+const DATA = [{x: 1, y: 5}, {x: 2, y: 12}, {x: 3, y: 8}, {x: 4, y: 15}];
 const XMAX = 4;
 
 function getAlignStyle(align, x, y) {
@@ -63,33 +58,23 @@ export default class Example extends React.Component {
   render() {
     const {value} = this.state;
     return (
-      <XYPlot
-        width={300}
-        height={300}
-        margin={CHART_MARGINS}>
+      <XYPlot width={300} height={300} margin={CHART_MARGINS}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis />
         <YAxis />
-        <MarkSeries
-          onNearestX={ this._rememberValue}
-          data={DATA}/>
-        {value ?
+        <MarkSeries onNearestX={this._rememberValue} data={DATA} />
+        {value ? (
           <LineSeries
             data={[{x: value.x, y: value.y}, {x: XMAX, y: value.y}]}
             stroke="black"
-          /> : null
-        }
-        {value ?
-          <Hint
-            value={value}
-            getAlignStyle={ getAlignStyle }
-          >
-            <div className="rv-hint__content">
-              { `(${value.x}, ${value.y})` }
-            </div>
-          </Hint> : null
-        }
+          />
+        ) : null}
+        {value ? (
+          <Hint value={value} getAlignStyle={getAlignStyle}>
+            <div className="rv-hint__content">{`(${value.x}, ${value.y})`}</div>
+          </Hint>
+        ) : null}
       </XYPlot>
     );
   }

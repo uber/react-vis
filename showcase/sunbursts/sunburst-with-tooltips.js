@@ -20,21 +20,19 @@
 
 import React from 'react';
 
-import {
-  Hint,
-  Sunburst
-} from 'index';
+import {Hint, Sunburst} from 'index';
 
-import {
-  EXTENDED_DISCRETE_COLOR_RANGE as COLORS
-} from 'theme';
+import {EXTENDED_DISCRETE_COLOR_RANGE as COLORS} from 'theme';
 
 const DATA = {
   children: [
-    {children: [
-      {bigness: 1, children: [], clr: COLORS[1], name: 'excellent'},
-      {bigness: 1, children: [], clr: COLORS[2], name: 'chart'}
-    ], clr: COLORS[3]},
+    {
+      children: [
+        {bigness: 1, children: [], clr: COLORS[1], name: 'excellent'},
+        {bigness: 1, children: [], clr: COLORS[2], name: 'chart'}
+      ],
+      clr: COLORS[3]
+    },
     {
       bigness: 1,
       children: [],
@@ -47,10 +45,13 @@ const DATA = {
     },
     {bigness: 1, children: [], clr: COLORS[5], name: 'dogs'},
     {bigness: 1, children: [], clr: COLORS[6], name: 'sunglasses'},
-    {children: [
-      {bigness: 1, children: [], clr: COLORS[7], name: 'great'},
-      {bigness: 1, children: [], clr: COLORS[8], name: 'label'}
-    ], clr: COLORS[9]}
+    {
+      children: [
+        {bigness: 1, children: [], clr: COLORS[7], name: 'great'},
+        {bigness: 1, children: [], clr: COLORS[8], name: 'label'}
+      ],
+      clr: COLORS[9]
+    }
   ]
 };
 
@@ -75,14 +76,16 @@ function buildValue(hoveredCell) {
 export default class SunburstWithTooltips extends React.Component {
   state = {
     hoveredCell: false
-  }
+  };
   render() {
     const {hoveredCell} = this.state;
     return (
       <Sunburst
         data={DATA}
         style={{stroke: '#fff'}}
-        onValueMouseOver={v => this.setState({hoveredCell: v.x && v.y ? v : false})}
+        onValueMouseOver={v =>
+          this.setState({hoveredCell: v.x && v.y ? v : false})
+        }
         onValueMouseOut={v => this.setState({hoveredCell: false})}
         height={300}
         margin={{top: 50, bottom: 50, left: 50, right: 50}}
@@ -90,15 +93,17 @@ export default class SunburstWithTooltips extends React.Component {
         getSize={d => d.bigness}
         getColor={d => d.clr}
         width={350}
-        padAngle={() => 0.02}>
-        {hoveredCell ? <Hint value={buildValue(hoveredCell)}>
-          <div style={tipStyle}>
-            <div style={{...boxStyle, background: hoveredCell.clr}}/>
-            {hoveredCell.clr}
-          </div>
-        </ Hint> : null}
+        padAngle={() => 0.02}
+      >
+        {hoveredCell ? (
+          <Hint value={buildValue(hoveredCell)}>
+            <div style={tipStyle}>
+              <div style={{...boxStyle, background: hoveredCell.clr}} />
+              {hoveredCell.clr}
+            </div>
+          </Hint>
+        ) : null}
       </Sunburst>
     );
   }
-
 }

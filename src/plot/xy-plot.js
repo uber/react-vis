@@ -28,8 +28,16 @@ import {
   getOptionalScaleProps,
   getXYPlotValues
 } from 'utils/scales-utils';
-import {getStackedData, getSeriesChildren, getSeriesPropsFromChildren} from 'utils/series-utils';
-import {getInnerDimensions, MarginPropType, DEFAULT_MARGINS} from 'utils/chart-utils';
+import {
+  getStackedData,
+  getSeriesChildren,
+  getSeriesPropsFromChildren
+} from 'utils/series-utils';
+import {
+  getInnerDimensions,
+  MarginPropType,
+  DEFAULT_MARGINS
+} from 'utils/chart-utils';
 import {AnimationPropType} from 'animation';
 import {
   CONTINUOUS_COLOR_RANGE,
@@ -77,18 +85,21 @@ function cleanseData(data) {
 function checkIfMixinsAreEqual(nextScaleMixins, scaleMixins, hasTreeStructure) {
   const newMixins = {
     ...nextScaleMixins,
-    _allData: hasTreeStructure ? cleanseData(nextScaleMixins._allData) : nextScaleMixins._allData
+    _allData: hasTreeStructure
+      ? cleanseData(nextScaleMixins._allData)
+      : nextScaleMixins._allData
   };
   const oldMixins = {
     ...scaleMixins,
-    _allData: hasTreeStructure ? cleanseData(scaleMixins._allData) : scaleMixins._allData
+    _allData: hasTreeStructure
+      ? cleanseData(scaleMixins._allData)
+      : scaleMixins._allData
   };
   // it's hard to say if this function is reasonable?
   return equal(newMixins, oldMixins);
 }
 
 class XYPlot extends React.Component {
-
   static get propTypes() {
     return {
       animation: AnimationPropType,
@@ -148,7 +159,13 @@ class XYPlot extends React.Component {
     const nextData = getStackedData(children, nextProps.stackBy);
     const {scaleMixins} = this.state;
     const nextScaleMixins = this._getScaleMixins(nextData, nextProps);
-    if (!checkIfMixinsAreEqual(nextScaleMixins, scaleMixins, nextProps.hasTreeStructure)) {
+    if (
+      !checkIfMixinsAreEqual(
+        nextScaleMixins,
+        scaleMixins,
+        nextProps.hasTreeStructure
+      )
+    ) {
       this.setState({
         scaleMixins: nextScaleMixins,
         data: nextData
@@ -361,8 +378,10 @@ class XYPlot extends React.Component {
     );
 
     const colorRanges = ['color', 'fill', 'stroke'].reduce((acc, attr) => {
-      const range = props[`${attr}Type`] === 'category' ?
-        EXTENDED_DISCRETE_COLOR_RANGE : CONTINUOUS_COLOR_RANGE;
+      const range =
+        props[`${attr}Type`] === 'category'
+          ? EXTENDED_DISCRETE_COLOR_RANGE
+          : CONTINUOUS_COLOR_RANGE;
       return {...acc, [`${attr}Range`]: range};
     }, {});
 
@@ -384,18 +403,21 @@ class XYPlot extends React.Component {
    * @private
    */
   _getScaleMixins(data, props) {
-
     const filteredData = data.filter(d => d);
     const allData = [].concat(...filteredData);
 
     const defaultScaleProps = this._getDefaultScaleProps(props);
     const optionalScaleProps = getOptionalScaleProps(props);
     const userScaleProps = extractScalePropsFromProps(props, ATTRIBUTES);
-    const missingScaleProps = getMissingScaleProps({
-      ...defaultScaleProps,
-      ...optionalScaleProps,
-      ...userScaleProps
-    }, allData, ATTRIBUTES);
+    const missingScaleProps = getMissingScaleProps(
+      {
+        ...defaultScaleProps,
+        ...optionalScaleProps,
+        ...userScaleProps
+      },
+      allData,
+      ATTRIBUTES
+    );
     const children = getSeriesChildren(props.children);
     const zeroBaseProps = {};
     const adjustBy = new Set();
@@ -407,17 +429,17 @@ class XYPlot extends React.Component {
       ATTRIBUTES.forEach(attr => {
         const {
           isDomainAdjustmentNeeded,
-          zeroBaseValue} = child.type.getParentConfig(
-          attr,
-          child.props
-        );
+          zeroBaseValue
+        } = child.type.getParentConfig(attr, child.props);
         if (isDomainAdjustmentNeeded) {
           adjustBy.add(attr);
           adjustWhat.add(index);
         }
         if (zeroBaseValue) {
           const specifiedDomain = props[`${attr}Domain`];
-          zeroBaseProps[`${attr}BaseValue`] = specifiedDomain ? specifiedDomain[0] : 0;
+          zeroBaseProps[`${attr}BaseValue`] = specifiedDomain
+            ? specifiedDomain[0]
+            : 0;
         }
       });
     });
@@ -441,8 +463,11 @@ class XYPlot extends React.Component {
    */
   _isPlotEmpty() {
     const {data} = this.state;
-    return !data || !data.length ||
-      !data.some(series => series && series.some(d => d));
+    return (
+      !data ||
+      !data.length ||
+      !data.some(series => series && series.some(d => d))
+    );
   }
 
   /**
@@ -469,11 +494,12 @@ class XYPlot extends React.Component {
       return React.cloneElement(child, {
         ...dimensions,
         animation,
-        ...(dataProps && child.type.prototype && child.type.prototype.render ?
-        {
-          ref: ref => (this[`series${seriesProps[index].seriesIndex}`] = ref)
-        } :
-        {}),
+        ...(dataProps && child.type.prototype && child.type.prototype.render
+          ? {
+              ref: ref =>
+                (this[`series${seriesProps[index].seriesIndex}`] = ref)
+            }
+          : {}),
         ...seriesProps[index],
         ...scaleMixins,
         ...child.props,
@@ -484,7 +510,9 @@ class XYPlot extends React.Component {
   }
 
   renderCanvasComponents(components, props) {
-    const componentsToRender = components.filter(c => c && !c.type.requiresSVG && c.type.isCanvas);
+    const componentsToRender = components.filter(
+      c => c && !c.type.requiresSVG && c.type.isCanvas
+    );
 
     if (componentsToRender.length === 0) {
       return null;
@@ -497,26 +525,24 @@ class XYPlot extends React.Component {
       innerHeight,
       innerWidth
     } = componentsToRender[0].props;
-    return (<CanvasWrapper {...{
-      innerHeight,
-      innerWidth,
-      marginLeft,
-      marginTop,
-      marginBottom,
-      marginRight
-    }}>
-      {componentsToRender}
-    </CanvasWrapper>);
+    return (
+      <CanvasWrapper
+        {...{
+          innerHeight,
+          innerWidth,
+          marginLeft,
+          marginTop,
+          marginBottom,
+          marginRight
+        }}
+      >
+        {componentsToRender}
+      </CanvasWrapper>
+    );
   }
 
   render() {
-    const {
-      className,
-      dontCheckIfEmpty,
-      style,
-      width,
-      height
-    } = this.props;
+    const {className, dontCheckIfEmpty, style, width, height} = this.props;
 
     if (!dontCheckIfEmpty && this._isPlotEmpty()) {
       return (
@@ -526,7 +552,8 @@ class XYPlot extends React.Component {
             width: `${width}px`,
             height: `${height}px`,
             ...this.props.style
-          }}/>
+          }}
+        />
       );
     }
     const components = this._getClonedChildComponents();
@@ -536,7 +563,8 @@ class XYPlot extends React.Component {
           width: `${width}px`,
           height: `${height}px`
         }}
-        className={`rv-xy-plot ${className}`}>
+        className={`rv-xy-plot ${className}`}
+      >
         <svg
           className="rv-xy-plot__inner"
           width={width}
@@ -553,7 +581,8 @@ class XYPlot extends React.Component {
           onTouchMove={this._touchMoveHandler}
           onTouchEnd={this._touchEndHandler}
           onTouchCancel={this._touchCancelHandler}
-          onWheel={this._wheelHandler}>
+          onWheel={this._wheelHandler}
+        >
           {components.filter(c => c && c.type.requiresSVG)}
         </svg>
         {this.renderCanvasComponents(components, this.props)}

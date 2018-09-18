@@ -4,12 +4,24 @@ import {setAddon, storiesOf} from '@storybook/react';
 import JSXAddon from 'storybook-addon-jsx';
 setAddon(JSXAddon);
 
-import {withKnobs, boolean, color, number, object, select, text} from '@storybook/addon-knobs/react';
+import {
+  withKnobs,
+  boolean,
+  color,
+  number,
+  object,
+  select,
+  text
+} from '@storybook/addon-knobs/react';
 
 import {ArcSeries} from 'react-vis';
 
 import {generateRadialData} from './storybook-data.js';
-import {SimpleChartWrapperNoAxes, SimpleRadialChartWrapper, jsxOptions} from './storybook-utils.js';
+import {
+  SimpleChartWrapperNoAxes,
+  SimpleRadialChartWrapper,
+  jsxOptions
+} from './storybook-utils.js';
 
 // function styledLineSeries(props) {
 //   return (
@@ -47,15 +59,29 @@ storiesOf('Series/RadialCharts/Pie Chart', module)
   .addWithJSX(
     'Single Pie Chart',
     () => {
-      const nbSlices = number('nbSlices', 5, {max: 8, min: 1, range: true, step: 1}, 'Pie Chart');
-      return <SimpleRadialChartWrapper data={generateRadialData({key: 'radial-1'}).slice(0, nbSlices)} />;
+      const nbSlices = number(
+        'nbSlices',
+        5,
+        {max: 8, min: 1, range: true, step: 1},
+        'Pie Chart'
+      );
+      return (
+        <SimpleRadialChartWrapper
+          data={generateRadialData({key: 'radial-1'}).slice(0, nbSlices)}
+        />
+      );
     },
     jsxOptions
   )
   .addWithJSX(
     'Single Pie Chart with Labels',
     () => {
-      const nbSlices = number('nbSlices', 5, {max: 8, min: 1, range: true, step: 1}, 'Pie Chart');
+      const nbSlices = number(
+        'nbSlices',
+        5,
+        {max: 8, min: 1, range: true, step: 1},
+        'Pie Chart'
+      );
       return (
         <SimpleRadialChartWrapper
           data={generateRadialData({key: 'radial-1'}).slice(0, nbSlices)}

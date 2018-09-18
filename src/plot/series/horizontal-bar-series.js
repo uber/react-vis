@@ -24,7 +24,6 @@ import AbstractSeries from './abstract-series';
 import BarSeries from './bar-series';
 
 class HorizontalBarSeries extends AbstractSeries {
-
   static getParentConfig(attr) {
     const isDomainAdjustmentNeeded = attr === 'y';
     const zeroBaseValue = attr === 'x';

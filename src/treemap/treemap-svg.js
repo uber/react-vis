@@ -40,30 +40,35 @@ class TreemapSVG extends React.Component {
       style
     } = this.props;
 
-    const {rows, minY, maxY, minX, maxX} = nodes.reduce((acc, node, index) => {
-      if (!index && hideRootNode) {
-        return acc;
+    const {rows, minY, maxY, minX, maxX} = nodes.reduce(
+      (acc, node, index) => {
+        if (!index && hideRootNode) {
+          return acc;
+        }
+        const {x, y, r} = node;
+        return {
+          maxY: Math.max(y + r, acc.maxY),
+          minY: Math.min(y - r, acc.minY),
+          maxX: Math.max(x + MARGIN_ADJUST * r, acc.maxX),
+          minX: Math.min(x - MARGIN_ADJUST * r, acc.minX),
+          rows: acc.rows.concat([
+            {
+              x,
+              y,
+              size: r,
+              color: scales.color(node)
+            }
+          ])
+        };
+      },
+      {
+        rows: [],
+        maxY: -Infinity,
+        minY: Infinity,
+        maxX: -Infinity,
+        minX: Infinity
       }
-      const {x, y, r} = node;
-      return {
-        maxY: Math.max(y + r, acc.maxY),
-        minY: Math.min(y - r, acc.minY),
-        maxX: Math.max(x + MARGIN_ADJUST * r, acc.maxX),
-        minX: Math.min(x - MARGIN_ADJUST * r, acc.minX),
-        rows: acc.rows.concat([{
-          x,
-          y,
-          size: r,
-          color: scales.color(node)
-        }])
-      };
-    }, {
-      rows: [],
-      maxY: -Infinity,
-      minY: Infinity,
-      maxX: -Infinity,
-      minX: Infinity
-    });
+    );
     return {
       updatedNodes: (
         <MarkSeries
@@ -77,7 +82,8 @@ class TreemapSVG extends React.Component {
           getColor={d => d.color}
           sizeType="literal"
           getSize={d => d.size}
-          style={style}/>
+          style={style}
+        />
       ),
       minY,
       maxY,
@@ -98,68 +104,65 @@ class TreemapSVG extends React.Component {
       style
     } = this.props;
     const {color} = scales;
-    return nodes.reduce((acc, node, index) => {
-      if (!index && hideRootNode) {
+    return nodes.reduce(
+      (acc, node, index) => {
+        if (!index && hideRootNode) {
+          return acc;
+        }
+        const {x0, x1, y1, y0} = node;
+        const x = x0;
+        const y = y0;
+        const nodeHeight = y1 - y0;
+        const nodeWidth = x1 - x0;
+
+        acc.maxY = Math.max(y + nodeHeight, acc.maxY);
+        acc.minY = Math.min(y, acc.minY);
+        acc.maxX = Math.max(x + nodeWidth, acc.maxX);
+        acc.minX = Math.min(x, acc.minX);
+
+        const data = [
+          {x, y},
+          {x, y: y + nodeHeight},
+          {x: x + nodeWidth, y: y + nodeHeight},
+          {x: x + nodeWidth, y}
+        ];
+
+        acc.updatedNodes = acc.updatedNodes.concat([
+          <PolygonSeries
+            animation={animation}
+            className="rv-treemap__leaf"
+            key={index}
+            color={color(node)}
+            type="literal"
+            onSeriesMouseEnter={onLeafMouseOver}
+            onSeriesMouseLeave={onLeafMouseOut}
+            onSeriesClick={onLeafClick}
+            data={data}
+            style={{
+              ...style,
+              ...node.style
+            }}
+          />
+        ]);
         return acc;
+      },
+      {
+        updatedNodes: [],
+        maxY: -Infinity,
+        minY: Infinity,
+        maxX: -Infinity,
+        minX: Infinity
       }
-      const {x0, x1, y1, y0} = node;
-      const x = x0;
-      const y = y0;
-      const nodeHeight = y1 - y0;
-      const nodeWidth = x1 - x0;
-
-      acc.maxY = Math.max(y + nodeHeight, acc.maxY);
-      acc.minY = Math.min(y, acc.minY);
-      acc.maxX = Math.max(x + nodeWidth, acc.maxX);
-      acc.minX = Math.min(x, acc.minX);
-
-      const data = [
-        {x, y},
-        {x, y: y + nodeHeight},
-        {x: x + nodeWidth, y: y + nodeHeight},
-        {x: x + nodeWidth, y}
-      ];
-
-      acc.updatedNodes = acc.updatedNodes.concat([
-        (<PolygonSeries
-          animation={animation}
-          className="rv-treemap__leaf"
-          key={index}
-          color={color(node)}
-          type="literal"
-          onSeriesMouseEnter={onLeafMouseOver}
-          onSeriesMouseLeave={onLeafMouseOut}
-          onSeriesClick={onLeafClick}
-          data={data}
-          style={{
-            ...style,
-            ...node.style
-          }}
-          />)
-      ]);
-      return acc;
-    }, {
-      updatedNodes: [],
-      maxY: -Infinity,
-      minY: Infinity,
-      maxX: -Infinity,
-      minX: Infinity
-    });
+    );
   }
 
   render() {
-    const {
-      className,
-      height,
-      mode,
-      nodes,
-      width
-    } = this.props;
+    const {className, height, mode, nodes, width} = this.props;
     const useCirclePacking = mode === 'circlePack';
 
-    const {minY, maxY, minX, maxX, updatedNodes} = useCirclePacking ?
-      this.getCircularNodes() :
-      this.getNonCircularNodes();
+    const {minY, maxY, minX, maxX, updatedNodes} = useCirclePacking
+      ? this.getCircularNodes()
+      : this.getNonCircularNodes();
 
     const labels = nodes.reduce((acc, node) => {
       if (!node.data.title) {
@@ -175,7 +178,9 @@ class TreemapSVG extends React.Component {
 
     return (
       <XYPlot
-        className={`rv-treemap ${useCirclePacking ? 'rv-treemap-circle-packed' : ''} ${className}`}
+        className={`rv-treemap ${
+          useCirclePacking ? 'rv-treemap-circle-packed' : ''
+        } ${className}`}
         width={width}
         height={height}
         yDomain={[maxY, minY]}
@@ -183,7 +188,7 @@ class TreemapSVG extends React.Component {
         colorType="literal"
         hasTreeStructure
         {...this.props}
-        >
+      >
         {updatedNodes}
         <LabelSeries data={labels} />
       </XYPlot>

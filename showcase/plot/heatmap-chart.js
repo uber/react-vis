@@ -25,9 +25,7 @@ import {XYPlot, XAxis, YAxis, HeatmapSeries} from 'index';
 export default class Example extends React.Component {
   render() {
     return (
-      <XYPlot
-        width={300}
-        height={300}>
+      <XYPlot width={300} height={300}>
         <XAxis />
         <YAxis />
         <HeatmapSeries
@@ -45,7 +43,8 @@ export default class Example extends React.Component {
             {x: 3, y: 5, color: 2},
             {x: 3, y: 10, color: 6},
             {x: 3, y: 15, color: 12}
-          ]}/>
+          ]}
+        />
       </XYPlot>
     );
   }

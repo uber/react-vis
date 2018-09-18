@@ -53,7 +53,7 @@ export default class AnimatedSunburst extends React.Component {
   state = {
     data: updateData(),
     hovering: false
-  }
+  };
 
   render() {
     const {data, hovering} = this.state;
@@ -61,7 +61,8 @@ export default class AnimatedSunburst extends React.Component {
       <div className="animated-sunburst-example-wrapper">
         <ShowcaseButton
           onClick={() => this.setState({data: updateData()})}
-          buttonContent={'UPDATE'} />
+          buttonContent={'UPDATE'}
+        />
         <div>{hovering ? 'CURRENTLY HOVERING' : 'NOT HOVERED'}</div>
         <Sunburst
           animation={{damping: 20, stiffness: 300}}
@@ -72,9 +73,9 @@ export default class AnimatedSunburst extends React.Component {
           onValueMouseOver={() => this.setState({hovering: true})}
           onValueMouseOut={() => this.setState({hovering: false})}
           height={300}
-          width={350} />
+          width={350}
+        />
       </div>
     );
   }
-
 }

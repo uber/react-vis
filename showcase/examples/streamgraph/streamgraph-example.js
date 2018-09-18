@@ -38,50 +38,66 @@ const bump = (aggregatingData, samplesPerLayer) => {
 
   return aggregatingData.map((v, i) => {
     const w = (i / samplesPerLayer - y) * z;
-    return v + (x * Math.exp(-w * w));
+    return v + x * Math.exp(-w * w);
   });
 };
 
 // Inspired by Bostock's version of Lee Byron’s test data generator.
 function bumps(samplesPerLayer, bumpsPerLayer) {
-  const dataOutline = (new Array(samplesPerLayer)).fill(0);
-  return range(bumpsPerLayer).reduce(res => bump(res, samplesPerLayer), dataOutline);
+  const dataOutline = new Array(samplesPerLayer).fill(0);
+  return range(bumpsPerLayer).reduce(
+    res => bump(res, samplesPerLayer),
+    dataOutline
+  );
 }
 
 function generateData() {
-  const stack = d3Stack().keys(range(NUMBER_OF_LAYERS)).offset(stackOffsetWiggle);
-  const transposed = transpose(range(NUMBER_OF_LAYERS).map(() => bumps(SAMPLES_PER_LAYER, BUMPS_PER_LAYER)));
-  return stack(transposed).map(series => series.map((row, x) => ({x, y0: row[0], y: row[1]})));
+  const stack = d3Stack()
+    .keys(range(NUMBER_OF_LAYERS))
+    .offset(stackOffsetWiggle);
+  const transposed = transpose(
+    range(NUMBER_OF_LAYERS).map(() => bumps(SAMPLES_PER_LAYER, BUMPS_PER_LAYER))
+  );
+  return stack(transposed).map(series =>
+    series.map((row, x) => ({x, y0: row[0], y: row[1]}))
+  );
 }
 
 class StreamgraphExample extends React.Component {
   state = {
     data: generateData(),
     hoveredIndex: false
-  }
+  };
 
   render() {
     const {forFrontPage} = this.props;
     const {data, hoveredIndex} = this.state;
     return (
       <div className="streamgraph-example">
-        {!forFrontPage && (<button
-          className="showcase-button"
-          onClick={() => this.setState({data: generateData()})}>
-          {'Click me!'}
-          </button>)}
+        {!forFrontPage && (
+          <button
+            className="showcase-button"
+            onClick={() => this.setState({data: generateData()})}
+          >
+            {'Click me!'}
+          </button>
+        )}
         <div className="streamgraph">
           <FlexibleWidthXYPlot
             animation
             onMouseLeave={() => this.setState({hoveredIndex: false})}
-            height={300}>
+            height={300}
+          >
             {data.map((series, index) => (
               <AreaSeries
                 key={index}
                 curve="curveNatural"
-                className={`${index === hoveredIndex ? 'highlighted-stream' : ''}`}
+                className={`${
+                  index === hoveredIndex ? 'highlighted-stream' : ''
+                }`}
                 onSeriesMouseOver={() => this.setState({hoveredIndex: index})}
-                data={series} />
+                data={series}
+              />
             ))}
           </FlexibleWidthXYPlot>
         </div>
