@@ -114,8 +114,8 @@ test('series-utils #seriesClusterProps', t => {
   t.end();
 });
 
+// eslint-disable-next-line max-statements
 test('series-utils #getStackedData', t => {
-  // eslint-disable-line max-statements
   const yData = [
     [{y: 2, x: 10}, {y: 4, x: 5}, {y: 5, x: 15}],
     [{y: 2, x: 12}, {y: 4, x: 2}, {y: 5, x: 11}]

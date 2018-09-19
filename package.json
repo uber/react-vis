@@ -7,7 +7,10 @@
   "main": "dist",
   "module": "es",
   "jsnext:main": "es",
-  "files": ["dist", "es"],
+  "files": [
+    "dist",
+    "es"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/uber-common/react-vis.git"
@@ -52,6 +55,9 @@
     "react-motion": "^0.5.2"
   },
   "devDependencies": {
+    "@uber/eslint-config": "^3.0.3",
+    "@uber/eslint-config-es6": "^3.2.1",
+    "@uber/eslint-config-jsx": "^4.0.2",
     "babel-cli": "6.18.0",
     "babel-eslint": "^7.1.1",
     "babel-plugin-module-resolver": "^2.4.0",
@@ -64,12 +70,12 @@
     "browserify": "^14.3.0",
     "canvas-prebuilt": "^1.6.0",
     "enzyme": "^2.8.2",
-    "eslint": "^3.13.1",
-    "eslint-config-uber-es2015": "^3.0.1",
-    "eslint-config-uber-jsx": "^3.0.1",
-    "eslint-plugin-babel": "^4.0.0",
+    "eslint": "^3.19.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-no-only-tests": "^2.0.1",
-    "eslint-plugin-react": "^6.9.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.11.1",
     "jsdom": "^9.9.1",
     "node-sass": "^4.9.3",
     "nyc": "^13.0.1",
@@ -86,22 +92,39 @@
   "peerDependencies": {
     "react": "15.3.0 - 16.x"
   },
-  "keywords": ["d3", "react", "visualization", "chart", "es6", "babel"],
+  "keywords": [
+    "d3",
+    "react",
+    "visualization",
+    "chart",
+    "es6",
+    "babel"
+  ],
   "babel": {
     "plugins": [
       [
         "module-resolver",
         {
-          "root": ["./src"]
+          "root": [
+            "./src"
+          ]
         }
       ]
     ],
     "env": {
       "production": {
-        "presets": ["es2015", "stage-0", "react"]
+        "presets": [
+          "es2015",
+          "stage-0",
+          "react"
+        ]
       },
       "development": {
-        "presets": ["es2015", "stage-0", "react"]
+        "presets": [
+          "es2015",
+          "stage-0",
+          "react"
+        ]
       },
       "es": {
         "presets": [
@@ -118,7 +141,10 @@
     }
   },
   "nyc": {
-    "exclude": ["tests/**/*.js", "src/utils/react-utils.js"]
+    "exclude": [
+      "tests/**/*.js",
+      "src/utils/react-utils.js"
+    ]
   },
   "engines": {
     "node": ">=0.10.0",
