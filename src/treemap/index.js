@@ -100,7 +100,7 @@ class Treemap extends React.Component {
     };
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     this.setState({
       scales: _getScaleFns(props),
       ...getInnerDimensions(props, props.margin)
