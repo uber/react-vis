@@ -31,16 +31,8 @@ import {
 } from 'index';
 
 const DATA = [
-  [
-    {x: 1, y: 10},
-    {x: 2, y: 7},
-    {x: 3, y: 15}
-  ],
-  [
-    {x: 1, y: 20},
-    {x: 2, y: 5},
-    {x: 3, y: 15}
-  ]
+  [{x: 1, y: 10}, {x: 2, y: 7}, {x: 3, y: 15}],
+  [{x: 1, y: 20}, {x: 2, y: 5}, {x: 3, y: 15}]
 ];
 
 export default class DynamicCrosshair extends React.Component {
@@ -74,20 +66,17 @@ export default class DynamicCrosshair extends React.Component {
 
   render() {
     return (
-      <XYPlot
-        onMouseLeave={this._onMouseLeave}
-        width={300}
-        height={300}>
+      <XYPlot onMouseLeave={this._onMouseLeave} width={300} height={300}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis />
         <YAxis />
-        <LineSeries
-          onNearestX={this._onNearestX}
-          data={DATA[0]}/>
-        <LineSeries
-          data={DATA[1]}/>
-        <Crosshair values={this.state.crosshairValues} className={'test-class-name'}/>
+        <LineSeries onNearestX={this._onNearestX} data={DATA[0]} />
+        <LineSeries data={DATA[1]} />
+        <Crosshair
+          values={this.state.crosshairValues}
+          className={'test-class-name'}
+        />
       </XYPlot>
     );
   }

@@ -89,10 +89,14 @@ class ArcSeries extends AbstractSeries {
   _getAllScaleProps(props) {
     const defaultScaleProps = this._getDefaultScaleProps(props);
     const userScaleProps = extractScalePropsFromProps(props, ATTRIBUTES);
-    const missingScaleProps = getMissingScaleProps({
-      ...defaultScaleProps,
-      ...userScaleProps
-    }, props.data, ATTRIBUTES);
+    const missingScaleProps = getMissingScaleProps(
+      {
+        ...defaultScaleProps,
+        ...userScaleProps
+      },
+      props.data,
+      ATTRIBUTES
+    );
 
     return {
       ...defaultScaleProps,
@@ -140,10 +144,24 @@ class ArcSeries extends AbstractSeries {
       const cloneData = data.map(d => ({...d}));
       return (
         <g className="rv-xy-plot__series--arc__animation-wrapper">
-          <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS} data={cloneData}>
-            <ArcSeries {...this.props} animation={null} disableSeries={true} data={cloneData}/>
+          <Animation
+            {...this.props}
+            animatedProps={ANIMATED_SERIES_PROPS}
+            data={cloneData}
+          >
+            <ArcSeries
+              {...this.props}
+              animation={null}
+              disableSeries={true}
+              data={cloneData}
+            />
           </Animation>
-          <ArcSeries {...this.props} animation={null} hideSeries style={{stroke: 'red'}}/>
+          <ArcSeries
+            {...this.props}
+            animation={null}
+            hideSeries
+            style={{stroke: 'red'}}
+          />
         </g>
       );
     }
@@ -156,23 +174,26 @@ class ArcSeries extends AbstractSeries {
     const angle = getAttributeFunctor(scaleProps, 'angle');
     const angle0 = getAttr0Functor(scaleProps, 'angle');
     // but it does have good color support!
-    const fill = this._getAttributeFunctor('fill') ||
-      this._getAttributeFunctor('color');
-    const stroke = this._getAttributeFunctor('stroke') ||
-      this._getAttributeFunctor('color');
+    const fill =
+      this._getAttributeFunctor('fill') || this._getAttributeFunctor('color');
+    const stroke =
+      this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color');
     const opacity = this._getAttributeFunctor('opacity');
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
 
     return (
-      <g className={`${predefinedClassName} ${className}`}
+      <g
+        className={`${predefinedClassName} ${className}`}
         onMouseOver={this._seriesMouseOverHandler}
         onMouseOut={this._seriesMouseOutHandler}
         onClick={this._seriesClickHandler}
         onContextMenu={this._seriesRightClickHandler}
         opacity={hideSeries ? 0 : 1}
         pointerEvents={disableSeries ? 'none' : 'all'}
-        transform={`translate(${marginLeft + x(center)},${marginTop + y(center)})`}>
+        transform={`translate(${marginLeft + x(center)},${marginTop +
+          y(center)})`}
+      >
         {data.map((row, i) => {
           const noRadius = radiusDomain[1] === radiusDomain[0];
           const arcArg = {
@@ -184,22 +205,28 @@ class ArcSeries extends AbstractSeries {
           const arcedData = arcBuilder().padAngle(padAngle);
           const rowStyle = row.style || {};
           const rowClassName = row.className || '';
-          return (<path {...{
-            style: {
-              opacity: opacity && opacity(row),
-              stroke: stroke && stroke(row),
-              fill: fill && fill(row),
-              ...style,
-              ...rowStyle
-            },
-            onClick: e => this._valueClickHandler(modifyRow(row), e),
-            onContextMenu: e => this._valueRightClickHandler(modifyRow(row), e),
-            onMouseOver: e => this._valueMouseOverHandler(modifyRow(row), e),
-            onMouseOut: e => this._valueMouseOutHandler(modifyRow(row), e),
-            key: i,
-            className: `${predefinedClassName}-path ${arcClassName} ${rowClassName}`,
-            d: arcedData(arcArg)
-          }} />);
+          return (
+            <path
+              {...{
+                style: {
+                  opacity: opacity && opacity(row),
+                  stroke: stroke && stroke(row),
+                  fill: fill && fill(row),
+                  ...style,
+                  ...rowStyle
+                },
+                onClick: e => this._valueClickHandler(modifyRow(row), e),
+                onContextMenu: e =>
+                  this._valueRightClickHandler(modifyRow(row), e),
+                onMouseOver: e =>
+                  this._valueMouseOverHandler(modifyRow(row), e),
+                onMouseOut: e => this._valueMouseOutHandler(modifyRow(row), e),
+                key: i,
+                className: `${predefinedClassName}-path ${arcClassName} ${rowClassName}`,
+                d: arcedData(arcArg)
+              }}
+            />
+          );
         })}
       </g>
     );
@@ -214,10 +241,7 @@ ArcSeries.propTypes = {
     y: PropTypes.number
   }),
   arcClassName: PropTypes.string,
-  padAngle: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.number
-  ])
+  padAngle: PropTypes.oneOfType([PropTypes.func, PropTypes.number])
 };
 ArcSeries.defaultProps = defaultProps;
 ArcSeries.displayName = 'ArcSeries';

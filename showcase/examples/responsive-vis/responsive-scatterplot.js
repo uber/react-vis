@@ -49,12 +49,22 @@ const MED_HIGH_RANGE = [MED_RANGE[0], HIGH_RANGE[1]];
 export const SCATTERPLOT_FEATURES = [
   {min: -Infinity, max: Infinity, name: 'axes', group: 0},
   {min: SUPER_LOW_RANGE[0], max: SUPER_LOW_RANGE[1], name: 'labels', group: 1},
-  {min: VERY_LOW_RANGE[0], max: VERY_LOW_RANGE[1], name: 'pointSelection', group: 1},
+  {
+    min: VERY_LOW_RANGE[0],
+    max: VERY_LOW_RANGE[1],
+    name: 'pointSelection',
+    group: 1
+  },
   {min: LOW_RANGE[0], max: LOW_RANGE[1], name: 'points', group: 3},
   {min: MED_LOW_RANGE[0], max: MED_LOW_RANGE[1], name: 'tooltips', group: 2},
   {min: MED_HIGH_RANGE[0], max: MED_HIGH_RANGE[1], name: 'bins', group: 3},
   {min: MED_HIGH_RANGE[0], max: MED_HIGH_RANGE[1], name: 'bintips', group: 2},
-  {min: MED_HIGH_RANGE[0], max: MED_HIGH_RANGE[1], name: 'binSelection', group: 1}
+  {
+    min: MED_HIGH_RANGE[0],
+    max: MED_HIGH_RANGE[1],
+    name: 'binSelection',
+    group: 1
+  }
 ];
 
 export default class ResponsiveScatterplot extends React.Component {
@@ -62,12 +72,16 @@ export default class ResponsiveScatterplot extends React.Component {
     binData: [],
     hoveredPoint: false,
     selectedPoints: []
-  }
+  };
 
   componentWillReceiveProps(nextProps) {
     // not the greatest
     this.setState({
-      binData: transformToBinData(nextProps.data, nextProps.width, nextProps.height)
+      binData: transformToBinData(
+        nextProps.data,
+        nextProps.width,
+        nextProps.height
+      )
     });
   }
 
@@ -107,47 +121,69 @@ export default class ResponsiveScatterplot extends React.Component {
 
     const ppp = getPPP(innerWidth, innerHeight, data, 'TWOD');
     const featuresToRender = filterFeatures(SCATTERPLOT_FEATURES, ppp);
-    const rememberVal = featuresToRender.pointSelection || featuresToRender.tooltips;
-    const rememberBin = featuresToRender.bintips || featuresToRender.binSelection;
+    const rememberVal =
+      featuresToRender.pointSelection || featuresToRender.tooltips;
+    const rememberBin =
+      featuresToRender.bintips || featuresToRender.binSelection;
 
     const pointRadii = computeRadius(data, innerWidth, innerHeight);
 
-    const showHint = (featuresToRender.tooltips || featuresToRender.bintips) && hoveredPoint;
+    const showHint =
+      (featuresToRender.tooltips || featuresToRender.bintips) && hoveredPoint;
     return (
       <div className="responsive-vis">
-        <XYPlot
-          height={height}
-          margin={margin}
-          width={width}>
+        <XYPlot height={height} margin={margin} width={width}>
           {featuresToRender.axes && <XAxis />}
           {featuresToRender.axes && <YAxis />}
           {featuresToRender.bins && (
             <HeatmapSeries
               className="responsive-vis-heatmap"
               colorType="literal"
-              onValueMouseOver={rememberBin ? value => this.setState({hoveredPoint: value}) : null}
-              onValueMouseOut={rememberBin ? () => this.setState({hoveredPoint: null}) : null}
-              onValueClick={featuresToRender.binSelection ? this._select(d => `${d.x}-${d.y}`) : null}
-              data={manicureData(binData, hoveredPoint, selectedPoints, true)}/>
-            )}
+              onValueMouseOver={
+                rememberBin
+                  ? value => this.setState({hoveredPoint: value})
+                  : null
+              }
+              onValueMouseOut={
+                rememberBin ? () => this.setState({hoveredPoint: null}) : null
+              }
+              onValueClick={
+                featuresToRender.binSelection
+                  ? this._select(d => `${d.x}-${d.y}`)
+                  : null
+              }
+              data={manicureData(binData, hoveredPoint, selectedPoints, true)}
+            />
+          )}
           {featuresToRender.points && (
             <MarkSeries
               className="responsive-vis-scatterplot"
               colorType="literal"
               size={pointRadii}
-              onValueMouseOver={rememberVal ? value => this.setState({hoveredPoint: value}) : null}
-              onValueMouseOut={rememberVal ? () => this.setState({hoveredPoint: null}) : null}
-              onValueClick={featuresToRender.pointSelection ? this._select(d => d.label) : null}
-              data={manicureData(data, hoveredPoint, selectedPoints, false)}/>
-            )}
-          {showHint && <Hint value={hoveredPoint}/>}
+              onValueMouseOver={
+                rememberVal
+                  ? value => this.setState({hoveredPoint: value})
+                  : null
+              }
+              onValueMouseOut={
+                rememberVal ? () => this.setState({hoveredPoint: null}) : null
+              }
+              onValueClick={
+                featuresToRender.pointSelection
+                  ? this._select(d => d.label)
+                  : null
+              }
+              data={manicureData(data, hoveredPoint, selectedPoints, false)}
+            />
+          )}
+          {showHint && <Hint value={hoveredPoint} />}
           {featuresToRender.labels && (
             <LabelSeries
               allowOffsetToBeReversed
               data={data}
               yOffset={-1 * pointRadii}
-              />
-            )}
+            />
+          )}
         </XYPlot>
       </div>
     );

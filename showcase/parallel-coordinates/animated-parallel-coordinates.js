@@ -23,13 +23,15 @@ import React, {Component} from 'react';
 import ShowcaseButton from '../showcase-components/showcase-button';
 import {ParallelCoordinates} from 'index';
 
-const DATA = [{
-  explosions: 7,
-  wow: 10,
-  dog: 8,
-  sickMoves: 9,
-  nice: 7
-}];
+const DATA = [
+  {
+    explosions: 7,
+    wow: 10,
+    dog: 8,
+    sickMoves: 9,
+    nice: 7
+  }
+];
 
 const DOMAIN = [
   {name: 'nice', domain: [0, 100], tickFormat: t => t},
@@ -51,7 +53,7 @@ function generateData() {
 export default class AnimatedParallelCoordinates extends Component {
   state = {
     data: DATA
-  }
+  };
 
   render() {
     const {data} = this.state;
@@ -84,10 +86,12 @@ export default class AnimatedParallelCoordinates extends Component {
           }}
           tickFormat={t => ''}
           width={400}
-          height={300} />
+          height={300}
+        />
         <ShowcaseButton
-         onClick={() => this.setState({data: generateData()})}
-         buttonContent={'UPDATE DATA'} />
+          onClick={() => this.setState({data: generateData()})}
+          buttonContent={'UPDATE DATA'}
+        />
       </div>
     );
   }

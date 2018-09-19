@@ -36,33 +36,49 @@ import {generatePoints, getAxisAngle} from 'utils/axis-utils';
  * @return {Component} the plotted axis
  */
 export default function decorativeAxisTick(props) {
-  const {axisDomain, numberOfTicks, axisStart, axisEnd, tickValue, tickSize, style} = props;
-  const {points} = generatePoints({axisStart, axisEnd, numberOfTicks, axisDomain});
+  const {
+    axisDomain,
+    numberOfTicks,
+    axisStart,
+    axisEnd,
+    tickValue,
+    tickSize,
+    style
+  } = props;
+  const {points} = generatePoints({
+    axisStart,
+    axisEnd,
+    numberOfTicks,
+    axisDomain
+  });
   // add a quarter rotation to make ticks orthogonal to axis
   const tickAngle = getAxisAngle(axisStart, axisEnd) + Math.PI / 2;
-  return points
-    .map((point, index) => {
-      const tickProps = {
-        x1: 0,
-        y1: 0,
-        x2: tickSize * Math.cos(tickAngle),
-        y2: tickSize * Math.sin(tickAngle),
-        ...style.ticks
-      };
+  return points.map((point, index) => {
+    const tickProps = {
+      x1: 0,
+      y1: 0,
+      x2: tickSize * Math.cos(tickAngle),
+      y2: tickSize * Math.sin(tickAngle),
+      ...style.ticks
+    };
 
-      const textProps = {
-        x: tickSize * Math.cos(tickAngle),
-        y: tickSize * Math.sin(tickAngle),
-        textAnchor: 'start',
-        ...style.text
-      };
-      return (
-        <g key={index} transform={`translate(${point.x}, ${point.y})`} className="rv-xy-plot__axis__tick">
-          <line {...tickProps} className="rv-xy-plot__axis__tick__line"/>
-          <text {...textProps} className="rv-xy-plot__axis__tick__text">
-            {tickValue(point.text)}
-          </text>
-        </g>
-      );
-    });
+    const textProps = {
+      x: tickSize * Math.cos(tickAngle),
+      y: tickSize * Math.sin(tickAngle),
+      textAnchor: 'start',
+      ...style.text
+    };
+    return (
+      <g
+        key={index}
+        transform={`translate(${point.x}, ${point.y})`}
+        className="rv-xy-plot__axis__tick"
+      >
+        <line {...tickProps} className="rv-xy-plot__axis__tick__line" />
+        <text {...textProps} className="rv-xy-plot__axis__tick__text">
+          {tickValue(point.text)}
+        </text>
+      </g>
+    );
+  });
 }

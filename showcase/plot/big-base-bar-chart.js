@@ -46,17 +46,20 @@ const myDATA = [
   {id: '00036', y: 199740, x: 1504117481}
 ];
 
-const yDomain = myDATA.reduce((res, row) => {
-  return {
-    max: Math.max(res.max, row.y),
-    min: Math.min(res.min, row.y)
-  };
-}, {max: -Infinity, min: Infinity});
+const yDomain = myDATA.reduce(
+  (res, row) => {
+    return {
+      max: Math.max(res.max, row.y),
+      min: Math.min(res.min, row.y)
+    };
+  },
+  {max: -Infinity, min: Infinity}
+);
 
 export default class Example extends React.Component {
   state = {
     useCanvas: false
-  }
+  };
 
   render() {
     const {useCanvas} = this.state;
@@ -66,16 +69,15 @@ export default class Example extends React.Component {
       <div>
         <ShowcaseButton
           onClick={() => this.setState({useCanvas: !useCanvas})}
-          buttonContent={content}/>
+          buttonContent={content}
+        />
         <XYPlot
           xType="time"
           width={300}
           height={300}
           yDomain={[yDomain.min, yDomain.max]}
-          >
-          <BarSeries
-            className="vertical-bar-series-example"
-            data={myDATA}/>
+        >
+          <BarSeries className="vertical-bar-series-example" data={myDATA} />
           <XAxis />
           <YAxis />
         </XYPlot>

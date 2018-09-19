@@ -35,9 +35,13 @@ const propTypes = {
 const defaultProps = {
   className: '',
   searchText: '',
-  searchFn: (items, s) => items.filter(
-    item => String(item.title || item).toLowerCase().indexOf(s) !== -1
-  )
+  searchFn: (items, s) =>
+    items.filter(
+      item =>
+        String(item.title || item)
+          .toLowerCase()
+          .indexOf(s) !== -1
+    )
 };
 
 function SearchableDiscreteColorLegend(props) {
@@ -54,9 +58,9 @@ function SearchableDiscreteColorLegend(props) {
     searchText,
     width
   } = props;
-  const onChange = onSearchChange ?
-    ({target: {value}}) => onSearchChange(value) :
-    null;
+  const onChange = onSearchChange
+    ? ({target: {value}}) => onSearchChange(value)
+    : null;
   const filteredItems = searchFn(items, searchText);
   return (
     <div className={`rv-search-wrapper ${className}`} style={{width, height}}>
@@ -66,7 +70,8 @@ function SearchableDiscreteColorLegend(props) {
           placeholder={searchPlaceholder}
           className="rv-search-wrapper__form__input"
           value={searchText}
-          onChange={onChange}/>
+          onChange={onChange}
+        />
       </form>
       <div className="rv-search-wrapper__contents">
         <DiscreteColorLegend

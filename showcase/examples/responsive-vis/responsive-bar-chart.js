@@ -19,13 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import {
-  AreaSeries,
-  HorizontalBarSeries,
-  XAxis,
-  XYPlot,
-  YAxis
-} from 'index';
+import {AreaSeries, HorizontalBarSeries, XAxis, XYPlot, YAxis} from 'index';
 
 import {filterFeatures, getPPP} from './responsive-vis-utils';
 
@@ -55,7 +49,6 @@ function updateDataForArea(data, ppp) {
 }
 
 export default class ResponsiveBarChart extends React.Component {
-
   // todo build a root responsive class that has this as a class method
   getFeatures() {
     const {data, height, margin, width} = this.props;
@@ -72,7 +65,9 @@ export default class ResponsiveBarChart extends React.Component {
     const innerHeight = height - margin.top - margin.bottom;
     const ppp = getPPP(innerWidth, innerHeight, data, 'HEIGHT');
     const featuresToRender = filterFeatures(BARCHART_FEATURES, ppp);
-    const updatedData = featuresToRender.area ? updateDataForArea(data, ppp) : data;
+    const updatedData = featuresToRender.area
+      ? updateDataForArea(data, ppp)
+      : data;
 
     return (
       <div className="responsive-bar-chart">
@@ -81,15 +76,17 @@ export default class ResponsiveBarChart extends React.Component {
           xType="linear"
           margin={margin}
           height={height}
-          width={width}>
-          {featuresToRender.xaxis && <XAxis orientation="top"/>}
+          width={width}
+        >
+          {featuresToRender.xaxis && <XAxis orientation="top" />}
           {featuresToRender.yaxis && <YAxis />}
           {featuresToRender.bars && (
             <HorizontalBarSeries
               colorType="literal"
               yRange={[0, innerHeight]}
               xRange={[0, innerWidth]}
-              data={updatedData} />
+              data={updatedData}
+            />
           )}
           {featuresToRender.area && (
             <AreaSeries
@@ -99,8 +96,9 @@ export default class ResponsiveBarChart extends React.Component {
               yDomain={[0, updatedData.length]}
               yRange={[0, innerHeight]}
               xRange={[innerWidth, 0]}
-              data={updatedData} />
-            )}
+              data={updatedData}
+            />
+          )}
         </XYPlot>
       </div>
     );

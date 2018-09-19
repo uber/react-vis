@@ -29,9 +29,7 @@ const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 const propTypes = {
   height: PropTypes.number.isRequired,
   style: PropTypes.object,
-  orientation: PropTypes.oneOf([
-    LEFT, RIGHT, TOP, BOTTOM
-  ]).isRequired,
+  orientation: PropTypes.oneOf([LEFT, RIGHT, TOP, BOTTOM]).isRequired,
   width: PropTypes.number.isRequired
 };
 
@@ -71,7 +69,7 @@ function AxisLine({orientation, width, height, style}) {
     };
   }
   return (
-    <line {...lineProps} className="rv-xy-plot__axis__line" style={style}/>
+    <line {...lineProps} className="rv-xy-plot__axis__line" style={style} />
   );
 }
 

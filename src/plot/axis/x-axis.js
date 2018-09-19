@@ -30,9 +30,7 @@ const {TOP, BOTTOM} = ORIENTATION;
 
 const propTypes = {
   ...Axis.propTypes,
-  orientation: PropTypes.oneOf([
-    TOP, BOTTOM
-  ])
+  orientation: PropTypes.oneOf([TOP, BOTTOM])
 };
 
 const defaultProps = {
@@ -42,9 +40,7 @@ const defaultProps = {
 };
 
 function XAxis(props) {
-  return (
-    <Axis {...props} />
-  );
+  return <Axis {...props} />;
 }
 
 XAxis.displayName = 'XAxis';

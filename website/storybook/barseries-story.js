@@ -4,12 +4,22 @@ import {setAddon, storiesOf} from '@storybook/react';
 import JSXAddon from 'storybook-addon-jsx';
 
 setAddon(JSXAddon);
-import {withKnobs, color, number, object, text} from '@storybook/addon-knobs/react';
+import {
+  withKnobs,
+  color,
+  number,
+  object,
+  text
+} from '@storybook/addon-knobs/react';
 
 import {HorizontalBarSeries, VerticalBarSeries} from 'react-vis';
 
 import {generateLinearData, intRandom, random} from './storybook-data.js';
-import {chooseColorScale, SimpleChartWrapper, jsxOptions} from './storybook-utils.js';
+import {
+  chooseColorScale,
+  SimpleChartWrapper,
+  jsxOptions
+} from './storybook-utils.js';
 
 function addBarSeriesStory(isVertical = true) {
   const seriesName = isVertical ? 'VerticalBarSeries' : 'HorizontalBarSeries';
@@ -20,7 +30,12 @@ function addBarSeriesStory(isVertical = true) {
         color={color('color', props.color || null, 'style')}
         data={props.data}
         fill={(color('fill', props.fill || '#12939a'), 'style')}
-        opacity={number('opacity', props.opacity || 1, {max: 1, min: 0, range: true, step: 0.01}, 'style')}
+        opacity={number(
+          'opacity',
+          props.opacity || 1,
+          {max: 1, min: 0, range: true, step: 0.01},
+          'style'
+        )}
         stroke={color('stroke', props.stroke || '#12939a', 'style')}
         style={object('style', props.style || {}, 'style')}
       />
@@ -39,7 +54,9 @@ function addBarSeriesStory(isVertical = true) {
       () => {
         return (
           <SimpleChartWrapper {...xyPlotParams}>
-            <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'})} />
+            <Series
+              data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'})}
+            />
           </SimpleChartWrapper>
         );
       },
@@ -50,9 +67,15 @@ function addBarSeriesStory(isVertical = true) {
       () => {
         return (
           <SimpleChartWrapper {...xyPlotParams}>
-            <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'})} />
-            <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar2'})} />
-            <Series data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar3'})} />
+            <Series
+              data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar1'})}
+            />
+            <Series
+              data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar2'})}
+            />
+            <Series
+              data={dataGenerator({nbPoints: 8, changeRatio: 0.4, key: 'bar3'})}
+            />
           </SimpleChartWrapper>
         );
       },
@@ -63,17 +86,17 @@ function addBarSeriesStory(isVertical = true) {
       () => {
         return (
           <SimpleChartWrapper
-            {...(isVertical ?
-              {
-                stackBy: 'y',
-                xDomain: [0, 8],
-                yDomain: [0, 50]
-              } :
-              {
-                stackBy: 'x',
-                xDomain: [0, 50],
-                yDomain: [0, 8]
-              })}
+            {...(isVertical
+              ? {
+                  stackBy: 'y',
+                  xDomain: [0, 8],
+                  yDomain: [0, 50]
+                }
+              : {
+                  stackBy: 'x',
+                  xDomain: [0, 50],
+                  yDomain: [0, 8]
+                })}
           >
             <Series
               cluster={text('BarSeries.1.cluster', 'stack 1')}
@@ -99,7 +122,11 @@ function addBarSeriesStory(isVertical = true) {
       const {colorScale, colorRange} = chooseColorScale();
 
       return (
-        <SimpleChartWrapper {...xyPlotParams} colorScale={colorScale} colorRange={colorRange}>
+        <SimpleChartWrapper
+          {...xyPlotParams}
+          colorScale={colorScale}
+          colorRange={colorRange}
+        >
           <Series
             data={dataGenerator({
               nbPoints: 8,

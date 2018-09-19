@@ -37,7 +37,10 @@ function DiscreteColorLegend({
   width
 }) {
   return (
-    <div className={`rv-discrete-color-legend ${orientation} ${className}`} style={{width, height}}>
+    <div
+      className={`rv-discrete-color-legend ${orientation} ${className}`}
+      style={{width, height}}
+    >
       {items.map((item, i) => (
         <DiscreteColorLegendItem
           title={item.title ? item.title : item}
@@ -46,8 +49,12 @@ function DiscreteColorLegend({
           orientation={orientation}
           key={i}
           onClick={onItemClick ? e => onItemClick(item, i, e) : null}
-          onMouseEnter={onItemMouseEnter ? e => onItemMouseEnter(item, i, e) : null}
-          onMouseLeave={onItemMouseEnter ? e => onItemMouseLeave(item, i, e) : null}
+          onMouseEnter={
+            onItemMouseEnter ? e => onItemMouseEnter(item, i, e) : null
+          }
+          onMouseLeave={
+            onItemMouseEnter ? e => onItemMouseLeave(item, i, e) : null
+          }
         />
       ))}
     </div>

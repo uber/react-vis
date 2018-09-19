@@ -16,13 +16,33 @@ testRenderWithProps(VerticalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
 test('BarSeries: Showcase Example - BarChart', t => {
   const $ = mount(<BarChart />);
-  t.equal($.text(), 'TOGGLE TO CANVASABC02468101214ABC', 'should fine the right text content');
-  t.equal($.find('.rv-xy-plot__series--bar rect').length, 6, 'should find the right number of bars');
-  t.equal($.find('.vertical-bar-series-example').length, 1, 'should find the right number of custom named series');
+  t.equal(
+    $.text(),
+    'TOGGLE TO CANVASABC02468101214ABC',
+    'should fine the right text content'
+  );
+  t.equal(
+    $.find('.rv-xy-plot__series--bar rect').length,
+    6,
+    'should find the right number of bars'
+  );
+  t.equal(
+    $.find('.vertical-bar-series-example').length,
+    1,
+    'should find the right number of custom named series'
+  );
 
   $.find('.showcase-button').simulate('click');
-  t.equal($.find('.rv-xy-plot__series--bar rect').length, 0, 'should now find no rects');
-  t.equal($.find('.rv-xy-canvas canvas').length, 1, 'should now find one canvas');
+  t.equal(
+    $.find('.rv-xy-plot__series--bar rect').length,
+    0,
+    'should now find no rects'
+  );
+  t.equal(
+    $.find('.rv-xy-canvas canvas').length,
+    1,
+    'should now find one canvas'
+  );
 
   // TODO CONFIGURE BETTER TESTING SYSTEM FOR CANVAS
   // const canvas = $.find('.rv-xy-canvas canvas');
@@ -36,68 +56,133 @@ test('BarSeries: Showcase Example - BarChart', t => {
 });
 
 test('BarSeries: Showcase Example - StackedHorizontalBarChart & StackedVerticalBarChart', t => {
-  [StackedHorizontalBarChart, StackedVerticalBarChart].forEach((Component, i) => {
-    const $ = mount(<Component />);
-    const textContent = ['0510152025', '12345'];
-    const expectedContent = `TOGGLE TO CANVAS${(i === 1 ? textContent.reverse() : textContent).join('')}`;
-    t.equal($.text(), expectedContent, 'should fine the right text content');
-    t.equal($.find('.rv-xy-plot__series--bar rect').length, 6, 'should find the right number of bars');
-    $.find('.showcase-button').simulate('click');
-    t.equal($.find('.rv-xy-plot__series--bar rect').length, 0, 'should now find no rects');
-    t.equal($.find('.rv-xy-canvas canvas').length, 1, 'should now find one canvas');
-  });
+  [StackedHorizontalBarChart, StackedVerticalBarChart].forEach(
+    (Component, i) => {
+      const $ = mount(<Component />);
+      const textContent = ['0510152025', '12345'];
+      const expectedContent = `TOGGLE TO CANVAS${(i === 1
+        ? textContent.reverse()
+        : textContent
+      ).join('')}`;
+      t.equal($.text(), expectedContent, 'should fine the right text content');
+      t.equal(
+        $.find('.rv-xy-plot__series--bar rect').length,
+        6,
+        'should find the right number of bars'
+      );
+      $.find('.showcase-button').simulate('click');
+      t.equal(
+        $.find('.rv-xy-plot__series--bar rect').length,
+        0,
+        'should now find no rects'
+      );
+      t.equal(
+        $.find('.rv-xy-canvas canvas').length,
+        1,
+        'should now find one canvas'
+      );
+    }
+  );
   t.end();
 });
 
 test('BarSeries: Ordinal Y-Axis HorizontalBarSeries', t => {
-  const $ = mount(<XYPlot
-    width={300}
-    height={300}
-    yType="ordinal">
-    <HorizontalBarSeries
-      data={[
-        {y: 'a', x: 10},
-        {y: 'b', x: 5},
-        {y: 'c', x: 15}
-      ]}
-    />
-  </XYPlot>);
-  t.equal($.find('.rv-xy-plot__series--bar rect').length, 3, 'should find the right number of bars');
-  t.equal($.find('.rv-xy-plot__series--bar rect').at(0).prop('height') > 0, true, 'should not have negative bar height');
+  const $ = mount(
+    <XYPlot width={300} height={300} yType="ordinal">
+      <HorizontalBarSeries
+        data={[{y: 'a', x: 10}, {y: 'b', x: 5}, {y: 'c', x: 15}]}
+      />
+    </XYPlot>
+  );
+  t.equal(
+    $.find('.rv-xy-plot__series--bar rect').length,
+    3,
+    'should find the right number of bars'
+  );
+  t.equal(
+    $.find('.rv-xy-plot__series--bar rect')
+      .at(0)
+      .prop('height') > 0,
+    true,
+    'should not have negative bar height'
+  );
   t.end();
 });
 
 test('BarSeries: No data', t => {
-  const $ = mount(<XYPlot
-    width={300}
-    height={300}
-    yType="ordinal">
-    <HorizontalBarSeries data={null} />
-  </XYPlot>);
-  t.equal($.find('.rv-xy-plot__series--bar rect').length, 0, 'should find the right number of bars');
+  const $ = mount(
+    <XYPlot width={300} height={300} yType="ordinal">
+      <HorizontalBarSeries data={null} />
+    </XYPlot>
+  );
+  t.equal(
+    $.find('.rv-xy-plot__series--bar rect').length,
+    0,
+    'should find the right number of bars'
+  );
   t.end();
 });
 
 test('BarSeries: Showcase Example - ClusteredStackedVerticalBarChart', t => {
   const $ = mount(<ClusteredStackedVerticalBarChart />);
-  t.equal($.text(), 'TOGGLE TO CANVASQ1Q2Q3Q40102030ApplesOranges', 'should fine the right text content');
-  t.equal($.find('.rv-xy-plot__series--bar rect').length, 16, 'should find the right number of bars');
-  t.equal($.find('.rv-xy-plot__series').length, 4, 'should find the right number of series');
+  t.equal(
+    $.text(),
+    'TOGGLE TO CANVASQ1Q2Q3Q40102030ApplesOranges',
+    'should fine the right text content'
+  );
+  t.equal(
+    $.find('.rv-xy-plot__series--bar rect').length,
+    16,
+    'should find the right number of bars'
+  );
+  t.equal(
+    $.find('.rv-xy-plot__series').length,
+    4,
+    'should find the right number of series'
+  );
 
   $.find('.showcase-button').simulate('click');
-  t.equal($.find('.rv-xy-plot__series--bar rect').length, 0, 'should now find no rects');
-  t.equal($.find('.rv-xy-canvas canvas').length, 1, 'should now find one canvas');
+  t.equal(
+    $.find('.rv-xy-plot__series--bar rect').length,
+    0,
+    'should now find no rects'
+  );
+  t.equal(
+    $.find('.rv-xy-canvas canvas').length,
+    1,
+    'should now find one canvas'
+  );
   t.end();
 });
 
 test('BarSeries: Showcase Example - BigBaseBarChart', t => {
   const $ = mount(<BigBaseBarChart />);
-  t.equal($.text(), 'TOGGLE TO CANVAS:38:39:40:41199,800199,900200,000200,100200,200200,300200,400', 'should fine the right text content');
-  t.equal($.find('.rv-xy-plot__series--bar rect').length, 15, 'should find the right number of bars');
-  t.equal($.find('.rv-xy-plot__series').length, 1, 'should find the right number of series');
+  t.equal(
+    $.text(),
+    'TOGGLE TO CANVAS:38:39:40:41199,800199,900200,000200,100200,200200,300200,400',
+    'should fine the right text content'
+  );
+  t.equal(
+    $.find('.rv-xy-plot__series--bar rect').length,
+    15,
+    'should find the right number of bars'
+  );
+  t.equal(
+    $.find('.rv-xy-plot__series').length,
+    1,
+    'should find the right number of series'
+  );
 
   $.find('.showcase-button').simulate('click');
-  t.equal($.find('.rv-xy-plot__series--bar rect').length, 0, 'should now find no rects');
-  t.equal($.find('.rv-xy-canvas canvas').length, 1, 'should now find one canvas');
+  t.equal(
+    $.find('.rv-xy-plot__series--bar rect').length,
+    0,
+    'should now find no rects'
+  );
+  t.equal(
+    $.find('.rv-xy-canvas canvas').length,
+    1,
+    'should now find one canvas'
+  );
   t.end();
 });

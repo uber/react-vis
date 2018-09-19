@@ -23,12 +23,14 @@ import React, {Component} from 'react';
 import RadarChart from 'radar-chart';
 
 const RADAR_PROPS = {
-  data: [{
-    C: 30,
-    VisualBasics: 60,
-    Excel: 40,
-    Access: 40
-  }],
+  data: [
+    {
+      C: 30,
+      VisualBasics: 60,
+      Excel: 40,
+      Access: 40
+    }
+  ],
   domains: [
     {name: 'C', domain: [0, 100]},
     {name: 'VisualBasics', domain: [0, 100]},

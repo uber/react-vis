@@ -30,10 +30,9 @@ import AbstractSeries from './abstract-series';
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--rect';
 
 class RectSeries extends AbstractSeries {
-
   static get propTypes() {
     return {
-      ... AbstractSeries.propTypes,
+      ...AbstractSeries.propTypes,
       linePosAttr: PropTypes.string,
       valuePosAttr: PropTypes.string,
       lineSizeAttr: PropTypes.string,
@@ -62,7 +61,7 @@ class RectSeries extends AbstractSeries {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <RectSeries {...this.props} animation={null}/>
+          <RectSeries {...this.props} animation={null} />
         </Animation>
       );
     }
@@ -71,15 +70,17 @@ class RectSeries extends AbstractSeries {
     const line0Functor = this._getAttr0Functor(linePosAttr);
     const valueFunctor = this._getAttributeFunctor(valuePosAttr);
     const value0Functor = this._getAttr0Functor(valuePosAttr);
-    const fillFunctor = this._getAttributeFunctor('fill') ||
-      this._getAttributeFunctor('color');
-    const strokeFunctor = this._getAttributeFunctor('stroke') ||
-      this._getAttributeFunctor('color');
+    const fillFunctor =
+      this._getAttributeFunctor('fill') || this._getAttributeFunctor('color');
+    const strokeFunctor =
+      this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color');
     const opacityFunctor = this._getAttributeFunctor('opacity');
 
     return (
-      <g className={`${predefinedClassName} ${className}`}
-        transform={`translate(${marginLeft},${marginTop})`}>
+      <g
+        className={`${predefinedClassName} ${className}`}
+        transform={`translate(${marginLeft},${marginTop})`}
+      >
         {data.map((d, i) => {
           const attrs = {
             style: {
@@ -98,7 +99,7 @@ class RectSeries extends AbstractSeries {
             onMouseOut: e => this._valueMouseOutHandler(d, e),
             key: i
           };
-          return (<rect {...attrs} />);
+          return <rect {...attrs} />;
         })}
       </g>
     );

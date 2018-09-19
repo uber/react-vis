@@ -39,8 +39,13 @@ import {
 } from 'utils/scales-utils';
 
 const isScaleConsistent = (scaleObject, attr) => {
-  return scaleObject && scaleObject.range && scaleObject.domain &&
-    scaleObject.type && scaleObject.attr === attr;
+  return (
+    scaleObject &&
+    scaleObject.range &&
+    scaleObject.domain &&
+    scaleObject.type &&
+    scaleObject.attr === attr
+  );
 };
 
 const _allData = [[{x: 1}, {x: 2}, {x: 3}, {x: 2}]];
@@ -62,21 +67,36 @@ test('scales-utils #getScaleObjectFromProps ', t => {
   t.equal(noDomainResult, null, 'Should be null if no range is passed');
 
   // with all props
-  const completeResult = getScaleObjectFromProps({xRange, _allData, xDomain, xType, xDistance}, 'x');
+  const completeResult = getScaleObjectFromProps(
+    {xRange, _allData, xDomain, xType, xDistance},
+    'x'
+  );
   t.ok(isScaleConsistent(completeResult, 'x'), 'Should be a consistent scale');
-  t.equal(completeResult.type, xType, 'Should have same type that was passed by detault');
+  t.equal(
+    completeResult.type,
+    xType,
+    'Should have same type that was passed by detault'
+  );
   // does not mutate passed domain
   const tXDomain = [1, 5];
-  const scaleObj = getScaleObjectFromProps({
-    xRange,
-    _adjustBy: ['x'],
-    _adjustWhat: [0],
-    _allData,
-    xDomain: tXDomain, xDistance
-  }, 'x');
+  const scaleObj = getScaleObjectFromProps(
+    {
+      xRange,
+      _adjustBy: ['x'],
+      _adjustWhat: [0],
+      _allData,
+      xDomain: tXDomain,
+      xDistance
+    },
+    'x'
+  );
 
   t.deepEqual(scaleObj.domain, [0.5, 5.5], 'Correct adjustment of domain');
-  t.deepEqual(tXDomain, [1, 5], 'original domain object should contain the same values');
+  t.deepEqual(
+    tXDomain,
+    [1, 5],
+    'original domain object should contain the same values'
+  );
 
   // with the value that overrides props
   const valueResult = getScaleObjectFromProps({x: 10, _allData}, 'x');
@@ -97,7 +117,11 @@ test('scales-utils #getScalePropTypesByAttribute', t => {
     'sizeDistance',
     'sizeBaseValue'
   ];
-  t.deepEqual(result, expectedResult, 'should find the correct scale prop attributes');
+  t.deepEqual(
+    result,
+    expectedResult,
+    'should find the correct scale prop attributes'
+  );
   t.end();
 });
 
@@ -108,16 +132,26 @@ test('scales-utils #getAttributeFunctor', t => {
     result({x: Math.random()}) === _xValue,
     `No props: Fallback value ${_xValue} should be returned by the produced functor`
   );
-  t.equal(result({}), _xValue,
+  t.equal(
+    result({}),
+    _xValue,
     'value from the props is used as default value if no argument passed to functor'
   );
   // with props
   result = getAttributeFunctor({xRange, xDomain}, 'x');
   const isFunction = typeof result === 'function';
   t.ok(isFunction, 'Result should be a function');
-  t.equal(result(_allData[0][0]), xRange[0], 'Function should reflect values properly');
+  t.equal(
+    result(_allData[0][0]),
+    xRange[0],
+    'Function should reflect values properly'
+  );
 
-  t.equal(result({data: {x: 10}}), 225, 'should find the correct transformed value');
+  t.equal(
+    result({data: {x: 10}}),
+    225,
+    'should find the correct transformed value'
+  );
   t.end();
 });
 
@@ -128,33 +162,63 @@ test('scales-utils #getAttr0Functor', t => {
 
   // using a literal scale to check that the fall back is working correctly
   const exNaughtData = [[{x: 1, x0: 1}, {x: 0}, {x: 3, x0: 3}, {x: 2, x0: 4}]];
-  result = getAttr0Functor({
-    xRange,
-    _allData: exNaughtData,
-    xDomain,
-    xType: 'literal',
-    xDistance
-  }, 'x');
+  result = getAttr0Functor(
+    {
+      xRange,
+      _allData: exNaughtData,
+      xDomain,
+      xType: 'literal',
+      xDistance
+    },
+    'x'
+  );
   t.ok(typeof result === 'function', 'Result should be a function');
-  t.equal(result(exNaughtData[0][0]), 1, 'Function should reflect values properly');
-  t.equal(result(exNaughtData[0][1]), 1, 'Function should fallback to base value properly');
+  t.equal(
+    result(exNaughtData[0][0]),
+    1,
+    'Function should reflect values properly'
+  );
+  t.equal(
+    result(exNaughtData[0][1]),
+    1,
+    'Function should fallback to base value properly'
+  );
 
-  t.equal(result({data: {x: 10, x0: 5}}), 5, 'should find the correct transformed value');
+  t.equal(
+    result({data: {x: 10, x0: 5}}),
+    5,
+    'should find the correct transformed value'
+  );
 
   // now with a linear scale
-  result = getAttr0Functor({
-    xRange,
-    _allData: exNaughtData,
-    xDomain,
-    xType: 'linear',
-    xDistance
-  }, 'x');
+  result = getAttr0Functor(
+    {
+      xRange,
+      _allData: exNaughtData,
+      xDomain,
+      xType: 'linear',
+      xDistance
+    },
+    'x'
+  );
 
   t.ok(typeof result === 'function', 'Result should be a function');
-  t.equal(result(exNaughtData[0][0]), xRange[0], 'Function should reflect values properly');
-  t.equal(result(exNaughtData[0][1]), 0, 'Function should fallback to base value properly');
+  t.equal(
+    result(exNaughtData[0][0]),
+    xRange[0],
+    'Function should reflect values properly'
+  );
+  t.equal(
+    result(exNaughtData[0][1]),
+    0,
+    'Function should fallback to base value properly'
+  );
 
-  t.equal(result({data: {x: 10, x0: 5}}), 100, 'should find the correct transformed value');
+  t.equal(
+    result({data: {x: 10, x0: 5}}),
+    100,
+    'should find the correct transformed value'
+  );
   t.end();
 });
 
@@ -198,7 +262,6 @@ test('scales-utils #_getSmallestDistanceIndex', t => {
 });
 
 test('scales-utils #extractScalePropsFromProps', t => {
-
   t.ok(
     Object.keys(extractScalePropsFromProps({}, [])).length === 0,
     'Should return empty object on empty values'
@@ -216,21 +279,18 @@ test('scales-utils #extractScalePropsFromProps', t => {
   const result = extractScalePropsFromProps(props, ['a', 'b']);
   t.ok(
     Object.keys(result).length === 5 &&
-    result.aType === props.aType &&
-    result.aRange === props.aRange &&
-    result._aValue === props._aValue &&
-    result.bDomain === props.bDomain &&
-    result.getA === props.getA,
-    'Should return valid object');
+      result.aType === props.aType &&
+      result.aRange === props.aRange &&
+      result._aValue === props._aValue &&
+      result.bDomain === props.bDomain &&
+      result.getA === props.getA,
+    'Should return valid object'
+  );
   t.end();
 });
 
 test('scales-utils #getMissingScaleProps', t => {
-  const fakeDataInteger = [
-    {x: 10, y: 10},
-    {x: 15, y: 15},
-    {x: 20, y: 20}
-  ];
+  const fakeDataInteger = [{x: 10, y: 10}, {x: 15, y: 15}, {x: 20, y: 20}];
   const fakeDataIntegerDomain = [9, 21];
   const fakeDataString = [{x: 'React'}, {x: 'Vis'}];
   const fakeDataStringDomain = ['React', 'Vis'];
@@ -238,59 +298,94 @@ test('scales-utils #getMissingScaleProps', t => {
   const dayTen = 972000000;
   const fakeDomain = [0, 100];
   const fakeDataUnixTime = [{x: dayOne}, {x: dayTen}];
-  const paddedDayOne = (dayOne - ((dayTen - dayOne) * 0.1));
-  const paddedDayTen = (dayTen + ((dayTen - dayOne) * 0.1));
+  const paddedDayOne = dayOne - (dayTen - dayOne) * 0.1;
+  const paddedDayTen = dayTen + (dayTen - dayOne) * 0.1;
   const fakePadding = 10;
 
-  t.equal(Object.keys(getMissingScaleProps({}, [], [])).length, 0,
-    'Should return empty result on empty arguments');
+  t.equal(
+    Object.keys(getMissingScaleProps({}, [], [])).length,
+    0,
+    'Should return empty result on empty arguments'
+  );
   const result = getMissingScaleProps({}, _allData[0], ['x']);
-  t.ok(Boolean(result.xDomain) && result.xDomain.length === 2 &&
-    result.xDomain[0] === 1 && result.xDomain[1] === 3,
-    'Should return a valid object');
+  t.ok(
+    Boolean(result.xDomain) &&
+      result.xDomain.length === 2 &&
+      result.xDomain[0] === 1 &&
+      result.xDomain[1] === 3,
+    'Should return a valid object'
+  );
 
   t.deepEqual(
-    getMissingScaleProps({
-      xPadding: fakePadding
-    }, fakeDataInteger, ['x']).xDomain,
+    getMissingScaleProps(
+      {
+        xPadding: fakePadding
+      },
+      fakeDataInteger,
+      ['x']
+    ).xDomain,
     fakeDataIntegerDomain,
     'should pad number xDomain'
   );
   // need to use json stringify to peel off the functions
   t.deepEqual(
-    JSON.stringify(getMissingScaleProps({
-      xPadding: fakePadding,
-      xDomain: fakeDomain
-    }, fakeDataInteger, ['x'])),
+    JSON.stringify(
+      getMissingScaleProps(
+        {
+          xPadding: fakePadding,
+          xDomain: fakeDomain
+        },
+        fakeDataInteger,
+        ['x']
+      )
+    ),
     '{}',
     'should not pad if xDomain is already supplied'
   );
   t.deepEqual(
-    Object.keys(getMissingScaleProps({
-      xPadding: fakePadding,
-      xDomain: fakeDomain
-    }, fakeDataInteger, ['x'])),
+    Object.keys(
+      getMissingScaleProps(
+        {
+          xPadding: fakePadding,
+          xDomain: fakeDomain
+        },
+        fakeDataInteger,
+        ['x']
+      )
+    ),
     ['getX', 'getX0'],
     'should not pad if xDomain is already supplied, but accessors should be present'
   );
   t.deepEqual(
-    getMissingScaleProps({
-      yPadding: fakePadding
-    }, fakeDataInteger, ['y']).yDomain,
+    getMissingScaleProps(
+      {
+        yPadding: fakePadding
+      },
+      fakeDataInteger,
+      ['y']
+    ).yDomain,
     fakeDataIntegerDomain,
     'should pad number yDomain'
   );
   t.deepEqual(
-    getMissingScaleProps({
-      xPadding: fakePadding
-    }, fakeDataString, ['x']).xDomain,
+    getMissingScaleProps(
+      {
+        xPadding: fakePadding
+      },
+      fakeDataString,
+      ['x']
+    ).xDomain,
     fakeDataStringDomain,
     'should not pad non-number domain'
   );
   t.deepEqual(
-    getMissingScaleProps({
-      xPadding: fakePadding
-    }, fakeDataUnixTime, ['x']).xDomain,
+    getMissingScaleProps(
+      {
+        xPadding: fakePadding
+      },
+      fakeDataUnixTime,
+      ['x']
+    ).xDomain,
     [paddedDayOne, paddedDayTen],
     'should pad unix time xDomain'
   );
@@ -312,15 +407,27 @@ test('scales-utils #literalScale', t => {
 });
 
 test('scales-utils #getFontColorFromBackground', t => {
-  t.equal(getFontColorFromBackground('#fff'), '#222', 'should find correct color');
-  t.equal(getFontColorFromBackground('#000'), '#fff', 'should find correct color');
+  t.equal(
+    getFontColorFromBackground('#fff'),
+    '#222',
+    'should find correct color'
+  );
+  t.equal(
+    getFontColorFromBackground('#000'),
+    '#fff',
+    'should find correct color'
+  );
   t.equal(getFontColorFromBackground(null), null, 'sensible default');
 
   t.end();
 });
 
 test('scales-utils #getScaleFnFromScaleObject', t => {
-  t.equal(getScaleFnFromScaleObject(), null, 'should recieve null for undefined');
+  t.equal(
+    getScaleFnFromScaleObject(),
+    null,
+    'should recieve null for undefined'
+  );
   const linearScale = getScaleFnFromScaleObject({
     type: 'linear',
     domain: [0, 1],
@@ -336,14 +443,38 @@ test('scales-utils #getScaleFnFromScaleObject', t => {
   t.deepEqual(linearScale.domain(), [0, 1], 'should set the domain correctly');
   t.deepEqual(linearScale.range(), [1, 0], 'should set the range correctly');
 
-  t.deepEqual(literalScaleWithDefaultValue(), 5, 'literal scale should handle default values');
-  t.deepEqual(literalScaleWithDefaultValue(2), 2, 'literal scale should work as such with argument');
+  t.deepEqual(
+    literalScaleWithDefaultValue(),
+    5,
+    'literal scale should handle default values'
+  );
+  t.deepEqual(
+    literalScaleWithDefaultValue(2),
+    2,
+    'literal scale should work as such with argument'
+  );
 
-  const modScaleWithZero = getScaleFnFromScaleObject({type: 'linear', domain: [0, 0], range: [1, 0]});
-  t.deepEqual(modScaleWithZero.domain(), [-1, 0], 'should build a generic domain about zero if the domain is closed');
+  const modScaleWithZero = getScaleFnFromScaleObject({
+    type: 'linear',
+    domain: [0, 0],
+    range: [1, 0]
+  });
+  t.deepEqual(
+    modScaleWithZero.domain(),
+    [-1, 0],
+    'should build a generic domain about zero if the domain is closed'
+  );
 
-  const modScale = getScaleFnFromScaleObject({type: 'linear', domain: [1, 1], range: [1, 0]});
-  t.deepEqual(modScale.domain(), [-1, 1], 'should build a generic domain that reflects about zero');
+  const modScale = getScaleFnFromScaleObject({
+    type: 'linear',
+    domain: [1, 1],
+    range: [1, 0]
+  });
+  t.deepEqual(
+    modScale.domain(),
+    [-1, 1],
+    'should build a generic domain that reflects about zero'
+  );
   t.end();
 });
 
@@ -361,21 +492,32 @@ test('scales-utils #_getScaleDistanceAndAdjustedDomain', t => {
     // the extra x's are here to test the accessor behaviour
     accessor: d => d.xxxx
   };
-  const resultObject = _getScaleDistanceAndAdjustedDomain(FAKE_DATA, scaleObject);
-  const expectedResults = {distance: 0.009900990099009799, domain0: -0.5, domainN: 100.5};
+  const resultObject = _getScaleDistanceAndAdjustedDomain(
+    FAKE_DATA,
+    scaleObject
+  );
+  const expectedResults = {
+    distance: 0.009900990099009799,
+    domain0: -0.5,
+    domainN: 100.5
+  };
   t.deepEqual(resultObject, expectedResults, 'should find reasonable results');
 
-  const FAKE_TIME_DATA_WITH_ONE_VALUE_AND_X0 = [{
-    x: 1422774000000,
-    x0: 1420095600000,
-    y: 16
-  }];
+  const FAKE_TIME_DATA_WITH_ONE_VALUE_AND_X0 = [
+    {
+      x: 1422774000000,
+      x0: 1420095600000,
+      y: 16
+    }
+  ];
 
-  const FAKE_TIME_DATA_WITH_ONE_VALUE_AND_Y0 = [{
-    x: 16,
-    y0: 1420095600000,
-    y: 1422774000000
-  }];
+  const FAKE_TIME_DATA_WITH_ONE_VALUE_AND_Y0 = [
+    {
+      x: 16,
+      y0: 1420095600000,
+      y: 1422774000000
+    }
+  ];
 
   const timeScaleObjectX = {
     attr: 'x',
@@ -432,7 +574,11 @@ test('scales-utils #_getScaleDistanceAndAdjustedDomain', t => {
     domain0: 1417546799999.5,
     domainN: 1430420400000.5
   };
-  t.deepEqual(timeResult, expectedTimeResults, 'should fine reasonable results for a time scale');
+  t.deepEqual(
+    timeResult,
+    expectedTimeResults,
+    'should fine reasonable results for a time scale'
+  );
 
   const logScaleObject = {
     attr: 'x',
@@ -441,41 +587,69 @@ test('scales-utils #_getScaleDistanceAndAdjustedDomain', t => {
     type: 'log',
     accessor: d => d.xxxx
   };
-  const logResult = _getScaleDistanceAndAdjustedDomain(FAKE_DATA, logScaleObject);
+  const logResult = _getScaleDistanceAndAdjustedDomain(
+    FAKE_DATA,
+    logScaleObject
+  );
   const expectedLogResults = {distance: Infinity, domain0: 0.1, domainN: 1.5};
-  t.deepEqual(logResult, expectedLogResults, 'should fine reasonable results for a log scale');
+  t.deepEqual(
+    logResult,
+    expectedLogResults,
+    'should fine reasonable results for a log scale'
+  );
 
   t.end();
 });
 
 test('scales-utils getXYPlotValues', t => {
-  const XYPlotProps = {colorType: 'linear', colorRange: ['#000', '#fff'], colorDomain: [0, 1]};
+  const XYPlotProps = {
+    colorType: 'linear',
+    colorRange: ['#000', '#fff'],
+    colorDomain: [0, 1]
+  };
   const children = [
     {props: {color: 0}},
     {props: {color: 0.5, opacity: '0.5'}},
     {props: {color: 1}}
   ];
   const result = getXYPlotValues(XYPlotProps, children);
-  t.equals(result[2]._colorValue, 'rgb(255, 255, 255)', 'children can be colored through a XYPlot scale');
-  t.equals(result[1]._opacityValue, '0.5', 'children can have fallback values without a XYPlot scale');
+  t.equals(
+    result[2]._colorValue,
+    'rgb(255, 255, 255)',
+    'children can be colored through a XYPlot scale'
+  );
+  t.equals(
+    result[1]._opacityValue,
+    '0.5',
+    'children can have fallback values without a XYPlot scale'
+  );
   t.end();
 });
 
 test('scales-utils #_adjustCategoricalScale', t => {
-  [{
-    scale: {type: 'category', domain: ['a', 'b', 'c'], range: [0, 10]},
-    distance: 10
-  }, {
-    scale: {type: 'category', domain: ['a'], range: [1, 10]},
-    distance: 9
-  }, {
-    scale: {type: 'ordinal', domain: ['a', 'b', 'c', 'd'], range: [10, 0]},
-    distance: 2.5
-  }, {
-    scale: {type: 'ordinal', domain: ['a'], range: [10, 1]},
-    distance: 9
-  }].forEach(({scale, distance}) => {
-    t.deepEqual(_adjustCategoricalScale(scale), {...scale, distance}, 'should correctly adjust a categorical scale');
+  [
+    {
+      scale: {type: 'category', domain: ['a', 'b', 'c'], range: [0, 10]},
+      distance: 10
+    },
+    {
+      scale: {type: 'category', domain: ['a'], range: [1, 10]},
+      distance: 9
+    },
+    {
+      scale: {type: 'ordinal', domain: ['a', 'b', 'c', 'd'], range: [10, 0]},
+      distance: 2.5
+    },
+    {
+      scale: {type: 'ordinal', domain: ['a'], range: [10, 1]},
+      distance: 9
+    }
+  ].forEach(({scale, distance}) => {
+    t.deepEqual(
+      _adjustCategoricalScale(scale),
+      {...scale, distance},
+      'should correctly adjust a categorical scale'
+    );
   });
   t.end();
 });
@@ -484,7 +658,16 @@ test('scale-utils #getOptionalScaleProps', t => {
   const foundProps = getOptionalScaleProps({node: 1, x: 2, margins: 4});
   t.deepEqual(foundProps, {}, 'should not find any non-padding optional props');
 
-  const paddingProps = getOptionalScaleProps({node: 1, x: 2, margins: 4, coolDogExplosionPadding: 10});
-  t.deepEqual(paddingProps, {coolDogExplosionPadding: 10}, 'should find only padding optional props');
+  const paddingProps = getOptionalScaleProps({
+    node: 1,
+    x: 2,
+    margins: 4,
+    coolDogExplosionPadding: 10
+  });
+  t.deepEqual(
+    paddingProps,
+    {coolDogExplosionPadding: 10},
+    'should find only padding optional props'
+  );
   t.end();
 });

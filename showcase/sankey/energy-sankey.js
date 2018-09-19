@@ -5,32 +5,34 @@ import Sankey from 'sankey';
 import Energy from '../datasets/energy.json';
 import ShowcaseButton from '../showcase-components/showcase-button';
 
-const MODE = [
-  'justify',
-  'center',
-  'left',
-  'right'
-];
+const MODE = ['justify', 'center', 'left', 'right'];
 
 export default class EnergySankey extends React.Component {
   state = {
     modeIndex: 0
-  }
+  };
 
   updateModeIndex = increment => () => {
     const newIndex = this.state.modeIndex + (increment ? 1 : -1);
-    const modeIndex = newIndex < 0 ? MODE.length - 1 : newIndex >= MODE.length ? 0 : newIndex;
+    const modeIndex =
+      newIndex < 0 ? MODE.length - 1 : newIndex >= MODE.length ? 0 : newIndex;
     this.setState({modeIndex});
-  }
+  };
   render() {
     const {modeIndex} = this.state;
 
     return (
       <div className="centered-and-flexed">
         <div className="centered-and-flexed-controls">
-          <ShowcaseButton onClick={this.updateModeIndex(false)} buttonContent={'PREV MODE'} />
+          <ShowcaseButton
+            onClick={this.updateModeIndex(false)}
+            buttonContent={'PREV MODE'}
+          />
           <div> {MODE[modeIndex]} </div>
-          <ShowcaseButton onClick={this.updateModeIndex(true)} buttonContent={'NEXT MODE'} />
+          <ShowcaseButton
+            onClick={this.updateModeIndex(true)}
+            buttonContent={'NEXT MODE'}
+          />
         </div>
         <Sankey
           animation
@@ -55,7 +57,7 @@ export default class EnergySankey extends React.Component {
               stroke: '#1A3177'
             }
           }}
-          />
+        />
       </div>
     );
   }

@@ -22,10 +22,7 @@ import ReactDOM from 'react-dom';
 import React, {Component} from 'react';
 import document from 'global/document';
 
-import {
-  BrowserRouter,
-  Route
-} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 
 import ShowcaseApp from './showcase-app';
 import '../src/styles/examples.scss';

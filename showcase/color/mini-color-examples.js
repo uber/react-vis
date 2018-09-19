@@ -75,9 +75,15 @@ for (let i = 0; i < 3; i++) {
 
   for (let j = 0; j < 10; j++) {
     const datapoint = {x: j, y: Math.random() * 10};
-    const categoryDatapoint = {...datapoint, color: Math.floor(Math.random() * 20)};
+    const categoryDatapoint = {
+      ...datapoint,
+      color: Math.floor(Math.random() * 20)
+    };
     const linearDatapoint = {...datapoint, color: Math.random() * 10};
-    const literalDatapoint = {...datapoint, color: colors[Math.floor(Math.random() * 20)]};
+    const literalDatapoint = {
+      ...datapoint,
+      color: colors[Math.floor(Math.random() * 20)]
+    };
     noColorSeries.push(datapoint);
     categoryColorSeries.push(categoryDatapoint);
     literalColorSeries.push(literalDatapoint);
@@ -85,10 +91,16 @@ for (let i = 0; i < 3; i++) {
   }
   data.noColor.push({key: i, data: noColorSeries});
   data.categoryColorAtSeriesLevel.push({key: i, data: noColorSeries, color: i});
-  data.literalColorAtSeriesLevel.push({key: i, data: noColorSeries,
-    color: colors[i]});
-  data.linearColorAtSeriesLevel.push({key: i, data: noColorSeries,
-    color: Math.floor(Math.random() * 20)});
+  data.literalColorAtSeriesLevel.push({
+    key: i,
+    data: noColorSeries,
+    color: colors[i]
+  });
+  data.linearColorAtSeriesLevel.push({
+    key: i,
+    data: noColorSeries,
+    color: Math.floor(Math.random() * 20)
+  });
   data.literalColorAtMarkLevel.push({key: i, data: literalColorSeries});
   data.linearColorAtMarkLevel.push({key: i, data: linearColorSeries});
   data.categoryColorAtMarkLevel.push({key: i, data: categoryColorSeries});
@@ -116,13 +128,17 @@ export function LiteralColorAtSeriesLevel() {
 
 export function LinearColorAtSeriesLevel() {
   return generateCharts(data.linearColorAtSeriesLevel, {
-    colorType: 'linear', colorDomain: [0, 9], colorRange: CONTINUOUS_COLOR_RANGE
+    colorType: 'linear',
+    colorDomain: [0, 9],
+    colorRange: CONTINUOUS_COLOR_RANGE
   });
 }
 
 export function CategoryColorAtSeriesLevel() {
-  return generateCharts(data.categoryColorAtSeriesLevel, {colorType: 'category',
-    colorDomain: [0, 1, 2], colorRange: EXTENDED_DISCRETE_COLOR_RANGE
+  return generateCharts(data.categoryColorAtSeriesLevel, {
+    colorType: 'category',
+    colorDomain: [0, 1, 2],
+    colorRange: EXTENDED_DISCRETE_COLOR_RANGE
   });
 }
 
@@ -142,7 +158,10 @@ export function CategoryColorAtMarkLevelCustomPalette() {
 }
 
 export function CategoryColorAtMarkLevelFixedStroke() {
-  return generateCharts(data.categoryColorAtMarkLevel, {colorType: 'category', stroke: '#f70'});
+  return generateCharts(data.categoryColorAtMarkLevel, {
+    colorType: 'category',
+    stroke: '#f70'
+  });
 }
 
 export function LinearColorAtMarkLevelNoPalette() {
@@ -150,44 +169,63 @@ export function LinearColorAtMarkLevelNoPalette() {
 }
 
 export function LinearColorAtMarkLevel() {
-  return generateCharts(data.linearColorAtMarkLevel, {colorRange: ['#c7e9c0', '#00441b']});
+  return generateCharts(data.linearColorAtMarkLevel, {
+    colorRange: ['#c7e9c0', '#00441b']
+  });
 }
 
 export function LineSeriesMarkSeries() {
-  return (<XYPlot {...defaultXYPlotProps} width={600}>
-    {data.noColor.map((d, i) => <LineSeries {...d}
-      key={i} color={DISCRETE_COLOR_RANGE[i]}/>)}
-    {data.noColor.map((d, i) => <MarkSeries {...d}
-      key={i} color={DISCRETE_COLOR_RANGE[i]} stroke="white"/>)}
-  </XYPlot>);
+  return (
+    <XYPlot {...defaultXYPlotProps} width={600}>
+      {data.noColor.map((d, i) => (
+        <LineSeries {...d} key={i} color={DISCRETE_COLOR_RANGE[i]} />
+      ))}
+      {data.noColor.map((d, i) => (
+        <MarkSeries
+          {...d}
+          key={i}
+          color={DISCRETE_COLOR_RANGE[i]}
+          stroke="white"
+        />
+      ))}
+    </XYPlot>
+  );
 }
 
 export function GradientCharts() {
-  const gradient = (<GradientDefs>
-    <linearGradient
-      id="myGradient"
-      gradientUnits="userSpaceOnUse"
-      x1="0" y1="0" x2="200" y2="200">
-      <stop offset="10%" stopColor="#c6e48b" />
-      <stop offset="33%" stopColor="#7bc96f" />
-      <stop offset="66%" stopColor="#239a3b" />
-      <stop offset="90%" stopColor="#196127" />
-    </linearGradient>
-  </GradientDefs>);
-  return (<div style={{display: 'flex'}}>
-    <XYPlot {...defaultXYPlotProps}>
-      {gradient}
-      <VerticalBarSeries {...data.noColor[0]} color={'url(#myGradient)'} />
-    </XYPlot>
-    <XYPlot {...defaultXYPlotProps}>
-      {gradient}
-      <LineSeries {...data.noColor[0]} color={'url(#myGradient)'} />
-    </XYPlot>
-    <XYPlot {...defaultXYPlotProps}>
-      {gradient}
-      <MarkSeries {...data.noColor[0]} color={'url(#myGradient)'} />
-    </XYPlot>
-  </div>);
+  const gradient = (
+    <GradientDefs>
+      <linearGradient
+        id="myGradient"
+        gradientUnits="userSpaceOnUse"
+        x1="0"
+        y1="0"
+        x2="200"
+        y2="200"
+      >
+        <stop offset="10%" stopColor="#c6e48b" />
+        <stop offset="33%" stopColor="#7bc96f" />
+        <stop offset="66%" stopColor="#239a3b" />
+        <stop offset="90%" stopColor="#196127" />
+      </linearGradient>
+    </GradientDefs>
+  );
+  return (
+    <div style={{display: 'flex'}}>
+      <XYPlot {...defaultXYPlotProps}>
+        {gradient}
+        <VerticalBarSeries {...data.noColor[0]} color={'url(#myGradient)'} />
+      </XYPlot>
+      <XYPlot {...defaultXYPlotProps}>
+        {gradient}
+        <LineSeries {...data.noColor[0]} color={'url(#myGradient)'} />
+      </XYPlot>
+      <XYPlot {...defaultXYPlotProps}>
+        {gradient}
+        <MarkSeries {...data.noColor[0]} color={'url(#myGradient)'} />
+      </XYPlot>
+    </div>
+  );
 }
 
 export function ColorSpecificity() {
@@ -195,21 +233,28 @@ export function ColorSpecificity() {
   const seventhElementColored = [...data.noColor[2].data];
   seventhElementColored[6].color = accentColor;
 
-  return (<div style={{display: 'flex'}}>
-    <XYPlot {...defaultXYPlotProps} color="#12939A" colorType="literal">
-      <VerticalBarSeries data={seventhElementColored} />
-    </XYPlot>
-    <XYPlot {...defaultXYPlotProps} stroke="#e5e5e5" strokeType="literal">
-      <LineSeries {...data.noColor[0]} />
-      <LineSeries {...data.noColor[1]} />
-      <LineSeries {...data.noColor[2]} stroke={accentColor}/>
-    </XYPlot>
-    <XYPlot {...defaultXYPlotProps} color="#12939A" colorType="literal" stroke="white" >
-      <MarkSeries {...data.noColor[0]} />
-      <MarkSeries {...data.noColor[1]} />
-      <MarkSeries data={seventhElementColored} color="#4fb79b"/>
-    </XYPlot>
-  </div>);
+  return (
+    <div style={{display: 'flex'}}>
+      <XYPlot {...defaultXYPlotProps} color="#12939A" colorType="literal">
+        <VerticalBarSeries data={seventhElementColored} />
+      </XYPlot>
+      <XYPlot {...defaultXYPlotProps} stroke="#e5e5e5" strokeType="literal">
+        <LineSeries {...data.noColor[0]} />
+        <LineSeries {...data.noColor[1]} />
+        <LineSeries {...data.noColor[2]} stroke={accentColor} />
+      </XYPlot>
+      <XYPlot
+        {...defaultXYPlotProps}
+        color="#12939A"
+        colorType="literal"
+        stroke="white"
+      >
+        <MarkSeries {...data.noColor[0]} />
+        <MarkSeries {...data.noColor[1]} />
+        <MarkSeries data={seventhElementColored} color="#4fb79b" />
+      </XYPlot>
+    </div>
+  );
 }
 
 export function ReactVis5() {
@@ -229,27 +274,48 @@ export function CustomPalette() {
 }
 
 function generatePalette(range) {
-  return (<div style={{display: 'flex', maxWidth: 700, flexWrap: 'wrap'}}>
-    {range.map((d, i) => (<div key={i} style={{
-      background: d,
-      width: 80, height: 80, borderRadius: 5, margin: 10, position: 'relative'}}>
-      <div className="color-box" style={{
-        position: 'absolute', top: '50%', left: '50%',
-        textShadow: 'white 1px 1px',
-        transform: 'translate(-50%, -50%)'}}>{d}</div>
-    </div>))}
-  </div>);
+  return (
+    <div style={{display: 'flex', maxWidth: 700, flexWrap: 'wrap'}}>
+      {range.map((d, i) => (
+        <div
+          key={i}
+          style={{
+            background: d,
+            width: 80,
+            height: 80,
+            borderRadius: 5,
+            margin: 10,
+            position: 'relative'
+          }}
+        >
+          <div
+            className="color-box"
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              textShadow: 'white 1px 1px',
+              transform: 'translate(-50%, -50%)'
+            }}
+          >
+            {d}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 function generateCharts(seriesData, props) {
   return (
     <div style={{display: 'flex'}}>
-      {[VerticalBarSeries, LineSeries, MarkSeries]
-      .map((Type, key) => (<XYPlot
-        key={key}
-        {...defaultXYPlotProps}
-        {...props}>
-        {seriesData.map((d, i) => (<Type {...d} />))}
-      </XYPlot>))}
-    </div>);
+      {[VerticalBarSeries, LineSeries, MarkSeries].map((Type, key) => (
+        <XYPlot key={key} {...defaultXYPlotProps} {...props}>
+          {seriesData.map((d, i) => (
+            <Type {...d} />
+          ))}
+        </XYPlot>
+      ))}
+    </div>
+  );
 }

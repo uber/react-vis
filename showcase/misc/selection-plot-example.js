@@ -43,7 +43,7 @@ const data = [...new Array(10)].map(row => ({
 export default class SelectionPlotExample extends React.Component {
   state = {
     filter: null
-  }
+  };
   render() {
     const {filter} = this.state;
     const highlightPoint = d => {
@@ -56,9 +56,7 @@ export default class SelectionPlotExample extends React.Component {
     const numSelectedPoints = filter ? data.filter(highlightPoint).length : 0;
     return (
       <div>
-        <XYPlot
-          width={300}
-          height={300}>
+        <XYPlot width={300} height={300}>
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
@@ -68,13 +66,15 @@ export default class SelectionPlotExample extends React.Component {
             className="mark-series-example"
             sizeRange={[5, 15]}
             colorType="literal"
-            getColor={d => highlightPoint(d) ? '#EF5D28' : '#12939A'}
-            data={data}/>
+            getColor={d => (highlightPoint(d) ? '#EF5D28' : '#12939A')}
+            data={data}
+          />
           <Highlight
             enableX={false}
             className="selection-example"
             onBrush={area => this.setState({filter: area})}
-            onBrushEnd={area => this.setState({filter: area})}/>
+            onBrushEnd={area => this.setState({filter: area})}
+          />
         </XYPlot>
         <p>{`There are ${numSelectedPoints} selected points`}</p>
       </div>

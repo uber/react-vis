@@ -39,10 +39,9 @@ const propTypes = {
   ...getScalePropTypesByAttribute('color'),
   width: PropTypes.number,
   height: PropTypes.number,
-  data: PropTypes.arrayOf(PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array
-  ])),
+  data: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+  ),
   onValueMouseOver: PropTypes.func,
   onValueMouseOut: PropTypes.func,
   onValueClick: PropTypes.func,
@@ -193,7 +192,7 @@ class AbstractSeries extends PureComponent {
     }
   }
 
-   /**
+  /**
    * Right Click handler for the entire series.
    * @param {Object} event Event.
    * @protected

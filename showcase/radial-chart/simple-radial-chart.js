@@ -43,7 +43,8 @@ export default class SimpleRadialChart extends React.Component {
         showLabels
         style={{stroke: '#fff', strokeWidth: 2}}
         width={400}
-        height={300} />
+        height={300}
+      />
     );
   }
 }

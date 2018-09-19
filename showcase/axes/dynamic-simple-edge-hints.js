@@ -30,28 +30,27 @@ import {
   Hint
 } from 'index';
 
-const {LEFT, RIGHT, TOP, BOTTOM_EDGE, RIGHT_EDGE, TOP_EDGE} =
-  Hint.ALIGN;
+const {LEFT, RIGHT, TOP, BOTTOM_EDGE, RIGHT_EDGE, TOP_EDGE} = Hint.ALIGN;
 const CHART_MARGINS = {left: 50, right: 10, top: 10, bottom: 25};
-const DATA = [
-  {x: 1, y: 5},
-  {x: 2, y: 10},
-  {x: 3, y: 10},
-  {x: 4, y: 15}
+const DATA = [{x: 1, y: 5}, {x: 2, y: 10}, {x: 3, y: 10}, {x: 4, y: 15}];
+const DATA_HINT_ALIGN = [
+  {
+    horizontal: RIGHT_EDGE,
+    vertical: TOP
+  },
+  {
+    horizontal: RIGHT,
+    vertical: BOTTOM_EDGE
+  },
+  {
+    horizontal: LEFT,
+    vertical: TOP_EDGE
+  },
+  {
+    horizontal: LEFT,
+    vertical: BOTTOM_EDGE
+  }
 ];
-const DATA_HINT_ALIGN = [{
-  horizontal: RIGHT_EDGE,
-  vertical: TOP
-}, {
-  horizontal: RIGHT,
-  vertical: BOTTOM_EDGE
-}, {
-  horizontal: LEFT,
-  vertical: TOP_EDGE
-}, {
-  horizontal: LEFT,
-  vertical: BOTTOM_EDGE
-}];
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -69,30 +68,23 @@ export default class Example extends React.Component {
   render() {
     const {value} = this.state;
     return (
-      <XYPlot
-        width={300}
-        height={300}
-        margin={CHART_MARGINS}>
+      <XYPlot width={300} height={300} margin={CHART_MARGINS}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis />
         <YAxis />
-        <MarkSeries
-          onNearestX={ this._rememberValue}
-          data={DATA}/>
-        {value ?
-          <Hint
-            value={value}
-            align={ DATA_HINT_ALIGN[value.x - 1] }
-          >
+        <MarkSeries onNearestX={this._rememberValue} data={DATA} />
+        {value ? (
+          <Hint value={value} align={DATA_HINT_ALIGN[value.x - 1]}>
             <div className="rv-hint__content">
-              { `(${value.x}, ${value.y})` }
-              <br/>
-              { `${DATA_HINT_ALIGN[value.x - 1].horizontal}-${
-                DATA_HINT_ALIGN[value.x - 1].vertical}` }
+              {`(${value.x}, ${value.y})`}
+              <br />
+              {`${DATA_HINT_ALIGN[value.x - 1].horizontal}-${
+                DATA_HINT_ALIGN[value.x - 1].vertical
+              }`}
             </div>
-          </Hint> : null
-        }
+          </Hint>
+        ) : null}
       </XYPlot>
     );
   }

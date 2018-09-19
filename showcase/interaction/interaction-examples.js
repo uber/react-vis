@@ -20,23 +20,19 @@
 
 import React, {Component} from 'react';
 
-import {
-  XYPlot,
-  LineSeries,
-  MarkSeries
-} from 'index';
+import {XYPlot, LineSeries, MarkSeries} from 'index';
 
-const scatterPlotData = [...Array(30).keys()].map(() => (
-  {
-    x: Math.random() * 10,
-    y: Math.random() * 10
-  }));
+const scatterPlotData = [...Array(30).keys()].map(() => ({
+  x: Math.random() * 10,
+  y: Math.random() * 10
+}));
 
 const lineData = [...Array(3).keys()].map(() =>
-  [...Array(10).keys()].map((x) => ({x, y: Math.random() * 10})));
+  [...Array(10).keys()].map(x => ({x, y: Math.random() * 10}))
+);
 
 const allData = lineData.reduce((prev, curr, i) => {
-  return [...prev, ...curr.map((d) => ({...d, seriesNb: i}))];
+  return [...prev, ...curr.map(d => ({...d, seriesNb: i}))];
 }, []);
 
 const defaultProps = {
@@ -52,16 +48,26 @@ export class ScatterPlotOnNearestXY extends Component {
   }
   render() {
     const {index} = this.state;
-    const data = scatterPlotData.map((d, i) => ({...d, color: i === index ? 1 : 0}));
-    return (<XYPlot {...defaultProps}
-        xDomain={[-0.5, 9.5]} yDomain={[-0.5, 9.5]}
-        size={5} colorDomain={[0, 1]}
+    const data = scatterPlotData.map((d, i) => ({
+      ...d,
+      color: i === index ? 1 : 0
+    }));
+    return (
+      <XYPlot
+        {...defaultProps}
+        xDomain={[-0.5, 9.5]}
+        yDomain={[-0.5, 9.5]}
+        size={5}
+        colorDomain={[0, 1]}
         onMouseLeave={() => this.setState({index: null})}
       >
-      <MarkSeries data={data} stroke="white"
-      onNearestXY={(d, e) => this.setState({index: e.index})}
-      />
-    </XYPlot>);
+        <MarkSeries
+          data={data}
+          stroke="white"
+          onNearestXY={(d, e) => this.setState({index: e.index})}
+        />
+      </XYPlot>
+    );
   }
 }
 
@@ -72,19 +78,30 @@ export class LineChartMouseOverSeries extends Component {
   }
   render() {
     const {index} = this.state;
-    return (<XYPlot {...defaultProps}
+    return (
+      <XYPlot
+        {...defaultProps}
         onMouseLeave={() => this.setState({index: null})}
       >
-      {lineData.map((d, i) => (<LineSeries
-        data={d} key={`${i}`} stroke={i === index ? 'orange' : undefined}
-      />))}
-      {lineData.map((d, i) => (<LineSeries
-        data={d} key={`${i}-mouseover`}
-        onSeriesMouseOut={() => this.setState({index: null})}
-        onSeriesMouseOver={() => this.setState({index: i})}
-        strokeWidth={10} stroke={index === i ? 'rgba(0,0,0,0.2)' : 'transparent'}
-      />))}
-    </XYPlot>);
+        {lineData.map((d, i) => (
+          <LineSeries
+            data={d}
+            key={`${i}`}
+            stroke={i === index ? 'orange' : undefined}
+          />
+        ))}
+        {lineData.map((d, i) => (
+          <LineSeries
+            data={d}
+            key={`${i}-mouseover`}
+            onSeriesMouseOut={() => this.setState({index: null})}
+            onSeriesMouseOver={() => this.setState({index: i})}
+            strokeWidth={10}
+            stroke={index === i ? 'rgba(0,0,0,0.2)' : 'transparent'}
+          />
+        ))}
+      </XYPlot>
+    );
   }
 }
 
@@ -100,25 +117,36 @@ export class LineChartMouseOverXY extends Component {
       color: i === pointUsed ? 'rgba(0,0,0,0.2)' : 'transparent'
     }));
 
-    return (<XYPlot {...defaultProps}
-        onMouseLeave={() => this.setState({
-          highlightedSeries: null,
-          pointUsed: null
-        })}
+    return (
+      <XYPlot
+        {...defaultProps}
+        onMouseLeave={() =>
+          this.setState({
+            highlightedSeries: null,
+            pointUsed: null
+          })
+        }
       >
-      {lineData.map((d, i) => (<LineSeries
-        data={d} key={`${i}`} stroke={i === highlightedSeries ? 'orange' : undefined}
-      />))}
-      <MarkSeries
-        data={data}
-        colorType="literal"
-        size={10}
-        onNearestXY={({seriesNb}, {index}) => this.setState({
-          highlightedSeries: seriesNb,
-          pointUsed: index
-        })}
-      />
-    </XYPlot>);
+        {lineData.map((d, i) => (
+          <LineSeries
+            data={d}
+            key={`${i}`}
+            stroke={i === highlightedSeries ? 'orange' : undefined}
+          />
+        ))}
+        <MarkSeries
+          data={data}
+          colorType="literal"
+          size={10}
+          onNearestXY={({seriesNb}, {index}) =>
+            this.setState({
+              highlightedSeries: seriesNb,
+              pointUsed: index
+            })
+          }
+        />
+      </XYPlot>
+    );
   }
 }
 
@@ -133,34 +161,40 @@ export class LinkedCharts extends Component {
   }
   render() {
     const {index} = this.state;
-    return (<div>
-      {lineData.map((d, i) => (<div key={i}>
-        <LineChart
-          data={d}
-          index={index}
-          handleMouseOver={this.handleMouseOver} />
-      </div>))}
-    </div>);
+    return (
+      <div>
+        {lineData.map((d, i) => (
+          <div key={i}>
+            <LineChart
+              data={d}
+              index={index}
+              handleMouseOver={this.handleMouseOver}
+            />
+          </div>
+        ))}
+      </div>
+    );
   }
 }
 
 function LineChart({data, index, handleMouseOver}) {
-  return (<XYPlot
-    {...defaultProps}
-    height={80}
-    yDomain={[0, 10]}
-    onMouseLeave={() => handleMouseOver(null)}
-  >
-    <LineSeries
-      data={data}
-      onNearestX={(d, e) => handleMouseOver(e.index)} />
-    {index === null ? null : <LineSeries
-      data={[{x: index, y: 0}, {x: index, y: 10}]}
-      opacity={0.5} />
-    }
-    {index === null ? null : <MarkSeries
-      data={[data[index]]}
-      stroke="white" />
-    }
-  </XYPlot>);
+  return (
+    <XYPlot
+      {...defaultProps}
+      height={80}
+      yDomain={[0, 10]}
+      onMouseLeave={() => handleMouseOver(null)}
+    >
+      <LineSeries data={data} onNearestX={(d, e) => handleMouseOver(e.index)} />
+      {index === null ? null : (
+        <LineSeries
+          data={[{x: index, y: 0}, {x: index, y: 10}]}
+          opacity={0.5}
+        />
+      )}
+      {index === null ? null : (
+        <MarkSeries data={[data[index]]} stroke="white" />
+      )}
+    </XYPlot>
+  );
 }

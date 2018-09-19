@@ -62,14 +62,16 @@ class HexbinSeries extends AbstractSeries {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <HexbinSeries {...this.props} animation={null}/>
+          <HexbinSeries {...this.props} animation={null} />
         </Animation>
       );
     }
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
 
-    const hex = hexbin().x(d => x(d) + xOffset).y(d => y(d) + yOffset)
+    const hex = hexbin()
+      .x(d => x(d) + xOffset)
+      .y(d => y(d) + yOffset)
       .radius(radius)
       .size([innerWidth, innerHeight]);
 
@@ -77,16 +79,23 @@ class HexbinSeries extends AbstractSeries {
     const hexes = hex(data);
 
     const countDomain = getColorDomain(this.props, hexes);
-    const color = scaleLinear().domain(countDomain).range(colorRange);
-    const size = scaleLinear().domain(countDomain).range([0, radius]);
+    const color = scaleLinear()
+      .domain(countDomain)
+      .range(colorRange);
+    const size = scaleLinear()
+      .domain(countDomain)
+      .range([0, radius]);
     return (
       <g
         className={`${predefinedClassName} ${className}`}
-        transform={`translate(${marginLeft},${marginTop})`}>
+        transform={`translate(${marginLeft},${marginTop})`}
+      >
         {hexes.map((d, i) => {
           const attrs = {
             style,
-            d: sizeHexagonsWithCount ? hex.hexagon(size(d.length)) : hexagonPath,
+            d: sizeHexagonsWithCount
+              ? hex.hexagon(size(d.length))
+              : hexagonPath,
             fill: color(d.length),
             transform: `translate(${d.x}, ${d.y})`,
             key: i,
@@ -95,7 +104,7 @@ class HexbinSeries extends AbstractSeries {
             onMouseOver: e => this._valueMouseOverHandler(d, e),
             onMouseOut: e => this._valueMouseOutHandler(d, e)
           };
-          return (<path {...attrs} />);
+          return <path {...attrs} />;
         })}
       </g>
     );

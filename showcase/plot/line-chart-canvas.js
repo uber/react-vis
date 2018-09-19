@@ -35,7 +35,7 @@ import {
 } from 'index';
 
 function getRandomData() {
-  return (new Array(1000)).fill(0).map((row, i) => ({
+  return new Array(1000).fill(0).map((row, i) => ({
     x: i,
     y: Math.random() * 20,
     color: Math.random() * 10
@@ -70,7 +70,7 @@ export default class Example extends React.Component {
     showMarks: true,
     value: false,
     hideComponent: false
-  }
+  };
 
   render() {
     const {
@@ -103,37 +103,46 @@ export default class Example extends React.Component {
           <div> {`Mode: ${mode}`} </div>
           <ShowcaseButton
             onClick={() => this.setState({drawMode: (drawMode + 1) % 2})}
-            buttonContent={nextModeContent[mode]} />
+            buttonContent={nextModeContent[mode]}
+          />
           <ShowcaseButton
             onClick={() => this.setState({showMarks: !showMarks})}
-            buttonContent={showMarks ? 'HIDE MARKS' : 'SHOW MARKS'} />
+            buttonContent={showMarks ? 'HIDE MARKS' : 'SHOW MARKS'}
+          />
           <ShowcaseButton
             onClick={() => this.setState({data: getRandomData()})}
-            buttonContent={'UPDATE DATA'} />
+            buttonContent={'UPDATE DATA'}
+          />
           <ShowcaseButton
             onClick={() => this.setState({colorType: nextType[colorType]})}
-            buttonContent={`TOGGLE COLOR to ${nextType[colorType]}`} />
+            buttonContent={`TOGGLE COLOR to ${nextType[colorType]}`}
+          />
           <ShowcaseButton
-            onClick={() => this.setState({strokeWidth: strokeWidth === 1 ? 2 : 1})}
-            buttonContent={'TOGGLE STROKEWIDTH'} />
+            onClick={() =>
+              this.setState({strokeWidth: strokeWidth === 1 ? 2 : 1})
+            }
+            buttonContent={'TOGGLE STROKEWIDTH'}
+          />
           <ShowcaseButton
             onClick={() => this.setState({hideComponent: !hideComponent})}
-            buttonContent={hideComponent ? 'SHOW' : 'HIDE'} />
+            buttonContent={hideComponent ? 'SHOW' : 'HIDE'}
+          />
         </div>
-        {!hideComponent && <XYPlot
-          onMouseLeave={() => this.setState({value: false})}
-          width={600}
-          height={300}>
-          <VerticalGridLines />
-          <HorizontalGridLines />
-          <XAxis />
-          <YAxis />
-          {mode === 'canvas' &&
-            <CanvasComponent {...lineSeriesProps}/>}
-          {mode === 'svg' &&
-            <SVGComponent {...lineSeriesProps}/>}
-          {value && <Crosshair values={[value]} />}
-        </XYPlot>}
+        {!hideComponent && (
+          <XYPlot
+            onMouseLeave={() => this.setState({value: false})}
+            width={600}
+            height={300}
+          >
+            <VerticalGridLines />
+            <HorizontalGridLines />
+            <XAxis />
+            <YAxis />
+            {mode === 'canvas' && <CanvasComponent {...lineSeriesProps} />}
+            {mode === 'svg' && <SVGComponent {...lineSeriesProps} />}
+            {value && <Crosshair values={[value]} />}
+          </XYPlot>
+        )}
       </div>
     );
   }

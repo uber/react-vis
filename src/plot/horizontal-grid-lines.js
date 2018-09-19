@@ -38,9 +38,7 @@ const defaultProps = {
 };
 
 function HorizontalGridLines(props) {
-  return (
-    <GridLines {...props} />
-  );
+  return <GridLines {...props} />;
 }
 
 HorizontalGridLines.displayName = 'HorizontalGridLines';

@@ -29,13 +29,15 @@ const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--polygon';
 const DEFAULT_COLOR = '#12939A';
 
 const generatePath = (data, xFunctor, yFunctor) =>
-  `${data.reduce((res, row, i) => `${res} ${i ? 'L' : 'M'}${xFunctor(row)} ${yFunctor(row)}`, '')} Z`;
+  `${data.reduce(
+    (res, row, i) => `${res} ${i ? 'L' : 'M'}${xFunctor(row)} ${yFunctor(row)}`,
+    ''
+  )} Z`;
 
 class PolygonSeries extends AbstractSeries {
-
   static get propTypes() {
     return {
-      ... AbstractSeries.propTypes
+      ...AbstractSeries.propTypes
     };
   }
 
@@ -57,7 +59,7 @@ class PolygonSeries extends AbstractSeries {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <PolygonSeries {...this.props} animation={null}/>
+          <PolygonSeries {...this.props} animation={null} />
         </Animation>
       );
     }
@@ -65,17 +67,19 @@ class PolygonSeries extends AbstractSeries {
     const yFunctor = this._getAttributeFunctor('y');
 
     return (
-      <path {...{
-        className: `${predefinedClassName} ${className}`,
-        onMouseOver: this._seriesMouseOverHandler,
-        onMouseOut: this._seriesMouseOutHandler,
-        onClick: this._seriesClickHandler,
-        onContextMenu: this._seriesRightClickHandler,
-        fill: color || DEFAULT_COLOR,
-        style,
-        d: generatePath(data, xFunctor, yFunctor),
-        transform: `translate(${marginLeft},${marginTop})`
-      }}/>
+      <path
+        {...{
+          className: `${predefinedClassName} ${className}`,
+          onMouseOver: this._seriesMouseOverHandler,
+          onMouseOut: this._seriesMouseOutHandler,
+          onClick: this._seriesClickHandler,
+          onContextMenu: this._seriesRightClickHandler,
+          fill: color || DEFAULT_COLOR,
+          style,
+          d: generatePath(data, xFunctor, yFunctor),
+          transform: `translate(${marginLeft},${marginTop})`
+        }}
+      />
     );
   }
 }

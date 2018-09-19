@@ -30,17 +30,13 @@ import XYPlot from 'plot/xy-plot';
 
 test('Animation interpolates xDomain when specified', t => {
   const wrapper = mount(
-    <XYPlot
-      width={300}
-      height={300}>
-      <VerticalBarSeries
-        data={[
-          {x: 1, y: 0}
-        ]}/>
+    <XYPlot width={300} height={300}>
+      <VerticalBarSeries data={[{x: 1, y: 0}]} />
       <Axis
         attr={'x'}
         animation={{nonAnimatedProps: ['xDomain']}}
-        xDomain={['Black']}/>
+        xDomain={['Black']}
+      />
     </XYPlot>
   );
 

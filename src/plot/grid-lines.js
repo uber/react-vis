@@ -34,9 +34,7 @@ import {
 const {VERTICAL, HORIZONTAL} = DIRECTION;
 
 const propTypes = {
-  direction: PropTypes.oneOf([
-    VERTICAL, HORIZONTAL
-  ]),
+  direction: PropTypes.oneOf([VERTICAL, HORIZONTAL]),
   attr: PropTypes.string.isRequired,
   width: PropTypes.number,
   height: PropTypes.number,
@@ -64,13 +62,20 @@ const defaultProps = {
 };
 
 const animatedProps = [
-  'xRange', 'yRange', 'xDomain', 'yDomain',
-  'width', 'height', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
+  'xRange',
+  'yRange',
+  'xDomain',
+  'yDomain',
+  'width',
+  'height',
+  'marginLeft',
+  'marginTop',
+  'marginRight',
+  'marginBottom',
   'tickTotal'
 ];
 
 class GridLines extends PureComponent {
-
   _getDefaultProps() {
     const {
       innerWidth,
@@ -85,9 +90,7 @@ class GridLines extends PureComponent {
       width: innerWidth,
       height: innerHeight,
       tickTotal: getTicksTotalFromSize(
-        direction === VERTICAL ?
-          innerWidth :
-          innerHeight
+        direction === VERTICAL ? innerWidth : innerHeight
       )
     };
   }
@@ -97,7 +100,7 @@ class GridLines extends PureComponent {
     if (animation) {
       return (
         <Animation {...this.props} {...{animatedProps}}>
-          <GridLines {...this.props} animation={null}/>
+          <GridLines {...this.props} animation={null} />
         </Animation>
       );
     }
@@ -129,7 +132,8 @@ class GridLines extends PureComponent {
     return (
       <g
         transform={`translate(${left},${top})`}
-        className="rv-xy-plot__grid-lines">
+        className="rv-xy-plot__grid-lines"
+      >
         {values.map((v, i) => {
           const pos = scale(v);
           const pathProps = {
@@ -143,7 +147,8 @@ class GridLines extends PureComponent {
               {...pathProps}
               key={i}
               className="rv-xy-plot__grid-lines__line"
-              style={style} />
+              style={style}
+            />
           );
         })}
       </g>

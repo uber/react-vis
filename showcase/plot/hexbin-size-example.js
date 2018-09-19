@@ -22,12 +22,7 @@ import React, {Component} from 'react';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
 
-import {
-  XYPlot,
-  XAxis,
-  YAxis,
-  HexbinSeries
-} from 'index';
+import {XYPlot, XAxis, YAxis, HexbinSeries} from 'index';
 
 import DATA from '../datasets/car-data.json';
 
@@ -45,14 +40,18 @@ export default class HexbinSizeExample extends Component {
   state = {
     xAxis: 0,
     yAxis: 3
-  }
+  };
 
   updateX(increment) {
-    this.setState({xAxis: (this.state.xAxis + (increment ? 1 : -1)) % DIMENSIONS.length});
+    this.setState({
+      xAxis: (this.state.xAxis + (increment ? 1 : -1)) % DIMENSIONS.length
+    });
   }
 
   updateY(increment) {
-    this.setState({yAxis: (this.state.yAxis + (increment ? 1 : -1)) % DIMENSIONS.length});
+    this.setState({
+      yAxis: (this.state.yAxis + (increment ? 1 : -1)) % DIMENSIONS.length
+    });
   }
 
   render() {
@@ -65,27 +64,41 @@ export default class HexbinSizeExample extends Component {
     return (
       <div className="centered-and-flexed">
         <div className="centered-and-flexed-controls">
-          <ShowcaseButton onClick={() => this.updateX(false)} buttonContent={'PREV X'} />
+          <ShowcaseButton
+            onClick={() => this.updateX(false)}
+            buttonContent={'PREV X'}
+          />
           <div> {`X AXIS ${DIMENSIONS[xAxis]}`} </div>
-          <ShowcaseButton onClick={() => this.updateX(true)} buttonContent={'NEXT X'} />
+          <ShowcaseButton
+            onClick={() => this.updateX(true)}
+            buttonContent={'NEXT X'}
+          />
         </div>
         <div className="centered-and-flexed-controls">
-          <ShowcaseButton onClick={() => this.updateY(false)} buttonContent={'PREV Y'} />
+          <ShowcaseButton
+            onClick={() => this.updateY(false)}
+            buttonContent={'PREV Y'}
+          />
           <div> {`Y AXIS ${DIMENSIONS[yAxis]}`} </div>
-          <ShowcaseButton onClick={() => this.updateY(true)} buttonContent={'NEXT Y'} />
+          <ShowcaseButton
+            onClick={() => this.updateY(true)}
+            buttonContent={'NEXT Y'}
+          />
         </div>
         <XYPlot
           width={500}
           onMouseLeave={() => this.setState({hoveredNode: null})}
-          height={300}>
+          height={300}
+        >
           <HexbinSeries
             animation
             sizeHexagonsWithCount
             className="hexbin-size-example"
             radius={15}
-            data={data}/>
-          <XAxis title={DIMENSIONS[xAxis]}/>
-          <YAxis title={DIMENSIONS[yAxis]}/>
+            data={data}
+          />
+          <XAxis title={DIMENSIONS[xAxis]} />
+          <YAxis title={DIMENSIONS[yAxis]} />
         </XYPlot>
       </div>
     );

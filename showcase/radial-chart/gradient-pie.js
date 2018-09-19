@@ -20,10 +20,7 @@
 
 import React from 'react';
 
-import {
-  GradientDefs,
-  RadialChart
-} from 'index';
+import {GradientDefs, RadialChart} from 'index';
 
 export default class GradientPie extends React.Component {
   render() {
@@ -44,18 +41,19 @@ export default class GradientPie extends React.Component {
         showLabels
         style={{stroke: '#fff', strokeWidth: 2}}
         width={400}
-        height={300}>
+        height={300}
+      >
         <GradientDefs>
           <linearGradient id="grad1" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="red" stopOpacity={0.4}/>
+            <stop offset="0%" stopColor="red" stopOpacity={0.4} />
             <stop offset="100%" stopColor="blue" stopOpacity={0.3} />
           </linearGradient>
           <linearGradient id="grad2" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="blue" stopOpacity={0.4}/>
+            <stop offset="0%" stopColor="blue" stopOpacity={0.4} />
             <stop offset="100%" stopColor="green" stopOpacity={0.3} />
           </linearGradient>
           <linearGradient id="grad3" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="yellow" stopOpacity={0.4}/>
+            <stop offset="0%" stopColor="yellow" stopOpacity={0.4} />
             <stop offset="100%" stopColor="green" stopOpacity={0.3} />
           </linearGradient>
         </GradientDefs>

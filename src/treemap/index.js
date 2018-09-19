@@ -33,7 +33,12 @@ import {
   treemap
 } from 'd3-hierarchy';
 
-import {CONTINUOUS_COLOR_RANGE, DEFAULT_COLOR, DEFAULT_OPACITY, OPACITY_TYPE} from 'theme';
+import {
+  CONTINUOUS_COLOR_RANGE,
+  DEFAULT_COLOR,
+  DEFAULT_OPACITY,
+  OPACITY_TYPE
+} from 'theme';
 import {AnimationPropType} from 'animation';
 import {getAttributeFunctor, getMissingScaleProps} from 'utils/scales-utils';
 import {MarginPropType, getInnerDimensions} from 'utils/chart-utils';
@@ -50,11 +55,7 @@ const TREEMAP_TILE_MODES = {
   binary: treemapBinary
 };
 
-const TREEMAP_LAYOUT_MODES = [
-  'circlePack',
-  'partition',
-  'partition-pivot'
-];
+const TREEMAP_LAYOUT_MODES = ['circlePack', 'partition', 'partition-pivot'];
 
 const NOOP = d => d;
 
@@ -118,10 +119,14 @@ class Treemap extends React.Component {
       return [];
     }
 
-    if ((mode === 'partition' || mode === 'partition-pivot')) {
+    if (mode === 'partition' || mode === 'partition-pivot') {
       const partitionFunction = partition()
-          .size(mode === 'partition-pivot' ? [innerHeight, innerWidth] : [innerWidth, innerHeight])
-          .padding(padding);
+        .size(
+          mode === 'partition-pivot'
+            ? [innerHeight, innerWidth]
+            : [innerWidth, innerHeight]
+        )
+        .padding(padding);
       const structuredInput = hierarchy(data)
         .sum(getSize)
         .sort((a, b) => sortFunction(a, b, getSize));
@@ -139,8 +144,8 @@ class Treemap extends React.Component {
     }
     if (mode === 'circlePack') {
       const packingFunction = pack()
-          .size([innerWidth, innerHeight])
-          .padding(padding);
+        .size([innerWidth, innerHeight])
+        .padding(padding);
       const structuredInput = hierarchy(data)
         .sum(getSize)
         .sort((a, b) => sortFunction(a, b, getSize));
@@ -156,7 +161,6 @@ class Treemap extends React.Component {
       .sum(getSize)
       .sort((a, b) => sortFunction(a, b, getSize));
     return treemapingFunction(structuredInput).descendants();
-
   }
 
   render() {
@@ -164,9 +168,8 @@ class Treemap extends React.Component {
     const {scales} = this.state;
     const nodes = this._getNodesToRender();
     const TreemapElement = renderMode === 'SVG' ? TreemapSVG : TreemapDOM;
-    return <TreemapElement {...this.props} nodes={nodes} scales={scales}/>;
+    return <TreemapElement {...this.props} nodes={nodes} scales={scales} />;
   }
-
 }
 
 Treemap.displayName = 'Treemap';

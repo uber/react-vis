@@ -40,13 +40,16 @@ class HorizontalBarSeriesCanvas extends AbstractSeries {
   }
 
   static renderLayer(props, ctx) {
-    BarSeries.renderLayer({
-      ...props,
-      linePosAttr: 'x',
-      valuePosAttr: 'y',
-      lineSizeAttr: 'width',
-      valueSizeAttr: 'height'
-    }, ctx);
+    BarSeries.renderLayer(
+      {
+        ...props,
+        linePosAttr: 'x',
+        valuePosAttr: 'y',
+        lineSizeAttr: 'width',
+        valueSizeAttr: 'height'
+      },
+      ctx
+    );
   }
 
   render() {

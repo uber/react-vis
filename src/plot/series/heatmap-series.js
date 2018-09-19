@@ -28,7 +28,6 @@ import AbstractSeries from './abstract-series';
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--heatmap';
 
 class HeatmapSeries extends AbstractSeries {
-
   static getParentConfig(attr) {
     const isDomainAdjustmentNeeded = attr === 'x' || attr === 'y';
     return {isDomainAdjustmentNeeded};
@@ -36,7 +35,12 @@ class HeatmapSeries extends AbstractSeries {
 
   render() {
     const {
-      animation, className, data, marginLeft, marginTop, style
+      animation,
+      className,
+      data,
+      marginLeft,
+      marginTop,
+      style
     } = this.props;
     if (!data) {
       return null;
@@ -44,7 +48,7 @@ class HeatmapSeries extends AbstractSeries {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <HeatmapSeries {...this.props} animation={null}/>
+          <HeatmapSeries {...this.props} animation={null} />
         </Animation>
       );
     }
@@ -52,16 +56,17 @@ class HeatmapSeries extends AbstractSeries {
     const x = this._getAttributeFunctor('x');
     const y = this._getAttributeFunctor('y');
     const opacity = this._getAttributeFunctor('opacity');
-    const fill = this._getAttributeFunctor('fill') ||
-      this._getAttributeFunctor('color');
-    const stroke = this._getAttributeFunctor('stroke') ||
-      this._getAttributeFunctor('color');
+    const fill =
+      this._getAttributeFunctor('fill') || this._getAttributeFunctor('color');
+    const stroke =
+      this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color');
     const xDistance = this._getScaleDistance('x');
     const yDistance = this._getScaleDistance('y');
     return (
       <g
         className={`${predefinedClassName} ${className}`}
-        transform={`translate(${marginLeft},${marginTop})`}>
+        transform={`translate(${marginLeft},${marginTop})`}
+      >
         {data.map((d, i) => {
           const attrs = {
             style: {
@@ -81,7 +86,7 @@ class HeatmapSeries extends AbstractSeries {
             onMouseOver: e => this._valueMouseOverHandler(d, e),
             onMouseOut: e => this._valueMouseOutHandler(d, e)
           };
-          return (<rect {...attrs} />);
+          return <rect {...attrs} />;
         })}
       </g>
     );

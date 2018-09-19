@@ -26,9 +26,17 @@ import Animation, {AnimationPropType} from 'animation';
 import {getFontColorFromBackground} from 'utils/scales-utils';
 
 const ANIMATED_PROPS = [
-  'colorRange', 'colorDomain', 'color',
-  'opacityRange', 'opacityDomain', 'opacity',
-  'x0', 'x1', 'y0', 'y1', 'r'
+  'colorRange',
+  'colorDomain',
+  'color',
+  'opacityRange',
+  'opacityDomain',
+  'opacity',
+  'x0',
+  'x1',
+  'y0',
+  'y1',
+  'r'
 ];
 
 class TreemapLeaf extends React.Component {
@@ -64,8 +72,8 @@ class TreemapLeaf extends React.Component {
     const {data} = node;
     const title = getLabel(data);
     const leafStyle = {
-      top: useCirclePacking ? (y0 - r) : y0,
-      left: useCirclePacking ? (x0 - r) : x0,
+      top: useCirclePacking ? y0 - r : y0,
+      left: useCirclePacking ? x0 - r : x0,
       width: useCirclePacking ? r * 2 : x1 - x0,
       height: useCirclePacking ? r * 2 : y1 - y0,
       background,
@@ -77,11 +85,14 @@ class TreemapLeaf extends React.Component {
 
     return (
       <div
-        className={`rv-treemap__leaf ${useCirclePacking ? 'rv-treemap__leaf--circle' : ''}`}
+        className={`rv-treemap__leaf ${
+          useCirclePacking ? 'rv-treemap__leaf--circle' : ''
+        }`}
         onMouseEnter={event => onLeafMouseOver(node, event)}
         onMouseLeave={event => onLeafMouseOut(node, event)}
         onClick={event => onLeafClick(node, event)}
-        style={leafStyle}>
+        style={leafStyle}
+      >
         <div className="rv-treemap__leaf__content">{title}</div>
       </div>
     );

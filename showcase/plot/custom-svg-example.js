@@ -32,9 +32,7 @@ import {
 export default class Example extends React.Component {
   render() {
     return (
-      <XYPlot
-        width={300}
-        height={300}>
+      <XYPlot width={300} height={300}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis />
@@ -47,18 +45,23 @@ export default class Example extends React.Component {
             {x: 1.7, y: 12, size: 20, style: {stroke: 'red', fill: 'orange'}},
             {x: 2, y: 5},
             {x: 3, y: 15},
-            {x: 2.5, y: 7, customComponent: (row, positionInPixels, globalStyle) => {
-              return (
-                <g className="inner-inner-component">
-                  <circle cx="0" cy="0" r={10} fill="green"/>
-                  <text x={0} y={0}>
-                    <tspan x="0" y="0">{`x: ${positionInPixels.x}`}</tspan>
-                    <tspan x="0" y="1em">{`y: ${positionInPixels.y}`}</tspan>
-                  </text>
-                </g>
-              );
-            }}
-          ]}/>
+            {
+              x: 2.5,
+              y: 7,
+              customComponent: (row, positionInPixels, globalStyle) => {
+                return (
+                  <g className="inner-inner-component">
+                    <circle cx="0" cy="0" r={10} fill="green" />
+                    <text x={0} y={0}>
+                      <tspan x="0" y="0">{`x: ${positionInPixels.x}`}</tspan>
+                      <tspan x="0" y="1em">{`y: ${positionInPixels.y}`}</tspan>
+                    </text>
+                  </g>
+                );
+              }
+            }
+          ]}
+        />
       </XYPlot>
     );
   }

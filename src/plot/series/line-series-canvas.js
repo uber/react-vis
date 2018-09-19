@@ -50,11 +50,13 @@ class LineSeriesCanvas extends AbstractSeries {
 
     const x = getAttributeFunctor(props, 'x');
     const y = getAttributeFunctor(props, 'y');
-    const stroke = getAttributeValue(props, 'stroke') || getAttributeValue(props, 'color');
+    const stroke =
+      getAttributeValue(props, 'stroke') || getAttributeValue(props, 'color');
     const strokeColor = rgb(stroke);
     const newOpacity = getAttributeValue(props, 'opacity');
     const opacity = Number.isFinite(newOpacity) ? newOpacity : DEFAULT_OPACITY;
-    let line = d3Shape.line()
+    let line = d3Shape
+      .line()
       .x(row => x(row) + marginLeft)
       .y(row => y(row) + marginTop);
     if (typeof curve === 'string' && d3Shape[curve]) {
@@ -64,7 +66,9 @@ class LineSeriesCanvas extends AbstractSeries {
     }
 
     ctx.beginPath();
-    ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${strokeColor.b}, ${opacity})`;
+    ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${
+      strokeColor.b
+    }, ${opacity})`;
     ctx.lineWidth = strokeWidth;
 
     if (strokeDasharray) {
@@ -80,7 +84,7 @@ class LineSeriesCanvas extends AbstractSeries {
   }
 
   render() {
-    return (<div />);
+    return <div />;
   }
 }
 

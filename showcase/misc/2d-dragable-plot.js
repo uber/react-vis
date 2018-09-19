@@ -35,14 +35,17 @@ import {generateSeededRandom} from '../showcase-utils';
 const seededRandom = generateSeededRandom(3);
 
 // randomly generated data
-const data = [...new Array(30)].map(row => ({x: seededRandom() * 5, y: seededRandom() * 10}));
+const data = [...new Array(30)].map(row => ({
+  x: seededRandom() * 5,
+  y: seededRandom() * 10
+}));
 
 export default class BidirectionDragChart extends React.Component {
   state = {
     filter: null,
     hovered: null,
     highlighting: false
-  }
+  };
 
   render() {
     const {filter, hovered, highlighting} = this.state;
@@ -59,9 +62,7 @@ export default class BidirectionDragChart extends React.Component {
     const numSelectedPoints = filter ? data.filter(highlightPoint).length : 0;
     return (
       <div>
-        <XYPlot
-          width={300}
-          height={300}>
+        <XYPlot width={300} height={300}>
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
@@ -70,10 +71,15 @@ export default class BidirectionDragChart extends React.Component {
             drag
             onBrushStart={() => this.setState({highlighting: true})}
             onBrush={area => this.setState({filter: area})}
-            onBrushEnd={area => this.setState({highlighting: false, filter: area})}
+            onBrushEnd={area =>
+              this.setState({highlighting: false, filter: area})
+            }
             onDragStart={area => this.setState({highlighting: true})}
             onDrag={area => this.setState({filter: area})}
-            onDragEnd={area => this.setState({highlighting: false, filter: area})}/>
+            onDragEnd={area =>
+              this.setState({highlighting: false, filter: area})
+            }
+          />
           <MarkSeries
             className="mark-series-example"
             strokeWidth={2}
@@ -81,11 +87,12 @@ export default class BidirectionDragChart extends React.Component {
             sizeRange={[5, 15]}
             style={{pointerEvents: highlighting ? 'none' : ''}}
             colorType="literal"
-            getColor={d => highlightPoint(d) ? '#EF5D28' : '#12939A'}
+            getColor={d => (highlightPoint(d) ? '#EF5D28' : '#12939A')}
             onValueMouseOver={d => this.setState({hovered: d})}
             onValueMouseOut={d => this.setState({hovered: false})}
-            data={data}/>
-          {hovered && <Hint value={hovered}/>}
+            data={data}
+          />
+          {hovered && <Hint value={hovered} />}
         </XYPlot>
         <p>{`There are ${numSelectedPoints} selected points`}</p>
       </div>

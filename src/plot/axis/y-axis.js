@@ -30,9 +30,7 @@ const {LEFT, RIGHT} = ORIENTATION;
 
 const propTypes = {
   ...Axis.propTypes,
-  orientation: PropTypes.oneOf([
-    LEFT, RIGHT
-  ])
+  orientation: PropTypes.oneOf([LEFT, RIGHT])
 };
 
 const defaultProps = {
@@ -42,9 +40,7 @@ const defaultProps = {
 };
 
 function YAxis(props) {
-  return (
-    <Axis {...props} />
-  );
+  return <Axis {...props} />;
 }
 
 YAxis.displayName = 'YAxis';

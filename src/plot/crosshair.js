@@ -62,7 +62,6 @@ function getFirstNonEmptyValue(values) {
 }
 
 class Crosshair extends PureComponent {
-
   static get propTypes() {
     return {
       className: PropTypes.string,
@@ -146,7 +145,8 @@ class Crosshair extends PureComponent {
       marginLeft,
       innerWidth,
       innerHeight,
-      style} = this.props;
+      style
+    } = this.props;
     const value = getFirstNonEmptyValue(values);
     if (!value) {
       return null;
@@ -154,31 +154,34 @@ class Crosshair extends PureComponent {
     const x = getAttributeFunctor(this.props, 'x');
     const innerLeft = x(value);
 
-    const {orientation = (innerLeft > innerWidth / 2) ? 'left' : 'right'} = this.props;
+    const {
+      orientation = innerLeft > innerWidth / 2 ? 'left' : 'right'
+    } = this.props;
     const left = marginLeft + innerLeft;
     const top = marginTop;
-    const innerClassName =
-      `rv-crosshair__inner rv-crosshair__inner--${orientation}`;
+    const innerClassName = `rv-crosshair__inner rv-crosshair__inner--${orientation}`;
 
     return (
       <div
         className={`rv-crosshair ${className}`}
-        style={{left: `${left}px`, top: `${top}px`}}>
-
+        style={{left: `${left}px`, top: `${top}px`}}
+      >
         <div
           className="rv-crosshair__line"
-          style={{height: `${innerHeight}px`, ...style.line}}/>
+          style={{height: `${innerHeight}px`, ...style.line}}
+        />
 
         <div className={innerClassName}>
-          {children ?
-            children :
+          {children ? (
+            children
+          ) : (
             <div className="rv-crosshair__inner__content" style={style.box}>
               <div>
                 {this._renderCrosshairTitle()}
                 {this._renderCrosshairItems()}
               </div>
             </div>
-          }
+          )}
         </div>
       </div>
     );

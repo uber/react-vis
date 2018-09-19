@@ -35,15 +35,17 @@ export default function EmptyChart() {
       xDomain={[0, 3]}
       yDomain={[10, 3]}
       width={300}
-      height={300}>
+      height={300}
+    >
       <VerticalGridLines />
       <HorizontalGridLines />
       <XAxis
         hideLine
         title="Empty Chart Right Here"
         tickFormat={v => `${v}!`}
-        tickValues={[1, 1.5, 2, 3]} />
-      <YAxis hideTicks/>
+        tickValues={[1, 1.5, 2, 3]}
+      />
+      <YAxis hideTicks />
     </XYPlot>
   );
 }

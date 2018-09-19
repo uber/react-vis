@@ -57,7 +57,6 @@ function getRandomSeriesData(total) {
 }
 
 export default class ZoomableChartExample extends React.Component {
-
   state = {
     lastDrawLocation: null,
     series: [
@@ -72,7 +71,7 @@ export default class ZoomableChartExample extends React.Component {
         title: 'Bananas'
       }
     ]
-  }
+  };
 
   render() {
     const {series, lastDrawLocation} = this.state;
@@ -81,17 +80,29 @@ export default class ZoomableChartExample extends React.Component {
         <div>
           <XYPlot
             animation
-            xDomain={lastDrawLocation && [lastDrawLocation.left, lastDrawLocation.right]}
-            yDomain={lastDrawLocation && [lastDrawLocation.bottom, lastDrawLocation.top]}
+            xDomain={
+              lastDrawLocation && [
+                lastDrawLocation.left,
+                lastDrawLocation.right
+              ]
+            }
+            yDomain={
+              lastDrawLocation && [
+                lastDrawLocation.bottom,
+                lastDrawLocation.top
+              ]
+            }
             width={500}
-            height={300}>
-
+            height={300}
+          >
             <HorizontalGridLines />
 
             <YAxis />
             <XAxis />
 
-            {series.map(entry => <LineSeries key={entry.title} data={entry.data} />)}
+            {series.map(entry => (
+              <LineSeries key={entry.title} data={entry.data} />
+            ))}
 
             <Highlight
               onBrushEnd={area => this.setState({lastDrawLocation: area})}
@@ -104,15 +115,15 @@ export default class ZoomableChartExample extends React.Component {
                     top: lastDrawLocation.top + (area.top - area.bottom)
                   }
                 });
-              }
-              } />
-
+              }}
+            />
           </XYPlot>
         </div>
 
         <button
           className="showcase-button"
-          onClick={() => this.setState({lastDrawLocation: null})}>
+          onClick={() => this.setState({lastDrawLocation: null})}
+        >
           Reset Zoom
         </button>
 
@@ -122,12 +133,22 @@ export default class ZoomableChartExample extends React.Component {
           </h4>
           {lastDrawLocation ? (
             <ul style={{listStyle: 'none'}}>
-              <li><b>Top:</b> {lastDrawLocation.top}</li>
-              <li><b>Right:</b> {lastDrawLocation.right}</li>
-              <li><b>Bottom:</b> {lastDrawLocation.bottom}</li>
-              <li><b>Left:</b> {lastDrawLocation.left}</li>
+              <li>
+                <b>Top:</b> {lastDrawLocation.top}
+              </li>
+              <li>
+                <b>Right:</b> {lastDrawLocation.right}
+              </li>
+              <li>
+                <b>Bottom:</b> {lastDrawLocation.bottom}
+              </li>
+              <li>
+                <b>Left:</b> {lastDrawLocation.left}
+              </li>
             </ul>
-          ) : <span>N/A</span>}
+          ) : (
+            <span>N/A</span>
+          )}
         </div>
       </div>
     );

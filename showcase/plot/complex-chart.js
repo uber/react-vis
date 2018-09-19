@@ -55,7 +55,6 @@ function getRandomSeriesData(total) {
 }
 
 export default class Example extends React.Component {
-
   constructor(props) {
     super(props);
     const totalValues = Math.random() * 50;
@@ -161,7 +160,8 @@ export default class Example extends React.Component {
           <DiscreteColorLegend
             onItemClick={this._legendClickHandler}
             width={180}
-            items={series}/>
+            items={series}
+          />
         </div>
 
         <div className="chart">
@@ -171,7 +171,8 @@ export default class Example extends React.Component {
             getY={d => d.top}
             onMouseLeave={this._mouseLeaveHandler}
             xDomain={[-0.5, series[0].data.length - 1]}
-            height={300}>
+            height={300}
+          >
             <HorizontalGridLines />
             <YAxis
               className="cool-custom-name"
@@ -184,18 +185,25 @@ export default class Example extends React.Component {
               tickSizeOuter={8}
             />
             <VerticalRectSeries
-              data={series[0].data.map(({left, top}) => ({x0: left - 0.5, left: left + 0.5, top}))}
+              data={series[0].data.map(({left, top}) => ({
+                x0: left - 0.5,
+                left: left + 0.5,
+                top
+              }))}
               stroke="white"
               onNearestX={this._nearestXHandler}
-              {...(series[0].disabled ? {opacity: 0.2} : null)}/>
+              {...(series[0].disabled ? {opacity: 0.2} : null)}
+            />
             <LineSeries
               data={series[1].data}
               curve="curveMonotoneX"
-              {...(series[1].disabled ? {opacity: 0.2} : null)}/>
+              {...(series[1].disabled ? {opacity: 0.2} : null)}
+            />
             <Crosshair
               itemsFormat={this._formatCrosshairItems}
               titleFormat={this._formatCrosshairTitle}
-              values={crosshairValues}/>
+              values={crosshairValues}
+            />
           </FlexibleWidthXYPlot>
         </div>
 

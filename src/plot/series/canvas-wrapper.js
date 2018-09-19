@@ -63,13 +63,18 @@ function drawLayers(ctx, height, width, layers, drawIteration) {
   layers.forEach(layer => {
     const {interpolator, newProps, animation} = layer;
     // return an empty object if dont need to be animating
-    const interpolatedProps = animation ?
-      (interpolator ? interpolator(drawIteration / MAX_DRAWS) : interpolator) :
-      () => ({});
-    layer.renderLayer({
-      ...newProps,
-      ...interpolatedProps
-    }, ctx);
+    const interpolatedProps = animation
+      ? interpolator
+        ? interpolator(drawIteration / MAX_DRAWS)
+        : interpolator
+      : () => ({});
+    layer.renderLayer(
+      {
+        ...newProps,
+        ...interpolatedProps
+      },
+      ctx
+    );
   });
 }
 
@@ -89,10 +94,12 @@ function buildLayers(newChildren, oldChildren) {
       ...oldProps,
       animatedProps: ANIMATED_SERIES_PROPS
     });
-    const newAnimatedProps = newProps ? extractAnimatedPropValues({
-      ...newProps,
-      animatedProps: ANIMATED_SERIES_PROPS
-    }) : null;
+    const newAnimatedProps = newProps
+      ? extractAnimatedPropValues({
+          ...newProps,
+          animatedProps: ANIMATED_SERIES_PROPS
+        })
+      : null;
     const interpolator = interpolate(oldAnimatedProps, newAnimatedProps);
 
     return {
@@ -104,10 +111,9 @@ function buildLayers(newChildren, oldChildren) {
   });
 }
 class CanvasWrapper extends Component {
-
   static get defaultProps() {
     return {
-      pixelRatio: window && window.devicePixelRatio || 1
+      pixelRatio: (window && window.devicePixelRatio) || 1
     };
   }
 
@@ -154,7 +160,10 @@ class CanvasWrapper extends Component {
 
     const height = innerHeight + marginTop + marginBottom;
     const width = innerWidth + marginLeft + marginRight;
-    const layers = buildLayers(newProps.children, oldProps ? oldProps.children : []);
+    const layers = buildLayers(
+      newProps.children,
+      oldProps ? oldProps.children : []
+    );
     // if we don't need to be animating, dont! cut short
     if (!childrenShouldAnimate) {
       drawLayers(ctx, height, width, layers);

@@ -24,13 +24,15 @@ import ShowcaseButton from '../showcase-components/showcase-button';
 import RadarChart from 'radar-chart';
 import CircularGridLines from 'plot/circular-grid-lines';
 
-const DATA = [{
-  explosions: 7,
-  wow: 10,
-  dog: 8,
-  sickMoves: 9,
-  nice: 7
-}];
+const DATA = [
+  {
+    explosions: 7,
+    wow: 10,
+    dog: 8,
+    sickMoves: 9,
+    nice: 7
+  }
+];
 
 const DOMAIN = [
   {name: 'nice', domain: [0, 100], tickFormat: t => t},
@@ -52,7 +54,7 @@ function generateData() {
 export default class AnimatedRadar extends Component {
   state = {
     data: DATA
-  }
+  };
 
   render() {
     const {data} = this.state;
@@ -85,12 +87,16 @@ export default class AnimatedRadar extends Component {
           }}
           tickFormat={t => ''}
           width={400}
-          height={300} >
-          <CircularGridLines tickValues={[...new Array(10)].map((v, i) => i / 10 - 1)}/>
+          height={300}
+        >
+          <CircularGridLines
+            tickValues={[...new Array(10)].map((v, i) => i / 10 - 1)}
+          />
         </RadarChart>
         <ShowcaseButton
-         onClick={() => this.setState({data: generateData()})}
-         buttonContent={'UPDATE DATA'} />
+          onClick={() => this.setState({data: generateData()})}
+          buttonContent={'UPDATE DATA'}
+        />
       </div>
     );
   }

@@ -107,12 +107,7 @@ const SCALE_FUNCTIONS = {
  * @const
  */
 
-const XYPLOT_ATTR = [
-  'color',
-  'fill',
-  'opacity',
-  'stroke'
-];
+const XYPLOT_ATTR = ['color', 'fill', 'opacity', 'stroke'];
 
 /**
  * Title case a given string
@@ -170,13 +165,18 @@ export function getScaleFnFromScaleObject(scaleObject) {
     return null;
   }
   const {type, domain, range} = scaleObject;
-  const modDomain = domain[0] === domain[1] ?
-    (domain[0] === 0 ? [-1, 0] : [-domain[0], domain[0]]) :
-    domain;
+  const modDomain =
+    domain[0] === domain[1]
+      ? domain[0] === 0
+        ? [-1, 0]
+        : [-domain[0], domain[0]]
+      : domain;
   if (type === LITERAL_SCALE_TYPE) {
     return literalScale(range[0]);
   }
-  const scale = SCALE_FUNCTIONS[type]().domain(modDomain).range(range);
+  const scale = SCALE_FUNCTIONS[type]()
+    .domain(modDomain)
+    .range(range);
   if (type === ORDINAL_SCALE_TYPE) {
     scale.padding(0.5);
   }
@@ -274,7 +274,14 @@ function _createScaleObjectForValue(attr, value, type, accessor, accessor0) {
  * @private
  */
 function _createScaleObjectForFunction({
-  domain, range, type, distance, attr, baseValue, accessor, accessor0
+  domain,
+  range,
+  type,
+  distance,
+  attr,
+  baseValue,
+  accessor,
+  accessor0
 }) {
   return {
     domain,
@@ -314,7 +321,12 @@ function _collectScaleObjectFromProps(props, attr) {
   // Return value-based scale if the value is assigned.
   if (!noFallBack && typeof value !== 'undefined') {
     return _createScaleObjectForValue(
-      attr, value, props[`${attr}Type`], accessor, accessor0);
+      attr,
+      value,
+      props[`${attr}Type`],
+      accessor,
+      accessor0
+    );
   }
   // Pick up the domain from the properties and create a new one if it's not
   // available.
@@ -326,7 +338,12 @@ function _collectScaleObjectFromProps(props, attr) {
   if (!range || !domain || !domain.length) {
     // Try to use the fallback value if it is available.
     return _createScaleObjectForValue(
-      attr, fallbackValue, props[`${attr}Type`], accessor, accessor0);
+      attr,
+      fallbackValue,
+      props[`${attr}Type`],
+      accessor,
+      accessor0
+    );
   }
 
   return _createScaleObjectForFunction({
@@ -443,7 +460,11 @@ export function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
   });
 
   const distance = _computeScaleDistance(
-    values, adjustedDomain, index, adjustedScaleFn);
+    values,
+    adjustedDomain,
+    index,
+    adjustedScaleFn
+  );
 
   return {
     domain0: adjustedDomain[0],
@@ -461,15 +482,11 @@ export function _getScaleDistanceAndAdjustedDomain(data, scaleObject) {
  */
 function _isScaleAdjustmentPossible(props, scaleObject) {
   const {attr} = scaleObject;
-  const {
-    _adjustBy: adjustBy = [],
-    _adjustWhat: adjustWhat = []} = props;
+  const {_adjustBy: adjustBy = [], _adjustWhat: adjustWhat = []} = props;
 
   // The scale cannot be adjusted if there's no attributes to adjust, no
   // suitable values
-  return adjustWhat.length &&
-    adjustBy.length &&
-    adjustBy.indexOf(attr) !== -1;
+  return adjustWhat.length && adjustBy.length && adjustBy.indexOf(attr) !== -1;
 }
 
 /**
@@ -481,9 +498,7 @@ function _isScaleAdjustmentPossible(props, scaleObject) {
  * @private
  */
 function _adjustContinuousScale(props, scaleObject) {
-  const {
-    _allData: allSeriesData,
-    _adjustWhat: adjustWhat = []} = props;
+  const {_allData: allSeriesData, _adjustWhat: adjustWhat = []} = props;
 
   // Assign the initial values.
   const domainLength = scaleObject.domain.length;
@@ -499,21 +514,17 @@ function _adjustContinuousScale(props, scaleObject) {
       return;
     }
     if (data && data.length) {
-      const {
-        domain0,
-        domainN,
-        distance} = _getScaleDistanceAndAdjustedDomain(data, scaleObject);
+      const {domain0, domainN, distance} = _getScaleDistanceAndAdjustedDomain(
+        data,
+        scaleObject
+      );
       scaleDomain0 = Math.min(scaleDomain0, domain0);
       scaleDomainN = Math.max(scaleDomainN, domainN);
       scaleDistance = Math.max(scaleDistance, distance);
     }
   });
 
-  scaleObject.domain = [
-    scaleDomain0,
-    ...domain.slice(1, -1),
-    scaleDomainN
-  ];
+  scaleObject.domain = [scaleDomain0, ...domain.slice(1, -1), scaleDomainN];
 
   scaleObject.distance = scaleDistance;
 
@@ -660,8 +671,10 @@ export function getAttributeValue(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
   if (scaleObject) {
     if (!scaleObject.isValue && props[`_${attr}Value`] === undefined) {
-      warning(`[React-vis] Cannot use data defined ${attr} for this ` +
-        'series type. Using fallback value instead.');
+      warning(
+        `[React-vis] Cannot use data defined ${attr} for this ` +
+          'series type. Using fallback value instead.'
+      );
     }
     return props[`_${attr}Value`] || scaleObject.range[0];
   }
@@ -681,9 +694,7 @@ export function getScalePropTypesByAttribute(attr) {
     [`get${toTitleCase(attr)}`]: PropTypes.func,
     [`get${toTitleCase(attr)}0`]: PropTypes.func,
     [`${attr}Range`]: PropTypes.array,
-    [`${attr}Type`]: PropTypes.oneOf(
-      Object.keys(SCALE_FUNCTIONS)
-    ),
+    [`${attr}Type`]: PropTypes.oneOf(Object.keys(SCALE_FUNCTIONS)),
     [`${attr}Distance`]: PropTypes.number,
     [`${attr}BaseValue`]: PropTypes.any
   };
@@ -744,7 +755,10 @@ export function getMissingScaleProps(props, data, attributes) {
         props[`${attr}Type`]
       );
       if (props[`${attr}Padding`]) {
-        result[`${attr}Domain`] = _padDomain(result[`${attr}Domain`], props[`${attr}Padding`]);
+        result[`${attr}Domain`] = _padDomain(
+          result[`${attr}Domain`],
+          props[`${attr}Padding`]
+        );
       }
     }
   });
@@ -796,11 +810,14 @@ export function getXYPlotValues(props, children) {
       [`${attr}Domain`]: domain,
       [`${attr}Range`]: range,
       [`${attr}Type`]: type
-     } = props;
+    } = props;
 
     if (domain && range && type) {
-      return {...prev,
-        [attr]: SCALE_FUNCTIONS[type]().domain(domain).range(range)
+      return {
+        ...prev,
+        [attr]: SCALE_FUNCTIONS[type]()
+          .domain(domain)
+          .range(range)
       };
     }
     return prev;
@@ -812,7 +829,8 @@ export function getXYPlotValues(props, children) {
         const scaleInput = child.props[attr];
         const scale = XYPlotScales[attr];
         const fallbackValue = scale ? scale(scaleInput) : scaleInput;
-        return {...prev,
+        return {
+          ...prev,
           [`_${attr}Value`]: fallbackValue
         };
       }
@@ -822,7 +840,9 @@ export function getXYPlotValues(props, children) {
 }
 
 const OPTIONAL_SCALE_PROPS = ['Padding'];
-const OPTIONAL_SCALE_PROPS_REGS = OPTIONAL_SCALE_PROPS.map(str => new RegExp(`${str}$`, 'i'));
+const OPTIONAL_SCALE_PROPS_REGS = OPTIONAL_SCALE_PROPS.map(
+  str => new RegExp(`${str}$`, 'i')
+);
 /**
  * Get the list of optional scale-related settings for XYPlot
  * mostly just used to find padding properties
@@ -831,15 +851,16 @@ const OPTIONAL_SCALE_PROPS_REGS = OPTIONAL_SCALE_PROPS.map(str => new RegExp(`${
  * @private
  */
 export function getOptionalScaleProps(props) {
-  return Object.keys(props)
-    .reduce((acc, prop) => {
-      const propIsNotOptional = OPTIONAL_SCALE_PROPS_REGS.every(reg => !prop.match(reg));
-      if (propIsNotOptional) {
-        return acc;
-      }
-      acc[prop] = props[prop];
+  return Object.keys(props).reduce((acc, prop) => {
+    const propIsNotOptional = OPTIONAL_SCALE_PROPS_REGS.every(
+      reg => !prop.match(reg)
+    );
+    if (propIsNotOptional) {
       return acc;
-    }, {});
+    }
+    acc[prop] = props[prop];
+    return acc;
+  }, {});
 }
 
 export default {

@@ -80,9 +80,7 @@ import {
   CustomPalette
 } from './color/mini-color-examples';
 
-import {
-  MiniCharts
-} from './data/mini-data-examples';
+import {MiniCharts} from './data/mini-data-examples';
 
 import {
   LineChartMouseOverSeries,
@@ -293,10 +291,16 @@ const mainShowCase = {
   VornoiSankey
 };
 
-const showCaseWithLinks = Object.keys(mainShowCase).reduce((acc, showCaseExample) => {
-  const link = SHOWCASE_LINKS[showCaseExample];
-  acc[`${showCaseExample}WithLink`] = sourceLinker(mainShowCase[showCaseExample], link);
-  return acc;
-}, {});
+const showCaseWithLinks = Object.keys(mainShowCase).reduce(
+  (acc, showCaseExample) => {
+    const link = SHOWCASE_LINKS[showCaseExample];
+    acc[`${showCaseExample}WithLink`] = sourceLinker(
+      mainShowCase[showCaseExample],
+      link
+    );
+    return acc;
+  },
+  {}
+);
 
 export const showCase = {...mainShowCase, ...showCaseWithLinks};

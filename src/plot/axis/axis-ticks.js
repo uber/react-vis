@@ -29,9 +29,7 @@ const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 
 const propTypes = {
   height: PropTypes.number.isRequired,
-  orientation: PropTypes.oneOf([
-    LEFT, RIGHT, TOP, BOTTOM
-  ]).isRequired,
+  orientation: PropTypes.oneOf([LEFT, RIGHT, TOP, BOTTOM]).isRequired,
   style: PropTypes.object,
   width: PropTypes.number.isRequired
 };
@@ -41,13 +39,14 @@ const defaultProps = {
 };
 
 function _getTickFormatFn(scale, tickTotal, tickFormat) {
-  return !tickFormat ?
-    (scale.tickFormat ? scale.tickFormat(tickTotal) : v => v) :
-    tickFormat;
+  return !tickFormat
+    ? scale.tickFormat
+      ? scale.tickFormat(tickTotal)
+      : v => v
+    : tickFormat;
 }
 
 class AxisTicks extends React.Component {
-
   /**
    * Gets if the axis is vertical.
    * @returns {boolean} True if vertical.
@@ -88,7 +87,8 @@ class AxisTicks extends React.Component {
     const {
       tickSize,
       tickSizeOuter = tickSize,
-      tickSizeInner = tickSize} = this.props;
+      tickSizeInner = tickSize
+    } = this.props;
     const isVertical = this._isAxisVertical();
     const tickXAttr = isVertical ? 'y' : 'x';
     const tickYAttr = isVertical ? 'x' : 'y';
@@ -112,13 +112,17 @@ class AxisTicks extends React.Component {
       tickLabelAngle,
       tickSize,
       tickSizeOuter = tickSize,
-      tickPadding = tickSize} = this.props;
+      tickPadding = tickSize
+    } = this.props;
 
     // Assign the text orientation inside the label of the tick mark.
     let textAnchor;
-    if (orientation === LEFT || orientation === BOTTOM && tickLabelAngle) {
+    if (orientation === LEFT || (orientation === BOTTOM && tickLabelAngle)) {
       textAnchor = 'end';
-    } else if (orientation === RIGHT || orientation === TOP && tickLabelAngle) {
+    } else if (
+      orientation === RIGHT ||
+      (orientation === TOP && tickLabelAngle)
+    ) {
       textAnchor = 'start';
     } else {
       textAnchor = 'middle';
@@ -130,18 +134,20 @@ class AxisTicks extends React.Component {
     const wrap = this._areTicksWrapped() ? -1 : 1;
 
     const labelOffset = wrap * (tickSizeOuter + tickPadding);
-    const transform = (isVertical ?
-        `translate(${labelOffset}, 0)` :
-        `translate(0, ${labelOffset})`) +
-      (tickLabelAngle ?
-        ` rotate(${tickLabelAngle})` :
-        '');
+    const transform =
+      (isVertical
+        ? `translate(${labelOffset}, 0)`
+        : `translate(0, ${labelOffset})`) +
+      (tickLabelAngle ? ` rotate(${tickLabelAngle})` : '');
 
     // Set the vertical offset of the label according to the position of
     // the axis.
-    const dy = orientation === TOP || tickLabelAngle ?
-      '0' :
-      (orientation === BOTTOM ? '0.72em' : '0.32em');
+    const dy =
+      orientation === TOP || tickLabelAngle
+        ? '0'
+        : orientation === BOTTOM
+          ? '0.72em'
+          : '0.32em';
 
     return {
       textAnchor,
@@ -179,14 +185,19 @@ class AxisTicks extends React.Component {
       const text = tickFormatFn(v, i, scale, tickTotal);
 
       return (
-        <g key={i} {...translateFn(pos, 0)}
-        className="rv-xy-plot__axis__tick"
-        style={style}>
-          <line {...pathProps}
+        <g
+          key={i}
+          {...translateFn(pos, 0)}
+          className="rv-xy-plot__axis__tick"
+          style={style}
+        >
+          <line
+            {...pathProps}
             className="rv-xy-plot__axis__tick__line"
             style={{...style, ...style.line}}
           />
-          <text {...textProps}
+          <text
+            {...textProps}
             className="rv-xy-plot__axis__tick__text"
             style={{...style, ...style.text}}
           >
@@ -199,7 +210,8 @@ class AxisTicks extends React.Component {
     return (
       <g
         transform={`translate(${x}, ${y})`}
-        className="rv-xy-plot__axis__ticks">
+        className="rv-xy-plot__axis__ticks"
+      >
         {ticks}
       </g>
     );

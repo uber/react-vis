@@ -25,18 +25,11 @@ import {XYPlot, XAxis, YAxis, VerticalGridLines, LineSeries} from 'index';
 export default class Example extends React.Component {
   render() {
     return (
-      <XYPlot
-        width={300}
-        height={300}>
+      <XYPlot width={300} height={300}>
         <VerticalGridLines values={[2, 2.3, 2.7]} />
         <XAxis />
         <YAxis />
-        <LineSeries
-          data={[
-            {x: 1, y: 10},
-            {x: 2, y: 5},
-            {x: 3, y: 15}
-          ]}/>
+        <LineSeries data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]} />
       </XYPlot>
     );
   }

@@ -5,7 +5,9 @@
   },
   "extends": [
     "uber-es2015",
-    "uber-jsx"
+    "uber-jsx",
+    "prettier",
+    "prettier/react"
   ],
   "rules": {
     "consistent-return": 0,
@@ -19,6 +21,7 @@
   "plugins": [
     "react",
     "babel",
+    "prettier",
     "no-only-tests"
   ]
 }

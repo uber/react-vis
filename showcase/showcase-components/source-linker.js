@@ -22,13 +22,29 @@ import React from 'react';
 
 export default function sourceLinker(ShowcaseComponent, link) {
   return function renderExample() {
-    return (<div style={{display: 'flex', flexDirection: 'column', height: '100%', width: '100%'}}>
-      {ShowcaseComponent && <ShowcaseComponent />}
-      {link && <a {...{
-        className: 'docs-link',
-        target: '_blank',
-        rel: 'noopener noreferrer'
-      }} href={link}>> View Code</a>}
-    </div>);
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%'
+        }}
+      >
+        {ShowcaseComponent && <ShowcaseComponent />}
+        {link && (
+          <a
+            {...{
+              className: 'docs-link',
+              target: '_blank',
+              rel: 'noopener noreferrer'
+            }}
+            href={link}
+          >
+            > View Code
+          </a>
+        )}
+      </div>
+    );
   };
 }

@@ -32,9 +32,7 @@ import {
 export default class Example extends React.Component {
   render() {
     return (
-      <XYPlot
-        width={300}
-        height={300}>
+      <XYPlot width={300} height={300}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis />
@@ -42,11 +40,8 @@ export default class Example extends React.Component {
         <AreaSeries
           className="area-series-example"
           curve="curveNatural"
-          data={[
-            {x: 1, y: 10},
-            {x: 2, y: 5},
-            {x: 3, y: 15}
-          ]}/>
+          data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]}
+        />
       </XYPlot>
     );
   }

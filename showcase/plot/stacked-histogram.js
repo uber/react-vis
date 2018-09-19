@@ -33,21 +33,20 @@ import {
 export default class Example extends React.Component {
   state = {
     useCanvas: false
-  }
+  };
   render() {
     const {useCanvas} = this.state;
-    const RectSeries = useCanvas ? VerticalRectSeriesCanvas : VerticalRectSeries;
+    const RectSeries = useCanvas
+      ? VerticalRectSeriesCanvas
+      : VerticalRectSeries;
     const content = useCanvas ? 'TOGGLE TO SVG' : 'TOGGLE TO CANVAS';
     return (
       <div>
         <ShowcaseButton
           onClick={() => this.setState({useCanvas: !useCanvas})}
-          buttonContent={content}/>
-        <XYPlot
-          xDomain={[0, 7]}
-          width={300}
-          height={300}
-          stackBy="y">
+          buttonContent={content}
+        />
+        <XYPlot xDomain={[0, 7]} width={300} height={300} stackBy="y">
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
@@ -64,7 +63,8 @@ export default class Example extends React.Component {
               {x0: 1, x: 2, y: 12},
               {x0: 2, x: 4, y: 2},
               {x0: 5, x: 6, y: 15}
-            ]}/>
+            ]}
+          />
         </XYPlot>
       </div>
     );

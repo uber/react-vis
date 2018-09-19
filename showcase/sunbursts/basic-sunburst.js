@@ -41,7 +41,9 @@ function getKeyPath(node) {
     return ['root'];
   }
 
-  return [node.data && node.data.name || node.name].concat(getKeyPath(node.parent));
+  return [(node.data && node.data.name) || node.name].concat(
+    getKeyPath(node.parent)
+  );
 }
 
 /**
@@ -77,13 +79,15 @@ export default class BasicSunburst extends React.Component {
     data: decoratedData,
     finalValue: 'SUNBURST',
     clicked: false
-  }
+  };
 
   render() {
     const {clicked, data, finalValue, pathValue} = this.state;
     return (
       <div className="basic-sunburst-example-wrapper">
-        <div>{clicked ? 'click to unlock selection' : 'click to lock selection'}</div>
+        <div>
+          {clicked ? 'click to unlock selection' : 'click to lock selection'}
+        </div>
         <Sunburst
           animation
           className="basic-sunburst-example"
@@ -103,11 +107,15 @@ export default class BasicSunburst extends React.Component {
               data: updateData(decoratedData, pathAsMap)
             });
           }}
-          onValueMouseOut={() => clicked ? () => {} : this.setState({
-            pathValue: false,
-            finalValue: false,
-            data: updateData(decoratedData, false)
-          })}
+          onValueMouseOut={() =>
+            clicked
+              ? () => {}
+              : this.setState({
+                  pathValue: false,
+                  finalValue: false,
+                  data: updateData(decoratedData, false)
+                })
+          }
           onValueClick={() => this.setState({clicked: !clicked})}
           style={{
             stroke: '#ddd',
@@ -119,14 +127,16 @@ export default class BasicSunburst extends React.Component {
           getColor={d => d.hex}
           data={data}
           height={300}
-          width={350}>
-          {finalValue && <LabelSeries data={[
-            {x: 0, y: 0, label: finalValue, style: LABEL_STYLE}
-          ]} />}
+          width={350}
+        >
+          {finalValue && (
+            <LabelSeries
+              data={[{x: 0, y: 0, label: finalValue, style: LABEL_STYLE}]}
+            />
+          )}
         </Sunburst>
         <div className="basic-sunburst-example-path-name">{pathValue}</div>
       </div>
     );
   }
-
 }
