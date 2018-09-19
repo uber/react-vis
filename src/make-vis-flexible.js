@@ -141,7 +141,7 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
       this.cancelSubscription = subscribeToDebouncedResize(this._onResize);
     }
 
-    componentWillReceiveProps() {
+    UNSAFE_componentWillReceiveProps() {
       this._onResize();
     }
 

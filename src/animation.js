@@ -61,7 +61,7 @@ class Animation extends PureComponent {
     this._motionEndHandler = this._motionEndHandler.bind(this);
   }
 
-  componentWillUpdate(props) {
+  UNSAFE_componentWillUpdate(props) {
     this._updateInterpolator(this.props, props);
     if (props.onStart) {
       props.onStart();

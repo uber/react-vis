@@ -6994,50 +6994,49 @@ object-assign
             o(a, i)
           );
         }
-        return (
-          a(t, e),
-          (t.prototype.getChildContext = function() {
-            return {
-              router: h({}, this.context.router, {
-                history: this.props.history,
-                route: {
-                  location: this.props.history.location,
-                  match: this.state.match
-                }
-              })
-            };
-          }),
-          (t.prototype.computeMatch = function(e) {
-            return {path: '/', url: '/', params: {}, isExact: '/' === e};
-          }),
-          (t.prototype.componentWillMount = function() {
-            var e = this,
-              t = this.props,
-              n = t.children,
-              r = t.history;
-            l()(
-              null == n || 1 === p.a.Children.count(n),
-              'A <Router> may have only one child element'
-            ),
-              (this.unlisten = r.listen(function() {
-                e.setState({match: e.computeMatch(r.location.pathname)});
-              }));
-          }),
-          (t.prototype.componentWillReceiveProps = function(e) {
-            u()(
-              this.props.history === e.history,
-              'You cannot change <Router history>'
-            );
-          }),
-          (t.prototype.componentWillUnmount = function() {
-            this.unlisten();
-          }),
-          (t.prototype.render = function() {
-            var e = this.props.children;
-            return e ? p.a.Children.only(e) : null;
-          }),
-          t
-        );
+        return a(t, e),
+        (t.prototype.getChildContext = function() {
+          return {
+            router: h({}, this.context.router, {
+              history: this.props.history,
+              route: {
+                location: this.props.history.location,
+                match: this.state.match
+              }
+            })
+          };
+        }),
+        (t.prototype.computeMatch = function(e) {
+          return {path: '/', url: '/', params: {}, isExact: '/' === e};
+        }),
+        (t.prototype.UNSAFE_componentWillMount = function() {
+          var e = this,
+            t = this.props,
+            n = t.children,
+            r = t.history;
+          l()(
+            null == n || 1 === p.a.Children.count(n),
+            'A <Router> may have only one child element'
+          ),
+            (this.unlisten = r.listen(function() {
+              e.setState({match: e.computeMatch(r.location.pathname)});
+            }));
+        }),
+        (t.prototype.UNSAFE_componentWillReceiveProps = function(e) {
+          u()(
+            this.props.history === e.history,
+            'You cannot change <Router history>'
+          );
+        }),
+        (t.prototype.componentWillUnmount = function() {
+          this.unlisten();
+        }),
+        (t.prototype.render = function() {
+          var e = this.props.children;
+          return e ? p.a.Children.only(e) : null;
+        }),
+        t
+      ;
       })(p.a.Component);
     (m.propTypes = {history: f.a.object.isRequired, children: f.a.node}),
       (m.contextTypes = {router: f.a.object}),
@@ -11016,89 +11015,88 @@ object-assign
             o(a, i)
           );
         }
-        return (
-          a(t, e),
-          (t.prototype.getChildContext = function() {
-            return {
-              router: f({}, this.context.router, {
-                route: {
-                  location:
-                    this.props.location || this.context.router.route.location,
-                  match: this.state.match
-                }
-              })
-            };
-          }),
-          (t.prototype.computeMatch = function(e, t) {
-            var r = e.computedMatch,
-              o = e.location,
-              a = e.path,
-              i = e.strict,
-              u = e.exact,
-              c = t.route;
-            if (r) return r;
-            var l = (o || c.location).pathname;
-            return a ? n.i(d.a)(l, {path: a, strict: i, exact: u}) : c.match;
-          }),
-          (t.prototype.componentWillMount = function() {
-            var e = this.props,
-              t = e.component,
-              n = e.render,
-              r = e.children;
+        return a(t, e),
+        (t.prototype.getChildContext = function() {
+          return {
+            router: f({}, this.context.router, {
+              route: {
+                location:
+                  this.props.location || this.context.router.route.location,
+                match: this.state.match
+              }
+            })
+          };
+        }),
+        (t.prototype.computeMatch = function(e, t) {
+          var r = e.computedMatch,
+            o = e.location,
+            a = e.path,
+            i = e.strict,
+            u = e.exact,
+            c = t.route;
+          if (r) return r;
+          var l = (o || c.location).pathname;
+          return a ? n.i(d.a)(l, {path: a, strict: i, exact: u}) : c.match;
+        }),
+        (t.prototype.UNSAFE_componentWillMount = function() {
+          var e = this.props,
+            t = e.component,
+            n = e.render,
+            r = e.children;
+          u()(
+            !(t && n),
+            'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored'
+          ),
             u()(
-              !(t && n),
-              'You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored'
+              !(t && r),
+              'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored'
             ),
-              u()(
-                !(t && r),
-                'You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored'
-              ),
-              u()(
-                !(n && r),
-                'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored'
-              );
-          }),
-          (t.prototype.componentWillReceiveProps = function(e, t) {
             u()(
-              !(e.location && !this.props.location),
-              '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.'
+              !(n && r),
+              'You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored'
+            );
+        }),
+        (t.prototype.UNSAFE_componentWillReceiveProps = function(e, t) {
+          u()(
+            !(e.location && !this.props.location),
+            '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.'
+          ),
+            u()(
+              !(!e.location && this.props.location),
+              '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.'
             ),
-              u()(
-                !(!e.location && this.props.location),
-                '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.'
-              ),
-              this.setState({match: this.computeMatch(e, t.router)});
-          }),
-          (t.prototype.render = function e() {
-            var t = this.state.match,
-              n = this.props,
-              r = n.children,
-              o = n.component,
-              e = n.render,
-              a = this.context.router,
-              i = a.history,
-              u = a.route,
-              c = a.staticContext,
-              s = this.props.location || u.location,
-              p = {match: t, location: s, history: i, staticContext: c};
-            return o
+            this.setState({match: this.computeMatch(e, t.router)});
+        }),
+        (t.prototype.render = function e() {
+          var t = this.state.match,
+            n = this.props,
+            r = n.children,
+            o = n.component,
+            e = n.render,
+            a = this.context.router,
+            i = a.history,
+            u = a.route,
+            c = a.staticContext,
+            s = this.props.location || u.location,
+            p = {match: t, location: s, history: i, staticContext: c};
+          return o
+            ? t
+              ? l.a.createElement(o, p)
+              : null
+            : e
               ? t
-                ? l.a.createElement(o, p)
+                ? e(p)
                 : null
-              : e
-                ? t
-                  ? e(p)
-                  : null
-                : r
-                  ? 'function' == typeof r
-                    ? r(p)
-                    : !Array.isArray(r) || r.length
-                      ? l.a.Children.only(r)
-                      : null
-                  : null;
-          }),
-          t
-        );
+              : r
+                ? 'function' == typeof r
+                  ? r(p)
+                  : !Array.isArray(r) || r.length
+                    ? l.a.Children.only(r)
+                    : null
+                : null;
+        }),
+        t
+      ;
       })(l.a.Component);
     (h.propTypes = {
       computedMatch: p.a.object,
@@ -17091,16 +17089,16 @@ object-assign
             var i = this._instance,
               c = 0;
             'production' !== t.env.NODE_ENV && (c = this._debugID),
-              i.componentWillMount &&
+              i.UNSAFE_componentWillMount &&
                 ('production' !== t.env.NODE_ENV
                   ? u(
                       function() {
-                        return i.componentWillMount();
+                        return i.UNSAFE_componentWillMount();
                       },
                       c,
                       'componentWillMount'
                     )
-                  : i.componentWillMount(),
+                  : i.UNSAFE_componentWillMount(),
                 this._pendingStateQueue &&
                   (i.state = this._processPendingState(i.props, i.context))),
               void 0 === e && (e = this._renderValidatedComponent());
@@ -17261,16 +17259,16 @@ object-assign
               d = r.props;
             n !== r && (s = !0),
               s &&
-                i.componentWillReceiveProps &&
+                i.UNSAFE_componentWillReceiveProps &&
                 ('production' !== t.env.NODE_ENV
                   ? u(
                       function() {
-                        return i.componentWillReceiveProps(d, l);
+                        return i.UNSAFE_componentWillReceiveProps(d, l);
                       },
                       this._debugID,
                       'componentWillReceiveProps'
                     )
-                  : i.componentWillReceiveProps(d, l));
+                  : i.UNSAFE_componentWillReceiveProps(d, l));
             var f = this._processPendingState(d, l),
               h = !0;
             this._pendingForceUpdate ||
@@ -17334,16 +17332,16 @@ object-assign
               d = this._instance,
               f = Boolean(d.componentDidUpdate);
             f && ((c = d.props), (l = d.state), (s = d.context)),
-              d.componentWillUpdate &&
+              d.UNSAFE_componentWillUpdate &&
                 ('production' !== t.env.NODE_ENV
                   ? u(
                       function() {
-                        return d.componentWillUpdate(n, r, o);
+                        return d.UNSAFE_componentWillUpdate(n, r, o);
                       },
                       this._debugID,
                       'componentWillUpdate'
                     )
-                  : d.componentWillUpdate(n, r, o)),
+                  : d.UNSAFE_componentWillUpdate(n, r, o)),
               (this._currentElement = e),
               (this._context = i),
               (d.props = n),
@@ -21847,11 +21845,11 @@ object-assign
           getInitialState: 'DEFINE_MANY_MERGED',
           getChildContext: 'DEFINE_MANY_MERGED',
           render: 'DEFINE_ONCE',
-          componentWillMount: 'DEFINE_MANY',
+          UNSAFE_componentWillMount: 'DEFINE_MANY',
           componentDidMount: 'DEFINE_MANY',
-          componentWillReceiveProps: 'DEFINE_MANY',
+          UNSAFE_componentWillReceiveProps: 'DEFINE_MANY',
           shouldComponentUpdate: 'DEFINE_ONCE',
-          componentWillUpdate: 'DEFINE_MANY',
+          UNSAFE_componentWillUpdate: 'DEFINE_MANY',
           componentDidUpdate: 'DEFINE_MANY',
           componentWillUnmount: 'DEFINE_MANY',
           updateComponent: 'OVERRIDE_BASE'
@@ -47587,32 +47585,31 @@ object-assign
         function t() {
           return r(this, t), o(this, e.apply(this, arguments));
         }
-        return (
-          a(t, e),
-          (t.prototype.enable = function(e) {
-            this.unblock && this.unblock(),
-              (this.unblock = this.context.router.history.block(e));
-          }),
-          (t.prototype.disable = function() {
-            this.unblock && (this.unblock(), (this.unblock = null));
-          }),
-          (t.prototype.componentWillMount = function() {
-            this.props.when && this.enable(this.props.message);
-          }),
-          (t.prototype.componentWillReceiveProps = function(e) {
-            e.when
-              ? (this.props.when && this.props.message === e.message) ||
-                this.enable(e.message)
-              : this.disable();
-          }),
-          (t.prototype.componentWillUnmount = function() {
-            this.disable();
-          }),
-          (t.prototype.render = function() {
-            return null;
-          }),
-          t
-        );
+        return a(t, e),
+        (t.prototype.enable = function(e) {
+          this.unblock && this.unblock(),
+            (this.unblock = this.context.router.history.block(e));
+        }),
+        (t.prototype.disable = function() {
+          this.unblock && (this.unblock(), (this.unblock = null));
+        }),
+        (t.prototype.UNSAFE_componentWillMount = function() {
+          this.props.when && this.enable(this.props.message);
+        }),
+        (t.prototype.UNSAFE_componentWillReceiveProps = function(e) {
+          e.when
+            ? (this.props.when && this.props.message === e.message) ||
+              this.enable(e.message)
+            : this.disable();
+        }),
+        (t.prototype.componentWillUnmount = function() {
+          this.disable();
+        }),
+        (t.prototype.render = function() {
+          return null;
+        }),
+        t
+      ;
       })(u.a.Component);
     (s.propTypes = {
       when: l.a.bool,
@@ -47660,29 +47657,28 @@ object-assign
         function t() {
           return r(this, t), o(this, e.apply(this, arguments));
         }
-        return (
-          a(t, e),
-          (t.prototype.isStatic = function() {
-            return this.context.router && this.context.router.staticContext;
-          }),
-          (t.prototype.componentWillMount = function() {
-            this.isStatic() && this.perform();
-          }),
-          (t.prototype.componentDidMount = function() {
-            this.isStatic() || this.perform();
-          }),
-          (t.prototype.perform = function() {
-            var e = this.context.router.history,
-              t = this.props,
-              n = t.push,
-              r = t.to;
-            n ? e.push(r) : e.replace(r);
-          }),
-          (t.prototype.render = function() {
-            return null;
-          }),
-          t
-        );
+        return a(t, e),
+        (t.prototype.isStatic = function() {
+          return this.context.router && this.context.router.staticContext;
+        }),
+        (t.prototype.UNSAFE_componentWillMount = function() {
+          this.isStatic() && this.perform();
+        }),
+        (t.prototype.componentDidMount = function() {
+          this.isStatic() || this.perform();
+        }),
+        (t.prototype.perform = function() {
+          var e = this.context.router.history,
+            t = this.props,
+            n = t.push,
+            r = t.to;
+          n ? e.push(r) : e.replace(r);
+        }),
+        (t.prototype.render = function() {
+          return null;
+        }),
+        t
+      ;
       })(u.a.Component);
     (s.propTypes = {
       push: l.a.bool,
@@ -47899,45 +47895,44 @@ object-assign
         function t() {
           return r(this, t), o(this, e.apply(this, arguments));
         }
-        return (
-          a(t, e),
-          (t.prototype.componentWillReceiveProps = function(e) {
+        return a(t, e),
+        (t.prototype.UNSAFE_componentWillReceiveProps = function(e) {
+          p()(
+            !(e.location && !this.props.location),
+            '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.'
+          ),
             p()(
-              !(e.location && !this.props.location),
-              '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.'
-            ),
-              p()(
-                !(!e.location && this.props.location),
-                '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.'
-              );
-          }),
-          (t.prototype.render = function() {
-            var e = this.context.router.route,
-              t = this.props.children,
-              r = this.props.location || e.location,
-              o = void 0,
-              a = void 0;
-            return (
-              u.a.Children.forEach(t, function(t) {
-                if (u.a.isValidElement(t)) {
-                  var i = t.props,
-                    c = i.path,
-                    l = i.exact,
-                    s = i.strict,
-                    p = i.from,
-                    f = c || p;
-                  null == o &&
-                    ((a = t),
-                    (o = f
-                      ? n.i(d.a)(r.pathname, {path: f, exact: l, strict: s})
-                      : e.match));
-                }
-              }),
-              o ? u.a.cloneElement(a, {location: r, computedMatch: o}) : null
+              !(!e.location && this.props.location),
+              '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.'
             );
-          }),
-          t
-        );
+        }),
+        (t.prototype.render = function() {
+          var e = this.context.router.route,
+            t = this.props.children,
+            r = this.props.location || e.location,
+            o = void 0,
+            a = void 0;
+          return (
+            u.a.Children.forEach(t, function(t) {
+              if (u.a.isValidElement(t)) {
+                var i = t.props,
+                  c = i.path,
+                  l = i.exact,
+                  s = i.strict,
+                  p = i.from,
+                  f = c || p;
+                null == o &&
+                  ((a = t),
+                  (o = f
+                    ? n.i(d.a)(r.pathname, {path: f, exact: l, strict: s})
+                    : e.match));
+              }
+            }),
+            o ? u.a.cloneElement(a, {location: r, computedMatch: o}) : null
+          );
+        }),
+        t
+      ;
       })(u.a.Component);
     (f.contextTypes = {
       router: l.a.shape({route: l.a.object.isRequired}).isRequired
