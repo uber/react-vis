@@ -34,17 +34,16 @@ import HorizontalBarSeries from 'plot/series/horizontal-rect-series';
 import VerticalBarSeries from 'plot/series/vertical-rect-series';
 
 test('series-utils #isSeriesChild', t => {
-  const series = React.createElement(LineSeries, {data: []});
+  const series = <LineSeries data={[]} />;
   t.ok(isSeriesChild(series), 'Should return true for series');
-  const axis = React.createElement(XAxis, {
-    xRange: [0, 1],
-    xDomain: [0, 1],
-    xType: 'linear',
-    width: 100,
-    height: 100,
-    top: 0,
-    left: 0
-  });
+  const axis = <XAxis
+    xRange={[0, 1]}
+    xDomain={[0, 1]}
+    xType="linear"
+    width={100}
+    height={100}
+    top={0}
+    left={0} />;
   t.notOk(isSeriesChild(axis), 'Should return false for non-series');
   t.end();
 });
@@ -81,8 +80,8 @@ const arePropsValid = seriesProps => {
 
 test('series-utils #collectSeriesTypesInfo', t => {
   const result = getSeriesPropsFromChildren([
-    React.createElement(LineSeries, {data: []}),
-    React.createElement(LineSeries, {data: []})
+    <LineSeries data={[]} />,
+    <LineSeries data={[]} />
   ]);
   t.ok(result.length === 2, 'Returns array of proper size');
   result.forEach((props, i) =>
@@ -93,10 +92,10 @@ test('series-utils #collectSeriesTypesInfo', t => {
 
 test('series-utils #seriesClusterProps', t => {
   const result = getSeriesPropsFromChildren([
-    React.createElement(HorizontalBarSeries, {cluster: 'alpha', data: []}),
-    React.createElement(HorizontalBarSeries, {cluster: 'beta', data: []}),
-    React.createElement(HorizontalBarSeries, {cluster: 'alpha', data: []}),
-    React.createElement(HorizontalBarSeries, {cluster: 'gamma', data: []})
+    <HorizontalBarSeries cluster="alpha" data={[]} />,
+    <HorizontalBarSeries cluster="beta" data={[]} />,
+    <HorizontalBarSeries cluster="alpha" data={[]} />,
+    <HorizontalBarSeries cluster="gamma" data={[]} />
   ]);
   const expectedClusters = ['alpha', 'beta', 'gamma'];
   t.ok(result.length === 4, 'Returns array of proper size');
