@@ -85,6 +85,14 @@ export default class ResponsiveScatterplot extends React.Component {
     });
   }
 
+  getFeatures() {
+    const {data, height, margin, width} = this.props;
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+    const ppp = getPPP(innerWidth, innerHeight, data, 'HEIGHT');
+    return filterFeatures(SCATTERPLOT_FEATURES, ppp);
+  }
+
   _select(accessor) {
     return (value, e) => {
       e.event.stopPropagation();
@@ -103,14 +111,6 @@ export default class ResponsiveScatterplot extends React.Component {
 
       this.setState({selectedPoints});
     };
-  }
-
-  getFeatures() {
-    const {data, height, margin, width} = this.props;
-    const innerWidth = width - margin.left - margin.right;
-    const innerHeight = height - margin.top - margin.bottom;
-    const ppp = getPPP(innerWidth, innerHeight, data, 'HEIGHT');
-    return filterFeatures(SCATTERPLOT_FEATURES, ppp);
   }
 
   render() {

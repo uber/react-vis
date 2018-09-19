@@ -68,17 +68,10 @@ class Animation extends PureComponent {
     }
   }
 
-  /**
-   * Update the interpolator function and assign it to this._interpolator.
-   * @param {Object} oldProps Old props.
-   * @param {Object} newProps New props.
-   * @private
-   */
-  _updateInterpolator(oldProps, newProps) {
-    this._interpolator = interpolate(
-      extractAnimatedPropValues(oldProps),
-      newProps ? extractAnimatedPropValues(newProps) : null
-    );
+  _motionEndHandler() {
+    if (this.props.onEnd) {
+      this.props.onEnd();
+    }
   }
 
   /**
@@ -118,10 +111,17 @@ class Animation extends PureComponent {
     });
   }
 
-  _motionEndHandler() {
-    if (this.props.onEnd) {
-      this.props.onEnd();
-    }
+  /**
+   * Update the interpolator function and assign it to this._interpolator.
+   * @param {Object} oldProps Old props.
+   * @param {Object} newProps New props.
+   * @private
+   */
+  _updateInterpolator(oldProps, newProps) {
+    this._interpolator = interpolate(
+      extractAnimatedPropValues(oldProps),
+      newProps ? extractAnimatedPropValues(newProps) : null
+    );
   }
 
   render() {
