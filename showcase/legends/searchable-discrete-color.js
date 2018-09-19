@@ -37,19 +37,17 @@ export default class Example extends React.Component {
       ],
       searchText: ''
     };
-    this._clickHandler = this._clickHandler.bind(this);
-    this._searchChangeHandler = this._searchChangeHandler.bind(this);
   }
 
-  _clickHandler(item) {
+  _clickHandler = item => {
     const {items} = this.state;
     item.disabled = !item.disabled;
     this.setState({items});
-  }
+  };
 
-  _searchChangeHandler(searchText) {
+  _searchChangeHandler = searchText => {
     this.setState({searchText});
-  }
+  };
 
   render() {
     const {items, searchText} = this.state;

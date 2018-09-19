@@ -35,7 +35,6 @@ export default class Example extends React.Component {
     this.state = {
       selectedIndex: null
     };
-    this._onChartMouseLeave = this._onChartMouseLeave.bind(this);
     this._onSeriesMouseOvers = [
       this._onSeriesMouseOver.bind(this, 0),
       this._onSeriesMouseOver.bind(this, 1)
@@ -46,9 +45,9 @@ export default class Example extends React.Component {
     this.setState({selectedIndex});
   }
 
-  _onChartMouseLeave() {
+  _onChartMouseLeave = () => {
     this.setState({selectedIndex: null});
-  }
+  };
 
   _getSeriesColor(index) {
     const {selectedIndex} = this.state;
