@@ -93,15 +93,13 @@ const MISC = [
   }
 ];
 
-class MiscShowcase extends Component {
-  render() {
-    return (
-      <article id="misc">
-        <h2>Miscellaneous</h2>
-        {MISC.map(mapSection)}
-      </article>
-    );
-  }
+function MiscShowcase(props) {
+  return (
+    <article id="misc">
+      <h2>Miscellaneous</h2>
+      {MISC.map(mapSection)}
+    </article>
+  );
 }
 
 export default MiscShowcase;

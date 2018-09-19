@@ -50,20 +50,18 @@ const CONTINOUS_SIZE_LEGEND = [
   }
 ];
 
-class LegendsExample extends Component {
-  render() {
-    return (
-      <article id="legends">
-        <h1>Legends</h1>
-        <h2>Discrete color legend</h2>
-        {DISCRETE_LEGENDS.map(mapSection)}
-        <h2>Continuous color legend</h2>
-        {CONTINOUS_COLOR_LEGEND.map(mapSection)}
-        <h2>Continuous size legend</h2>
-        {CONTINOUS_SIZE_LEGEND.map(mapSection)}
-      </article>
-    );
-  }
+function LegendsExample(props) {
+  return (
+    <article id="legends">
+      <h1>Legends</h1>
+      <h2>Discrete color legend</h2>
+      {DISCRETE_LEGENDS.map(mapSection)}
+      <h2>Continuous color legend</h2>
+      {CONTINOUS_COLOR_LEGEND.map(mapSection)}
+      <h2>Continuous size legend</h2>
+      {CONTINOUS_SIZE_LEGEND.map(mapSection)}
+    </article>
+  );
 }
 
 export default LegendsExample;

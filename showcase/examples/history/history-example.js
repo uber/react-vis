@@ -87,25 +87,23 @@ const authors = commitsByAuthor.map(commits => {
   };
 });
 
-export default class HistoryExample extends React.Component {
-  render() {
-    return (
-      <div className="history-example">
-        <div className="chart">
-          <FlexibleWidthXYPlot
-            animation
-            margin={50}
-            yType="log"
-            xType="time"
-            height={500}
-          >
-            <XAxis />
-            <YAxis tickFormat={t => t} />
-            {lines}
-            <LabelSeries data={authors} />
-          </FlexibleWidthXYPlot>
-        </div>
+export default function HistoryExample(props) {
+  return (
+    <div className="history-example">
+      <div className="chart">
+        <FlexibleWidthXYPlot
+          animation
+          margin={50}
+          yType="log"
+          xType="time"
+          height={500}
+        >
+          <XAxis />
+          <YAxis tickFormat={t => t} />
+          {lines}
+          <LabelSeries data={authors} />
+        </FlexibleWidthXYPlot>
       </div>
-    );
-  }
+    </div>
+  );
 }

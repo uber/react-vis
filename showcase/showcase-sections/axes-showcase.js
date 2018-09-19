@@ -133,19 +133,17 @@ const DECORATIVE_AXES = [
   }
 ];
 
-class AxesShowcase extends Component {
-  render() {
-    return (
-      <article id="axes">
-        <h2>Axes</h2>
-        {AXES.map(mapSection)}
-        <h2>Tooltips</h2>
-        {TOOLTIPS.map(mapSection)}
-        <h2>DecorativeAxis</h2>
-        {DECORATIVE_AXES.map(mapSection)}
-      </article>
-    );
-  }
+function AxesShowcase(props) {
+  return (
+    <article id="axes">
+      <h2>Axes</h2>
+      {AXES.map(mapSection)}
+      <h2>Tooltips</h2>
+      {TOOLTIPS.map(mapSection)}
+      <h2>DecorativeAxis</h2>
+      {DECORATIVE_AXES.map(mapSection)}
+    </article>
+  );
 }
 
 export default AxesShowcase;

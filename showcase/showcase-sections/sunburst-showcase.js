@@ -46,15 +46,13 @@ const SUNBURSTS = [
   }
 ];
 
-class SunburstSection extends Component {
-  render() {
-    return (
-      <article id="sunbursts">
-        <h1>Sunbursts</h1>
-        {SUNBURSTS.map(mapSection)}
-      </article>
-    );
-  }
+function SunburstSection(props) {
+  return (
+    <article id="sunbursts">
+      <h1>Sunbursts</h1>
+      {SUNBURSTS.map(mapSection)}
+    </article>
+  );
 }
 
 export default SunburstSection;

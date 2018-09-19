@@ -123,81 +123,79 @@ function buildLabels(mappedData, accessors) {
 
 const NOOP = () => {};
 
-class Sunburst extends React.Component {
-  render() {
-    const {
-      getAngle,
-      getAngle0,
-      animation,
-      className,
-      children,
-      data,
-      height,
-      hideRootNode,
-      getLabel,
-      width,
-      getSize,
-      colorType
-    } = this.props;
-    const mappedData = getNodesToRender({
-      data,
-      height,
-      hideRootNode,
-      width,
-      getSize
-    });
-    const radialDomain = getRadialDomain(mappedData);
-    const margin = getRadialLayoutMargin(width, height, radialDomain);
+function Sunburst(props) {
+  const {
+    getAngle,
+    getAngle0,
+    animation,
+    className,
+    children,
+    data,
+    height,
+    hideRootNode,
+    getLabel,
+    width,
+    getSize,
+    colorType
+  } = props;
+  const mappedData = getNodesToRender({
+    data,
+    height,
+    hideRootNode,
+    width,
+    getSize
+  });
+  const radialDomain = getRadialDomain(mappedData);
+  const margin = getRadialLayoutMargin(width, height, radialDomain);
 
-    const labelData = buildLabels(mappedData, {
-      getAngle,
-      getAngle0,
-      getLabel,
-      getRadius0: d => d.radius0
-    });
+  const labelData = buildLabels(mappedData, {
+    getAngle,
+    getAngle0,
+    getLabel,
+    getRadius0: d => d.radius0
+  });
 
-    const hofBuilder = f => (e, i) => (f ? f(mappedData[e.index], i) : NOOP);
-    return (
-      <XYPlot
-        height={height}
-        hasTreeStructure
-        width={width}
-        className={`${predefinedClassName} ${className}`}
-        margin={margin}
-        xDomain={[-radialDomain, radialDomain]}
-        yDomain={[-radialDomain, radialDomain]}
-      >
-        <ArcSeries
-          {...{
-            colorType,
-            ...this.props,
-            animation,
-            radiusDomain: [0, radialDomain],
-            // need to present a stripped down version for interpolation
-            data: animation
-              ? mappedData.map((row, index) => ({
-                  ...row,
-                  parent: null,
-                  children: null,
-                  index
-                }))
-              : mappedData,
-            _data: animation ? mappedData : null,
-            arcClassName: `${predefinedClassName}__series--radial__arc`,
-            ...LISTENERS_TO_OVERWRITE.reduce((acc, propName) => {
-              const prop = this.props[propName];
-              acc[propName] = animation ? hofBuilder(prop) : prop;
-              return acc;
-            }, {})
-          }}
-        />
-        {labelData.length > 0 && (
-          <LabelSeries data={labelData} getLabel={getLabel} />
-        )}
-        {children}
-      </XYPlot>
-    );
-  }
+  const hofBuilder = f => (e, i) => (f ? f(mappedData[e.index], i) : NOOP);
+  return (
+    <XYPlot
+      height={height}
+      hasTreeStructure
+      width={width}
+      className={`${predefinedClassName} ${className}`}
+      margin={margin}
+      xDomain={[-radialDomain, radialDomain]}
+      yDomain={[-radialDomain, radialDomain]}
+    >
+      <ArcSeries
+        {...{
+          colorType,
+          ...props,
+          animation,
+          radiusDomain: [0, radialDomain],
+          // need to present a stripped down version for interpolation
+          data: animation
+            ? mappedData.map((row, index) => ({
+                ...row,
+                parent: null,
+                children: null,
+                index
+              }))
+            : mappedData,
+          _data: animation ? mappedData : null,
+          arcClassName: `${predefinedClassName}__series--radial__arc`,
+          ...LISTENERS_TO_OVERWRITE.reduce((acc, propName) => {
+            const prop = props[propName];
+            acc[propName] = animation ? hofBuilder(prop) : prop;
+            return acc;
+          }, {})
+        }}
+      />
+      {labelData.length > 0 && (
+        <LabelSeries data={labelData} getLabel={getLabel} />
+      )}
+      {children}
+    </XYPlot>
+  );
 }
 
 Sunburst.displayName = 'Sunburst';

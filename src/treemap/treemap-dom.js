@@ -21,52 +21,50 @@ import React from 'react';
 
 import TreemapLeaf from './treemap-leaf';
 
-class TreemapDOM extends React.Component {
-  render() {
-    const {
-      animation,
-      className,
-      height,
-      hideRootNode,
-      getLabel,
-      mode,
-      nodes,
-      width,
-      scales,
-      style
-    } = this.props;
-    const useCirclePacking = mode === 'circlePack';
-    return (
-      <div
-        className={`rv-treemap ${
-          useCirclePacking ? 'rv-treemap-circle-packed' : ''
-        } ${className}`}
-        style={{height, width}}
-      >
-        {nodes.map((node, index) => {
-          // throw out the rootest node
-          if (hideRootNode && !index) {
-            return null;
-          }
+function TreemapDOM(props) {
+  const {
+    animation,
+    className,
+    height,
+    hideRootNode,
+    getLabel,
+    mode,
+    nodes,
+    width,
+    scales,
+    style
+  } = props;
+  const useCirclePacking = mode === 'circlePack';
+  return (
+    <div
+      className={`rv-treemap ${
+        useCirclePacking ? 'rv-treemap-circle-packed' : ''
+      } ${className}`}
+      style={{height, width}}
+    >
+      {nodes.map((node, index) => {
+        // throw out the rootest node
+        if (hideRootNode && !index) {
+          return null;
+        }
 
-          const nodeProps = {
-            animation,
-            node,
-            getLabel,
-            ...this.props,
-            x0: useCirclePacking ? node.x : node.x0,
-            x1: useCirclePacking ? node.x : node.x1,
-            y0: useCirclePacking ? node.y : node.y0,
-            y1: useCirclePacking ? node.y : node.y1,
-            r: useCirclePacking ? node.r : 1,
-            scales,
-            style
-          };
-          return <TreemapLeaf {...nodeProps} key={`leaf-${index}`} />;
-        })}
-      </div>
-    );
-  }
+        const nodeProps = {
+          animation,
+          node,
+          getLabel,
+          ...props,
+          x0: useCirclePacking ? node.x : node.x0,
+          x1: useCirclePacking ? node.x : node.x1,
+          y0: useCirclePacking ? node.y : node.y0,
+          y1: useCirclePacking ? node.y : node.y1,
+          r: useCirclePacking ? node.r : 1,
+          scales,
+          style
+        };
+        return <TreemapLeaf {...nodeProps} key={`leaf-${index}`} />;
+      })}
+    </div>
+  );
 }
 
 TreemapDOM.displayName = 'TreemapDOM';

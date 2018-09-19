@@ -65,33 +65,30 @@ const MARGIN = {
   bottom: 10
 };
 
-// build a custom color scale
-class ParallelCoordinatesExample extends React.Component {
-  render() {
-    return (
-      <XYPlot
-        width={500}
-        height={300}
-        xType="ordinal"
-        margin={MARGIN}
-        className="parallel-coordinates-example"
-      >
-        {mappedData.map((series, index) => {
-          return <LineSeries data={series} key={`series-${index}`} />;
-        })}
-        {mappedData[0].map((cell, index) => {
-          return (
-            <DecorativeAxis
-              key={`${index}-axis`}
-              axisStart={{x: cell.x, y: 0}}
-              axisEnd={{x: cell.x, y: 1}}
-              axisDomain={[domains[cell.x].min, domains[cell.x].max]}
-            />
-          );
-        })}
-      </XYPlot>
-    );
-  }
+function ParallelCoordinatesExample(props) {
+  return (
+    <XYPlot
+      width={500}
+      height={300}
+      xType="ordinal"
+      margin={MARGIN}
+      className="parallel-coordinates-example"
+    >
+      {mappedData.map((series, index) => {
+        return <LineSeries data={series} key={`series-${index}`} />;
+      })}
+      {mappedData[0].map((cell, index) => {
+        return (
+          <DecorativeAxis
+            key={`${index}-axis`}
+            axisStart={{x: cell.x, y: 0}}
+            axisEnd={{x: cell.x, y: 1}}
+            axisDomain={[domains[cell.x].min, domains[cell.x].max]}
+          />
+        );
+      })}
+    </XYPlot>
+  );
 }
 
 export default ParallelCoordinatesExample;

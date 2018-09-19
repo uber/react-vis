@@ -22,15 +22,13 @@ import React from 'react';
 
 import {XYPlot, XAxis, YAxis, VerticalGridLines, LineSeries} from 'index';
 
-export default class Example extends React.Component {
-  render() {
-    return (
-      <XYPlot margin={50} width={200} height={200}>
-        <VerticalGridLines />
-        <XAxis />
-        <YAxis />
-        <LineSeries data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]} />
-      </XYPlot>
-    );
-  }
+export default function Example(props) {
+  return (
+    <XYPlot margin={50} width={200} height={200}>
+      <VerticalGridLines />
+      <XAxis />
+      <YAxis />
+      <LineSeries data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]} />
+    </XYPlot>
+  );
 }

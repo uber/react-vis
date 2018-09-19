@@ -21,15 +21,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class ShowcaseButton extends React.Component {
-  render() {
-    const {buttonContent, onClick} = this.props;
-    return (
-      <button className="showcase-button" onClick={onClick}>
-        {buttonContent}
-      </button>
-    );
-  }
+function ShowcaseButton(props) {
+  const {buttonContent, onClick} = props;
+  return (
+    <button className="showcase-button" onClick={onClick}>
+      {buttonContent}
+    </button>
+  );
 }
 
 ShowcaseButton.PropTypes = {

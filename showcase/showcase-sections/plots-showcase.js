@@ -245,24 +245,22 @@ const BASIC_COMPONENTS = [
   }
 ];
 
-class PlotsShowcase extends Component {
-  render() {
-    const {forExample} = this.props;
-    return (
-      <article id="plots">
-        <h1>Plots</h1>
-        {!forExample && (
-          <section>
-            <ComplexChart />
-          </section>
-        )}
-        <h2>Series Types</h2>
-        {PLOTS.map(mapSection)}
-        <h2>Basic Components</h2>
-        {BASIC_COMPONENTS.map(mapSection)}
-      </article>
-    );
-  }
+function PlotsShowcase(props) {
+  const {forExample} = props;
+  return (
+    <article id="plots">
+      <h1>Plots</h1>
+      {!forExample && (
+        <section>
+          <ComplexChart />
+        </section>
+      )}
+      <h2>Series Types</h2>
+      {PLOTS.map(mapSection)}
+      <h2>Basic Components</h2>
+      {BASIC_COMPONENTS.map(mapSection)}
+    </article>
+  );
 }
 
 PlotsShowcase.propTypes = {
