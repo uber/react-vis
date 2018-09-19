@@ -4,9 +4,6 @@
     "browser": true
   },
   "extends": [
-    "@uber/eslint-config",
-    "@uber/eslint-config-es6",
-    "@uber/eslint-config-jsx",
     "prettier",
     "prettier/react"
   ],

@@ -55,9 +55,6 @@
     "react-motion": "^0.5.2"
   },
   "devDependencies": {
-    "@uber/eslint-config": "^3.0.3",
-    "@uber/eslint-config-es6": "^3.2.1",
-    "@uber/eslint-config-jsx": "^4.0.2",
     "babel-cli": "6.18.0",
     "babel-eslint": "^7.1.1",
     "babel-plugin-module-resolver": "^2.4.0",
