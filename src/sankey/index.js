@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   sankey,
@@ -66,12 +66,7 @@ function Sankey(props) {
     ...links[i]
   }));
 
-  const {
-    marginLeft,
-    marginTop,
-    marginRight,
-    marginBottom
-  } = getInnerDimensions(
+  const {marginLeft, marginTop, marginRight, marginBottom} = getInnerDimensions(
     {
       margin,
       height,
@@ -96,11 +91,7 @@ function Sankey(props) {
   const path = sankeyLinkHorizontal();
 
   return (
-    <XYPlot
-      {...props}
-      yType="literal"
-      className={`rv-sankey ${className}`}
-    >
+    <XYPlot {...props} yType="literal" className={`rv-sankey ${className}`}>
       {linksCopy.map((link, i) => (
         <SankeyLink
           style={style.links}

@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, {PureComponent} from 'react';
+import React from 'react';
 import {DISCRETE_COLOR_RANGE} from 'theme';
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';

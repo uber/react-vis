@@ -39,7 +39,7 @@ for (let i = 0; i < 20; i++) {
   data.push({color: i, key: i, data: series, opacity: 0.8});
 }
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot
       width={300}

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
