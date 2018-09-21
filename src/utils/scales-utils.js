@@ -653,7 +653,7 @@ export function getAttr0Functor(props, attr) {
     const {baseValue = domain[0]} = scaleObject;
     const scaleFn = getScaleFnFromScaleObject(scaleObject);
     return d => {
-      const value = _getAttrValue(d, el => el[attr0]);
+      const value = _getAttrValue(d, scaleObject.accessor0);
       return scaleFn(_isDefined(value) ? value : baseValue);
     };
   }
