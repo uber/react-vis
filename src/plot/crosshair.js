@@ -62,6 +62,18 @@ function getFirstNonEmptyValue(values) {
 }
 
 class Crosshair extends PureComponent {
+  static get defaultProps() {
+    return {
+      titleFormat: defaultTitleFormat,
+      itemsFormat: defaultItemsFormat,
+      style: {
+        line: {},
+        title: {},
+        box: {}
+      }
+    };
+  }
+
   static get propTypes() {
     return {
       className: PropTypes.string,
@@ -80,38 +92,6 @@ class Crosshair extends PureComponent {
         box: PropTypes.object
       })
     };
-  }
-
-  static get defaultProps() {
-    return {
-      titleFormat: defaultTitleFormat,
-      itemsFormat: defaultItemsFormat,
-      style: {
-        line: {},
-        title: {},
-        box: {}
-      }
-    };
-  }
-
-  /**
-   * Render crosshair title.
-   * @returns {*} Container with the crosshair title.
-   * @private
-   */
-  _renderCrosshairTitle() {
-    const {values, titleFormat, style} = this.props;
-    const titleItem = titleFormat(values);
-    if (!titleItem) {
-      return null;
-    }
-    return (
-      <div className="rv-crosshair__title" key="title" style={style.title}>
-        <span className="rv-crosshair__title__title">{titleItem.title}</span>
-        {': '}
-        <span className="rv-crosshair__title__value">{titleItem.value}</span>
-      </div>
-    );
   }
 
   /**
@@ -134,6 +114,26 @@ class Crosshair extends PureComponent {
         </div>
       );
     });
+  }
+
+  /**
+   * Render crosshair title.
+   * @returns {*} Container with the crosshair title.
+   * @private
+   */
+  _renderCrosshairTitle() {
+    const {values, titleFormat, style} = this.props;
+    const titleItem = titleFormat(values);
+    if (!titleItem) {
+      return null;
+    }
+    return (
+      <div className="rv-crosshair__title" key="title" style={style.title}>
+        <span className="rv-crosshair__title__title">{titleItem.title}</span>
+        {': '}
+        <span className="rv-crosshair__title__value">{titleItem.value}</span>
+      </div>
+    );
   }
 
   render() {
