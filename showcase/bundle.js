@@ -17016,24 +17016,23 @@ object-assign
               (this._pendingReplaceState = !1),
               (this._pendingForceUpdate = !1);
             var A;
-            return (
-              (A = E.unstable_handleError
-                ? this.performInitialMountWithErrorHandling(f, n, l, e, p)
-                : this.performInitialMount(f, n, l, e, p)),
-              E.componentDidMount &&
-                ('production' !== t.env.NODE_ENV
-                  ? e.getReactMountReady().enqueue(function() {
-                      u(
-                        function() {
-                          return E.componentDidMount();
-                        },
-                        d._debugID,
-                        'componentDidMount'
-                      );
-                    })
-                  : e.getReactMountReady().enqueue(E.componentDidMount, E)),
-              A
-            );
+            return (A = E.componentDidCatch
+              ? this.performInitialMountWithErrorHandling(f, n, l, e, p)
+              : this.performInitialMount(f, n, l, e, p)),
+            E.componentDidMount &&
+              ('production' !== t.env.NODE_ENV
+                ? e.getReactMountReady().enqueue(function() {
+                    u(
+                      function() {
+                        return E.componentDidMount();
+                      },
+                      d._debugID,
+                      'componentDidMount'
+                    );
+                  })
+                : e.getReactMountReady().enqueue(E.componentDidMount, E)),
+            A
+          ;
           },
           _constructComponent: function(e, n, r, o) {
             if ('production' === t.env.NODE_ENV)
@@ -17074,7 +17073,7 @@ object-assign
               a = this.performInitialMount(e, t, n, r, o);
             } catch (u) {
               r.rollback(i),
-                this._instance.unstable_handleError(u),
+                this._instance.componentDidCatch(u),
                 this._pendingStateQueue &&
                   (this._instance.state = this._processPendingState(
                     this._instance.props,
