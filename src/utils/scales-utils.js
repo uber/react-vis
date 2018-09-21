@@ -648,7 +648,6 @@ export function getAttributeFunctor(props, attr) {
 export function getAttr0Functor(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
   if (scaleObject) {
-    const attr0 = `${attr}0`;
     const {domain} = scaleObject;
     const {baseValue = domain[0]} = scaleObject;
     const scaleFn = getScaleFnFromScaleObject(scaleObject);
