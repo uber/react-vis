@@ -242,7 +242,8 @@ function _createScaleObjectForValue(attr, value, type, accessor, accessor0) {
       attr,
       baseValue: undefined,
       isValue: true,
-      accessor
+      accessor,
+      accessor0
     };
   }
   if (typeof value === 'undefined') {
@@ -256,7 +257,8 @@ function _createScaleObjectForValue(attr, value, type, accessor, accessor0) {
     attr,
     baseValue: undefined,
     isValue: true,
-    accessor
+    accessor,
+    accessor0
   };
 }
 
