@@ -59,7 +59,6 @@ import extensibility from '../../docs/examples/extensibility.md';
 import otherThings from '../../docs/examples/building-things-other-than-charts.md';
 import streamGraph from '../../docs/examples/stream-graph.md';
 import responsiveVis from '../../docs/examples/responsive-vis.md';
-import zoomableChart from '../../docs/examples/zoomable-chart.md';
 import gitHistory from '../../docs/examples/history-example.md';
 
 const mdRoutes = [

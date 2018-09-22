@@ -40,7 +40,7 @@ The SVG mode is accessed by using the normal `MarkSeries`, just as above, while 
 
 Mark series can usefully be deployed with voronois for fast and accurate mouse overs!
 
-<!-- INJECT:"DynamicCrosshairScatterplotLink" -->
+<!-- INJECT:"DynamicCrosshairScatterplotWithLink" -->
 
 ## Data format reference
 
