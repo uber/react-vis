@@ -128,10 +128,6 @@ const mdRoutes = [
           {
             name: 'Responsive Vis',
             markdown: responsiveVis
-          },
-          {
-            name: 'Git History',
-            markdown: gitHistory
           }
         ]
       }

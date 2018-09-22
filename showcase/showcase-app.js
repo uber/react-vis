@@ -18,7 +18,6 @@ import {
   ResponsiveVis,
   StreamgraphExample,
   IrisDashboard,
-  HistoryExample
 } from './showcase-index';
 
 const sectionNames = [
@@ -102,12 +101,6 @@ const sectionNames = [
     link: 'responsive',
     name: 'ResponsiveVis',
     showcase: ResponsiveVis
-  },
-  {
-    showByDefault: false,
-    link: 'history',
-    name: 'HistoryExample',
-    showcase: HistoryExample
   }
 ];
 
