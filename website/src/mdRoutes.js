@@ -1,65 +1,63 @@
-import presentation from '../../docs/presentation.md';
-
 import codepen from '../../docs/getting-started/react-vis-in-codepen.md';
 import install from '../../docs/getting-started/installing-react-vis.md';
 import newProject from '../../docs/getting-started/new-react-vis-project.md';
 import first from '../../docs/getting-started/your-first-chart.md';
 
-import scalesAndData from '../../docs/scales-and-data.md';
-import colors from '../../docs/colors.md';
-import interaction from '../../docs/interaction.md';
-import animation from '../../docs/animation.md';
-import style from '../../docs/style.md';
+import otherThings from "../../docs/examples/building-things-other-than-charts.md";
+import extensibility from "../../docs/examples/extensibility.md";
+import gitHistory from "../../docs/examples/history-example.md";
+import responsiveVis from "../../docs/examples/responsive-vis.md";
+import streamGraph from "../../docs/examples/stream-graph.md";
 
-import xy from '../../docs/xy-plot.md';
-import series from '../../docs/series.md';
-import legends from '../../docs/legends.md';
-import crosshair from '../../docs/crosshair.md';
-import grids from '../../docs/grids.md';
-import hint from '../../docs/hint.md';
-import axes from '../../docs/axes.md';
-import decorativeAxis from '../../docs/decorative-axis.md';
-import gradients from '../../docs/gradients.md';
-import flexiblePlots from '../../docs/flexible-plots.md';
-import borders from '../../docs/borders.md';
-import voronoi from '../../docs/voronoi.md';
+import axesShowcase from "../../docs/examples/showcases/axes-showcase.md";
+import legendsShowcase from "../../docs/examples/showcases/legends-showcase.md";
+import miscShowcase from "../../docs/examples/showcases/misc-showcase.md";
+import plotsShowcase from "../../docs/examples/showcases/plots-showcase.md";
+import radarShowcase from "../../docs/examples/showcases/radar-chart-showcase.md";
+import radialShowcase from "../../docs/examples/showcases/radial-showcase.md";
+import sankeysShowcase from "../../docs/examples/showcases/sankeys-showcase.md";
+import sunburstShowcase from "../../docs/examples/showcases/sunburst-showcase.md";
+import treemapsShowcase from "../../docs/examples/showcases/treemaps-showcase.md";
 
-import arcSeries from '../../docs/arc-series.md';
-import areaSeries from '../../docs/area-series.md';
-import barSeries from '../../docs/bar-series.md';
-import contourSeries from '../../docs/contour-series.md';
-import customSvgSeries from '../../docs/custom-svg-series.md';
-import heatmapSeries from '../../docs/heatmap-series.md';
-import labelSeries from '../../docs/label-series.md';
-import lineSeries from '../../docs/line-series.md';
-import lineMarkSeries from '../../docs/line-mark-series.md';
-import markSeries from '../../docs/mark-series.md';
-import polygonSeries from '../../docs/polygon-series.md';
-import rectSeries from '../../docs/rect-series.md';
-import whiskerSeries from '../../docs/whisker-series.md';
-
-import parallel from '../../docs/parallel-coordinates.md';
-import radar from '../../docs/radar-chart.md';
-import radial from '../../docs/radial-chart.md';
-import sankey from '../../docs/sankey.md';
-import sunburst from '../../docs/sunburst.md';
-import treemap from '../../docs/treemap.md';
-
-import plotsEx from '../../docs/examples/showcases/plots-showcase.md';
-import axesEx from '../../docs/examples/showcases/axes-showcase.md';
-import legendsEx from '../../docs/examples/showcases/legends-showcase.md';
-import sunburstEx from '../../docs/examples/showcases/sunburst-showcase.md';
-import radialEx from '../../docs/examples/showcases/radial-showcase.md';
-import sankeyEx from '../../docs/examples/showcases/sankeys-showcase.md';
-import treemapEx from '../../docs/examples/showcases/treemaps-showcase.md';
-import radarEx from '../../docs/examples/showcases/radar-chart-showcase.md';
-import miscEx from '../../docs/examples/showcases/misc-showcase.md';
-
-import extensibility from '../../docs/examples/extensibility.md';
-import otherThings from '../../docs/examples/building-things-other-than-charts.md';
-import streamGraph from '../../docs/examples/stream-graph.md';
-import responsiveVis from '../../docs/examples/responsive-vis.md';
-import gitHistory from '../../docs/examples/history-example.md';
+import animation from "../../docs/animation.md";
+import arcSeries from "../../docs/arc-series.md";
+import areaSeries from "../../docs/area-series.md";
+import axes from "../../docs/axes.md";
+import barSeries from "../../docs/bar-series.md";
+import borders from "../../docs/borders.md";
+import colors from "../../docs/colors.md";
+import contourSeries from "../../docs/contour-series.md";
+import crosshair from "../../docs/crosshair.md";
+import customSvgSeries from "../../docs/custom-svg-series.md";
+import decorativeAxis from "../../docs/decorative-axis.md";
+import flexiblePlots from "../../docs/flexible-plots.md";
+import gradients from "../../docs/gradients.md";
+import grids from "../../docs/grids.md";
+import heatmapSeries from "../../docs/heatmap-series.md";
+import hexbinSeries from "../../docs/hexbin-series.md";
+import highlight from "../../docs/highlight.md";
+import hint from "../../docs/hint.md";
+import interaction from "../../docs/interaction.md";
+import labelSeries from "../../docs/label-series.md";
+import legends from "../../docs/legends.md";
+import lineMarkSeries from "../../docs/line-mark-series.md";
+import lineSeries from "../../docs/line-series.md";
+import markSeries from "../../docs/mark-series.md";
+import parallel from "../../docs/parallel-coordinates.md";
+import polygonSeries from "../../docs/polygon-series.md";
+import presentation from "../../docs/presentation.md";
+import radar from "../../docs/radar-chart.md";
+import radial from "../../docs/radial-chart.md";
+import rectSeries from "../../docs/rect-series.md";
+import sankey from "../../docs/sankey.md";
+import scalesAndData from "../../docs/scales-and-data.md";
+import series from "../../docs/series.md";
+import style from "../../docs/style.md";
+import sunburst from "../../docs/sunburst.md";
+import treemap from "../../docs/treemap.md";
+import voronoi from "../../docs/voronoi.md";
+import whiskerSeries from "../../docs/whisker-series.md";
+import xy from "../../docs/xy-plot.md";
 
 const mdRoutes = [
   {
@@ -71,39 +69,39 @@ const mdRoutes = [
         children: [
           {
             name: 'Plots',
-            markdown: plotsEx
+            markdown: plotsShowcase
           },
           {
             name: 'Axes',
-            markdown: axesEx
+            markdown: axesShowcase
           },
           {
             name: 'Legends',
-            markdown: legendsEx
+            markdown: legendsShowcase
           },
           {
             name: 'Sunbursts',
-            markdown: sunburstEx
+            markdown: sunburstShowcase
           },
           {
             name: 'Radial',
-            markdown: radialEx
+            markdown: radialShowcase
           },
           {
             name: 'Sankeys',
-            markdown: sankeyEx
+            markdown: sankeysShowcase
           },
           {
             name: 'Treemaps',
-            markdown: treemapEx
+            markdown: treemapsShowcase
           },
           {
             name: 'Radar Charts',
-            markdown: radarEx
+            markdown: radarShowcase
           },
           {
             name: 'Misc',
-            markdown: miscEx
+            markdown: miscShowcase
           }
         ]
       },
@@ -200,6 +198,10 @@ const mdRoutes = [
             markdown: series
           },
           {
+            name: 'Brushing and Dragging',
+            markdown: highlight
+          },
+          {
             name: 'Legends',
             markdown: legends
           },
@@ -267,6 +269,10 @@ const mdRoutes = [
           {
             name: 'Heatmap Series',
             markdown: heatmapSeries
+          },
+          {
+            name: 'Hexbin Series',
+            markdown: hexbinSeries
           },
           {
             name: 'Label Series',

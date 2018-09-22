@@ -25,6 +25,7 @@ export default function sourceLinker(ShowcaseComponent, link) {
     return (
       <div
         style={{
+          alignItem: 'center',
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
