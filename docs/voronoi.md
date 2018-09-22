@@ -16,7 +16,7 @@ Voronoi diagrams are useful for making a chart interactive by creating target ar
 ## API Reference
 
 
-<!-- INJECT:"DynamicCrosshairScatterplotLink" -->
+<!-- INJECT:"DynamicCrosshairScatterplotWithLink" -->
 
 ### extent
 Type: `Array`
