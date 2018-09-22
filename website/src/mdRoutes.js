@@ -127,10 +127,6 @@ const mdRoutes = [
             markdown: responsiveVis
           },
           {
-            name: 'Zoomable Chart',
-            markdown: zoomableChart
-          },
-          {
             name: 'Git History',
             markdown: gitHistory
           }
