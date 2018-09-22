@@ -17,6 +17,7 @@ import {
   ForceDirectedGraph,
   ResponsiveVis,
   StreamgraphExample,
+  IrisDashboard,
   HistoryExample
 } from './showcase-index';
 
@@ -89,6 +90,12 @@ const sectionNames = [
     link: 'streamgraph',
     name: 'Streamgraph',
     showcase: StreamgraphExample
+  },
+  {
+    showByDefault: false,
+    link: 'irisdashboard',
+    name: 'IrisDashboard',
+    showcase: IrisDashboard
   },
   {
     showByDefault: false,

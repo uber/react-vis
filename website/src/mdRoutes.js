@@ -7,6 +7,7 @@ import otherThings from "../../docs/examples/building-things-other-than-charts.m
 import extensibility from "../../docs/examples/extensibility.md";
 import gitHistory from "../../docs/examples/history-example.md";
 import responsiveVis from "../../docs/examples/responsive-vis.md";
+import irisDashboard from '../../docs/examples/iris-dashboard.md';
 import streamGraph from "../../docs/examples/stream-graph.md";
 
 import axesShowcase from "../../docs/examples/showcases/axes-showcase.md";
@@ -119,6 +120,10 @@ const mdRoutes = [
           {
             name: 'Streamgraph',
             markdown: streamGraph
+          },
+          {
+            name: 'Dynamic Dashboard',
+            markdown: irisDashboard
           },
           {
             name: 'Responsive Vis',
