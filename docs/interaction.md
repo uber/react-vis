@@ -461,7 +461,8 @@ function LineChart({data, index, handleMouseOver}) {
         stroke="white" />
       }
     </XYPlot>);
-}```
+}
+```
 
 More often than not, you want to be able to handle an action that happened in one of the charts and reflect it in different parts of your app, i.e. outside the chart.
 
