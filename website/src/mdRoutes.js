@@ -5,7 +5,6 @@ import first from '../../docs/getting-started/your-first-chart.md';
 
 import otherThings from "../../docs/examples/building-things-other-than-charts.md";
 import extensibility from "../../docs/examples/extensibility.md";
-import gitHistory from "../../docs/examples/history-example.md";
 import responsiveVis from "../../docs/examples/responsive-vis.md";
 import irisDashboard from '../../docs/examples/iris-dashboard.md';
 import streamGraph from "../../docs/examples/stream-graph.md";
@@ -128,10 +127,6 @@ const mdRoutes = [
           {
             name: 'Responsive Vis',
             markdown: responsiveVis
-          },
-          {
-            name: 'Git History',
-            markdown: gitHistory
           }
         ]
       }
