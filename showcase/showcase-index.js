@@ -14,3 +14,4 @@ export ForceDirectedGraph from './examples/force-directed-graph/force-directed-e
 export ResponsiveVis from './examples/responsive-vis/responsive-vis-example';
 export StreamgraphExample from './examples/streamgraph/streamgraph-example';
 export HistoryExample from './examples/history/history-example';
+export IrisDashboard from './examples/iris-dashboard/iris-dashboard';
