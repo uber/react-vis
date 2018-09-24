@@ -55,22 +55,27 @@
 }
 
 .container {
+
   hr.short {
     display: none;
   }
+
   .Contributors.m-top {
     margin-top: 0;
+
     .Contributor {
       width: 8rem;
       height: 10rem;
       background: none;
       margin: 10px;
+
       img {
         border-radius: 50%;
         border: 4px solid #17b8be;
         box-shadow: 0 0 0 #17b8be;
         transition: border 0.5s, box-shadow 0.5s;
       }
+
       span {
         display: block;
         font-size: 1rem;
@@ -83,6 +88,7 @@
         width: 8rem;
       }
     }
+
     .Contributor:after {
       content: '';
       position: absolute;
@@ -93,6 +99,7 @@
       border: 2px solid white;
       border-radius: 50%;
     }
+
     .Contributor:hover {
       img {
         border-radius: 50%;
@@ -101,6 +108,13 @@
       }
     }
   }
+}
+
+.inline-code.container > div {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
 }
 
 @keyframes pulse {
