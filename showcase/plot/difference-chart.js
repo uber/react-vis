@@ -32,7 +32,7 @@ import {
 // where you want your bars to start and stop
 const myDATA = [...new Array(15)]
   .map((x, idx) => ({
-    x: 1538664270008 - (15 - idx) * 100000,
+    x: idx,
     // if the bars are above zero then we start them at zero
     y0: (idx - 4 < 0) ? idx - 4 : 0,
     // if the bars are below zero then we stop them at zero
@@ -60,7 +60,6 @@ export default class DifferenceChart extends React.Component {
           buttonContent={content}
         />
         <XYPlot
-          xType="time"
           width={300}
           height={300}
           yDomain={[yDomain.min, yDomain.max]}

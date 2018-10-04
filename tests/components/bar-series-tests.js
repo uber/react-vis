@@ -192,7 +192,7 @@ test('BarSeries: Showcase Example - DifferenceChart', t => {
   const $ = mount(<DifferenceChart />);
   t.equal(
     $.text(),
-    'TOGGLE TO CANVAS09:2009:2509:3009:3509:40-4-20246810',
+    'TOGGLE TO CANVAS02468101214-4-20246810',
     'should fine the right text content'
   );
   t.equal(
