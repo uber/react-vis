@@ -46,7 +46,7 @@ function predefinedComponents(type, size = 2, style = DEFAULT_STYLE) {
     case 'star':
       const starPoints = [...new Array(5)]
         .map((c, index) => {
-          const angle = (index / 5) * Math.PI * 2;
+          const angle = index / 5 * Math.PI * 2;
           const innerAngle = angle + Math.PI / 10;
           const outerAngle = angle - Math.PI / 10;
           // ratio of inner polygon to outer polgyon
@@ -159,10 +159,14 @@ class CustomSVGSeries extends AbstractSeries {
           key={`rv-xy-plot__series--custom-svg-${index}`}
           transform={`translate(${positionInPixels.x},${positionInPixels.y})`}
           onMouseOver={() => {
-            onMouseOver && onMouseOver(seriesComponent);
+            if (onMouseOver) {
+              onMouseOver(seriesComponent);
+            }
           }}
           onMouseOut={() => {
-            onMouseOut && onMouseOut(seriesComponent);
+            if (onMouseOut) {
+              onMouseOut(seriesComponent);
+            }
           }}
         >
           {innerComponent}
