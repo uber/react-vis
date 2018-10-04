@@ -140,6 +140,7 @@ import ArcSeriesExample from './radial-chart/arc-series-example';
 import BasicRadarChart from './radar-chart/basic-radar-chart';
 import AnimatedRadarChart from './radar-chart/animated-radar-chart';
 import FourQuadrantRadarChart from './radar-chart/four-quadrant-radar-chart';
+import RadarChartWithTooltips from './radar-chart/radar-chart-with-tooltips';
 
 import BasicParallelCoordinates from './parallel-coordinates/basic-parallel-coordinates';
 import AnimatedParallelCoordinates from './parallel-coordinates/animated-parallel-coordinates';
@@ -270,6 +271,7 @@ const mainShowCase = {
   AnimatedRadarChart,
   BasicRadarChart,
   FourQuadrantRadarChart,
+  RadarChartWithTooltips,
 
   BasicParallelCoordinates,
   AnimatedParallelCoordinates,

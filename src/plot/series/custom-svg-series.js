@@ -89,13 +89,14 @@ function getInnerComponent({
   defaultType,
   positionInPixels,
   positionFunctions,
-  style
+  style,
+  propsSize
 }) {
   const {size} = customComponent;
   const aggStyle = {...style, ...(customComponent.style || {})};
   const innerComponent = customComponent.customComponent;
   if (!innerComponent && typeof defaultType === 'string') {
-    return predefinedComponents(defaultType, size, aggStyle);
+    return predefinedComponents(defaultType, size || propsSize, aggStyle);
   }
   // if default component is a function
   if (!innerComponent) {
@@ -119,7 +120,10 @@ class CustomSVGSeries extends AbstractSeries {
       innerWidth,
       marginLeft,
       marginTop,
-      style
+      style,
+      size,
+      onMouseOver,
+      onMouseOut
     } = this.props;
 
     if (!data || !innerWidth || !innerHeight) {
@@ -146,13 +150,20 @@ class CustomSVGSeries extends AbstractSeries {
         positionInPixels,
         defaultType: customComponent,
         positionFunctions: {x, y},
-        style
+        style,
+        propsSize: size
       });
       return (
         <g
           className="rv-xy-plot__series--custom-svg"
           key={`rv-xy-plot__series--custom-svg-${index}`}
           transform={`translate(${positionInPixels.x},${positionInPixels.y})`}
+          onMouseOver={() => {
+            onMouseOver && onMouseOver(seriesComponent);
+          }}
+          onMouseOut={() => {
+            onMouseOut && onMouseOut(seriesComponent);
+          }}
         >
           {innerComponent}
         </g>
@@ -181,14 +192,18 @@ CustomSVGSeries.propTypes = {
   ).isRequired,
   marginLeft: PropTypes.number,
   marginTop: PropTypes.number,
-  style: PropTypes.object
+  style: PropTypes.object,
+  size: PropTypes.number,
+  onMouseOver: PropTypes.func,
+  onMouseOut: PropTypes.func
 };
 
 CustomSVGSeries.defaultProps = {
   ...AbstractSeries.defaultProps,
   animation: false,
   customComponent: 'circle',
-  style: {}
+  style: {},
+  size: 2
 };
 
 export default CustomSVGSeries;

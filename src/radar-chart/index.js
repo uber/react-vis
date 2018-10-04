@@ -28,6 +28,7 @@ import XYPlot from 'plot/xy-plot';
 import {DISCRETE_COLOR_RANGE} from 'theme';
 import {MarginPropType} from 'utils/chart-utils';
 import PolygonSeries from 'plot/series/polygon-series';
+import MarkSeries from 'plot/series/mark-series';
 import LabelSeries from 'plot/series/label-series';
 import DecorativeAxis from 'plot/axis/decorative-axis';
 
@@ -139,9 +140,7 @@ function getLabels(props) {
 function getPolygons(props) {
   const {animation, colorRange, domains, data, style, startingAngle} = props;
   const scales = domains.reduce((acc, {domain, name}) => {
-    acc[name] = scaleLinear()
-      .domain(domain)
-      .range([0, 1]);
+    acc[name] = scaleLinear().domain(domain).range([0, 1]);
     return acc;
   }, {});
 
@@ -149,7 +148,7 @@ function getPolygons(props) {
     const mappedData = domains.map(({name, getValue}, index) => {
       const dataPoint = getValue ? getValue(row) : row[name];
       // error handling if point doesn't exist
-      const angle = (index / domains.length) * Math.PI * 2 + startingAngle;
+      const angle = index / domains.length * Math.PI * 2 + startingAngle;
       // dont let the radius become negative
       const radius = Math.max(scales[name](dataPoint), 0);
       return {x: radius * Math.cos(angle), y: radius * Math.sin(angle)};
@@ -173,6 +172,72 @@ function getPolygons(props) {
   });
 }
 
+/**
+ * Generate circles at the polygon points for Hover functionality
+ * @param {Object} props
+ - props.animation {Boolean}
+ - props.data {Array} array of object specifying what values are to be plotted
+ - props.domains {Array} array of object specifying the way each axis is to be plotted
+ - props.startingAngle {number} the initial angle offset
+ - props.style {object} style object for the whole chart
+ - props.onValueMouseOver {function} function to call on mouse over a polygon point
+ - props.onValueMouseOver {function} function to call when mouse leaves a polygon point
+ * @return {Array} the plotted axis components
+ */
+function getPolygonPoints(props) {
+  const {
+    animation,
+    domains,
+    data,
+    startingAngle,
+    style,
+    onValueMouseOver,
+    onValueMouseOut
+  } = props;
+   if (!onValueMouseOver) {
+    return;
+  }
+  const scales = domains.reduce((acc, {domain, name}) => {
+    acc[name] = scaleLinear()
+      .domain(domain)
+      .range([0, 1]);
+    return acc;
+  }, {});
+ return data.map((row, rowIndex) => {
+  const mappedData = domains.map(({name, getValue}, index) => {
+    const dataPoint = getValue ? getValue(row) : row[name];
+    // error handling if point doesn't exist
+    const angle = (index / domains.length) * Math.PI * 2 + startingAngle;
+    // dont let the radius become negative
+    const radius = Math.max(scales[name](dataPoint), 0);
+    return {
+      x: radius * Math.cos(angle),
+      y: radius * Math.sin(angle),
+      domain: name,
+      value: dataPoint,
+      dataName: row.name
+    };
+  });
+
+  return (
+    <MarkSeries
+      animation={animation}
+      className={`${predefinedClassName}-polygonPoint`}
+      key={`${rowIndex}-polygonPoint`}
+      data={mappedData}
+      size={10}
+      style={{
+        ...style.polygons,
+        fill: 'transparent',
+        stroke: 'transparent'
+      }}
+      onValueMouseOver={onValueMouseOver}
+      onValueMouseOut={onValueMouseOut}
+    />
+    );
+  });
+}
+
 function RadarChart(props) {
   const {
     animation,
@@ -189,49 +254,71 @@ function RadarChart(props) {
     startingAngle,
     style,
     tickFormat,
-    width
+    width,
+    renderAxesOverPolygons,
+    onValueMouseOver,
+    onValueMouseOut
   } = props;
 
-  const axes = getAxes({
-    domains,
-    animation,
-    hideInnerMostValues,
-    startingAngle,
-    style,
-    tickFormat
-  });
+const axes = getAxes({
+  domains,
+  animation,
+  hideInnerMostValues,
+  startingAngle,
+  style,
+  tickFormat
+});
 
-  const polygons = getPolygons({
-    animation,
-    colorRange,
-    domains,
-    data,
-    startingAngle,
-    style
-  });
-  const labelSeries = (
-    <LabelSeries
-      animation={animation}
-      key={className}
-      className={`${predefinedClassName}-label`}
-      data={getLabels({domains, style: style.labels, startingAngle})}
-    />
-  );
-  return (
-    <XYPlot
-      height={height}
-      width={width}
-      margin={margin}
-      dontCheckIfEmpty
-      className={`${className} ${predefinedClassName}`}
-      onMouseLeave={onMouseLeave}
-      onMouseEnter={onMouseEnter}
-      xDomain={[-1, 1]}
-      yDomain={[-1, 1]}
-    >
-      {children}
-      {axes.concat(polygons).concat(labelSeries)}
-    </XYPlot>
+const polygons = getPolygons({
+  animation,
+  colorRange,
+  domains,
+  data,
+  startingAngle,
+  style
+});
+
+const polygonPoints = getPolygonPoints({
+  animation,
+  colorRange,
+  domains,
+  data,
+  startingAngle,
+  style,
+  onValueMouseOver,
+  onValueMouseOut
+});
+
+const labelSeries = (
+  <LabelSeries
+    animation={animation}
+    key={className}
+    className={`${predefinedClassName}-label`}
+    data={getLabels({domains, style: style.labels, startingAngle})} />
+);
+return (
+  <XYPlot
+    height={height}
+    width={width}
+    margin={margin}
+    dontCheckIfEmpty
+    className={`${className} ${predefinedClassName}`}
+    onMouseLeave={onMouseLeave}
+    onMouseEnter={onMouseEnter}
+    xDomain={[-1, 1]}
+    yDomain={[-1, 1]}>
+    {children}
+    {!renderAxesOverPolygons &&
+      axes
+        .concat(polygons)
+        .concat(labelSeries)
+        .concat(polygonPoints)}
+    {renderAxesOverPolygons &&
+      polygons
+        .concat(labelSeries)
+        .concat(axes)
+        .concat(polygonPoints)}
+  </XYPlot>
   );
 }
 
@@ -259,7 +346,10 @@ RadarChart.propTypes = {
     polygons: PropTypes.object
   }),
   tickFormat: PropTypes.func,
-  width: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired,
+  renderAxesOverPolygons: PropTypes.bool,
+  onValueMouseOver: PropTypes.func,
+  onValueMouseOut: PropTypes.func
 };
 RadarChart.defaultProps = {
   className: '',
@@ -283,7 +373,8 @@ RadarChart.defaultProps = {
       fillOpacity: 0.1
     }
   },
-  tickFormat: DEFAULT_FORMAT
+  tickFormat: DEFAULT_FORMAT,
+  renderAxesOverPolygons: false
 };
 
 export default RadarChart;
