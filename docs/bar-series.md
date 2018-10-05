@@ -35,6 +35,14 @@ Type (VerticalBarSeries): `number`
 Type (HorizontalBarSeries): `string|number`
 The y position in coordinates of the box to be used. For VerticalBarSeries this value is considered a number, and is scaled against it's domain into pixels.
 
+<!-- INJECT:"DifferenceChartWithLink" -->
+
+#### y0
+(Optional)
+Type (VerticalBarSeries): `number`  
+Type (HorizontalBarSeries): `string|number`
+The y0 position in coordinates of the box to be used, this is where the bottom of the bar is placed, defaults to zero. Use is not recommended with stacked bars. For VerticalBarSeries this value is considered a number, and is scaled against it's domain into pixels.
+
 #### color (optional)
 Type: `string|number`
 The color of a bar in the series. By default the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop colorType="literal" to the series itself. This property can also be defined on the series level.
