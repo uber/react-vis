@@ -77,7 +77,13 @@ class Crosshair extends PureComponent {
   static get propTypes() {
     return {
       className: PropTypes.string,
-      values: PropTypes.array,
+      values: PropTypes.arrayOf(
+        PropTypes.oneOfType([
+          PropTypes.number,
+          PropTypes.string,
+          PropTypes.object
+        ])
+      ),
       series: PropTypes.object,
       innerWidth: PropTypes.number,
       innerHeight: PropTypes.number,
