@@ -42,7 +42,7 @@ The way to align the hint inside the chart. Within the object, specify the horiz
 
 <!-- INJECT:"DynamicSimpleTopEdgeHintsWithLink" -->
 
-### Style (optional)
+#### style (optional)
 Type: `Object`
 You can pass a style object to your Hint component to apply your own styles. See [style](style.md)
 ```jsx

@@ -51,7 +51,7 @@ If using a function to defined your mark, it is important to note that the funct
 
 ## API reference
 
-#### animation (optional)  
+#### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
 #### className (optional)
@@ -66,7 +66,7 @@ Provides the mark type for the entire series. Defaults to a 'circle'. See `Defin
 Type: `Array<Object>`
 Array of data for the series. See above data format reference.
 
-### style
+#### style
 Type: `object`
 A list of CSS properties to style the series outside of the explicitly set properties. Note that it will override all other properties (ie fill, stroke, opacity, color). See [style](style.md)
 

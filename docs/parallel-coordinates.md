@@ -98,7 +98,7 @@ Type: `Boolean`
 Default: false
 Enable stateful brushing on parallel coordinates
 
-### style (optional)
+#### style (optional)
 Type: `object`
 An object that contains CSS properties with which the axis component can be entirely re-styled.
 As the ParallelCoordinates is composite of several composite elements, it is possible to provide style objects for any and all parts of the tree. See [style](style.md)

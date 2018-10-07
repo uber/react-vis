@@ -190,7 +190,7 @@ This handler is triggered when the user's exits a link. Callback accepts the dat
 />
 ```
 
-### style (optional)
+#### style (optional)
 Type: `object`
 An object that contains CSS properties with which the axis component can be entirely re-styled.
 As the Sankey is composite of several composite elements, it is possible to provide style objects for any and all parts of the tree. See [style](style.md)

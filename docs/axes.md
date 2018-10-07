@@ -123,7 +123,7 @@ Height of the axis in pixels. **Already set by default**, but can be overridden 
 #### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
-### style (optional)
+#### style (optional)
 Type: `object`
 An object that contains CSS properties with which the axis component can be entirely re-styled.
 As the Axis component is composite, it is possible to style its different parts individually. See [style](style.md)

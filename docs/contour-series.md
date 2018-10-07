@@ -29,10 +29,10 @@ The ContourSeries expects a similar data input as would be fed to either the Mar
 
 ## API reference
 
-#### animation (optional)  
+#### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
-#### bandwidth (optional)  
+#### bandwidth (optional)
 A parameter that directly maps into d3-contour's bandwidth parameter. See the [docs for more](https://github.com/d3/d3-contour#density_bandwidth)
 
 #### className (optional)
@@ -43,7 +43,7 @@ Provide an additional class name for the series.
 Type: `Array<Object>`
 Array of data for the series. Follows the usual pattern of an array of objects formatted with x and y coordinates, [{x: 0, y: 0}, ...].
 
-### style
+#### style
 Type: `object`
 A list of CSS properties to style the series outside of the explicitly set properties. Note that it will override all other properties (ie fill, stroke, opacity, color). See [style](style.md)
 

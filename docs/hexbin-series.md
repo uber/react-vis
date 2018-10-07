@@ -35,7 +35,7 @@ Points are binned into hexagonal containers, which are then rendered as svg path
 
 ## API reference
 
-#### animation (optional)  
+#### animation (optional)
 Type: `Boolean`
 See the [Animation](animation.md)'s `animation` section for more information.
 
@@ -59,20 +59,20 @@ Array of data for the series. Follows the usual pattern of an array of objects f
 Type: `Number`
 The maximum size of the hexagon, specified in pixels.
 
-### style
+#### style
 Type: `object`
 A list of CSS properties to style the series outside of the explicitly set properties. These style elements are applied directly to each individual hexagon. Note that it will override all other properties (ie fill, stroke, opacity, color). See [style](style.md) for more information.
 
-### sizeHexagonsWithCount
+#### sizeHexagonsWithCount
 Type: `Boolean`
 Size the hexagons based on the number of values in side of the hexagon. Ranges between [0, <radius prop>].
 
-### xOffset (optional)
+#### xOffset (optional)
 Type: `Number`
 Default: 0
 Size of aggregation offset form base value, this enables fine tuning along the x axis.
 
-### yOffset (optional)
+#### yOffset (optional)
 Type: `Number`
 Default: 0
 Size of aggregation offset form base value, this enables fine tuning along the y axis.

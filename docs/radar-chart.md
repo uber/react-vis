@@ -72,7 +72,7 @@ Type: `Object`
 Default: `{left: 40, right: 10, top: 10, bottom: 40}`
 Margin around the chart.
 
-### style (optional)
+#### style (optional)
 Type: `object`
 An object that contains CSS properties with which the axis component can be entirely re-styled.
 As the RadarChart is composite of several composite elements, it is possible to provide style objects for any and all parts of the tree. See [style](style.md)

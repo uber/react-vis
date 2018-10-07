@@ -151,7 +151,7 @@ Margin around the chart.
 Type: `string`
 Stack the chart by the given attribute. If the attribute is `y`, the chart is stacked vertically; if the attribute is `x` then it's stacked horizontally. See the [Series](series.md) API reference for series level stack opt-in.
 
-### style (optional)
+#### style (optional)
 Type: `object`
 CSS properties that will affect this wrapper component. Those will be applied to the SVG element in which other react-vis components will be created.
 

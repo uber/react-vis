@@ -96,7 +96,7 @@ The color of a box in the series. By default the color is interpreted as number 
 
 ## Series API Reference
 
-#### animation (optional)  
+#### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
 #### color
@@ -123,7 +123,7 @@ The opacity for all elements in the series, this property will be over-ridden by
 Type: `string|number`
 The outer color for all elements in the series, this property will be over-ridden by color specified in the data attribute. See [colors](colors.md)
 
-### style
+#### style
 Type: `object`
 A list of CSS properties to style the series outside of the explicitly set properties. Note that it will override all other properties (ie fill, stroke, opacity, color). See [style](style.md)
 

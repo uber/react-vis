@@ -56,10 +56,10 @@ Number in degrees for the text to be rotated about its xy point.
 
 ## Series API Reference
 
-#### animation (optional)  
+#### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
-### allowOffsetToBeReversed (optional)
+#### allowOffsetToBeReversed (optional)
 The allows the offset specified on the data rows to flipped if the label is too close to an edge. This allows you to make sure your labels never get randomly clipped by going offscreen.
 
 #### className (optional)

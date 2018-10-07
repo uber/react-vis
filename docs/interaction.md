@@ -45,44 +45,44 @@ In all cases, onNearestX and onNearestXY can be implemented at the series level,
 
 ### XYPlot event handlers
 
-### onMouseDown
+#### onMouseDown
 Type: `function`
 Default: none
 This event handler is triggered whenever the mousebutton of the user is down while their mouse cursor is in the plot area. It passes a mouse event.
 
-### onMouseUp
+#### onMouseUp
 Type: `function`
 Default: none
 This event handler is triggered whenever the user release the mouse button while their mouse cursor is in the plot area. It passes a mouse event.
 
-### onMouseEnter
+#### onMouseEnter
 Type: `function`
 Default: none
 This event handler is triggered whenever the mouse of the user enters the plot area. It passes a mouse event.
 
-### onMouseLeave
+#### onMouseLeave
 Type: `function`
 Default: none
 This event handler is triggered whenever the mouse of the user exits the plot area. It passes a mouse event.
 
-### onMouseMove
+#### onMouseMove
 Type: `function`
 Default: none
 This event handler is triggered whenever the mouse of the user moves while in the plot area. It passes a mouse event.
 
-### onTouchStart
+#### onTouchStart
 Type: `function`
 The event handler is triggered whenever the finger of the user first touches the plot area. It passes a touch event.
 
-### onTouchMove
+#### onTouchMove
 Type: `function`
 This event handler is triggered whenever the finger of the user moves while in the plot area. It passes a touch event.
 
-### onTouchEnd
+#### onTouchEnd
 Type: `function`
 This event handler is triggered when a touch point of the user lifts off the plot area. It passes a touch event.
 
-### onTouchCancel
+#### onTouchCancel
 Type: `function`
 This event handler is triggered when a touch point of the user has been disrupted in an implementation-specific manner
 
