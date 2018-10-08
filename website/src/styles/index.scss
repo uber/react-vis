@@ -68,15 +68,16 @@
 
     h4,
     h5 {
-      display: block;
-      width: max-content;
-      width: -moz-max-content;
-      padding: 0.2em 0.6em;
       margin-top: 2em;
-      font-size: 1em;
+      font-size: 1.1em;
       line-height: 1.5em;
       font-weight: 600;
-      background: rgba(#00ADE6, 0.09);
+      text-decoration: underline;
+
+      & ~ ul code,
+      & ~ p code {
+        background: rgba(#00ADE6, 0.1);
+      }
 
       & ~ p,
       & ~ pre,
