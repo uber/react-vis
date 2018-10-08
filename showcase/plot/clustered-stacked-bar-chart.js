@@ -55,7 +55,7 @@ export default class Example extends React.Component {
           height={300}
         >
           <DiscreteColorLegend
-            style={{position: 'absolute', left: '40px', top: '0px'}}
+            style={{position: 'absolute', left: '50px', top: '10px'}}
             orientation="horizontal"
             items={[
               {
