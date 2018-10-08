@@ -137,7 +137,7 @@ test('Discrete Legends', t => {
       .find('.rv-discrete-color-legend')
       .first()
       .props().style,
-    {width: undefined, height: undefined, position: 'absolute', left: '50px', top: '10px' },
+    {width: undefined, height: undefined, position: 'absolute', left: '50px', top: '10px'},
     'discrete legend retains passed styles'
   );
 
@@ -175,5 +175,4 @@ test('Discrete Legends Showcase: HorizontalDiscreteCustomPalette', t => {
   t.end();
 });
 
-  const $ = mount(<ClusteredStackedVerticalBarChart />);
 
