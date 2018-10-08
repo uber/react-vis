@@ -70,7 +70,7 @@ const ORIENTATION = {
  */
 function defaultFormat(value) {
   return Object.keys(value).map(function getProp(key) {
-    return {title: key, value: value[key]};
+    return { title: key, value: Object.prototype.toString.call(value[key]) === '[object Date]' ? value[key].toDateString() : value[key] };
   });
 }
 
