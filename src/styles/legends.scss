@@ -27,11 +27,14 @@ $rv-legend-disabled-color: #b8b8b8;
 }
 
 .rv-discrete-color-legend-item__color {
-  background: #dcdcdc;
   display: inline-block;
-  height: 2px;
   vertical-align: middle;
-  width: 14px;
+  overflow: visible;
+}
+
+.rv-discrete-color-legend-item__color__path {
+  stroke: #dcdcdc;
+  stroke-width: 2px;
 }
 
 .rv-discrete-color-legend-item__title {
