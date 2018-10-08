@@ -45,6 +45,9 @@ function DiscreteColorLegend({
         <DiscreteColorLegendItem
           title={item.title ? item.title : item}
           color={item.color ? item.color : colors[i % colors.length]}
+          strokeDasharray={item.strokeDasharray}
+          strokeStyle={item.strokeStyle}
+          strokeWidth={item.strokeWidth}
           disabled={Boolean(item.disabled)}
           orientation={orientation}
           key={i}
