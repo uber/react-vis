@@ -86,80 +86,116 @@ Where `hoveredValue` is an appropriately curated coordinate value. See the [sunb
 ## API Reference
 
 #### width
-Type: `number`  
+
+Type: `number`
+
 Width of the component.
 
 #### height
-Type: `number`  
+
+Type: `number`
+
 Height of the component.
 
 #### data
-Type: `Object`  
-The data for the component. The `data` property is a tree-like structure.  
+
+Type: `Object`
+
+The data for the component. The `data` property is a tree-like structure.
 Each point consists of following properties:
 
-* `title`  
-  Type: `string`  
-  The title to show inside the cell. Might be a string or a React component.
-* `size`  
-  Type: `number`  
-  The relative size of the cell.
-* `color` (optional)  
-  Type: `number` or `string`
-  The value to visualize the color with.
-* `label` (optional)  
+* `title`
+
   Type: `string`
+
+  The title to show inside the cell. Might be a string or a React component.
+* `size`
+
+  Type: `number`
+
+  The relative size of the cell.
+* `color` (optional)
+
+  Type: `number` or `string`
+
+  The value to visualize the color with.
+* `label` (optional)
+
+  Type: `string`
+
   The label to be attached for the current node.
-* `labelStyle` (optional)  
+* `labelStyle` (optional)
+
   Type: `object`
+
   The style of the attached label. Example `{labelStyle: {fontSize: 15}, ...}`
-* `dontRotateLabel` (optional)  
+* `dontRotateLabel` (optional)
+
   Type: `boolean`
+
   Don't rotate this label
-* `children` (optional)  
-  Type: `Array`  
+* `children` (optional)
+
+  Type: `Array`
+
   The children for the leaf.
 
 <!-- INJECT:"SunburstWithTooltipsWithLink" -->
 
 #### hideRootNode (optional)
+
 Type: `boolean`
+
 Simple boolean on whether or not to show the root node of the tree.
 
 #### children (optional)
+
 Type: `react components`
+
 Sunburst can accept react components as children if you wish to annotate your diagram.
 
 #### animation (optional)
+
 Type: `boolean|Object`
+
 Please refer to [Animation](animation.md) doc for more information.
 
 <!-- INJECT:"AnimatedSunburstWithLink" -->
 
 #### onValueClick (optional)
+
 Type: `function`
+
 - Should accept arguments (arc node, domEvent)
 
 Pass in a function that will be called on click on a given arc.
 
 #### onValueRightClick (optional)
+
 Type: `function`
+
 - Should accept arguments (arc node, domEvent)
 
 Pass in a function that will be called on right click on a given arc.
 
 #### onValueMouseOver (optional)
+
 Type: `function`
+
 - Should accept arguments (arc node, domEvent)
 
 Pass in a function that will be called on mouseEnter on a given arc.
 
 #### onValueMouseOut (optional)
+
 Type: `function`
+
 - Should accept arguments (arc node, domEvent)
 
 Pass in a function that will be called on mouseOut on a given arc.
 
 #### padAngle (optional)
+
 Type: `number|function`
+
 The padding to be applied between arcs.

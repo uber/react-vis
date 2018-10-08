@@ -81,75 +81,109 @@ for more details.
 ## API Reference
 
 #### width
-Type: `number`  
+
+Type: `number`
+
 Width of the component.
 
 #### height
-Type: `number`  
+
+Type: `number`
+
 Height of the component.
 
 #### padding
-Type: `number`  
+
+Type: `number`
+
 The padding between cells the cells of the heatmap in pixels.
 
 #### data
-Type: `Object`  
-The data for the component. The `data` property is a tree-like structure.  
+
+Type: `Object`
+
+The data for the component. The `data` property is a tree-like structure.
 Each point consists of following properties:
 
-* `title`  
-  Type: `string`  
+* `title`
+
+  Type: `string`
+
   The title to show inside the cell. Might be a string or a React component.
-* `size`  
-  Type: `number`  
+* `size`
+
+  Type: `number`
+
   The relative size of the cell.
-* `opacity` (optional)  
-  Type: `number`  
+* `opacity` (optional)
+
+  Type: `number`
+
   The value to visualize the opacity with.
-* `color` (optional)  
+* `color` (optional)
+
   Type: `number` or `string`
+
   The value to visualize the color with.
-* `style` (optional)  
+* `style` (optional)
+
   Type: `object`
+
   style object to be added to the inline styles of the array
-* `children` (optional)  
-  Type: `Array`  
+* `children` (optional)
+
+  Type: `Array`
+
   The children for the leaf.
 
 #### animation (optional)
+
 Type: `boolean|Object`
+
 Please refer to [Animation](animation.md) doc for more information.
 
 #### hideRootNode (optional)
+
 Type: `boolean`
+
 Simple boolean on whether or not to show the root node of the tree.
 
 #### onLeafClick (optional)
+
 Type: `function`
+
 - Should accept arguments (leafNode, domEvent)
 
 Pass in a function that will be called on click on a given leaf.
 
 #### onLeafMouseOver (optional)
+
 Type: `function`
+
 - Should accept arguments (leafNode, domEvent)
 
 Pass in a function that will be called on mouseEnter on a given leaf.
 
 #### onLeafMouseOut (optional)
+
 Type: `function`
+
 - Should accept arguments (leafNode, domEvent)
 
 Pass in a function that will be called on mouseOut on a given leaf.
 
 #### mode (options)
+
 Type: `string`
+
 - One of squarify, resquarify, slice, dice, slicedice, binary, circlePack, partition, partition-pivot
 
 This modifies the tiling strategy for the treemap, for more information see the [d3 hierarchy docs](https://github.com/d3/d3-hierarchy).
 
 #### sortFunction (optional)
+
 Type: `function`
+
 - Should accept arguments (a, b)
 
 Pass in a function that will be used to sort the nodes, for more information see the [d3 hierarchy docs on sorting](https://github.com/d3/d3-hierarchy#node_sort).

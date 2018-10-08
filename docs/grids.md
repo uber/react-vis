@@ -16,35 +16,49 @@
 Currently both components have following properties:
 
 #### tickTotal (optional)
-Type: `number`  
+
+Type: `number`
+
 Total number of lines on the grid. Already set by default, depends on the size of the grid. Similar to the `tickTotal()` method of d3-axis.
 
 #### tickValues (optional)
-Type: `Array<*>`  
+
+Type: `Array<*>`
+
 An array of values (not coordinates!) that where the lines should be shown. Similar to the `tickValues()` method of d3-axis.
 
 #### left (optional)
-Type: `number`  
+
+Type: `number`
+
 Horizontal position of the grid lines in pixels. **Already set by default**, but can be overridden by the user.
 
 #### top (optional)
-Type: `number`  
+
+Type: `number`
+
 Vertical position of the grid lines in pixels. **Already set by default**, but can be overridden by the user.
 
 #### width (optional)
-Type: `number`  
+
+Type: `number`
+
 Width of the grid lines in pixels. **Already set by default**, but can be overridden by the user.
 
 #### height (optional)
-Type: `number`  
+
+Type: `number`
+
 Height of the grid lines in pixels. **Already set by default**, but can be overridden by the user.
 
 #### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
 #### style (optional)
+
 Type: `object`
-An CSS object that will style these gridlines. 
+
+An CSS object that will style these gridlines.
 
 ## Polar Grids
 
@@ -76,11 +90,15 @@ An CSS object that will style these gridlines.
 It can often be useful to specify the x and y domains on the surrounding XYPLot. CircularGridLines accepts all of the same props as the cartesian grids, but also accepts two more:
 
 #### centerX (optional)
+
 Type: `number`
+
 The left-right value in coordinates of where the circles should be centered.
 
 #### centerY (optional)
-Type: `number`  
+
+Type: `number`
+
 The top-bottom value in coordinates of where the circles should be centered.
 
 #### rRange (optional)
@@ -88,6 +106,8 @@ Type:[`number`, `number`]
 This allows users to specify the exact pixel range over which they wish their rings to appear.
 
 #### style (optional)
+
 Type: `object`
+
 An CSS object that will style these gridlines. See [style](style.md)
 
