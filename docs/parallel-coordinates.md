@@ -38,7 +38,9 @@ The ParallelCoordinates also features a stateful brushing mode in which your use
 
 ## API Reference
 #### data
+
 Type: `arrayOf(Objects)`
+
 Each object must have keys for each of the intended display domains (eg in the above example any input row should have at neatExplosions/wow/dog/sickMoves/nice). Additional a style prop can be provided on the row of the data itself to style the line series that it corresponds to, for instance here's one of the rows from the car example:
 
 ```javascript
@@ -61,7 +63,9 @@ It is not necessary to provide style, but it can be helpful!
 
 
 #### domains
+
 Type: `arrayOf(Objects)`
+
 The domains allow the user to specify the nature of the variables being plotted. This information is captured in an object formatted like:
 
 ```javascript
@@ -81,25 +85,37 @@ Let's looks at each member of the object
 - tickFormat: allows the user to provide a formatting function for prettifying the way that axis interpolates between the domain values.
 
 #### width
-Type: `number`  
+
+Type: `number`
+
 Width of the component.
 
 #### height
-Type: `number`  
+
+Type: `number`
+
 Height of the component.
 
 #### margin (optional)
-Type: `Object`  
+
+Type: `Object`
+
 Default: `{left: 40, right: 10, top: 10, bottom: 40}`
+
 Margin around the chart.
 
 #### brushing
+
 Type: `Boolean`
+
 Default: false
+
 Enable stateful brushing on parallel coordinates
 
-### style (optional)
+#### style (optional)
+
 Type: `object`
+
 An object that contains CSS properties with which the axis component can be entirely re-styled.
 As the ParallelCoordinates is composite of several composite elements, it is possible to provide style objects for any and all parts of the tree. See [style](style.md)
 Most generally, there are three top level components `axes`, `labels`, and `lines`. These in turn lead to their corresponding to style objects. As an example, here is the default style object for the ParallelCoordinates:
@@ -126,21 +142,31 @@ Most generally, there are three top level components `axes`, `labels`, and `line
 If you are using the stateful brushing mode and have filtered out a line then, in addition to the previous styles that were applied to a particular line, deselectedLineStyle will also be applied.
 
 #### animation (optional)
+
 Type: `boolean|Object`
+
 Please refer to [Animation](animation.md) doc for more information.
 
 #### className (optional)
+
 Type: `string`
+
 Provide an additional class name for the series.
 
 #### colorType (optional)
+
 Type: `string`
+
 Specify the type of color scale to be used on the parallel coordinates chart, please refer to [Scales and data](scales-and-data.md) for more information.
 
 #### showMarks (optional)
+
 Type: 'boolean'
+
 Specific whether or not to show the marks on the vertices of the lines
 
 #### tickFormat (optional)
+
 Type: 'function'
+
 Specify the tick format for all axes. Will be over-ridden by tickFormats specified on single domains.

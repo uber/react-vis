@@ -45,52 +45,78 @@ In all cases, onNearestX and onNearestXY can be implemented at the series level,
 
 ### XYPlot event handlers
 
-### onMouseDown
+#### onMouseDown
+
 Type: `function`
+
 Default: none
+
 This event handler is triggered whenever the mousebutton of the user is down while their mouse cursor is in the plot area. It passes a mouse event.
 
-### onMouseUp
+#### onMouseUp
+
 Type: `function`
+
 Default: none
+
 This event handler is triggered whenever the user release the mouse button while their mouse cursor is in the plot area. It passes a mouse event.
 
-### onMouseEnter
+#### onMouseEnter
+
 Type: `function`
+
 Default: none
+
 This event handler is triggered whenever the mouse of the user enters the plot area. It passes a mouse event.
 
-### onMouseLeave
+#### onMouseLeave
+
 Type: `function`
+
 Default: none
+
 This event handler is triggered whenever the mouse of the user exits the plot area. It passes a mouse event.
 
-### onMouseMove
+#### onMouseMove
+
 Type: `function`
+
 Default: none
+
 This event handler is triggered whenever the mouse of the user moves while in the plot area. It passes a mouse event.
 
-### onTouchStart
+#### onTouchStart
+
 Type: `function`
+
 The event handler is triggered whenever the finger of the user first touches the plot area. It passes a touch event.
 
-### onTouchMove
+#### onTouchMove
+
 Type: `function`
+
 This event handler is triggered whenever the finger of the user moves while in the plot area. It passes a touch event.
 
-### onTouchEnd
+#### onTouchEnd
+
 Type: `function`
+
 This event handler is triggered when a touch point of the user lifts off the plot area. It passes a touch event.
 
-### onTouchCancel
+#### onTouchCancel
+
 Type: `function`
+
 This event handler is triggered when a touch point of the user has been disrupted in an implementation-specific manner
 
 ### Series event handlers
 
 #### onNearestX
+
 Type: `function`
+
 Default: none
+
 This handler fires when the user moves their mouse somewhere on the plot. The handler fires a function that takes two argument: the datapoint with the x value closest to the cursor or touch point, and a second object containing: the `innerX` value (x coordinates of the cursor relative to the left of the plot), `index` (position of this datapoint in the dataset, where 0 is the first datapoint, 1 is the second, etc) plus the actual event as `event`.
 
 onNearestX is at the series level, not at the plot level. If you attach onNearestX to several series, each time the user moves their mouse or touch point, each onNearestX handler will be triggered once with the closest mark of each series.
@@ -105,8 +131,11 @@ onNearestX is at the series level, not at the plot level. If you attach onNeares
 ```
 
 #### onNearestXY
+
 Type: `function`
+
 Default: none
+
 This handler is nearly identical to `onNearestX`. The difference is that it will return datapoint corresponding to the mark closest to the cursor or touch point, not just the one with the closest x coordinate.
 
 onNearestXY will supersede onNearestX, so if both exist for the same series, only onNearestXY will be fired.
@@ -125,8 +154,11 @@ onNearestXY is at the series level, not at the plot level. If you attach onNeare
 ```
 
 #### onSeriesClick
+
 Type: `function`
+
 Default: none
+
 This handler fires when the user clicks somewhere on a series, and provides the corresponding event. Unlike onValueClick, it doesn't pass a specific datapoint.
 
 ```jsx
@@ -139,8 +171,11 @@ This handler fires when the user clicks somewhere on a series, and provides the 
 ```
 
 #### onSeriesRightClick
+
 Type: `function`
+
 Default: none
+
 This handler fires when the user right-clicks somewhere on a series, and provides the corresponding event. Unlike onValueRightClick, it doesn't pass a specific datapoint.
 
 ```jsx
@@ -154,8 +189,11 @@ This handler fires when the user right-clicks somewhere on a series, and provide
 
 
 #### onSeriesMouseOut
+
 Type: `function`
+
 Default: none
+
 This handler fires when the user's mouse cursor leaves a series, and provides the corresponding event. Unlike onValueMouseOut, it doesn't pass a specific datapoint.
 
 ```jsx
@@ -168,8 +206,11 @@ This handler fires when the user's mouse cursor leaves a series, and provides th
 ```
 
 #### onSeriesMouseOver
+
 Type: `function`
+
 Default: none
+
 This handler fires when the user mouses over a series, and provides the corresponding event. Unlike onMouseOver, it doesn't pass a specific datapoint.
 
 ```jsx
@@ -182,8 +223,11 @@ This handler fires when the user mouses over a series, and provides the correspo
 ```
 
 #### onValueClick
+
 Type: `function`
+
 Default: none
+
 This handler is triggered either when the user clicks on a mark.
 The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx
@@ -196,8 +240,11 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 ```
 
 #### onValueRightClick
+
 Type: `function`
+
 Default: none
+
 This handler is triggered either when the user right-clicks on a mark.
 The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx
@@ -210,8 +257,11 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 ```
 
 #### onValueMouseOut
+
 Type: `function`
+
 Default: none
+
 This handler is triggered either when the user's mouse leaves a mark.
 The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx
@@ -224,8 +274,11 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 ```
 
 #### onValueMouseOver
+
 Type: `function`
+
 Default: none
+
 This handler is triggered either when the user's mouse enters a mark.
 The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx

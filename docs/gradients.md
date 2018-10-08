@@ -34,5 +34,7 @@ This approach works with both types of gradients (Linear and circular gradients)
 ## Component API Reference
 
 #### className (optional)
+
 Type: `string`
+
 Provide an additional class name for the series.

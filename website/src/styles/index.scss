@@ -60,6 +60,43 @@
     display: none;
   }
 
+  &.markdown-body {
+    h2 + h4,
+    h2 + h5 {
+      margin-top: 0;
+    }
+
+    h4,
+    h5 {
+      margin-top: 2em;
+      font-size: 1.1em;
+      line-height: 1.5em;
+      font-weight: 600;
+      text-decoration: underline;
+
+      & ~ ul code,
+      & ~ p code {
+        background: rgba(#00ADE6, 0.1);
+      }
+
+      & ~ p,
+      & ~ pre,
+      & ~ ul {
+        margin-left: 2em;
+        font-size: 0.9em;
+        line-height: 1.5em;
+
+        @media (max-width: 400px) {
+          margin-left: 1em;
+        }
+
+        & + h2 {
+          margin-top: 2em;
+        }
+      }
+    }
+  }
+
   .Contributors.m-top {
     margin-top: 0;
 
