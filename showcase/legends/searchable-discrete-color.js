@@ -27,10 +27,10 @@ export default class Example extends React.Component {
     super(props);
     this.state = {
       items: [
-        {title: 'Apples', color: '#3a3'},
+        {title: 'Apples', color: '#3a3', strokeStyle: "dashed"},
         {title: 'Bananas', color: '#fc0'},
         {title: 'Blueberries', color: '#337'},
-        {title: 'Carrots', color: '#f93'},
+        {title: 'Carrots', color: '#f93', strokeWidth: 6},
         {title: 'Eggplants', color: '#337'},
         {title: 'Limes', color: '#cf3'},
         {title: 'Potatoes', color: '#766'}

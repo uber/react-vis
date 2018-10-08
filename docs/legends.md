@@ -18,8 +18,8 @@ Currently following types of legends are supported:
 <!-- INJECT:"VerticalDiscreteColorLegendExampleWithLink" -->
 
 #### items (required)
-Type: `Array<string|{title: string, color: String, disabled: boolean}|react element>`
-Array of items that should be shown on the legend. The array should consist from either objects (`title`, optional `color` and optional `disabled` flag) or strings (treated as titles).
+Type: `Array<string|{title: string, color: String, strokeDasharray: string, strokeStyle: string, strokeWidth: number, disabled: boolean}|react element>`
+Array of items that should be shown on the legend. The array should consist from either objects (`title`, optional `color`, optional `strokeDasharray`, optional `strokeStyle`, optional `strokeWidth`, and optional `disabled` flag) or strings (treated as titles). The stroke properties should match those in your series (see [line series](line-mark-series.md))
 
 #### orientation (optional)
 Type: `(vertical|horizontal)`
