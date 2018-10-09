@@ -27,7 +27,12 @@ const RADAR = [{
     name: 'Radar Chart with Tooltips',
     component: RadarChartWithTooltips,
     componentName: 'RadarChartWithTooltips'
-}];
+}, {
+    name: 'Radar Chart with Series Tooltips',
+    component: RadarChartSeriesTooltips,
+    componentName: 'RadarChartSeriesTooltips'
+  }
+];
 
 function RadarShowcase(props) {
   return (

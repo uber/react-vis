@@ -6,6 +6,7 @@ import BasicRadarChart from '../../showcase/radar-chart/basic-radar-chart';
 import AnimatedRadarChart from '../../showcase/radar-chart/animated-radar-chart';
 import FourQuadrantRadarChart from '../../showcase/radar-chart/four-quadrant-radar-chart';
 import RadarChartWithTooltips from '../../showcase/radar-chart/radar-chart-with-tooltips';
+import RadarChartSeriesTooltips from '../../showcase/radar-chart/radar-chart-series-tooltips';
 
 import {testRenderWithProps} from '../test-utils';
 
@@ -65,7 +66,7 @@ test('Radar: Showcase Example - Animated Radial ', t => {
   t.equal(
     $.find('.rv-radar-chart-polygon').length,
     1,
-    'should find the right number of axes'
+    'should find the right number of polygons'
   );
   t.equal(
     $.find('.rv-radar-chart').text(),
@@ -129,15 +130,66 @@ test('Radar: Showcase Example - Radar Chart with Tooltips', t => {
   const $ = mount(<RadarChartWithTooltips />);
   const chartText = 'mileagepricesafetyperformanceinteriorwarranty1234';
   t.equal($.find('.rv-radar-chart').length, 1, 'should find a radar chart');
-  t.equal($.find('.rv-xy-manipulable-axis__ticks').length, 6, 'should find the right number of axes');
-  t.equal($.find('.rv-radar-chart-polygon').length, 7, 'should find the right number of polygons');
-  t.equal($.find('.rv-radar-chart-polygonPoint').length, 7, 'should find the right number of polygon points');
-  t.equal($.find('.rv-xy-plot__series--custom-svg').length, 42, 'should find the right number of polygon points (axes * polygons)');
-  t.equal($.find('.rv-radar-chart').text(), chartText, 'should find the right text content');
+  t.equal(
+    $.find('.rv-xy-manipulable-axis__ticks').length,
+    6,
+    'should find the right number of axes'
+  );
+  t.equal(
+    $.find('.rv-radar-chart-polygon').length,
+    7,
+    'should find the right number of polygons'
+  );
+  t.equal(
+    $.find('.rv-radar-chart-polygonPoint').length,
+    7,
+    'should find the right number of polygon points'
+  );
+  t.equal(
+    $.find('.rv-radar-chart').text(),
+    chartText,
+    'should find the right text content'
+  );
 
   // Tooltips
-  const tooltipText = 'warranty: 4.5';
-  $.find('.rv-xy-plot__series--custom-svg').at(41).simulate('mouseOver');
+  const tooltipText = 'mileage: 3';
+  $.find('.rv-xy-plot__series .rv-xy-plot__series--mark .rv-radar-chart-polygonPoint')
+    .at(6) // last domain
+    .children().at(0) // first tooltip on that domain
+    .simulate('mouseOver');
   t.equal($.text(), chartText + tooltipText, 'should display tooltip text');
+  t.end();
+});
+
+test('Radar: Showcase Example - series tooltips', t => {
+  const $ = mount(<RadarChartSeriesTooltips />);
+  const chartText = '2.004.006.008.0010.0$4.8$7.6$10$13$166.007.008.009.0010.02.004.006.008.0010.01.402.804.205.607.008.406.805.203.602.00mileagepricesafetyperformanceinteriorwarranty';
+  t.equal($.find('.rv-radar-chart').length, 1, 'should find a radar chart');
+  t.equal(
+    $.find('.rv-xy-manipulable-axis__ticks').length,
+    6,
+    'should find the right number of axes'
+  );
+  t.equal(
+    $.find('.rv-radar-chart-polygon').length,
+    3,
+    'should find the right number of polygons'
+  );
+  t.equal(
+    $.find('.rv-radar-chart').text(),
+    chartText,
+    'should find the right text content'
+  );
+  t.equal(
+    $.find('.rv-xy-plot__series--custom-svg').length,
+    0,
+    'should find the right number of polygon points (0 because onMouseOver is not defined)'
+  );
+  $.find('.rv-radar-chart-polygon').at(0).simulate('mouseOver');
+  t.equal(
+    $.find('.rv-radar-chart').text(),
+    chartText + 'Mercedes',
+    'should find hover text for the series mouseOver'
+  );
   t.end();
 });

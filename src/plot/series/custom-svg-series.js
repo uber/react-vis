@@ -121,9 +121,7 @@ class CustomSVGSeries extends AbstractSeries {
       marginLeft,
       marginTop,
       style,
-      size,
-      onMouseOver,
-      onMouseOut
+      size
     } = this.props;
 
     if (!data || !innerWidth || !innerHeight) {
@@ -158,16 +156,8 @@ class CustomSVGSeries extends AbstractSeries {
           className="rv-xy-plot__series--custom-svg"
           key={`rv-xy-plot__series--custom-svg-${index}`}
           transform={`translate(${positionInPixels.x},${positionInPixels.y})`}
-          onMouseOver={() => {
-            if (onMouseOver) {
-              onMouseOver(seriesComponent);
-            }
-          }}
-          onMouseOut={() => {
-            if (onMouseOut) {
-              onMouseOut(seriesComponent);
-            }
-          }}
+          onMouseEnter={e => this._valueMouseOverHandler(seriesComponent, e)}
+          onMouseLeave={e => this._valueMouseOutHandler(seriesComponent, e)}
         >
           {innerComponent}
         </g>
@@ -198,8 +188,8 @@ CustomSVGSeries.propTypes = {
   marginTop: PropTypes.number,
   style: PropTypes.object,
   size: PropTypes.number,
-  onMouseOver: PropTypes.func,
-  onMouseOut: PropTypes.func
+  onValueMouseOver: PropTypes.func,
+  onValueMouseOut: PropTypes.func
 };
 
 CustomSVGSeries.defaultProps = {

@@ -27,8 +27,8 @@ import {AnimationPropType} from 'animation';
 import XYPlot from 'plot/xy-plot';
 import {DISCRETE_COLOR_RANGE} from 'theme';
 import {MarginPropType} from 'utils/chart-utils';
-import PolygonSeries from 'plot/series/polygon-series';
 import MarkSeries from 'plot/series/mark-series';
+import PolygonSeries from 'plot/series/polygon-series';
 import LabelSeries from 'plot/series/label-series';
 import DecorativeAxis from 'plot/axis/decorative-axis';
 
@@ -138,7 +138,7 @@ function getLabels(props) {
  * @return {Array} the plotted axis components
  */
 function getPolygons(props) {
-  const {animation, colorRange, domains, data, style, startingAngle} = props;
+  const {animation, colorRange, domains, data, style, startingAngle, onSeriesMouseOver, onSeriesMouseOut} = props;
   const scales = domains.reduce((acc, {domain, name}) => {
     acc[name] = scaleLinear().domain(domain).range([0, 1]);
     return acc;
@@ -148,10 +148,10 @@ function getPolygons(props) {
     const mappedData = domains.map(({name, getValue}, index) => {
       const dataPoint = getValue ? getValue(row) : row[name];
       // error handling if point doesn't exist
-      const angle = index / domains.length * Math.PI * 2 + startingAngle;
+      const angle = (index / domains.length) * Math.PI * 2 + startingAngle;
       // dont let the radius become negative
       const radius = Math.max(scales[name](dataPoint), 0);
-      return {x: radius * Math.cos(angle), y: radius * Math.sin(angle)};
+      return {x: radius * Math.cos(angle), y: radius * Math.sin(angle), name: row.name};
     });
 
     return (
@@ -167,6 +167,8 @@ function getPolygons(props) {
             row.color || row.fill || colorRange[rowIndex % colorRange.length],
           ...style.polygons
         }}
+        onSeriesMouseOver={onSeriesMouseOver}
+        onSeriesMouseOut={onSeriesMouseOut}
       />
     );
   });
@@ -219,21 +221,37 @@ function getPolygonPoints(props) {
     };
   });
 
-  return (
-    <MarkSeries
-      animation={animation}
-      className={`${predefinedClassName}-polygonPoint`}
-      key={`${rowIndex}-polygonPoint`}
-      data={mappedData}
-      size={10}
-      style={{
-        ...style.polygons,
-        fill: 'transparent',
-        stroke: 'transparent'
-      }}
-      onValueMouseOver={onValueMouseOver}
-      onValueMouseOut={onValueMouseOut}
-    />
+  return data.map((row, rowIndex) => {
+    const mappedData = domains.map(({name, getValue}, index) => {
+      const dataPoint = getValue ? getValue(row) : row[name];
+      // error handling if point doesn't exist
+      const angle = (index / domains.length) * Math.PI * 2 + startingAngle;
+      // dont let the radius become negative
+      const radius = Math.max(scales[name](dataPoint), 0);
+      return {
+        x: radius * Math.cos(angle),
+        y: radius * Math.sin(angle),
+        domain: name,
+        value: dataPoint,
+        dataName: row.name
+      };
+    });
+
+    return (
+      <MarkSeries
+        animation={animation}
+        className={`${predefinedClassName}-polygonPoint`}
+        key={`${rowIndex}-polygonPoint`}
+        data={mappedData}
+        size={10}
+        style={{
+          ...style.polygons,
+          fill: 'transparent',
+          stroke: 'transparent'
+        }}
+        onValueMouseOver={onValueMouseOver}
+        onValueMouseOut={onValueMouseOut}
+      />
     );
   });
 }
@@ -275,7 +293,9 @@ const polygons = getPolygons({
   domains,
   data,
   startingAngle,
-  style
+  style,
+  onSeriesMouseOver,
+  onSeriesMouseOut
 });
 
 const polygonPoints = getPolygonPoints({
@@ -349,7 +369,9 @@ RadarChart.propTypes = {
   width: PropTypes.number.isRequired,
   renderAxesOverPolygons: PropTypes.bool,
   onValueMouseOver: PropTypes.func,
-  onValueMouseOut: PropTypes.func
+  onValueMouseOut: PropTypes.func,
+  onSeriesMouseOver: PropTypes.func,
+  onSeriesMouseOut: PropTypes.func
 };
 RadarChart.defaultProps = {
   className: '',

@@ -75,11 +75,20 @@ test('CustomSVGSeries: Showcase Example - CustomSVGRootLevelComponent', t => {
 });
 
 test('CustomSVGSeries: Showcase Example - CustomSVGAllTheMarks', t => {
+  const textContent = 'REVERSE0123402468101214';
   const $ = mount(<CustomSVGAllTheMarks />);
   t.equal(
     $.text(),
-    'REVERSE0123402468101214',
+    textContent,
     'should fine the right text content'
+  );
+  $.find('.rv-xy-plot__series--custom-svg')
+    .at(0)
+    .simulate('mouseEnter');
+  t.equal(
+    $.text(),
+    textContent + 'star',
+    'should fine the right text content on hover'
   );
   t.equal(
     $.find('.rv-xy-plot__series--custom-svg').length,
