@@ -34,7 +34,7 @@ function defaultTitleFormat(values) {
   if (value) {
     return {
       title: 'x',
-      value: value.x
+      value: Object.prototype.toString.call(value.x) === '[object Date]' ? value.x.toDateString() : value.x
     };
   }
 }
