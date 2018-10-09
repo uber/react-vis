@@ -8,6 +8,7 @@ import HorizontalDiscreteLegend from '../../showcase/legends/horizontal-discrete
 import VerticalDiscreteLegend from '../../showcase/legends/vertical-discrete-color';
 import SearchableDiscreteLegend from '../../showcase/legends/searchable-discrete-color';
 import HorizontalDiscreteCustomPalette from '../../showcase/legends/horizontal-discrete-custom-palette';
+import ClusteredStackedVerticalBarChart from '../../showcase/plot/clustered-stacked-bar-chart';
 
 test('Discrete Legend has no clickable className while onItemClick is not passing', t => {
   const withOnClick$ = mount(<VerticalDiscreteLegend />);
@@ -144,6 +145,16 @@ test('Discrete Legends', t => {
     'before clicking, should find no items disabled'
   );
 
+
+  t.deepEqual(
+    mount(<ClusteredStackedVerticalBarChart />)
+      .find('.rv-discrete-color-legend')
+      .first()
+      .props().style,
+    {width: undefined, height: undefined, position: 'absolute', left: '50px', top: '10px'},
+    'discrete legend retains passed styles'
+  );
+
   t.end();
 });
 
@@ -177,3 +188,5 @@ test('Discrete Legends Showcase: HorizontalDiscreteCustomPalette', t => {
 
   t.end();
 });
+
+

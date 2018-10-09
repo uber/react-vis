@@ -34,12 +34,13 @@ function DiscreteColorLegend({
   onItemMouseEnter,
   onItemMouseLeave,
   orientation,
+  style,
   width
 }) {
   return (
     <div
       className={`rv-discrete-color-legend ${orientation} ${className}`}
-      style={{width, height}}
+      style={{width, height, ...style}}
     >
       {items.map((item, i) => (
         <DiscreteColorLegendItem
