@@ -219,8 +219,8 @@ class AbstractSeries extends PureComponent {
       return;
     }
     onNearestXY(value, {
-      innerX: foundPoint.x,
-      innerY: foundPoint.y,
+      innerX: foundPoint[0],
+      innerY: foundPoint[1],
       index: foundPoint.index,
       event: event.nativeEvent
     });
