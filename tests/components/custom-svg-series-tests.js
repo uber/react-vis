@@ -76,6 +76,8 @@ test('CustomSVGSeries: Showcase Example - CustomSVGRootLevelComponent', t => {
 
 test('CustomSVGSeries: Showcase Example - CustomSVGAllTheMarks', t => {
   const textContent = 'REVERSE0123402468101214';
+  const hoverText = 'star';
+
   const $ = mount(<CustomSVGAllTheMarks />);
   t.equal(
     $.text(),
@@ -87,7 +89,7 @@ test('CustomSVGSeries: Showcase Example - CustomSVGAllTheMarks', t => {
     .simulate('mouseEnter');
   t.equal(
     $.text(),
-    textContent + 'star',
+    `${textContent}${hoverText}`,
     'should fine the right text content on hover'
   );
   t.equal(

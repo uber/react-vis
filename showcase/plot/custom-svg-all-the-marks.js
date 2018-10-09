@@ -84,7 +84,7 @@ export default class Example extends React.Component {
             style={{stroke: 'red', fill: 'orange'}}
             data={reverse ? REVERSED_DATA : DATA}
             onValueMouseOver={ v => {
-              this.setState({ hoveredCell: v});
+              this.setState({hoveredCell: v});
             }}
             onValueMouseOut={v => this.setState({hoveredCell: false})}
           />
