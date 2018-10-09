@@ -45,3 +45,12 @@ export function addValueToArray(arr, value) {
   }
   return result;
 }
+
+/**
+ * Transforms a value ( number or date ) to a string.
+ * @param {Date | number} value The value as date or number.
+ * @returns {string | number} The value as string.
+ */
+export function transformValueToString(value) {
+  return Object.prototype.toString.call(value) === '[object Date]' ? value.toDateString() : value;
+}

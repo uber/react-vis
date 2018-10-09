@@ -22,6 +22,8 @@ import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 
+import {transformValueToString} from 'utils/data-utils';
+
 import {getAttributeFunctor} from 'utils/scales-utils';
 
 /**
@@ -34,7 +36,7 @@ function defaultTitleFormat(values) {
   if (value) {
     return {
       title: 'x',
-      value: value.x
+      value: transformValueToString(value.x)
     };
   }
 }
@@ -62,28 +64,11 @@ function getFirstNonEmptyValue(values) {
 }
 
 class Crosshair extends PureComponent {
-  static get defaultProps() {
-    return {
-      titleFormat: defaultTitleFormat,
-      itemsFormat: defaultItemsFormat,
-      style: {
-        line: {},
-        title: {},
-        box: {}
-      }
-    };
-  }
 
   static get propTypes() {
     return {
       className: PropTypes.string,
-      values: PropTypes.arrayOf(
-        PropTypes.oneOfType([
-          PropTypes.number,
-          PropTypes.string,
-          PropTypes.object
-        ])
-      ),
+      values: PropTypes.array,
       series: PropTypes.object,
       innerWidth: PropTypes.number,
       innerHeight: PropTypes.number,
@@ -98,6 +83,38 @@ class Crosshair extends PureComponent {
         box: PropTypes.object
       })
     };
+  }
+
+  static get defaultProps() {
+    return {
+      titleFormat: defaultTitleFormat,
+      itemsFormat: defaultItemsFormat,
+      style: {
+        line: {},
+        title: {},
+        box: {}
+      }
+    };
+  }
+
+  /**
+   * Render crosshair title.
+   * @returns {*} Container with the crosshair title.
+   * @private
+   */
+  _renderCrosshairTitle() {
+    const {values, titleFormat, style} = this.props;
+    const titleItem = titleFormat(values);
+    if (!titleItem) {
+      return null;
+    }
+    return (
+      <div className="rv-crosshair__title" key="title" style={style.title}>
+        <span className="rv-crosshair__title__title">{titleItem.title}</span>
+        {': '}
+        <span className="rv-crosshair__title__value">{titleItem.value}</span>
+      </div>
+    );
   }
 
   /**
@@ -122,26 +139,6 @@ class Crosshair extends PureComponent {
     });
   }
 
-  /**
-   * Render crosshair title.
-   * @returns {*} Container with the crosshair title.
-   * @private
-   */
-  _renderCrosshairTitle() {
-    const {values, titleFormat, style} = this.props;
-    const titleItem = titleFormat(values);
-    if (!titleItem) {
-      return null;
-    }
-    return (
-      <div className="rv-crosshair__title" key="title" style={style.title}>
-        <span className="rv-crosshair__title__title">{titleItem.title}</span>
-        {': '}
-        <span className="rv-crosshair__title__value">{titleItem.value}</span>
-      </div>
-    );
-  }
-
   render() {
     const {
       children,
@@ -151,8 +148,7 @@ class Crosshair extends PureComponent {
       marginLeft,
       innerWidth,
       innerHeight,
-      style
-    } = this.props;
+      style} = this.props;
     const value = getFirstNonEmptyValue(values);
     if (!value) {
       return null;
@@ -160,34 +156,31 @@ class Crosshair extends PureComponent {
     const x = getAttributeFunctor(this.props, 'x');
     const innerLeft = x(value);
 
-    const {
-      orientation = innerLeft > innerWidth / 2 ? 'left' : 'right'
-    } = this.props;
+    const {orientation = (innerLeft > innerWidth / 2) ? 'left' : 'right'} = this.props;
     const left = marginLeft + innerLeft;
     const top = marginTop;
-    const innerClassName = `rv-crosshair__inner rv-crosshair__inner--${orientation}`;
+    const innerClassName =
+      `rv-crosshair__inner rv-crosshair__inner--${orientation}`;
 
     return (
       <div
         className={`rv-crosshair ${className}`}
-        style={{left: `${left}px`, top: `${top}px`}}
-      >
+        style={{left: `${left}px`, top: `${top}px`}}>
+
         <div
           className="rv-crosshair__line"
-          style={{height: `${innerHeight}px`, ...style.line}}
-        />
+          style={{height: `${innerHeight}px`, ...style.line}}/>
 
         <div className={innerClassName}>
-          {children ? (
-            children
-          ) : (
+          {children ?
+            children :
             <div className="rv-crosshair__inner__content" style={style.box}>
               <div>
                 {this._renderCrosshairTitle()}
                 {this._renderCrosshairItems()}
               </div>
             </div>
-          )}
+          }
         </div>
       </div>
     );
