@@ -1,3 +1,6 @@
+import Chance from 'chance';
+
+const chance = new Chance(process.env.STORYBOOK_CHANCE_SEED || Math.random());
 const data = {};
 const DEC23 = 1513987200000;
 const DAY_IN_MS = 86400000;
@@ -21,8 +24,8 @@ export function generateLinearData({
         datapoint: {
           x: i + 1,
           y:
-            series[i].y * (1 + (Math.random() - 0.5) * changeRatio) +
-            (Math.random() - 0.5) * randomFactor
+            series[i].y * (1 + (chance.random() - 0.5) * changeRatio) +
+            (chance.random() - 0.5) * randomFactor
         },
         nbPoints,
         series,
@@ -83,16 +86,16 @@ export function nonUniformX() {
     if (!i) {
       return x;
     }
-    return series[i].x + Math.random() + Math.random() + Math.random();
+    return series[i].x + chance.random() + chance.random() + chance.random();
   };
 }
 
 export function random({max = 1, min = 0}) {
-  return () => min + Math.random() * (max - min);
+  return () => min + chance.random() * (max - min);
 }
 
 export function intRandom({max = 10, min = 0}) {
-  return () => Math.floor(min + Math.random() * (max - min));
+  return () => Math.floor(min + chance.random() * (max - min));
 }
 
 export function getTime({startTime = DEC23}) {
