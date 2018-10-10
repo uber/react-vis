@@ -9,8 +9,10 @@
   "jsnext:main": "es",
   "files": [
     "dist",
-    "es"
+    "es",
+    "index.d.ts"
   ],
+  "typings": "./index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/uber-common/react-vis.git"
@@ -21,10 +23,10 @@
   },
   "scripts": {
     "docs": "./publish-docs.sh",
-    "clean": "rm -rf dist es bundle.* index.html && mkdir dist es",
+    "clean": "rm -rf dist es bundle.* index.html index.d.ts && mkdir dist es",
     "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
     "build:browser": "browserify src/index.js -t [ babelify ] --standalone reactVis | uglifyjs > dist/dist.min.js",
-    "build": "npm run clean && babel src -d dist --copy-files && BABEL_ENV=es babel src -d es --copy-files && node-sass src/main.scss dist/style.css --output-style compressed && npm run build:browser",
+    "build": "npm run clean && babel src -d dist --copy-files && BABEL_ENV=es babel src -d es --copy-files && node-sass src/main.scss dist/style.css --output-style compressed && npm run build:browser && npm run generate-types",
     "lint": "eslint src tests showcase docs --ignore-pattern node_modules --ignore-pattern bundle.js",
     "lint-styles": "stylelint src/styles/*.scss --syntax scss",
     "test:windows": "babel-node --inspect ./tests/index.js",
@@ -32,7 +34,8 @@
     "full-test": "npm run lint && npm run cover",
     "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test",
     "prettier": "prettier --write $(git ls-files | grep '.js$')",
-    "remove-unpm-rfs": "./remove-refs-to-unpm.pl"
+    "remove-unpm-rfs": "./remove-refs-to-unpm.pl",
+    "generate-types": "cd typegen && npm install && npm run generate-types && npm run generate-modules"
   },
   "dependencies": {
     "d3-array": "^1.2.0",

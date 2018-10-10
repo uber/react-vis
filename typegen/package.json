@@ -1,0 +1,15 @@
+{
+  "name": "typegen",
+  "version": "1.0.0",
+  "description": "Generates TypeScript definition file",
+  "main": "generate-types.js",
+  "scripts": {
+    "generate-types": "node generate-types.js",
+    "generate-modules": "node generate-modules.js"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "prop-types-to-dts": "^0.3.2"
+  }
+}
