@@ -49,6 +49,12 @@ The way to align the hint inside the chart. Within the object, specify the horiz
 
 <!-- INJECT:"DynamicSimpleTopEdgeHintsWithLink" -->
 
+#### className (optional)
+
+Type: `String`
+
+A class name to apply to the hint container.
+
 #### style (optional)
 
 Type: `Object`
