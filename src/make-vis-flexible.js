@@ -113,14 +113,13 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
         height: 0,
         width: 0
       };
-      this._onResize = this._onResize.bind(this);
     }
 
     /**
      * Get the width of the container and assign the width.
      * @private
      */
-    _onResize() {
+    _onResize = () => {
       const containerElement = getDOMNode(this[CONTAINER_REF]);
       const {offsetHeight, offsetWidth} = containerElement;
 
@@ -134,7 +133,7 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
         ...newHeight,
         ...newWidth
       });
-    }
+    };
 
     componentDidMount() {
       this._onResize();
