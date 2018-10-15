@@ -133,18 +133,6 @@ class XYPlot extends React.Component {
 
   constructor(props) {
     super(props);
-    this._clickHandler = this._clickHandler.bind(this);
-    this._doubleClickHandler = this._doubleClickHandler.bind(this);
-    this._mouseDownHandler = this._mouseDownHandler.bind(this);
-    this._mouseUpHandler = this._mouseUpHandler.bind(this);
-    this._mouseLeaveHandler = this._mouseLeaveHandler.bind(this);
-    this._mouseEnterHandler = this._mouseEnterHandler.bind(this);
-    this._mouseMoveHandler = this._mouseMoveHandler.bind(this);
-    this._touchStartHandler = this._touchStartHandler.bind(this);
-    this._touchMoveHandler = this._touchMoveHandler.bind(this);
-    this._touchEndHandler = this._touchEndHandler.bind(this);
-    this._touchCancelHandler = this._touchCancelHandler.bind(this);
-    this._wheelHandler = this._wheelHandler.bind(this);
     const {stackBy} = props;
     const children = getSeriesChildren(props.children);
     const data = getStackedData(children, stackBy);
@@ -178,24 +166,24 @@ class XYPlot extends React.Component {
    * @param {React.SyntheticEvent} event Click event.
    * @private
    */
-  _clickHandler(event) {
+  _clickHandler = event => {
     const {onClick} = this.props;
     if (onClick) {
       onClick(event);
     }
-  }
+  };
 
   /**
    * Trigger doule-click related callbacks if they are available.
    * @param {React.SyntheticEvent} event Double-click event.
    * @private
    */
-  _doubleClickHandler(event) {
+  _doubleClickHandler = event => {
     const {onDoubleClick} = this.props;
     if (onDoubleClick) {
       onDoubleClick(event);
     }
-  }
+  };
 
   /**
    * Prepare the child components (including series) for rendering.
@@ -345,7 +333,7 @@ class XYPlot extends React.Component {
    * @param {React.SyntheticEvent} event Mouse down event.
    * @private
    */
-  _mouseDownHandler(event) {
+  _mouseDownHandler = event => {
     const {onMouseDown, children} = this.props;
     if (onMouseDown) {
       onMouseDown(event);
@@ -357,14 +345,14 @@ class XYPlot extends React.Component {
         component.onParentMouseDown(event);
       }
     });
-  }
+  };
 
   /**
    * Trigger onMouseEnter handler if it was passed in props.
    * @param {React.SyntheticEvent} event Mouse enter event.
    * @private
    */
-  _mouseEnterHandler(event) {
+  _mouseEnterHandler = event => {
     const {onMouseEnter, children} = this.props;
     if (onMouseEnter) {
       onMouseEnter(event);
@@ -376,14 +364,14 @@ class XYPlot extends React.Component {
         component.onParentMouseEnter(event);
       }
     });
-  }
+  };
 
   /**
    * Trigger onMouseLeave handler if it was passed in props.
    * @param {React.SyntheticEvent} event Mouse leave event.
    * @private
    */
-  _mouseLeaveHandler(event) {
+  _mouseLeaveHandler = event => {
     const {onMouseLeave, children} = this.props;
     if (onMouseLeave) {
       onMouseLeave(event);
@@ -395,14 +383,14 @@ class XYPlot extends React.Component {
         component.onParentMouseLeave(event);
       }
     });
-  }
+  };
 
   /**
    * Trigger movement-related callbacks if they are available.
    * @param {React.SyntheticEvent} event Mouse move event.
    * @private
    */
-  _mouseMoveHandler(event) {
+  _mouseMoveHandler = event => {
     const {onMouseMove, children} = this.props;
     if (onMouseMove) {
       onMouseMove(event);
@@ -414,14 +402,14 @@ class XYPlot extends React.Component {
         component.onParentMouseMove(event);
       }
     });
-  }
+  };
 
   /**
    * Trigger mouse-up related callbacks if they are available.
    * @param {React.SyntheticEvent} event Mouse up event.
    * @private
    */
-  _mouseUpHandler(event) {
+  _mouseUpHandler = event => {
     const {onMouseUp, children} = this.props;
     if (onMouseUp) {
       onMouseUp(event);
@@ -433,38 +421,38 @@ class XYPlot extends React.Component {
         component.onParentMouseUp(event);
       }
     });
-  }
+  };
 
   /**
    * Trigger onTouchCancel handler if it was passed in props.
    * @param {React.SyntheticEvent} event Touch Cancel event.
    * @private
    */
-  _touchCancelHandler(event) {
+  _touchCancelHandler = event => {
     const {onTouchCancel} = this.props;
     if (onTouchCancel) {
       onTouchCancel(event);
     }
-  }
+  };
 
   /**
    * Trigger onTouchEnd handler if it was passed in props.
    * @param {React.SyntheticEvent} event Touch End event.
    * @private
    */
-  _touchEndHandler(event) {
+  _touchEndHandler = event => {
     const {onTouchEnd} = this.props;
     if (onTouchEnd) {
       onTouchEnd(event);
     }
-  }
+  };
 
   /**
    * Trigger touch movement-related callbacks if they are available.
    * @param {React.SyntheticEvent} event Touch move event.
    * @private
    */
-  _touchMoveHandler(event) {
+  _touchMoveHandler = event => {
     const {onTouchMove, children} = this.props;
     if (onTouchMove) {
       onTouchMove(event);
@@ -476,14 +464,14 @@ class XYPlot extends React.Component {
         component.onParentTouchMove(event);
       }
     });
-  }
+  };
 
   /**
    * Trigger touch-start related callbacks if they are available.
    * @param {React.SyntheticEvent} event Touch start event.
    * @private
    */
-  _touchStartHandler(event) {
+  _touchStartHandler = event => {
     const {onTouchStart, children} = this.props;
     if (onTouchStart) {
       onTouchStart(event);
@@ -495,19 +483,19 @@ class XYPlot extends React.Component {
         component.onParentTouchStart(event);
       }
     });
-  }
+  };
 
   /**
    * Trigger doule-click related callbacks if they are available.
    * @param {React.SyntheticEvent} event Double-click event.
    * @private
    */
-  _wheelHandler(event) {
+  _wheelHandler = event => {
     const {onWheel} = this.props;
     if (onWheel) {
       onWheel(event);
     }
-  }
+  };
 
   renderCanvasComponents(components, props) {
     const componentsToRender = components.filter(

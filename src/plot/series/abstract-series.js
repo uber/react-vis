@@ -80,18 +80,6 @@ class AbstractSeries extends PureComponent {
     return true;
   }
 
-  constructor(props) {
-    super(props);
-    this._seriesMouseOverHandler = this._seriesMouseOverHandler.bind(this);
-    this._valueMouseOverHandler = this._valueMouseOverHandler.bind(this);
-    this._seriesMouseOutHandler = this._seriesMouseOutHandler.bind(this);
-    this._valueMouseOutHandler = this._valueMouseOutHandler.bind(this);
-    this._seriesClickHandler = this._seriesClickHandler.bind(this);
-    this._valueClickHandler = this._valueClickHandler.bind(this);
-    this._seriesRightClickHandler = this._seriesRightClickHandler.bind(this);
-    this._valueRightClickHandler = this._valueRightClickHandler.bind(this);
-  }
-
   onParentMouseMove(event) {
     const {onNearestX, onNearestXY, data} = this.props;
     if ((!onNearestX && !onNearestXY) || !data) {
@@ -231,48 +219,48 @@ class AbstractSeries extends PureComponent {
    * @param {Object} event Event.
    * @protected
    */
-  _seriesClickHandler(event) {
+  _seriesClickHandler = event => {
     const {onSeriesClick} = this.props;
     if (onSeriesClick) {
       onSeriesClick({event});
     }
-  }
+  };
 
   /**
    * Mouse out handler for the entire series.
    * @param {Object} event Event.
    * @protected
    */
-  _seriesMouseOutHandler(event) {
+  _seriesMouseOutHandler = event => {
     const {onSeriesMouseOut} = this.props;
     if (onSeriesMouseOut) {
       onSeriesMouseOut({event});
     }
-  }
+  };
 
   /**
    * Mouse over handler for the entire series.
    * @param {Object} event Event.
    * @protected
    */
-  _seriesMouseOverHandler(event) {
+  _seriesMouseOverHandler = event => {
     const {onSeriesMouseOver} = this.props;
     if (onSeriesMouseOver) {
       onSeriesMouseOver({event});
     }
-  }
+  };
 
   /**
    * Right Click handler for the entire series.
    * @param {Object} event Event.
    * @protected
    */
-  _seriesRightClickHandler(event) {
+  _seriesRightClickHandler = event => {
     const {onSeriesRightClick} = this.props;
     if (onSeriesRightClick) {
       onSeriesRightClick({event});
     }
-  }
+  };
 
   /**
    * Click handler for the specific series' value.
@@ -280,7 +268,7 @@ class AbstractSeries extends PureComponent {
    * @param {Object} event Event.
    * @protected
    */
-  _valueClickHandler(d, event) {
+  _valueClickHandler = (d, event) => {
     const {onValueClick, onSeriesClick} = this.props;
     if (onValueClick) {
       onValueClick(d, {event});
@@ -288,7 +276,7 @@ class AbstractSeries extends PureComponent {
     if (onSeriesClick) {
       onSeriesClick({event});
     }
-  }
+  };
 
   /**
    * Mouse out handler for the specific series' value.
@@ -296,7 +284,7 @@ class AbstractSeries extends PureComponent {
    * @param {Object} event Event.
    * @protected
    */
-  _valueMouseOutHandler(d, event) {
+  _valueMouseOutHandler = (d, event) => {
     const {onValueMouseOut, onSeriesMouseOut} = this.props;
     if (onValueMouseOut) {
       onValueMouseOut(d, {event});
@@ -304,7 +292,7 @@ class AbstractSeries extends PureComponent {
     if (onSeriesMouseOut) {
       onSeriesMouseOut({event});
     }
-  }
+  };
 
   /**
    * Mouse over handler for the specific series' value.
@@ -312,7 +300,7 @@ class AbstractSeries extends PureComponent {
    * @param {Object} event Event.
    * @protected
    */
-  _valueMouseOverHandler(d, event) {
+  _valueMouseOverHandler = (d, event) => {
     const {onValueMouseOver, onSeriesMouseOver} = this.props;
     if (onValueMouseOver) {
       onValueMouseOver(d, {event});
@@ -320,7 +308,7 @@ class AbstractSeries extends PureComponent {
     if (onSeriesMouseOver) {
       onSeriesMouseOver({event});
     }
-  }
+  };
 
   /**
    * Right Click handler for the specific series' value.
@@ -328,7 +316,7 @@ class AbstractSeries extends PureComponent {
    * @param {Object} event Event.
    * @protected
    */
-  _valueRightClickHandler(d, event) {
+  _valueRightClickHandler = (d, event) => {
     const {onValueRightClick, onSeriesRightClick} = this.props;
     if (onValueRightClick) {
       onValueRightClick(d, {event});
@@ -336,7 +324,7 @@ class AbstractSeries extends PureComponent {
     if (onSeriesRightClick) {
       onSeriesRightClick({event});
     }
-  }
+  };
 }
 
 AbstractSeries.displayName = 'AbstractSeries';
