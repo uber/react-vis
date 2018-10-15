@@ -73,16 +73,22 @@ export default class Example extends React.Component {
         }
       ]
     };
+    this._nearestXHandler = this._nearestXHandler.bind(this);
+    this._mouseLeaveHandler = this._mouseLeaveHandler.bind(this);
+    this._updateButtonClicked = this._updateButtonClicked.bind(this);
+    this._legendClickHandler = this._legendClickHandler.bind(this);
+    this._formatCrosshairItems = this._formatCrosshairItems.bind(this);
+    this._formatCrosshairTitle = this._formatCrosshairTitle.bind(this);
   }
 
-  _updateButtonClicked = () => {
+  _updateButtonClicked() {
     const {series} = this.state;
     const totalValues = Math.random() * 50;
     series.forEach(s => {
       s.data = getRandomSeriesData(totalValues);
     });
     this.setState({series});
-  };
+  }
 
   /**
    * Event handler for onNearestX.
@@ -90,20 +96,20 @@ export default class Example extends React.Component {
    * @param {number} index Index of the series.
    * @private
    */
-  _nearestXHandler = (value, {index}) => {
+  _nearestXHandler(value, {index}) {
     const {series} = this.state;
     this.setState({
       crosshairValues: series.map(s => s.data[index])
     });
-  };
+  }
 
   /**
    * Event handler for onMouseLeave.
    * @private
    */
-  _mouseLeaveHandler = () => {
+  _mouseLeaveHandler() {
     this.setState({crosshairValues: []});
-  };
+  }
 
   /**
    * Format the title line of the crosshair.
@@ -111,12 +117,12 @@ export default class Example extends React.Component {
    * @returns {Object} The caption and the value of the title.
    * @private
    */
-  _formatCrosshairTitle = values => {
+  _formatCrosshairTitle(values) {
     return {
       title: 'X',
       value: values[0].left
     };
-  };
+  }
 
   /**
    * A callback to format the crosshair items.
@@ -124,7 +130,7 @@ export default class Example extends React.Component {
    * @returns {Array<Object>} Array of objects with titles and values.
    * @private
    */
-  _formatCrosshairItems = values => {
+  _formatCrosshairItems(values) {
     const {series} = this.state;
     return values.map((v, i) => {
       return {
@@ -132,7 +138,7 @@ export default class Example extends React.Component {
         value: v.top
       };
     });
-  };
+  }
 
   /**
    * Click handler for the legend.
@@ -140,11 +146,11 @@ export default class Example extends React.Component {
    * @param {number} i Index of the legend.
    * @private
    */
-  _legendClickHandler = (item, i) => {
+  _legendClickHandler(item, i) {
     const {series} = this.state;
     series[i].disabled = !series[i].disabled;
     this.setState({series});
-  };
+  }
 
   render() {
     const {series, crosshairValues} = this.state;

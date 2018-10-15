@@ -41,6 +41,9 @@ export default class DynamicCrosshair extends React.Component {
     this.state = {
       crosshairValues: []
     };
+
+    this._onMouseLeave = this._onMouseLeave.bind(this);
+    this._onNearestX = this._onNearestX.bind(this);
   }
 
   /**
@@ -49,17 +52,17 @@ export default class DynamicCrosshair extends React.Component {
    * @param {index} index Index of the value in the data array.
    * @private
    */
-  _onNearestX = (value, {index}) => {
+  _onNearestX(value, {index}) {
     this.setState({crosshairValues: DATA.map(d => d[index])});
-  };
+  }
 
   /**
    * Event handler for onMouseLeave.
    * @private
    */
-  _onMouseLeave = () => {
+  _onMouseLeave() {
     this.setState({crosshairValues: []});
-  };
+  }
 
   render() {
     return (

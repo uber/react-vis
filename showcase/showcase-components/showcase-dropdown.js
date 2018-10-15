@@ -27,11 +27,12 @@ class ShowcaseDropdown extends React.Component {
     this.state = {
       open: false
     };
+    this.toggleState = this.toggleState.bind(this);
   }
 
-  toggleState = () => {
+  toggleState() {
     this.setState({open: !this.state.open});
-  };
+  }
 
   render() {
     const {items} = this.props;
