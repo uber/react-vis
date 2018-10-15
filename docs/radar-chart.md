@@ -37,10 +37,14 @@ In such a case, there would be ONE polygon rendered for four variables (nice/exp
 
 
 #### data
+
 Type: `arrayOf(Objects)`
 
+
 #### domains
+
 Type: `arrayOf(Objects)`
+
 The domains allow the user to specify the nature of the variables being plotted. This information is captured in an object formatted like:
 
 ```javascript
@@ -60,20 +64,29 @@ Let's looks at each member of the object
 - tickFormat: allows the user to provide a formatting function for prettifying the way that axis interpolates between the domain values.
 
 #### width
-Type: `number`  
+
+Type: `number`
+
 Width of the component.
 
 #### height
-Type: `number`  
+
+Type: `number`
+
 Height of the component.
 
 #### margin (optional)
-Type: `Object`  
+
+Type: `Object`
+
 Default: `{left: 40, right: 10, top: 10, bottom: 40}`
+
 Margin around the chart.
 
-### style (optional)
+#### style (optional)
+
 Type: `object`
+
 An object that contains CSS properties with which the axis component can be entirely re-styled.
 As the RadarChart is composite of several composite elements, it is possible to provide style objects for any and all parts of the tree. See [style](style.md)
 Most generally, there are three top level components `axes`, `labels`, and `polygons`. These in turn lead to their corresponding to style objects. As an example, here is the default style object for the RadarChart:
@@ -97,26 +110,38 @@ Most generally, there are three top level components `axes`, `labels`, and `poly
 ```
 
 #### animation (optional)
+
 Type: `boolean|Object`
+
 Please refer to [Animation](animation.md) doc for more information.
 
 #### hideInnerMostValues (optional)
+
 Type: `boolean`
+
 defaults to true
 Whether or not to hide the inner most tick values of the radar chart. This attempts to ensure that the ticks do not run over each other.
 
 #### className (optional)
+
 Type: `string`
+
 Provide an additional class name for the series.
 
 #### colorType (optional)
+
 Type: `string`
+
 Specify the type of color scale to be used on the radar chart, please refer to [Scales and data](scales-and-data.md) for more information.
 
 #### tickFormat (optional)
+
 Type: 'function'
+
 Specify the tick format for all axes. Will be over-ridden by tickFormats specified on single domains.
 
 #### startingAngle (optional)
+
 Type: `number`
+
 The angle of the first axis in radians. Defaults to PI / 2.

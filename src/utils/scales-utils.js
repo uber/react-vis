@@ -242,7 +242,8 @@ function _createScaleObjectForValue(attr, value, type, accessor, accessor0) {
       attr,
       baseValue: undefined,
       isValue: true,
-      accessor
+      accessor,
+      accessor0
     };
   }
   if (typeof value === 'undefined') {
@@ -256,7 +257,8 @@ function _createScaleObjectForValue(attr, value, type, accessor, accessor0) {
     attr,
     baseValue: undefined,
     isValue: true,
-    accessor
+    accessor,
+    accessor0
   };
 }
 
@@ -648,12 +650,11 @@ export function getAttributeFunctor(props, attr) {
 export function getAttr0Functor(props, attr) {
   const scaleObject = getScaleObjectFromProps(props, attr);
   if (scaleObject) {
-    const attr0 = `${attr}0`;
     const {domain} = scaleObject;
     const {baseValue = domain[0]} = scaleObject;
     const scaleFn = getScaleFnFromScaleObject(scaleObject);
     return d => {
-      const value = _getAttrValue(d, el => el[attr0]);
+      const value = _getAttrValue(d, scaleObject.accessor0);
       return scaleFn(_isDefined(value) ? value : baseValue);
     };
   }

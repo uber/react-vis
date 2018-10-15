@@ -40,88 +40,127 @@ const myData = [
 angle0 describes the start of the arc in radians, and angle describes the end of the arc, again in radians. radius0 describes the inner distance from the origin, while radius describes the outer distance to the origin. It is recommended to provide all four of these quantities to format your arcs well.
 
 #### angle0
-Type: `number`  
+
+Type: `number`
+
 The start position of the arc in radians. This quantity is returned literally by default.
 
 #### angle
-Type: `number`  
+
+Type: `number`
+
 The end position of the arc in radians. This quantity is returned literally by default.
 
 #### radius0
-Type: `number`  
+
+Type: `number`
+
 The distance between the origin and the inside of the arc. This values is scaled linearly by default
 
 #### radius
-Type: `number`    
+
+Type: `number`
+
 The distance between the origin and the outside of the arc. This values is scaled linearly by default
 
 #### radiusDomain
+
 Type: `array of numbers`
-The domain over which the radius is scaled. This can be an essential element in getting your arcs to look right, the automatic inference for the prop tends to be somewhat inaccurate, so it is highly encourage that you set it for your self as appropriate. For example: [0, 3]. See the code for ArcSeriesExample for more. 
+
+The domain over which the radius is scaled. This can be an essential element in getting your arcs to look right, the automatic inference for the prop tends to be somewhat inaccurate, so it is highly encourage that you set it for your self as appropriate. For example: [0, 3]. See the code for ArcSeriesExample for more.
 
 #### color (optional)
-Type: `string|number`  
+
+Type: `string|number`
+
 The color of an arc in the series. By default, the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop colorType="literal" to the series itself. This property can also be defined on the series level. See [colors](colors.md)
 
 #### fill (optional)
-Type: `string|number`  
+
+Type: `string|number`
+
 The inner color of an arc in the series. If `fill` and `color` are provided, `fill` will override `color`. By default, the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop fillType="literal" to the series itself. This property can also be defined on the series level. See [colors](colors.md)
 
 #### stroke (optional)
-Type: `string|number`  
+
+Type: `string|number`
+
 The outer color of an arc in the series (i.e. its outline). If `stroke` and `color` are provided, `stroke` will override `color`. By default, the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop strokeType="literal" to the series itself. This property can also be defined on the series level. See [colors](colors.md)
 
 #### opacity (optional)
-Type: `string|number`  
-Default: 1  
+
+Type: `string|number`
+
+Default: 1
+
 The opacity of an arc in the series, from 0 (transparent) to 1 (opaque).
 
 #### padAngle (optional)
+
 Type: `number|function`
+
 The padding to be applied between arcs.
 
 <!-- INJECT:"ClockExampleWithLink" -->
 
 ## Series API Reference
 
-#### animation (optional)  
+#### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
-#### center  
+#### center
+
 Type: `Object` of the form `{x, y}`, where x and y are in coordinates
+
 This allows users to specify the origin of their arcs.
 
-#### color  
+#### color
+
 Type: `string|number`
+
 The color for all elements in the series, this property will be over-ridden by color specified in the data attribute.
 
 #### className (optional)
-Type: `string`  
+
+Type: `string`
+
 Provide an additional class name for the series.
 
 #### data
-Type: `Array<Object>`  
+
+Type: `Array<Object>`
+
 Array of data for the series. See above data format reference.
 
 #### fill
-Type: `string|number`  
+
+Type: `string|number`
+
 The inner color for all elements in the series, this property will be over-ridden by color specified in the data attribute.
 
 #### opacity
-Type: `string|number`  
+
+Type: `string|number`
+
 The opacity for all elements in the series, this property will be over-ridden by color specified in the data attribute.
 
 #### stroke
-Type: `string|number`  
+
+Type: `string|number`
+
 The outer color for all elements in the series, this property will be over-ridden by color specified in the data attribute.
 
 #### style (optional)
-Type: `object`  
+
+Type: `object`
+
 SVG paths (which is what the arc series is made up of) have numerous manipulable properties, so rather than trying to prescribe all of them as props we offer a port to let you style it for yourself.
 
 ## Interaction handlers
 #### onNearestX (optional)
-Type: `function(value, {event, innerX, index})`  
+
+Type: `function(value, {event, innerX, index})`
+
 A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
@@ -130,7 +169,9 @@ Callback is triggered with two arguments. `value` is the data point, `info` obje
 See [interaction](interaction.md)
 
 #### onNearestXY (optional)
-Type: `function(value, {event, innerX, innerY, index})`  
+
+Type: `function(value, {event, innerX, innerY, index})`
+
 A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
@@ -140,8 +181,11 @@ Callback is triggered with two arguments. `value` is the data point, `info` obje
 See [interaction](interaction.md)
 
 #### onSeriesClick
-Type: `function`  
-Default: none  
+
+Type: `function`
+
+Default: none
+
 This handler fires when the user clicks somewhere on a series, and provides the corresponding event. Unlike onClick, it doesn't pass a specific datapoint.
 
 ```jsx
@@ -154,8 +198,11 @@ This handler fires when the user clicks somewhere on a series, and provides the 
 ```
 
 #### onSeriesMouseOut
-Type: `function`  
-Default: none  
+
+Type: `function`
+
+Default: none
+
 This handler fires when the user's mouse cursor leaves a series, and provides the corresponding event. Unlike onValueMouseOut, it doesn't pass a specific datapoint.
 
 ```jsx
@@ -168,8 +215,11 @@ This handler fires when the user's mouse cursor leaves a series, and provides th
 ```
 
 #### onSeriesMouseOver
+
 Type: `function`
-Default: none  
+
+Default: none
+
 This handler fires when the user mouses over a series, and provides the corresponding event. Unlike onValueMouseOver, it doesn't pass a specific datapoint.
 
 ```jsx
@@ -182,8 +232,11 @@ This handler fires when the user mouses over a series, and provides the correspo
 ```
 
 #### onSeriesRightClick
-Type: `function`  
-Default: none  
+
+Type: `function`
+
+Default: none
+
 This handler fires when the user right-clicks somewhere on a series, and provides the corresponding event. Unlike onClick, it doesn't pass a specific datapoint.
 
 ```jsx
@@ -196,8 +249,11 @@ This handler fires when the user right-clicks somewhere on a series, and provide
 ```
 
 #### onValueClick
-Type: `function`  
-Default: none  
+
+Type: `function`
+
+Default: none
+
 This handler is triggered either when the user clicks on a mark.
 The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx
@@ -210,8 +266,11 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 ```
 
 #### onValueMouseOut
-Type: `function`  
-Default: none  
+
+Type: `function`
+
+Default: none
+
 This handler is triggered either when the user's mouse leaves a mark.
 The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx
@@ -224,8 +283,11 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 ```
 
 #### onValueMouseOver
+
 Type: `function`
-Default: none  
+
+Default: none
+
 This handler is triggered either when the user's mouse enters a mark.
 The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx
@@ -238,8 +300,11 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 ```
 
 #### onValueRightClick
-Type: `function`  
-Default: none  
+
+Type: `function`
+
+Default: none
+
 This handler is triggered either when the user right-clicks on a mark.
 The handler passes two arguments, the corresponding datapoint and the actual event.
 ```jsx

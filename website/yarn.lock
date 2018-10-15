@@ -2559,6 +2559,10 @@ d3-geo@^1.6.4:
   dependencies:
     d3-array "1"
 
+d3-hexbin@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/d3-hexbin/-/d3-hexbin-0.2.2.tgz#9c5837dacfd471ab05337a9e91ef10bfc4f98831"
+
 d3-hierarchy@^1.1.4:
   version "1.1.5"
   resolved "https://registry.npmjs.org/d3-hierarchy/-/d3-hierarchy-1.1.5.tgz#a1c845c42f84a206bcf1c01c01098ea4ddaa7a26"
@@ -4086,6 +4090,10 @@ hmac-drbg@^1.0.0:
 hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.npmjs.org/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
+
+hoek@4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
 
 hoist-non-react-statics@1.x.x, hoist-non-react-statics@^1.2.0:
   version "1.2.0"
@@ -6903,9 +6911,9 @@ react-virtualized@^9.18.5:
     loose-envify "^1.3.0"
     prop-types "^15.6.0"
 
-react-vis@^1.9.2:
-  version "1.9.2"
-  resolved "https://registry.npmjs.org/react-vis/-/react-vis-1.9.2.tgz#4dbd5d91ac820fd39fa7ad1c892198495194f6e3"
+react-vis@^1.11.2:
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/react-vis/-/react-vis-1.11.2.tgz#706a56a78723a15a0b6f5823f8a33ade3d41d35d"
   dependencies:
     d3-array "^1.2.0"
     d3-collection "^1.0.3"
@@ -6913,6 +6921,7 @@ react-vis@^1.9.2:
     d3-contour "^1.1.0"
     d3-format "^1.2.0"
     d3-geo "^1.6.4"
+    d3-hexbin "^0.2.2"
     d3-hierarchy "^1.1.4"
     d3-interpolate "^1.1.4"
     d3-sankey "^0.7.1"
@@ -6921,6 +6930,7 @@ react-vis@^1.9.2:
     d3-voronoi "^1.1.2"
     deep-equal "^1.0.1"
     global "^4.3.1"
+    hoek "4.2.1"
     prop-types "^15.5.8"
     react-motion "^0.5.2"
 

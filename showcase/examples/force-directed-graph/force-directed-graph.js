@@ -74,6 +74,14 @@ function generateSimulation(props) {
 }
 
 class ForceDirectedGraph extends React.Component {
+  static get defaultProps() {
+    return {
+      className: '',
+      data: {nodes: [], links: []},
+      maxSteps: 50
+    };
+  }
+
   static get propTypes() {
     return {
       className: PropTypes.string,
@@ -81,14 +89,6 @@ class ForceDirectedGraph extends React.Component {
       height: PropTypes.number.isRequired,
       width: PropTypes.number.isRequired,
       steps: PropTypes.number
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      className: '',
-      data: {nodes: [], links: []},
-      maxSteps: 50
     };
   }
 

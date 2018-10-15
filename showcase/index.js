@@ -30,6 +30,7 @@ import LineMarkChart from './plot/linemark-chart';
 import LineSeriesCanvasNearestXYExample from './plot/line-series-canvas-nearest-xy-example';
 import BarChart from './plot/bar-chart';
 import BigBaseBarChart from './plot/big-base-bar-chart';
+import DifferenceChart from './plot/difference-chart';
 import StackedVerticalBarChart from './plot/stacked-vertical-bar-chart';
 import StackedHorizontalBarChart from './plot/stacked-horizontal-bar-chart';
 import ClusteredStackedVerticalBarChart from './plot/clustered-stacked-bar-chart';
@@ -169,6 +170,7 @@ const mainShowCase = {
   LineSeriesCanvasNearestXYExample,
   BarChart,
   BigBaseBarChart,
+  DifferenceChart,
   StackedVerticalBarChart,
   MixedStackedChart,
   StackedHorizontalBarChart,

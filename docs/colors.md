@@ -33,7 +33,7 @@ So it goes like this:
 
 ### Cases
 
-#### We do nothing:
+We do nothing:
 
 <!-- INJECT:"SensibleDefaultsWithLink" -->
 
@@ -41,7 +41,7 @@ With no color instruction, colors are automatically set by series according to t
 
 <!-- INJECT:"ReactVis5WithLink" -->
 
-#### We specify color in XYPlot
+We specify color in XYPlot
 
 ```jsx
 <XYPlot height={200} width={200} color="red">
@@ -65,7 +65,7 @@ With no color instruction, colors are automatically set by series according to t
 
 Without any further instruction, all the series are red. Note that in the case of LineSeries, we have to use stroke instead of color for this effect to work.
 
-#### We specify color by series
+We specify color by series
 
 The next step is passing colors to by series. When we do that, we add a color prop to each series component:
 
@@ -76,7 +76,8 @@ The next step is passing colors to by series. When we do that, we add a color pr
 
 How this color information is going to be treated depends on a number of factors.
 
-##### Color scales
+Color scales
+
 Once it's passed through series, color works like a [scale](scales-and-data.md); in other words, it transforms data into a visual representation.
 There are several types of scales.
 
@@ -93,7 +94,7 @@ For instance, if a categorical color scale has the domain: ['yes', 'maybe', 'no'
 
 Finally, the literal color scale just returns whatever is provided as is. With a literal color scale, we can have color names in the dataset, and they will be used without transformation.
 
-##### Categorical colors at series level
+Categorical colors at series level
 
 <!-- INJECT:"CategoryColorAtSeriesLevelWithLink" -->
 
@@ -131,7 +132,7 @@ For this example, the XYPlot props are:
 
 As you can see, __using categorical color at the series level doesn't work for bar charts or scatterplots__. It does for line charts though.
 
-##### Linear colors at series level
+Linear colors at series level
 
 <!-- INJECT:"LinearColorAtSeriesLevelWithLink" -->
 
@@ -167,7 +168,7 @@ As you can see, __using categorical color at the series level doesn't work for b
 
 Likewise, __using linear color at the series level only works for line charts__.
 
-##### Literal colors at series level
+Literal colors at series level
 
 <!-- INJECT:"LiteralColorAtSeriesLevelWithLink" -->
 
@@ -191,7 +192,7 @@ Likewise, __using linear color at the series level only works for line charts__.
 
 However, setting color at the series level works for all kinds of charts. It's not even necessary to specify a color type, a domain or a range.
 
-#### We specify color information at mark level
+We specify color information at mark level
 
 For this second series of charts, we are going to specify color information inside of our dataset (ie the series which will be passed to the props "data").
 Previously, our datasets only included x and y information:
@@ -208,7 +209,7 @@ Now, they will have a color information as well.
 * Finally, for our literal example, the color information will be the name of a color in hex format.
 
 
-##### Categorical colors at mark level
+Categorical colors at mark level
 <!-- INJECT:"CategoryColorAtMarkLevelWithLink" -->
 
 ```jsx
@@ -242,7 +243,7 @@ Here, I have specified the colorType prop at the XYPlot level. I could have done
 It's going to use the default extended palette as the color range. We'll override this in the next example. As for domain, it's going to associate the first color value it finds in the dataset with the first color of the palette, the second distinct color it finds with the second color of the palette, and so on and so forth.
 With this syntax, we'll render marks which have different color information in different colors, but we don't control which color. If we want to control which color a specific value is going to be associated with, we have to pass a colorDomain.
 
-##### Categorical colors at mark level, custom palette
+Categorical colors at mark level, custom palette
 <!-- INJECT:"CategoryColorAtMarkLevelCustomPaletteWithLink" -->
 
 ```jsx
@@ -269,7 +270,7 @@ This time, I'm passing a custom palette:
 
 Behavior for line chart is still identical, but the colors are different for our bar charts and scatterplots. As I'm not passing a color domain, I still don't control which value will be associated with which color - not super important since my color values are random numbers. But if order matters, a colorDomain is required.
 
-##### Linear colors at mark level, default palette
+Linear colors at mark level, default palette
 
 <!-- INJECT:"LinearColorAtMarkLevelNoPaletteWithLink" -->
 
@@ -299,7 +300,7 @@ I haven't specified the color range either. React-Vis will compute it by looking
 
 The line charts are still unaffected.
 
-##### Linear colors at mark level, custom palette
+Linear colors at mark level, custom palette
 
 <!-- INJECT:"LinearColorAtMarkLevelWithLink" -->
 
@@ -323,7 +324,7 @@ The line charts are still unaffected.
 
 Here's the same code, but we define the color range. This green palette comes from ColorBrewer.
 
-##### Literal colors at mark level, default palette
+Literal colors at mark level, default palette
 
 <!-- INJECT:"LiteralColorAtMarkLevelWithLink" -->
 
@@ -349,7 +350,7 @@ Finally, we can pass literal color names in our dataset from our custom palette.
 
 ### Going beyond
 
-#### Independently control fill and stroke
+Independently control fill and stroke
 
 The line chart series (LineSeries) is only a line, but most other series (AreaSeries, ArcSeries, BarSeries, HeatmapSeries, HexbinSeries, MarkSeries, RectSeries and their derivatives, including LineMarkSeries) involve 2D shapes that have both a fill color and a stroke color.
 
@@ -405,11 +406,11 @@ Note that in the case of a LineMarkSeries (a combination of a LineSeries and a M
 Here, I want my dots to have a white outline.
 Why did I specify the color of each of my series? You might have to scroll all the way to the top for the answer! If I had done nothing all the colors of my series would have been taken from the default palette for each new series. So the first line series would have had the first color, then the first mark series would have had the _second_ color... and so on and so forth. By specifying a color, we are guaranteeing that the dots and the lines have the same color.
 
-#### Using styles
+Using styles
 
 We can pass style information to anything - XYPlot, series, mark - and override the look and feel of that element. Styles don't have to be static objects - they can be computed at run time. Styles are a different way to control colors. While using the color prop, or a color property in a dataset, can be much more concise, everything can be affected by styles - including non-mark elements such as ticks or gridlines. See [style](style.md) for more info.
 
-#### Using specificity
+Using specificity
 
 We've seen that we can set color information at the plot level, at the series level and at the mark level. But what happens when we do it at several levels at the same time? The most specific wins.
 
@@ -439,7 +440,7 @@ Notes:
 * For the line series, which behave differently than other series, you must use stroke instead of color for this to work.
 * For the scatterplot series, I'm using specificity twice: there's a color at the plot level, overridden by a color at the first series level, overridden by a color on the 7th mark of the series.
 
-#### Using gradients
+Using gradients
 
 Why use a boring solid color when you can use gradients? We're not sure either! Once you define gradients (see [gradients](gradients.md)) you can use them instead of color (or fill, or stroke) at the series level.
 

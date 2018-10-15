@@ -43,7 +43,12 @@ const propTypes = {
 
   style: PropTypes.object,
 
-  tickValues: PropTypes.array,
+  tickValues: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ])
+  ),
   tickTotal: PropTypes.number,
 
   animation: AnimationPropType,

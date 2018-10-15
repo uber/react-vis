@@ -17,7 +17,7 @@ const DISCRETE_LEGENDS = [
     componentName: 'VerticalDiscreteColorLegendExample'
   },
   {
-    name: 'Horizontal legend',
+    name: 'Horizontal legend with stroke styles',
     component: HorizontalDiscreteColorLegendExample,
     componentName: 'HorizontalDiscreteColorLegendExample'
   },

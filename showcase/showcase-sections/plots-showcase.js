@@ -14,6 +14,7 @@ const {
   CustomSVGExample,
   CustomSVGAllTheMarks,
   CustomSVGRootLevel,
+  DifferenceChart,
   EmptyChart,
   FauxScatterplotChart,
   GridLinesChart,
@@ -131,6 +132,11 @@ const PLOTS = [
     component: BigBaseBarChart,
     componentName: 'BigBaseBarChart',
     name: 'Big Base Bar Series'
+  },
+  {
+    component: DifferenceChart,
+    componentName: 'DifferenceChart',
+    name: 'Difference Bar Series'
   },
   {
     name: 'Stacked Horizontal Bar Series',

@@ -152,6 +152,17 @@ test('scales-utils #getAttributeFunctor', t => {
     225,
     'should find the correct transformed value'
   );
+
+  // with custom accessor
+  result = getAttributeFunctor({xRange, xDomain, getX: d => d.value}, 'x');
+  t.ok(typeof result === 'function', 'Result should be a function');
+
+  t.equal(
+    result({data: {x: 10, value: 1}}),
+    0,
+    'should find the correct transformed value'
+  );
+
   t.end();
 });
 
@@ -187,6 +198,25 @@ test('scales-utils #getAttr0Functor', t => {
   t.equal(
     result({data: {x: 10, x0: 5}}),
     5,
+    'should find the correct transformed value'
+  );
+
+  // with custom accessor
+  result = getAttr0Functor(
+    {
+      xRange,
+      _allData: exNaughtData,
+      getX0: d => d.z,
+      xDomain,
+      xType: 'literal',
+      xDistance
+    },
+    'x'
+  );
+  t.ok(typeof result === 'function', 'Result should be a function');
+  t.equal(
+    result({data: {x: 10, x0: 5, z: 1}}),
+    1,
     'should find the correct transformed value'
   );
 
