@@ -26,7 +26,8 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  CustomSVGSeries
+  CustomSVGSeries,
+  Hint
 } from 'index';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
@@ -52,12 +53,21 @@ function generateData(reversed) {
 const DATA = generateData(false);
 const REVERSED_DATA = generateData(true);
 
+const tipStyle = {
+  display: 'flex',
+  color: '#fff',
+  background: '#000',
+  alignItems: 'center',
+  padding: '5px'
+};
+
 export default class Example extends React.Component {
   state = {
     reverse: false
   };
   render() {
-    const {reverse} = this.state;
+    const {reverse, hoveredCell} = this.state;
+
     return (
       <div>
         <ShowcaseButton
@@ -73,7 +83,18 @@ export default class Example extends React.Component {
             animation
             style={{stroke: 'red', fill: 'orange'}}
             data={reverse ? REVERSED_DATA : DATA}
+            onValueMouseOver={ v => {
+              this.setState({hoveredCell: v});
+            }}
+            onValueMouseOut={v => this.setState({hoveredCell: false})}
           />
+          {hoveredCell && (
+            <Hint value={hoveredCell}>
+              <div style={tipStyle}>
+                {hoveredCell.customComponent}
+              </div>
+            </Hint>
+          )}
         </XYPlot>
       </div>
     );

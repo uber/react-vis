@@ -46,7 +46,7 @@ function predefinedComponents(type, size = 2, style = DEFAULT_STYLE) {
     case 'star':
       const starPoints = [...new Array(5)]
         .map((c, index) => {
-          const angle = (index / 5) * Math.PI * 2;
+          const angle = index / 5 * Math.PI * 2;
           const innerAngle = angle + Math.PI / 10;
           const outerAngle = angle - Math.PI / 10;
           // ratio of inner polygon to outer polgyon
@@ -89,13 +89,14 @@ function getInnerComponent({
   defaultType,
   positionInPixels,
   positionFunctions,
-  style
+  style,
+  propsSize
 }) {
   const {size} = customComponent;
   const aggStyle = {...style, ...(customComponent.style || {})};
   const innerComponent = customComponent.customComponent;
   if (!innerComponent && typeof defaultType === 'string') {
-    return predefinedComponents(defaultType, size, aggStyle);
+    return predefinedComponents(defaultType, size || propsSize, aggStyle);
   }
   // if default component is a function
   if (!innerComponent) {
@@ -119,7 +120,8 @@ class CustomSVGSeries extends AbstractSeries {
       innerWidth,
       marginLeft,
       marginTop,
-      style
+      style,
+      size
     } = this.props;
 
     if (!data || !innerWidth || !innerHeight) {
@@ -146,13 +148,16 @@ class CustomSVGSeries extends AbstractSeries {
         positionInPixels,
         defaultType: customComponent,
         positionFunctions: {x, y},
-        style
+        style,
+        propsSize: size
       });
       return (
         <g
           className="rv-xy-plot__series--custom-svg"
           key={`rv-xy-plot__series--custom-svg-${index}`}
           transform={`translate(${positionInPixels.x},${positionInPixels.y})`}
+          onMouseEnter={e => this._valueMouseOverHandler(seriesComponent, e)}
+          onMouseLeave={e => this._valueMouseOutHandler(seriesComponent, e)}
         >
           {innerComponent}
         </g>
@@ -181,14 +186,18 @@ CustomSVGSeries.propTypes = {
   ).isRequired,
   marginLeft: PropTypes.number,
   marginTop: PropTypes.number,
-  style: PropTypes.object
+  style: PropTypes.object,
+  size: PropTypes.number,
+  onValueMouseOver: PropTypes.func,
+  onValueMouseOut: PropTypes.func
 };
 
 CustomSVGSeries.defaultProps = {
   ...AbstractSeries.defaultProps,
   animation: false,
   customComponent: 'circle',
-  style: {}
+  style: {},
+  size: 2
 };
 
 export default CustomSVGSeries;

@@ -208,7 +208,7 @@ const PLOTS = [
     componentName: 'CustomSVGExample'
   },
   {
-    name: 'Custom SVG - All The Mark',
+    name: 'Custom SVG - All The Marks (with tooltips)',
     component: CustomSVGAllTheMarks,
     componentName: 'CustomSVGAllTheMarks'
   },
