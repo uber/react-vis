@@ -218,22 +218,6 @@ function getPolygonPoints(props) {
       domain: name,
       value: dataPoint,
       dataName: row.name
-    };
-  });
-
-  return data.map((row, rowIndex) => {
-    const mappedData = domains.map(({name, getValue}, index) => {
-      const dataPoint = getValue ? getValue(row) : row[name];
-      // error handling if point doesn't exist
-      const angle = (index / domains.length) * Math.PI * 2 + startingAngle;
-      // dont let the radius become negative
-      const radius = Math.max(scales[name](dataPoint), 0);
-      return {
-        x: radius * Math.cos(angle),
-        y: radius * Math.sin(angle),
-        domain: name,
-        value: dataPoint,
-        dataName: row.name
       };
     });
 
@@ -252,7 +236,7 @@ function getPolygonPoints(props) {
         onValueMouseOver={onValueMouseOver}
         onValueMouseOut={onValueMouseOut}
       />
-    );
+  );
   });
 }
 
@@ -275,7 +259,9 @@ function RadarChart(props) {
     width,
     renderAxesOverPolygons,
     onValueMouseOver,
-    onValueMouseOut
+    onValueMouseOut,
+    onSeriesMouseOver,
+    onSeriesMouseOut
   } = props;
 
 const axes = getAxes({

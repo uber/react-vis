@@ -6,7 +6,8 @@ const {
   AnimatedRadarChart,
   BasicRadarChart,
   FourQuadrantRadarChart,
-  RadarChartWithTooltips
+  RadarChartWithTooltips,
+  RadarChartSeriesTooltips,
 } = showCase;
 
 const RADAR = [{
