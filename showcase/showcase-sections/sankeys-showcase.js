@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
@@ -42,15 +42,13 @@ const SANKEYS = [
   }
 ];
 
-class SankeysSection extends Component {
-  render() {
-    return (
-      <article id="sankeys">
-        <h1>Sankeys</h1>
-        {SANKEYS.map(mapSection)}
-      </article>
-    );
-  }
+function SankeysSection(props) {
+  return (
+    <article id="sankeys">
+      <h1>Sankeys</h1>
+      {SANKEYS.map(mapSection)}
+    </article>
+  );
 }
 
 export default SankeysSection;
