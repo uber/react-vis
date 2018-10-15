@@ -8,6 +8,7 @@ import HorizontalDiscreteLegend from '../../showcase/legends/horizontal-discrete
 import VerticalDiscreteLegend from '../../showcase/legends/vertical-discrete-color';
 import SearchableDiscreteLegend from '../../showcase/legends/searchable-discrete-color';
 import HorizontalDiscreteCustomPalette from '../../showcase/legends/horizontal-discrete-custom-palette';
+import ClusteredStackedVerticalBarChart from '../../showcase/plot/clustered-stacked-bar-chart';
 
 test('Discrete Legend has no clickable className while onItemClick is not passing', t => {
   const withOnClick$ = mount(<VerticalDiscreteLegend />);
@@ -60,35 +61,33 @@ test('Continuous Color Legend', t => {
 });
 
 test('Discrete Legends', t => {
-  [HorizontalDiscreteLegend, VerticalDiscreteLegend].forEach(Component => {
-    const $ = mount(<Component />);
-    t.equal(
-      $.text(),
-      'OptionsButtonsSelect boxesDate inputsPassword inputsFormsOther',
-      'should find the correct text content'
-    );
-    t.equal(
-      $.find('.rv-discrete-color-legend-item__color').length,
-      7,
-      'should find the right number of elements'
-    );
-  });
+  const verticalLegend = mount(<VerticalDiscreteLegend />);
+  t.equal(
+    verticalLegend.text(),
+    'OptionsButtonsSelect boxesDate inputsPassword inputsFormsOther',
+    'should find the correct text content'
+  );
+  t.equal(
+    verticalLegend.find('.rv-discrete-color-legend-item__color').length,
+    7,
+    'should find the right number of elements'
+  );
 
   t.deepEqual(
-    mount(<HorizontalDiscreteLegend />)
-      .find('.rv-discrete-color-legend-item__color')
+    verticalLegend
+      .find('.rv-discrete-color-legend-item__color__path')
       .first()
       .props().style,
-    {background: '#12939A'},
+    {stroke: '#12939A'},
     'normal discrete legend uses default palette'
   );
 
   t.deepEqual(
     mount(<HorizontalDiscreteCustomPalette />)
-      .find('.rv-discrete-color-legend-item__color')
+      .find('.rv-discrete-color-legend-item__color__path')
       .first()
       .props().style,
-    {background: '#6588cd'},
+    {stroke: '#6588cd'},
     'custom discrete legend uses custom palette'
   );
 
@@ -102,6 +101,22 @@ test('Discrete Legends', t => {
     $.find('.rv-discrete-color-legend-item__color').length,
     7,
     'should find the right number of element for the searchable legends'
+  );
+  t.deepEqual(
+    mount(<HorizontalDiscreteLegend />)
+      .find('.rv-discrete-color-legend-item__color__path')
+      .first()
+      .props().style,
+    {strokeDasharray: '6, 2', stroke: '#45aeb1'},
+    'should find the default dashed dasharray style'
+  );
+  t.deepEqual(
+    mount(<HorizontalDiscreteLegend />)
+      .find('.rv-discrete-color-legend-item__color__path')
+      .at(4)
+      .props().style,
+    {strokeWidth: 13, stroke: 'url(#stripes)'},
+    'should find the specified stroke width'
   );
   $.find('.rv-search-wrapper__form__input').simulate('change', {
     target: {value: 'egg'}
@@ -130,14 +145,24 @@ test('Discrete Legends', t => {
     'before clicking, should find no items disabled'
   );
 
+
+  t.deepEqual(
+    mount(<ClusteredStackedVerticalBarChart />)
+      .find('.rv-discrete-color-legend')
+      .first()
+      .props().style,
+    {width: undefined, height: undefined, position: 'absolute', left: '50px', top: '10px'},
+    'discrete legend retains passed styles'
+  );
+
   t.end();
 });
 
 test('Discrete Legends Showcase: HorizontalDiscreteCustomPalette', t => {
   const $ = mount(<HorizontalDiscreteCustomPalette />);
-  const colors = $.find('.rv-discrete-color-legend-item__color')
+  const colors = $.find('.rv-discrete-color-legend-item__color__path')
     .map(colorBrick => {
-      return colorBrick.props().style.background;
+      return colorBrick.props().style.stroke;
     })
     .join(' ');
 
@@ -163,3 +188,5 @@ test('Discrete Legends Showcase: HorizontalDiscreteCustomPalette', t => {
 
   t.end();
 });
+
+

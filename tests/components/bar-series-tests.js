@@ -10,6 +10,7 @@ import StackedVerticalBarChart from '../../showcase/plot/stacked-vertical-bar-ch
 import BarChart from '../../showcase/plot/bar-chart';
 import BigBaseBarChart from '../../showcase/plot/big-base-bar-chart';
 import ClusteredStackedVerticalBarChart from '../../showcase/plot/clustered-stacked-bar-chart';
+import DifferenceChart from '../../showcase/plot/difference-chart';
 
 testRenderWithProps(HorizontalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
 testRenderWithProps(VerticalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
@@ -160,6 +161,38 @@ test('BarSeries: Showcase Example - BigBaseBarChart', t => {
   t.equal(
     $.text(),
     'TOGGLE TO CANVAS:38:39:40:41199,800199,900200,000200,100200,200200,300200,400',
+    'should fine the right text content'
+  );
+  t.equal(
+    $.find('.rv-xy-plot__series--bar rect').length,
+    15,
+    'should find the right number of bars'
+  );
+  t.equal(
+    $.find('.rv-xy-plot__series').length,
+    1,
+    'should find the right number of series'
+  );
+
+  $.find('.showcase-button').simulate('click');
+  t.equal(
+    $.find('.rv-xy-plot__series--bar rect').length,
+    0,
+    'should now find no rects'
+  );
+  t.equal(
+    $.find('.rv-xy-canvas canvas').length,
+    1,
+    'should now find one canvas'
+  );
+  t.end();
+});
+
+test('BarSeries: Showcase Example - DifferenceChart', t => {
+  const $ = mount(<DifferenceChart />);
+  t.equal(
+    $.text(),
+    'TOGGLE TO CANVAS02468101214-4-20246810',
     'should fine the right text content'
   );
   t.equal(

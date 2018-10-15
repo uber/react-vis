@@ -11,4 +11,7 @@ yarn-error.log*
 .idea/
 public/
 
+showcase/bundle.js
+showcase/bundle.css
+
 /index.html

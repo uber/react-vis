@@ -100,6 +100,12 @@ function checkIfMixinsAreEqual(nextScaleMixins, scaleMixins, hasTreeStructure) {
 }
 
 class XYPlot extends React.Component {
+  static get defaultProps() {
+    return {
+      className: ''
+    };
+  }
+
   static get propTypes() {
     return {
       animation: AnimationPropType,
@@ -122,12 +128,6 @@ class XYPlot extends React.Component {
       stackBy: PropTypes.oneOf(ATTRIBUTES),
       style: PropTypes.object,
       width: PropTypes.number.isRequired
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      className: ''
     };
   }
 
@@ -198,173 +198,43 @@ class XYPlot extends React.Component {
   }
 
   /**
-   * Trigger mouse-down related callbacks if they are available.
-   * @param {React.SyntheticEvent} event Mouse down event.
+   * Prepare the child components (including series) for rendering.
+   * @returns {Array} Array of child components.
    * @private
    */
-  _mouseDownHandler(event) {
-    const {onMouseDown, children} = this.props;
-    if (onMouseDown) {
-      onMouseDown(event);
-    }
-    const seriesChildren = getSeriesChildren(children);
-    seriesChildren.forEach((child, index) => {
-      const component = this[`series${index}`];
-      if (component && component.onParentMouseDown) {
-        component.onParentMouseDown(event);
+  _getClonedChildComponents() {
+    const props = this.props;
+    const {animation} = this.props;
+    const {scaleMixins, data} = this.state;
+    const dimensions = getInnerDimensions(this.props, DEFAULT_MARGINS);
+    const children = React.Children.toArray(this.props.children);
+    const seriesProps = getSeriesPropsFromChildren(children);
+    const XYPlotValues = getXYPlotValues(props, children);
+    return children.map((child, index) => {
+      let dataProps = null;
+      if (seriesProps[index]) {
+        // Get the index of the series in the list of props and retrieve
+        // the data property from it.
+        const {seriesIndex} = seriesProps[index];
+        dataProps = {data: data[seriesIndex]};
       }
+      return React.cloneElement(child, {
+        ...dimensions,
+        animation,
+        ...(dataProps && child.type.prototype && child.type.prototype.render
+          ? {
+              ref: ref =>
+                (this[`series${seriesProps[index].seriesIndex}`] = ref)
+            }
+          : {}),
+        ...seriesProps[index],
+        ...scaleMixins,
+        ...child.props,
+        ...XYPlotValues[index],
+        ...dataProps
+      });
     });
   }
-  /**
-   * Trigger mouse-up related callbacks if they are available.
-   * @param {React.SyntheticEvent} event Mouse up event.
-   * @private
-   */
-  _mouseUpHandler(event) {
-    const {onMouseUp, children} = this.props;
-    if (onMouseUp) {
-      onMouseUp(event);
-    }
-    const seriesChildren = getSeriesChildren(children);
-    seriesChildren.forEach((child, index) => {
-      const component = this[`series${index}`];
-      if (component && component.onParentMouseUp) {
-        component.onParentMouseUp(event);
-      }
-    });
-  }
-
-  /**
-   * Trigger movement-related callbacks if they are available.
-   * @param {React.SyntheticEvent} event Mouse move event.
-   * @private
-   */
-  _mouseMoveHandler(event) {
-    const {onMouseMove, children} = this.props;
-    if (onMouseMove) {
-      onMouseMove(event);
-    }
-    const seriesChildren = getSeriesChildren(children);
-    seriesChildren.forEach((child, index) => {
-      const component = this[`series${index}`];
-      if (component && component.onParentMouseMove) {
-        component.onParentMouseMove(event);
-      }
-    });
-  }
-
-  /**
-   * Trigger onMouseLeave handler if it was passed in props.
-   * @param {React.SyntheticEvent} event Mouse leave event.
-   * @private
-   */
-  _mouseLeaveHandler(event) {
-    const {onMouseLeave, children} = this.props;
-    if (onMouseLeave) {
-      onMouseLeave(event);
-    }
-    const seriesChildren = getSeriesChildren(children);
-    seriesChildren.forEach((child, index) => {
-      const component = this[`series${index}`];
-      if (component && component.onParentMouseLeave) {
-        component.onParentMouseLeave(event);
-      }
-    });
-  }
-
-  /**
-   * Trigger onMouseEnter handler if it was passed in props.
-   * @param {React.SyntheticEvent} event Mouse enter event.
-   * @private
-   */
-  _mouseEnterHandler(event) {
-    const {onMouseEnter, children} = this.props;
-    if (onMouseEnter) {
-      onMouseEnter(event);
-    }
-    const seriesChildren = getSeriesChildren(children);
-    seriesChildren.forEach((child, index) => {
-      const component = this[`series${index}`];
-      if (component && component.onParentMouseEnter) {
-        component.onParentMouseEnter(event);
-      }
-    });
-  }
-
-  /**
-   * Trigger touch-start related callbacks if they are available.
-   * @param {React.SyntheticEvent} event Touch start event.
-   * @private
-   */
-  _touchStartHandler(event) {
-    const {onTouchStart, children} = this.props;
-    if (onTouchStart) {
-      onTouchStart(event);
-    }
-    const seriesChildren = getSeriesChildren(children);
-    seriesChildren.forEach((child, index) => {
-      const component = this[`series${index}`];
-      if (component && component.onParentTouchStart) {
-        component.onParentTouchStart(event);
-      }
-    });
-  }
-
-  /**
-   * Trigger touch movement-related callbacks if they are available.
-   * @param {React.SyntheticEvent} event Touch move event.
-   * @private
-   */
-  _touchMoveHandler(event) {
-    const {onTouchMove, children} = this.props;
-    if (onTouchMove) {
-      onTouchMove(event);
-    }
-    const seriesChildren = getSeriesChildren(children);
-    seriesChildren.forEach((child, index) => {
-      const component = this[`series${index}`];
-      if (component && component.onParentTouchMove) {
-        component.onParentTouchMove(event);
-      }
-    });
-  }
-
-  /**
-   * Trigger onTouchEnd handler if it was passed in props.
-   * @param {React.SyntheticEvent} event Touch End event.
-   * @private
-   */
-  _touchEndHandler(event) {
-    const {onTouchEnd} = this.props;
-    if (onTouchEnd) {
-      onTouchEnd(event);
-    }
-  }
-
-  /**
-   * Trigger onTouchCancel handler if it was passed in props.
-   * @param {React.SyntheticEvent} event Touch Cancel event.
-   * @private
-   */
-  _touchCancelHandler(event) {
-    const {onTouchCancel} = this.props;
-    if (onTouchCancel) {
-      onTouchCancel(event);
-    }
-  }
-
-  /**
-   * Trigger doule-click related callbacks if they are available.
-   * @param {React.SyntheticEvent} event Double-click event.
-   * @private
-   */
-  _wheelHandler(event) {
-    const {onWheel} = this.props;
-    if (onWheel) {
-      onWheel(event);
-    }
-  }
-
   /**
    * Get the list of scale-related settings that should be applied by default.
    * @param {Object} props Object of props.
@@ -471,42 +341,172 @@ class XYPlot extends React.Component {
   }
 
   /**
-   * Prepare the child components (including series) for rendering.
-   * @returns {Array} Array of child components.
+   * Trigger mouse-down related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Mouse down event.
    * @private
    */
-  _getClonedChildComponents() {
-    const props = this.props;
-    const {animation} = this.props;
-    const {scaleMixins, data} = this.state;
-    const dimensions = getInnerDimensions(this.props, DEFAULT_MARGINS);
-    const children = React.Children.toArray(this.props.children);
-    const seriesProps = getSeriesPropsFromChildren(children);
-    const XYPlotValues = getXYPlotValues(props, children);
-    return children.map((child, index) => {
-      let dataProps = null;
-      if (seriesProps[index]) {
-        // Get the index of the series in the list of props and retrieve
-        // the data property from it.
-        const {seriesIndex} = seriesProps[index];
-        dataProps = {data: data[seriesIndex]};
+  _mouseDownHandler(event) {
+    const {onMouseDown, children} = this.props;
+    if (onMouseDown) {
+      onMouseDown(event);
+    }
+    const seriesChildren = getSeriesChildren(children);
+    seriesChildren.forEach((child, index) => {
+      const component = this[`series${index}`];
+      if (component && component.onParentMouseDown) {
+        component.onParentMouseDown(event);
       }
-      return React.cloneElement(child, {
-        ...dimensions,
-        animation,
-        ...(dataProps && child.type.prototype && child.type.prototype.render
-          ? {
-              ref: ref =>
-                (this[`series${seriesProps[index].seriesIndex}`] = ref)
-            }
-          : {}),
-        ...seriesProps[index],
-        ...scaleMixins,
-        ...child.props,
-        ...XYPlotValues[index],
-        ...dataProps
-      });
     });
+  }
+
+  /**
+   * Trigger onMouseEnter handler if it was passed in props.
+   * @param {React.SyntheticEvent} event Mouse enter event.
+   * @private
+   */
+  _mouseEnterHandler(event) {
+    const {onMouseEnter, children} = this.props;
+    if (onMouseEnter) {
+      onMouseEnter(event);
+    }
+    const seriesChildren = getSeriesChildren(children);
+    seriesChildren.forEach((child, index) => {
+      const component = this[`series${index}`];
+      if (component && component.onParentMouseEnter) {
+        component.onParentMouseEnter(event);
+      }
+    });
+  }
+
+  /**
+   * Trigger onMouseLeave handler if it was passed in props.
+   * @param {React.SyntheticEvent} event Mouse leave event.
+   * @private
+   */
+  _mouseLeaveHandler(event) {
+    const {onMouseLeave, children} = this.props;
+    if (onMouseLeave) {
+      onMouseLeave(event);
+    }
+    const seriesChildren = getSeriesChildren(children);
+    seriesChildren.forEach((child, index) => {
+      const component = this[`series${index}`];
+      if (component && component.onParentMouseLeave) {
+        component.onParentMouseLeave(event);
+      }
+    });
+  }
+
+  /**
+   * Trigger movement-related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Mouse move event.
+   * @private
+   */
+  _mouseMoveHandler(event) {
+    const {onMouseMove, children} = this.props;
+    if (onMouseMove) {
+      onMouseMove(event);
+    }
+    const seriesChildren = getSeriesChildren(children);
+    seriesChildren.forEach((child, index) => {
+      const component = this[`series${index}`];
+      if (component && component.onParentMouseMove) {
+        component.onParentMouseMove(event);
+      }
+    });
+  }
+
+  /**
+   * Trigger mouse-up related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Mouse up event.
+   * @private
+   */
+  _mouseUpHandler(event) {
+    const {onMouseUp, children} = this.props;
+    if (onMouseUp) {
+      onMouseUp(event);
+    }
+    const seriesChildren = getSeriesChildren(children);
+    seriesChildren.forEach((child, index) => {
+      const component = this[`series${index}`];
+      if (component && component.onParentMouseUp) {
+        component.onParentMouseUp(event);
+      }
+    });
+  }
+
+  /**
+   * Trigger onTouchCancel handler if it was passed in props.
+   * @param {React.SyntheticEvent} event Touch Cancel event.
+   * @private
+   */
+  _touchCancelHandler(event) {
+    const {onTouchCancel} = this.props;
+    if (onTouchCancel) {
+      onTouchCancel(event);
+    }
+  }
+
+  /**
+   * Trigger onTouchEnd handler if it was passed in props.
+   * @param {React.SyntheticEvent} event Touch End event.
+   * @private
+   */
+  _touchEndHandler(event) {
+    const {onTouchEnd} = this.props;
+    if (onTouchEnd) {
+      onTouchEnd(event);
+    }
+  }
+
+  /**
+   * Trigger touch movement-related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Touch move event.
+   * @private
+   */
+  _touchMoveHandler(event) {
+    const {onTouchMove, children} = this.props;
+    if (onTouchMove) {
+      onTouchMove(event);
+    }
+    const seriesChildren = getSeriesChildren(children);
+    seriesChildren.forEach((child, index) => {
+      const component = this[`series${index}`];
+      if (component && component.onParentTouchMove) {
+        component.onParentTouchMove(event);
+      }
+    });
+  }
+
+  /**
+   * Trigger touch-start related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Touch start event.
+   * @private
+   */
+  _touchStartHandler(event) {
+    const {onTouchStart, children} = this.props;
+    if (onTouchStart) {
+      onTouchStart(event);
+    }
+    const seriesChildren = getSeriesChildren(children);
+    seriesChildren.forEach((child, index) => {
+      const component = this[`series${index}`];
+      if (component && component.onParentTouchStart) {
+        component.onParentTouchStart(event);
+      }
+    });
+  }
+
+  /**
+   * Trigger doule-click related callbacks if they are available.
+   * @param {React.SyntheticEvent} event Double-click event.
+   * @private
+   */
+  _wheelHandler(event) {
+    const {onWheel} = this.props;
+    if (onWheel) {
+      onWheel(event);
+    }
   }
 
   renderCanvasComponents(components, props) {
