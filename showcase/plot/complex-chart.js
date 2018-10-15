@@ -81,49 +81,6 @@ export default class Example extends React.Component {
     this._formatCrosshairTitle = this._formatCrosshairTitle.bind(this);
   }
 
-  _updateButtonClicked() {
-    const {series} = this.state;
-    const totalValues = Math.random() * 50;
-    series.forEach(s => {
-      s.data = getRandomSeriesData(totalValues);
-    });
-    this.setState({series});
-  }
-
-  /**
-   * Event handler for onNearestX.
-   * @param {Object} value Selected value.
-   * @param {number} index Index of the series.
-   * @private
-   */
-  _nearestXHandler(value, {index}) {
-    const {series} = this.state;
-    this.setState({
-      crosshairValues: series.map(s => s.data[index])
-    });
-  }
-
-  /**
-   * Event handler for onMouseLeave.
-   * @private
-   */
-  _mouseLeaveHandler() {
-    this.setState({crosshairValues: []});
-  }
-
-  /**
-   * Format the title line of the crosshair.
-   * @param {Array} values Array of values.
-   * @returns {Object} The caption and the value of the title.
-   * @private
-   */
-  _formatCrosshairTitle(values) {
-    return {
-      title: 'X',
-      value: values[0].left
-    };
-  }
-
   /**
    * A callback to format the crosshair items.
    * @param {Object} values Array of values.
@@ -141,6 +98,19 @@ export default class Example extends React.Component {
   }
 
   /**
+   * Format the title line of the crosshair.
+   * @param {Array} values Array of values.
+   * @returns {Object} The caption and the value of the title.
+   * @private
+   */
+  _formatCrosshairTitle(values) {
+    return {
+      title: 'X',
+      value: values[0].left
+    };
+  }
+
+  /**
    * Click handler for the legend.
    * @param {Object} item Clicked item of the legend.
    * @param {number} i Index of the legend.
@@ -149,6 +119,36 @@ export default class Example extends React.Component {
   _legendClickHandler(item, i) {
     const {series} = this.state;
     series[i].disabled = !series[i].disabled;
+    this.setState({series});
+  }
+
+  /**
+   * Event handler for onMouseLeave.
+   * @private
+   */
+  _mouseLeaveHandler() {
+    this.setState({crosshairValues: []});
+  }
+
+  /**
+   * Event handler for onNearestX.
+   * @param {Object} value Selected value.
+   * @param {number} index Index of the series.
+   * @private
+   */
+  _nearestXHandler(value, {index}) {
+    const {series} = this.state;
+    this.setState({
+      crosshairValues: series.map(s => s.data[index])
+    });
+  }
+
+  _updateButtonClicked() {
+    const {series} = this.state;
+    const totalValues = Math.random() * 50;
+    series.forEach(s => {
+      s.data = getRandomSeriesData(totalValues);
+    });
     this.setState({series});
   }
 

@@ -29,34 +29,32 @@ import {
   LineSeries
 } from 'index';
 
-export default class Example extends React.Component {
-  render() {
-    const axisStyle = {
-      ticks: {
-        fontSize: '14px',
-        color: '#333'
-      },
-      title: {
-        fontSize: '16px',
-        color: '#333'
-      }
-    };
+export default function Example(props) {
+  const axisStyle = {
+    ticks: {
+      fontSize: '14px',
+      color: '#333'
+    },
+    title: {
+      fontSize: '16px',
+      color: '#333'
+    }
+  };
 
-    return (
-      <XYPlot width={300} height={300}>
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <XAxis
-          hideLine
-          title="X"
-          labelFormat={v => `Value is ${v}`}
-          labelValues={[2]}
-          tickValues={[1, 1.5, 2, 3]}
-          style={axisStyle}
-        />
-        <YAxis hideTicks />
-        <LineSeries data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]} />
-      </XYPlot>
-    );
-  }
+  return (
+    <XYPlot width={300} height={300}>
+      <VerticalGridLines />
+      <HorizontalGridLines />
+      <XAxis
+        hideLine
+        title="X"
+        labelFormat={v => `Value is ${v}`}
+        labelValues={[2]}
+        tickValues={[1, 1.5, 2, 3]}
+        style={axisStyle}
+      />
+      <YAxis hideTicks />
+      <LineSeries data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]} />
+    </XYPlot>
+  );
 }

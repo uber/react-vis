@@ -53,64 +53,92 @@ It is important to note that brushing over non-continuous scales is not supporte
 <!-- INJECT:"SelectionPlotExampleWithLink" -->
 
 
-### className (optional)
+#### className (optional)
+
 Type: `String`
+
 Add css class to Voronoi container
 
-### drag (optional)
+#### drag (optional)
+
 Type: `Boolean`
+
 Enable dragging interactions
 
-### enableX (optional)
+#### enableX (optional)
+
 Type: `Boolean`
+
 Defaults to `true`
 Enable brushing and dragging in the x direction
 
-### enableY (optional)
+#### enableY (optional)
+
 Type: `Boolean`
+
 Defaults to `true`
 Enable brushing and dragging in the y direction
 
-### highlightX (optional)
+#### highlightX (optional)
+
 Type: `String or Number`
+
 Defaults to left edge
 Position in x coordinate space to place the left edge of the highlight bar.
 
-### highlightY (optional)
+#### highlightY (optional)
+
 Type: `String or Number`
+
 Defaults to top edge
 Position in y coordinate space to place the top edge of the highlight bar.
 
-### highlightHeight (optional)
+#### highlightHeight (optional)
+
 Type: `Number`
+
 Defaults to full height
 The height of highlight bar in pixels.
 
-### highlightWidth (optional)
+#### highlightWidth (optional)
+
 Type: `Number`
+
 Defaults to full width
 The width of highlight bar in pixels.
 
-### onBrushStart (optional)
+#### onBrushStart (optional)
+
 Type: `Function`
+
 Function called on the start of brushing.
 
-### onBrush (optional)
+#### onBrush (optional)
+
 Type: `Function`
+
 Function called on the start of brushing.
 
-### onBrushEnd (optional)
+#### onBrushEnd (optional)
+
 Type: `Function`
+
 Function called on the start of brushing.
 
-### onDragStart (optional)
+#### onDragStart (optional)
+
 Type: `Function`
+
 Function called on the start of dragging.
 
-### onDrag (optional)
+#### onDrag (optional)
+
 Type: `Function`
+
 Function called on the start of dragging.
 
-### onDragEnd (optional)
+#### onDragEnd (optional)
+
 Type: `Function`
+
 Function called on the start of dragging.

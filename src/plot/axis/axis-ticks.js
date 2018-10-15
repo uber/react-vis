@@ -48,16 +48,6 @@ function _getTickFormatFn(scale, tickTotal, tickFormat) {
 
 class AxisTicks extends React.Component {
   /**
-   * Gets if the axis is vertical.
-   * @returns {boolean} True if vertical.
-   * @private
-   */
-  _isAxisVertical() {
-    const {orientation} = this.props;
-    return orientation === LEFT || orientation === RIGHT;
-  }
-
-  /**
    * Check if axis ticks should be mirrored (for the right and top positions.
    * @returns {boolean} True if mirrored.
    * @private
@@ -75,29 +65,6 @@ class AxisTicks extends React.Component {
     }
     return pos => {
       return {transform: `translate(${pos}, 0)`};
-    };
-  }
-
-  /**
-   * Get the props of the tick line.
-   * @returns {Object} Props.
-   * @private
-   */
-  _getTickLineProps() {
-    const {
-      tickSize,
-      tickSizeOuter = tickSize,
-      tickSizeInner = tickSize
-    } = this.props;
-    const isVertical = this._isAxisVertical();
-    const tickXAttr = isVertical ? 'y' : 'x';
-    const tickYAttr = isVertical ? 'x' : 'y';
-    const wrap = this._areTicksWrapped() ? -1 : 1;
-    return {
-      [`${tickXAttr}1`]: 0,
-      [`${tickXAttr}2`]: 0,
-      [`${tickYAttr}1`]: -wrap * tickSizeInner,
-      [`${tickYAttr}2`]: wrap * tickSizeOuter
     };
   }
 
@@ -154,6 +121,39 @@ class AxisTicks extends React.Component {
       dy,
       transform
     };
+  }
+
+  /**
+   * Get the props of the tick line.
+   * @returns {Object} Props.
+   * @private
+   */
+  _getTickLineProps() {
+    const {
+      tickSize,
+      tickSizeOuter = tickSize,
+      tickSizeInner = tickSize
+    } = this.props;
+    const isVertical = this._isAxisVertical();
+    const tickXAttr = isVertical ? 'y' : 'x';
+    const tickYAttr = isVertical ? 'x' : 'y';
+    const wrap = this._areTicksWrapped() ? -1 : 1;
+    return {
+      [`${tickXAttr}1`]: 0,
+      [`${tickXAttr}2`]: 0,
+      [`${tickYAttr}1`]: -wrap * tickSizeInner,
+      [`${tickYAttr}2`]: wrap * tickSizeOuter
+    };
+  }
+
+  /**
+   * Gets if the axis is vertical.
+   * @returns {boolean} True if vertical.
+   * @private
+   */
+  _isAxisVertical() {
+    const {orientation} = this.props;
+    return orientation === LEFT || orientation === RIGHT;
   }
 
   render() {

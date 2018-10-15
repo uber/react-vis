@@ -70,7 +70,12 @@ const propTypes = {
   tickSizeInner: PropTypes.number,
   tickSizeOuter: PropTypes.number,
   tickPadding: PropTypes.number,
-  tickValues: PropTypes.array,
+  tickValues: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ])
+  ),
   tickFormat: PropTypes.func,
   tickTotal: PropTypes.number,
 

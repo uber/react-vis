@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import {showCase} from '../index';
 import {mapSection} from '../showcase-components/showcase-utils';
@@ -21,15 +21,13 @@ const TREEMAPS = [
   }
 ];
 
-class TreemapShowcase extends Component {
-  render() {
-    return (
-      <article id="treemaps">
-        <h1>Treemap</h1>
-        {TREEMAPS.map(mapSection)}
-      </article>
-    );
-  }
+function TreemapShowcase(props) {
+  return (
+    <article id="treemaps">
+      <h1>Treemap</h1>
+      {TREEMAPS.map(mapSection)}
+    </article>
+  );
 }
 
 export default TreemapShowcase;

@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, {Component} from 'react';
+import React from 'react';
 
 import {ParallelCoordinates} from 'index';
 import IrisData from '../datasets/iris.json';
@@ -47,18 +47,16 @@ const domains = IrisData.reduce((acc, row) => {
   });
 }, domainStructure);
 
-export default class BrushedParallelCoordinates extends Component {
-  render() {
-    return (
-      <ParallelCoordinates
-        animation
-        brushing
-        data={IrisData.map(d => ({...d, color: SPECIES_COLORS[d.species]}))}
-        domains={domains}
-        margin={60}
-        width={600}
-        height={400}
-      />
-    );
-  }
+export default function BrushedParallelCoordinates(props) {
+  return (
+    <ParallelCoordinates
+      animation
+      brushing
+      data={IrisData.map(d => ({...d, color: SPECIES_COLORS[d.species]}))}
+      domains={domains}
+      margin={60}
+      width={600}
+      height={400}
+    />
+  );
 }

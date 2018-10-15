@@ -262,6 +262,20 @@ class Hero extends Component {
     window.removeEventListener('resize', this._resize);
   }
 
+  _resize = () => {
+    this.setState({
+      height: window.innerHeight,
+      width: window.innerWidth
+    });
+  };
+
+  changeType = i => {
+    const updatedChartsProps = [...this.state.chartsProps];
+    updatedChartsProps[i].type = (updatedChartsProps[i].type + 1) % 6;
+    updatedChartsProps[i].changes = updatedChartsProps[i].changes + 1;
+    this.setState({chartsProps: updatedChartsProps});
+  };
+
   generateData = nb => {
     return [...Array(nb).keys()].map(d => {
       const nbPoints = 5 + random({scope: 5, rolls: 2, integer: true});
@@ -274,20 +288,6 @@ class Hero extends Component {
         type,
         data
       };
-    });
-  };
-
-  changeType = i => {
-    const updatedChartsProps = [...this.state.chartsProps];
-    updatedChartsProps[i].type = (updatedChartsProps[i].type + 1) % 6;
-    updatedChartsProps[i].changes = updatedChartsProps[i].changes + 1;
-    this.setState({chartsProps: updatedChartsProps});
-  };
-
-  _resize = () => {
-    this.setState({
-      height: window.innerHeight,
-      width: window.innerWidth
     });
   };
 

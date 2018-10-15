@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {scaleLinear} from 'd3-scale';
 import {format} from 'd3-format';
@@ -173,68 +173,66 @@ function getPolygons(props) {
   });
 }
 
-class RadarChart extends Component {
-  render() {
-    const {
-      animation,
-      className,
-      children,
-      colorRange,
-      data,
-      domains,
-      height,
-      hideInnerMostValues,
-      margin,
-      onMouseLeave,
-      onMouseEnter,
-      startingAngle,
-      style,
-      tickFormat,
-      width
-    } = this.props;
+function RadarChart(props) {
+  const {
+    animation,
+    className,
+    children,
+    colorRange,
+    data,
+    domains,
+    height,
+    hideInnerMostValues,
+    margin,
+    onMouseLeave,
+    onMouseEnter,
+    startingAngle,
+    style,
+    tickFormat,
+    width
+  } = props;
 
-    const axes = getAxes({
-      domains,
-      animation,
-      hideInnerMostValues,
-      startingAngle,
-      style,
-      tickFormat
-    });
+  const axes = getAxes({
+    domains,
+    animation,
+    hideInnerMostValues,
+    startingAngle,
+    style,
+    tickFormat
+  });
 
-    const polygons = getPolygons({
-      animation,
-      colorRange,
-      domains,
-      data,
-      startingAngle,
-      style
-    });
-    const labelSeries = (
-      <LabelSeries
-        animation={animation}
-        key={className}
-        className={`${predefinedClassName}-label`}
-        data={getLabels({domains, style: style.labels, startingAngle})}
-      />
-    );
-    return (
-      <XYPlot
-        height={height}
-        width={width}
-        margin={margin}
-        dontCheckIfEmpty
-        className={`${className} ${predefinedClassName}`}
-        onMouseLeave={onMouseLeave}
-        onMouseEnter={onMouseEnter}
-        xDomain={[-1, 1]}
-        yDomain={[-1, 1]}
-      >
-        {children}
-        {axes.concat(polygons).concat(labelSeries)}
-      </XYPlot>
-    );
-  }
+  const polygons = getPolygons({
+    animation,
+    colorRange,
+    domains,
+    data,
+    startingAngle,
+    style
+  });
+  const labelSeries = (
+    <LabelSeries
+      animation={animation}
+      key={className}
+      className={`${predefinedClassName}-label`}
+      data={getLabels({domains, style: style.labels, startingAngle})}
+    />
+  );
+  return (
+    <XYPlot
+      height={height}
+      width={width}
+      margin={margin}
+      dontCheckIfEmpty
+      className={`${className} ${predefinedClassName}`}
+      onMouseLeave={onMouseLeave}
+      onMouseEnter={onMouseEnter}
+      xDomain={[-1, 1]}
+      yDomain={[-1, 1]}
+    >
+      {children}
+      {axes.concat(polygons).concat(labelSeries)}
+    </XYPlot>
+  );
 }
 
 RadarChart.displayName = 'RadarChart';

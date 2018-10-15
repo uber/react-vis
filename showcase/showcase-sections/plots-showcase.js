@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {showCase} from '../index';
 import {mapSection} from '../showcase-components/showcase-utils';
@@ -14,6 +14,7 @@ const {
   CustomSVGExample,
   CustomSVGAllTheMarks,
   CustomSVGRootLevel,
+  DifferenceChart,
   EmptyChart,
   FauxScatterplotChart,
   GridLinesChart,
@@ -133,6 +134,11 @@ const PLOTS = [
     name: 'Big Base Bar Series'
   },
   {
+    component: DifferenceChart,
+    componentName: 'DifferenceChart',
+    name: 'Difference Bar Series'
+  },
+  {
     name: 'Stacked Horizontal Bar Series',
     component: StackedHorizontalBarChart,
     componentName: 'StackedHorizontalBarChart'
@@ -245,24 +251,22 @@ const BASIC_COMPONENTS = [
   }
 ];
 
-class PlotsShowcase extends Component {
-  render() {
-    const {forExample} = this.props;
-    return (
-      <article id="plots">
-        <h1>Plots</h1>
-        {!forExample && (
-          <section>
-            <ComplexChart />
-          </section>
-        )}
-        <h2>Series Types</h2>
-        {PLOTS.map(mapSection)}
-        <h2>Basic Components</h2>
-        {BASIC_COMPONENTS.map(mapSection)}
-      </article>
-    );
-  }
+function PlotsShowcase(props) {
+  const {forExample} = props;
+  return (
+    <article id="plots">
+      <h1>Plots</h1>
+      {!forExample && (
+        <section>
+          <ComplexChart />
+        </section>
+      )}
+      <h2>Series Types</h2>
+      {PLOTS.map(mapSection)}
+      <h2>Basic Components</h2>
+      {BASIC_COMPONENTS.map(mapSection)}
+    </article>
+  );
 }
 
 PlotsShowcase.propTypes = {

@@ -42,20 +42,20 @@ export default class Example extends React.Component {
     ];
   }
 
-  _onSeriesMouseOver(selectedIndex) {
-    this.setState({selectedIndex});
-  }
-
-  _onChartMouseLeave() {
-    this.setState({selectedIndex: null});
-  }
-
   _getSeriesColor(index) {
     const {selectedIndex} = this.state;
     if (selectedIndex !== null && selectedIndex !== index) {
       return '#ddd';
     }
     return null;
+  }
+
+  _onChartMouseLeave() {
+    this.setState({selectedIndex: null});
+  }
+
+  _onSeriesMouseOver(selectedIndex) {
+    this.setState({selectedIndex});
   }
 
   render() {

@@ -29,25 +29,23 @@ import {
   WhiskerSeries
 } from 'index';
 
-export default class Example extends React.Component {
-  render() {
-    return (
-      <XYPlot width={300} height={300}>
-        <VerticalGridLines />
-        <HorizontalGridLines />
-        <XAxis />
-        <YAxis />
-        <WhiskerSeries
-          className="whisker-series-example"
-          data={[
-            {x: 1, y: 10, xVariance: 0.2, yVariance: 4},
-            {x: 1.7, y: 12, xVariance: 0.3, yVariance: 7},
-            {x: 2, y: 5, xVariance: 0.1, yVariance: 3},
-            {x: 3, y: 15, xVariance: 0.4, yVariance: 10},
-            {x: 2.5, y: 7, xVariance: 0.3, yVariance: 4}
-          ]}
-        />
-      </XYPlot>
-    );
-  }
+export default function Example(props) {
+  return (
+    <XYPlot width={300} height={300}>
+      <VerticalGridLines />
+      <HorizontalGridLines />
+      <XAxis />
+      <YAxis />
+      <WhiskerSeries
+        className="whisker-series-example"
+        data={[
+          {x: 1, y: 10, xVariance: 0.2, yVariance: 4},
+          {x: 1.7, y: 12, xVariance: 0.3, yVariance: 7},
+          {x: 2, y: 5, xVariance: 0.1, yVariance: 3},
+          {x: 3, y: 15, xVariance: 0.4, yVariance: 10},
+          {x: 2.5, y: 7, xVariance: 0.3, yVariance: 4}
+        ]}
+      />
+    </XYPlot>
+  );
 }

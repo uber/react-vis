@@ -29,35 +29,50 @@ In the above example we start be setting our domain on the XYPlot (though this w
 ## API Reference
 
 #### axisStart
+
 Type: `Object`
+
 Specify a start point for the decorativeAxis. It should be expressed in terms of coordinates (not pixels!) as a object like ```{x: 10, y: 1}```
 
 #### axisEnd
+
 Type: `Object`
+
 Specify a start point for the decorativeAxis. It should be expressed in terms of coordinates (not pixels!) as a object like ```{x: 10, y: 1}```
 
 #### axisDomain
+
 Type: `Array`
+
 This array of numbers allows the user to specify the values that will be interpolated across on the axis.
 
 #### tickTotal (optional)
-Type: `number`  
+
+Type: `number`
+
 Total number of ticks on the axis. Already set by default. Similar to the `tickTotal()` method of d3-axis.
 
 #### tickSize (optional)
-Type: `number`  
-Default: `5`  
+
+Type: `number`
+
+Default: `5`
+
 Tick size for the axis. Sets both inner and outer sizes of the tick line. Similar to the `tickSize()` method of d3-axis.
 
 #### tickValue (optional)
-Type: `function(*)`  
+
+Type: `function(*)`
+
 Format function for the tick label. Similar to the `tickFormat()` method of d3-axis.
 
 #### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
-### style (optional)
+#### style (optional)
+
 Type: `object`
+
 An object that contains CSS properties with which the axis component can be entirely re-styled.
 As the Axis component is composite, it is possible to style its different parts individually. See [style](style.md)
 

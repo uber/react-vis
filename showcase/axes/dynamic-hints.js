@@ -40,14 +40,14 @@ export default class Example extends React.Component {
     this._forgetValue = this._forgetValue.bind(this);
   }
 
-  _rememberValue(value) {
-    this.setState({value});
-  }
-
   _forgetValue() {
     this.setState({
       value: null
     });
+  }
+
+  _rememberValue(value) {
+    this.setState({value});
   }
 
   render() {

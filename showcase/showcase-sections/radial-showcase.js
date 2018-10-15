@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
@@ -35,17 +35,14 @@ const RADIAL = [
     componentName: GradientPie
   }
 ];
-/* eslint-enable max-len */
 
-class RadialShowcase extends Component {
-  render() {
-    return (
-      <article id="radial-charts">
-        <h1>Radial Chart</h1>
-        {RADIAL.map(mapSection)}
-      </article>
-    );
-  }
+function RadialShowcase(props) {
+  return (
+    <article id="radial-charts">
+      <h1>Radial Chart</h1>
+      {RADIAL.map(mapSection)}
+    </article>
+  );
 }
 
 export default RadialShowcase;

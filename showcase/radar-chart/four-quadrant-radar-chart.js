@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, {Component} from 'react';
+import React from 'react';
 
 import RadarChart from 'radar-chart';
 
@@ -41,27 +41,25 @@ const RADAR_PROPS = {
   width: 400
 };
 
-export default class FourQuadrantRadarChart extends Component {
-  render() {
-    return (
-      <RadarChart
-        data={RADAR_PROPS.data}
-        domains={RADAR_PROPS.domains}
-        height={RADAR_PROPS.height}
-        width={RADAR_PROPS.width}
-        startingAngle={Math.PI / 7}
-        className="overflow-okay horizontally-centered"
-        style={{
-          labels: {
-            fontSize: 13
-          },
-          polygons: {
-            fillOpacity: 0.1,
-            strokeOpacity: 1,
-            strokeWidth: 0.5
-          }
-        }}
-      />
-    );
-  }
+export default function FourQuadrantRadarChart(props) {
+  return (
+    <RadarChart
+      data={RADAR_PROPS.data}
+      domains={RADAR_PROPS.domains}
+      height={RADAR_PROPS.height}
+      width={RADAR_PROPS.width}
+      startingAngle={Math.PI / 7}
+      className="overflow-okay horizontally-centered"
+      style={{
+        labels: {
+          fontSize: 13
+        },
+        polygons: {
+          fillOpacity: 0.1,
+          strokeOpacity: 1,
+          strokeWidth: 0.5
+        }
+      }}
+    />
+  );
 }
