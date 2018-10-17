@@ -1,34 +1,45 @@
 const fs = require('fs');
 const path = require('path');
 
-function generateSubModules(mainJsFile, basePath) {
-  const pathMap = new Map();
-  const regex = /export\s+(\S+|\{[\s\w,]*\})\s+from\s+'(\.\/)?(\S+)'/g;
+const reactVis = require('../dist');
 
-  let match;
-  do {
-    match = regex.exec(mainJsFile);
-    if (match) {
-      pathMap.set(match[1], match[3]);
+const pathMap = new Map();
+const reactVisModule = require.main.children.find(child => child.exports === reactVis);
+
+// Map origin source file location for each element exported from main module
+Object.keys(reactVis).forEach(key => {
+  const originModule = reactVisModule.children.find(child => child.exports &&
+    Object.values(child.exports).find(exp => exp === reactVis[key])
+  );
+  if (originModule) {
+    const defaultExport = reactVis[key] === originModule.exports.default;
+    const { filename } = originModule;
+    if (defaultExport) {
+      pathMap.set(filename, key);
+    } else {
+      const oldValue = pathMap.get(filename) || [];
+      pathMap.set(filename, [...oldValue, key])
     }
-  } while (match);
+  }
+});
 
-  Array.from(pathMap).forEach(([name, componentPath]) => {
-    let fullPath = path.join(basePath, `${componentPath}`);
-    fullPath = fs.existsSync(fullPath) && fs.statSync(fullPath).isDirectory()
-      ? path.join(fullPath, 'index.d.ts')
-      : fullPath + '.d.ts';
-
-    fs.writeFileSync(
-      fullPath,
-      name.includes('{')
-        ? `export ${name} from 'react-vis';\n`
-        : `import { ${name} } from 'react-vis';\nexport default ${name};\n`,
-    )
-  });
+function generateModuleFile(filePath, value) {
+  const { dir, name } = path.parse(filePath);
+  const dtsFileName =  path.join(dir, `${name}.d.ts`);
+  
+  fs.writeFileSync(
+    dtsFileName,
+    Array.isArray(value)
+      ? `export { ${value.join(', ')} } from 'react-vis';\n`
+      : `import { ${value} } from 'react-vis';\nexport default ${value};\n`,
+  );
 }
 
-const indexContent = fs.readFileSync('../src/index.js', 'utf8');
+// write modules definitions to ../dist directory
+Array.from(pathMap).forEach(([filePath, value]) => generateModuleFile(filePath, value));
 
-generateSubModules(indexContent, '../es');
-generateSubModules(indexContent, '../dist');
+// write modules definitions to ../es directory
+Array.from(pathMap).forEach(([filePath, value]) => {
+  filePath = path.resolve('../es', path.relative('../dist', filePath));
+  generateModuleFile(filePath, value);
+});
