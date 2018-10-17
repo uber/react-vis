@@ -16,9 +16,9 @@ reactVis.AbstractSeries.propTypes = {
 }
 
 function splitPath(path) {
-  let [compName, ...propName] = path.split('.');
-  compName = compName.replace('Canvas', '');
-  propName = propName.join('.');
+  const [fullCompName, ...properties] = path.split('.');
+  const compName = fullCompName.replace('Canvas', '');
+  const propName = properties.join('.');
   return { compName, propName };
 }
 
