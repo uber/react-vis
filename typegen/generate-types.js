@@ -14,7 +14,7 @@ reactVis.AbstractSeries.propTypes = Object.assign(
     stroke: colorType,
     fill: colorType,
     opacity: PropTypes.number,
-  },
+  }
 );
 
 function splitPath(path) {
