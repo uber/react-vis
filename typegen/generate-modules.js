@@ -9,7 +9,10 @@ const reactVisModule = require.main.children.find(child => child.exports === rea
 // Map origin source file location for each element exported from main module
 Object.keys(reactVis).forEach(key => {
   const originModule = reactVisModule.children.find(child => child.exports &&
-    Object.values(child.exports).find(exp => exp === reactVis[key])
+    // Can't use Object.values here. It is not available in node v6
+    Object.keys(child.exports)
+      .map(key => child.exports[key])
+      .find(exp => exp === reactVis[key])
   );
   if (originModule) {
     const defaultExport = reactVis[key] === originModule.exports.default;
@@ -25,13 +28,13 @@ Object.keys(reactVis).forEach(key => {
 
 function generateModuleFile(filePath, value) {
   const { dir, name } = path.parse(filePath);
-  const dtsFileName =  path.join(dir, `${name}.d.ts`);
-  
+  const dtsFileName = path.join(dir, `${name}.d.ts`);
+
   fs.writeFileSync(
     dtsFileName,
     Array.isArray(value)
       ? `export { ${value.join(', ')} } from 'react-vis';\n`
-      : `import { ${value} } from 'react-vis';\nexport default ${value};\n`,
+      : `import { ${value} } from 'react-vis';\nexport default ${value};\n`
   );
 }
 

@@ -7,13 +7,15 @@ const reactVis = require('../dist');
 
 //Adding missing prop types (described in docs but not covered with prop types of components)
 const colorType = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
-reactVis.AbstractSeries.propTypes = {
-  ...reactVis.AbstractSeries.propTypes,
-  color: colorType,
-  stroke: colorType,
-  fill: colorType,
-  opacity: PropTypes.number,
-}
+reactVis.AbstractSeries.propTypes = Object.assign(
+  reactVis.AbstractSeries.propTypes,
+  {
+    color: colorType,
+    stroke: colorType,
+    fill: colorType,
+    opacity: PropTypes.number,
+  },
+);
 
 function splitPath(path) {
   const [fullCompName, ...properties] = path.split('.');
