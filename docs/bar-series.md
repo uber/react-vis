@@ -126,6 +126,11 @@ Type: `object`
 
 A list of CSS properties to style the series outside of the explicitly set properties. Note that it will override all other properties (ie fill, stroke, opacity, color). See [style](style.md)
 
+#### barWidth
+Type: `Number`
+The percentage for which each bar fills the designated bucket. 1.0 means that the bar fills the whole bucket (no padding between bars), while a 
+smaller percentage means more whitespace between the bars.
+
 ## Interaction handlers
 #### onNearestX (optional)
 

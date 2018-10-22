@@ -37,7 +37,14 @@ class BarSeries extends AbstractSeries {
       valuePosAttr: PropTypes.string,
       lineSizeAttr: PropTypes.string,
       valueSizeAttr: PropTypes.string,
-      cluster: PropTypes.string
+      cluster: PropTypes.string,
+      barWidth: PropTypes.number
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      barWidth: 0.85
     };
   }
 
@@ -52,7 +59,8 @@ class BarSeries extends AbstractSeries {
       marginTop,
       style,
       valuePosAttr,
-      valueSizeAttr
+      valueSizeAttr,
+      barWidth
     } = this.props;
 
     if (!data) {
@@ -79,7 +87,7 @@ class BarSeries extends AbstractSeries {
       this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color');
     const opacityFunctor = this._getAttributeFunctor('opacity');
 
-    const itemSize = (distance / 2) * 0.85;
+    const itemSize = (distance / 2) * barWidth;
 
     return (
       <g
