@@ -43,6 +43,6 @@ Array.from(pathMap).forEach(([filePath, value]) => generateModuleFile(filePath, 
 
 // write modules definitions to ../es directory
 Array.from(pathMap).forEach(([filePath, value]) => {
-  filePath = path.resolve('../es', path.relative('../dist', filePath));
+  filePath = path.resolve('./es', path.relative('./dist', filePath));
   generateModuleFile(filePath, value);
 });

@@ -35,7 +35,7 @@
     "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test",
     "prettier": "prettier --write $(git ls-files | grep '.js$')",
     "remove-unpm-rfs": "./remove-refs-to-unpm.pl",
-    "generate-types": "cd typegen && npm install && npm run generate-types && npm run generate-modules"
+    "generate-types": "node ./typegen/generate-types.js && node ./typegen/generate-modules.js"
   },
   "dependencies": {
     "d3-array": "^1.2.0",
@@ -82,6 +82,7 @@
     "node-sass": "^4.9.3",
     "nyc": "^13.0.1",
     "prettier": "^1.14.2",
+    "prop-types-to-dts": "^0.3.2",
     "react": "^15.5.4",
     "react-addons-test-utils": ">=15.4.2",
     "react-dom": "^15.5.4",

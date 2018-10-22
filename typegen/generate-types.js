@@ -32,7 +32,7 @@ function getPoint(name) {
   return isAbstract(name) ? 'T' : `${name}Point`;
 }
 
-const customDeclarations = fs.readFileSync('header.d.ts');
+const customDeclarations = fs.readFileSync('./typegen/header.d.ts');
 
 let reactVisTypings = generateTypes('react-vis', reactVis, {
   customDeclarations,
@@ -176,5 +176,5 @@ reactVisTypings = reactVisTypings
   .replace(/ReactComponent/g, 'Component')
   .replace(/ReactPureComponent/g, 'PureComponent');
 
-fs.writeFileSync('../index.d.ts', reactVisTypings + '\n');
+fs.writeFileSync('./index.d.ts', reactVisTypings + '\n');
 
