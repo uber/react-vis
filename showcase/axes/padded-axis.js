@@ -31,7 +31,9 @@ import {
 
 export default class Example extends React.Component {
   getRandomData() {
-    const randomYData = [...new Array(100)].map(() => Math.round(Math.random() * 40));
+    const randomYData = [...new Array(100)].map(() =>
+      Math.round(Math.random() * 40)
+    );
     return randomYData.map((val, idx) => {
       return {x: idx, y: val};
     });
@@ -42,34 +44,21 @@ export default class Example extends React.Component {
     const secondData = this.getRandomData();
     return (
       <div style={{display: 'flex'}}>
-        <XYPlot
-          width={300}
-          height={300}>
+        <XYPlot width={300} height={300}>
           <HorizontalGridLines />
           <VerticalGridLines />
           <XAxis title="X Axis" />
           <YAxis title="Y Axis" />
-          <LineSeries
-            className="first-series"
-            data={firstData}/>
-          <LineSeries
-            className="second-series"
-            data={secondData}/>
+          <LineSeries className="first-series" data={firstData} />
+          <LineSeries className="second-series" data={secondData} />
         </XYPlot>
-        <XYPlot
-          yPadding={60}
-          width={300}
-          height={300}>
+        <XYPlot yPadding={60} width={300} height={300}>
           <HorizontalGridLines />
           <VerticalGridLines />
           <XAxis title="X Axis" />
           <YAxis title="Y Axis" />
-          <LineSeries
-            className="first-series"
-            data={firstData}/>
-          <LineSeries
-            className="second-series"
-            data={secondData}/>
+          <LineSeries className="first-series" data={firstData} />
+          <LineSeries className="second-series" data={secondData} />
         </XYPlot>
       </div>
     );

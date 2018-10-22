@@ -21,7 +21,11 @@ import PropTypes from 'prop-types';
 import {rgb} from 'd3-color';
 
 import {DEFAULT_OPACITY} from 'theme';
-import {getAttributeFunctor, getScaleObjectFromProps, getAttr0Functor} from 'utils/scales-utils';
+import {
+  getAttributeFunctor,
+  getScaleObjectFromProps,
+  getAttr0Functor
+} from 'utils/scales-utils';
 import {getStackParams} from 'utils/series-utils';
 import AbstractSeries from './abstract-series';
 
@@ -56,8 +60,11 @@ class BarSeriesCanvas extends AbstractSeries {
     const line = getAttributeFunctor(props, linePosAttr);
     const value = getAttributeFunctor(props, valuePosAttr);
     const value0 = getAttr0Functor(props, valuePosAttr);
-    const fill = getAttributeFunctor(props, 'fill') || getAttributeFunctor(props, 'color');
-    const stroke = getAttributeFunctor(props, 'stroke') || getAttributeFunctor(props, 'color');
+    const fill =
+      getAttributeFunctor(props, 'fill') || getAttributeFunctor(props, 'color');
+    const stroke =
+      getAttributeFunctor(props, 'stroke') ||
+      getAttributeFunctor(props, 'color');
     const opacity = getAttributeFunctor(props, 'opacity');
 
     const halfSpace = (distance / 2) * 0.85;
@@ -92,9 +99,13 @@ class BarSeriesCanvas extends AbstractSeries {
 
       ctx.beginPath();
       ctx.rect(x + marginBottom, y + marginTop, width, height);
-      ctx.fillStyle = `rgba(${fillColor.r}, ${fillColor.g}, ${fillColor.b}, ${rowOpacity})`;
+      ctx.fillStyle = `rgba(${fillColor.r}, ${fillColor.g}, ${
+        fillColor.b
+      }, ${rowOpacity})`;
       ctx.fill();
-      ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${strokeColor.b}, ${rowOpacity})`;
+      ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${
+        strokeColor.b
+      }, ${rowOpacity})`;
       ctx.stroke();
     });
   }

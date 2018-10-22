@@ -20,15 +20,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  hierarchy,
-  partition
-} from 'd3-hierarchy';
+import {hierarchy, partition} from 'd3-hierarchy';
 
-import {
-  scaleLinear,
-  scaleSqrt
-} from 'd3-scale';
+import {scaleLinear, scaleSqrt} from 'd3-scale';
 
 import {AnimationPropType} from 'animation';
 import LabelSeries from 'plot/series/label-series';
@@ -63,25 +57,28 @@ const LISTENERS_TO_OVERWRITE = [
 function getNodesToRender({data, height, hideRootNode, width, getSize}) {
   const partitionFunction = partition();
   const structuredInput = hierarchy(data).sum(getSize);
-  const radius = (Math.min(width, height) / 2) - 10;
+  const radius = Math.min(width, height) / 2 - 10;
   const x = scaleLinear().range([0, 2 * Math.PI]);
   const y = scaleSqrt().range([0, radius]);
 
-  return partitionFunction(structuredInput).descendants()
+  return partitionFunction(structuredInput)
+    .descendants()
     .reduce((res, cell, index) => {
       if (hideRootNode && index === 0) {
         return res;
       }
 
-      return res.concat([{
-        angle0: Math.max(0, Math.min(2 * Math.PI, x(cell.x0))),
-        angle: Math.max(0, Math.min(2 * Math.PI, x(cell.x1))),
-        radius0: Math.max(0, y(cell.y0)),
-        radius: Math.max(0, y(cell.y1)),
-        depth: cell.depth,
-        parent: cell.parent,
-        ...cell.data
-      }]);
+      return res.concat([
+        {
+          angle0: Math.max(0, Math.min(2 * Math.PI, x(cell.x0))),
+          angle: Math.max(0, Math.min(2 * Math.PI, x(cell.x1))),
+          radius0: Math.max(0, y(cell.y0)),
+          radius: Math.max(0, y(cell.y1)),
+          depth: cell.depth,
+          parent: cell.parent,
+          ...cell.data
+        }
+      ]);
     }, []);
 }
 
@@ -93,21 +90,14 @@ function getNodesToRender({data, height, hideRootNode, width, getSize}) {
  * @returns {Array} array of node for rendering as labels
  */
 function buildLabels(mappedData, accessors) {
-  const {
-    getAngle,
-    getAngle0,
-    getLabel,
-    getRadius0
-  } = accessors;
+  const {getAngle, getAngle0, getLabel, getRadius0} = accessors;
 
-  return mappedData
-  .filter(getLabel)
-  .map(row => {
+  return mappedData.filter(getLabel).map(row => {
     const truedAngle = -1 * getAngle(row) + Math.PI / 2;
     const truedAngle0 = -1 * getAngle0(row) + Math.PI / 2;
     const angle = (truedAngle0 + truedAngle) / 2;
     const rotateLabels = !row.dontRotateLabel;
-    const rotAngle = -angle / (2 * Math.PI) * 360;
+    const rotAngle = (-angle / (2 * Math.PI)) * 360;
 
     return {
       ...row,
@@ -120,74 +110,92 @@ function buildLabels(mappedData, accessors) {
         textAnchor: rotAngle > 90 ? 'end' : 'start',
         ...row.labelStyle
       },
-      rotation: rotateLabels ? (
-        rotAngle > 90 ? (rotAngle + 180) :
-        rotAngle === 90 ? 90 : (rotAngle)) : null
+      rotation: rotateLabels
+        ? rotAngle > 90
+          ? rotAngle + 180
+          : rotAngle === 90
+            ? 90
+            : rotAngle
+        : null
     };
   });
 }
 
 const NOOP = () => {};
 
-class Sunburst extends React.Component {
-  render() {
-    const {
-      getAngle,
-      getAngle0,
-      animation,
-      className,
-      children,
-      data,
-      height,
-      hideRootNode,
-      getLabel,
-      width,
-      getSize,
-      colorType
-    } = this.props;
-    const mappedData = getNodesToRender({data, height, hideRootNode, width, getSize});
-    const radialDomain = getRadialDomain(mappedData);
-    const margin = getRadialLayoutMargin(width, height, radialDomain);
+function Sunburst(props) {
+  const {
+    getAngle,
+    getAngle0,
+    animation,
+    className,
+    children,
+    data,
+    height,
+    hideRootNode,
+    getLabel,
+    width,
+    getSize,
+    colorType
+  } = props;
+  const mappedData = getNodesToRender({
+    data,
+    height,
+    hideRootNode,
+    width,
+    getSize
+  });
+  const radialDomain = getRadialDomain(mappedData);
+  const margin = getRadialLayoutMargin(width, height, radialDomain);
 
-    const labelData = buildLabels(mappedData, {
-      getAngle,
-      getAngle0,
-      getLabel,
-      getRadius0: d => d.radius0
-    });
+  const labelData = buildLabels(mappedData, {
+    getAngle,
+    getAngle0,
+    getLabel,
+    getRadius0: d => d.radius0
+  });
 
-    const hofBuilder = f => (e, i) => f ? f(mappedData[e.index], i) : NOOP;
-    return (
-      <XYPlot
-        height={height}
-        hasTreeStructure
-        width={width}
-        className={`${predefinedClassName} ${className}`}
-        margin={margin}
-        xDomain={[-radialDomain, radialDomain]}
-        yDomain={[-radialDomain, radialDomain]}>
-        <ArcSeries {...{
+  const hofBuilder = f => (e, i) => (f ? f(mappedData[e.index], i) : NOOP);
+  return (
+    <XYPlot
+      height={height}
+      hasTreeStructure
+      width={width}
+      className={`${predefinedClassName} ${className}`}
+      margin={margin}
+      xDomain={[-radialDomain, radialDomain]}
+      yDomain={[-radialDomain, radialDomain]}
+    >
+      <ArcSeries
+        {...{
           colorType,
-          ...this.props,
+          ...props,
           animation,
           radiusDomain: [0, radialDomain],
           // need to present a stripped down version for interpolation
-          data: animation ?
-            mappedData.map((row, index) => ({...row, parent: null, children: null, index})) :
-            mappedData,
+          data: animation
+            ? mappedData.map((row, index) => ({
+                ...row,
+                parent: null,
+                children: null,
+                index
+              }))
+            : mappedData,
           _data: animation ? mappedData : null,
           arcClassName: `${predefinedClassName}__series--radial__arc`,
-          ...(LISTENERS_TO_OVERWRITE.reduce((acc, propName) => {
-            const prop = this.props[propName];
+          ...LISTENERS_TO_OVERWRITE.reduce((acc, propName) => {
+            const prop = props[propName];
             acc[propName] = animation ? hofBuilder(prop) : prop;
             return acc;
-          }, {}))
-        }}/>
-        {labelData.length > 0 && (<LabelSeries data={labelData} getLabel={getLabel}/>)}
-        {children}
-      </XYPlot>
-    );
-  }
+          }, {})
+        }}
+      />
+      {labelData.length > 0 && (
+        <LabelSeries data={labelData} getLabel={getLabel} />
+      )}
+      {children}
+    </XYPlot>
+  );
 }
 
 Sunburst.displayName = 'Sunburst';
@@ -206,10 +214,7 @@ Sunburst.propTypes = {
   onValueMouseOut: PropTypes.func,
   getSize: PropTypes.func,
   width: PropTypes.number.isRequired,
-  padAngle: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.number
-  ])
+  padAngle: PropTypes.oneOfType([PropTypes.func, PropTypes.number])
 };
 Sunburst.defaultProps = {
   getAngle: d => d.angle,

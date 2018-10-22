@@ -28,20 +28,13 @@ const propTypes = {
   className: PropTypes.string,
   height: PropTypes.number,
   endColor: PropTypes.string,
-  endTitle: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]).isRequired,
+  endTitle: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    .isRequired,
   midColor: PropTypes.string,
-  midTitle: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]),
+  midTitle: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   startColor: PropTypes.string,
-  startTitle: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]).isRequired,
+  startTitle: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    .isRequired,
   width: PropTypes.number
 };
 
@@ -51,30 +44,37 @@ const defaultProps = {
   endColor: CONTINUOUS_COLOR_RANGE[1]
 };
 
-function ContinuousColorLegend({startColor, midColor, endColor, startTitle,
-  midTitle, endTitle, height, width, className}) {
+function ContinuousColorLegend({
+  startColor,
+  midColor,
+  endColor,
+  startTitle,
+  midTitle,
+  endTitle,
+  height,
+  width,
+  className
+}) {
   const colors = [startColor];
   if (midColor) {
     colors.push(midColor);
   }
   colors.push(endColor);
   return (
-    <div className={`rv-continuous-color-legend ${className}`} style={{width, height}}>
+    <div
+      className={`rv-continuous-color-legend ${className}`}
+      style={{width, height}}
+    >
       <div
         className="rv-gradient"
-        style={{background: `linear-gradient(to right, ${colors.join(',')})`}} />
+        style={{background: `linear-gradient(to right, ${colors.join(',')})`}}
+      />
       <div className="rv-legend-titles">
-        <span className="rv-legend-titles__left">
-          {startTitle}
-        </span>
-        <span className="rv-legend-titles__right">
-          {endTitle}
-        </span>
-        {midTitle ?
-          <span className="rv-legend-titles__center">
-            {midTitle}
-          </span> :
-          null}
+        <span className="rv-legend-titles__left">{startTitle}</span>
+        <span className="rv-legend-titles__right">{endTitle}</span>
+        {midTitle ? (
+          <span className="rv-legend-titles__center">{midTitle}</span>
+        ) : null}
       </div>
     </div>
   );

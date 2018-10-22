@@ -51,28 +51,38 @@ If using a function to defined your mark, it is important to note that the funct
 
 ## API reference
 
-#### animation (optional)  
+#### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
 #### className (optional)
+
 Type: `string`
+
 Provide an additional class name for the series.
 
 #### customComponent (optional)
+
 Type: `string|function`
+
 Provides the mark type for the entire series. Defaults to a 'circle'. See `Defining You Marks` above.
 
 #### data
+
 Type: `Array<Object>`
+
 Array of data for the series. See above data format reference.
 
-### style
+#### style
+
 Type: `object`
+
 A list of CSS properties to style the series outside of the explicitly set properties. Note that it will override all other properties (ie fill, stroke, opacity, color). See [style](style.md)
 
 ## Interaction handlers
 #### onNearestX (optional)
-Type: `function(value, {event, innerX, index})`  
+
+Type: `function(value, {event, innerX, index})`
+
 A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
@@ -81,7 +91,9 @@ Callback is triggered with two arguments. `value` is the data point, `info` obje
 See [interaction](interaction.md)
 
 #### onNearestXY (optional)
-Type: `function(value, {event, innerX, innerY, index})`  
+
+Type: `function(value, {event, innerX, innerY, index})`
+
 A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
@@ -89,3 +101,11 @@ Callback is triggered with two arguments. `value` is the data point, `info` obje
 - `index` is the index of the data point in the array of data;
 - `event` is the event object.
 See [interaction](interaction.md)
+
+#### onValueMouseOver (optional)
+Type: `function(d, {event})`
+`mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
+
+#### onValueMouseOut (optional)
+Type: `function(d, {event})`
+`mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.

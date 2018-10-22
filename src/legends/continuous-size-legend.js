@@ -26,16 +26,12 @@ const propTypes = {
   className: PropTypes.string,
   circlesTotal: PropTypes.number,
   endSize: PropTypes.number,
-  endTitle: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]).isRequired,
+  endTitle: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    .isRequired,
   height: PropTypes.number,
   startSize: PropTypes.number,
-  startTitle: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]).isRequired,
+  startTitle: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    .isRequired,
   width: PropTypes.number
 };
 
@@ -46,37 +42,48 @@ const defaultProps = {
   startSize: 2
 };
 
-function ContinuousSizeLegend({startTitle, endTitle, startSize, endSize,
-  circlesTotal, height, width, className}) {
+function ContinuousSizeLegend({
+  startTitle,
+  endTitle,
+  startSize,
+  endSize,
+  circlesTotal,
+  height,
+  width,
+  className
+}) {
   const circles = [];
   const step = (endSize - startSize) / (circlesTotal - 1);
 
   for (let i = 0; i < circlesTotal; i++) {
     const size = step * i + startSize;
     circles.push(
-      <div key={i} className="rv-bubble" style={{
-        width: size,
-        height: size,
-        borderRadius: size / 2
-      }} />
+      <div
+        key={i}
+        className="rv-bubble"
+        style={{
+          width: size,
+          height: size,
+          borderRadius: size / 2
+        }}
+      />
     );
     // Add the separator in order to justify the content (otherwise the tags
     // will be stacked together without any margins around).
     circles.push(' ');
   }
   return (
-    <div className={`rv-continuous-size-legend ${className}`} style={{width, height}}>
+    <div
+      className={`rv-continuous-size-legend ${className}`}
+      style={{width, height}}
+    >
       <div className="rv-bubbles" style={{height: endSize}}>
         {circles}
         <div className="rv-spacer" />
       </div>
       <div className="rv-legend-titles">
-        <span className="rv-legend-titles__left">
-          {startTitle}
-        </span>
-        <span className="rv-legend-titles__right">
-          {endTitle}
-        </span>
+        <span className="rv-legend-titles__left">{startTitle}</span>
+        <span className="rv-legend-titles__right">{endTitle}</span>
       </div>
     </div>
   );

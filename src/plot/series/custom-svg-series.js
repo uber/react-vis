@@ -25,7 +25,8 @@ import AbstractSeries from './abstract-series';
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 
-const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--custom-svg-wrapper';
+const predefinedClassName =
+  'rv-xy-plot__series rv-xy-plot__series--custom-svg-wrapper';
 
 const DEFAULT_STYLE = {
   stroke: 'blue',
@@ -34,30 +35,52 @@ const DEFAULT_STYLE = {
 
 function predefinedComponents(type, size = 2, style = DEFAULT_STYLE) {
   switch (type) {
-  case 'diamond':
-    return (<polygon
-      style={style}
-      points={`0 0 ${size / 2} ${size / 2} 0 ${size} ${-size / 2} ${size / 2} 0 0`} />);
-  case 'star':
-    const starPoints = [...new Array(5)].map((c, index) => {
-      const angle = index / 5 * Math.PI * 2;
-      const innerAngle = angle + Math.PI / 10;
-      const outerAngle = angle - Math.PI / 10;
-      // ratio of inner polygon to outer polgyon
-      const innerRadius = size / 2.61;
-      return `
+    case 'diamond':
+      return (
+        <polygon
+          style={style}
+          points={`0 0 ${size / 2} ${size / 2} 0 ${size} ${-size / 2} ${size /
+            2} 0 0`}
+        />
+      );
+    case 'star':
+      const starPoints = [...new Array(5)]
+        .map((c, index) => {
+          const angle = index / 5 * Math.PI * 2;
+          const innerAngle = angle + Math.PI / 10;
+          const outerAngle = angle - Math.PI / 10;
+          // ratio of inner polygon to outer polgyon
+          const innerRadius = size / 2.61;
+          return `
         ${Math.cos(outerAngle) * size} ${Math.sin(outerAngle) * size}
-        ${Math.cos(innerAngle) * innerRadius} ${Math.sin(innerAngle) * innerRadius}
+        ${Math.cos(innerAngle) * innerRadius} ${Math.sin(innerAngle) *
+            innerRadius}
       `;
-    }).join(' ');
-    return (<polygon
-        points={starPoints}
-        x="0" y="0" height={size} width={size} style={style}/>);
-  case 'square':
-    return (<rect x={`${-size / 2}`} y={`${-size / 2}`} height={size} width={size} style={style}/>);
-  default:
-  case 'circle':
-    return (<circle cx="0" cy="0" r={size / 2} style={style}/>);
+        })
+        .join(' ');
+      return (
+        <polygon
+          points={starPoints}
+          x="0"
+          y="0"
+          height={size}
+          width={size}
+          style={style}
+        />
+      );
+    case 'square':
+      return (
+        <rect
+          x={`${-size / 2}`}
+          y={`${-size / 2}`}
+          height={size}
+          width={size}
+          style={style}
+        />
+      );
+    default:
+    case 'circle':
+      return <circle cx="0" cy="0" r={size / 2} style={style} />;
   }
 }
 
@@ -66,13 +89,14 @@ function getInnerComponent({
   defaultType,
   positionInPixels,
   positionFunctions,
-  style
+  style,
+  propsSize
 }) {
   const {size} = customComponent;
   const aggStyle = {...style, ...(customComponent.style || {})};
   const innerComponent = customComponent.customComponent;
   if (!innerComponent && typeof defaultType === 'string') {
-    return predefinedComponents(defaultType, size, aggStyle);
+    return predefinedComponents(defaultType, size || propsSize, aggStyle);
   }
   // if default component is a function
   if (!innerComponent) {
@@ -96,7 +120,8 @@ class CustomSVGSeries extends AbstractSeries {
       innerWidth,
       marginLeft,
       marginTop,
-      style
+      style,
+      size
     } = this.props;
 
     if (!data || !innerWidth || !innerHeight) {
@@ -106,7 +131,7 @@ class CustomSVGSeries extends AbstractSeries {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <CustomSVGSeries {...this.props} animation={false}/>
+          <CustomSVGSeries {...this.props} animation={false} />
         </Animation>
       );
     }
@@ -123,21 +148,26 @@ class CustomSVGSeries extends AbstractSeries {
         positionInPixels,
         defaultType: customComponent,
         positionFunctions: {x, y},
-        style
+        style,
+        propsSize: size
       });
       return (
         <g
           className="rv-xy-plot__series--custom-svg"
           key={`rv-xy-plot__series--custom-svg-${index}`}
           transform={`translate(${positionInPixels.x},${positionInPixels.y})`}
-          >
+          onMouseEnter={e => this._valueMouseOverHandler(seriesComponent, e)}
+          onMouseLeave={e => this._valueMouseOutHandler(seriesComponent, e)}
+        >
           {innerComponent}
         </g>
       );
     });
     return (
-      <g className={`${predefinedClassName} ${className}`}
-         transform={`translate(${marginLeft},${marginTop})`}>
+      <g
+        className={`${predefinedClassName} ${className}`}
+        transform={`translate(${marginLeft},${marginTop})`}
+      >
         {contents}
       </g>
     );
@@ -148,20 +178,26 @@ CustomSVGSeries.propTypes = {
   animation: PropTypes.bool,
   className: PropTypes.string,
   customComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-  data: PropTypes.arrayOf(PropTypes.shape({
-    x: PropTypes.number.isRequired,
-    y: PropTypes.number.isRequired
-  })).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      x: PropTypes.number.isRequired,
+      y: PropTypes.number.isRequired
+    })
+  ).isRequired,
   marginLeft: PropTypes.number,
   marginTop: PropTypes.number,
-  style: PropTypes.object
+  style: PropTypes.object,
+  size: PropTypes.number,
+  onValueMouseOver: PropTypes.func,
+  onValueMouseOut: PropTypes.func
 };
 
 CustomSVGSeries.defaultProps = {
   ...AbstractSeries.defaultProps,
   animation: false,
   customComponent: 'circle',
-  style: {}
+  style: {},
+  size: 2
 };
 
 export default CustomSVGSeries;

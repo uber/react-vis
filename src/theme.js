@@ -50,10 +50,7 @@ export const EXTENDED_DISCRETE_COLOR_RANGE = [
   '#B3AD9E'
 ];
 
-export const CONTINUOUS_COLOR_RANGE = [
-  '#EF5D28',
-  '#FF9833'
-];
+export const CONTINUOUS_COLOR_RANGE = ['#EF5D28', '#FF9833'];
 
 export const SIZE_RANGE = [1, 10];
 

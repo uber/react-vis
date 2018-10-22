@@ -29,9 +29,20 @@ import Animation from 'animation';
 const predefinedClassName = 'rv-xy-manipulable-axis rv-xy-plot__axis';
 
 const animatedProps = [
-  'xRange', 'yRange', 'xDomain', 'yDomain',
-  'width', 'height', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
-  'tickSize', 'tickTotal', 'tickSizeInner', 'tickSizeOuter'
+  'xRange',
+  'yRange',
+  'xDomain',
+  'yDomain',
+  'width',
+  'height',
+  'marginLeft',
+  'marginTop',
+  'marginRight',
+  'marginBottom',
+  'tickSize',
+  'tickTotal',
+  'tickSizeInner',
+  'tickSizeOuter'
 ];
 
 class DecorativeAxis extends AbstractSeries {
@@ -53,7 +64,7 @@ class DecorativeAxis extends AbstractSeries {
     if (animation) {
       return (
         <Animation {...this.props} {...{animatedProps}}>
-          <DecorativeAxis {...this.props} animation={null}/>
+          <DecorativeAxis {...this.props} animation={null} />
         </Animation>
       );
     }
@@ -62,15 +73,20 @@ class DecorativeAxis extends AbstractSeries {
     const y = this._getAttributeFunctor('y');
 
     return (
-      <g className={`${predefinedClassName} ${className}`}
-         transform={`translate(${marginLeft},${marginTop})`}>
-        <line {...{
-          x1: x({x: axisStart.x}),
-          x2: x({x: axisEnd.x}),
-          y1: y({y: axisStart.y}),
-          y2: y({y: axisEnd.y}),
-          ...style.line
-        }} className="rv-xy-plot__axis__line"/>
+      <g
+        className={`${predefinedClassName} ${className}`}
+        transform={`translate(${marginLeft},${marginTop})`}
+      >
+        <line
+          {...{
+            x1: x({x: axisStart.x}),
+            x2: x({x: axisEnd.x}),
+            y1: y({y: axisStart.y}),
+            y2: y({y: axisEnd.y}),
+            ...style.line
+          }}
+          className="rv-xy-plot__axis__line"
+        />
         <g className="rv-xy-manipulable-axis__ticks">
           {DecorativeAxisTicks({
             axisDomain,

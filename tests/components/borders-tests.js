@@ -9,7 +9,15 @@ testRenderWithProps(Borders, GENERIC_XYPLOT_SERIES_PROPS);
 
 test('Borders: GradientExample', t => {
   const $ = mount(<GradientExample />);
-  t.equal($.find('.rv-xy-plot__borders').length, 1, 'should find the right number of borders containers');
-  t.equal($.find('.rv-xy-plot__borders rect').length, 4, 'should find the right number of borders');
+  t.equal(
+    $.find('.rv-xy-plot__borders').length,
+    1,
+    'should find the right number of borders containers'
+  );
+  t.equal(
+    $.find('.rv-xy-plot__borders rect').length,
+    4,
+    'should find the right number of borders'
+  );
   t.end();
 });

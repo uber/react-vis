@@ -20,10 +20,7 @@
 
 import test from 'tape';
 
-import {
-  getUniquePropertyValues,
-  addValueToArray
-} from 'utils/data-utils';
+import {getUniquePropertyValues, addValueToArray} from 'utils/data-utils';
 
 const arr = [{a: 1}, {b: 3, a: 2}, {a: 2}];
 
@@ -32,16 +29,26 @@ test('data-utils #getUniquePropertyValues', t => {
   t.ok(result.length === 2, 'Should return the array of the proper size');
   t.ok(
     result.indexOf(1) !== -1 && result.indexOf(2) !== -1,
-    'Should return unique values of the property');
+    'Should return unique values of the property'
+  );
   t.end();
 });
 
 test('data-utils #addValueToArray', t => {
-  t.deepEqual(addValueToArray([-10, 10], 1), [-10, 10],
-    'Shouldn\'t add the value if the value is in the array');
-  t.deepEqual(addValueToArray([-10, 0], 1), [-10, 1],
-    'Should add the value if the value is larger');
-  t.deepEqual(addValueToArray([0, 10], -1), [-1, 10],
-    'Should add the value if the value is smaller');
+  t.deepEqual(
+    addValueToArray([-10, 10], 1),
+    [-10, 10],
+    "Shouldn't add the value if the value is in the array"
+  );
+  t.deepEqual(
+    addValueToArray([-10, 0], 1),
+    [-10, 1],
+    'Should add the value if the value is larger'
+  );
+  t.deepEqual(
+    addValueToArray([0, 10], -1),
+    [-1, 10],
+    'Should add the value if the value is smaller'
+  );
   t.end();
 });

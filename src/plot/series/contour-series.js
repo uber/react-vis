@@ -32,12 +32,15 @@ import {CONTINUOUS_COLOR_RANGE} from 'theme';
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--contour';
 
 function getDomain(data) {
-  return data.reduce((acc, row) => {
-    return {
-      min: Math.min(acc.min, row.value),
-      max: Math.max(acc.max, row.value)
-    };
-  }, {min: Infinity, max: -Infinity});
+  return data.reduce(
+    (acc, row) => {
+      return {
+        min: Math.min(acc.min, row.value),
+        max: Math.max(acc.max, row.value)
+      };
+    },
+    {min: Infinity, max: -Infinity}
+  );
 }
 
 class ContourSeries extends AbstractSeries {
@@ -62,7 +65,7 @@ class ContourSeries extends AbstractSeries {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <ContourSeries {...this.props} animation={null}/>
+          <ContourSeries {...this.props} animation={null} />
         </Animation>
       );
     }
@@ -79,10 +82,13 @@ class ContourSeries extends AbstractSeries {
     const geo = geoPath();
     const {min, max} = getDomain(contouredData);
     const colorScale = scaleLinear()
-      .domain([min, max]).range(colorRange || CONTINUOUS_COLOR_RANGE);
+      .domain([min, max])
+      .range(colorRange || CONTINUOUS_COLOR_RANGE);
     return (
-      <g className={`${predefinedClassName} ${className}`}
-         transform={`translate(${marginLeft},${marginTop})`} >
+      <g
+        className={`${predefinedClassName} ${className}`}
+        transform={`translate(${marginLeft},${marginTop})`}
+      >
         {contouredData.map((polygon, index) => {
           return (
             <path
@@ -93,7 +99,7 @@ class ContourSeries extends AbstractSeries {
                 fill: colorScale(polygon.value),
                 ...style
               }}
-              />
+            />
           );
         })}
       </g>

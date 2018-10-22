@@ -20,12 +20,7 @@
 
 import React from 'react';
 
-import {
-  XYPlot,
-  LineSeries,
-  MarkSeries,
-  VerticalBarSeries
-} from 'index';
+import {XYPlot, LineSeries, MarkSeries, VerticalBarSeries} from 'index';
 
 const data = [
   {x: 0, y: 8},
@@ -47,15 +42,17 @@ const defaultProps = {
 };
 
 export function MiniCharts() {
-  return (<div style={{display: 'flex'}}>
-    <XYPlot {...defaultProps}>
-      <VerticalBarSeries data={data} />
-    </XYPlot>
-    <XYPlot {...defaultProps}>
-      <LineSeries data={data} />
-    </XYPlot>
-    <XYPlot {...defaultProps}>
-      <MarkSeries data={data} />
-    </XYPlot>
-  </div>);
+  return (
+    <div style={{display: 'flex'}}>
+      <XYPlot {...defaultProps}>
+        <VerticalBarSeries data={data} />
+      </XYPlot>
+      <XYPlot {...defaultProps}>
+        <LineSeries data={data} />
+      </XYPlot>
+      <XYPlot {...defaultProps}>
+        <MarkSeries data={data} />
+      </XYPlot>
+    </div>
+  );
 }

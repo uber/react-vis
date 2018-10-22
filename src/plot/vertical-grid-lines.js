@@ -38,9 +38,7 @@ const defaultProps = {
 };
 
 function VerticalGridLines(props) {
-  return (
-    <GridLines {...props} />
-  );
+  return <GridLines {...props} />;
 }
 
 VerticalGridLines.displayName = 'VerticalGridLines';

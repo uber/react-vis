@@ -33,11 +33,5 @@ const ITEMS = [
 ];
 
 export default function DiscreteColorExample() {
-  return (
-    <DiscreteColorLegend
-      height={200}
-      width={300}
-      items={ITEMS}
-    />
-  );
+  return <DiscreteColorLegend height={200} width={300} items={ITEMS} />;
 }

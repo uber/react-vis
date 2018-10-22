@@ -23,7 +23,6 @@ import React from 'react';
 import ContinuousColorLegend from 'legends/continuous-color-legend';
 
 export default class Example extends React.Component {
-
   constructor(props) {
     super(props);
   }

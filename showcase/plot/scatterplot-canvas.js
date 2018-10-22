@@ -33,7 +33,7 @@ import {
 } from 'index';
 
 function getRandomData() {
-  return (new Array(100)).fill(0).map(row => ({
+  return new Array(100).fill(0).map(row => ({
     x: Math.random() * 10,
     y: Math.random() * 20,
     size: Math.random() * 10,
@@ -65,7 +65,7 @@ export default class Example extends React.Component {
     data: randomData,
     colorType: 'typeA',
     value: false
-  }
+  };
 
   render() {
     const {drawMode, data, colorType} = this.state;
@@ -87,30 +87,29 @@ export default class Example extends React.Component {
           <div>{`MODE: ${mode}`}</div>
           <ShowcaseButton
             onClick={() => this.setState({drawMode: (drawMode + 1) % 2})}
-            buttonContent={nextModeContent[mode]} />
+            buttonContent={nextModeContent[mode]}
+          />
           <ShowcaseButton
             onClick={() => this.setState({data: getRandomData()})}
-            buttonContent={'UPDATE DATA'} />
+            buttonContent={'UPDATE DATA'}
+          />
           <ShowcaseButton
             onClick={() => this.setState({colorType: nextType[colorType]})}
-            buttonContent={'UPDATE COLOR'} />
+            buttonContent={'UPDATE COLOR'}
+          />
         </div>
         <XYPlot
           onMouseLeave={() => this.setState({value: false})}
           width={600}
-          height={300}>
+          height={300}
+        >
           <VerticalGridLines />
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          {mode === 'canvas' &&
-            <MarkSeriesCanvas {...markSeriesProps}/>}
-          {mode === 'svg' &&
-            <MarkSeries {...markSeriesProps}/>}
-          {this.state.value ?
-            <Hint value={this.state.value}/> :
-            null
-          }
+          {mode === 'canvas' && <MarkSeriesCanvas {...markSeriesProps} />}
+          {mode === 'svg' && <MarkSeries {...markSeriesProps} />}
+          {this.state.value ? <Hint value={this.state.value} /> : null}
         </XYPlot>
       </div>
     );

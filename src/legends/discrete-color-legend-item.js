@@ -22,8 +22,16 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
+const STROKE_STYLES = {
+  dashed: '6, 2',
+  solid: null
+};
+
 function DiscreteColorLegendItem({
   color,
+  strokeDasharray,
+  strokeStyle,
+  strokeWidth,
   disabled,
   onClick,
   orientation,
@@ -38,14 +46,22 @@ function DiscreteColorLegendItem({
   if (onClick) {
     className += ' clickable';
   }
+  const strokeDasharrayStyle = STROKE_STYLES[strokeStyle] || strokeDasharray;
   return (
     <div {...{className, onClick, onMouseEnter, onMouseLeave}}>
-      <span
-        className="rv-discrete-color-legend-item__color"
-        style={disabled ? null : {background: color}} />
-      <span className="rv-discrete-color-legend-item__title">
-        {title}
-      </span>
+      <svg className="rv-discrete-color-legend-item__color" height={2} width={14}>
+        <path
+          className="rv-discrete-color-legend-item__color__path"
+          d="M 0, 1 L 14, 1"
+          style={{
+            ...(strokeWidth ? {strokeWidth} : {}),
+            ...(strokeDasharrayStyle ? {strokeDasharray: strokeDasharrayStyle} : {}),
+            stroke: disabled ? null : color
+          }}
+
+        />
+      </svg>
+      <span className="rv-discrete-color-legend-item__title">{title}</span>
     </div>
   );
 }
@@ -53,17 +69,18 @@ function DiscreteColorLegendItem({
 DiscreteColorLegendItem.propTypes = {
   color: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
-  title: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element
-  ]).isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   onClick: PropTypes.func,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
-  orientation: PropTypes.oneOf(['vertical', 'horizontal']).isRequired
+  orientation: PropTypes.oneOf(['vertical', 'horizontal']).isRequired,
+  strokeDasharray: PropTypes.string,
+  strokeWidth: PropTypes.number,
+  strokeStyle: PropTypes.oneOf(Object.keys(STROKE_STYLES))
 };
 DiscreteColorLegendItem.defaultProps = {
-  disabled: false
+  disabled: false,
+  strokeStyle: 'solid'
 };
 DiscreteColorLegendItem.displayName = 'DiscreteColorLegendItem';
 

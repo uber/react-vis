@@ -81,7 +81,7 @@ Here is what attribute is available as a scale per series type, and what is the 
 | [RectSeries](rect-series.md)          |        |        | linear     | linear     | literal    |        |         |        | linear     | linear | linear | linear | linear |
 | [VerticalBarSeries](bar-series.md)   |        |        | linear     | linear     | literal    |        |         |        | linear     | linear |        | linear | linear |
 
-For Heatmap series, while you can pass a colorDomain and a colorRange, you cannot override the type of scale for colors.
+For the Heatmap and Hexbin series, while you can pass a colorDomain and a colorRange, you cannot override the type of scale for colors.
 
 "Per series" means that it's possible to pass a value to the series as a whole, but not per data point.
 

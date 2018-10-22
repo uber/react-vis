@@ -18,20 +18,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const predefinedClassName = 'rv-gradient-defs';
 
-class GradientDefs extends PureComponent {
-  render() {
-    const {className} = this.props;
-    return (
-      <defs className={`${predefinedClassName} ${className}`}>
-        {this.props.children}
-      </defs>
-    );
-  }
+function GradientDefs(props) {
+  const {className} = props;
+  return (
+    <defs className={`${predefinedClassName} ${className}`}>
+      {props.children}
+    </defs>
+  );
 }
 
 GradientDefs.displayName = 'GradientDefs';

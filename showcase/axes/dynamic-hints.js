@@ -36,26 +36,22 @@ export default class Example extends React.Component {
     this.state = {
       value: null
     };
-    this._rememberValue = this._rememberValue.bind(this);
-    this._forgetValue = this._forgetValue.bind(this);
   }
 
-  _rememberValue(value) {
-    this.setState({value});
-  }
-
-  _forgetValue() {
+  _forgetValue = () => {
     this.setState({
       value: null
     });
-  }
+  };
+
+  _rememberValue = value => {
+    this.setState({value});
+  };
 
   render() {
     const {value} = this.state;
     return (
-      <XYPlot
-        width={300}
-        height={300}>
+      <XYPlot width={300} height={300}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis />
@@ -63,15 +59,9 @@ export default class Example extends React.Component {
         <MarkSeries
           onValueMouseOver={this._rememberValue}
           onValueMouseOut={this._forgetValue}
-          data={[
-            {x: 1, y: 10},
-            {x: 2, y: 5},
-            {x: 3, y: 15}
-          ]}/>
-        {value ?
-          <Hint value={value}/> :
-          null
-        }
+          data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]}
+        />
+        {value ? <Hint value={value} /> : null}
       </XYPlot>
     );
   }

@@ -18,8 +18,15 @@ test('AxisTitle: horizontal bottom axis title', t => {
   });
   const $ = mount(<AxisTitle {...props} />);
   const innerGroupHtml = $.find('g > g').html();
-  t.ok(innerGroupHtml.includes('text-anchor: end'), 'should have text-anchor: end');
-  t.equal($.find('text').text(), baseProps.title, 'should render the correct title');
+  t.ok(
+    innerGroupHtml.includes('text-anchor: end'),
+    'should have text-anchor: end'
+  );
+  t.equal(
+    $.find('text').text(),
+    baseProps.title,
+    'should render the correct title'
+  );
   t.end();
 });
 
@@ -30,8 +37,15 @@ test('AxisTitle: horizontal top axis title', t => {
   });
   const $ = mount(<AxisTitle {...props} />);
   const innerGroupHtml = $.find('g > g').html();
-  t.ok(innerGroupHtml.includes('text-anchor: start'), 'should have text-anchor: start');
-  t.equal($.find('text').text(), baseProps.title, 'should render the correct title');
+  t.ok(
+    innerGroupHtml.includes('text-anchor: start'),
+    'should have text-anchor: start'
+  );
+  t.equal(
+    $.find('text').text(),
+    baseProps.title,
+    'should render the correct title'
+  );
   t.end();
 });
 
@@ -41,8 +55,15 @@ test('AxisTitle: vertical left title', t => {
   });
   const $ = mount(<AxisTitle {...props} />);
   const innerGroupHtml = $.find('g > g').html();
-  t.ok(innerGroupHtml.includes('text-anchor: end'), 'should have text-anchor: end');
-  t.equal($.find('text').text(), baseProps.title, 'should render the correct title');
+  t.ok(
+    innerGroupHtml.includes('text-anchor: end'),
+    'should have text-anchor: end'
+  );
+  t.equal(
+    $.find('text').text(),
+    baseProps.title,
+    'should render the correct title'
+  );
   t.end();
 });
 
@@ -53,7 +74,14 @@ test('AxisTitle: vertical right title', t => {
   });
   const $ = mount(<AxisTitle {...props} />);
   const innerGroupHtml = $.find('g > g').html();
-  t.ok(innerGroupHtml.includes('text-anchor: start'), 'should have text-anchor: start');
-  t.equal($.find('text').text(), baseProps.title, 'should render the correct title');
+  t.ok(
+    innerGroupHtml.includes('text-anchor: start'),
+    'should have text-anchor: start'
+  );
+  t.equal(
+    $.find('text').text(),
+    baseProps.title,
+    'should render the correct title'
+  );
   t.end();
 });

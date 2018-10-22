@@ -13,10 +13,9 @@ const links = [
 ];
 
 export default class LinkEventSankeyExample extends React.Component {
-
   state = {
     activeLink: null
-  }
+  };
 
   render() {
     const {activeLink} = this.state;
@@ -27,16 +26,22 @@ export default class LinkEventSankeyExample extends React.Component {
     return (
       <div>
         <div>
-          {`${activeLink ? (
-            `${nodes[activeLink.source.index].name} -> ${nodes[activeLink.target.index].name}`
-          ) : (
-            'None'
-          )} selected`}</div>
+          {`${
+            activeLink
+              ? `${nodes[activeLink.source.index].name} -> ${
+                  nodes[activeLink.target.index].name
+                }`
+              : 'None'
+          } selected`}
+        </div>
         <Sankey
           nodes={nodes.map(d => ({...d}))}
           links={links.map((d, i) => ({
             ...d,
-            opacity: activeLink && i === activeLink.index ? FOCUSED_LINK_OPACITY : BLURRED_LINK_OPACITY
+            opacity:
+              activeLink && i === activeLink.index
+                ? FOCUSED_LINK_OPACITY
+                : BLURRED_LINK_OPACITY
           }))}
           width={200}
           height={200}

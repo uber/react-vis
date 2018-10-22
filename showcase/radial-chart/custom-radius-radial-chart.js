@@ -20,10 +20,7 @@
 
 import React, {Component} from 'react';
 
-import {
-  CircularGridLines,
-  RadialChart
-} from 'index';
+import {CircularGridLines, RadialChart} from 'index';
 
 const DATA = [
   {
@@ -61,8 +58,8 @@ function mapData(hoveredSection) {
   return DATA.map((row, index) => {
     return {
       ...row,
-      innerRadius: hoveredSection === (index + 1) ? row.radius - 1 : null,
-      opacity: (!hoveredSection || hoveredSection === index + 1) ? 1 : 0.6
+      innerRadius: hoveredSection === index + 1 ? row.radius - 1 : null,
+      opacity: !hoveredSection || hoveredSection === index + 1 ? 1 : 0.6
     };
   });
 }
@@ -70,7 +67,7 @@ function mapData(hoveredSection) {
 export default class SimpleRadialChart extends Component {
   state = {
     hoveredSection: false
-  }
+  };
 
   render() {
     const {hoveredSection} = this.state;
@@ -84,8 +81,9 @@ export default class SimpleRadialChart extends Component {
         onValueMouseOver={row => this.setState({hoveredSection: row.id})}
         onMouseLeave={() => this.setState({hoveredSection: false})}
         width={600}
-        height={300} >
-        <CircularGridLines tickTotal={20} rRange={[0, 150]}/>
+        height={300}
+      >
+        <CircularGridLines tickTotal={20} rRange={[0, 150]} />
       </RadialChart>
     );
   }

@@ -55,7 +55,6 @@ function getRandomSeriesData(total) {
 }
 
 export default class Example extends React.Component {
-
   constructor(props) {
     super(props);
     const totalValues = Math.random() * 50;
@@ -74,55 +73,6 @@ export default class Example extends React.Component {
         }
       ]
     };
-    this._nearestXHandler = this._nearestXHandler.bind(this);
-    this._mouseLeaveHandler = this._mouseLeaveHandler.bind(this);
-    this._updateButtonClicked = this._updateButtonClicked.bind(this);
-    this._legendClickHandler = this._legendClickHandler.bind(this);
-    this._formatCrosshairItems = this._formatCrosshairItems.bind(this);
-    this._formatCrosshairTitle = this._formatCrosshairTitle.bind(this);
-  }
-
-  _updateButtonClicked() {
-    const {series} = this.state;
-    const totalValues = Math.random() * 50;
-    series.forEach(s => {
-      s.data = getRandomSeriesData(totalValues);
-    });
-    this.setState({series});
-  }
-
-  /**
-   * Event handler for onNearestX.
-   * @param {Object} value Selected value.
-   * @param {number} index Index of the series.
-   * @private
-   */
-  _nearestXHandler(value, {index}) {
-    const {series} = this.state;
-    this.setState({
-      crosshairValues: series.map(s => s.data[index])
-    });
-  }
-
-  /**
-   * Event handler for onMouseLeave.
-   * @private
-   */
-  _mouseLeaveHandler() {
-    this.setState({crosshairValues: []});
-  }
-
-  /**
-   * Format the title line of the crosshair.
-   * @param {Array} values Array of values.
-   * @returns {Object} The caption and the value of the title.
-   * @private
-   */
-  _formatCrosshairTitle(values) {
-    return {
-      title: 'X',
-      value: values[0].left
-    };
   }
 
   /**
@@ -131,7 +81,7 @@ export default class Example extends React.Component {
    * @returns {Array<Object>} Array of objects with titles and values.
    * @private
    */
-  _formatCrosshairItems(values) {
+  _formatCrosshairItems = values => {
     const {series} = this.state;
     return values.map((v, i) => {
       return {
@@ -139,7 +89,20 @@ export default class Example extends React.Component {
         value: v.top
       };
     });
-  }
+  };
+
+  /**
+   * Format the title line of the crosshair.
+   * @param {Array} values Array of values.
+   * @returns {Object} The caption and the value of the title.
+   * @private
+   */
+  _formatCrosshairTitle = values => {
+    return {
+      title: 'X',
+      value: values[0].left
+    };
+  };
 
   /**
    * Click handler for the legend.
@@ -147,11 +110,41 @@ export default class Example extends React.Component {
    * @param {number} i Index of the legend.
    * @private
    */
-  _legendClickHandler(item, i) {
+  _legendClickHandler = (item, i) => {
     const {series} = this.state;
     series[i].disabled = !series[i].disabled;
     this.setState({series});
-  }
+  };
+
+  /**
+   * Event handler for onMouseLeave.
+   * @private
+   */
+  _mouseLeaveHandler = () => {
+    this.setState({crosshairValues: []});
+  };
+
+  /**
+   * Event handler for onNearestX.
+   * @param {Object} value Selected value.
+   * @param {number} index Index of the series.
+   * @private
+   */
+  _nearestXHandler = (value, {index}) => {
+    const {series} = this.state;
+    this.setState({
+      crosshairValues: series.map(s => s.data[index])
+    });
+  };
+
+  _updateButtonClicked = () => {
+    const {series} = this.state;
+    const totalValues = Math.random() * 50;
+    series.forEach(s => {
+      s.data = getRandomSeriesData(totalValues);
+    });
+    this.setState({series});
+  };
 
   render() {
     const {series, crosshairValues} = this.state;
@@ -161,7 +154,8 @@ export default class Example extends React.Component {
           <DiscreteColorLegend
             onItemClick={this._legendClickHandler}
             width={180}
-            items={series}/>
+            items={series}
+          />
         </div>
 
         <div className="chart">
@@ -171,7 +165,8 @@ export default class Example extends React.Component {
             getY={d => d.top}
             onMouseLeave={this._mouseLeaveHandler}
             xDomain={[-0.5, series[0].data.length - 1]}
-            height={300}>
+            height={300}
+          >
             <HorizontalGridLines />
             <YAxis
               className="cool-custom-name"
@@ -184,18 +179,25 @@ export default class Example extends React.Component {
               tickSizeOuter={8}
             />
             <VerticalRectSeries
-              data={series[0].data.map(({left, top}) => ({x0: left - 0.5, left: left + 0.5, top}))}
+              data={series[0].data.map(({left, top}) => ({
+                x0: left - 0.5,
+                left: left + 0.5,
+                top
+              }))}
               stroke="white"
               onNearestX={this._nearestXHandler}
-              {...(series[0].disabled ? {opacity: 0.2} : null)}/>
+              {...(series[0].disabled ? {opacity: 0.2} : null)}
+            />
             <LineSeries
               data={series[1].data}
               curve="curveMonotoneX"
-              {...(series[1].disabled ? {opacity: 0.2} : null)}/>
+              {...(series[1].disabled ? {opacity: 0.2} : null)}
+            />
             <Crosshair
               itemsFormat={this._formatCrosshairItems}
               titleFormat={this._formatCrosshairTitle}
-              values={crosshairValues}/>
+              values={crosshairValues}
+            />
           </FlexibleWidthXYPlot>
         </div>
 

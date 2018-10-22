@@ -35,12 +35,16 @@ would cause the first area series to be truncated underneath the borders, while 
 
 ## API Reference
 
-### className (optional)
+#### className (optional)
+
 Type: `String`
+
 A class name to apply to each of the borders, as well as the root border container. It will be enumerates on top the borders using suffixes, eg if className={"my-cool-class"} the top rectangle will have a class name "my-cool-class-top".
 
-### Style (optional)
+#### style (optional)
+
 Type: `Object`
+
 You can pass a style object to your Hint component to apply your own styles. See [style](style.md)
 ```jsx
 <Borders style={{

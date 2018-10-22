@@ -38,14 +38,21 @@ test('axis-utils #getTicksTotalFromSize', t => {
 });
 
 test('axis-utils #getTickValues', t => {
-  const scale = scaleLinear().domain([0, 1]).range(['red', 'blue']);
-  t.deepEqual(getTickValues(scale, 10, false).map(d => Math.round(d * 1000) / 1000),
+  const scale = scaleLinear()
+    .domain([0, 1])
+    .range(['red', 'blue']);
+  t.deepEqual(
+    getTickValues(scale, 10, false).map(d => Math.round(d * 1000) / 1000),
     [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-    'should find the correct tick values');
+    'should find the correct tick values'
+  );
 
   const predefinedVals = ['got dang', 1, undefined, 'lolz'];
-  t.deepEqual(getTickValues(scale, 10, predefinedVals), predefinedVals,
-    'should find the correct tick values');
+  t.deepEqual(
+    getTickValues(scale, 10, predefinedVals),
+    predefinedVals,
+    'should find the correct tick values'
+  );
 
   t.end();
 });
@@ -53,21 +60,44 @@ test('axis-utils #getTickValues', t => {
 test('axis-utils #getAxisAngle', t => {
   t.equal(getAxisAngle({x: 0, y: 0}, {x: 1, y: 1}), Math.PI / 4);
   t.equal(getAxisAngle({x: 0, y: 0}, {x: 0, y: 1}), Math.PI / 2);
-  t.equal(getAxisAngle({x: 0, y: 0}, {x: 0, y: -1}), 3 * Math.PI / 2);
+  t.equal(getAxisAngle({x: 0, y: 0}, {x: 0, y: -1}), (3 * Math.PI) / 2);
   t.end();
 });
 
 test('axis-utils #generateFit', t => {
-  t.deepEqual(generateFit({x: 0, y: 0}, {x: 1, y: 1}), {left: 0, offset: 0, right: 1, slope: 1});
-  t.deepEqual(generateFit({x: 0, y: 0}, {x: 0, y: 1}), {left: 0, offset: 0, right: 1, slope: 0});
-  t.deepEqual(generateFit({x: 0, y: 0}, {x: 0, y: -1}), {left: 0, offset: 0, right: -1, slope: 0});
-  const result = generateFit({x: 175, y: 125}, {x: 17.33044811707665, y: 179.23546738969475});
+  t.deepEqual(generateFit({x: 0, y: 0}, {x: 1, y: 1}), {
+    left: 0,
+    offset: 0,
+    right: 1,
+    slope: 1
+  });
+  t.deepEqual(generateFit({x: 0, y: 0}, {x: 0, y: 1}), {
+    left: 0,
+    offset: 0,
+    right: 1,
+    slope: 0
+  });
+  t.deepEqual(generateFit({x: 0, y: 0}, {x: 0, y: -1}), {
+    left: 0,
+    offset: 0,
+    right: -1,
+    slope: 0
+  });
+  const result = generateFit(
+    {x: 175, y: 125},
+    {x: 17.33044811707665, y: 179.23546738969475}
+  );
   const numberOfTicks = 5;
   const left = result.left;
   const right = result.right;
   const pointSlope = (right - left) / numberOfTicks;
-  const lengthOfGeneratedPoints = range(left, right + pointSlope, pointSlope).length;
-  t.equal(lengthOfGeneratedPoints, 7, 'should be 7, incorrect length of generated points');
+  const lengthOfGeneratedPoints = range(left, right + pointSlope, pointSlope)
+    .length;
+  t.equal(
+    lengthOfGeneratedPoints,
+    7,
+    'should be 7, incorrect length of generated points'
+  );
   t.end();
 });
 
@@ -141,8 +171,20 @@ test('axis-utils #generatePoints', t => {
   };
   t.deepEqual(result, expectedResult);
   t.deepEqual(result2, expectedResult2);
-  t.equal(expectedResult2.points.length, 6, 'should be 6, correct length of generated points');
-  t.deepEqual(result3, expectedResult3, 'should return correct points when accounting for floating point errors');
-  t.deepEqual(result4, expectedResult4, 'should not return correct points when not accounting for floating point errors');
+  t.equal(
+    expectedResult2.points.length,
+    6,
+    'should be 6, correct length of generated points'
+  );
+  t.deepEqual(
+    result3,
+    expectedResult3,
+    'should return correct points when accounting for floating point errors'
+  );
+  t.deepEqual(
+    result4,
+    expectedResult4,
+    'should not return correct points when not accounting for floating point errors'
+  );
   t.end();
 });

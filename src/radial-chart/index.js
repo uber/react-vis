@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {pie as pieBuilder} from 'd3-shape';
 
@@ -99,80 +99,90 @@ function getMaxRadius(width, height) {
   return Math.min(width, height) / 2 - DEFAULT_RADIUS_MARGIN;
 }
 
-class RadialChart extends Component {
-  render() {
-    const {
-      animation,
-      className,
-      children,
-      colorType,
-      data,
-      getAngle,
-      getLabel,
-      getSubLabel,
-      height,
-      hideRootNode,
-      innerRadius,
-      labelsAboveChildren,
-      labelsRadiusMultiplier,
-      labelsStyle,
-      margin,
-      onMouseLeave,
-      onMouseEnter,
-      radius,
-      showLabels,
-      style,
-      width
-    } = this.props;
-    const mappedData = getWedgesToRender({data, height, hideRootNode, width, getAngle});
-    const radialDomain = getRadialDomain(mappedData);
-    const arcProps = {
-      colorType,
-      ...this.props,
-      animation,
-      radiusDomain: [0, radialDomain],
-      data: mappedData,
-      radiusNoFallBack: true,
-      style,
-      arcClassName: 'rv-radial-chart__series--pie__slice'
-    };
-    if (radius) {
-      arcProps.radiusDomain = [0, 1];
-      arcProps.radiusRange = [innerRadius || 0, radius];
-      arcProps.radiusType = 'linear';
-    }
-    const maxRadius = radius ? radius : getMaxRadius(width, height);
-    const defaultMargin = getRadialLayoutMargin(width, height, maxRadius);
-
-    const labels = generateLabels(
-      mappedData,
-      {
-        getLabel,
-        getSubLabel
-      },
-      labelsRadiusMultiplier
-    );
-    return (
-      <XYPlot
-        height={height}
-        width={width}
-        margin={{
-          ...margin,
-          ...defaultMargin
-        }}
-        className={`${className} ${predefinedClassName}`}
-        onMouseLeave={onMouseLeave}
-        onMouseEnter={onMouseEnter}
-        xDomain={[-radialDomain, radialDomain]}
-        yDomain={[-radialDomain, radialDomain]}
-      >
-        <ArcSeries {...arcProps} getAngle={d => d.angle} />
-        {showLabels && !labelsAboveChildren && <LabelSeries data={labels} style={labelsStyle} />}
-        {children}
-        {showLabels && labelsAboveChildren && <LabelSeries data={labels} style={labelsStyle} />}
-      </XYPlot>
-    );
+function RadialChart(props) {
+  const {
+    animation,
+    className,
+    children,
+    colorType,
+    data,
+    getAngle,
+    getLabel,
+    getSubLabel,
+    height,
+    hideRootNode,
+    innerRadius,
+    labelsAboveChildren,
+    labelsRadiusMultiplier,
+    labelsStyle,
+    margin,
+    onMouseLeave,
+    onMouseEnter,
+    radius,
+    showLabels,
+    style,
+    width
+  } = props;
+  const mappedData = getWedgesToRender({
+    data,
+    height,
+    hideRootNode,
+    width,
+    getAngle
+  });
+  const radialDomain = getRadialDomain(mappedData);
+  const arcProps = {
+    colorType,
+    ...props,
+    animation,
+    radiusDomain: [0, radialDomain],
+    data: mappedData,
+    radiusNoFallBack: true,
+    style,
+    arcClassName: 'rv-radial-chart__series--pie__slice'
+  };
+  if (radius) {
+    arcProps.radiusDomain = [0, 1];
+    arcProps.radiusRange = [innerRadius || 0, radius];
+    arcProps.radiusType = 'linear';
   }
+  const maxRadius = radius ? radius : getMaxRadius(width, height);
+  const defaultMargin = getRadialLayoutMargin(width, height, maxRadius);
+
+  const labels = generateLabels(
+    mappedData,
+    {
+      getLabel,
+      getSubLabel
+    },
+    labelsRadiusMultiplier
+  );
+  return (
+    <XYPlot
+      height={height}
+      width={width}
+      margin={{
+        ...margin,
+        ...defaultMargin
+      }}
+      className={`${className} ${predefinedClassName}`}
+      onMouseLeave={onMouseLeave}
+      onMouseEnter={onMouseEnter}
+      xDomain={[-radialDomain, radialDomain]}
+      yDomain={[-radialDomain, radialDomain]}
+    >
+      <ArcSeries {...arcProps} getAngle={d => d.angle} />
+      {showLabels &&
+        !labelsAboveChildren && (
+          <LabelSeries data={labels} style={labelsStyle} />
+        )}
+      {children}
+      {showLabels &&
+        labelsAboveChildren && (
+          <LabelSeries data={labels} style={labelsStyle} />
+        )}
+    </XYPlot>
+  );
 }
 
 RadialChart.displayName = 'RadialChart';
@@ -191,10 +201,7 @@ RadialChart.propTypes = {
   ).isRequired,
   getAngle: PropTypes.func,
   getAngle0: PropTypes.func,
-  padAngle: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.number
-  ]),
+  padAngle: PropTypes.oneOfType([PropTypes.func, PropTypes.number]),
   getRadius: PropTypes.func,
   getRadius0: PropTypes.func,
   getLabel: PropTypes.func,
