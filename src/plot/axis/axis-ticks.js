@@ -182,8 +182,9 @@ class AxisTicks extends React.Component {
 
     const ticks = values.map((v, i) => {
       const pos = scale(v);
-      const text = tickFormatFn(v, i, scale, tickTotal);
-      const textIsReactNode = React.isValidElement(text);
+      const labelNode = tickFormatFn(v, i, scale, tickTotal);
+      const shouldRenderAsOwnNode = React.isValidElement(labelNode) &&
+        !['tspan', 'textPath'].includes(labelNode.type)
 
       return (
         <g
@@ -197,8 +198,8 @@ class AxisTicks extends React.Component {
             className="rv-xy-plot__axis__tick__line"
             style={{...style, ...style.line}}
           />
-          {textIsReactNode
-            ? React.cloneElement(text, {
+          {shouldRenderAsOwnNode
+            ? React.cloneElement(labelNode, {
               ...textProps,
               containerWidth: width,
               tickCount: values.length
@@ -209,7 +210,7 @@ class AxisTicks extends React.Component {
                 className="rv-xy-plot__axis__tick__text"
                 style={{...style, ...style.text}}
               >
-                {text}
+                {labelNode}
               </text>
             )}
         </g>
