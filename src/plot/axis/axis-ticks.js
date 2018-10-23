@@ -198,14 +198,20 @@ class AxisTicks extends React.Component {
             style={{...style, ...style.line}}
           />
           {textIsReactNode
-            ? React.cloneElement(text, {...textProps, containerWidth: width, tickCount: values.length})
-            : <text
-            {...textProps}
-            className="rv-xy-plot__axis__tick__text"
-            style={{...style, ...style.text}}
-          >
-            {text}
-          </text>}
+            ? React.cloneElement(text, {
+              ...textProps,
+              containerWidth: width,
+              tickCount: values.length
+            })
+            : (
+              <text
+                {...textProps}
+                className="rv-xy-plot__axis__tick__text"
+                style={{...style, ...style.text}}
+              >
+                {text}
+              </text>
+            )}
         </g>
       );
     });
