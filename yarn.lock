@@ -242,6 +242,13 @@ array-find-index@^1.0.1:
   version "1.0.2"
   resolved "https://registry.npmjs.org/array-find-index/-/array-find-index-1.0.2.tgz#df010aa1287e164bbda6f9723b0a96a1ec4187a1"
 
+array-includes@^3.0.3:
+  version "3.0.3"
+  resolved "https://unpm.uberinternal.com/array-includes/-/array-includes-3.0.3.tgz#184b48f62d92d7452bb31b323165c7f8bd02266d"
+  dependencies:
+    define-properties "^1.1.2"
+    es-abstract "^1.7.0"
+
 array-map@~0.0.0:
   version "0.0.0"
   resolved "https://registry.npmjs.org/array-map/-/array-map-0.0.0.tgz#88a2bab73d1cf7bcd5c1b118a003f66f665fa662"
@@ -1946,6 +1953,12 @@ doctrine@^2.0.0:
     esutils "^2.0.2"
     isarray "^1.0.0"
 
+doctrine@^2.1.0:
+  version "2.1.0"
+  resolved "https://unpm.uberinternal.com/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"
+  dependencies:
+    esutils "^2.0.2"
+
 doiuse@^2.4.1:
   version "2.6.0"
   resolved "https://registry.npmjs.org/doiuse/-/doiuse-2.6.0.tgz#1892d10b61a9a356addbf2b614933e81f8bb3834"
@@ -2171,32 +2184,45 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-uber-es2015@^3.0.1:
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/eslint-config-uber-es2015/-/eslint-config-uber-es2015-3.1.1.tgz#3095aaf2eafe44864a1abb868767d6496678fc39"
+eslint-config-prettier@^3.0.1:
+  version "3.1.0"
+  resolved "https://unpm.uberinternal.com/eslint-config-prettier/-/eslint-config-prettier-3.1.0.tgz#2c26d2cdcfa3a05f0642cd7e6e4ef3316cdabfa2"
   dependencies:
-    eslint-config-uber-es5 "^2.0.1"
+    get-stdin "^6.0.0"
 
-eslint-config-uber-es5@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/eslint-config-uber-es5/-/eslint-config-uber-es5-2.0.1.tgz#1f4c71ae30bcb7b84ee0a474ee31902c971a44e4"
-
-eslint-config-uber-jsx@^3.0.1:
-  version "3.2.0"
-  resolved "https://registry.npmjs.org/eslint-config-uber-jsx/-/eslint-config-uber-jsx-3.2.0.tgz#bfbb4c8dab9431b3d06920c1130a8ad75576a46d"
+eslint-config-uber-es2015@^3.1.2:
+  version "3.1.2"
+  resolved "https://unpm.uberinternal.com/eslint-config-uber-es2015/-/eslint-config-uber-es2015-3.1.2.tgz#77acd8800141f75dde997a87bb451e3490b07e54"
   dependencies:
-    eslint-config-uber-es5 "^2.0.1"
+    eslint-config-uber-es5 "^2.0.3"
+
+eslint-config-uber-es5@^2.0.3:
+  version "2.0.3"
+  resolved "https://unpm.uberinternal.com/eslint-config-uber-es5/-/eslint-config-uber-es5-2.0.3.tgz#4991bc80103a7f5a39dc77a7eb13dbd860568fe5"
+
+eslint-config-uber-jsx@^3.3.3:
+  version "3.3.3"
+  resolved "https://unpm.uberinternal.com/eslint-config-uber-jsx/-/eslint-config-uber-jsx-3.3.3.tgz#982db8e7bc3d004517c0df298f37ca90d02bd132"
+  dependencies:
+    eslint-config-uber-es5 "^2.0.3"
     eslint-plugin-react "^6.7.1"
 
-eslint-plugin-babel@^4.0.0:
-  version "4.1.1"
-  resolved "https://registry.npmjs.org/eslint-plugin-babel/-/eslint-plugin-babel-4.1.1.tgz#ef285c87039b67beb3bbd227f5b0eed4fb376b87"
+eslint-plugin-babel@^4.1.2:
+  version "4.1.2"
+  resolved "https://unpm.uberinternal.com/eslint-plugin-babel/-/eslint-plugin-babel-4.1.2.tgz#79202a0e35757dd92780919b2336f1fa2fe53c1e"
 
 eslint-plugin-no-only-tests@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/eslint-plugin-no-only-tests/-/eslint-plugin-no-only-tests-2.0.1.tgz#c7bfa82a46be791f9625d720e990632b5dec3c7d"
 
-eslint-plugin-react@^6.7.1, eslint-plugin-react@^6.9.0:
+eslint-plugin-prettier@^2.6.2:
+  version "2.7.0"
+  resolved "https://unpm.uberinternal.com/eslint-plugin-prettier/-/eslint-plugin-prettier-2.7.0.tgz#b4312dcf2c1d965379d7f9d5b5f8aaadc6a45904"
+  dependencies:
+    fast-diff "^1.1.1"
+    jest-docblock "^21.0.0"
+
+eslint-plugin-react@^6.7.1:
   version "6.10.3"
   resolved "https://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-6.10.3.tgz#c5435beb06774e12c7db2f6abaddcbf900cd3f78"
   dependencies:
@@ -2206,9 +2232,19 @@ eslint-plugin-react@^6.7.1, eslint-plugin-react@^6.9.0:
     jsx-ast-utils "^1.3.4"
     object.assign "^4.0.4"
 
-eslint@^3.13.1:
+eslint-plugin-react@^7.11.1:
+  version "7.11.1"
+  resolved "https://unpm.uberinternal.com/eslint-plugin-react/-/eslint-plugin-react-7.11.1.tgz#c01a7af6f17519457d6116aa94fc6d2ccad5443c"
+  dependencies:
+    array-includes "^3.0.3"
+    doctrine "^2.1.0"
+    has "^1.0.3"
+    jsx-ast-utils "^2.0.1"
+    prop-types "^15.6.2"
+
+eslint@^3.19.0:
   version "3.19.0"
-  resolved "https://registry.npmjs.org/eslint/-/eslint-3.19.0.tgz#c8fc6201c7f40dd08941b87c085767386a679acc"
+  resolved "https://unpm.uberinternal.com/eslint/-/eslint-3.19.0.tgz#c8fc6201c7f40dd08941b87c085767386a679acc"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -2362,6 +2398,10 @@ extsprintf@1.0.2:
 fast-deep-equal@^1.0.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-1.1.0.tgz#c053477817c86b51daa853c81e059b733d023614"
+
+fast-diff@^1.1.1:
+  version "1.2.0"
+  resolved "https://unpm.uberinternal.com/fast-diff/-/fast-diff-1.2.0.tgz#73ee11982d86caaf7959828d519cfe927fac5f03"
 
 fast-json-stable-stringify@^2.0.0:
   version "2.0.0"
@@ -2541,6 +2581,10 @@ function-bind@^1.0.2, function-bind@^1.1.0, function-bind@~1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.0.tgz#16176714c801798e4e8f2cf7f7529467bb4a5771"
 
+function-bind@^1.1.1:
+  version "1.1.1"
+  resolved "https://unpm.uberinternal.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
+
 function.prototype.name@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/function.prototype.name/-/function.prototype.name-1.0.0.tgz#5f523ca64e491a5f95aba80cc1e391080a14482e"
@@ -2593,6 +2637,10 @@ get-stdin@^4.0.1:
 get-stdin@^5.0.0:
   version "5.0.1"
   resolved "https://registry.npmjs.org/get-stdin/-/get-stdin-5.0.1.tgz#122e161591e21ff4c52530305693f20e6393a398"
+
+get-stdin@^6.0.0:
+  version "6.0.0"
+  resolved "https://unpm.uberinternal.com/get-stdin/-/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
 
 get-stream@^3.0.0:
   version "3.0.0"
@@ -2767,6 +2815,12 @@ has@^1.0.0, has@^1.0.1, has@~1.0.1:
   resolved "https://registry.npmjs.org/has/-/has-1.0.1.tgz#8461733f538b0837c9361e39a9ab9e9704dc2f28"
   dependencies:
     function-bind "^1.0.2"
+
+has@^1.0.3:
+  version "1.0.3"
+  resolved "https://unpm.uberinternal.com/has/-/has-1.0.3.tgz#722d7cbfc1f6aa8241f16dd814e011e1f41e8796"
+  dependencies:
+    function-bind "^1.1.1"
 
 hash-base@^2.0.0:
   version "2.0.2"
@@ -3203,6 +3257,10 @@ istanbul-reports@^2.0.0:
   dependencies:
     handlebars "^4.0.11"
 
+jest-docblock@^21.0.0:
+  version "21.2.0"
+  resolved "https://unpm.uberinternal.com/jest-docblock/-/jest-docblock-21.2.0.tgz#51529c3b30d5fd159da60c27ceedc195faf8d414"
+
 jodid25519@^1.0.0:
   version "1.0.2"
   resolved "https://registry.npmjs.org/jodid25519/-/jodid25519-1.0.2.tgz#06d4912255093419477d425633606e0e90782967"
@@ -3333,6 +3391,12 @@ jsprim@^1.2.2:
 jsx-ast-utils@^1.3.4:
   version "1.4.1"
   resolved "https://registry.npmjs.org/jsx-ast-utils/-/jsx-ast-utils-1.4.1.tgz#3867213e8dd79bf1e8f2300c0cfc1efb182c0df1"
+
+jsx-ast-utils@^2.0.1:
+  version "2.0.1"
+  resolved "https://unpm.uberinternal.com/jsx-ast-utils/-/jsx-ast-utils-2.0.1.tgz#e801b1b39985e20fffc87b40e3748080e2dcac7f"
+  dependencies:
+    array-includes "^3.0.3"
 
 kind-of@^3.0.2:
   version "3.2.2"
@@ -3873,7 +3937,7 @@ oauth-sign@~0.9.0:
   version "0.9.0"
   resolved "https://registry.npmjs.org/oauth-sign/-/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
 
-object-assign@^4.0.0, object-assign@^4.0.1, object-assign@^4.1.0:
+object-assign@^4.0.0, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
@@ -4296,6 +4360,13 @@ prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@~15.5.7:
   dependencies:
     fbjs "^0.8.9"
     loose-envify "^1.3.1"
+
+prop-types@^15.6.2:
+  version "15.6.2"
+  resolved "https://unpm.uberinternal.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
+  dependencies:
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
 
 pseudomap@^1.0.1:
   version "1.0.2"
