@@ -1,31 +1,18 @@
 CACHE MANIFEST
-<<<<<<< HEAD
-#ver:2018-10-8 20:32:20
+#ver:10/24/2018, 4:42:39 PM
 #plugin:4.9.1
 
 CACHE:
-../bundle-1357fa90d8f1fd60a03a.js
-../styles-1357fa90d8f1fd60a03a.css
-=======
-#ver:2018-10-24 16:34:32
-#plugin:4.9.1
-
-CACHE:
-../bundle-2095162d6842f3ba45b2.js
-../styles-2095162d6842f3ba45b2.css
->>>>>>> Upgrade docs
+../bundle-00a3968916c7ec23f293.js
 ../
+../favicon.ico
 ../images/footer-pattern.gif
 ../images/icon-chart.svg
 ../images/icon-custom.svg
 ../images/icon-high-precision.svg
-../images/icon-layers.svg
 ../images/icon-react.svg
+../images/icon-layers.svg
 ../images/hero.jpg
-<<<<<<< HEAD
-=======
-../favicon.ico
->>>>>>> Upgrade docs
 
 NETWORK:
 *
