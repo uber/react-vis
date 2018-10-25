@@ -72,7 +72,7 @@ export class HeatmapSeriesCanvas extends AbstractSeries {
   }
 }
 
-HeatmapSeriesCanvas.displayName = 'BarSeriesCanvas';
+HeatmapSeriesCanvas.displayName = 'HeatmapSeriesCanvas';
 HeatmapSeriesCanvas.defaultProps = {
   ...AbstractSeries.defaultProps,
 };
