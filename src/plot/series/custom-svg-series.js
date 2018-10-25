@@ -180,8 +180,8 @@ CustomSVGSeries.propTypes = {
   customComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   data: PropTypes.arrayOf(
     PropTypes.shape({
-      x: PropTypes.number.isRequired,
-      y: PropTypes.number.isRequired
+      x: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]),
+      y: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired])
     })
   ).isRequired,
   marginLeft: PropTypes.number,
