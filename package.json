@@ -36,7 +36,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run remove-unpm-rfs && npm install"
+      "pre-push": "npm run remove-unpm-rfs && command -v yarn >/dev/null && yarn || npm install"
     }
   },
   "dependencies": {
