@@ -244,7 +244,7 @@ array-find-index@^1.0.1:
 
 array-includes@^3.0.3:
   version "3.0.3"
-  resolved "https://unpm.uberinternal.com/array-includes/-/array-includes-3.0.3.tgz#184b48f62d92d7452bb31b323165c7f8bd02266d"
+  resolved "https://registry.yarnpkg.com/array-includes/-/array-includes-3.0.3.tgz#184b48f62d92d7452bb31b323165c7f8bd02266d"
   dependencies:
     define-properties "^1.1.2"
     es-abstract "^1.7.0"
@@ -1955,7 +1955,7 @@ doctrine@^2.0.0:
 
 doctrine@^2.1.0:
   version "2.1.0"
-  resolved "https://unpm.uberinternal.com/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"
+  resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"
   dependencies:
     esutils "^2.0.2"
 
@@ -2186,30 +2186,30 @@ escope@^3.6.0:
 
 eslint-config-prettier@^3.0.1:
   version "3.1.0"
-  resolved "https://unpm.uberinternal.com/eslint-config-prettier/-/eslint-config-prettier-3.1.0.tgz#2c26d2cdcfa3a05f0642cd7e6e4ef3316cdabfa2"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-3.1.0.tgz#2c26d2cdcfa3a05f0642cd7e6e4ef3316cdabfa2"
   dependencies:
     get-stdin "^6.0.0"
 
 eslint-config-uber-es2015@^3.1.2:
   version "3.1.2"
-  resolved "https://unpm.uberinternal.com/eslint-config-uber-es2015/-/eslint-config-uber-es2015-3.1.2.tgz#77acd8800141f75dde997a87bb451e3490b07e54"
+  resolved "https://registry.yarnpkg.com/eslint-config-uber-es2015/-/eslint-config-uber-es2015-3.1.2.tgz#77acd8800141f75dde997a87bb451e3490b07e54"
   dependencies:
     eslint-config-uber-es5 "^2.0.3"
 
 eslint-config-uber-es5@^2.0.3:
   version "2.0.3"
-  resolved "https://unpm.uberinternal.com/eslint-config-uber-es5/-/eslint-config-uber-es5-2.0.3.tgz#4991bc80103a7f5a39dc77a7eb13dbd860568fe5"
+  resolved "https://registry.yarnpkg.com/eslint-config-uber-es5/-/eslint-config-uber-es5-2.0.3.tgz#4991bc80103a7f5a39dc77a7eb13dbd860568fe5"
 
 eslint-config-uber-jsx@^3.3.3:
   version "3.3.3"
-  resolved "https://unpm.uberinternal.com/eslint-config-uber-jsx/-/eslint-config-uber-jsx-3.3.3.tgz#982db8e7bc3d004517c0df298f37ca90d02bd132"
+  resolved "https://registry.yarnpkg.com/eslint-config-uber-jsx/-/eslint-config-uber-jsx-3.3.3.tgz#982db8e7bc3d004517c0df298f37ca90d02bd132"
   dependencies:
     eslint-config-uber-es5 "^2.0.3"
     eslint-plugin-react "^6.7.1"
 
 eslint-plugin-babel@^4.1.2:
   version "4.1.2"
-  resolved "https://unpm.uberinternal.com/eslint-plugin-babel/-/eslint-plugin-babel-4.1.2.tgz#79202a0e35757dd92780919b2336f1fa2fe53c1e"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-babel/-/eslint-plugin-babel-4.1.2.tgz#79202a0e35757dd92780919b2336f1fa2fe53c1e"
 
 eslint-plugin-no-only-tests@^2.0.1:
   version "2.0.1"
@@ -2217,7 +2217,7 @@ eslint-plugin-no-only-tests@^2.0.1:
 
 eslint-plugin-prettier@^2.6.2:
   version "2.7.0"
-  resolved "https://unpm.uberinternal.com/eslint-plugin-prettier/-/eslint-plugin-prettier-2.7.0.tgz#b4312dcf2c1d965379d7f9d5b5f8aaadc6a45904"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-2.7.0.tgz#b4312dcf2c1d965379d7f9d5b5f8aaadc6a45904"
   dependencies:
     fast-diff "^1.1.1"
     jest-docblock "^21.0.0"
@@ -2234,7 +2234,7 @@ eslint-plugin-react@^6.7.1:
 
 eslint-plugin-react@^7.11.1:
   version "7.11.1"
-  resolved "https://unpm.uberinternal.com/eslint-plugin-react/-/eslint-plugin-react-7.11.1.tgz#c01a7af6f17519457d6116aa94fc6d2ccad5443c"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.11.1.tgz#c01a7af6f17519457d6116aa94fc6d2ccad5443c"
   dependencies:
     array-includes "^3.0.3"
     doctrine "^2.1.0"
@@ -2244,7 +2244,7 @@ eslint-plugin-react@^7.11.1:
 
 eslint@^3.19.0:
   version "3.19.0"
-  resolved "https://unpm.uberinternal.com/eslint/-/eslint-3.19.0.tgz#c8fc6201c7f40dd08941b87c085767386a679acc"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.19.0.tgz#c8fc6201c7f40dd08941b87c085767386a679acc"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -2401,7 +2401,7 @@ fast-deep-equal@^1.0.0:
 
 fast-diff@^1.1.1:
   version "1.2.0"
-  resolved "https://unpm.uberinternal.com/fast-diff/-/fast-diff-1.2.0.tgz#73ee11982d86caaf7959828d519cfe927fac5f03"
+  resolved "https://registry.yarnpkg.com/fast-diff/-/fast-diff-1.2.0.tgz#73ee11982d86caaf7959828d519cfe927fac5f03"
 
 fast-json-stable-stringify@^2.0.0:
   version "2.0.0"
@@ -2583,7 +2583,7 @@ function-bind@^1.0.2, function-bind@^1.1.0, function-bind@~1.1.0:
 
 function-bind@^1.1.1:
   version "1.1.1"
-  resolved "https://unpm.uberinternal.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
+  resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
 
 function.prototype.name@^1.0.0:
   version "1.0.0"
@@ -2640,7 +2640,7 @@ get-stdin@^5.0.0:
 
 get-stdin@^6.0.0:
   version "6.0.0"
-  resolved "https://unpm.uberinternal.com/get-stdin/-/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
+  resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
 
 get-stream@^3.0.0:
   version "3.0.0"
@@ -2818,7 +2818,7 @@ has@^1.0.0, has@^1.0.1, has@~1.0.1:
 
 has@^1.0.3:
   version "1.0.3"
-  resolved "https://unpm.uberinternal.com/has/-/has-1.0.3.tgz#722d7cbfc1f6aa8241f16dd814e011e1f41e8796"
+  resolved "https://registry.yarnpkg.com/has/-/has-1.0.3.tgz#722d7cbfc1f6aa8241f16dd814e011e1f41e8796"
   dependencies:
     function-bind "^1.1.1"
 
@@ -3259,7 +3259,7 @@ istanbul-reports@^2.0.0:
 
 jest-docblock@^21.0.0:
   version "21.2.0"
-  resolved "https://unpm.uberinternal.com/jest-docblock/-/jest-docblock-21.2.0.tgz#51529c3b30d5fd159da60c27ceedc195faf8d414"
+  resolved "https://registry.yarnpkg.com/jest-docblock/-/jest-docblock-21.2.0.tgz#51529c3b30d5fd159da60c27ceedc195faf8d414"
 
 jodid25519@^1.0.0:
   version "1.0.2"
@@ -3394,7 +3394,7 @@ jsx-ast-utils@^1.3.4:
 
 jsx-ast-utils@^2.0.1:
   version "2.0.1"
-  resolved "https://unpm.uberinternal.com/jsx-ast-utils/-/jsx-ast-utils-2.0.1.tgz#e801b1b39985e20fffc87b40e3748080e2dcac7f"
+  resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-2.0.1.tgz#e801b1b39985e20fffc87b40e3748080e2dcac7f"
   dependencies:
     array-includes "^3.0.3"
 
@@ -4363,7 +4363,7 @@ prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@~15.5.7:
 
 prop-types@^15.6.2:
   version "15.6.2"
-  resolved "https://unpm.uberinternal.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   dependencies:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
