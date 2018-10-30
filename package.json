@@ -70,7 +70,7 @@
     "babel-register": "^6.18.0",
     "babelify": "^7.3.0",
     "browserify": "^14.3.0",
-    "canvas-prebuilt": "^1.6.0",
+    "canvas-prebuilt": "^1.6.11",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-prettier": "^3.0.1",
