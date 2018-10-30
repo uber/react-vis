@@ -34,6 +34,11 @@
     "prettier": "prettier --write $(git ls-files | grep '.js$')",
     "remove-unpm-rfs": "./remove-refs-to-unpm.pl"
   },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run remove-unpm-rfs"
+    }
+  },
   "dependencies": {
     "d3-array": "^1.2.0",
     "d3-collection": "^1.0.3",
@@ -65,7 +70,7 @@
     "babel-register": "^6.18.0",
     "babelify": "^7.3.0",
     "browserify": "^14.3.0",
-    "canvas-prebuilt": "^1.6.0",
+    "canvas-prebuilt": "^1.6.11",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-prettier": "^3.0.1",
@@ -75,6 +80,7 @@
     "eslint-plugin-no-only-tests": "^2.0.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.1.2",
     "jsdom": "^9.9.1",
     "node-sass": "^4.9.3",
     "nyc": "^13.0.1",
