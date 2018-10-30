@@ -184,8 +184,8 @@ class AxisTicks extends React.Component {
       const pos = scale(v);
       const labelNode = tickFormatFn(v, i, scale, tickTotal);
       const shouldRenderAsOwnNode = React.isValidElement(labelNode) &&
-        !['tspan', 'textPath'].includes(labelNode.type)
-
+        !['tspan', 'textPath'].includes(labelNode.type);
+      const shouldAddProps = labelNode && typeof labelNode.type !== 'string';
       return (
         <g
           key={i}
@@ -199,11 +199,11 @@ class AxisTicks extends React.Component {
             style={{...style, ...style.line}}
           />
           {shouldRenderAsOwnNode
-            ? React.cloneElement(labelNode, {
+            ? React.cloneElement(labelNode, shouldAddProps ? {
               ...textProps,
               containerWidth: width,
               tickCount: values.length
-            })
+            } : undefined)
             : (
               <text
                 {...textProps}

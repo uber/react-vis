@@ -96,6 +96,7 @@ import AxisOn0 from './axes/axis-on-0';
 import CustomAxesOrientation from './axes/custom-axes-orientation';
 import CustomAxisChart from './axes/custom-axis';
 import CustomAxisTickFormat from './axes/custom-axis-tick-format';
+import CustomAxisTickElement from './axes/custom-axis-tick-element';
 import CustomAxes from './axes/custom-axes';
 import DecorativeAxisCrissCross from './axes/decorative-axes-criss-cross';
 import EmptyChart from './axes/empty-chart';
@@ -199,6 +200,7 @@ const mainShowCase = {
   CustomAxesOrientation,
   CustomAxisChart,
   CustomAxisTickFormat,
+  CustomAxisTickElement,
   AxisWithTurnedLabels,
   GridLinesChart,
   StaticHints,
