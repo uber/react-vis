@@ -87,7 +87,7 @@ function mySIPrefixFormatter(value, index, scale, tickTotal) {
 }
 ```
 
-**Note!** The return value will be wrapped with a `<text>` node if it's a string, `<tspan>`, or `<textPath>`. In all other cases the returned element will replace the `<text>` node and receive two additional props: `containerWidth` and `tickCount`. This way you can e.g. render a `<div>` to truncate long labels:
+**Note!** The return value will be wrapped with a `<text>` node if it's a string, `<tspan>`, or `<textPath>`. In all other cases the returned element will replace the `<text>` node. In case it's a custom React element it will also receive two additional props: `containerWidth` and `tickCount`. This way you can e.g. render a `<div>` to truncate long labels:
 
 ```javascript
 const MyLabel = props => (
@@ -107,7 +107,11 @@ const MyLabel = props => (
 function myFormatter(value) {
   return <MyLabel>{value}</MyLabel>;
 }
+
+<XAxis tickFormat={myFormatter} />
 ```
+
+<!-- INJECT:"CustomAxisTickElement" -->
 
 #### tickSize (optional)
 
