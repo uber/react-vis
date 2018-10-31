@@ -137,12 +137,12 @@ test('Radar: Showcase Example - Radar Chart with Tooltips', t => {
   );
   t.equal(
     $.find('.rv-radar-chart-polygon').length,
-    7,
+    2,
     'should find the right number of polygons'
   );
   t.equal(
     $.find('.rv-radar-chart-polygonPoint').length,
-    7,
+    2,
     'should find the right number of polygon points'
   );
   t.equal(
@@ -154,7 +154,7 @@ test('Radar: Showcase Example - Radar Chart with Tooltips', t => {
   // Tooltips
   const tooltipText = 'mileage: 3';
   $.find('.rv-xy-plot__series .rv-xy-plot__series--mark .rv-radar-chart-polygonPoint')
-    .at(6)
+    .at(0)
     .children().at(0)
     .simulate('mouseOver');
   t.equal($.text(), `${chartText}${tooltipText}`, 'should display tooltip text');

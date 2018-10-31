@@ -20,87 +20,31 @@
 
 import React, {Component} from 'react';
 import RadarChart from 'radar-chart';
+import RadarChartStraightGridLines from 'radar-chart/radar-chart-straight-grid-lines';
 import {Hint} from 'index';
 
-// The first 6 data elements here are to simulate a 'spider' type of radar chart -
-// similar to CircularGridLines, but straight edges instead.
 const DATA = [
-  {
-    name: 'Spider5',
-    mileage: 5,
-    price: 5,
-    safety: 5,
-    performance: 5,
-    interior: 5,
-    warranty: 5,
-    fill: '#f8f8f8',
-    stroke: '#cccccc'
-  },
-  {
-    name: 'Spider4',
-    mileage: 4,
-    price: 4,
-    safety: 4,
-    performance: 4,
-    interior: 4,
-    warranty: 4,
-    fill: 'white',
-    stroke: '#cccccc'
-  },
-  {
-    name: 'Spider3',
-    mileage: 3,
-    price: 3,
-    safety: 3,
-    performance: 3,
-    interior: 3,
-    warranty: 3,
-    fill: '#f8f8f8',
-    stroke: '#cccccc'
-  },
-  {
-    name: 'Spider2',
-    mileage: 2,
-    price: 2,
-    safety: 2,
-    performance: 2,
-    interior: 2,
-    warranty: 2,
-    fill: 'white',
-    stroke: '#cccccc'
-  },
-  {
-    name: 'Spider1',
-    mileage: 1,
-    price: 1,
-    safety: 1,
-    performance: 1,
-    interior: 1,
-    warranty: 1,
-    fill: '#f8f8f8',
-    stroke: '#cccccc'
-  },
-  {
-    name: 'Spider0',
-    mileage: 0.1,
-    price: 0.1,
-    safety: 0.1,
-    performance: 0.1,
-    interior: 0.1,
-    warranty: 0.1,
-    fill: '#f8f8f8',
-    stroke: '#cccccc'
-  },
   {
     name: 'Mercedes',
     mileage: 3,
-    price: 4,
-    safety: 5,
-    performance: 1.5,
+    price: 2.5,
+    safety: 8,
+    performance: 5,
     interior: 4,
     warranty: 4.5,
-    fill: 'rgba(114,172,240,0.5)',
+    fill: 'rgba(114,172,240,0.4)',
     stroke: 'rgba(114,172,240,0.2)'
+  },
+  {
+    name: 'Honda',
+    mileage: 4.5,
+    price: 5,
+    safety: 7.5,
+    performance: 2.5,
+    interior: 3,
+    warranty: 4,
+    fill: 'rgba(154,102,220,0.4)',
+    stroke: 'rgba(154,102,220,0.2)'
   }
 ];
 
@@ -142,18 +86,20 @@ export default class RadarChartWithTooltips extends Component {
             domain: [0, 5],
             getValue: d => d.price
           },
-          {name: 'safety', domain: [0, 5], getValue: d => d.safety},
+          {name: 'safety', domain: [0, 10], getValue: d => d.safety},
           {name: 'performance', domain: [0, 5], getValue: d => d.performance},
           {name: 'interior', domain: [0, 5], getValue: d => d.interior},
           {name: 'warranty', domain: [0, 5], getValue: d => d.warranty}
         ]}
-        width={300}
-        height={300}
+        width={450}
+        height={350}
         onValueMouseOver={v => {
           this.setState({hoveredCell: v});
         }}
         onValueMouseOut={v => this.setState({hoveredCell: false})}
+        margin={{top: 30, right: 60, left: 60, bottom: 30}}
         style={{
+          background: 'transparent',
           polygons: {
             strokeWidth: 1,
             strokeOpacity: 0.8,
@@ -164,9 +110,8 @@ export default class RadarChartWithTooltips extends Component {
           },
           axes: {
             line: {
-              fillOpacity: 0.8,
-              strokeWidth: 0.5,
-              strokeOpacity: 0.8
+              strokeWidth: 0,
+              strokeOpacity: 0
             },
             ticks: {
               fillOpacity: 0,
@@ -178,15 +123,28 @@ export default class RadarChartWithTooltips extends Component {
         colorRange={['transparent']}
         hideInnerMostValues={false}
         renderAxesOverPolygons={true}
+        numberOfGridlines={0}
       >
-        {hoveredCell &&
-          hoveredCell.dataName === 'Mercedes' && (
-            <Hint value={hoveredCell}>
-              <div style={tipStyle}>
-                {hoveredCell.domain}: {hoveredCell.value}
-              </div>
-            </Hint>
-          )}
+        {hoveredCell && (
+          <Hint value={hoveredCell}>
+            <div style={tipStyle}>
+              {hoveredCell.domain}: {hoveredCell.value}
+            </div>
+          </Hint>
+        )}
+        <RadarChartStraightGridLines
+          numberOfGridlines={5}
+          numberOfDomains={6}
+          width={450}
+          height={350}
+          margin={{top: 30, right: 60, left: 60, bottom: 30}}
+          style={{
+            marginTop: '-350px',
+            polygons: {
+              stroke: '#cccccc'
+            }
+          }}
+        />
       </RadarChart>
     );
   }

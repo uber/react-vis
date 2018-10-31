@@ -24,7 +24,6 @@ import {format} from 'd3-format';
 import RadarChart from 'radar-chart';
 import {Hint} from 'index';
 
-
 const DATA = [
   {
     name: 'Mercedes',
@@ -94,10 +93,11 @@ export default class BasicRadarChart extends Component {
         ]}
         width={400}
         height={300}
-        onSeriesMouseOver={(data) => {
+        onSeriesMouseOver={data => {
           this.setState({hoveredCell: data.event[0]});
         }}
         onSeriesMouseOut={() => this.setState({hoveredCell: false})}
+        numberOfGridlines={5}
       >
         {hoveredCell && (
           <Hint value={{x: 0, y: 0}}>
