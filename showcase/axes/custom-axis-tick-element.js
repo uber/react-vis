@@ -52,9 +52,7 @@ export default class Example extends React.Component {
       <XYPlot
         width={300}
         height={300}
-        xType="linear"
         xDomain={[0, 4]}
-        yType="linear"
         yDomain={[0, 1000]}
         margin={{top: 10, right: 10, left: 60, bottom: 40}}
       >
