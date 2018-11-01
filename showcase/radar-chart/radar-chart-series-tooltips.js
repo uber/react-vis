@@ -22,7 +22,6 @@ import React, {Component} from 'react';
 import {format} from 'd3-format';
 
 import RadarChart from 'radar-chart';
-import RadarChartStraightGridLines from 'radar-chart/radar-chart-straight-grid-lines';
 import {Hint} from 'index';
 
 

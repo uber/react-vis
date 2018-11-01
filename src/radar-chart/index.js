@@ -205,8 +205,8 @@ function getPolygonPoints(props) {
       .range([0, 1]);
     return acc;
   }, {});
-return data.map((row, rowIndex) => {
- const mappedData = domains.map(({name, getValue}, index) => {
+ return data.map((row, rowIndex) => {
+  const mappedData = domains.map(({name, getValue}, index) => {
     const dataPoint = getValue ? getValue(row) : row[name];
     // error handling if point doesn't exist
     const angle = (index / domains.length) * Math.PI * 2 + startingAngle;
@@ -295,40 +295,36 @@ const polygonPoints = getPolygonPoints({
   onValueMouseOut
 });
 
-  const labelSeries = (
-    <LabelSeries
-      animation={animation}
-      key={className}
-      className={`${predefinedClassName}-label`}
-      data={getLabels({domains, style: style.labels, startingAngle})} />
-  );
-  return (
-    <XYPlot
-      height={height}
-      width={width}
-      margin={margin}
-      dontCheckIfEmpty
-      className={`${className} ${predefinedClassName}`}
-      onMouseLeave={onMouseLeave}
-      onMouseEnter={onMouseEnter}
-      xDomain={[-1, 1]}
-      yDomain={[-1, 1]}
-      style={{
-        backgroundColor: 'transparent'
-      }}
-    >
-      {children}
-      {!renderAxesOverPolygons &&
-        axes
-          .concat(polygons)
-          .concat(labelSeries)
-          .concat(polygonPoints)}
-      {renderAxesOverPolygons &&
-        polygons
-          .concat(labelSeries)
-          .concat(axes)
-          .concat(polygonPoints)}
-    </XYPlot>
+const labelSeries = (
+  <LabelSeries
+    animation={animation}
+    key={className}
+    className={`${predefinedClassName}-label`}
+    data={getLabels({domains, style: style.labels, startingAngle})} />
+);
+return (
+  <XYPlot
+    height={height}
+    width={width}
+    margin={margin}
+    dontCheckIfEmpty
+    className={`${className} ${predefinedClassName}`}
+    onMouseLeave={onMouseLeave}
+    onMouseEnter={onMouseEnter}
+    xDomain={[-1, 1]}
+    yDomain={[-1, 1]}>
+    {children}
+    {!renderAxesOverPolygons &&
+      axes
+        .concat(polygons)
+        .concat(labelSeries)
+        .concat(polygonPoints)}
+    {renderAxesOverPolygons &&
+      polygons
+        .concat(labelSeries)
+        .concat(axes)
+        .concat(polygonPoints)}
+  </XYPlot>
   );
 }
 
