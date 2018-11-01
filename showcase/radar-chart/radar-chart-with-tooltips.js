@@ -19,8 +19,7 @@
 // THE SOFTWARE.
 
 import React, {Component} from 'react';
-import RadarChart from 'radar-chart';
-import {Hint, RadarChartStraightGridLines} from 'index';
+import {Hint,  RadarChart, RadarChartStraightGridLines} from 'index';
 
 const DATA = [
   {
