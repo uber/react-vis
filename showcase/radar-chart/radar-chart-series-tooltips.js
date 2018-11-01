@@ -22,7 +22,9 @@ import React, {Component} from 'react';
 import {format} from 'd3-format';
 
 import RadarChart from 'radar-chart';
+import RadarChartStraightGridLines from 'radar-chart/radar-chart-straight-grid-lines';
 import {Hint} from 'index';
+
 
 const DATA = [
   {
@@ -93,11 +95,10 @@ export default class BasicRadarChart extends Component {
         ]}
         width={400}
         height={300}
-        onSeriesMouseOver={data => {
+        onSeriesMouseOver={(data) => {
           this.setState({hoveredCell: data.event[0]});
         }}
         onSeriesMouseOut={() => this.setState({hoveredCell: false})}
-        numberOfGridlines={5}
       >
         {hoveredCell && (
           <Hint value={{x: 0, y: 0}}>

@@ -138,20 +138,9 @@ function getLabels(props) {
  * @return {Array} the plotted axis components
  */
 function getPolygons(props) {
-  const {
-    animation,
-    colorRange,
-    domains,
-    data,
-    style,
-    startingAngle,
-    onSeriesMouseOver,
-    onSeriesMouseOut
-  } = props;
+  const {animation, colorRange, domains, data, style, startingAngle, onSeriesMouseOver, onSeriesMouseOut} = props;
   const scales = domains.reduce((acc, {domain, name}) => {
-    acc[name] = scaleLinear()
-      .domain(domain)
-      .range([0, 1]);
+    acc[name] = scaleLinear().domain(domain).range([0, 1]);
     return acc;
   }, {});
 
@@ -162,11 +151,7 @@ function getPolygons(props) {
       const angle = (index / domains.length) * Math.PI * 2 + startingAngle;
       // dont let the radius become negative
       const radius = Math.max(scales[name](dataPoint), 0);
-      return {
-        x: radius * Math.cos(angle),
-        y: radius * Math.sin(angle),
-        name: row.name
-      };
+      return {x: radius * Math.cos(angle), y: radius * Math.sin(angle), name: row.name};
     });
 
     return (
@@ -211,7 +196,7 @@ function getPolygonPoints(props) {
     onValueMouseOver,
     onValueMouseOut
   } = props;
-  if (!onValueMouseOver) {
+   if (!onValueMouseOver) {
     return;
   }
   const scales = domains.reduce((acc, {domain, name}) => {
@@ -220,19 +205,19 @@ function getPolygonPoints(props) {
       .range([0, 1]);
     return acc;
   }, {});
-  return data.map((row, rowIndex) => {
-    const mappedData = domains.map(({name, getValue}, index) => {
-      const dataPoint = getValue ? getValue(row) : row[name];
-      // error handling if point doesn't exist
-      const angle = (index / domains.length) * Math.PI * 2 + startingAngle;
-      // dont let the radius become negative
-      const radius = Math.max(scales[name](dataPoint), 0);
-      return {
-        x: radius * Math.cos(angle),
-        y: radius * Math.sin(angle),
-        domain: name,
-        value: dataPoint,
-        dataName: row.name
+return data.map((row, rowIndex) => {
+ const mappedData = domains.map(({name, getValue}, index) => {
+    const dataPoint = getValue ? getValue(row) : row[name];
+    // error handling if point doesn't exist
+    const angle = (index / domains.length) * Math.PI * 2 + startingAngle;
+    // dont let the radius become negative
+    const radius = Math.max(scales[name](dataPoint), 0);
+    return {
+      x: radius * Math.cos(angle),
+      y: radius * Math.sin(angle),
+      domain: name,
+      value: dataPoint,
+      dataName: row.name
       };
     });
 
@@ -251,7 +236,7 @@ function getPolygonPoints(props) {
         onValueMouseOver={onValueMouseOver}
         onValueMouseOut={onValueMouseOut}
       />
-    );
+  );
   });
 }
 
@@ -276,48 +261,46 @@ function RadarChart(props) {
     onValueMouseOver,
     onValueMouseOut,
     onSeriesMouseOver,
-    onSeriesMouseOut,
-    numberOfGridlines
+    onSeriesMouseOut
   } = props;
 
-  const axes = getAxes({
-    domains,
-    animation,
-    hideInnerMostValues,
-    startingAngle,
-    style,
-    tickFormat
-  });
+const axes = getAxes({
+  domains,
+  animation,
+  hideInnerMostValues,
+  startingAngle,
+  style,
+  tickFormat
+});
 
-  const polygons = getPolygons({
-    animation,
-    colorRange,
-    domains,
-    data,
-    startingAngle,
-    style,
-    onSeriesMouseOver,
-    onSeriesMouseOut
-  });
+const polygons = getPolygons({
+  animation,
+  colorRange,
+  domains,
+  data,
+  startingAngle,
+  style,
+  onSeriesMouseOver,
+  onSeriesMouseOut
+});
 
-  const polygonPoints = getPolygonPoints({
-    animation,
-    colorRange,
-    domains,
-    data,
-    startingAngle,
-    style,
-    onValueMouseOver,
-    onValueMouseOut
-  });
+const polygonPoints = getPolygonPoints({
+  animation,
+  colorRange,
+  domains,
+  data,
+  startingAngle,
+  style,
+  onValueMouseOver,
+  onValueMouseOut
+});
 
   const labelSeries = (
     <LabelSeries
       animation={animation}
       key={className}
       className={`${predefinedClassName}-label`}
-      data={getLabels({domains, style: style.labels, startingAngle})}
-    />
+      data={getLabels({domains, style: style.labels, startingAngle})} />
   );
   return (
     <XYPlot
@@ -403,8 +386,7 @@ RadarChart.defaultProps = {
     }
   },
   tickFormat: DEFAULT_FORMAT,
-  renderAxesOverPolygons: false,
-  numberOfGridlines: 0
+  renderAxesOverPolygons: false
 };
 
 export default RadarChart;

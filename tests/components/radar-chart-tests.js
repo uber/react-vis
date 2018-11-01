@@ -159,6 +159,13 @@ test('Radar: Showcase Example - Radar Chart with Tooltips', t => {
     .simulate('mouseOver');
   t.equal($.text(), `${chartText}${tooltipText}`, 'should display tooltip text');
   t.end();
+
+  // Spider graph lines
+  t.equal(
+    $.find('.rv-radar-chart-grid-lines-spider-grid-line').length,
+    6,
+    'should find the right number grid lines for the spider graph'
+  );
 });
 
 test('Radar: Showcase Example - series tooltips', t => {
