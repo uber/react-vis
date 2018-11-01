@@ -21,7 +21,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {scaleLinear} from 'd3-scale';
-import {format} from 'd3-format';
 
 import {MarginPropType} from 'utils/chart-utils';
 import XYPlot from 'plot/xy-plot';
@@ -32,16 +31,16 @@ const predefinedClassName = 'rv-radar-chart-grid-lines';
 /**
  * Generate the actual polygons to be plotted
  * @param {Object} props
- - props.data {Array} array of object specifying what values are to be plotted
- - props.domains {Array} array of object specifying the way each axis is to be plotted
- - props.startingAngle {number} the initial angle offset
+ - props.numberOfDomains {number} number of domains - should match the RadarChart
  - props.style {object} style object for the whole chart
+ - props.startingAngle {number} the initial angle offset - should match the RadarChart
+ - props.numberOfGridlines {number} the number of grid lines to render
+ - props.startAtZero {bool} specifices if a grid line should be rendered at the 0th radius
  * @return {Array} the plotted axis components
  */
 function getSpiderGridLines(props) {
   const {
     numberOfDomains,
-    data,
     style,
     startingAngle,
     numberOfGridlines,
@@ -97,7 +96,6 @@ function RadarChartStraightGridLines(props) {
     margin,
     className,
     numberOfDomains,
-    data,
     startingAngle,
     style,
     numberOfGridlines,
@@ -106,7 +104,6 @@ function RadarChartStraightGridLines(props) {
 
   const spiderGridLines = getSpiderGridLines({
     numberOfDomains,
-    data,
     startingAngle,
     style,
     numberOfGridlines,

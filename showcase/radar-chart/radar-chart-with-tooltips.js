@@ -20,8 +20,7 @@
 
 import React, {Component} from 'react';
 import RadarChart from 'radar-chart';
-import RadarChartStraightGridLines from 'radar-chart/radar-chart-straight-grid-lines';
-import {Hint} from 'index';
+import {Hint, RadarChartStraightGridLines} from 'index';
 
 const DATA = [
   {
