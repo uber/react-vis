@@ -56,7 +56,6 @@ export default function Example(props) {
       <LineSeries
         className="third-series"
         curve={'curveMonotoneX'}
-        strokeDasharray="3 4"
         data={[{x: 1, y: 10}, {x: 2, y: 4}, {x: 3, y: 2}, {x: 4, y: 15}]}
         strokeDasharray="7, 3"
       />
