@@ -36,19 +36,17 @@ export default class Example extends React.Component {
     this.state = {
       value: null
     };
-    this._rememberValue = this._rememberValue.bind(this);
-    this._forgetValue = this._forgetValue.bind(this);
   }
 
-  _forgetValue() {
+  _forgetValue = () => {
     this.setState({
       value: null
     });
-  }
+  };
 
-  _rememberValue(value) {
+  _rememberValue = value => {
     this.setState({value});
-  }
+  };
 
   render() {
     const {value} = this.state;

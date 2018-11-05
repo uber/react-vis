@@ -57,8 +57,6 @@ class Animation extends PureComponent {
   constructor(props) {
     super(props);
     this._updateInterpolator(props);
-    this._renderChildren = this._renderChildren.bind(this);
-    this._motionEndHandler = this._motionEndHandler.bind(this);
   }
 
   componentWillUpdate(props) {
@@ -68,11 +66,11 @@ class Animation extends PureComponent {
     }
   }
 
-  _motionEndHandler() {
+  _motionEndHandler = () => {
     if (this.props.onEnd) {
       this.props.onEnd();
     }
-  }
+  };
 
   /**
    * Render the child into the parent.
@@ -80,7 +78,7 @@ class Animation extends PureComponent {
    * @returns {React.Component} Rendered react element.
    * @private
    */
-  _renderChildren({i}) {
+  _renderChildren = ({i}) => {
     const {children} = this.props;
     const interpolator = this._interpolator;
     const child = React.Children.only(children);
@@ -109,7 +107,7 @@ class Animation extends PureComponent {
       // enforce re-rendering
       _animation: Math.random()
     });
-  }
+  };
 
   /**
    * Update the interpolator function and assign it to this._interpolator.

@@ -101,3 +101,11 @@ Callback is triggered with two arguments. `value` is the data point, `info` obje
 - `index` is the index of the data point in the array of data;
 - `event` is the event object.
 See [interaction](interaction.md)
+
+#### onValueMouseOver (optional)
+Type: `function(d, {event})`
+`mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
+
+#### onValueMouseOut (optional)
+Type: `function(d, {event})`
+`mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.

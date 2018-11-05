@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
 const {
@@ -17,7 +17,7 @@ const DISCRETE_LEGENDS = [
     componentName: 'VerticalDiscreteColorLegendExample'
   },
   {
-    name: 'Horizontal legend',
+    name: 'Horizontal legend with stroke styles',
     component: HorizontalDiscreteColorLegendExample,
     componentName: 'HorizontalDiscreteColorLegendExample'
   },
@@ -50,20 +50,18 @@ const CONTINOUS_SIZE_LEGEND = [
   }
 ];
 
-class LegendsExample extends Component {
-  render() {
-    return (
-      <article id="legends">
-        <h1>Legends</h1>
-        <h2>Discrete color legend</h2>
-        {DISCRETE_LEGENDS.map(mapSection)}
-        <h2>Continuous color legend</h2>
-        {CONTINOUS_COLOR_LEGEND.map(mapSection)}
-        <h2>Continuous size legend</h2>
-        {CONTINOUS_SIZE_LEGEND.map(mapSection)}
-      </article>
-    );
-  }
+function LegendsExample(props) {
+  return (
+    <article id="legends">
+      <h1>Legends</h1>
+      <h2>Discrete color legend</h2>
+      {DISCRETE_LEGENDS.map(mapSection)}
+      <h2>Continuous color legend</h2>
+      {CONTINOUS_COLOR_LEGEND.map(mapSection)}
+      <h2>Continuous size legend</h2>
+      {CONTINOUS_SIZE_LEGEND.map(mapSection)}
+    </article>
+  );
 }
 
 export default LegendsExample;

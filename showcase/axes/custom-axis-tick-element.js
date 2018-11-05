@@ -26,30 +26,42 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
-  LineMarkSeries
+  LineSeries
 } from 'index';
 
-export default function Example(props) {
-  return (
-    <XYPlot width={300} height={300}>
-      <VerticalGridLines />
-      <HorizontalGridLines />
-      <XAxis />
-      <YAxis />
-      <LineMarkSeries
-        className="linemark-series-example"
-        style={{
-          strokeWidth: '3px'
-        }}
-        lineStyle={{stroke: 'red'}}
-        markStyle={{stroke: 'blue'}}
-        data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]}
-      />
-      <LineMarkSeries
-        className="linemark-series-example-2"
-        curve={'curveMonotoneX'}
-        data={[{x: 1, y: 11}, {x: 1.5, y: 29}, {x: 3, y: 7}]}
-      />
-    </XYPlot>
-  );
+export default class Example extends React.Component {
+  state = {
+    data: [
+      {x: 0, y: 100, label: <circle cx={0} cy={10} r={5} fill="darksalmon" />},
+      {x: 1, y: 200, label: <rect x={-5} y={5} width={10} height={10} fill="slateblue" />},
+      {x: 2, y: 500, label: <tspan>Label</tspan>},
+      {x: 3, y: 900, label: <path d="M0 5 L5 15 L-5 15 Z" fill="sandybrown" />},
+      {x: 4, y: 1000, label: 'Label'}
+    ]
+  };
+
+  formatX = (v, i, scale, tickTotal) => {
+    if (i < this.state.data.length) {
+      return this.state.data[i].label;
+    }
+    return null;
+  }
+
+  render() {
+    return (
+      <XYPlot
+        width={300}
+        height={300}
+        xDomain={[0, 4]}
+        yDomain={[0, 1000]}
+        margin={{top: 10, right: 10, left: 60, bottom: 40}}
+      >
+        <VerticalGridLines />
+        <HorizontalGridLines />
+        <XAxis tickTotal={this.state.data.length} tickFormat={this.formatX} />
+        <YAxis />
+        <LineSeries data={this.state.data} />
+      </XYPlot>
+    );
+  }
 }

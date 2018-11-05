@@ -39,65 +39,64 @@ const ANIMATED_PROPS = [
   'r'
 ];
 
-class TreemapLeaf extends React.Component {
-  render() {
-    const {
-      animation,
-      getLabel,
-      mode,
-      node,
-      onLeafClick,
-      onLeafMouseOver,
-      onLeafMouseOut,
-      r,
-      scales,
-      x0,
-      x1,
-      y0,
-      y1,
-      style
-    } = this.props;
+function TreemapLeaf(props) {
+  const {
+    animation,
+    getLabel,
+    mode,
+    node,
+    onLeafClick,
+    onLeafMouseOver,
+    onLeafMouseOut,
+    r,
+    scales,
+    x0,
+    x1,
+    y0,
+    y1,
+    style
+  } = props;
 
-    if (animation) {
-      return (
-        <Animation {...this.props} animatedProps={ANIMATED_PROPS}>
-          <TreemapLeaf {...this.props} animation={null} />
-        </Animation>
-      );
-    }
-    const useCirclePacking = mode === 'circlePack';
-    const background = scales.color(node);
-    const opacity = scales.opacity(node);
-    const color = getFontColorFromBackground(background);
-    const {data} = node;
-    const title = getLabel(data);
-    const leafStyle = {
-      top: useCirclePacking ? y0 - r : y0,
-      left: useCirclePacking ? x0 - r : x0,
-      width: useCirclePacking ? r * 2 : x1 - x0,
-      height: useCirclePacking ? r * 2 : y1 - y0,
-      background,
-      opacity,
-      color,
-      ...style,
-      ...node.data.style
-    };
-
+  if (animation) {
     return (
-      <div
-        className={`rv-treemap__leaf ${
-          useCirclePacking ? 'rv-treemap__leaf--circle' : ''
-        }`}
-        onMouseEnter={event => onLeafMouseOver(node, event)}
-        onMouseLeave={event => onLeafMouseOut(node, event)}
-        onClick={event => onLeafClick(node, event)}
-        style={leafStyle}
-      >
-        <div className="rv-treemap__leaf__content">{title}</div>
-      </div>
+      <Animation {...props} animatedProps={ANIMATED_PROPS}>
+        <TreemapLeaf {...props} animation={null} />
+      </Animation>
     );
   }
+  const useCirclePacking = mode === 'circlePack';
+  const background = scales.color(node);
+  const opacity = scales.opacity(node);
+  const color = getFontColorFromBackground(background);
+  const {data} = node;
+  const title = getLabel(data);
+  const leafStyle = {
+    top: useCirclePacking ? y0 - r : y0,
+    left: useCirclePacking ? x0 - r : x0,
+    width: useCirclePacking ? r * 2 : x1 - x0,
+    height: useCirclePacking ? r * 2 : y1 - y0,
+    background,
+    opacity,
+    color,
+    ...style,
+    ...node.data.style
+  };
+
+  return (
+    <div
+      className={`rv-treemap__leaf ${
+        useCirclePacking ? 'rv-treemap__leaf--circle' : ''
+      }`}
+      onMouseEnter={event => onLeafMouseOver(node, event)}
+      onMouseLeave={event => onLeafMouseOut(node, event)}
+      onClick={event => onLeafClick(node, event)}
+      style={leafStyle}
+    >
+      <div className="rv-treemap__leaf__content">{title}</div>
+    </div>
+  );
 }
+
 TreemapLeaf.propTypes = {
   animation: AnimationPropType,
   height: PropTypes.number.isRequired,

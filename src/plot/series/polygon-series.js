@@ -70,8 +70,8 @@ class PolygonSeries extends AbstractSeries {
       <path
         {...{
           className: `${predefinedClassName} ${className}`,
-          onMouseOver: this._seriesMouseOverHandler,
-          onMouseOut: this._seriesMouseOutHandler,
+          onMouseOver: e => this._seriesMouseOverHandler(data, e),
+          onMouseOut: e => this._seriesMouseOutHandler(data, e),
           onClick: this._seriesClickHandler,
           onContextMenu: this._seriesRightClickHandler,
           fill: color || DEFAULT_COLOR,

@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, {Component} from 'react';
+import React from 'react';
 
 import {XYPlot, DecorativeAxis} from 'index';
 
@@ -29,30 +29,28 @@ const MARGIN = {
   bottom: 30
 };
 
-export default class Example extends Component {
-  render() {
-    return (
-      <XYPlot
-        dontCheckIfEmpty
-        margin={MARGIN}
-        xDomain={[0, 1]}
-        yDomain={[0, 1]}
-        width={300}
-        height={300}
-      >
-        <DecorativeAxis
-          axisStart={{x: 0, y: 0}}
-          axisEnd={{x: 1, y: 1}}
-          axisDomain={[-10, 100]}
-        />
-        <DecorativeAxis
-          axisStart={{x: 1, y: 0}}
-          axisEnd={{x: 0, y: 1}}
-          axisDomain={[1000, 900]}
-          tickSize={-10}
-          tickValue={t => `¡${t}!`}
-        />
-      </XYPlot>
-    );
-  }
+export default function Example(props) {
+  return (
+    <XYPlot
+      dontCheckIfEmpty
+      margin={MARGIN}
+      xDomain={[0, 1]}
+      yDomain={[0, 1]}
+      width={300}
+      height={300}
+    >
+      <DecorativeAxis
+        axisStart={{x: 0, y: 0}}
+        axisEnd={{x: 1, y: 1}}
+        axisDomain={[-10, 100]}
+      />
+      <DecorativeAxis
+        axisStart={{x: 1, y: 0}}
+        axisEnd={{x: 0, y: 1}}
+        axisDomain={[1000, 900]}
+        tickSize={-10}
+        tickValue={t => `¡${t}!`}
+      />
+    </XYPlot>
+  );
 }

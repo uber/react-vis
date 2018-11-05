@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
@@ -30,17 +30,14 @@ const PARALLEL_COORDINATES = [
     componentName: 'BrushedParallelCoordinates'
   }
 ];
-/* eslint-enable max-len */
 
-class ParallelCoordinatesShowcase extends Component {
-  render() {
-    return (
-      <article id="parallel-coordinates">
-        <h1>Parallel Coordinates</h1>
-        {PARALLEL_COORDINATES.map(mapSection)}
-      </article>
-    );
-  }
+function ParallelCoordinatesShowcase(props) {
+  return (
+    <article id="parallel-coordinates">
+      <h1>Parallel Coordinates</h1>
+      {PARALLEL_COORDINATES.map(mapSection)}
+    </article>
+  );
 }
 
 export default ParallelCoordinatesShowcase;

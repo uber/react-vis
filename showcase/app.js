@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 import ReactDOM from 'react-dom';
-import React, {Component} from 'react';
+import React from 'react';
 import document from 'global/document';
 
 import {BrowserRouter, Route} from 'react-router-dom';
@@ -27,18 +27,16 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import ShowcaseApp from './showcase-app';
 import '../src/styles/examples.scss';
 
-export default class App extends Component {
-  render() {
-    // using react-router to trigger react updates on url change
-    return (
-      <BrowserRouter>
-        <Route path="/" component={ShowcaseApp} />
-      </BrowserRouter>
-    );
-  }
+export default function App(props) {
+  // using react-router to trigger react updates on url change
+  return (
+    <BrowserRouter>
+      <Route path="/" component={ShowcaseApp} />
+    </BrowserRouter>
+  );
 }
 
 const el = document.createElement('div');
 document.body.appendChild(el);
 
-ReactDOM.render(React.createElement(App), el);
+ReactDOM.render(<App />, el);

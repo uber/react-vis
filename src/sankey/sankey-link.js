@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, {PureComponent} from 'react';
+import React from 'react';
 import {DISCRETE_COLOR_RANGE} from 'theme';
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
@@ -26,42 +26,40 @@ import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 const DEFAULT_LINK_COLOR = DISCRETE_COLOR_RANGE[1];
 const DEFAULT_LINK_OPACITY = 0.7;
 
-class SankeyLink extends PureComponent {
-  render() {
-    const {
-      animation,
-      data,
-      node,
-      opacity,
-      color,
-      strokeWidth,
-      style,
-      onLinkClick,
-      onLinkMouseOver,
-      onLinkMouseOut
-    } = this.props;
-    if (animation) {
-      return (
-        <Animation {...this.props} animatedProps={ANIMATED_SERIES_PROPS}>
-          <SankeyLink {...this.props} animation={null} />
-        </Animation>
-      );
-    }
+function SankeyLink(props) {
+  const {
+    animation,
+    data,
+    node,
+    opacity,
+    color,
+    strokeWidth,
+    style,
+    onLinkClick,
+    onLinkMouseOver,
+    onLinkMouseOut
+  } = props;
+  if (animation) {
     return (
-      <path
-        d={data}
-        {...style}
-        className="rv-sankey__link"
-        opacity={Number.isFinite(opacity) ? opacity : DEFAULT_LINK_OPACITY}
-        stroke={color || DEFAULT_LINK_COLOR}
-        onClick={e => onLinkClick(node, e)}
-        onMouseOver={e => onLinkMouseOver(node, e)}
-        onMouseOut={e => onLinkMouseOut(node, e)}
-        strokeWidth={strokeWidth}
-        fill="none"
-      />
+      <Animation {...props} animatedProps={ANIMATED_SERIES_PROPS}>
+        <SankeyLink {...props} animation={null} />
+      </Animation>
     );
   }
+  return (
+    <path
+      d={data}
+      {...style}
+      className="rv-sankey__link"
+      opacity={Number.isFinite(opacity) ? opacity : DEFAULT_LINK_OPACITY}
+      stroke={color || DEFAULT_LINK_COLOR}
+      onClick={e => onLinkClick(node, e)}
+      onMouseOver={e => onLinkMouseOver(node, e)}
+      onMouseOut={e => onLinkMouseOut(node, e)}
+      strokeWidth={strokeWidth}
+      fill="none"
+    />
+  );
 }
 
 SankeyLink.displayName = 'SankeyLink';

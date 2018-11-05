@@ -27,29 +27,27 @@ export default class Example extends React.Component {
     super(props);
     this.state = {
       items: [
-        {title: 'Apples', color: '#3a3', strokeStyle: "dashed"},
+        {title: 'Apples', color: '#3a3'},
         {title: 'Bananas', color: '#fc0'},
         {title: 'Blueberries', color: '#337'},
-        {title: 'Carrots', color: '#f93', strokeWidth: 6},
+        {title: 'Carrots', color: '#f93'},
         {title: 'Eggplants', color: '#337'},
         {title: 'Limes', color: '#cf3'},
         {title: 'Potatoes', color: '#766'}
       ],
       searchText: ''
     };
-    this._clickHandler = this._clickHandler.bind(this);
-    this._searchChangeHandler = this._searchChangeHandler.bind(this);
   }
 
-  _clickHandler(item) {
+  _clickHandler = item => {
     const {items} = this.state;
     item.disabled = !item.disabled;
     this.setState({items});
-  }
+  };
 
-  _searchChangeHandler(searchText) {
+  _searchChangeHandler = searchText => {
     this.setState({searchText});
-  }
+  };
 
   render() {
     const {items, searchText} = this.state;

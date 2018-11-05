@@ -136,6 +136,11 @@ export const SHOWCASE_LINKS = {
     'https://github.com/uber/react-vis/blob/master/showcase/radar-chart/basic-radar-chart.js',
   FourQuadrantRadarChart:
     'https://github.com/uber/react-vis/blob/master/showcase/radar-chart/four-quadrant-radar-chart.js',
+  RadarChartWithTooltips:
+    'https://github.com/uber/react-vis/blob/master/showcase/radar-chart/radar-chart-with-tooltips.js',
+  RadarChartSeriesTooltips:
+    'https://github.com/uber/react-vis/blob/master/showcase/radar-chart/radar-chart-series-tooltips.js',
+
   // RADIAL CHART SHOWCASE LINKS
   SimpleRadialChart:
     'https://github.com/uber/react-vis/blob/master/showcase/radial-chart/simple-radial-chart.js',

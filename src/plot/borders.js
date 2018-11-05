@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, {PureComponent} from 'react';
+import React from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -46,57 +46,55 @@ const CLASSES = {
   top: 'rv-xy-plot__borders-top'
 };
 
-class Borders extends PureComponent {
-  render() {
-    const {
-      marginTop,
-      marginBottom,
-      marginLeft,
-      marginRight,
-      innerWidth,
-      innerHeight,
-      style,
-      className
-    } = this.props;
-    const height = innerHeight + marginTop + marginBottom;
-    const width = innerWidth + marginLeft + marginRight;
-    return (
-      <g className={`${CLASSES.container} ${className}`}>
-        <rect
-          className={`${CLASSES.bottom} ${className}-bottom`}
-          style={{...style.all, ...style.bottom}}
-          x={0}
-          y={height - marginBottom}
-          width={width}
-          height={marginBottom}
-        />
-        <rect
-          className={`${CLASSES.left} ${className}-left`}
-          style={{...style.all, ...style.left}}
-          x={0}
-          y={0}
-          width={marginLeft}
-          height={height}
-        />
-        <rect
-          className={`${CLASSES.right} ${className}-right`}
-          style={{...style.all, ...style.right}}
-          x={width - marginRight}
-          y={0}
-          width={marginRight}
-          height={height}
-        />
-        <rect
-          className={`${CLASSES.top} ${className}-top`}
-          style={{...style.all, ...style.top}}
-          x={0}
-          y={0}
-          width={width}
-          height={marginTop}
-        />
-      </g>
-    );
-  }
+function Borders(props) {
+  const {
+    marginTop,
+    marginBottom,
+    marginLeft,
+    marginRight,
+    innerWidth,
+    innerHeight,
+    style,
+    className
+  } = props;
+  const height = innerHeight + marginTop + marginBottom;
+  const width = innerWidth + marginLeft + marginRight;
+  return (
+    <g className={`${CLASSES.container} ${className}`}>
+      <rect
+        className={`${CLASSES.bottom} ${className}-bottom`}
+        style={{...style.all, ...style.bottom}}
+        x={0}
+        y={height - marginBottom}
+        width={width}
+        height={marginBottom}
+      />
+      <rect
+        className={`${CLASSES.left} ${className}-left`}
+        style={{...style.all, ...style.left}}
+        x={0}
+        y={0}
+        width={marginLeft}
+        height={height}
+      />
+      <rect
+        className={`${CLASSES.right} ${className}-right`}
+        style={{...style.all, ...style.right}}
+        x={width - marginRight}
+        y={0}
+        width={marginRight}
+        height={height}
+      />
+      <rect
+        className={`${CLASSES.top} ${className}-top`}
+        style={{...style.all, ...style.top}}
+        x={0}
+        y={0}
+        width={width}
+        height={marginTop}
+      />
+    </g>
+  );
 }
 
 Borders.displayName = 'Borders';

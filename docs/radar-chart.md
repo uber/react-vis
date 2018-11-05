@@ -145,3 +145,23 @@ Specify the tick format for all axes. Will be over-ridden by tickFormats specifi
 Type: `number`
 
 The angle of the first axis in radians. Defaults to PI / 2.
+
+#### renderAxesOverPolygons (optional)
+Type: `boolean`
+By default, the axes are rendered beneath the data (polygons) on the radar chart. Setting this to true will reverse the rendering, drawing the axes on top. This can be useful if you have a lot of data or your polygons have high opacity.
+
+#### onValueMouseOver (optional)
+Type: `function(d, {event})`
+`mouseover` event handler for the elements corresponding separate data points, where each data point is a point on the radar chart. First argument received, `d`, is the relevant data point, including the `domain`, `name`, and `value` of the data point. The second argument is the `event` property.
+
+#### onValueMouseOut (optional)
+Type: `function(d, {event})`
+`mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
+
+#### onSeriesMouseOver (optional)
+Type: `function(d, {event})`
+`mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
+
+#### onSeriesMouseOut (optional)
+Type: `function(d, {event})`
+`mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.

@@ -96,6 +96,7 @@ import AxisOn0 from './axes/axis-on-0';
 import CustomAxesOrientation from './axes/custom-axes-orientation';
 import CustomAxisChart from './axes/custom-axis';
 import CustomAxisTickFormat from './axes/custom-axis-tick-format';
+import CustomAxisTickElement from './axes/custom-axis-tick-element';
 import CustomAxes from './axes/custom-axes';
 import DecorativeAxisCrissCross from './axes/decorative-axes-criss-cross';
 import EmptyChart from './axes/empty-chart';
@@ -140,6 +141,8 @@ import ArcSeriesExample from './radial-chart/arc-series-example';
 import BasicRadarChart from './radar-chart/basic-radar-chart';
 import AnimatedRadarChart from './radar-chart/animated-radar-chart';
 import FourQuadrantRadarChart from './radar-chart/four-quadrant-radar-chart';
+import RadarChartWithTooltips from './radar-chart/radar-chart-with-tooltips';
+import RadarChartSeriesTooltips from './radar-chart/radar-chart-series-tooltips';
 
 import BasicParallelCoordinates from './parallel-coordinates/basic-parallel-coordinates';
 import AnimatedParallelCoordinates from './parallel-coordinates/animated-parallel-coordinates';
@@ -197,6 +200,7 @@ const mainShowCase = {
   CustomAxesOrientation,
   CustomAxisChart,
   CustomAxisTickFormat,
+  CustomAxisTickElement,
   AxisWithTurnedLabels,
   GridLinesChart,
   StaticHints,
@@ -270,6 +274,8 @@ const mainShowCase = {
   AnimatedRadarChart,
   BasicRadarChart,
   FourQuadrantRadarChart,
+  RadarChartWithTooltips,
+  RadarChartSeriesTooltips,
 
   BasicParallelCoordinates,
   AnimatedParallelCoordinates,

@@ -154,11 +154,12 @@ export class LinkedCharts extends Component {
   constructor() {
     super();
     this.state = {index: null};
-    this.handleMouseOver = this.handleMouseOver.bind(this);
   }
-  handleMouseOver(index) {
+
+  handleMouseOver = index => {
     this.setState({index});
-  }
+  };
+
   render() {
     const {index} = this.state;
     return (

@@ -18,10 +18,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {Component} from 'react';
 import {format} from 'd3-format';
 
-import {ParallelCoordinates} from 'index';
+import RadarChart from 'radar-chart';
+import {Hint} from 'index';
+
 
 const DATA = [
   {
@@ -40,11 +42,7 @@ const DATA = [
     safety: 9,
     performance: 6,
     interior: 3,
-    warranty: 9,
-    style: {
-      strokeWidth: 3,
-      strokeDasharray: '2, 2'
-    }
+    warranty: 9
   },
   {
     name: 'Chevrolet',
@@ -60,29 +58,53 @@ const DATA = [
 const basicFormat = format('.2r');
 const wideFormat = format('.3r');
 
-export default function BasicParallelCoordinates(props) {
-  return (
-    <ParallelCoordinates
-      data={DATA}
-      tickFormat={t => wideFormat(t)}
-      margin={50}
-      colorRange={['#172d47', '#911116', '#998965']}
-      domains={[
-        {name: 'mileage', domain: [0, 10]},
-        {
-          name: 'price',
-          domain: [2, 16],
-          tickFormat: t => `$${basicFormat(t)}`,
-          getValue: d => d.price
-        },
-        {name: 'safety', domain: [5, 10], getValue: d => d.safety},
-        {name: 'performance', domain: [0, 10], getValue: d => d.performance},
-        {name: 'interior', domain: [0, 7], getValue: d => d.interior},
-        {name: 'warranty', domain: [10, 2], getValue: d => d.warranty}
-      ]}
-      showMarks
-      width={400}
-      height={300}
-    />
-  );
+const tipStyle = {
+  display: 'flex',
+  color: '#fff',
+  background: '#000',
+  alignItems: 'center',
+  padding: '5px'
+};
+
+export default class BasicRadarChart extends Component {
+  state = {
+    hoveredCell: false
+  };
+
+  render() {
+    const {hoveredCell} = this.state;
+
+    return (
+      <RadarChart
+        data={DATA}
+        tickFormat={t => wideFormat(t)}
+        startingAngle={0}
+        domains={[
+          {name: 'mileage', domain: [0, 10]},
+          {
+            name: 'price',
+            domain: [2, 16],
+            tickFormat: t => `$${basicFormat(t)}`,
+            getValue: d => d.price
+          },
+          {name: 'safety', domain: [5, 10], getValue: d => d.safety},
+          {name: 'performance', domain: [0, 10], getValue: d => d.performance},
+          {name: 'interior', domain: [0, 7], getValue: d => d.interior},
+          {name: 'warranty', domain: [10, 2], getValue: d => d.warranty}
+        ]}
+        width={400}
+        height={300}
+        onSeriesMouseOver={(data) => {
+          this.setState({hoveredCell: data.event[0]});
+        }}
+        onSeriesMouseOut={() => this.setState({hoveredCell: false})}
+      >
+        {hoveredCell && (
+          <Hint value={{x: 0, y: 0}}>
+            <div style={tipStyle}>{hoveredCell.name}</div>
+          </Hint>
+        )}
+      </RadarChart>
+    );
+  }
 }

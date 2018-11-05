@@ -37,7 +37,14 @@ class BarSeries extends AbstractSeries {
       valuePosAttr: PropTypes.string,
       lineSizeAttr: PropTypes.string,
       valueSizeAttr: PropTypes.string,
-      cluster: PropTypes.string
+      cluster: PropTypes.string,
+      barWidth: PropTypes.number
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      barWidth: 0.85
     };
   }
 
@@ -52,7 +59,8 @@ class BarSeries extends AbstractSeries {
       marginTop,
       style,
       valuePosAttr,
-      valueSizeAttr
+      valueSizeAttr,
+      barWidth
     } = this.props;
 
     if (!data) {
@@ -79,7 +87,7 @@ class BarSeries extends AbstractSeries {
       this._getAttributeFunctor('stroke') || this._getAttributeFunctor('color');
     const opacityFunctor = this._getAttributeFunctor('opacity');
 
-    const itemSize = (distance / 2) * 0.85;
+    const halfSpace = (distance / 2) * barWidth;
 
     return (
       <g
@@ -87,6 +95,20 @@ class BarSeries extends AbstractSeries {
         transform={`translate(${marginLeft},${marginTop})`}
       >
         {data.map((d, i) => {
+          // totalSpaceAvailable is the space we have available to draw all the
+          // bars of a same 'linePosAttr' value (a.k.a. sameTypeTotal)
+          const totalSpaceAvailable = halfSpace * 2;
+          const totalSpaceCenter = lineFunctor(d);
+          // totalSpaceStartingPoint is the first pixel were we can start drawing
+          const totalSpaceStartingPoint = totalSpaceCenter - halfSpace;
+          // spaceTakenByInterBarsPixels has the overhead space consumed by each bar of sameTypeTotal
+          const spaceTakenByInterBarsPixels = (sameTypeTotal - 1) / sameTypeTotal;
+          // spacePerBar is the space we have available to draw sameTypeIndex bar
+          const spacePerBar = (totalSpaceAvailable / sameTypeTotal) - spaceTakenByInterBarsPixels;
+          // barStartingPoint is the first pixel were we can start drawing sameTypeIndex bar
+          const barStartingPoint = totalSpaceStartingPoint + spacePerBar * sameTypeIndex +
+            sameTypeIndex;
+
           const attrs = {
             style: {
               opacity: opacityFunctor && opacityFunctor(d),
@@ -94,11 +116,8 @@ class BarSeries extends AbstractSeries {
               fill: fillFunctor && fillFunctor(d),
               ...style
             },
-            [linePosAttr]:
-              lineFunctor(d) -
-              itemSize +
-              ((itemSize * 2) / sameTypeTotal) * sameTypeIndex,
-            [lineSizeAttr]: (itemSize * 2) / sameTypeTotal,
+            [linePosAttr]: barStartingPoint,
+            [lineSizeAttr]: spacePerBar,
             [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
             [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
             onClick: e => this._valueClickHandler(d, e),

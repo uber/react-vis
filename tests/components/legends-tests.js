@@ -61,22 +61,20 @@ test('Continuous Color Legend', t => {
 });
 
 test('Discrete Legends', t => {
-  [HorizontalDiscreteLegend, VerticalDiscreteLegend].forEach(Component => {
-    const $ = mount(<Component />);
-    t.equal(
-      $.text(),
-      'OptionsButtonsSelect boxesDate inputsPassword inputsFormsOther',
-      'should find the correct text content'
-    );
-    t.equal(
-      $.find('.rv-discrete-color-legend-item__color').length,
-      7,
-      'should find the right number of elements'
-    );
-  });
+  const verticalLegend = mount(<VerticalDiscreteLegend />);
+  t.equal(
+    verticalLegend.text(),
+    'OptionsButtonsSelect boxesDate inputsPassword inputsFormsOther',
+    'should find the correct text content'
+  );
+  t.equal(
+    verticalLegend.find('.rv-discrete-color-legend-item__color').length,
+    7,
+    'should find the right number of elements'
+  );
 
   t.deepEqual(
-    mount(<HorizontalDiscreteLegend />)
+    verticalLegend
       .find('.rv-discrete-color-legend-item__color__path')
       .first()
       .props().style,
@@ -105,17 +103,19 @@ test('Discrete Legends', t => {
     'should find the right number of element for the searchable legends'
   );
   t.deepEqual(
-    $.find('.rv-discrete-color-legend-item__color__path')
+    mount(<HorizontalDiscreteLegend />)
+      .find('.rv-discrete-color-legend-item__color__path')
       .first()
       .props().style,
-    {strokeDasharray: '6, 2', stroke: '#3a3'},
+    {strokeDasharray: '6, 2', stroke: '#45aeb1'},
     'should find the default dashed dasharray style'
   );
   t.deepEqual(
-    $.find('.rv-discrete-color-legend-item__color__path')
-      .at(3)
+    mount(<HorizontalDiscreteLegend />)
+      .find('.rv-discrete-color-legend-item__color__path')
+      .at(4)
       .props().style,
-    {strokeWidth: 6, stroke: '#f93'},
+    {strokeWidth: 13, stroke: 'url(#stripes)'},
     'should find the specified stroke width'
   );
   $.find('.rv-search-wrapper__form__input').simulate('change', {

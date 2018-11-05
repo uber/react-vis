@@ -41,29 +41,27 @@ const margin = {
 const WIDTH = 300;
 const HEIGHT = 300;
 
-export default class Example extends React.Component {
-  render() {
-    return (
-      <XYPlot
-        margin={margin}
-        xDomain={[-3, 3]}
-        yDomain={[-3, 3]}
-        width={WIDTH}
-        height={HEIGHT}
-      >
-        <CircularGridLines />
-        <XAxis top={(HEIGHT - margin.top) / 2} />
-        <YAxis left={(WIDTH - margin.left - margin.right) / 2} />
-        <MarkSeries
-          strokeWidth={2}
-          sizeRange={[5, 15]}
-          data={data.map(row => ({
-            ...row,
-            x: Math.cos(row.theta) * row.r,
-            y: Math.sin(row.theta) * row.r
-          }))}
-        />
-      </XYPlot>
-    );
-  }
+export default function Example(props) {
+  return (
+    <XYPlot
+      margin={margin}
+      xDomain={[-3, 3]}
+      yDomain={[-3, 3]}
+      width={WIDTH}
+      height={HEIGHT}
+    >
+      <CircularGridLines />
+      <XAxis top={(HEIGHT - margin.top) / 2} />
+      <YAxis left={(WIDTH - margin.left - margin.right) / 2} />
+      <MarkSeries
+        strokeWidth={2}
+        sizeRange={[5, 15]}
+        data={data.map(row => ({
+          ...row,
+          x: Math.cos(row.theta) * row.r,
+          y: Math.sin(row.theta) * row.r
+        }))}
+      />
+    </XYPlot>
+  );
 }
