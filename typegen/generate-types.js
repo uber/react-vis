@@ -188,4 +188,3 @@ reactVisTypings = reactVisTypings
   .replace(/ReactPureComponent/g, 'PureComponent');
 
 fs.writeFileSync('./index.d.ts', `${reactVisTypings  }\n`);
-
