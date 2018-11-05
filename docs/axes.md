@@ -69,7 +69,7 @@ An array of values (not coordinates!) that where the ticks should be shown. Simi
 
 Type: `function(value, index, scale, tickTotal)`
 
-Format function for the tick label. Similar to the `tickFormat()` method of d3-axis. Typically the value that is return is a string or a number, however this function also supports rendering svg react elements. To wit, I could have formatting function like
+Format function for the tick label. Similar to the `tickFormat()` method of d3-axis. Typically the value that is returned is a string or a number, however this function also supports rendering SVG React elements. To wit, I could have formatting function like
 
 ```javascript
 function myFormatter(t, i) {
@@ -86,6 +86,32 @@ function mySIPrefixFormatter(value, index, scale, tickTotal) {
   return `${scale.tickFormat(tickTotal, 's')(value)}Wh`;// -> e.g. 1.2kWh
 }
 ```
+
+**Note!** The return value will be wrapped with a `<text>` node if it's a string, `<tspan>`, or `<textPath>`. In all other cases the returned element will replace the `<text>` node. In case it's a custom React element it will also receive two additional props: `containerWidth` and `tickCount`. This way you can e.g. render a `<div>` to truncate long labels:
+
+```javascript
+const MyLabel = props => (
+  <foreignObject>
+    <div
+      xmlns="http://www.w3.org/1999/xhtml"
+      style={{
+        width: props.containerWidth / props.tickCount, overflow: 'hidden',
+        whiteSpace: 'nowrap'
+      }}
+    >
+      {props.children}
+    </div>
+  </foreignObject>
+);
+
+function myFormatter(value) {
+  return <MyLabel>{value}</MyLabel>;
+}
+
+<XAxis tickFormat={myFormatter} />
+```
+
+<!-- INJECT:"CustomAxisTickElement" -->
 
 #### tickSize (optional)
 

@@ -33,6 +33,7 @@ import './components/animation-tests';
 import './components/area-series-tests';
 import './components/arc-series-tests';
 import './components/axes-tests';
+import './components/axis-tick-format-tests';
 import './components/axis-title-tests';
 import './components/bar-series-tests';
 import './components/borders-tests';

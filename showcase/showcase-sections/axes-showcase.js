@@ -9,6 +9,7 @@ const {
   CustomAxisChart,
   CustomAxesOrientation,
   CustomAxisTickFormat,
+  CustomAxisTickElement,
   DecorativeAxisCrissCross,
   DynamicComplexEdgeHints,
   DynamicCrosshair,
@@ -43,6 +44,10 @@ const AXES = [
   {
     name: 'Custom axis tick format',
     component: CustomAxisTickFormat
+  },
+  {
+    name: 'Custom axis tick label element',
+    component: CustomAxisTickElement
   },
   {
     name: 'Even more Custom Axes',
