@@ -1,4 +1,4 @@
-const { injectPropTypes, generateTypes } = require('prop-types-to-dts');
+const { injectPropTypes, generateTypes } = require('./prop-types-to-dts');
 const fs = require('fs');
 
 const PropTypes = injectPropTypes(require('prop-types'));
