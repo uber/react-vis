@@ -1,20 +1,18 @@
-'use strict';
-
 function padStr(str) {
   const padding = ' '.repeat(2);
-  return str.split('\n').map(s=>(padding+s).trimRight()).join('\n');
+  return str.split('\n').map(s => (padding + s).trimRight()).join('\n');
 }
 
-//Can't support custom validators
+// Can't support custom validators
 function isCustomValidator(type) {
   return typeof type === "function" && type.name !== '_fpr';
-}  
+}
 
-function fakeProp(type, propToString, isRequired){
+function fakeProp(type, propToString, isRequired) {
   if (isCustomValidator(type)) {
     type = 'any';
   }
-  const _fpr = ()=>{};
+  const _fpr = () => { };
   _fpr.toString = (path = '', options = {}) => {
     const result = propToString ? propToString(type, path, options) : type
     return result;
@@ -29,23 +27,23 @@ function fakeProp(type, propToString, isRequired){
 
 function oneOfToString(props) {
   return props
-    .map(prop=>JSON.stringify(prop))
-    .filter(str=>typeof str === 'string')
-    .map(str=>str.replace(/"/g, `'`))
+    .map(prop => JSON.stringify(prop))
+    .filter(str => typeof str === 'string')
+    .map(str => str.replace(/"/g, `'`))
     .join(' | ');
-}  
+}
 
 function oneOfTypeToString(props, path, options) {
-  return props.map(prop=>prop.toString(path, options)).join(' | ');
+  return props.map(prop => prop.toString(path, options)).join(' | ');
 }
 
 function shapeToString(shape, path, options) {
-  return `{\n`+padStr(
+  return `{\n${padStr(
     Object.keys(shape)
-      .map(key=>`${key}${shape[key]._req ? '' : '?'}: ${shape[key].toString(`${path}.${key}`, options)}`)
+      .map(key => `${key}${shape[key]._req ? '' : '?'}: ${shape[key].toString(`${path}.${key}`, options)}`)
       .join(';\n')
-  )+`;\n}`;
-} 
+  )};\n}`;
+}
 
 function arrayOfToString(prop, path, options) {
   return `Array<${prop.toString(path, options)}>`;
@@ -56,17 +54,17 @@ function objectOfToString(prop, path, options) {
 }
 
 function genericCallback(name) {
-  return (prop, path, {[name]: cb})=> cb ? cb(path, prop) : prop;
+  return (prop, path, {[name]: cb}) => cb ? cb(path, prop) : prop;
 }
 
 const fakePropTypes = {
-  //simple values
+  // simple values
   bool: fakeProp('boolean'),
   number: fakeProp('number'),
   string: fakeProp('string'),
   symbol: fakeProp('Symbol'),
 
-  //values that could be mapped
+  // values that could be mapped
   element: fakeProp('ReactChild', genericCallback('mapReactChild')),
   node: fakeProp('ReactNode', genericCallback('mapReactNode')),
   array: fakeProp('Array<any>', genericCallback('mapArray')),
@@ -74,24 +72,24 @@ const fakePropTypes = {
   object: fakeProp('{[key: string]: any}', genericCallback('mapObject')),
   any: fakeProp('any', genericCallback('mapAny')),
 
-  //complex values
-  oneOf: (props)=>fakeProp(props, oneOfToString),
-  oneOfType: (props)=>fakeProp(props, oneOfTypeToString),
-  arrayOf: (prop)=>fakeProp(prop, arrayOfToString),
-  objectOf: (prop)=>fakeProp(prop, objectOfToString),
-  instanceOf: (func)=>fakeProp(func.name), //prop should be class|function
-  shape: (shape)=>fakeProp(shape, shapeToString),
-  exact: (shape)=>fakeProp(shape, shapeToString),
+  // complex values
+  oneOf: (props) => fakeProp(props, oneOfToString),
+  oneOfType: (props) => fakeProp(props, oneOfTypeToString),
+  arrayOf: (prop) => fakeProp(prop, arrayOfToString),
+  objectOf: (prop) => fakeProp(prop, objectOfToString),
+  instanceOf: (func) => fakeProp(func.name),
+  shape: (shape) => fakeProp(shape, shapeToString),
+  exact: (shape) => fakeProp(shape, shapeToString),
 };
 
 function getComponentProps(comp, path, options) {
-  const parentPropTypes = comp.__proto__.propTypes || {};
-  const parentDefaultProps = comp.__proto__.defaultProps || {};
+  const parentPropTypes = Object.getPrototypeOf(comp).propTypes || {};
+  const parentDefaultProps = Object.getPrototypeOf(comp).defaultProps || {};
   const parentKeys = [...Object.keys(parentPropTypes), ...Object.keys(parentDefaultProps)];
 
   const result = Object.keys(comp.propTypes)
-    .filter(key=>!parentKeys.some(parentKey=>key===parentKey))
-    .map((key)=>{
+    .filter(key => !parentKeys.some(parentKey => key === parentKey))
+    .map((key) => {
       const prop = isCustomValidator(comp.propTypes[key]) ? 'any' : comp.propTypes[key];
       const defaultProp = comp.defaultProps && comp.defaultProps[key];
       const required = prop._req && (defaultProp === undefined);
@@ -105,16 +103,16 @@ function getComponentProps(comp, path, options) {
 }
 
 function getComponent(name, comp, options) {
-  const parentName = comp.__proto__.name;
+  const parentName = Object.getPrototypeOf(comp).name;
   const props = padStr(getComponentProps(comp, name, options));
   let result;
   if (parentName) {
-    result = 
-      `export interface ${name}Props {${props}}\n`+
+    result =
+      `export interface ${name}Props {${props}}\n` +
       `export class ${name} extends ${parentName}<${name}Props> {}\n`;
   } else {
-    result = 
-      `export interface ${name}Props {${props}}\n`+
+    result =
+      `export interface ${name}Props {${props}}\n` +
       `export const ${name}: SFC<${name}Props>;\n`;
   }
 
@@ -126,34 +124,18 @@ function getComponent(name, comp, options) {
 };
 
 function generateTypes(moduleName, moduleExport, options = {}) {
-  const reactImport = options.skipReactImport ? '' : 
-    `import { Component, PureComponent, ReactChild, ReactNode, SFC } from 'react';\n\n`;
+  const moduleContent = Object.keys(moduleExport)
+    .filter(key => moduleExport[key].propTypes)
+    .map(key => getComponent(key, moduleExport[key], options))
+    .join('\n');
 
-  let customDeclarations = options.customDeclarations || '';
-  if (Array.isArray(customDeclarations)) {
-    customDeclarations = customDeclarations.join('\n');
-  }
-
-  const moduleContent = moduleExport.propTypes
-    //single component
-    ? getComponent(moduleExport.name, moduleExport, options)
-    //set of components
-    : Object.keys(moduleExport)
-        .filter(key=>moduleExport[key].propTypes)
-        .map(key=>getComponent(key, moduleExport[key], options))
-        .join('\n');
-
-  return  `declare module '${moduleName}' {\n\n`+
-    padStr(
-      reactImport+
-      customDeclarations+'\n'+
-      moduleContent+'\n'
-    )+
-  `}\n`;
+  return `declare module '${moduleName}' {\n\n${
+    padStr(`${options.customDeclarations}\n${moduleContent}\n`)
+  }}\n`;
 }
 
-const injectPropTypes = (propTypes) => { 
-  Object.keys(propTypes).forEach(key=>propTypes[key] = fakePropTypes[key]);
+const injectPropTypes = (propTypes) => {
+  Object.keys(propTypes).forEach(key => { propTypes[key] = fakePropTypes[key] });
   return propTypes;
 }
 

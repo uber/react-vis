@@ -1,11 +1,11 @@
-const { injectPropTypes, generateTypes } = require('./prop-types-to-dts');
+const {injectPropTypes, generateTypes} = require('./prop-types-to-dts');
 const fs = require('fs');
 
 const PropTypes = injectPropTypes(require('prop-types'));
 
 const reactVis = require('../dist');
 
-//Adding missing prop types (described in docs but not covered with prop types of components)
+// Adding missing prop types (described in docs but not covered with prop types of components)
 const colorType = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
 reactVis.AbstractSeries.propTypes = Object.assign(
   reactVis.AbstractSeries.propTypes,
@@ -21,7 +21,7 @@ function splitPath(path) {
   const [fullCompName, ...properties] = path.split('.');
   const compName = fullCompName.replace('Canvas', '');
   const propName = properties.join('.');
-  return { compName, propName };
+  return {compName, propName};
 }
 
 function isAbstract(name) {
@@ -37,22 +37,20 @@ const customDeclarations = fs.readFileSync('./typegen/header.d.ts');
 let reactVisTypings = generateTypes('react-vis', reactVis, {
   customDeclarations,
 
-  skipReactImport: true,
-
   getComponent: (name, props, parentName, def) => {
     if (isAbstract(name)) {
       return `export interface ${name}Props<T extends ${name}Point> {${props}}\n` +
         `export class ${name}<T> extends ${parentName}<T> {}\n`;
     } else if (isAbstract(parentName)) {
-      return `export interface ${name}Props extends ${parentName}Props<${name.replace('Canvas', '')}Point> {${props}}\n` +
+      return `export interface ${name}Props extends ` +
+        `${parentName}Props<${name.replace('Canvas', '')}Point> {${props}}\n` +
         `export class ${name} extends ${parentName}<${name}Props> {}\n`;
-    } else {
-      return def;
     }
+    return def;
   },
 
   mapObject: (path, def) => {
-    const { compName, propName } = splitPath(path);
+    const {compName, propName} = splitPath(path);
 
     if (/style/i.test(propName)) {
       return 'CSSProperties';
@@ -62,18 +60,21 @@ let reactVisTypings = generateTypes('react-vis', reactVis, {
 
     } else if (/nodes/.test(propName)) {
       return getPoint(compName);
-
-    } else {
-      if (!['Sankey.links.source', 'Sankey.links.target', 'Crosshair.values',
-        'Crosshair.series', 'Hint.scales', 'Hint.value'].includes(path)) {
-        console.warn(`Object not mapped: ${compName}.${propName}`);
-      }
-      return def;
     }
+
+    if (!['Sankey.links.source', 'Sankey.links.target', 'Crosshair.values',
+      'Crosshair.series', 'Hint.scales', 'Hint.value'].includes(path)) {
+      /* eslint-disable no-console */
+      console.warn(`Object not mapped: ${compName}.${propName}`);
+      /* eslint-enable no-console */
+    }
+    return def;
   },
 
+  /* eslint-disable complexity */
+  /* eslint-disable max-statements */
   mapFunction: (path, def) => {
-    const { compName, propName } = splitPath(path);
+    const {compName, propName} = splitPath(path);
     if (/onValue\w+|onLeaf\w+|onLink\w+/.test(propName)) {
       return `RVValueEventHandler<${getPoint(compName)}>`;
 
@@ -83,13 +84,15 @@ let reactVisTypings = generateTypes('react-vis', reactVis, {
     } else if (/onNearestXY/.test(propName)) {
       return `RVNearestXYEventHandler<${getPoint(compName)}>`;
 
-    } else if (/getNull/.test(propName)) { //should be before /get/ handler!!!
+    // should be before /get/ handler!!!
+    } else if (/getNull/.test(propName)) {
       return `RVGetNull<${getPoint(compName)}>`;
 
     } else if (/sortFunction/.test(propName)) {
       return `RVSortFn<${getPoint(compName)}>`;
-
-    } else if (/getAlignStyle/.test(propName)) { //should be before /get/ handler!!!
+    
+    // should be before /get/ handler!!!
+    } else if (/getAlignStyle/.test(propName)) {
       return `RVGetAlignStyle`;
 
     } else if (/get\w+/.test(propName)) {
@@ -135,40 +138,48 @@ let reactVisTypings = generateTypes('react-vis', reactVis, {
 
     } else if (/Hint.format/.test(path)) {
       return 'RVHintFormat';
-
-    } else {
-      if (!['LineSeries.curve', 'LineMarkSeries.curve', 'CustomSVGSeries.customComponent',
-        'Voronoi.x', 'Voronoi.y', 'RadialChart.subLabel'].includes(path)) {
-        console.warn(`Function not mapped: ${compName}.${propName}`);
-      }
-      return def;
     }
+
+    if (!['LineSeries.curve', 'LineMarkSeries.curve', 'CustomSVGSeries.customComponent',
+      'Voronoi.x', 'Voronoi.y', 'RadialChart.subLabel'].includes(path)) {
+      /* eslint-disable no-console */
+      console.warn(`Function not mapped: ${compName}.${propName}`);
+      /* eslint-enable no-console */
+    }
+    return def;
   },
+  /* eslint-enable max-statements */
+  /* eslint-enable complexity */
+
 
   mapAny: (path, def) => {
-    const { compName, propName } = splitPath(path);
+    const {compName, propName} = splitPath(path);
 
     if (/\w+(Base)?Value/.test(propName)) {
       const key = /_?(\w+?)(Base)?Value/.exec(propName)[1];
       return `${getPoint(compName)}['${key}']`;
-    } else {
-      console.warn(`Any not mapped: ${compName}.${propName}`);
-      return def;
     }
+
+    /* eslint-disable no-console */
+    console.warn(`Any not mapped: ${compName}.${propName}`);
+    /* eslint-enable no-console */
+    return def;
   },
 
   mapArray: (path, def) => {
-    const { compName, propName } = splitPath(path);
+    const {compName, propName} = splitPath(path);
 
     if (/\w+(Domain|Range)/.test(propName)) {
       const key = /(\w+)(Domain|Range)/.exec(propName)[1];
       return `Array<${getPoint(compName)}['${key}']>`;
-    } else {
-      if (!['AbstractSeries.data'].includes(path)) {
-        console.warn(`Array not mapped: ${compName}.${propName}`);
-      }
-      return def;
     }
+
+    if (!['AbstractSeries.data'].includes(path)) {
+    /* eslint-disable no-console */
+    console.warn(`Array not mapped: ${compName}.${propName}`);
+    /* eslint-enable no-console */
+    }
+    return def;
   },
 });
 
@@ -176,5 +187,5 @@ reactVisTypings = reactVisTypings
   .replace(/ReactComponent/g, 'Component')
   .replace(/ReactPureComponent/g, 'PureComponent');
 
-fs.writeFileSync('./index.d.ts', reactVisTypings + '\n');
+fs.writeFileSync('./index.d.ts', `${reactVisTypings  }\n`);
 

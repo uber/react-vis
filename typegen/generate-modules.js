@@ -11,12 +11,12 @@ Object.keys(reactVis).forEach(key => {
   const originModule = reactVisModule.children.find(child => child.exports &&
     // Can't use Object.values here. It is not available in node v6
     Object.keys(child.exports)
-      .map(key => child.exports[key])
+      .map(childKey => child.exports[childKey])
       .find(exp => exp === reactVis[key])
   );
   if (originModule) {
     const defaultExport = reactVis[key] === originModule.exports.default;
-    const { filename } = originModule;
+    const {filename} = originModule;
     if (defaultExport) {
       pathMap.set(filename, key);
     } else {
@@ -27,7 +27,7 @@ Object.keys(reactVis).forEach(key => {
 });
 
 function generateModuleFile(filePath, value) {
-  const { dir, name } = path.parse(filePath);
+  const {dir, name} = path.parse(filePath);
   const dtsFileName = path.join(dir, `${name}.d.ts`);
 
   fs.writeFileSync(
