@@ -151,6 +151,32 @@ export function _getSmallestDistanceIndex(values, scaleObject) {
 }
 
 /**
+ * This is a workaround for issue that ordinal scale
+ * does not have invert method implemented in d3-scale.
+ * @param {Object} Ordinal d3-scale object.
+ * @returns {void}
+ * @private
+ */
+
+function addInvertFunctionToOrdinalScaleObject(scale) {
+  if (scale.invert) return;
+
+  scale.invert = function(_) {
+    var domainIndex,
+        n = scale.domain().length,
+        reverse = scale.range()[1] < scale.range()[0],
+        start = scale.range()[reverse - 0],
+        stop = scale.range()[1 - reverse];
+    
+    if (_ < start + scale.padding() * scale.step()) domainIndex = 0;
+    else if (_ > stop - scale.padding() * scale.step()) domainIndex = n - 1;
+    else domainIndex = Math.floor((_ - start - scale.padding() * scale.step()) / scale.step());
+    
+    return scale.domain()[domainIndex];
+  }
+}
+
+/**
  * Crate a scale function from the scale object.
  * @param {Object} scaleObject Scale object.
  - scaleObject.domain {Array}
@@ -179,6 +205,7 @@ export function getScaleFnFromScaleObject(scaleObject) {
     .range(range);
   if (type === ORDINAL_SCALE_TYPE) {
     scale.padding(0.5);
+	addInvertFunctionToOrdinalScaleObject(scale);
   }
   return scale;
 }
