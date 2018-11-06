@@ -1,0 +1,461 @@
+@import '../main.scss';
+
+$black: #000;
+$white: #fff;
+
+body {
+  font-family: Sintony, Helvetica, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 36px;
+  margin: 20px 0;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 15px 0;
+}
+
+main {
+  padding: 40px 0;
+}
+
+header {
+  background: #f0f0f0;
+  line-height: 40px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.flex {
+  display: flex;
+}
+
+.docs-link {
+  font-weight: 500;
+  font-size: 11px;
+  margin-right: 5px;
+  text-transform: uppercase;
+  border-left: 1px solid #c0c0c0;
+  padding-left: 5px;
+  line-height: 1;
+}
+
+.docs-link:first-child {
+  border-left: 0px;
+  padding-left: 0px;
+}
+
+.docs-comment {
+  display: flex;
+  max-width: 300px;
+}
+
+.header-contents {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.header-logo {
+  color: $black;
+  float: left;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.background-overlay {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.dropdown-button {
+  cursor: pointer;
+  z-index: 10;
+}
+
+.dropdown-wrapper {
+  display: flex;
+  position: relative;
+
+  .dropdown-inner-wrapper {
+    background: $white;
+    border: 2px solid $black;
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    height: auto;
+    list-style: none;
+    padding: 10px;
+    position: absolute;
+    right: -5px;
+    top: 25px;
+    width: 150px;
+    z-index: 10;
+  }
+
+  a {
+    display: flex;
+    height: auto;
+    line-height: 15px;
+    text-decoration: none;
+  }
+
+  li {
+    display: flex;
+    height: 100%;
+  }
+
+  .subsection-label {
+    font-weight: 600;
+    line-height: 15px;
+  }
+}
+
+
+article {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 auto;
+  max-width: 1200px;
+  min-width: 650px;
+  padding: 30px 20px 0;
+
+  h1,
+  h2 {
+    flex: 1 100%;
+
+    small {
+      color: #6b6b76;
+      font-size: 50%;
+    }
+  }
+
+  section {
+    flex-basis: 400px;
+    flex-grow: 1;
+    margin: 0 0 40px;
+  }
+
+  .section-title {
+    margin-bottom: 5px;
+  }
+
+  .section-header {
+    margin-bottom: 1em;
+  }
+}
+
+.click-me {
+  border: 0;
+  background: #ef5d28;
+  color: $white;
+  cursor: pointer;
+  font-family: Sintony, Helvetica, sans-serif;
+  font-size: 14px;
+  outline: none;
+  padding: 11px 20px;
+  text-transform: uppercase;
+
+  &:hover {
+    background: #ff9833;
+  }
+
+  animation: shake 5s 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes shake {
+  1%,
+  9% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  2%,
+  8% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  3%,
+  5%,
+  7% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  4%,
+  6% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.example-with-click-me {
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  &:hover {
+    .click-me {
+      animation: none;
+    }
+  }
+
+  .chart {
+    margin-right: 200px;
+    .rv-xy-plot__axis__tick__line {
+      stroke: $rv-xy-plot-axis-font-color;
+    }
+  }
+
+  .legend {
+    position: absolute;
+    text-align: left;
+    right: 0;
+  }
+}
+
+.custom-hint {
+  background: #f9e7bb;
+  border-radius: 3px;
+  border: 1px solid #edaf00;
+  padding: 10px;
+  color: #333;
+  font-size: 10px;
+  position: relative;
+  margin: 12px 0 0 -10px;
+
+  &::after {
+    border-radius: 5px;
+    border: 2px solid #edaf00;
+    background: $white;
+    display: block;
+    content: ' ';
+    height: 6px;
+    width: 6px;
+    top: -17px;
+    left: 5px;
+    position: absolute;
+  }
+}
+
+.complex-hint {
+  margin-top: 40px;
+
+  .rv-hint {
+    /* must be positioned in a parent with relative positioning */
+    position: absolute;
+    width: 0;
+    height: 100%;
+    $hint-color: black;
+    $margin-left: 30px;
+    $margin-right: 10px;
+    $margin-top: 10px;
+    $margin-bottom: 25px;
+
+    & .hint--text-container {
+      position: absolute;
+
+      /*
+       * set to 0,0 so that its content (including children)
+       * can overflow out in vertical and horizontal
+       */
+      width: 0;
+      height: 0;
+
+      /*
+       * use flex to place its children (centered) and aligned (bottom).
+       * As its height is 0, align-items flex-end paints its items from cross-axis
+       * up.  flex-start, its items would paint from cross-axis down.
+       */
+      display: flex;
+      justify-content: center;
+
+      &.rightEdge-top {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+
+      &.left-topEdge {
+        flex-direction: row;
+        align-items: flex-end;
+      }
+
+      &.left-bottomEdge {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      &.leftEdge-top {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      & .hint--text {
+        /* text content uses -micro padding */
+        padding: 4px;
+        border: 2px solid $hint-color;
+        color: $hint-color;
+        white-space: nowrap;
+      }
+    }
+
+    & .hint--pole {
+      position: absolute;
+
+      &.rightEdge-top {
+        top: -1px;
+        left: -$margin-right;
+        border-top: 2px solid $hint-color;
+        width: $margin-right;
+        height: 0;
+      }
+
+      &.left-topEdge {
+        border-left: 2px solid $hint-color;
+        left: -1px;
+        height: $margin-top;
+        width: 0;
+        top: 0;
+      }
+
+      &.left-bottomEdge {
+        border-left: 2px solid $hint-color;
+        left: -1px;
+        height: $margin-bottom;
+        width: 0;
+        top: -$margin-bottom;
+      }
+
+      &.leftEdge-top {
+        top: -1px;
+        border-top: 2px solid $hint-color;
+        width: $margin-left;
+        height: 0;
+      }
+    }
+  }
+
+  .rv-hint--horizontalAlign-rightEdge.rv-hint--verticalAlign-top {
+    width: 0;
+    height: 0;
+  }
+
+  .rv-hint--horizontalAlign-left.rv-hint--verticalAlign-topEdge {
+    width: 0;
+    height: 100%;
+  }
+
+  .rv-hint--horizontalAlign-left.rv-hint--verticalAlign-bottomEdge {
+    width: 0;
+    height: 0;
+  }
+
+  .rv-hint--horizontalAlign-leftEdge.rv-hint--verticalAlign-top {
+    width: 100%;
+    height: 0;
+  }
+}
+
+.centered-and-flexed {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px;
+
+  .centered-and-flexed-controls {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    width: 75%;
+  }
+}
+
+.dynamic-treemap-example {
+  .rv-treemap__leaf--circle {
+    border: thin solid white;
+  }
+}
+
+.clustered-stacked-bar-chart-example {
+  .rv-discrete-color-legend {
+    left: 40px;
+    position: absolute;
+    top: 0;
+  }
+}
+
+.basic-sunburst-example-path-name {
+  height: 20px;
+}
+
+.showcase-button {
+  background: $white;
+  border: thin solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 5px 10px;
+}
+
+.donut-chart-example {
+  .rv-radial-chart__series--pie__slice:hover {
+    stroke: $black !important;
+    stroke-width: 2px !important;
+  }
+}
+
+.parallel-coordinates-example {
+  .rv-xy-plot__series--line {
+    stroke: #12939A !important;
+
+    &:hover {
+      stroke: #F15C17 !important;
+    }
+  }
+}
+
+
+.canvas-example-controls {
+  display: flex;
+}
+
+.canvas-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.highlight-container {
+  cursor: crosshair;
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

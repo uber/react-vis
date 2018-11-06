@@ -1,0 +1,9 @@
+// special tag for using to check if the style file has been imported
+.react-vis-magic-css-import-rule {
+  display: inherit;
+}
+
+@import 'styles/treemap';
+@import 'styles/plot';
+@import 'styles/legends';
+@import 'styles/radial-chart';
