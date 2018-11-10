@@ -4,21 +4,41 @@ import {setAddon, storiesOf} from '@storybook/react';
 import JSXAddon from 'storybook-addon-jsx';
 
 setAddon(JSXAddon);
-import {withKnobs, color, number, object, select} from '@storybook/addon-knobs/react';
+import {
+  withKnobs,
+  color,
+  number,
+  object,
+  select
+} from '@storybook/addon-knobs/react';
 
 import {MarkSeries} from 'react-vis';
 
 import {generateScatterplotData, intRandom, random} from './storybook-data.js';
-import {chooseColorScale, SimpleChartWrapper, jsxOptions} from './storybook-utils.js';
+import {
+  chooseColorScale,
+  SimpleChartWrapper,
+  jsxOptions
+} from './storybook-utils.js';
 
 function styledMarkSeries(props) {
   return (
     <MarkSeries
       data={props.data}
-      opacity={number('opacity', props.opacity || 1, {max: 1, min: 0, range: true, step: 0.01}, 'style')}
+      opacity={number(
+        'opacity',
+        props.opacity || 1,
+        {max: 1, min: 0, range: true, step: 0.01},
+        'style'
+      )}
       fill={color('fill', props.fill || '#12939a', 'style')}
       stroke={color('stroke', props.stroke || '#12939a', 'style')}
-      strokeStyle={select('strokeStyle', {solid: 'solid', dashed: 'dashed'}, props.strokeStyle || 'solid', 'style')}
+      strokeStyle={select(
+        'strokeStyle',
+        {solid: 'solid', dashed: 'dashed'},
+        props.strokeStyle || 'solid',
+        'style'
+      )}
       strokeWidth={number('strokeWidth', props.strokeWidth || 2, 'style')}
       style={object('style', props.style || {}, 'style')}
     />

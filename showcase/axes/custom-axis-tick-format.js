@@ -47,7 +47,7 @@ export default class Example extends React.Component {
       {x: 0.042, y: 100},
       {x: 0.051, y: 1200},
       {x: 0.063, y: 1600},
-      {x: 0.070, y: 1300},
+      {x: 0.07, y: 1300},
       {x: 0.073, y: 1220}
     ];
     const xMin = Math.min(...data.map(e => e.x));
@@ -63,12 +63,13 @@ export default class Example extends React.Component {
         xDomain={[xMin, xMax]}
         yType="linear"
         yDomain={[yMin, yMax]}
-        margin={{top: 10, right: 10, left: 60, bottom: 40}}>
+        margin={{top: 10, right: 10, left: 60, bottom: 40}}
+      >
         <VerticalGridLines />
         <HorizontalGridLines />
-        <XAxis tickFormat={Example._xTickFormatValue}/>
-        <YAxis tickFormat={Example._yTickFormatValue}/>
-        <LineSeries data={data}/>
+        <XAxis tickFormat={Example._xTickFormatValue} />
+        <YAxis tickFormat={Example._yTickFormatValue} />
+        <LineSeries data={data} />
       </XYPlot>
     );
   }

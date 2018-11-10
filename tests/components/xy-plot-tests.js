@@ -42,42 +42,22 @@ testRenderWithProps(XYPlot, XYPLOT_PROPS);
 test('Render a stacked bar chart', t => {
   const wrapper = shallow(
     <XYPlot width={300} height={300} stackBy="y">
-      <VerticalBarSeries
-        data={[
-          {x: 1, y: 0},
-          {x: 2, y: 1},
-          {x: 3, y: 2}
-        ]}
-      />
-      <VerticalBarSeries
-        data={[
-          {x: 1, y: 2},
-          {x: 2, y: 1},
-          {x: 3, y: 0}
-        ]}/>
+      <VerticalBarSeries data={[{x: 1, y: 0}, {x: 2, y: 1}, {x: 3, y: 2}]} />
+      <VerticalBarSeries data={[{x: 1, y: 2}, {x: 2, y: 1}, {x: 3, y: 0}]} />
     </XYPlot>
   );
 
-  const renderedVerticalBarsWrapper =
-    wrapper.find(VerticalBarSeries);
+  const renderedVerticalBarsWrapper = wrapper.find(VerticalBarSeries);
 
   t.deepEqual(
     renderedVerticalBarsWrapper.at(0).prop('data'),
-    [
-      {x: 1, y: 0},
-      {x: 2, y: 1},
-      {x: 3, y: 2}
-    ],
+    [{x: 1, y: 0}, {x: 2, y: 1}, {x: 3, y: 2}],
     'First bar series data is the same'
   );
 
   t.deepEqual(
     renderedVerticalBarsWrapper.at(1).prop('data'),
-    [
-      {x: 1, y: 2, y0: 0},
-      {x: 2, y: 2, y0: 1},
-      {x: 3, y: 2, y0: 2}
-    ],
+    [{x: 1, y: 2, y0: 0}, {x: 2, y: 2, y0: 1}, {x: 3, y: 2, y0: 2}],
     'Second bar series data contains y0 values'
   );
 
@@ -88,15 +68,8 @@ test('Render a stacked bar chart with other children', t => {
   const wrapper = shallow(
     <XYPlot width={300} height={300} stackBy="y">
       <XAxis />
-      <VerticalBarSeries
-        data={[
-          {x: 1, y: 0}
-        ]}
-      />
-      <VerticalBarSeries
-        data={[
-          {x: 1, y: 2}
-        ]}/>
+      <VerticalBarSeries data={[{x: 1, y: 0}]} />
+      <VerticalBarSeries data={[{x: 1, y: 2}]} />
       {
         // Empty div here is intentional, to test series children handling
       }
@@ -108,17 +81,13 @@ test('Render a stacked bar chart with other children', t => {
 
   t.deepEqual(
     renderedVerticalBarsWrapper.at(0).prop('data'),
-    [
-      {x: 1, y: 0}
-    ],
+    [{x: 1, y: 0}],
     'First bar series data is the same'
   );
 
   t.deepEqual(
     renderedVerticalBarsWrapper.at(1).prop('data'),
-    [
-      {x: 1, y: 2, y0: 0}
-    ],
+    [{x: 1, y: 2, y0: 0}],
     'Second bar series data contains y0 values'
   );
 
@@ -130,12 +99,10 @@ test('Render a bar chart with some nonAnimatedProps', t => {
     <XYPlot
       width={300}
       height={300}
-      animation={{nonAnimatedProps: ['xDomain']}}>
-      <VerticalBarSeries
-        data={[
-          {x: 1, y: 0}
-        ]}/>
-      <XAxis/>
+      animation={{nonAnimatedProps: ['xDomain']}}
+    >
+      <VerticalBarSeries data={[{x: 1, y: 0}]} />
+      <XAxis />
     </XYPlot>
   );
 
@@ -180,31 +147,19 @@ test('Render two stacked bar series with a non-stacked line series chart', t => 
 
   t.deepEqual(
     renderedBarsWrapper.at(0).prop('data'),
-    [
-      {x: 2, y: 10},
-      {x: 4, y: 5},
-      {x: 5, y: 15}
-    ],
+    [{x: 2, y: 10}, {x: 4, y: 5}, {x: 5, y: 15}],
     'First bar series data is the same'
   );
 
   t.deepEqual(
     renderedBarsWrapper.at(1).prop('data'),
-    [
-      {x: 2, y: 22, y0: 10},
-      {x: 4, y: 7, y0: 5},
-      {x: 5, y: 26, y0: 15}
-    ],
+    [{x: 2, y: 22, y0: 10}, {x: 4, y: 7, y0: 5}, {x: 5, y: 26, y0: 15}],
     'Second bar series data contains y0 values'
   );
 
   t.deepEqual(
     renderedLineWrapper.at(0).prop('data'),
-    [
-      {x: 2, y: 26},
-      {x: 4, y: 8},
-      {x: 5, y: 30}
-    ],
+    [{x: 2, y: 26}, {x: 4, y: 8}, {x: 5, y: 30}],
     'Line series data does not contain y0 values'
   );
 
@@ -213,18 +168,8 @@ test('Render two stacked bar series with a non-stacked line series chart', t => 
 
 test('Render a line series with data accessors', t => {
   const $ = mount(
-    <XYPlot
-      width={300}
-      height={300}
-      getX={d => d[0]}
-      getY={d => d[1]}>
-      <LineSeries
-        data={[
-          [1, 0],
-          [2, 1],
-          [3, 2]
-        ]}
-      />
+    <XYPlot width={300} height={300} getX={d => d[0]} getY={d => d[1]}>
+      <LineSeries data={[[1, 0], [2, 1], [3, 2]]} />
     </XYPlot>
   );
 
@@ -274,36 +219,32 @@ test('Trigger all onParentMouse handlers on Series components', t => {
     }
   }
   const $ = mount(
-    <XYPlot
-      width={300}
-      height={300}
-      getX={d => d[0]}
-      getY={d => d[1]}>
-      <ExtendedSeries
-        name="series-1"
-        data={[
-          [1, 0],
-          [2, 1],
-          [3, 2]
-        ]}
-      />
-      <ExtendedSeries
-        name="series-2"
-        data={[
-          [1, 0],
-          [2, 1],
-          [3, 2]
-        ]}
-      />
+    <XYPlot width={300} height={300} getX={d => d[0]} getY={d => d[1]}>
+      <ExtendedSeries name="series-1" data={[[1, 0], [2, 1], [3, 2]]} />
+      <ExtendedSeries name="series-2" data={[[1, 0], [2, 1], [3, 2]]} />
     </XYPlot>
   );
-  $.find('svg').at(0).simulate('mouseenter');
-  $.find('svg').at(0).simulate('mousedown');
-  $.find('svg').at(0).simulate('mousemove');
-  $.find('svg').at(0).simulate('mouseup');
-  $.find('svg').at(0).simulate('mouseleave');
-  $.find('svg').at(0).simulate('touchstart');
-  $.find('svg').at(0).simulate('touchmove');
+  $.find('svg')
+    .at(0)
+    .simulate('mouseenter');
+  $.find('svg')
+    .at(0)
+    .simulate('mousedown');
+  $.find('svg')
+    .at(0)
+    .simulate('mousemove');
+  $.find('svg')
+    .at(0)
+    .simulate('mouseup');
+  $.find('svg')
+    .at(0)
+    .simulate('mouseleave');
+  $.find('svg')
+    .at(0)
+    .simulate('touchstart');
+  $.find('svg')
+    .at(0)
+    .simulate('touchmove');
 
   t.end();
 });
@@ -311,7 +252,11 @@ test('Trigger all onParentMouse handlers on Series components', t => {
 test('XYPlot dontCheckIfEmpty - Showcase example EmptyChart', t => {
   const $ = mount(<EmptyChart />);
   t.equal($.find('.rv-xy-plot__series').length, 0, 'should find no series');
-  t.equal($.text(), '1!1.5!2!3!Empty Chart Right Here', 'should find the correct text');
+  t.equal(
+    $.text(),
+    '1!1.5!2!3!Empty Chart Right Here',
+    'should find the correct text'
+  );
   t.end();
 });
 
@@ -320,30 +265,36 @@ test('XYPlot attach ref only to series components', t => {
     return <div>stateless</div>;
   };
   const $ = mount(
-    <XYPlot
-      width={300}
-      height={300}>
+    <XYPlot width={300} height={300}>
       <HorizontalGridLines />
       <XAxis />
       <LineSeries
-        data={[
-          {x: 1, y: 3},
-          {x: 2, y: 5},
-          {x: 3, y: 15},
-          {x: 4, y: 12}
-        ]}/>
+        data={[{x: 1, y: 3}, {x: 2, y: 5}, {x: 3, y: 15}, {x: 4, y: 12}]}
+      />
       <Stateless />
     </XYPlot>
   );
 
   const clonedChilds = $.instance()._getClonedChildComponents();
-  const horizontalGridLinesChild = clonedChilds.find(element => element.type === HorizontalGridLines);
+  const horizontalGridLinesChild = clonedChilds.find(
+    element => element.type === HorizontalGridLines
+  );
   const axisChild = clonedChilds.find(element => element.type === XAxis);
-  const lineSeriesChild = clonedChilds.find(element => element.type === LineSeries);
-  const statelessChild = clonedChilds.find(element => element.type === Stateless);
-  t.ok(horizontalGridLinesChild.ref === null, 'Ref not attached to non series components');
+  const lineSeriesChild = clonedChilds.find(
+    element => element.type === LineSeries
+  );
+  const statelessChild = clonedChilds.find(
+    element => element.type === Stateless
+  );
+  t.ok(
+    horizontalGridLinesChild.ref === null,
+    'Ref not attached to non series components'
+  );
   t.ok(axisChild.ref === null, 'Ref not attached to axis');
-  t.ok(typeof lineSeriesChild.ref === 'function', 'Ref attached to series components');
+  t.ok(
+    typeof lineSeriesChild.ref === 'function',
+    'Ref attached to series components'
+  );
   t.ok(statelessChild.ref === null, 'Ref not attached to stateless components');
   t.end();
 });

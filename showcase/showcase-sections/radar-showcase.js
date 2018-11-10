@@ -1,11 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
 const {
   AnimatedRadarChart,
   BasicRadarChart,
-  FourQuadrantRadarChart
+  FourQuadrantRadarChart,
+  RadarChartWithTooltips,
+  RadarChartSeriesTooltips,
 } = showCase;
 
 const RADAR = [{
@@ -22,17 +24,24 @@ const RADAR = [{
   name: 'Four Quadrant Radar Chart',
   component: FourQuadrantRadarChart,
   componentName: 'FourQuadrantRadarChart'
-}];
-
-class RadarShowcase extends Component {
-  render() {
-    return (
-      <article id="radar-charts">
-        <h1>Radar Chart</h1>
-        {RADAR.map(mapSection)}
-      </article>
-    );
+}, {
+    name: 'Radar Chart with Tooltips',
+    component: RadarChartWithTooltips,
+    componentName: 'RadarChartWithTooltips'
+}, {
+    name: 'Radar Chart with Series Tooltips',
+    component: RadarChartSeriesTooltips,
+    componentName: 'RadarChartSeriesTooltips'
   }
+];
+
+function RadarShowcase(props) {
+  return (
+    <article id="radar-charts">
+      <h1>Radar Chart</h1>
+      {RADAR.map(mapSection)}
+    </article>
+  );
 }
 
 export default RadarShowcase;

@@ -28,7 +28,8 @@ test('Sankey: labels', t => {
       height={100}
       width={100}
       nodes={[{name: 'one'}, {name: 'two'}]}
-      links={[{source: 0, target: 1}]} />
+      links={[{source: 0, target: 1}]}
+    />
   );
 
   t.equal(wrap.find('text').length, 2, 'there should be two node labels');
@@ -36,7 +37,6 @@ test('Sankey: labels', t => {
   t.equal(wrap.find('text').length, 0, 'the labels should now be hidden');
 
   t.end();
-
 });
 
 test('Sankey: children', t => {
@@ -47,7 +47,7 @@ test('Sankey: children', t => {
       nodes={[{name: 'one'}, {name: 'two'}]}
       links={[{source: 0, target: 1}]}
     >
-      <Hint x={0} y={0} value={{test: 123}}/>
+      <Hint x={0} y={0} value={{test: 123}} />
     </Sankey>
   );
   t.equal($.find(Hint).length, 1, 'should find children of sankey');
@@ -57,8 +57,16 @@ test('Sankey: children', t => {
 
 test('Sankey: Showcase Example - BasicSankey', t => {
   const $ = mount(<BasicSankey />);
-  t.equal($.find('.rv-sankey__link').length, 3, 'should find the right number of links');
-  t.equal($.find('.rv-sankey__node rect').length, 3, 'should find the right number of nodes');
+  t.equal(
+    $.find('.rv-sankey__link').length,
+    3,
+    'should find the right number of links'
+  );
+  t.equal(
+    $.find('.rv-sankey__node rect').length,
+    3,
+    'should find the right number of nodes'
+  );
 
   t.end();
 });
@@ -66,15 +74,39 @@ test('Sankey: Showcase Example - BasicSankey', t => {
 test('Sankey: Showcase Example - VoronoiSankey', t => {
   const $ = mount(<VoronoiSankey />);
 
-  t.equal($.find('.rv-sankey__link').length, 3, 'should find the right number of links');
-  t.equal($.find('.rv-sankey__node rect').length, 3, 'should find the right number of nodes');
-  t.equal($.find('.rv-voronoi').length, 1, 'should find the right number of voronoi wrappers');
-  t.equal($.find('.rv-voronoi__cell').length, 3, 'should find the right number of voronoi cells');
+  t.equal(
+    $.find('.rv-sankey__link').length,
+    3,
+    'should find the right number of links'
+  );
+  t.equal(
+    $.find('.rv-sankey__node rect').length,
+    3,
+    'should find the right number of nodes'
+  );
+  t.equal(
+    $.find('.rv-voronoi').length,
+    1,
+    'should find the right number of voronoi wrappers'
+  );
+  t.equal(
+    $.find('.rv-voronoi__cell').length,
+    3,
+    'should find the right number of voronoi cells'
+  );
 
   t.equal($.text(), 'None selectedabc', 'should find that no bar is hovered');
-  $.find('.rv-voronoi__cell').at(0).simulate('mouseOver');
-  t.equal($.text(), 'a selected!a!bc', 'should find that the first bar is hovered bar is hovered');
-  $.find('.rv-voronoi__cell').at(0).simulate('mouseLeave');
+  $.find('.rv-voronoi__cell')
+    .at(0)
+    .simulate('mouseOver');
+  t.equal(
+    $.text(),
+    'a selected!a!bc',
+    'should find that the first bar is hovered bar is hovered'
+  );
+  $.find('.rv-voronoi__cell')
+    .at(0)
+    .simulate('mouseLeave');
 
   t.end();
 });
@@ -82,13 +114,29 @@ test('Sankey: Showcase Example - VoronoiSankey', t => {
 test('Sankey: Showcase Example - LinkEventSankey', t => {
   const $ = mount(<LinkEventSankey />);
 
-  t.equal($.find('.rv-sankey__link').length, 3, 'should find the right number of links');
-  t.equal($.find('.rv-sankey__node rect').length, 3, 'should find the right number of nodes');
+  t.equal(
+    $.find('.rv-sankey__link').length,
+    3,
+    'should find the right number of links'
+  );
+  t.equal(
+    $.find('.rv-sankey__node rect').length,
+    3,
+    'should find the right number of nodes'
+  );
 
   t.equal($.text(), 'None selectedabc', 'should find that no link is hovered');
-  $.find('.rv-sankey__link').at(0).simulate('mouseOver');
-  t.equal($.text(), 'a -> b selectedabc', 'should find that the first link is hovered');
-  $.find('.rv-sankey__link').at(0).simulate('mouseOut');
+  $.find('.rv-sankey__link')
+    .at(0)
+    .simulate('mouseOver');
+  t.equal(
+    $.text(),
+    'a -> b selectedabc',
+    'should find that the first link is hovered'
+  );
+  $.find('.rv-sankey__link')
+    .at(0)
+    .simulate('mouseOut');
   t.equal($.text(), 'None selectedabc', 'should find that no bar is hovered');
 
   t.end();
@@ -98,16 +146,26 @@ test('Sankey: Showcase Example - EnergySankey', t => {
   const $ = mount(<EnergySankey />);
 
   [
-    'PREV MODE justify NEXT MODEAgricultural \'waste\'Bio-conversionLiquidLossesSolidGasBiofuel importsBiomass importsCoal importsCoalCoal reservesDistrict heatingIndustryHeating and cooling - commercialHeating and cooling - homesElectricity gridOver generation / exportsH2 conversionRoad transportAgricultureRail transportLighting & appliances - commercialLighting & appliances - homesGas importsNgasGas reservesThermal generationGeothermalH2HydroInternational shippingDomestic aviationInternational aviationNational navigationMarine algaeNuclearOil importsOilOil reservesOther wastePumped heatSolar PVSolar ThermalSolarTidalUK land based bioenergyWaveWind',
-    'PREV MODE center NEXT MODEAgricultural \'waste\'Bio-conversionLiquidLossesSolidGasBiofuel importsBiomass importsCoal importsCoalCoal reservesDistrict heatingIndustryHeating and cooling - commercialHeating and cooling - homesElectricity gridOver generation / exportsH2 conversionRoad transportAgricultureRail transportLighting & appliances - commercialLighting & appliances - homesGas importsNgasGas reservesThermal generationGeothermalH2HydroInternational shippingDomestic aviationInternational aviationNational navigationMarine algaeNuclearOil importsOilOil reservesOther wastePumped heatSolar PVSolar ThermalSolarTidalUK land based bioenergyWaveWind',
-    'PREV MODE left NEXT MODEAgricultural \'waste\'Bio-conversionLiquidLossesSolidGasBiofuel importsBiomass importsCoal importsCoalCoal reservesDistrict heatingIndustryHeating and cooling - commercialHeating and cooling - homesElectricity gridOver generation / exportsH2 conversionRoad transportAgricultureRail transportLighting & appliances - commercialLighting & appliances - homesGas importsNgasGas reservesThermal generationGeothermalH2HydroInternational shippingDomestic aviationInternational aviationNational navigationMarine algaeNuclearOil importsOilOil reservesOther wastePumped heatSolar PVSolar ThermalSolarTidalUK land based bioenergyWaveWind',
-    'PREV MODE right NEXT MODEAgricultural \'waste\'Bio-conversionLiquidLossesSolidGasBiofuel importsBiomass importsCoal importsCoalCoal reservesDistrict heatingIndustryHeating and cooling - commercialHeating and cooling - homesElectricity gridOver generation / exportsH2 conversionRoad transportAgricultureRail transportLighting & appliances - commercialLighting & appliances - homesGas importsNgasGas reservesThermal generationGeothermalH2HydroInternational shippingDomestic aviationInternational aviationNational navigationMarine algaeNuclearOil importsOilOil reservesOther wastePumped heatSolar PVSolar ThermalSolarTidalUK land based bioenergyWaveWind'
+    "PREV MODE justify NEXT MODEAgricultural 'waste'Bio-conversionLiquidLossesSolidGasBiofuel importsBiomass importsCoal importsCoalCoal reservesDistrict heatingIndustryHeating and cooling - commercialHeating and cooling - homesElectricity gridOver generation / exportsH2 conversionRoad transportAgricultureRail transportLighting & appliances - commercialLighting & appliances - homesGas importsNgasGas reservesThermal generationGeothermalH2HydroInternational shippingDomestic aviationInternational aviationNational navigationMarine algaeNuclearOil importsOilOil reservesOther wastePumped heatSolar PVSolar ThermalSolarTidalUK land based bioenergyWaveWind",
+    "PREV MODE center NEXT MODEAgricultural 'waste'Bio-conversionLiquidLossesSolidGasBiofuel importsBiomass importsCoal importsCoalCoal reservesDistrict heatingIndustryHeating and cooling - commercialHeating and cooling - homesElectricity gridOver generation / exportsH2 conversionRoad transportAgricultureRail transportLighting & appliances - commercialLighting & appliances - homesGas importsNgasGas reservesThermal generationGeothermalH2HydroInternational shippingDomestic aviationInternational aviationNational navigationMarine algaeNuclearOil importsOilOil reservesOther wastePumped heatSolar PVSolar ThermalSolarTidalUK land based bioenergyWaveWind",
+    "PREV MODE left NEXT MODEAgricultural 'waste'Bio-conversionLiquidLossesSolidGasBiofuel importsBiomass importsCoal importsCoalCoal reservesDistrict heatingIndustryHeating and cooling - commercialHeating and cooling - homesElectricity gridOver generation / exportsH2 conversionRoad transportAgricultureRail transportLighting & appliances - commercialLighting & appliances - homesGas importsNgasGas reservesThermal generationGeothermalH2HydroInternational shippingDomestic aviationInternational aviationNational navigationMarine algaeNuclearOil importsOilOil reservesOther wastePumped heatSolar PVSolar ThermalSolarTidalUK land based bioenergyWaveWind",
+    "PREV MODE right NEXT MODEAgricultural 'waste'Bio-conversionLiquidLossesSolidGasBiofuel importsBiomass importsCoal importsCoalCoal reservesDistrict heatingIndustryHeating and cooling - commercialHeating and cooling - homesElectricity gridOver generation / exportsH2 conversionRoad transportAgricultureRail transportLighting & appliances - commercialLighting & appliances - homesGas importsNgasGas reservesThermal generationGeothermalH2HydroInternational shippingDomestic aviationInternational aviationNational navigationMarine algaeNuclearOil importsOilOil reservesOther wastePumped heatSolar PVSolar ThermalSolarTidalUK land based bioenergyWaveWind"
   ].forEach(testMessage => {
     t.equal($.text(), testMessage, 'should find that no bar is hovered');
-    $.find('.showcase-button').at(1).simulate('click');
+    $.find('.showcase-button')
+      .at(1)
+      .simulate('click');
 
-    t.equal($.find('.rv-sankey__link').length, 68, 'should find the right number of links');
-    t.equal($.find('.rv-sankey__node rect').length, 48, 'should find the right number of nodes');
+    t.equal(
+      $.find('.rv-sankey__link').length,
+      68,
+      'should find the right number of links'
+    );
+    t.equal(
+      $.find('.rv-sankey__node rect').length,
+      48,
+      'should find the right number of nodes'
+    );
   });
 
   t.end();
@@ -116,14 +174,34 @@ test('Sankey: Showcase Example - EnergySankey', t => {
 test('Sankey: Showcase Example - LinkHintSankey', t => {
   const $ = mount(<LinkHintSankey />);
 
-  t.equal($.find('.rv-sankey__link').length, 3, 'should find the right number of links');
-  t.equal($.find('.rv-sankey__node rect').length, 3, 'should find the right number of nodes');
+  t.equal(
+    $.find('.rv-sankey__link').length,
+    3,
+    'should find the right number of links'
+  );
+  t.equal(
+    $.find('.rv-sankey__node rect').length,
+    3,
+    'should find the right number of nodes'
+  );
 
   t.equal($.find(Hint).length, 0, 'should find that no hint is shown');
-  $.find('.rv-sankey__link').at(0).simulate('mouseOver');
-  t.equal($.find(Hint).length, 1, 'should find that hint is shown if link is hovered');
-  $.find('.rv-sankey__link').at(0).simulate('mouseOut');
-  t.equal($.find(Hint).length, 0, 'should find that no hint is shown if link is not hovered anymore');
+  $.find('.rv-sankey__link')
+    .at(0)
+    .simulate('mouseOver');
+  t.equal(
+    $.find(Hint).length,
+    1,
+    'should find that hint is shown if link is hovered'
+  );
+  $.find('.rv-sankey__link')
+    .at(0)
+    .simulate('mouseOut');
+  t.equal(
+    $.find(Hint).length,
+    0,
+    'should find that no hint is shown if link is not hovered anymore'
+  );
 
   t.end();
 });

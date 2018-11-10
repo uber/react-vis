@@ -50,26 +50,56 @@ const TREEMAP_PROPS = {
 testRenderWithProps(Treemap, TREEMAP_PROPS);
 
 test('Treemap: Basic rendering', t => {
-  const $ = mount(<Treemap {...TREEMAP_PROPS}/>);
-  t.equal($.find('.rv-treemap__leaf').length, 22, 'should find the right number of children');
-  const expectedText = 'EasingNeonateinterpolateISchedulableParallelPauseFunctionSequenceSequenceTransitionTransitionerTransitionEventSchedulerArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
-  t.equal($.find('.rv-treemap').text(), expectedText, 'should find the correct text shown');
-  t.equal($.find('.little-nested-tree-example').length, 1, 'should find the custom class name used');
+  const $ = mount(<Treemap {...TREEMAP_PROPS} />);
+  t.equal(
+    $.find('.rv-treemap__leaf').length,
+    22,
+    'should find the right number of children'
+  );
+  const expectedText =
+    'EasingNeonateinterpolateISchedulableParallelPauseFunctionSequenceSequenceTransitionTransitionerTransitionEventSchedulerArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
+  t.equal(
+    $.find('.rv-treemap').text(),
+    expectedText,
+    'should find the correct text shown'
+  );
+  t.equal(
+    $.find('.little-nested-tree-example').length,
+    1,
+    'should find the custom class name used'
+  );
 
   $.setProps({data: INTERPOLATE_DATA});
-  t.equal($.find('.rv-treemap__leaf').length, 10, 'should find the right number of children');
-  const newText = 'interpolateArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
-  t.equal($.find('.rv-treemap').text(), newText, 'should find the correct text shown');
-  t.equal($.find('.little-nested-tree-example').length, 1, 'should find the custom class name used');
+  t.equal(
+    $.find('.rv-treemap__leaf').length,
+    10,
+    'should find the right number of children'
+  );
+  const newText =
+    'interpolateArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
+  t.equal(
+    $.find('.rv-treemap').text(),
+    newText,
+    'should find the correct text shown'
+  );
+  t.equal(
+    $.find('.little-nested-tree-example').length,
+    1,
+    'should find the custom class name used'
+  );
   t.end();
 });
 
 test('Treemap: Custom Sorting', t => {
-  const $ = mount(<Treemap {...TREEMAP_PROPS}/>);
-  const expectedText = 'interpolateTransitionerEasingTransitionNeonateFunctionSequenceSchedulerSequenceParallelTransitionEventISchedulablePauseInterpolatorMatrixInterpolatorColorInterpolatorRectangleInterpolatorArrayInterpolatorPointInterpolatorObjectInterpolatorNumberInterpolatorDateInterpolator';
-  const expectedReverseText = 'PauseISchedulableTransitionEventParallelSequenceSchedulerFunctionSequenceNeonateTransitionEasingTransitionerinterpolateDateInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorArrayInterpolatorRectangleInterpolatorColorInterpolatorMatrixInterpolatorInterpolator';
-  const expectedNewText = 'interpolateInterpolatorMatrixInterpolatorColorInterpolatorRectangleInterpolatorArrayInterpolatorPointInterpolatorObjectInterpolatorNumberInterpolatorDateInterpolator';
-  const expectedReverseNewText = 'interpolateDateInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorArrayInterpolatorRectangleInterpolatorColorInterpolatorMatrixInterpolatorInterpolator';
+  const $ = mount(<Treemap {...TREEMAP_PROPS} />);
+  const expectedText =
+    'interpolateTransitionerEasingTransitionNeonateFunctionSequenceSchedulerSequenceParallelTransitionEventISchedulablePauseInterpolatorMatrixInterpolatorColorInterpolatorRectangleInterpolatorArrayInterpolatorPointInterpolatorObjectInterpolatorNumberInterpolatorDateInterpolator';
+  const expectedReverseText =
+    'PauseISchedulableTransitionEventParallelSequenceSchedulerFunctionSequenceNeonateTransitionEasingTransitionerinterpolateDateInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorArrayInterpolatorRectangleInterpolatorColorInterpolatorMatrixInterpolatorInterpolator';
+  const expectedNewText =
+    'interpolateInterpolatorMatrixInterpolatorColorInterpolatorRectangleInterpolatorArrayInterpolatorPointInterpolatorObjectInterpolatorNumberInterpolatorDateInterpolator';
+  const expectedReverseNewText =
+    'interpolateDateInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorArrayInterpolatorRectangleInterpolatorColorInterpolatorMatrixInterpolatorInterpolator';
 
   [
     'circlePack',
@@ -82,38 +112,75 @@ test('Treemap: Custom Sorting', t => {
     'slicedice',
     'binary'
   ].forEach(mode => {
-    $.setProps({mode, sortFunction: (a, b) => (b.value - a.value), ...TREEMAP_PROPS});
-    t.equal($.find('.rv-treemap').text(), expectedText, `should find the correct text shown for ${mode} with sort`);
-    $.setProps({sortFunction: (a, b) => (a.value - b.value)});
-    t.equal($.find('.rv-treemap').text(), expectedReverseText, `should find the correct text shown for ${mode} with reverse sort`);
+    $.setProps({
+      mode,
+      sortFunction: (a, b) => b.value - a.value,
+      ...TREEMAP_PROPS
+    });
+    t.equal(
+      $.find('.rv-treemap').text(),
+      expectedText,
+      `should find the correct text shown for ${mode} with sort`
+    );
+    $.setProps({sortFunction: (a, b) => a.value - b.value});
+    t.equal(
+      $.find('.rv-treemap').text(),
+      expectedReverseText,
+      `should find the correct text shown for ${mode} with reverse sort`
+    );
 
     // circle pack includes the root node, while the other modes do not. The root of INTERPOLATE_DATA has a title, but the root of the default data does not
-    $.setProps({data: INTERPOLATE_DATA, sortFunction: (a, b) => (b.value - a.value)});
-    t.equal($.find('.rv-treemap').text(), expectedNewText, `should find the correct new text shown for ${mode} with sort`);
-    $.setProps({sortFunction: (a, b) => (a.value - b.value)});
-    t.equal($.find('.rv-treemap').text(), expectedReverseNewText, `should find the correct new text shown for ${mode} with reverse sort`);
+    $.setProps({
+      data: INTERPOLATE_DATA,
+      sortFunction: (a, b) => b.value - a.value
+    });
+    t.equal(
+      $.find('.rv-treemap').text(),
+      expectedNewText,
+      `should find the correct new text shown for ${mode} with sort`
+    );
+    $.setProps({sortFunction: (a, b) => a.value - b.value});
+    t.equal(
+      $.find('.rv-treemap').text(),
+      expectedReverseNewText,
+      `should find the correct new text shown for ${mode} with reverse sort`
+    );
   });
 
   t.end();
 });
 
 test('Treemap: Empty treemap', t => {
-  const $ = mount(<Treemap {...{...TREEMAP_PROPS, data: {}}}/>);
+  const $ = mount(<Treemap {...{...TREEMAP_PROPS, data: {}}} />);
   // 1 is the empty root node
-  t.equal($.find('.rv-treemap__leaf').length, 1, 'should find the right number of children');
-  t.equal($.find('.rv-treemap').text(), '', 'should find the correct text shown');
-  t.equal($.find('.little-nested-tree-example').length, 1, 'should find the custom class name used');
+  t.equal(
+    $.find('.rv-treemap__leaf').length,
+    1,
+    'should find the right number of children'
+  );
+  t.equal(
+    $.find('.rv-treemap').text(),
+    '',
+    'should find the correct text shown'
+  );
+  t.equal(
+    $.find('.little-nested-tree-example').length,
+    1,
+    'should find the custom class name used'
+  );
 
   t.end();
 });
 
 test('Treemap: Hide Root Node', t => {
-  const $ = mount(<Treemap {...TREEMAP_PROPS}/>);
+  const $ = mount(<Treemap {...TREEMAP_PROPS} />);
   // the tree from TREEMAP_PROPS doesn't have a title so its text is the same with ot without the root
-  const expectedText = 'EasingNeonateinterpolateISchedulableParallelPauseFunctionSequenceSequenceTransitionTransitionerTransitionEventSchedulerArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
+  const expectedText =
+    'EasingNeonateinterpolateISchedulableParallelPauseFunctionSequenceSequenceTransitionTransitionerTransitionEventSchedulerArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
   const numberOfElements = 21;
   const numberOfElementsWithRoot = numberOfElements + 1;
-  const expectedNewText = 'ArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
+  const expectedNewText =
+    'ArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
   const expectedNewTextWithRoot = `interpolate${expectedNewText}`;
   const numberOfNewElements = 9;
   const numberOfNewElementsWithRoot = numberOfNewElements + 1;
@@ -129,29 +196,73 @@ test('Treemap: Hide Root Node', t => {
     'binary'
   ].forEach(mode => {
     $.setProps({mode, ...TREEMAP_PROPS, hideRootNode: false});
-    t.equal($.find('.rv-treemap').text(), expectedText, `should find the correct text shown for ${mode} with hideRootNode false`);
-    t.equal($.find('.rv-treemap__leaf').length, numberOfElementsWithRoot, `should find the correct number of children for ${mode} with  hideRootNode false`);
+    t.equal(
+      $.find('.rv-treemap').text(),
+      expectedText,
+      `should find the correct text shown for ${mode} with hideRootNode false`
+    );
+    t.equal(
+      $.find('.rv-treemap__leaf').length,
+      numberOfElementsWithRoot,
+      `should find the correct number of children for ${mode} with  hideRootNode false`
+    );
     $.setProps({hideRootNode: true});
-    t.equal($.find('.rv-treemap').text(), expectedText, `should find the correct text shown for ${mode} with hideRootNode true`);
-    t.equal($.find('.rv-treemap__leaf').length, numberOfElements, `should find the right number of children for ${mode} with hideRootNode true`);
+    t.equal(
+      $.find('.rv-treemap').text(),
+      expectedText,
+      `should find the correct text shown for ${mode} with hideRootNode true`
+    );
+    t.equal(
+      $.find('.rv-treemap__leaf').length,
+      numberOfElements,
+      `should find the right number of children for ${mode} with hideRootNode true`
+    );
 
     $.setProps({data: INTERPOLATE_DATA, hideRootNode: false});
-    t.equal($.find('.rv-treemap').text(), expectedNewTextWithRoot, `should find the correct new text shown for ${mode} with hideRootNode false`);
-    t.equal($.find('.rv-treemap__leaf').length, numberOfNewElementsWithRoot, `should find the new right number of children for ${mode} with  hideRootNode false`);
+    t.equal(
+      $.find('.rv-treemap').text(),
+      expectedNewTextWithRoot,
+      `should find the correct new text shown for ${mode} with hideRootNode false`
+    );
+    t.equal(
+      $.find('.rv-treemap__leaf').length,
+      numberOfNewElementsWithRoot,
+      `should find the new right number of children for ${mode} with  hideRootNode false`
+    );
     $.setProps({hideRootNode: true});
-    t.equal($.find('.rv-treemap').text(), expectedNewText, `should find the correct new text shown for ${mode} with hideRootNode true`);
-    t.equal($.find('.rv-treemap__leaf').length, numberOfNewElements, `should find the new right number of children for ${mode} with  hideRootNode true`);
+    t.equal(
+      $.find('.rv-treemap').text(),
+      expectedNewText,
+      `should find the correct new text shown for ${mode} with hideRootNode true`
+    );
+    t.equal(
+      $.find('.rv-treemap__leaf').length,
+      numberOfNewElements,
+      `should find the new right number of children for ${mode} with  hideRootNode true`
+    );
   });
 
   t.end();
 });
 
 test('Treemap: Empty treemap', t => {
-  const $ = mount(<Treemap {...{...TREEMAP_PROPS, data: {}}}/>);
+  const $ = mount(<Treemap {...{...TREEMAP_PROPS, data: {}}} />);
   // 1 is the empty root node
-  t.equal($.find('.rv-treemap__leaf').length, 1, 'should find the right number of children');
-  t.equal($.find('.rv-treemap').text(), '', 'should find the correct text shown');
-  t.equal($.find('.little-nested-tree-example').length, 1, 'should find the custom class name used');
+  t.equal(
+    $.find('.rv-treemap__leaf').length,
+    1,
+    'should find the right number of children'
+  );
+  t.equal(
+    $.find('.rv-treemap').text(),
+    '',
+    'should find the correct text shown'
+  );
+  t.equal(
+    $.find('.little-nested-tree-example').length,
+    1,
+    'should find the custom class name used'
+  );
 
   t.end();
 });
@@ -169,19 +280,42 @@ test('Treemap: SimpleTreemap', t => {
     'slicedice',
     'binary'
   ].forEach(mode => {
-    const selector = mode === 'circlePack' ? '.rv-treemap__leaf circle' : '.rv-treemap__leaf';
+    const selector =
+      mode === 'circlePack' ? '.rv-treemap__leaf circle' : '.rv-treemap__leaf';
     // circle pack includes the root node, while the other modes do not
     const numberOfElements = 252;
-    t.equal($.find(selector).length, numberOfElements, `${mode}: should find the right number of SVG children`);
-    t.equal($.text(), `USE DOMPREV MODE ${mode} NEXT MODE`, `${mode}: should find the correct text shown`);
+    t.equal(
+      $.find(selector).length,
+      numberOfElements,
+      `${mode}: should find the right number of SVG children`
+    );
+    t.equal(
+      $.text(),
+      `USE DOMPREV MODE ${mode} NEXT MODE`,
+      `${mode}: should find the correct text shown`
+    );
     // switch to svg
-    $.find('.showcase-button').at(0).simulate('click');
-    t.equal($.find('.rv-treemap__leaf').length, numberOfElements, `${mode}: should find the right number of DOM children`);
-    t.equal($.text(), `USE SVGPREV MODE ${mode} NEXT MODE`, `${mode}: should find the correct text shown`);
+    $.find('.showcase-button')
+      .at(0)
+      .simulate('click');
+    t.equal(
+      $.find('.rv-treemap__leaf').length,
+      numberOfElements,
+      `${mode}: should find the right number of DOM children`
+    );
+    t.equal(
+      $.text(),
+      `USE SVGPREV MODE ${mode} NEXT MODE`,
+      `${mode}: should find the correct text shown`
+    );
 
     // switch back to dom and go to next mode
-    $.find('.showcase-button').at(0).simulate('click');
-    $.find('.showcase-button').at(2).simulate('click');
+    $.find('.showcase-button')
+      .at(0)
+      .simulate('click');
+    $.find('.showcase-button')
+      .at(2)
+      .simulate('click');
   });
 
   t.end();
@@ -189,8 +323,16 @@ test('Treemap: SimpleTreemap', t => {
 
 test('Treemap: DynamicTreemap', t => {
   const $ = mount(<DynamicTreemap />);
-  t.equal($.find('.rv-treemap__leaf').length, 21, 'should find the right number of children');
-  t.equal($.find('.rv-treemap').text(), '2020202020202020202020202020202020202020', 'should find the correct text shown');
+  t.equal(
+    $.find('.rv-treemap__leaf').length,
+    21,
+    'should find the right number of children'
+  );
+  t.equal(
+    $.find('.rv-treemap').text(),
+    '2020202020202020202020202020202020202020',
+    'should find the correct text shown'
+  );
 
   t.end();
 });

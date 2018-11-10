@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ShowcaseDropdown from './showcase-components/showcase-dropdown';
 
@@ -13,14 +13,11 @@ import {
   TreemapShowcase,
   ParallelCoordinatesShowcase,
   MiscShowcase,
-
   Candlestick,
   ForceDirectedGraph,
   ResponsiveVis,
   StreamgraphExample,
-  ZoomableChart,
-  DragableChart,
-  HistoryExample
+  IrisDashboard,
 } from './showcase-index';
 
 const sectionNames = [
@@ -29,12 +26,42 @@ const sectionNames = [
   {label: true, name: 'BASIC EXAMPLES'},
   {showByDefault: true, link: 'plots', name: 'Plots', showcase: PlotsShowcase},
   {showByDefault: true, link: 'axes', name: 'Axes', showcase: AxesShowcase},
-  {showByDefault: true, link: 'radial-charts', name: 'Radial Charts', showcase: RadialShowcase},
-  {showByDefault: true, link: 'radar-charts', name: 'Radar Charts', showcase: RadarShowcase},
-  {showByDefault: true, link: 'treemaps', name: 'Treemaps', showcase: TreemapShowcase},
-  {showByDefault: true, link: 'legends', name: 'Legends', showcase: LegendsShowcase},
-  {showByDefault: true, link: 'sunbursts', name: 'Sunbursts', showcase: SunburstSection},
-  {showByDefault: true, link: 'sankeys', name: 'Sankeys', showcase: SankeysShowcase},
+  {
+    showByDefault: true,
+    link: 'radial-charts',
+    name: 'Radial Charts',
+    showcase: RadialShowcase
+  },
+  {
+    showByDefault: true,
+    link: 'radar-charts',
+    name: 'Radar Charts',
+    showcase: RadarShowcase
+  },
+  {
+    showByDefault: true,
+    link: 'treemaps',
+    name: 'Treemaps',
+    showcase: TreemapShowcase
+  },
+  {
+    showByDefault: true,
+    link: 'legends',
+    name: 'Legends',
+    showcase: LegendsShowcase
+  },
+  {
+    showByDefault: true,
+    link: 'sunbursts',
+    name: 'Sunbursts',
+    showcase: SunburstSection
+  },
+  {
+    showByDefault: true,
+    link: 'sankeys',
+    name: 'Sankeys',
+    showcase: SankeysShowcase
+  },
   {
     showByDefault: true,
     link: 'parallel-coordinates',
@@ -45,55 +72,90 @@ const sectionNames = [
 
   // in depth examples
   {label: true, name: 'ADVANCED EXAMPLES'},
-  {showByDefault: false, link: 'candlestick', name: 'Candlestick', showcase: Candlestick},
-  {showByDefault: false, link: 'force-directed', name: 'ForceDirectedGraph', showcase: ForceDirectedGraph},
-  {showByDefault: false, link: 'streamgraph', name: 'Streamgraph', showcase: StreamgraphExample},
-  {showByDefault: false, link: 'responsive', name: 'ResponsiveVis', showcase: ResponsiveVis},
-  {showByDefault: false, link: 'history', name: 'HistoryExample', showcase: HistoryExample},
-  {showByDefault: false, link: 'zoomable', name: 'ZoomableChart', showcase: ZoomableChart},
-  {showByDefault: false, link: 'dragable', name: 'DragableChart', showcase: DragableChart}
+  {
+    showByDefault: false,
+    link: 'candlestick',
+    name: 'Candlestick',
+    showcase: Candlestick
+  },
+  {
+    showByDefault: false,
+    link: 'force-directed',
+    name: 'ForceDirectedGraph',
+    showcase: ForceDirectedGraph
+  },
+  {
+    showByDefault: false,
+    link: 'streamgraph',
+    name: 'Streamgraph',
+    showcase: StreamgraphExample
+  },
+  {
+    showByDefault: false,
+    link: 'irisdashboard',
+    name: 'IrisDashboard',
+    showcase: IrisDashboard
+  },
+  {
+    showByDefault: false,
+    link: 'responsive',
+    name: 'ResponsiveVis',
+    showcase: ResponsiveVis
+  }
 ];
 
-class App extends Component {
-  render() {
-    const {forExample} = this.props;
-    const linkedSection = location.href.split('/#')[1];
-    const foundSection = sectionNames.find(section => section.link === linkedSection);
+function App(props) {
+  const {forExample} = props;
+  const linkedSection = location.href.split('/#')[1];
+  const foundSection = sectionNames.find(
+    section => section.link === linkedSection
+  );
 
-    const filteredSections = sectionNames.filter(section => {
+  const filteredSections = sectionNames
+    .filter(section => {
       // if at http://localhost:3001/, just return everything
       if (!linkedSection) {
         return section.showByDefault;
       }
-      const showThisSection = (foundSection && section.link === foundSection.link);
-      const showDefaultSections = (!foundSection || foundSection.root) && section.showByDefault;
+      const showThisSection =
+        foundSection && section.link === foundSection.link;
+      const showDefaultSections =
+        (!foundSection || foundSection.root) && section.showByDefault;
 
       return showThisSection || showDefaultSections;
-    }).map(section => {
+    })
+    .map(section => {
       if (section.label || section.root) {
-        return <div key={`${section.name}-showcase`}/>;
+        return <div key={`${section.name}-showcase`} />;
       }
-      return (<section.showcase key={`${section.name}-showcase`}/>);
+      return <section.showcase key={`${section.name}-showcase`} />;
     });
-    return (
-      <main>
-        {!forExample && (<header>
+  return (
+    <main>
+      {!forExample && (
+        <header>
           <div className="header-contents">
-            <a className="header-logo" href="#">react-vis</a>
-            <ShowcaseDropdown items={sectionNames.map(section => {
-              const {label, link, name} = section;
-              const content = label ?
-                (<div className="subsection-label">{name}</div>) :
-                (<a href={`#${link}`}>{name}</a>);
+            <a className="header-logo" href="#">
+              react-vis
+            </a>
+            <ShowcaseDropdown
+              items={sectionNames.map(section => {
+                const {label, link, name} = section;
+                const content = label ? (
+                  <div className="subsection-label">{name}</div>
+                ) : (
+                  <a href={`#${link}`}>{name}</a>
+                );
 
-              return <li key={name}>{content}</li>;
-            })}/>
+                return <li key={name}>{content}</li>;
+              })}
+            />
           </div>
-        </header>)}
-        {filteredSections}
-      </main>
-    );
-  }
+        </header>
+      )}
+      {filteredSections}
+    </main>
+  );
 }
 
 App.propTypes = {

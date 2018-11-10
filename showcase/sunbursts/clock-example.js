@@ -20,23 +20,20 @@
 
 import React from 'react';
 
-import {
-  XYPlot,
-  ArcSeries
-} from 'index';
+import {XYPlot, ArcSeries} from 'index';
 
 import {EXTENDED_DISCRETE_COLOR_RANGE} from 'theme';
 
 const PI = Math.PI;
 
 function getSeconds() {
-  return Math.floor((new Date()).getTime() / 1000);
+  return Math.floor(new Date().getTime() / 1000);
 }
 
 export default class ClockExample extends React.Component {
   state = {
     time: 0
-  }
+  };
 
   componentDidMount() {
     this._timerId = setInterval(() => this.setState({time: getSeconds()}), 100);
@@ -59,7 +56,8 @@ export default class ClockExample extends React.Component {
         width={300}
         getAngle={d => d.time}
         getAngle0={d => 0}
-        height={300}>
+        height={300}
+      >
         <ArcSeries
           animation={{
             damping: 9,
@@ -67,11 +65,17 @@ export default class ClockExample extends React.Component {
           }}
           radiusDomain={[0, 3]}
           data={[
-            {time: seconds / 60 * 2 * PI, radius0: 1, radius: 1.5, color: 0},
-            {time: minutes / 60 * 2 * PI, radius0: 1.6, radius: 2.1, color: 1},
-            {time: hours / 24 * 2 * PI, radius0: 2.2, radius: 2.7, color: 2}
+            {time: (seconds / 60) * 2 * PI, radius0: 1, radius: 1.5, color: 0},
+            {
+              time: (minutes / 60) * 2 * PI,
+              radius0: 1.6,
+              radius: 2.1,
+              color: 1
+            },
+            {time: (hours / 24) * 2 * PI, radius0: 2.2, radius: 2.7, color: 2}
           ]}
-          colorRange={EXTENDED_DISCRETE_COLOR_RANGE} />
+          colorRange={EXTENDED_DISCRETE_COLOR_RANGE}
+        />
       </XYPlot>
     );
   }

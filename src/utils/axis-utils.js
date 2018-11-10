@@ -58,9 +58,11 @@ export function getTicksTotalFromSize(size) {
  * @returns {Array} Array of tick values.
  */
 export function getTickValues(scale, tickTotal, tickValues) {
-  return !tickValues ?
-    (scale.ticks ? scale.ticks(tickTotal) : scale.domain()) :
-    tickValues;
+  return !tickValues
+    ? scale.ticks
+      ? scale.ticks(tickTotal)
+      : scale.domain()
+    : tickValues;
 }
 
 /**
@@ -104,11 +106,18 @@ export function generateFit(axisStart, axisEnd) {
  * props.@param {Array.Numbers} axisDomain The values to be interpolated across for the axis
  * @returns {Number} Object describing the slope and the specific coordinates of the points
  */
-export function generatePoints({axisStart, axisEnd, numberOfTicks, axisDomain}) {
+export function generatePoints({
+  axisStart,
+  axisEnd,
+  numberOfTicks,
+  axisDomain
+}) {
   const {left, right, slope, offset} = generateFit(axisStart, axisEnd);
   // construct a linear band of points, then map them
-  const pointSlope = (right - left) / (numberOfTicks);
-  const axisScale = scaleLinear().domain([left, right]).range(axisDomain);
+  const pointSlope = (right - left) / numberOfTicks;
+  const axisScale = scaleLinear()
+    .domain([left, right])
+    .range(axisDomain);
 
   const slopeVertical = axisStart.x === axisEnd.x;
   return {
@@ -134,7 +143,7 @@ export function generatePoints({axisStart, axisEnd, numberOfTicks, axisDomain}) 
  */
 export function getAxisAngle(axisStart, axisEnd) {
   if (axisStart.x === axisEnd.x) {
-    return axisEnd.y > axisStart.y ? Math.PI / 2 : (3 * Math.PI / 2);
+    return axisEnd.y > axisStart.y ? Math.PI / 2 : (3 * Math.PI) / 2;
   }
   return Math.atan((axisEnd.y - axisStart.y) / (axisEnd.x - axisStart.x));
 }

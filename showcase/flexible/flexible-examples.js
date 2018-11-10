@@ -45,26 +45,47 @@ const defaultProps = {
 
 export const FlexibleCharts = ({height, width}) => (
   <div>
-    <div style={{display: 'flex',
-      justifyContent: 'space-between', position: 'relative', width: width || '60vw'}}>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        position: 'relative',
+        width: width || '60vw'
+      }}
+    >
       <div style={{width: '30%'}}>Flexible width - fixed height</div>
       <div style={{width: '30%'}}>Flexible height - fixed width</div>
       <div style={{width: '30%'}}>Flexible width and height</div>
     </div>
-    <div style={{display: 'flex',
-      justifyContent: 'space-between', position: 'relative',
-      width: width || '60vw', height: height || '30vh'}}>
-      <div className="flexible-width" style={{width: '30%', height: '100%', border: '1px solid #ccc'}}>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        position: 'relative',
+        width: width || '60vw',
+        height: height || '30vh'
+      }}
+    >
+      <div
+        className="flexible-width"
+        style={{width: '30%', height: '100%', border: '1px solid #ccc'}}
+      >
         <FlexibleWidthXYPlot {...defaultProps} height={100}>
           <VerticalBarSeries data={data} />
         </FlexibleWidthXYPlot>
       </div>
-      <div className="flexible-height" style={{width: '30%', height: '100%', border: '1px solid #ccc'}}>
+      <div
+        className="flexible-height"
+        style={{width: '30%', height: '100%', border: '1px solid #ccc'}}
+      >
         <FlexibleHeightXYPlot {...defaultProps} width={100}>
           <VerticalBarSeries data={data} />
         </FlexibleHeightXYPlot>
       </div>
-      <div className="flexible-vis" style={{width: '30%', height: '100%', border: '1px solid #ccc'}}>
+      <div
+        className="flexible-vis"
+        style={{width: '30%', height: '100%', border: '1px solid #ccc'}}
+      >
         <FlexibleXYPlot {...defaultProps}>
           <VerticalBarSeries data={data} />
         </FlexibleXYPlot>

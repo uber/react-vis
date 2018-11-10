@@ -8,7 +8,9 @@ const NOOP = f => f;
 
 // Find the index of the node at coordinates of a touch point
 function getNodeIndex(evt) {
-  const {nativeEvent: {pageX, pageY}} = evt;
+  const {
+    nativeEvent: {pageX, pageY}
+  } = evt;
   const target = document.elementFromPoint(pageX, pageY);
   if (!target) {
     return -1;
@@ -49,7 +51,7 @@ function Voronoi(props) {
   const polygons = voronoiInstance.polygons(nodes);
 
   // Create helper function to handle special logic for touch events
-  const handleTouchEvent = (handler) => (evt) => {
+  const handleTouchEvent = handler => evt => {
     evt.preventDefault();
     const index = getNodeIndex(evt);
     if (index > -1 && index < polygons.length) {
@@ -71,7 +73,7 @@ function Voronoi(props) {
     >
       {polygons.map((d, i) => (
         <path
-          className={`rv-voronoi__cell ${d.data && d.data.className || ''}`}
+          className={`rv-voronoi__cell ${(d.data && d.data.className) || ''}`}
           d={`M${d.join('L')}Z`}
           onClick={() => onClick(d.data)}
           onMouseUp={() => onMouseUp(d.data)}
@@ -84,7 +86,8 @@ function Voronoi(props) {
             ...polygonStyle,
             ...(d.data && d.data.style)
           }}
-          key={i} />
+          key={i}
+        />
       ))}
     </g>
   );
@@ -103,9 +106,7 @@ Voronoi.defaultProps = {
 
 Voronoi.propTypes = {
   className: PropTypes.string,
-  extent: PropTypes.arrayOf(
-    PropTypes.arrayOf(PropTypes.number)
-  ),
+  extent: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
   nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
   onBlur: PropTypes.func,
   onClick: PropTypes.func,

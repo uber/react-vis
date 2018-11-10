@@ -13,7 +13,7 @@ Non-series elements (i.e. [gridlines](grids.md) or [hints](hint.md)) do not take
 ### Component-specific properties
 Virtually every component accept several properties that affects its appearance. For instance, [line series](line-series.md) take a `color` property to control the stroke color of the line, but others as well such as strokeWidth that controls its thickness. Each of these is described in detail for each component. 
 
-### Style property
+#### style property
 Finally, components can also accept a special property called `style`. This let you pass an object to the component. The keys of that object are CSS properties, camel-cased (ie `stroke-width` would be written `strokeWidth`) and values are what you'd want to set those properties to. These are the same conventions than when [passing style](https://facebook.github.io/react/docs/dom-elements.html) to a standard DOM element with React.
 
 ```javascript

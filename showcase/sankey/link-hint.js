@@ -14,25 +14,25 @@ const links = [
 ];
 
 export default class LinkHintSankeyExample extends React.Component {
-
   state = {
     activeLink: null
-  }
+  };
 
   _renderHint() {
     const {activeLink} = this.state;
 
     // calculate center x,y position of link for positioning of hint
-    const x = activeLink.source.x1 + ((activeLink.target.x0 - activeLink.source.x1) / 2);
-    const y = activeLink.y0 - ((activeLink.y0 - activeLink.y1) / 2);
+    const x =
+      activeLink.source.x1 + (activeLink.target.x0 - activeLink.source.x1) / 2;
+    const y = activeLink.y0 - (activeLink.y0 - activeLink.y1) / 2;
 
     const hintValue = {
-      [`${activeLink.source.name} ➞ ${activeLink.target.name}`]: activeLink.value
+      [`${activeLink.source.name} ➞ ${
+        activeLink.target.name
+      }`]: activeLink.value
     };
 
-    return (
-      <Hint x={x} y={y} value={hintValue} />
-    );
+    return <Hint x={x} y={y} value={hintValue} />;
   }
 
   render() {
@@ -47,7 +47,10 @@ export default class LinkHintSankeyExample extends React.Component {
           nodes={nodes.map(d => ({...d}))}
           links={links.map((d, i) => ({
             ...d,
-            opacity: activeLink && i === activeLink.index ? FOCUSED_LINK_OPACITY : BLURRED_LINK_OPACITY
+            opacity:
+              activeLink && i === activeLink.index
+                ? FOCUSED_LINK_OPACITY
+                : BLURRED_LINK_OPACITY
           }))}
           width={200}
           height={200}
@@ -55,8 +58,8 @@ export default class LinkHintSankeyExample extends React.Component {
           hasVoronoi={false}
           onLinkMouseOver={node => this.setState({activeLink: node})}
           onLinkMouseOut={() => this.setState({activeLink: null})}
-          >
-          { activeLink && this._renderHint() }
+        >
+          {activeLink && this._renderHint()}
         </Sankey>
       </div>
     );

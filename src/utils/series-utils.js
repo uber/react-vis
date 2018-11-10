@@ -39,8 +39,9 @@ export function isSeriesChild(child) {
  * @returns {Array} Array of children.
  */
 export function getSeriesChildren(children) {
-  return React.Children.toArray(children).filter(child =>
-  child && isSeriesChild(child));
+  return React.Children.toArray(children).filter(
+    child => child && isSeriesChild(child)
+  );
 }
 
 /**
@@ -108,7 +109,9 @@ function prepareData(data) {
  * @returns {Array} New array of children for the series.
  */
 export function getStackedData(children, attr) {
-  const areSomeSeriesStacked = children.some(series => series && series.props.stack);
+  const areSomeSeriesStacked = children.some(
+    series => series && series.props.stack
+  );
   // It stores the last segment position added to each bar, separated by cluster.
   const latestAttrPositions = {};
 
@@ -122,7 +125,12 @@ export function getStackedData(children, attr) {
     const {data, cluster = 'default', stack} = series.props;
     const preppedData = prepareData(data, attr);
 
-    if (!attr || !preppedData || !preppedData.length || (areSomeSeriesStacked && !stack)) {
+    if (
+      !attr ||
+      !preppedData ||
+      !preppedData.length ||
+      (areSomeSeriesStacked && !stack)
+    ) {
       accumulator.push(preppedData);
       return accumulator;
     }
@@ -130,36 +138,38 @@ export function getStackedData(children, attr) {
     const attr0 = `${attr}0`;
     const baseAttr = attr === 'y' ? 'x' : 'y';
 
-    accumulator.push(preppedData.map((d, dIndex) => {
-      if (!latestAttrPositions[cluster]) {
-        latestAttrPositions[cluster] = {};
-      }
+    accumulator.push(
+      preppedData.map((d, dIndex) => {
+        if (!latestAttrPositions[cluster]) {
+          latestAttrPositions[cluster] = {};
+        }
 
-      const prevD = latestAttrPositions[cluster][d[baseAttr]];
-      // It is the first segment of a bar.
-      if (!prevD) {
-        latestAttrPositions[cluster][d[baseAttr]] = {
-          [attr0]: d[attr0],
-          [attr]: d[attr]
+        const prevD = latestAttrPositions[cluster][d[baseAttr]];
+        // It is the first segment of a bar.
+        if (!prevD) {
+          latestAttrPositions[cluster][d[baseAttr]] = {
+            [attr0]: d[attr0],
+            [attr]: d[attr]
+          };
+
+          return {...d};
+        }
+
+        // Calculate the position of the next segment in a bar.
+        const nextD = {
+          ...d,
+          [attr0]: prevD[attr],
+          [attr]: prevD[attr] + d[attr] - (d[attr0] || 0)
         };
 
-        return {...d};
-      }
+        latestAttrPositions[cluster][d[baseAttr]] = {
+          [attr0]: nextD[attr0],
+          [attr]: nextD[attr]
+        };
 
-      // Calculate the position of the next segment in a bar.
-      const nextD = {
-        ...d,
-        [attr0]: prevD[attr],
-        [attr]: prevD[attr] + d[attr] - (d[attr0] || 0)
-      };
-
-      latestAttrPositions[cluster][d[baseAttr]] = {
-        [attr0]: nextD[attr0],
-        [attr]: nextD[attr]
-      };
-
-      return nextD;
-    }));
+        return nextD;
+      })
+    );
 
     return accumulator;
   }, []);
@@ -180,8 +190,8 @@ export function getSeriesPropsFromChildren(children) {
     let props;
     if (isSeriesChild(child)) {
       const seriesTypeInfo = seriesTypesInfo[child.type.displayName];
-      const _colorValue = DISCRETE_COLOR_RANGE[seriesIndex %
-        DISCRETE_COLOR_RANGE.length];
+      const _colorValue =
+        DISCRETE_COLOR_RANGE[seriesIndex % DISCRETE_COLOR_RANGE.length];
       props = {
         ...seriesTypeInfo,
         seriesIndex,
@@ -215,26 +225,45 @@ export function getRadialDomain(data) {
 }
 
 export const ANIMATED_SERIES_PROPS = [
-  'xRange', 'xDomain', 'x',
-  'yRange', 'yDomain', 'y',
-  'colorRange', 'colorDomain', 'color',
-  'opacityRange', 'opacityDomain', 'opacity',
-  'strokeRange', 'strokeDomain', 'stroke',
-  'fillRange', 'fillDomain', 'fill',
-  'width', 'height',
-  'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
+  'xRange',
+  'xDomain',
+  'x',
+  'yRange',
+  'yDomain',
+  'y',
+  'colorRange',
+  'colorDomain',
+  'color',
+  'opacityRange',
+  'opacityDomain',
+  'opacity',
+  'strokeRange',
+  'strokeDomain',
+  'stroke',
+  'fillRange',
+  'fillDomain',
+  'fill',
+  'width',
+  'height',
+  'marginLeft',
+  'marginTop',
+  'marginRight',
+  'marginBottom',
   'data',
-  'angleDomain', 'angleRange', 'angle',
-  'radiusDomain', 'radiusRange', 'radius',
-  'innerRadiusDomain', 'innerRadiusRange', 'innerRadius'
+  'angleDomain',
+  'angleRange',
+  'angle',
+  'radiusDomain',
+  'radiusRange',
+  'radius',
+  'innerRadiusDomain',
+  'innerRadiusRange',
+  'innerRadius'
 ];
 
 export function getStackParams(props) {
   const {_stackBy, valuePosAttr, cluster} = props;
-  let {
-    sameTypeTotal = 1,
-    sameTypeIndex = 0
-  } = props;
+  let {sameTypeTotal = 1, sameTypeIndex = 0} = props;
 
   // If bars are stacked, but not clustering, override `sameTypeTotal` and
   // `sameTypeIndex` such that bars are stacked and not staggered.

@@ -51,17 +51,29 @@ const SUNBURST_PROPS = {
 testRenderWithProps(Sunburst, SUNBURST_PROPS);
 
 test('Sunburst: Basic rendering + data changes', t => {
-  const $ = mount(<Sunburst {...SUNBURST_PROPS}/>);
-  t.equal($.find('.little-nested-burst-example.rv-xy-plot__series--arc path').length, 21, 'should find the custom class name used');
+  const $ = mount(<Sunburst {...SUNBURST_PROPS} />);
+  t.equal(
+    $.find('.little-nested-burst-example.rv-xy-plot__series--arc path').length,
+    21,
+    'should find the custom class name used'
+  );
 
   $.setProps({data: INTERPOLATE_DATA});
-  t.equal($.find('.rv-xy-plot__series--arc-path').length, 9, 'should find the right number of children');
+  t.equal(
+    $.find('.rv-xy-plot__series--arc-path').length,
+    9,
+    'should find the right number of children'
+  );
   t.end();
 });
 
 test('Sunburst: Empty', t => {
-  const $ = mount(<Sunburst {...{...SUNBURST_PROPS, data: {}}}/>);
-  t.equal($.find('.rv-xy-plot__series--arc-path').length, 0, 'should find the right number of children');
+  const $ = mount(<Sunburst {...{...SUNBURST_PROPS, data: {}}} />);
+  t.equal(
+    $.find('.rv-xy-plot__series--arc-path').length,
+    0,
+    'should find the right number of children'
+  );
 
   t.end();
 });
@@ -69,28 +81,74 @@ test('Sunburst: Empty', t => {
 test('Sunburst: BasicSunburst', t => {
   const $ = mount(<BasicSunburst />);
   // multiplied by two to account for the shadow listeners
-  t.equal($.find('.rv-xy-plot__series--arc path').length, 251 * 2, 'should find the right number of children');
-  t.equal($.text(), 'click to lock selectionSUNBURST', 'should find the correct text inside of the chart');
+  t.equal(
+    $.find('.rv-xy-plot__series--arc path').length,
+    251 * 2,
+    'should find the right number of children'
+  );
+  t.equal(
+    $.text(),
+    'click to lock selectionSUNBURST',
+    'should find the correct text inside of the chart'
+  );
   // check hover state
-  t.deepEqual($.state().pathValue, false, 'should initially find no hover path');
-  $.find('.rv-xy-plot__series--arc-path').at(200).simulate('mouseover');
-  t.deepEqual($.state().pathValue, 'root > vis > events > DataEvent', 'should find the correct path hovered');
+  t.deepEqual(
+    $.state().pathValue,
+    false,
+    'should initially find no hover path'
+  );
+  $.find('.rv-xy-plot__series--arc-path')
+    .at(200)
+    .simulate('mouseover');
+  t.deepEqual(
+    $.state().pathValue,
+    'root > vis > events > DataEvent',
+    'should find the correct path hovered'
+  );
 
-  $.find('.rv-xy-plot__series--arc-path').at(1).simulate('click');
-  t.equal($.text(), 'click to unlock selectionDataEventroot > vis > events > DataEvent', 'should find the right text');
-  $.find('.rv-xy-plot__series--arc-path').at(1).simulate('mouseLeave');
-  $.find('.rv-xy-plot__series--arc-path').at(10).simulate('mouseEnter');
+  $.find('.rv-xy-plot__series--arc-path')
+    .at(1)
+    .simulate('click');
+  t.equal(
+    $.text(),
+    'click to unlock selectionDataEventroot > vis > events > DataEvent',
+    'should find the right text'
+  );
+  $.find('.rv-xy-plot__series--arc-path')
+    .at(1)
+    .simulate('mouseLeave');
+  $.find('.rv-xy-plot__series--arc-path')
+    .at(10)
+    .simulate('mouseEnter');
 
-  t.equal($.text(), 'click to unlock selectionDataEventroot > vis > events > DataEvent', 'should find the right text');
+  t.equal(
+    $.text(),
+    'click to unlock selectionDataEventroot > vis > events > DataEvent',
+    'should find the right text'
+  );
   t.end();
 });
 
 test('Sunburst: SunburstWithTooltips', t => {
   const $ = mount(<SunburstWithTooltips />);
-  t.equal($.text(), 'cooldogssunglassesexcellentchartgreatlabel', 'should find the right text');
-  t.equal($.find('.rv-xy-plot__series--arc path').length, 10, 'should find the right number of children');
-  $.find('.rv-xy-plot__series--arc-path').at(1).simulate('mouseOver');
-  t.equal($.text(), 'cooldogssunglassesexcellentchartgreatlabel#FF991F', 'should find appropriate hover text');
+  t.equal(
+    $.text(),
+    'cooldogssunglassesexcellentchartgreatlabel',
+    'should find the right text'
+  );
+  t.equal(
+    $.find('.rv-xy-plot__series--arc path').length,
+    10,
+    'should find the right number of children'
+  );
+  $.find('.rv-xy-plot__series--arc-path')
+    .at(1)
+    .simulate('mouseOver');
+  t.equal(
+    $.text(),
+    'cooldogssunglassesexcellentchartgreatlabel#FF991F',
+    'should find appropriate hover text'
+  );
 
   t.end();
 });
@@ -98,9 +156,18 @@ test('Sunburst: SunburstWithTooltips', t => {
 test('Sunburst: AnimatedSunburst', t => {
   const $ = mount(<AnimatedSunburst />);
   t.equal($.text(), 'UPDATENOT HOVERED', 'should find the right text');
-  t.ok($.find('.rv-xy-plot__series--arc path').length > 2, 'should find a minimum number of elements');
-  $.find('.rv-xy-plot__series--arc-path').at(1).simulate('mouseOver');
-  t.equal($.text(), 'UPDATECURRENTLY HOVERING', 'should find the sunburst is now hovered');
+  t.ok(
+    $.find('.rv-xy-plot__series--arc path').length > 2,
+    'should find a minimum number of elements'
+  );
+  $.find('.rv-xy-plot__series--arc-path')
+    .at(1)
+    .simulate('mouseOver');
+  t.equal(
+    $.text(),
+    'UPDATECURRENTLY HOVERING',
+    'should find the sunburst is now hovered'
+  );
 
   t.end();
 });

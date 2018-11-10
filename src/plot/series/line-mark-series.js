@@ -32,7 +32,6 @@ const propTypes = {
 };
 
 class LineMarkSeries extends AbstractSeries {
-
   static get defaultProps() {
     return {
       ...LineSeries.defaultProps,
@@ -45,8 +44,8 @@ class LineMarkSeries extends AbstractSeries {
     const {lineStyle, markStyle, style} = this.props;
     return (
       <g className="rv-xy-plot__series rv-xy-plot__series--linemark">
-        <LineSeries {...this.props} style={{...style, ...lineStyle}}/>
-        <MarkSeries {...this.props} style={{...style, ...markStyle}}/>
+        <LineSeries {...this.props} style={{...style, ...lineStyle}} />
+        <MarkSeries {...this.props} style={{...style, ...markStyle}} />
       </g>
     );
   }
@@ -56,4 +55,3 @@ LineMarkSeries.displayName = 'LineMarkSeries';
 LineMarkSeries.propTypes = propTypes;
 
 export default LineMarkSeries;
-

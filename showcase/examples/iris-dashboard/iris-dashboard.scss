@@ -1,0 +1,20 @@
+.iris-dasboard-example {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .chart-row {
+    display: flex;
+  }
+
+  .rv-xy-plot__axis__title text {
+    font-size: 8px;
+  }
+
+  .axis-label {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+}

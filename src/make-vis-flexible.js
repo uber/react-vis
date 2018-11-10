@@ -101,9 +101,7 @@ function getDisplayName(Component) {
  */
 
 function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
-
   const ResultClass = class extends React.Component {
-
     static get propTypes() {
       const {height, width, ...otherPropTypes} = Component.propTypes; // eslint-disable-line no-unused-vars
       return otherPropTypes;
@@ -115,28 +113,27 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
         height: 0,
         width: 0
       };
-      this._onResize = this._onResize.bind(this);
     }
 
     /**
      * Get the width of the container and assign the width.
      * @private
      */
-    _onResize() {
+    _onResize = () => {
       const containerElement = getDOMNode(this[CONTAINER_REF]);
       const {offsetHeight, offsetWidth} = containerElement;
 
-      const newHeight = this.state.height === offsetHeight ? {} :
-        {height: offsetHeight};
+      const newHeight =
+        this.state.height === offsetHeight ? {} : {height: offsetHeight};
 
-      const newWidth = this.state.width === offsetWidth ? {} :
-        {width: offsetWidth};
+      const newWidth =
+        this.state.width === offsetWidth ? {} : {width: offsetWidth};
 
       this.setState({
         ...newHeight,
         ...newWidth
       });
-    }
+    };
 
     componentDidMount() {
       this._onResize();
@@ -153,7 +150,10 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
 
     render() {
       const {height, width} = this.state;
-      const props = {...this.props, animation: height === 0 && width === 0 ? null : this.props.animation};
+      const props = {
+        ...this.props,
+        animation: height === 0 && width === 0 ? null : this.props.animation
+      };
 
       const updatedDimensions = {
         ...(isHeightFlexible ? {height} : {}),
@@ -163,11 +163,9 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
       return (
         <div
           ref={ref => (this[CONTAINER_REF] = ref)}
-          style={{width: '100%', height: '100%'}}>
-          <Component
-            {...updatedDimensions}
-            {...props}
-          />
+          style={{width: '100%', height: '100%'}}
+        >
+          <Component {...updatedDimensions} {...props} />
         </div>
       );
     }

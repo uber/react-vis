@@ -26,11 +26,17 @@ import {format} from 'd3-format';
 import {AnimationPropType} from 'animation';
 import XYPlot from 'plot/xy-plot';
 import {DISCRETE_COLOR_RANGE} from 'theme';
-import {MarginPropType} from 'utils/chart-utils';
+import {
+  MarginPropType,
+  getInnerDimensions,
+  DEFAULT_MARGINS
+} from 'utils/chart-utils';
 import LineSeries from 'plot/series/line-series';
 import LineMarkSeries from 'plot/series/line-mark-series';
 import LabelSeries from 'plot/series/label-series';
 import DecorativeAxis from 'plot/axis/decorative-axis';
+
+import Highlight from 'plot/highlight';
 
 const predefinedClassName = 'rv-parallel-coordinates-chart';
 const DEFAULT_FORMAT = format('.2r');
@@ -44,12 +50,7 @@ const DEFAULT_FORMAT = format('.2r');
  * @return {Array} the plotted axis components
  */
 function getAxes(props) {
-  const {
-    animation,
-    domains,
-    style,
-    tickFormat
-  } = props;
+  const {animation, domains, style, tickFormat} = props;
   return domains.map((domain, index) => {
     const sortedDomain = domain.domain;
 
@@ -67,7 +68,7 @@ function getAxes(props) {
         numberOfTicks={5}
         tickValue={domainTickFormat}
         style={style.axes}
-        />
+      />
     );
   });
 }
@@ -104,6 +105,7 @@ function getLabels(props) {
 function getLines(props) {
   const {
     animation,
+    brushFilters,
     colorRange,
     domains,
     data,
@@ -111,34 +113,62 @@ function getLines(props) {
     showMarks
   } = props;
   const scales = domains.reduce((acc, {domain, name}) => {
-    acc[name] = scaleLinear().domain(domain).range([0, 1]);
+    acc[name] = scaleLinear()
+      .domain(domain)
+      .range([0, 1]);
     return acc;
   }, {});
+  // const
 
   return data.map((row, rowIndex) => {
+    let withinFilteredRange = true;
     const mappedData = domains.map((domain, index) => {
       const {getValue, name} = domain;
-      return {
-        x: name,
-        y: scales[name](getValue ? getValue(row) : row[name])
-      };
+
+      // watch out! Gotcha afoot
+      // yVal after being scale is in [0, 1] range
+      const yVal = scales[name](getValue ? getValue(row) : row[name]);
+      const filter = brushFilters[name];
+      // filter value after being scale back from pixel space is also in [0, 1]
+      if (filter && (yVal < filter.min || yVal > filter.max)) {
+        withinFilteredRange = false;
+      }
+      return {x: name, y: yVal};
     });
+    const selectedName = `${predefinedClassName}-line`;
+    const unselectedName = `${selectedName} ${predefinedClassName}-line-unselected`;
     const lineProps = {
       animation,
-      className: `${predefinedClassName}-line`,
+      className: withinFilteredRange ? selectedName : unselectedName,
       key: `${rowIndex}-polygon`,
       data: mappedData,
       color: row.color || colorRange[rowIndex % colorRange.length],
       style: {...style.lines, ...(row.style || {})}
     };
-    return showMarks ? <LineMarkSeries {...lineProps} /> : <LineSeries {...lineProps} />;
+    if (!withinFilteredRange) {
+      lineProps.style = {
+        ...lineProps.style,
+        ...style.deselectedLineStyle
+      };
+    }
+    return showMarks ? (
+      <LineMarkSeries {...lineProps} />
+    ) : (
+      <LineSeries {...lineProps} />
+    );
   });
 }
 
 class ParallelCoordinates extends Component {
+  state = {
+    brushFilters: {}
+  };
+
   render() {
+    const {brushFilters} = this.state;
     const {
       animation,
+      brushing,
       className,
       children,
       colorRange,
@@ -165,6 +195,7 @@ class ParallelCoordinates extends Component {
 
     const lines = getLines({
       animation,
+      brushFilters,
       colorRange,
       domains,
       data,
@@ -176,7 +207,13 @@ class ParallelCoordinates extends Component {
         animation
         key={className}
         className={`${predefinedClassName}-label`}
-        data={getLabels({domains, style: style.labels})} />
+        data={getLabels({domains, style: style.labels})}
+      />
+    );
+
+    const {marginLeft, marginRight} = getInnerDimensions(
+      this.props,
+      DEFAULT_MARGINS
     );
     return (
       <XYPlot
@@ -188,9 +225,34 @@ class ParallelCoordinates extends Component {
         onMouseLeave={onMouseLeave}
         onMouseEnter={onMouseEnter}
         xType="ordinal"
-        yDomain={[0, 1]}>
+        yDomain={[0, 1]}
+      >
         {children}
         {axes.concat(lines).concat(labelSeries)}
+        {brushing &&
+          domains.map(d => {
+            const trigger = row => {
+              this.setState({
+                brushFilters: {
+                  ...brushFilters,
+                  [d.name]: row ? {min: row.bottom, max: row.top} : null
+                }
+              });
+            };
+            return (
+              <Highlight
+                key={d.name}
+                drag
+                highlightX={d.name}
+                onBrushEnd={trigger}
+                onDragEnd={trigger}
+                highlightWidth={
+                  (width - marginLeft - marginRight) / domains.length
+                }
+                enableX={false}
+              />
+            );
+          })}
       </XYPlot>
     );
   }
@@ -199,6 +261,7 @@ class ParallelCoordinates extends Component {
 ParallelCoordinates.displayName = 'ParallelCoordinates';
 ParallelCoordinates.propTypes = {
   animation: AnimationPropType,
+  brushing: PropTypes.bool,
   className: PropTypes.string,
   colorType: PropTypes.string,
   colorRange: PropTypes.arrayOf(PropTypes.string),
@@ -238,6 +301,9 @@ ParallelCoordinates.defaultProps = {
     lines: {
       strokeWidth: 1,
       strokeOpacity: 1
+    },
+    deselectedLineStyle: {
+      strokeOpacity: 0.1
     }
   },
   tickFormat: DEFAULT_FORMAT

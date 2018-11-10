@@ -82,54 +82,76 @@ const myData = [
 Where x and y are required quantities and additional properties may be stapled on.
 
 #### x
+
 Type: `number`
+
 The x position in coordinates of the box to be used.
 
 #### y
-Type: `number`  
+
+Type: `number`
+
 The y position in coordinates of the box to be used.
 
 #### color (optional)
+
 Type: `string|number`
+
 The color of a box in the series. By default the color is interpreted as number to be scaled to a color range. This can be over-ridden by providing the prop colorType="literal" to the series itself. This property can also be defined on the series level.
 
 
 ## Series API Reference
 
-#### animation (optional)  
+#### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
 #### color
+
 Type: `string|number`
+
 The color for all elements in the series, this property will be over-ridden by color specified in the data attribute. See [colors](colors.md)
 
 #### className (optional)
+
 Type: `string`
+
 Provide an additional class name for the series.
 
 #### data
+
 Type: `Array<Object>`
+
 Array of data for the series. See above data format reference.
 
 #### fill
+
 Type: `string|number`
+
 The inner color for all elements in the series, this property will be over-ridden by color specified in the data attribute. See [colors](colors.md)
 
 #### opacity
+
 Type: `string|number`
+
 The opacity for all elements in the series, this property will be over-ridden by color specified in the data attribute.
 
 #### stroke
+
 Type: `string|number`
+
 The outer color for all elements in the series, this property will be over-ridden by color specified in the data attribute. See [colors](colors.md)
 
-### style
+#### style
+
 Type: `object`
+
 A list of CSS properties to style the series outside of the explicitly set properties. Note that it will override all other properties (ie fill, stroke, opacity, color). See [style](style.md)
 
 ## Interaction handlers
 #### onNearestX (optional)
-Type: `function(value, {event, innerX, index})`  
+
+Type: `function(value, {event, innerX, index})`
+
 A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose x position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
@@ -138,7 +160,9 @@ Callback is triggered with two arguments. `value` is the data point, `info` obje
 See [interaction](interaction.md)
 
 #### onNearestXY (optional)
-Type: `function(value, {event, innerX, innerY, index})`  
+
+Type: `function(value, {event, innerX, innerY, index})`
+
 A callback function which is triggered each time the mouse pointer moves. It can access the datapoint of the mark whose position is the closest to that of the cursor.
 Callback is triggered with two arguments. `value` is the data point, `info` object has following properties:
 - `innerX` is the left position of the mark;
@@ -148,17 +172,25 @@ Callback is triggered with two arguments. `value` is the data point, `info` obje
 See [interaction](interaction.md)
 
 #### onValueClick (optional)
-Type: `function(d, {event})`  
-`click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
+
+Type: `function(d, {event})`
+
+`click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
 
 #### onValueMouseOver (optional)
-Type: `function(d, {event})`  
+
+Type: `function(d, {event})`
+
 `mouseover` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
 
 #### onValueMouseOut (optional)
-Type: `function(d, {event})`  
-`mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.  
+
+Type: `function(d, {event})`
+
+`mouseout` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.
 
 #### onValueRightClick (optional)
-Type: `function(d, {event})`  
+
+Type: `function(d, {event})`
+
 `right-click` event handler for the elements corresponding separate data points. First argument received is, `d`, the relevant data point, and second an object with the only `event` property.

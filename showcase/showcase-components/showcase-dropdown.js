@@ -27,12 +27,11 @@ class ShowcaseDropdown extends React.Component {
     this.state = {
       open: false
     };
-    this.toggleState = this.toggleState.bind(this);
   }
 
-  toggleState() {
+  toggleState = () => {
     this.setState({open: !this.state.open});
-  }
+  };
 
   render() {
     const {items} = this.props;
@@ -42,7 +41,9 @@ class ShowcaseDropdown extends React.Component {
         <div className="dropdown-button" onClick={this.toggleState}>
           {'SELECT SECTION'}
         </div>
-        {open && <div className="background-overlay" onClick={this.toggleState} />}
+        {open && (
+          <div className="background-overlay" onClick={this.toggleState} />
+        )}
         {open && <ul className="dropdown-inner-wrapper">{items}</ul>}
       </div>
     );

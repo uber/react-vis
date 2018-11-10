@@ -23,18 +23,11 @@ import React from 'react';
 import ContinuousSizeLegend from 'legends/continuous-size-legend';
 
 export default class Example extends React.Component {
-
   constructor(props) {
     super(props);
   }
 
   render() {
-    return (
-      <ContinuousSizeLegend
-        width={200}
-        startTitle="100"
-        endTitle="200"
-      />
-    );
+    return <ContinuousSizeLegend width={200} startTitle="100" endTitle="200" />;
   }
 }

@@ -57,6 +57,7 @@ export GradientDefs from 'plot/gradient-defs';
 export VerticalGridLines from 'plot/vertical-grid-lines';
 export HorizontalGridLines from 'plot/horizontal-grid-lines';
 export Voronoi from 'plot/voronoi';
+export Highlight from 'plot/highlight';
 
 export DiscreteColorLegend from 'legends/discrete-color-legend';
 export SearchableDiscreteColorLegend from 'legends/searchable-discrete-color-legend';

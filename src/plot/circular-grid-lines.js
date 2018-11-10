@@ -25,26 +25,25 @@ import PropTypes from 'prop-types';
 import {getAttributeScale} from 'utils/scales-utils';
 import Animation, {AnimationPropType} from 'animation';
 
-import {
-  getTicksTotalFromSize,
-  getTickValues
-} from '../utils/axis-utils';
+import {getTicksTotalFromSize, getTickValues} from '../utils/axis-utils';
 
 const animatedProps = [
-  'xRange', 'yRange', 'xDomain', 'yDomain',
-  'width', 'height', 'marginLeft', 'marginTop', 'marginRight', 'marginBottom',
+  'xRange',
+  'yRange',
+  'xDomain',
+  'yDomain',
+  'width',
+  'height',
+  'marginLeft',
+  'marginTop',
+  'marginRight',
+  'marginBottom',
   'tickTotal'
 ];
 
 class CircularGridLines extends PureComponent {
-
   _getDefaultProps() {
-    const {
-      innerWidth,
-      innerHeight,
-      marginTop,
-      marginLeft
-    } = this.props;
+    const {innerWidth, innerHeight, marginTop, marginLeft} = this.props;
     return {
       left: marginLeft,
       top: marginTop,
@@ -60,7 +59,7 @@ class CircularGridLines extends PureComponent {
     if (animation) {
       return (
         <Animation {...this.props} animatedProps={animatedProps}>
-          <CircularGridLines {...this.props} animation={null}/>
+          <CircularGridLines {...this.props} animation={null} />
         </Animation>
       );
     }
@@ -70,22 +69,18 @@ class CircularGridLines extends PureComponent {
       ...this.props
     };
 
-    const {
-      tickTotal,
-      tickValues,
-      marginLeft,
-      marginTop,
-      rRange,
-      style
-    } = props;
+    const {tickTotal, tickValues, marginLeft, marginTop, rRange, style} = props;
 
     const xScale = getAttributeScale(props, 'x');
     const yScale = getAttributeScale(props, 'y');
     const values = getTickValues(xScale, tickTotal, tickValues);
     return (
       <g
-        transform={`translate(${xScale(centerX) + marginLeft},${yScale(centerY) + marginTop})`}
-        className="rv-xy-plot__circular-grid-lines">
+        transform={`translate(${xScale(centerX) + marginLeft},${yScale(
+          centerY
+        ) + marginTop})`}
+        className="rv-xy-plot__circular-grid-lines"
+      >
         {values.reduce((res, value, index) => {
           const radius = xScale(value);
           if (rRange && (radius < rRange[0] || radius > rRange[1])) {
@@ -96,7 +91,8 @@ class CircularGridLines extends PureComponent {
               {...{cx: 0, cy: 0, r: radius}}
               key={index}
               className="rv-xy-plot__circular-grid-lines__line"
-              style={style} />
+              style={style}
+            />
           ]);
         }, [])}
       </g>
