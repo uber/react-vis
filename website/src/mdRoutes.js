@@ -25,6 +25,7 @@ import areaSeries from "../../docs/area-series.md";
 import axes from "../../docs/axes.md";
 import barSeries from "../../docs/bar-series.md";
 import borders from "../../docs/borders.md";
+import chartLabel from "../../docs/chart-label.md";
 import colors from "../../docs/colors.md";
 import contourSeries from "../../docs/contour-series.md";
 import crosshair from "../../docs/crosshair.md";
@@ -220,6 +221,10 @@ const mdRoutes = [
           {
             name: 'Axes',
             markdown: axes
+          },
+          {
+            name: 'ChartLabel',
+            markdown: chartLabel
           },
           {
             name: 'DecorativeAxis',

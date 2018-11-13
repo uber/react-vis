@@ -31,6 +31,7 @@ Which is produced via
 </XYPlot>
 ```
 
+For greater control over the specific styling and placement of the axis label, please see [ChartLabel](chart-label.md).
 
 ## API Reference
 
