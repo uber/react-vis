@@ -83,7 +83,7 @@ test('LineSeries: basic rendering', t => {
   t.end();
 });
 
-test.only('LineSeries: Showcase Example - LineChart', t => {
+test('LineSeries: Showcase Example - LineChart', t => {
   const $ = mount(<LineChart />);
   t.equal($.find('.alt-x-label').length, 1, 'should find custom x class on chart label correctly');
   t.equal($.find('.alt-y-label').length, 1, 'should find custom y class on chart label correctly');
