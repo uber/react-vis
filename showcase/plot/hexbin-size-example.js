@@ -22,7 +22,7 @@ import React, {Component} from 'react';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
 
-import {XYPlot, XAxis, YAxis, HexbinSeries} from 'index';
+import {XYPlot, XAxis, YAxis, HexbinSeries, ChartLabel} from 'index';
 
 import DATA from '../datasets/car-data.json';
 
@@ -89,6 +89,7 @@ export default class HexbinSizeExample extends Component {
           width={500}
           onMouseLeave={() => this.setState({hoveredNode: null})}
           height={300}
+          margin={50}
         >
           <HexbinSeries
             animation
@@ -97,8 +98,28 @@ export default class HexbinSizeExample extends Component {
             radius={15}
             data={data}
           />
-          <XAxis title={DIMENSIONS[xAxis]} />
-          <YAxis title={DIMENSIONS[yAxis]} />
+          <XAxis />
+          <YAxis />
+          <ChartLabel 
+            text={DIMENSIONS[xAxis]}
+            className="alt-x-label"
+            xPercent={0.9}
+            yPercent={0.65}
+            style={{
+              transform: 'rotate(90)',
+              textAnchor: 'end'
+            }}
+            />
+
+          <ChartLabel 
+            text={DIMENSIONS[yAxis]}
+            className="alt-y-label"
+            xPercent={0.1}
+            yPercent={0.0}
+            style={{
+              textAnchor: 'start'
+            }}
+            />
         </XYPlot>
       </div>
     );
