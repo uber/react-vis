@@ -45,35 +45,37 @@ test('HexbinSeries: Showcase Example - HexHeatmap', t => {
 
 test('HexbinSeries: Showcase Example - HexbinSizeExample', t => {
   const $ = mount(<HexbinSizeExample />);
+  t.equal($.find('.alt-x-label').length, 1, 'should find custom x class on chart label correctly');
+  t.equal($.find('.alt-y-label').length, 1, 'should find custom y class on chart label correctly');
   [
     {
-      numHexes: 66,
+      numHexes: 56,
       text:
-        'PREV X X AXIS economy (mpg) NEXT XPREV Y Y AXIS power (hp) NEXT Y051015202530354045economy (mpg)050100150200power (hp)',
+        'PREV X X AXIS economy (mpg) NEXT XPREV Y Y AXIS power (hp) NEXT Y051015202530354045050100150200economy (mpg)power (hp)',
       buttonToPress: null
     },
 
     // click next x
     {
-      numHexes: 66,
+      numHexes: 56,
       text:
-        'PREV X X AXIS cylinders NEXT XPREV Y Y AXIS power (hp) NEXT Y3.03.54.04.55.05.56.06.57.07.58.0cylinders050100150200power (hp)',
+        'PREV X X AXIS cylinders NEXT XPREV Y Y AXIS power (hp) NEXT Y3.03.54.04.55.05.56.06.57.07.58.0050100150200cylinderspower (hp)',
       buttonToPress: 1
     },
 
     // click next y
     {
-      numHexes: 25,
+      numHexes: 20,
       text:
-        'PREV X X AXIS cylinders NEXT XPREV Y Y AXIS weight (lb) NEXT Y3.03.54.04.55.05.56.06.57.07.58.0cylinders2,0002,5003,0003,5004,0004,5005,000weight (lb)',
+        'PREV X X AXIS cylinders NEXT XPREV Y Y AXIS weight (lb) NEXT Y3.03.54.04.55.05.56.06.57.07.58.02,0002,5003,0003,5004,0004,5005,000cylindersweight (lb)',
       buttonToPress: 3
     },
 
     // click prev y
     {
-      numHexes: 25,
+      numHexes: 20,
       text:
-        'PREV X X AXIS cylinders NEXT XPREV Y Y AXIS weight (lb) NEXT Y3.03.54.04.55.05.56.06.57.07.58.0cylinders2,0002,5003,0003,5004,0004,5005,000weight (lb)',
+        'PREV X X AXIS cylinders NEXT XPREV Y Y AXIS weight (lb) NEXT Y3.03.54.04.55.05.56.06.57.07.58.02,0002,5003,0003,5004,0004,5005,000cylindersweight (lb)',
       buttonToPress: 0
     }
   ].forEach(({numHexes, text, buttonToPress}) => {

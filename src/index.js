@@ -18,6 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+// TODO alphabetize
 export AbstractSeries from 'plot/series/abstract-series';
 export LineSeries from 'plot/series/line-series';
 export LineSeriesCanvas from 'plot/series/line-series-canvas';
@@ -52,6 +53,7 @@ export DecorativeAxis from 'plot/axis/decorative-axis';
 export XAxis from 'plot/axis/x-axis';
 export YAxis from 'plot/axis/y-axis';
 export CircularGridLines from 'plot/circular-grid-lines';
+export ChartLabel from 'plot/chart-label';
 export GridLines from 'plot/grid-lines';
 export GradientDefs from 'plot/gradient-defs';
 export VerticalGridLines from 'plot/vertical-grid-lines';
@@ -59,11 +61,13 @@ export HorizontalGridLines from 'plot/horizontal-grid-lines';
 export Voronoi from 'plot/voronoi';
 export Highlight from 'plot/highlight';
 
+// TODO alphabetize
 export DiscreteColorLegend from 'legends/discrete-color-legend';
 export SearchableDiscreteColorLegend from 'legends/searchable-discrete-color-legend';
 export ContinuousColorLegend from 'legends/continuous-color-legend';
 export ContinuousSizeLegend from 'legends/continuous-size-legend';
 
+// TODO alphabetize
 export Treemap from 'treemap';
 export RadialChart from 'radial-chart';
 export RadarChart from 'radar-chart';

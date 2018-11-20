@@ -85,9 +85,11 @@ test('LineSeries: basic rendering', t => {
 
 test('LineSeries: Showcase Example - LineChart', t => {
   const $ = mount(<LineChart />);
+  t.equal($.find('.alt-x-label').length, 1, 'should find custom x class on chart label correctly');
+  t.equal($.find('.alt-y-label').length, 1, 'should find custom y class on chart label correctly');
   t.equal(
     $.text(),
-    'TOGGLE TO CANVAS1.01.52.02.53.03.54.0X Axis2468101214Y Axis',
+    'TOGGLE TO CANVAS1.01.52.02.53.03.54.02468101214X AxisY Axis',
     'should find the right text content'
   );
   t.equal(
