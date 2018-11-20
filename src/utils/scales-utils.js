@@ -171,7 +171,7 @@ function addInvertFunctionToOrdinalScaleObject(scale) {
     if (value < start + scale.padding() * scale.step()) domainIndex = 0;
     else if (value > stop - scale.padding() * scale.step()) domainIndex = n - 1;
     else domainIndex = Math.floor((value - start - scale.padding() * scale.step()) / scale.step());
-    
+
     return scale.domain()[domainIndex];
   }
 }
@@ -205,7 +205,7 @@ export function getScaleFnFromScaleObject(scaleObject) {
     .range(range);
   if (type === ORDINAL_SCALE_TYPE) {
     scale.padding(0.5);
-	addInvertFunctionToOrdinalScaleObject(scale);
+	  addInvertFunctionToOrdinalScaleObject(scale);
   }
   return scale;
 }
