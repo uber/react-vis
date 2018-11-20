@@ -186,14 +186,14 @@ function _getSmallestDistanceIndex(values, scaleObject) {
 function addInvertFunctionToOrdinalScaleObject(scale) {
   if (scale.invert) return;
 
-  scale.invert = function (_) {
-    var domainIndex,
-        n = scale.domain().length,
-        reverse = scale.range()[1] < scale.range()[0],
-        start = scale.range()[reverse - 0],
-        stop = scale.range()[1 - reverse];
+  scale.invert = function invert(value) {
+    var domainIndex = 0;
+    var n = scale.domain().length;
+    var reverse = scale.range()[1] < scale.range()[0];
+    var start = scale.range()[reverse - 0];
+    var stop = scale.range()[1 - reverse];
 
-    if (_ < start + scale.padding() * scale.step()) domainIndex = 0;else if (_ > stop - scale.padding() * scale.step()) domainIndex = n - 1;else domainIndex = Math.floor((_ - start - scale.padding() * scale.step()) / scale.step());
+    if (value < start + scale.padding() * scale.step()) domainIndex = 0;else if (value > stop - scale.padding() * scale.step()) domainIndex = n - 1;else domainIndex = Math.floor((value - start - scale.padding() * scale.step()) / scale.step());
 
     return scale.domain()[domainIndex];
   };

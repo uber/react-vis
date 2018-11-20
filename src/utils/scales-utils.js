@@ -161,16 +161,16 @@ export function _getSmallestDistanceIndex(values, scaleObject) {
 function addInvertFunctionToOrdinalScaleObject(scale) {
   if (scale.invert) return;
 
-  scale.invert = function(_) {
-    var domainIndex,
-        n = scale.domain().length,
-        reverse = scale.range()[1] < scale.range()[0],
-        start = scale.range()[reverse - 0],
-        stop = scale.range()[1 - reverse];
+  scale.invert = function invert(value) {
+    let domainIndex = 0;
+    const n = scale.domain().length;
+    const reverse = scale.range()[1] < scale.range()[0];
+    const start = scale.range()[reverse - 0];
+    const stop = scale.range()[1 - reverse];
     
-    if (_ < start + scale.padding() * scale.step()) domainIndex = 0;
-    else if (_ > stop - scale.padding() * scale.step()) domainIndex = n - 1;
-    else domainIndex = Math.floor((_ - start - scale.padding() * scale.step()) / scale.step());
+    if (value < start + scale.padding() * scale.step()) domainIndex = 0;
+    else if (value > stop - scale.padding() * scale.step()) domainIndex = n - 1;
+    else domainIndex = Math.floor((value - start - scale.padding() * scale.step()) / scale.step());
     
     return scale.domain()[domainIndex];
   }
