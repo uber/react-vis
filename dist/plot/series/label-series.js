@@ -57,7 +57,7 @@ var predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--label';
 var getTextAnchor = function getTextAnchor(labelAnchorX, leftOfMiddle) {
   return labelAnchorX ? labelAnchorX : leftOfMiddle ? 'start' : 'end';
 };
-var getAlignmentBaseline = function getAlignmentBaseline(labelAnchorY, aboveMiddle) {
+var getDominantBaseline = function getDominantBaseline(labelAnchorY, aboveMiddle) {
   return labelAnchorY ? labelAnchorY : aboveMiddle ? 'text-before-edge' : 'text-after-edge';
 };
 
@@ -132,7 +132,7 @@ var LabelSeries = function (_AbstractSeries) {
           var hasRotationValueSet = d.rotation === 0 || d.rotation;
           var labelRotation = hasRotationValueSet ? d.rotation : rotation;
           var attrs = _extends({
-            alignmentBaseline: getAlignmentBaseline(labelAnchorY, aboveMiddle),
+            dominantBaseline: getDominantBaseline(labelAnchorY, aboveMiddle),
             className: 'rv-xy-plot__series--label-text',
             key: i,
             onClick: function onClick(e) {

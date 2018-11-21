@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ScaleUtils = exports.AxisUtils = exports.FlexibleHeightXYPlot = exports.FlexibleWidthXYPlot = exports.FlexibleXYPlot = exports.makeWidthFlexible = exports.makeVisFlexible = exports.makeHeightFlexible = exports.Sunburst = exports.Sankey = exports.ParallelCoordinates = exports.RadarChart = exports.RadialChart = exports.Treemap = exports.ContinuousSizeLegend = exports.ContinuousColorLegend = exports.SearchableDiscreteColorLegend = exports.DiscreteColorLegend = exports.Highlight = exports.Voronoi = exports.HorizontalGridLines = exports.VerticalGridLines = exports.GradientDefs = exports.GridLines = exports.CircularGridLines = exports.YAxis = exports.XAxis = exports.DecorativeAxis = exports.XYPlot = exports.Crosshair = exports.Borders = exports.Hint = exports.LineMarkSeriesCanvas = exports.LineMarkSeries = exports.ArcSeries = exports.AreaSeries = exports.CustomSVGSeries = exports.ContourSeries = exports.HexbinSeries = exports.HeatmapSeries = exports.WhiskerSeries = exports.MarkSeriesCanvas = exports.MarkSeries = exports.RectSeriesCanvas = exports.RectSeries = exports.PolygonSeries = exports.LabelSeries = exports.HorizontalRectSeriesCanvas = exports.HorizontalRectSeries = exports.VerticalRectSeriesCanvas = exports.VerticalRectSeries = exports.VerticalBarSeriesCanvas = exports.VerticalBarSeries = exports.HorizontalBarSeriesCanvas = exports.HorizontalBarSeries = exports.LineSeriesCanvas = exports.LineSeries = exports.AbstractSeries = undefined;
+exports.ScaleUtils = exports.AxisUtils = exports.FlexibleHeightXYPlot = exports.FlexibleWidthXYPlot = exports.FlexibleXYPlot = exports.makeWidthFlexible = exports.makeVisFlexible = exports.makeHeightFlexible = exports.Sunburst = exports.Sankey = exports.ParallelCoordinates = exports.RadarChart = exports.RadialChart = exports.Treemap = exports.ContinuousSizeLegend = exports.ContinuousColorLegend = exports.SearchableDiscreteColorLegend = exports.DiscreteColorLegend = exports.Highlight = exports.Voronoi = exports.HorizontalGridLines = exports.VerticalGridLines = exports.GradientDefs = exports.GridLines = exports.ChartLabel = exports.CircularGridLines = exports.YAxis = exports.XAxis = exports.DecorativeAxis = exports.XYPlot = exports.Crosshair = exports.Borders = exports.Hint = exports.LineMarkSeriesCanvas = exports.LineMarkSeries = exports.ArcSeries = exports.AreaSeries = exports.CustomSVGSeries = exports.ContourSeries = exports.HexbinSeries = exports.HeatmapSeries = exports.WhiskerSeries = exports.MarkSeriesCanvas = exports.MarkSeries = exports.RectSeriesCanvas = exports.RectSeries = exports.PolygonSeries = exports.LabelSeries = exports.HorizontalRectSeriesCanvas = exports.HorizontalRectSeries = exports.VerticalRectSeriesCanvas = exports.VerticalRectSeries = exports.VerticalBarSeriesCanvas = exports.VerticalBarSeries = exports.HorizontalBarSeriesCanvas = exports.HorizontalBarSeries = exports.LineSeriesCanvas = exports.LineSeries = exports.AbstractSeries = undefined;
 
 var _makeVisFlexible = require('./make-vis-flexible');
 
@@ -180,6 +180,10 @@ var _circularGridLines = require('./plot/circular-grid-lines');
 
 var _circularGridLines2 = _interopRequireDefault(_circularGridLines);
 
+var _chartLabel = require('./plot/chart-label');
+
+var _chartLabel2 = _interopRequireDefault(_chartLabel);
+
 var _gridLines = require('./plot/grid-lines');
 
 var _gridLines2 = _interopRequireDefault(_gridLines);
@@ -274,6 +278,8 @@ exports.AbstractSeries = _abstractSeries2.default; // Copyright (c) 2016 - 2017 
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+// TODO alphabetize
+
 exports.LineSeries = _lineSeries2.default;
 exports.LineSeriesCanvas = _lineSeriesCanvas2.default;
 exports.HorizontalBarSeries = _horizontalBarSeries2.default;
@@ -307,16 +313,23 @@ exports.DecorativeAxis = _decorativeAxis2.default;
 exports.XAxis = _xAxis2.default;
 exports.YAxis = _yAxis2.default;
 exports.CircularGridLines = _circularGridLines2.default;
+exports.ChartLabel = _chartLabel2.default;
 exports.GridLines = _gridLines2.default;
 exports.GradientDefs = _gradientDefs2.default;
 exports.VerticalGridLines = _verticalGridLines2.default;
 exports.HorizontalGridLines = _horizontalGridLines2.default;
 exports.Voronoi = _voronoi2.default;
 exports.Highlight = _highlight2.default;
+
+// TODO alphabetize
+
 exports.DiscreteColorLegend = _discreteColorLegend2.default;
 exports.SearchableDiscreteColorLegend = _searchableDiscreteColorLegend2.default;
 exports.ContinuousColorLegend = _continuousColorLegend2.default;
 exports.ContinuousSizeLegend = _continuousSizeLegend2.default;
+
+// TODO alphabetize
+
 exports.Treemap = _treemap2.default;
 exports.RadialChart = _radialChart2.default;
 exports.RadarChart = _radarChart2.default;
