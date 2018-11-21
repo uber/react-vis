@@ -162,17 +162,20 @@ function addInvertFunctionToOrdinalScaleObject(scale) {
   if (scale.invert) return;
 
   scale.invert = function invert(value) {
-    let domainIndex = 0;
-    const n = scale.domain().length;
     const reverse = scale.range()[1] < scale.range()[0];
     const start = scale.range()[reverse - 0];
     const stop = scale.range()[1 - reverse];
     
-    if (value < start + scale.padding() * scale.step()) domainIndex = 0;
-    else if (value > stop - scale.padding() * scale.step()) domainIndex = n - 1;
-    else domainIndex = Math.floor((value - start - scale.padding() * scale.step()) / scale.step());
+    if (value < start + scale.padding() * scale.step()) {
+      return scale.domain()[0];
+    } 
+    
+    if (value > stop - scale.padding() * scale.step()) { 
+      return scale.domain()[scale.domain().length - 1];
+    }
 
-    return scale.domain()[domainIndex];
+    const index = Math.floor((value - start - scale.padding() * scale.step()) / scale.step());
+    return scale.domain()[index];
   }
 }
 
