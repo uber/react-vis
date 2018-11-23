@@ -249,6 +249,18 @@ test('Trigger all onParentMouse handlers on Series components', t => {
   t.end();
 });
 
+test('XYPlot - show useful error message if children cannot be rendered', t => {
+  const MistakenImport = undefined;
+  t.throws(() => {
+    mount(
+      <XYPlot width={300} height={300} getX={d => d[0]} getY={d => d[1]}>
+        <MistakenImport />
+      </XYPlot>
+    );
+  }, /is not a React component/);
+  t.end();
+});
+
 test('XYPlot dontCheckIfEmpty - Showcase example EmptyChart', t => {
   const $ = mount(<EmptyChart />);
   t.equal($.find('.rv-xy-plot__series').length, 0, 'should find no series');

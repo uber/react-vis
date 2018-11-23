@@ -29,6 +29,10 @@ import {DISCRETE_COLOR_RANGE, DEFAULT_OPACITY} from 'theme';
  * @returns {boolean} True if the child is series, false otherwise.
  */
 export function isSeriesChild(child) {
+  if (!child.type) {
+    throw new Error(`${child.toString()} is not a React component`);
+  }
+
   const {prototype} = child.type;
   return prototype instanceof AbstractSeries;
 }

@@ -45,6 +45,8 @@ test('series-utils #isSeriesChild', t => {
     top={0}
     left={0} />;
   t.notOk(isSeriesChild(axis), 'Should return false for non-series');
+  t.notOk(isSeriesChild(<div />), 'Should return false for non-react-vis components');
+  t.throws(() => isSeriesChild({}), /is not a React component/, 'Should throw for non-React components');
   t.end();
 });
 
