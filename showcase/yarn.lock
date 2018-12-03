@@ -722,11 +722,6 @@ cssesc@^0.1.0:
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-0.1.0.tgz#c814903e45623371a0477b40109aaafbeeaddbb4"
   integrity sha1-yBSQPkViM3GgR3tAEJqq++6t27Q=
 
-cssloader@0:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/cssloader/-/cssloader-0.0.1.tgz#f51ec290a9879741fea322a84cbe5057bd2f2bf4"
-  integrity sha1-9R7CkKmHl0H+oyKoTL5QV70vK/Q=
-
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
