@@ -20,7 +20,7 @@
 
 import test from 'tape';
 
-import {getUniquePropertyValues, addValueToArray} from 'utils/data-utils';
+import {getUniquePropertyValues, addValueToArray, transformValueToString} from 'utils/data-utils';
 
 const arr = [{a: 1}, {b: 3, a: 2}, {a: 2}];
 
@@ -50,5 +50,13 @@ test('data-utils #addValueToArray', t => {
     [-1, 10],
     'Should add the value if the value is smaller'
   );
+  t.end();
+});
+
+test('data-utils #transformValueToString', t => {
+  t.deepEqual(transformValueToString(0), 0,
+    'Shouldn\'t transform the number value');
+  t.deepEqual(transformValueToString(new Date(0)), 'Thu Jan 01 1970',
+    'Should transform the date to string value');
   t.end();
 });

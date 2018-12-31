@@ -22,6 +22,8 @@ import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 
+import {transformValueToString} from 'utils/data-utils';
+
 import {getAttributeFunctor} from 'utils/scales-utils';
 
 /*
@@ -70,7 +72,7 @@ const ORIENTATION = {
  */
 function defaultFormat(value) {
   return Object.keys(value).map(function getProp(key) {
-    return {title: key, value: value[key]};
+    return {title: key, value: transformValueToString(value[key])};
   });
 }
 

@@ -22,6 +22,8 @@ import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 
+import {transformValueToString} from 'utils/data-utils';
+
 import {getAttributeFunctor} from 'utils/scales-utils';
 
 /**
@@ -34,7 +36,7 @@ function defaultTitleFormat(values) {
   if (value) {
     return {
       title: 'x',
-      value: value.x
+      value: transformValueToString(value.x)
     };
   }
 }
