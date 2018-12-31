@@ -87,7 +87,7 @@ export default class LabeledHeatmap extends Component {
         labelAnchorY="baseline"
         getLabel={d => `${d.color}`}
         />
-      {value && <Hint value={value} />}
+      {value !== false && <Hint value={value} />}
       </XYPlot>
     );
   }

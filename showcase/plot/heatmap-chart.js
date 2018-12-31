@@ -52,7 +52,7 @@ export default class HeatmapChart extends Component {
             {x: 3, y: 15, color: 12}
           ]}
         />
-        {value && <Hint value={value} />}
+        {value !== false && <Hint value={value} />}
       </XYPlot>
     );
   }
