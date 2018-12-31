@@ -35,6 +35,11 @@ const DATA = [
   [{x: 1, y: 20}, {x: 2, y: 5}, {x: 3, y: 15}]
 ];
 
+const DATE_DATA = [
+  [{x: new Date(1), y: 10}, {x: new Date(2), y: 7}, {x: new Date(3), y: 15}],
+  [{x: new Date(1), y: 20}, {x: new Date(2), y: 5}, {x: new Date(3), y: 15}]
+];
+
 export default class DynamicCrosshair extends React.Component {
   constructor(props) {
     super(props);
@@ -65,14 +70,16 @@ export default class DynamicCrosshair extends React.Component {
   }
 
   render() {
+    const withDate = this.props.withDate
+    const xType = withDate ? 'time' : undefined
     return (
-      <XYPlot onMouseLeave={this._onMouseLeave} width={300} height={300}>
+      <XYPlot onMouseLeave={this._onMouseLeave} width={300} height={300} xType={xType}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis />
         <YAxis />
-        <LineSeries onNearestX={this._onNearestX} data={DATA[0]} />
-        <LineSeries data={DATA[1]} />
+        <LineSeries onNearestX={this._onNearestX} data={withDate ? DATE_DATA[0] : DATA[0]} />
+        <LineSeries data={withDate ? DATE_DATA[1] : DATA[1]} />
         <Crosshair
           values={this.state.crosshairValues}
           className={'test-class-name'}
