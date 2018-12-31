@@ -40,9 +40,9 @@ test('LineSeriesCanvas: on onNearestXY should be called and retur ncorrect value
         <LineSeriesCanvas
           color="#12939a"
           data={[{x: -50, y: -50}, {x: v, y: v * v}, {x: 60, y: 60}]}
-          onNearestXY={(value, {event}) =>
+          onNearestXY={(value, {event}) => {
             t.deepEqual({ x: v, y: v * v } , value, `onNearestXY called for series # ${v} and returns the correct values for x=${v} and y=${v*v}`)
-          }
+          }}
         />
       ))}
     </XYPlot>
