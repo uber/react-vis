@@ -140,8 +140,8 @@ class CustomSVGSeries extends AbstractSeries {
     const y = this._getAttributeFunctor('y');
     const contents = data.map((seriesComponent, index) => {
       const positionInPixels = {
-        x: x({x: seriesComponent.x}),
-        y: y({y: seriesComponent.y})
+        x: x(seriesComponent),
+        y: y(seriesComponent)
       };
       const innerComponent = getInnerComponent({
         customComponent: seriesComponent,
