@@ -127,11 +127,11 @@ LineMark series is a composite series, and as such, it's possible to separate st
   style={{
   	// affect both the line and the mark part
   	stroke: "red",
-  	.line: {
+  	line: {
   	  // affects just the line series
   	  strokeWidth: 2
   	},
-  	.mark: {
+  	mark: {
   	  // affects just the mark series
   	  strokeWidth: 4
   	}
