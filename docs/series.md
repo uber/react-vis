@@ -131,7 +131,7 @@ LineMark series is a composite series, and as such, it's possible to separate st
   	  // affects just the line series
   	  strokeWidth: 2
   	},
-  	.mark {
+  	.mark: {
   	  // affects just the mark series
   	  strokeWidth: 4
   	}
