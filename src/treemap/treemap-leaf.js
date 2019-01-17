@@ -43,6 +43,7 @@ function TreemapLeaf(props) {
   const {
     animation,
     getLabel,
+    getContent,
     mode,
     node,
     onLeafClick,
@@ -92,7 +93,8 @@ function TreemapLeaf(props) {
       onClick={event => onLeafClick(node, event)}
       style={leafStyle}
     >
-      <div className="rv-treemap__leaf__content">{title}</div>
+      { title && <div className="rv-treemap__leaf__content">{ title }</div> }
+      { getContent(node) }
     </div>
   );
 }
@@ -105,6 +107,7 @@ TreemapLeaf.propTypes = {
   onLeafClick: PropTypes.func,
   onLeafMouseOver: PropTypes.func,
   onLeafMouseOut: PropTypes.func,
+  getContent: PropTypes.func,
   scales: PropTypes.object.isRequired,
   width: PropTypes.number.isRequired,
   r: PropTypes.number.isRequired,
