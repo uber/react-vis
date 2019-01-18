@@ -26,6 +26,7 @@ import D3FlareData from '../datasets/d3-flare-example.json';
 import ShowcaseButton from '../showcase-components/showcase-button';
 
 const MODE = [
+  'binary',
   'circlePack',
   'partition',
   'partition-pivot',
@@ -33,8 +34,7 @@ const MODE = [
   'resquarify',
   'slice',
   'dice',
-  'slicedice',
-  'binary'
+  'slicedice'
 ];
 
 const STYLES = {
@@ -51,7 +51,9 @@ const STYLES = {
 export default class SimpleTreemapExample extends React.Component {
   state = {
     modeIndex: 0,
-    useSVG: true
+    useSVG: false,
+    data: D3FlareData,
+    isZoomed: false,
   };
 
   updateModeIndex = increment => () => {
@@ -60,6 +62,74 @@ export default class SimpleTreemapExample extends React.Component {
       newIndex < 0 ? MODE.length - 1 : newIndex >= MODE.length ? 0 : newIndex;
     this.setState({modeIndex});
   };
+
+  subTree(current) {
+    console.log(current, current.depth)
+    // if (current.depth === 0) return
+
+    function deleteSubChild(d) {
+      if (!d.children) return;
+      const items = d.children.map(ch => {
+        const summOfChild = (childs, deep = 0) => childs.reduce((a, c) => {
+          return a + (c.children ? summOfChild(c.children, deep + 1) : c.value);
+        }, 0);
+        if (ch.children) ch.value = summOfChild(ch.children);
+        // ch.children = undefined;
+        return ch
+      })
+      return items
+    }
+
+    const titleHeight = 24;
+    const newData = {children: current.data.children};
+    const gap = 4;
+
+    return <div style={{margin: `${gap}px`, boxShadow: '0px 1px 12px 1px rgba(0, 0, 0, 0.4)'}}>
+      <Treemap
+      {...{
+        animation: false,
+        className: 'nested-tree-example',
+        colorType: 'literal',
+        colorRange: ['#86572C'],
+        data: newData,
+        mode: 'binary',
+        renderMode: 'DOM',
+        height: current.y1 - current.y0 - titleHeight - (gap * 2),
+        width: current.x1 - current.x0 - (gap * 2),
+        padding: 0,
+        getSize: d => d.value,
+        getColor: d => d.hex,
+        style: {border: 'thin solid #ddd'} ,
+        getLabel: x => x.name,
+        getChildren: deleteSubChild,
+        margin: 0
+      }}
+    />
+      </div>
+  }
+
+  getChildren(d) {
+    // console.log(d)
+    if (!d.name) return d.children;
+
+    const summOfChild = (childs, deep = 0) => childs.reduce((a, c) => {
+      return a + (c.children ? summOfChild(c.children, deep + 1) : c.value);
+    }, 0);
+
+    if (d.children) d.value = summOfChild(d.children);
+    return;
+  }
+
+  goDeeper(leafNode, domEvent) {
+    this.setState(state => ({data: state.isZoomed ? D3FlareData : leafNode.data, isZoomed: !state.isZoomed}))
+    domEvent.target.dataset.zoom = !domEvent.target.dataset.zoom;
+    // console.log('We need to go deeper', leafNode.data, leafNode.data.value);
+
+  }
+
+  getLabel(d) {
+    return <div><span data-zoom style={{cursor: 'pointer'}}>[+] </span>{d.name}</div>;
+  }
 
   render() {
     const {modeIndex, useSVG} = this.state;
@@ -85,19 +155,25 @@ export default class SimpleTreemapExample extends React.Component {
         </div>
         <Treemap
           {...{
-            animation: true,
+            animation: false,
             className: 'nested-tree-example',
             colorType: 'literal',
             colorRange: ['#88572C'],
-            data: D3FlareData,
+            data: this.state.data,
             mode: MODE[modeIndex],
             renderMode: useSVG ? 'SVG' : 'DOM',
-            height: 300,
-            width: 350,
-            margin: 10,
+            height: 600,
+            width: 1000,
+            padding: 8,
             getSize: d => d.value,
             getColor: d => d.hex,
-            style: STYLES[useSVG ? 'SVG' : 'DOM']
+            style: STYLES[useSVG ? 'SVG' : 'DOM'],
+            getLabel: this.getLabel,
+            getContent: this.subTree,
+            getChildren: this.getChildren,
+            margin: 0,
+            onLeafClick: (l, e) => this.goDeeper(l, e),
+            hideRootNode: !this.state.isZoomed
           }}
         />
       </div>
