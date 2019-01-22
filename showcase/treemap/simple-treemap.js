@@ -22,8 +22,11 @@ import React from 'react';
 
 import Treemap from 'treemap';
 
-import D3FlareData from '../datasets/d3-flare-example.json';
+import D3FlareData from '../datasets/simply.json';
+// import D3FlareData from '../datasets/d3-flare-example.json';
 import ShowcaseButton from '../showcase-components/showcase-button';
+import {foldChilndrens, findBranchByOmen} from './tree-tools'
+
 
 const MODE = [
   'binary',
@@ -52,8 +55,13 @@ export default class SimpleTreemapExample extends React.Component {
   state = {
     modeIndex: 0,
     useSVG: false,
-    data: D3FlareData,
+    data: foldChilndrens(D3FlareData, {
+      children: 'children',
+      maxLevel: 2,
+      clearValues: true,
+    }),
     isZoomed: false,
+    breadcrumbs: [D3FlareData.name ]
   };
 
   updateModeIndex = increment => () => {
@@ -64,27 +72,15 @@ export default class SimpleTreemapExample extends React.Component {
   };
 
   subTree(current) {
-    console.log(current, current.depth)
-    // if (current.depth === 0) return
-
-    function deleteSubChild(d) {
-      if (!d.children) return;
-      const items = d.children.map(ch => {
-        const summOfChild = (childs, deep = 0) => childs.reduce((a, c) => {
-          return a + (c.children ? summOfChild(c.children, deep + 1) : c.value);
-        }, 0);
-        if (ch.children) ch.value = summOfChild(ch.children);
-        // ch.children = undefined;
-        return ch
-      })
-      return items
-    }
-
     const titleHeight = 24;
+    // console.log(current.data.name)
+
+    if (!current || !current.data) return <div>End</div>
+
     const newData = {children: current.data.children};
     const gap = 4;
 
-    return <div style={{margin: `${gap}px`, boxShadow: '0px 1px 12px 1px rgba(0, 0, 0, 0.4)'}}>
+    return current.data.children ? <div style={{margin: `${gap}px`, boxShadow: '0px 1px 12px 1px rgba(0, 0, 0, 0.4)'}}>
       <Treemap
       {...{
         animation: false,
@@ -99,17 +95,17 @@ export default class SimpleTreemapExample extends React.Component {
         padding: 0,
         getSize: d => d.value,
         getColor: d => d.hex,
+        getContent: d => this.subTree(d.children),
         style: {border: 'thin solid #ddd'} ,
         getLabel: x => x.name,
-        getChildren: deleteSubChild,
+        getChildren: d => d.children,
         margin: 0
       }}
     />
-      </div>
+      </div> : <div>{current.data.name}</div>
   }
 
   getChildren(d) {
-    // console.log(d)
     if (!d.name) return d.children;
 
     const summOfChild = (childs, deep = 0) => childs.reduce((a, c) => {
@@ -120,11 +116,41 @@ export default class SimpleTreemapExample extends React.Component {
     return;
   }
 
-  goDeeper(leafNode, domEvent) {
-    this.setState(state => ({data: state.isZoomed ? D3FlareData : leafNode.data, isZoomed: !state.isZoomed}))
-    domEvent.target.dataset.zoom = !domEvent.target.dataset.zoom;
-    // console.log('We need to go deeper', leafNode.data, leafNode.data.value);
+  getDataFrom(id) {
+    console.log(id)
+    const omen = {name: id};
+    const options = {
+      children: 'children',
+      maxLevel: 2,
+      clearValues: true,
+    };
 
+    const updateBreadcrumbs = (curCrumbs, newCrumb) => {
+      const curIndex = curCrumbs.indexOf(newCrumb);
+      if (curIndex === -1) return [...curCrumbs, newCrumb];
+      return curCrumbs.slice(0, curIndex + 1);
+    }
+
+    this.setState(state => {
+      const newData = foldChilndrens(id == null ? D3FlareData : findBranchByOmen(omen)(D3FlareData), options)
+      return {
+        data: newData,
+        breadcrumbs: updateBreadcrumbs(state.breadcrumbs, id)
+      };
+    });
+  }
+
+  goDeeper(leafNode, domEvent, isUpper) {
+    console.log(leafNode, domEvent)
+
+    const omen = {name: leafNode};
+
+    this.setState(state => {
+      const newData = foldChilndrens(findBranchByOmen(omen)(D3FlareData), {...options, maxLevel: 2})
+      return {data: newData, isZoomed: !state.isZoomed, breadcrumbs: [leafNode, ...state.breadcrumbs]};
+
+    })
+    domEvent.target.dataset.zoom = !domEvent.target.dataset.zoom;
   }
 
   getLabel(d) {
@@ -133,7 +159,7 @@ export default class SimpleTreemapExample extends React.Component {
 
   render() {
     const {modeIndex, useSVG} = this.state;
-
+    // console.log(JSON.stringify(this.state.data, null, 2))
     return (
       <div className="centered-and-flexed">
         <div className="centered-and-flexed-controls">
@@ -153,7 +179,8 @@ export default class SimpleTreemapExample extends React.Component {
             buttonContent={'NEXT MODE'}
           />
         </div>
-        <Treemap
+
+        {/* <Treemap
           {...{
             animation: false,
             className: 'nested-tree-example',
@@ -169,14 +196,31 @@ export default class SimpleTreemapExample extends React.Component {
             getColor: d => d.hex,
             style: STYLES[useSVG ? 'SVG' : 'DOM'],
             getLabel: this.getLabel,
-            getContent: this.subTree,
+            getContent: (d) => this.subTree(d),
             getChildren: this.getChildren,
             margin: 0,
             onLeafClick: (l, e) => this.goDeeper(l, e),
             hideRootNode: !this.state.isZoomed
           }}
-        />
+        /> */}
+        <ul>
+          { this.state.breadcrumbs.map(crumb => <li key={crumb} onClick={() => this.getDataFrom(crumb)}>{crumb}</li>)}
+        </ul>
+        <div style={{display: 'flex'}}>
+          { getContentFunc(this.state.data.children, name => this.getDataFrom(name)) }
+        </div>
       </div>
     );
   }
+}
+
+function getContentFunc(data, handler) {
+  return data && data.map(d => <Nested data={d} key={d.name} getContent={getContentFunc} onClickHandler={handler}/>)
+}
+
+function Nested({data, getContent, onClickHandler}) {
+  return <div style={{border: '1px solid gray', padding: '8px'}}>
+    <h3 onClick={() => onClickHandler(data.name)}> {data.name} </h3>
+    { getContent(data.children, () => onClickHandler(data.name)) }
+  </div>
 }
