@@ -79,3 +79,14 @@ export function foldChilndrens(tree, options, level = 0) {
   leaf.value = calcLeafWeight(omit);
   return leaf;
 }
+
+export function colorFromValue(item, s = 80, l = 50) {
+  const str = item.name;
+  const val = item.value || 1;
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  return `hsla(${hash % 360}, ${s}%, ${l}%, ${val === 1 ? 0 : 0.6})`;
+}

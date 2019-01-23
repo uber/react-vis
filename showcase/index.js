@@ -161,6 +161,7 @@ import LinkHintSankeyExample from './sankey/link-hint';
 
 import SimpleTreemap from './treemap/simple-treemap';
 import TreemapExample from './treemap/dynamic-treemap';
+import ZoomableTreemapExample from './treemap/zoomable-treemap';
 
 const mainShowCase = {
   AxisOn0,
@@ -259,6 +260,7 @@ const mainShowCase = {
 
   SimpleTreemap,
   TreemapExample,
+  ZoomableTreemapExample,
 
   AnimatedSunburst,
   BasicSunburst,

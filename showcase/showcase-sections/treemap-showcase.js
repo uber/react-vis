@@ -2,7 +2,7 @@ import React from 'react';
 
 import {showCase} from '../index';
 import {mapSection} from '../showcase-components/showcase-utils';
-const {SimpleTreemap, TreemapExample} = showCase;
+const {SimpleTreemap, TreemapExample, ZoomableTreemapExample} = showCase;
 
 const TREEMAPS = [
   {
@@ -18,6 +18,11 @@ const TREEMAPS = [
     name: 'Animated Treemap',
     component: TreemapExample,
     componentName: 'TreemapExample'
+  },
+  {
+    name: 'Zoomable Treemap',
+    component: ZoomableTreemapExample,
+    componentName: 'ZoomableTreemapExample'
   }
 ];
 

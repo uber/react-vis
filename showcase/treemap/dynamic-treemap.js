@@ -72,7 +72,7 @@ export default class DynamicTreemapExample extends React.Component {
           onClick={() => this.setState({useCirclePacking: !useCirclePacking})}
           buttonContent={'TOGGLE CIRCLE PACK'}
         />
-        {/* <Treemap {...treeProps} /> */}
+        <Treemap {...treeProps} />
         click above to the update data
         {hoveredNode && hoveredNode.value}
       </div>
