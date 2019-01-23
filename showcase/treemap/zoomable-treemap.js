@@ -20,12 +20,12 @@
 
 import React from 'react';
 import Treemap from 'treemap';
-import D3FlareData from '../datasets/rva.json';
-// import D3FlareData from '../datasets/d3-flare-example.json';
+// import D3FlareData from '../datasets/rva.json';
+import D3FlareData from '../datasets/d3-flare-example.json';
 import ShowcaseButton from '../showcase-components/showcase-button';
 import {foldChilndrens, findBranchByOmen, colorFromValue} from './tree-tools'
 
-
+const DEFAUL_ROOT_NAME = 'Root'
 const MODE = [
   'binary',
   'circlePack',
@@ -48,7 +48,7 @@ export default class ZoomableTreemapExample extends React.Component {
       clearValues: true,
     }),
     isZoomed: false,
-    breadcrumbs: [D3FlareData.name ]
+    breadcrumbs: [D3FlareData.name || DEFAUL_ROOT_NAME]
   };
 
   DEFAULTS = {
@@ -65,7 +65,7 @@ export default class ZoomableTreemapExample extends React.Component {
   };
 
   sliceTreeFrom(id) {
-    const omen = {name: id};
+    const omen = {name: id || DEFAUL_ROOT_NAME};
 
     const updateBreadcrumbs = (curCrumbs, newCrumb) => {
       const curIndex = curCrumbs.indexOf(newCrumb);
@@ -74,7 +74,7 @@ export default class ZoomableTreemapExample extends React.Component {
     }
 
     this.setState(state => {
-      const treeSlice = id === undefined ? D3FlareData : findBranchByOmen(omen)(D3FlareData);
+      const treeSlice = id === DEFAUL_ROOT_NAME ? D3FlareData : findBranchByOmen(omen)(D3FlareData);
       const newData = foldChilndrens(treeSlice, this.DEFAULTS)
       return {
         data: newData,
@@ -126,7 +126,7 @@ export default class ZoomableTreemapExample extends React.Component {
 function getContentFunc(data, handler, options, node) {
   /* Filtrate root nodes */
   if (node && node.depth === 0) return null;
-
+  if (!data.name) data.name = DEFAUL_ROOT_NAME
   /* Get label. If label not in leaf we don't wrap lines */
   const getLabel = d =>
     <div style={{
@@ -140,16 +140,12 @@ function getContentFunc(data, handler, options, node) {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         paddingRight: '4px',
-      }}>{ d.name.split('/').pop().replace(/_/g, ' ') }</div>
-      <div>[{d.rawValue}] [{d.value}]</div>
+      }}>{ d.name }</div>
+      <div> { d.value && `[${d.value}]` }</div>
     </div>;
 
   const titleHeight = 24;
   const gap = 8;
-
-  const hilightNode = (node, event) => {
-    // console.log(node)
-  }
 
   return data
     ? <div style={{
@@ -163,8 +159,6 @@ function getContentFunc(data, handler, options, node) {
           // getContent={leaf => getContentFunc(leaf.data, handler, options, leaf)}
           getLabel={getLabel}
           onLeafClick={handler}
-          onLeafMouseOver={(leaf, event) => {}}
-          onLeafMouseOut={hilightNode}
           getSize={d => d.value}
           getColor={d => d.hex}
           getChildren={d => d.children}
