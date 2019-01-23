@@ -217,7 +217,7 @@ Type: `function`
 
 Pass in a function that will be used for get size.
 
-#### getColor
+#### getColor (optional)
 
 Type: `function`
 
@@ -225,7 +225,7 @@ Type: `function`
 
 Pass in a function that will be used for get color.
 
-#### getLabel
+#### getLabel (optional)
 
 Type: `function`
 
@@ -233,7 +233,7 @@ Type: `function`
 
 Pass in a function that will be used for get label.
 
-#### getContent
+#### getContent (optional)
 
 Type: `function`
 
@@ -242,10 +242,27 @@ Type: `function`
 Pass in a function that will be used for get inner content of leaf.
 Can return a string or react component (JSX)
 
-#### getChildren
+#### getChildren (optional)
 
 Type: `function`
 
 - Should accept arguments (leaf)
 
 Pass in a function that will be used for get children
+
+#### titileHeight (optional)
+
+Type: `number`
+
+- Height of title in leafs in pixels
+
+Determines top padding for leafs names.
+
+#### paddingInner (optional)
+
+Type: `number`
+
+- Size of gap in pixels
+
+Determines gap between lefs. If not setted gap will be same as padding value.
+Set 0 for remove inner gap.

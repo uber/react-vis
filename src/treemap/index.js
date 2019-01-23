@@ -114,7 +114,7 @@ class Treemap extends React.Component {
    */
   _getNodesToRender() {
     const {innerWidth, innerHeight} = this.state;
-    const {data, mode, padding, sortFunction, getSize} = this.props;
+    const {data, mode, padding, sortFunction, getSize, titileHeight, paddingInner} = this.props;
     if (!data) {
       return [];
     }
@@ -156,7 +156,9 @@ class Treemap extends React.Component {
     const treemapingFunction = treemap(tileFn)
       .tile(tileFn)
       .size([innerWidth, innerHeight])
-      .padding(padding);
+      .padding(padding)
+      .paddingTop(titileHeight || padding)
+      .paddingInner(paddingInner === undefined ? padding : paddingInner)
     const structuredInput = hierarchy(data, this.props.getChildren)
       .sum(getSize)
       .sort((a, b) => sortFunction(a, b, getSize));
@@ -194,7 +196,9 @@ Treemap.propTypes = {
   getColor: PropTypes.func,
   getLabel: PropTypes.func,
   getContent: PropTypes.func,
-  getChildren: PropTypes.func
+  getChildren: PropTypes.func,
+  titileHeight: PropTypes.number,
+  paddingInner: PropTypes.number
 };
 
 Treemap.defaultProps = {
