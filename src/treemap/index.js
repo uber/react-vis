@@ -158,7 +158,8 @@ class Treemap extends React.Component {
       .size([innerWidth, innerHeight])
       .padding(padding)
       .paddingTop(titileHeight || padding)
-      .paddingInner(paddingInner === undefined ? padding : paddingInner)
+      .paddingInner(paddingInner === undefined ? padding : paddingInner);
+
     const structuredInput = hierarchy(data, this.props.getChildren)
       .sum(getSize)
       .sort((a, b) => sortFunction(a, b, getSize));
