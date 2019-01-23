@@ -94,7 +94,7 @@ function TreemapLeaf(props) {
       style={leafStyle}
     >
       { title && <div className="rv-treemap__leaf__content">{ title }</div> }
-      { getContent(node) }
+      { getContent && getContent(node) }
     </div>
   );
 }
