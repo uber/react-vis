@@ -20,7 +20,6 @@
 
 import React from 'react';
 import Treemap from 'treemap';
-// import D3FlareData from '../datasets/rva.json';
 import D3FlareData from '../datasets/d3-flare-example.json';
 import ShowcaseButton from '../showcase-components/showcase-button';
 import {foldChilndrens, findBranchByOmen, colorFromValue} from './tree-tools'
@@ -126,7 +125,8 @@ export default class ZoomableTreemapExample extends React.Component {
 function getContentFunc(data, handler, options, node) {
   /* Filtrate root nodes */
   if (node && node.depth === 0) return null;
-  if (!data.name) data.name = DEFAUL_ROOT_NAME
+  if (!data.name) data.name = DEFAUL_ROOT_NAME;
+
   /* Get label. If label not in leaf we don't wrap lines */
   const getLabel = d =>
     <div style={{
@@ -179,7 +179,6 @@ function getContentFunc(data, handler, options, node) {
           }}
           {...options}
         />
-      {/* <div> Tooltip </div> */}
       </div>
     : <div>{(data && data.name) || 'Unnamed'}</div>
 }
