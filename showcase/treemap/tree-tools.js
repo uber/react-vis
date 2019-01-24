@@ -51,10 +51,6 @@ export function foldChilndrens(tree, options, level = 0) {
       : chld[opt.value]
     ) + summ, 0);
 
-  // if (tree[`_${opt.children}`]) {
-  //   tree[opt.children] = tree[`_${opt.children}`];
-  // }
-
   if (
     !tree[opt.children]
     || tree[opt.children].length === 0
@@ -63,7 +59,7 @@ export function foldChilndrens(tree, options, level = 0) {
   if (level < opt.maxLevel) {
     // Delete value from tree;
     const getWithout = (data, exception) => {
-      const {[exception]: omit, ...rest} = data;
+      const {[exception]: omit, ...rest} = data; // eslint-disable-line no-unused-vars
       return rest;
     };
 
@@ -73,9 +69,7 @@ export function foldChilndrens(tree, options, level = 0) {
     }
   }
 
-  // Delete children from tree;
   const {[opt.children]: omit, ...leaf} = tree;
-  // leaf[`_${opt.children}`] = omit;
   leaf.value = calcLeafWeight(omit);
   return leaf;
 }
