@@ -49,7 +49,7 @@ export function findBranchByOmen(omen, options) {
  *
  * @returns {Object} folded tree
  */
-export function foldChilndren(tree, options, level = 0) {
+export function foldChildren(tree, options, level = 0) {
   const opt = {
     children: 'children',
     value: 'value',
@@ -79,7 +79,7 @@ export function foldChilndren(tree, options, level = 0) {
 
     return {
       ...(opt.clearValues ? getWithout(tree, opt.value) : tree),
-      [opt.children]: tree[opt.children].map(child => foldChilndren(child, options, level + 1))
+      [opt.children]: tree[opt.children].map(child => foldChildren(child, options, level + 1))
     }
   }
 

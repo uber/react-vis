@@ -22,7 +22,7 @@ import React from 'react';
 import Treemap from 'treemap';
 import D3FlareData from '../datasets/d3-flare-example.json';
 import ShowcaseButton from '../showcase-components/showcase-button';
-import {foldChilndren, findBranchByOmen, colorFromValue} from './tree-tools'
+import {foldChildren, findBranchByOmen, colorFromValue} from './tree-tools'
 
 const DEFAUL_ROOT_NAME = 'Root'
 const MODE = [
@@ -41,7 +41,7 @@ export default class ZoomableTreemapExample extends React.Component {
   state = {
     modeIndex: 0,
     useSVG: false,
-    data: foldChilndren(D3FlareData, {
+    data: foldChildren(D3FlareData, {
       children: 'children',
       maxLevel: 3,
       clearValues: true,
@@ -74,7 +74,7 @@ export default class ZoomableTreemapExample extends React.Component {
 
     this.setState(state => {
       const treeSlice = id === DEFAUL_ROOT_NAME ? D3FlareData : findBranchByOmen(omen)(D3FlareData);
-      const newData = foldChilndren(treeSlice, this.DEFAULTS)
+      const newData = foldChildren(treeSlice, this.DEFAULTS)
       return {
         data: newData,
         breadcrumbs: updateBreadcrumbs(state.breadcrumbs, id)
