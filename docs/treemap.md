@@ -256,7 +256,7 @@ Type: `number`
 
 - Height of title in leafs in pixels
 
-Determines top padding for leafs names.
+Determines top padding for leaf names.
 
 #### paddingInner (optional)
 
