@@ -239,7 +239,7 @@ Type: `function`
 
 - Should accept arguments (leaf)
 
-Pass in a function that will be used for get inner content of leaf.
+Pass in a function that will be used to get inner content of leaf.
 Can return a string or react component (JSX)
 
 #### getChildren (optional)
