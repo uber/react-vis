@@ -84,8 +84,13 @@ export default class ZoomableTreemapExample extends React.Component {
 
   getContentFunc(data, handler, options, node) {
     /* Filtrate root nodes */
-    if (node && node.depth === 0) return null;
-    if (!data.name) data.name = DEFAUL_ROOT_NAME;
+    if (node && node.depth === 0) {
+      return null;
+    }
+
+    if (!data.name) {
+      data.name = DEFAUL_ROOT_NAME;
+    }
 
     /* Get label. If label not in leaf we don't wrap lines */
     const getLabel = d =>
