@@ -254,7 +254,7 @@ Pass in a function that will be used for get children
 
 Type: `number`
 
-- Height of title in leafs in pixels
+- Height of title in leaves in pixels
 
 Determines top padding for leaf names.
 

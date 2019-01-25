@@ -36,7 +36,7 @@ export function findBranchByOmen(omen, options) {
 }
 
 /**
- * Fold children, and recalculate weights on leafs.
+ * Fold children, and recalculate weights on leaves.
  * Used to create tree slice of the required depth
  * @author Akiyamka <akiyamka@gmail.com>
  *
@@ -45,7 +45,7 @@ export function findBranchByOmen(omen, options) {
  * @param {String} options.children - the field where to take children
  * @param {String} options.value - the field where the values will be written
  * @param {String} options.maxLevel - the maximum depth of leaf
- * @param {String} options.clearValues [false] - if true - values saved only on leafs
+ * @param {String} options.clearValues [false] - if true - values saved only on leaves
  *
  * @returns {Object} folded tree
  */
