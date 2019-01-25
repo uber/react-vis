@@ -250,7 +250,7 @@ Type: `function`
 
 Pass in a function that will be used for get children
 
-#### titileHeight (optional)
+#### titleHeight (optional)
 
 Type: `number`
 

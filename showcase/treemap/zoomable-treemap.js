@@ -22,7 +22,7 @@ import React from 'react';
 import Treemap from 'treemap';
 import D3FlareData from '../datasets/d3-flare-example.json';
 import ShowcaseButton from '../showcase-components/showcase-button';
-import {foldChilndrens, findBranchByOmen, colorFromValue} from './tree-tools'
+import {foldChilndren, findBranchByOmen, colorFromValue} from './tree-tools'
 
 const DEFAUL_ROOT_NAME = 'Root'
 const MODE = [
@@ -41,7 +41,7 @@ export default class ZoomableTreemapExample extends React.Component {
   state = {
     modeIndex: 0,
     useSVG: false,
-    data: foldChilndrens(D3FlareData, {
+    data: foldChilndren(D3FlareData, {
       children: 'children',
       maxLevel: 3,
       clearValues: true,
@@ -74,7 +74,7 @@ export default class ZoomableTreemapExample extends React.Component {
 
     this.setState(state => {
       const treeSlice = id === DEFAUL_ROOT_NAME ? D3FlareData : findBranchByOmen(omen)(D3FlareData);
-      const newData = foldChilndrens(treeSlice, this.DEFAULTS)
+      const newData = foldChilndren(treeSlice, this.DEFAULTS)
       return {
         data: newData,
         breadcrumbs: updateBreadcrumbs(state.breadcrumbs, id)
@@ -130,7 +130,7 @@ export default class ZoomableTreemapExample extends React.Component {
             getChildren={d => d.children}
             height={600 || node.y1 - node.y0 - titleHeight - (gap * 2)}
             width={1000 || node.x1 - node.x0 - (gap * 2)}
-            titileHeight={titleHeight}
+            titleHeight={titleHeight}
             paddingInner={0}
             animation={false}
             className='nested-tree-example'
