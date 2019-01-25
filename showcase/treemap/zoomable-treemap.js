@@ -1,4 +1,4 @@
-// Copyright (c) 2016 - 2017 Uber Technologies, Inc.
+// Copyright (c) 2016 - 2019 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -82,6 +82,68 @@ export default class ZoomableTreemapExample extends React.Component {
     });
   }
 
+  getContentFunc(data, handler, options, node) {
+    /* Filtrate root nodes */
+    if (node && node.depth === 0) return null;
+    if (!data.name) data.name = DEFAUL_ROOT_NAME;
+
+    /* Get label. If label not in leaf we don't wrap lines */
+    const getLabel = d =>
+      <div style={{
+        cursor: 'pointer',
+        paddingLeft: '2px',
+        display: 'flex',
+        whiteSpace: `${d.children ? 'no' : ''}wrap`,
+        flexFlow: `row ${d.children ? 'no' : ''}wrap`
+      }}>
+        <div style={{
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          paddingRight: '4px',
+        }}>{ d.name }</div>
+        <div> { d.value && `[${d.value}]` }</div>
+      </div>;
+
+    const titleHeight = 24;
+    const gap = 8;
+
+    return data
+      ? <div style={{
+        background: 'rgb(100, 100, 100)'
+      }}>
+          <style dangerouslySetInnerHTML={{__html: `
+            .rv-treemap__leaf:hover { background: rgba(255, 255, 255, 0.2) !important }
+            .rv-treemap__leaf__content { padding: 4px; }
+          `}} />
+          <Treemap
+            data={data}
+            // getContent={leaf => getContentFunc(leaf.data, handler, options, leaf)}
+            getLabel={getLabel}
+            onLeafClick={handler}
+            getSize={d => d.value}
+            getColor={d => d.hex}
+            getChildren={d => d.children}
+            height={600 || node.y1 - node.y0 - titleHeight - (gap * 2)}
+            width={1000 || node.x1 - node.x0 - (gap * 2)}
+            titileHeight={titleHeight}
+            paddingInner={0}
+            animation={false}
+            className='nested-tree-example'
+            colorType='literal'
+            colorRange={['#12939a8f']}
+            padding={gap}
+            margin={0}
+            getColor={colorFromValue}
+            renderMode='DOM'
+            style={{
+              border: 'thin solid #ddd'
+            }}
+            {...options}
+          />
+        </div>
+      : <div>{(data && data.name) || 'Unnamed'}</div>
+  }
+
   render() {
     const {modeIndex} = this.state;
     const options = {
@@ -115,71 +177,9 @@ export default class ZoomableTreemapExample extends React.Component {
               ))
             }
           </div>
-          { getContentFunc(this.state.data, leaf => this.sliceTreeFrom(leaf.data.name), options) }
+          { this.getContentFunc(this.state.data, leaf => this.sliceTreeFrom(leaf.data.name), options) }
         </div>
       </div>
     );
   }
-}
-
-function getContentFunc(data, handler, options, node) {
-  /* Filtrate root nodes */
-  if (node && node.depth === 0) return null;
-  if (!data.name) data.name = DEFAUL_ROOT_NAME;
-
-  /* Get label. If label not in leaf we don't wrap lines */
-  const getLabel = d =>
-    <div style={{
-      cursor: 'pointer',
-      paddingLeft: '2px',
-      display: 'flex',
-      whiteSpace: `${d.children ? 'no' : ''}wrap`,
-      flexFlow: `row ${d.children ? 'no' : ''}wrap`
-    }}>
-      <div style={{
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        paddingRight: '4px',
-      }}>{ d.name }</div>
-      <div> { d.value && `[${d.value}]` }</div>
-    </div>;
-
-  const titleHeight = 24;
-  const gap = 8;
-
-  return data
-    ? <div style={{
-      background: 'rgb(100, 100, 100)'
-    }}>
-        <style dangerouslySetInnerHTML={{__html: `
-          .rv-treemap__leaf:hover { background: rgba(255, 255, 255, 0.2) !important }
-          .rv-treemap__leaf__content { padding: 4px; }
-        `}} />
-        <Treemap
-          data={data}
-          // getContent={leaf => getContentFunc(leaf.data, handler, options, leaf)}
-          getLabel={getLabel}
-          onLeafClick={handler}
-          getSize={d => d.value}
-          getColor={d => d.hex}
-          getChildren={d => d.children}
-          height={600 || node.y1 - node.y0 - titleHeight - (gap * 2)}
-          width={1000 || node.x1 - node.x0 - (gap * 2)}
-          titileHeight={titleHeight}
-          paddingInner={0}
-          animation={false}
-          className='nested-tree-example'
-          colorType='literal'
-          colorRange={['#12939a8f']}
-          padding={gap}
-          margin={0}
-          getColor={colorFromValue}
-          renderMode='DOM'
-          style={{
-            border: 'thin solid #ddd'
-          }}
-          {...options}
-        />
-      </div>
-    : <div>{(data && data.name) || 'Unnamed'}</div>
 }
