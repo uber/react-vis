@@ -66,8 +66,8 @@ export function foldChilndren(tree, options, level = 0) {
     ) + summ,
   0);
 
-  const isNotHaveChildren = !tree[opt.children] || tree[opt.children].length === 0;
-  if (isNotHaveChildren) {
+  const hasChildren = tree[opt.children] && tree[opt.children].length > 0;
+  if (hasChildren) {
     return tree
   };
 
