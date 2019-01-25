@@ -71,6 +71,7 @@ export ContinuousSizeLegend from 'legends/continuous-size-legend';
 export Treemap from 'treemap';
 export RadialChart from 'radial-chart';
 export RadarChart from 'radar-chart';
+export RadarChartStraightGridLines from 'radar-chart/radar-chart-straight-grid-lines';
 export ParallelCoordinates from 'parallel-coordinates';
 export Sankey from 'sankey';
 export Sunburst from 'sunburst';

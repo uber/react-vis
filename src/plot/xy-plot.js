@@ -545,11 +545,13 @@ class XYPlot extends React.Component {
       );
     }
     const components = this._getClonedChildComponents();
+    const xyPlotStyle = style ? style.XYPlot : {};
     return (
       <div
         style={{
           width: `${width}px`,
-          height: `${height}px`
+          height: `${height}px`,
+          ...xyPlotStyle
         }}
         className={`rv-xy-plot ${className}`}
       >
