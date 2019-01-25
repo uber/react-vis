@@ -7,7 +7,7 @@
  * @param {Boolean} options.returnChild - return whole branch or not
  * if true return branch started from found child,
  * @returns {Object} if options.returnChild true - return branch started from found child,
- * else - return whole branch where child founded
+ * else - return whole branch where child founded.
  */
 export function findBranchByOmen(omen, options) {
   const [[omenProp, omenValue]] = Object.entries(omen);
@@ -18,8 +18,15 @@ export function findBranchByOmen(omen, options) {
   };
 
   function _findBranch(tree) {
-    if (omenValue === tree[omenProp]) return tree;
-    if (!tree[opt.children]) return false;
+    if (omenValue === tree[omenProp]) {
+      return tree;
+    }
+
+    /* Needed for recursive reduce and find */
+    if (!tree[opt.children]) {
+      return false;
+    };
+
     return opt.returnChild
       ? tree[opt.children].reduce((result, branch) => _findBranch(branch) || result, false)
       : tree[opt.children].find(branch => _findBranch(branch));
