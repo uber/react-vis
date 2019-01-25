@@ -58,11 +58,11 @@ export function foldChilndren(tree, options, level = 0) {
     ...options
   };
 
-  const calcLeafWeight = childrn => childrn.reduce(
-    (summ, chld) => (
-      chld[opt.children]
-      ? calcLeafWeight(chld[opt.children])
-      : chld[opt.value]
+  const calcLeafWeight = chld => chld.reduce(
+    (summ, c) => (
+      c[opt.children]
+      ? calcLeafWeight(c[opt.children])
+      : c[opt.value]
     ) + summ,
   0);
 
