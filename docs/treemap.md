@@ -231,7 +231,7 @@ Type: `function`
 
 - Should accept arguments (leaf)
 
-Pass in a function that will be used for get label.
+Pass in a function that will be used to get label.
 
 #### getContent (optional)
 
