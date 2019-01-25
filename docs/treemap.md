@@ -223,7 +223,7 @@ Type: `function`
 
 - Should accept arguments (leaf)
 
-Pass in a function that will be used for get color.
+Pass in a function that will be used to get color.
 
 #### getLabel (optional)
 
