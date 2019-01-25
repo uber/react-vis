@@ -265,4 +265,4 @@ Type: `number`
 - Size of gap in pixels
 
 Determines gap between leaves. If not set gap will be same as padding value.
-Set 0 for remove inner gap.
+Set 0 to remove inner gap.
