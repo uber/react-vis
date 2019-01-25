@@ -264,5 +264,5 @@ Type: `number`
 
 - Size of gap in pixels
 
-Determines gap between lefs. If not setted gap will be same as padding value.
+Determines gap between leaves. If not set gap will be same as padding value.
 Set 0 for remove inner gap.
