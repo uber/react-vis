@@ -153,6 +153,7 @@ function getContentFunc(data, handler, options, node) {
     }}>
         <style dangerouslySetInnerHTML={{__html: `
           .rv-treemap__leaf:hover { background: rgba(255, 255, 255, 0.2) !important }
+          .rv-treemap__leaf__content { padding: 4px; }
         `}} />
         <Treemap
           data={data}
