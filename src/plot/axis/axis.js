@@ -73,7 +73,8 @@ const propTypes = {
   tickValues: PropTypes.arrayOf(
     PropTypes.oneOfType([
       PropTypes.number,
-      PropTypes.string
+      PropTypes.string,
+      PropTypes.object,
     ])
   ),
   tickFormat: PropTypes.func,
