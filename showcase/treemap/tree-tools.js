@@ -96,6 +96,9 @@ export function foldChildren(tree, options, level = 0) {
  * @returns {String} in css format: hsla(H,S,L,A)
  */
 export function colorFromValue(item, s = 80, l = 50) {
+  if (!item.value) {
+    return;
+  }
   const str = item.name;
   const val = item.value;
   let hash = 0;
