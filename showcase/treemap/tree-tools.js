@@ -1,7 +1,5 @@
 /**
  * Find branch in tree by omen pair - key-value
- * @author Akiyamka <akiyamka@gmail.com>
- *
  * @param {Object} omen - how to find branch. Example - { id: 123456 }
  * @param {Object} options [{children: 'children', returnChild: true}];
  * @param {Boolean} options.returnChild - return whole branch or not
@@ -38,8 +36,6 @@ export function findBranchByOmen(omen, options) {
 /**
  * Fold children, and recalculate weights on leaves.
  * Used to create tree slice of the required depth
- * @author Akiyamka <akiyamka@gmail.com>
- *
  * @param {Object} tree
  * @param {Object} options
  * @param {String} options.children - the field where to take children
