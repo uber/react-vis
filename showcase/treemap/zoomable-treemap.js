@@ -113,13 +113,7 @@ export default class ZoomableTreemapExample extends React.Component {
     const gap = 8;
 
     return data
-      ? <div style={{
-        background: 'rgb(100, 100, 100)'
-      }}>
-          <style dangerouslySetInnerHTML={{__html: `
-            .rv-treemap__leaf:hover { background: rgba(255, 255, 255, 0.2) !important }
-            .rv-treemap__leaf__content { padding: 4px; }
-          `}} />
+      ? <div style={{background: 'rgb(100, 100, 100)'}}>
           <Treemap
             data={data}
             // getContent={leaf => getContentFunc(leaf.data, handler, options, leaf)}
@@ -133,7 +127,7 @@ export default class ZoomableTreemapExample extends React.Component {
             titleHeight={titleHeight}
             paddingInner={0}
             animation={false}
-            className='nested-tree-example'
+            className='zoomable-tree-map'
             colorType='literal'
             colorRange={['#12939a8f']}
             padding={gap}

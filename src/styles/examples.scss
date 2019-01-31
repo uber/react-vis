@@ -459,3 +459,11 @@ article {
   -ms-user-select: none;
   user-select: none;
 }
+
+.zoomable-tree-map .rv-treemap__leaf:hover {
+  background: rgba(255, 255, 255, 0.2) !important
+}
+
+.zoomable-tree-map .rv-treemap__leaf__content {
+  padding: 4px;
+}
