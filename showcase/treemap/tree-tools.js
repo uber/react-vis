@@ -63,7 +63,7 @@ export function foldChildren(tree, options, level = 0) {
   0);
 
   const hasChildren = tree[opt.children] && tree[opt.children].length > 0;
-  if (hasChildren) {
+  if (!hasChildren) {
     return tree
   };
 
