@@ -101,7 +101,7 @@ class GridLines extends PureComponent {
   }
 
   render() {
-    const {animation} = this.props;
+    const {animation, className} = this.props;
     if (animation) {
       return (
         <Animation {...this.props} {...{animatedProps}}>
@@ -137,7 +137,7 @@ class GridLines extends PureComponent {
     return (
       <g
         transform={`translate(${left},${top})`}
-        className="rv-xy-plot__grid-lines"
+        className={`rv-xy-plot__grid-lines ${className}`}
       >
         {values.map((v, i) => {
           const pos = scale(v);

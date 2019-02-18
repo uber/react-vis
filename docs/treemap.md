@@ -8,6 +8,8 @@ relative information, such as nested-part-to-whole relationships in a easy to gr
 The `treemap` in react-vis builds a series of nested divs (allow for easy and highly restyleable trees). We offer ten different layout
 strategies, enabling the construction of standard treemaps, circle packed treemaps, and partition trees (also called icicle diagrams).
 
+Our treemap can target SVG or pure dom (via the renderMode prop)! You can play with the representation above.
+
 ## Usage
 
 Import the `treemap` component:
@@ -179,6 +181,14 @@ Type: `string`
 - One of squarify, resquarify, slice, dice, slicedice, binary, circlePack, partition, partition-pivot
 
 This modifies the tiling strategy for the treemap, for more information see the [d3 hierarchy docs](https://github.com/d3/d3-hierarchy).
+
+#### renderMode
+
+Type: `string`
+
+- One of 'SVG', or 'DOM'
+
+Determines which type of rendering to use for the treemap.
 
 #### sortFunction (optional)
 

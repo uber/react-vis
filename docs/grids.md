@@ -54,6 +54,12 @@ Height of the grid lines in pixels. **Already set by default**, but can be overr
 #### animation (optional)
 See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
+#### className (optional)
+
+Type: `String`
+
+A class name to apply to the gridlines.
+
 #### style (optional)
 
 Type: `object`

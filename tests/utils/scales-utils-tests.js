@@ -505,6 +505,22 @@ test('scales-utils #getScaleFnFromScaleObject', t => {
     [-1, 1],
     'should build a generic domain that reflects about zero'
   );
+
+  const ordinalScale = getScaleFnFromScaleObject({
+    type: 'ordinal',
+    domain: ["a", "b", "c", "d", "e"],
+    range: [20, 120]
+  });
+
+  t.equal(ordinalScale.invert(-10), "a");
+  t.equal(ordinalScale.invert(25), "a");
+  t.equal(ordinalScale.invert(40), "a");
+  t.equal(ordinalScale.invert(60), "b");
+  t.equal(ordinalScale.invert(80), "c");
+  t.equal(ordinalScale.invert(100), "d");
+  t.equal(ordinalScale.invert(115), "e");
+  t.equal(ordinalScale.invert(130), "e");
+
   t.end();
 });
 

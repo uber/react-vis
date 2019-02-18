@@ -47,7 +47,7 @@ export default class SimpleRadialChart extends Component {
         height={300}
         padAngle={0.04}
       >
-        {value && <Hint value={value} />}
+        {value !== false && <Hint value={value} />}
       </RadialChart>
     );
   }
