@@ -1,5 +1,6 @@
 import {
   Component,
+  ComponentType,
   PureComponent,
   ReactChild,
   ReactNode,
@@ -232,9 +233,9 @@ export interface DecorativeAxisPoint extends AbstractSeriesPoint { }
 export interface RadarChartPoint extends AbstractSeriesPoint { }
 export interface HighlightPoint extends AbstractSeriesPoint { }
 
-export function makeHeightFlexible(component: Component): Component;
-export function makeVisFlexible(component: Component): Component;
-export function makeWidthFlexible(component: Component): Component;
+export function makeVisFlexible<T>(component: ComponentType<T>): ComponentType<Pick<T, Exclude<keyof T, 'width'|'height'>>>;
+export function makeHeightFlexible<T>(component: ComponentType<T>): ComponentType<Pick<T, Exclude<keyof T, 'height'>>>;
+export function makeWidthFlexible<T>(component: ComponentType<T>): ComponentType<Pick<T, Exclude<keyof T, 'width'>>>;
 
 export const AxisUtils: {
   DIRECTION: {
@@ -255,7 +256,7 @@ export const AxisUtils: {
 
 export const ScaleUtils: {
   extractScalePropsFromProps: (props: AbstractSeriesProps<AbstractSeriesPoint>, attributes: Array<string>) => { [key: string]: any };
-  getAttributeScale: (props: AbstractSeriesProps<AbstractSeriesPoint>, attr: string) => Function;
+  getAttributeScale: (props: AbstractSeriesProps<AbstractSeriesPoint>, attr: string) => any;
   getAttributeFunctor: (props: AbstractSeriesProps<AbstractSeriesPoint>, attr: string) => any;
   getAttr0Functor: (props: AbstractSeriesProps<AbstractSeriesPoint>, attr: string) => any;
   getAttributeValue: (props: AbstractSeriesProps<AbstractSeriesPoint>, attr: string) => any;
@@ -266,5 +267,5 @@ export const ScaleUtils: {
   getScaleObjectFromProps: (props: AbstractSeriesProps<AbstractSeriesPoint>, attr: string) => any;
   getScalePropTypesByAttribute: (attr: string) => { [key: string]: any };
   getXYPlotValues: (props: AbstractSeriesProps<AbstractSeriesPoint>, children: Array<ReactChild>) => { [key: string]: any };
-  literalScale: (defaultValue: any) => Function;
+  literalScale: (defaultValue: any) => any;
 };
