@@ -84,8 +84,7 @@ const fakePropTypes = {
 
 function getComponentProps(comp, path, options) {
   const parentPropTypes = Object.getPrototypeOf(comp).propTypes || {};
-  const parentDefaultProps = Object.getPrototypeOf(comp).defaultProps || {};
-  const parentKeys = [...Object.keys(parentPropTypes), ...Object.keys(parentDefaultProps)];
+  const parentKeys = [...Object.keys(parentPropTypes)];
 
   const result = Object.keys(comp.propTypes)
     .filter(key => !parentKeys.some(parentKey => key === parentKey))
