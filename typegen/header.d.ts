@@ -135,17 +135,18 @@ export interface HeatmapSeriesPoint extends AbstractSeriesPoint {
 }
 
 export interface LabelSeriesPoint extends AbstractSeriesPoint {
-  x: number;
-  y: number;
+  x: string | number;
+  y: string | number;
   label: string;
   xOffset?: number;
   yOffset?: number;
   rotation?: number;
+  style?: CSSProperties;
 }
 
 export interface CustomSVGSeriesPoint extends AbstractSeriesPoint {
-  x: number;
-  y: number;
+  x: string | number;
+  y: string | number;
 }
 
 export interface PolygonSeriesPoint extends AbstractSeriesPoint {
