@@ -22,6 +22,8 @@ import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 
+import {transformValueToString} from 'utils/data-utils';
+
 import {getAttributeFunctor} from 'utils/scales-utils';
 
 /*
@@ -70,7 +72,7 @@ const ORIENTATION = {
  */
 function defaultFormat(value) {
   return Object.keys(value).map(function getProp(key) {
-    return {title: key, value: value[key]};
+    return {title: key, value: transformValueToString(value[key])};
   });
 }
 
@@ -96,6 +98,7 @@ class Hint extends PureComponent {
       value: PropTypes.object,
       format: PropTypes.func,
       style: PropTypes.object,
+      className: PropTypes.string,
       align: PropTypes.shape({
         horizontal: PropTypes.oneOf([
           ALIGN.AUTO,
@@ -263,7 +266,7 @@ class Hint extends PureComponent {
 
   /**
    * Get the position for the hint and the appropriate class name.
-   * @returns {{style: Object, className: string}} Style and className for the
+   * @returns {{style: Object, positionClassName: string}} Style and className for the
    * hint.
    * @private
    */
@@ -279,7 +282,7 @@ class Hint extends PureComponent {
       position: getAlignStyle
         ? getAlignStyle(align, x, y)
         : this._getAlignStyle(align, x, y),
-      className: this._getAlignClassNames(align)
+      positionClassName: this._getAlignClassNames(align)
     };
   }
 
@@ -355,12 +358,12 @@ class Hint extends PureComponent {
   }
 
   render() {
-    const {value, format, children, style} = this.props;
+    const {value, format, children, style, className} = this.props;
 
-    const {position, className} = this._getPositionInfo();
+    const {position, positionClassName} = this._getPositionInfo();
     return (
       <div
-        className={`rv-hint ${className}`}
+        className={`rv-hint ${positionClassName} ${className}`}
         style={{
           ...style,
           ...position,

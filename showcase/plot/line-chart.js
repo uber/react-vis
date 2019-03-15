@@ -26,6 +26,7 @@ import {
   XYPlot,
   XAxis,
   YAxis,
+  ChartLabel,
   HorizontalGridLines,
   VerticalGridLines,
   LineSeries,
@@ -50,8 +51,27 @@ export default class Example extends React.Component {
         <XYPlot width={300} height={300}>
           <HorizontalGridLines />
           <VerticalGridLines />
-          <XAxis title="X Axis" position="start" />
-          <YAxis title="Y Axis" />
+          <XAxis />
+          <YAxis />
+          <ChartLabel 
+            text="X Axis"
+            className="alt-x-label"
+            includeMargin={false}
+            xPercent={0.025}
+            yPercent={1.01}
+            />
+
+          <ChartLabel 
+            text="Y Axis"
+            className="alt-y-label"
+            includeMargin={false}
+            xPercent={0.06}
+            yPercent={0.06}
+            style={{
+              transform: 'rotate(-90)',
+              textAnchor: 'end'
+            }}
+            />
           <Line
             className="first-series"
             data={[{x: 1, y: 3}, {x: 2, y: 5}, {x: 3, y: 15}, {x: 4, y: 12}]}

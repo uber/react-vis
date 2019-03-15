@@ -102,7 +102,7 @@ This attribute is used to align (start-, middle- or end-alignment) the label tex
 
 Type: `string`
 
-This attribute is used to align the label text vertically relative to the datapoint. (Sets the alignment-baseline attribute for the element https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/alignment-baseline)
+This attribute is used to align the label text vertically relative to the datapoint. (Sets the dominant-baseline attribute for the element https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline)
 
 ## Interaction handlers
 #### onNearestX (optional)

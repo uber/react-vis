@@ -18,10 +18,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {Component} from 'react';
 import {scaleLinear} from 'd3-scale';
 
-import {XYPlot, XAxis, YAxis, HeatmapSeries, LabelSeries} from 'index';
+import {XYPlot, XAxis, YAxis, HeatmapSeries, LabelSeries, Hint} from 'index';
 
 const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 const data = alphabet.reduce((acc, letter1, idx) => {
@@ -41,20 +41,27 @@ const {min, max} = data.reduce(
   {min: Infinity, max: -Infinity}
 );
 
-export default function LabeledHeatmap() {
-  const exampleColorScale = scaleLinear()
+export default class LabeledHeatmap extends Component {
+  state = {
+    value: false
+  };
+
+  render () {
+    const {value} = this.state;
+    const exampleColorScale = scaleLinear()
     .domain([min, (min + max) / 2, max])
     .range(['orange', 'white', 'cyan']);
-  return (
-    <XYPlot
-      xType="ordinal"
-      xDomain={alphabet.map(letter => `${letter}1`)}
-      yType="ordinal"
-      yDomain={alphabet.map(letter => `${letter}2`).reverse()}
-      margin={50}
-      width={500}
-      height={500}
-    >
+
+    return (
+      <XYPlot
+        xType="ordinal"
+        xDomain={alphabet.map(letter => `${letter}1`)}
+        yType="ordinal"
+        yDomain={alphabet.map(letter => `${letter}2`).reverse()}
+        margin={50}
+        width={500}
+        height={500}
+        >
       <XAxis orientation="top" />
       <YAxis />
       <HeatmapSeries
@@ -70,13 +77,18 @@ export default function LabeledHeatmap() {
         }}
         className="heatmap-series-example"
         data={data}
-      />
+        onValueMouseOver={v => this.setState({value: v})}
+        onSeriesMouseOut={v => this.setState({value: false})}
+        />
       <LabelSeries
+        style={{pointerEvents: 'none'}}
         data={data}
         labelAnchorX="middle"
         labelAnchorY="baseline"
         getLabel={d => `${d.color}`}
-      />
-    </XYPlot>
-  );
+        />
+      {value !== false && <Hint value={value} />}
+      </XYPlot>
+    );
+  }
 }

@@ -28,7 +28,7 @@ const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--label';
 const getTextAnchor = (labelAnchorX, leftOfMiddle) => {
   return labelAnchorX ? labelAnchorX : leftOfMiddle ? 'start' : 'end';
 };
-const getAlignmentBaseline = (labelAnchorY, aboveMiddle) => {
+const getDominantBaseline = (labelAnchorY, aboveMiddle) => {
   return labelAnchorY
     ? labelAnchorY
     : aboveMiddle
@@ -95,7 +95,7 @@ class LabelSeries extends AbstractSeries {
           const hasRotationValueSet = d.rotation === 0 || d.rotation;
           const labelRotation = hasRotationValueSet ? d.rotation : rotation;
           const attrs = {
-            alignmentBaseline: getAlignmentBaseline(labelAnchorY, aboveMiddle),
+            dominantBaseline: getDominantBaseline(labelAnchorY, aboveMiddle),
             className: 'rv-xy-plot__series--label-text',
             key: i,
             onClick: e => this._valueClickHandler(d, e),

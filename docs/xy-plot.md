@@ -78,21 +78,21 @@ Not all properties can be visualized in each series. Here's a short comparison o
 
 |                      | `x` | `y` | `color` | `opacity` | `size` |
 |----------------------|-----|-----|---------|-----------|--------|
-| [LineSeries](line-series.md)  |  +  |  +  | +       |           |        |
-| [AreaSeries](area-series.md)         |  +  |  +  | +       |           |        |
-| [LineMarkSeries](line-mark-series.md)     |  +  |  +  | +       |     +     | +      |
-| [MarkSeries](mark-series.md)         |  +  |  +  | +       |     +     | +      |
-| [VerticalBarSeries](bar-series.md)  |  +  |  +  | +       |     +     |        |
-| [HorizontalBarSeries](bar-series.md)|  +  |  +  | +       |     +     |        |
-| [VerticalRectSeries](rect-series.md)  |  +  |  +  | +       |     +     |        |
-| [HorizontalRectSeries](rect-series.md)|  +  |  +  | +       |     +     |        |
-| [HeatmapSeries](heatmap-series.md)      |  +  |  +  | +       |     +     |        |      |
-| [HexbinSeries](hexbin-series.md)      |  +  |  +  | +       |     +     |        |      |
+| [LineSeries](line-series.md)  | + | + | + |  |  |
+| [AreaSeries](area-series.md)         | + | + | + |  |  |
+| [LineMarkSeries](line-mark-series.md)     | + | + | + | + | + |
+| [MarkSeries](mark-series.md)         | + | + | + | + | + |
+| [VerticalBarSeries](bar-series.md)  | + | + | + | + |  |
+| [HorizontalBarSeries](bar-series.md)| + | + | + | + |  |
+| [VerticalRectSeries](rect-series.md)  | + | + | + | + |  |
+| [HorizontalRectSeries](rect-series.md)| + | + | + | + |  |
+| [HeatmapSeries](heatmap-series.md)      | + | + | + | + |  |
+| [HexbinSeries](hexbin-series.md)      | + | + | + | + |  |
 
 
 ### A note on ordering
 
-XYPlot is pretty flexible, and can accept most kinds of things DOM, SVG, really whatever react can build. As far as XYPlot is concerned there are two types of components in the world: those that can be rendered as part of an SVG tree and those that can't. It separates it's children into these two groups, and clusters the SVG elements under a root svg tag in order and then presents each of the remaining children in order. To wit, given a react configuration like:
+XYPlot is pretty flexible, and can accept most kinds of things DOM, SVG, really whatever react can build. As far as XYPlot is concerned there are two types of components in the world: those that can be rendered as part of an SVG tree and those that can't. It separates it's children into these two groups, and clusters the SVG elements under a root svg tag in order and then presents each of the remaining children in order. With a react configuration like:
 
 ```javascript
 <XYPlot>
@@ -190,7 +190,7 @@ CSS properties that will affect this wrapper component. Those will be applied to
 </XYPlot>
 ```
 
-*NOTE* in order to stack properly react-vis expects each x value in each series to be present (assuming stackBy: 'x', the same applies to stackBy 'y', just transposed). To wit, if our data looks like
+*NOTE* in order to stack properly react-vis expects each x value in each series to be present (assuming stackBy: 'x', the same applies to stackBy 'y', just transposed). If our data looks like
 ```
 const seriesOne = [
   {x: 1, y: 10},
