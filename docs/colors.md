@@ -138,7 +138,7 @@ Linear colors at series level
 
 ```jsx
 <XYPlot height={200} width={200}
-  colorRange="linear"
+  colorType="linear"
   colorDomain={[0, 1, 2]}
   colorRange={myPalette}
 >
