@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
 const entry = {app: './app'};
 const jsRule = {
   test: /\.js$/,
@@ -57,7 +58,12 @@ const config = isProd
             use: ['style-loader', 'css-loader', 'sass-loader']
           }
         ]
-      }
+      },
+
+      resolve: {
+        modules: ['node_modules', path.join(__dirname,'..', 'src')]
+      },
+      
     };
 
 module.exports = config;
