@@ -121,6 +121,7 @@ export function getStackedData(children, attr) {
       accumulator.push(null);
       return accumulator;
     }
+    const seriesType = series.type.displayName;
 
     const {data, cluster = 'default', stack} = series.props;
     const preppedData = prepareData(data, attr);
@@ -143,11 +144,14 @@ export function getStackedData(children, attr) {
         if (!latestAttrPositions[cluster]) {
           latestAttrPositions[cluster] = {};
         }
+        if (!latestAttrPositions[cluster][seriesType]){
+          latestAttrPositions[cluster][seriesType] = {};
+        }
 
-        const prevD = latestAttrPositions[cluster][d[baseAttr]];
+        const prevD = latestAttrPositions[cluster][seriesType][d[baseAttr]];
         // It is the first segment of a bar.
         if (!prevD) {
-          latestAttrPositions[cluster][d[baseAttr]] = {
+          latestAttrPositions[cluster][seriesType][d[baseAttr]] = {
             [attr0]: d[attr0],
             [attr]: d[attr]
           };
@@ -162,7 +166,7 @@ export function getStackedData(children, attr) {
           [attr]: prevD[attr] + d[attr] - (d[attr0] || 0)
         };
 
-        latestAttrPositions[cluster][d[baseAttr]] = {
+        latestAttrPositions[cluster][seriesType][d[baseAttr]] = {
           [attr0]: nextD[attr0],
           [attr]: nextD[attr]
         };
