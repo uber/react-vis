@@ -71,7 +71,7 @@ DiscreteColorLegend.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.oneOfType([
       PropTypes.shape({
-        title: PropTypes.string.isRequired,
+        title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
         color: PropTypes.string,
         disabled: PropTypes.bool
       }),
