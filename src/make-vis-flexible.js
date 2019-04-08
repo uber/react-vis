@@ -122,17 +122,17 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
     _onResize = () => {
       const containerElement = getDOMNode(this[CONTAINER_REF]);
       const {offsetHeight, offsetWidth} = containerElement;
+      const {height, width} = this.state;
 
-      const newHeight =
-        this.state.height === offsetHeight ? {} : {height: offsetHeight};
-
-      const newWidth =
-        this.state.width === offsetWidth ? {} : {width: offsetWidth};
-
-      this.setState({
-        ...newHeight,
-        ...newWidth
-      });
+      if (height !== offsetHeight || width !== offsetWidth){
+        // Only call setState if one dimension has changed.
+        // Otherwise, this will create an infinite loop because _onResize
+        // is called from componentDidUpdate.
+        this.setState({
+          height: offsetHeight,
+          width: offsetWidth
+        });
+      }
     };
 
     componentDidMount() {
@@ -140,7 +140,7 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
       this.cancelSubscription = subscribeToDebouncedResize(this._onResize);
     }
 
-    componentWillReceiveProps() {
+    componentDidUpdate() {
       this._onResize();
     }
 
