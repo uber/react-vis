@@ -281,13 +281,17 @@ test('series-utils #getStackedData', t => {
   );
 
   children = [
-    <VerticalBarSeries data={yData[0]} />,
-    <VerticalBarSeries data={yData[1]} />,
-    <LabelSeries data={yData[0]} />,
-    <LabelSeries data={yData[1]} />,
-    undefined
+    <VerticalBarSeries data={xData[0]} />,
+    <VerticalBarSeries data={xData[1]} />,
+    <LabelSeries data={xData[0]} />,
+    <LabelSeries data={xData[1]} />
   ];
-  results = getStackedData(children, 'x');
+  results = getStackedData(children, 'y');
+  expectedResults = [
+    ...stackByYExpected.slice(0, 2),
+    ...stackByYExpected.slice(0, 2),
+  ];
+
   t.deepEqual(
     results,
     expectedResults,
