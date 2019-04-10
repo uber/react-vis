@@ -31,6 +31,13 @@ const propTypes = {
   markStyle: PropTypes.object
 };
 
+const defaultLineStyle = {
+  // Prevents multiple plotted lines from blocking pointer events on individual marks underneath:
+  pointerEvents: 'none'
+}
+
+const defaultMarkStyle = {}
+
 class LineMarkSeries extends AbstractSeries {
   static get defaultProps() {
     return {
@@ -44,8 +51,8 @@ class LineMarkSeries extends AbstractSeries {
     const {lineStyle, markStyle, style} = this.props;
     return (
       <g className="rv-xy-plot__series rv-xy-plot__series--linemark">
-        <LineSeries {...this.props} style={{...style, ...lineStyle}} />
-        <MarkSeries {...this.props} style={{...style, ...markStyle}} />
+        <LineSeries {...this.props} style={{...defaultLineStyle, ...style, ...lineStyle}} />
+        <MarkSeries {...this.props} style={{...defaultMarkStyle, ...style, ...markStyle}} />
       </g>
     );
   }
