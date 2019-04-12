@@ -90,7 +90,7 @@ Array of data for the series. See above data format reference.
 
 Type: `object`
 
-SVG text objects (which is what the labelSeries is made up of) accept a ton of different styles, so rather than prescribe every single one we just accept a general grab bag pf the styles. check out the [w3](https://www.w3schools.com/graphics/svg_path.asp) page for more details.
+SVG text objects (which is what the labelSeries is made up of) accept a ton of different styles, so rather than prescribe every single one we just accept a general grab bag pf the styles. check out the [mozilla](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text) page for more details.
 
 #### labelAnchorX
 
