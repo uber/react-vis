@@ -4,6 +4,7 @@ import {mount} from 'enzyme';
 import LabelSeries from 'plot/series/label-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import LabelSeriesExample from '../../showcase/misc/label-series-example';
+import LabeledStackedVerticalBarChart from '../../showcase/plot/labeled-stacked-vertical-bar-chart';
 
 testRenderWithProps(LabelSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
@@ -31,6 +32,16 @@ test('LabelSeries: Showcase Example - LabelSeriesExample', t => {
     $.text(),
     'UPDATE-101234505101520WigglytuffPsyduckGeoduderedblue',
     'should find the right text content'
+  );
+  t.end();
+});
+
+test('BarSeries: Showcase Example - LabeledStackedVerticalBarChart', t => {
+  const $ = mount(<LabeledStackedVerticalBarChart />);
+  t.equal(
+    $.find('.rv-xy-plot__series--label text').length,
+    9,
+    'should find the right number of labels'
   );
   t.end();
 });

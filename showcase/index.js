@@ -32,6 +32,7 @@ import BarChart from './plot/bar-chart';
 import BigBaseBarChart from './plot/big-base-bar-chart';
 import DifferenceChart from './plot/difference-chart';
 import StackedVerticalBarChart from './plot/stacked-vertical-bar-chart';
+import LabeledStackedVerticalBarChart from './plot/labeled-stacked-vertical-bar-chart';
 import StackedHorizontalBarChart from './plot/stacked-horizontal-bar-chart';
 import ClusteredStackedVerticalBarChart from './plot/clustered-stacked-bar-chart';
 import StackedHistogram from './plot/stacked-histogram';
@@ -175,6 +176,7 @@ const mainShowCase = {
   BigBaseBarChart,
   DifferenceChart,
   StackedVerticalBarChart,
+  LabeledStackedVerticalBarChart,
   MixedStackedChart,
   StackedHorizontalBarChart,
   ClusteredStackedVerticalBarChart,

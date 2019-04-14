@@ -32,6 +32,7 @@ import LineSeries from 'plot/series/line-series';
 import XAxis from 'plot/axis/x-axis';
 import HorizontalBarSeries from 'plot/series/horizontal-rect-series';
 import VerticalBarSeries from 'plot/series/vertical-rect-series';
+import LabelSeries from 'plot/series/label-series';
 
 test('series-utils #isSeriesChild', t => {
   const series = <LineSeries data={[]} />;
@@ -277,6 +278,24 @@ test('series-utils #getStackedData', t => {
     results,
     expectedResults,
     'should find the correct results for stacking bar clusters by y with a non stacked line'
+  );
+
+  children = [
+    <VerticalBarSeries data={xData[0]} />,
+    <VerticalBarSeries data={xData[1]} />,
+    <LabelSeries data={xData[0]} />,
+    <LabelSeries data={xData[1]} />
+  ];
+  results = getStackedData(children, 'y');
+  expectedResults = [
+    ...stackByYExpected.slice(0, 2),
+    ...stackByYExpected.slice(0, 2),
+  ];
+
+  t.deepEqual(
+    results,
+    expectedResults,
+    'should find the correct results for stacking by x, where different series types are calculated separately'
   );
 
   t.end();
