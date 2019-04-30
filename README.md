@@ -11,9 +11,6 @@
   <a href="https://npmjs.org/package/react-vis">
     <img src="https://img.shields.io/npm/dm/react-vis.svg?style=flat-square" alt="downloads" />
   </a>
-  <a href="http://starveller.sigsev.io/uber/react-vis">
-    <img src="http://starveller.sigsev.io/api/repos/uber/react-vis/badge" alt="stars" />
-  </a>
 </p>
 
 <h1 align="center">react-vis | <a href="http://uber.github.io/react-vis/examples/showcases/axes">Demos</a> | <a href="http://uber.github.io/react-vis/documentation/getting-started/creating-a-new-react-vis-project">Docs</a></h1>
