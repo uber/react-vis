@@ -18,9 +18,9 @@ Like other series, it is required that the data be an array of objects, formatte
 
 ```javascript
 const myData = [
-  {x: 0, x0: 1, y: 10, y0: 0},
-  {x: 1, x0: 2, y: 5, y0: 0},
-  {x: 2, x0: 4, y: 15, y0: 0}
+  {x: 1, x0: 0, y: 10, y0: 0},
+  {x: 2, x0: 1, y: 5, y0: 0},
+  {x: 4, x0: 2, y: 15, y0: 0}
 ]
 ```
 
@@ -34,7 +34,7 @@ Type: `string|number|date`
 
 Default: `0`
 
-The value used to compute the x position of _either_ side of the rectangle.
+The value used to compute the x position of _the right_ side of the rectangle.
 
 #### x0 (optional)
 
@@ -42,7 +42,7 @@ Type: `string|number|date`
 
 Default: `0`
 
-The value used to compute the x position of the other side of the rectangle.
+The value used to compute the x position of _the left_ side of the rectangle.
 
 #### y (optional)
 
