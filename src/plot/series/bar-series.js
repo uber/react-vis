@@ -38,13 +38,17 @@ class BarSeries extends AbstractSeries {
       lineSizeAttr: PropTypes.string,
       valueSizeAttr: PropTypes.string,
       cluster: PropTypes.string,
-      barWidth: PropTypes.number
+      barWidth: PropTypes.number,
+      barRadiusX: PropTypes.number,
+      barRadiusY: PropTypes.number
     };
   }
 
   static get defaultProps() {
     return {
-      barWidth: 0.85
+      barWidth: 0.85,
+      barRadiusX: 0,
+      barRadiusY: 0
     };
   }
 
@@ -60,7 +64,9 @@ class BarSeries extends AbstractSeries {
       style,
       valuePosAttr,
       valueSizeAttr,
-      barWidth
+      barWidth,
+      barRadiusX,
+      barRadiusY
     } = this.props;
 
     if (!data) {
@@ -120,6 +126,8 @@ class BarSeries extends AbstractSeries {
             [lineSizeAttr]: spacePerBar,
             [valuePosAttr]: Math.min(value0Functor(d), valueFunctor(d)),
             [valueSizeAttr]: Math.abs(-value0Functor(d) + valueFunctor(d)),
+            rx: barRadiusX,
+            ry: barRadiusY,
             onClick: e => this._valueClickHandler(d, e),
             onContextMenu: e => this._valueRightClickHandler(d, e),
             onMouseOver: e => this._valueMouseOverHandler(d, e),
