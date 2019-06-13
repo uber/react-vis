@@ -100,13 +100,13 @@ function getInnerComponent({
   }
   // if default component is a function
   if (!innerComponent) {
-    return defaultType(customComponent, positionInPixels, aggStyle);
+    return defaultType(customComponent, positionInPixels, aggStyle, positionFunctions);
   }
   if (typeof innerComponent === 'string') {
     return predefinedComponents(innerComponent || defaultType, size, aggStyle);
   }
   // if inner component is a function
-  return innerComponent(customComponent, positionInPixels, aggStyle);
+  return innerComponent(customComponent, positionInPixels, aggStyle, positionFunctions);
 }
 
 class CustomSVGSeries extends AbstractSeries {
