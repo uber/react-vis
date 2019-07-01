@@ -2,7 +2,7 @@
 slug: introducing-how-to-contribute-to-open-source
 title: 'Introducing: How to Contribute to Open Source'
 date: '2016-02-08'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _My free, first-timer friendly egghead.io series all about how to contribute
   to open source projects on GitHub._

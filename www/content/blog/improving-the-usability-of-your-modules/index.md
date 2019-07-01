@@ -2,7 +2,7 @@
 slug: improving-the-usability-of-your-modules
 title: Improving the usability of your modules
 date: '2017-11-06'
-author: Kent C. Dodds
+author: React Vis
 description:
   _How to make your modules more generically useful and easier to test._
 keywords:
@@ -102,7 +102,7 @@ environment, but also in the test environment! And unless you take care to give
 good warnings when the environment isn't ready (if you even know), people will
 get cryptic error messages when doing seemingly unrelated tasks (like importing
 some module that happens to import your module somewhere in the
-[dependency graph](https://twitter.com/kentcdodds/status/922114804038303745)).
+[dependency graph](https://twitter.com/react-vis/status/922114804038303745)).
 
 Another issue is that there could be a reason to **configure the initialization
 process**. What if my node doesn't have the id `react-messages`, but instead

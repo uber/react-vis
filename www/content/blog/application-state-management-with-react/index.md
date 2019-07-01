@@ -2,7 +2,7 @@
 slug: 'application-state-management-with-react'
 title: 'Application State Management with React'
 date: '2019-04-22'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description: '_How React is all you need to manage your application state_'
 categories:
   - 'react'

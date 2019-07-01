@@ -2,7 +2,7 @@
 slug: misunderstanding-es6-modules-upgrading-babel-tears-and-a-solution
 title: 'Misunderstanding ES6 Modules, Upgrading Babel, Tears, and a Solution'
 date: '2015-12-23'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _On October 29th, 2015, Sebastian McKenzie, James Kyle, and the rest of the
   Babel team dropped a huge major release for frontend developers..._
@@ -48,7 +48,7 @@ misunderstanding (writing a transpiler is hard).
 
 At first, I didn't quite understand what Logan meant, but when I had the time to
 dedicate to upgrading my app,
-[this happened](https://twitter.com/kentcdodds/status/671817302430515200)
+[this happened](https://twitter.com/react-vis/status/671817302430515200)
 
 [Tyler McGinnis](https://twitter.com/tylermcginnis),
 [Josh Manders](https://twitter.com/joshmanders), and I went back and forth quite
@@ -77,13 +77,13 @@ I finally figured out how things really work when I reviewed
 [Nicolás Bevacqua's](https://twitter.com/nzgb)
 [blogpost](https://ponyfoo.com/articles/es6)
 
-https://twitter.com/kentcdodds/status/671831027787038721
+https://twitter.com/react-vis/status/671831027787038721
 
 And I discovered why what I had been doing wouldn't work when I read
 [Axel Rauschmayer](https://twitter.com/rauschma)'s
 [blogpost](http://www.2ality.com/2014/09/es6-modules-final.html)
 
-https://twitter.com/kentcdodds/status/671830544129265664
+https://twitter.com/react-vis/status/671830544129265664
 
 Here's the basic idea: ES6 modules are supposed to be statically analyzable
 (runtime cannot change the exports/imports) so it can't be dynamic. In the

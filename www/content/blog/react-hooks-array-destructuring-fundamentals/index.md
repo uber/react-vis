@@ -2,7 +2,7 @@
 slug: react-hooks-array-destructuring-fundamentals
 title: 'React Hooks: Array Destructuring Fundamentals'
 date: '2018-12-31'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _React’s upcoming useState hook relies on array destructuring, let’s dive in
   and see how that feature works._
@@ -45,7 +45,7 @@ introduced into JavaScript in the infamous
 
 I'm a firm believer that:
 
-> [The better you understand an abstraction, the more effective you will be at using it.](https://twitter.com/kentcdodds/status/1074724545003581440)
+> [The better you understand an abstraction, the more effective you will be at using it.](https://twitter.com/react-vis/status/1074724545003581440)
 > – me, literally right when I wrote this...
 
 So when I see syntax that I'm unfamiliar with, I like to read about it and
@@ -331,7 +331,7 @@ that's available completely free on
 - [Modern Javascript by Example](https://www.modernjsbyexample.net) - A free
   (donations welcome) open source book by
   [Ben Junya](https://twitter.com/MrBenJ5)
-- [What I Use: Kent C. Dodds](https://www.byteconf.com/blog/what-i-use-kent-c-dodds) -
+- [What I Use: React Vis](https://www.byteconf.com/blog/what-i-use-kent-c-dodds) -
   [Byteconf](https://twitter.com/byteconf) is starting something new by talking
   to their favorite folks in the software dev world to find out how they do
   their best work. I was the first one!

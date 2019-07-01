@@ -2,7 +2,7 @@
 slug: mixing-component-patterns
 title: Mixing Component Patterns
 date: '2018-05-07'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Let's make a component that supports Render Props, Component Injection,
   Compound Components, the Provider Pattern, and Higher Order..._

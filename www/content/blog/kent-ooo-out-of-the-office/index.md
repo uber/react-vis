@@ -2,7 +2,7 @@
 slug: kent-ooo-out-of-the-office
 title: Kent OOO (Out Of the Office)
 date: '2016-05-31'
-author: Kent C. Dodds
+author: React Vis
 description:
   _Why this week's episode of JavaScript Air is canceled and where I'm going..._
 keywords:
@@ -20,9 +20,9 @@ I will be out of town and I didn't plan far enough in advance to have someone
 fill in for me. I've had this thing planned for several months and I only just
 realized last week that I leave before the normal show time. This also means
 that my normal
-[#eggheadADay](https://twitter.com/search?q=from%3Akentcdodds%20%23eggheadADay&src=typd)
+[#eggheadADay](https://twitter.com/search?q=from%3Areact-vis%20%23eggheadADay&src=typd)
 will miss a few days and I'll not be responding to emails, GitHub notifications,
-or [AMA questions](https://github.com/kentcdodds/ama).
+or [AMA questions](https://github.com/react-vis/ama).
 
 So, **TL;DR: I'll be unavailable from June 1 - 4** (Wed - Sat). If you're
 interested in why, read on:

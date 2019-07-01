@@ -2,7 +2,7 @@
 slug: testing-implementation-details
 title: Testing Implementation Details
 date: '2018-11-20'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Testing implementation details is a recipe for disaster. Why is that? And
   what does it even mean?_
@@ -227,7 +227,7 @@ testing implementation details!
 ... But I'm not going to bother... Ugh, I'm just so tired of all these false
 positives and negatives, I'd almost rather not write tests at all. DELETE ALL
 THE TESTS! Wouldn't it be nice if we had a tool that had a wider
-[pit](https://twitter.com/kentcdodds/status/859994199738900480) of
+[pit](https://twitter.com/react-vis/status/859994199738900480) of
 [success](https://blog.codinghorror.com/falling-into-the-pit-of-success)? Yes it
 would! And guess what, we DO have such a tool!
 
@@ -317,7 +317,7 @@ application code to consider the tests. What a complete waste of time. I don't
 want tests that are written for their own sake. _Automated tests should verify
 that the application code works for the production users._
 
-> _[The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/kentcdodds/status/977018512689455106)
+> _[The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/react-vis/status/977018512689455106)
 >  — me_
 
 > Read more about this in [Avoid the Test User](/blog/avoid-the-test-user).

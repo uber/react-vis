@@ -2,7 +2,7 @@
 slug: ui-testing-myths
 title: UI Testing Myths
 date: '2018-11-08'
-author: Kent C. Dodds
+author: React Vis
 description: _Some common myths around testing and what the reality is..._
 keywords:
   - react

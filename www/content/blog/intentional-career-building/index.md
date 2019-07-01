@@ -2,7 +2,7 @@
 slug: intentional-career-building
 date: 2019-02-11
 title: 'Intentional Career Building'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   'I have a challenge and ideas for you to do something to build your career.'
 categories: ['career']
@@ -75,7 +75,7 @@ with enough people that they don't want to miss your next big value add.
 If you're publishing to a domain you don't control, then you should consider
 making a change. I was luckily grandfathered into Medium's custom domain thing
 before they stopped doing that which is why my medium blog is at
-`blog.kentcdodds.com` rather than `medium.com/@kentcdodds`. I am planning on
+`blog.react-vis.com` rather than `medium.com/@react-vis`. I am planning on
 moving off of medium soon (UPDATE, I did:
 [Goodbye Medium](/blog/goodbye-medium)) and when I do I'll easily be able to
 redirect all my blog posts to my new custom platform because I own the domain
@@ -171,4 +171,4 @@ building your career:
   both by [Lindsey Kopacz](https://twitter.com/littlekope0903) are both terrific
   articles about accessibility I recommend you read.
 
-> [Share and participate in the discussion on twitter](https://twitter.com/kentcdodds/status/1095101380631584769)
+> [Share and participate in the discussion on twitter](https://twitter.com/react-vis/status/1095101380631584769)

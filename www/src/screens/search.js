@@ -89,7 +89,7 @@ function SearchScreen() {
       </div>
       <small>
         {`If you can't find what you're looking for with this, try `}
-        <a href="https://www.google.com/search?q=site%3Akentcdodds.com%2Fblog+testing">
+        <a href="https://www.google.com/search?q=site%3Areact-vis.com%2Fblog+testing">
           using Google
         </a>
         {'.'}

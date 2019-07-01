@@ -2,7 +2,7 @@
 slug: please-dont-commit-commented-out-code
 title: Please, don't commit commented out code
 date: '2015-10-27'
-author: Kent C. Dodds
+author: React Vis
 description: _Some solid reasons you should delete code that is not used_
 keywords:
   - Git
@@ -171,7 +171,7 @@ history. I believe this is an extremely rare case and can’t think of personall
 ever needing to do this.
 
 Do you have more questions? Add a comment here or ping me on
-[twitter](https://twitter.com/kentcdodds).
+[twitter](https://twitter.com/react-vis).
 
 ---
 

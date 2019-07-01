@@ -2,7 +2,7 @@
 slug: make-impossible-states-impossible
 title: Make Impossible States Impossible
 date: '2018-09-10'
-author: Kent C. Dodds
+author: React Vis
 description: _A simple trick to simplify your application and component state_
 keywords:
   - javascript

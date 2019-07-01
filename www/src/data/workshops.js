@@ -21,9 +21,7 @@ export default [
   // },
   {
     title: 'Advanced React Patterns with Hooks',
-    resources: [
-      '[repo](https://github.com/kentcdodds/advanced-react-patterns)',
-    ],
+    resources: ['[repo](https://github.com/react-vis/advanced-react-patterns)'],
     tags: ['react'],
     deliveries: [
       {
@@ -49,7 +47,7 @@ export default [
   {
     title: 'React Hooks and Suspense',
     resources: [
-      '[repo](https://github.com/kentcdodds/react-hooks-and-suspense-egghead-playlist)',
+      '[repo](https://github.com/react-vis/react-hooks-and-suspense-egghead-playlist)',
     ],
     tags: ['react', 'testing'],
     deliveries: [
@@ -67,7 +65,7 @@ export default [
   },
   {
     title: 'Simplify React Apps with React Hooks',
-    resources: ['[repo](https://github.com/kentcdodds/react-github-profile)'],
+    resources: ['[repo](https://github.com/react-vis/react-github-profile)'],
     tags: ['react', 'testing'],
     deliveries: [
       {
@@ -80,7 +78,7 @@ export default [
     description: `
       With the massive improvements to function components in React via hooks and suspense, you may be interested in seeing how to
       refactor a typical class component to a simpler class component that uses React Hooks features. In this course, we'll take
-      [a modern React codebase](https://github.com/kentcdodds/react-github-profile) that uses classes and refactor the entire thing
+      [a modern React codebase](https://github.com/react-vis/react-github-profile) that uses classes and refactor the entire thing
       to use function components as much as possible. We'll look at state, side effects, async code, caching, and more!
 
       Want a primer on hooks and suspense?
@@ -89,7 +87,7 @@ export default [
   },
   {
     title: 'Modern React Workshop: Hooks and Suspense',
-    resources: ['[repo](https://github.com/kentcdodds/modern-react)'],
+    resources: ['[repo](https://github.com/react-vis/modern-react)'],
     tags: ['react'],
     deliveries: [
       {
@@ -113,7 +111,7 @@ export default [
   },
   {
     title: 'Testing React and Web Applications',
-    resources: ['[repo](https://github.com/kentcdodds/testing-workshop)'],
+    resources: ['[repo](https://github.com/react-vis/testing-workshop)'],
     tags: ['testing', 'automation', 'jest', 'cypress', 'react'],
     deliveries: [
       {
@@ -153,8 +151,8 @@ export default [
   {
     title: 'Testing Practices and Principles',
     resources: [
-      '[slides](http://slides.com/kentcdodds/testing-principles)',
-      '[repo](https://github.com/kentcdodds/testing-workshop)',
+      '[slides](http://slides.com/react-vis/testing-principles)',
+      '[repo](https://github.com/react-vis/testing-workshop)',
     ],
     tags: ['testing', 'automation', 'jest', 'cypress'],
     deliveries: [
@@ -196,7 +194,7 @@ export default [
   {
     title: 'Advanced React Component Patterns',
     resources: [
-      '[repo](https://github.com/kentcdodds/advanced-react-patterns-v2)',
+      '[repo](https://github.com/react-vis/advanced-react-patterns-v2)',
     ],
     tags: ['react'],
     deliveries: [
@@ -293,8 +291,8 @@ export default [
   {
     title: 'Code Transformation and Linting',
     resources: [
-      '[slides](http://slides.com/kentcdodds/asts-workshop)',
-      '[repo](https://github.com/kentcdodds/asts-workshop)',
+      '[slides](http://slides.com/react-vis/asts-workshop)',
+      '[repo](https://github.com/react-vis/asts-workshop)',
     ],
     tags: ['babel', 'eslint', 'codemod', 'Abstract Syntax Trees', 'asts'],
     deliveries: [
@@ -317,15 +315,15 @@ export default [
       of the problems that you can solve with a basic understanding of Abstract Syntax Trees and the tools
       you can use to inspect and manipulate them.
 
-      Join Kent C. Dodds and learn invaluable skills you can take back to improve the developer experience
+      Join React Vis and learn invaluable skills you can take back to improve the developer experience
       in your JavaScript applications.
     `,
   },
   {
     title: 'Testing JavaScript Applications',
     resources: [
-      '[slides](http://slides.com/kentcdodds/testing-workshop)',
-      '[repo](https://github.com/kentcdodds/testing-workshop)',
+      '[slides](http://slides.com/react-vis/testing-workshop)',
+      '[repo](https://github.com/react-vis/testing-workshop)',
     ],
     tags: ['testing', 'jest', 'cypress'],
     deliveries: [
@@ -347,16 +345,16 @@ export default [
       configure tools and write tests that enhance your development experience is vital to your success.
 
       In this class, we'll explore the merits and tradeoffs of different forms of testing and get into configuring
-      and using specific tools to increase confidence in deploying our applications. Join Kent C. Dodds and
+      and using specific tools to increase confidence in deploying our applications. Join React Vis and
       learn invaluable skills you can take back to improve your JavaScript applications.
     `,
   },
   {
     title: 'ES6 and Beyond',
     resources: [
-      '[slides](http://slides.com/kentcdodds/es6-workshop#/)',
-      '[workshop repo](https://github.com/kentcdodds/es6-workshop)',
-      '[app repo](https://github.com/kentcdodds/es6-todomvc)',
+      '[slides](http://slides.com/react-vis/es6-workshop#/)',
+      '[workshop repo](https://github.com/react-vis/es6-workshop)',
+      '[app repo](https://github.com/react-vis/es6-todomvc)',
     ],
     tags: ['ES.next', 'ES6', 'webpack'],
     deliveries: [
@@ -424,8 +422,8 @@ export default [
   {
     title: 'Intro to ReactJS',
     resources: [
-      '[repo](https://github.com/kentcdodds/react-workshop)',
-      '[app](https://github.com/kentcdodds/react-github-profile)',
+      '[repo](https://github.com/react-vis/react-workshop)',
+      '[app](https://github.com/react-vis/react-github-profile)',
     ],
     tags: ['react'],
     deliveries: [
@@ -449,8 +447,8 @@ export default [
   {
     title: 'Webpack Deep Dive',
     resources: [
-      '[slides](https://slides.com/kentcdodds/webpack-deep-dive)',
-      '[app repo](https://github.com/kentcdodds/es6-todomvc)',
+      '[slides](https://slides.com/react-vis/webpack-deep-dive)',
+      '[app repo](https://github.com/react-vis/es6-todomvc)',
     ],
     tags: ['webpack'],
     deliveries: [
@@ -490,7 +488,7 @@ export default [
   },
   {
     title: 'How to Write an Open Source JavaScript Library',
-    resources: ['[repo](https://github.com/kentcdodds/starwars-names)'],
+    resources: ['[repo](https://github.com/react-vis/starwars-names)'],
     tags: ['open source'],
     deliveries: [
       {
@@ -521,7 +519,7 @@ export default [
   },
   {
     title: 'React + AVA = ❤️',
-    resources: ['[repo](https://github.com/kentcdodds/react-ava-workshop)'],
+    resources: ['[repo](https://github.com/react-vis/react-ava-workshop)'],
     tags: ['react', 'testing'],
     deliveries: [
       {
@@ -537,7 +535,7 @@ export default [
     ],
     description: `
       **NOTE**: _I no longer recommend using AVA in React Projects_. Instead I recommend using Jest. Incidentally, I
-      have a workshop for that too: [react-jest-workshop](https://github.com/kentcdodds/react-jest-workshop).
+      have a workshop for that too: [react-jest-workshop](https://github.com/react-vis/react-jest-workshop).
     `,
   },
   {
@@ -565,7 +563,7 @@ export default [
   {
     title: 'Intro to Webpack and Migrating from Require.js to Webpack ',
     resources: [
-      '[repo](https://github.com/kentcdodds/require-to-webpack-todomvc)',
+      '[repo](https://github.com/react-vis/require-to-webpack-todomvc)',
     ],
     tags: ['webpack'],
     deliveries: [
@@ -599,8 +597,8 @@ export default [
   {
     title: 'angular-formly',
     resources: [
-      '[slides](http://slides.com/kentcdodds/angular-formly)',
-      '[repo](https://github.com/kentcdodds/angular-formly-convert)',
+      '[slides](http://slides.com/react-vis/angular-formly)',
+      '[repo](https://github.com/react-vis/angular-formly-convert)',
     ],
     tags: ['angular'],
     deliveries: [
@@ -639,8 +637,8 @@ export default [
   {
     title: 'Intro to AngularJS',
     resources: [
-      '[slides](http://slides.com/kentcdodds/intro-to-angularjs)',
-      '[workshop](http://kentcdodds.com/ng-workshop/)',
+      '[slides](http://slides.com/react-vis/intro-to-angularjs)',
+      '[workshop](http://react-vis.com/ng-workshop/)',
     ],
     tags: ['angular'],
     deliveries: [

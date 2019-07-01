@@ -2,7 +2,7 @@
 slug: how-i-am-so-productive
 title: How I am so productive
 date: '2018-09-24'
-author: Kent C. Dodds
+author: React Vis
 description:
   _People regularly ask me how I get so much done. Here's my secret..._
 keywords:
@@ -32,7 +32,7 @@ basis these days:
   with
   [new friends playing Dominion](https://twitter.com/craigwalker1123/status/1039138835714560000))
 - On Mondays, I publish the blogpost newsletter from two weeks ago to
-  [kentcdodds.com/blog](http://kentcdodds.com/blog), a new one for subscribers.
+  [react-vis.com/blog](http://react-vis.com/blog), a new one for subscribers.
   (~1.5 hours of work, depending...)
 - Product tasks (currently helping work on [paypal.me](https://paypal.me)) (this
   is normally where most of my weekday is spent)
@@ -194,9 +194,9 @@ more productive
 ([even if it takes longer to develop the automation than the time it would save us](https://xkcd.com/1205)).
 If you find yourself repeatedly doing a task, see if there's a simple way to
 automate it. (Like
-[what I do for creating my kcd.im/ short urls](https://github.com/kentcdodds/hive-api)
+[what I do for creating my kcd.im/ short urls](https://github.com/react-vis/hive-api)
 \+
-[shorten](https://github.com/kentcdodds/dotfiles/blob/94c00b43354f86595647f9ff18057ff9e6469d33/.bash_profile#L61-L63)
+[shorten](https://github.com/react-vis/dotfiles/blob/94c00b43354f86595647f9ff18057ff9e6469d33/.bash_profile#L61-L63)
 😄, which happens to be another form of automation and productivity boost
 because short URLs are easier/faster to give to people, and people remember them
 better).
@@ -274,7 +274,7 @@ Even though this is working out so far, I don't believe this is sustainable.
 This is one reason why I'm so excited about writing this novel for
 [NaNoWriMo](https://nanowrimo.org). It'll be a new creative outlet. And
 hopefully by November I'll be done with most of
-[the HUGE things I'm working](https://twitter.com/kentcdodds/status/1038584983990849536)
+[the HUGE things I'm working](https://twitter.com/react-vis/status/1038584983990849536)
 on so I can dedicate myself to writing 50,000 words in 30 days :)
 
 That said, I think short bursts of hyper-focus do help me get a lot done.
@@ -310,7 +310,7 @@ able to think freely, it's consumed by the idea of the novel itself and learning
 tools that I can apply when I start writing it in November. Ask my wife. If
 we're not talking about something that's actually important, then I'll
 inevitably turn the conversation over to the book (and she's been
-[extremely helpful](https://twitter.com/kentcdodds/status/1043712163490160640)).
+[extremely helpful](https://twitter.com/react-vis/status/1043712163490160640)).
 
 I don't have tips of how you can develop this in yourself, and I'm not even sure
 that I would recommend it. It's just something that I do that my wife and I
@@ -370,7 +370,7 @@ inbox two weeks before it's published to my blog:
 **Learn more about career development from me**:
 
 - [Why and How I started public speaking](/blog/why-and-how-i-started-public-speaking)
-- [Getting Noticed and Widening Your Reach](https://buttondown.email/kentcdodds/archive/03761505-8609-404c-a5b7-5367013292bf)
+- [Getting Noticed and Widening Your Reach](https://buttondown.email/react-vis/archive/03761505-8609-404c-a5b7-5367013292bf)
 - [Zero to 60 in Software Development: How to Jumpstart Your Career — Forward 4 Web Summit](https://youtu.be/-qPh6I2hfjw&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
 
 **Things to not miss**:
@@ -379,7 +379,7 @@ inbox two weeks before it's published to my blog:
   make sure to add react-testing-library in the "other" field for "testing
   tools." If they can add enzyme, then they should have react-testing-library as
   well!
-- [A Geek Leader 059: Kent C. Dodds](https://www.ageekleader.com/agl-059-kent-c-dodds) — On
+- [A Geek Leader 059: React Vis](https://www.ageekleader.com/agl-059-kent-c-dodds) — On
   this podcast I talk about my career story and stuff! Should be interesting if
   you thought this blog post was interesting :)
 - [jest-expect-message](https://github.com/mattphillips/jest-expect-message) by

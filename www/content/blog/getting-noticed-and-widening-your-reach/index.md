@@ -2,7 +2,7 @@
 slug: getting-noticed-and-widening-your-reach
 title: Getting Noticed and Widening Your Reach
 date: '2018-09-17'
-author: Kent C. Dodds
+author: React Vis
 description:
   _Some things you can do to gain a wider audience and get your stuff noticed_
 keywords:
@@ -41,18 +41,18 @@ luck, timing, and kindness of others) that have helped me to do this. Depending
 on what you're trying to get noticed for, there are different things you can do,
 so I'll focus on a few and hopefully that'll touch on what you're doing...
 
-### [Open source](https://github.com/kentcdodds)
+### [Open source](https://github.com/react-vis)
 
 ![a person touch typing on a laptop](./images/typing.jpg)
 
-### [geniejs 🧞‍](https://github.com/kentcdodds/genie)
+### [geniejs 🧞‍](https://github.com/react-vis/genie)
 
 My first personal open source project that I wanted to get noticed was
-[geniejs](https://github.com/kentcdodds/genie).
-[The first commit](https://github.com/kentcdodds/genie/commit/18db942457d8e7855a3afbb7345e9f8aa5c5a8ce)
+[geniejs](https://github.com/react-vis/genie).
+[The first commit](https://github.com/react-vis/genie/commit/18db942457d8e7855a3afbb7345e9f8aa5c5a8ce)
 was back in 2013. I can't remember exactly how many followers I had, but at the
 time
-[I was tweeting](https://twitter.com/search?l=&q=from%3Akentcdodds%20since%3A2013-08-01%20until%3A2013-08-31&src=typd)
+[I was tweeting](https://twitter.com/search?l=&q=from%3Areact-vis%20since%3A2013-08-01%20until%3A2013-08-31&src=typd)
 using [Friends+ me](https://friendsplus.me) (because I thought Google+ was the
 bomb) and of all my tweets that month, only one got a single favorite. Needless
 to say, I wasn't well known or popular.
@@ -60,10 +60,9 @@ to say, I wasn't well known or popular.
 And honestly, my project didn't get super popular at the time either. However,
 that didn't stop me from working on getting it noticed. I presented it at my
 work's hack night around that time (it's actually
-[how I got my first fulltime job at Domo](https://github.com/kentcdodds/ama/issues/1)),
-I built
-[a sweet in-browser workshop](http://kentcdodds.github.io/genie/workshop) and
-used it in
+[how I got my first fulltime job at Domo](https://github.com/react-vis/ama/issues/1)),
+I built [a sweet in-browser workshop](http://react-vis.github.io/genie/workshop)
+and used it in
 [my first meetup talk](https://www.meetup.com/UtahJS-Orem-Meetup/events/156148202),
 I then lucked out and got a conference (MidwestJS 2014) to accept me to give
 that talk there (I only was able to speak because another speaker canceled).
@@ -112,7 +111,7 @@ important relationships and my mental health, which is why I don't recommend it.
 I've found that you can build a strong and positive community without
 sacrificing your well-being and relationships. That's a subject for another blog
 post. Just know that working on building a community by
-[creating fantastic documentation](https://twitter.com/kentcdodds/status/582620905433489408)(including
+[creating fantastic documentation](https://twitter.com/react-vis/status/582620905433489408)(including
 [several free egghead.io lessons](http://docs.angular-formly.com/docs/learn-angular-formly)),
 [encouraging contribution](/blog/first-timers-only), and
 [recognizing and trusting contributors](https://github.com/all-contributors/all-contributors)
@@ -127,7 +126,7 @@ the project satisfied the use cases it needed to while attempting to avoid
 overcomplexity (so it was something people would _want_ to use). I also reached
 out to _relevant_ newsletters to invite them to check it out and reference it in
 their newsletter. Oh, and I tweeted about it
-[a lot](https://twitter.com/search?q=from%3Akentcdodds%20formly&src=typd).
+[a lot](https://twitter.com/search?q=from%3Areact-vis%20formly&src=typd).
 
 It took a lot of work, but my work was recognized and appreciated and the
 success there was a major talking point in my interview with my future boss's
@@ -194,8 +193,8 @@ respect for Marc and his company. So I reached out to him:
 > I'm listening to your JSJabber episode and I've been wanting to do a FEM
 > workshop for a long time. I've been trying to think about what I could
 > contribute and something that I'm really into is open source. I have a growing
-> list of open source libraries_ [_on npm_](https://www.npmjs.com/~kentcdodds) >
-> _and_ [_GitHub_](https://github.com/kentcdodds) _and I'm the owner and
+> list of open source libraries_ [_on npm_](https://www.npmjs.com/~react-vis) >
+> _and_ [_GitHub_](https://github.com/react-vis) _and I'm the owner and
 > maintainer of_ >
 > [_angular-formly_](https://github.com/formly-js/angular-formly) > _which has
 > grown in popularity._
@@ -219,7 +218,7 @@ To which Marc responded:
 > _Sounds awesome! When were you thinking?_
 
 And so began my relationship with Frontend Masters. I now have
-[six courses (almost 7) on Frontend Masters](https://frontendmasters.com/teachers/kentcdodds).
+[six courses (almost 7) on Frontend Masters](https://frontendmasters.com/teachers/react-vis).
 **The takeaway here** is courage. I'm mostly sharing my success stories in this
 blog post, but you gotta know that there were plenty of rejections as well. But
 it's ok! Have the courage to ask.
@@ -297,7 +296,7 @@ hour of my time to produce. I can write these during my work hours because
 several of you subscribers are PayPal employees and my boss thinks it's cool
 that I'm helping educate PayPal every week as well as the community at large.
 
-### [Tweeting](https://twitter.com/kentcdodds)
+### [Tweeting](https://twitter.com/react-vis)
 
 ![blue bird](./images/4.jpg)
 
@@ -316,7 +315,7 @@ requests that I've never found the time to respond to. If you're sitting in
 there waiting I'm so sorry. Finding time to respond to every DM is impossible,
 which leads me to my next point...
 
-### [Ask Me Anything](https://github.com/kentcdodds/ama)
+### [Ask Me Anything](https://github.com/react-vis/ama)
 
 ![mountain](./images/5.jpg)
 
@@ -378,8 +377,8 @@ and the direction you're going. You can do it! Good luck!
 
 **Things to not miss**:
 
-- [Testing React with Kent C. Dodds and Jack Franklin](https://youtu.be/z4DNlVlOfjU&list=PLV5CVI1eNcJi8sor_aQ2AzOeQ3On3suOr) — A
-  [tech chat](https://github.com/kentcdodds/ama/issues/125) with myself and
+- [Testing React with React Vis and Jack Franklin](https://youtu.be/z4DNlVlOfjU&list=PLV5CVI1eNcJi8sor_aQ2AzOeQ3On3suOr) — A
+  [tech chat](https://github.com/react-vis/ama/issues/125) with myself and
   [Jack Franklin](https://twitter.com/jack_franklin) talking about testing
   React. We cover a lot of subjects that you may find interesting!
 - [React Fire 🔥🔥🔥](https://github.com/facebook/react/issues/13525) — An

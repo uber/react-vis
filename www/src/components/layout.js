@@ -207,7 +207,7 @@ function Layout({
         <div css={{flex: '1 0 auto'}}>
           {React.cloneElement(hero, {headerColor})}
           <Header
-            siteTitle="Kent C. Dodds"
+            siteTitle="React Vis"
             headerLink={headerLink}
             dark={dark}
             bgColor={headerBg}

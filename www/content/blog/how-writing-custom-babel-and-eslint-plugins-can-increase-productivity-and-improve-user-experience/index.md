@@ -5,7 +5,7 @@ title: >-
   How writing custom Babel & ESLint plugins can increase productivity & improve
   user experience
 date: '2017-07-17'
-author: Kent C. Dodds
+author: React Vis
 description: _And it's way more approachable than you think..._
 keywords:
   - javascript
@@ -128,7 +128,7 @@ Here are some examples of how babel plugins have done that:
 3.  While building the [glamorous.rocks](https://rc.glamorous.rocks) website
     (soon to be released), I realized that we were loading all localization
     strings regardless of what language you were requesting! So I wrote
-    [a custom babel plugin](https://github.com/kentcdodds/glamorous-website/blob/7ab245a4f99af9f217fd9b7d63f59dae1814f08e/other/babel-plugin-l10n-loader.js)
+    [a custom babel plugin](https://github.com/react-vis/glamorous-website/blob/7ab245a4f99af9f217fd9b7d63f59dae1814f08e/other/babel-plugin-l10n-loader.js)
     to load the right localization based on a `LOCALE` environment variable.
     This enabled us to create a
     [static export of the server rendered site](https://github.com/zeit/next.js/blob/dba24dac9db97dfce07fbdb1725f5ed1f9a40811/readme.md#static-html-export)
@@ -138,7 +138,7 @@ Here are some examples of how babel plugins have done that:
     confusing "Higher Order Component" for localization and just start importing
     markdown files _on the server._ At the end of it all, the site is way faster
     and it's much more pleasant to work with
-    ([contributions to glamorous.rocks are welcome](https://github.com/kentcdodds/glamorous-website/issues)).
+    ([contributions to glamorous.rocks are welcome](https://github.com/react-vis/glamorous-website/issues)).
 
 There are way more, but hopefully that gives you an idea of what's possible when
 you know how to write custom Babel plugins.
@@ -190,15 +190,15 @@ has helped you understand things a little better, please share it so more people
 see that learning how to write custom Babel and ESLint plugins can be an
 invaluable skill. You can simply retweet this:
 
-https://twitter.com/kentcdodds/status/886945519909711872
+https://twitter.com/react-vis/status/886945519909711872
 
 ---
 
 P.S. There are several other (free) resources to help you learn ASTs:
 
 - [babel-plugin-handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/en/plugin-handbook.md)
-- [asts-workshop](https://github.com/kentcdodds/asts-workshop) (the repo used
-  for the Frontend Masters course)
+- [asts-workshop](https://github.com/react-vis/asts-workshop) (the repo used for
+  the Frontend Masters course)
 - [Writing custom Babel and ESLint plugins with ASTs](https://youtu.be/VBscbcm2Mok&index=1&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf&t=192s)
 - [A couple lessons on ASTs on egghead.io](http://kcd.im/egghead-asts)
 
@@ -211,9 +211,9 @@ pretty excited about
 you should really take a look at these. I wrote the first working version of
 each of them in about a half hour:
 
-- [babel-plugin-preval](https://github.com/kentcdodds/babel-plugin-preval):
+- [babel-plugin-preval](https://github.com/react-vis/babel-plugin-preval):
   Pre-evaluate code at build-time
-- [babel-macros](https://github.com/kentcdodds/babel-macros): Enables
+- [babel-macros](https://github.com/react-vis/babel-macros): Enables
   zero-config, importable babel plugins
 
 And in [the course](http://kcd.im/fm-asts) I teach you everything you need to

@@ -2,7 +2,7 @@
 slug: tools-without-config
 title: "Tools without config \U0001F6E0\U0001F4E6"
 date: '2017-09-26'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _TL;DR/Spoiler alert: I'm working on a tool at PayPal called paypal-scripts
   and a personal one called kcd-scripts. You should try it too!_
@@ -89,18 +89,18 @@ wanted to add a custom babel plugin it's as easy as adding this to your
 
 ---
 
-I’ve been using [a generator](https://github.com/kentcdodds/generator-kcd-oss)
-for [my open source projects](https://github.com/kentcdodds) for over a year
-now. It’s been a huge productivity boost. However I’ve been suffering from all
-the same things I’ve discussed in this blog post. So with the excitement of
-creating paypal-scripts, I’ve also been working on
-[kcd-scripts](https://github.com/kentcdodds/kcd-scripts) which does the same
+I’ve been using [a generator](https://github.com/react-vis/generator-kcd-oss)
+for [my open source projects](https://github.com/react-vis) for over a year now.
+It’s been a huge productivity boost. However I’ve been suffering from all the
+same things I’ve discussed in this blog post. So with the excitement of creating
+paypal-scripts, I’ve also been working on
+[kcd-scripts](https://github.com/react-vis/kcd-scripts) which does the same
 things except encodes the preferences I have for my own projects in the CLI.
 I’ve been slowly adding it to my projects and I couldn’t be happier with the git
 diffs 😍. I mean…
-[check this out](https://twitter.com/kentcdodds/status/906238861067657221):
+[check this out](https://twitter.com/react-vis/status/906238861067657221):
 
-https://twitter.com/kentcdodds/status/906238861067657221
+https://twitter.com/react-vis/status/906238861067657221
 
 That’s a ton of config and dependencies I no longer need to maintain 🙌.
 Multiply that by the 100 packages I’ve published on npm and that’s some pretty

@@ -2,7 +2,7 @@
 slug: how-i-learn-an-open-source-codebase
 title: How I learn an Open Source Codebase
 date: '2018-05-14'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _What I do to learn and understand an open source project to which I want to
   contribute._
@@ -18,9 +18,9 @@ bannerCredit:
 [Participating in open source has been awesome for me](/blog/how-getting-into-open-source-has-been-awesome-for-me).
 It has
 [made me and the stuff I make better](https://youtu.be/6mtPPkKchcQ&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf).
-A [common](https://github.com/kentcdodds/ama/issues/57)
-[question](https://github.com/kentcdodds/ama/issues/264) that I get from folks
-is how to go about learning an open source codebase and understand other's code.
+A [common](https://github.com/react-vis/ama/issues/57)
+[question](https://github.com/react-vis/ama/issues/264) that I get from folks is
+how to go about learning an open source codebase and understand other's code.
 
 In my blog post ["Open Source Stamina"](/blog/open-source-stamina), I make an
 important observation:
@@ -98,7 +98,7 @@ maintainers because having material out there for new contributors to watch is
 very helpful. Here are some examples:
 
 - [Why, What, and How of React Fiber with Dan Abramov and Andrew Clark](https://youtu.be/crM1iRVGpGQ&list=PLV5CVI1eNcJi8sor_aQ2AzOeQ3On3suOr)
-- [React events in depth w/ Kent C. Dodds, Ben Alpert, & Dan Abramov](https://youtu.be/dRo_egw7tBc&list=PLV5CVI1eNcJi8sor_aQ2AzOeQ3On3suOr)
+- [React events in depth w/ React Vis, Ben Alpert, & Dan Abramov](https://youtu.be/dRo_egw7tBc&list=PLV5CVI1eNcJi8sor_aQ2AzOeQ3On3suOr)
 - [JavaScript & React Testing with Jest](https://youtu.be/i31VtyJSM-I&list=PLV5CVI1eNcJi8sor_aQ2AzOeQ3On3suOr)
 - [Contributing to ReactJS](https://youtu.be/wUpPsEcGsg8&list=PLV5CVI1eNcJi8sor_aQ2AzOeQ3On3suOr)
 

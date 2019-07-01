@@ -2,7 +2,7 @@
 slug: react-hooks-whats-going-to-happen-to-react-context
 title: "React Hooks: What's going to happen to react context?"
 date: '2018-12-17'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _With the cool new stuff coming to React (Hooks/Suspense), what's going to
   happen to the context api?_
@@ -171,5 +171,5 @@ Until next time! Good luck! 👋
   for Data Fetching (~mid 2019)
 - [Modern React Workshop: Hooks & Suspense](https://youtu.be/xcZXS_VEJS0&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) — a
   recording of a livestream I did last week at PayPal.
-  [Here's the workshop repo](https://github.com/kentcdodds/modern-react) and
+  [Here's the workshop repo](https://github.com/react-vis/modern-react) and
   [here's the part 2](https://youtu.be/NKAfuguroRY&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf).

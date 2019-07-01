@@ -2,7 +2,7 @@
 slug: write-the-story-that-works
 date: 2019-03-03
 title: 'Write the Story That Works'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   _You can write all kinds of stories. Only write the one that works._
 categories:

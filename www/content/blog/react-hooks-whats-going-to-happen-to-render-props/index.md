@@ -2,7 +2,7 @@
 slug: react-hooks-whats-going-to-happen-to-render-props
 title: "React Hooks: What's going to happen to render props?"
 date: '2018-12-10'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _What am I going to do with all these render props components now that react
   hooks solve the code reuse problem better than render props ever did?_
@@ -23,7 +23,7 @@ Current Available Translations:
 About a year ago, I published
 ["How to give rendering control to users with prop getters"](/blog/how-to-give-rendering-control-to-users-with-prop-getters).
 In that post, I show the entire implementation (at the time) of
-[`react-toggled`](https://github.com/kentcdodds/react-toggled) which I actually
+[`react-toggled`](https://github.com/react-vis/react-toggled) which I actually
 built for the sole purpose of teaching some of the patterns that I used in
 [`downshift`](https://github.com/downshift-js/downshift). It's a much smaller
 and simpler component that implements many of the same patterns as downshift so
@@ -43,8 +43,8 @@ go ahead and establish my claim that hooks are simpler by comparing the current
 version of `react-toggled` with a hooks-based implementation.
 
 If you're interested,
-[here's the current source for](https://github.com/kentcdodds/react-toggled/blob/8452a1f2a4ec7b64588cd8c9812e0faf8deb0271/src/index.js)
-[`react-toggled`](https://github.com/kentcdodds/react-toggled/blob/8452a1f2a4ec7b64588cd8c9812e0faf8deb0271/src/index.js).
+[here's the current source for](https://github.com/react-vis/react-toggled/blob/8452a1f2a4ec7b64588cd8c9812e0faf8deb0271/src/index.js)
+[`react-toggled`](https://github.com/react-vis/react-toggled/blob/8452a1f2a4ec7b64588cd8c9812e0faf8deb0271/src/index.js).
 
 Here's a typical usage of `react-toggled`:
 

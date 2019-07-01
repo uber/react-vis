@@ -1,6 +1,6 @@
 {
-  "projectName": "kentcdodds.com",
-  "projectOwner": "kentcdodds",
+  "projectName": "react-vis.com",
+  "projectOwner": "react-vis",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
@@ -11,10 +11,10 @@
   "contributorsPerLine": 7,
   "contributors": [
     {
-      "login": "kentcdodds",
-      "name": "Kent C. Dodds",
+      "login": "react-vis",
+      "name": "React Vis",
       "avatar_url": "https://avatars0.githubusercontent.com/u/1500684?v=4",
-      "profile": "https://kentcdodds.com",
+      "profile": "https://react-vis.com",
       "contributions": [
         "code",
         "infra"

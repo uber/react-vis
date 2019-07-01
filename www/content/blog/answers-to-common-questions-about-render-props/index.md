@@ -2,7 +2,7 @@
 slug: answers-to-common-questions-about-render-props
 title: Answers to common questions about render props
 date: '2018-02-12'
-author: Kent C. Dodds
+author: React Vis
 description: _Because there's a ton of hype, and a bunch of questions ⚛️_
 keywords:
   - javascript
@@ -25,9 +25,9 @@ continue).
 
 In preparing for this training (in addition to
 [creating this](https://codesandbox.io/s/k2krnxml7r)),
-[I tweeted this question](https://twitter.com/kentcdodds/status/954508165076455424):
+[I tweeted this question](https://twitter.com/react-vis/status/954508165076455424):
 
-https://twitter.com/kentcdodds/status/954508165076455424
+https://twitter.com/react-vis/status/954508165076455424
 
 I got quite a few great responses and for today's newsletter I thought I'd share
 three of them and simple examples for the answer:

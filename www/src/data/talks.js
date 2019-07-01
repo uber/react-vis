@@ -92,7 +92,7 @@ export default [
   },
   {
     title: 'Requisite React',
-    resources: ['[slides](https://github.com/kentcdodds/requisite-react)'],
+    resources: ['[slides](https://github.com/react-vis/requisite-react)'],
     tags: ['react'],
     deliveries: [
       {
@@ -110,12 +110,12 @@ export default [
       skills in anything, I find the most effective method is to take a step
       back and understand the foundational fundamentals. To strip away all
       abstraction until what we're left with is the bare bones.
-      [The better you understand an abstraction, the more effective you will be at using it.](https://twitter.com/kentcdodds/status/1074724545003581440)
+      [The better you understand an abstraction, the more effective you will be at using it.](https://twitter.com/react-vis/status/1074724545003581440)
       In this talk, we'll get more effective at using React Hooks, React Suspense, and JSX.
     `,
   },
   {
-    title: 'LIVE! Learn React Hooks with Kent C. Dodds',
+    title: 'LIVE! Learn React Hooks with React Vis',
     resources: [
       '[Partially Finished Codesandbox](https://codesandbox.io/s/r1m6pz58mq)',
       '[Fully Finished Codesandbox](https://codesandbox.io/s/l3r6zxx0vl)',
@@ -172,7 +172,7 @@ export default [
   {
     title: 'Why React Hooks',
     resources: [
-      '[repo](https://github.com/kentcdodds/gdg-devfest-2018-react)',
+      '[repo](https://github.com/react-vis/gdg-devfest-2018-react)',
       '[chat app](https://geo-chat.netlify.com)',
     ],
     tags: ['react'],
@@ -215,7 +215,7 @@ export default [
         Can Vue use Render Props? Does React have a concept like Directives?
         Can Angular go Renderless the way the young 'uns do? All my developer
         friends in that other framework keep using words I don't understand.
-        Help! Join Kent C. Dodds, Isaac Mann and Divya Sasidharan as they
+        Help! Join React Vis, Isaac Mann and Divya Sasidharan as they
         demonstrate UI component patterns that are common across React, Angular
         and Vue. Consider this your language primer before a trip to a foreign
         framework land. You'll see that we're all talking about the same concepts,
@@ -225,7 +225,7 @@ export default [
   {
     title: 'React... Suspense...',
     resources: [
-      '[repo](https://github.com/kentcdodds/react-suspense-simple-example)',
+      '[repo](https://github.com/react-vis/react-suspense-simple-example)',
     ],
     tags: ['react'],
     deliveries: [
@@ -291,9 +291,9 @@ export default [
   {
     title: 'Confident React',
     resources: [
-      '[slides](https://slides.com/kentcdodds/confident-react)',
-      '[example codesandbox](https://codesandbox.io/s/github/kentcdodds/confident-react-examples)',
-      '[react-testing-library-examples codesandbox](https://codesandbox.io/s/github/kentcdodds/react-testing-library-examples)',
+      '[slides](https://slides.com/react-vis/confident-react)',
+      '[example codesandbox](https://codesandbox.io/s/github/react-vis/confident-react-examples)',
+      '[react-testing-library-examples codesandbox](https://codesandbox.io/s/github/react-vis/react-testing-library-examples)',
     ],
     tags: ['react', 'testing'],
     deliveries: [
@@ -370,7 +370,7 @@ export default [
   },
   {
     title: 'How open source has made me and the stuff I make better',
-    resources: ['[slides](https://slides.com/kentcdodds/oss-better#/)'],
+    resources: ['[slides](https://slides.com/react-vis/oss-better#/)'],
     tags: ['open source'],
     deliveries: [
       {
@@ -390,7 +390,7 @@ export default [
   },
   {
     title: 'All about macros with babel-plugin-macros 🎣',
-    resources: ['[slides](http://slides.com/kentcdodds/macros)'],
+    resources: ['[slides](http://slides.com/react-vis/macros)'],
     tags: ['babel'],
     deliveries: [
       {
@@ -407,7 +407,7 @@ export default [
   },
   {
     title: 'Write tests. Not too many. Mostly integration.',
-    resources: ['[slides](https://slides.com/kentcdodds/write-tests)'],
+    resources: ['[slides](https://slides.com/react-vis/write-tests)'],
     tags: ['testing'],
     deliveries: [
       {
@@ -463,7 +463,7 @@ export default [
   },
   {
     title: 'Maintainable CSS in React',
-    resources: ['[slides](http://slides.com/kentcdodds/glamorous#/)'],
+    resources: ['[slides](http://slides.com/react-vis/glamorous#/)'],
     tags: ['glamorous', 'css', 'css-in-js', 'react'],
     deliveries: [
       {
@@ -490,7 +490,7 @@ export default [
   },
   {
     title: 'Tools of modern JavaScript projects',
-    resources: ['[slides](http://slides.com/kentcdodds/js-tools#/)'],
+    resources: ['[slides](http://slides.com/react-vis/js-tools#/)'],
     tags: ['javascript', 'tools'],
     deliveries: [
       {
@@ -508,7 +508,7 @@ export default [
   },
   {
     title: 'Faster JavaScript',
-    resources: ['[slides](https://slides.com/kentcdodds/faster-javascript)'],
+    resources: ['[slides](https://slides.com/react-vis/faster-javascript)'],
     tags: ['javascript', 'babel'],
     deliveries: [
       {
@@ -539,8 +539,8 @@ export default [
   {
     title: 'How to Open Source Your Stuff',
     resources: [
-      '[slides](https://slides.com/kentcdodds/open-sourcing-your-stuff)',
-      '[repo 1](https://github.com/kentcdodds/todomvc-angular)',
+      '[slides](https://slides.com/react-vis/open-sourcing-your-stuff)',
+      '[repo 1](https://github.com/react-vis/todomvc-angular)',
       '[repo 2](https://github.com/angular-todo-mvc/angular-todo-escape)',
     ],
     tags: ['open source', 'live coding'],
@@ -610,11 +610,11 @@ export default [
     title: 'Testing React',
     resources: [
       '[slides](https://kcd.im/react-jest)',
-      '[react-jest-workshop](https://github.com/kentcdodds/react-jest-workshop)',
+      '[react-jest-workshop](https://github.com/react-vis/react-jest-workshop)',
       '[old slides (mocha)](https://kcd.im/testing-react)',
-      '[react-mocha-workshop](https://github.com/kentcdodds/react-mocha-workshop)',
+      '[react-mocha-workshop](https://github.com/react-vis/react-mocha-workshop)',
       '[older slides (ava)](https://kcd.im/react-ava)',
-      '[react-ava-workshop](https://github.com/kentcdodds/react-ava-workshop)',
+      '[react-ava-workshop](https://github.com/react-vis/react-ava-workshop)',
     ],
     tags: ['react', 'testing', 'live coding'],
     deliveries: [
@@ -641,7 +641,7 @@ export default [
   },
   {
     title: 'More than you want to know about ES6 Modules',
-    resources: ['[slides](https://slides.com/kentcdodds/es6-modules)'],
+    resources: ['[slides](https://slides.com/react-vis/es6-modules)'],
     tags: ['ES6', 'babel'],
     deliveries: [
       {
@@ -676,7 +676,7 @@ export default [
   {
     title: 'Writing custom Babel and ESLint plugins with ASTs',
     resources: [
-      '[slides](https://slides.com/kentcdodds/a-beginners-guide-to-asts)',
+      '[slides](https://slides.com/react-vis/a-beginners-guide-to-asts)',
       '[code](http://kcd.im/beginner-asts-code)',
     ],
     tags: ['ECMAScript', 'babel', 'eslint', 'live coding'],
@@ -717,7 +717,7 @@ export default [
   },
   {
     title: 'The First Pull Request',
-    resources: ['[slides](http://slides.com/kentcdodds/1st-pr)'],
+    resources: ['[slides](http://slides.com/react-vis/1st-pr)'],
     tags: ['open source', 'soft skills'],
     deliveries: [
       {
@@ -773,7 +773,7 @@ export default [
   },
   {
     title: 'Zero to 60 in software development: How to jumpstart your career',
-    resources: ['[slides](https://slides.com/kentcdodds/zero-to-60)'],
+    resources: ['[slides](https://slides.com/react-vis/zero-to-60)'],
     tags: ['soft skills'],
     deliveries: [
       {
@@ -802,7 +802,7 @@ export default [
   {
     title: 'Learning JavaScript and Staying Marketable',
     resources: [
-      '[slides](http://slides.com/kentcdodds/learning-javascript)',
+      '[slides](http://slides.com/react-vis/learning-javascript)',
       '[tweet](https://twitter.com/ngnebraska/status/669319695015673856)',
     ],
     tags: ['soft skills'],
@@ -824,7 +824,7 @@ export default [
   },
   {
     title: 'ES6, Webpack, Karma, and Code Coverage',
-    resources: ['[repo](https://github.com/kentcdodds/random-user-coverage)'],
+    resources: ['[repo](https://github.com/react-vis/random-user-coverage)'],
     tags: ['babel', 'testing', 'webpack', 'live coding'],
     deliveries: [
       {
@@ -838,7 +838,7 @@ export default [
   },
   {
     title: 'Angular Directive Scope: Explained and Code Structure',
-    resources: ['[blog post](https://medium.com/@kentcdodds/19eee9e90e45)'],
+    resources: ['[blog post](https://medium.com/@react-vis/19eee9e90e45)'],
     deliveries: [
       {
         event:
@@ -850,7 +850,7 @@ export default [
   },
   {
     title: 'ES6',
-    resources: ['[repo](https://github.com/kentcdodds/es6-workshop)'],
+    resources: ['[repo](https://github.com/react-vis/es6-workshop)'],
     deliveries: [
       {
         event:
@@ -860,14 +860,14 @@ export default [
       },
     ],
     description: `
-        Kent C. Dodds is going to be introducing ECMAScript 6, which is the next version of JavaScript. If you want to
+        React Vis is going to be introducing ECMAScript 6, which is the next version of JavaScript. If you want to
         look ahead, check this out: [github.com/lukehoban/es6features](https://github.com/lukehoban/es6features)
       `,
   },
   {
     title: 'Moxee: Enforcing modularity in AngularJS',
     resources: [
-      '[slides](http://slides.com/kentcdodds/moxee#/)',
+      '[slides](http://slides.com/react-vis/moxee#/)',
       '[repo](https://github.com/alianza-dev/moxee)',
     ],
     deliveries: [
@@ -885,8 +885,8 @@ export default [
   {
     title: 'JSON powered Forms',
     resources: [
-      '[slides](http://slides.com/kentcdodds/angular-formly)',
-      '[repo](https://github.com/kentcdodds/angular-formly-convert)',
+      '[slides](http://slides.com/react-vis/angular-formly)',
+      '[repo](https://github.com/react-vis/angular-formly-convert)',
     ],
     deliveries: [
       {
@@ -912,8 +912,8 @@ export default [
   {
     title: 'Angular 2: Built for Huge, Long-lasting Applications',
     resources: [
-      '[slides](http://slides.com/kentcdodds/ng2-introduction)',
-      '[repo](https://github.com/kentcdodds/ng2-random-user/)',
+      '[slides](http://slides.com/react-vis/ng2-introduction)',
+      '[repo](https://github.com/react-vis/ng2-random-user/)',
     ],
     deliveries: [
       {
@@ -926,14 +926,14 @@ export default [
     description: `
         Angular 2 is built for huge web applications that stand the test of time. To accomplish this, Angular 2 utilizes
         the latest and greatest web technologies like ES6 modules/classes and Web Components. Come get a preview of what
-        this looks like with egghead.io instructor Kent C. Dodds as he live codes an application using the pre-release
+        this looks like with egghead.io instructor React Vis as he live codes an application using the pre-release
         alpha version of Angular 2.
       `,
   },
   {
     title: 'ng-model-options in 5 minutes',
     resources: [
-      '[slides](http://slides.com/kentcdodds/ng-model-options-in-5-minutes#/)',
+      '[slides](http://slides.com/react-vis/ng-model-options-in-5-minutes#/)',
       '[JSBin](http://jsbin.com/qocekak/edit)',
       '[blog post](https://www.airpair.com/angularjs/posts/ngmodeloptions-total-model-control)',
     ],
@@ -952,8 +952,8 @@ export default [
   {
     title: 'Using ReactJS with existing AngularJS codebase',
     resources: [
-      '[app](http://kentcdodds.com/react-in-angular/app/)',
-      '[repo](https://github.com/kentcdodds/react-in-angular)',
+      '[app](http://react-vis.com/react-in-angular/app/)',
+      '[repo](https://github.com/react-vis/react-in-angular)',
     ],
     deliveries: [
       {
@@ -983,8 +983,8 @@ export default [
   {
     title: 'Improving UX with GenieJS',
     resources: [
-      '[slides](https://slides.com/kentcdodds/genie)',
-      '[workshop](https://kentcdodds.github.io/genie/workshop/)',
+      '[slides](https://slides.com/react-vis/genie)',
+      '[workshop](https://react-vis.github.io/genie/workshop/)',
     ],
     deliveries: [
       {
@@ -1009,14 +1009,14 @@ export default [
         a user to type what they want to have happen and select from a list of the best matches for what they typed to
         perform an action. Over time, the genie will learn the actions more associated with specific keywords and those
         will be come first when a list of matching actions is requested. Check it out at
-        [github.com/kentcdodds/genie](https://github.com/kentcdodds/genie)
+        [github.com/react-vis/genie](https://github.com/react-vis/genie)
       `,
   },
   {
     title: 'Watch your Watchers',
     resources: [
-      '[slides](http://slides.com/kentcdodds/angular-bindonce#/)',
-      '[kcd-angular](http://kentcdodds.com/kcd-angular)',
+      '[slides](http://slides.com/react-vis/angular-bindonce#/)',
+      '[kcd-angular](http://react-vis.com/kcd-angular)',
     ],
     deliveries: [
       {
@@ -1049,7 +1049,7 @@ export default [
   },
   {
     title: 'How to Build a Demo with GitHub Pages',
-    resources: ['[slides](http://slides.com/kentcdodds/gh-pages#/)'],
+    resources: ['[slides](http://slides.com/react-vis/gh-pages#/)'],
     deliveries: [
       {
         event:
@@ -1061,9 +1061,9 @@ export default [
   {
     title: `JWT: Not Your Grandma's Cookies`,
     resources: [
-      '[slides](http://slides.com/kentcdodds/ng-jwt-workshop)',
-      '[site](http://kentcdodds.com/ng-jwt-workshop/frontend/)',
-      '[repo](https://github.com/kentcdodds/ng-jwt-workshop)',
+      '[slides](http://slides.com/react-vis/ng-jwt-workshop)',
+      '[site](http://react-vis.com/ng-jwt-workshop/frontend/)',
+      '[repo](https://github.com/react-vis/ng-jwt-workshop)',
     ],
     deliveries: [
       {
@@ -1082,8 +1082,8 @@ export default [
   {
     title: 'Intro to AngularJS',
     resources: [
-      '[slides](https://slides.com/kentcdodds/intro-to-angularjs)',
-      '[workshop](http://kentcdodds.com/ng-workshop/)',
+      '[slides](https://slides.com/react-vis/intro-to-angularjs)',
+      '[workshop](http://react-vis.com/ng-workshop/)',
     ],
     deliveries: [
       {

@@ -2,7 +2,7 @@
 slug: 'authentication-in-react-applications'
 title: 'Authentication in React Applications'
 date: '2019-05-20'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   '_How to handle user authentication in modern React Applications with context
   and hooks_'
@@ -35,12 +35,11 @@ function App() {
 export App
 ```
 
-That's it.
-[Most apps](https://twitter.com/kentcdodds/status/1131184429169168387) which
-require authentication of any kind can be drastically simplified by that one
-little trick. Rather than trying to do something fancy to redirect the user when
-they happen to land on a page that they're not supposed to, instead you don't
-render that stuff at all. Things get even cooler when you do this:
+That's it. [Most apps](https://twitter.com/react-vis/status/1131184429169168387)
+which require authentication of any kind can be drastically simplified by that
+one little trick. Rather than trying to do something fancy to redirect the user
+when they happen to land on a page that they're not supposed to, instead you
+don't render that stuff at all. Things get even cooler when you do this:
 
 ```jsx
 import React from 'react'
@@ -70,7 +69,7 @@ the app or the other if there is no user.
 ## How do we get here?
 
 > If you want to just look at how it's all done, then you can checkout
-> [the bookshelf repo](https://github.com/kentcdodds/bookshelf) which I made for
+> [the bookshelf repo](https://github.com/react-vis/bookshelf) which I made for
 > my [Build ReactJS Applications Workshop](/workshops/build-react-apps).
 
 Ok, so what do you do to get to this point? Let's start by looking at where
@@ -116,7 +115,7 @@ the `<UserProvider />` would be responsible for keeping the user data up to date
 in memory and on the server as we make changes to the user's data (like their
 email address/bio/etc.).
 
-[The `auth-context.js` file](https://github.com/kentcdodds/bookshelf/blob/69bde2c117660bd988ffbc60f387165d2f852c62/src/context/auth-context.js)
+[The `auth-context.js` file](https://github.com/react-vis/bookshelf/blob/69bde2c117660bd988ffbc60f387165d2f852c62/src/context/auth-context.js)
 has some stuff in it that's outside the scope of this blog post/domain specific,
 so I'm only going to show a slimmed down/modified version of it:
 
@@ -182,8 +181,8 @@ time you start rendering. Even in that situation, taking a branch higher up in
 the tree of your app drastically simplifies the maintenance of your app.
 
 I hope this is helpful to you. You can checkout
-[the bookshelf repo](https://github.com/kentcdodds/bookshelf)
-([or even edit it on codesandbox](https://codesandbox.io/s/github/kentcdodds/bookshelf))
+[the bookshelf repo](https://github.com/react-vis/bookshelf)
+([or even edit it on codesandbox](https://codesandbox.io/s/github/react-vis/bookshelf))
 for a more complete picture of what all this is like in a more realistic
 scenario with all the pieces together.
 

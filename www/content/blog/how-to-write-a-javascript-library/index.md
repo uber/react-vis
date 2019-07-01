@@ -2,7 +2,7 @@
 slug: how-to-write-a-javascript-library
 title: How to Write a JavaScript Library
 date: '2015-09-08'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _There are so many reasons to open source your code. But knowing how to do it
   can be a real challenge._
@@ -57,4 +57,4 @@ you're curious, check out the (free) lesson series on egghead.io:
 Start writing more open source JavaScript today! 👍
 
 If you have any recommendations or questions, catch me on
-[Twitter](https://twitter.com/kentcdodds).
+[Twitter](https://twitter.com/react-vis).

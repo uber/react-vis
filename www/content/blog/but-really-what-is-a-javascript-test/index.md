@@ -2,7 +2,7 @@
 slug: but-really-what-is-a-javascript-test
 title: 'But really, what is a JavaScript test?'
 date: '2018-01-01'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Let's take a step back and understand automated testing of JavaScript from
   square one._
@@ -23,10 +23,10 @@ Testing software. There are a ton of reasons we do it. Here are a two of mine:
 
 That said, I have a few questions for you (these are twitter polls):
 
-- [Have you ever written a JavaScript test?](https://twitter.com/kentcdodds/status/942625485829181441)
-- [Have you ever used a JavaScript Testing Framework?](https://twitter.com/kentcdodds/status/942625486638759938)
-- [Have you ever set up a JavaScript testing framework from scratch?](https://twitter.com/kentcdodds/status/942625487511154688)
-- [Do you understand testing frameworks well enough to implement your own? (even a really simple one?)](https://twitter.com/kentcdodds/status/942625489348280320)
+- [Have you ever written a JavaScript test?](https://twitter.com/react-vis/status/942625485829181441)
+- [Have you ever used a JavaScript Testing Framework?](https://twitter.com/react-vis/status/942625486638759938)
+- [Have you ever set up a JavaScript testing framework from scratch?](https://twitter.com/react-vis/status/942625487511154688)
+- [Do you understand testing frameworks well enough to implement your own? (even a really simple one?)](https://twitter.com/react-vis/status/942625489348280320)
 
 The goal of this post is to get each of you to be able to answer "Yes" to that
 last question. So you have a fundamental understanding of what a test in
@@ -43,7 +43,7 @@ module.exports = {sum, subtract}
 ```
 
 **I've made**
-[**a repo on GitHub**](https://github.com/kentcdodds/js-test-example) **you can
+[**a repo on GitHub**](https://github.com/react-vis/js-test-example) **you can
 reference as well 🐙😸**
 
 ### Step 1

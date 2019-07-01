@@ -2,7 +2,7 @@
 slug: introducing-glamorous
 title: 'Introducing glamorous 💄'
 date: '2017-04-04'
-author: Kent C. Dodds
+author: React Vis
 description:
   '_A styled-components 💅 and jsxstyle inspired solution for styling ⚛️ React
   Components from PayPal_'
@@ -33,7 +33,7 @@ So I decided to try out
 [styled-components](https://github.com/styled-components/styled-components)
 because the hype-train was strong 🚂. I REALLY liked it:
 
-https://twitter.com/kentcdodds/status/840329548885557250
+https://twitter.com/react-vis/status/840329548885557250
 
 It allowed me to write that same component like this:
 
@@ -50,11 +50,11 @@ const MyStyledDiv = styled.div`
 Unfortunately, I hit a wall when I realized that there isn't currently a
 solution for right-to-left conversion (like
 [CSSJanus](https://github.com/cssjanus/cssjanus) or
-[rtl-css-js](https://github.com/kentcdodds/rtl-css-js)) and that's a hard
+[rtl-css-js](https://github.com/react-vis/rtl-css-js)) and that's a hard
 requirement for what I'm building. I also had some issues with the size of
 styled-components at the time (note that you can transpile away a lot of the
 size if you're willing to give up
-[_some_ dynamic capabilities](https://github.com/kentcdodds/glamorous/issues/4),
+[_some_ dynamic capabilities](https://github.com/react-vis/glamorous/issues/4),
 which I was unwilling to do).
 
 So after evaluating a bunch of other solutions and trying to enhance existing
@@ -65,13 +65,13 @@ solutions to be what I wanted them to be, I decided to create my own.
 [**paypal/glamorous**](https://github.com/paypal/glamorous)
 
 `glamorous` is React component styling solved with an elegant
-([inspired](https://github.com/kentcdodds/glamorous#inspiration)) API, small
+([inspired](https://github.com/react-vis/glamorous#inspiration)) API, small
 footprint (<5kb gzipped), and great performance (via
 [`glamor`](https://github.com/threepointone/glamor)). It has a very similar API
 to styled-components and uses similar tools under the hood
 ([glamor](https://github.com/threepointone/glamor)). The benefits being:
 
-https://twitter.com/kentcdodds/status/842881773180731392
+https://twitter.com/react-vis/status/842881773180731392
 
 Let's get a quick look at what a glamorous component looks like:
 
@@ -209,11 +209,11 @@ And if you need global styles, you can just
 [use glamor](https://github.com/threepointone/glamor/blob/5e7d988211330b8e2fca5bb8da78e35051444efd/docs/howto.md#global-css-rule)
 to do that (you can do this with styled-components as well). And there many
 other cool things you can do with glamor (including
-[Server Side Rendering](https://github.com/kentcdodds/glamorous#server-side-rendering-ssr))!
+[Server Side Rendering](https://github.com/react-vis/glamorous#server-side-rendering-ssr))!
 
 Another great feature of `glamorous` is it will merge glamor class names
 together automatically for you. Learn more about that
-[here](https://github.com/kentcdodds/glamorous/blob/2c5cba47ed83a744b8dec1ac8f85b560eae818b7/README.md#classname).
+[here](https://github.com/react-vis/glamorous/blob/2c5cba47ed83a744b8dec1ac8f85b560eae818b7/README.md#classname).
 
 ---
 
@@ -311,6 +311,6 @@ I hope you enjoy [glamorous](https://github.com/paypal/glamorous) 💄
 [👀](https://github.com/paypal/glamorous/watchers)!
 
 See you around on twitter: [@glamorousCSS](https://twitter.com/glamorousCSS) and
-[@kentcdods](https://twitter.com/kentcdodds)
+[@kentcdods](https://twitter.com/react-vis)
 
 With ❤️ from PayPal ([we’re hiring](https://jobsearch.paypal-corp.com/search)!)

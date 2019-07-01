@@ -2,7 +2,7 @@
 slug: why-and-how-i-started-public-speaking
 title: Why and How I started public speaking
 date: '2018-08-27'
-author: Kent C. Dodds
+author: React Vis
 description:
   _Some stories and some advice from an international speaker and trainer_
 keywords:
@@ -13,7 +13,7 @@ bannerCredit:
   [Unsplash](https://unsplash.com)'
 ---
 
-![Kent C. Dodds in front of an audience at a meetup](./images/0.jpg)
+![React Vis in front of an audience at a meetup](./images/0.jpg)
 
 When I was still in school in the Information Systems program at
 [BYU](https://www.byu.edu), I discovered and started listening to
@@ -28,9 +28,9 @@ So I looked up the
 mentioned and noticed that there was an opening for a speaker. I had just gotten
 back from the first ng-conf (2014) and thought that whole public speaking thing
 looked like a lot of fun. I also had been working on a personal open source
-project on the side called [geniejs](https://github.com/kentcdodds/genie) (which
+project on the side called [geniejs](https://github.com/react-vis/genie) (which
 was part of how I eventually got
-[my first job](https://github.com/kentcdodds/ama/issues/1)) and thought if they
+[my first job](https://github.com/react-vis/ama/issues/1)) and thought if they
 needed a speaker I could talk about genie! So I offered to fill their slot:
 
 ![a comment thread showing a request to speak at a meetup](./images/1.png)

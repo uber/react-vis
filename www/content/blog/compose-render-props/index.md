@@ -2,7 +2,7 @@
 slug: compose-render-props
 title: Compose Render Props
 date: '2018-04-09'
-author: Kent C. Dodds
+author: React Vis
 description: _One of the reasons I'm so excited about render props_
 keywords:
   - javascript
@@ -16,10 +16,10 @@ bannerCredit:
 
 Today's newsletter will be short as my time's a bit limited, but I wanted to
 make sure you don't miss
-[this tweet](https://twitter.com/kentcdodds/status/977317314361282560) and the
+[this tweet](https://twitter.com/react-vis/status/977317314361282560) and the
 overarching concept:
 
-https://twitter.com/kentcdodds/status/977317314361282560
+https://twitter.com/react-vis/status/977317314361282560
 
 The example itself is a little unimpressive from a user experience standpoint
 (it's based on someone else's actual use-case and I didn't have a chance to
@@ -52,10 +52,10 @@ and then these libraries jump on top to provide opinions about what that looks
 like visually to the user and provide a nice API for adapting those opinions to
 your use cases.
 
-My [next tweet](https://twitter.com/kentcdodds/status/977317793992503297) (after
+My [next tweet](https://twitter.com/react-vis/status/977317793992503297) (after
 the one lined above) was:
 
-https://twitter.com/kentcdodds/status/977317793992503297
+https://twitter.com/react-vis/status/977317793992503297
 
 This week I livestreamed myself in the process of doing this for a component I'm
 working on. You can
@@ -114,6 +114,6 @@ I hope this is helpful! Good luck!
 
 - [CodeSandbox Live!!!](https://medium.com/@CompuIves/introducing-codesandbox-live-real-time-code-collaboration-in-the-browser-6d508cfc70c9)
 - [React Round Up Episode 3](https://devchat.tv/react-round-up/rru-003-advanced-component-patterns-and-downshift-with-kent-c-dodds) — "Advanced
-  Component Patterns and Downshift with Kent C. Dodds"
+  Component Patterns and Downshift with React Vis"
 - [Test Talks Episode 195](https://joecolantonio.com/testtalks/195-javascript-testing-using-jest-with-kent-c-dodds) — "JavaScript
-  Testing Using Jest with Kent C. Dodds"
+  Testing Using Jest with React Vis"

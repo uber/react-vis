@@ -2,7 +2,7 @@
 slug: react-hooks-whats-going-to-happen-to-my-tests
 title: "React Hooks: What's going to happen to my tests?"
 date: '2018-12-24'
-author: Kent C. Dodds
+author: React Vis
 description: _How can we prepare our tests for React's new hooks feature?_
 keywords:
   - javascript

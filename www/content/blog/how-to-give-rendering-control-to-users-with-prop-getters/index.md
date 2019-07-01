@@ -2,7 +2,7 @@
 slug: how-to-give-rendering-control-to-users-with-prop-getters
 title: How to give rendering control to users with prop getters
 date: '2017-10-02'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Render props are awesome, put it together with prop getters and you have an
   awesome combination to give users of your React components..._
@@ -43,12 +43,12 @@ elements to make the overarching component.** Hopefully that's clear 😀
 
 To talk about this, we'll actually use a different component I wrote recently
 that uses this pattern called
-[`react-toggled`](https://github.com/kentcdodds/react-toggled).
+[`react-toggled`](https://github.com/react-vis/react-toggled).
 
 ![React toggled logo](./images/1.png)
 
 It's pretty small, so I'm just going to paste all of it here for you
-([see the syntax highlighted file here](https://github.com/kentcdodds/react-toggled/blob/master/src/index.js)):
+([see the syntax highlighted file here](https://github.com/react-vis/react-toggled/blob/master/src/index.js)):
 
 ```js
 import {Component} from 'react'
@@ -227,7 +227,7 @@ Here are a few projects that implement the prop getters pattern:
 - [`downshift`](https://github.com/downshift-js/downshift)
   [🏎](https://github.com/downshift-js/downshift) - Primitive for building
   simple, flexible, WAI-ARIA compliant enhanced input React components
-- [`react-toggled`](https://github.com/kentcdodds/react-toggled) - Component to
+- [`react-toggled`](https://github.com/react-vis/react-toggled) - Component to
   build simple, flexible, and accessible toggle components
 - [`dub-step`](https://github.com/infiniteluke/dub-step)
   [🕺](https://github.com/infiniteluke/dub-step) - Step through an index with
@@ -240,7 +240,7 @@ all! 👍
 
 **Things to not miss:**
 
-- [`import-all.macro`](https://github.com/kentcdodds/import-all.macro) - A work
+- [`import-all.macro`](https://github.com/react-vis/import-all.macro) - A work
   in progress babel-macro that allows you to import all files that match a glob
 - [`react-powerplug`](https://github.com/renatorib/react-powerplug) - Pretty
   neat/interesting idea with the render prop pattern.

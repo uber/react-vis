@@ -2,7 +2,7 @@
 slug: how-gratitude-can-make-you-a-better-developer
 title: How Gratitude can make you a better developer
 date: '2018-12-03'
-author: Kent C. Dodds
+author: React Vis
 description: _What does gratitude have to do with software development?_
 keywords:
   - career
@@ -27,7 +27,7 @@ things I'm grateful for and also explain why I think that gratitude can help you
 be a better software engineer and a better person.
 
 When I was off
-[riding horses](https://twitter.com/kentcdodds/status/1043644565041819648) at a
+[riding horses](https://twitter.com/react-vis/status/1043644565041819648) at a
 family reunion last summer, my older brother gave a presentation about attitude
 and gratitude.
 
@@ -169,4 +169,4 @@ Good luck!
   [Shawn Wang](https://twitter.com/swyx).
 - [GDG Salt Lake DevFest 2018: Why React Hooks](https://youtu.be/zWsZcBiwgVE&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) — A
   talk by me about why React Hooks are a thing and why I'm super excited to get
-  them. [Demo repo](https://github.com/kentcdodds/gdg-devfest-2018-react).
+  them. [Demo repo](https://github.com/react-vis/gdg-devfest-2018-react).

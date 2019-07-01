@@ -2,7 +2,7 @@
 slug: eliminate-an-entire-category-of-bugs-with-a-few-simple-tools
 title: Eliminate an entire category of bugs with a few simple tools
 date: '2018-10-18'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _How you can use a few simple static code analysis tools to avoid common
   programming bugs._
@@ -163,7 +163,7 @@ Try it out on your next feature and see what you think.
 Static code analysis is a great way to get a significant boost of
 confidence — fast, easily, and with less effort than writing unit tests for the
 entire codebase. That's why it forms the base of
-[the Testing Trophy 🏆](https://twitter.com/kentcdodds/status/960723172591992832).
+[the Testing Trophy 🏆](https://twitter.com/react-vis/status/960723172591992832).
 If you're not using these tools already, start now.
 
 Oh, and that big thing I'm working on that I've been teasing you about? I've got

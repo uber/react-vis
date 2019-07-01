@@ -2,7 +2,7 @@
 slug: advanced-react-component-patterns
 title: Advanced React Component Patterns
 date: '2017-12-05'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _An overview of some of the patterns covered in my recently released
   egghead.io course (free until Friday)._
@@ -18,7 +18,7 @@ bannerCredit:
 I don't know that I've ever been more excited about an
 [egghead.io](http://egghead.io) course release before (having personally
 published
-[over 100 videos on egghead](https://egghead.io/instructors/kentcdodds), that's
+[over 100 videos on egghead](https://egghead.io/instructors/react-vis), that's
 saying something...). Two of my courses will be (have now been) released as part
 of egghead's annual Christmas course release celebration 🎉 One is
 [**The Beginner's Guide to ReactJS**](https://egghead.io/courses/the-beginner-s-guide-to-reactjs)
@@ -34,16 +34,16 @@ in the Advanced React Component Patterns course. I hope you find it helpful and
 that this preview will help you be eager to give the course a look! 👀
 
 The course starts with a single lesson where I
-[implement](https://github.com/kentcdodds/advanced-react-patterns/blob/736bc941e629af5acae2e827356d6996e923780e/01-intro-to-react-toggled/index.html)
-[a simple toggle component](https://cdn.rawgit.com/kentcdodds/advanced-react-patterns/736bc941e629af5acae2e827356d6996e923780e/01-intro-to-react-toggled/index.html)
+[implement](https://github.com/react-vis/advanced-react-patterns/blob/736bc941e629af5acae2e827356d6996e923780e/01-intro-to-react-toggled/index.html)
+[a simple toggle component](https://cdn.rawgit.com/react-vis/advanced-react-patterns/736bc941e629af5acae2e827356d6996e923780e/01-intro-to-react-toggled/index.html)
 that manages its own state. We use, refactor, and evolve this component to each
 of the patterns. My hope is that by doing things this way you can quickly
 identify the trade-offs of the different patterns and know when each pattern
 would be most appropriate.
 
 The course wraps up by
-[refactoring](https://github.com/kentcdodds/advanced-react-patterns/blob/736bc941e629af5acae2e827356d6996e923780e/18-use-redux-with-render-props/index.html)
-[the toggle component to a redux component](https://cdn.rawgit.com/kentcdodds/advanced-react-patterns/736bc941e629af5acae2e827356d6996e923780e/18-use-redux-with-render-props/index.html)
+[refactoring](https://github.com/react-vis/advanced-react-patterns/blob/736bc941e629af5acae2e827356d6996e923780e/18-use-redux-with-render-props/index.html)
+[the toggle component to a redux component](https://cdn.rawgit.com/react-vis/advanced-react-patterns/736bc941e629af5acae2e827356d6996e923780e/18-use-redux-with-render-props/index.html)
 affectionately called "Rendux." I think that you'll be **blown away** by the
 flexibility of some of these patterns to make this refactor a pretty
 straightforward one.
@@ -74,9 +74,9 @@ An interesting example of a compound component is
 ### Higher Order Components
 
 Higher Order Components (HOC) are functions which return a component (fun fact,
-[the name "Higher Order Component"](https://twitter.com/kentcdodds/status/930832776907046912)
+[the name "Higher Order Component"](https://twitter.com/react-vis/status/930832776907046912)
 is a bit of
-[a misnomer](https://twitter.com/kentcdodds/status/930844136617533441)). This
+[a misnomer](https://twitter.com/react-vis/status/930844136617533441)). This
 pattern is pretty widely popular. The most common example of a higher order
 component is from [`react-redux`](https://www.npmjs.com/package/react-redux). It
 allows you to share code by encapsulating logic in a "Wrapper" component which

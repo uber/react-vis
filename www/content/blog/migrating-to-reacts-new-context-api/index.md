@@ -2,7 +2,7 @@
 slug: migrating-to-reacts-new-context-api
 title: Migrating to React's New Context API
 date: '2018-04-23'
-author: Kent C. Dodds
+author: React Vis
 description: _Let's compare the before/after of React's new context API._
 keywords:
   - react

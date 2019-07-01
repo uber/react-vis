@@ -2,7 +2,7 @@
 slug: demystifying-testing
 title: Demystifying Testing
 date: '2018-10-11'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _How to get from aimlessly testing or not testing at all to really
   understanding how and what to test._
@@ -96,7 +96,7 @@ what's the difference between a testing framework and an assertion library? In
 my course, I'll not only explain it, we'll build our own!
 
 P.P.S. Set your alarms and
-[tell your friends](https://twitter.com/intent/tweet?status=%E2%9A%A0%EF%B8%8F%20Hey%20friends!%20%40kentcdodds%20is%20working%20on%20a%20HUGE%20series%20of%20courses%20%28%3E100%20videos%20total!%29%20and%20you%20don%27t%20want%20to%20miss%20it.%20Subscribe%20to%20his%20newsletter%20to%20get%20a%20special%20discount%20when%20it%27s%20launched%3A%20kcd.im/news%20%F0%9F%92%8C)!
+[tell your friends](https://twitter.com/intent/tweet?status=%E2%9A%A0%EF%B8%8F%20Hey%20friends!%20%40react-vis%20is%20working%20on%20a%20HUGE%20series%20of%20courses%20%28%3E100%20videos%20total!%29%20and%20you%20don%27t%20want%20to%20miss%20it.%20Subscribe%20to%20his%20newsletter%20to%20get%20a%20special%20discount%20when%20it%27s%20launched%3A%20kcd.im/news%20%F0%9F%92%8C)!
 On **Friday Oct 19th** my course goes on sale with early-bird pricing! It is
 HUGE. Like over 100 dense videos huge. Like ~5 dense hours of testing huge.
 Seriously, **let people know.** They don't want to miss this.

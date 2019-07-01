@@ -2,7 +2,7 @@
 slug: first-draft-finished
 date: 2019-03-01
 title: 'First Draft Finished!'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   _I've finally finished the first draft of [Shurlan](https://kcd.im/shurlan)_
 categories: ['writing']
@@ -40,7 +40,7 @@ I still didn't know what those magical abilities would be and what the rules of
 the magic system would be either. I was in the car shop waiting for my car to
 get fixed and I remember having this idea:
 
-https://twitter.com/kentcdodds/status/1038418971777630208
+https://twitter.com/react-vis/status/1038418971777630208
 
 That was the first magical ability that I thought would be cool for my book.
 
@@ -52,7 +52,7 @@ with a bunch of rules and limitations and other abilities to make the magic
 system interesting. Most of the way the magic system works today in the book was
 determined in that car ride.
 
-https://twitter.com/kentcdodds/status/1038503681820258304
+https://twitter.com/react-vis/status/1038503681820258304
 
 > Due to the magic system, I decided to change the name of magic practitioners
 > to "displacers" because that made sense, but I still wanted my son's
@@ -83,7 +83,7 @@ methodology.
 
 November came and went and I did it!
 
-https://twitter.com/kentcdodds/status/1068025862555979776
+https://twitter.com/react-vis/status/1068025862555979776
 
 I finished in my hotel while I was in San Jose
 [giving a workshop at PayPal](https://youtu.be/xcZXS_VEJS0&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf).

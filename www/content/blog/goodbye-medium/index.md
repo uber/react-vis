@@ -2,8 +2,8 @@
 slug: goodbye-medium
 title: Goodbye Medium
 date: '2019-02-25'
-author: Kent C. Dodds
-description: _I've migrated from Medium to kentcdodds.com/blog... Here's why_
+author: React Vis
+description: _I've migrated from Medium to react-vis.com/blog... Here's why_
 keywords:
   - career
 banner: ./images/banner.jpg
@@ -36,17 +36,17 @@ So when Medium became a thing years ago, I made the decision to go all in on
 Medium. I was really happy with the authoring experience. It really removed
 friction for me.
 
-I started out on Medium at `medium.com/@kentcdodds`, but after a while, I
+I started out on Medium at `medium.com/@react-vis`, but after a while, I
 realized that I didn't trust Medium to be around forever or (more likely) that I
 would want to be on Medium forever. I knew it was inevitable that eventually
 Medium would do some things with my content that I didn't like. So about a year
-or two ago I decided to create a "kentcdodds" publication and I used a (now
+or two ago I decided to create a "react-vis" publication and I used a (now
 unsupported) feature of Medium to host my custom publication at a custom domain:
-`blog.kentcdodds.com`.
+`blog.react-vis.com`.
 
 I started publishing blog posts every week, and over 100 blog posts later, I
 finally decided that the "cost" of creating my own blog platform was worth the
-effort. Links to my articles on `blog.kentcdodds.com` have been shared with
+effort. Links to my articles on `blog.react-vis.com` have been shared with
 millions of people all over the world on platforms like Twitter, Reddit, "the
 orange site," and on other platforms. Because I own the domain, **I was able to
 make this move without worrying about all those links breaking!**
@@ -58,7 +58,7 @@ make this move without worrying about all those links breaking!**
 > (it'll take you minutes and it's totally free).
 
 I spent 1 hour building
-[`kcd-blog-redirector`](https://github.com/kentcdodds/kcd-blog-redirector). I
+[`kcd-blog-redirector`](https://github.com/react-vis/kcd-blog-redirector). I
 even livestreamed it on my new "Coding with Kent" series:
 
 https://youtube.com/watch?v=1EOj__JPN08&list=PLV5CVI1eNcJgJCEkMlsqXea6OIF_uV_ub
@@ -66,11 +66,10 @@ https://youtube.com/watch?v=1EOj__JPN08&list=PLV5CVI1eNcJgJCEkMlsqXea6OIF_uV_ub
 (You might think this would be a simple task, but it's more complicated than you
 think. Watch the first few minutes of the video and you'll know what I mean.)
 
-I spent MANY more hours working on kentcdodds.com and preparing
-kentcdodds.com/blog. In the last few weeks, I've spent many hours working on
-migrating all my old Medium posts from blog.kentcdodds.com to
-kentcdodds.com/blog. (You can watch those on
-["Coding with Kent"](https://kcd.im/coding) as well).
+I spent MANY more hours working on react-vis.com and preparing
+react-vis.com/blog. In the last few weeks, I've spent many hours working on
+migrating all my old Medium posts from blog.react-vis.com to react-vis.com/blog.
+(You can watch those on ["Coding with Kent"](https://kcd.im/coding) as well).
 
 ## Why leave Medium?
 
@@ -101,10 +100,10 @@ consumed.
 
 The blog has several things that I need to work on still:
 
-1. [Search](https://github.com/kentcdodds/kentcdodds.com/issues/48)
-2. [Category Pages](https://github.com/kentcdodds/kentcdodds.com/issues/49)
-3. [Keyword Pages](https://github.com/kentcdodds/kentcdodds.com/issues/50)
-4. [Fix the RSS Feed](https://github.com/kentcdodds/kentcdodds.com/issues/51)
+1. [Search](https://github.com/react-vis/react-vis.com/issues/48)
+2. [Category Pages](https://github.com/react-vis/react-vis.com/issues/49)
+3. [Keyword Pages](https://github.com/react-vis/react-vis.com/issues/50)
+4. [Fix the RSS Feed](https://github.com/react-vis/react-vis.com/issues/51)
 5. Figure out how to automate sending emails that include nice syntax
    highlighting
 
@@ -135,7 +134,7 @@ and... other places :)
 
 **Stuff not to miss**:
 
-- [One Day Introduction to React with Kent C. Dodds](https://thinkster.io/tutorials/one-day-introduction-to-react-with-kent-c-dodds):
+- [One Day Introduction to React with React Vis](https://thinkster.io/tutorials/one-day-introduction-to-react-with-kent-c-dodds):
   This is a recorded workshop from back in October. If you're totally new to
   React and want a hands-on approach to learning it, this will be very helpful
   to you! (There's also

@@ -2,7 +2,7 @@
 slug: increase-your-marketability
 title: Increase your marketability
 date: '2018-03-12'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Some tips of things that I've done that have helped me get where I want to be
   in the industry._
@@ -19,7 +19,7 @@ My heart aches for the dozens of engineer's I've met so far **this year** who
 have had such rough luck finding their first full-time job. I'm regularly asked
 for advice on this subject and I'm afraid the best I can offer is ideas rather
 than solid experience-based recommendations. (I got my first job in an
-[interesting and unique series of events](https://github.com/kentcdodds/ama/issues/1)).
+[interesting and unique series of events](https://github.com/react-vis/ama/issues/1)).
 
 With that said, whether you are looking for your first job or have been doing
 this for a while, I'd like to give you **three ideas of what you can do now to
@@ -31,7 +31,7 @@ There's no shortcut to gaining experience. Everyone must put in the time. But
 you can maximize the impact of the time you put in by teaching as you learn to
 solidify what you learn. Last week's newsletter was all about solidifying what
 you learn. I recommend you
-[give that a read](https://tinyletter.com/kentcdodds/letters/solidifying-what-you-learn)
+[give that a read](https://tinyletter.com/react-vis/letters/solidifying-what-you-learn)
 if you haven't already. The basic premise here is that learning comes in three
 steps:
 

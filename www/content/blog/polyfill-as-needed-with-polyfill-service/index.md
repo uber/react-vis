@@ -2,7 +2,7 @@
 slug: polyfill-as-needed-with-polyfill-service
 title: Polyfill as needed with polyfill-service
 date: '2018-08-06'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _How to maximize the performance of loading polyfills for your application
   users._
@@ -162,7 +162,7 @@ cached version isn't used.
 
 ### Extras
 
-One ["fun" experience](https://twitter.com/kentcdodds/status/997228884864139264)
+One ["fun" experience](https://twitter.com/react-vis/status/997228884864139264)
 I had while building this involved polyfill-service not playing nice with the
 way that babel transpiles classes. Follow that twitter thread and github issues
 linked for a "fun" time of your own... 😅

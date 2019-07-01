@@ -2,7 +2,7 @@
 slug: application-state-management
 title: Application State Management
 date: '2018-02-26'
-author: Kent C. Dodds
+author: React Vis
 description:
   _Some approaches to solving one of the most complex problems in software._
 keywords:

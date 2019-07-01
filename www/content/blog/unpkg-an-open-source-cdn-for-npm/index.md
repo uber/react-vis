@@ -2,7 +2,7 @@
 slug: unpkg-an-open-source-cdn-for-npm
 title: 'unpkg: An open source CDN for npm'
 date: '2018-08-13'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Let's learn how unpkg the service and the open source project can improve
   performance for your company's apps._

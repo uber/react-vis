@@ -2,7 +2,7 @@
 slug: should-i-usestate-or-usereducer
 date: 2019-02-11
 title: 'Should I useState or useReducer?'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   Two built-in React hooks that handle state, which one should you use?
 categories: ['react']
@@ -28,11 +28,11 @@ I think `useState` and `useReducer` are no exception to this at all. In fact,
 [useReducer, don't useState](https://matthamlin.me/blog/2019/february/why-you-should-useReducer)
 and he makes some great points there. I'd like to throw my hat in this
 discussion though because
-[I was asked about it on my AMA](https://github.com/kentcdodds/ama/issues/587).
+[I was asked about it on my AMA](https://github.com/react-vis/ama/issues/587).
 
-> Congratulations on the new design of your website kentcdodds.com. Looking at
+> Congratulations on the new design of your website react-vis.com. Looking at
 > the source code of your website, in the
-> [`Subscribe`](https://github.com/kentcdodds/kentcdodds.com/blob/ed55aea3a58d24813a59cf72d8ffbdfbd96f769e/src/components/Forms/Subscribe.js)
+> [`Subscribe`](https://github.com/react-vis/react-vis.com/blob/ed55aea3a58d24813a59cf72d8ffbdfbd96f769e/src/components/Forms/Subscribe.js)
 > component, you used useState hooks to handle the state of this component. My
 > question is, is not it more optimized to use a useReducer here instead of
 > several useState? If not, why?

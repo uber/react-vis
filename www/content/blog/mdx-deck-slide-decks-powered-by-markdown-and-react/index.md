@@ -2,7 +2,7 @@
 slug: mdx-deck-slide-decks-powered-by-markdown-and-react
 title: 'mdx-deck: slide decks powered by markdown and react'
 date: '2018-08-20'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Why it's awesome, what it is, how it works, and how to use mdx-deck._
 keywords:
@@ -23,8 +23,8 @@ was a little limited and didn't look all that nice. Eventually I landed at
 [slides.com](https://slides.com). I've been with slides for pretty much my
 entire software development presentation career. You'll find pretty much 100% of
 the public presentations I've made on
-[my slides page](https://slides.com/kentcdodds) (including
-[my first meetup talk](https://slides.com/kentcdodds/genie)).
+[my slides page](https://slides.com/react-vis) (including
+[my first meetup talk](https://slides.com/react-vis/genie)).
 
 I've been pretty happy with slides because it's really easy to create
 presentations and I've never been one to spend a ton of time on my slides. I
@@ -41,7 +41,7 @@ is the difficulty of including interactive elements on the page. I always admire
 people who's slides are made with HTML, CSS, and JS because they can just add
 their interactive demos directly to their slides which increases "the wow
 factor" in addition to being generally more engaging. For a specific example,
-[my slides](https://slides.com/kentcdodds/simply-react) for my "Simply React"
+[my slides](https://slides.com/react-vis/simply-react) for my "Simply React"
 keynote at ChainReact had several demos that were recorded video which is not
 awesome, but I also had an issue where I couldn't replay the videos
 ([watch here](https://youtu.be/M9X2qGddHkU&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf&t=4m04s)).
@@ -85,10 +85,10 @@ for quite some time! Back when I was working on the website for
 ([glamorous.rocks](https://glamorous.rocks)), I wanted to make all the docs in
 markdown to make it easier to internationalize, but I also wanted interactivity
 to be possible, so I came up with
-[a super weird syntax](https://github.com/kentcdodds/glamorous-website/blob/master/other/CONTRIBUTING_DOCUMENTATION.md#important-markdown-notes)
+[a super weird syntax](https://github.com/react-vis/glamorous-website/blob/master/other/CONTRIBUTING_DOCUMENTATION.md#important-markdown-notes)
 to make this possible. It's pretty cool, and actually works similar to MDX at a
 fundamental level (uses
-[a custom fancy plugin](https://github.com/kentcdodds/glamorous-website/blob/b2469c1dfbfed750fc01dcbe411fec307b7ae5a8/components/interactive-markdown.js#L89-L113)
+[a custom fancy plugin](https://github.com/react-vis/glamorous-website/blob/b2469c1dfbfed750fc01dcbe411fec307b7ae5a8/components/interactive-markdown.js#L89-L113)
 for [remark](https://github.com/remarkjs/remark)), but it's way hacky and
 limited. This MDX thing is the REAL DEAL!
 
@@ -127,7 +127,7 @@ automatically deployed slide deck!
 ### Conclusion
 
 I'm currently working on porting my slides for
-["Simply React"](https://github.com/kentcdodds/simply-react). You can see the
+["Simply React"](https://github.com/react-vis/simply-react). You can see the
 current state of
 [the slides deployed on netlify here](https://simply-react.netlify.com) (and
 [the pdf](https://simply-react.netlify.com/presentation.pdf)). I'm pretty jazzed

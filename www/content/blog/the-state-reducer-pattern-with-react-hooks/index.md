@@ -2,7 +2,7 @@
 slug: 'the-state-reducer-pattern-with-react-hooks'
 title: 'The State Reducer Pattern with React Hooks'
 date: '2019-03-25'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   '_A pattern for you to use in custom hooks to enhance the power and
   flexibility of your hooks._'

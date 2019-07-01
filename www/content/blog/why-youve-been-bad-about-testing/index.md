@@ -2,7 +2,7 @@
 slug: why-youve-been-bad-about-testing
 title: Why you've been bad about testing
 date: '2018-10-15'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Some common struggles people have with testing, and things you can do to
   improve._
@@ -27,7 +27,7 @@ Pretty much everyone's had a situation where tests saved them from a production
 bug...or would have saved them if tests had been in place.
 
 But there's still a struggle.
-[The other day I asked on twitter](https://twitter.com/kentcdodds/status/1048645068616163328)
+[The other day I asked on twitter](https://twitter.com/react-vis/status/1048645068616163328)
 what you all struggle with around testing. The struggle comes when you're trying
 to determine what to test, how much time you have to test, what granularity to
 test, what to mock and what to keep real, or just the daunting task of setting

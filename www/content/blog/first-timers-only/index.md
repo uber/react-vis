@@ -2,7 +2,7 @@
 slug: first-timers-only
 title: First Timers Only
 date: '2015-08-04'
-author: Kent C. Dodds
+author: React Vis
 description: _A suggestion to Open Source project maintainers..._
 keywords:
   - open source
@@ -82,11 +82,11 @@ _The hard part of getting into open source for the first time isn’t the
 implementation of a feature, but figuring out how to actually contribute code._
 
 So I explain exactly what to do in the issue, and then I blasted it out on
-[Twitter](https://twitter.com/kentcdodds/status/609354862074052608),
+[Twitter](https://twitter.com/react-vis/status/609354862074052608),
 [Gitter](https://gitter.im/formly-js/angular-formly), and
 [Slack](http://angularbuddies.com):
 
-https://twitter.com/kentcdodds/status/609354862074052608
+https://twitter.com/react-vis/status/609354862074052608
 
 It wasn’t long before I had several people reach out to me on all three mediums
 asking if they could take a swing at it. Finally with
@@ -145,13 +145,13 @@ way, the more people we get into open source the better. And by being open like
 this, we’re helping
 “[Bring Kindness back to Open Source](http://www.hanselman.com/blog/BringKindnessBackToOpenSource.aspx).”
 
-See you on the [githubs](https://github.com/kentcdodds) and
-[twitters](https://twitter.com/kentcdodds)!
+See you on the [githubs](https://github.com/react-vis) and
+[twitters](https://twitter.com/react-vis)!
 
 ---
 
 Watch my Fluent Conf 2016 talk
-“[The First Pull Request](http://slides.com/kentcdodds/1st-pr)”
+“[The First Pull Request](http://slides.com/react-vis/1st-pr)”
 
 https://youtube.com/watch?v=HjgZQeMrw6c&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf
 

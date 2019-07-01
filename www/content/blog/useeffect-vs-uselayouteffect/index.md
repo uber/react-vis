@@ -2,7 +2,7 @@
 slug: useeffect-vs-uselayouteffect
 title: useEffect vs useLayoutEffect
 date: '2018-11-26'
-author: Kent C. Dodds
+author: React Vis
 description: _The simple rules for when to use each._
 keywords:
   - react

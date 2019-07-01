@@ -2,7 +2,7 @@
 slug: spelunking-in-node-modules
 title: "Spelunking in node_modules \U0001F477"
 date: '2018-01-22'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Deep dive into Jest, React, and jsdom: A story about how I go about finding
   and fixing bugs in my dependencies._
@@ -23,9 +23,9 @@ was excited to get things going!
 
 For the most part, things went over smoothly. I had a few deprecation warnings
 with rollup that were
-[simple enough](https://github.com/kentcdodds/kcd-scripts/commit/709c49dd8bc764d08c6958762199c62cbc494e55).
+[simple enough](https://github.com/react-vis/kcd-scripts/commit/709c49dd8bc764d08c6958762199c62cbc494e55).
 There was
-[a simple change](https://github.com/kentcdodds/kcd-scripts/commit/6d0231382dc5edc003cac4a204b4c5f933fe7817#diff-e7d38b8d97a7607d1fa8b1075f987e2dR17)
+[a simple change](https://github.com/react-vis/kcd-scripts/commit/6d0231382dc5edc003cac4a204b4c5f933fe7817#diff-e7d38b8d97a7607d1fa8b1075f987e2dR17)
 I needed to make for changes in Jest (which I think I'll be able to revert
 [when this is released](https://github.com/facebook/jest/pull/5127)).
 
@@ -54,7 +54,7 @@ Error: Uncaught [Error: downshift: You provided the id of "foo" for your input, 
 ```
 
 > _I clipped the output, see_ >
-> [_this gist_](https://gist.github.com/kentcdodds/0d02347d420459f4aac2cba4b3e8bef7#file-downshift-error-log) >
+> [_this gist_](https://gist.github.com/react-vis/0d02347d420459f4aac2cba4b3e8bef7#file-downshift-error-log) >
 > _for the full output._
 
 The funny thing about this though is that the tests all still passed! In
@@ -125,7 +125,7 @@ C/C++ Header 20     1115      325       5571
 ```
 
 > _I clipped the output because it's so big._ >
-> [_See this gist for the full output of the last command_](https://gist.github.com/kentcdodds/0d02347d420459f4aac2cba4b3e8bef7#file-npx-clock-node_modules)_._
+> [_See this gist for the full output of the last command_](https://gist.github.com/react-vis/0d02347d420459f4aac2cba4b3e8bef7#file-npx-clock-node_modules)_._
 
 ![Wow](./images/0.jpg)
 
@@ -283,8 +283,8 @@ I've been on a few podcasts lately:
 - [JAMStack Radio](https://www.heavybit.com/library/podcasts/jamstack-radio):
   [Ep. #23, Introduction to Downshift and Glamorous](https://www.heavybit.com/library/podcasts/jamstack-radio/ep-23-introduction-to-downshift-and-glamorous)
 - [#!hashbang](https://youtube.com/playlist?list=PLZ66c9_z3umOuPSGsTu3mfzt6PGZeUyQZ):
-  [HashBang Episode 5: Assert(js) panel: Kent C. Dodds, Justin Searls, Gleb Bahmutov and Brian Mann](https://youtu.be/ltzNIOF_L3E)
+  [HashBang Episode 5: Assert(js) panel: React Vis, Justin Searls, Gleb Bahmutov and Brian Mann](https://youtu.be/ltzNIOF_L3E)
 - [Full Stack Radio](http://www.fullstackradio.com):
-  [79: Kent C. Dodds — Building Reusable React Components with Render Props](http://www.fullstackradio.com/79)
+  [79: React Vis — Building Reusable React Components with Render Props](http://www.fullstackradio.com/79)
 - [Web of Tomorrow](http://www.weboftomorrowpodcast.com):
-  [44: How to Jumpstart Your Career — Kent C. Dodds](http://www.weboftomorrowpodcast.com/44)
+  [44: How to Jumpstart Your Career — React Vis](http://www.weboftomorrowpodcast.com/44)

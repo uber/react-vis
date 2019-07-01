@@ -3,7 +3,7 @@ slug: introducing-a-new-course-simplify-react-apps-with-react-hooks-and-suspense
 title:
   'Introducing a new course: Simplify React Apps with React Hooks and Suspense'
 date: '2018-12-03'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Learn about the massive improvements coming to function components in React
   via a fresh new course showing you how to refactor an existing..._
@@ -35,7 +35,7 @@ With the massive improvements to function components in React via hooks and
 suspense, you may be interested in seeing how to refactor a typical class
 component to a simpler class component that uses React Suspense and Hooks
 features. In this course, Kent will take
-[a modern React codebase](https://github.com/kentcdodds/react-github-profile)
+[a modern React codebase](https://github.com/react-vis/react-github-profile)
 that uses classes and refactor the entire thing to use function components as
 much as possible. We'll look at state, side effects, async code, caching, and
 more!

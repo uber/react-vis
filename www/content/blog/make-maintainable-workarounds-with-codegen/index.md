@@ -2,7 +2,7 @@
 slug: make-maintainable-workarounds-with-codegen
 title: "Make maintainable workarounds with codegen \U0001F4A5"
 date: '2017-10-09'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Sometimes you need to workaround issues in other libraries. These workarounds
   can often lead to messy code. codegen is a tool that helps..._
@@ -55,10 +55,10 @@ in part to verify that the issue was Rollup. Then I started thinking about a
 good workaround.
 
 Here's where codegen comes in.
-[`babel-plugin-codegen`](https://github.com/kentcdodds/babel-plugin-codegen) is
-a babel plugin I wrote inspired by my other plugin
-[`babel-plugin-preval`](https://github.com/kentcdodds/babel-plugin-preval). Both
-of these ship with a [babel-macro](https://github.com/kentcdodds/babel-macros)
+[`babel-plugin-codegen`](https://github.com/react-vis/babel-plugin-codegen) is a
+babel plugin I wrote inspired by my other plugin
+[`babel-plugin-preval`](https://github.com/react-vis/babel-plugin-preval). Both
+of these ship with a [babel-macro](https://github.com/react-vis/babel-macros)
 and they each have a companion package to make using that easier.
 
 So I installed [`codegen.macro`](https://www.npmjs.com/package/codegen.macro)

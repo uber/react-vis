@@ -2,7 +2,7 @@
 slug: test-utils
 title: Make Test Utils For Your App
 date: '2019-06-03'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   '_Why every serious app should have custom test utilities and how to do that
   with Jest (even with create-react-app)_'

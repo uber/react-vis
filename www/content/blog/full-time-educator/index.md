@@ -2,7 +2,7 @@
 slug: full-time-educator
 date: 2019-02-17
 title: "🚨 Big Announcement: I'm a full-time educator! 👨‍🏫"
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   After years of teaching on the side, I've decided to take the plunge and go
   full-time as an educator!

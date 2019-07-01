@@ -8,15 +8,13 @@ import Container from 'components/container'
 
 import heroImageRight from '../images/hero/path-right.svg'
 import heroImageLeft from '../images/hero/path-left.svg'
-import photoOfKent from '../images/hero/kent.png'
 
 function Hero({
   children,
-  title = `Hi, I'm Kent C. Dodds. I help people make the world better through quality software.`,
+  title = `Hi, I'm React Vis. I help people make the world better through quality software.`,
   text,
   background = `url(${heroImageRight}), url(${heroImageLeft}),
   linear-gradient(-213deg, #5e31dc 0%, #3155dc 100%)`,
-  image = `${photoOfKent}`,
 }) {
   return (
     <section
@@ -69,15 +67,6 @@ function Hero({
               width: 250px;
               height: 250px;
               //background: #241d44;
-              ${image === photoOfKent &&
-                `
-                width: 160px;
-              height: 160px;
-              overflow: 'hidden';
-              border-radius: 50%;
-              background: #4b4ddf;
-              `}
-              background-image: url(${image});
               background-size: cover;
               background-position-y: 10px;
               background-repeat: no-repeat;
@@ -102,7 +91,6 @@ function Hero({
               height: 100%;
               display: flex;
               //align-self: center;
-              padding-bottom: ${image === photoOfKent ? '40px' : '0'};
             `}
           >
             {title}
@@ -129,24 +117,6 @@ function Hero({
               {text}
             </Markdown>
           )}
-        </div>
-        <div
-          css={{
-            marginRight: '-160px',
-            width: 380,
-            height: 336,
-            display: 'flex',
-            [bpMaxMD]: {
-              display: 'none',
-              visibility: 'hidden',
-            },
-          }}
-        >
-          <img
-            src={image}
-            alt="Kent C. Dodds"
-            css={{maxWidth: '100%', marginBottom: 0}}
-          />
         </div>
       </Container>
     </section>

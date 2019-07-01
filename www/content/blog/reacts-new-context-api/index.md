@@ -2,7 +2,7 @@
 slug: reacts-new-context-api
 title: React's ⚛️ new Context API
 date: '2018-02-05'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _It's way more ergonomic, it's no longer "experimental," and it's now a
   first-class API! OH, AND IT USES A RENDER PROP!_
@@ -17,7 +17,7 @@ bannerCredit:
 
 > Curious about what's going to happen to the context API when
 > [React hooks](https://reactjs.org/hooks) are stable? Read all about it here:
-> [https://kentcdodds.com/blog/react-hooks-whats-going-to-happen-to-react-context](/blog/react-hooks-whats-going-to-happen-to-react-context)
+> [https://react-vis.com/blog/react-hooks-whats-going-to-happen-to-react-context](/blog/react-hooks-whats-going-to-happen-to-react-context)
 
 Have you heard of the context API in React? If you've heard of it, are you like
 many others afraid to use it directly because you saw this in the official docs:
@@ -142,9 +142,9 @@ that pain and they can instead stick with vanilla React for longer (or perhaps,
 [James Kyle](https://medium.com/@thejameskyle) is the solution we've all been
 waiting for).
 
-I recently [tweeted](https://twitter.com/kentcdodds/status/911276059051438082):
+I recently [tweeted](https://twitter.com/react-vis/status/911276059051438082):
 
-https://twitter.com/kentcdodds/status/911276059051438082
+https://twitter.com/react-vis/status/911276059051438082
 
 So I think if we avoid prematurely and arbitrarily breaking up render methods,
 we'll feel this pain even less. But even when we do feel it, we'll have a solid,
@@ -235,11 +235,11 @@ There will quite probably be a codemod released to automatically update most
 everyone's code (as there often is).
 
 I'm excited about what this new API has to offer. As
-[I noted on twitter recently](https://twitter.com/kentcdodds/status/956675313966239745)
+[I noted on twitter recently](https://twitter.com/react-vis/status/956675313966239745)
 (in response to [Dan Abramov](https://twitter.com/dan_abramov)'s
 [tweet](https://twitter.com/dan_abramov/status/956674265104953344)):
 
-https://twitter.com/kentcdodds/status/956675313966239745
+https://twitter.com/react-vis/status/956675313966239745
 
 So much to look forward to! Good luck! 👍
 

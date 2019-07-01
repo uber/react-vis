@@ -2,7 +2,7 @@
 slug: how-to-react
 title: How to React ⚛️
 date: '2018-04-16'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Let's see how learning React ⚛️ in the right order can make it less
   overwhelming._
@@ -188,7 +188,7 @@ conceptually for you. Here's some resources on why:
 - Package management
 - Non-browser styling
 
-[Maintainable CSS in React](https://youtu.be/3-4KsXPO2Q4&index=2&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) — [me 👋](https://twitter.com/kentcdodds):
+[Maintainable CSS in React](https://youtu.be/3-4KsXPO2Q4&index=2&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) — [me 👋](https://twitter.com/react-vis):
 
 - Colocation of concerns
 

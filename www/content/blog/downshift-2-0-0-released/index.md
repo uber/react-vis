@@ -2,7 +2,7 @@
 slug: downshift-2-0-0-released
 title: '🏎 downshift 2.0.0 released 🎉'
 date: '2018-06-15'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Even better accessibility, React Native and ReasonReact support, even simpler
   API, improved docs, new examples site, Flow and TypeScript..._
@@ -94,9 +94,9 @@ Find it and contribute
 on codesandbox!
 
 - Codesandbox:
-  [codesandbox.io/s/github/kentcdodds/downshift-examples](https://codesandbox.io/s/github/kentcdodds/downshift-examples)
+  [codesandbox.io/s/github/react-vis/downshift-examples](https://codesandbox.io/s/github/react-vis/downshift-examples)
 - GitHub:
-  [https://github.com/kentcdodds/downshift-examples](https://github.com/kentcdodds/downshift-examples)
+  [https://github.com/react-vis/downshift-examples](https://github.com/react-vis/downshift-examples)
 
 <figcaption>The codesandbox for the examples site</figcaption>
 

@@ -2,7 +2,7 @@
 slug: automation
 title: An Argument for Automation
 date: '2015-12-07'
-author: Kent C. Dodds
+author: React Vis
 description: _Why it can be worth spending 1 hour automating a 10 second task_
 keywords:
   - javascript
@@ -58,7 +58,7 @@ resource). Here are some of the things that need to happen when I do that:
 Setting all of that up and wiring things together properly can actually take a
 minute or two if I didn’t automate generating those files. In fact, right now I
 only use
-[snippets](https://github.com/kentcdodds/dotfiles/tree/master/.janus/vim-kentcdodds-snippets/snippets)
+[snippets](https://github.com/react-vis/dotfiles/tree/master/.janus/vim-react-vis-snippets/snippets)
 to do _some_ of that stuff. If I weren’t changing jobs/projects soon, I’d
 probably write a generator using [plop](http://npm.im/plop) to speed it up
 further.
@@ -164,8 +164,8 @@ If you’ve automated something and want to open source it, you might check out 
 egghead.io series of over 20 free 5 minute lessons called
 “[How to Write an Open Source JavaScript Library](https://egghead.io/series/how-to-write-an-open-source-javascript-library)”
 
-Catch you on [Twitter](https://twitter.com/kentcdodds) and
-[GitHub](https://github.com/kentcdodds)!
+Catch you on [Twitter](https://twitter.com/react-vis) and
+[GitHub](https://github.com/react-vis)!
 
 ---
 

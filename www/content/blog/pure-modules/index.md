@@ -2,7 +2,7 @@
 slug: pure-modules
 title: Pure Modules
 date: '2018-04-30'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _How you write your ES Modules impacts the performance and maintainability of
   your code._
@@ -31,9 +31,9 @@ simulate this with dynamic imports, but then you'd have other issues).
 
 This made me think of something else that I feel is important and I'd like to
 share with you. I
-[quote tweeted Ingvar's tweet](https://twitter.com/kentcdodds/status/985192759165251584):
+[quote tweeted Ingvar's tweet](https://twitter.com/react-vis/status/985192759165251584):
 
-https://twitter.com/kentcdodds/status/985192759165251584
+https://twitter.com/react-vis/status/985192759165251584
 
 Ingvar
 [expanded on what I mean](https://twitter.com/RReverser/status/985286856681054208)
@@ -212,7 +212,7 @@ slightly contrived) have been helpful. Good luck!
 - [npm-registry-browser](https://topheman.github.io/npm-registry-browser):
   [A project to help getting into making React apps](http://dev.topheman.com/project-to-help-getting-into-making-react-apps)
   by [@topheman](https://twitter.com/topheman). Pretty nifty idea!
-- [advanced-react-patterns-v2](https://github.com/kentcdodds/advanced-react-patterns-v2):
+- [advanced-react-patterns-v2](https://github.com/react-vis/advanced-react-patterns-v2):
   This is the content for my Advanced React Patterns workshop. It's pretty
   self-directed with comments in the code to tell you what to do to learn the
   patterns.

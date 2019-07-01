@@ -2,7 +2,7 @@
 slug: 'avoid-the-test-user'
 title: 'Avoid the Test User'
 date: '2019-05-24'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   '_How your UI code has only two users, but the wrong tests can add a third_'
 categories:
@@ -65,7 +65,7 @@ is needed.
 ## The Test User
 
 So what does this have to do with testing? One thing that I talk about a lot is
-"[The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/kentcdodds/status/977018512689455106) "
+"[The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/react-vis/status/977018512689455106) "
 So knowing how your software is used is really valuable. It gives you a guide
 for knowing how to test the component.
 
@@ -100,7 +100,7 @@ you'll be much better off.
 
 > P.S. If you're interested to know how I'd test this component in a way that's
 > free of implementation details, then you can
-> [look at the tests here](https://github.com/kentcdodds/advanced-react-patterns/blob/06a16f86d2397c4451da9faf9aeb64cbe4452ff6/src/__tests__/01.js)
+> [look at the tests here](https://github.com/react-vis/advanced-react-patterns/blob/06a16f86d2397c4451da9faf9aeb64cbe4452ff6/src/__tests__/01.js)
 
 <!-- separate quoted text -->
 

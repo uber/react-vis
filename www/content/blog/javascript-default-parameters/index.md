@@ -2,7 +2,7 @@
 slug: javascript-default-parameters
 title: JavaScript default parameters
 date: '2018-06-25'
-author: Kent C. Dodds
+author: React Vis
 description:
   _The expressive power of expressions in default values for parameters_
 keywords:
@@ -14,7 +14,7 @@ bannerCredit:
 ---
 
 Today I thought I'd take you through one of the examples from
-[my es6 workshop](https://github.com/kentcdodds/es6-workshop).
+[my es6 workshop](https://github.com/react-vis/es6-workshop).
 
 Consider the following code:
 

@@ -2,7 +2,7 @@
 slug: effective-snapshot-testing
 title: Effective Snapshot Testing
 date: '2017-10-30'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Snapshot testing can be useless, or super useful. Your choice. Let's talk
   about how to make them useful._
@@ -107,8 +107,8 @@ say, but with snapshot testing it's so much easier.
 
 Here's an example of this from [kcd-scripts](/blog/tools-without-config):
 
-- [Tests](https://github.com/kentcdodds/kcd-scripts/blob/11f6218772ee2075cebddadd30a50a6d4bdec637/src/__tests__/index.js)
-- [Snapshot output](https://github.com/kentcdodds/kcd-scripts/blob/11f6218772ee2075cebddadd30a50a6d4bdec637/src/__tests__/__snapshots__/index.js.snap)
+- [Tests](https://github.com/react-vis/kcd-scripts/blob/11f6218772ee2075cebddadd30a50a6d4bdec637/src/__tests__/index.js)
+- [Snapshot output](https://github.com/react-vis/kcd-scripts/blob/11f6218772ee2075cebddadd30a50a6d4bdec637/src/__tests__/__snapshots__/index.js.snap)
 
 #### [`babel-plugin-tester`](https://github.com/babel-utils/babel-plugin-tester)
 
@@ -117,8 +117,8 @@ snapshot testing.** It would be prohibitively difficult to attempt asserting on
 the resulting AST. `babel-plugin-tester` uses snapshots for its assertion and
 they're fantastic. They avoid a lot of the pitfalls that Justin mentions because
 of the way the results are serialized. Here's
-[an example](https://github.com/kentcdodds/import-all.macro/blob/0069f82e78e4af69444284b078e88ba424c550a4/src/__tests__/__snapshots__/macro.js.snap#L38-L59)
-from [import-all.macro](https://github.com/kentcdodds/import-all.macro):
+[an example](https://github.com/react-vis/import-all.macro/blob/0069f82e78e4af69444284b078e88ba424c550a4/src/__tests__/__snapshots__/macro.js.snap#L38-L59)
+from [import-all.macro](https://github.com/react-vis/import-all.macro):
 
 ```
 exports[`importAll.sync uses static imports 1`] = `
@@ -148,7 +148,7 @@ after). What's cool about this is for any plugin using `babel-plugin-tester` I
 can just look at the snapshot file and get a great idea for how the plugin
 works. 😎
 
-#### [`jest-glamor-react`](https://github.com/kentcdodds/jest-glamor-react)
+#### [`jest-glamor-react`](https://github.com/react-vis/jest-glamor-react)
 
 Have you ever shipped code that busted your app user experience because styling
 wasn't applied properly? I have. Writing tests to ensure this kind of confidence
@@ -163,7 +163,7 @@ using CSS-in-JS, there's a great way to use snapshot testing to reduce some of
 the difficulty of testing these kinds of changes. If you use a tool like
 `jest-glamor-react`then you can include the applicable CSS with whatever you
 rendered.
-[For example](https://github.com/kentcdodds/jest-glamor-react/blob/84ace7c093d49344268b25a0d5a2518cd20922da/src/__snapshots__/serializer.test.js.snap#L101-L124):
+[For example](https://github.com/react-vis/jest-glamor-react/blob/84ace7c093d49344268b25a0d5a2518cd20922da/src/__snapshots__/serializer.test.js.snap#L101-L124):
 
 ```js
 exports[`enzyme.render 1`] = `  
@@ -229,7 +229,7 @@ that could be pretty helpful in discouraging large snapshots 👍
 
 `jest-glamor-react` is in fact a custom serializer. This has made our snapshots
 much more effective. Writing a custom serializer is actually quite simple.
-[Here's one that I wrote](https://github.com/kentcdodds/babel-macros/blob/520e58f4b0888c37f9811beb773d154cf3c23a72/src/__tests__/index.js#L28-L38)
+[Here's one that I wrote](https://github.com/react-vis/babel-macros/blob/520e58f4b0888c37f9811beb773d154cf3c23a72/src/__tests__/index.js#L28-L38)
 which normalizes paths so any path in the snapshot is relative to the project
 directory and looks the same on windows and mac:
 
@@ -295,10 +295,10 @@ diff).
   composition of React components
 - [`eslint-plugin-no-editor-code`](https://github.com/lukebelliveau/eslint-plugin-no-editor-code)
   - ESlint plugin to remove vscode folding comments. Because
-    [code folding is super annoying](https://twitter.com/kentcdodds/status/918321670183514119).
+    [code folding is super annoying](https://twitter.com/react-vis/status/918321670183514119).
 - [`is-ci`](https://github.com/watson/is-ci) - Detect if your code is running on
   a CI server
-  ([I used this recently](https://twitter.com/kentcdodds/status/918605888373559296)
+  ([I used this recently](https://twitter.com/react-vis/status/918605888373559296)
   and it was great)
 - [`pullit`](https://github.com/jkup/pullit) - Display and pull branches from
   GitHub pull requests. Pretty handy!

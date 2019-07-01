@@ -2,7 +2,7 @@
 slug: 'how-to-optimize-your-context-value'
 title: 'How to optimize your context value'
 date: '2019-05-06'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   "_Why and how you can optimize your context provider's value to avoid
   performance issues_"
@@ -35,7 +35,7 @@ If that explains your situation, then read on (and don't miss the alternative
 solution which is honestly probably better anyway). In fact, the alternative is
 definitely better and I've reworked the blog post to remove my original
 recommendation and just show the alternative. If you want to see my original,
-[read the original stuff here](https://github.com/kentcdodds/kentcdodds.com/blob/319db97260078ea4c263e75166f05e2cea21ccd1/content/blog/how-to-optimize-your-context-value/index.md).
+[read the original stuff here](https://github.com/react-vis/react-vis.com/blob/319db97260078ea4c263e75166f05e2cea21ccd1/content/blog/how-to-optimize-your-context-value/index.md).
 
 > No seriously, if you're going to do this stuff just because you _think_ your
 > code _might_ be slow, then don't bother. I'm not joking. React is really fast

@@ -2,7 +2,7 @@
 slug: why-users-care-about-how-you-write-code
 title: Why users care about how you write code
 date: '2015-11-12'
-author: Kent C. Dodds
+author: React Vis
 description:
   _Your coding practices and technology choices impact user experience..._
 keywords:

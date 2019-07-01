@@ -2,7 +2,7 @@
 slug: 'how-to-know-what-to-test'
 title: 'How to know what to test'
 date: '2019-04-13'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description: '_Practical advice to help you determine what to test._'
 categories:
   - 'testing'
@@ -45,7 +45,7 @@ uses the application:
 
 > The more your tests resemble the way your software is used, the more
 > confidence they can give you. <span style={{paddingTop: 10, float: 'right'}}>–
-> <a href="https://twitter.com/kentcdodds/status/977018512689455106" target="_blank" rel="noopener noreferrer">me,
+> <a href="https://twitter.com/react-vis/status/977018512689455106" target="_blank" rel="noopener noreferrer">me,
 > on twitter</a></span>
 
 ## Code Coverage < Use Case Coverage

@@ -2,7 +2,7 @@
 slug: confidently-shipping-code
 title: Confidently Shipping Code
 date: '2018-10-08'
-author: Kent C. Dodds
+author: React Vis
 description: _Why I care about testing_
 keywords:
   - testing
@@ -33,11 +33,11 @@ about automated testing. I thought it was pretty neat, but he moved on to
 another job before I really got testing ingrained in my workflow.
 
 Later, when I started writing my first JavaScript library
-([geniejs](https://github.com/kentcdodds/genie)), I realized quickly that
+([geniejs](https://github.com/react-vis/genie)), I realized quickly that
 spending time to manually verify that everything's working, every single time I
 fixed a bug or added a new feature, was pretty annoying. I decided to learn to
 test and write tests for my library.
-([The tests](https://github.com/kentcdodds/genie/blob/166572f9fa82e6ec0893f90c7d6a99a49632dace/src/__tests__/index.js)
+([The tests](https://github.com/react-vis/genie/blob/166572f9fa82e6ec0893f90c7d6a99a49632dace/src/__tests__/index.js)
 have been through a few testing framework refactorings, but they're still
 largely the same as when I originally wrote them all those years ago). Investing
 time into testing my library ended up saving me a TON of time, and I was able to
@@ -52,10 +52,10 @@ testing had become more than a default workflow for saving time. It was a
 mechanism for giving me confidence.
 
 At the time of this writing,
-[I have 111 packages published on npm](https://www.npmjs.com/~kentcdodds).
-Pretty much every one of those packages has 100% code coverage, meaning every
-line is run in the tests. I don't think I could possibly maintain them any other
-way. **My libraries have received contributions from thousands of people.** When
+[I have 111 packages published on npm](https://www.npmjs.com/~react-vis). Pretty
+much every one of those packages has 100% code coverage, meaning every line is
+run in the tests. I don't think I could possibly maintain them any other way.
+**My libraries have received contributions from thousands of people.** When
 someone opens a pull request with changes to one of my libraries, I have a
 continuous integration service ([TravisCI](https://travis-ci.org)) that kicks
 off to run all the tests. Sometimes it's been months or even years since I've

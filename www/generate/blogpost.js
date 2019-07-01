@@ -65,7 +65,7 @@ async function generateBlogPost() {
       slug,
       title,
       date: formatDate(new Date()),
-      author: 'Kent C. Dodds',
+      author: 'React Vis',
       description: `_${description}_`,
       categories: listify(categories),
       keywords: listify(keywords),

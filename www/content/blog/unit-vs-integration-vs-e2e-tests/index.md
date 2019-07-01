@@ -2,10 +2,11 @@
 slug: unit-vs-integration-vs-e2e-tests
 date: 2019-01-28
 title: 'Static vs Unit vs Integration vs E2E Testing for Frontend Apps'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description: _What these mean, why they matter, and why they don't_
 categories: ['testing']
-keywords: ['testing', 'testing trophy', 'testing pyramid', 'react', 'javascript']
+keywords:
+  ['testing', 'testing trophy', 'testing pyramid', 'react', 'javascript']
 published: true
 banner: './banner.png'
 bannerCredit:
@@ -31,7 +32,7 @@ over the ocean a hundred years ago? No way. There are different brushes for
 different use cases and the same thing applies to tests.
 
 Nearly 1 year ago,
-[created the Testing Trophy](https://twitter.com/kentcdodds/status/960723172591992832).
+[created the Testing Trophy](https://twitter.com/react-vis/status/960723172591992832).
 Since then [Maggie Appleton](https://twitter.com/Mappletons) (the mastermind
 behind [egghead.io](https://egghead.io)'s masterful art/design) created this for
 [TestingJavaScript.com](https://testingjavascript.com):
@@ -265,7 +266,7 @@ to be cognizant of the trade-offs I'm making when testing.
 There are some important elements to the testing trophy I want to call out in
 this picture (ripped from [my slides](http://kcd.im/confident-react)):
 
-[![The Testing Trophy with arrows indicating the trade-offs](./confidence-coefficient.png)](https://slides.com/kentcdodds/confident-react#/3/5)
+[![The Testing Trophy with arrows indicating the trade-offs](./confidence-coefficient.png)](https://slides.com/react-vis/confident-react#/3/5)
 
 The arrows on the image signify three trade-offs you make when writing automated
 tests:
@@ -300,7 +301,7 @@ testing when regarding the testing pyramid. Of course we shouldn't do that and
 this is because of one super important principle that you've probably heard me
 say before:
 
-> [The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/kentcdodds/status/977018512689455106)
+> [The more your tests resemble the way your software is used, the more confidence they can give you.](https://twitter.com/react-vis/status/977018512689455106)
 
 What does this mean? It means that there's no better way to ensure that your
 Aunt Marie will be able to file her taxes using your tax software than actually

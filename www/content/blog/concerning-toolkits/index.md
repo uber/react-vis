@@ -2,7 +2,7 @@
 slug: concerning-toolkits
 title: 'Concerning toolkits 🛠 📦'
 date: '2018-01-29'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _The merits and use cases of consolidating tools into one "zero config"
   toolkit._
@@ -21,9 +21,9 @@ Current Translations:
 
 About a month ago, I roped myself into a conversation about the merits of "zero
 config" tools when jumped into a twitter thread with
-[this](https://twitter.com/kentcdodds/status/941330985836208128):
+[this](https://twitter.com/react-vis/status/941330985836208128):
 
-https://twitter.com/kentcdodds/status/941330985836208128
+https://twitter.com/react-vis/status/941330985836208128
 
 There were some dissenting opinions about this. Because twitter is a pretty poor
 medium to build a case for your opinion, I've decided to write out my thoughts
@@ -79,7 +79,7 @@ People who are used to building/learning/configuring widely used tools have
 asked me why I would ever want to build and help popularize toolkits. Here are a
 few of the reasons [I'm working on toolkits](/blog/tools-without-config) for
 paypal and
-[my own open source projects](https://github.com/kentcdodds/kcd-scripts).
+[my own open source projects](https://github.com/react-vis/kcd-scripts).
 
 ### Keeping config updated
 
@@ -104,7 +104,7 @@ big improvements by way of features/performance/etc.
 
 That said, I don't think anyone's excited about actually updating their codebase
 to handle these changes. This is another reason toolkits are so great. Check out
-[this git diff](https://twitter.com/kentcdodds/status/906238861067657221):
+[this git diff](https://twitter.com/react-vis/status/906238861067657221):
 
 ![git diff](./images/0.jpg)
 
@@ -116,7 +116,7 @@ this is one of my smaller/simpler projects.
 
 That diff matches that of dozens of other open source projects I have. Managing
 all the config was a nightmare 👻 🙀 before I built
-[`kcd-scripts`](https://github.com/kentcdodds/kcd-scripts). Whenever there was a
+[`kcd-scripts`](https://github.com/react-vis/kcd-scripts). Whenever there was a
 change in babel or webpack config, or even a simple update in jest, I had to go
 to every project to update them. Now however, **I can simply go to**
 `**kcd-scripts**`**, address any breaking changes, and push out a patch release
@@ -176,8 +176,7 @@ This covers the building, testing, and linting of your react application
 projects. It's fantastic and used in a
 [TON of projects on GitHub (180k search results)](https://github.com/search?l=JSON&q=react-scripts&type=Code&utf8=%E2%9C%93)
 and you'll find some real world applications mentioned from
-[my tweet question](https://twitter.com/kentcdodds/status/950924626317656064)
-and
+[my tweet question](https://twitter.com/react-vis/status/950924626317656064) and
 [Dan's tweet question](https://twitter.com/dan_abramov/status/952248179478745089).
 
 While it's impressive that real-world production applications are built using
@@ -197,10 +196,10 @@ With most other tools however, you have another option...
 #### Still configurable
 
 Most other "zero config" tools (toolkits) are **actually still configurable.**
-As [I tweeted](https://twitter.com/kentcdodds/status/942177631981649921) a while
+As [I tweeted](https://twitter.com/react-vis/status/942177631981649921) a while
 back:
 
-https://twitter.com/kentcdodds/status/942177631981649921
+https://twitter.com/react-vis/status/942177631981649921
 
 This allows toolkits to cover even more use cases. For example, folks who don't
 want to eject from `react-scripts` (because they like all the aforementioned

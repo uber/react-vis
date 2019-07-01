@@ -2,7 +2,7 @@
 slug: first-conference-part-4
 date: 2019-02-16
 title: 'First Conference: Part 4'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description: _My experience on the final day of the LTUE conference_
 categories: ['writing']
 keywords: ['writing', 'fantasy', 'novel']

@@ -2,7 +2,7 @@
 slug: but-really-what-is-a-javascript-mock
 title: 'But really, what is a JavaScript mock?'
 date: '2018-03-19'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Let's take a step back and understand what mocks are and how to use them to
   facilitate testing in JavaScript._
@@ -67,8 +67,8 @@ best our test can do:
 import thumbWar from '../thumb-war'
 
 test('returns winner', () => {
-  const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
-  expect(['Ken Wheeler', 'Kent C. Dodds'].includes(winner)).toBe(true)
+  const winner = thumbWar('Ken Wheeler', 'React Vis')
+  expect(['Ken Wheeler', 'React Vis'].includes(winner)).toBe(true)
 })
 ```
 
@@ -91,8 +91,8 @@ test('returns winner', () => {
   // eslint-disable-next-line import/namespace
   utils.getWinner = (p1, p2) => p2
 
-  const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
-  expect(winner).toBe('Kent C. Dodds')
+  const winner = thumbWar('Ken Wheeler', 'React Vis')
+  expect(winner).toBe('React Vis')
 
   // eslint-disable-next-line import/namespace
   utils.getWinner = originalGetWinner
@@ -140,11 +140,11 @@ test('returns winner', () => {
   }
   utils.getWinner.mock = {calls: []}
 
-  const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
-  expect(winner).toBe('Kent C. Dodds')
+  const winner = thumbWar('Ken Wheeler', 'React Vis')
+  expect(winner).toBe('React Vis')
   expect(utils.getWinner.mock.calls).toHaveLength(2)
   utils.getWinner.mock.calls.forEach(args => {
-    expect(args).toEqual(['Ken Wheeler', 'Kent C. Dodds'])
+    expect(args).toEqual(['Ken Wheeler', 'React Vis'])
   })
 
   // eslint-disable-next-line import/namespace
@@ -159,7 +159,7 @@ assertions:
 ```js
 expect(utils.getWinner.mock.calls).toHaveLength(2)
 utils.getWinner.mock.calls.forEach(args => {
-  expect(args).toEqual(['Ken Wheeler', 'Kent C. Dodds'])
+  expect(args).toEqual(['Ken Wheeler', 'React Vis'])
 })
 ```
 
@@ -190,11 +190,11 @@ test('returns winner', () => {
   // eslint-disable-next-line import/namespace
   utils.getWinner = jest.fn((p1, p2) => p2)
 
-  const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
-  expect(winner).toBe('Kent C. Dodds')
+  const winner = thumbWar('Ken Wheeler', 'React Vis')
+  expect(winner).toBe('React Vis')
   expect(utils.getWinner).toHaveBeenCalledTimes(2)
   utils.getWinner.mock.calls.forEach(args => {
-    expect(args).toEqual(['Ken Wheeler', 'Kent C. Dodds'])
+    expect(args).toEqual(['Ken Wheeler', 'React Vis'])
   })
 
   // eslint-disable-next-line import/namespace
@@ -232,8 +232,8 @@ test('returns winner', () => {
   jest.spyOn(utils, 'getWinner')
   utils.getWinner.mockImplementation((p1, p2) => p2)
 
-  const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
-  expect(winner).toBe('Kent C. Dodds')
+  const winner = thumbWar('Ken Wheeler', 'React Vis')
+  expect(winner).toBe('React Vis')
 
   utils.getWinner.mockRestore()
 })
@@ -296,11 +296,11 @@ jest.mock('../utils', () => {
 })
 
 test('returns winner', () => {
-  const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
-  expect(winner).toBe('Kent C. Dodds')
+  const winner = thumbWar('Ken Wheeler', 'React Vis')
+  expect(winner).toBe('React Vis')
   expect(utilsMock.getWinner).toHaveBeenCalledTimes(2)
   utilsMock.getWinner.mock.calls.forEach(args => {
-    expect(args).toEqual(['Ken Wheeler', 'Kent C. Dodds'])
+    expect(args).toEqual(['Ken Wheeler', 'React Vis'])
   })
 })
 ```
@@ -352,11 +352,11 @@ import * as utilsMock from '../utils'
 jest.mock('../utils')
 
 test('returns winner', () => {
-  const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
-  expect(winner).toBe('Kent C. Dodds')
+  const winner = thumbWar('Ken Wheeler', 'React Vis')
+  expect(winner).toBe('React Vis')
   expect(utilsMock.getWinner).toHaveBeenCalledTimes(2)
   utilsMock.getWinner.mock.calls.forEach(args => {
-    expect(args).toEqual(['Ken Wheeler', 'Kent C. Dodds'])
+    expect(args).toEqual(['Ken Wheeler', 'React Vis'])
   })
 })
 ```

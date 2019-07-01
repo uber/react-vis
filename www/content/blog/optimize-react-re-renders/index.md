@@ -2,7 +2,7 @@
 slug: 'optimize-react-re-renders'
 title: 'One simple trick to optimize React re-renders'
 date: '2019-06-24'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   '_Without using React.memo, PureComponent, or shouldComponentUpdate_'
 categories:
@@ -22,7 +22,7 @@ I was preparing a blog post on a subject related to React re-renders when I
 stumbled upon this little React gem of knowledge I think you'll really
 appreciate:
 
-https://twitter.com/kentcdodds/status/1143200604065431552
+https://twitter.com/react-vis/status/1143200604065431552
 
 Let's break that down with a simple contrived example and then talk about what
 practical application this has for you in your day-to-day apps.
@@ -288,7 +288,8 @@ holistically.
 
 In summary, if you're experiencing performance issues, try this:
 
-1. "Lift" the expensive component to a parent where it will be rendered less often.
+1. "Lift" the expensive component to a parent where it will be rendered less
+   often.
 2. Then pass the expensive component down as a prop.
 
 You may find doing so solves your performance problem without needing to spread

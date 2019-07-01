@@ -2,7 +2,7 @@
 slug: the-beginners-guide-to-reactjs
 title: The Beginner's Guide to ReactJS
 date: '2017-12-18'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _The course is free forever on egghead.io! Let's talk about how it teaches
   even developers experienced with React ⚛️_
@@ -79,6 +79,6 @@ will be helpful to you as well). Good luck!
 - [`ReactPrimer`](https://github.com/ReactPrimer/ReactPrimer) - React component
   prototyping tool that generates fully connected class component code.
 - [Partial Application & Lambda Parameter Syntax for JavaScript](https://medium.com/@citycide/partial-application-lambda-parameters-for-js-aa16f4d94df4) — Awesome
-  use of [`babel-macros`](https://github.com/kentcdodds/babel-macros)
+  use of [`babel-macros`](https://github.com/react-vis/babel-macros)
 - [Using Glitch as a UNIX command line playground](https://medium.com/@hugo__df/using-glitch-as-a-unix-command-line-playground-8e5cbdc9a8d5) — Interesting
   idea!

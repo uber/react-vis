@@ -2,7 +2,7 @@
 slug: 'usememo-and-usecallback'
 title: 'When to useMemo and useCallback'
 date: '2019-06-04'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   "_Performance optimizations ALWAYS come with a cost but do NOT always come
   with a benefit. Let's talk about the costs and benefits of useMemo and
@@ -153,7 +153,7 @@ _more_ allocation for function definitions (this is actually not the case, but
 the point still stands). This is what I was trying to get across with my twitter
 poll here:
 
-https://twitter.com/kentcdodds/status/1135943012410830848
+https://twitter.com/react-vis/status/1135943012410830848
 
 > Granted, I had several people tell me that was worded poorly, so my apologies
 > if you got the wrong answer but actually knew the correct answer.

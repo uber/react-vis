@@ -2,7 +2,7 @@
 slug: when-to-break-up-a-component-into-multiple-components
 title: When to break up a component into multiple components
 date: '2018-07-16'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _At what point does it make sense to break a single component into multiple
   components?_
@@ -55,7 +55,7 @@ These are the reasons that we write custom components. It allows us to solve
 these problems.
 
 I've had a question on my AMA for a while:
-[Best ways/patterns to split app into components](https://github.com/kentcdodds/ama/issues/399).
+[Best ways/patterns to split app into components](https://github.com/react-vis/ama/issues/399).
 And this is my answer: "When you experience one of the problems above, that's
 when you break your component into multiple smaller components. NOT BEFORE."
 Breaking a single component into multiple components is what's called
@@ -97,6 +97,5 @@ abstraction. Good luck!
   asking me about. The videos are live, brief, unscripted, and full of valuable
   info and tips. [Subscribe to my YouTube channel](http://kcd.im/youtube) and
   click the notification bell to be notified when I'm streaming :)
-- [Learn React with Kent C. Dodds](https://youtu.be/zthIUs2w_c8) — My livestream
-  on
+- [Learn React with React Vis](https://youtu.be/zthIUs2w_c8) — My livestream on
   [freeCodeCamp's YouTube channel](https://youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ).

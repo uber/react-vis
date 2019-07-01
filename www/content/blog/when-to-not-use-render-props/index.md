@@ -2,7 +2,7 @@
 slug: when-to-not-use-render-props
 title: When to NOT use Render Props
 date: '2018-03-26'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Let's back up from the hype and think critically about the render props
   pattern_
@@ -26,15 +26,15 @@ PATTERN.**
 ---
 
 > _🚨 Announcement: I am now on Patreon! Support these newsletters and other
-> things I do!_ [_patreon.com/kentcdodds_](https://www.patreon.com/kentcdodds)
+> things I do!_ [_patreon.com/react-vis_](https://www.patreon.com/react-vis)
 
-With all the [tweets](https://twitter.com/kentcdodds/status/957388589171539968),
+With all the [tweets](https://twitter.com/react-vis/status/957388589171539968),
 [posts](/blog/answers-to-common-questions-about-render-props), and
 [training videos](https://egghead.io/lessons/react-use-render-props-with-react)
 I have about the render prop pattern, I get this question a lot: "When should I
 not use the render props pattern?"
 
-[Every abstraction comes with a cost](https://twitter.com/kentcdodds/status/972468078813446149),
+[Every abstraction comes with a cost](https://twitter.com/react-vis/status/972468078813446149),
 even render props. But we use abstractions because we perceive the benefit
 outweighs the cost (or because the thought lords told us to and we didn't stop
 to think about it... but I digress). So when you're considering implementing a

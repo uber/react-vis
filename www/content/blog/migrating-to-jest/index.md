@@ -2,7 +2,7 @@
 slug: migrating-to-jest
 title: Migrating to Jest
 date: '2016-11-14'
-author: Kent C. Dodds
+author: React Vis
 description: _on the P2P team at PayPal_
 keywords:
   - javascript
@@ -22,14 +22,14 @@ was on the rooftops of twitter telling people to give AVA a shot. I created
 about how to set up and use AVA, and a full blown workshop on how to test React
 with AVA:
 
-https://twitter.com/kentcdodds/status/699636857928179712
+https://twitter.com/react-vis/status/699636857928179712
 
 I actually had used Jest long before, but had a less than awesome experience:
 
-https://twitter.com/kentcdodds/status/687756147105730560
+https://twitter.com/react-vis/status/687756147105730560
 
 So,
-[I convinced my team at PayPal](https://twitter.com/kentcdodds/status/720359271469162496)
+[I convinced my team at PayPal](https://twitter.com/react-vis/status/720359271469162496)
 and we started using AVA for all our new React tests. I was getting ready to
 start migrating our existing UI tests and our server tests when I started to
 notice something about AVA that really put a wrench in the whole thing.
@@ -40,7 +40,7 @@ application, I found this to be true:
 
 https://twitter.com/housecor/status/736530288952541185
 
-https://twitter.com/kentcdodds/status/749019087167041537
+https://twitter.com/react-vis/status/749019087167041537
 
 <figcaption>
   On a thread where I'm talking about making a AVA ➡️ Mocha codemod
@@ -84,7 +84,7 @@ from [Trevor D. Miller](https://twitter.com/trevordmiller) which I
 [responded to](https://github.com/facebook/create-react-app/pull/250#issuecomment-236985503)
 (in which I mention that I'd write this very blog post about me migrating from
 AVA to Mocha... I'd already started migrating my React Testing workshop to Mocha
-[here](https://github.com/kentcdodds/react-mocha-workshop). Hah). Then
+[here](https://github.com/react-vis/react-mocha-workshop). Hah). Then
 [Christoph Pojer](https://twitter.com/cpojer) responded with
 [this great comment](https://github.com/facebook/create-react-app/pull/250#issuecomment-237098619).
 That pretty much won my curiosity back and I decided to give it another go on a
@@ -93,13 +93,13 @@ project.
 Unfortunately, I didn't have time to look into it right away, even though I
 wanted to:
 
-https://twitter.com/kentcdodds/status/760668819140390913
+https://twitter.com/react-vis/status/760668819140390913
 
 <figcaption>😅</figcaption>
 
 But a few weeks later I gave it a go:
 
-https://twitter.com/kentcdodds/status/771455054947549184
+https://twitter.com/react-vis/status/771455054947549184
 
 I was impressed at how fast it was and even more how easy it was to set up.
 Especially since I'd tried Jest before and it was soooo slow. And I was really
@@ -112,18 +112,18 @@ I was slowly discovering the truth of this statement:
 https://twitter.com/cpojer/status/795729029223616512
 
 So I eventually
-[swapped AVA for Jest](https://github.com/kentcdodds/generator-kcd-oss/commit/23f8875358db204d16e040a14ee44aaa79681691)
+[swapped AVA for Jest](https://github.com/react-vis/generator-kcd-oss/commit/23f8875358db204d16e040a14ee44aaa79681691)
 for my open source module generator and now all my open source stuff is Jest and
 I love it 💚 .
 
 As is the case for me, when I get excited about new tech, I really like to
 share! So I created [a bunch of videos](http://kcd.im/egghead-jest) for
 egghead.io about it, had a
-[tech chat](https://github.com/kentcdodds/ama/issues/125) with
+[tech chat](https://github.com/react-vis/ama/issues/125) with
 [Christoph Pojer](https://twitter.com/cpojer)
 [on YouTube](https://youtu.be/i31VtyJSM-I&list=PLV5CVI1eNcJi8sor_aQ2AzOeQ3On3suOr&index=20)
 about Jest, and rewrote my React Testing Workshop **again** in
-[Jest](https://github.com/kentcdodds/react-jest-workshop).
+[Jest](https://github.com/react-vis/react-jest-workshop).
 
 ### The Migration
 
@@ -190,9 +190,9 @@ https://twitter.com/0xDEAD37/status/798993455040995328
 
 For the client-side stuff, I can say for sure absolutely positively YES:
 
-https://twitter.com/kentcdodds/status/785571364484755456
+https://twitter.com/react-vis/status/785571364484755456
 
-https://twitter.com/kentcdodds/status/786354753122947072
+https://twitter.com/react-vis/status/786354753122947072
 
 As for the server side. Well, my PR for the server changes was just merged
 yesterday, so I can only say I _think_ that it was worth it. Jest provides a ton
@@ -250,8 +250,8 @@ a solid look. Seriously. Oh, and don't forget to
 
 ![See you on twitter!](./images/1.png)
 
-See you on [twitter](https://twitter.com/kentcdodds)!
+See you on [twitter](https://twitter.com/react-vis)!
 
 P.S. PayPal is hiring 😃
 
-https://twitter.com/kentcdodds/status/783330287035887616
+https://twitter.com/react-vis/status/783330287035887616

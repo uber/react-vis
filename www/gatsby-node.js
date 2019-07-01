@@ -284,7 +284,7 @@ exports.onCreateNode = ({node, getNode, actions}) => {
     createNodeField({
       name: 'author',
       node,
-      value: node.frontmatter.author || 'Kent C. Dodds',
+      value: node.frontmatter.author || 'React Vis',
     })
 
     createNodeField({
@@ -344,7 +344,7 @@ exports.onCreateNode = ({node, getNode, actions}) => {
     createNodeField({
       name: 'editLink',
       node,
-      value: `https://github.com/kentcdodds/kentcdodds.com/edit/master${node.fileAbsolutePath.replace(
+      value: `https://github.com/react-vis/react-vis.com/edit/master${node.fileAbsolutePath.replace(
         __dirname,
         '',
       )}`,

@@ -2,7 +2,7 @@
 slug: react-jsx-as-a-server-side-templating-language
 title: React/JSX as a server-side templating language
 date: '2018-10-01'
-author: Kent C. Dodds
+author: React Vis
 description:
   _Using React function components to render your website's skeleton index.html_
 keywords:
@@ -15,7 +15,7 @@ bannerCredit:
 ---
 
 > _Another note:
-> [I've been teasing](https://twitter.com/kentcdodds/status/1041712678970875904)
+> [I've been teasing](https://twitter.com/react-vis/status/1041712678970875904)
 > about something big that I have coming. I'm totally not joking. I'm working on
 > something really huge and y'all will be the first to know about it. Stay
 > tuned. It's weeks away and I think you're going to love it._
@@ -31,7 +31,7 @@ The app is [paypal.me](https://paypal.me). The way it works is we have the
 [terms](https://www.paypal.com/paypalme/pages/terms), and
 [supported countries](https://www.paypal.me/pages/countries) pages that are 100%
 rendered HTML/CSS (and just a tiny bit of vanilla JS), and then the
-[profile](https://www.paypal.me/kentcdodds/10) and
+[profile](https://www.paypal.me/react-vis/10) and
 [settings](https://www.paypal.com/paypalme/my/profile) pages are rendered by the
 server as "skeleton" html pages (with SEO-relevant tags and a root `<div>` etc.)
 and then the client-side React app kicks in to load the rest of the
@@ -251,4 +251,4 @@ long-term. I hope this is helpful to you! Good luck!
   [Watch all the talks from UtahJS Conf 2018](https://youtube.com/playlist?list=PLuVqdWOQ-PNn_lDYUVgcA4e91qxJzipva)
 - [Testing React Components @ PayPal 2018–09](https://youtube.com/playlist?list=PLV5CVI1eNcJhU1eyqkTjR0B5P7PzMVubB) — I
   gave a ~4 hour workshop at PayPal last week and livestreamed it.
-  [Here's the material](https://github.com/kentcdodds/react-testing-library-course/tree/workshop-2018-09).
+  [Here's the material](https://github.com/react-vis/react-testing-library-course/tree/workshop-2018-09).

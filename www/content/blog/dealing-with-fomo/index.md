@@ -2,7 +2,7 @@
 slug: dealing-with-fomo
 title: Dealing with FOMO
 date: '2018-06-18'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _What is "Fear Of Missing Out" and how to deal with this natural unhealthy
   tendency._
@@ -96,8 +96,8 @@ of ourselves and find more happiness in life :) Good luck!
   [the state reducer prop pattern](/blog/the-state-reducer-pattern)). Enjoy!
 - [Drive with Kent — Tech phone call recording](https://youtu.be/vVlcq3e1ooI) — In
   case you missed it,
-  [I took a 6 hour drive](https://github.com/kentcdodds/ama/issues/405) and had
-  a phone conversation with people about React, Testing, CSS-in-JS, and more.
+  [I took a 6 hour drive](https://github.com/react-vis/ama/issues/405) and had a
+  phone conversation with people about React, Testing, CSS-in-JS, and more.
   Check it out!
 - [reach-router](https://reach.tech/router) — Not a typo, this is a new router
   from [Ryan Florence](https://twitter.com/ryanflorence) (creator of

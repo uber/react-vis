@@ -2,7 +2,7 @@
 slug: giving-good-demos
 title: Giving good demos
 date: '2017-12-11'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _I gave a pretty good demo and here are some things I did that might help you
   give good demos too._
@@ -14,8 +14,8 @@ bannerCredit:
   [Unsplash](https://unsplash.com)'
 ---
 
-[This week was exhausting](https://twitter.com/kentcdodds/status/931716752047665153)!
-[I hit two big milestones for projects I've been working on for a long time](https://twitter.com/kentcdodds/status/931247165342707712).
+[This week was exhausting](https://twitter.com/react-vis/status/931716752047665153)!
+[I hit two big milestones for projects I've been working on for a long time](https://twitter.com/react-vis/status/931247165342707712).
 I finished the second of two React courses for [egghead.io](http://egghead.io)
 and [Jamund Ferguson](https://twitter.com/xjamundx) and I gave a demo and the
 announcement of [paypal-scripts](/blog/tools-without-config) at work. And it

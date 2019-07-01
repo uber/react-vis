@@ -129,13 +129,13 @@ module.exports = {
         feeds: [
           getBlogFeed({
             filePathRegex: `//content/blog//`,
-            blogUrl: 'https://kentcdodds.com/blog',
+            blogUrl: 'https://react-vis.com/blog',
             output: '/blog/rss.xml',
-            title: 'Kent C. Dodds Blog RSS Feed',
+            title: 'React Vis Blog RSS Feed',
           }),
           getBlogFeed({
             filePathRegex: `//content/writing-blog//`,
-            blogUrl: 'https://kentcdodds.com/writing/blog',
+            blogUrl: 'https://react-vis.com/writing/blog',
             output: '/writing/blog/rss.xml',
             title: `Kent's Writing Blog RSS Feed`,
           }),
@@ -177,24 +177,24 @@ function getBlogFeed({filePathRegex, blogUrl, ...overrides}) {
             <div style="display: flex;">
               <div style="padding-right: 20px;">
                 <img
-                  src="https://kentcdodds.com/images/small-circular-kent.png"
-                  alt="Kent C. Dodds"
+                  src="https://react-vis.com/images/small-circular-kent.png"
+                  alt="React Vis"
                   style="max-width: 80px; border-radius: 50%;"
                 />
               </div>
               <p>
-                <strong>Kent C. Dodds</strong> is a JavaScript software engineer and
+                <strong>React Vis</strong> is a JavaScript software engineer and
                 teacher. He's taught hundreds of thousands of people how to make the world
                 a better place with quality software development tools and practices. He
                 lives with his wife and four kids in Utah.
               </p>
             </div>
             <div>
-              <p>Learn more with Kent C. Dodds:</p>
+              <p>Learn more with React Vis:</p>
               <ul>
                 <li>
-                  <a href="https://kentcdodds.com/workshops">Live, professional workshops</a>:
-                  Join Kent C. Dodds from the comfort of your home for live remote workshops.
+                  <a href="https://react-vis.com/workshops">Live, professional workshops</a>:
+                  Join React Vis from the comfort of your home for live remote workshops.
                   Tickets are limited! 🎟
                 </li>
                 <li>

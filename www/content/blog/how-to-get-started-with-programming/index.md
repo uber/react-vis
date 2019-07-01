@@ -2,7 +2,7 @@
 slug: 'how-to-get-started-with-programming'
 title: 'How to get started with programming'
 date: '2019-03-06'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description: _So you want to get into programming? Here's how you get started._
 categories:
   - 'programming'
@@ -217,9 +217,9 @@ in your position myself, so I suggest you sign up for my newsletter here:
 [kcd.im/news](https://kcd.im/news). Another tip for you is that in the software
 industry, twitter is a pretty big platform where coders connect and communicate.
 If you're not on twitter yet, jump on board and I have a suggestion for your
-first follow: [@kentcdodds](https://twitter.com/kentcdodds) 😉
+first follow: [@react-vis](https://twitter.com/react-vis) 😉
 
 Good luck to you!
 
 P.S. If you'd like to see more beginner material and tutorials from me, please
-[ask me about it on twitter](https://twitter.com/intent/tweet?url=https%3A%2F%2Fkentcdodds.com%2Fblog%2Fhow-to-get-started-with-programming&text=Hey,%20@kentcdodds,%20I%27d%20love%20it%20if%20you%20could%20create%20more%20beginner%20programmer%20content!)
+[ask me about it on twitter](https://twitter.com/intent/tweet?url=https%3A%2F%2Freact-vis.com%2Fblog%2Fhow-to-get-started-with-programming&text=Hey,%20@react-vis,%20I%27d%20love%20it%20if%20you%20could%20create%20more%20beginner%20programmer%20content!)

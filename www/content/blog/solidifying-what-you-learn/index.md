@@ -2,7 +2,7 @@
 slug: solidifying-what-you-learn
 title: Solidifying what you learn
 date: '2018-03-05'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Teaching is nature's way of letting you know how sloppy your understanding
   is._
@@ -42,7 +42,7 @@ and
 [the funny story of how I got my first full-time job](https://youtu.be/-qPh6I2hfjw?t=14m31s).
 
 Over the last two months or so, I've been revamping my
-[testing workshop](https://github.com/kentcdodds/testing-workshop). I gave it
+[testing workshop](https://github.com/react-vis/testing-workshop). I gave it
 once before for
 [Frontend Masters](https://frontendmasters.com/courses/testing-javascript)and
 I'm simplifying the content to make it easier to set up and less distracting to

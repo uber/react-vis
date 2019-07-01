@@ -2,7 +2,7 @@
 slug: the-state-reducer-pattern
 title: "The state reducer pattern ⚛️ \U0001F3CE"
 date: '2018-02-19'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _A new pattern has been implemented in downshift and it's awesome. Use the
   state reducer pattern to make your components more useful._
@@ -99,7 +99,7 @@ So, @notruth opened
 the `modifyStateChange`. After considering it a little further, I decided that
 this could be generalized into a pattern that could be really useful for other
 libraries. Patterns are much easier to evangelize when they have a name, so
-[I looked for one](https://twitter.com/kentcdodds/status/958707800292470784). 🕵️
+[I looked for one](https://twitter.com/react-vis/status/958707800292470784). 🕵️
 
 ### Introducing the state reducer pattern
 
@@ -177,7 +177,7 @@ Redux!
 This is a talk I gave at
 [ReactJS Utah](https://www.meetup.com/ReactJS-Utah/events/246683120) a few weeks
 ago. If you're curious what
-[`babel-plugin-macros`](https://github.com/kentcdodds/babel-plugin-macros) is
-all about and why it's so cool it's
+[`babel-plugin-macros`](https://github.com/react-vis/babel-plugin-macros) is all
+about and why it's so cool it's
 [built-into create-react-app](https://github.com/facebook/create-react-app/pull/3675),
 then give this a watch!

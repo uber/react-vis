@@ -2,7 +2,7 @@
 slug: prop-drilling
 title: Prop Drilling
 date: '2018-05-21'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _What it is, why it's good, why it's bad, and how to avoid common problems
   with it_

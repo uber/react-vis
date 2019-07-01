@@ -2,7 +2,7 @@
 slug: updated-advanced-react-component-patterns
 title: '💯 UPDATED: Advanced React Component Patterns ⚛️'
 date: '2018-06-01'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Now featuring the latest React APIs (like context) and entirely new patterns
   (like state reducer props)._
@@ -12,7 +12,7 @@ keywords:
 banner: ./images/banner.jpg
 bannerCredit: >-
   [Advanced React Component Patterns](http://kcd.im/advanced-react) with [Kent
-  C. Dodds](https://twitter.com/kentcdodds) (art by [Maggie
+  C. Dodds](https://twitter.com/react-vis) (art by [Maggie
   Appleton](https://twitter.com/Mappletons))
 ---
 
@@ -30,7 +30,7 @@ find it here:
 Here's the intro:
 
 ALSO! You can
-[follow along in codesandbox](https://codesandbox.io/s/github/kentcdodds/advanced-react-patterns-v2/tree/egghead)
+[follow along in codesandbox](https://codesandbox.io/s/github/react-vis/advanced-react-patterns-v2/tree/egghead)
 right here:
 
 ### So what's new?
@@ -137,4 +137,4 @@ patterns. I hope you love it!
 
 Please share this blog post and the course link with your friends!
 
-https://twitter.com/kentcdodds/status/1002546068884787202
+https://twitter.com/react-vis/status/1002546068884787202

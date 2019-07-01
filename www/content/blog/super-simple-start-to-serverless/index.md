@@ -2,7 +2,7 @@
 slug: 'super-simple-start-to-serverless'
 title: 'Super simple start to serverless'
 date: '2019-03-18'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   '_Easily create server code without worrying about managing servers yourself_'
 categories:
@@ -20,7 +20,7 @@ bannerCredit:
 ---
 
 This last little while I've been doing a fair amount of work on
-[kentcdodds.com](https://kentcdodds.com). One page that I've been working on is
+[react-vis.com](https://react-vis.com). One page that I've been working on is
 the [contact page](/contact) where you can
 [request enterprise training](https://kcd.im/request-a-workshop),
 [schedule an hour of my time for consulting](https://kcd.im/consulting), or even
@@ -164,7 +164,7 @@ Wahoo!
 ## Next steps
 
 You can find my version of this project
-[on GitHub](https://github.com/kentcdodds/super-simple-netlify-function-example)
+[on GitHub](https://github.com/react-vis/super-simple-netlify-function-example)
 and
 [on Netlify](https://simple-fn-example.netlify.com/.netlify/functions/hello).
 
@@ -178,7 +178,7 @@ Also, testing this locally is... not easy...
 [`netlify-lambda`](https://www.npmjs.com/package/netlify-lambda) to solve both
 of these problems! I've taken the liberty of giving you an example of this same
 function that uses `netlify-lambda` here
-[on GitHub](https://github.com/kentcdodds/netlify-function-example).
+[on GitHub](https://github.com/react-vis/netlify-function-example).
 
 Here are the main changes:
 

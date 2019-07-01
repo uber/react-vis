@@ -2,7 +2,7 @@
 slug: rendering-a-function-with-react
 title: Rendering a function with React
 date: '2017-11-13'
-author: Kent C. Dodds
+author: React Vis
 description:
   _How I tricked React into rendering a function (not call it... render it)_
 keywords:
@@ -20,7 +20,7 @@ bannerCredit:
 on it. That said, this is kinda fun so keep reading!**
 
 This week I was working on an internal module at PayPal and
-[had to do something kinda sorta-hacky with React](https://twitter.com/kentcdodds/status/923241478670909441).
+[had to do something kinda sorta-hacky with React](https://twitter.com/react-vis/status/923241478670909441).
 I thought You'd be interested to hear what I learned.
 
 > _No, this isn't about_ >

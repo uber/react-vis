@@ -2,7 +2,7 @@
 slug: the-merits-of-mocking
 title: The Merits of Mocking
 date: '2018-11-05'
-author: Kent C. Dodds
+author: React Vis
 description:
   '_What are you doing when you mock something, and when is it worth the cost?_'
 keywords:
@@ -17,9 +17,9 @@ bannerCredit:
 
 > _The more your tests resemble the way your software is used, the more
 > confidence they can give
-> you. — _[_me_](https://twitter.com/kentcdodds/status/977018512689455106)
+> you. — _[_me_](https://twitter.com/react-vis/status/977018512689455106)
 
-[One of the biggest challenges people face with testing is knowing what to test](https://twitter.com/kentcdodds/status/1048645068616163328).
+[One of the biggest challenges people face with testing is knowing what to test](https://twitter.com/react-vis/status/1048645068616163328).
 There are lots of reasons for that, but one big, flashing-lights reason is
 mocking. Many people don't know when to add a mock version of code or have their
 test run the actual code directly. These are challenges I'll help you work
@@ -102,5 +102,5 @@ See you [there](https://testingjavascript.com).
 
 **Things to not miss**:
 
-- [Episode 061 — React with Kent C. Dodds](https://6figuredev.com/podcast/episode-061-react-with-kent-c-dodds)
+- [Episode 061 — React with React Vis](https://6figuredev.com/podcast/episode-061-react-with-kent-c-dodds)
   on [The 6 Figure Developer podcast](https://6figuredev.com).

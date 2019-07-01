@@ -2,7 +2,7 @@
 slug: what-is-a-polyfill
 title: What is a polyfill
 date: '2018-07-30'
-author: Kent C. Dodds
+author: React Vis
 description: _The difference between a polyfill and a code transform._
 keywords:
   - javascript

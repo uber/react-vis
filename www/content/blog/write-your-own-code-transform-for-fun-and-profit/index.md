@@ -2,7 +2,7 @@
 slug: write-your-own-code-transform
 title: Write your own code transform for fun and profit
 date: '2018-06-04'
-author: Kent C. Dodds
+author: React Vis
 description:
   "_How to write your own code macro with babel-plugin-macros \U0001F3A3_"
 keywords:
@@ -15,7 +15,7 @@ bannerCredit:
 ---
 
 If you haven't heard,
-[`babel-plugin-macros`](https://github.com/kentcdodds/babel-plugin-macros)
+[`babel-plugin-macros`](https://github.com/react-vis/babel-plugin-macros)
 "enables zero-config, importable babel plugins." A few months ago, I published a
 blog post about it on the official babel blog:
 ["Zero-config code transformation with babel-plugin-macros"](https://babeljs.io/blog/2017/09/11/zero-config-with-babel-macros).
@@ -31,11 +31,11 @@ Since then, there have been a few exciting developments:
     [@FWeinb](https://twitter.com/FWeinb)
 
 Up until now, only early adopters have tried to
-[write a macro](https://github.com/kentcdodds/babel-plugin-macros/blob/master/other/docs/author.md),
+[write a macro](https://github.com/react-vis/babel-plugin-macros/blob/master/other/docs/author.md),
 though there are a fair amount of
-[people using](https://github.com/kentcdodds/babel-plugin-macros/blob/master/other/docs/user.md)
+[people using](https://github.com/react-vis/babel-plugin-macros/blob/master/other/docs/user.md)
 the growing list of
-[existing macros](https://github.com/kentcdodds/babel-plugin-macros/blob/master/other/docs/macros.md).
+[existing macros](https://github.com/react-vis/babel-plugin-macros/blob/master/other/docs/macros.md).
 There are tons of awesome things you can do with `babel-plugin-macros`, and I
 want to dedicate this newsletter to showing you how to get started playing
 around with writing your own.

@@ -2,7 +2,7 @@
 slug: write-tests
 title: Write tests. Not too many. Mostly integration.
 date: '2017-10-16'
-author: Kent C. Dodds
+author: React Vis
 description:
   _Guillermo Rauch tweeted this a while back. Let's take a quick dive into what
   it means._
@@ -89,7 +89,7 @@ about it at Fluent Conf:
 They each have trade-offs. The three most common forms of testing we're talking
 about when we talk of automated testing are: Unit, Integration, and End to End.
 
-Here's [a slide](http://slides.com/kentcdodds/testing-workshop#/4/8) from my
+Here's [a slide](http://slides.com/react-vis/testing-workshop#/4/8) from my
 Frontend Masters workshop:
 ["Testing JavaScript Applications"](https://frontendmasters.com/courses/testing-javascript).
 
@@ -113,13 +113,13 @@ intended.
 
 This is why I created "The Testing Trophy" 🏆
 
-https://twitter.com/kentcdodds/status/960723172591992832
+https://twitter.com/react-vis/status/960723172591992832
 
 ---
 
 Here's another illustration of the importance of integration tests:
 
-https://twitter.com/kentcdodds/status/628658648001048577
+https://twitter.com/react-vis/status/628658648001048577
 
 We've written unit tests that verify the man can run in place, do pushups, and
 read, but the man isn't integrating with his various body parts very

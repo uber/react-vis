@@ -2,7 +2,7 @@
 slug: common-testing-mistakes
 title: Common Testing Mistakes
 date: '2018-11-12'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Today let's talk about some common mistakes that people make when testing
   JavaScript applications._

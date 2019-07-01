@@ -2,7 +2,7 @@
 slug: 2018-in-review
 title: 2018 in Review
 date: '2019-01-14'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _An overview of what I've accomplished in 2018 and a bit about my goals for
   2019._
@@ -33,7 +33,7 @@ and
 [introduced react-testing-library](/blog/introducing-the-react-testing-library).
 It has [grown a lot](https://www.npmtrends.com/react-testing-library) since
 then. [The spectrum community](https://spectrum.chat/testing-library) has
-[over 300 members now](https://twitter.com/kentcdodds/status/1079523389553790976).
+[over 300 members now](https://twitter.com/react-vis/status/1079523389553790976).
 We've [really](https://twitter.com/Saifadin/status/1079746658882195457)
 [had](https://twitter.com/blankmannow/status/1079358441380954112)
 [a](https://twitter.com/LaurenBeatty13/status/1079489139433762819)
@@ -72,7 +72,7 @@ Creating this open source software and the community of awesome people that has
 been built around it is probably one of my finest accomplishments of 2019. If
 you'd like to hear more about how this software came to be, you can watch
 [S05E12 Modern Web Podcast - Testing](https://youtu.be/nw-GFMW8LSQ) or listen to
-[RRU 043: Testing React Apps Without Testing Implementation Details with Kent C. Dodds](https://devchat.tv/react-round-up/rru-043-testing-react-apps-without-testing-implementation-details-with-kent-c-dodds).
+[RRU 043: Testing React Apps Without Testing Implementation Details with React Vis](https://devchat.tv/react-round-up/rru-043-testing-react-apps-without-testing-implementation-details-with-kent-c-dodds).
 
 ## [National Novel Writing Month](https://nanowrimo.org)
 
@@ -177,7 +177,7 @@ PROJECT. I'm really proud of this accomplishment.
 
 > (Before you ask, this will not be open sourced, it's too PayPal specific, but
 > you might be interested in forking
-> [kcd-scripts](https://github.com/kentcdodds/kcd-scripts)).
+> [kcd-scripts](https://github.com/react-vis/kcd-scripts)).
 
 ## [PayPal.me](https://paypal.me) rewrite
 
@@ -218,10 +218,10 @@ realm of Open Source that I'd like to mention. Here are a few numbers:
   and it was [added to gatsby](https://github.com/gatsbyjs/gatsby/pull/7129).
   There are
   [over 200 dependents published on npm](https://www.npmjs.com/browse/depended/babel-plugin-macros)!
-- [I opened 134 issues](https://github.com/search?q=created%3A>2018-01-01+is%3Aissue+author%3Akentcdodds&type=Issues)
-- [I created 86 PRs](https://github.com/search?q=created%3A>2018-01-01+is%3Apr+author%3Akentcdodds+-user%3Akentcdodds)
-  ([73 were merged](https://github.com/search?utf8=✓&q=created%3A>2018-01-01+is%3Apr+author%3Akentcdodds+-user%3Akentcdodds+is%3Amerged&ref=simplesearch))
-- [I reviewed 802 PRs](https://github.com/search?q=created%3A>2018-01-01+is%3Apr+reviewed-by%3Akentcdodds&type=Issues)...
+- [I opened 134 issues](https://github.com/search?q=created%3A>2018-01-01+is%3Aissue+author%3Areact-vis&type=Issues)
+- [I created 86 PRs](https://github.com/search?q=created%3A>2018-01-01+is%3Apr+author%3Areact-vis+-user%3Areact-vis)
+  ([73 were merged](https://github.com/search?utf8=✓&q=created%3A>2018-01-01+is%3Apr+author%3Areact-vis+-user%3Areact-vis+is%3Amerged&ref=simplesearch))
+- [I reviewed 802 PRs](https://github.com/search?q=created%3A>2018-01-01+is%3Apr+reviewed-by%3Areact-vis&type=Issues)...
   WOW. 🤯
 - I [deprecated glamorous](https://github.com/paypal/glamorous/issues/419) in
   favor of [emotion.sh](https://emotion.sh)
@@ -230,7 +230,7 @@ realm of Open Source that I'd like to mention. Here are a few numbers:
   [over 2k `.all-contributorsrc` files on GitHub](https://github.com/search?q=.all-contributorsrc+in%3Apath&type=Code&utf8=✓)
   😱
 - All in all,
-  [I had 2,337 GitHub contributions in the last year](https://github.com/kentcdodds).
+  [I had 2,337 GitHub contributions in the last year](https://github.com/react-vis).
 
 ## [My YouTube Channel](https://kcd.im/youtube)
 
@@ -242,14 +242,14 @@ coherent than others, but altogether they represent a great resource for people
 to learn things from JavaScript to testing to React to Babel to more and more :)
 
 I also have a playlist called
-[Talks and workshops from Kent C. Dodds](https://youtube.com/playlist?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
+[Talks and workshops from React Vis](https://youtube.com/playlist?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
 with over 60 videos. More on this later.
 
 Altogether, this year I've really been pushing content onto YouTube and
-[hit over 10k subscribers](https://twitter.com/kentcdodds/status/1073589861054070784).
+[hit over 10k subscribers](https://twitter.com/react-vis/status/1073589861054070784).
 My videos got over 260k views this year (I am of course excluding
 [my smiley face video](https://youtu.be/t6q5_7fVjEg)
-[which was stolen](https://github.com/kentcdodds/ama/issues/290) and has 3.7
+[which was stolen](https://github.com/react-vis/ama/issues/290) and has 3.7
 million views now).
 
 ## Conferences
@@ -278,11 +278,11 @@ Here are some other interesting facts/accomplishments from 2018:
 
 - [I read the Book of Mormon](https://twitter.com/ryanflorence/status/1062114045417873408)
   again.
-- [Twitter](https://twitter.com/kentcdodds): I went from
-  [25k followers](https://twitter.com/kentcdodds/status/955863656788643840) to
+- [Twitter](https://twitter.com/react-vis): I went from
+  [25k followers](https://twitter.com/react-vis/status/955863656788643840) to
   almost 50k.
 - [Newsletter](https://kcd.im/news): I went from
-  [less than 5k subscribers](https://twitter.com/kentcdodds/status/973023708473278465)
+  [less than 5k subscribers](https://twitter.com/react-vis/status/973023708473278465)
   to over 10k.
 - [Brandon Sanderson](https://brandonsanderson.com): I listened to almost 30
   DAYS worth of time of Brandon Sanderson fantasy novels in 2018. I listen at
@@ -322,7 +322,7 @@ my surprises, but here are a few things:
 - I'm turning my [3 minutes with Kent podcast](https://kcd.im/3-mins) into a
   week-daily Q&A. Give it a look, subscribe, and ask your own question on my
   AMA: [kcd.im/ama](https://kcd.im/ama)
-- I'm revamping [my website](https://kentcdodds.com) using Gatsby and a bunch of
+- I'm revamping [my website](https://react-vis.com) using Gatsby and a bunch of
   other cool tools. I'll definitely blog about it. I'm actually kinda excited
   about it :) I'll also be moving my blog from Medium to my website with gatsby
   and hopefully automate more parts of this newsletter stuff :)
@@ -331,7 +331,7 @@ my surprises, but here are a few things:
   professional? This is going to be enormous.
 - I avoid traveling as much as possible, but I want to give more workshops this
   year than I gave last year. So I'm going to do online workshops. There are
-  [a lot of benefits to remote workshops](https://twitter.com/kentcdodds/status/1022675523154014209).
+  [a lot of benefits to remote workshops](https://twitter.com/react-vis/status/1022675523154014209).
   I've done it and I know how to make up for the difficulties of not being there
   in person. You're going to want to take advantage of these!
 - At PayPal, I'm working on a component library. I imagine there are some
@@ -359,7 +359,7 @@ I wish you the very best and happiest New Year!
 
 **Things to not miss**:
 
-- [RRU 043: Testing React Apps Without Testing Implementation Details with Kent C. Dodds](https://devchat.tv/react-round-up/rru-043-testing-react-apps-without-testing-implementation-details-with-kent-c-dodds) -
+- [RRU 043: Testing React Apps Without Testing Implementation Details with React Vis](https://devchat.tv/react-round-up/rru-043-testing-react-apps-without-testing-implementation-details-with-kent-c-dodds) -
   The ReactRoundUp podcast had me on to talk about testing!
 - [Testing Software](https://mhme-blog.now.sh/2018/december/testing-software.html) -
   Great insights here by [Matt Hamlin](https://mobile.twitter.com/immatthamlin)

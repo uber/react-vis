@@ -3,6 +3,6 @@ describe('app', () => {
     cy.visit('/')
       .getAllByText(/about/i, {selector: 'a'})
       .click()
-      .getByText(/About Kent C. Dodds/i)
+      .getByText(/About React Vis/i)
   })
 })

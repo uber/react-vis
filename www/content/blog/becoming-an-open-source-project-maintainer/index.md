@@ -2,7 +2,7 @@
 slug: becoming-an-open-source-project-maintainer
 title: Becoming an Open Source Project Maintainer
 date: '2017-11-20'
-author: Kent C. Dodds
+author: React Vis
 description: _Some tips and tricks that have worked for me._
 banner: ./images/banner.jpg
 bannerCredit:

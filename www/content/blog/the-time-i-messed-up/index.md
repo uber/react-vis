@@ -2,7 +2,7 @@
 slug: the-time-i-messed-up
 title: The time I messed up
 date: '2018-10-22'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _That time I went too far with Test Driven Development and forgot a very
   important step_
@@ -40,7 +40,7 @@ repo was asking if the React team would be willing to extract prop types into
 its own package (this has actually now taken place! Checkout
 [prop-types](http://npm.im/prop-types)). That didn't work out, so I decided to
 write my own package and thus
-[api-check](https://github.com/kentcdodds/api-check) was born!
+[api-check](https://github.com/react-vis/api-check) was born!
 
 One of the cool things about a library like this is that the whole thing is a
 bunch of pure functions! And we all know that pure functions are super easy to

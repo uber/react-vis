@@ -2,7 +2,7 @@
 slug: introducing-the-react-testing-library
 title: "Introducing the react-testing-library \U0001F410"
 date: '2018-04-02'
-author: Kent C. Dodds
+author: React Vis
 description:
   _A simpler replacement for enzyme that encourages good testing practices._
 keywords:
@@ -20,7 +20,7 @@ Two weeks ago, I wrote
 been thinking about it for a while. But two weeks ago I started getting pretty
 serious about it:
 
-https://twitter.com/kentcdodds/status/974278185540964352
+https://twitter.com/react-vis/status/974278185540964352
 
 Read on to get an idea of what I mean by "damaging practices."
 
@@ -48,7 +48,7 @@ components. It provides light utility functions on top of `react-dom` and
 `react-dom/test-utils`, in a way that encourages better testing practices. It's
 primary guiding principle is:
 
-https://twitter.com/kentcdodds/status/977018512689455106
+https://twitter.com/react-vis/status/977018512689455106
 
 So rather than dealing with instances of rendered react components, your tests
 will work with actual DOM nodes. The utilities this library provides facilitate
@@ -268,7 +268,7 @@ month!:
 **Things to not miss**:
 
 - I am now on Patreon! Support these newsletters and other things I do!
-  [patreon.com/kentcdodds](https://www.patreon.com/kentcdodds)
+  [patreon.com/react-vis](https://www.patreon.com/react-vis)
 - [React Dev Summit](https://reactdevsummit.com): Coupon code "KENT" gets 10%
   off the ticket price
 - [polyfill.io](https://polyfill.io): It's more than just an amazing service,
@@ -276,6 +276,6 @@ month!:
   that and it's amazing. I'll probably write about it eventually.
 - Oh, by the way, I was originally going to call this library:
   `react-dom-testing-assistant` or `rdta`, but after
-  [I tweeted about it](https://twitter.com/kentcdodds/status/975422070656921601),
+  [I tweeted about it](https://twitter.com/react-vis/status/975422070656921601),
   [Ryan suggested](https://twitter.com/ryanflorence/status/975424602699530240)`react-testing-library`
   and I couldn't pass it up.

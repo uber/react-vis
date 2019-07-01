@@ -2,7 +2,7 @@
 slug: first-conference-part-0
 date: 2019-02-12
 title: 'First Conference: Part 0'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description: _Feelings going to my first writer's workshop tomorrow._
 categories: ['writing']
 keywords: ['writing', 'fantasy', 'novel']
@@ -65,7 +65,7 @@ make sure that I do things correctly. One thing that I learned from that blog
 post is that business cards are pretty important in the writing community so I
 got 500 of these printed:
 
-![Hi, I'm Kent C. Dodds and I write epic fantasy kentcdodds.com/writing @kent_writes. “There is no greater agony than bearing an untold story inside you.” ― Maya Angelou](./business-cards.jpg)
+![Hi, I'm React Vis and I write epic fantasy react-vis.com/writing @kent_writes. “There is no greater agony than bearing an untold story inside you.” ― Maya Angelou](./business-cards.jpg)
 
 I think they turned out great and I'm excited to hand them out to folks that I
 meet and make connections with people at the conference. I'm especially eager to

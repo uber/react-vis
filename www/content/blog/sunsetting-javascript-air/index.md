@@ -2,7 +2,7 @@
 slug: sunsetting-javascript-air
 title: "\U0001F306 Sunsetting JavaScript Air \U0001F306"
 date: '2016-10-28'
-author: Kent C. Dodds
+author: React Vis
 description: "_for now... \U0001F307_"
 keywords:
   - javascript
@@ -18,7 +18,7 @@ With heavy heart 💔, I must officially announce that I'm sunsetting
 Air (I'm surprised you're even reading this), it's the **live** broadcast
 podcast all about JavaScript and the web platform. Learn more about the
 background
-[here](https://medium.com/@kentcdodds/introducing-javascript-air-46700561f38d).
+[here](https://medium.com/@react-vis/introducing-javascript-air-46700561f38d).
 
 On November 2nd, we'll have our last show with
 [Brendan Eich](https://twitter.com/BrendanEich), the creator of JavaScript. It's
@@ -65,9 +65,9 @@ some tweets coming from the account eventually.
 If you're interested in what I'm doing next, I plan on doing more stuff for
 [egghead.io](http://kcd.im/egghead),
 [Frontend Masters](https://frontendmasters.com), and I have
-[a project](https://gist.github.com/kentcdodds/e85254d4dbc1540df6b95eb9ad2098d9)
+[a project](https://gist.github.com/react-vis/e85254d4dbc1540df6b95eb9ad2098d9)
 that I'm working on and I'm really excited about.
-[Follow me on twitter](https://twitter.com/kentcdodds) to keep up with that :)
+[Follow me on twitter](https://twitter.com/react-vis) to keep up with that :)
 
 ![See you on Twitter!](./images/0.png)
 
@@ -77,7 +77,7 @@ The show actually was a bit of a financial burden and it turns out that I didn't
 charge sponsors enough to cover the costs for wrapping things up for the show.
 Poor planning on my part. It was never my goal to make money from the show:
 
-https://twitter.com/kentcdodds/status/705497837820203009
+https://twitter.com/react-vis/status/705497837820203009
 
 If JavaScript Air helped you at all, and you feel so inclined, a small donation
 would be appreciated:
@@ -87,5 +87,5 @@ https://twitter.com/JavaScriptAir/status/792087078267871232
 #### P.P.S
 
 If you're looking for other good podcasts,
-[here's a list](https://github.com/kentcdodds/ama/issues/17#issuecomment-257030651)
-on [my AMA](https://github.com/kentcdodds/ama) of the podcasts that I listen to.
+[here's a list](https://github.com/react-vis/ama/issues/17#issuecomment-257030651)
+on [my AMA](https://github.com/react-vis/ama) of the podcasts that I listen to.

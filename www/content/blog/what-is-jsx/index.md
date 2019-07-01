@@ -2,7 +2,7 @@
 slug: what-is-jsx
 title: What is JSX?
 date: '2018-07-09'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _You may use it every day, but have you seen what happens after Babel compiles
   it?_

@@ -2,7 +2,7 @@
 slug: react-devtools
 title: React DevTools
 date: '2018-05-28'
-author: Kent C. Dodds
+author: React Vis
 description:
   _A quick demo of the browser extension you should definitely be using._
 keywords:

@@ -63,7 +63,7 @@ const Footer = ({subscribeForm = <SubscribeForm />}) => (
         <Link to="/" aria-label="Return to homepage">
           <img
             src={Signature}
-            alt="Kent C. Dodds"
+            alt="React Vis"
             css={css`
               max-width: 100px;
             `}

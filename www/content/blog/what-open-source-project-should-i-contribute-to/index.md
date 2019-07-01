@@ -2,7 +2,7 @@
 slug: what-open-source-project-should-i-contribute-to
 title: What open source project should I contribute to?
 date: '2019-06-03'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _My silver bullet answer to this frequently posed question, and how to get
   started_
@@ -69,7 +69,7 @@ favorite way to learn how a project works is by reading the code. My favorite
 way to do this is by sticking a `debugger` before I call a library function or
 when a library calls my function and jumping around the call stack, like this:
 
-https://twitter.com/kentcdodds/status/1135687475110670341
+https://twitter.com/react-vis/status/1135687475110670341
 
 Step through the code and you'll learn a lot about how the framework/library
 works. Don't worry if you don't understand what's going on right away. That will
@@ -123,7 +123,7 @@ Take a look at GitHub's issues for issues labeled
 [good-first-bug](https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+label%3Agood-first-bug)),
 or
 [help wanted](https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22+)
-(more [here](https://twitter.com/kentcdodds/status/672873736974897152)... we
+(more [here](https://twitter.com/react-vis/status/672873736974897152)... we
 _need_ to standardize on this).
 
 Also, here are good resources for finding simple ways to contribute:
@@ -138,7 +138,7 @@ Also, here are good resources for finding simple ways to contribute:
 
 [**MunGell/awesome-for-beginners**](https://github.com/MunGell/awesome-for-beginners)
 
-[My first PR](http://firstpr.me/#kentcdodds) was to fix a typo in a comment
+[My first PR](http://firstpr.me/#react-vis) was to fix a typo in a comment
 ([find yours](http://firstpr.me)). It was super small and it was to a project
 that I didn't really use all that much (discovered the typo when stepping
 through their code in a debugger). It was a great first contribution, even

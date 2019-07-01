@@ -2,7 +2,7 @@
 slug: react-strict-mode
 title: How to Enable React Strict Mode
 date: '2019-03-04'
-author: Kent C. Dodds
+author: React Vis
 description: _What it is and how to add it to your app._
 keywords:
   - react

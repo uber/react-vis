@@ -2,7 +2,7 @@
 slug: merry-christmas
 title: Merry Christmas!
 date: '2017-12-25'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _As I write this, it's Christmas Eve. My kids have fallen asleep and I've
   wrapped up the last few presents I've made or purchased for them..._
@@ -20,17 +20,17 @@ them interesting:
 - Michael (3 months): A letter telling him what I love about him as a baby.
   He'll hopefully appreciate it more later :)
 - Adam (2):
-  [Hand woven beanie](https://twitter.com/kentcdodds/status/944812510821023744),
+  [Hand woven beanie](https://twitter.com/react-vis/status/944812510821023744),
   [GitHub Activity Book](https://github.myshopify.com/products/github-activity-book)
 - Nathan (4): [Typing For Kids](https://typing-for-kids.netlify.com)
-  ([repo](https://github.com/kentcdodds/typing-for-kids)),
+  ([repo](https://github.com/react-vis/typing-for-kids)),
   [GitHub Activity Book](https://github.myshopify.com/products/github-activity-book)
 - Becca (5): [Typing For Kids](https://typing-for-kids.netlify.com)
-  ([repo](https://github.com/kentcdodds/typing-for-kids)),
+  ([repo](https://github.com/react-vis/typing-for-kids)),
   [GitHub Activity Book](https://github.myshopify.com/products/github-activity-book)
 
 And for my wife, I made [Repeat Todo](https://repeat-todo.com)
-([repo](https://github.com/kentcdodds/repeat-todo-v2)). A while back I made her
+([repo](https://github.com/react-vis/repeat-todo-v2)). A while back I made her
 [this version](https://stackedit.io/repeat-todo.surge.sh), but the fact that it
 used only local storage for persistence presented a few problems when wanting to
 create a list or transfer devices. This new one uses Firebase _and_ works
@@ -49,7 +49,7 @@ of our Savior Jesus Christ.
 A few weeks ago, my wife had the idea to have a Nativity display in our backyard
 and invite our neighbors to come and see them and enjoy cookies and hot
 chocolate. It happened, and
-[here's a video of the result](https://twitter.com/kentcdodds/status/943644317503156224).
+[here's a video of the result](https://twitter.com/react-vis/status/943644317503156224).
 It took a lot of work, but it was totally worth it and a wonderful new family
 tradition.
 

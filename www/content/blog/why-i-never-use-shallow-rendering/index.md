@@ -2,7 +2,7 @@
 slug: why-i-never-use-shallow-rendering
 title: Why I Never Use Shallow Rendering
 date: '2018-07-23'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Tests should help me be confident that my application is working and there
   are better ways to do that than shallow rendering._
@@ -162,7 +162,7 @@ that are returned by your custom components (like our `Fade` component).
 When I determined early on to never use shallow rendering, it was because I knew
 that there were better ways to get at the things that shallow rendering makes
 easy without making the trade-offs shallow rendering forces you to make.
-[I recently asked folks](https://twitter.com/kentcdodds/status/1016084196421296133)
+[I recently asked folks](https://twitter.com/react-vis/status/1016084196421296133)
 to tell me why they use shallow rendering. Here are a few of the things that
 shallow rendering makes easier:
 
@@ -273,7 +273,7 @@ mocks.
 I'm a huge believer of the guiding principle of
 [`react-testing-library`](https://github.com/testing-library/react-testing-library):
 
-> [_The more your tests resemble the way your software is used, the more confidence they can give you._](https://twitter.com/kentcdodds/status/977018512689455106)_ — Kent
+> [_The more your tests resemble the way your software is used, the more confidence they can give you._](https://twitter.com/react-vis/status/977018512689455106)_ — Kent
 > C. Dodds 👋_
 
 That's why I wrote the library in the first place. As a side-note to this

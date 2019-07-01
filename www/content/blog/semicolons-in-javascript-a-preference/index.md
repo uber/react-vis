@@ -2,7 +2,7 @@
 slug: semicolons-in-javascript-a-preference
 title: 'Semicolons in JavaScript: A preference'
 date: '2015-11-16'
-author: Kent C. Dodds
+author: React Vis
 description:
   _An argument for why use of semicolons in JavaScript source is a preference_
 keywords:
@@ -67,7 +67,7 @@ what doesn’t but becomes a simple matter of preference.
 
 So why do I prefer to not have semicolons? It’s not just that I have a broken
 right pinky (though
-[sometimes it gets hurt](https://twitter.com/kentcdodds/status/925901200624558080))
+[sometimes it gets hurt](https://twitter.com/react-vis/status/925901200624558080))
 or I like typing one less character per line. It’s simply because I don’t like
 my linter/editor telling me I need to add something that is not necessary (so I
 tell them I don’t want semicolons and they warn against them instead).
@@ -101,4 +101,4 @@ this case, it’s simply the proper way to write JavaScript). I definitely would
 recommend that you get these things in place (but that’s another blogpost). If
 you do have these things in place, then that’s great! You can make the choice
 **based on preference**! Catch you on the
-[twitters](https://twitter.com/kentcdodds)!
+[twitters](https://twitter.com/react-vis)!

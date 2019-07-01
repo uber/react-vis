@@ -2,7 +2,7 @@
 slug: how-getting-into-open-source-has-been-awesome-for-me
 title: How getting into Open Source has been awesome for me
 date: '2015-12-01'
-author: Kent C. Dodds
+author: React Vis
 description: _An anecdotal argument for contributing and using open source_
 keywords:
   - open source
@@ -77,13 +77,13 @@ big in open source to get noticed.
 [Matt Apperson](https://twitter.com/mattapperson),
 [Rahat Khanna](https://twitter.com/mappmechanic), and
 [Bram Borggreve](https://twitter.com/beeman_nl) and
-[others](https://twitter.com/kentcdodds/status/671565082858418180) each spent
+[others](https://twitter.com/react-vis/status/671565082858418180) each spent
 time making contributions to open source and have their jobs to thanks for it.
 Certainly getting a job was not _the_ reason these developers got into open
 source in the first place. But it's good for business in any case.
 
 It's notable that when
-[I asked](https://twitter.com/kentcdodds/status/671565082858418180) people if
+[I asked](https://twitter.com/react-vis/status/671565082858418180) people if
 they had gotten their job for open source contributions, several mentioned they
 got their job from other community contributions like blog posts
 ([Vjeux](https://twitter.com/Vjeux) and
@@ -128,12 +128,12 @@ and I recommend that kind of experience to anyone. But if you're looking to make
 a lasting impression on a project, think of what tools, libraries, and
 frameworks you use regularly and find ways you can contribute to those things.
 
-See you on [Twitter](https://twitter.com/kentcdodds) and
-[GitHub](https://github.com/kentcdodds)!
+See you on [Twitter](https://twitter.com/react-vis) and
+[GitHub](https://github.com/react-vis)!
 
 **Other Resources:**
 
 - [24 Pull Requests](http://24pullrequests.com/contributing)
-- [How to Write an Open Source JavaScript Library - Course by @kentcdodds](https://egghead.io/series/how-to-write-an-open-source-javascript-library)
+- [How to Write an Open Source JavaScript Library - Course by @react-vis](https://egghead.io/series/how-to-write-an-open-source-javascript-library)
 - [First Timers Only](https://medium.com/p/78281ea47455)
 - [GitHub for Developers](https://training.github.com/classes/developers)

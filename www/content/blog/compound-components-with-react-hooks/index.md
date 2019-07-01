@@ -2,7 +2,7 @@
 slug: compound-components-with-react-hooks
 date: 2019-02-18
 title: 'React Hooks: Compound Components'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description: How do compound components change with React hooks?
 categories: ['react']
 keywords:

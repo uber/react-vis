@@ -2,7 +2,7 @@
 slug: open-source-stamina
 title: Open Source Stamina
 date: '2015-10-22'
-author: Kent C. Dodds
+author: React Vis
 description: _You contribute best to something you use regularly._
 keywords:
   - Nodejs

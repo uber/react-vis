@@ -2,7 +2,7 @@
 slug: colocation
 title: Colocation
 date: '2019-06-17'
-author: Kent C. Dodds
+author: React Vis
 description: _Maintainability through colocation_
 keywords:
   - javascript

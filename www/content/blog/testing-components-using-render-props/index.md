@@ -2,7 +2,7 @@
 slug: testing-components-using-render-props
 title: Testing ⚛️ components using render props
 date: '2018-01-08'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Let's look at how we can write tests for React components that use render
   props!_
@@ -30,7 +30,7 @@ could help you when testing a component that renders a render prop component :)
 > implement the render prop pattern :)_
 
 In preparing this blog post, **I created**
-[**this repo**](https://github.com/kentcdodds/test-render-prop-example) which
+[**this repo**](https://github.com/react-vis/test-render-prop-example) which
 totally works and you can give it a look if you want more details :) In that
 repo, we have a component called `FruitAutocomplete` which is (basically)
 implemented like so:
@@ -286,7 +286,7 @@ that things wont break if you do.
 I should note also that for some components that require a provider to exist
 (like `react-redux` or `react-router`), that you simply render your component
 within a provider. I have
-[some examples](https://github.com/kentcdodds/testing-workshop/tree/65d17521c9f516529c6f749d64846b14743b0eaa/client-final/tests/integration)
+[some examples](https://github.com/react-vis/testing-workshop/tree/65d17521c9f516529c6f749d64846b14743b0eaa/client-final/tests/integration)
 of doing this in my
 [testing workshop for frontend masters](http://kcd.im/fm-testing).
 
@@ -294,9 +294,9 @@ I hope this is helpful to you! Good luck!
 
 **Things to not miss**:
 
-- [Learn, Build, and Teach with Kent C. Dodds](http://itcareerenergizer.com/e35)
-  on [I.T. Career Energizer](http://itcareerenergizer.com) — You can find my
-  other appearances on podcasts and things on
+- [Learn, Build, and Teach with React Vis](http://itcareerenergizer.com/e35) on
+  [I.T. Career Energizer](http://itcareerenergizer.com) — You can find my other
+  appearances on podcasts and things on
   [my website appearances page](/appearances) 🎙
 - [ReactJS RFCs repo](https://github.com/reactjs/rfcs) — RFCs for changes to
   React. Check it out. It already has a few very interesting pull requests.

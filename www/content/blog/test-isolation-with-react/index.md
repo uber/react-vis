@@ -2,7 +2,7 @@
 slug: test-isolation-with-react
 title: Test Isolation with React
 date: '2018-07-02'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Why your tests should be completely isolated from one another and how to do
   that._
@@ -337,7 +337,7 @@ to handle edge cases.
 ### Conclusion
 
 I hope this is helpful to you! You can find the code for this example
-[here](https://github.com/kentcdodds/react-test-isolation). Try to keep your
+[here](https://github.com/react-vis/react-test-isolation). Try to keep your
 tests isolated from one another and focus on use cases rather than functionality
 and you'll have a much better time testing! Good luck!
 

@@ -2,7 +2,7 @@
 slug: please-stop-building-inaccessible-forms-and-how-to-fix-them
 title: Please stop building inaccessible forms (and how to fix them)
 date: '2019-02-04'
-author: Kent C. Dodds
+author: React Vis
 description:
   _I regularly find inaccessible forms. In this post we'll check out some common
   accessibility problems and fix them._

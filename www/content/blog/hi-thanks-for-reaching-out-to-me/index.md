@@ -2,7 +2,7 @@
 slug: hi-thanks-for-reaching-out-to-me
 title: "Hi, thanks for reaching out to me \U0001F44B"
 date: '2017-05-03'
-author: Kent C. Dodds
+author: React Vis
 description: _My generic response to requests for personal support_
 banner: ./images/banner.jpg
 bannerCredit: >-
@@ -19,7 +19,7 @@ given. People have questions about the stuff I create and want help with it.
 Totally understandable. When I have a question, I'd much rather talk to an
 expert on the subject than read generic documentation or outdated tutorials
 (this is one of the reasons that I do my
-[tech chats](https://github.com/kentcdodds/ama/issues/125)).
+[tech chats](https://github.com/react-vis/ama/issues/125)).
 
 Unfortunately, I don't have time to field all of the support requests that I get
 via email, GitHub, Twitter, Gitter, Slack, etc... It's not that I don't want to
@@ -42,8 +42,8 @@ the most amount of people at once.
 _I almost never respond to direct support request emails._ So instead, post your
 ([Minimal, Complete, and Verifiable](https://stackoverflow.com/help/mcve))
 question on a relevant forum (like [StackOverflow](http://stackoverflow.com))
-and feel free to [tweet](https://twitter.com/kentcdodds) the link to me (or ask
-me on [my AMA](https://github.com/kentcdodds/ama)). I can't promise that I'll
+and feel free to [tweet](https://twitter.com/react-vis) the link to me (or ask
+me on [my AMA](https://github.com/react-vis/ama)). I can't promise that I'll
 find time to look at it, but hundreds of other developers will see it so you're
 more likely to get an answer from someone. What's better is the positive impact
 is increased because it's in a public forum so I'll be more likely to give it a

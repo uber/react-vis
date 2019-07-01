@@ -2,7 +2,7 @@
 slug: learn-react-fundamentals-and-advanced-patterns
 title: "Learn React Fundamentals \U0001F193 and Advanced Patterns ⚛️ \U0001F381"
 date: '2017-12-04'
-author: Kent C. Dodds
+author: React Vis
 description: >-
   _Two and a half hours of new beginner (free) and advanced React material are
   now available egghead.io!_
@@ -192,17 +192,17 @@ anything or enjoy the courses, I would ask you to do any of the following:
 1.  [Become an egghead.io subscriber](https://egghead.io/pricing) to help
     support the community resources _and_ get access to the 2500+ videos already
     on there!
-2.  [Tweet this blog post](https://twitter.com/intent/tweet?text=🎁⚛️%20“Learn%20React%20Fundamentals%20and%20Advanced%20Patterns”%20by%20@kentcdodds%20https://kentcdodds.com/blog/learn-react-fundamentals-and-advanced-patterns%20🎁⚛️)!
+2.  [Tweet this blog post](https://twitter.com/intent/tweet?text=🎁⚛️%20“Learn%20React%20Fundamentals%20and%20Advanced%20Patterns”%20by%20@react-vis%20https://react-vis.com/blog/learn-react-fundamentals-and-advanced-patterns%20🎁⚛️)!
     Or
-    [retweet my tweet](https://twitter.com/kentcdodds/status/937686244045176832)
+    [retweet my tweet](https://twitter.com/react-vis/status/937686244045176832)
     about it :)
 3.  Upvote and discuss this blog post and the courses
     [on Reddit](https://www.reddit.com/r/reactjs/comments/7hq91g/learn_react_fundamentals_and_advanced_patterns)
-4.  [Follow me on twitter](https://twitter.com/kentcdodds) to keep up with what
-    I work on next
+4.  [Follow me on twitter](https://twitter.com/react-vis) to keep up with what I
+    work on next
 5.  [Subscribe to my weekly newsletter 💌](http://kcd.im/news)
 6.  Write a blog post about your experience watching my courses!
 
-https://twitter.com/kentcdodds/status/937686244045176832
+https://twitter.com/react-vis/status/937686244045176832
 
 Thanks everyone! And Merry Christmas! 🎁 🎄

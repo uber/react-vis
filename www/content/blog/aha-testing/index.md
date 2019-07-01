@@ -2,7 +2,7 @@
 slug: 'aha-testing'
 title: 'AHA Testing 💡'
 date: '2019-04-07'
-author: 'Kent C. Dodds'
+author: 'React Vis'
 description:
   '_How to apply the "Avoid Hasty Abstraction" principle to your test code._'
 categories:
@@ -422,13 +422,13 @@ I probably wouldn't bother doing this for this simple example, but what's cool
 about it is that you can add more test cases very easily by simply adding more
 elements to that array. A good example of this concept (that actually _doesn't_
 use jest-in-case) is
-[the `rtl-css-js` tests](https://github.com/kentcdodds/rtl-css-js/blob/b148865ce6a4c994eba292015b8f44b5dae7edaa/src/__tests__/index.js).
+[the `rtl-css-js` tests](https://github.com/react-vis/rtl-css-js/blob/b148865ce6a4c994eba292015b8f44b5dae7edaa/src/__tests__/index.js).
 Contributors to this codebase find it very easy to add new test cases with this
 structure.
 
 This can also be applied to impure functions and modules as well, though it
 takes a little bit more work.
-([Here's a test that does this which I'm not totally proud of, but it's not too bad](https://github.com/kentcdodds/kcd-scripts/blob/7bc29e41e46e73b4b57c0f975648a90a75c24c80/src/scripts/__tests__/lint.js))
+([Here's a test that does this which I'm not totally proud of, but it's not too bad](https://github.com/react-vis/kcd-scripts/blob/7bc29e41e46e73b4b57c0f975648a90a75c24c80/src/scripts/__tests__/lint.js))
 
 I personally prefer [jest-in-case](https://github.com/atlassian/jest-in-case)
 but Jest has a built-in
