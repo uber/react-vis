@@ -1,0 +1,51 @@
+---
+title: Kent C. Dodds Writes
+heroMessage: Hi, I'm Kent C. Dodds and I write epic fantasy.
+---
+
+import Container from 'components/container'
+import SEO from 'components/seo'
+import Layout from 'components/layout'
+import BigHero from 'components/big-hero'
+import {TinyLetterSubscribe} from 'components/forms/subscribe'
+import theme from '../../../config/theme'
+
+export default function MarkdownPage({children, pageContext: {frontmatter}}) {
+  return (
+    <>
+      <SEO frontmatter={frontmatter} />
+      <Layout
+        hero={<BigHero message={frontmatter.heroMessage} />}
+        frontmatter={frontmatter}
+        headerColor={theme.colors.white}
+        subscribeForm={<TinyLetterSubscribe />}
+      >
+        <Container>{children}</Container>
+      </Layout>
+    </>
+  )
+}
+
+> "There is no greater agony than bearing an untold story inside you." ― Maya
+> Angelou
+
+[Follow `@kent_writes` on twitter](https://twitter.com/kent_writes). It's the
+twitter account where I tweet about my experience as a writer as well as nice
+quotes that I enjoy like the one above.
+
+## Blog
+
+You can read about my experiences on my writing blog:
+[kentcdodds.com/writing/blog](/writing/blog)
+
+## Shurlan
+
+> An insecure 14-year-old surgeon struggles to learn magic that only works if
+> she's confident in her abilities.
+
+Planning on adding things to describe the book. Will update soon. In the
+meantime, here are a few links:
+
+- [The Shurlan Manuscript](https://kcd.im/shurlan) (work in progress)
+- [My Writer Newsletter](https://kcd.im/shurlan-news) (not the same as the
+  newsletter you can sign up for on my site)

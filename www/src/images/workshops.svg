@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="226" height="140" viewBox="0 0 226 140">
+  <defs>
+    <linearGradient id="workshops-a" x1="117.045%" x2="9.078%" y1="-12.984%" y2="88.035%">
+      <stop offset="0%" stop-color="#C38AFF"/>
+      <stop offset="100%" stop-color="#9052FF"/>
+    </linearGradient>
+    <linearGradient id="workshops-b" x1="-7.812%" x2="117.045%" y1="67.876%" y2="33.126%">
+      <stop offset="0%" stop-color="#C38AFF"/>
+      <stop offset="100%" stop-color="#9052FF"/>
+    </linearGradient>
+    <path id="workshops-c" d="M97.0009137,60 L129.000914,60 L129.000914,68 C129.000914,69.6568542 127.698469,71 126.091823,71 L97.0009137,71 L97.0009137,60 Z"/>
+    <filter id="workshops-d" width="100%" height="100%" x="0%" y="0%" filterUnits="objectBoundingBox">
+      <feOffset in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+      <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 0.509803922   0 0 0 0 0.258823529   0 0 0 0 0.964705882  0 0 0 1 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(-358 -3971)">
+    <rect width="1440" height="7696" fill="#FAFAFA"/>
+    <g transform="translate(338 3881)">
+      <rect width="227" height="230" x="20" fill="#8242F6" rx="5"/>
+      <path fill="#6D37CE" d="M30.0206839,252.343547 L252.060189,205.147593 C243.463522,164.703453 239.189968,144.313063 239.239526,143.976422 C231.920051,148.599246 216.092483,153.49701 200.014181,150.780515 C173.731509,146.33995 165.460815,138.728722 136.066263,138.612968 C100.813015,138.474142 86.5524582,131.109319 55.3433299,135.525927 C26.5612261,139.599071 15.5086009,150.127104 10.4881055,160.684996 C10.5199674,160.678224 17.0308269,191.231074 30.0206839,252.343547 Z" transform="rotate(12 131.274 193.23)"/>
+      <path stroke="#979797"/>
+      <rect width="72.593" height="5" x="69" y="186" fill="#8242F6" rx="2.5"/>
+      <rect width="36.297" height="5" x="69" y="196" fill="#8242F6" rx="2.5"/>
+      <g transform="translate(69 103)">
+        <path fill="url(#workshops-a)" d="M3,0 L98,0 L98,71 L3,71 C1.34314575,71 4.54950257e-13,69.6568542 4.54747351e-13,68 L4.54747351e-13,3 C4.54544445e-13,1.34314575 1.34314575,3.04359188e-16 3,0 Z"/>
+        <path fill="#6927E2" fill-rule="nonzero" d="M49.6515,30.2368941 C48.7080331,29.6193647 47.4524715,30.2817427 47.4524715,31.3857531 L47.4524715,40.6142496 C47.4524715,41.7182424 48.7098288,42.3806381 49.6515,41.7631086 L56.6992195,37.126339 C57.5514642,36.5519094 57.5514642,35.3599505 56.6992195,34.785521 L49.6515,30.2368941 Z"/>
+        <path fill="#9052FF" d="M97.0009137,0 L126.091823,0 C127.698469,0 129.000914,1.34314575 129.000914,3 L129.000914,12 L97.0009137,12 L97.0009137,0 Z"/>
+        <rect width="17" height="3" x="109.226" y="4" fill="#7A3EE6" rx="1.5"/>
+        <rect width="32" height="1" x="97.001" y="11" fill="#7A3EE6"/>
+        <polygon fill="#9052FF" points="97.001 12 129.001 12 129.001 24 97.001 24"/>
+        <rect width="17" height="3" x="109.226" y="16" fill="#7A3EE6" rx="1.5"/>
+        <polygon fill="url(#workshops-b)" points="97.001 24 129.001 24 129.001 36 97.001 36"/>
+        <rect width="17" height="3" x="109.226" y="28" fill="#7A3EE6" rx="1.5"/>
+        <polygon fill="#9052FF" points="97.001 36 129.001 36 129.001 48 97.001 48"/>
+        <rect width="17" height="3" x="109.226" y="40" fill="#7A3EE6" rx="1.5"/>
+        <polygon fill="#9052FF" points="97.001 48 129.001 48 129.001 60 97.001 60"/>
+        <rect width="17" height="3" x="109.226" y="52" fill="#7A3EE6" rx="1.5"/>
+        <use fill="#9052FF" xlink:href="#workshops-c"/>
+        <use fill="#000" filter="url(#workshops-d)" xlink:href="#workshops-c"/>
+        <rect width="17" height="3" x="109.226" y="64" fill="#7A3EE6" rx="1.5"/>
+        <rect width="32" height="1" x="97.001" y="23" fill="#7A3EE6"/>
+        <rect width="32" height="1" x="97.001" y="35" fill="#7A3EE6"/>
+        <rect width="32" height="1" x="97.001" y="47" fill="#7A3EE6"/>
+        <rect width="32" height="1" x="97.001" y="59" fill="#7A3EE6"/>
+        <rect width="1.008" height="71" x="97.001" fill="#7A3EE6"/>
+        <circle cx="103.5" cy="17.5" r="2.5" fill="#7A3EE6"/>
+        <circle cx="103.5" cy="5.5" r="2.5" fill="#7A3EE6"/>
+        <circle cx="103.5" cy="29.5" r="2.5" fill="#7A3EE6"/>
+        <circle cx="103.5" cy="41.5" r="2.5" fill="#7A3EE6"/>
+        <circle cx="103.5" cy="53.5" r="2.5" fill="#7A3EE6"/>
+        <circle cx="103.5" cy="65.5" r="2.5" fill="#7A3EE6"/>
+      </g>
+    </g>
+  </g>
+</svg>

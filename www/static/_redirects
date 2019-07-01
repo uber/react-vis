@@ -1,0 +1,12 @@
+# no idea why, but the gatsby redirect doesn't always work right
+
+/blog/always-use-memo-your-context-value                                /blog/how-to-optimize-your-context-value
+/blog/always-use-memo-your-context-value/                               /blog/how-to-optimize-your-context-value
+/blog/moist-programming                                                 /blog/aha-programming
+/blog/moist-programming/                                                /blog/aha-programming
+/aha                                                                    /blog/aha-programming
+/blog/aha                                                               /blog/aha-programming
+/workshops/advanced-react-component-patterns                            /workshops/advanced-react-patterns
+/workshops/hooks                                                        /workshops/react-hooks
+/blog/make-test-utils-for-your-app                                      /blog/test-utils
+/blog/what-code-comments-can-teach-us-about-scaling-a-codebase          /blog/colocation

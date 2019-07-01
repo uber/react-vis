@@ -1,0 +1,13 @@
+<script>!function(){function a(){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-62924965-1","auto"),ga("send","pageview")}a()}();</script>
+<script src="//www.google-analytics.com/analytics.js"></script>
+<script>
+  var urlToRedirectTo = getQueryStringParam(location.href, 'url') || '/'
+  ga('send', 'event', 'redirect', urlToRedirectTo, 'redirect', 0)
+  window.location.replace(urlToRedirectTo)
+  function getQueryStringParam(url, name) {
+    var regexReadyName = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]')
+    var regex = new RegExp(`[\\?&]${regexReadyName}=([^&#]*)`)
+    var results = regex.exec(url)
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '))
+  }
+</script>

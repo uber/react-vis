@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="327" height="230" viewBox="0 0 327 230">
+  <defs>
+    <rect id="devtips-a" width="720" height="230"/>
+    <linearGradient id="devtips-d" x1="95.428%" x2="6.944%" y1="25.799%" y2="73.978%">
+      <stop offset="0%" stop-color="#FB5D53"/>
+      <stop offset="100%" stop-color="#CA433A"/>
+    </linearGradient>
+    <rect id="devtips-c" width="220" height="142" rx="5"/>
+    <rect id="devtips-f" width="220" height="142" rx="5"/>
+    <rect id="devtips-g" width="220" height="142" rx="5"/>
+    <rect id="devtips-h" width="220" height="142" rx="5"/>
+    <rect id="devtips-i" width="220" height="142" rx="5"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(-753 -3606)">
+    <rect width="1440" height="7696" fill="#FAFAFA"/>
+    <g transform="translate(360 3606)">
+      <mask id="devtips-b" fill="#fff">
+        <use xlink:href="#devtips-a"/>
+      </mask>
+      <use fill="#E75248" fill-rule="nonzero" xlink:href="#devtips-a"/>
+      <g mask="url(#devtips-b)">
+        <g transform="translate(393 -189)">
+          <g transform="translate(0 233)">
+            <mask id="devtips-e" fill="#fff">
+              <use xlink:href="#devtips-c"/>
+            </mask>
+            <use fill="url(#devtips-d)" xlink:href="#devtips-c"/>
+            <path fill="#BE3F36" fill-rule="nonzero" d="M108.302275,62.8267022 C106.966181,61.9004081 105.188112,62.8939752 105.188112,64.5499908 L105.188112,78.3927355 C105.188112,80.0487247 106.968724,81.0423182 108.302275,80.1160241 L118.28293,73.1608696 C119.48984,72.2992253 119.48984,70.5112869 118.28293,69.6496426 L108.302275,62.8267022 Z" mask="url(#devtips-e)"/>
+            <text fill="#BE3F36" font-family="Inter-Black, Inter" font-size="10" font-weight="700" letter-spacing=".87" mask="url(#devtips-e)">
+              <tspan x="175" y="20">LIV</tspan> <tspan x="194.187" y="20">E</tspan>
+            </text>
+            <circle cx="207" cy="16" r="2" fill="#BE3F36" mask="url(#devtips-e)"/>
+          </g>
+          <use fill="#CA433A" transform="translate(235 157)" xlink:href="#devtips-f"/>
+          <use fill="#CA433A" transform="translate(0 76)" xlink:href="#devtips-g"/>
+          <use fill="#CA433A" transform="translate(0 390)" xlink:href="#devtips-h"/>
+          <g transform="translate(235 314)">
+            <mask id="devtips-j" fill="#fff">
+              <use xlink:href="#devtips-i"/>
+            </mask>
+            <use fill="#CA433A" xlink:href="#devtips-i"/>
+            <g fill="#E75248" mask="url(#devtips-j)">
+              <g transform="translate(30 30)">
+                <rect width="48" height="8" rx="2"/>
+                <rect width="74" height="8" y="21" rx="2"/>
+                <rect width="24" height="8" y="42" rx="2"/>
+                <rect width="43" height="8" x="34" y="42" rx="2"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
