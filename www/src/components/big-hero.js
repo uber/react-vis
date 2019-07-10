@@ -11,7 +11,7 @@ import heroImageLeft from '../images/hero/path-left.svg'
 
 function Hero({
   children,
-  title = `Hi, I'm React Vis. I help people make the world better through quality software.`,
+  title = `Hero text`,
   text,
   background = `url(${heroImageRight}), url(${heroImageLeft}),
   linear-gradient(-213deg, #5e31dc 0%, #3155dc 100%)`,
