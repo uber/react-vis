@@ -1,14 +1,6 @@
 import Typography from 'typography'
 import '../fonts/fonts.css'
 
-export const fonts = {
-  thin: 'UberMoveText',
-  light: 'UberMoveText',
-  regular: 'UberMoveText',
-  semibold: 'UberMoveText',
-  bold: 'UberMoveText',
-}
-
 export const headerFontFamily = 'UberMove'
 export const bodyFontFamily = 'UberMoveText'
 

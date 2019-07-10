@@ -12,7 +12,6 @@ import mdxComponents from 'components/mdx'
 import {bpMaxMD, bpMaxSM} from '../lib/breakpoints'
 import theme from '../../config/theme'
 import reset from '../lib/reset'
-import {fonts} from '../lib/typography'
 import config from '../../config/website'
 
 export const globalStyles = css`
@@ -35,23 +34,12 @@ export const globalStyles = css`
     border-top: 1px solid ${theme.colors.gray};
     background: none;
   }
-  em {
-    font-family: ${fonts.regularItalic};
-  }
-  strong,
-  b {
-    font-family: ${fonts.semibold};
-    em {
-      font-family: ${fonts.semiboldItalic};
-    }
-  }
   input,
   textarea {
     border-radius: 4px;
     border: 1px solid ${theme.colors.gray};
     padding: 5px 10px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-    font-family: ${fonts.regular};
     ::placeholder {
       opacity: 0.4;
     }

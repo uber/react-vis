@@ -1,55 +1,55 @@
 @font-face {
   font-family: 'UberMove';
   font-display: swap;
-  font-weight: light;
+  font-weight: 300;
   src: url('./UberMove-Light.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'UberMove';
   font-display: swap;
-  font-weight: medium;
+  font-weight: 400;
   src: url('./UberMove-Medium.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'UberMove';
   font-display: swap;
-  font-weight: regular;
+  font-weight: 500;
   src: url('./UberMove-Regular.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'UberMove';
   font-display: swap;
-  font-weight: bold;
+  font-weight: 700;
   src: url('./UberMove-Bold.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'UberMoveText';
   font-display: swap;
-  font-weight: light;
+  font-weight: 300;
   src: url('./UberMoveText-Light.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'UberMoveText';
   font-display: swap;
-  font-weight: medium;
+  font-weight: 400;
   src: url('./UberMoveText-Medium.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'UberMoveText';
   font-display: swap;
-  font-weight: regular;
+  font-weight: 500;
   src: url('./UberMoveText-Regular.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'UberMoveText';
   font-display: swap;
-  font-weight: bold;
+  font-weight: 700;
   src: url('./UberMoveText-Bold.otf') format('opentype');
 }

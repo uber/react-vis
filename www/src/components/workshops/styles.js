@@ -2,7 +2,7 @@ import {css} from '@emotion/core'
 import CalendarIcon from '../../images/icons/calendar.svg'
 import LocationIcon from '../../images/icons/location.svg'
 import TimeIcon from '../../images/icons/time.svg'
-import {fonts} from '../../lib/typography'
+import {headerFontFamily} from '../../lib/typography'
 import theme from '../../../config/theme'
 import {bpMaxSM} from '../../lib/breakpoints'
 
@@ -19,7 +19,8 @@ const styles = css`
   }
   h1 {
     margin-top: 0;
-    font-family: ${fonts.bold}, sans-serif;
+    font-family: ${headerFontFamily}, sans-serif;
+    font-weight: 700;
     font-size: 26px;
   }
   time {

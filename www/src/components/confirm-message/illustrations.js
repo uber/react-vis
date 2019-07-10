@@ -1,6 +1,6 @@
 import React from 'react'
 import {css, keyframes} from '@emotion/core'
-import {fonts} from '../../lib/typography'
+import {headerFontFamily} from '../../lib/typography'
 import theme from '../../../config/theme'
 
 // PleaseConfirmIllustration
@@ -146,7 +146,7 @@ export const PleaseConfirmIllustration = (
         />
         <text
           fill="#FFF"
-          fontFamily={fonts.bold}
+          fontFamily={headerFontFamily}
           fontSize="10"
           fontWeight="600"
           letterSpacing="1"
@@ -371,7 +371,7 @@ export const ThankYouIllustration = (
           />
           <text
             fill="#FFF"
-            fontFamily={fonts.regular}
+            fontFamily={headerFontFamily}
             fontSize="14.3"
             fontWeight="500"
           >

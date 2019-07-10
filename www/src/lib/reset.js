@@ -1,6 +1,6 @@
 import {css} from '@emotion/core'
 import theme from '../../config/theme'
-import typography, {fonts} from '../lib/typography'
+import typography, {headerFontFamily} from '../lib/typography'
 
 const reset = css`
   form {
@@ -19,7 +19,8 @@ const reset = css`
   }
   html,
   body {
-    font-family: ${fonts.regular}, sans-serif;
+    font-family: ${headerFontFamily}, sans-serif;
+    font-weight: 500;
     font-style: normal;
     padding: 0;
     margin: 0;

@@ -1,6 +1,6 @@
 import React from 'react'
 import {css} from '@emotion/core'
-import {fonts, rhythm} from '../../lib/typography'
+import {headerFontFamily, rhythm} from '../../lib/typography'
 import {bpMaxSM} from '../../lib/breakpoints'
 import theme from '../../../config/theme'
 import {lighten} from 'polished'
@@ -84,7 +84,7 @@ const Header = ({
         }
         h1 {
           font-size: 1.75rem;
-          font-family: ${fonts.semibold}, sans-serif;
+          font-family: ${headerFontFamily}, sans-serif;
           margin-top: 10px;
           margin-bottom: ${date ? location : buttonText ? '0.775rem' : 0};
         }

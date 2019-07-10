@@ -3,7 +3,7 @@ import Link from './link'
 import {css} from '@emotion/core'
 import styled from '@emotion/styled'
 import theme from '../../config/theme'
-import {fonts} from '../lib/typography'
+import {headerFontFamily} from '../lib/typography'
 import MobileNav from './mobile-nav'
 import Container from './container'
 import {bpMaxSM} from '../lib/breakpoints'
@@ -67,7 +67,8 @@ const Header = ({
       z-index: 10;
       position: ${fixed ? 'fixed' : 'absolute'};
       top: 0;
-      font-family: ${fonts.light};
+      font-family: ${headerFontFamily};
+      font-weight: 300;
     `}
   >
     <Container noVerticalPadding>
@@ -84,7 +85,8 @@ const Header = ({
           aria-label="go to homepage"
           headerColor={headerColor}
           css={{
-            fontFamily: fonts.regular,
+            fontFamily: headerFontFamily,
+            fontWeight: 500,
             display: 'flex',
             alignItems: 'center',
             img: {

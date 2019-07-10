@@ -1,5 +1,5 @@
 import {darken, lighten} from 'polished'
-import {fonts} from '../src/lib/typography'
+import {bodyFontFamily, headerFontFamily} from '../src/lib/typography'
 
 const brand = {
   primary: '#573EDE',
@@ -25,7 +25,8 @@ const colors = {
 
 const theme = {
   colors,
-  fonts,
+  bodyFontFamily,
+  headerFontFamily,
   brand,
   breakpoints: {
     xs: '400px',

@@ -16,7 +16,7 @@ import {
   useWorkshopEvents,
 } from 'components/workshops/context'
 import Markdown from 'react-markdown'
-import {fonts} from '../lib/typography'
+import {headerFontFamily} from '../lib/typography'
 import config from '../../config/website'
 import {bpMaxSM} from '../lib/breakpoints'
 import get from 'lodash/get'
@@ -91,7 +91,8 @@ function Post({data: {site, mdx}}) {
               text-align: center;
               margin-bottom: 20px;
               margin-top: 0;
-              font-family: ${fonts.light};
+              font-family: ${headerFontFamily};
+              font-weight: 300;
             `}
           >
             {title}
@@ -106,7 +107,8 @@ function Post({data: {site, mdx}}) {
                 text-align: center;
                 font-size: 15px;
                 opacity: 0.6;
-                font-family: ${fonts.regular}, sans-serif;
+                font-family: ${headerFontFamily}, sans-serif;
+                font-weight: 500;
                 font-weight: normal;
                 margin: 0 5px;
               }
