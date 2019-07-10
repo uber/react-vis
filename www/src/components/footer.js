@@ -1,18 +1,19 @@
 import React from 'react'
-import Link from '../components/link'
+// import Link from '../components/link'
 import {css} from '@emotion/core'
 import theme from '../../config/theme'
 import {bpMaxSM} from '../lib/breakpoints'
-import SubscribeForm from './forms/subscribe'
+// import SubscribeForm from './forms/subscribe'
 import {Twitter, GitHub, YouTube} from './social'
 import Container from './container'
 
-import Signature from '../images/signature.png'
+// import Signature from '../images/signature.png'
 
-const Footer = ({subscribeForm = <SubscribeForm />}) => (
+const Footer = () => (
+  // {subscribeForm = <SubscribeForm />}
   <footer
     css={css`
-      background: ${theme.colors.purple_dark};
+      background: ${theme.colors.black};
       color: white;
       margin-top: 70px;
     `}
@@ -30,13 +31,13 @@ const Footer = ({subscribeForm = <SubscribeForm />}) => (
         }
       `}
     >
-      {subscribeForm ? (
+      {/*subscribeForm ? (
         <div css={{marginTop: -40}}>
           {subscribeForm}
           <br />
           <br />
         </div>
-      ) : null}
+      ) : null*/}
       <div
         css={css`
           display: flex;
@@ -60,7 +61,7 @@ const Footer = ({subscribeForm = <SubscribeForm />}) => (
           <YouTube />
         </div>
 
-        <Link to="/" aria-label="Return to homepage">
+        {/*<Link to="/" aria-label="Return to homepage">
           <img
             src={Signature}
             alt="React Vis"
@@ -68,7 +69,7 @@ const Footer = ({subscribeForm = <SubscribeForm />}) => (
               max-width: 100px;
             `}
           />
-        </Link>
+        </Link>*/}
       </div>
     </Container>
   </footer>

@@ -6,15 +6,15 @@ import {rhythm, headerFontFamily} from '../lib/typography'
 import Markdown from 'react-markdown'
 import Container from 'components/container'
 
-import heroImageRight from '../images/hero/path-right.svg'
-import heroImageLeft from '../images/hero/path-left.svg'
+// import heroImageRight from '../images/hero/path-right.svg'
+// import heroImageLeft from '../images/hero/path-left.svg'
 
 function Hero({
   children,
   title = `Hero text`,
   text,
-  background = `url(${heroImageRight}), url(${heroImageLeft}),
-  linear-gradient(-213deg, #5e31dc 0%, #3155dc 100%)`,
+  // background = `url(${heroImageRight}), url(${heroImageLeft}),
+  // linear-gradient(-213deg, #5e31dc 0%, #3155dc 100%)`,
 }) {
   return (
     <section
@@ -23,8 +23,7 @@ function Hero({
           color: ${theme.colors.white};
         }
         width: 100%;
-        background: #3155dc;
-        background-image: ${background};
+        background: black;
         background-position: center right, center left;
         background-repeat: no-repeat;
         background-size: contain;
