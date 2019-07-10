@@ -81,7 +81,7 @@ impromptu conversations that naturally strike up during
 breaks/lunch/parties/etc. Take advantage of that time. You and many others there
 spent a lot of money and time to be there. Look for opportunities to make new
 connections and exchange contact info (or Twitter follows).
-[I got my current job at PayPal](https://github.com/react-vis/ama/issues/47)
+[I got my current job at PayPal](https://github.com/uber/react-vis/ama/issues/47)
 because I met a few people during the breaks at React Rally a few years ago and
 connected with them on Twitter. You can also learn a lot. The speakers are not
 the only experts attending the conference. Ask people about their work. Leave
@@ -134,5 +134,5 @@ to go.
   [bundle.sh](https://bundle.sh).
 - [`next-mdx-blog`](https://github.com/johnlindquist/next-mdx-blog) - an example
   by [John Lindquist](https://twitter.com/johnlindquist). Uses
-  [`preval`](https://github.com/react-vis/babel-plugin-preval) to run mdx.
+  [`preval`](https://github.com/uber/react-vis/babel-plugin-preval) to run mdx.
   Pretty rad TBH :)

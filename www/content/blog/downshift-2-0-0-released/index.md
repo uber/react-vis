@@ -96,7 +96,7 @@ on codesandbox!
 - Codesandbox:
   [codesandbox.io/s/github/react-vis/downshift-examples](https://codesandbox.io/s/github/react-vis/downshift-examples)
 - GitHub:
-  [https://github.com/react-vis/downshift-examples](https://github.com/react-vis/downshift-examples)
+  [https://github.com/uber/react-vis/downshift-examples](https://github.com/uber/react-vis/downshift-examples)
 
 <figcaption>The codesandbox for the examples site</figcaption>
 

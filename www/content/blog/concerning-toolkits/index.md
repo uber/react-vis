@@ -79,7 +79,7 @@ People who are used to building/learning/configuring widely used tools have
 asked me why I would ever want to build and help popularize toolkits. Here are a
 few of the reasons [I'm working on toolkits](/blog/tools-without-config) for
 paypal and
-[my own open source projects](https://github.com/react-vis/kcd-scripts).
+[my own open source projects](https://github.com/uber/react-vis/kcd-scripts).
 
 ### Keeping config updated
 
@@ -116,9 +116,9 @@ this is one of my smaller/simpler projects.
 
 That diff matches that of dozens of other open source projects I have. Managing
 all the config was a nightmare 👻 🙀 before I built
-[`kcd-scripts`](https://github.com/react-vis/kcd-scripts). Whenever there was a
-change in babel or webpack config, or even a simple update in jest, I had to go
-to every project to update them. Now however, **I can simply go to**
+[`kcd-scripts`](https://github.com/uber/react-vis/kcd-scripts). Whenever there
+was a change in babel or webpack config, or even a simple update in jest, I had
+to go to every project to update them. Now however, **I can simply go to**
 `**kcd-scripts**`**, address any breaking changes, and push out a patch release
 with any version bumps to all underlying tools.**
 

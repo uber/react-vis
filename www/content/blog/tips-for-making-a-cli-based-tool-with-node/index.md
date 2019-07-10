@@ -23,18 +23,18 @@ Thanks for reaching out to me! I'm glad you enjoyed
 [my course](http://kcd.im/write-oss) :D
 
 I've made a few CLIs. Probably my simplest recent one is
-[split-guide](https://github.com/react-vis/split-guide). You'll see the CLI code
-lives
-[here](https://github.com/react-vis/split-guide/blob/fb4b2a2ebc1fb8c3c010c2af1318861b8bb1bb13/src/bin/index.js).
+[split-guide](https://github.com/uber/react-vis/split-guide). You'll see the CLI
+code lives
+[here](https://github.com/uber/react-vis/split-guide/blob/fb4b2a2ebc1fb8c3c010c2af1318861b8bb1bb13/src/bin/index.js).
 And I tell npm to use the transpiled version of that file as the `bin` in the
 `package.json`
-[here](https://github.com/react-vis/split-guide/blob/fb4b2a2ebc1fb8c3c010c2af1318861b8bb1bb13/package.json#L12-L14)
+[here](https://github.com/uber/react-vis/split-guide/blob/fb4b2a2ebc1fb8c3c010c2af1318861b8bb1bb13/package.json#L12-L14)
 where the `key` in that object is the name of the binary (so what you'd type in
 the terminal to use the CLI) and the `value` is the path in the package where
 the binary is located (in my case it's in the `dist` directory which I transpile
 to with [babel](http://babeljs.io)
-[here](https://github.com/react-vis/split-guide/blob/fb4b2a2ebc1fb8c3c010c2af1318861b8bb1bb13/package-scripts.js#L13)
-(I'm using [`p-s`](https://github.com/react-vis/p-s) for my scripts).
+[here](https://github.com/uber/react-vis/split-guide/blob/fb4b2a2ebc1fb8c3c010c2af1318861b8bb1bb13/package-scripts.js#L13)
+(I'm using [`p-s`](https://github.com/uber/react-vis/p-s) for my scripts).
 
 With that configuration, when `npm` (or [`yarn`](https://yarnpkg.com)) installs
 my package, it will create a
@@ -46,16 +46,17 @@ behavior is kinda explained
 [here in the official docs](https://docs.npmjs.com/misc/scripts#path)).
 
 So, for example, because I have setup `split-guide` like that, I can use it in
-my [`react-jest-workshop`](https://github.com/react-vis/react-jest-workshop)
-[here](https://github.com/react-vis/react-jest-workshop/blob/c43eaa13eb0ca203d7ed2b771b85e61ca5e539b0/package.json#L12).
+my
+[`react-jest-workshop`](https://github.com/uber/react-vis/react-jest-workshop)
+[here](https://github.com/uber/react-vis/react-jest-workshop/blob/c43eaa13eb0ca203d7ed2b771b85e61ca5e539b0/package.json#L12).
 
 Let's look again at
-[the actual](https://github.com/react-vis/split-guide/blob/master/src/bin/index.js)
-[`bin`](https://github.com/react-vis/split-guide/blob/master/src/bin/index.js)
-[file](https://github.com/react-vis/split-guide/blob/master/src/bin/index.js)
+[the actual](https://github.com/uber/react-vis/split-guide/blob/master/src/bin/index.js)
+[`bin`](https://github.com/uber/react-vis/split-guide/blob/master/src/bin/index.js)
+[file](https://github.com/uber/react-vis/split-guide/blob/master/src/bin/index.js)
 itself now. There are a few things to note:
 
-1.  [The first line](https://github.com/react-vis/split-guide/blob/fb4b2a2ebc1fb8c3c010c2af1318861b8bb1bb13/src/bin/index.js#L1)
+1.  [The first line](https://github.com/uber/react-vis/split-guide/blob/fb4b2a2ebc1fb8c3c010c2af1318861b8bb1bb13/src/bin/index.js#L1)
     has `#!/usr/bin/env node`. This is called a
     [shebang](https://en.wikipedia.org/wiki/Shebang_%28Unix%29) which
     effectively tells the system to run the script with node.
@@ -70,7 +71,7 @@ itself now. There are a few things to note:
     [`yargs`](https://www.npmjs.com/package/yargs). It's pretty darn powerful.
 3.  You'll also notice that I'm not doing a lot of logic in here. That's because
     unit testing this file is a bit of a pain. You'll find my tests
-    [here](https://github.com/react-vis/split-guide/blob/fb4b2a2ebc1fb8c3c010c2af1318861b8bb1bb13/src/bin/index.test.js)
+    [here](https://github.com/uber/react-vis/split-guide/blob/fb4b2a2ebc1fb8c3c010c2af1318861b8bb1bb13/src/bin/index.test.js)
     and see that it is a bit complex, but it's actually a pretty solid
     integration test. Most of it is actually just using
     [Jest snapshots](https://egghead.io/lessons/javascript-use-jest-s-snapshot-testing-feature?pl=testing-javascript-with-jest-a36c4074)
@@ -78,7 +79,7 @@ itself now. There are a few things to note:
     my changes will make on the tool. I couldn't be happier with Jest snapshot
     testing and definitely recommend it for testing your CLIs!
 4.  The main logic for the package lives in the rest of the
-    [`src`](https://github.com/react-vis/split-guide/tree/fb4b2a2ebc1fb8c3c010c2af1318861b8bb1bb13/src)
+    [`src`](https://github.com/uber/react-vis/split-guide/tree/fb4b2a2ebc1fb8c3c010c2af1318861b8bb1bb13/src)
     directory. Normally I would unit test this, but this package in particular
     is one that I don't expect a lot of people to use so I didn't take the time.
     In fact, I don't even report coverage on this project which is kinda rare

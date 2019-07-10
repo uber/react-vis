@@ -23,9 +23,9 @@ was excited to get things going!
 
 For the most part, things went over smoothly. I had a few deprecation warnings
 with rollup that were
-[simple enough](https://github.com/react-vis/kcd-scripts/commit/709c49dd8bc764d08c6958762199c62cbc494e55).
+[simple enough](https://github.com/uber/react-vis/kcd-scripts/commit/709c49dd8bc764d08c6958762199c62cbc494e55).
 There was
-[a simple change](https://github.com/react-vis/kcd-scripts/commit/6d0231382dc5edc003cac4a204b4c5f933fe7817#diff-e7d38b8d97a7607d1fa8b1075f987e2dR17)
+[a simple change](https://github.com/uber/react-vis/kcd-scripts/commit/6d0231382dc5edc003cac4a204b4c5f933fe7817#diff-e7d38b8d97a7607d1fa8b1075f987e2dR17)
 I needed to make for changes in Jest (which I think I'll be able to revert
 [when this is released](https://github.com/facebook/jest/pull/5127)).
 

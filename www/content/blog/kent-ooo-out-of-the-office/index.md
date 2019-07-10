@@ -22,7 +22,7 @@ realized last week that I leave before the normal show time. This also means
 that my normal
 [#eggheadADay](https://twitter.com/search?q=from%3Areact-vis%20%23eggheadADay&src=typd)
 will miss a few days and I'll not be responding to emails, GitHub notifications,
-or [AMA questions](https://github.com/react-vis/ama).
+or [AMA questions](https://github.com/uber/react-vis/ama).
 
 So, **TL;DR: I'll be unavailable from June 1 - 4** (Wed - Sat). If you're
 interested in why, read on:

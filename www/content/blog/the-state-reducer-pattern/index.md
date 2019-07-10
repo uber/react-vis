@@ -177,7 +177,7 @@ Redux!
 This is a talk I gave at
 [ReactJS Utah](https://www.meetup.com/ReactJS-Utah/events/246683120) a few weeks
 ago. If you're curious what
-[`babel-plugin-macros`](https://github.com/react-vis/babel-plugin-macros) is all
-about and why it's so cool it's
+[`babel-plugin-macros`](https://github.com/uber/react-vis/babel-plugin-macros)
+is all about and why it's so cool it's
 [built-into create-react-app](https://github.com/facebook/create-react-app/pull/3675),
 then give this a watch!

@@ -164,7 +164,7 @@ Wahoo!
 ## Next steps
 
 You can find my version of this project
-[on GitHub](https://github.com/react-vis/super-simple-netlify-function-example)
+[on GitHub](https://github.com/uber/react-vis/super-simple-netlify-function-example)
 and
 [on Netlify](https://simple-fn-example.netlify.com/.netlify/functions/hello).
 
@@ -178,7 +178,7 @@ Also, testing this locally is... not easy...
 [`netlify-lambda`](https://www.npmjs.com/package/netlify-lambda) to solve both
 of these problems! I've taken the liberty of giving you an example of this same
 function that uses `netlify-lambda` here
-[on GitHub](https://github.com/react-vis/netlify-function-example).
+[on GitHub](https://github.com/uber/react-vis/netlify-function-example).
 
 Here are the main changes:
 

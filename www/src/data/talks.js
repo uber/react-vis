@@ -92,7 +92,7 @@ export default [
   },
   {
     title: 'Requisite React',
-    resources: ['[slides](https://github.com/react-vis/requisite-react)'],
+    resources: ['[slides](https://github.com/uber/react-vis/requisite-react)'],
     tags: ['react'],
     deliveries: [
       {
@@ -172,7 +172,7 @@ export default [
   {
     title: 'Why React Hooks',
     resources: [
-      '[repo](https://github.com/react-vis/gdg-devfest-2018-react)',
+      '[repo](https://github.com/uber/react-vis/gdg-devfest-2018-react)',
       '[chat app](https://geo-chat.netlify.com)',
     ],
     tags: ['react'],
@@ -225,7 +225,7 @@ export default [
   {
     title: 'React... Suspense...',
     resources: [
-      '[repo](https://github.com/react-vis/react-suspense-simple-example)',
+      '[repo](https://github.com/uber/react-vis/react-suspense-simple-example)',
     ],
     tags: ['react'],
     deliveries: [
@@ -540,7 +540,7 @@ export default [
     title: 'How to Open Source Your Stuff',
     resources: [
       '[slides](https://slides.com/react-vis/open-sourcing-your-stuff)',
-      '[repo 1](https://github.com/react-vis/todomvc-angular)',
+      '[repo 1](https://github.com/uber/react-vis/todomvc-angular)',
       '[repo 2](https://github.com/angular-todo-mvc/angular-todo-escape)',
     ],
     tags: ['open source', 'live coding'],
@@ -610,11 +610,11 @@ export default [
     title: 'Testing React',
     resources: [
       '[slides](https://kcd.im/react-jest)',
-      '[react-jest-workshop](https://github.com/react-vis/react-jest-workshop)',
+      '[react-jest-workshop](https://github.com/uber/react-vis/react-jest-workshop)',
       '[old slides (mocha)](https://kcd.im/testing-react)',
-      '[react-mocha-workshop](https://github.com/react-vis/react-mocha-workshop)',
+      '[react-mocha-workshop](https://github.com/uber/react-vis/react-mocha-workshop)',
       '[older slides (ava)](https://kcd.im/react-ava)',
-      '[react-ava-workshop](https://github.com/react-vis/react-ava-workshop)',
+      '[react-ava-workshop](https://github.com/uber/react-vis/react-ava-workshop)',
     ],
     tags: ['react', 'testing', 'live coding'],
     deliveries: [
@@ -824,7 +824,9 @@ export default [
   },
   {
     title: 'ES6, Webpack, Karma, and Code Coverage',
-    resources: ['[repo](https://github.com/react-vis/random-user-coverage)'],
+    resources: [
+      '[repo](https://github.com/uber/react-vis/random-user-coverage)',
+    ],
     tags: ['babel', 'testing', 'webpack', 'live coding'],
     deliveries: [
       {
@@ -850,7 +852,7 @@ export default [
   },
   {
     title: 'ES6',
-    resources: ['[repo](https://github.com/react-vis/es6-workshop)'],
+    resources: ['[repo](https://github.com/uber/react-vis/es6-workshop)'],
     deliveries: [
       {
         event:
@@ -886,7 +888,7 @@ export default [
     title: 'JSON powered Forms',
     resources: [
       '[slides](http://slides.com/react-vis/angular-formly)',
-      '[repo](https://github.com/react-vis/angular-formly-convert)',
+      '[repo](https://github.com/uber/react-vis/angular-formly-convert)',
     ],
     deliveries: [
       {
@@ -913,7 +915,7 @@ export default [
     title: 'Angular 2: Built for Huge, Long-lasting Applications',
     resources: [
       '[slides](http://slides.com/react-vis/ng2-introduction)',
-      '[repo](https://github.com/react-vis/ng2-random-user/)',
+      '[repo](https://github.com/uber/react-vis/ng2-random-user/)',
     ],
     deliveries: [
       {
@@ -953,7 +955,7 @@ export default [
     title: 'Using ReactJS with existing AngularJS codebase',
     resources: [
       '[app](http://react-vis.com/react-in-angular/app/)',
-      '[repo](https://github.com/react-vis/react-in-angular)',
+      '[repo](https://github.com/uber/react-vis/react-in-angular)',
     ],
     deliveries: [
       {
@@ -1009,7 +1011,7 @@ export default [
         a user to type what they want to have happen and select from a list of the best matches for what they typed to
         perform an action. Over time, the genie will learn the actions more associated with specific keywords and those
         will be come first when a list of matching actions is requested. Check it out at
-        [github.com/react-vis/genie](https://github.com/react-vis/genie)
+        [github.com/react-vis/genie](https://github.com/uber/react-vis/genie)
       `,
   },
   {
@@ -1063,7 +1065,7 @@ export default [
     resources: [
       '[slides](http://slides.com/react-vis/ng-jwt-workshop)',
       '[site](http://react-vis.com/ng-jwt-workshop/frontend/)',
-      '[repo](https://github.com/react-vis/ng-jwt-workshop)',
+      '[repo](https://github.com/uber/react-vis/ng-jwt-workshop)',
     ],
     deliveries: [
       {

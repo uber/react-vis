@@ -42,8 +42,8 @@ and
 [the funny story of how I got my first full-time job](https://youtu.be/-qPh6I2hfjw?t=14m31s).
 
 Over the last two months or so, I've been revamping my
-[testing workshop](https://github.com/react-vis/testing-workshop). I gave it
-once before for
+[testing workshop](https://github.com/uber/react-vis/testing-workshop). I gave
+it once before for
 [Frontend Masters](https://frontendmasters.com/courses/testing-javascript)and
 I'm simplifying the content to make it easier to set up and less distracting to
 learn from. The content will now be used to give two distinct workshops (both of

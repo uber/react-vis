@@ -30,7 +30,7 @@ module.exports = {
   // Social component
   twitter: 'https://twitter.com/react-vis/',
   twitterHandle: '@react-vis',
-  github: 'https://github.com/react-vis/',
+  github: 'https://github.com/uber/react-vis/',
   linkedin: 'https://www.linkedin.com/in/react-vis/',
   youtube: 'https://www.youtube.com/channel/UCz-BYvuntVRt_VpfR6FKXJw',
 }

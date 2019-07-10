@@ -84,7 +84,7 @@ from [Trevor D. Miller](https://twitter.com/trevordmiller) which I
 [responded to](https://github.com/facebook/create-react-app/pull/250#issuecomment-236985503)
 (in which I mention that I'd write this very blog post about me migrating from
 AVA to Mocha... I'd already started migrating my React Testing workshop to Mocha
-[here](https://github.com/react-vis/react-mocha-workshop). Hah). Then
+[here](https://github.com/uber/react-vis/react-mocha-workshop). Hah). Then
 [Christoph Pojer](https://twitter.com/cpojer) responded with
 [this great comment](https://github.com/facebook/create-react-app/pull/250#issuecomment-237098619).
 That pretty much won my curiosity back and I decided to give it another go on a
@@ -112,18 +112,18 @@ I was slowly discovering the truth of this statement:
 https://twitter.com/cpojer/status/795729029223616512
 
 So I eventually
-[swapped AVA for Jest](https://github.com/react-vis/generator-kcd-oss/commit/23f8875358db204d16e040a14ee44aaa79681691)
+[swapped AVA for Jest](https://github.com/uber/react-vis/generator-kcd-oss/commit/23f8875358db204d16e040a14ee44aaa79681691)
 for my open source module generator and now all my open source stuff is Jest and
 I love it 💚 .
 
 As is the case for me, when I get excited about new tech, I really like to
 share! So I created [a bunch of videos](http://kcd.im/egghead-jest) for
 egghead.io about it, had a
-[tech chat](https://github.com/react-vis/ama/issues/125) with
+[tech chat](https://github.com/uber/react-vis/ama/issues/125) with
 [Christoph Pojer](https://twitter.com/cpojer)
 [on YouTube](https://youtu.be/i31VtyJSM-I&list=PLV5CVI1eNcJi8sor_aQ2AzOeQ3On3suOr&index=20)
 about Jest, and rewrote my React Testing Workshop **again** in
-[Jest](https://github.com/react-vis/react-jest-workshop).
+[Jest](https://github.com/uber/react-vis/react-jest-workshop).
 
 ### The Migration
 

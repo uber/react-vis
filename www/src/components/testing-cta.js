@@ -118,7 +118,7 @@ const TestingCta = () => {
         ))}
       </Carousel>
       <Content>
-        <h2>TestingJavaScript.com</h2>
+        <h2>Content</h2>
         <h3>Your essential guide to flawless testing.</h3>
         <p>
           Jump on this self-paced workshop and learn the smart, efficient way to

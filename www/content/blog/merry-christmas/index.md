@@ -23,17 +23,17 @@ them interesting:
   [Hand woven beanie](https://twitter.com/react-vis/status/944812510821023744),
   [GitHub Activity Book](https://github.myshopify.com/products/github-activity-book)
 - Nathan (4): [Typing For Kids](https://typing-for-kids.netlify.com)
-  ([repo](https://github.com/react-vis/typing-for-kids)),
+  ([repo](https://github.com/uber/react-vis/typing-for-kids)),
   [GitHub Activity Book](https://github.myshopify.com/products/github-activity-book)
 - Becca (5): [Typing For Kids](https://typing-for-kids.netlify.com)
-  ([repo](https://github.com/react-vis/typing-for-kids)),
+  ([repo](https://github.com/uber/react-vis/typing-for-kids)),
   [GitHub Activity Book](https://github.myshopify.com/products/github-activity-book)
 
 And for my wife, I made [Repeat Todo](https://repeat-todo.com)
-([repo](https://github.com/react-vis/repeat-todo-v2)). A while back I made her
-[this version](https://stackedit.io/repeat-todo.surge.sh), but the fact that it
-used only local storage for persistence presented a few problems when wanting to
-create a list or transfer devices. This new one uses Firebase _and_ works
+([repo](https://github.com/uber/react-vis/repeat-todo-v2)). A while back I made
+her [this version](https://stackedit.io/repeat-todo.surge.sh), but the fact that
+it used only local storage for persistence presented a few problems when wanting
+to create a list or transfer devices. This new one uses Firebase _and_ works
 offline (thanks create-react-app/codesandbox.io!).
 
 In addition to that, I also worked hard to help an idea my wife had become a

@@ -69,8 +69,8 @@ the app or the other if there is no user.
 ## How do we get here?
 
 > If you want to just look at how it's all done, then you can checkout
-> [the bookshelf repo](https://github.com/react-vis/bookshelf) which I made for
-> my [Build ReactJS Applications Workshop](/workshops/build-react-apps).
+> [the bookshelf repo](https://github.com/uber/react-vis/bookshelf) which I made
+> for my [Build ReactJS Applications Workshop](/workshops/build-react-apps).
 
 Ok, so what do you do to get to this point? Let's start by looking at where
 we're actually rendering the app:
@@ -115,7 +115,7 @@ the `<UserProvider />` would be responsible for keeping the user data up to date
 in memory and on the server as we make changes to the user's data (like their
 email address/bio/etc.).
 
-[The `auth-context.js` file](https://github.com/react-vis/bookshelf/blob/69bde2c117660bd988ffbc60f387165d2f852c62/src/context/auth-context.js)
+[The `auth-context.js` file](https://github.com/uber/react-vis/bookshelf/blob/69bde2c117660bd988ffbc60f387165d2f852c62/src/context/auth-context.js)
 has some stuff in it that's outside the scope of this blog post/domain specific,
 so I'm only going to show a slimmed down/modified version of it:
 
@@ -181,7 +181,7 @@ time you start rendering. Even in that situation, taking a branch higher up in
 the tree of your app drastically simplifies the maintenance of your app.
 
 I hope this is helpful to you. You can checkout
-[the bookshelf repo](https://github.com/react-vis/bookshelf)
+[the bookshelf repo](https://github.com/uber/react-vis/bookshelf)
 ([or even edit it on codesandbox](https://codesandbox.io/s/github/react-vis/bookshelf))
 for a more complete picture of what all this is like in a more realistic
 scenario with all the pieces together.

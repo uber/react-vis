@@ -212,7 +212,7 @@ slightly contrived) have been helpful. Good luck!
 - [npm-registry-browser](https://topheman.github.io/npm-registry-browser):
   [A project to help getting into making React apps](http://dev.topheman.com/project-to-help-getting-into-making-react-apps)
   by [@topheman](https://twitter.com/topheman). Pretty nifty idea!
-- [advanced-react-patterns-v2](https://github.com/react-vis/advanced-react-patterns-v2):
+- [advanced-react-patterns-v2](https://github.com/uber/react-vis/advanced-react-patterns-v2):
   This is the content for my Advanced React Patterns workshop. It's pretty
   self-directed with comments in the code to tell you what to do to learn the
   patterns.

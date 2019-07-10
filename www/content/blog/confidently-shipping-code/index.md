@@ -33,11 +33,11 @@ about automated testing. I thought it was pretty neat, but he moved on to
 another job before I really got testing ingrained in my workflow.
 
 Later, when I started writing my first JavaScript library
-([geniejs](https://github.com/react-vis/genie)), I realized quickly that
+([geniejs](https://github.com/uber/react-vis/genie)), I realized quickly that
 spending time to manually verify that everything's working, every single time I
 fixed a bug or added a new feature, was pretty annoying. I decided to learn to
 test and write tests for my library.
-([The tests](https://github.com/react-vis/genie/blob/166572f9fa82e6ec0893f90c7d6a99a49632dace/src/__tests__/index.js)
+([The tests](https://github.com/uber/react-vis/genie/blob/166572f9fa82e6ec0893f90c7d6a99a49632dace/src/__tests__/index.js)
 have been through a few testing framework refactorings, but they're still
 largely the same as when I originally wrote them all those years ago). Investing
 time into testing my library ended up saving me a TON of time, and I was able to

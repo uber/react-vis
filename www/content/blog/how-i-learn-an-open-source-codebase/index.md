@@ -18,9 +18,10 @@ bannerCredit:
 [Participating in open source has been awesome for me](/blog/how-getting-into-open-source-has-been-awesome-for-me).
 It has
 [made me and the stuff I make better](https://youtu.be/6mtPPkKchcQ&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf).
-A [common](https://github.com/react-vis/ama/issues/57)
-[question](https://github.com/react-vis/ama/issues/264) that I get from folks is
-how to go about learning an open source codebase and understand other's code.
+A [common](https://github.com/uber/react-vis/ama/issues/57)
+[question](https://github.com/uber/react-vis/ama/issues/264) that I get from
+folks is how to go about learning an open source codebase and understand other's
+code.
 
 In my blog post ["Open Source Stamina"](/blog/open-source-stamina), I make an
 important observation:

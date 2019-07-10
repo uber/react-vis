@@ -87,5 +87,6 @@ https://twitter.com/JavaScriptAir/status/792087078267871232
 #### P.P.S
 
 If you're looking for other good podcasts,
-[here's a list](https://github.com/react-vis/ama/issues/17#issuecomment-257030651)
-on [my AMA](https://github.com/react-vis/ama) of the podcasts that I listen to.
+[here's a list](https://github.com/uber/react-vis/ama/issues/17#issuecomment-257030651)
+on [my AMA](https://github.com/uber/react-vis/ama) of the podcasts that I listen
+to.

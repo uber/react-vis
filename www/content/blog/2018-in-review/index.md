@@ -177,7 +177,7 @@ PROJECT. I'm really proud of this accomplishment.
 
 > (Before you ask, this will not be open sourced, it's too PayPal specific, but
 > you might be interested in forking
-> [kcd-scripts](https://github.com/react-vis/kcd-scripts)).
+> [kcd-scripts](https://github.com/uber/react-vis/kcd-scripts)).
 
 ## [PayPal.me](https://paypal.me) rewrite
 
@@ -249,7 +249,7 @@ Altogether, this year I've really been pushing content onto YouTube and
 [hit over 10k subscribers](https://twitter.com/react-vis/status/1073589861054070784).
 My videos got over 260k views this year (I am of course excluding
 [my smiley face video](https://youtu.be/t6q5_7fVjEg)
-[which was stolen](https://github.com/react-vis/ama/issues/290) and has 3.7
+[which was stolen](https://github.com/uber/react-vis/ama/issues/290) and has 3.7
 million views now).
 
 ## Conferences

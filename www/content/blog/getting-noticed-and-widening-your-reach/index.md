@@ -45,11 +45,11 @@ so I'll focus on a few and hopefully that'll touch on what you're doing...
 
 ![a person touch typing on a laptop](./images/typing.jpg)
 
-### [geniejs 🧞‍](https://github.com/react-vis/genie)
+### [geniejs 🧞‍](https://github.com/uber/react-vis/genie)
 
 My first personal open source project that I wanted to get noticed was
-[geniejs](https://github.com/react-vis/genie).
-[The first commit](https://github.com/react-vis/genie/commit/18db942457d8e7855a3afbb7345e9f8aa5c5a8ce)
+[geniejs](https://github.com/uber/react-vis/genie).
+[The first commit](https://github.com/uber/react-vis/genie/commit/18db942457d8e7855a3afbb7345e9f8aa5c5a8ce)
 was back in 2013. I can't remember exactly how many followers I had, but at the
 time
 [I was tweeting](https://twitter.com/search?l=&q=from%3Areact-vis%20since%3A2013-08-01%20until%3A2013-08-31&src=typd)
@@ -60,7 +60,7 @@ to say, I wasn't well known or popular.
 And honestly, my project didn't get super popular at the time either. However,
 that didn't stop me from working on getting it noticed. I presented it at my
 work's hack night around that time (it's actually
-[how I got my first fulltime job at Domo](https://github.com/react-vis/ama/issues/1)),
+[how I got my first fulltime job at Domo](https://github.com/uber/react-vis/ama/issues/1)),
 I built [a sweet in-browser workshop](http://react-vis.github.io/genie/workshop)
 and used it in
 [my first meetup talk](https://www.meetup.com/UtahJS-Orem-Meetup/events/156148202),
@@ -315,7 +315,7 @@ requests that I've never found the time to respond to. If you're sitting in
 there waiting I'm so sorry. Finding time to respond to every DM is impossible,
 which leads me to my next point...
 
-### [Ask Me Anything](https://github.com/react-vis/ama)
+### [Ask Me Anything](https://github.com/uber/react-vis/ama)
 
 ![mountain](./images/5.jpg)
 
@@ -378,7 +378,7 @@ and the direction you're going. You can do it! Good luck!
 **Things to not miss**:
 
 - [Testing React with React Vis and Jack Franklin](https://youtu.be/z4DNlVlOfjU&list=PLV5CVI1eNcJi8sor_aQ2AzOeQ3On3suOr) — A
-  [tech chat](https://github.com/react-vis/ama/issues/125) with myself and
+  [tech chat](https://github.com/uber/react-vis/ama/issues/125) with myself and
   [Jack Franklin](https://twitter.com/jack_franklin) talking about testing
   React. We cover a lot of subjects that you may find interesting!
 - [React Fire 🔥🔥🔥](https://github.com/facebook/react/issues/13525) — An

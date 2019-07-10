@@ -46,7 +46,7 @@ itself is a very small library, and the real brains behind it is
 dom-testing-library — which is totally framework-agnostic! Cool right!? 😎
 
 In fact,
-[check out this example](https://github.com/react-vis/dom-testing-library-with-anything/blob/9361a120bc52334968e94a10363bab9724d5dbd3/jquery.test.js)
+[check out this example](https://github.com/uber/react-vis/dom-testing-library-with-anything/blob/9361a120bc52334968e94a10363bab9724d5dbd3/jquery.test.js)
 from the course for testing a jQuery plugin with dom-testing-library:
 
 ```js

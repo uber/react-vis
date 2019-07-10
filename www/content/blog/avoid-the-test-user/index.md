@@ -100,7 +100,7 @@ you'll be much better off.
 
 > P.S. If you're interested to know how I'd test this component in a way that's
 > free of implementation details, then you can
-> [look at the tests here](https://github.com/react-vis/advanced-react-patterns/blob/06a16f86d2397c4451da9faf9aeb64cbe4452ff6/src/__tests__/01.js)
+> [look at the tests here](https://github.com/uber/react-vis/advanced-react-patterns/blob/06a16f86d2397c4451da9faf9aeb64cbe4452ff6/src/__tests__/01.js)
 
 <!-- separate quoted text -->
 

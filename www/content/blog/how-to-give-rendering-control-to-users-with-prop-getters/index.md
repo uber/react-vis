@@ -43,12 +43,12 @@ elements to make the overarching component.** Hopefully that's clear 😀
 
 To talk about this, we'll actually use a different component I wrote recently
 that uses this pattern called
-[`react-toggled`](https://github.com/react-vis/react-toggled).
+[`react-toggled`](https://github.com/uber/react-vis/react-toggled).
 
 ![React toggled logo](./images/1.png)
 
 It's pretty small, so I'm just going to paste all of it here for you
-([see the syntax highlighted file here](https://github.com/react-vis/react-toggled/blob/master/src/index.js)):
+([see the syntax highlighted file here](https://github.com/uber/react-vis/react-toggled/blob/master/src/index.js)):
 
 ```js
 import {Component} from 'react'
@@ -227,8 +227,8 @@ Here are a few projects that implement the prop getters pattern:
 - [`downshift`](https://github.com/downshift-js/downshift)
   [🏎](https://github.com/downshift-js/downshift) - Primitive for building
   simple, flexible, WAI-ARIA compliant enhanced input React components
-- [`react-toggled`](https://github.com/react-vis/react-toggled) - Component to
-  build simple, flexible, and accessible toggle components
+- [`react-toggled`](https://github.com/uber/react-vis/react-toggled) - Component
+  to build simple, flexible, and accessible toggle components
 - [`dub-step`](https://github.com/infiniteluke/dub-step)
   [🕺](https://github.com/infiniteluke/dub-step) - Step through an index with
   style
@@ -240,8 +240,9 @@ all! 👍
 
 **Things to not miss:**
 
-- [`import-all.macro`](https://github.com/react-vis/import-all.macro) - A work
-  in progress babel-macro that allows you to import all files that match a glob
+- [`import-all.macro`](https://github.com/uber/react-vis/import-all.macro) - A
+  work in progress babel-macro that allows you to import all files that match a
+  glob
 - [`react-powerplug`](https://github.com/renatorib/react-powerplug) - Pretty
   neat/interesting idea with the render prop pattern.
 - [`graphql-tag.macro`](https://github.com/leoasis/graphql-tag.macro) -

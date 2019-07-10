@@ -194,9 +194,9 @@ more productive
 ([even if it takes longer to develop the automation than the time it would save us](https://xkcd.com/1205)).
 If you find yourself repeatedly doing a task, see if there's a simple way to
 automate it. (Like
-[what I do for creating my kcd.im/ short urls](https://github.com/react-vis/hive-api)
+[what I do for creating my kcd.im/ short urls](https://github.com/uber/react-vis/hive-api)
 \+
-[shorten](https://github.com/react-vis/dotfiles/blob/94c00b43354f86595647f9ff18057ff9e6469d33/.bash_profile#L61-L63)
+[shorten](https://github.com/uber/react-vis/dotfiles/blob/94c00b43354f86595647f9ff18057ff9e6469d33/.bash_profile#L61-L63)
 😄, which happens to be another form of automation and productivity boost
 because short URLs are easier/faster to give to people, and people remember them
 better).

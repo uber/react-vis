@@ -376,8 +376,8 @@ places where I _really_ need performance gains of `class`.
 
 I should also note that you _can_ use a WeakMap to get privacy for classes as
 well, like I demonstrate in the
-[WeakMap exercises](https://github.com/react-vis/es6-workshop/blob/2a6bf446c95a387c8e87c1398444733618265c8a/exercises-final/13_weakmap.test.js#L10-L23)
-in the [es6–workshop](https://github.com/react-vis/es6-workshop).
+[WeakMap exercises](https://github.com/uber/react-vis/es6-workshop/blob/2a6bf446c95a387c8e87c1398444733618265c8a/exercises-final/13_weakmap.test.js#L10-L23)
+in the [es6–workshop](https://github.com/uber/react-vis/es6-workshop).
 
 #### Additional Reading
 

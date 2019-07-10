@@ -43,8 +43,8 @@ module.exports = {sum, subtract}
 ```
 
 **I've made**
-[**a repo on GitHub**](https://github.com/react-vis/js-test-example) **you can
-reference as well 🐙😸**
+[**a repo on GitHub**](https://github.com/uber/react-vis/js-test-example) **you
+can reference as well 🐙😸**
 
 ### Step 1
 

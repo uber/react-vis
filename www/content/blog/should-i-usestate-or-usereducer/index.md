@@ -28,11 +28,11 @@ I think `useState` and `useReducer` are no exception to this at all. In fact,
 [useReducer, don't useState](https://matthamlin.me/blog/2019/february/why-you-should-useReducer)
 and he makes some great points there. I'd like to throw my hat in this
 discussion though because
-[I was asked about it on my AMA](https://github.com/react-vis/ama/issues/587).
+[I was asked about it on my AMA](https://github.com/uber/react-vis/ama/issues/587).
 
 > Congratulations on the new design of your website react-vis.com. Looking at
 > the source code of your website, in the
-> [`Subscribe`](https://github.com/react-vis/react-vis.com/blob/ed55aea3a58d24813a59cf72d8ffbdfbd96f769e/src/components/Forms/Subscribe.js)
+> [`Subscribe`](https://github.com/uber/react-vis/react-vis.com/blob/ed55aea3a58d24813a59cf72d8ffbdfbd96f769e/src/components/Forms/Subscribe.js)
 > component, you used useState hooks to handle the state of this component. My
 > question is, is not it more optimized to use a useReducer here instead of
 > several useState? If not, why?

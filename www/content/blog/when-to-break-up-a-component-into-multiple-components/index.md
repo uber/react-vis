@@ -55,7 +55,7 @@ These are the reasons that we write custom components. It allows us to solve
 these problems.
 
 I've had a question on my AMA for a while:
-[Best ways/patterns to split app into components](https://github.com/react-vis/ama/issues/399).
+[Best ways/patterns to split app into components](https://github.com/uber/react-vis/ama/issues/399).
 And this is my answer: "When you experience one of the problems above, that's
 when you break your component into multiple smaller components. NOT BEFORE."
 Breaking a single component into multiple components is what's called

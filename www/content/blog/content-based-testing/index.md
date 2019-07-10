@@ -65,9 +65,10 @@ initMessages(enUS)
 
 If you're using something like [LinguiJS](https://lingui.js.org) which provides
 an awesome babel plugin ([and a](https://lingui.js.org/ref/macro.html)
-[macro!](https://github.com/react-vis/babel-plugin-macros)) that allows you to
-write your content directly in your source code (super cool!), but requires that
-your content be provided via the `I18nProvider` then you can include that in
+[macro!](https://github.com/uber/react-vis/babel-plugin-macros)) that allows you
+to write your content directly in your source code (super cool!), but requires
+that your content be provided via the `I18nProvider` then you can include that
+in
 [the custom render](https://testing-library.com/docs/react-testing-library/setup#custom-render)
 method which you should be using:
 

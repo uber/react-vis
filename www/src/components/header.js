@@ -5,6 +5,7 @@ import styled from '@emotion/styled'
 import theme from '../../config/theme'
 import {headerFontFamily} from '../lib/typography'
 import MobileNav from './mobile-nav'
+import {GitHub} from './social'
 import Container from './container'
 import {bpMaxSM} from '../lib/breakpoints'
 import {lighten} from 'polished'
@@ -152,6 +153,7 @@ const Header = ({
           >
             About
           </NavLink>
+          <GitHub />
         </div>
       </nav>
     </Container>

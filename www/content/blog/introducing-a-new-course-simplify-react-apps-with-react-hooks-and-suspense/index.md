@@ -35,7 +35,7 @@ With the massive improvements to function components in React via hooks and
 suspense, you may be interested in seeing how to refactor a typical class
 component to a simpler class component that uses React Suspense and Hooks
 features. In this course, Kent will take
-[a modern React codebase](https://github.com/react-vis/react-github-profile)
+[a modern React codebase](https://github.com/uber/react-vis/react-github-profile)
 that uses classes and refactor the entire thing to use function components as
 much as possible. We'll look at state, side effects, async code, caching, and
 more!

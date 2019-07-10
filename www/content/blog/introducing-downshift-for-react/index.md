@@ -258,7 +258,7 @@ accessible component of its kind.
 there's much less code required. In addition, it was easy to make work out of
 the box with [preact](https://preactjs.com) ⚛️ (a teeny tiny version of react.
 No need to add preact-compat). I was able to create
-[an experiment using preact-habitat](https://github.com/react-vis/autocomplete-widget)
+[an experiment using preact-habitat](https://github.com/uber/react-vis/autocomplete-widget)
 that gives
 [**a completely frameworkless implementation of autocomplete**](https://dist-woxxqrsspd.now.sh)
 **in less than 26kb (uncompressed)**. That size _includes_ `downshift` +
@@ -304,7 +304,7 @@ of is in [codesandbox](https://codesandbox.io) from
 ![The codesandbox.io file chooser (press ⌘+P to open it)](./images/4.gif)
 
 Fun fact: both of these solutions are also using
-[match-sorter](https://github.com/react-vis/match-sorter), which is a user
+[match-sorter](https://github.com/uber/react-vis/match-sorter), which is a user
 friendly best-match sorting library. I highly recommend it!
 
 ## What's next

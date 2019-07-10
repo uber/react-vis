@@ -20,7 +20,7 @@ bannerCredit:
 
 You're a developer and you want to avoid shipping a broken login experience, so
 you're writing some tests to make sure you don't. Let's get a quick look at
-[an example of such a form](https://github.com/react-vis/testing-workshop/blob/1938d6fc2048e55362679905f700f938a3b497c4/client/src/screens/login.js#L50-L82):
+[an example of such a form](https://github.com/uber/react-vis/testing-workshop/blob/1938d6fc2048e55362679905f700f938a3b497c4/client/src/screens/login.js#L50-L82):
 
 ![Login form from the Conduit App](./images/0.png)
 
@@ -178,7 +178,7 @@ const submitButton = rootNode.querySelector(sel('submit'))
 ```
 
 This is great for
-[end to end tests](https://github.com/react-vis/testing-workshop/blob/1938d6fc2048e55362679905f700f938a3b497c4/cypress/e2e/post_spec.js)
+[end to end tests](https://github.com/uber/react-vis/testing-workshop/blob/1938d6fc2048e55362679905f700f938a3b497c4/cypress/e2e/post_spec.js)
 as well. So I suggest that you use it for that too! However, some folks have
 expressed to me concern about shipping these attributes to production. If that's
 you, please really consider whether it's actually a problem for you (because
@@ -187,9 +187,9 @@ to, you can transpile those attributes away with
 [`babel-plugin-react-remove-properties`](https://www.npmjs.com/package/babel-plugin-react-remove-properties).
 
 _I should also note that if you're using enzyme to test React components, you
-might be interested in_ [_this_](https://github.com/react-vis/enzyme-sel) _to
-avoid some issues with enzyme's_ `_find_` _returning component instances along
-with DOM nodes._
+might be interested in_ [_this_](https://github.com/uber/react-vis/enzyme-sel)
+_to avoid some issues with enzyme's_ `_find_` _returning component instances
+along with DOM nodes._
 
 I hope this is helpful to you. Good luck! Enjoy :)
 

@@ -251,4 +251,4 @@ long-term. I hope this is helpful to you! Good luck!
   [Watch all the talks from UtahJS Conf 2018](https://youtube.com/playlist?list=PLuVqdWOQ-PNn_lDYUVgcA4e91qxJzipva)
 - [Testing React Components @ PayPal 2018–09](https://youtube.com/playlist?list=PLV5CVI1eNcJhU1eyqkTjR0B5P7PzMVubB) — I
   gave a ~4 hour workshop at PayPal last week and livestreamed it.
-  [Here's the material](https://github.com/react-vis/react-testing-library-course/tree/workshop-2018-09).
+  [Here's the material](https://github.com/uber/react-vis/react-testing-library-course/tree/workshop-2018-09).

@@ -58,7 +58,7 @@ resource). Here are some of the things that need to happen when I do that:
 Setting all of that up and wiring things together properly can actually take a
 minute or two if I didn’t automate generating those files. In fact, right now I
 only use
-[snippets](https://github.com/react-vis/dotfiles/tree/master/.janus/vim-react-vis-snippets/snippets)
+[snippets](https://github.com/uber/react-vis/dotfiles/tree/master/.janus/vim-react-vis-snippets/snippets)
 to do _some_ of that stuff. If I weren’t changing jobs/projects soon, I’d
 probably write a generator using [plop](http://npm.im/plop) to speed it up
 further.

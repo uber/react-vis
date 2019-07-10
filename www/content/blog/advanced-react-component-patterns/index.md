@@ -34,7 +34,7 @@ in the Advanced React Component Patterns course. I hope you find it helpful and
 that this preview will help you be eager to give the course a look! 👀
 
 The course starts with a single lesson where I
-[implement](https://github.com/react-vis/advanced-react-patterns/blob/736bc941e629af5acae2e827356d6996e923780e/01-intro-to-react-toggled/index.html)
+[implement](https://github.com/uber/react-vis/advanced-react-patterns/blob/736bc941e629af5acae2e827356d6996e923780e/01-intro-to-react-toggled/index.html)
 [a simple toggle component](https://cdn.rawgit.com/react-vis/advanced-react-patterns/736bc941e629af5acae2e827356d6996e923780e/01-intro-to-react-toggled/index.html)
 that manages its own state. We use, refactor, and evolve this component to each
 of the patterns. My hope is that by doing things this way you can quickly
@@ -42,7 +42,7 @@ identify the trade-offs of the different patterns and know when each pattern
 would be most appropriate.
 
 The course wraps up by
-[refactoring](https://github.com/react-vis/advanced-react-patterns/blob/736bc941e629af5acae2e827356d6996e923780e/18-use-redux-with-render-props/index.html)
+[refactoring](https://github.com/uber/react-vis/advanced-react-patterns/blob/736bc941e629af5acae2e827356d6996e923780e/18-use-redux-with-render-props/index.html)
 [the toggle component to a redux component](https://cdn.rawgit.com/react-vis/advanced-react-patterns/736bc941e629af5acae2e827356d6996e923780e/18-use-redux-with-render-props/index.html)
 affectionately called "Rendux." I think that you'll be **blown away** by the
 flexibility of some of these patterns to make this refactor a pretty

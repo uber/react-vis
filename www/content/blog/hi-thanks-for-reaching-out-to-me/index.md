@@ -19,7 +19,7 @@ given. People have questions about the stuff I create and want help with it.
 Totally understandable. When I have a question, I'd much rather talk to an
 expert on the subject than read generic documentation or outdated tutorials
 (this is one of the reasons that I do my
-[tech chats](https://github.com/react-vis/ama/issues/125)).
+[tech chats](https://github.com/uber/react-vis/ama/issues/125)).
 
 Unfortunately, I don't have time to field all of the support requests that I get
 via email, GitHub, Twitter, Gitter, Slack, etc... It's not that I don't want to
@@ -43,11 +43,11 @@ _I almost never respond to direct support request emails._ So instead, post your
 ([Minimal, Complete, and Verifiable](https://stackoverflow.com/help/mcve))
 question on a relevant forum (like [StackOverflow](http://stackoverflow.com))
 and feel free to [tweet](https://twitter.com/react-vis) the link to me (or ask
-me on [my AMA](https://github.com/react-vis/ama)). I can't promise that I'll
-find time to look at it, but hundreds of other developers will see it so you're
-more likely to get an answer from someone. What's better is the positive impact
-is increased because it's in a public forum so I'll be more likely to give it a
-look and help out (but again no promises).
+me on [my AMA](https://github.com/uber/react-vis/ama)). I can't promise that
+I'll find time to look at it, but hundreds of other developers will see it so
+you're more likely to get an answer from someone. What's better is the positive
+impact is increased because it's in a public forum so I'll be more likely to
+give it a look and help out (but again no promises).
 
 Think of it this way, when I'm helping you, I'm not working for my employer,
 hanging out with my family, helping someone else, or making other cool stuff. I

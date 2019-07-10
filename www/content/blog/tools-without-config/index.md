@@ -89,12 +89,13 @@ wanted to add a custom babel plugin it's as easy as adding this to your
 
 ---
 
-I’ve been using [a generator](https://github.com/react-vis/generator-kcd-oss)
-for [my open source projects](https://github.com/react-vis) for over a year now.
+I’ve been using
+[a generator](https://github.com/uber/react-vis/generator-kcd-oss) for
+[my open source projects](https://github.com/react-vis) for over a year now.
 It’s been a huge productivity boost. However I’ve been suffering from all the
 same things I’ve discussed in this blog post. So with the excitement of creating
 paypal-scripts, I’ve also been working on
-[kcd-scripts](https://github.com/react-vis/kcd-scripts) which does the same
+[kcd-scripts](https://github.com/uber/react-vis/kcd-scripts) which does the same
 things except encodes the preferences I have for my own projects in the CLI.
 I’ve been slowly adding it to my projects and I couldn’t be happier with the git
 diffs 😍. I mean…

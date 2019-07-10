@@ -40,7 +40,7 @@ repo was asking if the React team would be willing to extract prop types into
 its own package (this has actually now taken place! Checkout
 [prop-types](http://npm.im/prop-types)). That didn't work out, so I decided to
 write my own package and thus
-[api-check](https://github.com/react-vis/api-check) was born!
+[api-check](https://github.com/uber/react-vis/api-check) was born!
 
 One of the cool things about a library like this is that the whole thing is a
 bunch of pure functions! And we all know that pure functions are super easy to

@@ -85,10 +85,10 @@ for quite some time! Back when I was working on the website for
 ([glamorous.rocks](https://glamorous.rocks)), I wanted to make all the docs in
 markdown to make it easier to internationalize, but I also wanted interactivity
 to be possible, so I came up with
-[a super weird syntax](https://github.com/react-vis/glamorous-website/blob/master/other/CONTRIBUTING_DOCUMENTATION.md#important-markdown-notes)
+[a super weird syntax](https://github.com/uber/react-vis/glamorous-website/blob/master/other/CONTRIBUTING_DOCUMENTATION.md#important-markdown-notes)
 to make this possible. It's pretty cool, and actually works similar to MDX at a
 fundamental level (uses
-[a custom fancy plugin](https://github.com/react-vis/glamorous-website/blob/b2469c1dfbfed750fc01dcbe411fec307b7ae5a8/components/interactive-markdown.js#L89-L113)
+[a custom fancy plugin](https://github.com/uber/react-vis/glamorous-website/blob/b2469c1dfbfed750fc01dcbe411fec307b7ae5a8/components/interactive-markdown.js#L89-L113)
 for [remark](https://github.com/remarkjs/remark)), but it's way hacky and
 limited. This MDX thing is the REAL DEAL!
 
@@ -127,8 +127,8 @@ automatically deployed slide deck!
 ### Conclusion
 
 I'm currently working on porting my slides for
-["Simply React"](https://github.com/react-vis/simply-react). You can see the
-current state of
+["Simply React"](https://github.com/uber/react-vis/simply-react). You can see
+the current state of
 [the slides deployed on netlify here](https://simply-react.netlify.com) (and
 [the pdf](https://simply-react.netlify.com/presentation.pdf)). I'm pretty jazzed
 about the ability to have such an easy way to create presentations in the

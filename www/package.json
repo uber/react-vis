@@ -4,7 +4,7 @@
   "description": "Kent's personal website",
   "version": "1.0.5",
   "author": "React Vis <kent@doddsfamily.us> (https://react-vis.com)",
-  "repository": "https://github.com/react-vis/react-vis.com",
+  "repository": "https://github.com/uber/react-vis/react-vis.com",
   "dependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.11",

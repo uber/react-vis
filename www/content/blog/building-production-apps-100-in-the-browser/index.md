@@ -48,7 +48,7 @@ Another thing you'll find interesting is that I built the ENTIRE thing solely in
 once. I used CodeSandbox's new
 [GitHub integration](https://hackernoon.com/announcing-codesandbox-2-0-938cff3a0fcb)
 feature to create
-[the repository](https://github.com/react-vis/typing-for-kids), then their
+[the repository](https://github.com/uber/react-vis/typing-for-kids), then their
 [GitHub import](https://codesandbox.io/s/github) feature any time I wanted to
 start working on it again. This is pretty amazing I think!
 
@@ -61,7 +61,7 @@ could leverage the
 [service worker](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#making-a-progressive-web-app)
 that the react-scripts build creates for me so this thing works totally offline.
 I also added
-[a manifest.json](https://github.com/react-vis/typing-for-kids/blob/7a8ff3fd0580258493b0963739dffbe596141277/public/manifest.json)
+[a manifest.json](https://github.com/uber/react-vis/typing-for-kids/blob/7a8ff3fd0580258493b0963739dffbe596141277/public/manifest.json)
 so when I pulled it up on my kids Chromebook I could add it directly to the
 desktop like an installed app! So cool!
 
@@ -92,14 +92,14 @@ separate the styling components from the rest of the components. I also created
 a few render prop components for the firebase authentication and data stuff.
 
 You can find most of the interesting stuff in the
-[`index.js`](https://github.com/react-vis/repeat-todo-v2/blob/master/src/index.js)
-[file](https://github.com/react-vis/repeat-todo-v2/blob/master/src/index.js). I
-think the thing that made it the most complicated is that
+[`index.js`](https://github.com/uber/react-vis/repeat-todo-v2/blob/master/src/index.js)
+[file](https://github.com/uber/react-vis/repeat-todo-v2/blob/master/src/index.js).
+I think the thing that made it the most complicated is that
 [Firebase doesn't work super well with arrays](https://firebase.googleblog.com/2014/04/best-practices-arrays-in-firebase.html)
 and because order mattered (things will one day be resortable by the user,
-[open issue, help wanted](https://github.com/react-vis/repeat-todo-v2/issues/2)),
+[open issue, help wanted](https://github.com/uber/react-vis/repeat-todo-v2/issues/2)),
 I had to store it as an object and
-[manually keep the order values correct](https://github.com/react-vis/repeat-todo-v2/blob/66e27104ba551f2637210347bab8ec06bdb90c47/src/index.js#L308-L337).
+[manually keep the order values correct](https://github.com/uber/react-vis/repeat-todo-v2/blob/66e27104ba551f2637210347bab8ec06bdb90c47/src/index.js#L308-L337).
 
 All-in-all it was a pretty fun experience and because **firebase works so well
 offline**, this app can also leverage the service worker that react-scripts

@@ -28,10 +28,10 @@ So I looked up the
 mentioned and noticed that there was an opening for a speaker. I had just gotten
 back from the first ng-conf (2014) and thought that whole public speaking thing
 looked like a lot of fun. I also had been working on a personal open source
-project on the side called [geniejs](https://github.com/react-vis/genie) (which
-was part of how I eventually got
-[my first job](https://github.com/react-vis/ama/issues/1)) and thought if they
-needed a speaker I could talk about genie! So I offered to fill their slot:
+project on the side called [geniejs](https://github.com/uber/react-vis/genie)
+(which was part of how I eventually got
+[my first job](https://github.com/uber/react-vis/ama/issues/1)) and thought if
+they needed a speaker I could talk about genie! So I offered to fill their slot:
 
 ![a comment thread showing a request to speak at a meetup](./images/1.png)
 

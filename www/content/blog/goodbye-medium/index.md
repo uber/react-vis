@@ -58,8 +58,8 @@ make this move without worrying about all those links breaking!**
 > (it'll take you minutes and it's totally free).
 
 I spent 1 hour building
-[`kcd-blog-redirector`](https://github.com/react-vis/kcd-blog-redirector). I
-even livestreamed it on my new "Coding with Kent" series:
+[`kcd-blog-redirector`](https://github.com/uber/react-vis/kcd-blog-redirector).
+I even livestreamed it on my new "Coding with Kent" series:
 
 https://youtube.com/watch?v=1EOj__JPN08&list=PLV5CVI1eNcJgJCEkMlsqXea6OIF_uV_ub
 
@@ -100,10 +100,10 @@ consumed.
 
 The blog has several things that I need to work on still:
 
-1. [Search](https://github.com/react-vis/react-vis.com/issues/48)
-2. [Category Pages](https://github.com/react-vis/react-vis.com/issues/49)
-3. [Keyword Pages](https://github.com/react-vis/react-vis.com/issues/50)
-4. [Fix the RSS Feed](https://github.com/react-vis/react-vis.com/issues/51)
+1. [Search](https://github.com/uber/react-vis/react-vis.com/issues/48)
+2. [Category Pages](https://github.com/uber/react-vis/react-vis.com/issues/49)
+3. [Keyword Pages](https://github.com/uber/react-vis/react-vis.com/issues/50)
+4. [Fix the RSS Feed](https://github.com/uber/react-vis/react-vis.com/issues/51)
 5. Figure out how to automate sending emails that include nice syntax
    highlighting
 

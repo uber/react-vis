@@ -14,7 +14,7 @@ bannerCredit:
 ---
 
 Today I thought I'd take you through one of the examples from
-[my es6 workshop](https://github.com/react-vis/es6-workshop).
+[my es6 workshop](https://github.com/uber/react-vis/es6-workshop).
 
 Consider the following code:
 

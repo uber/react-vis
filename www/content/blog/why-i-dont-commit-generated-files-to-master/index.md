@@ -76,13 +76,13 @@ If you’re writing an open source library, chances are you want to make it easy
 to contribute to and
 [welcoming to new contributors](http://www.erikaheidi.com/blog/is-your-open-source-project-welcoming-to-new-contributors).
 I have often received
-[pull](https://github.com/react-vis/ng-stats/pull/20)[requests](https://github.com/react-vis/ng-stats/pull/33)
+[pull](https://github.com/uber/react-vis/ng-stats/pull/20)[requests](https://github.com/uber/react-vis/ng-stats/pull/33)
 that make changes to the generated files rather than the source files (or commit
 a run of the build script). Their contributions would be overwritten next time
 the build is run! Others will submit
-[a](https://github.com/react-vis/ng-stats/pull/38)
-[PR](https://github.com/react-vis/ng-stats/pull/44) that includes the updated
-dist (which ruins the diff for that commit as mentioned earlier).
+[a](https://github.com/uber/react-vis/ng-stats/pull/38)
+[PR](https://github.com/uber/react-vis/ng-stats/pull/44) that includes the
+updated dist (which ruins the diff for that commit as mentioned earlier).
 
 For these kinds of contributions, I always have to (kindly) ask the contributor
 to resubmit the PR with a force push so that commit doesn’t get into my history.
@@ -104,7 +104,7 @@ with the package
 [**publish-latest**](https://www.npmjs.com/package/publish-latest).
 
 Basically, you run your build, then run publish-latest which runs
-[this script](https://github.com/react-vis/publish-latest/blob/master/scripts/publish-latest.sh)which
+[this script](https://github.com/uber/react-vis/publish-latest/blob/master/scripts/publish-latest.sh)which
 will commit your built files and push them to your latest branch automatically.
 You can totally do this locally, but it actually works best when done with
 [semantic-release](https://github.com/semantic-release/semantic-release) and
@@ -128,11 +128,11 @@ You can totally do this locally, but it actually works best when done with
 
 For an example of this actually working, you can see
 [several](https://github.com/formly-js/angular-formly/tree/latest)
-[of my](https://github.com/react-vis/cross-env/tree/latest)
-[projects](https://github.com/react-vis/api-check/tree/latest)and
+[of my](https://github.com/uber/react-vis/cross-env/tree/latest)
+[projects](https://github.com/uber/react-vis/api-check/tree/latest)and
 [other’s](https://github.com/Swimlane/angular-model-factory/tree/latest) that
 have already been moved over to this (including
-[publish-latest](https://github.com/react-vis/publish-latest/tree/latest)
+[publish-latest](https://github.com/uber/react-vis/publish-latest/tree/latest)
 itself).
 
 ### Conclusion

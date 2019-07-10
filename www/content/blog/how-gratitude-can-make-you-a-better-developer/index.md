@@ -169,4 +169,4 @@ Good luck!
   [Shawn Wang](https://twitter.com/swyx).
 - [GDG Salt Lake DevFest 2018: Why React Hooks](https://youtu.be/zWsZcBiwgVE&list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf) — A
   talk by me about why React Hooks are a thing and why I'm super excited to get
-  them. [Demo repo](https://github.com/react-vis/gdg-devfest-2018-react).
+  them. [Demo repo](https://github.com/uber/react-vis/gdg-devfest-2018-react).

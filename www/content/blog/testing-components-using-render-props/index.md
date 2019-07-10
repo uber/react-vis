@@ -30,9 +30,9 @@ could help you when testing a component that renders a render prop component :)
 > implement the render prop pattern :)_
 
 In preparing this blog post, **I created**
-[**this repo**](https://github.com/react-vis/test-render-prop-example) which
-totally works and you can give it a look if you want more details :) In that
-repo, we have a component called `FruitAutocomplete` which is (basically)
+[**this repo**](https://github.com/uber/react-vis/test-render-prop-example)
+which totally works and you can give it a look if you want more details :) In
+that repo, we have a component called `FruitAutocomplete` which is (basically)
 implemented like so:
 
 ```jsx
@@ -286,7 +286,7 @@ that things wont break if you do.
 I should note also that for some components that require a provider to exist
 (like `react-redux` or `react-router`), that you simply render your component
 within a provider. I have
-[some examples](https://github.com/react-vis/testing-workshop/tree/65d17521c9f516529c6f749d64846b14743b0eaa/client-final/tests/integration)
+[some examples](https://github.com/uber/react-vis/testing-workshop/tree/65d17521c9f516529c6f749d64846b14743b0eaa/client-final/tests/integration)
 of doing this in my
 [testing workshop for frontend masters](http://kcd.im/fm-testing).
 

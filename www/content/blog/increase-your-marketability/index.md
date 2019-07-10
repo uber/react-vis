@@ -19,7 +19,7 @@ My heart aches for the dozens of engineer's I've met so far **this year** who
 have had such rough luck finding their first full-time job. I'm regularly asked
 for advice on this subject and I'm afraid the best I can offer is ideas rather
 than solid experience-based recommendations. (I got my first job in an
-[interesting and unique series of events](https://github.com/react-vis/ama/issues/1)).
+[interesting and unique series of events](https://github.com/uber/react-vis/ama/issues/1)).
 
 With that said, whether you are looking for your first job or have been doing
 this for a while, I'd like to give you **three ideas of what you can do now to
