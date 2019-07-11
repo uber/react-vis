@@ -20,7 +20,7 @@ export default function CodingBlogWithData(props) {
           ) {
             edges {
               node {
-                excerpt(pruneLength: 300)
+                excerpt(pruneLength: 250)
                 id
                 fields {
                   title

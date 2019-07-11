@@ -227,10 +227,7 @@ export const pageQuery = graphql`
     allMdx(
       limit: 5
       sort: {fields: [frontmatter___date], order: DESC}
-      filter: {
-        frontmatter: {published: {ne: false}, unlisted: {ne: true}}
-        fileAbsolutePath: {regex: "//content/blog//"}
-      }
+      filter: {fileAbsolutePath: {regex: "//content/blog//"}}
     ) {
       edges {
         node {
