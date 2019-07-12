@@ -37,11 +37,13 @@ Install react-vis via npm.
     npm install react-vis --save
 
 Include the built main CSS file in your HTML page or via SASS:
+
 ```sass
 @import "~react-vis/dist/style";
 ```
 
 You can also select only the styles you want to use. This helps minimize the size of the outputted CSS. Here's an example of importing only the legends styles:
+
 ```sass
 @import "~react-vis/dist/styles/legends";
 ```
@@ -55,16 +57,9 @@ import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
 &hellip; and add the following code to your `render` function:
 
 ```jsx
-<XYPlot
-  width={300}
-  height={300}>
+<XYPlot width={300} height={300}>
   <HorizontalGridLines />
-  <LineSeries
-    data={[
-      {x: 1, y: 10},
-      {x: 2, y: 5},
-      {x: 3, y: 15}
-    ]}/>
+  <LineSeries data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]} />
   <XAxis />
   <YAxis />
 </XYPlot>
@@ -73,8 +68,11 @@ import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
 If you're working in a non-node environment, you can also directly include the bundle and compiled style using basic html tags.
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/react-vis/dist/style.css">
-<script type="text/javascript" src="https://unpkg.com/react-vis/dist/dist.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/react-vis/dist/style.css" />
+<script
+  type="text/javascript"
+  src="https://unpkg.com/react-vis/dist/dist.min.js"
+></script>
 ```
 
 The global `reactVis` object will now be available for you to play around.
@@ -90,17 +88,17 @@ You can checkout these example CodePens:
 Take a look at the [folder with examples](showcase/examples/) or check out some docs:
 
 - Common concepts:
-  * [Scales and Data](docs/scales-and-data.md) about how the attributes can be adjusted.
-  * [Animations](docs/animation.md) about how to tweak animations in the library.
+  - [Scales and Data](docs/scales-and-data.md) about how the attributes can be adjusted.
+  - [Animations](docs/animation.md) about how to tweak animations in the library.
 - Components:
-  * [XYPlot](docs/xy-plot.md) about orthogonal charts.
-  * [RadialChart](docs/radial-chart.md) about radial charts.
-  * [Treemap](docs/treemap.md) about making tree maps.
-  * [Sankey](docs/sankey.md) about making sankey diagrams.
-  * [Radar Chart](docs/radar-chart.md) about making radar charts.
-  * [Parallel Coordinates](docs/parallel-coordinates.md) about making parallel coordinate charts.
-  * [Sunbursts](docs/sunburst.md) about making sunburst diagrams.
-  * [Legends](docs/legends.md) about the legends.
+  - [XYPlot](docs/xy-plot.md) about orthogonal charts.
+  - [RadialChart](docs/radial-chart.md) about radial charts.
+  - [Treemap](docs/treemap.md) about making tree maps.
+  - [Sankey](docs/sankey.md) about making sankey diagrams.
+  - [Radar Chart](docs/radar-chart.md) about making radar charts.
+  - [Parallel Coordinates](docs/parallel-coordinates.md) about making parallel coordinate charts.
+  - [Sunbursts](docs/sunburst.md) about making sunburst diagrams.
+  - [Legends](docs/legends.md) about the legends.
 
 ## Development
 

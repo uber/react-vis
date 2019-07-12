@@ -3,12 +3,11 @@ import Link from './link'
 import {css} from '@emotion/core'
 import styled from '@emotion/styled'
 import theme from '../../config/theme'
-import {headerFontFamily} from '../lib/typography'
+import {headerFontFamily, bodyFontFamily} from '../lib/typography'
 import MobileNav from './mobile-nav'
 import {GitHub} from './social'
 import Container from './container'
 import {bpMaxSM} from '../lib/breakpoints'
-import {lighten} from 'polished'
 
 function HeaderLink({headerColor, ...props}) {
   return (
@@ -16,16 +15,10 @@ function HeaderLink({headerColor, ...props}) {
       activeClassName="active"
       css={{
         textDecoration: 'none',
-        color: headerColor ? headerColor : theme.colors.body_color,
+        color: theme.colors.body_color,
+        borderRight: '1px solid #f2f2f2',
         '&:hover,&:focus': {
-          background:
-            headerColor === theme.colors.white
-              ? 'rgba(40, 28, 77, 0.3)'
-              : lighten(0.4, theme.brand.primary),
-          color:
-            headerColor === theme.colors.white
-              ? 'white'
-              : theme.colors.link_color_hover,
+          background: '#f2f2f2',
         },
       }}
       {...props}
@@ -34,15 +27,14 @@ function HeaderLink({headerColor, ...props}) {
 }
 
 const NavLink = styled(HeaderLink)({
-  padding: '8px 10px',
-  borderRadius: '3px',
+  padding: '0 1.5rem',
+  lineHeight: '4rem',
   background: 'transparent',
-  '& + &': {marginLeft: 10},
   [bpMaxSM]: {
     display: 'none',
   },
   '&.active': {
-    background: 'rgba(40, 28, 77, 0.7)',
+    background: '#c0c0c0',
   },
 })
 
@@ -58,18 +50,14 @@ const Header = ({
   <header
     css={css`
       width: 100%;
+      border-bottom: 1px solid #f2f2f2;
       flex-shrink: 0;
       background: none;
-      padding: 30px 0 0 0;
-      ${bpMaxSM} {
-        padding: 35px 0 0 0;
-      }
+      font-family: ${bodyFontFamily};
       background: ${dark ? '#090909' : `${bgColor}` || 'none'};
       z-index: 10;
       position: ${fixed ? 'fixed' : 'absolute'};
       top: 0;
-      font-family: ${headerFontFamily};
-      font-weight: 300;
     `}
   >
     <Container noVerticalPadding>
@@ -87,7 +75,7 @@ const Header = ({
           headerColor={headerColor}
           css={{
             fontFamily: headerFontFamily,
-            fontWeight: 500,
+            fontWeight: 600,
             display: 'flex',
             alignItems: 'center',
             img: {
@@ -139,13 +127,13 @@ const Header = ({
           >
             Talks
           </NavLink>
-          <NavLink
+          {/*<NavLink
             headerColor={headerColor}
             to="/workshops/"
             aria-label="View workshops page"
           >
             Workshops
-          </NavLink>
+          </NavLink>*/}
           <NavLink
             headerColor={headerColor}
             to="/about/"

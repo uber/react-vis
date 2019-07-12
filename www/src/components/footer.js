@@ -1,8 +1,8 @@
 import React from 'react'
 // import Link from '../components/link'
 import {css} from '@emotion/core'
-import theme from '../../config/theme'
-import {bpMaxSM} from '../lib/breakpoints'
+// import theme from '../../config/theme'
+// import {bpMaxSM} from '../lib/breakpoints'
 // import SubscribeForm from './forms/subscribe'
 import {Twitter, GitHub, YouTube} from './social'
 import Container from './container'
@@ -13,9 +13,9 @@ const Footer = () => (
   // {subscribeForm = <SubscribeForm />}
   <footer
     css={css`
-      background: ${theme.colors.black};
-      color: white;
-      margin-top: 70px;
+      border-top: 1px solid #f2f2f2;
+      color: black;
+      line-height: 6rem;
     `}
   >
     <Container
@@ -25,10 +25,6 @@ const Footer = () => (
         display: flex;
         justify-content: space-between;
         align-items: center;
-        ${bpMaxSM} {
-          padding-top: 0;
-          flex-direction: column;
-        }
       `}
     >
       {/*subscribeForm ? (
@@ -43,16 +39,6 @@ const Footer = () => (
           display: flex;
           flex-direction: column;
           align-items: flex-end;
-          div,
-          img {
-            margin: 50px 0;
-            ${bpMaxSM} {
-              margin: 20px 0;
-            }
-          }
-          ${bpMaxSM} {
-            align-items: center;
-          }
         `}
       >
         <div>
