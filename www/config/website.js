@@ -28,7 +28,7 @@ module.exports = {
   backgroundColor: '#231C42',
 
   // Social component
-  twitter: 'https://twitter.com/react-vis/',
+  twitter: 'https://twitter.com/React_Vis/',
   twitterHandle: '@react-vis',
   github: 'https://github.com/uber/react-vis/',
   linkedin: 'https://www.linkedin.com/in/react-vis/',

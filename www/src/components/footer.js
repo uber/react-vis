@@ -5,7 +5,7 @@ import {css} from '@emotion/core'
 // import {bpMaxSM} from '../lib/breakpoints'
 // import SubscribeForm from './forms/subscribe'
 import {Twitter, GitHub, YouTube} from './social'
-import Container from './container'
+// import Container from './container'
 
 // import Signature from '../images/signature.png'
 
@@ -18,36 +18,27 @@ const Footer = () => (
       line-height: 6rem;
     `}
   >
-    <Container
-      css={css`
-        padding-top: 0;
-        padding-bottom: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      `}
-    >
-      {/*subscribeForm ? (
+    {/*subscribeForm ? (
         <div css={{marginTop: -40}}>
           {subscribeForm}
           <br />
           <br />
         </div>
       ) : null*/}
-      <div
-        css={css`
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-        `}
-      >
-        <div>
-          <Twitter />
-          <GitHub />
-          <YouTube />
-        </div>
+    <div
+      css={css`
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      `}
+    >
+      <div>
+        <Twitter />
+        <GitHub />
+        <YouTube />
+      </div>
 
-        {/*<Link to="/" aria-label="Return to homepage">
+      {/*<Link to="/" aria-label="Return to homepage">
           <img
             src={Signature}
             alt="React Vis"
@@ -56,8 +47,7 @@ const Footer = () => (
             `}
           />
         </Link>*/}
-      </div>
-    </Container>
+    </div>
   </footer>
 )
 

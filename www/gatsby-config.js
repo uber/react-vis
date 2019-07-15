@@ -109,18 +109,7 @@ module.exports = {
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: 'standalone',
-        icons: [
-          {
-            src: '/favicons/android-chrome-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: '/favicons/android-chrome-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-        ],
+        icon: './static/favicons/android-icon-192x192.png',
       },
     },
     {
@@ -173,7 +162,7 @@ function getBlogFeed({filePathRegex, blogUrl, ...overrides}) {
         const url = `${siteUrl}/${stripSlash(edge.node.fields.slug)}`
         // TODO: clean this up... This shouldn't be here and it should be dynamic.
         const footer = `
-          <div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
+          <div style="width: 100%; margin: 0 auto; padding: 40px 40px;">
             <div style="display: flex;">
               <div style="padding-right: 20px;">
                 <img
@@ -224,7 +213,7 @@ function getBlogFeed({filePathRegex, blogUrl, ...overrides}) {
           guid: url,
           custom_elements: [
             {
-              'content:encoded': `<div style="width: 100%; margin: 0 auto; max-width: 800px; padding: 40px 40px;">
+              'content:encoded': `<div style="width: 100%; margin: 0 auto; padding: 40px 40px;">
                 ${html}
                 ${postText}
               </div>`,

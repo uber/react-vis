@@ -1,12 +1,12 @@
 import React from 'react'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
 import debounceFn from 'debounce-fn'
 import {useStaticQuery, graphql, Link} from 'gatsby'
 import matchSorter from 'match-sorter'
 import theme from '../../config/theme'
 
 function BlogPostCard({blogpost}) {
-  const {slug, title, description, keywords, banner} = blogpost
+  const {slug, title, description} = blogpost
   return (
     <Link to={slug} css={{color: 'initial', margin: 20, width: 320}}>
       <div
@@ -18,7 +18,6 @@ function BlogPostCard({blogpost}) {
         }}
       >
         <h2 css={{marginTop: 0}}>{title}</h2>
-        <Img fluid={banner.childImageSharp.fluid} alt={keywords.join(', ')} />
         <div css={{margin: '16px 0 0 0'}}>{description}</div>
       </div>
     </Link>

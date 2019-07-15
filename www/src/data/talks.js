@@ -110,7 +110,7 @@ export default [
       skills in anything, I find the most effective method is to take a step
       back and understand the foundational fundamentals. To strip away all
       abstraction until what we're left with is the bare bones.
-      [The better you understand an abstraction, the more effective you will be at using it.](https://twitter.com/react-vis/status/1074724545003581440)
+      [The better you understand an abstraction, the more effective you will be at using it.](https://twitter.com/React_Vis/status/1074724545003581440)
       In this talk, we'll get more effective at using React Hooks, React Suspense, and JSX.
     `,
   },

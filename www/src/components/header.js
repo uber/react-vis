@@ -2,14 +2,16 @@ import React from 'react'
 import Link from './link'
 import {css} from '@emotion/core'
 import styled from '@emotion/styled'
+
+import logo from './logo'
 import theme from '../../config/theme'
 import {headerFontFamily, bodyFontFamily} from '../lib/typography'
 import MobileNav from './mobile-nav'
-import {GitHub} from './social'
-import Container from './container'
+import {GitHubIcon} from './social'
 import {bpMaxSM} from '../lib/breakpoints'
+import config from '../../config/website'
 
-function HeaderLink({headerColor, ...props}) {
+function HeaderLink(props) {
   return (
     <Link
       activeClassName="active"
@@ -17,8 +19,12 @@ function HeaderLink({headerColor, ...props}) {
         textDecoration: 'none',
         color: theme.colors.body_color,
         borderRight: '1px solid #f2f2f2',
-        '&:hover,&:focus': {
+        '&:hover': {
           background: '#f2f2f2',
+        },
+        '&:focus': {
+          background: '#c0c0c0',
+          outline: 'none',
         },
       }}
       {...props}
@@ -45,7 +51,6 @@ const Header = ({
   headerLink = '/',
   headerColor = 'black',
   fixed = false,
-  headerImage = true,
 }) => (
   <header
     css={css`
@@ -60,91 +65,95 @@ const Header = ({
       top: 0;
     `}
   >
-    <Container noVerticalPadding>
-      <nav
+    <nav
+      css={{
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}
+    >
+      <HeaderLink
+        to={headerLink}
+        aria-label="go to homepage"
+        headerColor={headerColor}
         css={{
-          width: '100%',
+          fontFamily: headerFontFamily,
+          fontWeight: 600,
+          padding: '0 1.5rem',
           display: 'flex',
-          justifyContent: 'space-between',
+          lineHeight: '4rem',
           alignItems: 'center',
+          img: {
+            marginBottom: 0,
+            maxWidth: '50px',
+            position: 'absolute',
+            borderRadius: '100%',
+            background:
+              headerColor === '#fff' ? 'rgba(40, 28, 77, 0.7)' : '#f1f1f1',
+          },
+          ':hover, :focus': {
+            background: 'transparent',
+          },
         }}
       >
-        <HeaderLink
-          to={headerLink}
-          aria-label="go to homepage"
-          headerColor={headerColor}
-          css={{
-            fontFamily: headerFontFamily,
-            fontWeight: 600,
-            display: 'flex',
-            alignItems: 'center',
-            img: {
-              marginBottom: 0,
-              maxWidth: '50px',
-              position: 'absolute',
-              borderRadius: '100%',
-              background:
-                headerColor === '#fff' ? 'rgba(40, 28, 77, 0.7)' : '#f1f1f1',
-            },
-            ':hover, :focus': {
-              background: 'transparent',
-            },
-            span: {
-              transform: headerImage && 'translateX(60px)',
-            },
-          }}
-        >
-          <span>{siteTitle}</span>
-        </HeaderLink>
-        <div
-          css={css`
-            font-size: 16px;
-            line-height: 1.25;
-            display: flex;
-            align-items: center;
-            .mobile-nav {
-              display: none;
-              visibility: hidden;
-              ${bpMaxSM} {
-                display: block;
-                visibility: visible;
-              }
+        {logo}
+        <span>{siteTitle}</span>
+      </HeaderLink>
+      <div
+        css={css`
+          font-size: 16px;
+          line-height: 1.25;
+          display: flex;
+          align-items: center;
+          .mobile-nav {
+            display: none;
+            visibility: hidden;
+            ${bpMaxSM} {
+              display: block;
+              visibility: visible;
             }
-          `}
+          }
+        `}
+      >
+        <MobileNav color={headerColor} />
+        <NavLink
+          headerColor={headerColor}
+          to="/blog/"
+          aria-label="View blog page"
         >
-          <MobileNav color={headerColor} />
-          <NavLink
-            headerColor={headerColor}
-            to="/blog/"
-            aria-label="View blog page"
-          >
-            Blog
-          </NavLink>
-          <NavLink
-            headerColor={headerColor}
-            to="/talks/"
-            aria-label="View talks page"
-          >
-            Talks
-          </NavLink>
-          {/*<NavLink
+          Blog
+        </NavLink>
+        <NavLink
+          headerColor={headerColor}
+          to="/talks/"
+          aria-label="View talks page"
+        >
+          Talks
+        </NavLink>
+        {/*<NavLink
             headerColor={headerColor}
             to="/workshops/"
             aria-label="View workshops page"
           >
             Workshops
           </NavLink>*/}
-          <NavLink
-            headerColor={headerColor}
-            to="/about/"
-            aria-label="View about page"
-          >
-            About
-          </NavLink>
-          <GitHub />
-        </div>
-      </nav>
-    </Container>
+        <NavLink
+          headerColor={headerColor}
+          to="/about/"
+          aria-label="View about page"
+        >
+          About
+        </NavLink>
+        <NavLink
+          headerColor={headerColor}
+          to={config.github}
+          aria-label="View about page"
+        >
+          {GitHubIcon}
+        </NavLink>
+      </div>
+    </nav>
   </header>
 )
 

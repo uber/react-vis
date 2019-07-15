@@ -7,7 +7,7 @@ jest.mock('node-fetch', () =>
     json: () =>
       Promise.resolve({
         html: `
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">example</p>&mdash; React Vis (@react-vis) <a href="https://twitter.com/react-vis/status/1078755736455278592?ref_src=twsrc%5Etfw">December 28, 2018</a></blockquote>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">example</p>&mdash; React Vis (@react-vis) <a href="https://twitter.com/React_Vis/status/1078755736455278592?ref_src=twsrc%5Etfw">December 28, 2018</a></blockquote>
     `.trim(),
       }),
   }),
@@ -37,9 +37,9 @@ cases(
 
 test('calls twitter API for the url', async () => {
   const html = await getTwitterHtml(
-    'https://twitter.com/react-vis/status/1078755736455278592',
+    'https://twitter.com/React_Vis/status/1078755736455278592',
   )
   expect(html).toMatchInlineSnapshot(
-    `"<blockquote class=\\"twitter-tweet\\"><p lang=\\"en\\" dir=\\"ltr\\">example</p>&mdash; React Vis (@react-vis) <a href=\\"https://twitter.com/react-vis/status/1078755736455278592\\">December 28, 2018</a></blockquote>"`,
+    `"<blockquote class=\\"twitter-tweet\\"><p lang=\\"en\\" dir=\\"ltr\\">example</p>&mdash; React Vis (@react-vis) <a href=\\"https://twitter.com/React_Vis/status/1078755736455278592\\">December 28, 2018</a></blockquote>"`,
   )
 })
