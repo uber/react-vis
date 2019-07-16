@@ -643,7 +643,7 @@
 
 "@babel/runtime@^7.4.5":
   version "7.5.4"
-  resolved "https://unpm.uberinternal.com/@babel%2fruntime/-/runtime-7.5.4.tgz#cb7d1ad7c6d65676e66b47186577930465b5271b"
+  resolved "https://registry.yarnpkg.com/@babel%2fruntime/-/runtime-7.5.4.tgz#cb7d1ad7c6d65676e66b47186577930465b5271b"
   dependencies:
     regenerator-runtime "^0.13.2"
 
@@ -825,19 +825,19 @@
 
 "@hapi/address@2.x.x":
   version "2.0.0"
-  resolved "https://unpm.uberinternal.com/@hapi%2faddress/-/address-2.0.0.tgz#9f05469c88cb2fd3dcd624776b54ee95c312126a"
+  resolved "https://registry.yarnpkg.com/@hapi%2faddress/-/address-2.0.0.tgz#9f05469c88cb2fd3dcd624776b54ee95c312126a"
 
 "@hapi/hoek@6.x.x":
   version "6.2.4"
-  resolved "https://unpm.uberinternal.com/@hapi%2fhoek/-/hoek-6.2.4.tgz#4b95fbaccbfba90185690890bdf1a2fbbda10595"
+  resolved "https://registry.yarnpkg.com/@hapi%2fhoek/-/hoek-6.2.4.tgz#4b95fbaccbfba90185690890bdf1a2fbbda10595"
 
 "@hapi/hoek@8.x.x":
   version "8.0.2"
-  resolved "https://unpm.uberinternal.com/@hapi%2fhoek/-/hoek-8.0.2.tgz#f63a5ff00e891a4e7aa98f11119f9515c6672032"
+  resolved "https://registry.yarnpkg.com/@hapi%2fhoek/-/hoek-8.0.2.tgz#f63a5ff00e891a4e7aa98f11119f9515c6672032"
 
 "@hapi/joi@^15.0.0", "@hapi/joi@^15.1.0":
   version "15.1.0"
-  resolved "https://unpm.uberinternal.com/@hapi%2fjoi/-/joi-15.1.0.tgz#940cb749b5c55c26ab3b34ce362e82b6162c8e7a"
+  resolved "https://registry.yarnpkg.com/@hapi%2fjoi/-/joi-15.1.0.tgz#940cb749b5c55c26ab3b34ce362e82b6162c8e7a"
   dependencies:
     "@hapi/address" "2.x.x"
     "@hapi/hoek" "6.x.x"
@@ -846,11 +846,11 @@
 
 "@hapi/marker@1.x.x":
   version "1.0.0"
-  resolved "https://unpm.uberinternal.com/@hapi%2fmarker/-/marker-1.0.0.tgz#65b0b2b01d1be06304886ce9b4b77b1bfb21a769"
+  resolved "https://registry.yarnpkg.com/@hapi%2fmarker/-/marker-1.0.0.tgz#65b0b2b01d1be06304886ce9b4b77b1bfb21a769"
 
 "@hapi/topo@3.x.x":
   version "3.1.2"
-  resolved "https://unpm.uberinternal.com/@hapi%2ftopo/-/topo-3.1.2.tgz#57cc1317be1a8c5f47c124f9b0e3c49cd78424d2"
+  resolved "https://registry.yarnpkg.com/@hapi%2ftopo/-/topo-3.1.2.tgz#57cc1317be1a8c5f47c124f9b0e3c49cd78424d2"
   dependencies:
     "@hapi/hoek" "8.x.x"
 
@@ -1839,7 +1839,7 @@ auto-bind@^2.0.0:
 
 autoprefixer@^9.6.0:
   version "9.6.1"
-  resolved "https://unpm.uberinternal.com/autoprefixer/-/autoprefixer-9.6.1.tgz#51967a02d2d2300bb01866c1611ec8348d355a47"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.6.1.tgz#51967a02d2d2300bb01866c1611ec8348d355a47"
   dependencies:
     browserslist "^4.6.3"
     caniuse-lite "^1.0.30000980"
@@ -1980,7 +1980,7 @@ babel-plugin-macros@^2.0.0, babel-plugin-macros@^2.4.2:
 
 babel-plugin-remove-graphql-queries@^2.7.1:
   version "2.7.1"
-  resolved "https://unpm.uberinternal.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-2.7.1.tgz#868c850004b46beea1b07bd4df98c748e2494ce4"
+  resolved "https://registry.yarnpkg.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-2.7.1.tgz#868c850004b46beea1b07bd4df98c748e2494ce4"
 
 "babel-plugin-styled-components@>= 1":
   version "1.10.0"
@@ -2059,7 +2059,7 @@ babel-preset-gatsby@^0.1.11:
 
 babel-preset-gatsby@^0.2.2:
   version "0.2.2"
-  resolved "https://unpm.uberinternal.com/babel-preset-gatsby/-/babel-preset-gatsby-0.2.2.tgz#cbfc079db8f104770a7293e2e53843c627785cef"
+  resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-0.2.2.tgz#cbfc079db8f104770a7293e2e53843c627785cef"
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.0.0"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
@@ -2400,7 +2400,7 @@ browserslist@^4.0.0, browserslist@^4.6.0:
 
 browserslist@^4.6.3:
   version "4.6.4"
-  resolved "https://unpm.uberinternal.com/browserslist/-/browserslist-4.6.4.tgz#fd0638b3f8867fec2c604ed0ed9300379f8ec7c2"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.6.4.tgz#fd0638b3f8867fec2c604ed0ed9300379f8ec7c2"
   dependencies:
     caniuse-lite "^1.0.30000981"
     electron-to-chromium "^1.3.188"
@@ -2631,7 +2631,7 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30000967:
 
 caniuse-lite@^1.0.30000980, caniuse-lite@^1.0.30000981:
   version "1.0.30000983"
-  resolved "https://unpm.uberinternal.com/caniuse-lite/-/caniuse-lite-1.0.30000983.tgz#ab3c70061ca2a3467182a10ac75109b199b647f8"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000983.tgz#ab3c70061ca2a3467182a10ac75109b199b647f8"
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -3657,53 +3657,53 @@ cypress@^3.3.1:
 
 d3-array@1, d3-array@^1.1.1, d3-array@^1.2.0:
   version "1.2.4"
-  resolved "https://unpm.uberinternal.com/d3-array/-/d3-array-1.2.4.tgz#635ce4d5eea759f6f605863dbcfc30edc737f71f"
+  resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.4.tgz#635ce4d5eea759f6f605863dbcfc30edc737f71f"
 
 d3-collection@1, d3-collection@^1.0.3:
   version "1.0.7"
-  resolved "https://unpm.uberinternal.com/d3-collection/-/d3-collection-1.0.7.tgz#349bd2aa9977db071091c13144d5e4f16b5b310e"
+  resolved "https://registry.yarnpkg.com/d3-collection/-/d3-collection-1.0.7.tgz#349bd2aa9977db071091c13144d5e4f16b5b310e"
 
 d3-color@1, d3-color@^1.0.3:
   version "1.2.8"
-  resolved "https://unpm.uberinternal.com/d3-color/-/d3-color-1.2.8.tgz#4eaf9b60ef188c893fcf8b28f3546aafebfbd9f4"
+  resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-1.2.8.tgz#4eaf9b60ef188c893fcf8b28f3546aafebfbd9f4"
 
 d3-contour@^1.1.0:
   version "1.3.2"
-  resolved "https://unpm.uberinternal.com/d3-contour/-/d3-contour-1.3.2.tgz#652aacd500d2264cb3423cee10db69f6f59bead3"
+  resolved "https://registry.yarnpkg.com/d3-contour/-/d3-contour-1.3.2.tgz#652aacd500d2264cb3423cee10db69f6f59bead3"
   dependencies:
     d3-array "^1.1.1"
 
 d3-format@1, d3-format@^1.2.0:
   version "1.3.2"
-  resolved "https://unpm.uberinternal.com/d3-format/-/d3-format-1.3.2.tgz#6a96b5e31bcb98122a30863f7d92365c00603562"
+  resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.3.2.tgz#6a96b5e31bcb98122a30863f7d92365c00603562"
 
 d3-geo@^1.6.4:
   version "1.11.6"
-  resolved "https://unpm.uberinternal.com/d3-geo/-/d3-geo-1.11.6.tgz#134f2ef035ff75a448075fafdea92702a2e0e0cf"
+  resolved "https://registry.yarnpkg.com/d3-geo/-/d3-geo-1.11.6.tgz#134f2ef035ff75a448075fafdea92702a2e0e0cf"
   dependencies:
     d3-array "1"
 
 d3-hexbin@^0.2.2:
   version "0.2.2"
-  resolved "https://unpm.uberinternal.com/d3-hexbin/-/d3-hexbin-0.2.2.tgz#9c5837dacfd471ab05337a9e91ef10bfc4f98831"
+  resolved "https://registry.yarnpkg.com/d3-hexbin/-/d3-hexbin-0.2.2.tgz#9c5837dacfd471ab05337a9e91ef10bfc4f98831"
 
 d3-hierarchy@^1.1.4:
   version "1.1.8"
-  resolved "https://unpm.uberinternal.com/d3-hierarchy/-/d3-hierarchy-1.1.8.tgz#7a6317bd3ed24e324641b6f1e76e978836b008cc"
+  resolved "https://registry.yarnpkg.com/d3-hierarchy/-/d3-hierarchy-1.1.8.tgz#7a6317bd3ed24e324641b6f1e76e978836b008cc"
 
 d3-interpolate@1, d3-interpolate@^1.1.4:
   version "1.3.2"
-  resolved "https://unpm.uberinternal.com/d3-interpolate/-/d3-interpolate-1.3.2.tgz#417d3ebdeb4bc4efcc8fd4361c55e4040211fd68"
+  resolved "https://registry.yarnpkg.com/d3-interpolate/-/d3-interpolate-1.3.2.tgz#417d3ebdeb4bc4efcc8fd4361c55e4040211fd68"
   dependencies:
     d3-color "1"
 
 d3-path@1:
   version "1.0.7"
-  resolved "https://unpm.uberinternal.com/d3-path/-/d3-path-1.0.7.tgz#8de7cd693a75ac0b5480d3abaccd94793e58aae8"
+  resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-1.0.7.tgz#8de7cd693a75ac0b5480d3abaccd94793e58aae8"
 
 d3-sankey@^0.7.1:
   version "0.7.1"
-  resolved "https://unpm.uberinternal.com/d3-sankey/-/d3-sankey-0.7.1.tgz#d229832268fc69a7fec84803e96c2256a614c521"
+  resolved "https://registry.yarnpkg.com/d3-sankey/-/d3-sankey-0.7.1.tgz#d229832268fc69a7fec84803e96c2256a614c521"
   dependencies:
     d3-array "1"
     d3-collection "1"
@@ -3711,7 +3711,7 @@ d3-sankey@^0.7.1:
 
 d3-scale@^1.0.5:
   version "1.0.7"
-  resolved "https://unpm.uberinternal.com/d3-scale/-/d3-scale-1.0.7.tgz#fa90324b3ea8a776422bd0472afab0b252a0945d"
+  resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-1.0.7.tgz#fa90324b3ea8a776422bd0472afab0b252a0945d"
   dependencies:
     d3-array "^1.2.0"
     d3-collection "1"
@@ -3723,23 +3723,23 @@ d3-scale@^1.0.5:
 
 d3-shape@^1.1.0, d3-shape@^1.2.0:
   version "1.3.5"
-  resolved "https://unpm.uberinternal.com/d3-shape/-/d3-shape-1.3.5.tgz#e81aea5940f59f0a79cfccac012232a8987c6033"
+  resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.3.5.tgz#e81aea5940f59f0a79cfccac012232a8987c6033"
   dependencies:
     d3-path "1"
 
 d3-time-format@2:
   version "2.1.3"
-  resolved "https://unpm.uberinternal.com/d3-time-format/-/d3-time-format-2.1.3.tgz#ae06f8e0126a9d60d6364eac5b1533ae1bac826b"
+  resolved "https://registry.yarnpkg.com/d3-time-format/-/d3-time-format-2.1.3.tgz#ae06f8e0126a9d60d6364eac5b1533ae1bac826b"
   dependencies:
     d3-time "1"
 
 d3-time@1:
   version "1.0.11"
-  resolved "https://unpm.uberinternal.com/d3-time/-/d3-time-1.0.11.tgz#1d831a3e25cd189eb256c17770a666368762bbce"
+  resolved "https://registry.yarnpkg.com/d3-time/-/d3-time-1.0.11.tgz#1d831a3e25cd189eb256c17770a666368762bbce"
 
 d3-voronoi@^1.1.2:
   version "1.1.4"
-  resolved "https://unpm.uberinternal.com/d3-voronoi/-/d3-voronoi-1.1.4.tgz#dd3c78d7653d2bb359284ae478645d95944c8297"
+  resolved "https://registry.yarnpkg.com/d3-voronoi/-/d3-voronoi-1.1.4.tgz#dd3c78d7653d2bb359284ae478645d95944c8297"
 
 damerau-levenshtein@^1.0.4:
   version "1.0.5"
@@ -4270,7 +4270,7 @@ electron-to-chromium@^1.3.133, electron-to-chromium@^1.3.47:
 
 electron-to-chromium@^1.3.188:
   version "1.3.190"
-  resolved "https://unpm.uberinternal.com/electron-to-chromium/-/electron-to-chromium-1.3.190.tgz#5bf599519983bfffd9d4387817039a3ed7ca085f"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.190.tgz#5bf599519983bfffd9d4387817039a3ed7ca085f"
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -5442,7 +5442,7 @@ g-status@^2.0.2:
 
 gatsby-cli@^2.7.10:
   version "2.7.10"
-  resolved "https://unpm.uberinternal.com/gatsby-cli/-/gatsby-cli-2.7.10.tgz#2001d9c305d101dc101d991274d93b7a569b1a71"
+  resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.7.10.tgz#2001d9c305d101dc101d991274d93b7a569b1a71"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/runtime" "^7.0.0"
@@ -5487,7 +5487,7 @@ gatsby-cli@^2.7.10:
 
 gatsby-graphiql-explorer@^0.2.2:
   version "0.2.2"
-  resolved "https://unpm.uberinternal.com/gatsby-graphiql-explorer/-/gatsby-graphiql-explorer-0.2.2.tgz#52483064f4c970f0a626a8cf6c49247918f7aa65"
+  resolved "https://registry.yarnpkg.com/gatsby-graphiql-explorer/-/gatsby-graphiql-explorer-0.2.2.tgz#52483064f4c970f0a626a8cf6c49247918f7aa65"
   dependencies:
     "@babel/runtime" "^7.0.0"
 
@@ -5509,7 +5509,7 @@ gatsby-link@^2.1.1:
 
 gatsby-link@^2.2.1:
   version "2.2.1"
-  resolved "https://unpm.uberinternal.com/gatsby-link/-/gatsby-link-2.2.1.tgz#f68c5b3c66bd17bb3b2d054f195315fe181e9157"
+  resolved "https://registry.yarnpkg.com/gatsby-link/-/gatsby-link-2.2.1.tgz#f68c5b3c66bd17bb3b2d054f195315fe181e9157"
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@types/reach__router" "^1.0.0"
@@ -5547,7 +5547,7 @@ gatsby-mdx@^0.6.3:
 
 gatsby-page-utils@^0.0.3:
   version "0.0.3"
-  resolved "https://unpm.uberinternal.com/gatsby-page-utils/-/gatsby-page-utils-0.0.3.tgz#d08168343f9011136818d0e82a944d89508be243"
+  resolved "https://registry.yarnpkg.com/gatsby-page-utils/-/gatsby-page-utils-0.0.3.tgz#d08168343f9011136818d0e82a944d89508be243"
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
@@ -5613,7 +5613,7 @@ gatsby-plugin-offline@^2.1.1:
 
 gatsby-plugin-page-creator@^2.1.3:
   version "2.1.3"
-  resolved "https://unpm.uberinternal.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-2.1.3.tgz#ab8eef22c17443b75c5401e2f13fe82971b40a39"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-2.1.3.tgz#ab8eef22c17443b75c5401e2f13fe82971b40a39"
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
@@ -5664,7 +5664,7 @@ gatsby-plugin-typography@^2.2.13:
 
 gatsby-react-router-scroll@^2.1.2:
   version "2.1.2"
-  resolved "https://unpm.uberinternal.com/gatsby-react-router-scroll/-/gatsby-react-router-scroll-2.1.2.tgz#6cfed27e6bbf27de9b34be1402fa0c730cc8159b"
+  resolved "https://registry.yarnpkg.com/gatsby-react-router-scroll/-/gatsby-react-router-scroll-2.1.2.tgz#6cfed27e6bbf27de9b34be1402fa0c730cc8159b"
   dependencies:
     "@babel/runtime" "^7.0.0"
     scroll-behavior "^0.9.9"
@@ -5728,7 +5728,7 @@ gatsby-source-filesystem@^2.0.37:
 
 gatsby-telemetry@^1.1.4:
   version "1.1.4"
-  resolved "https://unpm.uberinternal.com/gatsby-telemetry/-/gatsby-telemetry-1.1.4.tgz#406b41b2cd7330cdc2e3456329cd0e2ed8922c8f"
+  resolved "https://registry.yarnpkg.com/gatsby-telemetry/-/gatsby-telemetry-1.1.4.tgz#406b41b2cd7330cdc2e3456329cd0e2ed8922c8f"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/runtime" "^7.0.0"
@@ -5787,7 +5787,7 @@ gatsby-transformer-sharp@^2.1.19:
 
 gatsby@^2.13.15:
   version "2.13.15"
-  resolved "https://unpm.uberinternal.com/gatsby/-/gatsby-2.13.15.tgz#c85a803d8e170abd9c1d7e26e587b67190aeb64f"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.13.15.tgz#c85a803d8e170abd9c1d7e26e587b67190aeb64f"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -5993,7 +5993,7 @@ getpass@^0.1.1:
 
 git-up@4.0.1:
   version "4.0.1"
-  resolved "https://unpm.uberinternal.com/git-up/-/git-up-4.0.1.tgz#cb2ef086653640e721d2042fe3104857d89007c0"
+  resolved "https://registry.yarnpkg.com/git-up/-/git-up-4.0.1.tgz#cb2ef086653640e721d2042fe3104857d89007c0"
   dependencies:
     is-ssh "^1.3.0"
     parse-url "^5.0.0"
@@ -6074,7 +6074,7 @@ global@^4.3.0, global@~4.3.0:
 
 global@^4.3.1:
   version "4.4.0"
-  resolved "https://unpm.uberinternal.com/global/-/global-4.4.0.tgz#3e7b105179006a323ed71aafca3e9c57a5cc6406"
+  resolved "https://registry.yarnpkg.com/global/-/global-4.4.0.tgz#3e7b105179006a323ed71aafca3e9c57a5cc6406"
   dependencies:
     min-document "^2.19.0"
     process "^0.11.10"
@@ -7388,7 +7388,7 @@ is-root@1.0.0:
 
 is-ssh@^1.3.0:
   version "1.3.1"
-  resolved "https://unpm.uberinternal.com/is-ssh/-/is-ssh-1.3.1.tgz#f349a8cadd24e65298037a522cf7520f2e81a0f3"
+  resolved "https://registry.yarnpkg.com/is-ssh/-/is-ssh-1.3.1.tgz#f349a8cadd24e65298037a522cf7520f2e81a0f3"
   dependencies:
     protocols "^1.1.0"
 
@@ -9226,7 +9226,7 @@ node-fetch@^1.0.1:
 
 node-fetch@^2.6.0:
   version "2.6.0"
-  resolved "https://unpm.uberinternal.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
 
 node-forge@0.7.5:
   version "0.7.5"
@@ -9301,7 +9301,7 @@ node-releases@^1.1.19:
 
 node-releases@^1.1.25:
   version "1.1.25"
-  resolved "https://unpm.uberinternal.com/node-releases/-/node-releases-1.1.25.tgz#0c2d7dbc7fed30fbe02a9ee3007b8c90bf0133d3"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.25.tgz#0c2d7dbc7fed30fbe02a9ee3007b8c90bf0133d3"
   dependencies:
     semver "^5.3.0"
 
@@ -9899,7 +9899,7 @@ parse-passwd@^1.0.0:
 
 parse-path@^4.0.0:
   version "4.0.1"
-  resolved "https://unpm.uberinternal.com/parse-path/-/parse-path-4.0.1.tgz#0ec769704949778cb3b8eda5e994c32073a1adff"
+  resolved "https://registry.yarnpkg.com/parse-path/-/parse-path-4.0.1.tgz#0ec769704949778cb3b8eda5e994c32073a1adff"
   dependencies:
     is-ssh "^1.3.0"
     protocols "^1.4.0"
@@ -9910,7 +9910,7 @@ parse-unit@^1.0.1:
 
 parse-url@^5.0.0:
   version "5.0.1"
-  resolved "https://unpm.uberinternal.com/parse-url/-/parse-url-5.0.1.tgz#99c4084fc11be14141efa41b3d117a96fcb9527f"
+  resolved "https://registry.yarnpkg.com/parse-url/-/parse-url-5.0.1.tgz#99c4084fc11be14141efa41b3d117a96fcb9527f"
   dependencies:
     is-ssh "^1.3.0"
     normalize-url "^3.3.0"
@@ -10044,7 +10044,7 @@ pend@~1.2.0:
 
 performance-now@^0.2.0:
   version "0.2.0"
-  resolved "https://unpm.uberinternal.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
+  resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
 
 performance-now@^2.1.0:
   version "2.1.0"
@@ -10459,7 +10459,7 @@ postcss-value-parser@^3.0.0, postcss-value-parser@^3.3.0, postcss-value-parser@^
 
 postcss-value-parser@^4.0.0:
   version "4.0.0"
-  resolved "https://unpm.uberinternal.com/postcss-value-parser/-/postcss-value-parser-4.0.0.tgz#99a983d365f7b2ad8d0f9b8c3094926eab4b936d"
+  resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.0.0.tgz#99a983d365f7b2ad8d0f9b8c3094926eab4b936d"
 
 postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.23:
   version "6.0.23"
@@ -10479,7 +10479,7 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.5:
 
 postcss@^7.0.17:
   version "7.0.17"
-  resolved "https://unpm.uberinternal.com/postcss/-/postcss-7.0.17.tgz#4da1bdff5322d4a0acaab4d87f3e782436bad31f"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.17.tgz#4da1bdff5322d4a0acaab4d87f3e782436bad31f"
   dependencies:
     chalk "^2.4.2"
     source-map "^0.6.1"
@@ -10648,7 +10648,7 @@ proto-list@~1.2.1:
 
 protocols@^1.1.0, protocols@^1.4.0:
   version "1.4.7"
-  resolved "https://unpm.uberinternal.com/protocols/-/protocols-1.4.7.tgz#95f788a4f0e979b291ffefcf5636ad113d037d32"
+  resolved "https://registry.yarnpkg.com/protocols/-/protocols-1.4.7.tgz#95f788a4f0e979b291ffefcf5636ad113d037d32"
 
 proxy-addr@~2.0.5:
   version "2.0.5"
@@ -10769,7 +10769,7 @@ querystringify@^2.1.1:
 
 raf@^3.1.0:
   version "3.4.1"
-  resolved "https://unpm.uberinternal.com/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
+  resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
   dependencies:
     performance-now "^2.1.0"
 
@@ -10835,7 +10835,7 @@ react-countdown-now@^2.1.0:
 
 react-dev-utils@^4.2.3:
   version "4.2.3"
-  resolved "https://unpm.uberinternal.com/react-dev-utils/-/react-dev-utils-4.2.3.tgz#5b42d9ea58d5e9e017a2f57a40a8af408a3a46fb"
+  resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-4.2.3.tgz#5b42d9ea58d5e9e017a2f57a40a8af408a3a46fb"
   dependencies:
     address "1.0.3"
     babel-code-frame "6.26.0"
@@ -10890,7 +10890,7 @@ react-helmet@~5.2.1:
 
 react-hot-loader@^4.12.5:
   version "4.12.6"
-  resolved "https://unpm.uberinternal.com/react-hot-loader/-/react-hot-loader-4.12.6.tgz#bd7a41501b02576638031482474a72bac453587d"
+  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.12.6.tgz#bd7a41501b02576638031482474a72bac453587d"
   dependencies:
     fast-levenshtein "^2.0.6"
     global "^4.3.0"
@@ -10936,7 +10936,7 @@ react-markdown@^4.0.8:
 
 react-motion@^0.5.2:
   version "0.5.2"
-  resolved "https://unpm.uberinternal.com/react-motion/-/react-motion-0.5.2.tgz#0dd3a69e411316567927917c6626551ba0607316"
+  resolved "https://registry.yarnpkg.com/react-motion/-/react-motion-0.5.2.tgz#0dd3a69e411316567927917c6626551ba0607316"
   dependencies:
     performance-now "^0.2.0"
     prop-types "^15.5.8"
@@ -10992,7 +10992,7 @@ react-typography@^0.16.19:
 
 react-vis@^1.11.7:
   version "1.11.7"
-  resolved "https://unpm.uberinternal.com/react-vis/-/react-vis-1.11.7.tgz#909902af00158895d14da1adfe1d0dc0045228ff"
+  resolved "https://registry.yarnpkg.com/react-vis/-/react-vis-1.11.7.tgz#909902af00158895d14da1adfe1d0dc0045228ff"
   dependencies:
     d3-array "^1.2.0"
     d3-collection "^1.0.3"
@@ -11806,7 +11806,7 @@ semver@^6.0.0:
 
 semver@^6.1.1:
   version "6.2.0"
-  resolved "https://unpm.uberinternal.com/semver/-/semver-6.2.0.tgz#4d813d9590aaf8a9192693d6c85b9344de5901db"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-6.2.0.tgz#4d813d9590aaf8a9192693d6c85b9344de5901db"
 
 send@0.17.1:
   version "0.17.1"
