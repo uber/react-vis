@@ -1,19 +1,17 @@
 import React from 'react'
 import {graphql} from 'gatsby'
-import Img from 'gatsby-image'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import SEO from 'components/seo'
 import {css} from '@emotion/core'
 import Container from 'components/container'
 import Layout from 'components/layout'
 import Share from 'components/share'
-import SubscribeForm, {TinyLetterSubscribe} from 'components/forms/subscribe'
+import SubscribeForm from 'components/forms/subscribe'
 import BlogPostFooter from 'components/blog-post-footer'
 import TestingCta from 'components/testing-cta'
 import Markdown from 'react-markdown'
 import {headerFontFamily} from '../lib/typography'
 import config from '../../config/website'
-import {bpMaxSM} from '../lib/breakpoints'
 import get from 'lodash/get'
 
 export default function PostPage(props) {
@@ -21,18 +19,7 @@ export default function PostPage(props) {
 }
 
 function Post({data: {site, mdx}}) {
-  const {
-    isWriting,
-    editLink,
-    title,
-    slug,
-    date,
-    description,
-    banner,
-    bannerCredit,
-    noFooter,
-    keywords,
-  } = mdx.fields
+  const {editLink, title, slug, date, description, keywords} = mdx.fields
 
   const blogPostUrl = `${config.siteUrl}${slug}`
 
@@ -40,9 +27,8 @@ function Post({data: {site, mdx}}) {
     <Layout
       site={site}
       frontmatter={mdx.fields}
-      headerLink={isWriting ? '/writing/blog' : '/blog'}
-      noFooter={noFooter}
-      subscribeForm={isWriting ? <TinyLetterSubscribe /> : <SubscribeForm />}
+      headerLink={'/blog'}
+      subscribeForm={<SubscribeForm />}
     >
       <SEO
         frontmatter={mdx.fields}
@@ -94,26 +80,6 @@ function Post({data: {site, mdx}}) {
           >
             {date && <h3>{date}</h3>}
           </div>
-          {banner && (
-            <div
-              css={css`
-                text-align: center;
-
-                p {
-                  margin-bottom: 0;
-                }
-                ${bpMaxSM} {
-                  padding: 0;
-                }
-              `}
-            >
-              <Img
-                fluid={banner.childImageSharp.fluid}
-                alt={site.siteMetadata.keywords.join(', ')}
-              />
-              {bannerCredit ? <Markdown>{bannerCredit}</Markdown> : null}
-            </div>
-          )}
           <br />
           {description ? <Markdown>{description}</Markdown> : null}
           <MDXRenderer>{mdx.code.body}</MDXRenderer>
@@ -166,17 +132,11 @@ export const pageQuery = graphql`
     mdx(fields: {id: {eq: $id}}) {
       fields {
         editLink
-        isWriting
         title
-        noFooter
         description
         plainTextDescription
         date(formatString: "MMMM DD, YYYY")
         author
-        banner {
-          ...bannerImage720
-        }
-        bannerCredit
         slug
         keywords
       }

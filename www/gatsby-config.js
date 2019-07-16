@@ -55,13 +55,6 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/content/writing-blog`,
-        name: 'writing-blog',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
         path: `${__dirname}/src`,
         name: 'src',
       },
@@ -115,12 +108,6 @@ module.exports = {
             output: '/blog/rss.xml',
             title: 'React Vis Blog RSS Feed',
           }),
-          getBlogFeed({
-            filePathRegex: `//content/writing-blog//`,
-            blogUrl: 'https://react-vis.com/writing/blog',
-            output: '/writing/blog/rss.xml',
-            title: `Kent's Writing Blog RSS Feed`,
-          }),
         ],
       },
     },
@@ -153,38 +140,6 @@ function getBlogFeed({filePathRegex, blogUrl, ...overrides}) {
       return allMdx.edges.map(edge => {
         const siteUrl = site.siteMetadata.siteUrl
         const url = `${siteUrl}/${stripSlash(edge.node.fields.slug)}`
-        // TODO: clean this up... This shouldn't be here and it should be dynamic.
-        const footer = `
-          <div style="width: 100%; margin: 0 auto; padding: 40px 40px;">
-            <div style="display: flex;">
-              <div style="padding-right: 20px;">
-                <img
-                  src="https://react-vis.com/images/small-circular-kent.png"
-                  alt="React Vis"
-                  style="max-width: 80px; border-radius: 50%;"
-                />
-              </div>
-              <p>
-                <strong>React Vis</strong> is a JavaScript software engineer and
-                teacher. He's taught hundreds of thousands of people how to make the world
-                a better place with quality software development tools and practices. He
-                lives with his wife and four kids in Utah.
-              </p>
-            </div>
-            <div>
-              <p>Learn more with React Vis:</p>
-              <ul>
-                <li>
-                  <a href="https://testingjavascript.com">TestingJavaScript.com</a>: Jump on
-                  this self-paced workshop and learn the smart, efficient way to test any
-                  JavaScript application. 🏆
-                </li>
-              </ul>
-            </div>
-          </div>
-        `
-
-        const postText = `<div>${footer}</div><div style="margin-top=55px; font-style: italic;">(This article was posted to my blog at <a href="${blogUrl}">${blogUrl}</a>. You can <a href="${url}">read it online by clicking here</a>.)</div>`
 
         // Hacky workaround for https://github.com/gaearon/overreacted.io/issues/65
         const html = (edge.node.html || ``)
@@ -203,7 +158,6 @@ function getBlogFeed({filePathRegex, blogUrl, ...overrides}) {
             {
               'content:encoded': `<div style="width: 100%; margin: 0 auto; padding: 40px 40px;">
                 ${html}
-                ${postText}
               </div>`,
             },
           ],

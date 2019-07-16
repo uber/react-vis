@@ -48,9 +48,6 @@ function SearchScreen() {
                 categories
                 keywords
                 description: plainTextDescription
-                banner {
-                  ...bannerImage260
-                }
               }
               excerpt(pruneLength: 190)
             }

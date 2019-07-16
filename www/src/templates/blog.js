@@ -24,7 +24,6 @@ export default function CodingBlogWithData(props) {
                 id
                 fields {
                   title
-                  isWriting
                   slug
                   date
                 }
@@ -36,9 +35,6 @@ export default function CodingBlogWithData(props) {
                 frontmatter {
                   title
                   date(formatString: "MMMM DD, YYYY")
-                  banner {
-                    ...bannerImage640
-                  }
                   slug
                   keywords
                 }

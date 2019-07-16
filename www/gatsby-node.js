@@ -88,19 +88,6 @@ exports.createPages = async ({actions, graphql}) => {
           }
         }
       }
-      writing: allMdx(
-        filter: {
-          frontmatter: {published: {ne: false}}
-          fileAbsolutePath: {regex: "//content/writing-blog//"}
-        }
-        sort: {order: DESC, fields: [frontmatter___date]}
-      ) {
-        edges {
-          node {
-            ...PostDetails
-          }
-        }
-      }
     }
   `)
 
@@ -108,18 +95,12 @@ exports.createPages = async ({actions, graphql}) => {
     return Promise.reject(errors)
   }
 
-  const {blog, writing} = data
+  const {blog} = data
 
   createBlogPages({
     blogPath: '/blog',
     data: blog,
     paginationTemplate: path.resolve(`src/templates/blog.js`),
-    actions,
-  })
-  createBlogPages({
-    blogPath: '/writing/blog',
-    data: writing,
-    paginationTemplate: path.resolve(`src/templates/writing-blog.js`),
     actions,
   })
 }
@@ -182,16 +163,11 @@ exports.onCreateNode = ({node, getNode, actions}) => {
     let slug =
       node.frontmatter.slug ||
       createFilePath({node, getNode, basePath: `pages`})
-    let {isWriting, isScheduled} = false
 
     if (node.fileAbsolutePath.includes('content/blog/')) {
       slug = `/blog/${node.frontmatter.slug || slugify(parent.name)}`
     }
 
-    if (node.fileAbsolutePath.includes('content/writing-blog/')) {
-      isWriting = true
-      slug = `/writing/blog/${node.frontmatter.slug || slugify(parent.name)}`
-    }
     createNodeField({
       name: 'id',
       node,
@@ -271,24 +247,6 @@ exports.onCreateNode = ({node, getNode, actions}) => {
         __dirname,
         '',
       )}`,
-    })
-
-    createNodeField({
-      name: 'noFooter',
-      node,
-      value: isWriting ? false : node.frontmatter.noFooter || false,
-    })
-
-    createNodeField({
-      name: 'isWriting',
-      node,
-      value: isWriting,
-    })
-
-    createNodeField({
-      name: 'isScheduled',
-      node,
-      value: isScheduled,
     })
   }
 }
