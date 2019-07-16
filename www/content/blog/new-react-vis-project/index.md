@@ -1,6 +1,6 @@
 ---
 slug: 'new-react-vis-project'
-title: 'AHA Testing 💡'
+title: 'New React Vis Project'
 date: '2019-04-07'
 author: 'React Vis'
 published: true

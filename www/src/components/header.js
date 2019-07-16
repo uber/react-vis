@@ -141,13 +141,6 @@ const Header = ({
           >
             Talks
           </NavLink>
-          {/*<NavLink
-            headerColor={headerColor}
-            to="/workshops/"
-            aria-label="View workshops page"
-          >
-            Workshops
-          </NavLink>*/}
           <NavLink
             headerColor={headerColor}
             to="/about/"

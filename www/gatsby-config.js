@@ -62,13 +62,6 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/content/workshops`,
-        name: 'workshops',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
         path: `${__dirname}/src`,
         name: 'src',
       },
@@ -181,11 +174,6 @@ function getBlogFeed({filePathRegex, blogUrl, ...overrides}) {
             <div>
               <p>Learn more with React Vis:</p>
               <ul>
-                <li>
-                  <a href="https://react-vis.com/workshops">Live, professional workshops</a>:
-                  Join React Vis from the comfort of your home for live remote workshops.
-                  Tickets are limited! 🎟
-                </li>
                 <li>
                   <a href="https://testingjavascript.com">TestingJavaScript.com</a>: Jump on
                   this self-paced workshop and learn the smart, efficient way to test any

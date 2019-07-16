@@ -2,7 +2,6 @@ import React from 'react'
 import {graphql} from 'gatsby'
 import Img from 'gatsby-image'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
-import isEmpty from 'lodash/isEmpty'
 import SEO from 'components/seo'
 import {css} from '@emotion/core'
 import Container from 'components/container'
@@ -11,27 +10,14 @@ import Share from 'components/share'
 import SubscribeForm, {TinyLetterSubscribe} from 'components/forms/subscribe'
 import BlogPostFooter from 'components/blog-post-footer'
 import TestingCta from 'components/testing-cta'
-import {
-  WorkshopEventsProvider,
-  useWorkshopEvents,
-} from 'components/workshops/context'
 import Markdown from 'react-markdown'
 import {headerFontFamily} from '../lib/typography'
 import config from '../../config/website'
 import {bpMaxSM} from '../lib/breakpoints'
 import get from 'lodash/get'
-import intersection from 'lodash/intersection'
-import flatMap from 'lodash/flatMap'
-import first from 'lodash/first'
-import UpcomingWorkshops from 'components/workshops/upcoming-workshops'
-import titleCase from 'ap-style-title-case'
 
 export default function PostPage(props) {
-  return (
-    <WorkshopEventsProvider>
-      <Post {...props} />
-    </WorkshopEventsProvider>
-  )
+  return <Post {...props} />
 }
 
 function Post({data: {site, mdx}}) {
@@ -47,14 +33,6 @@ function Post({data: {site, mdx}}) {
     noFooter,
     keywords,
   } = mdx.fields
-
-  const {eventsByKeywords, isLoading: isLoadingEvents} = useWorkshopEvents({
-    keywords,
-  })
-
-  const commonKeyword = first(
-    intersection(flatMap(eventsByKeywords, event => event.keywords), keywords),
-  )
 
   const blogPostUrl = `${config.siteUrl}${slug}`
 
@@ -168,28 +146,6 @@ function Post({data: {site, mdx}}) {
           twitterHandle={config.twitterHandle}
         />
       </Container>
-      {isLoadingEvents ? (
-        <div css={{textAlign: 'center'}}>
-          loading relevant upcoming workshops...
-        </div>
-      ) : isEmpty(eventsByKeywords) ? null : (
-        <div
-          css={css`
-            margin-top: 55px;
-            display: flex;
-            justify-content: center;
-          `}
-        >
-          <UpcomingWorkshops
-            headline={
-              commonKeyword
-                ? titleCase(`Upcoming ${commonKeyword} Workshops`)
-                : 'Upcoming Workshops'
-            }
-            events={eventsByKeywords}
-          />
-        </div>
-      )}
       {keywords.map(keyword => keyword.toLowerCase()).includes('testing') && (
         <TestingCta />
       )}

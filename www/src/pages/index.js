@@ -12,7 +12,6 @@ import theme from '../../config/theme'
 // import {bpMaxMD, bpMaxSM} from '../lib/breakpoints'
 // import {rhythm, headerFontFamily} from '../lib/typography'
 
-// import workshopsImg from '../images/workshops.svg'
 // import talksImg from '../images/talks.svg'
 // import minutesImg from '../images/3-minutes.svg'
 // import devtipsImg from '../images/devtips.svg'
@@ -198,12 +197,6 @@ export default function Index() {
             }
           `}
         >
-          <Card
-            backgroundColor={theme.colors.purple}
-            title="Workshops"
-            image={workshopsImg}
-            link="/workshops"
-          />
           <Card
             title="Talks"
             backgroundColor={theme.colors.blue}
