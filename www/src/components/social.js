@@ -30,10 +30,7 @@ export const Twitter = ({url = `${config.twitter}`}) => (
   </Link>
 )
 
-export const LinkedIn = ({
-  color = `rgba(255,255,255,0.7)`,
-  url = `${config.linkedin}`,
-}) => (
+export const LinkedIn = ({url = `${config.linkedin}`}) => (
   <Link
     to={url}
     css={css`
@@ -60,12 +57,7 @@ export const LinkedIn = ({
 )
 
 export const GitHubIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="23"
-    height="23"
-    viewBox="0 0 23 23"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 23 23">
     <path
       fill="currentColor"
       fillRule="evenodd"
@@ -74,10 +66,7 @@ export const GitHubIcon = (
   </svg>
 )
 
-export const GitHub = ({
-  color = `rgba(255,255,255,0.7)`,
-  url = `${config.github}`,
-}) => (
+export const GitHub = ({url = `${config.github}`}) => (
   <Link
     to={url}
     css={css`
@@ -93,10 +82,7 @@ export const GitHub = ({
   </Link>
 )
 
-export const YouTube = ({
-  color = `rgba(255,255,255,0.7)`,
-  url = `${config.youtube}`,
-}) => (
+export const YouTube = ({url = `${config.youtube}`}) => (
   <Link
     to={url}
     css={css`

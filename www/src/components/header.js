@@ -42,6 +42,11 @@ const NavLink = styled(HeaderLink)({
   '&.active': {
     background: '#c0c0c0',
   },
+  svg: {
+    height: '1.25em',
+    marginLeft: '0.5em',
+    marginTop: '-2px',
+  },
 })
 
 const Header = ({
@@ -51,110 +56,142 @@ const Header = ({
   headerLink = '/',
   headerColor = 'black',
   fixed = false,
-}) => (
-  <header
-    css={css`
-      width: 100%;
-      border-bottom: 1px solid #f2f2f2;
-      flex-shrink: 0;
-      background: none;
-      font-family: ${bodyFontFamily};
-      background: ${dark ? '#090909' : `${bgColor}` || 'none'};
-      z-index: 10;
-      position: ${fixed ? 'fixed' : 'absolute'};
-      top: 0;
-    `}
-  >
-    <nav
-      css={{
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      }}
+}) => {
+  const [numStars, setStars] = React.useState(null)
+
+  if (!numStars) {
+    fetch(`https://api.github.com/repos/uber/react-vis`)
+      .then(res => res.json())
+      .then(json => setStars(json.stargazers_count))
+  }
+
+  return (
+    <header
+      css={css`
+        width: 100%;
+        line-height: 4rem;
+        border-bottom: 1px solid #f2f2f2;
+        flex-shrink: 0;
+        background: none;
+        font-family: ${bodyFontFamily};
+        background: ${dark ? '#090909' : `${bgColor}` || 'none'};
+        z-index: 10;
+        position: ${fixed ? 'fixed' : 'absolute'};
+        top: 0;
+      `}
     >
-      <HeaderLink
-        to={headerLink}
-        aria-label="go to homepage"
-        headerColor={headerColor}
+      <nav
         css={{
-          fontFamily: headerFontFamily,
-          fontWeight: 600,
-          padding: '0 1.5rem',
+          width: '100%',
           display: 'flex',
-          lineHeight: '4rem',
+          justifyContent: 'space-between',
           alignItems: 'center',
-          img: {
-            marginBottom: 0,
-            maxWidth: '50px',
-            position: 'absolute',
-            borderRadius: '100%',
-            background:
-              headerColor === '#fff' ? 'rgba(40, 28, 77, 0.7)' : '#f1f1f1',
-          },
-          ':hover, :focus': {
-            background: 'transparent',
-          },
         }}
       >
-        {logo}
-        <span>{siteTitle}</span>
-      </HeaderLink>
-      <div
-        css={css`
-          font-size: 16px;
-          line-height: 1.25;
-          display: flex;
-          align-items: center;
-          .mobile-nav {
-            display: none;
-            visibility: hidden;
-            ${bpMaxSM} {
-              display: block;
-              visibility: visible;
+        <HeaderLink
+          to={headerLink}
+          aria-label="go to homepage"
+          headerColor={headerColor}
+          css={{
+            fontFamily: headerFontFamily,
+            fontWeight: 600,
+            padding: '0 1.5rem',
+            display: 'flex',
+            lineHeight: '4rem',
+            alignItems: 'center',
+            svg: {
+              height: '2em',
+              marginRight: '0.75em',
+            },
+            ':hover, :focus': {
+              background: 'transparent',
+            },
+          }}
+        >
+          {logo}
+          <span>{siteTitle}</span>
+        </HeaderLink>
+        <div
+          css={css`
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            .mobile-nav {
+              display: none;
+              visibility: hidden;
+              ${bpMaxSM} {
+                display: block;
+                visibility: visible;
+              }
             }
-          }
-        `}
-      >
-        <MobileNav color={headerColor} />
-        <NavLink
-          headerColor={headerColor}
-          to="/blog/"
-          aria-label="View blog page"
+          `}
         >
-          Blog
-        </NavLink>
-        <NavLink
-          headerColor={headerColor}
-          to="/talks/"
-          aria-label="View talks page"
-        >
-          Talks
-        </NavLink>
-        {/*<NavLink
+          <MobileNav color={headerColor} />
+          <NavLink
+            headerColor={headerColor}
+            to="/blog/"
+            aria-label="View blog page"
+          >
+            Blog
+          </NavLink>
+          <NavLink
+            headerColor={headerColor}
+            to="/talks/"
+            aria-label="View talks page"
+          >
+            Talks
+          </NavLink>
+          {/*<NavLink
             headerColor={headerColor}
             to="/workshops/"
             aria-label="View workshops page"
           >
             Workshops
           </NavLink>*/}
-        <NavLink
-          headerColor={headerColor}
-          to="/about/"
-          aria-label="View about page"
-        >
-          About
-        </NavLink>
-        <NavLink
-          headerColor={headerColor}
-          to={config.github}
-          aria-label="View about page"
-        >
-          {GitHubIcon}
-        </NavLink>
-      </div>
-    </nav>
-  </header>
-)
+          <NavLink
+            headerColor={headerColor}
+            to="/about/"
+            aria-label="View about page"
+          >
+            About
+          </NavLink>
+          <NavLink
+            headerColor={headerColor}
+            to={config.github}
+            aria-label="View about page"
+          >
+            GitHub
+            {GitHubIcon}
+          </NavLink>
+          {numStars ? (
+            <div
+              css={css`
+                padding: 0 1.5rem;
+                display: flex;
+                align-items: center;
+                svg {
+                  margin-left: 0.5rem;
+                }
+              `}
+            >
+              {numStars}
+              <svg
+                fill="currentColor"
+                preserveAspectRatio="xMidYMid meet"
+                height="1em"
+                width="1em"
+                viewBox="0 0 40 40"
+              >
+                <g>
+                  <path d="m37.5 15l-12.2-1.6-5.3-10.9-5.3 10.9-12.2 1.6 9 8.2-2.3 11.8 10.8-5.8 10.8 5.8-2.3-11.8 9-8.2z" />
+                </g>
+              </svg>
+            </div>
+          ) : null}
+        </div>
+      </nav>
+    </header>
+  )
+}
 
 export default Header

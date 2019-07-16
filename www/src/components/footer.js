@@ -15,6 +15,7 @@ const Footer = () => (
     css={css`
       border-top: 1px solid #f2f2f2;
       color: black;
+      padding: 0 1.5em;
       line-height: 6rem;
     `}
   >
