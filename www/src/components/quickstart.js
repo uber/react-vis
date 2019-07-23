@@ -9,7 +9,7 @@ import {bpMaxSM} from '../lib/breakpoints'
 import theme from '../../config/theme'
 
 function Blog({data: {allMdx}, pageContext: {pagination}, subscribeForm}) {
-  const {page, nextPagePath, previousPagePath} = pagination
+  const {page} = pagination
 
   const posts = page
     .map(id =>
@@ -41,15 +41,6 @@ function Blog({data: {allMdx}, pageContext: {pagination}, subscribeForm}) {
           }
         `}
       >
-        <div
-          css={{
-            marginTop: 20,
-            fontStyle: 'italic',
-          }}
-        >
-          {`Looking for something specific? `}
-          <Link to="/search">Search for a blogpost here.</Link>
-        </div>
         {posts.map(({node: post}) => (
           <div
             key={post.id}
@@ -110,37 +101,13 @@ function Blog({data: {allMdx}, pageContext: {pagination}, subscribeForm}) {
             <p
               css={css`
                 margin-top: 10px;
-                overflow-x: scroll;
               `}
             >
               {post.excerpt}
             </p>
-            <Link
-              to={post.fields.slug}
-              aria-label={`view "${post.frontmatter.title}" article`}
-            >
-              Read →
-            </Link>
           </div>
         ))}
         <br />
-        <br />
-        <div css={{display: 'flex', justifyContent: 'space-around'}}>
-          {previousPagePath ? (
-            <Link to={previousPagePath} aria-label="View previous page">
-              ← Previous Page
-            </Link>
-          ) : (
-            <div />
-          )}
-          {nextPagePath ? (
-            <Link to={nextPagePath} aria-label="View next page">
-              Next Page →
-            </Link>
-          ) : (
-            <div />
-          )}
-        </div>
       </Container>
     </Layout>
   )

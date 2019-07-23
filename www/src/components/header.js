@@ -129,10 +129,10 @@ const Header = ({
           <MobileNav color={headerColor} />
           <NavLink
             headerColor={headerColor}
-            to="/blog/"
-            aria-label="View blog page"
+            to="/quickstart/"
+            aria-label="Quickstart"
           >
-            Blog
+            Quick Start
           </NavLink>
           <NavLink
             headerColor={headerColor}

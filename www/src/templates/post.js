@@ -8,7 +8,6 @@ import Layout from 'components/layout'
 import Share from 'components/share'
 import SubscribeForm from 'components/forms/subscribe'
 import BlogPostFooter from 'components/blog-post-footer'
-import TestingCta from 'components/testing-cta'
 import Markdown from 'react-markdown'
 import {headerFontFamily} from '../lib/typography'
 import config from '../../config/website'
@@ -19,7 +18,7 @@ export default function PostPage(props) {
 }
 
 function Post({data: {site, mdx}}) {
-  const {editLink, title, slug, date, description, keywords} = mdx.fields
+  const {editLink, title, slug, date, description} = mdx.fields
 
   const blogPostUrl = `${config.siteUrl}${slug}`
 
@@ -27,7 +26,7 @@ function Post({data: {site, mdx}}) {
     <Layout
       site={site}
       frontmatter={mdx.fields}
-      headerLink={'/blog'}
+      headerLink={'/quickstart'}
       subscribeForm={<SubscribeForm />}
     >
       <SEO
@@ -112,9 +111,6 @@ function Post({data: {site, mdx}}) {
           twitterHandle={config.twitterHandle}
         />
       </Container>
-      {keywords.map(keyword => keyword.toLowerCase()).includes('testing') && (
-        <TestingCta />
-      )}
       <Container>
         <BlogPostFooter />
       </Container>

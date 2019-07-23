@@ -36,7 +36,7 @@ function SearchScreen() {
           sort: {fields: frontmatter___date, order: DESC}
           filter: {
             frontmatter: {published: {ne: false}}
-            fileAbsolutePath: {regex: "//content/blog//"}
+            fileAbsolutePath: {regex: "//content/quickstart//"}
           }
         ) {
           edges {
@@ -81,7 +81,7 @@ function SearchScreen() {
   return (
     <div>
       <div>
-        <h1>Search Kent C. Dodds Blogposts</h1>
+        <h1>Search Blog Posts</h1>
       </div>
       <small>
         {`If you can't find what you're looking for with this, try `}

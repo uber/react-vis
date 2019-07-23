@@ -1,6 +1,6 @@
 import React from 'react'
 import {graphql, StaticQuery} from 'gatsby'
-import Blog from 'components/blog'
+import Blog from 'components/quickstart'
 
 function CodingBlog(props) {
   return <Blog {...props} />
@@ -15,7 +15,7 @@ export default function CodingBlogWithData(props) {
             sort: {fields: [frontmatter___date], order: DESC}
             filter: {
               frontmatter: {published: {ne: false}, unlisted: {ne: true}}
-              fileAbsolutePath: {regex: "//content/blog//"}
+              fileAbsolutePath: {regex: "//content/quickstart//"}
             }
           ) {
             edges {

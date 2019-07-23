@@ -75,10 +75,10 @@ exports.createPages = async ({actions, graphql}) => {
       }
     }
     query {
-      blog: allMdx(
+      quickstart: allMdx(
         filter: {
           frontmatter: {published: {ne: false}}
-          fileAbsolutePath: {regex: "//content/blog//"}
+          fileAbsolutePath: {regex: "//content/quickstart//"}
         }
         sort: {order: DESC, fields: [frontmatter___date]}
       ) {
@@ -95,12 +95,12 @@ exports.createPages = async ({actions, graphql}) => {
     return Promise.reject(errors)
   }
 
-  const {blog} = data
+  const {quickstart} = data
 
   createBlogPages({
-    blogPath: '/blog',
-    data: blog,
-    paginationTemplate: path.resolve(`src/templates/blog.js`),
+    blogPath: '/quickstart',
+    data: quickstart,
+    paginationTemplate: path.resolve(`src/templates/quickstart.js`),
     actions,
   })
 }
@@ -164,8 +164,8 @@ exports.onCreateNode = ({node, getNode, actions}) => {
       node.frontmatter.slug ||
       createFilePath({node, getNode, basePath: `pages`})
 
-    if (node.fileAbsolutePath.includes('content/blog/')) {
-      slug = `/blog/${node.frontmatter.slug || slugify(parent.name)}`
+    if (node.fileAbsolutePath.includes('content/quickstart/')) {
+      slug = `/quickstart/${node.frontmatter.slug || slugify(parent.name)}`
     }
 
     createNodeField({

@@ -115,16 +115,8 @@ const DefaultHero = styled.section`
     color: ${theme.colors.white};
   }
   width: 100%;
-  ${({headerColor}) =>
-    headerColor
-      ? css`
-          background: #3155dc;
-          background-image: linear-gradient(-213deg, #5e31dc 0%, #3155dc 100%);
-          background-position: center right, center left;
-          background-repeat: no-repeat;
-          background-size: contain;
-        `
-      : null} position: relative;
+  background: ${({headerColor}) => headerColor};
+  position: relative;
   z-index: 0;
   align-items: center;
   display: flex;
