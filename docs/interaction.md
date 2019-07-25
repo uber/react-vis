@@ -200,7 +200,7 @@ This handler fires when the user's mouse cursor leaves a series, and provides th
 <AreaSeries
 ...
   onSeriesMouseOut={(event)=>{
-  	// does something on mouse over
+  	// does something on mouse out
   	// you can access the value of the event
   }}
 ```
@@ -268,7 +268,7 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 <MarkSeries
 ...
   onValueMouseOut={(datapoint, event)=>{
-  	// does something on click
+  	// does something on mouse out
   	// you can access the value of the event
   }}
 ```
@@ -285,7 +285,7 @@ The handler passes two arguments, the corresponding datapoint and the actual eve
 <MarkSeries
 ...
   onValueMouseOver={(datapoint, event)=>{
-  	// does something on click
+  	// does something on mouse over
   	// you can access the value of the event
   }}
 ```
