@@ -98,7 +98,14 @@ Height of the component.
 
 Type: `number`
 
-The padding between cells the cells of the heatmap in pixels.
+The padding between the cells of the heatmap in pixels.
+
+#### paddingDirections (optional)
+
+Type: `Array` of `string`
+
+Directions, in which `padding` is applied. Possible values are `['left', 'right', 'top', 'bottom']`.  
+Any combination can be used. By default (`null`), padding is applied to all directions.
 
 #### data
 

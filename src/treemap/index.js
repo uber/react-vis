@@ -91,6 +91,31 @@ function _getScaleFns(props) {
   };
 }
 
+/**
+ * Adds padding in desired directions to treemapingFunction.
+ * @param {Function} treemapingFunction function to update.
+ * @param {Number} padding value in pixels.
+ * @param {Array} paddingDirections .
+ * @returns {Function} treemapingFunction, updated with padding.
+ * @private
+ */
+function _applyPadding(treemapingFunction, padding, paddingDirections) {
+  if (!paddingDirections) {
+    return treemapingFunction.padding(padding);
+  }
+  const directionToProperty = {
+    'left': 'paddingLeft',
+    'right': 'paddingRight',
+    'bottom': 'paddingBottom',
+    'top': 'paddingTop',
+  };
+  paddingDirections.forEach(direction => {
+    const property = directionToProperty[direction];
+    treemapingFunction = treemapingFunction[property](padding);
+  });
+  return treemapingFunction;
+}
+
 class Treemap extends React.Component {
   constructor(props) {
     super(props);
@@ -114,7 +139,7 @@ class Treemap extends React.Component {
    */
   _getNodesToRender() {
     const {innerWidth, innerHeight} = this.state;
-    const {data, mode, padding, sortFunction, getSize} = this.props;
+    const {data, mode, padding, sortFunction, getSize, paddingDirections} = this.props;
     if (!data) {
       return [];
     }
@@ -153,10 +178,9 @@ class Treemap extends React.Component {
     }
 
     const tileFn = TREEMAP_TILE_MODES[mode];
-    const treemapingFunction = treemap(tileFn)
+    const treemapingFunction = _applyPadding(treemap(tileFn)
       .tile(tileFn)
-      .size([innerWidth, innerHeight])
-      .padding(padding);
+      .size([innerWidth, innerHeight]), padding, paddingDirections);
     const structuredInput = hierarchy(data)
       .sum(getSize)
       .sort((a, b) => sortFunction(a, b, getSize));
@@ -188,6 +212,7 @@ Treemap.propTypes = {
   onLeafMouseOut: PropTypes.func,
   useCirclePacking: PropTypes.bool,
   padding: PropTypes.number.isRequired,
+  paddingDirections: PropTypes.arrayOf(PropTypes.oneOf(['left', 'right', 'top', 'bottom'])),
   sortFunction: PropTypes.func,
   width: PropTypes.number.isRequired,
   getSize: PropTypes.func,
@@ -210,6 +235,7 @@ Treemap.defaultProps = {
   opacityType: OPACITY_TYPE,
   _opacityValue: DEFAULT_OPACITY,
   padding: 1,
+  paddingDirections: null,
   sortFunction: (a, b, accessor) => {
     if (!accessor) {
       return 0;
