@@ -82,7 +82,7 @@ See the [XYPlot](xy-plot.md)'s `animation` section for more information.
 
 Type: `string|number`
 
-The color for all elements in the series, this property will be over-ridden by color specified in the data attribute. See [colors](colors.md
+The color for all elements in the series, this property will be over-ridden by color specified in the data attribute. See [colors](colors.md)
 
 #### className (optional)
 
