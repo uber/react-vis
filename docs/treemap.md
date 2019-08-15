@@ -96,9 +96,10 @@ Height of the component.
 
 #### padding
 
-Type: `number`
+Type: `number` or `Array` of `number`
 
-The padding between the cells of the heatmap in pixels.
+The padding between the cells of the heatmap in pixels.  
+If Array, then each element should correspond to padding for direction in `paddingDirections` parameter.
 
 #### paddingDirections (optional)
 

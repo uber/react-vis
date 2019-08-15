@@ -109,9 +109,12 @@ function _applyPadding(treemapingFunction, padding, paddingDirections) {
     'bottom': 'paddingBottom',
     'top': 'paddingTop',
   };
+  let i = 0;
   paddingDirections.forEach(direction => {
     const property = directionToProperty[direction];
-    treemapingFunction = treemapingFunction[property](padding);
+    const paddingForDirection = Array.isArray(padding) ? padding[i] : padding;
+    i += 1;
+    treemapingFunction = treemapingFunction[property](paddingForDirection);
   });
   return treemapingFunction;
 }
@@ -211,7 +214,7 @@ Treemap.propTypes = {
   onLeafMouseOver: PropTypes.func,
   onLeafMouseOut: PropTypes.func,
   useCirclePacking: PropTypes.bool,
-  padding: PropTypes.number.isRequired,
+  padding: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]).isRequired,
   paddingDirections: PropTypes.arrayOf(PropTypes.oneOf(['left', 'right', 'top', 'bottom'])),
   sortFunction: PropTypes.func,
   width: PropTypes.number.isRequired,
