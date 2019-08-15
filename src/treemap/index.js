@@ -94,14 +94,13 @@ function _getScaleFns(props) {
 /**
  * Adds padding in desired directions to treemapingFunction.
  * @param {Function} treemapingFunction function to update.
- * @param {Number} padding value in pixels.
- * @param {Array} paddingDirections .
- * @returns {Function} treemapingFunction, updated with padding.
+ * @param {Object} sidePadding .
+ * @returns {Function} treemapingFunction, updated with side padding.
  * @private
  */
-function _applyPadding(treemapingFunction, padding, paddingDirections) {
-  if (!paddingDirections) {
-    return treemapingFunction.padding(padding);
+function _applySidePadding(treemapingFunction, sidePadding) {
+  if (!sidePadding) {
+    return treemapingFunction;
   }
   const directionToProperty = {
     'left': 'paddingLeft',
@@ -109,12 +108,10 @@ function _applyPadding(treemapingFunction, padding, paddingDirections) {
     'bottom': 'paddingBottom',
     'top': 'paddingTop',
   };
-  let i = 0;
-  paddingDirections.forEach(direction => {
-    const property = directionToProperty[direction];
-    const paddingForDirection = Array.isArray(padding) ? padding[i] : padding;
-    i += 1;
-    treemapingFunction = treemapingFunction[property](paddingForDirection);
+  Object.entries(sidePadding).forEach(entry => {
+    const [ direction, padding ] = entry;
+    const functionProperty = directionToProperty[direction];
+    treemapingFunction = treemapingFunction[functionProperty](padding);
   });
   return treemapingFunction;
 }
@@ -142,7 +139,7 @@ class Treemap extends React.Component {
    */
   _getNodesToRender() {
     const {innerWidth, innerHeight} = this.state;
-    const {data, mode, padding, sortFunction, getSize, paddingDirections} = this.props;
+    const {data, mode, padding, sortFunction, getSize, sidePadding} = this.props;
     if (!data) {
       return [];
     }
@@ -181,9 +178,10 @@ class Treemap extends React.Component {
     }
 
     const tileFn = TREEMAP_TILE_MODES[mode];
-    const treemapingFunction = _applyPadding(treemap(tileFn)
+    const treemapingFunction = _applySidePadding(treemap(tileFn)
       .tile(tileFn)
-      .size([innerWidth, innerHeight]), padding, paddingDirections);
+      .size([innerWidth, innerHeight])
+      .padding(padding), sidePadding);
     const structuredInput = hierarchy(data)
       .sum(getSize)
       .sort((a, b) => sortFunction(a, b, getSize));
@@ -214,8 +212,13 @@ Treemap.propTypes = {
   onLeafMouseOver: PropTypes.func,
   onLeafMouseOut: PropTypes.func,
   useCirclePacking: PropTypes.bool,
-  padding: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]).isRequired,
-  paddingDirections: PropTypes.arrayOf(PropTypes.oneOf(['left', 'right', 'top', 'bottom'])),
+  padding: PropTypes.number.isRequired,
+  sidePadding: PropTypes.shape({
+    'left': PropTypes.number,
+    'right': PropTypes.number,
+    'top': PropTypes.number,
+    'bottom': PropTypes.number,
+  }),
   sortFunction: PropTypes.func,
   width: PropTypes.number.isRequired,
   getSize: PropTypes.func,
@@ -238,7 +241,7 @@ Treemap.defaultProps = {
   opacityType: OPACITY_TYPE,
   _opacityValue: DEFAULT_OPACITY,
   padding: 1,
-  paddingDirections: null,
+  sidePadding: null,
   sortFunction: (a, b, accessor) => {
     if (!accessor) {
       return 0;
