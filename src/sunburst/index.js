@@ -21,8 +21,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {hierarchy, partition} from 'd3-hierarchy';
-
 import {scaleLinear, scaleSqrt} from 'd3-scale';
+import cc from 'classcat';
 
 import {AnimationPropType} from 'animation';
 import LabelSeries from 'plot/series/label-series';
@@ -161,7 +161,7 @@ function Sunburst(props) {
       height={height}
       hasTreeStructure
       width={width}
-      className={`${predefinedClassName} ${className}`}
+      className={cc([predefinedClassName, className])}
       margin={margin}
       xDomain={[-radialDomain, radialDomain]}
       yDomain={[-radialDomain, radialDomain]}

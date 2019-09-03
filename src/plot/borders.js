@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import cc from 'classcat';
 
 import PropTypes from 'prop-types';
 
@@ -60,9 +61,9 @@ function Borders(props) {
   const height = innerHeight + marginTop + marginBottom;
   const width = innerWidth + marginLeft + marginRight;
   return (
-    <g className={`${CLASSES.container} ${className}`}>
+    <g className={cc([CLASSES.container, className])}>
       <rect
-        className={`${CLASSES.bottom} ${className}-bottom`}
+        className={cc([CLASSES.bottom, `${className}-bottom`])}
         style={{...style.all, ...style.bottom}}
         x={0}
         y={height - marginBottom}
@@ -70,7 +71,7 @@ function Borders(props) {
         height={marginBottom}
       />
       <rect
-        className={`${CLASSES.left} ${className}-left`}
+        className={cc([CLASSES.left, `${className}-left`])}
         style={{...style.all, ...style.left}}
         x={0}
         y={0}
@@ -78,7 +79,7 @@ function Borders(props) {
         height={height}
       />
       <rect
-        className={`${CLASSES.right} ${className}-right`}
+        className={cc([CLASSES.right, `${className}-right`])}
         style={{...style.all, ...style.right}}
         x={width - marginRight}
         y={0}
@@ -86,7 +87,7 @@ function Borders(props) {
         height={height}
       />
       <rect
-        className={`${CLASSES.top} ${className}-top`}
+        className={cc([CLASSES.top, `${className}-top`])}
         style={{...style.all, ...style.top}}
         x={0}
         y={0}

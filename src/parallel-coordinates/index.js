@@ -22,6 +22,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {scaleLinear} from 'd3-scale';
 import {format} from 'd3-format';
+import cc from 'classcat';
 
 import {AnimationPropType} from 'animation';
 import XYPlot from 'plot/xy-plot';
@@ -221,7 +222,7 @@ class ParallelCoordinates extends Component {
         width={width}
         margin={margin}
         dontCheckIfEmpty
-        className={`${className} ${predefinedClassName}`}
+        className={cc([className, predefinedClassName])}
         onMouseLeave={onMouseLeave}
         onMouseEnter={onMouseEnter}
         xType="ordinal"

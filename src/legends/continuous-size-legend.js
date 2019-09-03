@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import cc from 'classcat';
 
 import PropTypes from 'prop-types';
 
@@ -74,7 +75,7 @@ function ContinuousSizeLegend({
   }
   return (
     <div
-      className={`rv-continuous-size-legend ${className}`}
+      className={cc(["rv-continuous-size-legend", className])}
       style={{width, height}}
     >
       <div className="rv-bubbles" style={{height: endSize}}>

@@ -21,6 +21,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import equal from 'deep-equal';
+import cc from 'classcat';
 
 import {
   extractScalePropsFromProps,
@@ -535,7 +536,7 @@ class XYPlot extends React.Component {
     if (!dontCheckIfEmpty && this._isPlotEmpty()) {
       return (
         <div
-          className={`rv-xy-plot ${className}`}
+          className={cc(["rv-xy-plot", className])}
           style={{
             width: `${width}px`,
             height: `${height}px`,
@@ -551,7 +552,7 @@ class XYPlot extends React.Component {
           width: `${width}px`,
           height: `${height}px`
         }}
-        className={`rv-xy-plot ${className}`}
+        className={cc(["rv-xy-plot", className])}
       >
         <svg
           className="rv-xy-plot__inner"

@@ -23,6 +23,7 @@ import PropTypes from 'prop-types';
 import {contourDensity} from 'd3-contour';
 import {geoPath} from 'd3-geo';
 import {scaleLinear} from 'd3-scale';
+import cc from 'classcat';
 
 import AbstractSeries from './abstract-series';
 import Animation from 'animation';
@@ -86,7 +87,7 @@ class ContourSeries extends AbstractSeries {
       .range(colorRange || CONTINUOUS_COLOR_RANGE);
     return (
       <g
-        className={`${predefinedClassName} ${className}`}
+        className={cc([predefinedClassName, className])}
         transform={`translate(${marginLeft},${marginTop})`}
       >
         {contouredData.map((polygon, index) => {

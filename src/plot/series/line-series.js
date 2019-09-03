@@ -21,6 +21,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as d3Shape from 'd3-shape';
+import cc from 'classcat';
 
 import Animation from 'animation';
 import {DEFAULT_OPACITY} from 'theme';
@@ -92,7 +93,7 @@ class LineSeries extends AbstractSeries {
     return (
       <path
         d={d}
-        className={`${predefinedClassName} ${className}`}
+        className={cc([predefinedClassName, className])}
         transform={`translate(${marginLeft},${marginTop})`}
         onMouseOver={this._seriesMouseOverHandler}
         onMouseOut={this._seriesMouseOutHandler}

@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import cc from 'classcat';
 
 import PropTypes from 'prop-types';
 
@@ -62,7 +63,7 @@ function ContinuousColorLegend({
   colors.push(endColor);
   return (
     <div
-      className={`rv-continuous-color-legend ${className}`}
+      className={cc(["rv-continuous-color-legend", className])}
       style={{width, height}}
     >
       <div

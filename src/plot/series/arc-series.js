@@ -19,13 +19,12 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import PropTypes from 'prop-types';
-
 import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import {arc as arcBuilder} from 'd3-shape';
+import cc from 'classcat';
 
+import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import AbstractSeries from './abstract-series';
 import {
   getAttributeFunctor,
@@ -184,7 +183,7 @@ class ArcSeries extends AbstractSeries {
 
     return (
       <g
-        className={`${predefinedClassName} ${className}`}
+        className={cc([predefinedClassName, className])}
         onMouseOver={this._seriesMouseOverHandler}
         onMouseOut={this._seriesMouseOutHandler}
         onClick={this._seriesClickHandler}

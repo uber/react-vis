@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import cc from 'classcat';
 
 import XYPlot from 'plot/xy-plot';
 import PolygonSeries from 'plot/series/polygon-series';
@@ -178,9 +179,11 @@ class TreemapSVG extends React.Component {
 
     return (
       <XYPlot
-        className={`rv-treemap ${
-          useCirclePacking ? 'rv-treemap-circle-packed' : ''
-        } ${className}`}
+        className={cc([
+          "rv-treemap",
+          {"rv-treemap-circle-paked": useCirclePacking},
+          className
+        ])}
         width={width}
         height={height}
         yDomain={[maxY, minY]}

@@ -19,8 +19,8 @@
 // THE SOFTWARE.
 
 import React, {PureComponent} from 'react';
-
 import PropTypes from 'prop-types';
+import cc from 'classcat';
 
 import {getAttributeScale} from 'utils/scales-utils';
 import Animation, {AnimationPropType} from 'animation';
@@ -137,7 +137,7 @@ class GridLines extends PureComponent {
     return (
       <g
         transform={`translate(${left},${top})`}
-        className={`rv-xy-plot__grid-lines ${className}`}
+        className={cc(["rv-xy-plot__grid-lines", className])}
       >
         {values.map((v, i) => {
           const pos = scale(v);

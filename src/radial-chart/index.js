@@ -21,6 +21,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {pie as pieBuilder} from 'd3-shape';
+import cc from 'classcat';
 
 import {AnimationPropType} from 'animation';
 import ArcSeries from 'plot/series/arc-series';
@@ -165,7 +166,7 @@ function RadialChart(props) {
         ...margin,
         ...defaultMargin
       }}
-      className={`${className} ${predefinedClassName}`}
+      className={cc([className, predefinedClassName])}
       onMouseLeave={onMouseLeave}
       onMouseEnter={onMouseEnter}
       xDomain={[-radialDomain, radialDomain]}

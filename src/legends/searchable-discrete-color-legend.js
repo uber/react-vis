@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import cc from 'classcat';
 
 import PropTypes from 'prop-types';
 
@@ -63,7 +64,7 @@ function SearchableDiscreteColorLegend(props) {
     : null;
   const filteredItems = searchFn(items, searchText);
   return (
-    <div className={`rv-search-wrapper ${className}`} style={{width, height}}>
+    <div className={cc(["rv-search-wrapper", className])} style={{width, height}}>
       <form className="rv-search-wrapper__form">
         <input
           type="search"

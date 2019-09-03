@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import cc from 'classcat';
 
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
@@ -69,7 +70,7 @@ class PolygonSeries extends AbstractSeries {
     return (
       <path
         {...{
-          className: `${predefinedClassName} ${className}`,
+          className: cc([predefinedClassName, className]),
           onMouseOver: e => this._seriesMouseOverHandler(data, e),
           onMouseOut: e => this._seriesMouseOutHandler(data, e),
           onClick: this._seriesClickHandler,

@@ -20,9 +20,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import cc from 'classcat';
+
 import AbstractSeries from './abstract-series';
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--label';
 
 const getTextAnchor = (labelAnchorX, leftOfMiddle) => {
@@ -71,7 +74,7 @@ class LabelSeries extends AbstractSeries {
 
     return (
       <g
-        className={`${predefinedClassName} ${className}`}
+        className={cc([predefinedClassName, className])}
         transform={`translate(${marginLeft},${marginTop})`}
         style={style}
       >

@@ -8,6 +8,7 @@ import {
   sankeyCenter,
   sankeyJustify
 } from 'd3-sankey';
+import cc from 'classcat';
 import XYPlot from 'plot/xy-plot';
 
 import {MarginPropType, getInnerDimensions} from 'utils/chart-utils';
@@ -91,7 +92,7 @@ function Sankey(props) {
   const path = sankeyLinkHorizontal();
 
   return (
-    <XYPlot {...props} yType="literal" className={`rv-sankey ${className}`}>
+    <XYPlot {...props} yType="literal" className={cc(["rv-sankey", className])}>
       {linksCopy.map((link, i) => (
         <SankeyLink
           style={style.links}
@@ -109,7 +110,7 @@ function Sankey(props) {
       ))}
       <VerticalRectSeries
         animation={animation}
-        className={`${className} rv-sankey__node`}
+        className={cc([className, "rv-sankey__node"])}
         data={nodesCopy.map(node => ({
           ...node,
           y: node.y1 - marginTop,

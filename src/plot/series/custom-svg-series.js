@@ -20,6 +20,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import cc from 'classcat';
 
 import AbstractSeries from './abstract-series';
 import Animation from 'animation';
@@ -165,7 +166,7 @@ class CustomSVGSeries extends AbstractSeries {
     });
     return (
       <g
-        className={`${predefinedClassName} ${className}`}
+        className={cc([predefinedClassName, className])}
         transform={`translate(${marginLeft},${marginTop})`}
       >
         {contents}

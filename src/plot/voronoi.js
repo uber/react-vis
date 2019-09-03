@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {voronoi} from 'd3-voronoi';
+import cc from 'classcat';
 
 import {getAttributeFunctor} from 'utils/scales-utils';
 
@@ -62,7 +63,7 @@ function Voronoi(props) {
 
   return (
     <g
-      className={`${className} rv-voronoi`}
+      className={cc([className, "rv-voronoi"])}
       style={style}
       // Because of the nature of how touch events, and more specifically touchmove
       // and how it differs from mouseover, we must manage touch events on the parent

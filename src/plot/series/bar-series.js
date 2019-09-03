@@ -19,8 +19,8 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import PropTypes from 'prop-types';
+import cc from 'classcat';
 
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS, getStackParams} from 'utils/series-utils';
@@ -91,7 +91,7 @@ class BarSeries extends AbstractSeries {
 
     return (
       <g
-        className={`${predefinedClassName} ${className}`}
+        className={cc([predefinedClassName, className])}
         transform={`translate(${marginLeft},${marginTop})`}
       >
         {data.map((d, i) => {

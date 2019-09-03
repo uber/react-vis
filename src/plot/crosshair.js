@@ -19,8 +19,8 @@
 // THE SOFTWARE.
 
 import React, {PureComponent} from 'react';
-
 import PropTypes from 'prop-types';
+import cc from 'classcat';
 
 import {transformValueToString} from 'utils/data-utils';
 
@@ -171,7 +171,7 @@ class Crosshair extends PureComponent {
 
     return (
       <div
-        className={`rv-crosshair ${className}`}
+        className={cc(["rv-crosshair", className])}
         style={{left: `${left}px`, top: `${top}px`}}
       >
         <div

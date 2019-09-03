@@ -19,8 +19,8 @@
 // THE SOFTWARE.
 
 import React, {PureComponent} from 'react';
-
 import PropTypes from 'prop-types';
+import cc from 'classcat';
 
 import Animation from 'animation';
 import {ORIENTATION, getTicksTotalFromSize} from 'utils/axis-utils';
@@ -209,7 +209,7 @@ class Axis extends PureComponent {
     return (
       <g
         transform={`translate(${leftPos},${topPos})`}
-        className={`${predefinedClassName} ${axisClassName} ${className}`}
+        className={cc([predefinedClassName, axisClassName, className])}
         style={style}
       >
         {!hideLine && (

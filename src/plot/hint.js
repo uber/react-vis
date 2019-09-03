@@ -19,11 +19,10 @@
 // THE SOFTWARE.
 
 import React, {PureComponent} from 'react';
-
 import PropTypes from 'prop-types';
+import cc from 'classcat';
 
 import {transformValueToString} from 'utils/data-utils';
-
 import {getAttributeFunctor} from 'utils/scales-utils';
 
 /*
@@ -363,7 +362,7 @@ class Hint extends PureComponent {
     const {position, positionClassName} = this._getPositionInfo();
     return (
       <div
-        className={`rv-hint ${positionClassName} ${className}`}
+        className={cc(["rv-hint", positionClassName, className])}
         style={{
           ...style,
           ...position,

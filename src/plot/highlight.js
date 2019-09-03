@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import cc from 'classcat';
+
 import AbstractSeries from './series/abstract-series';
 import {getAttributeScale} from 'utils/scales-utils';
-import PropTypes from 'prop-types';
 
 function getLocs(evt) {
   const xLoc = evt.type === 'touchstart' ? evt.pageX : evt.offsetX;
@@ -245,7 +247,7 @@ class Highlight extends AbstractSeries {
     return (
       <g
         transform={`translate(${leftPos}, ${topPos})`}
-        className={`${className} rv-highlight-container`}
+        className={cc([className, "rv-highlight-container"])}
       >
         <rect
           className="rv-mouse-target"

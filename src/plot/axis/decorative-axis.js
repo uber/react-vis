@@ -21,6 +21,7 @@
 import React from 'react';
 import {format} from 'd3-format';
 import PropTypes from 'prop-types';
+import cc from 'classcat';
 
 import AbstractSeries from 'plot/series/abstract-series';
 import DecorativeAxisTicks from './decorative-axis-ticks';
@@ -74,7 +75,7 @@ class DecorativeAxis extends AbstractSeries {
 
     return (
       <g
-        className={`${predefinedClassName} ${className}`}
+        className={cc([predefinedClassName, className])}
         transform={`translate(${marginLeft},${marginTop})`}
       >
         <line

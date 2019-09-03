@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import cc from 'classcat';
 
 import PropTypes from 'prop-types';
 
@@ -39,7 +40,7 @@ function DiscreteColorLegend({
 }) {
   return (
     <div
-      className={`rv-discrete-color-legend ${orientation} ${className}`}
+      className={cc(["rv-discrete-color-legend", orientation, className])}
       style={{width, height, ...style}}
     >
       {items.map((item, i) => (

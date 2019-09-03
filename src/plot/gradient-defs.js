@@ -20,13 +20,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import cc from 'classcat';
 
 const predefinedClassName = 'rv-gradient-defs';
 
 function GradientDefs(props) {
   const {className} = props;
   return (
-    <defs className={`${predefinedClassName} ${className}`}>
+    <defs className={cc([predefinedClassName, className])}>
       {props.children}
     </defs>
   );

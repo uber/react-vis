@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
+import cc from 'classcat';
 
 import PropTypes from 'prop-types';
 
@@ -51,7 +52,7 @@ class ChartLabel extends React.PureComponent {
     return (
       <g
         transform={`translate(${xPos}, ${yPos})`}
-        className={`rv-xy-plot__axis__title ${className}`}>
+        className={cc(["rv-xy-plot__axis__title", className])}>
         <text {...style}>{text}</text>
       </g>
     );
