@@ -19,10 +19,10 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import cc from 'classcat';
 
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 import AbstractSeries from './abstract-series';
 
@@ -65,7 +65,7 @@ class HeatmapSeries extends AbstractSeries {
     const yDistance = this._getScaleDistance('y');
     return (
       <g
-        className={cc([predefinedClassName, className])}
+        className={getCombinedClassName(predefinedClassName, className)}
         transform={`translate(${marginLeft},${marginTop})`}
       >
         {data.map((d, i) => {

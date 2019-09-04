@@ -19,9 +19,8 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import cc from 'classcat';
-
 import PropTypes from 'prop-types';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 const propTypes = {
   style: PropTypes.shape({
@@ -61,9 +60,9 @@ function Borders(props) {
   const height = innerHeight + marginTop + marginBottom;
   const width = innerWidth + marginLeft + marginRight;
   return (
-    <g className={cc([CLASSES.container, className])}>
+    <g className={getCombinedClassName(CLASSES.container, className)}>
       <rect
-        className={cc([CLASSES.bottom, `${className}-bottom`])}
+        className={getCombinedClassName(CLASSES.bottom, `${className}-bottom`)}
         style={{...style.all, ...style.bottom}}
         x={0}
         y={height - marginBottom}
@@ -71,7 +70,7 @@ function Borders(props) {
         height={marginBottom}
       />
       <rect
-        className={cc([CLASSES.left, `${className}-left`])}
+        className={getCombinedClassName(CLASSES.left, `${className}-left`)}
         style={{...style.all, ...style.left}}
         x={0}
         y={0}
@@ -79,7 +78,7 @@ function Borders(props) {
         height={height}
       />
       <rect
-        className={cc([CLASSES.right, `${className}-right`])}
+        className={getCombinedClassName(CLASSES.right, `${className}-right`)}
         style={{...style.all, ...style.right}}
         x={width - marginRight}
         y={0}
@@ -87,7 +86,7 @@ function Borders(props) {
         height={height}
       />
       <rect
-        className={cc([CLASSES.top, `${className}-top`])}
+        className={getCombinedClassName(CLASSES.top, `${className}-top`)}
         style={{...style.all, ...style.top}}
         x={0}
         y={0}

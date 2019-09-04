@@ -22,7 +22,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Animation from 'animation';
 import {arc as arcBuilder} from 'd3-shape';
-import cc from 'classcat';
 
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import AbstractSeries from './abstract-series';
@@ -33,6 +32,7 @@ import {
   getMissingScaleProps,
   getScalePropTypesByAttribute
 } from 'utils/scales-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--arc';
 const ATTRIBUTES = ['radius', 'angle'];
@@ -183,7 +183,7 @@ class ArcSeries extends AbstractSeries {
 
     return (
       <g
-        className={cc([predefinedClassName, className])}
+        className={getCombinedClassName(predefinedClassName, className)}
         onMouseOver={this._seriesMouseOverHandler}
         onMouseOut={this._seriesMouseOutHandler}
         onClick={this._seriesClickHandler}

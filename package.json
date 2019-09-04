@@ -34,13 +34,7 @@
     "prettier": "prettier --write $(git ls-files | grep '.js$')",
     "remove-unpm-rfs": "./remove-refs-to-unpm.pl"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run remove-unpm-rfs"
-    }
-  },
   "dependencies": {
-    "classcat": "^4.0.2",
     "d3-array": "^1.2.0",
     "d3-collection": "^1.0.3",
     "d3-color": "^1.0.3",

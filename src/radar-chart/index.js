@@ -22,12 +22,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {scaleLinear} from 'd3-scale';
 import {format} from 'd3-format';
-import cc from 'classcat';
 
 import {AnimationPropType} from 'animation';
 import XYPlot from 'plot/xy-plot';
 import {DISCRETE_COLOR_RANGE} from 'theme';
 import {MarginPropType} from 'utils/chart-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 import MarkSeries from 'plot/series/mark-series';
 import PolygonSeries from 'plot/series/polygon-series';
 import LabelSeries from 'plot/series/label-series';
@@ -309,7 +309,7 @@ return (
     width={width}
     margin={margin}
     dontCheckIfEmpty
-    className={cc([className, predefinedClassName])}
+    className={getCombinedClassName(className, predefinedClassName)}
     onMouseLeave={onMouseLeave}
     onMouseEnter={onMouseEnter}
     xDomain={[-1, 1]}

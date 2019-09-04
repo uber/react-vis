@@ -20,11 +20,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import cc from 'classcat';
 
 import AbstractSeries from './abstract-series';
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--label';
 
@@ -74,7 +74,7 @@ class LabelSeries extends AbstractSeries {
 
     return (
       <g
-        className={cc([predefinedClassName, className])}
+        className={getCombinedClassName(predefinedClassName, className)}
         transform={`translate(${marginLeft},${marginTop})`}
         style={style}
       >

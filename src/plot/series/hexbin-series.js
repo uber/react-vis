@@ -23,9 +23,9 @@ import PropTypes from 'prop-types';
 import Animation from 'animation';
 import {hexbin} from 'd3-hexbin';
 import {scaleLinear} from 'd3-scale';
-import cc from 'classcat';
 
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 import {CONTINUOUS_COLOR_RANGE} from 'theme';
 import AbstractSeries from './abstract-series';
 
@@ -88,7 +88,7 @@ class HexbinSeries extends AbstractSeries {
       .range([0, radius]);
     return (
       <g
-        className={cc([predefinedClassName, className])}
+        className={getCombinedClassName(predefinedClassName, className)}
         transform={`translate(${marginLeft},${marginTop})`}
       >
         {hexes.map((d, i) => {

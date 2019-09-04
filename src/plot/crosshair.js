@@ -20,11 +20,10 @@
 
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import cc from 'classcat';
 
 import {transformValueToString} from 'utils/data-utils';
-
 import {getAttributeFunctor} from 'utils/scales-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 /**
  * Format title by detault.
@@ -171,7 +170,7 @@ class Crosshair extends PureComponent {
 
     return (
       <div
-        className={cc(["rv-crosshair", className])}
+        className={getCombinedClassName("rv-crosshair", className)}
         style={{left: `${left}px`, top: `${top}px`}}
       >
         <div

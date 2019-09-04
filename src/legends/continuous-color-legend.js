@@ -19,11 +19,11 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import cc from 'classcat';
 
 import PropTypes from 'prop-types';
 
 import {CONTINUOUS_COLOR_RANGE} from 'theme';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 const propTypes = {
   className: PropTypes.string,
@@ -63,7 +63,7 @@ function ContinuousColorLegend({
   colors.push(endColor);
   return (
     <div
-      className={cc(["rv-continuous-color-legend", className])}
+      className={getCombinedClassName("rv-continuous-color-legend", className)}
       style={{width, height}}
     >
       <div

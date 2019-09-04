@@ -22,7 +22,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {scaleLinear} from 'd3-scale';
 import {format} from 'd3-format';
-import cc from 'classcat';
 
 import {AnimationPropType} from 'animation';
 import XYPlot from 'plot/xy-plot';
@@ -32,6 +31,7 @@ import {
   getInnerDimensions,
   DEFAULT_MARGINS
 } from 'utils/chart-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 import LineSeries from 'plot/series/line-series';
 import LineMarkSeries from 'plot/series/line-mark-series';
 import LabelSeries from 'plot/series/label-series';
@@ -222,7 +222,7 @@ class ParallelCoordinates extends Component {
         width={width}
         margin={margin}
         dontCheckIfEmpty
-        className={cc([className, predefinedClassName])}
+        className={getCombinedClassName(className, predefinedClassName)}
         onMouseLeave={onMouseLeave}
         onMouseEnter={onMouseEnter}
         xType="ordinal"

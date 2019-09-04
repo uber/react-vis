@@ -1441,11 +1441,6 @@ circular-json@^0.3.1:
   version "0.3.1"
   resolved "https://registry.npmjs.org/circular-json/-/circular-json-0.3.1.tgz#be8b36aefccde8b3ca7aa2d6afc07a37242c0d2d"
 
-classcat@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/classcat/-/classcat-4.0.2.tgz#bd5d51b656e01e9cdd21c1aae3d29ed035a52126"
-  integrity sha512-RlMPOPp8VDu3CJOUVorPumhz/CI+t9ft6f0uexxxCguk28/M+Kf27eQXjNWeDTisEQWei/30oDfITOQqr1TNpQ==
-
 cli-cursor@^1.0.1:
   version "1.0.2"
   resolved "https://registry.npmjs.org/cli-cursor/-/cli-cursor-1.0.2.tgz#64da3f7d56a54412e59794bd62dc35295e8f2987"

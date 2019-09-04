@@ -21,12 +21,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as d3Shape from 'd3-shape';
-import cc from 'classcat';
 
 import Animation from 'animation';
 import {DEFAULT_OPACITY} from 'theme';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import {warning} from 'utils/react-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 import AbstractSeries from './abstract-series';
 
@@ -92,7 +92,7 @@ class AreaSeries extends AbstractSeries {
     return (
       <path
         d={d}
-        className={cc([predefinedClassName, className])}
+        className={getCombinedClassName(predefinedClassName, className)}
         transform={`translate(${marginLeft},${marginTop})`}
         onMouseOver={this._seriesMouseOverHandler}
         onMouseOut={this._seriesMouseOutHandler}

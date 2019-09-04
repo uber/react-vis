@@ -21,7 +21,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {pie as pieBuilder} from 'd3-shape';
-import cc from 'classcat';
 
 import {AnimationPropType} from 'animation';
 import ArcSeries from 'plot/series/arc-series';
@@ -30,6 +29,7 @@ import XYPlot from 'plot/xy-plot';
 import {DISCRETE_COLOR_RANGE} from 'theme';
 import {MarginPropType, getRadialLayoutMargin} from 'utils/chart-utils';
 import {getRadialDomain} from 'utils/series-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 const predefinedClassName = 'rv-radial-chart';
 
@@ -166,7 +166,7 @@ function RadialChart(props) {
         ...margin,
         ...defaultMargin
       }}
-      className={cc([className, predefinedClassName])}
+      className={getCombinedClassName(className, predefinedClassName)}
       onMouseLeave={onMouseLeave}
       onMouseEnter={onMouseEnter}
       xDomain={[-radialDomain, radialDomain]}

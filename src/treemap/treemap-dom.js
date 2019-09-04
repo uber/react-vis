@@ -18,9 +18,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 import React from 'react';
-import cc from 'classcat';
 
 import TreemapLeaf from './treemap-leaf';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 function TreemapDOM(props) {
   const {
@@ -38,11 +38,11 @@ function TreemapDOM(props) {
   const useCirclePacking = mode === 'circlePack';
   return (
     <div
-      className={cc([
+      className={getCombinedClassName(
         "rv-treemap",
-        {"rv-treemap-circle-paked": useCirclePacking},
+        useCirclePacking && "rv-treemap-circle-paked",
         className
-      ])}
+      )}
       style={{height, width}}
     >
       {nodes.map((node, index) => {

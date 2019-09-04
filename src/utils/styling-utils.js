@@ -1,4 +1,4 @@
-// Copyright (c) 2016 - 2017 Uber Technologies, Inc.
+// Copyright (c) 2016 - 2019 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -18,29 +18,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import PropTypes from 'prop-types';
+/**
+ * Generates interpolated class names signature based on multiple class names
+ * ignoring the falsy and non-string values
+ * @param {...string} classNames CSS class signatures.
+ * @returns {string} Interpolated string containing all valid class names.
+ */
 
-import {getCombinedClassName} from 'utils/styling-utils';
-
-const predefinedClassName = 'rv-gradient-defs';
-
-function GradientDefs(props) {
-  const {className} = props;
-  return (
-    <defs className={getCombinedClassName(predefinedClassName, className)}>
-      {props.children}
-    </defs>
-  );
+export function getCombinedClassName(...classNames) {
+  return classNames.filter(cn => cn && typeof cn === 'string').join(' ')
 }
-
-GradientDefs.displayName = 'GradientDefs';
-GradientDefs.requiresSVG = true;
-GradientDefs.propTypes = {
-  className: PropTypes.string
-};
-GradientDefs.defaultProps = {
-  className: ''
-};
-
-export default GradientDefs;
