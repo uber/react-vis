@@ -20,33 +20,31 @@
 
 import test from 'tape';
 
-import {
-  getCombinedClassName
-} from 'utils/styling-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 test('styling-utils #getCombinedClassName', t => {
-  const allValidStringParams = ['test_class--1', 'test_class--2', 'test_class--3']
-  const expectedAllValidStringParamsCombined = 'test_class--1 test_class--2 test_class--3'
-  const falsyValues = [null, undefined, false, '', 0]
-  const nonStringValues = [['invalid_class--1', 'invalid_class--2'], { foo: 'bar' }, 123, () => { return 'invalid_class--3' }]
+  const allValidStringParams = ['test_class--1', 'test_class--2', 'test_class--3'];
+  const expectedAllValidStringParamsCombined = 'test_class--1 test_class--2 test_class--3';
+  const falsyValues = [null, undefined, false, '', 0, NaN];
+  const nonStringValues = [['invalid_class--1', 'invalid_class--2'], { foo: 'bar' }, 123, () => { return 'invalid_class--3' }];
 
   t.equal(
     getCombinedClassName(...allValidStringParams),
     expectedAllValidStringParamsCombined,
     'generated class signature should contain all valid class names'
-  )
+  );
 
   t.equal(
     getCombinedClassName(...allValidStringParams, ...falsyValues),
     expectedAllValidStringParamsCombined,
     'generated class signature does not contain falsy values'
-  )
+  );
 
   t.equal(
     getCombinedClassName(...allValidStringParams, ...nonStringValues),
     expectedAllValidStringParamsCombined,
     'generated class signature does not contain non-string values'
-  )
+  );
 
-  t.end()
+  t.end();
 });
