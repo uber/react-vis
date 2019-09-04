@@ -90,10 +90,10 @@ class Highlight extends AbstractSeries {
 
     if (enableX && enableY) {
       return {
-        bottom: yScale.invert(brushArea.bottom),
+        bottom: yScale.invert(brushArea.bottom - marginTop),
         left: xScale.invert(brushArea.left - marginLeft),
         right: xScale.invert(brushArea.right - marginLeft),
-        top: yScale.invert(brushArea.top)
+        top: yScale.invert(brushArea.top - marginTop)
       };
     }
 
