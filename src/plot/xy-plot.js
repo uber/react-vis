@@ -487,18 +487,6 @@ class XYPlot extends React.Component {
     });
   };
 
-  /**
-   * Trigger doule-click related callbacks if they are available.
-   * @param {React.SyntheticEvent} event Double-click event.
-   * @private
-   */
-  _wheelHandler = event => {
-    const {onWheel} = this.props;
-    if (onWheel) {
-      onWheel(event);
-    }
-  };
-
   renderCanvasComponents(components, props) {
     const componentsToRender = components.filter(
       c => c && !c.type.requiresSVG && c.type.isCanvas
@@ -532,7 +520,7 @@ class XYPlot extends React.Component {
   }
 
   render() {
-    const {className, dontCheckIfEmpty, style, width, height} = this.props;
+    const {className, dontCheckIfEmpty, style, width, height, onWheel} = this.props;
 
     if (!dontCheckIfEmpty && this._isPlotEmpty()) {
       return (
@@ -571,7 +559,7 @@ class XYPlot extends React.Component {
           onTouchMove={this._touchMoveHandler}
           onTouchEnd={this._touchEndHandler}
           onTouchCancel={this._touchCancelHandler}
-          onWheel={this._wheelHandler}
+          onWheel={onWheel}
         >
           {components.filter(c => c && c.type.requiresSVG)}
         </svg>

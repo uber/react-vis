@@ -298,3 +298,21 @@ test('XYPlot attach ref only to series components', t => {
   t.ok(statelessChild.ref === null, 'Ref not attached to stateless components');
   t.end();
 });
+
+test('XYPlot with wheel event callback', t => {
+  t.plan(1);
+
+  const onWheel = () => t.pass("onWheel is called correctly");
+
+  const $ = mount(
+    <XYPlot onWheel={onWheel} width={300} height={300}>
+      <VerticalBarSeries data={[{x: 1, y: 0}, {x: 2, y: 1}, {x: 3, y: 2}]} />
+    </XYPlot>
+  );
+
+  $.find('svg')
+    .at(0)
+    .simulate('wheel');
+
+  t.end();
+});
