@@ -19,12 +19,11 @@
 // THE SOFTWARE.
 
 import React, {PureComponent} from 'react';
-
 import PropTypes from 'prop-types';
 
 import {transformValueToString} from 'utils/data-utils';
-
 import {getAttributeFunctor} from 'utils/scales-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 /*
  * Hint provides two options for placement of hint:
@@ -363,7 +362,7 @@ class Hint extends PureComponent {
     const {position, positionClassName} = this._getPositionInfo();
     return (
       <div
-        className={`rv-hint ${positionClassName} ${className}`}
+        className={getCombinedClassName("rv-hint", positionClassName, className)}
         style={{
           ...style,
           ...position,

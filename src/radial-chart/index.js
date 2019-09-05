@@ -29,6 +29,7 @@ import XYPlot from 'plot/xy-plot';
 import {DISCRETE_COLOR_RANGE} from 'theme';
 import {MarginPropType, getRadialLayoutMargin} from 'utils/chart-utils';
 import {getRadialDomain} from 'utils/series-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 const predefinedClassName = 'rv-radial-chart';
 
@@ -165,7 +166,7 @@ function RadialChart(props) {
         ...margin,
         ...defaultMargin
       }}
-      className={`${className} ${predefinedClassName}`}
+      className={getCombinedClassName(className, predefinedClassName)}
       onMouseLeave={onMouseLeave}
       onMouseEnter={onMouseEnter}
       xDomain={[-radialDomain, radialDomain]}

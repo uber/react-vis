@@ -31,6 +31,7 @@ import {
   getInnerDimensions,
   DEFAULT_MARGINS
 } from 'utils/chart-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 import LineSeries from 'plot/series/line-series';
 import LineMarkSeries from 'plot/series/line-mark-series';
 import LabelSeries from 'plot/series/label-series';
@@ -221,7 +222,7 @@ class ParallelCoordinates extends Component {
         width={width}
         margin={margin}
         dontCheckIfEmpty
-        className={`${className} ${predefinedClassName}`}
+        className={getCombinedClassName(className, predefinedClassName)}
         onMouseLeave={onMouseLeave}
         onMouseEnter={onMouseEnter}
         xType="ordinal"

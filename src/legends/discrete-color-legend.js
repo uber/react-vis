@@ -19,11 +19,11 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import DiscreteColorLegendItem from 'legends/discrete-color-legend-item';
 import {DISCRETE_COLOR_RANGE} from 'theme';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 function DiscreteColorLegend({
   className,
@@ -39,7 +39,7 @@ function DiscreteColorLegend({
 }) {
   return (
     <div
-      className={`rv-discrete-color-legend ${orientation} ${className}`}
+      className={getCombinedClassName("rv-discrete-color-legend", orientation, className)}
       style={{width, height, ...style}}
     >
       {items.map((item, i) => (

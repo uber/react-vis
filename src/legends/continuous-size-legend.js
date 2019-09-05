@@ -21,6 +21,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 const propTypes = {
   className: PropTypes.string,
@@ -74,7 +75,7 @@ function ContinuousSizeLegend({
   }
   return (
     <div
-      className={`rv-continuous-size-legend ${className}`}
+      className={getCombinedClassName("rv-continuous-size-legend", className)}
       style={{width, height}}
     >
       <div className="rv-bubbles" style={{height: endSize}}>

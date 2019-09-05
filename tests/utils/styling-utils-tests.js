@@ -1,4 +1,4 @@
-// Copyright (c) 2016 - 2017 Uber Technologies, Inc.
+// Copyright (c) 2016 - 2019 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -18,29 +18,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import test from 'tape';
 
 import {getCombinedClassName} from 'utils/styling-utils';
 
-const predefinedClassName = 'rv-gradient-defs';
+test('styling-utils #getCombinedClassName', t => {
+  const allValidStringParams = ['test_class--1', 'test_class--2', 'test_class--3'];
+  const expectedAllValidStringParamsCombined = 'test_class--1 test_class--2 test_class--3';
+  const falsyValues = [null, undefined, false, '', 0, NaN];
+  const nonStringValues = [['invalid_class--1', 'invalid_class--2'], {foo: 'bar'}, 123, () => { return 'invalid_class--3' }];
 
-function GradientDefs(props) {
-  const {className} = props;
-  return (
-    <defs className={getCombinedClassName(predefinedClassName, className)}>
-      {props.children}
-    </defs>
+  t.equal(
+    getCombinedClassName(...allValidStringParams),
+    expectedAllValidStringParamsCombined,
+    'generated class signature should contain all valid class names'
   );
-}
 
-GradientDefs.displayName = 'GradientDefs';
-GradientDefs.requiresSVG = true;
-GradientDefs.propTypes = {
-  className: PropTypes.string
-};
-GradientDefs.defaultProps = {
-  className: ''
-};
+  t.equal(
+    getCombinedClassName(...allValidStringParams, ...falsyValues),
+    expectedAllValidStringParamsCombined,
+    'generated class signature does not contain falsy values'
+  );
 
-export default GradientDefs;
+  t.equal(
+    getCombinedClassName(...allValidStringParams, ...nonStringValues),
+    expectedAllValidStringParamsCombined,
+    'generated class signature does not contain non-string values'
+  );
+
+  t.end();
+});

@@ -26,6 +26,7 @@ import Animation from 'animation';
 import {DEFAULT_OPACITY} from 'theme';
 import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
 import {warning} from 'utils/react-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 import AbstractSeries from './abstract-series';
 
@@ -92,7 +93,7 @@ class LineSeries extends AbstractSeries {
     return (
       <path
         d={d}
-        className={`${predefinedClassName} ${className}`}
+        className={getCombinedClassName(predefinedClassName, className)}
         transform={`translate(${marginLeft},${marginTop})`}
         onMouseOver={this._seriesMouseOverHandler}
         onMouseOut={this._seriesMouseOutHandler}

@@ -23,6 +23,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {CONTINUOUS_COLOR_RANGE} from 'theme';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 const propTypes = {
   className: PropTypes.string,
@@ -62,7 +63,7 @@ function ContinuousColorLegend({
   colors.push(endColor);
   return (
     <div
-      className={`rv-continuous-color-legend ${className}`}
+      className={getCombinedClassName("rv-continuous-color-legend", className)}
       style={{width, height}}
     >
       <div

@@ -19,11 +19,11 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import Animation from 'animation';
 import {ANIMATED_SERIES_PROPS, getStackParams} from 'utils/series-utils';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 import AbstractSeries from './abstract-series';
 
@@ -91,7 +91,7 @@ class BarSeries extends AbstractSeries {
 
     return (
       <g
-        className={`${predefinedClassName} ${className}`}
+        className={getCombinedClassName(predefinedClassName, className)}
         transform={`translate(${marginLeft},${marginTop})`}
       >
         {data.map((d, i) => {

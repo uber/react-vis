@@ -24,6 +24,7 @@ import XYPlot from 'plot/xy-plot';
 import PolygonSeries from 'plot/series/polygon-series';
 import MarkSeries from 'plot/series/mark-series';
 import LabelSeries from 'plot/series/label-series';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 const MARGIN_ADJUST = 1.2;
 
@@ -178,9 +179,11 @@ class TreemapSVG extends React.Component {
 
     return (
       <XYPlot
-        className={`rv-treemap ${
-          useCirclePacking ? 'rv-treemap-circle-packed' : ''
-        } ${className}`}
+        className={getCombinedClassName(
+          "rv-treemap",
+          useCirclePacking && "rv-treemap-circle-paked",
+          className
+        )}
         width={width}
         height={height}
         yDomain={[maxY, minY]}

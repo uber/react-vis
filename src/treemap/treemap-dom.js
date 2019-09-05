@@ -20,6 +20,7 @@
 import React from 'react';
 
 import TreemapLeaf from './treemap-leaf';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 function TreemapDOM(props) {
   const {
@@ -37,9 +38,11 @@ function TreemapDOM(props) {
   const useCirclePacking = mode === 'circlePack';
   return (
     <div
-      className={`rv-treemap ${
-        useCirclePacking ? 'rv-treemap-circle-packed' : ''
-      } ${className}`}
+      className={getCombinedClassName(
+        "rv-treemap",
+        useCirclePacking && "rv-treemap-circle-paked",
+        className
+      )}
       style={{height, width}}
     >
       {nodes.map((node, index) => {

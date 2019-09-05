@@ -19,10 +19,10 @@
 // THE SOFTWARE.
 
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import DiscreteColorLegend from 'legends/discrete-color-legend';
+import {getCombinedClassName} from 'utils/styling-utils';
 
 const propTypes = {
   ...DiscreteColorLegend.propTypes,
@@ -63,7 +63,7 @@ function SearchableDiscreteColorLegend(props) {
     : null;
   const filteredItems = searchFn(items, searchText);
   return (
-    <div className={`rv-search-wrapper ${className}`} style={{width, height}}>
+    <div className={getCombinedClassName("rv-search-wrapper", className)} style={{width, height}}>
       <form className="rv-search-wrapper__form">
         <input
           type="search"
