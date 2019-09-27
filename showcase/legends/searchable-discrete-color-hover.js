@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // Copyright (c) 2016 - 2017 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,9 +41,9 @@ export default class SearchableDiscreteColorLegendHoverExample extends Component
     };
   }
 
-  _clickHandler = item => {
+  _clickHandler = (item, i, e) => {
     const {items} = this.state;
-    item.disabled = !item.disabled;
+    items[i].disabled = !items[i].disabled;
     this.setState({items});
   };
 
@@ -56,19 +57,20 @@ export default class SearchableDiscreteColorLegendHoverExample extends Component
       <SearchableDiscreteColorLegend
         height={200}
         width={300}
-        onItemMouseEnter={i => this.setState({hoveredItem: i})}
+        onItemMouseEnter={i => this.setState({
+          hoveredItem: {
+            ...i,
+            title: `${i.title}:SELECTED`}
+          })
+        }
         onItemMouseLeave={() => this.setState({hoveredItem: false})}
         onSearchChange={this._searchChangeHandler}
         searchText={searchText}
         onItemClick={this._clickHandler}
         items={items.map(
           (item, key) =>
-            hoveredItem === item ? (
-              <div key={key}>
-                {item.title}
-                  <br />
-                {'SELECTED'}
-              </div>
+            hoveredItem && hoveredItem.title.includes(item.title) ? (
+              hoveredItem
             ) : (
               item
             )

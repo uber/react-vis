@@ -197,7 +197,7 @@ test('Discrete Legends Showcase: SearchableDiscreteLegendHover', t => {
     .simulate('mouseEnter');
   t.equal(
     $.text(),
-    'SELECTEDApples',
+    'Apples:SELECTEDBananasBlueberriesCarrotsEggplantsLimesPotatoes',
     'should find the right text, with the first element selected'
   )
 
