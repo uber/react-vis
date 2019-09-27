@@ -7,6 +7,7 @@ import ContinuousColorLegend from '../../showcase/legends/continuous-color';
 import HorizontalDiscreteLegend from '../../showcase/legends/horizontal-discrete-color';
 import VerticalDiscreteLegend from '../../showcase/legends/vertical-discrete-color';
 import SearchableDiscreteLegend from '../../showcase/legends/searchable-discrete-color';
+import SearchableDiscreteColorLegendHoverExample from '../../showcase/legends/searchable-discrete-color-hover';
 import HorizontalDiscreteCustomPalette from '../../showcase/legends/horizontal-discrete-custom-palette';
 import ClusteredStackedVerticalBarChart from '../../showcase/plot/clustered-stacked-bar-chart';
 
@@ -185,6 +186,20 @@ test('Discrete Legends Showcase: HorizontalDiscreteCustomPalette', t => {
     'OptionsSELECTEDButtonsSelect boxesDate inputsPassword inputsFormsOther',
     'should find the right text, with the first element selected'
   );
+
+  t.end();
+});
+
+test('Discrete Legends Showcase: SearchableDiscreteLegendHover', t => {
+  const $ = mount(<SearchableDiscreteColorLegendHoverExample />);
+  $.find('.rv-discrete-color-legend-item')
+    .first()
+    .simulate('mouseEnter');
+  t.equal(
+    $.text(),
+    'SELECTEDApples',
+    'should find the right text, with the first element selected'
+  )
 
   t.end();
 });

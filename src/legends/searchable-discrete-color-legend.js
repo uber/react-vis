@@ -51,6 +51,8 @@ function SearchableDiscreteColorLegend(props) {
     height,
     items,
     onItemClick,
+    onItemMouseEnter,
+    onItemMouseLeave,
     onSearchChange,
     orientation,
     searchFn,
@@ -78,6 +80,8 @@ function SearchableDiscreteColorLegend(props) {
           colors={colors}
           items={filteredItems}
           onItemClick={onItemClick}
+          onItemMouseEnter={onItemMouseEnter}
+          onItemMouseLeave={onItemMouseLeave}
           orientation={orientation}
         />
       </div>

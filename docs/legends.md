@@ -122,6 +122,40 @@ Type: `function(string):void`
 
 Event handler for the change of the input field. The handler is triggered with the search field value as a parameter.
 
+#### onItemMouseEnter
+
+Type: `function`
+
+Default: noop
+
+This handler is triggered either when the user's mouse enters a legend item.
+The handler passes three arguments, the corresponding item, legend index and the actual event.
+```jsx
+<SearchableDiscreteColorLegend
+...
+  onItemMouseEnter={(item, index, event) => {
+    // does something on mouse enter
+    // you can access the value of the event
+  }}
+```
+
+#### onItemMouseLeave
+
+Type: `function`
+
+Default: noop
+
+This handler is triggered either when the user's mouse leaves a legend item.
+The handler passes three arguments, the corresponding item, legend index and the actual event.
+```jsx
+<SearchableDiscreteColorLegend
+...
+  onItemMouseLeave={(item, index, event) => {
+    // does something on mouse leave
+    // you can access the value of the event
+  }}
+```
+
 ### ContinuousColorLegend
 
 <!-- INJECT:"ContinuousColorLegendExampleWithLink" -->
