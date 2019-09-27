@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 // Copyright (c) 2016 - 2017 Uber Technologies, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
