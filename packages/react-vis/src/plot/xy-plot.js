@@ -146,15 +146,15 @@ class XYPlot extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.props !== prevProps) {
-      const children = getSeriesChildren(prevProps.children);
-      const nextData = getStackedData(children, prevProps.stackBy);
+      const children = getSeriesChildren(this.props.children);
+      const nextData = getStackedData(children, this.props.stackBy);
       const {scaleMixins} = this.state;
-      const nextScaleMixins = this._getScaleMixins(nextData, prevProps);
+      const nextScaleMixins = this._getScaleMixins(nextData, this.props);
       if (
         !checkIfMixinsAreEqual(
           nextScaleMixins,
           scaleMixins,
-          prevProps.hasTreeStructure
+          this.props.hasTreeStructure
         )
       ) {
         this.setState({

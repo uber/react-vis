@@ -78,9 +78,9 @@ export default class ResponsiveScatterplot extends React.Component {
     if (this.props !== prevProps) {
       this.setState({
         binData: transformToBinData(
-          nextProps.data,
-          nextProps.width,
-          nextProps.height
+          this.props.data,
+          this.props.width,
+          this.props.height
         )
       });
     }
