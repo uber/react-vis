@@ -140,9 +140,13 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
       this.cancelSubscription = subscribeToDebouncedResize(this._onResize);
     }
 
-    // eslint-disable-next-line react/no-deprecated
-    componentWillReceiveProps() {
-      this._onResize();
+    componentDidUpdate(prevProps, prevState, snapshot) {
+      if (
+        this.state.width !== prevState.width ||
+        this.state.height !== prevState.height
+      ) {
+        this._onResize();
+      }
     }
 
     componentWillUnmount() {
