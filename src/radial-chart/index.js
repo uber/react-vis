@@ -163,8 +163,8 @@ function RadialChart(props) {
       height={height}
       width={width}
       margin={{
-        ...margin,
-        ...defaultMargin
+        ...defaultMargin,
+        ...margin
       }}
       className={getCombinedClassName(className, predefinedClassName)}
       onMouseLeave={onMouseLeave}
