@@ -128,7 +128,7 @@ export const SHOWCASE_LINKS = {
   FauxScatterplotChart:
     'https://github.com/uber/react-vis/blob/master/showcase/plot/faux-radial-scatterplot.js',
   EmptyChart:
-    'https://github.com/uber/react-vis/blob/master/showcase/plot/empty-chart.js',
+    'https://github.com/uber/react-vis/blob/master/showcase/axes/empty-chart.js',
   // RADAR CHART SHOWCASE LINKS
   AnimatedRadarChart:
     'https://github.com/uber/react-vis/blob/master/showcase/radar-chart/animated-radar-chart.js',
