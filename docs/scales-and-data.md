@@ -116,7 +116,7 @@ To redefine a scale, you must pass a prop to the series that uses that scale. Th
     * `'category'`  
     Categorical scale, each new value gets the next value from the range. Similar to d3.scale.category\[Number\], but works with other values besides colors.
     * `'time'`  
-    Time scale. Similar to [d3.scaleTime](https://github.com/d3/d3-scale/blob/master/README.md#time-scales).
+    Time scale. Similar to [d3.scaleTime](https://github.com/d3/d3-scale/blob/master/README.md#time-scales). Times can be provided as JavaScript `Date` objects or as Unix epoch numbers.
     * `'time-utc'`  
     Time UTC scale. Similar to [d3.scaleUtc](https://github.com/d3/d3-scale/blob/master/README.md#scaleUtc)
     * `'log'`  

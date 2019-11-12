@@ -112,7 +112,13 @@ CircularGridLines.propTypes = {
 
   style: PropTypes.object,
 
-  tickValues: PropTypes.arrayOf(PropTypes.number),
+  tickValues: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+      PropTypes.object,
+    ])
+  ),
   tickTotal: PropTypes.number,
 
   animation: AnimationPropType,
