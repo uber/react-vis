@@ -49,7 +49,7 @@ function DiscreteColorLegendItem({
   const strokeDasharrayStyle = STROKE_STYLES[strokeStyle] || strokeDasharray;
   return (
     <div {...{className, onClick, onMouseEnter, onMouseLeave}}>
-      <svg className="rv-discrete-color-legend-item__color" height={2} width={14}>
+      <svg className="rv-discrete-color-legend-item__color" height={strokeWidth ? strokeWidth : 2} width={14}>
         <path
           className="rv-discrete-color-legend-item__color__path"
           d="M 0, 1 L 14, 1"
