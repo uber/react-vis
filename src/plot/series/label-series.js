@@ -79,7 +79,7 @@ class LabelSeries extends AbstractSeries {
         style={style}
       >
         {data.reduce((res, d, i) => {
-          const {style: markStyle, xOffset, yOffset} = d;
+          const {style: markStyle, xOffset, yOffset, fontSize} = d;
           if (!getLabel(d)) {
             return res;
           }
@@ -109,6 +109,7 @@ class LabelSeries extends AbstractSeries {
             x,
             y,
             transform: `rotate(${labelRotation},${x},${y})`,
+            fontSize,
             ...markStyle
           };
           const textContent = getLabel(_data ? _data[i] : d);
