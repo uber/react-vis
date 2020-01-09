@@ -60,7 +60,7 @@ const removeFirst = arr => Array.isArray(arr) && arr.slice(1, arr.length)
  * @returns {Object} Updated tree structure
  */
 function updateData(node, path) {
-  const hasToActivate = !path || path[0] == 'root' || node.name == path[0]
+  const hasToActivate = !path || path[0] === 'root' || node.name === path[0]
   
   // Add a fill to all the uncolored cells
   if (!node.hex) {
