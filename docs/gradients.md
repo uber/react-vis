@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ## Gradient
 
 Sometimes it is useful to style our svg components using gradients. The way that this is done in React-vis is by making use of the GradientDefs component, which is a simple wrapper on the svg <defs> tag.

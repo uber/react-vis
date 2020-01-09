@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 # Sunbursts
 
 Sunbursts are a powerful way to demonstrate part to whole relationships. While they certainly have the many of easily criticized problems of pie charts, they allow for
