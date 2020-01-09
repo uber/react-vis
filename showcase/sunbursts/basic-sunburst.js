@@ -47,28 +47,37 @@ function getKeyPath(node) {
 }
 
 /**
+ * Removes the first item of the given array (Mutable)
+ * @param {Array} arr - the array
+ */
+const removeFirst = arr => Array.isArray(arr) && arr.slice(1, arr.length)
+
+/**
  * Recursively modify data depending on whether or not each cell has been selected by the hover/highlight
- * @param {Object} data - the current node being considered
- * @param {Object|Boolean} keyPath - a map of keys that are in the highlight path
- * if this is false then all nodes are marked as selected
+ * @param {Object} node - the current node being considered
+ * @param {Array|Boolean} keyPath - an array of keys that are in the highlight path
+ * if this is false then all nodes are marked as selected, and if it is [] - nothing will be marked
  * @returns {Object} Updated tree structure
  */
-function updateData(data, keyPath) {
-  if (data.children) {
-    data.children.map(child => updateData(child, keyPath));
-  }
-  // add a fill to all the uncolored cells
-  if (!data.hex) {
-    data.style = {
+function updateData(node, path) {
+  const hasToActivate = !path || path[0] == 'root' || node.name == path[0]
+  
+  // Add a fill to all the uncolored cells
+  if (!node.hex) {
+    node.style = {
       fill: EXTENDED_DISCRETE_COLOR_RANGE[5]
     };
   }
-  data.style = {
-    ...data.style,
-    fillOpacity: keyPath && !keyPath[data.name] ? 0.2 : 1
-  };
 
-  return data;
+  // Manipulate the opacity of the hovered path
+  node.style = {
+    ...node.style,
+    fillOpacity: hasToActivate ? 1 : 0.2
+  };
+  
+  node.children && node.children.forEach(curr => updateData(curr, hasToActivate ? removeFirst(path) : []))
+
+  return node;
 }
 
 const decoratedData = updateData(D3FlareData, false);
@@ -97,14 +106,10 @@ export default class BasicSunburst extends React.Component {
               return;
             }
             const path = getKeyPath(node).reverse();
-            const pathAsMap = path.reduce((res, row) => {
-              res[row] = true;
-              return res;
-            }, {});
             this.setState({
               finalValue: path[path.length - 1],
               pathValue: path.join(' > '),
-              data: updateData(decoratedData, pathAsMap)
+              data: updateData(decoratedData, path)
             });
           }}
           onValueMouseOut={() =>
