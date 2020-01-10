@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ## Cartesian Grids
 
 <!-- INJECT:"CustomAxisChartWithLink" -->

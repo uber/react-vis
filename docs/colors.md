@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ## Color
 
 Color can be set and affected in many ways in React-vis.

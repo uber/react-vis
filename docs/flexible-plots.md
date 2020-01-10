@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ## Flexible plots
 
 By default, XYPlot requires a width and a height. There are times, however, when you'd like your chart to take all the space it can.

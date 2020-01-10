@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ## Voronoi
 
 Voronoi diagrams are useful for making a chart interactive by creating target areas for events like hover and click.

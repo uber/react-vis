@@ -1,3 +1,6 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ## DecorativeAxis
 
 <!-- INJECT:"ParallelCoordinatesExampleWithLink" -->
