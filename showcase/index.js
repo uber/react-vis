@@ -116,6 +116,7 @@ import StaticCrosshair from './axes/static-crosshair';
 import VerticalDiscreteColorLegendExample from './legends/vertical-discrete-color';
 import HorizontalDiscreteColorLegendExample from './legends/horizontal-discrete-color';
 import SearchableDiscreteColorLegendExample from './legends/searchable-discrete-color';
+import SearchableDiscreteColorLegendHoverExample from './legends/searchable-discrete-color-hover';
 import ContinuousColorLegendExample from './legends/continuous-color';
 import ContinuousSizeLegendExample from './legends/continuous-size';
 import HorizontalDiscreteCustomPalette from './legends/horizontal-discrete-custom-palette';
@@ -293,6 +294,7 @@ const mainShowCase = {
   HorizontalDiscreteColorLegendExample,
   HorizontalDiscreteCustomPalette,
   SearchableDiscreteColorLegendExample,
+  SearchableDiscreteColorLegendHoverExample,
   ContinuousColorLegendExample,
   ContinuousSizeLegendExample,
 

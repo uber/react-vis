@@ -7,6 +7,7 @@ const {
   HorizontalDiscreteColorLegendExample,
   HorizontalDiscreteCustomPalette,
   SearchableDiscreteColorLegendExample,
+  SearchableDiscreteColorLegendHoverExample,
   VerticalDiscreteColorLegendExample
 } = showCase;
 /* eslint-disable max-len */
@@ -30,6 +31,11 @@ const DISCRETE_LEGENDS = [
     name: 'Discrete color legend with search',
     component: SearchableDiscreteColorLegendExample,
     componentName: 'SearchableDiscreteColorLegendExample'
+  },
+  {
+    name: 'Discrete color legend with search and hover',
+    component: SearchableDiscreteColorLegendHoverExample,
+    componentName: 'SearchableDiscreteColorLegendHoverExample'
   }
 ];
 /* eslint-enable max-len */
