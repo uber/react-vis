@@ -100,7 +100,14 @@ Height of the component.
 
 Type: `number`
 
-The padding between cells the cells of the heatmap in pixels.
+The padding between the cells of the heatmap in pixels.  
+
+#### sidePadding (optional)
+
+Type: `Object` of `number`
+
+Directions, in which additional side padding is applied.  
+Possible keys for object are `['left', 'right', 'top', 'bottom']`.
 
 #### data
 
