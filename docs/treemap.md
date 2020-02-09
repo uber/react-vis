@@ -102,6 +102,12 @@ Type: `number`
 
 The padding between cells the cells of the heatmap in pixels.
 
+#### margin
+
+Type: `number`
+
+The margin of cells in pixels.
+
 #### data
 
 Type: `Object`
@@ -204,3 +210,61 @@ Pass in a function that will be used to sort the nodes, for more information see
 
 Scale properties for the `color` scale. If `color` property is not passed in the data object, each new section of the chart gets the next color (e. g. the `'category'` scale is applied).
 Please refer to [Scales and Data](scales-and-data.md) for more information about scales.
+
+#### getSize
+
+Type: `function`
+
+- Should accept arguments (leaf)
+
+Pass in a function that will be used for get size.
+
+#### getColor (optional)
+
+Type: `function`
+
+- Should accept arguments (leaf)
+
+Pass in a function that will be used to get color.
+
+#### getLabel (optional)
+
+Type: `function`
+
+- Should accept arguments (leaf)
+
+Pass in a function that will be used to get label.
+
+#### getContent (optional)
+
+Type: `function`
+
+- Should accept arguments (leaf)
+
+Pass in a function that will be used to get inner content of leaf.
+Can return a string or react component (JSX)
+
+#### getChildren (optional)
+
+Type: `function`
+
+- Should accept arguments (leaf)
+
+Pass in a function that will be used for get children
+
+#### titleHeight (optional)
+
+Type: `number`
+
+- Height of title in leaves in pixels
+
+Determines top padding for leaf names.
+
+#### paddingInner (optional)
+
+Type: `number`
+
+- Size of gap in pixels
+
+Determines gap between leaves. If not set gap will be same as padding value.
+Set 0 to remove inner gap.
