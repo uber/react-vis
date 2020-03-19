@@ -7,7 +7,11 @@ const jsRule = {
   loader: 'babel-loader',
   exclude: [/node_modules/],
   query: {
-    presets: ['react', 'es2015', 'stage-0']
+    presets: ['@babel/preset-react', '@babel/preset-env'],
+    plugins: [
+      '@babel/plugin-proposal-export-default-from',
+      '@babel/plugin-proposal-class-properties'
+    ]
   }
 };
 const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
@@ -61,9 +65,8 @@ const config = isProd
       },
 
       resolve: {
-        modules: ['node_modules', path.join(__dirname,'..', 'src')]
-      },
-      
+        modules: ['node_modules', path.join(__dirname, '..', 'src')]
+      }
     };
 
 module.exports = config;
