@@ -84,7 +84,7 @@
     "node-sass": "^4.13.1",
     "nyc": "^15.0.0",
     "prettier": "^1.19.1",
-    "react": "^15.5.4",
+    "react": "^16.13.0",
     "react-addons-test-utils": ">=15.6.2",
     "react-dom": "^16.13.0",
     "react-test-renderer": "^16.13.0",
