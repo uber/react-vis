@@ -16,7 +16,6 @@
     "url": "https://github.com/munsterberg/react-vis.git"
   },
   "scripts": {
-    "docs": "./publish-docs.sh",
     "clean": "rm -rf dist es bundle.* index.html && mkdir dist es",
     "start": "(cd showcase && npm install && npm start)",
     "build:browser": "browserify src/index.js -t [ babelify ] --standalone reactVis | uglifyjs > dist/dist.min.js",
@@ -122,19 +121,19 @@
       "production": {
         "presets": [
           "@babel/preset-env",
-          "react"
+          "@babel/preset-react"
         ]
       },
       "development": {
         "presets": [
           "@babel/preset-env",
-          "react"
+          "@babel/preset-react"
         ]
       },
       "es": {
         "presets": [
           "@babel/preset-env",
-          "react"
+          "@babel/preset-react"
         ]
       }
     }
