@@ -20,7 +20,7 @@ const config = isProd
       entry,
 
       output: {
-        path: './',
+        path: path.resolve(__dirname, './'),
         filename: 'bundle.js'
       },
 
@@ -51,6 +51,11 @@ const config = isProd
     }
   : {
       entry,
+
+      output: {
+        path: path.resolve(__dirname, './'),
+        filename: 'bundle.js'
+      },
 
       devtool: 'source-maps',
 

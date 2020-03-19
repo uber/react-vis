@@ -17,7 +17,7 @@ import {
   ForceDirectedGraph,
   ResponsiveVis,
   StreamgraphExample,
-  IrisDashboard,
+  IrisDashboard
 } from './showcase-index';
 
 const sectionNames = [
@@ -107,9 +107,7 @@ const sectionNames = [
 function App(props) {
   const {forExample} = props;
   const linkedSection = location.href.split('/#')[1];
-  const foundSection = sectionNames.find(
-    section => section.link === linkedSection
-  );
+  const foundSection = sectionNames.find(section => section.link === linkedSection);
 
   const filteredSections = sectionNames
     .filter(section => {
@@ -117,10 +115,8 @@ function App(props) {
       if (!linkedSection) {
         return section.showByDefault;
       }
-      const showThisSection =
-        foundSection && section.link === foundSection.link;
-      const showDefaultSections =
-        (!foundSection || foundSection.root) && section.showByDefault;
+      const showThisSection = foundSection && section.link === foundSection.link;
+      const showDefaultSections = (!foundSection || foundSection.root) && section.showByDefault;
 
       return showThisSection || showDefaultSections;
     })

@@ -3,7 +3,7 @@
   "description": "Showcase of react-vis components",
   "version": "0.1.0",
   "scripts": {
-    "start": "webpack-dev-server --progress --hot --port 3001 --open",
+    "start": "webpack-dev-server --progress --hot --port 3001",
     "build": "NODE_ENV=production webpack",
     "build:windows": "set NODE_ENV=production&&.\\node_modules\\.bin\\webpack"
   },

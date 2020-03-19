@@ -36,7 +36,4 @@ export default function App(props) {
   );
 }
 
-const el = document.createElement('div');
-document.body.appendChild(el);
-
-ReactDOM.render(<App />, el);
+ReactDOM.render(<App />, document.getElementById('app'));
