@@ -20,7 +20,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import equal from 'deep-equal';
+import equal from 'lodash/isEqual';
 
 import {getCombinedClassName} from 'utils/styling-utils';
 
@@ -188,6 +188,22 @@ class XYPlot extends React.Component {
     }
   };
 
+  _childPropCache = Object.create(null);
+
+  /**
+   * Memoizes the props of the child.
+   * This is keyed off of the childs 'key' property or defaults to its index.
+   * @param {number} index The index of the child
+   * @param {object} newValues The childs props
+   */
+  _getChildProps(index, newValues) {
+    const key = newValues.key || `@@series-${index}`;
+    const cached = this._childPropCache[key];
+    if (!equal(cached, newValues)) {
+      this._childPropCache[key] = {...newValues};
+    }
+    return this._childPropCache[key];
+  }
   /**
    * Prepare the child components (including series) for rendering.
    * @returns {Array} Array of child components.
@@ -201,6 +217,7 @@ class XYPlot extends React.Component {
     const children = React.Children.toArray(this.props.children);
     const seriesProps = getSeriesPropsFromChildren(children);
     const XYPlotValues = getXYPlotValues(props, children);
+
     return children.map((child, index) => {
       let dataProps = null;
       if (seriesProps[index]) {
@@ -209,21 +226,26 @@ class XYPlot extends React.Component {
         const {seriesIndex} = seriesProps[index];
         dataProps = {data: data[seriesIndex]};
       }
-      return React.cloneElement(child, {
+
+      const childProps = this._getChildProps(index, {
         ...dimensions,
         animation,
-        ...(dataProps && child.type.prototype && child.type.prototype.render
-          ? {
-              ref: ref =>
-                (this[`series${seriesProps[index].seriesIndex}`] = ref)
-            }
-          : {}),
         ...seriesProps[index],
         ...scaleMixins,
         ...child.props,
         ...XYPlotValues[index],
         ...dataProps
       });
+
+      const refProp =
+        dataProps && child.type.prototype && child.type.prototype.render
+          ? {
+              ref: ref =>
+                (this[`series${seriesProps[index].seriesIndex}`] = ref)
+            }
+          : {};
+
+      return React.cloneElement(child, {...childProps, ...refProp});
     });
   }
   /**
