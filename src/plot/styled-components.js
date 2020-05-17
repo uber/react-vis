@@ -1,5 +1,7 @@
-import {styled} from 'styletron-react';
+import React from 'react';
+import {useStyletron} from "styletron-react";
 
-export const XYPlotInnerSvg = styled('svg', {
-  display: 'block',
-});
+export function XYPlotInnerSvg(props) {
+  const [css] = useStyletron();
+  return <svg className={`rv-xy-plot__inner ${css({display: 'block'})}`} {...props} />;
+}

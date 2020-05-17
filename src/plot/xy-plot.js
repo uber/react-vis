@@ -545,7 +545,6 @@ class XYPlot extends React.Component {
         className={getCombinedClassName("rv-xy-plot", className)}
       >
         <XYPlotInnerSvg
-          className="rv-xy-plot__inner"
           width={width}
           height={height}
           style={style}
