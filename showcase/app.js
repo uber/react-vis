@@ -21,11 +21,16 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import document from 'global/document';
+import {Provider as StyletronProvider, DebugEngine} from "styletron-react";
+import {Client as Styletron} from "styletron-engine-atomic";
 
 import {BrowserRouter, Route} from 'react-router-dom';
 
 import ShowcaseApp from './showcase-app';
 import '../src/styles/examples.scss';
+
+const debug = new DebugEngine();
+const engine = new Styletron();
 
 export default function App(props) {
   // using react-router to trigger react updates on url change
@@ -39,4 +44,9 @@ export default function App(props) {
 const el = document.createElement('div');
 document.body.appendChild(el);
 
-ReactDOM.render(<App />, el);
+ReactDOM.render(
+  <StyletronProvider value={engine} debug={debug} debugAfterHydration>
+    <App />
+  </StyletronProvider>,
+  el
+);
