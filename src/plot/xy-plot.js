@@ -23,7 +23,7 @@ import PropTypes from 'prop-types';
 import equal from 'deep-equal';
 
 import {getCombinedClassName} from 'utils/styling-utils';
-import {styled} from 'styletron-react';
+import {XYPlotInnerSvg} from './styled-components';
 
 import {
   extractScalePropsFromProps,
@@ -62,10 +62,6 @@ const ATTRIBUTES = [
   'opacity',
   'size'
 ];
-
-const XYPlot__Inner_svg = styled('svg', {
-  display: 'block',
-});
 
 /**
  * Remove parents from tree formatted data. deep-equal doesnt play nice with data
@@ -548,7 +544,7 @@ class XYPlot extends React.Component {
         }}
         className={getCombinedClassName("rv-xy-plot", className)}
       >
-        <XYPlot__Inner_svg
+        <XYPlotInnerSvg
           className="rv-xy-plot__inner"
           width={width}
           height={height}
@@ -567,7 +563,7 @@ class XYPlot extends React.Component {
           onWheel={onWheel}
         >
           {components.filter(c => c && c.type.requiresSVG)}
-        </XYPlot__Inner_svg>
+        </XYPlotInnerSvg>
         {this.renderCanvasComponents(components, this.props)}
         {components.filter(c => c && !c.type.requiresSVG && !c.type.isCanvas)}
       </div>
