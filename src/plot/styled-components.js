@@ -1,7 +1,18 @@
+/* eslint-disable camelcase */
 import React from 'react';
-import {useStyletron} from "styletron-react";
+import {styled, withWrapper} from 'styletron-react';
 
-export function XYPlotInnerSvg(props) {
-  const [css] = useStyletron();
-  return <svg className={`rv-xy-plot__inner ${css({display: 'block'})}`} {...props} />;
+const styledWithClass = (elem, className, styleObj) => {
+  // eslint-disable-next-line react/display-name
+  return withWrapper(styled(elem, styleObj), Styled => props => (
+    <Styled className={className} {...props} />
+  ));
 }
+
+export const XYPlotInnerSvg = styledWithClass(
+  'svg',
+  'rv-xy-plot__inner',
+  {
+    display: 'block',
+  }
+);
