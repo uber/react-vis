@@ -17,6 +17,8 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+import React from 'react';
+import styled from 'styled-components';
 
 /**
  * Generates interpolated class names signature based on multiple class names
@@ -24,9 +26,6 @@
  * @param {...string} classNames CSS class signatures.
  * @returns {string} Interpolated string containing all valid class names.
  */
-import React from 'react';
-import styled from 'styled-components';
-
 export function getCombinedClassName(...classNames) {
   return classNames.filter(cn => cn && typeof cn === 'string').join(' ')
 }
