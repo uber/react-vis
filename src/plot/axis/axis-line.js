@@ -23,6 +23,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {ORIENTATION} from 'utils/axis-utils';
+import {XYPlotAxisLine} from '../styled-components';
 
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 
@@ -69,7 +70,7 @@ function AxisLine({orientation, width, height, style}) {
     };
   }
   return (
-    <line {...lineProps} className="rv-xy-plot__axis__line" style={style} />
+    <XYPlotAxisLine {...lineProps} style={style} />
   );
 }
 

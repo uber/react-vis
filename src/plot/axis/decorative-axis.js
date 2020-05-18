@@ -24,6 +24,7 @@ import PropTypes from 'prop-types';
 
 import AbstractSeries from 'plot/series/abstract-series';
 import DecorativeAxisTicks from './decorative-axis-ticks';
+import {XYPlotAxisLine} from '../styled-components';
 import Animation from 'animation';
 import {getCombinedClassName} from 'utils/styling-utils';
 
@@ -78,7 +79,7 @@ class DecorativeAxis extends AbstractSeries {
         className={getCombinedClassName(predefinedClassName, className)}
         transform={`translate(${marginLeft},${marginTop})`}
       >
-        <line
+        <XYPlotAxisLine
           {...{
             x1: x({x: axisStart.x}),
             x2: x({x: axisEnd.x}),
@@ -86,7 +87,6 @@ class DecorativeAxis extends AbstractSeries {
             y2: y({y: axisEnd.y}),
             ...style.line
           }}
-          className="rv-xy-plot__axis__line"
         />
         <g className="rv-xy-manipulable-axis__ticks">
           {DecorativeAxisTicks({
