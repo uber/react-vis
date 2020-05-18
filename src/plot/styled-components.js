@@ -1,4 +1,4 @@
-/* eslint_disable camelcase */
+/* eslint-disable camelcase */
 import {styledWithClass} from 'utils/styling-utils';
 
 const $rv_xy_plot_axis_font_color = '#6b6b76';
@@ -18,5 +18,5 @@ export const XYPlotInnerSvg = styledWithClass('svg', 'rv-xy-plot__inner')`
 export const XYPlotAxisLine = styledWithClass('line', 'rv-xy-plot__axis__line')`
   fill: none;
   stroke-width: 2px;
-  stroke: $rv_xy_plot_axis_line_color;
+  stroke: ${$rv_xy_plot_axis_line_color};
 `;
