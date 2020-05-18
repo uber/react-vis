@@ -17,6 +17,8 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+import React from 'react';
+import {styled, withWrapper} from 'styletron-react';
 
 /**
  * Generates interpolated class names signature based on multiple class names
@@ -27,4 +29,11 @@
 
 export function getCombinedClassName(...classNames) {
   return classNames.filter(cn => cn && typeof cn === 'string').join(' ')
+}
+
+export function styledWithClass(elem, className, styleObj) {
+  // eslint-disable-next-line react/display-name
+  return withWrapper(styled(elem, styleObj), Styled => props => (
+    <Styled className={className} {...props} />
+  ));
 }
