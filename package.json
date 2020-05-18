@@ -93,7 +93,8 @@
     "uglify-js": "^2.8.22"
   },
   "peerDependencies": {
-    "react": "15.3.0 - 16.x",
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
     "styled-components": ">= 5"
   },
   "keywords": [
