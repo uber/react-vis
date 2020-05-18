@@ -23,6 +23,7 @@ import PropTypes from 'prop-types';
 import equal from 'deep-equal';
 
 import {getCombinedClassName} from 'utils/styling-utils';
+import {XYPlotInnerSvg} from './styled-components';
 
 import {
   extractScalePropsFromProps,
@@ -543,8 +544,7 @@ class XYPlot extends React.Component {
         }}
         className={getCombinedClassName("rv-xy-plot", className)}
       >
-        <svg
-          className="rv-xy-plot__inner"
+        <XYPlotInnerSvg
           width={width}
           height={height}
           style={style}
@@ -562,7 +562,7 @@ class XYPlot extends React.Component {
           onWheel={onWheel}
         >
           {components.filter(c => c && c.type.requiresSVG)}
-        </svg>
+        </XYPlotInnerSvg>
         {this.renderCanvasComponents(components, this.props)}
         {components.filter(c => c && !c.type.requiresSVG && !c.type.isCanvas)}
       </div>
