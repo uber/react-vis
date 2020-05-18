@@ -25,7 +25,6 @@ import PropTypes from 'prop-types';
 import {ORIENTATION} from 'utils/axis-utils';
 import {XYPlotAxisLine} from '../styled-components';
 
-
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 
 const propTypes = {
