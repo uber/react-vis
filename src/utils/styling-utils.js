@@ -24,7 +24,19 @@
  * @param {...string} classNames CSS class signatures.
  * @returns {string} Interpolated string containing all valid class names.
  */
+import React from 'react';
+import styled from 'styled-components';
 
 export function getCombinedClassName(...classNames) {
   return classNames.filter(cn => cn && typeof cn === 'string').join(' ')
+}
+
+export function styledWithClass(elementName, globalClassName) {
+  function StyledComponent({className, ...props}) {
+    return React.createElement(
+      elementName,
+      {className: `${globalClassName} ${className}`, ...props}
+    );
+  }
+  return styled(StyledComponent);
 }
