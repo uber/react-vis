@@ -1,22 +1,24 @@
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const process = require('process');
 const path = require('path');
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const entry = {app: './app'};
 const jsRule = {
   test: /\.js$/,
   loader: 'babel-loader',
   exclude: [/node_modules/],
-  query: {
+  options: {
     presets: ['react', 'es2015', 'stage-0']
-  }
+  },
 };
 const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
 const config = isProd
   ? {
       entry,
-
+      mode: 'production',
       output: {
-        path: './',
+        path: process.cwd(),
         filename: 'bundle.js'
       },
 
@@ -32,30 +34,46 @@ const config = isProd
           jsRule,
           {
             test: /\.scss$/,
-            loader: ExtractTextPlugin.extract({
-              fallbackLoader: 'style-loader',
-              loader: ['css-loader', 'sass-loader']
-            })
+            use: [{
+              loader: MiniCssExtractPlugin.loader,
+            }, 'css-loader', 'sass-loader']
           }
         ]
       },
-
+      optimization: {
+        minimize: true
+      },
       plugins: [
-        new ExtractTextPlugin('bundle.css'),
-        new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}})
+       new MiniCssExtractPlugin('bundle.css'),
       ]
     }
   : {
+      mode: 'development',
       entry,
-
       devtool: 'source-maps',
+      output: {
+        path: path.resolve(__dirname, './dist'),
+        filename: 'bundle.js'
+      },
+      plugins: [
+        new MiniCssExtractPlugin()
+      ],
 
       module: {
         rules: [
           jsRule,
           {
-            test: /\.(sass|scss)$/,
-            use: ['style-loader', 'css-loader', 'sass-loader']
+            test: /\.(sa|sc|c)ss$/,
+            use: [
+              {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                  hmr: true,
+                },
+              },
+              'css-loader',
+              'sass-loader'
+            ],
           }
         ]
       },
@@ -63,7 +81,7 @@ const config = isProd
       resolve: {
         modules: ['node_modules', path.join(__dirname,'..', 'src')]
       },
-      
+
     };
 
 module.exports = config;

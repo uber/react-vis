@@ -23,10 +23,10 @@
     "docs": "./publish-docs.sh",
     "clean": "rm -rf dist es bundle.* index.html && mkdir dist es",
     "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
-    "build:browser": "browserify src/index.js -t [ babelify ] --standalone reactVis | uglifyjs > dist/dist.min.js",
-    "build": "npm run clean && babel src -d dist --copy-files && BABEL_ENV=es babel src -d es --copy-files && node-sass src/main.scss dist/style.css --output-style compressed && npm run build:browser",
-    "lint": "eslint src tests showcase docs --ignore-pattern node_modules --ignore-pattern bundle.js",
-    "lint-styles": "stylelint src/styles/*.scss --syntax scss",
+    "build:browser": "browserify ./index.js -t [ babelify ] --standalone reactVis | uglifyjs > dist/dist.min.js",
+    "build": "yarn run clean && babel . -d dist --copy-files && BABEL_ENV=es babel . -d es --copy-files && node-sass ./main.scss dist/style.css --output-style compressed && yarn run build:browser",
+    "lint": "eslint . tests showcase docs --ignore-pattern node_modules --ignore-pattern bundle.js",
+    "lint-styles": "stylelint ./styles/*.scss --syntax scss",
     "test:windows": "babel-node --inspect ./tests/index.js",
     "test": "node --inspect ./node_modules/.bin/babel-node ./tests/index.js",
     "full-test": "npm run lint && npm run cover",
@@ -111,7 +111,7 @@
         "module-resolver",
         {
           "root": [
-            "./src"
+            "."
           ]
         }
       ]
@@ -148,7 +148,7 @@
   "nyc": {
     "exclude": [
       "tests/**/*.js",
-      "src/utils/react-utils.js"
+      "./utils/react-utils.js"
     ]
   },
   "engines": {
