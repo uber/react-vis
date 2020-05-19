@@ -25,7 +25,7 @@ import document from 'global/document';
 import {BrowserRouter, Route} from 'react-router-dom';
 
 import ShowcaseApp from './showcase-app';
-import '../src/styles/examples.scss';
+import '../react-vis/src/styles/examples.scss';
 
 export default function App(props) {
   // using react-router to trigger react updates on url change

@@ -79,7 +79,7 @@ const config = isProd
       },
 
       resolve: {
-        modules: ['node_modules', path.join(__dirname,'..', 'src')]
+        modules: ['node_modules', path.join(__dirname,'..', 'react-vis', 'src')]
       },
 
     };

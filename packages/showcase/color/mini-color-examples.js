@@ -32,7 +32,7 @@ import {
   DISCRETE_COLOR_RANGE,
   EXTENDED_DISCRETE_COLOR_RANGE,
   CONTINUOUS_COLOR_RANGE
-} from '../../src/theme';
+} from '../../react-vis/src/theme';
 
 const colors = [
   '#cd3b54',

@@ -6,8 +6,8 @@
   "description": "Data visualization library based on React and d3.",
   "private": true,
   "workspaces": [
-    "showcase",
-    "src"
+    "packages/showcase",
+    "packages/react-vis"
   ],
   "repository": {
     "type": "git",
