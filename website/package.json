@@ -1,5 +1,5 @@
 {
-  "name": "react-vis",
+  "name": "react-vis-website",
   "version": "1.0.0",
   "description": "A composable charting library",
   "main": "index.js",
@@ -17,13 +17,18 @@
   "devDependencies": {
     "@storybook/addon-knobs": "^3.4.0",
     "@storybook/react": "^3.4.0",
-    "ocular": "^0.4.8",
+
     "storybook-addon-jsx": "^5.3.0"
   },
   "dependencies": {
     "d3-force": "^1.0.6",
     "d3-random": "^1.1.0",
+    "ocular": "0.6.2",
     "react-virtualized": "^9.18.5",
     "react-vis": "^1.11.2"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   }
 }
