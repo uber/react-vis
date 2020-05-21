@@ -31,13 +31,7 @@
     "test": "node --inspect ./node_modules/.bin/babel-node ./tests/index.js",
     "full-test": "npm run lint && npm run cover",
     "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test",
-    "prettier": "prettier --write $(git ls-files | grep '.js$')",
-    "remove-unpm-rfs": "../../remove-refs-to-unpm.pl"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run remove-unpm-rfs"
-    }
+    "prettier": "prettier --write $(git ls-files | grep '.js$')"
   },
   "dependencies": {
     "d3-array": "^1.2.0",
@@ -79,7 +73,6 @@
     "eslint-plugin-no-only-tests": "^2.0.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
-    "husky": "^1.1.2",
     "jsdom": "^9.9.1",
     "node-sass": "^4.9.3",
     "nyc": "^13.0.1",

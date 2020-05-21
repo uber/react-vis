@@ -25,6 +25,17 @@
     "es6",
     "babel"
   ],
+  "scripts":{
+    "remove-unpm-rfs": "./remove-refs-to-unpm.pl"
+  },
+  "devDependencies": {
+    "husky": "^1.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run remove-unpm-rfs"
+    }
+  },
   "babel": {
     "plugins": [
       [
