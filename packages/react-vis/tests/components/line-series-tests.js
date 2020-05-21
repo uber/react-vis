@@ -4,19 +4,23 @@ import {mount} from 'enzyme';
 import XYPlot from 'plot/xy-plot';
 import LineSeries from 'plot/series/line-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
-import LineChart from '../../showcase/plot/line-chart';
-import LineMarkSeries from '../../showcase/plot/linemark-chart';
-import LineChartManyColors from '../../showcase/color/line-chart-many-colors';
-import NullData from '../../showcase/misc/null-data-example';
-import TimeChart from '../../showcase/misc/time-chart';
-import SyncedCharts from '../../showcase/misc/synced-charts';
+import LineChart from '../../../showcase/plot/line-chart';
+import LineMarkSeries from '../../../showcase/plot/linemark-chart';
+import LineChartManyColors from '../../../showcase/color/line-chart-many-colors';
+import NullData from '../../../showcase/misc/null-data-example';
+import TimeChart from '../../../showcase/misc/time-chart';
+import SyncedCharts from '../../../showcase/misc/synced-charts';
 
 testRenderWithProps(LineSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
 const LINE_PROPS = {
   className: 'line-chart-example',
   color: '#12939a',
-  data: [{x: 1, y: 5, y0: 6}, {x: 2, y: 20, y0: 11}, {x: 3, y: 10, y0: 9}]
+  data: [
+    {x: 1, y: 5, y0: 6},
+    {x: 2, y: 20, y0: 11},
+    {x: 3, y: 10, y0: 9}
+  ]
 };
 
 const LINE_WITH_MANY_COLORS_COLORS = [
@@ -85,8 +89,16 @@ test('LineSeries: basic rendering', t => {
 
 test('LineSeries: Showcase Example - LineChart', t => {
   const $ = mount(<LineChart />);
-  t.equal($.find('.alt-x-label').length, 1, 'should find custom x class on chart label correctly');
-  t.equal($.find('.alt-y-label').length, 1, 'should find custom y class on chart label correctly');
+  t.equal(
+    $.find('.alt-x-label').length,
+    1,
+    'should find custom x class on chart label correctly'
+  );
+  t.equal(
+    $.find('.alt-y-label').length,
+    1,
+    'should find custom y class on chart label correctly'
+  );
   t.equal(
     $.text(),
     'TOGGLE TO CANVAS1.01.52.02.53.03.54.02468101214X AxisY Axis',

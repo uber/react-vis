@@ -21,7 +21,7 @@ import {
   ReactVis20,
   Continuous,
   CustomPalette
-} from '../../showcase/color/mini-color-examples';
+} from '../../../showcase/color/mini-color-examples';
 
 test('Color Article Test: #generateCharts', t => {
   [

@@ -4,11 +4,11 @@ import {mount} from 'enzyme';
 
 import Sankey from 'sankey';
 import Hint from 'plot/hint';
-import BasicSankey from '../../showcase/sankey/basic';
-import VoronoiSankey from '../../showcase/sankey/voronoi';
-import EnergySankey from '../../showcase/sankey/energy-sankey';
-import LinkEventSankey from '../../showcase/sankey/link-event';
-import LinkHintSankey from '../../showcase/sankey/link-hint';
+import BasicSankey from '../../../showcase/sankey/basic';
+import VoronoiSankey from '../../../showcase/sankey/voronoi';
+import EnergySankey from '../../../showcase/sankey/energy-sankey';
+import LinkEventSankey from '../../../showcase/sankey/link-event';
+import LinkHintSankey from '../../../showcase/sankey/link-hint';
 
 const SANKEY_PROPS = {
   nodes: [],

@@ -7,7 +7,7 @@ import {
   LineChartMouseOverXY,
   LineChartMouseOverSeries,
   ScatterPlotOnNearestXY
-} from '../../showcase/interaction/interaction-examples';
+} from '../../../showcase/interaction/interaction-examples';
 
 test('Interaction examples: LinkedCharts', t => {
   const $ = mount(<LinkedCharts />);

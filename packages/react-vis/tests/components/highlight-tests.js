@@ -2,10 +2,10 @@ import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import Highlight from 'plot/highlight';
-import DragableExample from '../../showcase/misc/dragable-chart-example';
-import ZoomableChartExample from '../../showcase/misc/zoomable-chart-example';
-import SelectionPlotExample from '../../showcase/misc/selection-plot-example';
-import BidirectionDragChart from '../../showcase/misc/2d-dragable-plot';
+import DragableExample from '../../../showcase/misc/dragable-chart-example';
+import ZoomableChartExample from '../../../showcase/misc/zoomable-chart-example';
+import SelectionPlotExample from '../../../showcase/misc/selection-plot-example';
+import BidirectionDragChart from '../../../showcase/misc/2d-dragable-plot';
 
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 

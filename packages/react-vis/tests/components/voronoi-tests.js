@@ -4,7 +4,7 @@ import {mount} from 'enzyme';
 import Voronoi from '../../src/plot/voronoi.js';
 import XYPlot from 'plot/xy-plot';
 
-import VoronoiLineChart from '../../showcase/misc/voronoi-line-chart';
+import VoronoiLineChart from '../../../showcase/misc/voronoi-line-chart';
 
 const StatelessVoronoiWrapper = () => (
   <XYPlot
@@ -15,7 +15,10 @@ const StatelessVoronoiWrapper = () => (
     yDomain={[-50, 250]}
   >
     <Voronoi
-      extent={[[0, 0], [200, 200]]}
+      extent={[
+        [0, 0],
+        [200, 200]
+      ]}
       nodes={Array(100)
         .fill()
         .map((e, x) => ({

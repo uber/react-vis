@@ -1,15 +1,15 @@
 import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
-import ContinuousSizeLegend from '../../showcase/legends/continuous-size';
-import ContinuousColorLegend from '../../showcase/legends/continuous-color';
+import ContinuousSizeLegend from '../../../showcase/legends/continuous-size';
+import ContinuousColorLegend from '../../../showcase/legends/continuous-color';
 
-import HorizontalDiscreteLegend from '../../showcase/legends/horizontal-discrete-color';
-import VerticalDiscreteLegend from '../../showcase/legends/vertical-discrete-color';
-import SearchableDiscreteLegend from '../../showcase/legends/searchable-discrete-color';
-import SearchableDiscreteColorLegendHoverExample from '../../showcase/legends/searchable-discrete-color-hover';
-import HorizontalDiscreteCustomPalette from '../../showcase/legends/horizontal-discrete-custom-palette';
-import ClusteredStackedVerticalBarChart from '../../showcase/plot/clustered-stacked-bar-chart';
+import HorizontalDiscreteLegend from '../../../showcase/legends/horizontal-discrete-color';
+import VerticalDiscreteLegend from '../../../showcase/legends/vertical-discrete-color';
+import SearchableDiscreteLegend from '../../../showcase/legends/searchable-discrete-color';
+import SearchableDiscreteColorLegendHoverExample from '../../../showcase/legends/searchable-discrete-color-hover';
+import HorizontalDiscreteCustomPalette from '../../../showcase/legends/horizontal-discrete-custom-palette';
+import ClusteredStackedVerticalBarChart from '../../../showcase/plot/clustered-stacked-bar-chart';
 
 test('Discrete Legend has no clickable className while onItemClick is not passing', t => {
   const withOnClick$ = mount(<VerticalDiscreteLegend />);
@@ -146,13 +146,18 @@ test('Discrete Legends', t => {
     'before clicking, should find no items disabled'
   );
 
-
   t.deepEqual(
     mount(<ClusteredStackedVerticalBarChart />)
       .find('.rv-discrete-color-legend')
       .first()
       .props().style,
-    {width: undefined, height: undefined, position: 'absolute', left: '50px', top: '10px'},
+    {
+      width: undefined,
+      height: undefined,
+      position: 'absolute',
+      left: '50px',
+      top: '10px'
+    },
     'discrete legend retains passed styles'
   );
 
@@ -199,9 +204,7 @@ test('Discrete Legends Showcase: SearchableDiscreteLegendHover', t => {
     $.text(),
     'Apples:SELECTEDBananasBlueberriesCarrotsEggplantsLimesPotatoes',
     'should find the right text, with the first element selected'
-  )
+  );
 
   t.end();
 });
-
-

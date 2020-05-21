@@ -3,8 +3,8 @@ import React from 'react';
 import {mount} from 'enzyme';
 import HexbinSeries from 'plot/series/hexbin-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
-import HexHeatmap from '../../showcase/plot/hex-heatmap';
-import HexbinSizeExample from '../../showcase/plot/hexbin-size-example';
+import HexHeatmap from '../../../showcase/plot/hex-heatmap';
+import HexbinSizeExample from '../../../showcase/plot/hexbin-size-example';
 
 testRenderWithProps(HexbinSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
@@ -45,8 +45,16 @@ test('HexbinSeries: Showcase Example - HexHeatmap', t => {
 
 test('HexbinSeries: Showcase Example - HexbinSizeExample', t => {
   const $ = mount(<HexbinSizeExample />);
-  t.equal($.find('.alt-x-label').length, 1, 'should find custom x class on chart label correctly');
-  t.equal($.find('.alt-y-label').length, 1, 'should find custom y class on chart label correctly');
+  t.equal(
+    $.find('.alt-x-label').length,
+    1,
+    'should find custom x class on chart label correctly'
+  );
+  t.equal(
+    $.find('.alt-y-label').length,
+    1,
+    'should find custom y class on chart label correctly'
+  );
   [
     {
       numHexes: 56,

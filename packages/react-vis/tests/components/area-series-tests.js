@@ -5,15 +5,19 @@ import {mount} from 'enzyme';
 import XYPlot from 'plot/xy-plot';
 import AreaSeries from 'plot/series/area-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
-import AreaChartElevated from '../../showcase/plot/area-chart-elevated';
-import AreaChart from '../../showcase/plot/area-chart';
+import AreaChartElevated from '../../../showcase/plot/area-chart-elevated';
+import AreaChart from '../../../showcase/plot/area-chart';
 
 testRenderWithProps(AreaSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
 const AREA_PROPS = {
   className: 'area-chart-example',
   color: '#12939a',
-  data: [{x: 1, y: 5, y0: 6}, {x: 2, y: 20, y0: 11}, {x: 3, y: 10, y0: 9}]
+  data: [
+    {x: 1, y: 5, y0: 6},
+    {x: 2, y: 20, y0: 11},
+    {x: 3, y: 10, y0: 9}
+  ]
 };
 
 test('AreaSeries: basic rendering', t => {

@@ -5,12 +5,12 @@ import XYPlot from 'plot/xy-plot';
 import HorizontalBarSeries from 'plot/series/horizontal-bar-series';
 import VerticalBarSeries from 'plot/series/vertical-bar-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
-import StackedHorizontalBarChart from '../../showcase/plot/stacked-horizontal-bar-chart';
-import StackedVerticalBarChart from '../../showcase/plot/stacked-vertical-bar-chart';
-import BarChart from '../../showcase/plot/bar-chart';
-import BigBaseBarChart from '../../showcase/plot/big-base-bar-chart';
-import ClusteredStackedVerticalBarChart from '../../showcase/plot/clustered-stacked-bar-chart';
-import DifferenceChart from '../../showcase/plot/difference-chart';
+import StackedHorizontalBarChart from '../../../showcase/plot/stacked-horizontal-bar-chart';
+import StackedVerticalBarChart from '../../../showcase/plot/stacked-vertical-bar-chart';
+import BarChart from '../../../showcase/plot/bar-chart';
+import BigBaseBarChart from '../../../showcase/plot/big-base-bar-chart';
+import ClusteredStackedVerticalBarChart from '../../../showcase/plot/clustered-stacked-bar-chart';
+import DifferenceChart from '../../../showcase/plot/difference-chart';
 
 testRenderWithProps(HorizontalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
 testRenderWithProps(VerticalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
@@ -91,7 +91,11 @@ test('BarSeries: Ordinal Y-Axis HorizontalBarSeries', t => {
   const $ = mount(
     <XYPlot width={300} height={300} yType="ordinal">
       <HorizontalBarSeries
-        data={[{y: 'a', x: 10}, {y: 'b', x: 5}, {y: 'c', x: 15}]}
+        data={[
+          {y: 'a', x: 10},
+          {y: 'b', x: 5},
+          {y: 'c', x: 15}
+        ]}
       />
     </XYPlot>
   );

@@ -2,7 +2,7 @@ import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 
-import DynamicCrosshair from '../../showcase/axes/dynamic-crosshair';
+import DynamicCrosshair from '../../../showcase/axes/dynamic-crosshair';
 
 test('Crosshair: Dynamic Crosshair - Example', t => {
   const $ = mount(<DynamicCrosshair />);

@@ -3,8 +3,8 @@ import React from 'react';
 import {mount} from 'enzyme';
 import LabelSeries from 'plot/series/label-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
-import LabelSeriesExample from '../../showcase/misc/label-series-example';
-import LabeledStackedVerticalBarChart from '../../showcase/plot/labeled-stacked-vertical-bar-chart';
+import LabelSeriesExample from '../../../showcase/misc/label-series-example';
+import LabeledStackedVerticalBarChart from '../../../showcase/plot/labeled-stacked-vertical-bar-chart';
 
 testRenderWithProps(LabelSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
