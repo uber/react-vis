@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {storiesOf} from '@storybook/react';
-import {jsxDecorator} from 'storybook-addon-jsx';
 
 import {
   withKnobs,
@@ -35,8 +34,7 @@ function styledAreaSeries(props) {
 
 storiesOf('Series/AreaSeries/Base', module)
   .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
-  .add(
+  .addWithJSX(
     'Single Area chart',
     () => {
       return (
@@ -46,7 +44,7 @@ storiesOf('Series/AreaSeries/Base', module)
       );
     },
   )
-  .add(
+  .addWithJSX(
     'Single Area chart paired with LineSeries',
     () => {
       return (
@@ -64,7 +62,7 @@ storiesOf('Series/AreaSeries/Base', module)
       );
     },
   )
-  .add(
+  .addWithJSX(
     'With negative numbers',
     () => {
       return (
@@ -77,7 +75,7 @@ storiesOf('Series/AreaSeries/Base', module)
       );
     },
   )
-  .add(
+  .addWithJSX(
     'With non-uniform x numbers',
     () => {
       return (
@@ -93,7 +91,7 @@ storiesOf('Series/AreaSeries/Base', module)
       );
     },
   )
-  .add(
+  .addWithJSX(
     'Multiple Area series',
     () => {
       return (
@@ -114,7 +112,7 @@ storiesOf('Series/AreaSeries/Base', module)
       );
     },
   )
-  .add(
+  .addWithJSX(
     'Multiple stacked Area series',
     () => {
       return (
@@ -129,8 +127,7 @@ storiesOf('Series/AreaSeries/Base', module)
 
 storiesOf('Series/AreaSeries/Styling', module)
   .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
-  .add(
+  .addWithJSX(
     'opacity',
     () => {
       return (
@@ -143,7 +140,7 @@ storiesOf('Series/AreaSeries/Styling', module)
       );
     },
   )
-  .add(
+  .addWithJSX(
     'stroke',
     () => {
       return (
@@ -156,7 +153,7 @@ storiesOf('Series/AreaSeries/Styling', module)
       );
     },
   )
-  .add(
+  .addWithJSX(
     'style object',
     () => {
       return (
@@ -176,8 +173,7 @@ storiesOf('Series/AreaSeries/Styling', module)
 
 storiesOf('Series/AreaSeries/Curve', module)
   .addDecorator(withKnobs)
-  .addDecorator(jsxDecorator)
-  .add(
+  .addWithJSX(
     'Curve',
     () => {
       return (
