@@ -1,8 +1,4 @@
-import {setAddon} from '@storybook/react';
-import JSXAddon from 'storybook-addon-jsx';
-setAddon(JSXAddon);
-
-import '../../dist/style.css';
+import '../../react-vis/dist/style.css';
 import '../.storybook/storybook.css';
 
 import './areaseries-story';

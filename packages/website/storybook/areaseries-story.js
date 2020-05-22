@@ -1,8 +1,7 @@
 import React from 'react';
 
-import {setAddon, storiesOf} from '@storybook/react';
-import JSXAddon from 'storybook-addon-jsx';
-setAddon(JSXAddon);
+import {storiesOf} from '@storybook/react';
+import {jsxDecorator} from 'storybook-addon-jsx';
 
 import {
   withKnobs,
@@ -15,7 +14,7 @@ import {
 import {AreaSeries, LineSeries} from 'react-vis';
 
 import {generateLinearData, nonUniformX} from './storybook-data.js';
-import {SimpleChartWrapper, jsxOptions} from './storybook-utils.js';
+import {SimpleChartWrapper} from './storybook-utils.js';
 
 function styledAreaSeries(props) {
   return (
@@ -36,7 +35,8 @@ function styledAreaSeries(props) {
 
 storiesOf('Series/AreaSeries/Base', module)
   .addDecorator(withKnobs)
-  .addWithJSX(
+  .addDecorator(jsxDecorator)
+  .add(
     'Single Area chart',
     () => {
       return (
@@ -45,10 +45,8 @@ storiesOf('Series/AreaSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
-  .addDecorator(withKnobs)
-  .addWithJSX(
+  .add(
     'Single Area chart paired with LineSeries',
     () => {
       return (
@@ -65,9 +63,8 @@ storiesOf('Series/AreaSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
-  .addWithJSX(
+  .add(
     'With negative numbers',
     () => {
       return (
@@ -79,9 +76,8 @@ storiesOf('Series/AreaSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
-  .addWithJSX(
+  .add(
     'With non-uniform x numbers',
     () => {
       return (
@@ -96,9 +92,8 @@ storiesOf('Series/AreaSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
-  .addWithJSX(
+  .add(
     'Multiple Area series',
     () => {
       return (
@@ -118,9 +113,8 @@ storiesOf('Series/AreaSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
-  .addWithJSX(
+  .add(
     'Multiple stacked Area series',
     () => {
       return (
@@ -131,12 +125,12 @@ storiesOf('Series/AreaSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   );
 
 storiesOf('Series/AreaSeries/Styling', module)
   .addDecorator(withKnobs)
-  .addWithJSX(
+  .addDecorator(jsxDecorator)
+  .add(
     'opacity',
     () => {
       return (
@@ -148,9 +142,8 @@ storiesOf('Series/AreaSeries/Styling', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
-  .addWithJSX(
+  .add(
     'stroke',
     () => {
       return (
@@ -162,9 +155,8 @@ storiesOf('Series/AreaSeries/Styling', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
-  .addWithJSX(
+  .add(
     'style object',
     () => {
       return (
@@ -180,12 +172,12 @@ storiesOf('Series/AreaSeries/Styling', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   );
 
 storiesOf('Series/AreaSeries/Curve', module)
   .addDecorator(withKnobs)
-  .addWithJSX(
+  .addDecorator(jsxDecorator)
+  .add(
     'Curve',
     () => {
       return (
@@ -212,5 +204,4 @@ storiesOf('Series/AreaSeries/Curve', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   );

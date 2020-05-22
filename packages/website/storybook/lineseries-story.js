@@ -1,8 +1,6 @@
 import React from 'react';
 
-import {setAddon, storiesOf} from '@storybook/react';
-import JSXAddon from 'storybook-addon-jsx';
-setAddon(JSXAddon);
+import {storiesOf} from '@storybook/react';
 
 import {
   withKnobs,
@@ -16,7 +14,7 @@ import {
 import {LineSeries} from 'react-vis';
 
 import {generateLinearData, nonUniformX} from './storybook-data.js';
-import {SimpleChartWrapper, jsxOptions} from './storybook-utils.js';
+import {SimpleChartWrapper} from './storybook-utils.js';
 
 function styledLineSeries(props) {
   return (
@@ -57,7 +55,6 @@ storiesOf('Series/LineSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'With negative numbers',
@@ -70,7 +67,6 @@ storiesOf('Series/LineSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'With non-uniform x numbers',
@@ -86,7 +82,6 @@ storiesOf('Series/LineSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'Multiple Line series',
@@ -99,7 +94,6 @@ storiesOf('Series/LineSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   );
 
 storiesOf('Series/LineSeries/Styling', module)
@@ -116,7 +110,6 @@ storiesOf('Series/LineSeries/Styling', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'stroke',
@@ -130,7 +123,6 @@ storiesOf('Series/LineSeries/Styling', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'strokeDasharray',
@@ -144,7 +136,6 @@ storiesOf('Series/LineSeries/Styling', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'strokeStyle',
@@ -158,7 +149,6 @@ storiesOf('Series/LineSeries/Styling', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'strokeWidth',
@@ -172,7 +162,6 @@ storiesOf('Series/LineSeries/Styling', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'style object',
@@ -190,7 +179,6 @@ storiesOf('Series/LineSeries/Styling', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   );
 
 storiesOf('Series/LineSeries/Curve', module)
@@ -221,5 +209,4 @@ storiesOf('Series/LineSeries/Curve', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   );

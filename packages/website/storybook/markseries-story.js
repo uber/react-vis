@@ -1,9 +1,7 @@
 import React from 'react';
 
-import {setAddon, storiesOf} from '@storybook/react';
-import JSXAddon from 'storybook-addon-jsx';
+import {storiesOf} from '@storybook/react';
 
-setAddon(JSXAddon);
 import {
   withKnobs,
   color,
@@ -18,7 +16,6 @@ import {generateScatterplotData, intRandom, random} from './storybook-data.js';
 import {
   chooseColorScale,
   SimpleChartWrapper,
-  jsxOptions
 } from './storybook-utils.js';
 
 function styledMarkSeries(props) {
@@ -56,7 +53,6 @@ storiesOf('Series/MarkSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'Multiple MarkSeries',
@@ -69,7 +65,6 @@ storiesOf('Series/MarkSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   );
 
 storiesOf('Series/MarkSeries/Styling/By Datapoint', module)
@@ -89,7 +84,6 @@ storiesOf('Series/MarkSeries/Styling/By Datapoint', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'fill',
@@ -106,7 +100,6 @@ storiesOf('Series/MarkSeries/Styling/By Datapoint', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'opacity',
@@ -122,7 +115,6 @@ storiesOf('Series/MarkSeries/Styling/By Datapoint', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'size',
@@ -138,7 +130,6 @@ storiesOf('Series/MarkSeries/Styling/By Datapoint', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'stroke',
@@ -156,7 +147,6 @@ storiesOf('Series/MarkSeries/Styling/By Datapoint', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   );
 
 storiesOf('Series/MarkSeries/Styling/At series level', module)
@@ -173,7 +163,6 @@ storiesOf('Series/MarkSeries/Styling/At series level', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'opacity',
@@ -187,7 +176,6 @@ storiesOf('Series/MarkSeries/Styling/At series level', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'stroke',
@@ -201,7 +189,6 @@ storiesOf('Series/MarkSeries/Styling/At series level', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'strokeWidth',
@@ -215,7 +202,6 @@ storiesOf('Series/MarkSeries/Styling/At series level', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'style',
@@ -233,5 +219,4 @@ storiesOf('Series/MarkSeries/Styling/At series level', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   );

@@ -1,8 +1,6 @@
 import React from 'react';
 
-import {setAddon, storiesOf} from '@storybook/react';
-import JSXAddon from 'storybook-addon-jsx';
-setAddon(JSXAddon);
+import {storiesOf} from '@storybook/react';
 
 import {
   withKnobs,
@@ -23,7 +21,6 @@ import {
 import {
   CATEGORY_PALETTE,
   LINEAR_PALETTE,
-  jsxOptions
 } from './storybook-utils.js';
 
 storiesOf('Legends', module)
@@ -49,7 +46,6 @@ storiesOf('Legends', module)
         ]}
       />
     ),
-    jsxOptions
   )
   .addWithJSX(
     'Searchable discrete color legend',
@@ -73,7 +69,6 @@ storiesOf('Legends', module)
         ]}
       />
     ),
-    jsxOptions
   )
   .addWithJSX(
     'Continuous Color Legend',
@@ -120,7 +115,6 @@ storiesOf('Legends', module)
         />
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'Continuous Size Legend',
@@ -175,5 +169,4 @@ storiesOf('Legends', module)
         />
       );
     },
-    jsxOptions
   );

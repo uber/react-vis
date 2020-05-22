@@ -7,7 +7,8 @@
   "private": true,
   "workspaces": [
     "packages/showcase",
-    "packages/react-vis"
+    "packages/react-vis",
+    "packages/website"
   ],
   "repository": {
     "type": "git",
