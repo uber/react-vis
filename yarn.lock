@@ -324,7 +324,7 @@ acorn@^7.0.0, acorn@^7.1.1:
 
 airbnb-prop-types@^2.15.0:
   version "2.15.0"
-  resolved "https://unpm.uberinternal.com/airbnb-prop-types/-/airbnb-prop-types-2.15.0.tgz#5287820043af1eb469f5b0af0d6f70da6c52aaef"
+  resolved "https://registry.yarnpkg.com/airbnb-prop-types/-/airbnb-prop-types-2.15.0.tgz#5287820043af1eb469f5b0af0d6f70da6c52aaef"
   dependencies:
     array.prototype.find "^2.1.0"
     function.prototype.name "^1.1.1"
@@ -544,7 +544,7 @@ array-unique@^0.3.2:
 
 array.prototype.find@^2.1.0:
   version "2.1.1"
-  resolved "https://unpm.uberinternal.com/array.prototype.find/-/array.prototype.find-2.1.1.tgz#3baca26108ca7affb08db06bf0be6cb3115a969c"
+  resolved "https://registry.yarnpkg.com/array.prototype.find/-/array.prototype.find-2.1.1.tgz#3baca26108ca7affb08db06bf0be6cb3115a969c"
   dependencies:
     define-properties "^1.1.3"
     es-abstract "^1.17.4"
@@ -2938,7 +2938,7 @@ entities@^2.0.0:
 
 enzyme-adapter-react-16@^1.15.2:
   version "1.15.2"
-  resolved "https://unpm.uberinternal.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.15.2.tgz#b16db2f0ea424d58a808f9df86ab6212895a4501"
+  resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.15.2.tgz#b16db2f0ea424d58a808f9df86ab6212895a4501"
   dependencies:
     enzyme-adapter-utils "^1.13.0"
     enzyme-shallow-equal "^1.0.1"
@@ -2952,7 +2952,7 @@ enzyme-adapter-react-16@^1.15.2:
 
 enzyme-adapter-utils@^1.13.0:
   version "1.13.0"
-  resolved "https://unpm.uberinternal.com/enzyme-adapter-utils/-/enzyme-adapter-utils-1.13.0.tgz#01c885dde2114b4690bf741f8dc94cee3060eb78"
+  resolved "https://registry.yarnpkg.com/enzyme-adapter-utils/-/enzyme-adapter-utils-1.13.0.tgz#01c885dde2114b4690bf741f8dc94cee3060eb78"
   dependencies:
     airbnb-prop-types "^2.15.0"
     function.prototype.name "^1.1.2"
@@ -5661,7 +5661,7 @@ object.assign@^4.1.0:
 
 object.entries@^1.1.0:
   version "1.1.2"
-  resolved "https://unpm.uberinternal.com/object.entries/-/object.entries-1.1.2.tgz#bc73f00acb6b6bb16c203434b10f9a7e797d3add"
+  resolved "https://registry.yarnpkg.com/object.entries/-/object.entries-1.1.2.tgz#bc73f00acb6b6bb16c203434b10f9a7e797d3add"
   dependencies:
     define-properties "^1.1.3"
     es-abstract "^1.17.5"
@@ -6423,7 +6423,7 @@ promise-inflight@^1.0.1:
 
 prop-types-exact@^1.2.0:
   version "1.2.0"
-  resolved "https://unpm.uberinternal.com/prop-types-exact/-/prop-types-exact-1.2.0.tgz#825d6be46094663848237e3925a98c6e944e9869"
+  resolved "https://registry.yarnpkg.com/prop-types-exact/-/prop-types-exact-1.2.0.tgz#825d6be46094663848237e3925a98c6e944e9869"
   dependencies:
     has "^1.0.3"
     object.assign "^4.1.0"
@@ -6797,7 +6797,7 @@ reduce-function-call@^1.0.1:
 
 reflect.ownkeys@^0.2.0:
   version "0.2.0"
-  resolved "https://unpm.uberinternal.com/reflect.ownkeys/-/reflect.ownkeys-0.2.0.tgz#749aceec7f3fdf8b63f927a04809e90c5c0b3460"
+  resolved "https://registry.yarnpkg.com/reflect.ownkeys/-/reflect.ownkeys-0.2.0.tgz#749aceec7f3fdf8b63f927a04809e90c5c0b3460"
 
 regenerate-unicode-properties@^8.2.0:
   version "8.2.0"
