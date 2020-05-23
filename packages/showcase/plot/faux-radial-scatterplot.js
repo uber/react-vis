@@ -41,7 +41,7 @@ const margin = {
 const WIDTH = 300;
 const HEIGHT = 300;
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot
       margin={margin}

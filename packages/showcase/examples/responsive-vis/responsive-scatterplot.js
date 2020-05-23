@@ -74,7 +74,7 @@ export default class ResponsiveScatterplot extends React.Component {
     selectedPoints: []
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // not the greatest
     this.setState({
       binData: transformToBinData(

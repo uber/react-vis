@@ -93,7 +93,7 @@ const MISC = [
   }
 ];
 
-function MiscShowcase(props) {
+function MiscShowcase() {
   return (
     <article id="misc">
       <h2>Miscellaneous</h2>

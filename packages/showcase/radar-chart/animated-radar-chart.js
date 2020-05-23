@@ -85,7 +85,7 @@ export default class AnimatedRadar extends Component {
             bottom: 40,
             right: 50
           }}
-          tickFormat={t => ''}
+          tickFormat={() => ''}
           width={400}
           height={300}
         >

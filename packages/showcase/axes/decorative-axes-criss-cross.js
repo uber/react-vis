@@ -29,7 +29,7 @@ const MARGIN = {
   bottom: 30
 };
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot
       dontCheckIfEmpty

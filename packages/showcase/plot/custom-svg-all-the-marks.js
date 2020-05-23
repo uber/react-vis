@@ -83,16 +83,14 @@ export default class Example extends React.Component {
             animation
             style={{stroke: 'red', fill: 'orange'}}
             data={reverse ? REVERSED_DATA : DATA}
-            onValueMouseOver={ v => {
+            onValueMouseOver={v => {
               this.setState({hoveredCell: v});
             }}
-            onValueMouseOut={v => this.setState({hoveredCell: false})}
+            onValueMouseOut={() => this.setState({hoveredCell: false})}
           />
           {hoveredCell && (
             <Hint value={hoveredCell}>
-              <div style={tipStyle}>
-                {hoveredCell.customComponent}
-              </div>
+              <div style={tipStyle}>{hoveredCell.customComponent}</div>
             </Hint>
           )}
         </XYPlot>

@@ -29,7 +29,7 @@ import {
   CustomSVGSeries
 }from 'react-vis';
 
-export default function CustomSVGRootLevelComponent(props) {
+export default function CustomSVGRootLevelComponent() {
   return (
     <XYPlot width={300} height={300}>
       <VerticalGridLines />

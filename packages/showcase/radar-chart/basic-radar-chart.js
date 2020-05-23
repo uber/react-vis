@@ -56,7 +56,7 @@ const DATA = [
 const basicFormat = format('.2r');
 const wideFormat = format('.3r');
 
-export default function BasicRadarChart(props) {
+export default function BasicRadarChart() {
   return (
     <RadarChart
       data={DATA}

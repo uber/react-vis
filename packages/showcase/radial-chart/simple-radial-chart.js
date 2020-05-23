@@ -22,7 +22,7 @@ import React from 'react';
 
 import RadialChart from 'react-vis/radial-chart';
 
-export default function SimpleRadialChart(props) {
+export default function SimpleRadialChart() {
   return (
     <RadialChart
       colorType={'literal'}

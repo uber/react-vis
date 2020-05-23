@@ -29,7 +29,7 @@ import {
   MarkSeries
 }from 'react-vis';
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot width={300} height={300}>
       <VerticalGridLines />

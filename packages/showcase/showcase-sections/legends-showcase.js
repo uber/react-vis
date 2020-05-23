@@ -56,7 +56,7 @@ const CONTINOUS_SIZE_LEGEND = [
   }
 ];
 
-function LegendsExample(props) {
+function LegendsExample() {
   return (
     <article id="legends">
       <h1>Legends</h1>

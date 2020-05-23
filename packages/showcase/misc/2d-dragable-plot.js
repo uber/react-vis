@@ -35,7 +35,7 @@ import {generateSeededRandom} from '../showcase-utils';
 const seededRandom = generateSeededRandom(3);
 
 // randomly generated data
-const data = [...new Array(30)].map(row => ({
+const data = [...new Array(30)].map(() => ({
   x: seededRandom() * 5,
   y: seededRandom() * 10
 }));
@@ -74,7 +74,7 @@ export default class BidirectionDragChart extends React.Component {
             onBrushEnd={area =>
               this.setState({highlighting: false, filter: area})
             }
-            onDragStart={area => this.setState({highlighting: true})}
+            onDragStart={() => this.setState({highlighting: true})}
             onDrag={area => this.setState({filter: area})}
             onDragEnd={area =>
               this.setState({highlighting: false, filter: area})
@@ -89,7 +89,7 @@ export default class BidirectionDragChart extends React.Component {
             colorType="literal"
             getColor={d => (highlightPoint(d) ? '#EF5D28' : '#12939A')}
             onValueMouseOver={d => this.setState({hovered: d})}
-            onValueMouseOut={d => this.setState({hovered: false})}
+            onValueMouseOut={() => this.setState({hovered: false})}
             data={data}
           />
           {hovered && <Hint value={hovered} />}

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {SHOWCASE_LINKS} from '../showcase-links';
 
-export function mapSection(section, index) {
+export function mapSection(section) {
   const {docsLink, comment, name, componentName} = section;
   const SectionComponent = section.component;
   const linkProps = {

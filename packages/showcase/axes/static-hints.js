@@ -30,7 +30,7 @@ import {
   Hint
 }from 'react-vis';
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot width={300} height={300}>
       <VerticalGridLines />
@@ -38,7 +38,12 @@ export default function Example(props) {
       <XAxis />
       <YAxis />
       <LineSeries
-        data={[{x: 0, y: 1}, {x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]}
+        data={[
+          {x: 0, y: 1},
+          {x: 1, y: 10},
+          {x: 2, y: 5},
+          {x: 3, y: 15}
+        ]}
       />
       <Hint value={{x: 1, y: 10}} />
       <Hint

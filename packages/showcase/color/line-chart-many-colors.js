@@ -52,8 +52,8 @@ export default function Example() {
       <VerticalGridLines />
       <XAxis />
       <YAxis />
-      {data.map(props => (
-        <LineSeries {...props} />
+      {data.map(({key, ...props}) => (
+        <LineSeries key={key} {...props} />
       ))}
     </XYPlot>
   );

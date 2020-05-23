@@ -29,7 +29,7 @@ import {
   LineSeries
 }from 'react-vis';
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot
       margin={{top: 40, right: 40, left: 10, bottom: 10}}

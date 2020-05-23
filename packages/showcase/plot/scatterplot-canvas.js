@@ -33,7 +33,7 @@ import {
 }from 'react-vis';
 
 function getRandomData() {
-  return new Array(100).fill(0).map(row => ({
+  return new Array(100).fill(0).map(() => ({
     x: Math.random() * 10,
     y: Math.random() * 20,
     size: Math.random() * 10,

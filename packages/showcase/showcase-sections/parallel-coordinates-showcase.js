@@ -31,7 +31,7 @@ const PARALLEL_COORDINATES = [
   }
 ];
 
-function ParallelCoordinatesShowcase(props) {
+function ParallelCoordinatesShowcase() {
   return (
     <article id="parallel-coordinates">
       <h1>Parallel Coordinates</h1>

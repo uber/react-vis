@@ -65,7 +65,7 @@ const MARGIN = {
   bottom: 10
 };
 
-function ParallelCoordinatesExample(props) {
+function ParallelCoordinatesExample() {
   return (
     <XYPlot
       width={500}
