@@ -23,10 +23,14 @@
   "dependencies": {
     "d3-force": "^1.0.6",
     "d3-random": "^1.1.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-vis": "^1.11.7"
+  },
+  "volta": {
+    "node": "10.20.1",
+    "yarn": "1.22.4"
   }
 }
