@@ -671,7 +671,7 @@ babel-core@^6.0.14, babel-core@^6.18.0, babel-core@^6.26.0:
 
 babel-eslint@^10.1.0:
   version "10.1.0"
-  resolved "https://unpm.uberinternal.com/babel-eslint/-/babel-eslint-10.1.0.tgz#6968e568a910b78fb3779cdd8b6ac2f479943232"
+  resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-10.1.0.tgz#6968e568a910b78fb3779cdd8b6ac2f479943232"
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/parser" "^7.7.0"
