@@ -21,7 +21,7 @@ test('HexbinSeries: Showcase Example - HexHeatmap', t => {
     'should find the right number of hexes'
   );
   t.equal(
-    $.find('.hexbin-example').length,
+    $.find('g.hexbin-example').length,
     1,
     'should find the correct custom class name'
   );
@@ -46,12 +46,12 @@ test('HexbinSeries: Showcase Example - HexHeatmap', t => {
 test('HexbinSeries: Showcase Example - HexbinSizeExample', t => {
   const $ = mount(<HexbinSizeExample />);
   t.equal(
-    $.find('.alt-x-label').length,
+    $.find('g.alt-x-label').length,
     1,
     'should find custom x class on chart label correctly'
   );
   t.equal(
-    $.find('.alt-y-label').length,
+    $.find('g.alt-y-label').length,
     1,
     'should find custom y class on chart label correctly'
   );
@@ -103,7 +103,7 @@ test('HexbinSeries: Showcase Example - HexbinSizeExample', t => {
       'should find the right number of hexes'
     );
     t.equal(
-      $.find('.hexbin-size-example').length,
+      $.find('g.hexbin-size-example').length,
       1,
       'should find the correct custom class name'
     );

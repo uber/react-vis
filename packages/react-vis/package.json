@@ -65,6 +65,7 @@
     "browserify": "^14.3.0",
     "canvas-prebuilt": "^1.6.11",
     "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-babel": "^5.3.0",

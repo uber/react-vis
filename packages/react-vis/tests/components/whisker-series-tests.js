@@ -15,7 +15,7 @@ test('WhiskerSeries: Showcase Example - Whisker Scatterplot', t => {
     'should find the right text content'
   );
   t.equal(
-    $.find('.whisker-series-example').length,
+    $.find('g.whisker-series-example').length,
     1,
     'should find the right number of custom named series'
   );

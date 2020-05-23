@@ -43,7 +43,7 @@ test('Animation interpolates xDomain when specified', t => {
   const renderedAnimationWrapper = wrapper.find(Animation);
 
   t.deepEqual(
-    renderedAnimationWrapper.children(AxisTicks).prop('xDomain'),
+    renderedAnimationWrapper.find(AxisTicks).prop('xDomain'),
     ['Black'],
     'Axis interpolates props and passes to Animation'
   );

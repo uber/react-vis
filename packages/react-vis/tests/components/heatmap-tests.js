@@ -44,7 +44,7 @@ test('Heatmap: basic rendering', t => {
     'should find the right number of series'
   );
   t.equal(
-    $.find('.heatmap-series-example').length,
+    $.find('g.heatmap-series-example').length,
     1,
     'should find the correct custom class name'
   );
@@ -81,7 +81,7 @@ test('Heatmap: Showcase Example - HeatmapChart', t => {
     'should find the right number of series'
   );
   t.equal(
-    $.find('.heatmap-series-example').length,
+    $.find('g.heatmap-series-example').length,
     1,
     'should find the correct custom class name'
   );
@@ -111,7 +111,7 @@ test('Heatmap: Showcase Example - LabeledHeatmap', t => {
     'should find the right number of series'
   );
   t.equal(
-    $.find('.heatmap-series-example').length,
+    $.find('g.heatmap-series-example').length,
     1,
     'should find the correct custom class name'
   );

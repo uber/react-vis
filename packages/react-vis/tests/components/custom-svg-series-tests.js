@@ -43,7 +43,7 @@ test('CustomSVGSeries: Showcase Example - CustomSVGRootLevelComponent', t => {
   const $ = mount(<CustomSVGRootLevelComponent />);
   t.equal(
     $.text(),
-    '1.01.52.02.53.068101214x: 0y: 125x: 87.5y: 75x: 125y: 250x: 250y: 0x: 187.5y: 200',
+    '1.01.52.02.53.068101214x: 0y: 125x: 87.5y: 75.00000000000001x: 125y: 250x: 250y: 0x: 187.5y: 200',
     'should fine the right text content'
   );
   t.equal(
