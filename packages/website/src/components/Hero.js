@@ -28,7 +28,7 @@ const MiniChart = props => {
     width: 120
   };
   switch (props.type) {
-    case 0:
+    case 0: {
       // bar charts
       const barData = props.data.map((barseries, s) =>
         barseries.map((d, i) => ({
@@ -51,7 +51,8 @@ const MiniChart = props => {
           ))}
         </XYPlot>
       );
-    case 1:
+    }
+    case 1: {
       // pie charts
       const pieData = props.data
         .reduce((prev, curr) => [...prev, ...curr], [])
@@ -77,6 +78,7 @@ const MiniChart = props => {
           onSeriesMouseOut={() => props.highlight(null)}
         />
       );
+    }
     case 2:
       // area charts
       return (
@@ -91,10 +93,10 @@ const MiniChart = props => {
           ))}
         </XYPlot>
       );
-    case 3:
+    case 3: {
       // scatterplots
       const scatterData = props.data.map((scatterseries, s) =>
-        scatterseries.map((d, j) => ({
+        scatterseries.map(d => ({
           x: d.xS,
           s,
           y: d.yS,
@@ -114,7 +116,8 @@ const MiniChart = props => {
           ))}
         </XYPlot>
       );
-    case 4:
+    }
+    case 4: {
       // treemaps
       const treeMapData = props.data.reduce(
         (prev, treeseries, s) => {
@@ -143,6 +146,7 @@ const MiniChart = props => {
           children: []
         }
       );
+
       return (
         <Treemap
           {...XYProps}
@@ -159,6 +163,7 @@ const MiniChart = props => {
           style={{margin: '6px -6px -6px 6px'}}
         />
       );
+    }
     default:
       // Line charts
       return (
@@ -185,7 +190,10 @@ const MiniChart = props => {
           ))}
           {props.x !== null && props.x < props.data[0].length ? (
             <LineSeries
-              data={[{x: props.x, y: 0}, {x: props.x, y: 20}]}
+              data={[
+                {x: props.x, y: 0},
+                {x: props.x, y: 20}
+              ]}
               stroke="#125C77"
               strokeStyle="dashed"
               opacity={0.5}
@@ -219,8 +227,8 @@ function series(nbPoints, s) {
       previousPoint > 17.5
         ? previousPoint - random({scope: 1, rolls: 3})
         : previousPoint < 2.5
-          ? previousPoint + random({scope: 1, rolls: 3})
-          : previousPoint + random({scope: 1, rolls: 5}) - 2.5;
+        ? previousPoint + random({scope: 1, rolls: 3})
+        : previousPoint + random({scope: 1, rolls: 5}) - 2.5;
     previousPoint = y;
     return {
       x: d,
@@ -277,7 +285,7 @@ class Hero extends Component {
   };
 
   generateData = nb => {
-    return [...Array(nb).keys()].map(d => {
+    return [...Array(nb).keys()].map(() => {
       const nbPoints = 5 + random({scope: 5, rolls: 2, integer: true});
       const nbSeries =
         1 + Number(Math.random() > 0.2) + Number(Math.random() > 0.5);

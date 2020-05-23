@@ -47,7 +47,7 @@ const domains = IrisData.reduce((acc, row) => {
   });
 }, domainStructure);
 
-export default function BrushedParallelCoordinates(props) {
+export default function BrushedParallelCoordinates() {
   return (
     <ParallelCoordinates
       animation

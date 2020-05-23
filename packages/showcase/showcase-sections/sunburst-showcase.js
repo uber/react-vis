@@ -46,7 +46,7 @@ const SUNBURSTS = [
   }
 ];
 
-function SunburstSection(props) {
+function SunburstSection() {
   return (
     <article id="sunbursts">
       <h1>Sunbursts</h1>

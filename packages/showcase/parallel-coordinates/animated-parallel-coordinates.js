@@ -84,7 +84,7 @@ export default class AnimatedParallelCoordinates extends Component {
             bottom: 40,
             right: 50
           }}
-          tickFormat={t => ''}
+          tickFormat={() => ''}
           width={400}
           height={300}
         />

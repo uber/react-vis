@@ -60,7 +60,7 @@ const DATA = [
 const basicFormat = format('.2r');
 const wideFormat = format('.3r');
 
-export default function BasicParallelCoordinates(props) {
+export default function BasicParallelCoordinates() {
   return (
     <ParallelCoordinates
       data={DATA}

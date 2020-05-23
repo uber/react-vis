@@ -34,7 +34,7 @@ import {generateSeededRandom} from '../showcase-utils';
 const seededRandom = generateSeededRandom(36);
 
 // randomly generated data
-const data = [...new Array(10)].map(row => ({
+const data = [...new Array(10)].map(() => ({
   x: seededRandom() * 3,
   y: seededRandom() * 11 + 4,
   size: seededRandom() * 30 + 1

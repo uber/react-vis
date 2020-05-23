@@ -56,7 +56,10 @@ function generateSimulation(props) {
   const links = data.links.map(d => ({...d}));
   // build the simuatation
   const simulation = forceSimulation(nodes)
-    .force('link', forceLink().id(d => d.id))
+    .force(
+      'link',
+      forceLink().id(d => d.id)
+    )
     .force('charge', forceManyBody().strength(strength))
     .force('center', forceCenter(width / 2, height / 2))
     .stop();
@@ -99,7 +102,7 @@ class ForceDirectedGraph extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({
       data: generateSimulation(nextProps)
     });
@@ -118,7 +121,10 @@ class ForceDirectedGraph extends React.Component {
               color={'#B3AD9E'}
               key={`link-${index}`}
               opacity={0.3}
-              data={[{...source, color: null}, {...target, color: null}]}
+              data={[
+                {...source, color: null},
+                {...target, color: null}
+              ]}
             />
           );
         })}

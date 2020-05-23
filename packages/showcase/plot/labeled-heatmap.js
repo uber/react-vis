@@ -46,11 +46,11 @@ export default class LabeledHeatmap extends Component {
     value: false
   };
 
-  render () {
+  render() {
     const {value} = this.state;
     const exampleColorScale = scaleLinear()
-    .domain([min, (min + max) / 2, max])
-    .range(['orange', 'white', 'cyan']);
+      .domain([min, (min + max) / 2, max])
+      .range(['orange', 'white', 'cyan']);
 
     return (
       <XYPlot
@@ -61,33 +61,33 @@ export default class LabeledHeatmap extends Component {
         margin={50}
         width={500}
         height={500}
-        >
-      <XAxis orientation="top" />
-      <YAxis />
-      <HeatmapSeries
-        colorType="literal"
-        getColor={d => exampleColorScale(d.color)}
-        style={{
-          stroke: 'white',
-          strokeWidth: '2px',
-          rectStyle: {
-            rx: 10,
-            ry: 10
-          }
-        }}
-        className="heatmap-series-example"
-        data={data}
-        onValueMouseOver={v => this.setState({value: v})}
-        onSeriesMouseOut={v => this.setState({value: false})}
+      >
+        <XAxis orientation="top" />
+        <YAxis />
+        <HeatmapSeries
+          colorType="literal"
+          getColor={d => exampleColorScale(d.color)}
+          style={{
+            stroke: 'white',
+            strokeWidth: '2px',
+            rectStyle: {
+              rx: 10,
+              ry: 10
+            }
+          }}
+          className="heatmap-series-example"
+          data={data}
+          onValueMouseOver={v => this.setState({value: v})}
+          onSeriesMouseOut={() => this.setState({value: false})}
         />
-      <LabelSeries
-        style={{pointerEvents: 'none'}}
-        data={data}
-        labelAnchorX="middle"
-        labelAnchorY="baseline"
-        getLabel={d => `${d.color}`}
+        <LabelSeries
+          style={{pointerEvents: 'none'}}
+          data={data}
+          labelAnchorX="middle"
+          labelAnchorY="baseline"
+          getLabel={d => `${d.color}`}
         />
-      {value !== false && <Hint value={value} />}
+        {value !== false && <Hint value={value} />}
       </XYPlot>
     );
   }

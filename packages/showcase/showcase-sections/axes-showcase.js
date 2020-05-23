@@ -138,7 +138,7 @@ const DECORATIVE_AXES = [
   }
 ];
 
-function AxesShowcase(props) {
+function AxesShowcase() {
   return (
     <article id="axes">
       <h2>Axes</h2>
