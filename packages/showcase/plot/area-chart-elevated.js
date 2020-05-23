@@ -30,7 +30,7 @@ import {
   AreaSeries
 } from 'index';
 
-export default function AreaChartElevated(props) {
+export default function AreaChartElevated() {
   return (
     <XYPlot width={300} height={300}>
       <VerticalGridLines />
@@ -57,7 +57,11 @@ export default function AreaChartElevated(props) {
       />
       <LineMarkSeries
         className="area-elevated-line-series"
-        data={[{x: 1, y: 5.5}, {x: 2, y: 15}, {x: 3, y: 9}]}
+        data={[
+          {x: 1, y: 5.5},
+          {x: 2, y: 15},
+          {x: 3, y: 9}
+        ]}
       />
     </XYPlot>
   );

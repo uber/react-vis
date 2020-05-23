@@ -29,7 +29,7 @@ import {
   LineSeries
 } from 'index';
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot xType="linear" width={300} height={300}>
       <HorizontalGridLines />
@@ -37,11 +37,21 @@ export default function Example(props) {
       <XAxis title="X Axis" />
       <YAxis title="Y Axis" />
       <LineSeries
-        data={[{x: 1, y: 3}, {x: 2, y: 5}, {x: 3, y: 15}, {x: 4, y: 12}]}
+        data={[
+          {x: 1, y: 3},
+          {x: 2, y: 5},
+          {x: 3, y: 15},
+          {x: 4, y: 12}
+        ]}
       />
       <LineSeries data={null} />
       <LineSeries
-        data={[{x: 1, y: 10}, {x: 2, y: 4}, {x: 4, y: 2}, {x: 5, y: 15}]}
+        data={[
+          {x: 1, y: 10},
+          {x: 2, y: 4},
+          {x: 4, y: 2},
+          {x: 5, y: 15}
+        ]}
       />
     </XYPlot>
   );

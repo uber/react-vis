@@ -29,7 +29,7 @@ import {
   CustomSVGSeries
 } from 'index';
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot width={300} height={300} getY={d => d.value}>
       <VerticalGridLines />
@@ -47,7 +47,8 @@ export default function Example(props) {
           {
             x: 2.5,
             value: 7,
-            customComponent: (row, positionInPixels, globalStyle) => {
+            // eslint-disable-next-line react/display-name
+            customComponent: (_, positionInPixels) => {
               return (
                 <g className="inner-inner-component">
                   <circle cx="0" cy="0" r={10} fill="green" />

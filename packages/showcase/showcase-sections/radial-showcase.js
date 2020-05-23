@@ -36,7 +36,7 @@ const RADIAL = [
   }
 ];
 
-function RadialShowcase(props) {
+function RadialShowcase() {
   return (
     <article id="radial-charts">
       <h1>Radial Chart</h1>

@@ -32,9 +32,24 @@ import {
 } from 'index';
 
 const lines = [
-  [{x: 1, y: 3}, {x: 2, y: 5}, {x: 3, y: 15}, {x: 4, y: 12}],
-  [{x: 1, y: 10}, {x: 2, y: 4}, {x: 3, y: 2}, {x: 4, y: 15}],
-  [{x: 1, y: 7}, {x: 2, y: 11}, {x: 3, y: 9}, {x: 4, y: 2}]
+  [
+    {x: 1, y: 3},
+    {x: 2, y: 5},
+    {x: 3, y: 15},
+    {x: 4, y: 12}
+  ],
+  [
+    {x: 1, y: 10},
+    {x: 2, y: 4},
+    {x: 3, y: 2},
+    {x: 4, y: 15}
+  ],
+  [
+    {x: 1, y: 7},
+    {x: 2, y: 11},
+    {x: 3, y: 9},
+    {x: 4, y: 2}
+  ]
 ].map((p, i) => p.map(d => ({...d, line: i})));
 const nodes = lines.reduce((acc, d) => [...acc, ...d], []);
 
@@ -65,7 +80,7 @@ export default class Example extends React.Component {
           <input
             type="checkbox"
             checked={showVoronoi}
-            onChange={e => this.setState({showVoronoi: !showVoronoi})}
+            onChange={() => this.setState({showVoronoi: !showVoronoi})}
           />
           Show Voronoi
         </label>

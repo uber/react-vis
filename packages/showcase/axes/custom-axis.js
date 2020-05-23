@@ -29,7 +29,7 @@ import {
   LineSeries
 } from 'index';
 
-export default function Example(props) {
+export default function Example() {
   const axisStyle = {
     ticks: {
       fontSize: '14px',
@@ -54,7 +54,13 @@ export default function Example(props) {
         style={axisStyle}
       />
       <YAxis hideTicks />
-      <LineSeries data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]} />
+      <LineSeries
+        data={[
+          {x: 1, y: 10},
+          {x: 2, y: 5},
+          {x: 3, y: 15}
+        ]}
+      />
     </XYPlot>
   );
 }

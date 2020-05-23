@@ -31,7 +31,7 @@ import {
   Borders
 } from 'index';
 
-export default function GradientExample(props) {
+export default function GradientExample() {
   return (
     <XYPlot xDomain={[1.2, 3]} yDomain={[11, 26]} width={300} height={300}>
       <GradientDefs>

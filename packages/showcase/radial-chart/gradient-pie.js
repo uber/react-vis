@@ -22,7 +22,7 @@ import React from 'react';
 
 import {GradientDefs, RadialChart} from 'index';
 
-export default function GradientPie(props) {
+export default function GradientPie() {
   return (
     <RadialChart
       colorType={'literal'}

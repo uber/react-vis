@@ -42,7 +42,7 @@ const SANKEYS = [
   }
 ];
 
-function SankeysSection(props) {
+function SankeysSection() {
   return (
     <article id="sankeys">
       <h1>Sankeys</h1>

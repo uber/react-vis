@@ -4,24 +4,10 @@ import {setAddon, storiesOf} from '@storybook/react';
 import JSXAddon from 'storybook-addon-jsx';
 setAddon(JSXAddon);
 
-import {
-  withKnobs,
-  boolean,
-  color,
-  number,
-  object,
-  select,
-  text
-} from '@storybook/addon-knobs/react';
-
-import {ArcSeries} from 'react-vis';
+import {withKnobs, boolean, number, object} from '@storybook/addon-knobs/react';
 
 import {generateRadialData} from './storybook-data.js';
-import {
-  SimpleChartWrapperNoAxes,
-  SimpleRadialChartWrapper,
-  jsxOptions
-} from './storybook-utils.js';
+import {SimpleRadialChartWrapper, jsxOptions} from './storybook-utils.js';
 
 // function styledLineSeries(props) {
 //   return (
