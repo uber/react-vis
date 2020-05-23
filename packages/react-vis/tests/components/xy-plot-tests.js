@@ -231,25 +231,25 @@ test('Render a line series with data accessors', t => {
 test('Trigger all onParentMouse handlers on Series components', t => {
   t.plan(14);
   class ExtendedSeries extends AbstractSeries {
-    onParentMouseUp(event) {
+    onParentMouseUp() {
       t.pass(`onParentMouseUp on ${this.props.name} is called correctly`);
     }
-    onParentMouseDown(event) {
+    onParentMouseDown() {
       t.pass(`onParentMouseDown on ${this.props.name} is called correctly`);
     }
-    onParentMouseMove(event) {
+    onParentMouseMove() {
       t.pass(`onParentMouseMove on ${this.props.name} is called correctly`);
     }
-    onParentMouseLeave(event) {
+    onParentMouseLeave() {
       t.pass(`onParentMouseLeave on ${this.props.name} is called correctly`);
     }
-    onParentMouseEnter(event) {
+    onParentMouseEnter() {
       t.pass(`onParentMouseEnter on ${this.props.name} is called correctly`);
     }
-    onParentTouchStart(event) {
+    onParentTouchStart() {
       t.pass(`onParentTouchStart on ${this.props.name} is called correctly`);
     }
-    onParentTouchMove(event) {
+    onParentTouchMove() {
       t.pass(`onParentTouchMove on ${this.props.name} is called correctly`);
     }
     render() {

@@ -100,7 +100,7 @@ test('series-utils #seriesClusterProps', t => {
   ]);
   const expectedClusters = ['alpha', 'beta', 'gamma'];
   t.ok(result.length === 4, 'Returns array of proper size');
-  result.forEach((props, i) => {
+  result.forEach(props => {
     t.ok(props.sameTypeIndex === expectedClusters.indexOf(props.cluster));
     t.ok(
       props.sameTypeTotal === props.clusters.length,

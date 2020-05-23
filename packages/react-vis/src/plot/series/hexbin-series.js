@@ -99,13 +99,12 @@ class HexbinSeries extends AbstractSeries {
               : hexagonPath,
             fill: color(d.length),
             transform: `translate(${d.x}, ${d.y})`,
-            key: i,
             onClick: e => this._valueClickHandler(d, e),
             onContextMenu: e => this._valueRightClickHandler(d, e),
             onMouseOver: e => this._valueMouseOverHandler(d, e),
             onMouseOut: e => this._valueMouseOutHandler(d, e)
           };
-          return <path {...attrs} />;
+          return <path key={String(i)} {...attrs} />;
         })}
       </g>
     );

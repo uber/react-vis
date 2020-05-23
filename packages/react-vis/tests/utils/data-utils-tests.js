@@ -56,7 +56,10 @@ test('data-utils #addValueToArray', t => {
 test('data-utils #transformValueToString', t => {
   t.deepEqual(transformValueToString(0), 0,
     'Shouldn\'t transform the number value');
-  t.deepEqual(transformValueToString(new Date(0)), 'Thu Jan 01 1970',
+
+    // 43200000 - this is the timestamp for 12PM on 1970-01-01
+    // This plays much nicer when running tests locally for different timezones.
+  t.deepEqual(transformValueToString(new Date(43200000)), 'Thu Jan 01 1970',
     'Should transform the date to string value');
   t.end();
 });

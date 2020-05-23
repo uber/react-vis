@@ -100,7 +100,6 @@ class LabelSeries extends AbstractSeries {
           const attrs = {
             dominantBaseline: getDominantBaseline(labelAnchorY, aboveMiddle),
             className: 'rv-xy-plot__series--label-text',
-            key: i,
             onClick: e => this._valueClickHandler(d, e),
             onContextMenu: e => this._valueRightClickHandler(d, e),
             onMouseOver: e => this._valueMouseOverHandler(d, e),
@@ -112,7 +111,7 @@ class LabelSeries extends AbstractSeries {
             ...markStyle
           };
           const textContent = getLabel(_data ? _data[i] : d);
-          return res.concat([<text {...attrs}>{textContent}</text>]);
+          return res.concat([<text key={String(i)} {...attrs}>{textContent}</text>]);
         }, [])}
       </g>
     );

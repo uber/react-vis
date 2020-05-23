@@ -28,14 +28,14 @@ test('BarSeries: Showcase Example - BarChart', t => {
     'should find the right number of bars'
   );
   t.equal(
-    $.find('.vertical-bar-series-example').length,
+    $.find('g.vertical-bar-series-example').length,
     1,
     'should find the right number of custom named series'
   );
 
   $.find('.showcase-button').simulate('click');
   t.equal(
-    $.find('.rv-xy-plot__series--bar rect').length,
+    $.find('rect.rv-xy-plot__series--bar').length,
     0,
     'should now find no rects'
   );

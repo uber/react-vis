@@ -144,6 +144,7 @@ class XYPlot extends React.Component {
     };
   }
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillReceiveProps(nextProps) {
     const children = getSeriesChildren(nextProps.children);
     const nextData = getStackedData(children, nextProps.stackBy);
@@ -487,7 +488,7 @@ class XYPlot extends React.Component {
     });
   };
 
-  renderCanvasComponents(components, props) {
+  renderCanvasComponents(components) {
     const componentsToRender = components.filter(
       c => c && !c.type.requiresSVG && c.type.isCanvas
     );
@@ -563,7 +564,7 @@ class XYPlot extends React.Component {
         >
           {components.filter(c => c && c.type.requiresSVG)}
         </svg>
-        {this.renderCanvasComponents(components, this.props)}
+        {this.renderCanvasComponents(components)}
         {components.filter(c => c && !c.type.requiresSVG && !c.type.isCanvas)}
       </div>
     );

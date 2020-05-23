@@ -115,7 +115,7 @@ export function getStackedData(children, attr) {
   // It stores the last segment position added to each bar, separated by cluster.
   const latestAttrPositions = {};
 
-  return children.reduce((accumulator, series, seriesIndex) => {
+  return children.reduce((accumulator, series) => {
     // Skip the children that are not series (e.g. don't have any data).
     if (!series) {
       accumulator.push(null);
@@ -140,7 +140,7 @@ export function getStackedData(children, attr) {
     const baseAttr = attr === 'y' ? 'x' : 'y';
 
     accumulator.push(
-      preppedData.map((d, dIndex) => {
+      preppedData.map((d) => {
         if (!latestAttrPositions[cluster]) {
           latestAttrPositions[cluster] = {};
         }

@@ -73,7 +73,7 @@ test('Highlight: ZoomableChartExample', t => {
   });
   t.equal(
     $.text(),
-    '-5051015200102030405060708090Reset ZoomLast Draw AreaTop: 11.083578425950622Right: 34.98Bottom: -0.5863163548405375Left: 13.2',
+    '-5051015200102030405060708090Reset ZoomLast Draw AreaTop: 11.083578425950623Right: 34.98Bottom: -0.5863163548405383Left: 13.2',
     'should find the right text after brush finishes'
   );
 
@@ -85,7 +85,7 @@ test('Highlight: SelectionPlotExample', t => {
 
   const initialText = '0.51.01.52.02.5681012There are 0 selected points';
   t.equal(
-    $.find('.selection-example').length,
+    $.find('g.selection-example').length,
     1,
     'should find the custom class is passed through correctly'
   );

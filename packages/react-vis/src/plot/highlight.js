@@ -155,7 +155,7 @@ class Highlight extends AbstractSeries {
     }
   }
 
-  stopBrushing(e) {
+  stopBrushing() {
     const {brushing, dragging, brushArea} = this.state;
     // Quickly short-circuit if the user isn't brushing in our component
     if (!brushing && !dragging) {

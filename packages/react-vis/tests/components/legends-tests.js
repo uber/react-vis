@@ -17,7 +17,7 @@ test('Discrete Legend has no clickable className while onItemClick is not passin
 
   t.equal(
     withOnClick$
-      .find('.rv-discrete-color-legend-item .vertical')
+      .find('.rv-discrete-color-legend-item.vertical')
       .first()
       .props().onClick,
     null,
@@ -25,7 +25,7 @@ test('Discrete Legend has no clickable className while onItemClick is not passin
   );
   t.notEqual(
     withoutOnClick$
-      .find('.rv-discrete-color-legend-item .vertical .clickable')
+      .find('.rv-discrete-color-legend-item.vertical.clickable')
       .first()
       .props().onClick,
     Function,

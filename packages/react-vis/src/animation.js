@@ -46,7 +46,7 @@ export function extractAnimatedPropValues(props) {
   const {animatedProps, ...otherProps} = props;
 
   return animatedProps.reduce((result, animatedPropName) => {
-    if (otherProps.hasOwnProperty(animatedPropName)) {
+    if (Object.prototype.hasOwnProperty.call(otherProps, animatedPropName)) {
       result[animatedPropName] = otherProps[animatedPropName];
     }
     return result;
@@ -59,6 +59,7 @@ class Animation extends PureComponent {
     this._updateInterpolator(props);
   }
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillUpdate(props) {
     this._updateInterpolator(this.props, props);
     if (props.onStart) {

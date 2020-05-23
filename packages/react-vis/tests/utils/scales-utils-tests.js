@@ -637,7 +637,7 @@ test('scales-utils #_getScaleDistanceAndAdjustedDomain', t => {
     FAKE_DATA,
     logScaleObject
   );
-  const expectedLogResults = {distance: Infinity, domain0: 0.1, domainN: 1.5};
+  const expectedLogResults = {distance: NaN, domain0: 0.1, domainN: 1.5};
   t.deepEqual(
     logResult,
     expectedLogResults,

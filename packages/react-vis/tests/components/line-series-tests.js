@@ -58,12 +58,12 @@ test('LineSeries: basic rendering', t => {
     'should find the right number of series'
   );
   t.equal(
-    $.find('.rv-xy-plot__series path').length,
+    $.find('path.rv-xy-plot__series').length,
     1,
     'should find the right number of series'
   );
   t.equal(
-    $.find('.line-chart-example').length,
+    $.find('path.line-chart-example').length,
     1,
     'should find the right number of custom named series'
   );
@@ -90,12 +90,13 @@ test('LineSeries: basic rendering', t => {
 test('LineSeries: Showcase Example - LineChart', t => {
   const $ = mount(<LineChart />);
   t.equal(
-    $.find('.alt-x-label').length,
+    $.find('g.alt-x-label').length,
     1,
     'should find custom x class on chart label correctly'
   );
+
   t.equal(
-    $.find('.alt-y-label').length,
+    $.find('g.alt-y-label').length,
     1,
     'should find custom y class on chart label correctly'
   );
@@ -112,13 +113,14 @@ test('LineSeries: Showcase Example - LineChart', t => {
 
   ['first-series', 'third-series', 'fourth-series'].forEach(customClassName => {
     t.equal(
-      $.find(`.${customClassName}`).length,
+      $.find(`.rv-xy-plot__series--line.${customClassName}`).length,
       1,
       `should find the right number of series with the custom class name: ${customClassName}`
     );
   });
+
   t.equal(
-    $.find('.second-series').length,
+    $.find('path.second-series').length,
     0,
     'there should be no line with the class second series bc it has null data and should be filtered out'
   );
@@ -160,9 +162,15 @@ test('LineSeries: Showcase Example - LineMarkSeries', t => {
   ['linemark-series-example', 'linemark-series-example-2'].forEach(
     customClassName => {
       t.equal(
-        $.find(`.${customClassName}`).length,
-        2,
-        `should find the right number of series with the custom class name: ${customClassName}`
+        $.find(`MarkSeries.${customClassName}`).length,
+        1,
+        `should find the right number of MarkSeries with the custom class name: ${customClassName}`
+      )
+
+      t.equal(
+        $.find(`LineSeries.${customClassName}`).length,
+        1,
+        `should find the right number of LineSeries with the custom class name: ${customClassName}`
       );
     }
   );
@@ -241,7 +249,7 @@ test('LineSeries: Line Styling', t => {
     </XYPlot>
   );
 
-  const lineStyle = $.find('.rv-xy-plot__series path').prop('style');
+  const lineStyle = $.find('path.rv-xy-plot__series').prop('style');
 
   t.equal(lineStyle.opacity, 0.5, 'should render an opaque line');
   t.equal(lineStyle.strokeWidth, '3px', 'should honor stroke width');
@@ -253,7 +261,7 @@ test('LineSeries: Line Styling', t => {
 test('getNull prop: Showcase Example - Null Data Example', t => {
   const $ = mount(<NullData />);
   t.equal(
-    $.find('.rv-xy-plot__series path').length,
+    $.find('path.rv-xy-plot__series').length,
     2,
     'should find the right number of series'
   );

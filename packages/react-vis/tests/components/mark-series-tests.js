@@ -21,7 +21,7 @@ test('MarkSeries: Showcase Example - Scatterplot', t => {
     'should find the right number of circles'
   );
   t.equal(
-    $.find('.mark-series-example').length,
+    $.find('g.mark-series-example').length,
     1,
     'should find the right number of custom named series'
   );
@@ -58,11 +58,10 @@ test('MarkSeries: Showcase Example - Dynamic Crosshair Scatterplot', t => {
     []
   );
   t.equal(highlightedCircles3.length, 1, 'should highlight one circle');
-  t.deepEqual(
-    highlightedCircles3[0],
-    {cx: 0, cy: 2.5},
-    'should highlight circle at <0, 2.5>'
-  );
+
+  t.true(Math.abs(highlightedCircles3[0].cx - 0) < 0.005);
+  t.true(Math.abs(highlightedCircles3[0].cy - 2.5) < 0.005);
+
   t.end();
 
   function updateCursor(x, y) {

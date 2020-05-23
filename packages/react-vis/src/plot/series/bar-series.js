@@ -124,9 +124,8 @@ class BarSeries extends AbstractSeries {
             onContextMenu: e => this._valueRightClickHandler(d, e),
             onMouseOver: e => this._valueMouseOverHandler(d, e),
             onMouseOut: e => this._valueMouseOutHandler(d, e),
-            key: i
           };
-          return <rect {...attrs} />;
+          return <rect key={`${i}`} {...attrs} />;
         })}
       </g>
     );
