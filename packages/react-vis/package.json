@@ -86,8 +86,8 @@
     "uglify-js": "^2.8.22"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
   },
   "keywords": [
     "d3",
@@ -144,7 +144,11 @@
     ]
   },
   "engines": {
-    "node": ">=0.10.0",
-    "npm": ">=3.0"
+    "node": ">=8.17.0",
+    "npm": ">=6.13.0"
+  },
+  "volta": {
+    "node": "10.20.1",
+    "yarn": "1.22.4"
   }
 }
