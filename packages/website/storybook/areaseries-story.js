@@ -1,8 +1,6 @@
 import React from 'react';
 
-import {setAddon, storiesOf} from '@storybook/react';
-import JSXAddon from 'storybook-addon-jsx';
-setAddon(JSXAddon);
+import {storiesOf} from '@storybook/react';
 
 import {
   withKnobs,
@@ -15,7 +13,7 @@ import {
 import {AreaSeries, LineSeries} from 'react-vis';
 
 import {generateLinearData, nonUniformX} from './storybook-data.js';
-import {SimpleChartWrapper, jsxOptions} from './storybook-utils.js';
+import {SimpleChartWrapper} from './storybook-utils.js';
 
 function styledAreaSeries(props) {
   return (
@@ -45,9 +43,7 @@ storiesOf('Series/AreaSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
-  .addDecorator(withKnobs)
   .addWithJSX(
     'Single Area chart paired with LineSeries',
     () => {
@@ -65,7 +61,6 @@ storiesOf('Series/AreaSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'With negative numbers',
@@ -79,7 +74,6 @@ storiesOf('Series/AreaSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'With non-uniform x numbers',
@@ -96,7 +90,6 @@ storiesOf('Series/AreaSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'Multiple Area series',
@@ -118,7 +111,6 @@ storiesOf('Series/AreaSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'Multiple stacked Area series',
@@ -131,7 +123,6 @@ storiesOf('Series/AreaSeries/Base', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   );
 
 storiesOf('Series/AreaSeries/Styling', module)
@@ -148,7 +139,6 @@ storiesOf('Series/AreaSeries/Styling', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'stroke',
@@ -162,7 +152,6 @@ storiesOf('Series/AreaSeries/Styling', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'style object',
@@ -180,7 +169,6 @@ storiesOf('Series/AreaSeries/Styling', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   );
 
 storiesOf('Series/AreaSeries/Curve', module)
@@ -212,5 +200,4 @@ storiesOf('Series/AreaSeries/Curve', module)
         </SimpleChartWrapper>
       );
     },
-    jsxOptions
   );

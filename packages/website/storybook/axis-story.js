@@ -1,15 +1,13 @@
 import React from 'react';
 
-import {setAddon, storiesOf} from '@storybook/react';
-import JSXAddon from 'storybook-addon-jsx';
+import {storiesOf} from '@storybook/react';
 
-setAddon(JSXAddon);
 import {withKnobs, number, select} from '@storybook/addon-knobs/react';
 
 import {LineSeries, VerticalBarSeries, XAxis, YAxis} from 'react-vis';
 import {generateLinearData, getTime, getWord} from './storybook-data.js';
 
-import {SimpleChartWrapperNoAxes, jsxOptions} from './storybook-utils';
+import {SimpleChartWrapperNoAxes} from './storybook-utils';
 
 storiesOf('Axes and scales/Axis Formatting/Base', module)
   .addDecorator(withKnobs)
@@ -41,7 +39,6 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         </SimpleChartWrapperNoAxes>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'Axis titles',
@@ -67,7 +64,6 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         </SimpleChartWrapperNoAxes>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'Tick total',
@@ -93,7 +89,6 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         </SimpleChartWrapperNoAxes>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'Tick Size',
@@ -119,7 +114,6 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         </SimpleChartWrapperNoAxes>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'Tick Size (Inner)',
@@ -145,7 +139,6 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         </SimpleChartWrapperNoAxes>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'Tick Size (Outer)',
@@ -171,7 +164,6 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         </SimpleChartWrapperNoAxes>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'Tick orientation',
@@ -198,7 +190,6 @@ storiesOf('Axes and scales/Axis Formatting/Base', module)
         </SimpleChartWrapperNoAxes>
       );
     },
-    jsxOptions
   );
 storiesOf('Axes and scales/Scales', module)
   .addDecorator(withKnobs)
@@ -218,7 +209,6 @@ storiesOf('Axes and scales/Scales', module)
         </SimpleChartWrapperNoAxes>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'category scale',
@@ -236,7 +226,6 @@ storiesOf('Axes and scales/Scales', module)
         </SimpleChartWrapperNoAxes>
       );
     },
-    jsxOptions
   )
   .addWithJSX(
     'ordinal scale',
@@ -255,5 +244,4 @@ storiesOf('Axes and scales/Scales', module)
         </SimpleChartWrapperNoAxes>
       );
     },
-    jsxOptions
   );

@@ -1,9 +1,7 @@
 import React from 'react';
 
-import {setAddon, storiesOf} from '@storybook/react';
-import JSXAddon from 'storybook-addon-jsx';
+import {storiesOf} from '@storybook/react';
 
-setAddon(JSXAddon);
 import {
   withKnobs,
   color,
@@ -18,7 +16,6 @@ import {generateLinearData, intRandom, random} from './storybook-data.js';
 import {
   chooseColorScale,
   SimpleChartWrapper,
-  jsxOptions
 } from './storybook-utils.js';
 
 function addBarSeriesStory(isVertical = true) {
@@ -60,7 +57,6 @@ function addBarSeriesStory(isVertical = true) {
           </SimpleChartWrapper>
         );
       },
-      jsxOptions
     )
     .addWithJSX(
       `multiple ${seriesName} - clustered`,
@@ -79,7 +75,6 @@ function addBarSeriesStory(isVertical = true) {
           </SimpleChartWrapper>
         );
       },
-      jsxOptions
     )
     .addWithJSX(
       `multiple ${seriesName} - stacked`,
@@ -113,7 +108,6 @@ function addBarSeriesStory(isVertical = true) {
           </SimpleChartWrapper>
         );
       },
-      jsxOptions
     );
 
   storiesOf(`Series/${seriesName}/Styling/By datapoint`, module)
@@ -154,7 +148,6 @@ function addBarSeriesStory(isVertical = true) {
           </SimpleChartWrapper>
         );
       },
-      jsxOptions
     );
 
   storiesOf(`Series/${seriesName}/Styling/At series level`, module)
@@ -171,7 +164,6 @@ function addBarSeriesStory(isVertical = true) {
           </SimpleChartWrapper>
         );
       },
-      jsxOptions
     )
     .addWithJSX(
       'opacity',
@@ -185,7 +177,6 @@ function addBarSeriesStory(isVertical = true) {
           </SimpleChartWrapper>
         );
       },
-      jsxOptions
     )
     .addWithJSX(
       'stroke',
@@ -199,7 +190,6 @@ function addBarSeriesStory(isVertical = true) {
           </SimpleChartWrapper>
         );
       },
-      jsxOptions
     )
     .addWithJSX(
       'style',
@@ -216,7 +206,6 @@ function addBarSeriesStory(isVertical = true) {
           </SimpleChartWrapper>
         );
       },
-      jsxOptions
     );
 }
 addBarSeriesStory();

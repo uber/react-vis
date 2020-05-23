@@ -7,7 +7,8 @@
   "private": true,
   "workspaces": [
     "packages/showcase",
-    "packages/react-vis"
+    "packages/react-vis",
+    "packages/website"
   ],
   "repository": {
     "type": "git",
@@ -79,5 +80,8 @@
   "volta": {
     "node": "10.20.1",
     "yarn": "1.22.4"
+  },
+  "resolutions": {
+    "js-beautify": "1.10.3"
   }
 }
