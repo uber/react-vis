@@ -1,5 +1,6 @@
 {
   "rules": {
-    "max-len": "off"
+    "max-len": "off",
+    "react/jsx-key": "off"
   }
 }

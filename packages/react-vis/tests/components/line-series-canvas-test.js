@@ -11,7 +11,7 @@ test('LineSeriesCanvas: should be rendered', t => {
     <XYPlot width={300} height={300}>
       {Array(k)
         .fill(0)
-        .map(v => (
+        .map(() => (
           <LineSeriesCanvas
             color="#12939a"
             data={[{x: 1, y: 5}, {x: 2, y: 20}, {x: 3, y: 10}]}
@@ -40,7 +40,7 @@ test('LineSeriesCanvas: on onNearestXY should be called and retur ncorrect value
         <LineSeriesCanvas
           color="#12939a"
           data={[{x: -50, y: -50}, {x: v, y: v * v}, {x: 60, y: 60}]}
-          onNearestXY={(value, {event}) => {
+          onNearestXY={(value) => {
             t.deepEqual({x: v, y: v * v}, value, `onNearestXY called for series # ${v} and returns the correct values for x=${v} and y=${v*v}`)
           }}
         />

@@ -44,7 +44,7 @@ function predefinedComponents(type, size = 2, style = DEFAULT_STYLE) {
             2} 0 0`}
         />
       );
-    case 'star':
+    case 'star': {
       const starPoints = [...new Array(5)]
         .map((c, index) => {
           const angle = index / 5 * Math.PI * 2;
@@ -69,6 +69,7 @@ function predefinedComponents(type, size = 2, style = DEFAULT_STYLE) {
           style={style}
         />
       );
+    }
     case 'square':
       return (
         <rect

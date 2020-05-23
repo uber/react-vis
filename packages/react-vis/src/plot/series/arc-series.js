@@ -206,24 +206,18 @@ class ArcSeries extends AbstractSeries {
           const rowClassName = row.className || '';
           return (
             <path
-              {...{
-                style: {
-                  opacity: opacity && opacity(row),
-                  stroke: stroke && stroke(row),
-                  fill: fill && fill(row),
-                  ...style,
-                  ...rowStyle
-                },
-                onClick: e => this._valueClickHandler(modifyRow(row), e),
-                onContextMenu: e =>
-                  this._valueRightClickHandler(modifyRow(row), e),
-                onMouseOver: e =>
-                  this._valueMouseOverHandler(modifyRow(row), e),
-                onMouseOut: e => this._valueMouseOutHandler(modifyRow(row), e),
-                key: i,
-                className: `${predefinedClassName}-path ${arcClassName} ${rowClassName}`,
-                d: arcedData(arcArg)
-              }}
+              key={`path-${i}`}
+              style={{opacity: opacity && opacity(row),
+              stroke: stroke && stroke(row),
+              fill: fill && fill(row),
+              ...style,
+              ...rowStyle}}
+              onClick={e => this._valueClickHandler(modifyRow(row), e)}
+              onContextMenu={e =>this._valueRightClickHandler(modifyRow(row), e)}
+              onMouseOver={e => this._valueMouseOverHandler(modifyRow(row), e)}
+              onMouseOut={e => this._valueMouseOutHandler(modifyRow(row), e)}
+              className={`${predefinedClassName}-path ${arcClassName} ${rowClassName}`}
+              d={arcedData(arcArg)}
             />
           );
         })}

@@ -39,7 +39,7 @@ class MarkSeriesCanvas extends AbstractSeries {
 
     const x = getAttributeFunctor(props, 'x');
     const y = getAttributeFunctor(props, 'y');
-    const size = getAttributeFunctor(props, 'size') || (p => DEFAULT_SIZE);
+    const size = getAttributeFunctor(props, 'size') || (() => DEFAULT_SIZE);
     const fill =
       getAttributeFunctor(props, 'fill') || getAttributeFunctor(props, 'color');
     const stroke =

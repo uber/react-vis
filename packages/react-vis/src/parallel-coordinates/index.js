@@ -83,7 +83,7 @@ function getAxes(props) {
  */
 function getLabels(props) {
   const {domains, style} = props;
-  return domains.map((domain, index) => {
+  return domains.map(domain => {
     return {
       x: domain.name,
       y: 1.1,
@@ -123,7 +123,7 @@ function getLines(props) {
 
   return data.map((row, rowIndex) => {
     let withinFilteredRange = true;
-    const mappedData = domains.map((domain, index) => {
+    const mappedData = domains.map(domain => {
       const {getValue, name} = domain;
 
       // watch out! Gotcha afoot

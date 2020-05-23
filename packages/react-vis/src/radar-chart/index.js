@@ -139,7 +139,17 @@ function getLabels(props) {
  * @return {Array} the plotted axis components
  */
 function getPolygons(props) {
-  const {animation, colorRange, domains, data, style, startingAngle, onSeriesMouseOver, onSeriesMouseOut} = props;
+  const {
+    animation,
+    colorRange,
+    domains,
+    data,
+    style,
+    startingAngle,
+    onSeriesMouseOver,
+    onSeriesMouseOut
+  } = props;
+
   const scales = domains.reduce((acc, {domain, name}) => {
     acc[name] = scaleLinear().domain(domain).range([0, 1]);
     return acc;
