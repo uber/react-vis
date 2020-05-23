@@ -3,9 +3,9 @@ import React from 'react';
 import {mount} from 'enzyme';
 import CustomSVGSeries from 'plot/series/custom-svg-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
-import CustomSVGExample from '../../showcase/plot/custom-svg-example';
-import CustomSVGAllTheMarks from '../../showcase/plot/custom-svg-all-the-marks';
-import CustomSVGRootLevelComponent from '../../showcase/plot/custom-svg-root-level';
+import CustomSVGExample from '../../../showcase/plot/custom-svg-example';
+import CustomSVGAllTheMarks from '../../../showcase/plot/custom-svg-all-the-marks';
+import CustomSVGRootLevelComponent from '../../../showcase/plot/custom-svg-root-level';
 
 testRenderWithProps(CustomSVGSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
@@ -79,11 +79,7 @@ test('CustomSVGSeries: Showcase Example - CustomSVGAllTheMarks', t => {
   const hoverText = 'star';
 
   const $ = mount(<CustomSVGAllTheMarks />);
-  t.equal(
-    $.text(),
-    textContent,
-    'should fine the right text content'
-  );
+  t.equal($.text(), textContent, 'should fine the right text content');
   $.find('.rv-xy-plot__series--custom-svg')
     .at(0)
     .simulate('mouseEnter');

@@ -3,7 +3,7 @@ import React from 'react';
 import {mount} from 'enzyme';
 import ContourSeries from 'plot/series/contour-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
-import ContourSeriesExample from '../../showcase/plot/contour-series-example';
+import ContourSeriesExample from '../../../showcase/plot/contour-series-example';
 
 testRenderWithProps(ContourSeries, GENERIC_XYPLOT_SERIES_PROPS);
 

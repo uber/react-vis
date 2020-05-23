@@ -2,9 +2,9 @@ import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import ParallelCoordinates from 'parallel-coordinates';
-import BasicParallelCoordinates from '../../showcase/parallel-coordinates/basic-parallel-coordinates';
-import AnimatedParallelCoordinates from '../../showcase/parallel-coordinates/animated-parallel-coordinates';
-import BrushedParallelCoordinates from '../../showcase/parallel-coordinates/brushed-parallel-coordinates';
+import BasicParallelCoordinates from '../../../showcase/parallel-coordinates/basic-parallel-coordinates';
+import AnimatedParallelCoordinates from '../../../showcase/parallel-coordinates/animated-parallel-coordinates';
+import BrushedParallelCoordinates from '../../../showcase/parallel-coordinates/brushed-parallel-coordinates';
 
 import {testRenderWithProps} from '../test-utils';
 

@@ -3,8 +3,8 @@ import React from 'react';
 import {mount} from 'enzyme';
 import Treemap from 'treemap';
 
-import SimpleTreemap from '../../showcase/treemap/simple-treemap';
-import DynamicTreemap from '../../showcase/treemap/dynamic-treemap';
+import SimpleTreemap from '../../../showcase/treemap/simple-treemap';
+import DynamicTreemap from '../../../showcase/treemap/dynamic-treemap';
 
 import {testRenderWithProps} from '../test-utils';
 

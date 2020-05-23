@@ -2,12 +2,12 @@ import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 
-import CustomAxes from '../../showcase/axes/custom-axes';
-import CustomAxis from '../../showcase/axes/custom-axis';
-import PaddedAxis from '../../showcase/axes/padded-axis';
-import CustomAxesOrientation from '../../showcase/axes/custom-axes-orientation';
-import AxisWithTurnedLabels from '../../showcase/plot/axis-with-turned-labels';
-import AxisOn0 from '../../showcase/axes/axis-on-0';
+import CustomAxes from '../../../showcase/axes/custom-axes';
+import CustomAxis from '../../../showcase/axes/custom-axis';
+import PaddedAxis from '../../../showcase/axes/padded-axis';
+import CustomAxesOrientation from '../../../showcase/axes/custom-axes-orientation';
+import AxisWithTurnedLabels from '../../../showcase/plot/axis-with-turned-labels';
+import AxisOn0 from '../../../showcase/axes/axis-on-0';
 
 test('Axis: Showcase Example - CustomAxesOrientation', t => {
   const $ = mount(<CustomAxesOrientation />);

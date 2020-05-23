@@ -30,9 +30,9 @@ import XAxis from 'plot/axis/x-axis';
 import XYPlot from 'plot/xy-plot';
 import HorizontalGridLines from 'plot/horizontal-grid-lines';
 
-import MixedStackedChart from '../../showcase/plot/mixed-stacked-chart';
-import {FlexibleCharts} from '../../showcase/flexible/flexible-examples';
-import EmptyChart from '../../showcase/axes/empty-chart';
+import MixedStackedChart from '../../../showcase/plot/mixed-stacked-chart';
+import {FlexibleCharts} from '../../../showcase/flexible/flexible-examples';
+import EmptyChart from '../../../showcase/axes/empty-chart';
 import {testRenderWithProps} from '../test-utils';
 
 const XYPLOT_PROPS = {width: 10, height: 10};
@@ -42,8 +42,20 @@ testRenderWithProps(XYPlot, XYPLOT_PROPS);
 test('Render a stacked bar chart', t => {
   const wrapper = shallow(
     <XYPlot width={300} height={300} stackBy="y">
-      <VerticalBarSeries data={[{x: 1, y: 0}, {x: 2, y: 1}, {x: 3, y: 2}]} />
-      <VerticalBarSeries data={[{x: 1, y: 2}, {x: 2, y: 1}, {x: 3, y: 0}]} />
+      <VerticalBarSeries
+        data={[
+          {x: 1, y: 0},
+          {x: 2, y: 1},
+          {x: 3, y: 2}
+        ]}
+      />
+      <VerticalBarSeries
+        data={[
+          {x: 1, y: 2},
+          {x: 2, y: 1},
+          {x: 3, y: 0}
+        ]}
+      />
     </XYPlot>
   );
 
@@ -51,13 +63,21 @@ test('Render a stacked bar chart', t => {
 
   t.deepEqual(
     renderedVerticalBarsWrapper.at(0).prop('data'),
-    [{x: 1, y: 0}, {x: 2, y: 1}, {x: 3, y: 2}],
+    [
+      {x: 1, y: 0},
+      {x: 2, y: 1},
+      {x: 3, y: 2}
+    ],
     'First bar series data is the same'
   );
 
   t.deepEqual(
     renderedVerticalBarsWrapper.at(1).prop('data'),
-    [{x: 1, y: 2, y0: 0}, {x: 2, y: 2, y0: 1}, {x: 3, y: 2, y0: 2}],
+    [
+      {x: 1, y: 2, y0: 0},
+      {x: 2, y: 2, y0: 1},
+      {x: 3, y: 2, y0: 2}
+    ],
     'Second bar series data contains y0 values'
   );
 
@@ -147,19 +167,31 @@ test('Render two stacked bar series with a non-stacked line series chart', t => 
 
   t.deepEqual(
     renderedBarsWrapper.at(0).prop('data'),
-    [{x: 2, y: 10}, {x: 4, y: 5}, {x: 5, y: 15}],
+    [
+      {x: 2, y: 10},
+      {x: 4, y: 5},
+      {x: 5, y: 15}
+    ],
     'First bar series data is the same'
   );
 
   t.deepEqual(
     renderedBarsWrapper.at(1).prop('data'),
-    [{x: 2, y: 22, y0: 10}, {x: 4, y: 7, y0: 5}, {x: 5, y: 26, y0: 15}],
+    [
+      {x: 2, y: 22, y0: 10},
+      {x: 4, y: 7, y0: 5},
+      {x: 5, y: 26, y0: 15}
+    ],
     'Second bar series data contains y0 values'
   );
 
   t.deepEqual(
     renderedLineWrapper.at(0).prop('data'),
-    [{x: 2, y: 26}, {x: 4, y: 8}, {x: 5, y: 30}],
+    [
+      {x: 2, y: 26},
+      {x: 4, y: 8},
+      {x: 5, y: 30}
+    ],
     'Line series data does not contain y0 values'
   );
 
@@ -169,7 +201,13 @@ test('Render two stacked bar series with a non-stacked line series chart', t => 
 test('Render a line series with data accessors', t => {
   const $ = mount(
     <XYPlot width={300} height={300} getX={d => d[0]} getY={d => d[1]}>
-      <LineSeries data={[[1, 0], [2, 1], [3, 2]]} />
+      <LineSeries
+        data={[
+          [1, 0],
+          [2, 1],
+          [3, 2]
+        ]}
+      />
     </XYPlot>
   );
 
@@ -220,8 +258,22 @@ test('Trigger all onParentMouse handlers on Series components', t => {
   }
   const $ = mount(
     <XYPlot width={300} height={300} getX={d => d[0]} getY={d => d[1]}>
-      <ExtendedSeries name="series-1" data={[[1, 0], [2, 1], [3, 2]]} />
-      <ExtendedSeries name="series-2" data={[[1, 0], [2, 1], [3, 2]]} />
+      <ExtendedSeries
+        name="series-1"
+        data={[
+          [1, 0],
+          [2, 1],
+          [3, 2]
+        ]}
+      />
+      <ExtendedSeries
+        name="series-2"
+        data={[
+          [1, 0],
+          [2, 1],
+          [3, 2]
+        ]}
+      />
     </XYPlot>
   );
   $.find('svg')
@@ -269,7 +321,12 @@ test('XYPlot attach ref only to series components', t => {
       <HorizontalGridLines />
       <XAxis />
       <LineSeries
-        data={[{x: 1, y: 3}, {x: 2, y: 5}, {x: 3, y: 15}, {x: 4, y: 12}]}
+        data={[
+          {x: 1, y: 3},
+          {x: 2, y: 5},
+          {x: 3, y: 15},
+          {x: 4, y: 12}
+        ]}
       />
       <Stateless />
     </XYPlot>
@@ -302,11 +359,17 @@ test('XYPlot attach ref only to series components', t => {
 test('XYPlot with wheel event callback', t => {
   t.plan(1);
 
-  const onWheel = () => t.pass("onWheel is called correctly");
+  const onWheel = () => t.pass('onWheel is called correctly');
 
   const $ = mount(
     <XYPlot onWheel={onWheel} width={300} height={300}>
-      <VerticalBarSeries data={[{x: 1, y: 0}, {x: 2, y: 1}, {x: 3, y: 2}]} />
+      <VerticalBarSeries
+        data={[
+          {x: 1, y: 0},
+          {x: 2, y: 1},
+          {x: 3, y: 2}
+        ]}
+      />
     </XYPlot>
   );
 

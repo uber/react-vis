@@ -3,7 +3,7 @@ import React from 'react';
 import {mount} from 'enzyme';
 import WhiskerSeries from 'plot/series/whisker-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
-import WhiskerChart from '../../showcase/plot/whisker-chart';
+import WhiskerChart from '../../../showcase/plot/whisker-chart';
 
 testRenderWithProps(WhiskerSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
