@@ -5,11 +5,14 @@
   "author": "Visualization Team <visualization@uber.com>",
   "description": "Data visualization library based on React and d3.",
   "private": true,
-  "workspaces": [
-    "packages/showcase",
-    "packages/react-vis",
-    "packages/website"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/showcase",
+      "packages/react-vis",
+      "packages/website"
+    ],
+    "nohoist": ["**/ocular-gatsby"]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/uber-common/react-vis.git"

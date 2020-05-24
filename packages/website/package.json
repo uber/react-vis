@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "A composable charting library",
-  "main": "index.js",
+  "main": "gatsby-config.js",
   "scripts": {
     "start": "ocular start",
     "clean": "rm -rf dist/*{.js,.css,index.html,appcache,fonts,images}",
@@ -18,14 +18,16 @@
   "devDependencies": {
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/react": "^5.3.18",
-    "storybook-addon-jsx": "^7.2.3"
+    "gatsby": "~2.20.24",
+    "ocular-gatsby": "^1.0.6",
+    "storybook-addon-jsx": "^7.2.3",
+    "to-case": "^2.0.0"
   },
   "dependencies": {
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
     "d3-force": "^1.0.6",
     "d3-random": "^1.1.0",
-    "ocular": "0.6.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-virtualized": "^9.18.5",
     "react-vis": "^1.11.2"
   },
