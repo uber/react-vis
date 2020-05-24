@@ -24,6 +24,7 @@ import {mount, shallow} from 'enzyme';
 
 import AbstractSeries from 'plot/series/abstract-series';
 import VerticalBarSeries from 'plot/series/vertical-bar-series';
+import BarSeries from 'plot/series/bar-series';
 import LineSeries from 'plot/series/line-series';
 import XAxis from 'plot/axis/x-axis';
 import XYPlot from 'plot/xy-plot';
@@ -161,8 +162,8 @@ test('testing flexible charts', t => {
 test('Render two stacked bar series with a non-stacked line series chart', t => {
   const $ = mount(<MixedStackedChart />);
 
-  const renderedBarsWrapper = $.find('BarSeries');
-  const renderedLineWrapper = $.find('LineSeries');
+  const renderedBarsWrapper = $.find(BarSeries);
+  const renderedLineWrapper = $.find(LineSeries);
   t.deepEqual(
     renderedBarsWrapper.at(0).prop('data'),
     [

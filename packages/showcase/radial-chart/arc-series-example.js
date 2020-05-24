@@ -23,7 +23,7 @@ import React from 'react';
 import ShowcaseButton from '../showcase-components/showcase-button';
 import {XYPlot, ArcSeries, XAxis, YAxis}from 'react-vis';
 
-import {EXTENDED_DISCRETE_COLOR_RANGE as COLORS} from 'theme';
+import {EXTENDED_DISCRETE_COLOR_RANGE as COLORS} from 'react-vis/theme';
 
 const PI = Math.PI;
 

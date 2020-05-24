@@ -20,7 +20,7 @@
 
 import React, {Component} from 'react';
 
-import DiscreteColorLegend from 'legends/discrete-color-legend';
+import DiscreteColorLegend from 'react-vis/legends/discrete-color-legend';
 
 const ITEMS = [
   'Options',

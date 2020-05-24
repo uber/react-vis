@@ -33,6 +33,11 @@
     "yarn": "1.22.4"
   },
   "babel": {
+    "presets": [
+      "es2015",
+      "stage-0",
+      "react"
+    ],
     "plugins": [
       [
         "module-resolver",
