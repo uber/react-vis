@@ -1,5 +1,4 @@
 /* eslint-env node */
-
 const process = require('process');
 const path = require('path');
 
