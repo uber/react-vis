@@ -37,46 +37,6 @@
       "pre-commit": "npm run remove-unpm-rfs && git add yarn.lock"
     }
   },
-  "babel": {
-    "plugins": [
-      [
-        "module-resolver",
-        {
-          "root": [
-            "./src"
-          ]
-        }
-      ]
-    ],
-    "env": {
-      "production": {
-        "presets": [
-          "es2015",
-          "stage-0",
-          "react"
-        ]
-      },
-      "development": {
-        "presets": [
-          "es2015",
-          "stage-0",
-          "react"
-        ]
-      },
-      "es": {
-        "presets": [
-          [
-            "es2015",
-            {
-              "modules": false
-            }
-          ],
-          "stage-0",
-          "react"
-        ]
-      }
-    }
-  },
   "volta": {
     "node": "10.20.1",
     "yarn": "1.22.4"
