@@ -26,10 +26,6 @@ const config = isProd
 
       resolve: {
         modules: ['node_modules', path.join(__dirname,'..', 'react-vis', 'src')],
-        alias: {
-          // 'index':path.join(__dirname,'..', 'src', 'index.js'),
-          // 'theme':path.join(__dirname,'..', 'src', 'theme.js')
-        }
       },
 
       module: {

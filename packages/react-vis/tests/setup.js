@@ -1,17 +1,14 @@
 /* eslint-disable no-undef */
-import jsdom from 'jsdom';
+import {JSDOM} from 'jsdom';
 import Enzyme from 'enzyme';
 
 import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({adapter: new Adapter()})
 
-global.document = jsdom.jsdom('<body></body>');
+const dom = new JSDOM('<body></body>');
+const window = dom.window;
+global.document = window.document;
 global.window = document.defaultView;
-Object.keys(document.defaultView).forEach(function mapProperties(property) {
-  if (typeof global[property] === 'undefined') {
-    global[property] = document.defaultView[property];
-  }
-});
 
 global.navigator = {
   userAgent: 'node.js'
