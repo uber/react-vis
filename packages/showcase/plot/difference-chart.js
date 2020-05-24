@@ -26,7 +26,7 @@ import {
   YAxis,
   VerticalBarSeries,
   VerticalBarSeriesCanvas
-} from 'index';
+}from 'react-vis';
 
 // When making a difference chart you are specifying in coordinates
 // where you want your bars to start and stop

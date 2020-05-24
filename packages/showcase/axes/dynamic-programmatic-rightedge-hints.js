@@ -29,7 +29,7 @@ import {
   LineSeries,
   MarkSeries,
   Hint
-} from 'index';
+}from 'react-vis';
 
 const CHART_MARGINS = {left: 50, right: 10, top: 10, bottom: 25};
 const DATA = [{x: 1, y: 5}, {x: 2, y: 12}, {x: 3, y: 8}, {x: 4, y: 15}];

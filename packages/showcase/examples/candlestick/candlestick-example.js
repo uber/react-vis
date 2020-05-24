@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import {XAxis, YAxis, LineSeries, FlexibleWidthXYPlot} from 'index';
+import {XAxis, YAxis, LineSeries, FlexibleWidthXYPlot}from 'react-vis';
 import Candlestick from './candlestick';
 
 import './candlestick.scss';

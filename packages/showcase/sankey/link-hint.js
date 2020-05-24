@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Sankey from 'sankey';
-import Hint from 'plot/hint';
+import Sankey from 'react-vis/sankey';
+import Hint from 'react-vis/plot/hint';
 
 const BLURRED_LINK_OPACITY = 0.3;
 const FOCUSED_LINK_OPACITY = 0.6;

@@ -20,7 +20,7 @@
 
 import React, {Component} from 'react';
 
-import {XYPlot, LineSeries, MarkSeries} from 'index';
+import {XYPlot, LineSeries, MarkSeries}from 'react-vis';
 
 const scatterPlotData = [...Array(30).keys()].map(() => ({
   x: Math.random() * 10,

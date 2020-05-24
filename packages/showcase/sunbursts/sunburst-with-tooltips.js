@@ -20,9 +20,9 @@
 
 import React from 'react';
 
-import {Hint, Sunburst} from 'index';
+import {Hint, Sunburst}from 'react-vis';
 
-import {EXTENDED_DISCRETE_COLOR_RANGE as COLORS} from 'theme';
+import {EXTENDED_DISCRETE_COLOR_RANGE as COLORS} from 'react-vis/theme';
 
 const DATA = {
   children: [

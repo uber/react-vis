@@ -29,7 +29,7 @@ import {
   LineSeries,
   MarkSeries,
   Voronoi
-} from 'index';
+}from 'react-vis';
 
 const lines = [
   [{x: 1, y: 3}, {x: 2, y: 5}, {x: 3, y: 15}, {x: 4, y: 12}],

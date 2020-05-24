@@ -23,7 +23,7 @@ import PropTypes from 'prop-types';
 import {stack as d3Stack, stackOffsetWiggle} from 'd3-shape';
 import {range, transpose} from 'd3-array';
 
-import {FlexibleWidthXYPlot, AreaSeries} from 'index';
+import {FlexibleWidthXYPlot, AreaSeries}from 'react-vis';
 
 import './streamgraph-example.scss';
 

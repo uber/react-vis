@@ -31,7 +31,7 @@ import {
   VerticalGridLines,
   LineSeries,
   LineSeriesCanvas
-} from 'index';
+}from 'react-vis';
 
 export default class Example extends React.Component {
   state = {
@@ -53,7 +53,7 @@ export default class Example extends React.Component {
           <VerticalGridLines />
           <XAxis />
           <YAxis />
-          <ChartLabel 
+          <ChartLabel
             text="X Axis"
             className="alt-x-label"
             includeMargin={false}
@@ -61,7 +61,7 @@ export default class Example extends React.Component {
             yPercent={1.01}
             />
 
-          <ChartLabel 
+          <ChartLabel
             text="Y Axis"
             className="alt-y-label"
             includeMargin={false}

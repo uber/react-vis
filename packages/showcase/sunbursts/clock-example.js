@@ -20,9 +20,9 @@
 
 import React from 'react';
 
-import {XYPlot, ArcSeries} from 'index';
+import {XYPlot, ArcSeries}from 'react-vis';
 
-import {EXTENDED_DISCRETE_COLOR_RANGE} from 'theme';
+import {EXTENDED_DISCRETE_COLOR_RANGE} from 'react-vis/theme';
 
 const PI = Math.PI;
 

@@ -27,7 +27,7 @@ import {
   HorizontalGridLines,
   VerticalGridLines,
   LineSeries
-} from 'index';
+}from 'react-vis';
 
 const data = [];
 

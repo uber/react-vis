@@ -23,7 +23,7 @@ import {scaleLinear} from 'd3-scale';
 
 import CarData from '../datasets/car-data.json';
 
-import {XYPlot, DecorativeAxis, LineSeries} from 'index';
+import {XYPlot, DecorativeAxis, LineSeries}from 'react-vis';
 
 const DEFAULT_DOMAIN = {min: Infinity, max: -Infinity};
 // begin by figuring out the domain of each of the columns

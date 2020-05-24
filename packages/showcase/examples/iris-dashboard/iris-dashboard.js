@@ -26,7 +26,7 @@ import {
   MarkSeriesCanvas,
   Borders,
   Highlight
-} from 'index';
+}from 'react-vis';
 
 import Iris from '../../datasets/iris.json';
 

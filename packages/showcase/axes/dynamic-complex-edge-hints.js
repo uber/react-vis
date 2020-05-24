@@ -29,7 +29,7 @@ import {
   LineSeries,
   MarkSeries,
   Hint
-} from 'index';
+}from 'react-vis';
 
 const {LEFT, TOP, BOTTOM_EDGE, LEFT_EDGE, RIGHT_EDGE, TOP_EDGE} = Hint.ALIGN;
 

@@ -29,7 +29,7 @@ import {
   VerticalBarSeries,
   VerticalBarSeriesCanvas,
   LabelSeries
-} from 'index';
+}from 'react-vis';
 
 const greenData = [{x: 'A', y: 10}, {x: 'B', y: 5}, {x: 'C', y: 15}];
 

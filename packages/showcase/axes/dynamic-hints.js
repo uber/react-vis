@@ -28,7 +28,7 @@ import {
   HorizontalGridLines,
   MarkSeries,
   Hint
-} from 'index';
+}from 'react-vis';
 
 export default class Example extends React.Component {
   constructor(props) {

@@ -164,7 +164,6 @@ test('Render two stacked bar series with a non-stacked line series chart', t => 
 
   const renderedBarsWrapper = $.find(BarSeries);
   const renderedLineWrapper = $.find(LineSeries);
-
   t.deepEqual(
     renderedBarsWrapper.at(0).prop('data'),
     [
