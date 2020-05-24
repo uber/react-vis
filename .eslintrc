@@ -1,15 +1,15 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:prettier/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
   ],
   "parser": "babel-eslint",
   "plugins": [
     "react",
-    "babel",
     "prettier",
-    "prettier/react",
+    "babel",
     "no-only-tests"
   ],
   "ignorePatterns": [
@@ -35,6 +35,6 @@
     "babel/object-curly-spacing": 2,
     "no-only-tests/no-only-tests": 2,
     "react/prop-types": "off",
-    "prettier": "warn"
+    "prettier/prettier": "warn"
   }
 }
