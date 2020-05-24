@@ -21,7 +21,7 @@
 import React from 'react';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
-import {XYPlot, XAxis, YAxis, MarkSeries, LabelSeries} from 'index';
+import {XYPlot, XAxis, YAxis, MarkSeries, LabelSeries}from 'react-vis';
 
 function generateData() {
   return [

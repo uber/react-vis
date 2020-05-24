@@ -26,7 +26,7 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   VerticalRectSeries
-} from 'index';
+}from 'react-vis';
 
 const timestamp = new Date('May 23 2017').getTime();
 const ONE_DAY = 86400000;

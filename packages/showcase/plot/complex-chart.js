@@ -29,7 +29,7 @@ import {
   VerticalRectSeries,
   DiscreteColorLegend,
   Crosshair
-} from 'index';
+}from 'react-vis';
 
 /**
  * Get the array of x and y pairs.

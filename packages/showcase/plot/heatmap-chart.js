@@ -20,7 +20,7 @@
 
 import React, {Component} from 'react';
 
-import {XYPlot, XAxis, YAxis, HeatmapSeries, Hint} from 'index';
+import {XYPlot, XAxis, YAxis, HeatmapSeries, Hint}from 'react-vis';
 
 export default class HeatmapChart extends Component {
   state = {

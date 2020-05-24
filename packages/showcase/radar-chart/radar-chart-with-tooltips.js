@@ -20,7 +20,7 @@
 
 import React, {Component} from 'react';
 import RadarChart from 'radar-chart';
-import {Hint} from 'index';
+import {Hint}from 'react-vis';
 
 // The first 6 data elements here are to simulate a 'spider' type of radar chart -
 // similar to CircularGridLines, but straight edges instead.

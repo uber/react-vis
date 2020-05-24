@@ -29,7 +29,7 @@ import {
   HorizontalGridLines,
   VerticalGridLines,
   LineMarkSeries
-} from 'index';
+}from 'react-vis';
 
 const DATA = [
   [{x: 1, y: 10}, {x: 2, y: 10}, {x: 3, y: 13}, {x: 4, y: 7}, {x: 5, y: null}],

@@ -28,7 +28,7 @@ import {
   HorizontalGridLines,
   MarkSeries,
   Highlight
-} from 'index';
+}from 'react-vis';
 
 import {generateSeededRandom} from '../showcase-utils';
 const seededRandom = generateSeededRandom(36);

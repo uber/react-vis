@@ -28,7 +28,7 @@ import {
   HorizontalGridLines,
   MarkSeries,
   Hint
-} from 'index';
+}from 'react-vis';
 
 const {LEFT, RIGHT, TOP, BOTTOM_EDGE, RIGHT_EDGE, TOP_EDGE} = Hint.ALIGN;
 const CHART_MARGINS = {left: 50, right: 10, top: 10, bottom: 25};

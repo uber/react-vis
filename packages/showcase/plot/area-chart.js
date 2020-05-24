@@ -27,7 +27,7 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   AreaSeries
-} from 'index';
+}from 'react-vis';
 
 export default function Example(props) {
   return (

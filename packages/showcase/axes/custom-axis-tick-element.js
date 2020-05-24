@@ -27,7 +27,7 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   LineSeries
-} from 'index';
+}from 'react-vis';
 
 export default class Example extends React.Component {
   state = {
