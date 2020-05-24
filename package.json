@@ -26,7 +26,7 @@
     "es6",
     "babel"
   ],
-  "scripts":{
+  "scripts": {
     "remove-unpm-rfs": "./remove-refs-to-unpm.pl"
   },
   "devDependencies": {
