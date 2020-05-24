@@ -104,7 +104,10 @@
         {
           "root": [
             "src"
-          ]
+          ],
+          "alias": {
+            "react-vis/*": "src/*"
+          }
         }
       ]
     ],

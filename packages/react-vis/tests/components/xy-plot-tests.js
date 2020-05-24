@@ -24,7 +24,6 @@ import {mount, shallow} from 'enzyme';
 
 import AbstractSeries from 'plot/series/abstract-series';
 import VerticalBarSeries from 'plot/series/vertical-bar-series';
-import BarSeries from 'plot/series/bar-series';
 import LineSeries from 'plot/series/line-series';
 import XAxis from 'plot/axis/x-axis';
 import XYPlot from 'plot/xy-plot';
