@@ -104,7 +104,6 @@
     "uglify-js": "^2.8.22"
   },
   "peerDependencies": {
-    "@babel/core": "^7.0.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
   },
