@@ -1,0 +1,11 @@
+{
+  "plugins": [
+    ["module-resolver", {
+      "root": ["."],
+      "alias": {
+        "react-vis/*": "../react-vis/src/*",
+        "react-vis": "../react-vis/src"
+      }
+    }]
+  ]
+}
