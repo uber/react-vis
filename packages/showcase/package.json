@@ -31,5 +31,21 @@
   "volta": {
     "node": "10.20.1",
     "yarn": "1.22.4"
+  },
+  "babel": {
+    "plugins": [
+      [
+        "module-resolver",
+        {
+          "root": [
+            "."
+          ],
+          "alias": {
+            "react-vis/*": "../react-vis/src/*",
+            "react-vis": "../react-vis/src"
+          }
+        }
+      ]
+    ]
   }
 }
