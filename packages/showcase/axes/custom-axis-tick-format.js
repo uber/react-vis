@@ -27,7 +27,7 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   LineSeries
-}from 'react-vis';
+} from 'react-vis';
 
 export default class Example extends React.Component {
   static _xTickFormatValue(v, i, scale, tickTotal) {

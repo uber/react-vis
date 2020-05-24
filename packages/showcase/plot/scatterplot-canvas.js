@@ -30,7 +30,7 @@ import {
   MarkSeries,
   MarkSeriesCanvas,
   Hint
-}from 'react-vis';
+} from 'react-vis';
 
 function getRandomData() {
   return new Array(100).fill(0).map(() => ({

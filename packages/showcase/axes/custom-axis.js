@@ -27,7 +27,7 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   LineSeries
-}from 'react-vis';
+} from 'react-vis';
 
 export default function Example() {
   const axisStyle = {

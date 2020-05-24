@@ -29,10 +29,15 @@ import {
   LineSeries,
   MarkSeries,
   Hint
-}from 'react-vis';
+} from 'react-vis';
 
 const CHART_MARGINS = {left: 50, right: 10, top: 10, bottom: 25};
-const DATA = [{x: 1, y: 5}, {x: 2, y: 12}, {x: 3, y: 8}, {x: 4, y: 15}];
+const DATA = [
+  {x: 1, y: 5},
+  {x: 2, y: 12},
+  {x: 3, y: 8},
+  {x: 4, y: 15}
+];
 const XMAX = 4;
 
 function getAlignStyle(align, x, y) {
@@ -65,7 +70,10 @@ export default class Example extends React.Component {
         <MarkSeries onNearestX={this._rememberValue} data={DATA} />
         {value ? (
           <LineSeries
-            data={[{x: value.x, y: value.y}, {x: XMAX, y: value.y}]}
+            data={[
+              {x: value.x, y: value.y},
+              {x: XMAX, y: value.y}
+            ]}
             stroke="black"
           />
         ) : null}

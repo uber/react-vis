@@ -27,7 +27,7 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   CustomSVGSeries
-}from 'react-vis';
+} from 'react-vis';
 
 export default function CustomSVGRootLevelComponent() {
   return (

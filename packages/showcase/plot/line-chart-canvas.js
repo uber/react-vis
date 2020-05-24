@@ -32,7 +32,7 @@ import {
   LineSeriesCanvas,
   LineSeries,
   Crosshair
-}from 'react-vis';
+} from 'react-vis';
 
 function getRandomData() {
   return new Array(1000).fill(0).map((row, i) => ({

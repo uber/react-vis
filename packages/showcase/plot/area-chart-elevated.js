@@ -28,7 +28,7 @@ import {
   HorizontalGridLines,
   LineMarkSeries,
   AreaSeries
-}from 'react-vis';
+} from 'react-vis';
 
 export default function AreaChartElevated() {
   return (

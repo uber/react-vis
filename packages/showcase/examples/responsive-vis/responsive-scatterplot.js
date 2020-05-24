@@ -27,7 +27,7 @@ import {
   YAxis,
   Hint,
   LabelSeries
-}from 'react-vis';
+} from 'react-vis';
 
 import {
   filterFeatures,

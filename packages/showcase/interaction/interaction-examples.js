@@ -20,7 +20,7 @@
 
 import React, {Component} from 'react';
 
-import {XYPlot, LineSeries, MarkSeries}from 'react-vis';
+import {XYPlot, LineSeries, MarkSeries} from 'react-vis';
 
 const scatterPlotData = [...Array(30).keys()].map(() => ({
   x: Math.random() * 10,
@@ -189,7 +189,10 @@ function LineChart({data, index, handleMouseOver}) {
       <LineSeries data={data} onNearestX={(d, e) => handleMouseOver(e.index)} />
       {index === null ? null : (
         <LineSeries
-          data={[{x: index, y: 0}, {x: index, y: 10}]}
+          data={[
+            {x: index, y: 0},
+            {x: index, y: 10}
+          ]}
           opacity={0.5}
         />
       )}

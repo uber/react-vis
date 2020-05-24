@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {Hint, Sunburst}from 'react-vis';
+import {Hint, Sunburst} from 'react-vis';
 
 import {EXTENDED_DISCRETE_COLOR_RANGE as COLORS} from 'react-vis/theme';
 

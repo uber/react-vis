@@ -27,7 +27,7 @@ import {
   HorizontalGridLines,
   VerticalGridLines,
   LineSeries
-}from 'react-vis';
+} from 'react-vis';
 
 const MSEC_DAILY = 86400000;
 

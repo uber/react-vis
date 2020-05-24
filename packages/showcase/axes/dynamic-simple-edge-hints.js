@@ -28,11 +28,16 @@ import {
   HorizontalGridLines,
   MarkSeries,
   Hint
-}from 'react-vis';
+} from 'react-vis';
 
 const {LEFT, RIGHT, TOP, BOTTOM_EDGE, RIGHT_EDGE, TOP_EDGE} = Hint.ALIGN;
 const CHART_MARGINS = {left: 50, right: 10, top: 10, bottom: 25};
-const DATA = [{x: 1, y: 5}, {x: 2, y: 10}, {x: 3, y: 10}, {x: 4, y: 15}];
+const DATA = [
+  {x: 1, y: 5},
+  {x: 2, y: 10},
+  {x: 3, y: 10},
+  {x: 4, y: 15}
+];
 const DATA_HINT_ALIGN = [
   {
     horizontal: RIGHT_EDGE,

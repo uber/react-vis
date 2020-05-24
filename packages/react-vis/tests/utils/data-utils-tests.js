@@ -20,7 +20,11 @@
 
 import test from 'tape';
 
-import {getUniquePropertyValues, addValueToArray, transformValueToString} from 'utils/data-utils';
+import {
+  getUniquePropertyValues,
+  addValueToArray,
+  transformValueToString
+} from 'utils/data-utils';
 
 const arr = [{a: 1}, {b: 3, a: 2}, {a: 2}];
 
@@ -54,12 +58,18 @@ test('data-utils #addValueToArray', t => {
 });
 
 test('data-utils #transformValueToString', t => {
-  t.deepEqual(transformValueToString(0), 0,
-    'Shouldn\'t transform the number value');
+  t.deepEqual(
+    transformValueToString(0),
+    0,
+    "Shouldn't transform the number value"
+  );
 
-    // 43200000 - this is the timestamp for 12PM on 1970-01-01
-    // This plays much nicer when running tests locally for different timezones.
-  t.deepEqual(transformValueToString(new Date(43200000)), 'Thu Jan 01 1970',
-    'Should transform the date to string value');
+  // 43200000 - this is the timestamp for 12PM on 1970-01-01
+  // This plays much nicer when running tests locally for different timezones.
+  t.deepEqual(
+    transformValueToString(new Date(43200000)),
+    'Thu Jan 01 1970',
+    'Should transform the date to string value'
+  );
   t.end();
 });

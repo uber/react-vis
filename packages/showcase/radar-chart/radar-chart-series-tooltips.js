@@ -22,8 +22,7 @@ import React, {Component} from 'react';
 import {format} from 'd3-format';
 
 import RadarChart from 'react-vis/radar-chart';
-import {Hint}from 'react-vis';
-
+import {Hint} from 'react-vis';
 
 const DATA = [
   {
@@ -94,7 +93,7 @@ export default class BasicRadarChart extends Component {
         ]}
         width={400}
         height={300}
-        onSeriesMouseOver={(data) => {
+        onSeriesMouseOver={data => {
           this.setState({hoveredCell: data.event[0]});
         }}
         onSeriesMouseOut={() => this.setState({hoveredCell: false})}

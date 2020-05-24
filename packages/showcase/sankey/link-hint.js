@@ -27,9 +27,7 @@ export default class LinkHintSankeyExample extends React.Component {
     const y = activeLink.y0 - (activeLink.y0 - activeLink.y1) / 2;
 
     const hintValue = {
-      [`${activeLink.source.name} ➞ ${
-        activeLink.target.name
-      }`]: activeLink.value
+      [`${activeLink.source.name} ➞ ${activeLink.target.name}`]: activeLink.value
     };
 
     return <Hint x={x} y={y} value={hintValue} />;

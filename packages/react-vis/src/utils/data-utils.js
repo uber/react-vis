@@ -52,5 +52,7 @@ export function addValueToArray(arr, value) {
  * @returns {string | number} The value as string.
  */
 export function transformValueToString(value) {
-  return Object.prototype.toString.call(value) === '[object Date]' ? value.toDateString() : value;
+  return Object.prototype.toString.call(value) === '[object Date]'
+    ? value.toDateString()
+    : value;
 }

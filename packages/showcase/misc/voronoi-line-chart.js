@@ -29,7 +29,7 @@ import {
   LineSeries,
   MarkSeries,
   Voronoi
-}from 'react-vis';
+} from 'react-vis';
 
 const lines = [
   [

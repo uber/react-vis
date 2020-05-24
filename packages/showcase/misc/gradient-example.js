@@ -29,7 +29,7 @@ import {
   AreaSeries,
   GradientDefs,
   Borders
-}from 'react-vis';
+} from 'react-vis';
 
 export default function GradientExample() {
   return (

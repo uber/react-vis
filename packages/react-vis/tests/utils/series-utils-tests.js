@@ -37,14 +37,17 @@ import LabelSeries from 'plot/series/label-series';
 test('series-utils #isSeriesChild', t => {
   const series = <LineSeries data={[]} />;
   t.ok(isSeriesChild(series), 'Should return true for series');
-  const axis = <XAxis
-    xRange={[0, 1]}
-    xDomain={[0, 1]}
-    xType="linear"
-    width={100}
-    height={100}
-    top={0}
-    left={0} />;
+  const axis = (
+    <XAxis
+      xRange={[0, 1]}
+      xDomain={[0, 1]}
+      xType="linear"
+      width={100}
+      height={100}
+      top={0}
+      left={0}
+    />
+  );
   t.notOk(isSeriesChild(axis), 'Should return false for non-series');
   t.end();
 });
@@ -117,30 +120,66 @@ test('series-utils #seriesClusterProps', t => {
 // eslint-disable-next-line max-statements
 test('series-utils #getStackedData', t => {
   const yData = [
-    [{y: 2, x: 10}, {y: 4, x: 5}, {y: 5, x: 15}],
-    [{y: 2, x: 12}, {y: 4, x: 2}, {y: 5, x: 11}]
+    [
+      {y: 2, x: 10},
+      {y: 4, x: 5},
+      {y: 5, x: 15}
+    ],
+    [
+      {y: 2, x: 12},
+      {y: 4, x: 2},
+      {y: 5, x: 11}
+    ]
   ];
 
   const stackByYExpected = [
-    [{x: 2, y: 10}, {x: 4, y: 5}, {x: 5, y: 15}],
-    [{x: 2, y: 22, y0: 10}, {x: 4, y: 7, y0: 5}, {x: 5, y: 26, y0: 15}],
+    [
+      {x: 2, y: 10},
+      {x: 4, y: 5},
+      {x: 5, y: 15}
+    ],
+    [
+      {x: 2, y: 22, y0: 10},
+      {x: 4, y: 7, y0: 5},
+      {x: 5, y: 26, y0: 15}
+    ],
     undefined
   ];
 
   const stackByXExpected = [
-    [{y: 2, x: 10}, {y: 4, x: 5}, {y: 5, x: 15}],
-    [{y: 2, x: 22, x0: 10}, {y: 4, x: 7, x0: 5}, {y: 5, x: 26, x0: 15}],
+    [
+      {y: 2, x: 10},
+      {y: 4, x: 5},
+      {y: 5, x: 15}
+    ],
+    [
+      {y: 2, x: 22, x0: 10},
+      {y: 4, x: 7, x0: 5},
+      {y: 5, x: 26, x0: 15}
+    ],
     null
   ];
 
   const stackByYExpectedPartial = [
-    [{x: 2, y: 10}, {x: 4, y: 5}],
-    [{x: 4, y: 7, y0: 5}, {x: 5, y: 11}]
+    [
+      {x: 2, y: 10},
+      {x: 4, y: 5}
+    ],
+    [
+      {x: 4, y: 7, y0: 5},
+      {x: 5, y: 11}
+    ]
   ];
 
   const stackByXExpectedPartial = [
-    [{y: 2, x: 10}, {y: 4, x: 5}],
-    [{y: 4, x: 7, x0: 5}, {y: 5, x: 11}]
+    [
+      {y: 2, x: 10},
+      {y: 4, x: 5}
+    ],
+    [
+      {y: 4, x: 7, x0: 5},
+      {y: 5, x: 11}
+    ]
   ];
 
   // Transpose data to flip stacking
@@ -244,7 +283,11 @@ test('series-utils #getStackedData', t => {
   children = [
     <VerticalBarSeries data={yData[0]} stack />,
     <VerticalBarSeries
-      data={[{x: 10, y: 3}, {x: 5, y: 6}, {x: 15, y: 7}]}
+      data={[
+        {x: 10, y: 3},
+        {x: 5, y: 6},
+        {x: 15, y: 7}
+      ]}
       stack
     />,
     <LineSeries data={yData[1]} />
@@ -252,7 +295,11 @@ test('series-utils #getStackedData', t => {
   results = getStackedData(children, 'y');
   expectedResults = [
     yData[0],
-    [{x: 10, y: 5, y0: 2}, {x: 5, y: 10, y0: 4}, {x: 15, y: 12, y0: 5}],
+    [
+      {x: 10, y: 5, y0: 2},
+      {x: 5, y: 10, y0: 4},
+      {x: 15, y: 12, y0: 5}
+    ],
     yData[1]
   ];
   t.deepEqual(
@@ -289,7 +336,7 @@ test('series-utils #getStackedData', t => {
   results = getStackedData(children, 'y');
   expectedResults = [
     ...stackByYExpected.slice(0, 2),
-    ...stackByYExpected.slice(0, 2),
+    ...stackByYExpected.slice(0, 2)
   ];
 
   t.deepEqual(

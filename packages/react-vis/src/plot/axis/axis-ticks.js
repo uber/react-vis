@@ -113,8 +113,8 @@ class AxisTicks extends React.Component {
       orientation === TOP || tickLabelAngle
         ? '0'
         : orientation === BOTTOM
-          ? '0.72em'
-          : '0.32em';
+        ? '0.72em'
+        : '0.32em';
 
     return {
       textAnchor,
@@ -183,7 +183,8 @@ class AxisTicks extends React.Component {
     const ticks = values.map((v, i) => {
       const pos = scale(v);
       const labelNode = tickFormatFn(v, i, scale, tickTotal);
-      const shouldRenderAsOwnNode = React.isValidElement(labelNode) &&
+      const shouldRenderAsOwnNode =
+        React.isValidElement(labelNode) &&
         !['tspan', 'textPath'].includes(labelNode.type);
       const shouldAddProps = labelNode && typeof labelNode.type !== 'string';
       return (
@@ -198,21 +199,26 @@ class AxisTicks extends React.Component {
             className="rv-xy-plot__axis__tick__line"
             style={{...style, ...style.line}}
           />
-          {shouldRenderAsOwnNode
-            ? React.cloneElement(labelNode, shouldAddProps ? {
-              ...textProps,
-              containerWidth: width,
-              tickCount: values.length
-            } : undefined)
-            : (
-              <text
-                {...textProps}
-                className="rv-xy-plot__axis__tick__text"
-                style={{...style, ...style.text}}
-              >
-                {labelNode}
-              </text>
-            )}
+          {shouldRenderAsOwnNode ? (
+            React.cloneElement(
+              labelNode,
+              shouldAddProps
+                ? {
+                    ...textProps,
+                    containerWidth: width,
+                    tickCount: values.length
+                  }
+                : undefined
+            )
+          ) : (
+            <text
+              {...textProps}
+              className="rv-xy-plot__axis__tick__text"
+              style={{...style, ...style.text}}
+            >
+              {labelNode}
+            </text>
+          )}
         </g>
       );
     });

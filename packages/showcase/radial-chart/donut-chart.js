@@ -20,7 +20,7 @@
 
 import React, {Component} from 'react';
 
-import {RadialChart, Hint}from 'react-vis';
+import {RadialChart, Hint} from 'react-vis';
 
 export default class SimpleRadialChart extends Component {
   state = {

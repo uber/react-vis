@@ -28,7 +28,7 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   MarkSeries
-}from 'react-vis';
+} from 'react-vis';
 
 function generateData() {
   return [...new Array(10)].map(() => ({

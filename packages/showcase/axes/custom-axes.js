@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {XYPlot, XAxis, YAxis, MarkSeries}from 'react-vis';
+import {XYPlot, XAxis, YAxis, MarkSeries} from 'react-vis';
 
 const MARGIN = {
   left: 10,

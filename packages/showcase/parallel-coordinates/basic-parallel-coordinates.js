@@ -21,7 +21,7 @@
 import React from 'react';
 import {format} from 'd3-format';
 
-import {ParallelCoordinates}from 'react-vis';
+import {ParallelCoordinates} from 'react-vis';
 
 const DATA = [
   {

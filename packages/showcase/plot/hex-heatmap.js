@@ -22,7 +22,7 @@ import React, {Component} from 'react';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
 
-import {XYPlot, XAxis, YAxis, HexbinSeries, Borders, Hint}from 'react-vis';
+import {XYPlot, XAxis, YAxis, HexbinSeries, Borders, Hint} from 'react-vis';
 
 import DATA from '../datasets/old-faithful.json';
 

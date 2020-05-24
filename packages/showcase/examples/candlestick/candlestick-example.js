@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import {XAxis, YAxis, LineSeries, FlexibleWidthXYPlot}from 'react-vis';
+import {XAxis, YAxis, LineSeries, FlexibleWidthXYPlot} from 'react-vis';
 import Candlestick from './candlestick';
 
 import './candlestick.scss';
@@ -73,13 +73,19 @@ export default class CandlestickExample extends React.Component {
             <LineSeries
               color="#FF9833"
               className="dashed-example-line"
-              data={[{x: 0, y: 25}, {x: 30, y: 25}]}
+              data={[
+                {x: 0, y: 25},
+                {x: 30, y: 25}
+              ]}
             />
             <LineSeries
               color="#1A3177"
               className="dashed-example-line"
               opacity={0.3}
-              data={[{x: 0, y: 75}, {x: 30, y: 75}]}
+              data={[
+                {x: 0, y: 75},
+                {x: 30, y: 75}
+              ]}
             />
             <Candlestick
               colorType="literal"

@@ -65,7 +65,10 @@ function SearchableDiscreteColorLegend(props) {
     : null;
   const filteredItems = searchFn(items, searchText);
   return (
-    <div className={getCombinedClassName("rv-search-wrapper", className)} style={{width, height}}>
+    <div
+      className={getCombinedClassName('rv-search-wrapper', className)}
+      style={{width, height}}
+    >
       <form className="rv-search-wrapper__form">
         <input
           type="search"

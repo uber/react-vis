@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {ParallelCoordinates}from 'react-vis';
+import {ParallelCoordinates} from 'react-vis';
 import IrisData from '../datasets/iris.json';
 
 // {"sepal length": 5.1, "sepal width": 3.5, "petal length": 1.4, "petal width": 0.2, "species": "setosa"},

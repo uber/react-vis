@@ -21,7 +21,14 @@
 import React, {Component} from 'react';
 import {scaleLinear} from 'd3-scale';
 
-import {XYPlot, XAxis, YAxis, HeatmapSeries, LabelSeries, Hint}from 'react-vis';
+import {
+  XYPlot,
+  XAxis,
+  YAxis,
+  HeatmapSeries,
+  LabelSeries,
+  Hint
+} from 'react-vis';
 
 const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 const data = alphabet.reduce((acc, letter1, idx) => {

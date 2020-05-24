@@ -140,11 +140,11 @@ export function getStackedData(children, attr) {
     const baseAttr = attr === 'y' ? 'x' : 'y';
 
     accumulator.push(
-      preppedData.map((d) => {
+      preppedData.map(d => {
         if (!latestAttrPositions[cluster]) {
           latestAttrPositions[cluster] = {};
         }
-        if (!latestAttrPositions[cluster][seriesType]){
+        if (!latestAttrPositions[cluster][seriesType]) {
           latestAttrPositions[cluster][seriesType] = {};
         }
 

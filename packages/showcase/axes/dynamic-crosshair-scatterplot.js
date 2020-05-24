@@ -30,7 +30,7 @@ import {
   XYPlot,
   YAxis,
   Voronoi
-}from 'react-vis';
+} from 'react-vis';
 
 const DATA = [
   {x: 1, y: 4, size: 9},

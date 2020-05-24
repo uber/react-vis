@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {XYPlot, XAxis, YAxis, MarkSeries, CircularGridLines}from 'react-vis';
+import {XYPlot, XAxis, YAxis, MarkSeries, CircularGridLines} from 'react-vis';
 
 const data = [
   {r: 1, theta: Math.PI / 3, size: 30},

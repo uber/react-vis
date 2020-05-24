@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {Sunburst}from 'react-vis';
+import {Sunburst} from 'react-vis';
 import ShowcaseButton from '../showcase-components/showcase-button';
 
 function randomLeaf() {

@@ -207,13 +207,17 @@ class ArcSeries extends AbstractSeries {
           return (
             <path
               key={`path-${i}`}
-              style={{opacity: opacity && opacity(row),
-              stroke: stroke && stroke(row),
-              fill: fill && fill(row),
-              ...style,
-              ...rowStyle}}
+              style={{
+                opacity: opacity && opacity(row),
+                stroke: stroke && stroke(row),
+                fill: fill && fill(row),
+                ...style,
+                ...rowStyle
+              }}
               onClick={e => this._valueClickHandler(modifyRow(row), e)}
-              onContextMenu={e =>this._valueRightClickHandler(modifyRow(row), e)}
+              onContextMenu={e =>
+                this._valueRightClickHandler(modifyRow(row), e)
+              }
               onMouseOver={e => this._valueMouseOverHandler(modifyRow(row), e)}
               onMouseOut={e => this._valueMouseOutHandler(modifyRow(row), e)}
               className={`${predefinedClassName}-path ${arcClassName} ${rowClassName}`}

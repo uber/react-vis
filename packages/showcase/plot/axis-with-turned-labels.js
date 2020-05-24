@@ -27,7 +27,7 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   VerticalBarSeries
-}from 'react-vis';
+} from 'react-vis';
 
 export default function Example() {
   return (

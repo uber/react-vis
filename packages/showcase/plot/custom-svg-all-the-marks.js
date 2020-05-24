@@ -28,7 +28,7 @@ import {
   HorizontalGridLines,
   CustomSVGSeries,
   Hint
-}from 'react-vis';
+} from 'react-vis';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
 

@@ -320,7 +320,11 @@ test('scales-utils #extractScalePropsFromProps', t => {
 });
 
 test('scales-utils #getMissingScaleProps', t => {
-  const fakeDataInteger = [{x: 10, y: 10}, {x: 15, y: 15}, {x: 20, y: 20}];
+  const fakeDataInteger = [
+    {x: 10, y: 10},
+    {x: 15, y: 15},
+    {x: 20, y: 20}
+  ];
   const fakeDataIntegerDomain = [9, 21];
   const fakeDataString = [{x: 'React'}, {x: 'Vis'}];
   const fakeDataStringDomain = ['React', 'Vis'];
@@ -508,18 +512,18 @@ test('scales-utils #getScaleFnFromScaleObject', t => {
 
   const ordinalScale = getScaleFnFromScaleObject({
     type: 'ordinal',
-    domain: ["a", "b", "c", "d", "e"],
+    domain: ['a', 'b', 'c', 'd', 'e'],
     range: [20, 120]
   });
 
-  t.equal(ordinalScale.invert(-10), "a");
-  t.equal(ordinalScale.invert(25), "a");
-  t.equal(ordinalScale.invert(40), "a");
-  t.equal(ordinalScale.invert(60), "b");
-  t.equal(ordinalScale.invert(80), "c");
-  t.equal(ordinalScale.invert(100), "d");
-  t.equal(ordinalScale.invert(115), "e");
-  t.equal(ordinalScale.invert(130), "e");
+  t.equal(ordinalScale.invert(-10), 'a');
+  t.equal(ordinalScale.invert(25), 'a');
+  t.equal(ordinalScale.invert(40), 'a');
+  t.equal(ordinalScale.invert(60), 'b');
+  t.equal(ordinalScale.invert(80), 'c');
+  t.equal(ordinalScale.invert(100), 'd');
+  t.equal(ordinalScale.invert(115), 'e');
+  t.equal(ordinalScale.invert(130), 'e');
 
   t.end();
 });

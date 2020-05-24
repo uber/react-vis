@@ -108,19 +108,18 @@ export function chooseColorScale() {
 }
 
 export const jsxOptions = {
-
-    defaultProps: false,
-    displayName: component => {
-      if (
-        component.type.name === 'SimpleChartWrapper' ||
-        component.type.name === 'SimpleChartWrapperNoAxes'
-      ) {
-        return 'XYPlot';
-      }
-      if (component.type.name === 'SimpleRadialChartWrapper') {
-        return 'RadialChart';
-      }
-      return component.type.displayName;
-    },
-    filterProps: ['className', 'getNull', 'nullAccessor', 'stack']
+  defaultProps: false,
+  displayName: component => {
+    if (
+      component.type.name === 'SimpleChartWrapper' ||
+      component.type.name === 'SimpleChartWrapperNoAxes'
+    ) {
+      return 'XYPlot';
+    }
+    if (component.type.name === 'SimpleRadialChartWrapper') {
+      return 'RadialChart';
+    }
+    return component.type.displayName;
+  },
+  filterProps: ['className', 'getNull', 'nullAccessor', 'stack']
 };

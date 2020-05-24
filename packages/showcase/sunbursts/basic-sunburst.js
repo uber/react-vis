@@ -22,7 +22,7 @@ import React from 'react';
 
 import Sunburst from 'react-vis/sunburst';
 import {EXTENDED_DISCRETE_COLOR_RANGE} from 'react-vis/theme';
-import {LabelSeries}from 'react-vis';
+import {LabelSeries} from 'react-vis';
 
 import D3FlareData from '../datasets/d3-flare-example.json';
 

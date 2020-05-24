@@ -112,15 +112,17 @@ class Crosshair extends PureComponent {
     if (!items) {
       return null;
     }
-    return items.filter(i => i).map(function renderValue(item, i) {
-      return (
-        <div className="rv-crosshair__item" key={`item${i}`}>
-          <span className="rv-crosshair__item__title">{item.title}</span>
-          {': '}
-          <span className="rv-crosshair__item__value">{item.value}</span>
-        </div>
-      );
-    });
+    return items
+      .filter(i => i)
+      .map(function renderValue(item, i) {
+        return (
+          <div className="rv-crosshair__item" key={`item${i}`}>
+            <span className="rv-crosshair__item__title">{item.title}</span>
+            {': '}
+            <span className="rv-crosshair__item__value">{item.value}</span>
+          </div>
+        );
+      });
   }
 
   /**
@@ -170,7 +172,7 @@ class Crosshair extends PureComponent {
 
     return (
       <div
-        className={getCombinedClassName("rv-crosshair", className)}
+        className={getCombinedClassName('rv-crosshair', className)}
         style={{left: `${left}px`, top: `${top}px`}}
       >
         <div

@@ -29,7 +29,7 @@ import {
   VerticalBarSeries,
   VerticalBarSeriesCanvas,
   LabelSeries
-}from 'react-vis';
+} from 'react-vis';
 
 export default class Example extends React.Component {
   state = {

@@ -28,7 +28,7 @@ import {
   HorizontalGridLines,
   LineSeries,
   Crosshair
-}from 'react-vis';
+} from 'react-vis';
 
 export default function Example() {
   return (

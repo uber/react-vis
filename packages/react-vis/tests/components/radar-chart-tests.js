@@ -168,9 +168,7 @@ test('Radar: Showcase Example - Radar Chart with Tooltips', t => {
 
   // Tooltips
   const tooltipText = 'mileage: 3';
-  $.find(
-    'g.rv-radar-chart-polygonPoint'
-  )
+  $.find('g.rv-radar-chart-polygonPoint')
     .at(6)
     .children()
     .at(0)

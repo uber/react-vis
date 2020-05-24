@@ -165,7 +165,7 @@ test('LineSeries: Showcase Example - LineMarkSeries', t => {
         $.find(`MarkSeries.${customClassName}`).length,
         1,
         `should find the right number of MarkSeries with the custom class name: ${customClassName}`
-      )
+      );
 
       t.equal(
         $.find(`LineSeries.${customClassName}`).length,

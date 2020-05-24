@@ -39,7 +39,11 @@ function DiscreteColorLegend({
 }) {
   return (
     <div
-      className={getCombinedClassName("rv-discrete-color-legend", orientation, className)}
+      className={getCombinedClassName(
+        'rv-discrete-color-legend',
+        orientation,
+        className
+      )}
       style={{width, height, ...style}}
     >
       {items.map((item, i) => (
@@ -71,7 +75,8 @@ DiscreteColorLegend.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.oneOfType([
       PropTypes.shape({
-        title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+        title: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+          .isRequired,
         color: PropTypes.string,
         disabled: PropTypes.bool
       }),

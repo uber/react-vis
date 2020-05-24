@@ -75,7 +75,7 @@ function ContinuousSizeLegend({
   }
   return (
     <div
-      className={getCombinedClassName("rv-continuous-size-legend", className)}
+      className={getCombinedClassName('rv-continuous-size-legend', className)}
       style={{width, height}}
     >
       <div className="rv-bubbles" style={{height: endSize}}>
