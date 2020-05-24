@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {XYPlot, LineSeries, MarkSeries, VerticalBarSeries} from 'index';
+import {XYPlot, LineSeries, MarkSeries, VerticalBarSeries}from 'react-vis';
 
 const data = [
   {x: 0, y: 8},

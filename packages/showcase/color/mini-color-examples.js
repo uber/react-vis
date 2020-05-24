@@ -26,7 +26,7 @@ import {
   LineSeries,
   MarkSeries,
   VerticalBarSeries
-} from 'index';
+}from 'react-vis';
 
 import {
   DISCRETE_COLOR_RANGE,

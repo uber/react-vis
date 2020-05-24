@@ -29,7 +29,7 @@ import {
   VerticalBarSeries,
   VerticalBarSeriesCanvas,
   LabelSeries
-} from 'index';
+}from 'react-vis';
 
 export default class Example extends React.Component {
   state = {
@@ -46,7 +46,7 @@ export default class Example extends React.Component {
 
     const bars = data.map((value, index) => <BarSeries data={value} key={index} />)
     const labels = labelsData.map((value, index) => <LabelSeries data={value} key={index} labelAnchorY='hanging' style={{fill: '#ff8c00'}}/>)
-    
+
     return (
       <div>
         <ShowcaseButton

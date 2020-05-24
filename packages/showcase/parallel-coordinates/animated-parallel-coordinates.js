@@ -21,7 +21,7 @@
 import React, {Component} from 'react';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
-import {ParallelCoordinates} from 'index';
+import {ParallelCoordinates}from 'react-vis';
 
 const DATA = [
   {

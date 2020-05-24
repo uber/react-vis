@@ -29,7 +29,7 @@ import {
   MarkSeries,
   Highlight,
   Hint
-} from 'index';
+}from 'react-vis';
 
 import {generateSeededRandom} from '../showcase-utils';
 const seededRandom = generateSeededRandom(3);

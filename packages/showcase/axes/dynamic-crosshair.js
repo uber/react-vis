@@ -28,7 +28,7 @@ import {
   HorizontalGridLines,
   LineSeries,
   Crosshair
-} from 'index';
+}from 'react-vis';
 
 const DATA = [
   [{x: 1, y: 10}, {x: 2, y: 7}, {x: 3, y: 15}],

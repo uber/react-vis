@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {GradientDefs, RadialChart} from 'index';
+import {GradientDefs, RadialChart}from 'react-vis';
 
 export default function GradientPie(props) {
   return (

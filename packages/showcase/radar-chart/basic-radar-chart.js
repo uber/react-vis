@@ -21,7 +21,7 @@
 import React from 'react';
 import {format} from 'd3-format';
 
-import RadarChart from 'radar-chart';
+import RadarChart from 'react-vis/radar-chart';
 
 const DATA = [
   {

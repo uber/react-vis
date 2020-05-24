@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import ContinuousColorLegend from 'legends/continuous-color-legend';
+import ContinuousColorLegend from 'react-vis/legends/continuous-color-legend';
 
 export default class Example extends React.Component {
   constructor(props) {

@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {XYPlot, DecorativeAxis} from 'index';
+import {XYPlot, DecorativeAxis}from 'react-vis';
 
 const MARGIN = {
   left: 30,

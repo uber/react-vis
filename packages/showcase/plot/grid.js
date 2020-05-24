@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {XYPlot, XAxis, YAxis, VerticalGridLines, LineSeries} from 'index';
+import {XYPlot, XAxis, YAxis, VerticalGridLines, LineSeries}from 'react-vis';
 
 export default function Example(props) {
   return (

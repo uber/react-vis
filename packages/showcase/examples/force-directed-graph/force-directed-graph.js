@@ -22,7 +22,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {forceSimulation, forceLink, forceManyBody, forceCenter} from 'd3-force';
 
-import {XYPlot, MarkSeriesCanvas, LineSeriesCanvas} from 'index';
+import {XYPlot, MarkSeriesCanvas, LineSeriesCanvas}from 'react-vis';
 
 const colors = [
   '#19CDD7',

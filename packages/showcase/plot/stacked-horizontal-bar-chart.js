@@ -28,7 +28,7 @@ import {
   HorizontalGridLines,
   HorizontalBarSeries,
   HorizontalBarSeriesCanvas
-} from 'index';
+}from 'react-vis';
 
 export default class Example extends React.Component {
   state = {

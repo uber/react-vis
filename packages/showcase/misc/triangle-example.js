@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {XYPlot, PolygonSeries, XAxis, YAxis, GradientDefs} from 'index';
+import {XYPlot, PolygonSeries, XAxis, YAxis, GradientDefs}from 'react-vis';
 
 function buildTriangle(sideWidth, lowerLeftCoord) {
   const {x, y} = lowerLeftCoord;

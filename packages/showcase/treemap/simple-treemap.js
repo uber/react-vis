@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import Treemap from 'treemap';
+import Treemap from 'react-vis/treemap';
 
 import D3FlareData from '../datasets/d3-flare-example.json';
 import ShowcaseButton from '../showcase-components/showcase-button';

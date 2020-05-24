@@ -22,7 +22,7 @@ import React, {Component} from 'react';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
 
-import {XYPlot, XAxis, YAxis, HexbinSeries, ChartLabel} from 'index';
+import {XYPlot, XAxis, YAxis, HexbinSeries, ChartLabel}from 'react-vis';
 
 import DATA from '../datasets/car-data.json';
 
@@ -100,7 +100,7 @@ export default class HexbinSizeExample extends Component {
           />
           <XAxis />
           <YAxis />
-          <ChartLabel 
+          <ChartLabel
             text={DIMENSIONS[xAxis]}
             className="alt-x-label"
             xPercent={0.9}
@@ -111,7 +111,7 @@ export default class HexbinSizeExample extends Component {
             }}
             />
 
-          <ChartLabel 
+          <ChartLabel
             text={DIMENSIONS[yAxis]}
             className="alt-y-label"
             xPercent={0.1}

@@ -26,7 +26,7 @@ import {
   YAxis,
   VerticalGridLines,
   HorizontalGridLines
-} from 'index';
+}from 'react-vis';
 
 export default function EmptyChart() {
   return (
