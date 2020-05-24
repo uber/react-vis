@@ -14,5 +14,6 @@ public/
 
 bundle.js
 bundle.css
+packages/showcase/app.css
 
 /index.html
