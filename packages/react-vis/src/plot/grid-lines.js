@@ -44,10 +44,7 @@ const propTypes = {
   style: PropTypes.object,
 
   tickValues: PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string
-    ])
+    PropTypes.oneOfType([PropTypes.number, PropTypes.string])
   ),
   tickTotal: PropTypes.number,
 
@@ -137,7 +134,7 @@ class GridLines extends PureComponent {
     return (
       <g
         transform={`translate(${left},${top})`}
-        className={getCombinedClassName("rv-xy-plot__grid-lines", className)}
+        className={getCombinedClassName('rv-xy-plot__grid-lines', className)}
       >
         {values.map((v, i) => {
           const pos = scale(v);

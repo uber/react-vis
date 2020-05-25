@@ -26,7 +26,7 @@ import {
   LineSeries,
   MarkSeries,
   VerticalBarSeries
-}from 'react-vis';
+} from 'react-vis';
 
 import {
   DISCRETE_COLOR_RANGE,
@@ -278,7 +278,7 @@ function generatePalette(range) {
     <div style={{display: 'flex', maxWidth: 700, flexWrap: 'wrap'}}>
       {range.map((d, i) => (
         <div
-          key={i}
+          key={i.toString()}
           style={{
             background: d,
             width: 80,
@@ -312,7 +312,7 @@ function generateCharts(seriesData, props) {
       {[VerticalBarSeries, LineSeries, MarkSeries].map((Type, key) => (
         <XYPlot key={key} {...defaultXYPlotProps} {...props}>
           {seriesData.map((d, i) => (
-            <Type {...d} />
+            <Type key={i} {...d} />
           ))}
         </XYPlot>
       ))}

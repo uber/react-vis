@@ -28,7 +28,7 @@ import {
   HorizontalGridLines,
   HorizontalBarSeries,
   HorizontalBarSeriesCanvas
-}from 'react-vis';
+} from 'react-vis';
 
 export default class Example extends React.Component {
   state = {
@@ -51,8 +51,20 @@ export default class Example extends React.Component {
           <HorizontalGridLines />
           <XAxis />
           <YAxis />
-          <BarSeries data={[{y: 2, x: 10}, {y: 4, x: 5}, {y: 5, x: 15}]} />
-          <BarSeries data={[{y: 2, x: 12}, {y: 4, x: 2}, {y: 5, x: 11}]} />
+          <BarSeries
+            data={[
+              {y: 2, x: 10},
+              {y: 4, x: 5},
+              {y: 5, x: 15}
+            ]}
+          />
+          <BarSeries
+            data={[
+              {y: 2, x: 12},
+              {y: 4, x: 2},
+              {y: 5, x: 11}
+            ]}
+          />
         </XYPlot>
       </div>
     );

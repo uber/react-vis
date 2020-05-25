@@ -28,11 +28,19 @@ import {
   HorizontalGridLines,
   LineSeries,
   Crosshair
-}from 'react-vis';
+} from 'react-vis';
 
 const DATA = [
-  [{x: 1, y: 10}, {x: 2, y: 7}, {x: 3, y: 15}],
-  [{x: 1, y: 20}, {x: 2, y: 5}, {x: 3, y: 15}]
+  [
+    {x: 1, y: 10},
+    {x: 2, y: 7},
+    {x: 3, y: 15}
+  ],
+  [
+    {x: 1, y: 20},
+    {x: 2, y: 5},
+    {x: 3, y: 15}
+  ]
 ];
 
 export default class DynamicCrosshair extends React.Component {

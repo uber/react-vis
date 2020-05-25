@@ -81,14 +81,16 @@ class BarSeriesCanvas extends AbstractSeries {
       // spaceTakenByInterBarsPixels has the overhead space consumed by each bar of sameTypeTotal
       const spaceTakenByInterBarsPixels = (sameTypeTotal - 1) / sameTypeTotal;
       // lineSize is the space we have available to draw sameTypeIndex bar
-      const lineSize = (totalSpaceAvailable / sameTypeTotal) - spaceTakenByInterBarsPixels;
+      const lineSize =
+        totalSpaceAvailable / sameTypeTotal - spaceTakenByInterBarsPixels;
 
       const fillColor = rgb(fill(row));
       const strokeColor = rgb(stroke(row));
       const rowOpacity = opacity(row) || DEFAULT_OPACITY;
 
       // linePos is the first pixel were we can start drawing sameTypeIndex bar
-      const linePos = totalSpaceStartingPoint + lineSize * sameTypeIndex + sameTypeIndex;
+      const linePos =
+        totalSpaceStartingPoint + lineSize * sameTypeIndex + sameTypeIndex;
       const valuePos = Math.min(value0(row), value(row));
       const x = valuePosAttr === 'x' ? valuePos : linePos;
       const y = valuePosAttr === 'y' ? valuePos : linePos;
@@ -99,13 +101,9 @@ class BarSeriesCanvas extends AbstractSeries {
 
       ctx.beginPath();
       ctx.rect(x + marginBottom, y + marginTop, width, height);
-      ctx.fillStyle = `rgba(${fillColor.r}, ${fillColor.g}, ${
-        fillColor.b
-      }, ${rowOpacity})`;
+      ctx.fillStyle = `rgba(${fillColor.r}, ${fillColor.g}, ${fillColor.b}, ${rowOpacity})`;
       ctx.fill();
-      ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${
-        strokeColor.b
-      }, ${rowOpacity})`;
+      ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${strokeColor.b}, ${rowOpacity})`;
       ctx.stroke();
     });
   }

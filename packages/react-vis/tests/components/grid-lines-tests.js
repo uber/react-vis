@@ -9,13 +9,16 @@ import VerticalGridLines from 'plot/vertical-grid-lines';
 test('GridLines: HorizontalGridLines', t => {
   const wrapper = shallow(
     <XYPlot width={300} height={300} stackBy="y">
-      <HorizontalGridLines className='test-class-name' />
+      <HorizontalGridLines className="test-class-name" />
       <LineSeries data={[{x: 1, y: 3}]} />
     </XYPlot>
   );
 
   t.equal(
-    wrapper.find(HorizontalGridLines).at(0).hasClass('test-class-name'),
+    wrapper
+      .find(HorizontalGridLines)
+      .at(0)
+      .hasClass('test-class-name'),
     true,
     'should find className passed as prop'
   );
@@ -25,13 +28,16 @@ test('GridLines: HorizontalGridLines', t => {
 test('GridLines: VerticalGridLines', t => {
   const wrapper = shallow(
     <XYPlot width={300} height={300} stackBy="y">
-      <VerticalGridLines className='test-class-name' />
+      <VerticalGridLines className="test-class-name" />
       <LineSeries data={[{x: 1, y: 3}]} />
     </XYPlot>
   );
 
   t.equal(
-    wrapper.find(VerticalGridLines).at(0).hasClass('test-class-name'),
+    wrapper
+      .find(VerticalGridLines)
+      .at(0)
+      .hasClass('test-class-name'),
     true,
     'should find className passed as prop'
   );

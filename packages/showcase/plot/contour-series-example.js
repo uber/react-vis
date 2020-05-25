@@ -29,7 +29,7 @@ import {
   ContourSeries,
   MarkSeriesCanvas,
   Borders
-}from 'react-vis';
+} from 'react-vis';
 
 import DATA from '../datasets/old-faithful.json';
 

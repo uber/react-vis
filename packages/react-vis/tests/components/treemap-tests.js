@@ -281,7 +281,9 @@ test('Treemap: SimpleTreemap', t => {
     'binary'
   ].forEach(mode => {
     const selector =
-      mode === 'circlePack' ? '.rv-treemap__leaf circle' : 'path.rv-treemap__leaf';
+      mode === 'circlePack'
+        ? '.rv-treemap__leaf circle'
+        : 'path.rv-treemap__leaf';
     // circle pack includes the root node, while the other modes do not
     const numberOfElements = 252;
     t.equal(

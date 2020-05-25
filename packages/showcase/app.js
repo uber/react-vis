@@ -27,7 +27,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import ShowcaseApp from './showcase-app';
 import '../react-vis/src/styles/examples.scss';
 
-export default function App(props) {
+export default function App() {
   // using react-router to trigger react updates on url change
   return (
     <BrowserRouter>

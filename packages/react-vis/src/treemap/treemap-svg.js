@@ -180,8 +180,8 @@ class TreemapSVG extends React.Component {
     return (
       <XYPlot
         className={getCombinedClassName(
-          "rv-treemap",
-          useCirclePacking && "rv-treemap-circle-paked",
+          'rv-treemap',
+          useCirclePacking && 'rv-treemap-circle-paked',
           className
         )}
         width={width}

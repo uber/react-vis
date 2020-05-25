@@ -30,7 +30,7 @@ import {
   VerticalBarSeries,
   VerticalBarSeriesCanvas,
   DiscreteColorLegend
-}from 'react-vis';
+} from 'react-vis';
 
 export default class Example extends React.Component {
   state = {

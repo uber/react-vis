@@ -66,9 +66,7 @@ class LineSeriesCanvas extends AbstractSeries {
     }
 
     ctx.beginPath();
-    ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${
-      strokeColor.b
-    }, ${opacity})`;
+    ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${strokeColor.b}, ${opacity})`;
     ctx.lineWidth = strokeWidth;
 
     if (strokeDasharray) {

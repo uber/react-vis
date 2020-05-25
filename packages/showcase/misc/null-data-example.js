@@ -29,11 +29,23 @@ import {
   HorizontalGridLines,
   VerticalGridLines,
   LineMarkSeries
-}from 'react-vis';
+} from 'react-vis';
 
 const DATA = [
-  [{x: 1, y: 10}, {x: 2, y: 10}, {x: 3, y: 13}, {x: 4, y: 7}, {x: 5, y: null}],
-  [{x: 1, y: 30}, {x: 2, y: 0}, {x: 5, y: null}, {x: 4, y: 15}, {x: 5, y: null}]
+  [
+    {x: 1, y: 10},
+    {x: 2, y: 10},
+    {x: 3, y: 13},
+    {x: 4, y: 7},
+    {x: 5, y: null}
+  ],
+  [
+    {x: 1, y: 30},
+    {x: 2, y: 0},
+    {x: 5, y: null},
+    {x: 4, y: 15},
+    {x: 5, y: null}
+  ]
 ];
 
 export default class NullDataExample extends React.Component {

@@ -112,7 +112,7 @@ function transformColor(data, hovered = [], useRange = false) {
     ? scaleLinear()
         .domain([0, samplePoint.maxCount])
         .range(['#fff', '#EF5D28'])
-    : d => '#EF5D28';
+    : () => '#EF5D28';
 
   const hoveredPoints = hovered.reduce((res, row) => {
     res[useRange ? `${row.x}-${row.y}` : row.label] = true;

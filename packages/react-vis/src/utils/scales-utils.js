@@ -159,7 +159,7 @@ export function _getSmallestDistanceIndex(values, scaleObject) {
  */
 
 function addInvertFunctionToOrdinalScaleObject(scale) {
-  if (scale.invert) { 
+  if (scale.invert) {
     return;
   }
 
@@ -167,18 +167,20 @@ function addInvertFunctionToOrdinalScaleObject(scale) {
     const [lower, upper] = scale.range();
     const start = Math.min(lower, upper);
     const stop = Math.max(lower, upper);
-    
+
     if (value < start + scale.padding() * scale.step()) {
       return scale.domain()[0];
-    } 
-    
-    if (value > stop - scale.padding() * scale.step()) { 
+    }
+
+    if (value > stop - scale.padding() * scale.step()) {
       return scale.domain()[scale.domain().length - 1];
     }
 
-    const index = Math.floor((value - start - scale.padding() * scale.step()) / scale.step());
+    const index = Math.floor(
+      (value - start - scale.padding() * scale.step()) / scale.step()
+    );
     return scale.domain()[index];
-  }
+  };
 }
 
 /**
@@ -210,7 +212,7 @@ export function getScaleFnFromScaleObject(scaleObject) {
     .range(range);
   if (type === ORDINAL_SCALE_TYPE) {
     scale.padding(0.5);
-	  addInvertFunctionToOrdinalScaleObject(scale);
+    addInvertFunctionToOrdinalScaleObject(scale);
   }
   return scale;
 }

@@ -21,7 +21,7 @@
 import React from 'react';
 import {format} from 'd3-format';
 
-import {ParallelCoordinates}from 'react-vis';
+import {ParallelCoordinates} from 'react-vis';
 
 const DATA = [
   {
@@ -60,7 +60,7 @@ const DATA = [
 const basicFormat = format('.2r');
 const wideFormat = format('.3r');
 
-export default function BasicParallelCoordinates(props) {
+export default function BasicParallelCoordinates() {
   return (
     <ParallelCoordinates
       data={DATA}

@@ -27,9 +27,9 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   AreaSeries
-}from 'react-vis';
+} from 'react-vis';
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot width={300} height={300}>
       <VerticalGridLines />
@@ -39,7 +39,11 @@ export default function Example(props) {
       <AreaSeries
         className="area-series-example"
         curve="curveNatural"
-        data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]}
+        data={[
+          {x: 1, y: 10},
+          {x: 2, y: 5},
+          {x: 3, y: 15}
+        ]}
       />
     </XYPlot>
   );

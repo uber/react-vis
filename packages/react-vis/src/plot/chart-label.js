@@ -52,7 +52,8 @@ class ChartLabel extends React.PureComponent {
     return (
       <g
         transform={`translate(${xPos}, ${yPos})`}
-        className={getCombinedClassName("rv-xy-plot__axis__title", className)}>
+        className={getCombinedClassName('rv-xy-plot__axis__title', className)}
+      >
         <text {...style}>{text}</text>
       </g>
     );

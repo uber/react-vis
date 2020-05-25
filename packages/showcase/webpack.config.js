@@ -11,7 +11,7 @@ const jsRule = {
   exclude: [/node_modules/],
   options: {
     presets: ['react', 'es2015', 'stage-0']
-  },
+  }
 };
 const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
 const config = isProd
@@ -35,18 +35,20 @@ const config = isProd
           jsRule,
           {
             test: /\.scss$/,
-            use: [{
-              loader: MiniCssExtractPlugin.loader,
-            }, 'css-loader', 'sass-loader']
+            use: [
+              {
+                loader: MiniCssExtractPlugin.loader
+              },
+              'css-loader',
+              'sass-loader'
+            ]
           }
         ]
       },
       optimization: {
         minimize: true
       },
-      plugins: [
-       new MiniCssExtractPlugin('bundle.css'),
-      ]
+      plugins: [new MiniCssExtractPlugin('bundle.css')]
     }
   : {
       mode: 'development',
@@ -56,9 +58,7 @@ const config = isProd
         path: path.resolve(__dirname, './dist'),
         filename: 'bundle.js'
       },
-      plugins: [
-        new MiniCssExtractPlugin()
-      ],
+      plugins: [new MiniCssExtractPlugin()],
 
       module: {
         rules: [
@@ -69,20 +69,22 @@ const config = isProd
               {
                 loader: MiniCssExtractPlugin.loader,
                 options: {
-                  hmr: true,
-                },
+                  hmr: true
+                }
               },
               'css-loader',
               'sass-loader'
-            ],
+            ]
           }
         ]
       },
 
       resolve: {
-        modules: ['node_modules', path.join(__dirname,'..', 'react-vis', 'src')]
-      },
-
+        modules: [
+          'node_modules',
+          path.join(__dirname, '..', 'react-vis', 'src')
+        ]
+      }
     };
 
 module.exports = config;

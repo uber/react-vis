@@ -28,7 +28,7 @@ import {
   HorizontalGridLines,
   MarkSeries,
   Hint
-}from 'react-vis';
+} from 'react-vis';
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -59,7 +59,11 @@ export default class Example extends React.Component {
         <MarkSeries
           onValueMouseOver={this._rememberValue}
           onValueMouseOut={this._forgetValue}
-          data={[{x: 1, y: 10}, {x: 2, y: 5}, {x: 3, y: 15}]}
+          data={[
+            {x: 1, y: 10},
+            {x: 2, y: 5},
+            {x: 3, y: 15}
+          ]}
         />
         {value ? <Hint value={value} /> : null}
       </XYPlot>

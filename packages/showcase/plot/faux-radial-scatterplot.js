@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {XYPlot, XAxis, YAxis, MarkSeries, CircularGridLines}from 'react-vis';
+import {XYPlot, XAxis, YAxis, MarkSeries, CircularGridLines} from 'react-vis';
 
 const data = [
   {r: 1, theta: Math.PI / 3, size: 30},
@@ -41,7 +41,7 @@ const margin = {
 const WIDTH = 300;
 const HEIGHT = 300;
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot
       margin={margin}

@@ -26,7 +26,7 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   VerticalRectSeries
-}from 'react-vis';
+} from 'react-vis';
 
 const timestamp = new Date('May 23 2017').getTime();
 const ONE_DAY = 86400000;
@@ -42,7 +42,7 @@ const DATA = [
   {x0: ONE_DAY * 21, x: ONE_DAY * 24, y: 1}
 ].map(el => ({x0: el.x0 + timestamp, x: el.x + timestamp, y: el.y}));
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot
       xDomain={[timestamp - 2 * ONE_DAY, timestamp + 30 * ONE_DAY]}

@@ -63,7 +63,7 @@ function ContinuousColorLegend({
   colors.push(endColor);
   return (
     <div
-      className={getCombinedClassName("rv-continuous-color-legend", className)}
+      className={getCombinedClassName('rv-continuous-color-legend', className)}
       style={{width, height}}
     >
       <div

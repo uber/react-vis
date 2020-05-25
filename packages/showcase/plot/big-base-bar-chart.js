@@ -26,7 +26,7 @@ import {
   YAxis,
   VerticalBarSeries,
   VerticalBarSeriesCanvas
-}from 'react-vis';
+} from 'react-vis';
 
 const myDATA = [
   {id: '00036', y: 200400, x: 1504121437},

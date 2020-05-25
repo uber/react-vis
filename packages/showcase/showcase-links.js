@@ -186,7 +186,7 @@ export const SHOWCASE_LINKS = {
     'https://github.com/uber/react-vis/blob/master/showcase/legends/horizontal-discrete-custom-palette.js',
   SearchableDiscreteColorLegendExample:
     'https://github.com/uber/react-vis/blob/master/showcase/legends/searchable-discrete-color.js',
-    SearchableDiscreteColorLegendHoverExample:
+  SearchableDiscreteColorLegendHoverExample:
     'https://github.com/uber/react-vis/blob/master/showcase/legends/searchable-discrete-color-hover.js',
   ContinuousColorLegendExample:
     'https://github.com/uber/react-vis/blob/master/showcase/legends/continuous-color.js',

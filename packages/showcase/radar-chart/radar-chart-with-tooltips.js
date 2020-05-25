@@ -20,7 +20,7 @@
 
 import React, {Component} from 'react';
 import RadarChart from 'react-vis/radar-chart';
-import {Hint}from 'react-vis';
+import {Hint} from 'react-vis';
 
 // The first 6 data elements here are to simulate a 'spider' type of radar chart -
 // similar to CircularGridLines, but straight edges instead.
@@ -123,7 +123,7 @@ export default class RadarChartWithTooltips extends Component {
     return (
       <RadarChart
         data={DATA}
-        tickFormat={t => {
+        tickFormat={() => {
           return '';
         }}
         domains={[
@@ -152,7 +152,7 @@ export default class RadarChartWithTooltips extends Component {
         onValueMouseOver={v => {
           this.setState({hoveredCell: v});
         }}
-        onValueMouseOut={v => this.setState({hoveredCell: false})}
+        onValueMouseOut={() => this.setState({hoveredCell: false})}
         style={{
           polygons: {
             strokeWidth: 1,
@@ -179,14 +179,13 @@ export default class RadarChartWithTooltips extends Component {
         hideInnerMostValues={false}
         renderAxesOverPolygons={true}
       >
-        {hoveredCell &&
-          hoveredCell.dataName === 'Mercedes' && (
-            <Hint value={hoveredCell}>
-              <div style={tipStyle}>
-                {hoveredCell.domain}: {hoveredCell.value}
-              </div>
-            </Hint>
-          )}
+        {hoveredCell && hoveredCell.dataName === 'Mercedes' && (
+          <Hint value={hoveredCell}>
+            <div style={tipStyle}>
+              {hoveredCell.domain}: {hoveredCell.value}
+            </div>
+          </Hint>
+        )}
       </RadarChart>
     );
   }

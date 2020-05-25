@@ -25,7 +25,7 @@ import {
   FlexibleWidthXYPlot,
   FlexibleHeightXYPlot,
   FlexibleXYPlot
-}from 'react-vis';
+} from 'react-vis';
 
 const data = [
   {x: 0, y: 8},

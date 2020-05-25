@@ -39,8 +39,8 @@ function TreemapDOM(props) {
   return (
     <div
       className={getCombinedClassName(
-        "rv-treemap",
-        useCirclePacking && "rv-treemap-circle-paked",
+        'rv-treemap',
+        useCirclePacking && 'rv-treemap-circle-paked',
         className
       )}
       style={{height, width}}

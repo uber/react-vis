@@ -20,7 +20,7 @@
 
 import React, {Component} from 'react';
 
-import {CircularGridLines, RadialChart}from 'react-vis';
+import {CircularGridLines, RadialChart} from 'react-vis';
 
 const DATA = [
   {

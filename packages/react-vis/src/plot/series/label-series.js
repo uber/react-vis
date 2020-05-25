@@ -35,8 +35,8 @@ const getDominantBaseline = (labelAnchorY, aboveMiddle) => {
   return labelAnchorY
     ? labelAnchorY
     : aboveMiddle
-      ? 'text-before-edge'
-      : 'text-after-edge';
+    ? 'text-before-edge'
+    : 'text-after-edge';
 };
 
 class LabelSeries extends AbstractSeries {
@@ -111,7 +111,11 @@ class LabelSeries extends AbstractSeries {
             ...markStyle
           };
           const textContent = getLabel(_data ? _data[i] : d);
-          return res.concat([<text key={String(i)} {...attrs}>{textContent}</text>]);
+          return res.concat([
+            <text key={String(i)} {...attrs}>
+              {textContent}
+            </text>
+          ]);
         }, [])}
       </g>
     );
