@@ -13,18 +13,14 @@ module.exports = {
   DIR_NAME: `${__dirname}`,
 
   EXAMPLES: [
+    // TODO: Uncomment the "Plots" example to see Webpack errors.
+    // Make sure to rebuild react-vis to see the issues.
     // {
     //   title: 'Plots',
     //   // Path to code to download
     //   path: 'docs/examples/showcases/plots-showcase',
     //   image: 'images/examples/demo-thumb-line.jpg',
     //   componentUrl: resolve(__dirname, '../showcase/showcase-sections/plots-showcase.js')
-    // },
-    // {
-    //   title: 'my example',
-    //   path: 'examples/my-example/',
-    //   image: 'images/my-example.jpg',
-    //   componentUrl: '../examples/app.js'
     // }
   ],
   // your table of contents go there
@@ -71,13 +67,6 @@ module.exports = {
 
   // For showing star counts and contributors.
   // Should be like btoa('YourUsername:YourKey') and should be readonly.
-  GITHUB_KEY: null,
+  GITHUB_KEY: null
 
-  webpack: {
-    resolve: {
-      alias: {
-        'react-vis': resolve(__dirname, '../react-vis/src/')
-      }
-    }
-  }
 };
