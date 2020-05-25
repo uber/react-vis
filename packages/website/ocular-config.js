@@ -1,5 +1,6 @@
-
+/* eslint-env node */
 // default location for table of contents
+const resolve = require('path').resolve;
 const DOCS = require('../../docs/table-of-contents.json');
 // const DEPENDENCIES = require('./package.json').dependencies;
 
@@ -12,6 +13,13 @@ module.exports = {
   DIR_NAME: `${__dirname}`,
 
   EXAMPLES: [
+    // {
+    //   title: 'Plots',
+    //   // Path to code to download
+    //   path: 'docs/examples/showcases/plots-showcase',
+    //   image: 'images/examples/demo-thumb-line.jpg',
+    //   componentUrl: resolve(__dirname, '../showcase/showcase-sections/plots-showcase.js')
+    // },
     // {
     //   title: 'my example',
     //   path: 'examples/my-example/',
@@ -63,5 +71,13 @@ module.exports = {
 
   // For showing star counts and contributors.
   // Should be like btoa('YourUsername:YourKey') and should be readonly.
-  GITHUB_KEY: null
+  GITHUB_KEY: null,
+
+  webpack: {
+    resolve: {
+      alias: {
+        'react-vis': resolve(__dirname, '../react-vis/src/')
+      }
+    }
+  }
 };
