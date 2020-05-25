@@ -1,4 +1,4 @@
-## Scales and data
+# Scales and data
 
 ### Data
 

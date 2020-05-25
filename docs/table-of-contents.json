@@ -2,7 +2,7 @@
   "id": "table-of-contents",
   "chapters": [
     {
-      "title": "Overview",
+      "title": "Welcome to React-vis",
       "entries": [
         {"entry": "docs/README"}
       ]
@@ -20,23 +20,18 @@
       "title": "General principles",
       "entries": [
         {
-          "title": "Scales and data",
           "entry": "docs/scales-and-data"
         },
         {
-          "title": "Colors",
           "entry": "docs/colors"
         },
         {
-          "title": "Interaction",
           "entry": "docs/interaction"
         },
         {
-          "title": "Animation",
           "entry": "docs/animation"
         },
         {
-          "title": "Style",
           "entry": "docs/style"
         }
       ]
