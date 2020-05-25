@@ -1,4 +1,4 @@
-### Your first chart
+# Your first chart
 
 We tried to make react-vis syntax as close to the traditional react syntax. You have components which have props and possibly children. 
 

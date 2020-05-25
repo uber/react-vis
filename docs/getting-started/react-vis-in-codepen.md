@@ -1,4 +1,4 @@
-### Jump right in on codepen!
+# React-vis in codepen
 
 You can use react-vis directly on [codepen](https://codepen.io/ubervisualization/pen/BZOeZB) (or equivalent).  
 Each published version of react-vis is accessible via [unpkg.com](https://unpkg.com).

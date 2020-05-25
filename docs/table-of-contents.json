@@ -1,35 +1,24 @@
 {
+  "id": "table-of-contents",
   "chapters": [
     {
-      "title": "Welcome to React-vis",
+      "title": "Overview",
       "entries": [
-        {"entry": "docs/presentation"}
+        {"entry": "docs/README"}
       ]
     },
     {
       "title": "Getting Started",
-      "chapters": [
-        {
-          "title": "React-vis in codepen",
-          "entry": "docs/getting-started/react-vis-in-codepen"
-        },
-        {
-          "title": "Installing react-vis",
-          "entry": "docs/getting-started/installing-react-vis"
-        },
-        {
-          "title": "Creating a new react-vis project",
-          "entry": "docs/getting-started/new-react-vis-project"
-        },
-        {
-          "title": "Your first chart",
-          "entry": "docs/getting-started/your-first-chart"
-        }
+      "entries": [
+        {"entry": "docs/getting-started/react-vis-in-codepen"},
+        {"entry": "docs/getting-started/installing-react-vis"},
+        {"entry": "docs/getting-started/new-react-vis-project"},
+        {"entry": "docs/getting-started/your-first-chart"}
       ]
     },
     {
       "title": "General principles",
-      "chapters": [
+      "entries": [
         {
           "title": "Scales and data",
           "entry": "docs/scales-and-data"
@@ -51,7 +40,203 @@
           "entry": "docs/style"
         }
       ]
+    },
+    {
+      "title": "Overview 2",
+      "entries": [
+        {
+          "entry": "docs/xy-plot"
+        },
+        {
+          "entry": "docs/gradients"
+        },
+        {
+          "entry": "docs/grids"
+        },
+        {
+          "entry": "docs/flexible-plots"
+        },
+        {
+          "entry": "docs/heatmap-series"
+        },
+        {
+          "entry": "docs/hexbin-series"
+        },
+        {
+          "entry": "docs/highlight"
+        },
+        {
+          "entry": "docs/hint"
+        },
+        {
+          "entry": "docs/interaction"
+        },
+        {
+          "entry": "docs/label-series"
+        },
+        {
+          "entry": "docs/legends"
+        },
+        {
+          "entry": "docs/line-mark-series"
+        },
+        {
+          "entry": "docs/line-series"
+        },
+        {
+          "entry": "docs/mark-series"
+        },
+        {
+          "entry": "docs/parallel-coordinates"
+        },
+        {
+          "entry": "docs/polygon-series"
+        },
+        {
+          "entry": "docs/presentation"
+        },
+        {
+          "entry": "docs/decorative-axis"
+        },
+        {
+          "entry": "docs/radar-chart"
+        },
+        {
+          "entry": "docs/custom-svg-series"
+        },
+        {
+          "entry": "docs/radial-chart"
+        },
+        {
+          "entry": "docs/crosshair"
+        },
+        {
+          "entry": "docs/rect-series"
+        },
+        {
+          "entry": "docs/contour-series"
+        },
+        {
+          "entry": "docs/sankey"
+        },
+        {
+          "entry": "docs/colors"
+        },
+        {
+          "entry": "docs/scales-and-data"
+        },
+        {
+          "entry": "docs/chart-label"
+        },
+        {
+          "entry": "docs/series"
+        },
+        {
+          "entry": "docs/borders"
+        },
+        {
+          "entry": "docs/style"
+        },
+        {
+          "entry": "docs/bar-series"
+        },
+        {
+          "entry": "docs/sunburst"
+        },
+        {
+          "entry": "docs/axes"
+        },
+        {
+          "entry": "docs/treemap"
+        },
+        {
+          "entry": "docs/area-series"
+        },
+        {
+          "entry": "docs/voronoi"
+        },
+        {
+          "entry": "docs/arc-series"
+        },
+        {
+          "entry": "docs/whisker-series"
+        },
+        {
+          "entry": "docs/animation"
+        }
+      ]
+    },
+    {
+      "title": "Getting started",
+      "entries": [
+        {
+          "entry": "docs/getting-started/your-first-chart"
+        },
+        {
+          "entry": "docs/getting-started/react-vis-in-codepen"
+        },
+        {
+          "entry": "docs/getting-started/installing-react-vis"
+        },
+        {
+          "entry": "docs/getting-started/getting-started"
+        },
+        {
+          "entry": "docs/getting-started/new-react-vis-project"
+        }
+      ]
+    },
+    {
+      "title": "Examples",
+      "entries": [
+        {
+          "entry": "docs/examples/stream-graph"
+        },
+        {
+          "title": "Showcases",
+          "entries": [
+            {
+              "entry": "docs/examples/showcases/treemaps-showcase"
+            },
+            {
+              "entry": "docs/examples/showcases/sunburst-showcase"
+            },
+            {
+              "entry": "docs/examples/showcases/sankeys-showcase"
+            },
+            {
+              "entry": "docs/examples/showcases/radial-showcase"
+            },
+            {
+              "entry": "docs/examples/showcases/radar-chart-showcase"
+            },
+            {
+              "entry": "docs/examples/showcases/plots-showcase"
+            },
+            {
+              "entry": "docs/examples/showcases/misc-showcase"
+            },
+            {
+              "entry": "docs/examples/showcases/legends-showcase"
+            },
+            {
+              "entry": "docs/examples/showcases/axes-showcase"
+            }
+          ]
+        },
+        {
+          "entry": "docs/examples/responsive-vis"
+        },
+        {
+          "entry": "docs/examples/iris-dashboard"
+        },
+        {
+          "entry": "docs/examples/extensibility"
+        },
+        {
+          "entry": "docs/examples/building-things-other-than-charts"
+        }
+      ]
     }
-  ],
-  "id": "table-of-contents"
+  ]
 }

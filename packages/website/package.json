@@ -5,11 +5,15 @@
   "description": "A composable charting library",
   "main": "gatsby-config.js",
   "scripts": {
-    "start": "ocular start",
-    "clean": "rm -rf dist/*{.js,.css,index.html,appcache,fonts,images}",
-    "build": "npm run clean && ocular build && npm run build-storybook",
+    "clean": "rm -rf dist/*{.js,.css,index.html,appcache,fonts,images} && npm run clean-ocular",
+    "clean-ocular": "rm -rf ./.cache ./public",
+    "develop": "gatsby develop --port=8000",
+    "build": "npm run clean && npm run build-ocular && npm run build-storybook",
     "build-storybook": "build-storybook -c .storybook -o ./dist/storybook",
+    "build-ocular": "gatsby build",
     "lint": "ocular lint",
+    "serve": "gatsby serve",
+    "start": "yarn clean && yarn develop",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "keywords": [],

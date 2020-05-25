@@ -1,4 +1,4 @@
-# React-vis
+# Introduction
 
 __React-vis__ is a React visualization library. It's been designed with the following principles in mind:
 
