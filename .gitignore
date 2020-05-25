@@ -10,8 +10,10 @@ yarn-error.log*
 .DS_Store
 .idea/
 public/
+.vscode/
 
-showcase/bundle.js
-showcase/bundle.css
+bundle.js
+bundle.css
+packages/showcase/app.css
 
 /index.html

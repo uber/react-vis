@@ -1,0 +1,112 @@
+{
+  "name": "react-vis",
+  "version": "1.11.7",
+  "license": "MIT",
+  "author": "Visualization Team <visualization@uber.com>",
+  "description": "Data visualization library based on React and d3.",
+  "main": "dist",
+  "module": "es",
+  "jsnext:main": "es",
+  "files": [
+    "dist",
+    "es"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uber-common/react-vis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uber-common/react-vis/issues/new",
+    "email": "visualization@uber.com"
+  },
+  "scripts": {
+    "docs": "./publish-docs.sh",
+    "clean": "rm -rf dist es bundle.* index.html && mkdir dist es",
+    "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
+    "build:browser": "browserify src/index.js -t [ babelify --rootMode upward ] --standalone reactVis | uglifyjs > dist/dist.min.js",
+    "build": "yarn run clean && babel --root-mode upward src -d dist --copy-files && BABEL_ENV=es babel --root-mode upward src -d es --copy-files && node-sass src/main.scss dist/style.css --output-style compressed && yarn run build:browser",
+    "lint-styles": "stylelint src/styles/*.scss --syntax scss",
+    "test:windows": "babel-node --inspect ./tests/index.js",
+    "test": "node --inspect ./node_modules/.bin/babel-node --root-mode upward ./tests/index.js --only='../showcase/**/*.js,src,tests'",
+    "full-test": "npm run lint && npm run cover",
+    "cover": "nyc --reporter=text --reporter=html --reporter=lcov npm test",
+    "prettier": "prettier --write $(git ls-files | grep '.js$')"
+  },
+  "dependencies": {
+    "d3-array": "^1.2.0",
+    "d3-collection": "^1.0.3",
+    "d3-color": "^1.0.3",
+    "d3-contour": "^1.1.0",
+    "d3-format": "^1.2.0",
+    "d3-geo": "^1.6.4",
+    "d3-hexbin": "^0.2.2",
+    "d3-hierarchy": "^1.1.4",
+    "d3-interpolate": "^1.1.4",
+    "d3-sankey": "^0.7.1",
+    "d3-scale": "^1.0.5",
+    "d3-shape": "^1.1.0",
+    "d3-voronoi": "^1.1.2",
+    "deep-equal": "^1.0.1",
+    "global": "^4.3.1",
+    "prop-types": "^15.5.8",
+    "react-motion": "^0.5.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babelify": "^10.0.0",
+    "browserify": "^14.3.0",
+    "canvas-prebuilt": "^1.6.11",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "jsdom": "^9.9.1",
+    "node-sass": "^4.9.3",
+    "nyc": "^13.0.1",
+    "prettier": "^1.14.2",
+    "react": "^16.0.0",
+    "react-addons-test-utils": ">=15.4.2",
+    "react-dom": "^16.0.0",
+    "react-test-renderer": "^16.13.1",
+    "react-vis-showcase": "^0.1.0",
+    "stylelint": "^7.7.1",
+    "stylelint-config-standard": "^15.0.1",
+    "tape": "^4.6.3",
+    "uglify-js": "^2.8.22"
+  },
+  "peerDependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  },
+  "keywords": [
+    "d3",
+    "react",
+    "visualization",
+    "chart",
+    "es6",
+    "babel"
+  ],
+  "nyc": {
+    "exclude": [
+      "tests/**/*.js",
+      "./utils/react-utils.js"
+    ]
+  },
+  "engines": {
+    "node": ">=8.17.0",
+    "npm": ">=6.13.0"
+  },
+  "volta": {
+    "node": "10.20.1",
+    "yarn": "1.22.4"
+  }
+}

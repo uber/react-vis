@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "max-len": "off",
+    "react/jsx-key": "off"
+  }
+}

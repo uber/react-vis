@@ -1,0 +1,36 @@
+{
+  "name": "react-vis-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A composable charting library",
+  "main": "index.js",
+  "scripts": {
+    "start": "ocular start",
+    "clean": "rm -rf dist/*{.js,.css,index.html,appcache,fonts,images}",
+    "build": "npm run clean && ocular build && npm run build-storybook",
+    "build-storybook": "build-storybook -c .storybook -o ./dist/storybook",
+    "lint": "ocular lint",
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "storybook-addon-jsx": "^7.2.3"
+  },
+  "dependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "d3-force": "^1.0.6",
+    "d3-random": "^1.1.0",
+    "ocular": "0.6.2",
+    "react-virtualized": "^9.18.5",
+    "react-vis": "^1.11.2"
+  },
+  "volta": {
+    "node": "10.20.1",
+    "yarn": "1.22.4"
+  }
+}

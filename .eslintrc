@@ -1,27 +1,40 @@
 {
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react"
+  ],
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "prettier",
+    "babel",
+    "no-only-tests"
+  ],
+  "ignorePatterns": [
+    "node_modules",
+    "bundle.js",
+    "**/dist/",
+    "**/es/"
+  ],
+  "settings":{
+    "react":{
+      "version": "detect"
+    }
+  },
   "env": {
     "es6": true,
     "browser": true
   },
-  "extends": [
-    "uber-es2015",
-    "uber-jsx",
-    "prettier",
-    "prettier/react"
-  ],
   "rules": {
     "consistent-return": 0,
     "max-len": [1, 110, 4],
     "max-params": ["error", 6],
     "object-curly-spacing": 0,
     "babel/object-curly-spacing": 2,
-    "no-only-tests/no-only-tests": 2
-  },
-  "parser": "babel-eslint",
-  "plugins": [
-    "react",
-    "babel",
-    "prettier",
-    "no-only-tests"
-  ]
+    "no-only-tests/no-only-tests": 2,
+    "react/prop-types": "off",
+    "prettier/prettier": "warn"
+  }
 }
