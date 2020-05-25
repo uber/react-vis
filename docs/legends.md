@@ -1,6 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 ## Legends
 
 <!-- INJECT:"HorizontalDiscreteColorLegendExampleWithLink" -->

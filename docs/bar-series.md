@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 # Bar Series
 
 **TLDR**: use bar series to make bar charts, but not histograms.
@@ -130,7 +128,7 @@ A list of CSS properties to style the series outside of the explicitly set prope
 
 #### barWidth
 Type: `Number`
-The percentage for which each bar fills the designated bucket. 1.0 means that the bar fills the whole bucket (no padding between bars), while a
+The percentage for which each bar fills the designated bucket. 1.0 means that the bar fills the whole bucket (no padding between bars), while a 
 smaller percentage means more whitespace between the bars.
 
 ## Interaction handlers

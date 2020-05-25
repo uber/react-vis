@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 ## ChartLabel
 
 When you are styling your chart sometimes you just want to take complete control of label placements. Maybe you want to annotate something, or maybe you just want to place your axis labels in a very specific place, ChartLabel allows you to do just that. Let's look at an example:

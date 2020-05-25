@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 # Treemap
 
 Treemaps are a splendid way to represent data that has a nested aspect to it. They allow for the easy display of complicated

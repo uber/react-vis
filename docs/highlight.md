@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 ## Highlight
 
 The highlight component enables use interaction via direct manipulation of chart through dragging and brushing. This component is stateful and can maintain a notion of a dragged box. It can be applied either in two directions or in one!
