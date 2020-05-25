@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {XYPlot, XAxis, YAxis, VerticalRectSeries, Highlight}from 'react-vis';
+import {XYPlot, XAxis, YAxis, VerticalRectSeries, Highlight} from 'react-vis';
 
 const DATA = [
   {x0: 0, x: 1, y: 1},

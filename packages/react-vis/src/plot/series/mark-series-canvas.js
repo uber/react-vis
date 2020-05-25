@@ -59,13 +59,9 @@ class MarkSeriesCanvas extends AbstractSeries {
         0,
         2 * Math.PI
       );
-      ctx.fillStyle = `rgba(${fillColor.r}, ${fillColor.g}, ${
-        fillColor.b
-      }, ${rowOpacity})`;
+      ctx.fillStyle = `rgba(${fillColor.r}, ${fillColor.g}, ${fillColor.b}, ${rowOpacity})`;
       ctx.fill();
-      ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${
-        strokeColor.b
-      }, ${rowOpacity})`;
+      ctx.strokeStyle = `rgba(${strokeColor.r}, ${strokeColor.g}, ${strokeColor.b}, ${rowOpacity})`;
       ctx.stroke();
     });
   }

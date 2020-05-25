@@ -31,7 +31,7 @@ import {
   VerticalGridLines,
   LineSeries,
   LineSeriesCanvas
-}from 'react-vis';
+} from 'react-vis';
 
 export default class Example extends React.Component {
   state = {
@@ -59,7 +59,7 @@ export default class Example extends React.Component {
             includeMargin={false}
             xPercent={0.025}
             yPercent={1.01}
-            />
+          />
 
           <ChartLabel
             text="Y Axis"
@@ -71,16 +71,26 @@ export default class Example extends React.Component {
               transform: 'rotate(-90)',
               textAnchor: 'end'
             }}
-            />
+          />
           <Line
             className="first-series"
-            data={[{x: 1, y: 3}, {x: 2, y: 5}, {x: 3, y: 15}, {x: 4, y: 12}]}
+            data={[
+              {x: 1, y: 3},
+              {x: 2, y: 5},
+              {x: 3, y: 15},
+              {x: 4, y: 12}
+            ]}
           />
           <Line className="second-series" data={null} />
           <Line
             className="third-series"
             curve={'curveMonotoneX'}
-            data={[{x: 1, y: 10}, {x: 2, y: 4}, {x: 3, y: 2}, {x: 4, y: 15}]}
+            data={[
+              {x: 1, y: 10},
+              {x: 2, y: 4},
+              {x: 3, y: 2},
+              {x: 4, y: 15}
+            ]}
             strokeDasharray={useCanvas ? [7, 3] : '7, 3'}
           />
           <Line
@@ -90,7 +100,12 @@ export default class Example extends React.Component {
               // note that this can not be translated to the canvas version
               strokeDasharray: '2 2'
             }}
-            data={[{x: 1, y: 7}, {x: 2, y: 11}, {x: 3, y: 9}, {x: 4, y: 2}]}
+            data={[
+              {x: 1, y: 7},
+              {x: 2, y: 11},
+              {x: 3, y: 9},
+              {x: 4, y: 2}
+            ]}
           />
         </XYPlot>
       </div>

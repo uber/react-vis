@@ -24,13 +24,13 @@ import DiscreteColorLegend from 'react-vis/legends/discrete-color-legend';
 import GradientDefs from 'react-vis/plot/gradient-defs';
 
 const ITEMS = [
-  {title: 'Dashed', color: "#45aeb1", strokeStyle: "dashed"},
-  {title: 'Dasharray', color: '#f93', strokeDasharray: "1 2 3 4 5 6 7"},
+  {title: 'Dashed', color: '#45aeb1', strokeStyle: 'dashed'},
+  {title: 'Dasharray', color: '#f93', strokeDasharray: '1 2 3 4 5 6 7'},
   {title: 'Dots', color: 'url(#circles)', strokeWidth: 9},
   {title: 'Stripes', color: 'url(#stripes)'},
   {title: 'Wide stripes', color: 'url(#stripes)', strokeWidth: 13},
   {title: 'Normal', color: 'purple'},
-  {title: 'Wide', color: 'powderblue', strokeWidth: 6},
+  {title: 'Wide', color: 'powderblue', strokeWidth: 6}
 ];
 
 export default function DiscreteColorExample() {
@@ -38,16 +38,25 @@ export default function DiscreteColorExample() {
     <div>
       <svg height={0} width={0}>
         <GradientDefs>
-            <pattern id="stripes" width="4" height="4" patternUnits="userSpaceOnUse">
-                <path d="M 0, 0 l 5, 5" stroke="#45aeb1" strokeLinecap="square" />
-            </pattern>
-            <pattern id="circles" width="3" height="3" patternUnits="userSpaceOnUse">
-              <circle cx="1.5" cy="1.5" r="0.8" fill="magenta" />
-            </pattern>
-
+          <pattern
+            id="stripes"
+            width="4"
+            height="4"
+            patternUnits="userSpaceOnUse"
+          >
+            <path d="M 0, 0 l 5, 5" stroke="#45aeb1" strokeLinecap="square" />
+          </pattern>
+          <pattern
+            id="circles"
+            width="3"
+            height="3"
+            patternUnits="userSpaceOnUse"
+          >
+            <circle cx="1.5" cy="1.5" r="0.8" fill="magenta" />
+          </pattern>
         </GradientDefs>
       </svg>
-    <DiscreteColorLegend orientation="horizontal" width={300} items={ITEMS} />
+      <DiscreteColorLegend orientation="horizontal" width={300} items={ITEMS} />
     </div>
   );
 }

@@ -21,7 +21,7 @@
 import React, {Component} from 'react';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
-import {ParallelCoordinates}from 'react-vis';
+import {ParallelCoordinates} from 'react-vis';
 
 const DATA = [
   {
@@ -84,7 +84,7 @@ export default class AnimatedParallelCoordinates extends Component {
             bottom: 40,
             right: 50
           }}
-          tickFormat={t => ''}
+          tickFormat={() => ''}
           width={400}
           height={300}
         />

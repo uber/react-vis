@@ -362,7 +362,11 @@ class Hint extends PureComponent {
     const {position, positionClassName} = this._getPositionInfo();
     return (
       <div
-        className={getCombinedClassName("rv-hint", positionClassName, className)}
+        className={getCombinedClassName(
+          'rv-hint',
+          positionClassName,
+          className
+        )}
         style={{
           ...style,
           ...position,

@@ -20,7 +20,7 @@
 
 import React, {Component} from 'react';
 
-import {XYPlot, XAxis, YAxis, HeatmapSeries, Hint}from 'react-vis';
+import {XYPlot, XAxis, YAxis, HeatmapSeries, Hint} from 'react-vis';
 
 export default class HeatmapChart extends Component {
   state = {
@@ -36,7 +36,7 @@ export default class HeatmapChart extends Component {
         <HeatmapSeries
           className="heatmap-series-example"
           onValueMouseOver={v => this.setState({value: v})}
-          onSeriesMouseOut={v => this.setState({value: false})}
+          onSeriesMouseOut={() => this.setState({value: false})}
           data={[
             {x: 1, y: 0, color: 10},
             {x: 1, y: 5, color: 10},

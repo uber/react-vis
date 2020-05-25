@@ -102,11 +102,15 @@ class BarSeries extends AbstractSeries {
           // totalSpaceStartingPoint is the first pixel were we can start drawing
           const totalSpaceStartingPoint = totalSpaceCenter - halfSpace;
           // spaceTakenByInterBarsPixels has the overhead space consumed by each bar of sameTypeTotal
-          const spaceTakenByInterBarsPixels = (sameTypeTotal - 1) / sameTypeTotal;
+          const spaceTakenByInterBarsPixels =
+            (sameTypeTotal - 1) / sameTypeTotal;
           // spacePerBar is the space we have available to draw sameTypeIndex bar
-          const spacePerBar = (totalSpaceAvailable / sameTypeTotal) - spaceTakenByInterBarsPixels;
+          const spacePerBar =
+            totalSpaceAvailable / sameTypeTotal - spaceTakenByInterBarsPixels;
           // barStartingPoint is the first pixel were we can start drawing sameTypeIndex bar
-          const barStartingPoint = totalSpaceStartingPoint + spacePerBar * sameTypeIndex +
+          const barStartingPoint =
+            totalSpaceStartingPoint +
+            spacePerBar * sameTypeIndex +
             sameTypeIndex;
 
           const attrs = {
@@ -123,7 +127,7 @@ class BarSeries extends AbstractSeries {
             onClick: e => this._valueClickHandler(d, e),
             onContextMenu: e => this._valueRightClickHandler(d, e),
             onMouseOver: e => this._valueMouseOverHandler(d, e),
-            onMouseOut: e => this._valueMouseOutHandler(d, e),
+            onMouseOut: e => this._valueMouseOutHandler(d, e)
           };
           return <rect key={`${i}`} {...attrs} />;
         })}

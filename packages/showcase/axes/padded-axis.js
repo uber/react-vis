@@ -27,7 +27,7 @@ import {
   HorizontalGridLines,
   VerticalGridLines,
   LineSeries
-}from 'react-vis';
+} from 'react-vis';
 
 export default class Example extends React.Component {
   getRandomData() {

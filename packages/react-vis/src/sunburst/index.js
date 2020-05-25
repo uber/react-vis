@@ -114,8 +114,8 @@ function buildLabels(mappedData, accessors) {
         ? rotAngle > 90
           ? rotAngle + 180
           : rotAngle === 90
-            ? 90
-            : rotAngle
+          ? 90
+          : rotAngle
         : null
     };
   });

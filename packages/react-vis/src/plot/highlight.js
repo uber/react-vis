@@ -247,7 +247,7 @@ class Highlight extends AbstractSeries {
     return (
       <g
         transform={`translate(${leftPos}, ${topPos})`}
-        className={getCombinedClassName(className, "rv-highlight-container")}
+        className={getCombinedClassName(className, 'rv-highlight-container')}
       >
         <rect
           className="rv-mouse-target"

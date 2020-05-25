@@ -63,7 +63,7 @@ function Voronoi(props) {
 
   return (
     <g
-      className={getCombinedClassName(className, "rv-voronoi")}
+      className={getCombinedClassName(className, 'rv-voronoi')}
       style={style}
       // Because of the nature of how touch events, and more specifically touchmove
       // and how it differs from mouseover, we must manage touch events on the parent

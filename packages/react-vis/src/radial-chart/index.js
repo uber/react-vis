@@ -173,15 +173,13 @@ function RadialChart(props) {
       yDomain={[-radialDomain, radialDomain]}
     >
       <ArcSeries {...arcProps} getAngle={d => d.angle} />
-      {showLabels &&
-        !labelsAboveChildren && (
-          <LabelSeries data={labels} style={labelsStyle} />
-        )}
+      {showLabels && !labelsAboveChildren && (
+        <LabelSeries data={labels} style={labelsStyle} />
+      )}
       {children}
-      {showLabels &&
-        labelsAboveChildren && (
-          <LabelSeries data={labels} style={labelsStyle} />
-        )}
+      {showLabels && labelsAboveChildren && (
+        <LabelSeries data={labels} style={labelsStyle} />
+      )}
     </XYPlot>
   );
 }

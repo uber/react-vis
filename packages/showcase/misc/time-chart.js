@@ -27,11 +27,11 @@ import {
   HorizontalGridLines,
   VerticalGridLines,
   LineSeries
-}from 'react-vis';
+} from 'react-vis';
 
 const MSEC_DAILY = 86400000;
 
-export default function Example(props) {
+export default function Example() {
   const timestamp = new Date('September 9 2017').getTime();
   return (
     <XYPlot xType="time" width={300} height={300}>

@@ -42,7 +42,7 @@ export default function sourceLinker(ShowcaseComponent, link) {
             }}
             href={link}
           >
-            > View Code
+            {'> View Code'}
           </a>
         )}
       </div>

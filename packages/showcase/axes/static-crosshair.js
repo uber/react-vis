@@ -28,18 +28,35 @@ import {
   HorizontalGridLines,
   LineSeries,
   Crosshair
-}from 'react-vis';
+} from 'react-vis';
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot width={300} height={300}>
       <VerticalGridLines />
       <HorizontalGridLines />
       <XAxis />
       <YAxis />
-      <LineSeries data={[{x: 1, y: 10}, {x: 2, y: 7}, {x: 3, y: 15}]} />
-      <LineSeries data={[{x: 1, y: 20}, {x: 2, y: 5}, {x: 3, y: 15}]} />
-      <Crosshair values={[{x: 2, y: 5}, {x: 2, y: 7}]} />
+      <LineSeries
+        data={[
+          {x: 1, y: 10},
+          {x: 2, y: 7},
+          {x: 3, y: 15}
+        ]}
+      />
+      <LineSeries
+        data={[
+          {x: 1, y: 20},
+          {x: 2, y: 5},
+          {x: 3, y: 15}
+        ]}
+      />
+      <Crosshair
+        values={[
+          {x: 2, y: 5},
+          {x: 2, y: 7}
+        ]}
+      />
     </XYPlot>
   );
 }

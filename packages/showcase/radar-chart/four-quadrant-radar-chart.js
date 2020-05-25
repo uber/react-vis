@@ -41,7 +41,7 @@ const RADAR_PROPS = {
   width: 400
 };
 
-export default function FourQuadrantRadarChart(props) {
+export default function FourQuadrantRadarChart() {
   return (
     <RadarChart
       data={RADAR_PROPS.data}

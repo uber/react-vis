@@ -521,12 +521,19 @@ class XYPlot extends React.Component {
   }
 
   render() {
-    const {className, dontCheckIfEmpty, style, width, height, onWheel} = this.props;
+    const {
+      className,
+      dontCheckIfEmpty,
+      style,
+      width,
+      height,
+      onWheel
+    } = this.props;
 
     if (!dontCheckIfEmpty && this._isPlotEmpty()) {
       return (
         <div
-          className={getCombinedClassName("rv-xy-plot", className)}
+          className={getCombinedClassName('rv-xy-plot', className)}
           style={{
             width: `${width}px`,
             height: `${height}px`,
@@ -542,7 +549,7 @@ class XYPlot extends React.Component {
           width: `${width}px`,
           height: `${height}px`
         }}
-        className={getCombinedClassName("rv-xy-plot", className)}
+        className={getCombinedClassName('rv-xy-plot', className)}
       >
         <svg
           className="rv-xy-plot__inner"

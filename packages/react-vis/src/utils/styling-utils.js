@@ -26,5 +26,5 @@
  */
 
 export function getCombinedClassName(...classNames) {
-  return classNames.filter(cn => cn && typeof cn === 'string').join(' ')
+  return classNames.filter(cn => cn && typeof cn === 'string').join(' ');
 }

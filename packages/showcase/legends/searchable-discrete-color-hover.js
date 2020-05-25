@@ -40,7 +40,7 @@ export default class SearchableDiscreteColorLegendHoverExample extends Component
     };
   }
 
-  _clickHandler = (item, i, e) => {
+  _clickHandler = (item, i) => {
     const {items} = this.state;
     items[i].disabled = !items[i].disabled;
     this.setState({items});
@@ -56,23 +56,22 @@ export default class SearchableDiscreteColorLegendHoverExample extends Component
       <SearchableDiscreteColorLegend
         height={200}
         width={300}
-        onItemMouseEnter={i => this.setState({
-          hoveredItem: {
-            ...i,
-            title: `${i.title}:SELECTED`}
+        onItemMouseEnter={i =>
+          this.setState({
+            hoveredItem: {
+              ...i,
+              title: `${i.title}:SELECTED`
+            }
           })
         }
         onItemMouseLeave={() => this.setState({hoveredItem: false})}
         onSearchChange={this._searchChangeHandler}
         searchText={searchText}
         onItemClick={this._clickHandler}
-        items={items.map(
-          (item, key) =>
-            hoveredItem && hoveredItem.title.includes(item.title) ? (
-              hoveredItem
-            ) : (
-              item
-            )
+        items={items.map(item =>
+          hoveredItem && hoveredItem.title.includes(item.title)
+            ? hoveredItem
+            : item
         )}
       />
     );

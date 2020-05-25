@@ -27,9 +27,9 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   VerticalBarSeries
-}from 'react-vis';
+} from 'react-vis';
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot margin={{bottom: 70}} xType="ordinal" width={300} height={300}>
       <VerticalGridLines />

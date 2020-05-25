@@ -21,7 +21,7 @@ const TREEMAPS = [
   }
 ];
 
-function TreemapShowcase(props) {
+function TreemapShowcase() {
   return (
     <article id="treemaps">
       <h1>Treemap</h1>

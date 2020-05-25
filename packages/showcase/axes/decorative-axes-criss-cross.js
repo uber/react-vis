@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import {XYPlot, DecorativeAxis}from 'react-vis';
+import {XYPlot, DecorativeAxis} from 'react-vis';
 
 const MARGIN = {
   left: 30,
@@ -29,7 +29,7 @@ const MARGIN = {
   bottom: 30
 };
 
-export default function Example(props) {
+export default function Example() {
   return (
     <XYPlot
       dontCheckIfEmpty

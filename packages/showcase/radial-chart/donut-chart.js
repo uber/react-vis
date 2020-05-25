@@ -20,7 +20,7 @@
 
 import React, {Component} from 'react';
 
-import {RadialChart, Hint}from 'react-vis';
+import {RadialChart, Hint} from 'react-vis';
 
 export default class SimpleRadialChart extends Component {
   state = {
@@ -42,7 +42,7 @@ export default class SimpleRadialChart extends Component {
           {theta: 1}
         ]}
         onValueMouseOver={v => this.setState({value: v})}
-        onSeriesMouseOut={v => this.setState({value: false})}
+        onSeriesMouseOut={() => this.setState({value: false})}
         width={300}
         height={300}
         padAngle={0.04}

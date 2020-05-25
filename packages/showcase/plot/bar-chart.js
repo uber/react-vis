@@ -29,11 +29,19 @@ import {
   VerticalBarSeries,
   VerticalBarSeriesCanvas,
   LabelSeries
-}from 'react-vis';
+} from 'react-vis';
 
-const greenData = [{x: 'A', y: 10}, {x: 'B', y: 5}, {x: 'C', y: 15}];
+const greenData = [
+  {x: 'A', y: 10},
+  {x: 'B', y: 5},
+  {x: 'C', y: 15}
+];
 
-const blueData = [{x: 'A', y: 12}, {x: 'B', y: 2}, {x: 'C', y: 11}];
+const blueData = [
+  {x: 'A', y: 12},
+  {x: 'B', y: 2},
+  {x: 'C', y: 11}
+];
 
 const labelData = greenData.map((d, idx) => ({
   x: d.x,

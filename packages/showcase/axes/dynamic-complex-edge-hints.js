@@ -29,7 +29,7 @@ import {
   LineSeries,
   MarkSeries,
   Hint
-}from 'react-vis';
+} from 'react-vis';
 
 const {LEFT, TOP, BOTTOM_EDGE, LEFT_EDGE, RIGHT_EDGE, TOP_EDGE} = Hint.ALIGN;
 
@@ -38,12 +38,29 @@ const XMIN = 1;
 const XMAX = 4;
 const YMIN = 5;
 const YMAX = 15;
-const DATA = [{x: 1, y: 5}, {x: 2, y: 8}, {x: 3, y: 12}, {x: 4, y: 15}];
+const DATA = [
+  {x: 1, y: 5},
+  {x: 2, y: 8},
+  {x: 3, y: 12},
+  {x: 4, y: 15}
+];
 const POLE = [
-  [{x: XMIN, y: DATA[0].y}, {x: XMAX, y: DATA[0].y}],
-  [{x: DATA[1].x, y: DATA[1].y}, {x: DATA[1].x, y: YMAX}],
-  [{x: DATA[2].x, y: YMIN}, {x: DATA[2].x, y: DATA[2].y}],
-  [{x: XMIN, y: DATA[3].y}, {x: DATA[3].x, y: DATA[3].y}]
+  [
+    {x: XMIN, y: DATA[0].y},
+    {x: XMAX, y: DATA[0].y}
+  ],
+  [
+    {x: DATA[1].x, y: DATA[1].y},
+    {x: DATA[1].x, y: YMAX}
+  ],
+  [
+    {x: DATA[2].x, y: YMIN},
+    {x: DATA[2].x, y: DATA[2].y}
+  ],
+  [
+    {x: XMIN, y: DATA[3].y},
+    {x: DATA[3].x, y: DATA[3].y}
+  ]
 ];
 const DATA_HINT_ALIGN = [
   {

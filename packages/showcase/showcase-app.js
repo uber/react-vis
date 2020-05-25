@@ -17,7 +17,7 @@ import {
   ForceDirectedGraph,
   ResponsiveVis,
   StreamgraphExample,
-  IrisDashboard,
+  IrisDashboard
 } from './showcase-index';
 
 const sectionNames = [

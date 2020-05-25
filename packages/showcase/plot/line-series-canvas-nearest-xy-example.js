@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 import React from 'react';
-import {XYPlot, LineSeriesCanvas, MarkSeriesCanvas}from 'react-vis';
+import {XYPlot, LineSeriesCanvas, MarkSeriesCanvas} from 'react-vis';
 const k = 100;
 const data = Array(k)
   .fill(0)

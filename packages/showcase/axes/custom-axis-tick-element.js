@@ -27,25 +27,29 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   LineSeries
-}from 'react-vis';
+} from 'react-vis';
 
 export default class Example extends React.Component {
   state = {
     data: [
       {x: 0, y: 100, label: <circle cx={0} cy={10} r={5} fill="darksalmon" />},
-      {x: 1, y: 200, label: <rect x={-5} y={5} width={10} height={10} fill="slateblue" />},
+      {
+        x: 1,
+        y: 200,
+        label: <rect x={-5} y={5} width={10} height={10} fill="slateblue" />
+      },
       {x: 2, y: 500, label: <tspan>Label</tspan>},
       {x: 3, y: 900, label: <path d="M0 5 L5 15 L-5 15 Z" fill="sandybrown" />},
       {x: 4, y: 1000, label: 'Label'}
     ]
   };
 
-  formatX = (v, i, scale, tickTotal) => {
+  formatX = (v, i) => {
     if (i < this.state.data.length) {
       return this.state.data[i].label;
     }
     return null;
-  }
+  };
 
   render() {
     return (
