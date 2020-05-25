@@ -10,10 +10,10 @@ const jsRule = {
   loader: 'babel-loader',
   exclude: [/node_modules/],
   options: {
-    presets: ['react', 'es2015', 'stage-0']
-  }
+    rootMode: 'upward'
+  },
 };
-const isProd = process.env.NODE_ENV === 'production'; // eslint-disable-line
+const isProd = process.env.NODE_ENV === 'production';
 const config = isProd
   ? {
       entry,
@@ -24,10 +24,7 @@ const config = isProd
       },
 
       resolve: {
-        alias: {
-          // 'index':path.join(__dirname,'..', 'src', 'index.js'),
-          // 'theme':path.join(__dirname,'..', 'src', 'theme.js')
-        }
+        modules: ['node_modules', path.join(__dirname,'..', 'react-vis', 'src')],
       },
 
       module: {
