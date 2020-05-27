@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 
@@ -20,88 +19,33 @@ const AREA_PROPS = {
   ]
 };
 
-test('AreaSeries: basic rendering', t => {
+test('AreaSeries: basic rendering', () => {
   const $ = mount(
     <XYPlot width={300} height={300}>
       <AreaSeries {...AREA_PROPS} />
     </XYPlot>
   );
-  t.equal(
-    $.find('.rv-xy-plot__series').length,
-    1,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('path.rv-xy-plot__series').length,
-    1,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('path.area-chart-example').length,
-    1,
-    'should find the right number of custom named series'
-  );
+  expect($.find('.rv-xy-plot__series').length).toBe(1);
+  expect($.find('path.rv-xy-plot__series').length).toBe(1);
+  expect($.find('path.area-chart-example').length).toBe(1);
 
   $.setProps({children: <AreaSeries {...{...AREA_PROPS, data: null}} />});
-  t.equal(
-    $.find('.rv-xy-plot__series').length,
-    0,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series path').length,
-    0,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('.area-chart-example').length,
-    0,
-    'should find the right number of custom named series'
-  );
-  t.end();
+  expect($.find('.rv-xy-plot__series').length).toBe(0);
+  expect($.find('.rv-xy-plot__series path').length).toBe(0);
+  expect($.find('.area-chart-example').length).toBe(0);
 });
 
-test('AreaSeries: Showcase Example - AreaChart', t => {
+test('AreaSeries: Showcase Example - AreaChart', () => {
   const $ = mount(<AreaChart />);
-  t.equal(
-    $.find('.rv-xy-plot__series').length,
-    1,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('path.rv-xy-plot__series').length,
-    1,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('path.area-series-example').length,
-    1,
-    'should find the right number of custom named series'
-  );
-  t.end();
+  expect($.find('.rv-xy-plot__series').length).toBe(1);
+  expect($.find('path.rv-xy-plot__series').length).toBe(1);
+  expect($.find('path.area-series-example').length).toBe(1);
 });
 
-test('AreaSeries: Showcase Example - AreaChartElevated', t => {
+test('AreaSeries: Showcase Example - AreaChartElevated', () => {
   const $ = mount(<AreaChartElevated />);
-  t.equal(
-    $.find('.rv-xy-plot__series').length,
-    5,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('path.rv-xy-plot__series').length,
-    3,
-    'should find the right number of pathes'
-  );
-  t.equal(
-    $.find('path.area-elevated-series-1').length,
-    1,
-    'should find the first custom component correctly'
-  );
-  t.equal(
-    $.find('path.area-elevated-series-2').length,
-    1,
-    'should find the second custom component correctly'
-  );
-  t.end();
+  expect($.find('.rv-xy-plot__series').length).toBe(5);
+  expect($.find('path.rv-xy-plot__series').length).toBe(3);
+  expect($.find('path.area-elevated-series-1').length).toBe(1);
+  expect($.find('path.area-elevated-series-2').length).toBe(1);
 });

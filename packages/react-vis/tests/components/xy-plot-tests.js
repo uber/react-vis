@@ -18,7 +18,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import test from 'tape';
 import React from 'react';
 import {mount, shallow} from 'enzyme';
 
@@ -39,7 +38,7 @@ const XYPLOT_PROPS = {width: 10, height: 10};
 
 testRenderWithProps(XYPlot, XYPLOT_PROPS);
 
-test('Render a stacked bar chart', t => {
+test('Render a stacked bar chart', () => {
   const wrapper = shallow(
     <XYPlot width={300} height={300} stackBy="y">
       <VerticalBarSeries
@@ -61,30 +60,20 @@ test('Render a stacked bar chart', t => {
 
   const renderedVerticalBarsWrapper = wrapper.find(VerticalBarSeries);
 
-  t.deepEqual(
-    renderedVerticalBarsWrapper.at(0).prop('data'),
-    [
-      {x: 1, y: 0},
-      {x: 2, y: 1},
-      {x: 3, y: 2}
-    ],
-    'First bar series data is the same'
-  );
+  expect(renderedVerticalBarsWrapper.at(0).prop('data')).toEqual([
+    {x: 1, y: 0},
+    {x: 2, y: 1},
+    {x: 3, y: 2}
+  ]);
 
-  t.deepEqual(
-    renderedVerticalBarsWrapper.at(1).prop('data'),
-    [
-      {x: 1, y: 2, y0: 0},
-      {x: 2, y: 2, y0: 1},
-      {x: 3, y: 2, y0: 2}
-    ],
-    'Second bar series data contains y0 values'
-  );
-
-  t.end();
+  expect(renderedVerticalBarsWrapper.at(1).prop('data')).toEqual([
+    {x: 1, y: 2, y0: 0},
+    {x: 2, y: 2, y0: 1},
+    {x: 3, y: 2, y0: 2}
+  ]);
 });
 
-test('Render a stacked bar chart with other children', t => {
+test('Render a stacked bar chart with other children', () => {
   const wrapper = shallow(
     <XYPlot width={300} height={300} stackBy="y">
       <XAxis />
@@ -99,22 +88,16 @@ test('Render a stacked bar chart with other children', t => {
 
   const renderedVerticalBarsWrapper = wrapper.find(VerticalBarSeries);
 
-  t.deepEqual(
-    renderedVerticalBarsWrapper.at(0).prop('data'),
-    [{x: 1, y: 0}],
-    'First bar series data is the same'
-  );
+  expect(renderedVerticalBarsWrapper.at(0).prop('data')).toEqual([
+    {x: 1, y: 0}
+  ]);
 
-  t.deepEqual(
-    renderedVerticalBarsWrapper.at(1).prop('data'),
-    [{x: 1, y: 2, y0: 0}],
-    'Second bar series data contains y0 values'
-  );
-
-  t.end();
+  expect(renderedVerticalBarsWrapper.at(1).prop('data')).toEqual([
+    {x: 1, y: 2, y0: 0}
+  ]);
 });
 
-test('Render a bar chart with some nonAnimatedProps', t => {
+test('Render a bar chart with some nonAnimatedProps', () => {
   const wrapper = shallow(
     <XYPlot
       width={300}
@@ -129,75 +112,54 @@ test('Render a bar chart with some nonAnimatedProps', t => {
   const renderedXAxisWrapper = wrapper.find(XAxis);
   const renderedVerticalBarsWrapper = wrapper.find(VerticalBarSeries);
 
-  t.deepEqual(
-    renderedXAxisWrapper.at(0).prop('animation'),
-    {nonAnimatedProps: ['xDomain']},
-    'XAxis has nonAnimatedProps'
-  );
+  expect(renderedXAxisWrapper.at(0).prop('animation')).toEqual({
+    nonAnimatedProps: ['xDomain']
+  });
 
-  t.deepEqual(
-    renderedVerticalBarsWrapper.at(0).prop('animation'),
-    {nonAnimatedProps: ['xDomain']},
-    'VerticalBarSeries has nonAnimatedProps'
-  );
-
-  t.end();
+  expect(renderedVerticalBarsWrapper.at(0).prop('animation')).toEqual({
+    nonAnimatedProps: ['xDomain']
+  });
 });
 
-test('testing flexible charts', t => {
+test('testing flexible charts', () => {
   const $ = mount(FlexibleCharts({height: 200, width: 400}));
   const w = $.find('.flexible-width .rv-xy-plot').prop('style');
   const h = $.find('.flexible-height .rv-xy-plot').prop('style');
   const v = $.find('.flexible-vis .rv-xy-plot').prop('style');
 
-  t.notEqual(w.width, '100px', 'flexible width - width is not 100px');
-  t.deepEqual(w.height, '100px', 'flexible width - height is 100px');
-  t.deepEqual(h.width, '100px', 'flexible height - width is 100px');
-  t.notEqual(h.height, '100px', 'flexible height - height is not 100px');
-  t.notEqual(v.width, '100px', 'flexible vis - width is not 100px');
-  t.notEqual(v.height, '100px', 'flexible vis - height is not 100px');
-  t.end();
+  expect(w.width).not.toBe('100px');
+  expect(w.height).toEqual('100px');
+  expect(h.width).toEqual('100px');
+  expect(h.height).not.toBe('100px');
+  expect(v.width).not.toBe('100px');
+  expect(v.height).not.toBe('100px');
 });
 
-test('Render two stacked bar series with a non-stacked line series chart', t => {
+test('Render two stacked bar series with a non-stacked line series chart', () => {
   const $ = mount(<MixedStackedChart />);
 
   const renderedBarsWrapper = $.find(BarSeries);
   const renderedLineWrapper = $.find(LineSeries);
-  t.deepEqual(
-    renderedBarsWrapper.at(0).prop('data'),
-    [
-      {x: 2, y: 10},
-      {x: 4, y: 5},
-      {x: 5, y: 15}
-    ],
-    'First bar series data is the same'
-  );
+  expect(renderedBarsWrapper.at(0).prop('data')).toEqual([
+    {x: 2, y: 10},
+    {x: 4, y: 5},
+    {x: 5, y: 15}
+  ]);
 
-  t.deepEqual(
-    renderedBarsWrapper.at(1).prop('data'),
-    [
-      {x: 2, y: 22, y0: 10},
-      {x: 4, y: 7, y0: 5},
-      {x: 5, y: 26, y0: 15}
-    ],
-    'Second bar series data contains y0 values'
-  );
+  expect(renderedBarsWrapper.at(1).prop('data')).toEqual([
+    {x: 2, y: 22, y0: 10},
+    {x: 4, y: 7, y0: 5},
+    {x: 5, y: 26, y0: 15}
+  ]);
 
-  t.deepEqual(
-    renderedLineWrapper.at(0).prop('data'),
-    [
-      {x: 2, y: 26},
-      {x: 4, y: 8},
-      {x: 5, y: 30}
-    ],
-    'Line series data does not contain y0 values'
-  );
-
-  t.end();
+  expect(renderedLineWrapper.at(0).prop('data')).toEqual([
+    {x: 2, y: 26},
+    {x: 4, y: 8},
+    {x: 5, y: 30}
+  ]);
 });
 
-test('Render a line series with data accessors', t => {
+test('Render a line series with data accessors', () => {
   const $ = mount(
     <XYPlot width={300} height={300} getX={d => d[0]} getY={d => d[1]}>
       <LineSeries
@@ -214,43 +176,21 @@ test('Render a line series with data accessors', t => {
   const dataProp = renderedLineWrapper.at(0).prop('data');
   const getXProp = renderedLineWrapper.at(0).prop('getX');
   const getYProp = renderedLineWrapper.at(0).prop('getY');
-  t.deepEqual(
-    dataProp.map(getXProp),
-    [1, 2, 3],
-    'X values should be mapped correctly'
-  );
-  t.deepEqual(
-    dataProp.map(getYProp),
-    [0, 1, 2],
-    'Y values should be mapped correctly'
-  );
-  t.end();
+  expect(dataProp.map(getXProp)).toEqual([1, 2, 3]);
+  expect(dataProp.map(getYProp)).toEqual([0, 1, 2]);
 });
 
-test('Trigger all onParentMouse handlers on Series components', t => {
-  t.plan(14);
+test('Trigger all onParentMouse handlers on Series components', () => {
+  const onParentMouseHandler = jest.fn();
+
   class ExtendedSeries extends AbstractSeries {
-    onParentMouseUp() {
-      t.pass(`onParentMouseUp on ${this.props.name} is called correctly`);
-    }
-    onParentMouseDown() {
-      t.pass(`onParentMouseDown on ${this.props.name} is called correctly`);
-    }
-    onParentMouseMove() {
-      t.pass(`onParentMouseMove on ${this.props.name} is called correctly`);
-    }
-    onParentMouseLeave() {
-      t.pass(`onParentMouseLeave on ${this.props.name} is called correctly`);
-    }
-    onParentMouseEnter() {
-      t.pass(`onParentMouseEnter on ${this.props.name} is called correctly`);
-    }
-    onParentTouchStart() {
-      t.pass(`onParentTouchStart on ${this.props.name} is called correctly`);
-    }
-    onParentTouchMove() {
-      t.pass(`onParentTouchMove on ${this.props.name} is called correctly`);
-    }
+    onParentMouseUp = onParentMouseHandler;
+    onParentMouseDown = onParentMouseHandler;
+    onParentMouseMove = onParentMouseHandler;
+    onParentMouseLeave = onParentMouseHandler;
+    onParentMouseEnter = onParentMouseHandler;
+    onParentTouchStart = onParentMouseHandler;
+    onParentTouchMove = onParentMouseHandler;
     render() {
       return null;
     }
@@ -297,21 +237,16 @@ test('Trigger all onParentMouse handlers on Series components', t => {
     .at(0)
     .simulate('touchmove');
 
-  t.end();
+  expect(onParentMouseHandler).toHaveBeenCalledTimes(14);
 });
 
-test('XYPlot dontCheckIfEmpty - Showcase example EmptyChart', t => {
+test('XYPlot dontCheckIfEmpty - Showcase example EmptyChart', () => {
   const $ = mount(<EmptyChart />);
-  t.equal($.find('.rv-xy-plot__series').length, 0, 'should find no series');
-  t.equal(
-    $.text(),
-    '1!1.5!2!3!Empty Chart Right Here',
-    'should find the correct text'
-  );
-  t.end();
+  expect($.find('.rv-xy-plot__series').length).toBe(0);
+  expect($.text()).toBe('1!1.5!2!3!Empty Chart Right Here');
 });
 
-test('XYPlot attach ref only to series components', t => {
+test('XYPlot attach ref only to series components', () => {
   const Stateless = () => {
     return <div>stateless</div>;
   };
@@ -342,23 +277,14 @@ test('XYPlot attach ref only to series components', t => {
   const statelessChild = clonedChilds.find(
     element => element.type === Stateless
   );
-  t.ok(
-    horizontalGridLinesChild.ref === null,
-    'Ref not attached to non series components'
-  );
-  t.ok(axisChild.ref === null, 'Ref not attached to axis');
-  t.ok(
-    typeof lineSeriesChild.ref === 'function',
-    'Ref attached to series components'
-  );
-  t.ok(statelessChild.ref === null, 'Ref not attached to stateless components');
-  t.end();
+  expect(horizontalGridLinesChild.ref === null).toBeTruthy();
+  expect(axisChild.ref === null).toBeTruthy();
+  expect(typeof lineSeriesChild.ref === 'function').toBeTruthy();
+  expect(statelessChild.ref === null).toBeTruthy();
 });
 
-test('XYPlot with wheel event callback', t => {
-  t.plan(1);
-
-  const onWheel = () => t.pass('onWheel is called correctly');
+test('XYPlot with wheel event callback', () => {
+  const onWheel = jest.fn();
 
   const $ = mount(
     <XYPlot onWheel={onWheel} width={300} height={300}>
@@ -376,5 +302,5 @@ test('XYPlot with wheel event callback', t => {
     .at(0)
     .simulate('wheel');
 
-  t.end();
+  expect(onWheel).toHaveBeenCalledTimes(1);
 });

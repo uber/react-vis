@@ -18,42 +18,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import test from 'tape';
-
 import {getRadialLayoutMargin} from 'utils/chart-utils';
 
-test('chart-utils #getRadialLayoutMargin', t => {
-  t.deepEqual(
-    getRadialLayoutMargin(500, 300, 120),
-    {
-      bottom: 30,
-      left: 130,
-      right: 130,
-      top: 30
-    },
-    'Get the right margin to center the radial layout chart - landscape container'
-  );
+test('chart-utils #getRadialLayoutMargin', () => {
+  expect(getRadialLayoutMargin(500, 300, 120)).toEqual({
+    bottom: 30,
+    left: 130,
+    right: 130,
+    top: 30
+  });
 
-  t.deepEqual(
-    getRadialLayoutMargin(300, 500, 120),
-    {
-      bottom: 130,
-      left: 30,
-      right: 30,
-      top: 130
-    },
-    'Get the right margin to center the radial layout chart  - portrait container'
-  );
+  expect(getRadialLayoutMargin(300, 500, 120)).toEqual({
+    bottom: 130,
+    left: 30,
+    right: 30,
+    top: 130
+  });
 
-  t.deepEqual(
-    getRadialLayoutMargin(300, 300, 120),
-    {
-      bottom: 30,
-      left: 30,
-      right: 30,
-      top: 30
-    },
-    'Get the right margin to center the radial layout chart  - rectangle container'
-  );
-  t.end();
+  expect(getRadialLayoutMargin(300, 300, 120)).toEqual({
+    bottom: 30,
+    left: 30,
+    right: 30,
+    top: 30
+  });
 });

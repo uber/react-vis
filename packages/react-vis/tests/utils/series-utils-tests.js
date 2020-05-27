@@ -18,7 +18,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 
@@ -34,9 +33,9 @@ import HorizontalBarSeries from 'plot/series/horizontal-rect-series';
 import VerticalBarSeries from 'plot/series/vertical-rect-series';
 import LabelSeries from 'plot/series/label-series';
 
-test('series-utils #isSeriesChild', t => {
+test('series-utils #isSeriesChild', () => {
   const series = <LineSeries data={[]} />;
-  t.ok(isSeriesChild(series), 'Should return true for series');
+  expect(isSeriesChild(series)).toBeTruthy();
   const axis = (
     <XAxis
       xRange={[0, 1]}
@@ -48,11 +47,10 @@ test('series-utils #isSeriesChild', t => {
       left={0}
     />
   );
-  t.notOk(isSeriesChild(axis), 'Should return false for non-series');
-  t.end();
+  expect(isSeriesChild(axis)).toBeFalsy();
 });
 
-test('series-utils #getSeriesChildren', t => {
+test('series-utils #getSeriesChildren', () => {
   const children = [
     <span key="wild"> This squid is heavy </span>,
     <input key="wacky" placeholder="i wish i hadnt bought it" />,
@@ -64,12 +62,7 @@ test('series-utils #getSeriesChildren', t => {
     </div>
   );
   const expectedChildren = [{...children[2], key: '.$woah'}];
-  t.deepEqual(
-    getSeriesChildren($.props().children),
-    expectedChildren,
-    'should find the correct children'
-  );
-  t.end();
+  expect(getSeriesChildren($.props().children)).toEqual(expectedChildren);
 });
 
 const arePropsValid = seriesProps => {
@@ -82,19 +75,16 @@ const arePropsValid = seriesProps => {
   );
 };
 
-test('series-utils #collectSeriesTypesInfo', t => {
+test('series-utils #collectSeriesTypesInfo', () => {
   const result = getSeriesPropsFromChildren([
     <LineSeries data={[]} />,
     <LineSeries data={[]} />
   ]);
-  t.ok(result.length === 2, 'Returns array of proper size');
-  result.forEach((props, i) =>
-    t.ok(arePropsValid(props), `Props #${i} are valid`)
-  );
-  t.end();
+  expect(result.length === 2).toBeTruthy();
+  result.forEach(props => expect(arePropsValid(props)).toBeTruthy());
 });
 
-test('series-utils #seriesClusterProps', t => {
+test('series-utils #seriesClusterProps', () => {
   const result = getSeriesPropsFromChildren([
     <HorizontalBarSeries cluster="alpha" data={[]} />,
     <HorizontalBarSeries cluster="beta" data={[]} />,
@@ -102,23 +92,18 @@ test('series-utils #seriesClusterProps', t => {
     <HorizontalBarSeries cluster="gamma" data={[]} />
   ]);
   const expectedClusters = ['alpha', 'beta', 'gamma'];
-  t.ok(result.length === 4, 'Returns array of proper size');
+  expect(result.length === 4).toBeTruthy();
   result.forEach(props => {
-    t.ok(props.sameTypeIndex === expectedClusters.indexOf(props.cluster));
-    t.ok(
-      props.sameTypeTotal === props.clusters.length,
-      'SameTypeTotal is set correctly'
-    );
-    t.ok(
-      props.clusters.length === 3,
-      'Returns correct number of unique clusters'
-    );
+    expect(
+      props.sameTypeIndex === expectedClusters.indexOf(props.cluster)
+    ).toBeTruthy();
+    expect(props.sameTypeTotal === props.clusters.length).toBeTruthy();
+    expect(props.clusters.length === 3).toBeTruthy();
   });
-  t.end();
 });
 
 // eslint-disable-next-line max-statements
-test('series-utils #getStackedData', t => {
+test('series-utils #getStackedData', () => {
   const yData = [
     [
       {y: 2, x: 10},
@@ -197,11 +182,7 @@ test('series-utils #getStackedData', t => {
   ];
 
   let results = getStackedData(children, 'y');
-  t.deepEqual(
-    results,
-    stackByYExpected,
-    'should find the correct results for stacking by y'
-  );
+  expect(results).toEqual(stackByYExpected);
 
   children = [
     <HorizontalBarSeries data={yData[0]} />,
@@ -210,11 +191,7 @@ test('series-utils #getStackedData', t => {
   ];
   results = getStackedData(children, 'x');
 
-  t.deepEqual(
-    results,
-    stackByXExpected,
-    'should find the correct results for stacking by x'
-  );
+  expect(results).toEqual(stackByXExpected);
 
   children = [
     <HorizontalBarSeries cluster="alpha" data={yData[0]} />,
@@ -228,11 +205,7 @@ test('series-utils #getStackedData', t => {
     ...stackByXExpected.slice(0, 2)
   ];
 
-  t.deepEqual(
-    results,
-    expectedResults,
-    'should find the correct results for stacking bar clusters by x'
-  );
+  expect(results).toEqual(expectedResults);
 
   children = [
     <VerticalBarSeries cluster="alpha" data={xData[0]} />,
@@ -245,11 +218,7 @@ test('series-utils #getStackedData', t => {
     ...stackByYExpected.slice(0, 2),
     ...stackByYExpected.slice(0, 2)
   ];
-  t.deepEqual(
-    results,
-    expectedResults,
-    'should find the correct results for stacking bar clusters by y'
-  );
+  expect(results).toEqual(expectedResults);
 
   children = [
     <HorizontalBarSeries cluster="alpha" data={partialYData[0]} />,
@@ -259,11 +228,7 @@ test('series-utils #getStackedData', t => {
   ];
   results = getStackedData(children, 'x');
   expectedResults = [...stackByXExpectedPartial, ...stackByXExpectedPartial];
-  t.deepEqual(
-    results,
-    expectedResults,
-    'should find the correct results for stacking bar clusters by x with incomplete data'
-  );
+  expect(results).toEqual(expectedResults);
 
   children = [
     <VerticalBarSeries cluster="alpha" data={partialXData[0]} />,
@@ -274,11 +239,7 @@ test('series-utils #getStackedData', t => {
   results = getStackedData(children, 'y');
   expectedResults = [...stackByYExpectedPartial, ...stackByYExpectedPartial];
 
-  t.deepEqual(
-    results,
-    expectedResults,
-    'should find the correct results for stacking bar clusters by y with incomplete data'
-  );
+  expect(results).toEqual(expectedResults);
 
   children = [
     <VerticalBarSeries data={yData[0]} stack />,
@@ -302,11 +263,7 @@ test('series-utils #getStackedData', t => {
     ],
     yData[1]
   ];
-  t.deepEqual(
-    results,
-    expectedResults,
-    'should find the correct results for stacking by y only the bars'
-  );
+  expect(results).toEqual(expectedResults);
 
   children = [
     <VerticalBarSeries cluster="alpha" data={xData[0]} stack />,
@@ -321,11 +278,7 @@ test('series-utils #getStackedData', t => {
     ...stackByYExpected.slice(0, 2),
     xData[1]
   ];
-  t.deepEqual(
-    results,
-    expectedResults,
-    'should find the correct results for stacking bar clusters by y with a non stacked line'
-  );
+  expect(results).toEqual(expectedResults);
 
   children = [
     <VerticalBarSeries data={xData[0]} />,
@@ -339,11 +292,5 @@ test('series-utils #getStackedData', t => {
     ...stackByYExpected.slice(0, 2)
   ];
 
-  t.deepEqual(
-    results,
-    expectedResults,
-    'should find the correct results for stacking by x, where different series types are calculated separately'
-  );
-
-  t.end();
+  expect(results).toEqual(expectedResults);
 });

@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import HexbinSeries from 'plot/series/hexbin-series';
@@ -8,53 +7,27 @@ import HexbinSizeExample from '../../../showcase/plot/hexbin-size-example';
 
 testRenderWithProps(HexbinSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
-test('HexbinSeries: Showcase Example - HexHeatmap', t => {
+test('HexbinSeries: Showcase Example - HexHeatmap', () => {
   const $ = mount(<HexHeatmap />);
-  t.equal(
-    $.find('.rv-xy-plot__series--hexbin').length,
-    1,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--hexbin path').length,
-    53,
-    'should find the right number of hexes'
-  );
-  t.equal(
-    $.find('g.hexbin-example').length,
-    1,
-    'should find the correct custom class name'
-  );
-  t.equal(
-    $.text(),
-    '4050607080901002345678UPDATE DATAUPDATE RADIUSUPDATE OFFSET',
-    'should find the correct text'
+  expect($.find('.rv-xy-plot__series--hexbin').length).toBe(1);
+  expect($.find('.rv-xy-plot__series--hexbin path').length).toBe(53);
+  expect($.find('g.hexbin-example').length).toBe(1);
+  expect($.text()).toBe(
+    '4050607080901002345678UPDATE DATAUPDATE RADIUSUPDATE OFFSET'
   );
 
   $.find('.rv-xy-plot__series--hexbin path')
     .at(2)
     .simulate('mouseOver');
-  t.equal(
-    $.text(),
-    '4050607080901002345678x: 138.56406460551017y: 180value: 1UPDATE DATAUPDATE RADIUSUPDATE OFFSET',
-    'should find the correct text'
+  expect($.text()).toBe(
+    '4050607080901002345678x: 138.56406460551017y: 180value: 1UPDATE DATAUPDATE RADIUSUPDATE OFFSET'
   );
-
-  t.end();
 });
 
-test('HexbinSeries: Showcase Example - HexbinSizeExample', t => {
+test('HexbinSeries: Showcase Example - HexbinSizeExample', () => {
   const $ = mount(<HexbinSizeExample />);
-  t.equal(
-    $.find('g.alt-x-label').length,
-    1,
-    'should find custom x class on chart label correctly'
-  );
-  t.equal(
-    $.find('g.alt-y-label').length,
-    1,
-    'should find custom y class on chart label correctly'
-  );
+  expect($.find('g.alt-x-label').length).toBe(1);
+  expect($.find('g.alt-y-label').length).toBe(1);
   [
     {
       numHexes: 56,
@@ -92,23 +65,9 @@ test('HexbinSeries: Showcase Example - HexbinSizeExample', t => {
         .at(buttonToPress)
         .simulate('click');
     }
-    t.equal(
-      $.find('.rv-xy-plot__series--hexbin').length,
-      1,
-      'should find the right number of series'
-    );
-    t.equal(
-      $.find('.rv-xy-plot__series--hexbin path').length,
-      numHexes,
-      'should find the right number of hexes'
-    );
-    t.equal(
-      $.find('g.hexbin-size-example').length,
-      1,
-      'should find the correct custom class name'
-    );
-    t.equal($.text(), text, 'should find the correct text');
+    expect($.find('.rv-xy-plot__series--hexbin').length).toBe(1);
+    expect($.find('.rv-xy-plot__series--hexbin path').length).toBe(numHexes);
+    expect($.find('g.hexbin-size-example').length).toBe(1);
+    expect($.text()).toBe(text);
   });
-
-  t.end();
 });

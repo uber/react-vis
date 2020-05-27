@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import XYPlot from 'plot/xy-plot';
@@ -46,184 +45,85 @@ const LINE_WITH_MANY_COLORS_COLORS = [
   'rgb(255, 65, 0)'
 ];
 
-test('LineSeries: basic rendering', t => {
+test('LineSeries: basic rendering', () => {
   const $ = mount(
     <XYPlot width={300} height={300}>
       <LineSeries {...LINE_PROPS} />
     </XYPlot>
   );
-  t.equal(
-    $.find('.rv-xy-plot__series').length,
-    1,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('path.rv-xy-plot__series').length,
-    1,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('path.line-chart-example').length,
-    1,
-    'should find the right number of custom named series'
-  );
+  expect($.find('.rv-xy-plot__series').length).toBe(1);
+  expect($.find('path.rv-xy-plot__series').length).toBe(1);
+  expect($.find('path.line-chart-example').length).toBe(1);
 
   $.setProps({children: <LineSeries {...{...LINE_PROPS, data: null}} />});
-  t.equal(
-    $.find('.rv-xy-plot__series').length,
-    0,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series path').length,
-    0,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('.line-chart-example').length,
-    0,
-    'should find the right number of custom named series'
-  );
-  t.end();
+  expect($.find('.rv-xy-plot__series').length).toBe(0);
+  expect($.find('.rv-xy-plot__series path').length).toBe(0);
+  expect($.find('.line-chart-example').length).toBe(0);
 });
 
-test('LineSeries: Showcase Example - LineChart', t => {
+test('LineSeries: Showcase Example - LineChart', () => {
   const $ = mount(<LineChart />);
-  t.equal(
-    $.find('g.alt-x-label').length,
-    1,
-    'should find custom x class on chart label correctly'
-  );
+  expect($.find('g.alt-x-label').length).toBe(1);
 
-  t.equal(
-    $.find('g.alt-y-label').length,
-    1,
-    'should find custom y class on chart label correctly'
+  expect($.find('g.alt-y-label').length).toBe(1);
+  expect($.text()).toBe(
+    'TOGGLE TO CANVAS1.01.52.02.53.03.54.02468101214X AxisY Axis'
   );
-  t.equal(
-    $.text(),
-    'TOGGLE TO CANVAS1.01.52.02.53.03.54.02468101214X AxisY Axis',
-    'should find the right text content'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--line').length,
-    3,
-    'should find the right number of series'
-  );
+  expect($.find('.rv-xy-plot__series--line').length).toBe(3);
 
   ['first-series', 'third-series', 'fourth-series'].forEach(customClassName => {
-    t.equal(
-      $.find(`.rv-xy-plot__series--line.${customClassName}`).length,
-      1,
-      `should find the right number of series with the custom class name: ${customClassName}`
+    expect($.find(`.rv-xy-plot__series--line.${customClassName}`).length).toBe(
+      1
     );
   });
 
-  t.equal(
-    $.find('path.second-series').length,
-    0,
-    'there should be no line with the class second series bc it has null data and should be filtered out'
-  );
+  expect($.find('path.second-series').length).toBe(0);
 
   $.find('button').simulate('click');
-  t.equal(
-    $.find('.rv-xy-plot__series--line').length,
-    0,
-    'should find no more line series'
-  );
+  expect($.find('.rv-xy-plot__series--line').length).toBe(0);
 
   $.find('button').simulate('click');
-  t.equal(
-    $.find('.rv-xy-plot__series--line').length,
-    3,
-    'should find no more line series'
-  );
-  t.end();
+  expect($.find('.rv-xy-plot__series--line').length).toBe(3);
 });
 
-test('LineSeries: Showcase Example - LineMarkSeries', t => {
+test('LineSeries: Showcase Example - LineMarkSeries', () => {
   const $ = mount(<LineMarkSeries />);
-  t.equal(
-    $.text(),
-    '1.01.52.02.53.0510152025',
-    'should find the right text content'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--linemark').length,
-    2,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series circle').length,
-    6,
-    'should find the right number of marks'
-  );
+  expect($.text()).toBe('1.01.52.02.53.0510152025');
+  expect($.find('.rv-xy-plot__series--linemark').length).toBe(2);
+  expect($.find('.rv-xy-plot__series circle').length).toBe(6);
 
   ['linemark-series-example', 'linemark-series-example-2'].forEach(
     customClassName => {
-      t.equal(
-        $.find(`MarkSeries.${customClassName}`).length,
-        1,
-        `should find the right number of MarkSeries with the custom class name: ${customClassName}`
-      );
+      expect($.find(`MarkSeries.${customClassName}`).length).toBe(1);
 
-      t.equal(
-        $.find(`LineSeries.${customClassName}`).length,
-        1,
-        `should find the right number of LineSeries with the custom class name: ${customClassName}`
-      );
+      expect($.find(`LineSeries.${customClassName}`).length).toBe(1);
     }
   );
-  t.end();
 });
 
-test('LineSeries: Showcase Example - LineChartManyColors', t => {
+test('LineSeries: Showcase Example - LineChartManyColors', () => {
   const $ = mount(<LineChartManyColors />);
   const lines = $.find('.rv-xy-plot__series');
-  t.equal(lines.length, 20, 'line with many colors has 20 series');
+  expect(lines.length).toBe(20);
   lines.forEach((node, i) =>
-    t.equal(
-      node.props().style.stroke,
-      LINE_WITH_MANY_COLORS_COLORS[i],
-      `${i}th line series gets the right color`
-    )
+    expect(node.props().style.stroke).toBe(LINE_WITH_MANY_COLORS_COLORS[i])
   );
-  t.end();
 });
 
-test('LineSeries: Showcase Example - TimeChart', t => {
+test('LineSeries: Showcase Example - TimeChart', () => {
   const $ = mount(<TimeChart />);
-  t.equal(
-    $.find('.rv-xy-plot__series--line').length,
-    2,
-    'should find the right number of lines'
+  expect($.find('.rv-xy-plot__series--line').length).toBe(2);
+  expect($.text()).toBe(
+    'Sep 1012 PMMon 1112 PMTue 1212 PMWed 13X Axis2468101214Y Axis'
   );
-  t.equal(
-    $.text(),
-    'Sep 1012 PMMon 1112 PMTue 1212 PMWed 13X Axis2468101214Y Axis',
-    'should find the right number of lines'
-  );
-  t.end();
 });
 
-test('LineSeries: Showcase Example - SyncedCharts', t => {
+test('LineSeries: Showcase Example - SyncedCharts', () => {
   const $ = mount(<SyncedCharts />);
   const tests = () => {
-    t.equal(
-      $.find('.rv-xy-plot').length,
-      2,
-      'should find the right number of lines'
-    );
-    t.equal(
-      $.find('.rv-xy-plot__series--line').length,
-      4,
-      'should find the right number of lines'
-    );
-    t.equal(
-      $.text(),
-      '1.01.52.02.53.024681012141.01.52.02.53.0246810',
-      'should find the right number of lines'
-    );
+    expect($.find('.rv-xy-plot').length).toBe(2);
+    expect($.find('.rv-xy-plot__series--line').length).toBe(4);
+    expect($.text()).toBe('1.01.52.02.53.024681012141.01.52.02.53.0246810');
   };
   tests();
   $.find('.rv-xy-plot__series--line')
@@ -233,10 +133,9 @@ test('LineSeries: Showcase Example - SyncedCharts', t => {
   $.find('.rv-xy-plot')
     .at(0)
     .simulate('mouseLeave');
-  t.end();
 });
 
-test('LineSeries: Line Styling', t => {
+test('LineSeries: Line Styling', () => {
   const $ = mount(
     <XYPlot width={300} height={300}>
       <LineSeries
@@ -251,125 +150,74 @@ test('LineSeries: Line Styling', t => {
 
   const lineStyle = $.find('path.rv-xy-plot__series').prop('style');
 
-  t.equal(lineStyle.opacity, 0.5, 'should render an opaque line');
-  t.equal(lineStyle.strokeWidth, '3px', 'should honor stroke width');
-  t.equal(lineStyle.stroke, 'rgb(255, 255, 255)', 'should honor stroke');
-  t.equal(lineStyle.strokeDasharray, '3, 1', 'should honor stroke dash-array');
-  t.end();
+  expect(lineStyle.opacity).toBe(0.5);
+  expect(lineStyle.strokeWidth).toBe('3px');
+  expect(lineStyle.stroke).toBe('rgb(255, 255, 255)');
+  expect(lineStyle.strokeDasharray).toBe('3, 1');
 });
 
-test('getNull prop: Showcase Example - Null Data Example', t => {
+test('getNull prop: Showcase Example - Null Data Example', () => {
   const $ = mount(<NullData />);
-  t.equal(
-    $.find('path.rv-xy-plot__series').length,
-    2,
-    'should find the right number of series'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--mark circle').length,
-    3,
-    'should find the right number of circles'
-  );
+  expect($.find('path.rv-xy-plot__series').length).toBe(2);
+  expect($.find('.rv-xy-plot__series--mark circle').length).toBe(3);
 
   simulateMouseMove(35);
-  t.equal(
-    $.find('.rv-crosshair__title').text(),
-    'x: 1',
-    'should find the right crosshair title'
-  );
-  t.equal(
+  expect($.find('.rv-crosshair__title').text()).toBe('x: 1');
+  expect(
     $.find('.rv-crosshair__item')
       .at(0)
-      .text(),
-    '0: 10',
-    'should find the right crosshair series text'
-  );
-  t.equal(
+      .text()
+  ).toBe('0: 10');
+  expect(
     $.find('.rv-crosshair__item')
       .at(1)
-      .text(),
-    '1: 30',
-    'should find the right crosshair series text'
-  );
+      .text()
+  ).toBe('1: 30');
 
   $.find('.rv-xy-plot__inner').simulate('mouseleave');
-  t.equal(
-    $.find('.rv-crosshair').exists(),
-    false,
-    'crosshair should not exist'
-  );
+  expect($.find('.rv-crosshair').exists()).toBe(false);
 
   simulateMouseMove(100);
-  t.equal(
-    $.find('.rv-crosshair__title').text(),
-    'x: 2',
-    'should find the right crosshair title'
-  );
-  t.equal(
+  expect($.find('.rv-crosshair__title').text()).toBe('x: 2');
+  expect(
     $.find('.rv-crosshair__item')
       .at(0)
-      .text(),
-    '0: 10',
-    'should find the right crosshair series text'
-  );
-  t.equal(
+      .text()
+  ).toBe('0: 10');
+  expect(
     $.find('.rv-crosshair__item')
       .at(1)
-      .text(),
-    '1: 0',
-    'should find the right crosshair series text'
-  );
+      .text()
+  ).toBe('1: 0');
 
   simulateMouseMove(165);
-  t.equal(
-    $.find('.rv-crosshair__title').text(),
-    'x: 3',
-    'should find the right crosshair title'
-  );
-  t.equal(
+  expect($.find('.rv-crosshair__title').text()).toBe('x: 3');
+  expect(
     $.find('.rv-crosshair__item')
       .at(0)
-      .text(),
-    '0: 13',
-    'should find the right crosshair series text'
-  );
-  t.equal(
+      .text()
+  ).toBe('0: 13');
+  expect(
     $.find('.rv-crosshair__item')
       .at(1)
-      .exists(),
-    false,
-    'crosshair series text should not exist'
-  );
+      .exists()
+  ).toBe(false);
 
   simulateMouseMove(230);
-  t.equal(
-    $.find('.rv-crosshair__title').text(),
-    'x: 4',
-    'should find the right crosshair title'
-  );
-  t.equal(
+  expect($.find('.rv-crosshair__title').text()).toBe('x: 4');
+  expect(
     $.find('.rv-crosshair__item')
       .at(0)
-      .text(),
-    '0: 7',
-    'should find the right crosshair series text'
-  );
-  t.equal(
+      .text()
+  ).toBe('0: 7');
+  expect(
     $.find('.rv-crosshair__item')
       .at(1)
-      .text(),
-    '1: 15',
-    'should find the right crosshair series text'
-  );
+      .text()
+  ).toBe('1: 15');
 
   simulateMouseMove(295);
-  t.equal(
-    $.find('.rv-crosshair').exists(),
-    false,
-    'crosshair should not exist'
-  );
-
-  t.end();
+  expect($.find('.rv-crosshair').exists()).toBe(false);
 
   function simulateMouseMove(x) {
     $.find('.rv-xy-plot__inner').simulate('mousemove', {

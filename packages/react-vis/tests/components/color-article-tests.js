@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 
@@ -23,7 +22,7 @@ import {
   CustomPalette
 } from '../../../showcase/color/mini-color-examples';
 
-test('Color Article Test: #generateCharts', t => {
+test('Color Article Test: #generateCharts', () => {
   [
     {name: 'SensibleDefaults', Item: SensibleDefaults},
     {name: 'ColorInXYPlot', Item: ColorInXYPlot},
@@ -46,87 +45,34 @@ test('Color Article Test: #generateCharts', t => {
     },
     {name: 'LinearColorAtMarkLevel', Item: LinearColorAtMarkLevel}
   ].forEach(obj => {
-    const {name, Item} = obj;
+    const {Item} = obj;
     const $ = mount(<Item />);
-    t.equal(
-      $.find('.rv-xy-plot').length,
-      3,
-      `${name} should find the right number of xy-plots`
-    );
-    t.equal(
-      $.find('.rv-xy-plot__series--bar rect').length,
-      30,
-      `${name} should find the right number of rects`
-    );
-    t.equal(
-      $.find('path.rv-xy-plot__series--line').length,
-      3,
-      `${name} should find the right number of paths`
-    );
-    t.equal(
-      $.find('.rv-xy-plot__series--mark circle').length,
-      30,
-      `${name} should find the right number of circles`
-    );
+    expect($.find('.rv-xy-plot').length).toBe(3);
+    expect($.find('.rv-xy-plot__series--bar rect').length).toBe(30);
+    expect($.find('path.rv-xy-plot__series--line').length).toBe(3);
+    expect($.find('.rv-xy-plot__series--mark circle').length).toBe(30);
   });
-  t.end();
 });
 
-test('Color Article Test: GradientCharts', t => {
+test('Color Article Test: GradientCharts', () => {
   const $ = mount(<GradientCharts />);
 
-  t.equal(
-    $.find('.rv-xy-plot').length,
-    3,
-    'should find the right number of xy-plots'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--bar rect').length,
-    10,
-    'should find the right number of rects'
-  );
-  t.equal(
-    $.find('path.rv-xy-plot__series--line').length,
-    1,
-    'should find the right number of paths'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--mark circle').length,
-    10,
-    'should find the right number of circles'
-  );
-
-  t.end();
+  expect($.find('.rv-xy-plot').length).toBe(3);
+  expect($.find('.rv-xy-plot__series--bar rect').length).toBe(10);
+  expect($.find('path.rv-xy-plot__series--line').length).toBe(1);
+  expect($.find('.rv-xy-plot__series--mark circle').length).toBe(10);
 });
 
-test('Color Article Test: ColorSpecificity', t => {
+test('Color Article Test: ColorSpecificity', () => {
   const $ = mount(<ColorSpecificity />);
 
-  t.equal(
-    $.find('.rv-xy-plot').length,
-    3,
-    'should find the right number of xy-plots'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--bar rect').length,
-    10,
-    'should find the right number of rects'
-  );
-  t.equal(
-    $.find('path.rv-xy-plot__series--line').length,
-    3,
-    'should find the right number of paths'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--mark circle').length,
-    30,
-    'should find the right number of circles'
-  );
-
-  t.end();
+  expect($.find('.rv-xy-plot').length).toBe(3);
+  expect($.find('.rv-xy-plot__series--bar rect').length).toBe(10);
+  expect($.find('path.rv-xy-plot__series--line').length).toBe(3);
+  expect($.find('.rv-xy-plot__series--mark circle').length).toBe(30);
 });
 
-test('Color Article Test: generatePalette', t => {
+test('Color Article Test: generatePalette', () => {
   [
     {
       name: 'ReactVis5',
@@ -155,35 +101,15 @@ test('Color Article Test: generatePalette', t => {
       numberOfBoxes: 20
     }
   ].forEach(obj => {
-    const {Item, expectedText, numberOfBoxes, name} = obj;
+    const {Item, expectedText, numberOfBoxes} = obj;
     const $ = mount(<Item />);
-    t.equal(
-      $.find('.color-box').length,
-      numberOfBoxes,
-      `${name} color scale: should find boxes being rendered`
-    );
-    t.equal(
-      $.text(),
-      expectedText,
-      `${name} color scale: should find the right text`
-    );
+    expect($.find('.color-box').length).toBe(numberOfBoxes);
+    expect($.text()).toBe(expectedText);
   });
-
-  t.end();
 });
 
-test('Color Article Test: LineSeriesMarkSeries', t => {
+test('Color Article Test: LineSeriesMarkSeries', () => {
   const $ = mount(<LineSeriesMarkSeries />);
-  t.equal(
-    $.find('path.rv-xy-plot__series--line').length,
-    3,
-    'should find the right number of paths'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--mark circle').length,
-    30,
-    'should find the right number of circles'
-  );
-
-  t.end();
+  expect($.find('path.rv-xy-plot__series--line').length).toBe(3);
+  expect($.find('.rv-xy-plot__series--mark circle').length).toBe(30);
 });

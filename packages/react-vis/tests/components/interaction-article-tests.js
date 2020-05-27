@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 
@@ -9,26 +8,22 @@ import {
   ScatterPlotOnNearestXY
 } from '../../../showcase/interaction/interaction-examples';
 
-test('Interaction examples: LinkedCharts', t => {
+test('Interaction examples: LinkedCharts', () => {
   const $ = mount(<LinkedCharts />);
-  t.equal($.find('.rv-xy-plot').length, 3, '3 XYPlot in this example');
-  t.end();
+  expect($.find('.rv-xy-plot').length).toBe(3);
 });
 
-test('Interaction examples: LineChartMouseOverXY', t => {
+test('Interaction examples: LineChartMouseOverXY', () => {
   const $ = mount(<LineChartMouseOverXY />);
-  t.equal($.find('.rv-xy-plot').length, 1, '1 XYPlot in this example');
-  t.end();
+  expect($.find('.rv-xy-plot').length).toBe(1);
 });
 
-test('Interaction examples: LineChartMouseOverSeries', t => {
+test('Interaction examples: LineChartMouseOverSeries', () => {
   const $ = mount(<LineChartMouseOverSeries />);
-  t.equal($.find('.rv-xy-plot').length, 1, '1 XYPlot in this example');
-  t.end();
+  expect($.find('.rv-xy-plot').length).toBe(1);
 });
 
-test('Interaction examples: ScatterPlotOnNearestXY', t => {
+test('Interaction examples: ScatterPlotOnNearestXY', () => {
   const $ = mount(<ScatterPlotOnNearestXY />);
-  t.equal($.find('.rv-xy-plot').length, 1, '1 XYPlot in this example');
-  t.end();
+  expect($.find('.rv-xy-plot').length).toBe(1);
 });

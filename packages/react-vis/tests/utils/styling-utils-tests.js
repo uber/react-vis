@@ -18,11 +18,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import test from 'tape';
-
 import {getCombinedClassName} from 'utils/styling-utils';
 
-test('styling-utils #getCombinedClassName', t => {
+test('styling-utils #getCombinedClassName', () => {
   const allValidStringParams = [
     'test_class--1',
     'test_class--2',
@@ -40,23 +38,15 @@ test('styling-utils #getCombinedClassName', t => {
     }
   ];
 
-  t.equal(
-    getCombinedClassName(...allValidStringParams),
-    expectedAllValidStringParamsCombined,
-    'generated class signature should contain all valid class names'
+  expect(getCombinedClassName(...allValidStringParams)).toBe(
+    expectedAllValidStringParamsCombined
   );
 
-  t.equal(
-    getCombinedClassName(...allValidStringParams, ...falsyValues),
-    expectedAllValidStringParamsCombined,
-    'generated class signature does not contain falsy values'
+  expect(getCombinedClassName(...allValidStringParams, ...falsyValues)).toBe(
+    expectedAllValidStringParamsCombined
   );
 
-  t.equal(
-    getCombinedClassName(...allValidStringParams, ...nonStringValues),
-    expectedAllValidStringParamsCombined,
-    'generated class signature does not contain non-string values'
-  );
-
-  t.end();
+  expect(
+    getCombinedClassName(...allValidStringParams, ...nonStringValues)
+  ).toBe(expectedAllValidStringParamsCombined);
 });

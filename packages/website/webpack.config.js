@@ -10,8 +10,8 @@ module.exports = {
         exclude: [/node_modules/],
         options: {
           rootMode: 'upward'
-        },
-      },
+        }
+      }
     ]
   },
   resolve: {

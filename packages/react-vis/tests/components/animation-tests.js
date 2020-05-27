@@ -18,7 +18,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 
@@ -28,7 +27,7 @@ import AxisTicks from 'plot/axis/axis-ticks';
 import VerticalBarSeries from 'plot/series/vertical-bar-series';
 import XYPlot from 'plot/xy-plot';
 
-test('Animation interpolates xDomain when specified', t => {
+test('Animation interpolates xDomain when specified', () => {
   const wrapper = mount(
     <XYPlot width={300} height={300}>
       <VerticalBarSeries data={[{x: 1, y: 0}]} />
@@ -42,11 +41,7 @@ test('Animation interpolates xDomain when specified', t => {
 
   const renderedAnimationWrapper = wrapper.find(Animation);
 
-  t.deepEqual(
-    renderedAnimationWrapper.find(AxisTicks).prop('xDomain'),
-    ['Black'],
-    'Axis interpolates props and passes to Animation'
-  );
-
-  t.end();
+  expect(renderedAnimationWrapper.find(AxisTicks).prop('xDomain')).toEqual([
+    'Black'
+  ]);
 });

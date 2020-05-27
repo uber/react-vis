@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import ContinuousSizeLegend from '../../../showcase/legends/continuous-size';
@@ -11,160 +10,105 @@ import SearchableDiscreteColorLegendHoverExample from '../../../showcase/legends
 import HorizontalDiscreteCustomPalette from '../../../showcase/legends/horizontal-discrete-custom-palette';
 import ClusteredStackedVerticalBarChart from '../../../showcase/plot/clustered-stacked-bar-chart';
 
-test('Discrete Legend has no clickable className while onItemClick is not passing', t => {
+test('Discrete Legend has no clickable className while onItemClick is not passing', () => {
   const withOnClick$ = mount(<VerticalDiscreteLegend />);
   const withoutOnClick$ = mount(<SearchableDiscreteLegend />);
 
-  t.equal(
+  expect(
     withOnClick$
       .find('.rv-discrete-color-legend-item.vertical')
       .first()
-      .props().onClick,
-    null,
-    'should not have onClick prop'
-  );
-  t.notEqual(
+      .props().onClick
+  ).toBe(null);
+  expect(
     withoutOnClick$
       .find('.rv-discrete-color-legend-item.vertical.clickable')
       .first()
-      .props().onClick,
-    Function,
-    'should have onClick prop'
-  );
-
-  t.end();
+      .props().onClick
+  ).not.toBe(Function);
 });
 
-test('Continuous Size Legend', t => {
+test('Continuous Size Legend', () => {
   const $ = mount(<ContinuousSizeLegend />);
-  t.equal($.text(), '          100200', 'should find the correct text content');
-  t.equal(
-    $.find('.rv-bubble').length,
-    10,
-    'should find the right number of bubbles'
-  );
-
-  t.end();
+  expect($.text()).toBe('          100200');
+  expect($.find('.rv-bubble').length).toBe(10);
 });
 
-test('Continuous Color Legend', t => {
+test('Continuous Color Legend', () => {
   const $ = mount(<ContinuousColorLegend />);
-  t.equal($.text(), '100200150', 'should find the correct text content');
+  expect($.text()).toBe('100200150');
   const expectedStyle = {
     background: 'linear-gradient(to right, #EF5D28,#FF9833)'
   };
-  t.deepEqual(
-    $.find('.rv-gradient').props().style,
-    expectedStyle,
-    'should find the correct styling'
-  );
-  t.end();
+  expect($.find('.rv-gradient').props().style).toEqual(expectedStyle);
 });
 
-test('Discrete Legends', t => {
+test('Discrete Legends', () => {
   const verticalLegend = mount(<VerticalDiscreteLegend />);
-  t.equal(
-    verticalLegend.text(),
-    'OptionsButtonsSelect boxesDate inputsPassword inputsFormsOther',
-    'should find the correct text content'
+  expect(verticalLegend.text()).toBe(
+    'OptionsButtonsSelect boxesDate inputsPassword inputsFormsOther'
   );
-  t.equal(
-    verticalLegend.find('.rv-discrete-color-legend-item__color').length,
-    7,
-    'should find the right number of elements'
-  );
+  expect(
+    verticalLegend.find('.rv-discrete-color-legend-item__color').length
+  ).toBe(7);
 
-  t.deepEqual(
+  expect(
     verticalLegend
       .find('.rv-discrete-color-legend-item__color__path')
       .first()
-      .props().style,
-    {stroke: '#12939A'},
-    'normal discrete legend uses default palette'
-  );
+      .props().style
+  ).toEqual({stroke: '#12939A'});
 
-  t.deepEqual(
+  expect(
     mount(<HorizontalDiscreteCustomPalette />)
       .find('.rv-discrete-color-legend-item__color__path')
       .first()
-      .props().style,
-    {stroke: '#6588cd'},
-    'custom discrete legend uses custom palette'
-  );
+      .props().style
+  ).toEqual({stroke: '#6588cd'});
 
   const $ = mount(<SearchableDiscreteLegend />);
-  t.equal(
-    $.text(),
-    'ApplesBananasBlueberriesCarrotsEggplantsLimesPotatoes',
-    'should find the correct text content for the searchable legend'
+  expect($.text()).toBe(
+    'ApplesBananasBlueberriesCarrotsEggplantsLimesPotatoes'
   );
-  t.equal(
-    $.find('.rv-discrete-color-legend-item__color').length,
-    7,
-    'should find the right number of element for the searchable legends'
-  );
-  t.deepEqual(
+  expect($.find('.rv-discrete-color-legend-item__color').length).toBe(7);
+  expect(
     mount(<HorizontalDiscreteLegend />)
       .find('.rv-discrete-color-legend-item__color__path')
       .first()
-      .props().style,
-    {strokeDasharray: '6, 2', stroke: '#45aeb1'},
-    'should find the default dashed dasharray style'
-  );
-  t.deepEqual(
+      .props().style
+  ).toEqual({strokeDasharray: '6, 2', stroke: '#45aeb1'});
+  expect(
     mount(<HorizontalDiscreteLegend />)
       .find('.rv-discrete-color-legend-item__color__path')
       .at(4)
-      .props().style,
-    {strokeWidth: 13, stroke: 'url(#stripes)'},
-    'should find the specified stroke width'
-  );
+      .props().style
+  ).toEqual({strokeWidth: 13, stroke: 'url(#stripes)'});
   $.find('.rv-search-wrapper__form__input').simulate('change', {
     target: {value: 'egg'}
   });
-  t.equal(
-    $.text(),
-    'Eggplants',
-    'should find the correct text content after search'
-  );
+  expect($.text()).toBe('Eggplants');
   const itemsFound = $.find('.rv-discrete-color-legend-item__color').length;
-  t.equal(
-    itemsFound,
-    1,
-    'should find the right number of elements for the searchable legend after searched'
-  );
+  expect(itemsFound).toBe(1);
 
-  t.equal(
-    $.find('.disabled').length,
-    0,
-    'before clicking, should find no items disabled'
-  );
+  expect($.find('.disabled').length).toBe(0);
   $.find('.clickable').simulate('click');
-  t.equal(
-    $.find('.disabled').length,
-    1,
-    'before clicking, should find no items disabled'
-  );
+  expect($.find('.disabled').length).toBe(1);
 
-  t.deepEqual(
+  expect(
     mount(<ClusteredStackedVerticalBarChart />)
       .find('.rv-discrete-color-legend')
       .first()
-      .props().style,
-    {
-      width: undefined,
-      height: undefined,
-      position: 'absolute',
-      left: '50px',
-      top: '10px'
-    },
-    'discrete legend retains passed styles'
-  );
-
-  t.end();
+      .props().style
+  ).toEqual({
+    width: undefined,
+    height: undefined,
+    position: 'absolute',
+    left: '50px',
+    top: '10px'
+  });
 });
 
-test('Discrete Legends Showcase: HorizontalDiscreteCustomPalette', t => {
+test('Discrete Legends Showcase: HorizontalDiscreteCustomPalette', () => {
   const $ = mount(<HorizontalDiscreteCustomPalette />);
   const colors = $.find('.rv-discrete-color-legend-item__color__path')
     .map(colorBrick => {
@@ -172,39 +116,27 @@ test('Discrete Legends Showcase: HorizontalDiscreteCustomPalette', t => {
     })
     .join(' ');
 
-  t.equal(
-    colors,
-    '#6588cd #66b046 #a361c7 #ad953f #c75a87 #55a47b #cb6141',
-    'should find all correct values for the colors'
+  expect(colors).toBe(
+    '#6588cd #66b046 #a361c7 #ad953f #c75a87 #55a47b #cb6141'
   );
-  t.equal(
-    $.text(),
-    'OptionsButtonsSelect boxesDate inputsPassword inputsFormsOther',
-    'should find the right text'
+  expect($.text()).toBe(
+    'OptionsButtonsSelect boxesDate inputsPassword inputsFormsOther'
   );
 
   $.find('.rv-discrete-color-legend-item')
     .first()
     .simulate('mouseEnter');
-  t.equal(
-    $.text(),
-    'OptionsSELECTEDButtonsSelect boxesDate inputsPassword inputsFormsOther',
-    'should find the right text, with the first element selected'
+  expect($.text()).toBe(
+    'OptionsSELECTEDButtonsSelect boxesDate inputsPassword inputsFormsOther'
   );
-
-  t.end();
 });
 
-test('Discrete Legends Showcase: SearchableDiscreteLegendHover', t => {
+test('Discrete Legends Showcase: SearchableDiscreteLegendHover', () => {
   const $ = mount(<SearchableDiscreteColorLegendHoverExample />);
   $.find('.rv-discrete-color-legend-item')
     .first()
     .simulate('mouseEnter');
-  t.equal(
-    $.text(),
-    'Apples:SELECTEDBananasBlueberriesCarrotsEggplantsLimesPotatoes',
-    'should find the right text, with the first element selected'
+  expect($.text()).toBe(
+    'Apples:SELECTEDBananasBlueberriesCarrotsEggplantsLimesPotatoes'
   );
-
-  t.end();
 });

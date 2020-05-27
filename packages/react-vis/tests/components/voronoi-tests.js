@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import Voronoi from '../../src/plot/voronoi.js';
@@ -31,74 +30,46 @@ const StatelessVoronoiWrapper = () => (
   </XYPlot>
 );
 
-test('Voronoi: Basic Chart', t => {
+test('Voronoi: Basic Chart', () => {
   const $ = mount(<StatelessVoronoiWrapper />);
 
-  t.equal(
+  expect(
     $.find('.rv-voronoi__cell')
       .at(30)
-      .prop('style').color,
-    'red',
-    'should apply inline styles'
-  );
-  t.equal(
+      .prop('style').color
+  ).toBe('red');
+  expect(
     $.find('.rv-voronoi__cell')
       .at(30)
-      .hasClass('my-class-30'),
-    true,
-    'should apply css class'
-  );
-  t.equal(
+      .hasClass('my-class-30')
+  ).toBe(true);
+  expect(
     $.find('.rv-voronoi__cell')
       .at(50)
-      .hasClass('my-class-50'),
-    true,
-    'should apply css class'
-  );
-
-  t.end();
+      .hasClass('my-class-50')
+  ).toBe(true);
 });
 
-test('Voronoi: Showcase Example - VoronoiLineChart', t => {
+test('Voronoi: Showcase Example - VoronoiLineChart', () => {
   const $ = mount(<VoronoiLineChart />);
 
-  t.equal(
-    $.text(),
-    'Show Voronoi1.01.52.02.53.03.54.0X Axis2468101214Y Axis',
-    'should find the correct text'
+  expect($.text()).toBe(
+    'Show Voronoi1.01.52.02.53.03.54.0X Axis2468101214Y Axis'
   );
-  t.equal(
-    $.find('.rv-voronoi__cell').length,
-    12,
-    'should find the right number of voronoi cells'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--line').length,
-    3,
-    'should find the right number of line series'
-  );
-  t.equal(
-    $.find('circle').length,
-    0,
-    'should initially find no scatterplot dots'
-  );
+  expect($.find('.rv-voronoi__cell').length).toBe(12);
+  expect($.find('.rv-xy-plot__series--line').length).toBe(3);
+  expect($.find('circle').length).toBe(0);
 
   $.find('input').simulate('click');
   $.find('.rv-voronoi__cell')
     .at(0)
     .simulate('mouseOver');
 
-  t.equal($.find('circle').length, 1, 'should now find a single hover dot');
+  expect($.find('circle').length).toBe(1);
 
   $.find('.rv-voronoi__cell')
     .at(0)
     .simulate('mouseOut');
 
-  t.equal(
-    $.find('circle').length,
-    0,
-    'after mouse out should find no hover dots'
-  );
-
-  t.end();
+  expect($.find('circle').length).toBe(0);
 });
