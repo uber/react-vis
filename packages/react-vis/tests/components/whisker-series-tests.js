@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import WhiskerSeries from 'plot/series/whisker-series';
@@ -7,23 +6,10 @@ import WhiskerChart from '../../../showcase/plot/whisker-chart';
 
 testRenderWithProps(WhiskerSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
-test('WhiskerSeries: Showcase Example - Whisker Scatterplot', t => {
+test('WhiskerSeries: Showcase Example - Whisker Scatterplot', () => {
   const $ = mount(<WhiskerChart />);
-  t.equal(
-    $.text(),
-    '1.01.52.02.53.068101214',
-    'should find the right text content'
-  );
-  t.equal(
-    $.find('g.whisker-series-example').length,
-    1,
-    'should find the right number of custom named series'
-  );
+  expect($.text()).toBe('1.01.52.02.53.068101214');
+  expect($.find('g.whisker-series-example').length).toBe(1);
   // 8 lines each per 5 (double) whiskers
-  t.equal(
-    $.find('.rv-xy-plot__series--whisker line').length,
-    40,
-    'should find the right number of lines'
-  );
-  t.end();
+  expect($.find('.rv-xy-plot__series--whisker line').length).toBe(40);
 });

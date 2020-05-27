@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import HorizontalRectSeries from 'plot/series/horizontal-bar-series';
@@ -10,45 +9,18 @@ import StackedHistogram from '../../../showcase/plot/stacked-histogram';
 testRenderWithProps(HorizontalRectSeries, GENERIC_XYPLOT_SERIES_PROPS);
 testRenderWithProps(VerticalRectSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
-test('RectSeries: Showcase Example - StackedHistogram', t => {
+test('RectSeries: Showcase Example - StackedHistogram', () => {
   const $ = mount(<StackedHistogram />);
-  t.equal(
-    $.text(),
-    'TOGGLE TO CANVAS01234567051015202530',
-    'should fine the right text content'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--rect rect').length,
-    6,
-    'should find the right number of bars'
-  );
+  expect($.text()).toBe('TOGGLE TO CANVAS01234567051015202530');
+  expect($.find('.rv-xy-plot__series--rect rect').length).toBe(6);
 
   $.find('.showcase-button').simulate('click');
-  t.equal(
-    $.find('.rv-xy-plot__series--rect rect').length,
-    0,
-    'should now find no rects'
-  );
-  t.equal(
-    $.find('.rv-xy-canvas canvas').length,
-    1,
-    'should now find one canvas'
-  );
-  t.end();
+  expect($.find('.rv-xy-plot__series--rect rect').length).toBe(0);
+  expect($.find('.rv-xy-canvas canvas').length).toBe(1);
 });
 
-test('RectSeries: Showcase Example - Histogram', t => {
+test('RectSeries: Showcase Example - Histogram', () => {
   const $ = mount(<Histogram />);
-  t.equal(
-    $.text(),
-    'May 21May 28Jun 04Jun 11Jun 180.51.01.52.0',
-    'should fine the right text content'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--rect rect').length,
-    8,
-    'should find the right number of bars'
-  );
-
-  t.end();
+  expect($.text()).toBe('May 21May 28Jun 04Jun 11Jun 180.51.01.52.0');
+  expect($.find('.rv-xy-plot__series--rect rect').length).toBe(8);
 });

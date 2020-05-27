@@ -1,18 +1,12 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 
 import DynamicCrosshair from '../../../showcase/axes/dynamic-crosshair';
 
-test('Crosshair: Dynamic Crosshair - Example', t => {
+test('Crosshair: Dynamic Crosshair - Example', () => {
   const $ = mount(<DynamicCrosshair />);
   simulateMouseMove(100);
-  t.equal(
-    $.find('.rv-crosshair').hasClass('test-class-name'),
-    true,
-    'should find the class name passed as a prop'
-  );
-  t.end();
+  expect($.find('.rv-crosshair').hasClass('test-class-name')).toBe(true);
 
   function simulateMouseMove(x) {
     $.find('.rv-xy-plot__inner').simulate('mousemove', {
@@ -21,15 +15,10 @@ test('Crosshair: Dynamic Crosshair - Example', t => {
   }
 });
 
-test('Crosshair: Dynamic Crosshair - Touch Example', t => {
+test('Crosshair: Dynamic Crosshair - Touch Example', () => {
   const $ = mount(<DynamicCrosshair />);
   simulateMouseMove(100);
-  t.equal(
-    $.find('.rv-crosshair').hasClass('test-class-name'),
-    true,
-    'should find the class name passed as a prop'
-  );
-  t.end();
+  expect($.find('.rv-crosshair').hasClass('test-class-name')).toBe(true);
 
   function simulateMouseMove(x) {
     $.find('.rv-xy-plot__inner').simulate('touchmove', {

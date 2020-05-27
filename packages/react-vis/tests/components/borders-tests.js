@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import Borders from 'plot/borders';
@@ -7,17 +6,8 @@ import GradientExample from '../../../showcase/misc/gradient-example';
 
 testRenderWithProps(Borders, GENERIC_XYPLOT_SERIES_PROPS);
 
-test('Borders: GradientExample', t => {
+test('Borders: GradientExample', () => {
   const $ = mount(<GradientExample />);
-  t.equal(
-    $.find('.rv-xy-plot__borders').length,
-    1,
-    'should find the right number of borders containers'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__borders rect').length,
-    4,
-    'should find the right number of borders'
-  );
-  t.end();
+  expect($.find('.rv-xy-plot__borders').length).toBe(1);
+  expect($.find('.rv-xy-plot__borders rect').length).toBe(4);
 });

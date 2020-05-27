@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import AxisTitle from 'plot/axis/axis-title';
@@ -12,76 +11,44 @@ const baseProps = {
   title: 'Title'
 };
 
-test('AxisTitle: horizontal bottom axis title', t => {
+test('AxisTitle: horizontal bottom axis title', () => {
   const props = Object.assign({}, baseProps, {
     orientation: BOTTOM
   });
   const $ = mount(<AxisTitle {...props} />);
   const innerGroupHtml = $.find('g > g').html();
-  t.ok(
-    innerGroupHtml.includes('text-anchor: end'),
-    'should have text-anchor: end'
-  );
-  t.equal(
-    $.find('text').text(),
-    baseProps.title,
-    'should render the correct title'
-  );
-  t.end();
+  expect(innerGroupHtml.includes('text-anchor: end')).toBeTruthy();
+  expect($.find('text').text()).toBe(baseProps.title);
 });
 
-test('AxisTitle: horizontal top axis title', t => {
+test('AxisTitle: horizontal top axis title', () => {
   const props = Object.assign({}, baseProps, {
     orientation: TOP,
     position: 'start'
   });
   const $ = mount(<AxisTitle {...props} />);
   const innerGroupHtml = $.find('g > g').html();
-  t.ok(
-    innerGroupHtml.includes('text-anchor: start'),
-    'should have text-anchor: start'
-  );
-  t.equal(
-    $.find('text').text(),
-    baseProps.title,
-    'should render the correct title'
-  );
-  t.end();
+  expect(innerGroupHtml.includes('text-anchor: start')).toBeTruthy();
+  expect($.find('text').text()).toBe(baseProps.title);
 });
 
-test('AxisTitle: vertical left title', t => {
+test('AxisTitle: vertical left title', () => {
   const props = Object.assign({}, baseProps, {
     orientation: LEFT
   });
   const $ = mount(<AxisTitle {...props} />);
   const innerGroupHtml = $.find('g > g').html();
-  t.ok(
-    innerGroupHtml.includes('text-anchor: end'),
-    'should have text-anchor: end'
-  );
-  t.equal(
-    $.find('text').text(),
-    baseProps.title,
-    'should render the correct title'
-  );
-  t.end();
+  expect(innerGroupHtml.includes('text-anchor: end')).toBeTruthy();
+  expect($.find('text').text()).toBe(baseProps.title);
 });
 
-test('AxisTitle: vertical right title', t => {
+test('AxisTitle: vertical right title', () => {
   const props = Object.assign({}, baseProps, {
     orientation: RIGHT,
     position: 'start'
   });
   const $ = mount(<AxisTitle {...props} />);
   const innerGroupHtml = $.find('g > g').html();
-  t.ok(
-    innerGroupHtml.includes('text-anchor: start'),
-    'should have text-anchor: start'
-  );
-  t.equal(
-    $.find('text').text(),
-    baseProps.title,
-    'should render the correct title'
-  );
-  t.end();
+  expect(innerGroupHtml.includes('text-anchor: start')).toBeTruthy();
+  expect($.find('text').text()).toBe(baseProps.title);
 });

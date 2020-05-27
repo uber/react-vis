@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import Sunburst from 'sunburst';
@@ -50,69 +49,38 @@ const SUNBURST_PROPS = {
 // make sure that the components render at all
 testRenderWithProps(Sunburst, SUNBURST_PROPS);
 
-test('Sunburst: Basic rendering + data changes', t => {
+test('Sunburst: Basic rendering + data changes', () => {
   const $ = mount(<Sunburst {...SUNBURST_PROPS} />);
-  t.equal(
-    $.find('.little-nested-burst-example.rv-xy-plot__series--arc path').length,
-    21,
-    'should find the custom class name used'
-  );
+  expect(
+    $.find('.little-nested-burst-example.rv-xy-plot__series--arc path').length
+  ).toBe(21);
 
   $.setProps({data: INTERPOLATE_DATA});
-  t.equal(
-    $.find('.rv-xy-plot__series--arc-path').length,
-    9,
-    'should find the right number of children'
-  );
-  t.end();
+  expect($.find('.rv-xy-plot__series--arc-path').length).toBe(9);
 });
 
-test('Sunburst: Empty', t => {
+test('Sunburst: Empty', () => {
   const $ = mount(<Sunburst {...{...SUNBURST_PROPS, data: {}}} />);
-  t.equal(
-    $.find('.rv-xy-plot__series--arc-path').length,
-    0,
-    'should find the right number of children'
-  );
-
-  t.end();
+  expect($.find('.rv-xy-plot__series--arc-path').length).toBe(0);
 });
 
-test('Sunburst: BasicSunburst', t => {
+test('Sunburst: BasicSunburst', () => {
   const $ = mount(<BasicSunburst />);
   // multiplied by two to account for the shadow listeners
-  t.equal(
-    $.find('.rv-xy-plot__series--arc path').length,
-    251 * 2,
-    'should find the right number of children'
-  );
-  t.equal(
-    $.text(),
-    'click to lock selectionSUNBURST',
-    'should find the correct text inside of the chart'
-  );
+  expect($.find('.rv-xy-plot__series--arc path').length).toBe(251 * 2);
+  expect($.text()).toBe('click to lock selectionSUNBURST');
   // check hover state
-  t.deepEqual(
-    $.state().pathValue,
-    false,
-    'should initially find no hover path'
-  );
+  expect($.state().pathValue).toEqual(false);
   $.find('.rv-xy-plot__series--arc-path')
     .at(200)
     .simulate('mouseover');
-  t.deepEqual(
-    $.state().pathValue,
-    'root > vis > events > DataEvent',
-    'should find the correct path hovered'
-  );
+  expect($.state().pathValue).toEqual('root > vis > events > DataEvent');
 
   $.find('.rv-xy-plot__series--arc-path')
     .at(1)
     .simulate('click');
-  t.equal(
-    $.text(),
-    'click to unlock selectionDataEventroot > vis > events > DataEvent',
-    'should find the right text'
+  expect($.text()).toBe(
+    'click to unlock selectionDataEventroot > vis > events > DataEvent'
   );
   $.find('.rv-xy-plot__series--arc-path')
     .at(1)
@@ -121,53 +89,27 @@ test('Sunburst: BasicSunburst', t => {
     .at(10)
     .simulate('mouseEnter');
 
-  t.equal(
-    $.text(),
-    'click to unlock selectionDataEventroot > vis > events > DataEvent',
-    'should find the right text'
+  expect($.text()).toBe(
+    'click to unlock selectionDataEventroot > vis > events > DataEvent'
   );
-  t.end();
 });
 
-test('Sunburst: SunburstWithTooltips', t => {
+test('Sunburst: SunburstWithTooltips', () => {
   const $ = mount(<SunburstWithTooltips />);
-  t.equal(
-    $.text(),
-    'cooldogssunglassesexcellentchartgreatlabel',
-    'should find the right text'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--arc path').length,
-    10,
-    'should find the right number of children'
-  );
+  expect($.text()).toBe('cooldogssunglassesexcellentchartgreatlabel');
+  expect($.find('.rv-xy-plot__series--arc path').length).toBe(10);
   $.find('.rv-xy-plot__series--arc-path')
     .at(1)
     .simulate('mouseOver');
-  t.equal(
-    $.text(),
-    'cooldogssunglassesexcellentchartgreatlabel#FF991F',
-    'should find appropriate hover text'
-  );
-
-  t.end();
+  expect($.text()).toBe('cooldogssunglassesexcellentchartgreatlabel#FF991F');
 });
 
-test('Sunburst: AnimatedSunburst', t => {
+test('Sunburst: AnimatedSunburst', () => {
   const $ = mount(<AnimatedSunburst />);
-  t.equal($.text(), 'UPDATENOT HOVERED', 'should find the right text');
-  t.ok(
-    $.find('.rv-xy-plot__series--arc path').length > 2,
-    'should find a minimum number of elements'
-  );
+  expect($.text()).toBe('UPDATENOT HOVERED');
+  expect($.find('.rv-xy-plot__series--arc path').length > 2).toBeTruthy();
   $.find('.rv-xy-plot__series--arc-path')
     .at(1)
     .simulate('mouseOver');
-  t.equal(
-    $.text(),
-    'UPDATECURRENTLY HOVERING',
-    'should find the sunburst is now hovered'
-  );
-
-  t.end();
+  expect($.text()).toBe('UPDATECURRENTLY HOVERING');
 });

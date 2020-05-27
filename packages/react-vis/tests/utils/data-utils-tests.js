@@ -18,8 +18,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import test from 'tape';
-
 import {
   getUniquePropertyValues,
   addValueToArray,
@@ -28,48 +26,22 @@ import {
 
 const arr = [{a: 1}, {b: 3, a: 2}, {a: 2}];
 
-test('data-utils #getUniquePropertyValues', t => {
+test('data-utils #getUniquePropertyValues', () => {
   const result = getUniquePropertyValues(arr, d => d.a);
-  t.ok(result.length === 2, 'Should return the array of the proper size');
-  t.ok(
-    result.indexOf(1) !== -1 && result.indexOf(2) !== -1,
-    'Should return unique values of the property'
-  );
-  t.end();
+  expect(result.length === 2).toBeTruthy();
+  expect(result.indexOf(1) !== -1 && result.indexOf(2) !== -1).toBeTruthy();
 });
 
-test('data-utils #addValueToArray', t => {
-  t.deepEqual(
-    addValueToArray([-10, 10], 1),
-    [-10, 10],
-    "Shouldn't add the value if the value is in the array"
-  );
-  t.deepEqual(
-    addValueToArray([-10, 0], 1),
-    [-10, 1],
-    'Should add the value if the value is larger'
-  );
-  t.deepEqual(
-    addValueToArray([0, 10], -1),
-    [-1, 10],
-    'Should add the value if the value is smaller'
-  );
-  t.end();
+test('data-utils #addValueToArray', () => {
+  expect(addValueToArray([-10, 10], 1)).toEqual([-10, 10]);
+  expect(addValueToArray([-10, 0], 1)).toEqual([-10, 1]);
+  expect(addValueToArray([0, 10], -1)).toEqual([-1, 10]);
 });
 
-test('data-utils #transformValueToString', t => {
-  t.deepEqual(
-    transformValueToString(0),
-    0,
-    "Shouldn't transform the number value"
-  );
+test('data-utils #transformValueToString', () => {
+  expect(transformValueToString(0)).toEqual(0);
 
   // 43200000 - this is the timestamp for 12PM on 1970-01-01
   // This plays much nicer when running tests locally for different timezones.
-  t.deepEqual(
-    transformValueToString(new Date(43200000)),
-    'Thu Jan 01 1970',
-    'Should transform the date to string value'
-  );
-  t.end();
+  expect(transformValueToString(new Date(43200000))).toEqual('Thu Jan 01 1970');
 });

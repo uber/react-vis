@@ -1,10 +1,9 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import XYPlot from 'plot/xy-plot';
 import LineSeriesCanvas from 'plot/series/line-series-canvas';
 
-test('LineSeriesCanvas: should be rendered', t => {
+test('LineSeriesCanvas: should be rendered', () => {
   const k = 7;
 
   const $ = mount(
@@ -24,19 +23,16 @@ test('LineSeriesCanvas: should be rendered', t => {
     </XYPlot>
   );
 
-  t.equal(
+  expect(
     $.find('CanvasWrapper')
       .children()
-      .find('LineSeriesCanvas').length,
-    k,
-    'should render correct amount of LineSeriesCanvas children'
-  );
-  t.end();
+      .find('LineSeriesCanvas').length
+  ).toBe(k);
 });
 
-test('LineSeriesCanvas: on onNearestXY should be called and retur ncorrect values', t => {
+test('LineSeriesCanvas: on onNearestXY should be called and retur ncorrect values', () => {
   const k = 7;
-  t.plan(k);
+  expect.assertions(k);
 
   const $ = mount(
     <XYPlot width={300} height={300}>
@@ -49,12 +45,7 @@ test('LineSeriesCanvas: on onNearestXY should be called and retur ncorrect value
             {x: 60, y: 60}
           ]}
           onNearestXY={value => {
-            t.deepEqual(
-              {x: v, y: v * v},
-              value,
-              `onNearestXY called for series # ${v} and returns the correct values for x=${v} and y=${v *
-                v}`
-            );
+            expect({x: v, y: v * v}).toEqual(value);
           }}
         />
       ))}
@@ -64,5 +55,4 @@ test('LineSeriesCanvas: on onNearestXY should be called and retur ncorrect value
   $.find('.rv-xy-plot__inner').simulate('mousemove', {
     nativeEvent: {clientX: 150, clientY: 150}
   });
-  t.end();
 });

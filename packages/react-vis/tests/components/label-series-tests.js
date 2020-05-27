@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import LabelSeries from 'plot/series/label-series';
@@ -8,40 +7,24 @@ import LabeledStackedVerticalBarChart from '../../../showcase/plot/labeled-stack
 
 testRenderWithProps(LabelSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
-test('LabelSeries: Showcase Example - LabelSeriesExample', t => {
+test('LabelSeries: Showcase Example - LabelSeriesExample', () => {
   const $ = mount(<LabelSeriesExample />);
-  t.equal(
-    $.text(),
-    'UPDATE-101234505101520WigglytuffPsyduckGeodudeDittoSnorlax',
-    'should find the right text content'
+  expect($.text()).toBe(
+    'UPDATE-101234505101520WigglytuffPsyduckGeodudeDittoSnorlax'
   );
-  t.equal(
-    $.find('.rv-xy-plot__series--label text').length,
-    5,
-    'should find the right number of text boxes'
-  );
+  expect($.find('.rv-xy-plot__series--label text').length).toBe(5);
 
   $.find('.showcase-button').simulate('click');
-  t.equal(
-    $.text(),
-    'UPDATE-101234505101520WigglytuffPsyduckGeoduderedblue',
-    'should find the right text content'
+  expect($.text()).toBe(
+    'UPDATE-101234505101520WigglytuffPsyduckGeoduderedblue'
   );
   $.find('.showcase-button').simulate('click');
-  t.equal(
-    $.text(),
-    'UPDATE-101234505101520WigglytuffPsyduckGeoduderedblue',
-    'should find the right text content'
+  expect($.text()).toBe(
+    'UPDATE-101234505101520WigglytuffPsyduckGeoduderedblue'
   );
-  t.end();
 });
 
-test('BarSeries: Showcase Example - LabeledStackedVerticalBarChart', t => {
+test('BarSeries: Showcase Example - LabeledStackedVerticalBarChart', () => {
   const $ = mount(<LabeledStackedVerticalBarChart />);
-  t.equal(
-    $.find('.rv-xy-plot__series--label text').length,
-    9,
-    'should find the right number of labels'
-  );
-  t.end();
+  expect($.find('.rv-xy-plot__series--label text').length).toBe(9);
 });

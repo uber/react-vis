@@ -1,25 +1,16 @@
-import test from 'tape';
 import {makeWidthFlexible} from 'make-vis-flexible';
 
-test('makeWidthFlexible: displayName given', t => {
+test('makeWidthFlexible: displayName given', () => {
   function ChildComponent() {}
   ChildComponent.displayName = 'ChildComponentWithDisplayName';
   const FlexibleComponent = makeWidthFlexible(ChildComponent);
-  t.equal(
-    FlexibleComponent.displayName,
-    'FlexibleChildComponentWithDisplayName',
-    'should use component display name'
+  expect(FlexibleComponent.displayName).toBe(
+    'FlexibleChildComponentWithDisplayName'
   );
-  t.end();
 });
 
-test('makeWidthFlexible: displayName not given', t => {
+test('makeWidthFlexible: displayName not given', () => {
   function ChildComponent() {}
   const FlexibleComponent = makeWidthFlexible(ChildComponent);
-  t.equal(
-    FlexibleComponent.displayName,
-    'FlexibleChildComponent',
-    'should default to component name'
-  );
-  t.end();
+  expect(FlexibleComponent.displayName).toBe('FlexibleChildComponent');
 });

@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 
@@ -22,7 +21,7 @@ import {testRenderWithProps} from '../test-utils';
 // make sure that the components render at all
 testRenderWithProps(Sankey, SANKEY_PROPS);
 
-test('Sankey: labels', t => {
+test('Sankey: labels', () => {
   const wrap = mount(
     <Sankey
       height={100}
@@ -32,14 +31,12 @@ test('Sankey: labels', t => {
     />
   );
 
-  t.equal(wrap.find('text').length, 2, 'there should be two node labels');
+  expect(wrap.find('text').length).toBe(2);
   wrap.setProps({hideLabels: true});
-  t.equal(wrap.find('text').length, 0, 'the labels should now be hidden');
-
-  t.end();
+  expect(wrap.find('text').length).toBe(0);
 });
 
-test('Sankey: children', t => {
+test('Sankey: children', () => {
   const $ = mount(
     <Sankey
       height={100}
@@ -50,99 +47,51 @@ test('Sankey: children', t => {
       <Hint x={0} y={0} value={{test: 123}} />
     </Sankey>
   );
-  t.equal($.find(Hint).length, 1, 'should find children of sankey');
-
-  t.end();
+  expect($.find(Hint).length).toBe(1);
 });
 
-test('Sankey: Showcase Example - BasicSankey', t => {
+test('Sankey: Showcase Example - BasicSankey', () => {
   const $ = mount(<BasicSankey />);
-  t.equal(
-    $.find('.rv-sankey__link').length,
-    3,
-    'should find the right number of links'
-  );
-  t.equal(
-    $.find('.rv-sankey__node rect').length,
-    3,
-    'should find the right number of nodes'
-  );
-
-  t.end();
+  expect($.find('.rv-sankey__link').length).toBe(3);
+  expect($.find('.rv-sankey__node rect').length).toBe(3);
 });
 
-test('Sankey: Showcase Example - VoronoiSankey', t => {
+test('Sankey: Showcase Example - VoronoiSankey', () => {
   const $ = mount(<VoronoiSankey />);
 
-  t.equal(
-    $.find('.rv-sankey__link').length,
-    3,
-    'should find the right number of links'
-  );
-  t.equal(
-    $.find('.rv-sankey__node rect').length,
-    3,
-    'should find the right number of nodes'
-  );
-  t.equal(
-    $.find('.rv-voronoi').length,
-    1,
-    'should find the right number of voronoi wrappers'
-  );
-  t.equal(
-    $.find('.rv-voronoi__cell').length,
-    3,
-    'should find the right number of voronoi cells'
-  );
+  expect($.find('.rv-sankey__link').length).toBe(3);
+  expect($.find('.rv-sankey__node rect').length).toBe(3);
+  expect($.find('.rv-voronoi').length).toBe(1);
+  expect($.find('.rv-voronoi__cell').length).toBe(3);
 
-  t.equal($.text(), 'None selectedabc', 'should find that no bar is hovered');
+  expect($.text()).toBe('None selectedabc');
   $.find('.rv-voronoi__cell')
     .at(0)
     .simulate('mouseOver');
-  t.equal(
-    $.text(),
-    'a selected!a!bc',
-    'should find that the first bar is hovered bar is hovered'
-  );
+  expect($.text()).toBe('a selected!a!bc');
   $.find('.rv-voronoi__cell')
     .at(0)
     .simulate('mouseLeave');
-
-  t.end();
 });
 
-test('Sankey: Showcase Example - LinkEventSankey', t => {
+test('Sankey: Showcase Example - LinkEventSankey', () => {
   const $ = mount(<LinkEventSankey />);
 
-  t.equal(
-    $.find('.rv-sankey__link').length,
-    3,
-    'should find the right number of links'
-  );
-  t.equal(
-    $.find('.rv-sankey__node rect').length,
-    3,
-    'should find the right number of nodes'
-  );
+  expect($.find('.rv-sankey__link').length).toBe(3);
+  expect($.find('.rv-sankey__node rect').length).toBe(3);
 
-  t.equal($.text(), 'None selectedabc', 'should find that no link is hovered');
+  expect($.text()).toBe('None selectedabc');
   $.find('.rv-sankey__link')
     .at(0)
     .simulate('mouseOver');
-  t.equal(
-    $.text(),
-    'a -> b selectedabc',
-    'should find that the first link is hovered'
-  );
+  expect($.text()).toBe('a -> b selectedabc');
   $.find('.rv-sankey__link')
     .at(0)
     .simulate('mouseOut');
-  t.equal($.text(), 'None selectedabc', 'should find that no bar is hovered');
-
-  t.end();
+  expect($.text()).toBe('None selectedabc');
 });
 
-test('Sankey: Showcase Example - EnergySankey', t => {
+test('Sankey: Showcase Example - EnergySankey', () => {
   const $ = mount(<EnergySankey />);
 
   [
@@ -151,57 +100,29 @@ test('Sankey: Showcase Example - EnergySankey', t => {
     "PREV MODE left NEXT MODEAgricultural 'waste'Bio-conversionLiquidLossesSolidGasBiofuel importsBiomass importsCoal importsCoalCoal reservesDistrict heatingIndustryHeating and cooling - commercialHeating and cooling - homesElectricity gridOver generation / exportsH2 conversionRoad transportAgricultureRail transportLighting & appliances - commercialLighting & appliances - homesGas importsNgasGas reservesThermal generationGeothermalH2HydroInternational shippingDomestic aviationInternational aviationNational navigationMarine algaeNuclearOil importsOilOil reservesOther wastePumped heatSolar PVSolar ThermalSolarTidalUK land based bioenergyWaveWind",
     "PREV MODE right NEXT MODEAgricultural 'waste'Bio-conversionLiquidLossesSolidGasBiofuel importsBiomass importsCoal importsCoalCoal reservesDistrict heatingIndustryHeating and cooling - commercialHeating and cooling - homesElectricity gridOver generation / exportsH2 conversionRoad transportAgricultureRail transportLighting & appliances - commercialLighting & appliances - homesGas importsNgasGas reservesThermal generationGeothermalH2HydroInternational shippingDomestic aviationInternational aviationNational navigationMarine algaeNuclearOil importsOilOil reservesOther wastePumped heatSolar PVSolar ThermalSolarTidalUK land based bioenergyWaveWind"
   ].forEach(testMessage => {
-    t.equal($.text(), testMessage, 'should find that no bar is hovered');
+    expect($.text()).toBe(testMessage);
     $.find('.showcase-button')
       .at(1)
       .simulate('click');
 
-    t.equal(
-      $.find('.rv-sankey__link').length,
-      68,
-      'should find the right number of links'
-    );
-    t.equal(
-      $.find('.rv-sankey__node rect').length,
-      48,
-      'should find the right number of nodes'
-    );
+    expect($.find('.rv-sankey__link').length).toBe(68);
+    expect($.find('.rv-sankey__node rect').length).toBe(48);
   });
-
-  t.end();
 });
 
-test('Sankey: Showcase Example - LinkHintSankey', t => {
+test('Sankey: Showcase Example - LinkHintSankey', () => {
   const $ = mount(<LinkHintSankey />);
 
-  t.equal(
-    $.find('.rv-sankey__link').length,
-    3,
-    'should find the right number of links'
-  );
-  t.equal(
-    $.find('.rv-sankey__node rect').length,
-    3,
-    'should find the right number of nodes'
-  );
+  expect($.find('.rv-sankey__link').length).toBe(3);
+  expect($.find('.rv-sankey__node rect').length).toBe(3);
 
-  t.equal($.find(Hint).length, 0, 'should find that no hint is shown');
+  expect($.find(Hint).length).toBe(0);
   $.find('.rv-sankey__link')
     .at(0)
     .simulate('mouseOver');
-  t.equal(
-    $.find(Hint).length,
-    1,
-    'should find that hint is shown if link is hovered'
-  );
+  expect($.find(Hint).length).toBe(1);
   $.find('.rv-sankey__link')
     .at(0)
     .simulate('mouseOut');
-  t.equal(
-    $.find(Hint).length,
-    0,
-    'should find that no hint is shown if link is not hovered anymore'
-  );
-
-  t.end();
+  expect($.find(Hint).length).toBe(0);
 });

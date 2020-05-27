@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import MarkSeries from 'plot/series/mark-series';
@@ -8,27 +7,14 @@ import DynamicCrosshairScatterplot from '../../../showcase/axes/dynamic-crosshai
 
 testRenderWithProps(MarkSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
-test('MarkSeries: Showcase Example - Scatterplot', t => {
+test('MarkSeries: Showcase Example - Scatterplot', () => {
   const $ = mount(<Scatterplot />);
-  t.equal(
-    $.text(),
-    '1.01.52.02.53.068101214',
-    'should find the right text content'
-  );
-  t.equal(
-    $.find('.rv-xy-plot__series--mark circle').length,
-    5,
-    'should find the right number of circles'
-  );
-  t.equal(
-    $.find('g.mark-series-example').length,
-    1,
-    'should find the right number of custom named series'
-  );
-  t.end();
+  expect($.text()).toBe('1.01.52.02.53.068101214');
+  expect($.find('.rv-xy-plot__series--mark circle').length).toBe(5);
+  expect($.find('g.mark-series-example').length).toBe(1);
 });
 
-test('MarkSeries: Showcase Example - Dynamic Crosshair Scatterplot', t => {
+test('MarkSeries: Showcase Example - Dynamic Crosshair Scatterplot', () => {
   const $ = mount(<DynamicCrosshairScatterplot />);
   // NOTE: Point 0 (P0) and Point 1 (P1) are vertically aligned
   const yDistanceBetweenP0andP1 = 2.5;
@@ -38,31 +24,25 @@ test('MarkSeries: Showcase Example - Dynamic Crosshair Scatterplot', t => {
     highlightedCircle,
     []
   );
-  t.equal(highlightedCircles1.length, 0, 'should not highlight any circles');
+  expect(highlightedCircles1.length).toBe(0);
 
   updateCursor(0, yDistanceBetweenP0andP1 / 2 - 0.01);
   const highlightedCircles2 = $.find('.rv-xy-plot__series--mark circle').reduce(
     highlightedCircle,
     []
   );
-  t.equal(highlightedCircles2.length, 1, 'should highlight one circle');
-  t.deepEqual(
-    highlightedCircles2[0],
-    {cx: 0, cy: 0},
-    'should highlight circle at <0, 0>'
-  );
+  expect(highlightedCircles2.length).toBe(1);
+  expect(highlightedCircles2[0]).toEqual({cx: 0, cy: 0});
 
   updateCursor(0, yDistanceBetweenP0andP1 / 2);
   const highlightedCircles3 = $.find('.rv-xy-plot__series--mark circle').reduce(
     highlightedCircle,
     []
   );
-  t.equal(highlightedCircles3.length, 1, 'should highlight one circle');
+  expect(highlightedCircles3.length).toBe(1);
 
-  t.true(Math.abs(highlightedCircles3[0].cx - 0) < 0.005);
-  t.true(Math.abs(highlightedCircles3[0].cy - 2.5) < 0.005);
-
-  t.end();
+  expect(Math.abs(highlightedCircles3[0].cx - 0) < 0.005).toBeTruthy();
+  expect(Math.abs(highlightedCircles3[0].cy - 2.5) < 0.005).toBeTruthy();
 
   function updateCursor(x, y) {
     $.find('.rv-xy-plot__series--mark').simulate('mousemove', {

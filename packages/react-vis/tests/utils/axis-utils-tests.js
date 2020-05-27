@@ -18,7 +18,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import test from 'tape';
 import {scaleLinear} from 'd3-scale';
 import {range} from 'd3-array';
 
@@ -30,54 +29,44 @@ import {
   generatePoints
 } from 'utils/axis-utils';
 
-test('axis-utils #getTicksTotalFromSize', t => {
-  t.ok(getTicksTotalFromSize(0) === 5, 'Returns valid value for 0px');
-  t.ok(getTicksTotalFromSize(301) === 10, 'Returns valid value for 301px');
-  t.ok(getTicksTotalFromSize(701) === 20, 'Returns valid value for 701px');
-  t.end();
+test('axis-utils #getTicksTotalFromSize', () => {
+  expect(getTicksTotalFromSize(0) === 5).toBeTruthy();
+  expect(getTicksTotalFromSize(301) === 10).toBeTruthy();
+  expect(getTicksTotalFromSize(701) === 20).toBeTruthy();
 });
 
-test('axis-utils #getTickValues', t => {
+test('axis-utils #getTickValues', () => {
   const scale = scaleLinear()
     .domain([0, 1])
     .range(['red', 'blue']);
-  t.deepEqual(
-    getTickValues(scale, 10, false).map(d => Math.round(d * 1000) / 1000),
-    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-    'should find the correct tick values'
-  );
+  expect(
+    getTickValues(scale, 10, false).map(d => Math.round(d * 1000) / 1000)
+  ).toEqual([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]);
 
   const predefinedVals = ['got dang', 1, undefined, 'lolz'];
-  t.deepEqual(
-    getTickValues(scale, 10, predefinedVals),
-    predefinedVals,
-    'should find the correct tick values'
-  );
-
-  t.end();
+  expect(getTickValues(scale, 10, predefinedVals)).toEqual(predefinedVals);
 });
 
-test('axis-utils #getAxisAngle', t => {
-  t.equal(getAxisAngle({x: 0, y: 0}, {x: 1, y: 1}), Math.PI / 4);
-  t.equal(getAxisAngle({x: 0, y: 0}, {x: 0, y: 1}), Math.PI / 2);
-  t.equal(getAxisAngle({x: 0, y: 0}, {x: 0, y: -1}), (3 * Math.PI) / 2);
-  t.end();
+test('axis-utils #getAxisAngle', () => {
+  expect(getAxisAngle({x: 0, y: 0}, {x: 1, y: 1})).toBe(Math.PI / 4);
+  expect(getAxisAngle({x: 0, y: 0}, {x: 0, y: 1})).toBe(Math.PI / 2);
+  expect(getAxisAngle({x: 0, y: 0}, {x: 0, y: -1})).toBe((3 * Math.PI) / 2);
 });
 
-test('axis-utils #generateFit', t => {
-  t.deepEqual(generateFit({x: 0, y: 0}, {x: 1, y: 1}), {
+test('axis-utils #generateFit', () => {
+  expect(generateFit({x: 0, y: 0}, {x: 1, y: 1})).toEqual({
     left: 0,
     offset: 0,
     right: 1,
     slope: 1
   });
-  t.deepEqual(generateFit({x: 0, y: 0}, {x: 0, y: 1}), {
+  expect(generateFit({x: 0, y: 0}, {x: 0, y: 1})).toEqual({
     left: 0,
     offset: 0,
     right: 1,
     slope: 0
   });
-  t.deepEqual(generateFit({x: 0, y: 0}, {x: 0, y: -1}), {
+  expect(generateFit({x: 0, y: 0}, {x: 0, y: -1})).toEqual({
     left: 0,
     offset: 0,
     right: -1,
@@ -93,15 +82,10 @@ test('axis-utils #generateFit', t => {
   const pointSlope = (right - left) / numberOfTicks;
   const lengthOfGeneratedPoints = range(left, right + pointSlope, pointSlope)
     .length;
-  t.equal(
-    lengthOfGeneratedPoints,
-    7,
-    'should be 7, incorrect length of generated points'
-  );
-  t.end();
+  expect(lengthOfGeneratedPoints).toBe(7);
 });
 
-test('axis-utils #generatePoints', t => {
+test('axis-utils #generatePoints', () => {
   const result = generatePoints({
     axisStart: {x: 0, y: 1},
     axisEnd: {x: 1, y: 1},
@@ -169,24 +153,11 @@ test('axis-utils #generatePoints', t => {
     ],
     slope: -4398046511104000
   };
-  t.deepEqual(result, expectedResult);
+  expect(result).toEqual(expectedResult);
 
   // Relies on testing library to handle differences in floating point numbers.
   // t.deepEqual(result2, expectedResult2);
-  t.equal(
-    expectedResult2.points.length,
-    6,
-    'should be 6, correct length of generated points'
-  );
-  t.deepEqual(
-    result3,
-    expectedResult3,
-    'should return correct points when accounting for floating point errors'
-  );
-  t.deepEqual(
-    result4,
-    expectedResult4,
-    'should not return correct points when not accounting for floating point errors'
-  );
-  t.end();
+  expect(expectedResult2.points.length).toBe(6);
+  expect(result3).toEqual(expectedResult3);
+  expect(result4).toEqual(expectedResult4);
 });

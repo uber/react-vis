@@ -1,4 +1,3 @@
-import test from 'tape';
 import React from 'react';
 import {mount} from 'enzyme';
 import Highlight from 'plot/highlight';
@@ -11,11 +10,11 @@ import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 
 testRenderWithProps(Highlight, GENERIC_XYPLOT_SERIES_PROPS);
 
-test('Highlight: DragableExample', t => {
+test('Highlight: DragableExample', () => {
   const $ = mount(<DragableExample />);
   const initialText =
     '0.00.51.01.52.02.53.03.54.04.55.05.56.06.57.00246810selectionStart: 0,selectionEnd: 0,';
-  t.equal($.text(), initialText, 'should find the correct text initially');
+  expect($.text()).toBe(initialText);
 
   $.find('.rv-mouse-target').simulate('mouseDown', {
     nativeEvent: {offsetX: 100, offsetY: 100}
@@ -25,14 +24,12 @@ test('Highlight: DragableExample', t => {
       nativeEvent: {offsetX: 100 + i, offsetY: 100}
     });
   }
-  t.equal($.text(), initialText, 'should find the right text after brushing');
+  expect($.text()).toBe(initialText);
   $.find('.rv-mouse-target').simulate('mouseUp', {
     nativeEvent: {offsetX: 200, offsetY: 100}
   });
-  t.equal(
-    $.text(),
-    '0.00.51.01.52.02.53.03.54.04.55.05.56.06.57.00246810selectionStart: 0.93,selectionEnd: 2.47,',
-    'should find the right text after brushing'
+  expect($.text()).toBe(
+    '0.00.51.01.52.02.53.03.54.04.55.05.56.06.57.00246810selectionStart: 0.93,selectionEnd: 2.47,'
   );
 
   // click to clear
@@ -42,20 +39,14 @@ test('Highlight: DragableExample', t => {
   $.find('.rv-mouse-target').simulate('mouseUp', {
     nativeEvent: {offsetX: 0, offsetY: 0}
   });
-  t.equal(
-    $.text(),
-    initialText,
-    'should find no points selected after click to clear'
-  );
-
-  t.end();
+  expect($.text()).toBe(initialText);
 });
 
-test('Highlight: ZoomableChartExample', t => {
+test('Highlight: ZoomableChartExample', () => {
   const $ = mount(<ZoomableChartExample />);
   const initialText =
     '-5051015200102030405060708090Reset ZoomLast Draw AreaN/A';
-  t.equal($.text(), initialText, 'should find the correct text initially');
+  expect($.text()).toBe(initialText);
 
   // brush in a drag area
   $.find('.rv-mouse-target').simulate('mouseDown', {
@@ -66,30 +57,22 @@ test('Highlight: ZoomableChartExample', t => {
       nativeEvent: {offsetX: 100 + i, offsetY: 100 + i}
     });
   }
-  t.equal($.text(), initialText, 'should find the right text after brushing');
+  expect($.text()).toBe(initialText);
 
   $.find('.rv-mouse-target').simulate('mouseUp', {
     nativeEvent: {offsetX: 200, offsetY: 200}
   });
-  t.equal(
-    $.text(),
-    '-5051015200102030405060708090Reset ZoomLast Draw AreaTop: 11.083578425950623Right: 34.98Bottom: -0.5863163548405383Left: 13.2',
-    'should find the right text after brush finishes'
+  expect($.text()).toBe(
+    '-5051015200102030405060708090Reset ZoomLast Draw AreaTop: 11.083578425950623Right: 34.98Bottom: -0.5863163548405383Left: 13.2'
   );
-
-  t.end();
 });
 
-test('Highlight: SelectionPlotExample', t => {
+test('Highlight: SelectionPlotExample', () => {
   const $ = mount(<SelectionPlotExample />);
 
   const initialText = '0.51.01.52.02.5681012There are 0 selected points';
-  t.equal(
-    $.find('g.selection-example').length,
-    1,
-    'should find the custom class is passed through correctly'
-  );
-  t.equal($.text(), initialText, 'should find the correct text initially');
+  expect($.find('g.selection-example').length).toBe(1);
+  expect($.text()).toBe(initialText);
 
   $.find('.rv-mouse-target').simulate('mouseDown', {
     nativeEvent: {offsetX: 100, offsetY: 100}
@@ -99,19 +82,11 @@ test('Highlight: SelectionPlotExample', t => {
       nativeEvent: {offsetX: 100, offsetY: 100 + i}
     });
   }
-  t.equal(
-    $.text(),
-    '0.51.01.52.02.5681012There are 4 selected points',
-    'should find the right text after brushing'
-  );
+  expect($.text()).toBe('0.51.01.52.02.5681012There are 4 selected points');
   $.find('.rv-mouse-target').simulate('mouseUp', {
     nativeEvent: {offsetX: 100, offsetY: 200}
   });
-  t.equal(
-    $.text(),
-    '0.51.01.52.02.5681012There are 4 selected points',
-    'should find the right text after brushing'
-  );
+  expect($.text()).toBe('0.51.01.52.02.5681012There are 4 selected points');
 
   // click to clear
   $.find('.rv-mouse-target').simulate('mouseDown', {
@@ -120,23 +95,14 @@ test('Highlight: SelectionPlotExample', t => {
   $.find('.rv-mouse-target').simulate('mouseUp', {
     nativeEvent: {offsetX: 0, offsetY: 0}
   });
-  t.equal(
-    $.text(),
-    initialText,
-    'should find no points selected after click to clear'
-  );
-  t.end();
+  expect($.text()).toBe(initialText);
 });
 
-test('Highlight: BidirectionDragChart', t => {
+test('Highlight: BidirectionDragChart', () => {
   const $ = mount(<BidirectionDragChart />);
 
   // brush in a drag area
-  t.equal(
-    $.text(),
-    '12342468There are 0 selected points',
-    'should find the correct text initially'
-  );
+  expect($.text()).toBe('12342468There are 0 selected points');
 
   $.find('.rv-mouse-target').simulate('mouseDown', {
     nativeEvent: {offsetX: 100, offsetY: 100}
@@ -146,20 +112,12 @@ test('Highlight: BidirectionDragChart', t => {
       nativeEvent: {offsetX: 100 + i, offsetY: 100 + i}
     });
   }
-  t.equal(
-    $.text(),
-    '12342468There are 5 selected points',
-    'should find the right text after brushing'
-  );
+  expect($.text()).toBe('12342468There are 5 selected points');
 
   $.find('.rv-mouse-target').simulate('mouseUp', {
     nativeEvent: {offsetX: 200, offsetY: 200}
   });
-  t.equal(
-    $.text(),
-    '12342468There are 5 selected points',
-    'should find the right text after brush finishes'
-  );
+  expect($.text()).toBe('12342468There are 5 selected points');
 
   // execute dragging
   $.find('.rv-mouse-target').simulate('mouseDown', {
@@ -170,19 +128,11 @@ test('Highlight: BidirectionDragChart', t => {
       nativeEvent: {offsetX: 150 + i, offsetY: 150 + i}
     });
   }
-  t.equal(
-    $.text(),
-    '12342468There are 6 selected points',
-    'should find the right text after dragging'
-  );
+  expect($.text()).toBe('12342468There are 6 selected points');
   $.find('.rv-mouse-target').simulate('mouseUp', {
     nativeEvent: {offsetX: 200, offsetY: 200}
   });
-  t.equal(
-    $.text(),
-    '12342468There are 6 selected points',
-    'should find the right text after drag finishes'
-  );
+  expect($.text()).toBe('12342468There are 6 selected points');
 
   // click to clear
   $.find('.rv-mouse-target').simulate('mouseDown', {
@@ -191,11 +141,5 @@ test('Highlight: BidirectionDragChart', t => {
   $.find('.rv-mouse-target').simulate('mouseUp', {
     nativeEvent: {offsetX: 75, offsetY: 75}
   });
-  t.equal(
-    $.text(),
-    '12342468There are 0 selected points',
-    'should find no points selected after click to clear'
-  );
-
-  t.end();
+  expect($.text()).toBe('12342468There are 0 selected points');
 });

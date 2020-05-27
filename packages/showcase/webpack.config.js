@@ -11,7 +11,7 @@ const jsRule = {
   exclude: [/node_modules/],
   options: {
     rootMode: 'upward'
-  },
+  }
 };
 const isProd = process.env.NODE_ENV === 'production';
 const config = isProd
@@ -24,7 +24,10 @@ const config = isProd
       },
 
       resolve: {
-        modules: ['node_modules', path.join(__dirname,'..', 'react-vis', 'src')],
+        modules: [
+          'node_modules',
+          path.join(__dirname, '..', 'react-vis', 'src')
+        ]
       },
 
       module: {
