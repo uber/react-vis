@@ -21,72 +21,77 @@ const RADIAL_PROPS = {
   width: 400,
   padAngle: 0.3
 };
-// make sure that the components render at all
-testRenderWithProps(RadialChart, RADIAL_PROPS);
 
-test('RadialChart: Basic rendering', () => {
-  const $ = mount(<RadialChart {...RADIAL_PROPS} />);
-  const pieSlices = $.find('.rv-radial-chart__series--pie__slice').length;
-  expect(pieSlices).toBe(RADIAL_PROPS.data.length);
-  expect(
+describe('RadialChart', () => {
+  // make sure that the components render at all
+  testRenderWithProps(RadialChart, RADIAL_PROPS);
+
+  test('Basic rendering', () => {
+    const $ = mount(<RadialChart {...RADIAL_PROPS} />);
+    const pieSlices = $.find('.rv-radial-chart__series--pie__slice').length;
+    expect(pieSlices).toBe(RADIAL_PROPS.data.length);
+    expect(
+      $.find('.rv-radial-chart__series--pie__slice')
+        .at(0)
+        .prop('className')
+    ).toBe(
+      'rv-xy-plot__series rv-xy-plot__series--arc-path rv-radial-chart__series--pie__slice custom-class'
+    );
+
+    const labels = $.find('.rv-xy-plot__series--label-text').length;
+    expect(labels).toBe(RADIAL_PROPS.data.length);
+    expect($.text()).toBe('yellow againmagentacyanyellowgreen');
+
+    $.setProps({data: []});
+    expect($.find('.rv-radial-chart__series--pie__slice').length).toBe(0);
+    expect($.find('.rv-radial-chart__series--pie__slice-overlay').length).toBe(
+      0
+    );
+    expect($.find('.rv-xy-plot__series--label-text').length).toBe(0);
+    expect($.text()).toBe('');
+  });
+
+  test('Showcase Example - Simple Radial Chart Example', () => {
+    const $ = mount(<SimpleRadialChart />);
+    expect($.find('.rv-radial-chart__series--pie__slice').length).toBe(5);
+    expect($.find('.rv-xy-plot__series--label-text').length).toBe(5);
+    expect($.text()).toBe('yellow againmagentacyanyellowgreen');
+  });
+
+  test('Showcase Example - DonutChart', () => {
+    const $ = mount(<DonutChart />);
+    expect($.find('.rv-radial-chart__series--pie__slice').length).toBe(5);
+    expect($.find('.rv-xy-plot__series--label-text').length).toBe(0);
+    expect($.text()).toBe('');
     $.find('.rv-radial-chart__series--pie__slice')
-      .at(0)
-      .prop('className')
-  ).toBe(
-    'rv-xy-plot__series rv-xy-plot__series--arc-path rv-radial-chart__series--pie__slice custom-class'
-  );
+      .at(1)
+      .simulate('mouseOver');
+    expect($.text()).toBe(
+      'theta: 3angle0: -2.9171931783333793angle: -4.263590029871862radius0: 0radius: 1color: 1x: -0.4338837391175583y: 0.900968867902419'
+    );
+  });
 
-  const labels = $.find('.rv-xy-plot__series--label-text').length;
-  expect(labels).toBe(RADIAL_PROPS.data.length);
-  expect($.text()).toBe('yellow againmagentacyanyellowgreen');
+  test('Showcase Example - Custom radius example', () => {
+    const $ = mount(<CustomRadiusRadialChart />);
+    $.find('.rv-radial-chart__series--pie__slice')
+      .at(1)
+      .simulate('mouseEnter');
+    $.find('.rv-radial-chart__series--pie__slice')
+      .at(1)
+      .simulate('mouseLeave');
+    // multiplied by two to account for the shadow listeners
+    expect($.find('.rv-radial-chart__series--pie__slice').length).toBe(2 * 5);
+    expect($.find('.rv-xy-plot__series--label-text').length).toBe(4);
+    expect($.text()).toBe(
+      'Sub Label onlyAlt LabelSuper Custom labelWith annotation'
+    );
+  });
 
-  $.setProps({data: []});
-  expect($.find('.rv-radial-chart__series--pie__slice').length).toBe(0);
-  expect($.find('.rv-radial-chart__series--pie__slice-overlay').length).toBe(0);
-  expect($.find('.rv-xy-plot__series--label-text').length).toBe(0);
-  expect($.text()).toBe('');
-});
-
-test('RadialChart: Showcase Example - Simple Radial Chart Example', () => {
-  const $ = mount(<SimpleRadialChart />);
-  expect($.find('.rv-radial-chart__series--pie__slice').length).toBe(5);
-  expect($.find('.rv-xy-plot__series--label-text').length).toBe(5);
-  expect($.text()).toBe('yellow againmagentacyanyellowgreen');
-});
-
-test('RadialChart: Showcase Example - DonutChart', () => {
-  const $ = mount(<DonutChart />);
-  expect($.find('.rv-radial-chart__series--pie__slice').length).toBe(5);
-  expect($.find('.rv-xy-plot__series--label-text').length).toBe(0);
-  expect($.text()).toBe('');
-  $.find('.rv-radial-chart__series--pie__slice')
-    .at(1)
-    .simulate('mouseOver');
-  expect($.text()).toBe(
-    'theta: 3angle0: -2.9171931783333793angle: -4.263590029871862radius0: 0radius: 1color: 1x: -0.4338837391175583y: 0.900968867902419'
-  );
-});
-
-test('RadialChart: Showcase Example - Custom radius example', () => {
-  const $ = mount(<CustomRadiusRadialChart />);
-  $.find('.rv-radial-chart__series--pie__slice')
-    .at(1)
-    .simulate('mouseEnter');
-  $.find('.rv-radial-chart__series--pie__slice')
-    .at(1)
-    .simulate('mouseLeave');
-  // multiplied by two to account for the shadow listeners
-  expect($.find('.rv-radial-chart__series--pie__slice').length).toBe(2 * 5);
-  expect($.find('.rv-xy-plot__series--label-text').length).toBe(4);
-  expect($.text()).toBe(
-    'Sub Label onlyAlt LabelSuper Custom labelWith annotation'
-  );
-});
-
-test('RadialChart: Showcase Example - Gradient Pie Example', () => {
-  const $ = mount(<GradientPie />);
-  // multiplied by two to account for the shadow listeners
-  expect($.find('.rv-radial-chart__series--pie__slice').length).toBe(3);
-  expect($.find('.rv-xy-plot__series--label-text').length).toBe(0);
-  expect($.find('.rv-gradient-defs linearGradient').length).toBe(3);
+  test('Showcase Example - Gradient Pie Example', () => {
+    const $ = mount(<GradientPie />);
+    // multiplied by two to account for the shadow listeners
+    expect($.find('.rv-radial-chart__series--pie__slice').length).toBe(3);
+    expect($.find('.rv-xy-plot__series--label-text').length).toBe(0);
+    expect($.find('.rv-gradient-defs linearGradient').length).toBe(3);
+  });
 });

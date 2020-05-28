@@ -7,24 +7,26 @@ import LabeledStackedVerticalBarChart from '../../../showcase/plot/labeled-stack
 
 testRenderWithProps(LabelSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
-test('LabelSeries: Showcase Example - LabelSeriesExample', () => {
-  const $ = mount(<LabelSeriesExample />);
-  expect($.text()).toBe(
-    'UPDATE-101234505101520WigglytuffPsyduckGeodudeDittoSnorlax'
-  );
-  expect($.find('.rv-xy-plot__series--label text').length).toBe(5);
+describe('LabelSeries', () => {
+  test('Showcase Example - LabelSeriesExample', () => {
+    const $ = mount(<LabelSeriesExample />);
+    expect($.text()).toBe(
+      'UPDATE-101234505101520WigglytuffPsyduckGeodudeDittoSnorlax'
+    );
+    expect($.find('.rv-xy-plot__series--label text').length).toBe(5);
 
-  $.find('.showcase-button').simulate('click');
-  expect($.text()).toBe(
-    'UPDATE-101234505101520WigglytuffPsyduckGeoduderedblue'
-  );
-  $.find('.showcase-button').simulate('click');
-  expect($.text()).toBe(
-    'UPDATE-101234505101520WigglytuffPsyduckGeoduderedblue'
-  );
-});
+    $.find('.showcase-button').simulate('click');
+    expect($.text()).toBe(
+      'UPDATE-101234505101520WigglytuffPsyduckGeoduderedblue'
+    );
+    $.find('.showcase-button').simulate('click');
+    expect($.text()).toBe(
+      'UPDATE-101234505101520WigglytuffPsyduckGeoduderedblue'
+    );
+  });
 
-test('BarSeries: Showcase Example - LabeledStackedVerticalBarChart', () => {
-  const $ = mount(<LabeledStackedVerticalBarChart />);
-  expect($.find('.rv-xy-plot__series--label text').length).toBe(9);
+  test('Showcase Example - LabeledStackedVerticalBarChart', () => {
+    const $ = mount(<LabeledStackedVerticalBarChart />);
+    expect($.find('.rv-xy-plot__series--label text').length).toBe(9);
+  });
 });

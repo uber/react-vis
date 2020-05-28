@@ -11,44 +11,46 @@ const baseProps = {
   title: 'Title'
 };
 
-test('AxisTitle: horizontal bottom axis title', () => {
-  const props = Object.assign({}, baseProps, {
-    orientation: BOTTOM
+describe('AxisTitle', () => {
+  test('horizontal bottom axis title', () => {
+    const props = Object.assign({}, baseProps, {
+      orientation: BOTTOM
+    });
+    const $ = mount(<AxisTitle {...props} />);
+    const innerGroupHtml = $.find('g > g').html();
+    expect(innerGroupHtml.includes('text-anchor: end')).toBeTruthy();
+    expect($.find('text').text()).toBe(baseProps.title);
   });
-  const $ = mount(<AxisTitle {...props} />);
-  const innerGroupHtml = $.find('g > g').html();
-  expect(innerGroupHtml.includes('text-anchor: end')).toBeTruthy();
-  expect($.find('text').text()).toBe(baseProps.title);
-});
 
-test('AxisTitle: horizontal top axis title', () => {
-  const props = Object.assign({}, baseProps, {
-    orientation: TOP,
-    position: 'start'
+  test('horizontal top axis title', () => {
+    const props = Object.assign({}, baseProps, {
+      orientation: TOP,
+      position: 'start'
+    });
+    const $ = mount(<AxisTitle {...props} />);
+    const innerGroupHtml = $.find('g > g').html();
+    expect(innerGroupHtml.includes('text-anchor: start')).toBeTruthy();
+    expect($.find('text').text()).toBe(baseProps.title);
   });
-  const $ = mount(<AxisTitle {...props} />);
-  const innerGroupHtml = $.find('g > g').html();
-  expect(innerGroupHtml.includes('text-anchor: start')).toBeTruthy();
-  expect($.find('text').text()).toBe(baseProps.title);
-});
 
-test('AxisTitle: vertical left title', () => {
-  const props = Object.assign({}, baseProps, {
-    orientation: LEFT
+  test('vertical left title', () => {
+    const props = Object.assign({}, baseProps, {
+      orientation: LEFT
+    });
+    const $ = mount(<AxisTitle {...props} />);
+    const innerGroupHtml = $.find('g > g').html();
+    expect(innerGroupHtml.includes('text-anchor: end')).toBeTruthy();
+    expect($.find('text').text()).toBe(baseProps.title);
   });
-  const $ = mount(<AxisTitle {...props} />);
-  const innerGroupHtml = $.find('g > g').html();
-  expect(innerGroupHtml.includes('text-anchor: end')).toBeTruthy();
-  expect($.find('text').text()).toBe(baseProps.title);
-});
 
-test('AxisTitle: vertical right title', () => {
-  const props = Object.assign({}, baseProps, {
-    orientation: RIGHT,
-    position: 'start'
+  test('vertical right title', () => {
+    const props = Object.assign({}, baseProps, {
+      orientation: RIGHT,
+      position: 'start'
+    });
+    const $ = mount(<AxisTitle {...props} />);
+    const innerGroupHtml = $.find('g > g').html();
+    expect(innerGroupHtml.includes('text-anchor: start')).toBeTruthy();
+    expect($.find('text').text()).toBe(baseProps.title);
   });
-  const $ = mount(<AxisTitle {...props} />);
-  const innerGroupHtml = $.find('g > g').html();
-  expect(innerGroupHtml.includes('text-anchor: start')).toBeTruthy();
-  expect($.find('text').text()).toBe(baseProps.title);
 });

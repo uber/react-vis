@@ -1,5 +1,7 @@
 import {isReactDOMSupported} from 'utils/react-utils';
 
-test('react-utils #isReactDOMSupported', () => {
-  expect(isReactDOMSupported()).toBeTruthy();
+describe('react-utils', () => {
+  test('isReactDOMSupported', () => {
+    expect(isReactDOMSupported()).toBeTruthy();
+  });
 });

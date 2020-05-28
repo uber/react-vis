@@ -26,22 +26,26 @@ import {
 
 const arr = [{a: 1}, {b: 3, a: 2}, {a: 2}];
 
-test('data-utils #getUniquePropertyValues', () => {
-  const result = getUniquePropertyValues(arr, d => d.a);
-  expect(result.length === 2).toBeTruthy();
-  expect(result.indexOf(1) !== -1 && result.indexOf(2) !== -1).toBeTruthy();
-});
+describe('data-utils', () => {
+  test('getUniquePropertyValues', () => {
+    const result = getUniquePropertyValues(arr, d => d.a);
+    expect(result.length === 2).toBeTruthy();
+    expect(result.indexOf(1) !== -1 && result.indexOf(2) !== -1).toBeTruthy();
+  });
 
-test('data-utils #addValueToArray', () => {
-  expect(addValueToArray([-10, 10], 1)).toEqual([-10, 10]);
-  expect(addValueToArray([-10, 0], 1)).toEqual([-10, 1]);
-  expect(addValueToArray([0, 10], -1)).toEqual([-1, 10]);
-});
+  test('addValueToArray', () => {
+    expect(addValueToArray([-10, 10], 1)).toEqual([-10, 10]);
+    expect(addValueToArray([-10, 0], 1)).toEqual([-10, 1]);
+    expect(addValueToArray([0, 10], -1)).toEqual([-1, 10]);
+  });
 
-test('data-utils #transformValueToString', () => {
-  expect(transformValueToString(0)).toEqual(0);
+  test('transformValueToString', () => {
+    expect(transformValueToString(0)).toEqual(0);
 
-  // 43200000 - this is the timestamp for 12PM on 1970-01-01
-  // This plays much nicer when running tests locally for different timezones.
-  expect(transformValueToString(new Date(43200000))).toEqual('Thu Jan 01 1970');
+    // 43200000 - this is the timestamp for 12PM on 1970-01-01
+    // This plays much nicer when running tests locally for different timezones.
+    expect(transformValueToString(new Date(43200000))).toEqual(
+      'Thu Jan 01 1970'
+    );
+  });
 });

@@ -4,10 +4,12 @@ import PolygonSeries from 'plot/series/mark-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import TriangleExample from '../../../showcase/misc/triangle-example';
 
-testRenderWithProps(PolygonSeries, GENERIC_XYPLOT_SERIES_PROPS);
+describe('PolygonSeries', () => {
+  testRenderWithProps(PolygonSeries, GENERIC_XYPLOT_SERIES_PROPS);
 
-test('PolygonSeries: Showcase Example - Triangle Example', () => {
-  const $ = mount(<TriangleExample />);
-  expect($.text()).toBe('024681012024681012');
-  expect($.find('.rv-xy-plot__series--polygon').length).toBe(121);
+  test('Showcase Example - Triangle Example', () => {
+    const $ = mount(<TriangleExample />);
+    expect($.text()).toBe('024681012024681012');
+    expect($.find('.rv-xy-plot__series--polygon').length).toBe(121);
+  });
 });

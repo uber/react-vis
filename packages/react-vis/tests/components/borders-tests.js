@@ -6,8 +6,10 @@ import GradientExample from '../../../showcase/misc/gradient-example';
 
 testRenderWithProps(Borders, GENERIC_XYPLOT_SERIES_PROPS);
 
-test('Borders: GradientExample', () => {
-  const $ = mount(<GradientExample />);
-  expect($.find('.rv-xy-plot__borders').length).toBe(1);
-  expect($.find('.rv-xy-plot__borders rect').length).toBe(4);
+describe('Borders', () => {
+  test('GradientExample', () => {
+    const $ = mount(<GradientExample />);
+    expect($.find('.rv-xy-plot__borders').length).toBe(1);
+    expect($.find('.rv-xy-plot__borders rect').length).toBe(4);
+  });
 });

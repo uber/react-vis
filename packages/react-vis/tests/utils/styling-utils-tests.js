@@ -20,33 +20,35 @@
 
 import {getCombinedClassName} from 'utils/styling-utils';
 
-test('styling-utils #getCombinedClassName', () => {
-  const allValidStringParams = [
-    'test_class--1',
-    'test_class--2',
-    'test_class--3'
-  ];
-  const expectedAllValidStringParamsCombined =
-    'test_class--1 test_class--2 test_class--3';
-  const falsyValues = [null, undefined, false, '', 0, NaN];
-  const nonStringValues = [
-    ['invalid_class--1', 'invalid_class--2'],
-    {foo: 'bar'},
-    123,
-    () => {
-      return 'invalid_class--3';
-    }
-  ];
+describe('styling-utils', () => {
+  test('getCombinedClassName', () => {
+    const allValidStringParams = [
+      'test_class--1',
+      'test_class--2',
+      'test_class--3'
+    ];
+    const expectedAllValidStringParamsCombined =
+      'test_class--1 test_class--2 test_class--3';
+    const falsyValues = [null, undefined, false, '', 0, NaN];
+    const nonStringValues = [
+      ['invalid_class--1', 'invalid_class--2'],
+      {foo: 'bar'},
+      123,
+      () => {
+        return 'invalid_class--3';
+      }
+    ];
 
-  expect(getCombinedClassName(...allValidStringParams)).toBe(
-    expectedAllValidStringParamsCombined
-  );
+    expect(getCombinedClassName(...allValidStringParams)).toBe(
+      expectedAllValidStringParamsCombined
+    );
 
-  expect(getCombinedClassName(...allValidStringParams, ...falsyValues)).toBe(
-    expectedAllValidStringParamsCombined
-  );
+    expect(getCombinedClassName(...allValidStringParams, ...falsyValues)).toBe(
+      expectedAllValidStringParamsCombined
+    );
 
-  expect(
-    getCombinedClassName(...allValidStringParams, ...nonStringValues)
-  ).toBe(expectedAllValidStringParamsCombined);
+    expect(
+      getCombinedClassName(...allValidStringParams, ...nonStringValues)
+    ).toBe(expectedAllValidStringParamsCombined);
+  });
 });

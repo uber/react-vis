@@ -20,25 +20,27 @@
 
 import {getRadialLayoutMargin} from 'utils/chart-utils';
 
-test('chart-utils #getRadialLayoutMargin', () => {
-  expect(getRadialLayoutMargin(500, 300, 120)).toEqual({
-    bottom: 30,
-    left: 130,
-    right: 130,
-    top: 30
-  });
+describe('chart-utils', () => {
+  test('getRadialLayoutMargin', () => {
+    expect(getRadialLayoutMargin(500, 300, 120)).toEqual({
+      bottom: 30,
+      left: 130,
+      right: 130,
+      top: 30
+    });
 
-  expect(getRadialLayoutMargin(300, 500, 120)).toEqual({
-    bottom: 130,
-    left: 30,
-    right: 30,
-    top: 130
-  });
+    expect(getRadialLayoutMargin(300, 500, 120)).toEqual({
+      bottom: 130,
+      left: 30,
+      right: 30,
+      top: 130
+    });
 
-  expect(getRadialLayoutMargin(300, 300, 120)).toEqual({
-    bottom: 30,
-    left: 30,
-    right: 30,
-    top: 30
+    expect(getRadialLayoutMargin(300, 300, 120)).toEqual({
+      bottom: 30,
+      left: 30,
+      right: 30,
+      top: 30
+    });
   });
 });

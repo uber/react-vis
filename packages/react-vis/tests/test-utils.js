@@ -34,6 +34,7 @@ export const GENERIC_XYPLOT_SERIES_PROPS = {
 };
 
 export const testRenderWithProps = (Component, props) =>
+  // eslint-disable-next-line jest/require-top-level-describe
   test(`Rendering ${Component.displayName}`, () => {
     const wrapper = mount(<Component {...props} />);
     const wrapperProps = wrapper.props();

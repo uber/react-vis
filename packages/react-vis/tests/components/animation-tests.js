@@ -27,21 +27,23 @@ import AxisTicks from 'plot/axis/axis-ticks';
 import VerticalBarSeries from 'plot/series/vertical-bar-series';
 import XYPlot from 'plot/xy-plot';
 
-test('Animation interpolates xDomain when specified', () => {
-  const wrapper = mount(
-    <XYPlot width={300} height={300}>
-      <VerticalBarSeries data={[{x: 1, y: 0}]} />
-      <Axis
-        attr={'x'}
-        animation={{nonAnimatedProps: ['xDomain']}}
-        xDomain={['Black']}
-      />
-    </XYPlot>
-  );
+describe('Animation', () => {
+  test('interpolates xDomain when specified', () => {
+    const wrapper = mount(
+      <XYPlot width={300} height={300}>
+        <VerticalBarSeries data={[{x: 1, y: 0}]} />
+        <Axis
+          attr={'x'}
+          animation={{nonAnimatedProps: ['xDomain']}}
+          xDomain={['Black']}
+        />
+      </XYPlot>
+    );
 
-  const renderedAnimationWrapper = wrapper.find(Animation);
+    const renderedAnimationWrapper = wrapper.find(Animation);
 
-  expect(renderedAnimationWrapper.find(AxisTicks).prop('xDomain')).toEqual([
-    'Black'
-  ]);
+    expect(renderedAnimationWrapper.find(AxisTicks).prop('xDomain')).toEqual([
+      'Black'
+    ]);
+  });
 });

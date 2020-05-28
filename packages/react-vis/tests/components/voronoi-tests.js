@@ -30,46 +30,48 @@ const StatelessVoronoiWrapper = () => (
   </XYPlot>
 );
 
-test('Voronoi: Basic Chart', () => {
-  const $ = mount(<StatelessVoronoiWrapper />);
+describe('Voronoi', () => {
+  test('Basic Chart', () => {
+    const $ = mount(<StatelessVoronoiWrapper />);
 
-  expect(
+    expect(
+      $.find('.rv-voronoi__cell')
+        .at(30)
+        .prop('style').color
+    ).toBe('red');
+    expect(
+      $.find('.rv-voronoi__cell')
+        .at(30)
+        .hasClass('my-class-30')
+    ).toBe(true);
+    expect(
+      $.find('.rv-voronoi__cell')
+        .at(50)
+        .hasClass('my-class-50')
+    ).toBe(true);
+  });
+
+  test('VoronoiLineChart', () => {
+    const $ = mount(<VoronoiLineChart />);
+
+    expect($.text()).toBe(
+      'Show Voronoi1.01.52.02.53.03.54.0X Axis2468101214Y Axis'
+    );
+    expect($.find('.rv-voronoi__cell').length).toBe(12);
+    expect($.find('.rv-xy-plot__series--line').length).toBe(3);
+    expect($.find('circle').length).toBe(0);
+
+    $.find('input').simulate('click');
     $.find('.rv-voronoi__cell')
-      .at(30)
-      .prop('style').color
-  ).toBe('red');
-  expect(
+      .at(0)
+      .simulate('mouseOver');
+
+    expect($.find('circle').length).toBe(1);
+
     $.find('.rv-voronoi__cell')
-      .at(30)
-      .hasClass('my-class-30')
-  ).toBe(true);
-  expect(
-    $.find('.rv-voronoi__cell')
-      .at(50)
-      .hasClass('my-class-50')
-  ).toBe(true);
-});
+      .at(0)
+      .simulate('mouseOut');
 
-test('Voronoi: Showcase Example - VoronoiLineChart', () => {
-  const $ = mount(<VoronoiLineChart />);
-
-  expect($.text()).toBe(
-    'Show Voronoi1.01.52.02.53.03.54.0X Axis2468101214Y Axis'
-  );
-  expect($.find('.rv-voronoi__cell').length).toBe(12);
-  expect($.find('.rv-xy-plot__series--line').length).toBe(3);
-  expect($.find('circle').length).toBe(0);
-
-  $.find('input').simulate('click');
-  $.find('.rv-voronoi__cell')
-    .at(0)
-    .simulate('mouseOver');
-
-  expect($.find('circle').length).toBe(1);
-
-  $.find('.rv-voronoi__cell')
-    .at(0)
-    .simulate('mouseOut');
-
-  expect($.find('circle').length).toBe(0);
+    expect($.find('circle').length).toBe(0);
+  });
 });
