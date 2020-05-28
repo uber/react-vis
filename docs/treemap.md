@@ -77,7 +77,7 @@ the "cluster" node has  3938 + 3812 + 6714 + 743 = 15207 size units.
 over all of the nodes.
 
 - It can useful to encode opacity to indicate tree depth, however because each tree leaf is a nested div this gets a little
-tricky. One technique is to compute the effective RGBA to hex value, check out [this link](viget.com/inspire/equating-color-and-transparency)
+tricky. One technique is to compute the effective RGBA to hex value, check out [this link](viget.com/articles/equating-color-and-transparency)
 for more details.
 
 - If your not sure when to use a treemap, remember they provide an easy drop in relationship for pie charts.
