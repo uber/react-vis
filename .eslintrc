@@ -2,6 +2,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:jest/recommended",
     "prettier",
     "prettier/react"
   ],
@@ -10,7 +11,8 @@
     "react",
     "prettier",
     "babel",
-    "no-only-tests"
+    "no-only-tests",
+    "jest"
   ],
   "ignorePatterns": [
     "node_modules",

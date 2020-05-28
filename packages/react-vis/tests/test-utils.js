@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-export */
 import React from 'react';
 import {mount} from 'enzyme';
 

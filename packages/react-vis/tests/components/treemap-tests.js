@@ -155,14 +155,6 @@ test('Treemap: Hide Root Node', () => {
   });
 });
 
-test('Treemap: Empty treemap', () => {
-  const $ = mount(<Treemap {...{...TREEMAP_PROPS, data: {}}} />);
-  // 1 is the empty root node
-  expect($.find('.rv-treemap__leaf').length).toBe(1);
-  expect($.find('.rv-treemap').text()).toBe('');
-  expect($.find('div.little-nested-tree-example').length).toBe(1);
-});
-
 test('Treemap: SimpleTreemap', () => {
   const $ = mount(<SimpleTreemap />);
   [
