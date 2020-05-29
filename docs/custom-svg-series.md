@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 ## CustomSVGSeries
 
 When creating visualizations, it is sometimes necessary to get your hands dirty and completely take control over what SVG components will be shown. This could be necessary in situations where you have predefined SVG code that you just want to appear the way you drew it in Sketch (but positioned using coordinates), or maybe you have multiline text annotations that you want to formatted in a particular way, or you just want to use an alternative type of mark instead of the usual scatterplot mark to differentiate series in a set. To serve these and many other tasks, we use the CustomSVGSeries.
