@@ -12,9 +12,9 @@ import ClusteredStackedVerticalBarChart from '../../../showcase/plot/clustered-s
 import DifferenceChart from '../../../showcase/plot/difference-chart';
 
 describe('BarSeries', () => {
-  testRenderWithProps(HorizontalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
+  testRenderWithProps(HorizontalBarSeries, GENERIC_XYPLOT_SERIES_PROPS, true);
 
-  testRenderWithProps(VerticalBarSeries, GENERIC_XYPLOT_SERIES_PROPS);
+  testRenderWithProps(VerticalBarSeries, GENERIC_XYPLOT_SERIES_PROPS, true);
 
   test('Showcase Example - BarChart', () => {
     const $ = mount(<BarChart />);

@@ -36,7 +36,7 @@ import {testRenderWithProps} from '../test-utils';
 
 const XYPLOT_PROPS = {width: 10, height: 10};
 
-testRenderWithProps(XYPlot, XYPLOT_PROPS);
+testRenderWithProps(XYPlot, XYPLOT_PROPS, false);
 
 describe('XYPlot', () => {
   test('Render a stacked bar chart', () => {

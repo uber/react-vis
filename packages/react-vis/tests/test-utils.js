@@ -33,14 +33,24 @@ export const GENERIC_XYPLOT_SERIES_PROPS = {
   onValueRightClick: NOOP
 };
 
-export const testRenderWithProps = (Component, props) =>
+export const testRenderWithProps = (Component, props, wrapWithSvg = false) =>
   // eslint-disable-next-line jest/require-top-level-describe
   test(`Rendering ${Component.displayName}`, () => {
-    const wrapper = mount(<Component {...props} />);
-    const wrapperProps = wrapper.props();
-    expect(wrapper.find(Component).length).toBeTruthy();
+    const wrapper = mount(
+      wrapWithSvg ? (
+        <svg>
+          <Component {...props} />
+        </svg>
+      ) : (
+        <Component {...props} />
+      )
+    );
 
+    const component = wrapper.find(Component);
+    expect(component).toHaveLength(1);
+
+    const componentProps = component.props();
     Object.keys(props).forEach(propName => {
-      expect(wrapperProps[propName] === props[propName]).toBeTruthy();
+      expect(componentProps[propName]).toEqual(props[propName]);
     });
   });

@@ -7,7 +7,7 @@ import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import AreaChartElevated from '../../../showcase/plot/area-chart-elevated';
 import AreaChart from '../../../showcase/plot/area-chart';
 
-testRenderWithProps(AreaSeries, GENERIC_XYPLOT_SERIES_PROPS);
+testRenderWithProps(AreaSeries, GENERIC_XYPLOT_SERIES_PROPS, true);
 
 const AREA_PROPS = {
   className: 'area-chart-example',

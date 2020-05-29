@@ -10,7 +10,7 @@ import NullData from '../../../showcase/misc/null-data-example';
 import TimeChart from '../../../showcase/misc/time-chart';
 import SyncedCharts from '../../../showcase/misc/synced-charts';
 
-testRenderWithProps(LineSeries, GENERIC_XYPLOT_SERIES_PROPS);
+testRenderWithProps(LineSeries, GENERIC_XYPLOT_SERIES_PROPS, true);
 
 const LINE_PROPS = {
   className: 'line-chart-example',

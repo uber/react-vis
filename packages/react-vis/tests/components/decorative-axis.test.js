@@ -5,12 +5,16 @@ import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import DecorativeAxisCrissCross from '../../../showcase/axes/decorative-axes-criss-cross';
 import ParallelCoordinatesExample from '../../../showcase/axes/parallel-coordinates-example';
 
-testRenderWithProps(DecorativeAxis, {
-  ...GENERIC_XYPLOT_SERIES_PROPS,
-  axisStart: {x: 0, y: 1},
-  axisEnd: {x: 0, y: 1},
-  axisDomain: [0, 1]
-});
+testRenderWithProps(
+  DecorativeAxis,
+  {
+    ...GENERIC_XYPLOT_SERIES_PROPS,
+    axisStart: {x: 0, y: 1},
+    axisEnd: {x: 0, y: 1},
+    axisDomain: [0, 1]
+  },
+  true
+);
 
 describe('DecorativeAxis', () => {
   test('Showcase Example - DecorativeAxisCrissCross', () => {

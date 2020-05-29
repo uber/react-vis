@@ -25,7 +25,7 @@ const HEATMAP_PROPS = {
 };
 
 describe('Heatmap', () => {
-  testRenderWithProps(HeatmapSeries, GENERIC_XYPLOT_SERIES_PROPS);
+  testRenderWithProps(HeatmapSeries, GENERIC_XYPLOT_SERIES_PROPS, true);
 
   test('basic rendering', () => {
     const $ = mount(

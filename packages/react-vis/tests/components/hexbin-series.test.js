@@ -6,7 +6,7 @@ import HexHeatmap from '../../../showcase/plot/hex-heatmap';
 import HexbinSizeExample from '../../../showcase/plot/hexbin-size-example';
 
 describe('HexbinSeries', () => {
-  testRenderWithProps(HexbinSeries, GENERIC_XYPLOT_SERIES_PROPS);
+  testRenderWithProps(HexbinSeries, GENERIC_XYPLOT_SERIES_PROPS, true);
 
   test('Showcase Example - HexHeatmap', () => {
     const $ = mount(<HexHeatmap />);

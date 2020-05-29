@@ -53,14 +53,14 @@ describe('series-utils', () => {
 
   test('getSeriesChildren', () => {
     const children = [
-      <span key="wild"> This squid is heavy </span>,
-      <input key="wacky" placeholder="i wish i hadnt bought it" />,
+      <text key="wild"> This squid is heavy </text>,
+      <circle key="wacky" cx="50" cy="50" r="50" />,
       <LineSeries key="woah" data={[]} />
     ];
     const $ = mount(
-      <div width={300} height={300}>
+      <svg width={300} height={300}>
         {children}
-      </div>
+      </svg>
     );
     const expectedChildren = [{...children[2], key: '.$woah'}];
     expect(getSeriesChildren($.props().children)).toEqual(expectedChildren);

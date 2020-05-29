@@ -6,7 +6,7 @@ import TriangleExample from '../../../showcase/misc/triangle-example';
 import GradientExample from '../../../showcase/misc/gradient-example';
 
 describe('GradientDefs', () => {
-  testRenderWithProps(GradientDefs, GENERIC_XYPLOT_SERIES_PROPS);
+  testRenderWithProps(GradientDefs, GENERIC_XYPLOT_SERIES_PROPS, true);
 
   test('TriangleExample', () => {
     const $ = mount(<TriangleExample />);
