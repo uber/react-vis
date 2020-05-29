@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-export */
 import React from 'react';
 import {mount} from 'enzyme';
 
@@ -33,6 +34,7 @@ export const GENERIC_XYPLOT_SERIES_PROPS = {
 };
 
 export const testRenderWithProps = (Component, props) =>
+  // eslint-disable-next-line jest/require-top-level-describe
   test(`Rendering ${Component.displayName}`, () => {
     const wrapper = mount(<Component {...props} />);
     const wrapperProps = wrapper.props();

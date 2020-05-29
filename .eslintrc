@@ -2,6 +2,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:jest/recommended",
     "prettier",
     "prettier/react"
   ],
@@ -10,7 +11,7 @@
     "react",
     "prettier",
     "babel",
-    "no-only-tests"
+    "jest"
   ],
   "ignorePatterns": [
     "node_modules",
@@ -34,7 +35,7 @@
     "max-params": ["error", 6],
     "object-curly-spacing": 0,
     "babel/object-curly-spacing": 2,
-    "no-only-tests/no-only-tests": 2,
+    "jest/require-top-level-describe":"error",
     "react/prop-types": "off",
     "prettier/prettier": "warn"
   }

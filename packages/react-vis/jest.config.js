@@ -2,7 +2,6 @@
 const path = require('path');
 
 module.exports = {
-  testMatch: ['**/?(*-)+(test|tests).[tj]s?(x)'],
   transform: {
     '^.+\\.js$': path.resolve(__dirname, './jestBabelTransform.js')
   },

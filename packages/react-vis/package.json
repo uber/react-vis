@@ -70,6 +70,7 @@
     "canvas-prebuilt": "^1.6.11",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "eslint-plugin-jest":"^23.13.2",
     "jest":"^25.5.4",
     "jsdom": "^9.9.1",
     "node-sass": "^4.9.3",
