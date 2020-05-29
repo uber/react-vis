@@ -59,8 +59,7 @@ class Animation extends PureComponent {
     this._updateInterpolator(props);
   }
 
-  // eslint-disable-next-line react/no-deprecated
-  componentWillUpdate(props) {
+  UNSAFE_componentWillUpdate(props) {
     this._updateInterpolator(this.props, props);
     if (props.onStart) {
       props.onStart();
