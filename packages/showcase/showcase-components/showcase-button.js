@@ -30,7 +30,7 @@ function ShowcaseButton(props) {
   );
 }
 
-ShowcaseButton.PropTypes = {
+ShowcaseButton.ropTypes = {
   buttonContent: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 };
