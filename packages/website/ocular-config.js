@@ -13,15 +13,16 @@ module.exports = {
   DIR_NAME: `${__dirname}`,
 
   EXAMPLES: [
-    // TODO: Uncomment the "Plots" example to see Webpack errors.
     // Make sure to rebuild react-vis to see the issues.
     {
       title: 'Plots',
       // Path to code to download
       path: 'docs/examples/showcases/plots-showcase',
       image: 'images/examples/demo-thumb-line.jpg',
-      componentUrl: resolve(__dirname, '../showcase/showcase-sections/plots-showcase.js')
-      // componentUrl: resolve(__dirname, '../showcase/plot/line-chart.js')
+      componentUrl: resolve(
+        __dirname,
+        '../showcase/showcase-sections/plots-showcase.js'
+      )
     }
   ],
   // your table of contents go there
