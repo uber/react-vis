@@ -20,9 +20,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@mdx-js/mdx": "^1.6.5",
+    "@mdx-js/react": "^1.6.5",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "gatsby": "~2.20.24",
+    "gatsby-plugin-mdx": "^1.2.13",
     "ocular-gatsby": "^1.0.6",
     "storybook-addon-jsx": "^7.2.3",
     "to-case": "^2.0.0"
