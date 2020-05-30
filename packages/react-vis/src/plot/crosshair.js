@@ -82,7 +82,8 @@ class Crosshair extends PureComponent {
         PropTypes.oneOfType([
           PropTypes.number,
           PropTypes.string,
-          PropTypes.object
+          PropTypes.object,
+          PropTypes.bool
         ])
       ),
       series: PropTypes.object,

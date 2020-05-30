@@ -9,7 +9,19 @@ import BidirectionDragChart from '../../../showcase/misc/2d-dragable-plot';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 
 describe('Highlight', () => {
-  testRenderWithProps(Highlight, GENERIC_XYPLOT_SERIES_PROPS, true);
+  testRenderWithProps(
+    Highlight,
+    {
+      ...GENERIC_XYPLOT_SERIES_PROPS,
+      marginLeft: 0,
+      marginRight: 0,
+      innerWidth: 100,
+      marginTop: 0,
+      marginBottom: 0,
+      innerHeight: 100
+    },
+    true
+  );
 
   test('DragableExample', () => {
     const $ = mount(<DragableExample />);

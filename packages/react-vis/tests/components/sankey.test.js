@@ -13,7 +13,8 @@ const SANKEY_PROPS = {
   nodes: [],
   links: [],
   width: 200,
-  height: 200
+  height: 200,
+  strokeWidth: 1
 };
 
 import {testRenderWithProps} from '../test-utils';
@@ -27,8 +28,8 @@ describe('Sankey', () => {
       <Sankey
         height={100}
         width={100}
-        nodes={[{name: 'one'}, {name: 'two'}]}
-        links={[{source: 0, target: 1}]}
+        nodes={[{name: 'a'}, {name: 'b'}]}
+        links={[{source: 0, target: 1, value: 10}]}
       />
     );
 
@@ -42,8 +43,8 @@ describe('Sankey', () => {
       <Sankey
         height={100}
         width={100}
-        nodes={[{name: 'one'}, {name: 'two'}]}
-        links={[{source: 0, target: 1}]}
+        nodes={[{name: 'a'}, {name: 'b'}]}
+        links={[{source: 0, target: 1, value: 10}]}
       >
         <Hint x={0} y={0} value={{test: 123}} />
       </Sankey>
