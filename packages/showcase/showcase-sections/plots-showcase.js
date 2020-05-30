@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {showCase} from '../index';
+import {REACTVIS_BASE_URL} from '../showcase-links';
 import {mapSection} from '../showcase-components/showcase-utils';
 const {
   AreaChart,
@@ -45,8 +46,7 @@ const PLOTS = [
     component: LineChart,
     componentName: 'LineChart',
     name: 'Line Series',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
+    sourceLink: `${REACTVIS_BASE_URL}/plot/series/line-series.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/series-reference/line-series'
   },
@@ -54,8 +54,7 @@ const PLOTS = [
     component: LineChartWithStyle,
     componentName: 'LineChartWithStyle',
     name: 'Line Series with style',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/series/line-series.js',
+    sourceLink: `${REACTVIS_BASE_URL}/plot/series/line-series.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/series-reference/line-series'
   },
@@ -63,8 +62,7 @@ const PLOTS = [
     component: LineMarkChart,
     componentName: 'LineMarkChart',
     name: 'LineMark Series',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/series/line-mark-series.js',
+    sourceLink: `${REACTVIS_BASE_URL}/plot/series/line-mark-series.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/series-reference/line-mark-series'
   },
@@ -87,8 +85,7 @@ const PLOTS = [
     component: ScatterplotChart,
     componentName: 'ScatterplotChart',
     name: 'Mark Series',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/series/mark-series.js',
+    sourceLink: `${REACTVIS_BASE_URL}/plot/series/mark-series.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/series-reference/mark-series'
   },
@@ -101,8 +98,7 @@ const PLOTS = [
     component: WhiskerChart,
     componentName: 'WhiskerChart',
     name: 'Whisker Series',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/series/whisker-series.js',
+    sourceLink: `${REACTVIS_BASE_URL}/plot/series/whisker-series.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/series-reference/whisker-series'
   },
@@ -110,8 +106,7 @@ const PLOTS = [
     component: AreaChart,
     componentName: 'AreaChart',
     name: 'Area Series',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/series/area-series.js'
+    sourceLink: `${REACTVIS_BASE_URL}/plot/series/area-serie.js`
   },
   {
     component: AreaChartElevated,
@@ -124,8 +119,7 @@ const PLOTS = [
     component: BarChart,
     componentName: 'BarChart',
     name: 'Bar Series',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/series/bar-series.js',
+    sourceLink: `${REACTVIS_BASE_URL}/plot/series/bar-series.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/series-reference/bar-series'
   },
@@ -177,8 +171,7 @@ const PLOTS = [
     name: 'Heatmap Series',
     component: HeatmapChart,
     componentName: 'HeatmapChart',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/series/heatmap-series.js',
+    sourceLink: `${REACTVIS_BASE_URL}/plot/series/heatmap-series.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/series-reference/heatmap-series'
   },
@@ -186,8 +179,7 @@ const PLOTS = [
     name: 'Hexbin Series',
     component: HexHeatmap,
     componentName: 'HexHeatmap',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/series/hexbin-series.js',
+    sourceLink: `${REACTVIS_BASE_URL}/plot/series/hexbin-series.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/series-reference/hexbin-series'
   },
@@ -200,8 +192,7 @@ const PLOTS = [
     name: 'Labeled Heatmap',
     component: LabeledHeatmap,
     componentName: 'LabeledHeatmap',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/series/heatmap-series.js'
+    sourceLink: `${REACTVIS_BASE_URL}/plot/series/heatmap-serie.js`
   },
   {
     name: 'Contour Series',
@@ -250,8 +241,7 @@ const BASIC_COMPONENTS = [
     name: 'Circular Gridlines',
     component: FauxScatterplotChart,
     componentName: 'FauxScatterplotChart',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/circular-grid-lines.js',
+    sourceLink: `${REACTVIS_BASE_URL}/plot/circular-grid-lines.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/api-reference/grids'
   }
@@ -268,6 +258,7 @@ function PlotsShowcase(props) {
         </section>
       )}
       <h2>Series Types</h2>
+
       {PLOTS.map(mapSection)}
       <h2>Basic Components</h2>
       {BASIC_COMPONENTS.map(mapSection)}

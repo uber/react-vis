@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {mapSection} from '../showcase-components/showcase-utils';
+import {REACTVIS_BASE_URL} from '../showcase-links';
 import {showCase} from '../index';
 const {
   AnimatedRadarChart,
@@ -15,8 +16,7 @@ const RADAR = [
     name: 'Basic Radar Chart',
     component: BasicRadarChart,
     componentName: 'BasicRadarChart',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/radar-chart/index.js',
+    sourceLink: `${REACTVIS_BASE_URL}/radar-chart/index.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/other-charts/radar-chart'
   },

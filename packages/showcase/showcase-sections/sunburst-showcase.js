@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {showCase} from '../index';
+import {REACTVIS_BASE_URL} from '../showcase-links';
 import {mapSection} from '../showcase-components/showcase-utils';
 const {
   AnimatedSunburst,
@@ -17,8 +18,7 @@ const SUNBURSTS = [
     componentName: 'ArcSeriesExample',
     docsLink:
       'http://uber.github.io/react-vis/documentation/series-reference/arc-series',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/series/arc-series.js'
+    sourceLink: `${REACTVIS_BASE_URL}/plot/series/arc-series.js`
   },
   {
     name: 'Basic Sunburst',
@@ -26,8 +26,7 @@ const SUNBURSTS = [
     componentName: 'BasicSunburst',
     docsLink:
       'http://uber.github.io/react-vis/documentation/other-charts/sunburst-diagram',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/sunburst/index.js'
+    sourceLink: `${REACTVIS_BASE_URL}/sunburst/index.js`
   },
   {
     name: 'Clock',
