@@ -28,10 +28,6 @@ module.exports = {
   // your table of contents go there
   DOCS,
 
-  THEME_OVERRIDES: [
-    //  {key: 'primaryFontFamily', value: 'serif'}
-  ],
-
   PROJECT_TYPE: 'github',
   PROJECT_NAME: 'react-vis-website',
   PROJECT_ORG: 'uber',
@@ -59,10 +55,10 @@ module.exports = {
   LINK_TO_GET_STARTED: '/docs',
 
   PROJECTS: [
-    // {name: 'Project name', url: 'http://project.url'},
+    {name: 'Project name', url: 'http://project.url'},
   ],
   ADDITIONAL_LINKS: [
-    // {name: 'link label', href: 'http://link.url'}
+    {name: 'link label', href: 'http://link.url', index: 1}
   ],
 
   GA_TRACKING: null,

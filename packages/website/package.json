@@ -26,13 +26,13 @@
     "@storybook/react": "^5.3.18",
     "gatsby": "~2.20.24",
     "gatsby-plugin-mdx": "^1.2.13",
-    "ocular-gatsby": "^1.0.6",
     "storybook-addon-jsx": "^7.2.3",
     "to-case": "^2.0.0"
   },
   "dependencies": {
     "d3-force": "^1.0.6",
     "d3-random": "^1.1.0",
+    "gatsby-theme-ocular": "^1.1.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-virtualized": "^9.18.5",
