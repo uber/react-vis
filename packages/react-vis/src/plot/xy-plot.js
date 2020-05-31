@@ -144,23 +144,24 @@ class XYPlot extends React.Component {
     };
   }
 
-  // eslint-disable-next-line react/no-deprecated
-  componentWillReceiveProps(nextProps) {
-    const children = getSeriesChildren(nextProps.children);
-    const nextData = getStackedData(children, nextProps.stackBy);
-    const {scaleMixins} = this.state;
-    const nextScaleMixins = this._getScaleMixins(nextData, nextProps);
-    if (
-      !checkIfMixinsAreEqual(
-        nextScaleMixins,
-        scaleMixins,
-        nextProps.hasTreeStructure
-      )
-    ) {
-      this.setState({
-        scaleMixins: nextScaleMixins,
-        data: nextData
-      });
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      const children = getSeriesChildren(this.props.children);
+      const nextData = getStackedData(children, this.props.stackBy);
+      const {scaleMixins} = this.state;
+      const nextScaleMixins = this._getScaleMixins(nextData, this.props);
+      if (
+        !checkIfMixinsAreEqual(
+          nextScaleMixins,
+          scaleMixins,
+          this.props.hasTreeStructure
+        )
+      ) {
+        this.setState({
+          scaleMixins: nextScaleMixins,
+          data: nextData
+        });
+      }
     }
   }
 

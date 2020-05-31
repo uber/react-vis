@@ -43,6 +43,8 @@ describe('RadialChart', () => {
     expect($.text()).toBe('yellow againmagentacyanyellowgreen');
 
     $.setProps({data: []});
+    $.update();
+
     expect($.find('.rv-radial-chart__series--pie__slice').length).toBe(0);
     expect($.find('.rv-radial-chart__series--pie__slice-overlay').length).toBe(
       0

@@ -102,10 +102,12 @@ class ForceDirectedGraph extends React.Component {
     };
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    this.setState({
-      data: generateSimulation(nextProps)
-    });
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.setState({
+        data: generateSimulation(this.props)
+      });
+    }
   }
 
   render() {

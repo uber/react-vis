@@ -100,12 +100,13 @@ class Treemap extends React.Component {
     };
   }
 
-  // eslint-disable-next-line react/no-deprecated
-  componentWillReceiveProps(props) {
-    this.setState({
-      scales: _getScaleFns(props),
-      ...getInnerDimensions(props, props.margin)
-    });
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.setState({
+        scales: _getScaleFns(this.props),
+        ...getInnerDimensions(this.props, this.props.margin)
+      });
+    }
   }
 
   /**
