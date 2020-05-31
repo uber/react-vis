@@ -31,6 +31,8 @@ describe('AreaSeries', () => {
     expect($.find('path.area-chart-example').length).toBe(1);
 
     $.setProps({children: <AreaSeries {...{...AREA_PROPS, data: null}} />});
+    $.update();
+
     expect($.find('.rv-xy-plot__series').length).toBe(0);
     expect($.find('.rv-xy-plot__series path').length).toBe(0);
     expect($.find('.area-chart-example').length).toBe(0);

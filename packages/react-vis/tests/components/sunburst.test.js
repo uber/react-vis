@@ -57,6 +57,7 @@ describe('Sunburst', () => {
     ).toBe(21);
 
     $.setProps({data: INTERPOLATE_DATA});
+    $.update();
     expect($.find('.rv-xy-plot__series--arc-path').length).toBe(9);
   });
 

@@ -57,6 +57,8 @@ describe('LineSeries', () => {
     expect($.find('path.line-chart-example').length).toBe(1);
 
     $.setProps({children: <LineSeries {...{...LINE_PROPS, data: null}} />});
+    $.update();
+
     expect($.find('.rv-xy-plot__series').length).toBe(0);
     expect($.find('.rv-xy-plot__series path').length).toBe(0);
     expect($.find('.line-chart-example').length).toBe(0);
