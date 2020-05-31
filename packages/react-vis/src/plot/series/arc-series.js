@@ -74,7 +74,7 @@ class ArcSeries extends AbstractSeries {
     this.state = {scaleProps};
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       this.setState({scaleProps: this._getAllScaleProps(this.props)});
     }

@@ -144,7 +144,7 @@ class XYPlot extends React.Component {
     };
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       const children = getSeriesChildren(this.props.children);
       const nextData = getStackedData(children, this.props.stackBy);

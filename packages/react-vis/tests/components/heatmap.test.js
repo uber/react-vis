@@ -30,7 +30,7 @@ describe('Heatmap', () => {
   test('basic rendering', () => {
     const $ = mount(
       <XYPlot width={300} height={300}>
-        <HeatmapSeries data-foo="original" {...HEATMAP_PROPS}  />
+        <HeatmapSeries data-foo="original" {...HEATMAP_PROPS} />
       </XYPlot>
     );
     expect($.find('.rv-xy-plot__series--heatmap').length).toBe(1);
@@ -38,7 +38,9 @@ describe('Heatmap', () => {
     expect($.find('g.heatmap-series-example').length).toBe(1);
 
     $.setProps({
-      children: <HeatmapSeries data-foo="set" {...{...HEATMAP_PROPS, data: null}} />
+      children: (
+        <HeatmapSeries data-foo="set" {...{...HEATMAP_PROPS, data: null}} />
+      )
     });
     $.update();
 

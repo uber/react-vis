@@ -100,7 +100,7 @@ class Treemap extends React.Component {
     };
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       this.setState({
         scales: _getScaleFns(this.props),

@@ -102,7 +102,7 @@ class ForceDirectedGraph extends React.Component {
     };
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       this.setState({
         data: generateSimulation(this.props)

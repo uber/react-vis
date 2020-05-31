@@ -140,7 +140,7 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
       this.cancelSubscription = subscribeToDebouncedResize(this._onResize);
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate(prevProps, prevState) {
       if (
         this.state.width !== prevState.width ||
         this.state.height !== prevState.height
