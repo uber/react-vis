@@ -33,7 +33,8 @@ function getSeconds() {
 export default function ClockExample() {
   const [time, setTime] = useState(getSeconds());
   useEffect(() => {
-    setInterval(() => setTime(getSeconds()), 100);
+    const handle = setInterval(() => setTime(getSeconds()), 100);
+    return () => clearInterval(handle);
   }, []);
   const seconds = time % 60;
   const minutes = (time / 60) % 60;

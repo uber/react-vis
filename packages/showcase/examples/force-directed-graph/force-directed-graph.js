@@ -45,7 +45,6 @@ const colors = [
  * @returns {Array} Array of nodes.
  */
 function generateSimulation(props) {
-  console.log('generate sim');
   const {data, height, width, maxSteps, strength} = props;
   if (!data) {
     return {nodes: [], links: []};

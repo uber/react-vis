@@ -26,14 +26,14 @@ import ForceDirectedGraph from './force-directed-graph';
 
 const makeStrength = () => Math.random() * 60 - 30;
 export default function ForceDirectedExample() {
-  const [strength, setStrength] = useState(makeStrength());
+  const [strength, setStrength] = useState(makeStrength);
   return (
     <div className="force-directed-example">
       <button
         className="showcase-button"
         onClick={() => setStrength(makeStrength())}
       >
-        {' REWEIGHT '}
+        REWEIGHT
       </button>
       <ForceDirectedGraph
         data={LesMisData}

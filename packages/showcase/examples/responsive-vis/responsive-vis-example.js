@@ -36,7 +36,7 @@ const EXAMPLE_MARGIN = {left: 60, top: 60, bottom: 50, right: 50};
 
 export default function ResponsiveVisDemo() {
   const [chartType, setChartType] = useState('barChart');
-  const [data, setData] = useState(createData(5, true));
+  const [data, setData] = useState(() => createData(5, true));
   const [visSize, setVisSize] = useState(400);
   const [dataSize, setDataSize] = useState(1);
 
