@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import Hint from 'plot/hint';
+import Hint from '~/plot/hint';
 
 describe('Hint', () => {
   test('Appends user-input class name to the class signatures list', () => {

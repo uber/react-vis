@@ -23,15 +23,15 @@ import PropTypes from 'prop-types';
 import {scaleLinear} from 'd3-scale';
 import {format} from 'd3-format';
 
-import {AnimationPropType} from 'animation';
-import XYPlot from 'plot/xy-plot';
-import {DISCRETE_COLOR_RANGE} from 'theme';
-import {MarginPropType} from 'utils/chart-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
-import MarkSeries from 'plot/series/mark-series';
-import PolygonSeries from 'plot/series/polygon-series';
-import LabelSeries from 'plot/series/label-series';
-import DecorativeAxis from 'plot/axis/decorative-axis';
+import {AnimationPropType} from '~/animation';
+import XYPlot from '~/plot/xy-plot';
+import {DISCRETE_COLOR_RANGE} from '~/theme';
+import {MarginPropType} from '~/utils/chart-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
+import MarkSeries from '~/plot/series/mark-series';
+import PolygonSeries from '~/plot/series/polygon-series';
+import LabelSeries from '~/plot/series/label-series';
+import DecorativeAxis from '~/plot/axis/decorative-axis';
 
 const predefinedClassName = 'rv-radar-chart';
 const DEFAULT_FORMAT = format('.2r');

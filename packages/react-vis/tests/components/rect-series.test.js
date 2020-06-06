@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import HorizontalRectSeries from 'plot/series/horizontal-bar-series';
-import VerticalRectSeries from 'plot/series/vertical-bar-series';
+import HorizontalRectSeries from '~/plot/series/horizontal-bar-series';
+import VerticalRectSeries from '~/plot/series/vertical-bar-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import Histogram from '../../../showcase/plot/histogram';
 import StackedHistogram from '../../../showcase/plot/stacked-histogram';

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import AbstractSeries from './series/abstract-series';
-import {getAttributeScale} from 'utils/scales-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
+import {getAttributeScale} from '~/utils/scales-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 function getLocs(evt) {
   const xLoc = evt.type === 'touchstart' ? evt.pageX : evt.offsetX;

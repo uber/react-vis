@@ -22,10 +22,10 @@ import React from 'react';
 import {format} from 'd3-format';
 import PropTypes from 'prop-types';
 
-import AbstractSeries from 'plot/series/abstract-series';
+import AbstractSeries from '~/plot/series/abstract-series';
 import DecorativeAxisTicks from './decorative-axis-ticks';
-import Animation from 'animation';
-import {getCombinedClassName} from 'utils/styling-utils';
+import Animation from '~/animation';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 const predefinedClassName = 'rv-xy-manipulable-axis rv-xy-plot__axis';
 
