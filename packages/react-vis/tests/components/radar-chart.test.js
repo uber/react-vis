@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import RadialChart from 'radial-chart';
+import RadialChart from '~/radial-chart';
 import BasicRadarChart from '../../../showcase/radar-chart/basic-radar-chart';
 import AnimatedRadarChart from '../../../showcase/radar-chart/animated-radar-chart';
 import FourQuadrantRadarChart from '../../../showcase/radar-chart/four-quadrant-radar-chart';

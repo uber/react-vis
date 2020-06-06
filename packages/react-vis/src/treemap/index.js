@@ -38,10 +38,10 @@ import {
   DEFAULT_COLOR,
   DEFAULT_OPACITY,
   OPACITY_TYPE
-} from 'theme';
-import {AnimationPropType} from 'animation';
-import {getAttributeFunctor, getMissingScaleProps} from 'utils/scales-utils';
-import {MarginPropType, getInnerDimensions} from 'utils/chart-utils';
+} from '~/theme';
+import {AnimationPropType} from '~/animation';
+import {getAttributeFunctor, getMissingScaleProps} from '~/utils/scales-utils';
+import {MarginPropType, getInnerDimensions} from '~/utils/chart-utils';
 
 import TreemapDOM from './treemap-dom';
 import TreemapSVG from './treemap-svg';

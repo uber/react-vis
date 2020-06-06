@@ -8,14 +8,14 @@ import {
   sankeyCenter,
   sankeyJustify
 } from 'd3-sankey';
-import XYPlot from 'plot/xy-plot';
+import XYPlot from '~/plot/xy-plot';
 
-import {MarginPropType, getInnerDimensions} from 'utils/chart-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
-import VerticalRectSeries from 'plot/series/vertical-rect-series';
-import LabelSeries from 'plot/series/label-series';
-import Voronoi from 'plot/voronoi';
-import {DISCRETE_COLOR_RANGE} from 'theme';
+import {MarginPropType, getInnerDimensions} from '~/utils/chart-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
+import VerticalRectSeries from '~/plot/series/vertical-rect-series';
+import LabelSeries from '~/plot/series/label-series';
+import Voronoi from '~/plot/voronoi';
+import {DISCRETE_COLOR_RANGE} from '~/theme';
 
 import SankeyLink from './sankey-link';
 const NOOP = f => f;

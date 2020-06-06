@@ -1,9 +1,9 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import XYPlot from 'plot/xy-plot';
-import LineSeries from 'plot/series/line-series';
-import HorizontalGridLines from 'plot/horizontal-grid-lines';
-import VerticalGridLines from 'plot/vertical-grid-lines';
+import XYPlot from '~/plot/xy-plot';
+import LineSeries from '~/plot/series/line-series';
+import HorizontalGridLines from '~/plot/horizontal-grid-lines';
+import VerticalGridLines from '~/plot/vertical-grid-lines';
 
 describe('GridLines', () => {
   test('HorizontalGridLines', () => {

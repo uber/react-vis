@@ -21,9 +21,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import {getAttributeScale} from 'utils/scales-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
-import Animation, {AnimationPropType} from 'animation';
+import {getAttributeScale} from '~/utils/scales-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
+import Animation, {AnimationPropType} from '~/animation';
 
 import {
   getTicksTotalFromSize,

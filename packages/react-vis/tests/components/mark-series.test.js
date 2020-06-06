@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import MarkSeries from 'plot/series/mark-series';
+import MarkSeries from '~/plot/series/mark-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import Scatterplot from '../../../showcase/plot/scatterplot';
 import DynamicCrosshairScatterplot from '../../../showcase/axes/dynamic-crosshair-scatterplot';

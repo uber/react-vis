@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import RadialChart from 'radial-chart';
+import RadialChart from '~/radial-chart';
 import SimpleRadialChart from '../../../showcase/radial-chart/simple-radial-chart';
 import DonutChart from '../../../showcase/radial-chart/donut-chart';
 import CustomRadiusRadialChart from '../../../showcase/radial-chart/custom-radius-radial-chart';

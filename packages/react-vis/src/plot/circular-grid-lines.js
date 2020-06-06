@@ -22,8 +22,8 @@ import React, {PureComponent} from 'react';
 
 import PropTypes from 'prop-types';
 
-import {getAttributeScale} from 'utils/scales-utils';
-import Animation, {AnimationPropType} from 'animation';
+import {getAttributeScale} from '~/utils/scales-utils';
+import Animation, {AnimationPropType} from '~/animation';
 
 import {getTicksTotalFromSize, getTickValues} from '../utils/axis-utils';
 

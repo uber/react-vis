@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import {getRadialLayoutMargin} from 'utils/chart-utils';
+import {getRadialLayoutMargin} from '~/utils/chart-utils';
 
 describe('chart-utils', () => {
   test('getRadialLayoutMargin', () => {

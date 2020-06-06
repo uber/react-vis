@@ -25,10 +25,10 @@ import {geoPath} from 'd3-geo';
 import {scaleLinear} from 'd3-scale';
 
 import AbstractSeries from './abstract-series';
-import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
-import {CONTINUOUS_COLOR_RANGE} from 'theme';
+import Animation from '~/animation';
+import {ANIMATED_SERIES_PROPS} from '~/utils/series-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
+import {CONTINUOUS_COLOR_RANGE} from '~/theme';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--contour';
 

@@ -21,8 +21,8 @@
 import React from 'react';
 import window from 'global/window';
 
-import XYPlot from 'plot/xy-plot';
-import {getDOMNode} from 'utils/react-utils';
+import XYPlot from '~/plot/xy-plot';
+import {getDOMNode} from '~/utils/react-utils';
 
 const CONTAINER_REF = 'container';
 

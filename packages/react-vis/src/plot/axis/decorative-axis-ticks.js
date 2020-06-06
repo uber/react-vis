@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import {generatePoints, getAxisAngle} from 'utils/axis-utils';
+import {generatePoints, getAxisAngle} from '~/utils/axis-utils';
 
 /**
  * Generate the actual polygons to be plotted

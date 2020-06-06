@@ -20,9 +20,9 @@
 
 import React from 'react';
 
-import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
+import Animation from '~/animation';
+import {ANIMATED_SERIES_PROPS} from '~/utils/series-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 import AbstractSeries from './abstract-series';
 
