@@ -59,6 +59,7 @@ import treemap from '../../docs/treemap.md';
 import voronoi from '../../docs/voronoi.md';
 import whiskerSeries from '../../docs/whisker-series.md';
 import xy from '../../docs/xy-plot.md';
+import clip from '../../docs/clip.md';
 
 const mdRoutes = [
   {
@@ -238,6 +239,7 @@ const mdRoutes = [
             name: 'Flexible plots',
             markdown: flexiblePlots
           },
+          {name: 'Clipping', markdown: clip},
           {
             name: 'Borders',
             markdown: borders

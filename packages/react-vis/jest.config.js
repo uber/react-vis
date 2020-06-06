@@ -5,5 +5,6 @@ module.exports = {
   transform: {
     '^.+\\.js$': path.resolve(__dirname, './jestBabelTransform.js')
   },
-  setupFilesAfterEnv: ['./jest.setup.js']
+  setupFilesAfterEnv: ['./jest.setup.js'],
+  snapshotSerializers: ['enzyme-to-json/serializer']
 };

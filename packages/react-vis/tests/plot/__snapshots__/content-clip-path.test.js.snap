@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`content-clip-path should render 1`] = `
+<defs>
+  <clipPath
+    id="foo"
+  >
+    <rect
+      height={200}
+      width={300}
+      x={0}
+      y={0}
+    />
+  </clipPath>
+</defs>
+`;
