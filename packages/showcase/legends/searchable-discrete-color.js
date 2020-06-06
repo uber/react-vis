@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import SearchableDiscreteColorLegend from 'react-vis/legends/searchable-discrete-color-legend';
+import {SearchableDiscreteColorLegend} from 'react-vis';
 
 export default class Example extends React.Component {
   constructor(props) {
