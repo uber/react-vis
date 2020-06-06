@@ -72,6 +72,8 @@ export Sankey from 'sankey';
 export Sunburst from 'sunburst';
 export Treemap from 'treemap';
 
+export ContentClipPath from './plot/content-clip-path';
+
 export {
   makeHeightFlexible,
   makeVisFlexible,
