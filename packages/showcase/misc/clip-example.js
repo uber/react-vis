@@ -7,7 +7,6 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   AreaSeries,
-  GradientDefs,
   ContentClipPath
 } from 'react-vis';
 
