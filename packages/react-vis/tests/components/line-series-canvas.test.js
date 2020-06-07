@@ -13,7 +13,7 @@ describe('LineSeriesCanvas', () => {
           .fill(0)
           .map((_, index) => (
             <LineSeriesCanvas
-              key={index}
+              key={index.toString()}
               color="#12939a"
               data={[
                 {x: 1, y: 5},
