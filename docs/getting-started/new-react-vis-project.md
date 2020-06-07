@@ -1,4 +1,4 @@
-### Create a new project with react-vis
+# Create a new project with react-vis
 
 Let's create a new vis app from scratch.
 To do this, let's use [create-react-app](https://github.com/facebookincubator/create-react-app), the popular Facebook scaffold. 

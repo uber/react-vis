@@ -1,4 +1,4 @@
-## Color
+# Colors
 
 Color can be set and affected in many ways in React-vis.
 The main principles are:

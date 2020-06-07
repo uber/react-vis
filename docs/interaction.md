@@ -1,4 +1,4 @@
-## Interaction
+# Interaction
 
 Interaction in react-vis happens through _event handlers_ which are triggered by certain interactive events, such as mouse movement or clicks.
 
