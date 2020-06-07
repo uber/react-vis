@@ -1,7 +1,9 @@
 import React from 'react';
 
 import {showCase} from '../index';
+import {REACTVIS_BASE_URL} from '../showcase-links';
 import {mapSection} from '../showcase-components/showcase-utils';
+
 const {SimpleTreemap, TreemapExample} = showCase;
 
 const TREEMAPS = [
@@ -11,8 +13,7 @@ const TREEMAPS = [
     componentName: 'SimpleTreemap',
     docsLink:
       'http://uber.github.io/react-vis/documentation/other-charts/treemap',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/treemap/index.js'
+    sourceLink: `${REACTVIS_BASE_URL}/treemap/index.js`
   },
   {
     name: 'Animated Treemap',

@@ -4,7 +4,7 @@ import Borders from 'plot/borders';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import GradientExample from '../../../showcase/misc/gradient-example';
 
-testRenderWithProps(Borders, GENERIC_XYPLOT_SERIES_PROPS, true);
+testRenderWithProps(Borders, GENERIC_XYPLOT_SERIES_PROPS);
 
 describe('Borders', () => {
   test('GradientExample', () => {

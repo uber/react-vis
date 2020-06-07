@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {mapSection} from '../showcase-components/showcase-utils';
+import {REACTVIS_BASE_URL} from '../showcase-links';
 import {showCase} from '../index';
 const {
   BasicSankeyExample,
@@ -17,8 +18,7 @@ const SANKEYS = [
     componentName: 'BasicSankeyExample',
     docsLink:
       'http://uber.github.io/react-vis/documentation/other-charts/sankey-diagram',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/sankey/index.js'
+    sourceLink: `${REACTVIS_BASE_URL}/sankey/index.js`
   },
   {
     name: 'With Voronoi Selection',

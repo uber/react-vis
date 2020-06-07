@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 # Sunbursts
 
 Sunbursts are a powerful way to demonstrate part to whole relationships. While they certainly have the many of easily criticized problems of pie charts, they allow for
@@ -77,13 +75,13 @@ Tooltips and other helpful annotations can be added to the sunburst diagram by p
   hideRootNode
   colorType="literal"
   data={data}
-  height={300}
+  height={300} 
   width={350}>
   <Hint value={hoveredValue} />
 </Sunburst>
 ```
 
-Where `hoveredValue` is an appropriately curated coordinate value. See the [sunburst-with-tooltips](https://github.com/uber/react-vis/blob/master/showcase/sunbursts/sunburst-with-tooltips.js) code for more details.
+Where `hoveredValue` is an appropriately curated coordinate value. See the [sunburst-with-tooltips](https://github.com/uber/react-vis/blob/master/packages/showcase/sunbursts/sunburst-with-tooltips.js) code for more details.
 
 ## API Reference
 

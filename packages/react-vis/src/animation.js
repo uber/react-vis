@@ -31,9 +31,9 @@ function getAnimationStyle(animationStyle = presets.noWobble) {
   }
   const {damping, stiffness} = animationStyle;
   return {
+    ...animationStyle,
     damping: damping || presets.noWobble.damping,
-    stiffness: stiffness || presets.noWobble.stiffness,
-    ...animationStyle
+    stiffness: stiffness || presets.noWobble.stiffness
   };
 }
 

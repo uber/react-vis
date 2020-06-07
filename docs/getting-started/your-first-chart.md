@@ -1,8 +1,6 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 ### Your first chart
 
-We tried to make react-vis syntax as close to the traditional react syntax. You have components which have props and possibly children.
+We tried to make react-vis syntax as close to the traditional react syntax. You have components which have props and possibly children. 
 
 Every react-vis chart is inside a component called XYPlot, for which a height and a width must be specified:
 

@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 ## Series
 
 The library supports several types of series:

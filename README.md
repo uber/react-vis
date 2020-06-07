@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 <p align="right">
   <a href="https://npmjs.org/package/react-vis">
     <img src="https://img.shields.io/npm/v/react-vis.svg?style=flat-square" alt="version" />

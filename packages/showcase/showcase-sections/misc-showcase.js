@@ -1,6 +1,7 @@
 import React from 'react';
 import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
+import {SHOWCASE_BASE_URL, REACTVIS_BASE_URL} from '../showcase-links';
 const {
   AnimationExample,
   LabelSeriesExample,
@@ -31,8 +32,7 @@ const MISC = [
     name: 'Polygon Example',
     component: TriangleExample,
     componentName: 'TriangleExample',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/series/polygon-series.js',
+    sourceLink: `${REACTVIS_BASE_URL}/src/plot/series/polygon-series.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/series-reference/polygon-series'
   },
@@ -45,8 +45,7 @@ const MISC = [
     name: 'Gradient & Custom Border Example',
     component: GradientExample,
     componentName: 'GradientExample',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/showcase/misc/gradient-example.js',
+    sourceLink: `${SHOWCASE_BASE_URL}/misc/gradient-example.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/api-reference/gradients'
   },
@@ -55,14 +54,13 @@ const MISC = [
     component: AnimationExample,
     componentName: 'AnimationExample',
     docsLink:
-      'http://uber.github.io/react-vis/documentation/general-principles/animation'
+      'http://uber.github.io/react-vis/documentation/series-reference/label-series'
   },
   {
     name: 'Label Series Example',
     component: LabelSeriesExample,
     componentName: 'LabelSeriesExample',
-    sourceLink:
-      'https://github.com/uber/react-vis/blob/master/src/plot/series/label-series.js',
+    sourceLink: `${SHOWCASE_BASE_URL}/src/plot/series/label-series.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/series-reference/label-series'
   },
