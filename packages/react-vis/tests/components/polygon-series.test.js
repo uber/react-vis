@@ -5,7 +5,7 @@ import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import TriangleExample from '../../../showcase/misc/triangle-example';
 
 describe('PolygonSeries', () => {
-  testRenderWithProps(PolygonSeries, GENERIC_XYPLOT_SERIES_PROPS);
+  testRenderWithProps(PolygonSeries, GENERIC_XYPLOT_SERIES_PROPS, true);
 
   test('Showcase Example - Triangle Example', () => {
     const $ = mount(<TriangleExample />);

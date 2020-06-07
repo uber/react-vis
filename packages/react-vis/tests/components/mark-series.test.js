@@ -6,7 +6,7 @@ import Scatterplot from '../../../showcase/plot/scatterplot';
 import DynamicCrosshairScatterplot from '../../../showcase/axes/dynamic-crosshair-scatterplot';
 
 describe('MarkSeries', () => {
-  testRenderWithProps(MarkSeries, GENERIC_XYPLOT_SERIES_PROPS);
+  testRenderWithProps(MarkSeries, GENERIC_XYPLOT_SERIES_PROPS, true);
 
   test('MShowcase Example - Scatterplot', () => {
     const $ = mount(<Scatterplot />);

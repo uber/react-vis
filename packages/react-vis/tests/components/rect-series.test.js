@@ -7,9 +7,9 @@ import Histogram from '../../../showcase/plot/histogram';
 import StackedHistogram from '../../../showcase/plot/stacked-histogram';
 
 describe('RectSeries', () => {
-  testRenderWithProps(HorizontalRectSeries, GENERIC_XYPLOT_SERIES_PROPS);
+  testRenderWithProps(HorizontalRectSeries, GENERIC_XYPLOT_SERIES_PROPS, true);
 
-  testRenderWithProps(VerticalRectSeries, GENERIC_XYPLOT_SERIES_PROPS);
+  testRenderWithProps(VerticalRectSeries, GENERIC_XYPLOT_SERIES_PROPS, true);
 
   test('Showcase Example - StackedHistogram', () => {
     const $ = mount(<StackedHistogram />);

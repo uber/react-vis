@@ -31,7 +31,7 @@ import {
 
 export default function Example() {
   return (
-    <XYPlot width={300} height={300} getY={d => d.value}>
+    <XYPlot width={300} height={300}>
       <VerticalGridLines />
       <HorizontalGridLines />
       <XAxis />
@@ -40,12 +40,19 @@ export default function Example() {
         className="custom-marking"
         customComponent="square"
         data={[
-          {x: 1, value: 10, customComponent: 'circle', size: 10},
-          {x: 1.7, value: 12, size: 20, style: {stroke: 'red', fill: 'orange'}},
-          {x: 2, value: 5},
-          {x: 3, value: 15},
+          {x: 1, y: 10, value: 10, customComponent: 'circle', size: 10},
+          {
+            x: 1.7,
+            y: 12,
+            value: 12,
+            size: 20,
+            style: {stroke: 'red', fill: 'orange'}
+          },
+          {x: 2, y: 5, value: 5},
+          {x: 3, y: 15, value: 15},
           {
             x: 2.5,
+            y: 7,
             value: 7,
             // eslint-disable-next-line react/display-name
             customComponent: (_, positionInPixels) => {

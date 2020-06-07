@@ -5,11 +5,15 @@ import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import LabelSeriesExample from '../../../showcase/misc/label-series-example';
 import LabeledStackedVerticalBarChart from '../../../showcase/plot/labeled-stacked-vertical-bar-chart';
 
-testRenderWithProps(LabelSeries, GENERIC_XYPLOT_SERIES_PROPS);
+testRenderWithProps(LabelSeries, GENERIC_XYPLOT_SERIES_PROPS, true);
 
 describe('LabelSeries', () => {
   test('Showcase Example - LabelSeriesExample', () => {
-    const $ = mount(<LabelSeriesExample />);
+    const $ = mount(
+      <svg>
+        <LabelSeriesExample />
+      </svg>
+    );
     expect($.text()).toBe(
       'UPDATE-101234505101520WigglytuffPsyduckGeodudeDittoSnorlax'
     );
@@ -26,7 +30,11 @@ describe('LabelSeries', () => {
   });
 
   test('Showcase Example - LabeledStackedVerticalBarChart', () => {
-    const $ = mount(<LabeledStackedVerticalBarChart />);
+    const $ = mount(
+      <svg>
+        <LabeledStackedVerticalBarChart />
+      </svg>
+    );
     expect($.find('.rv-xy-plot__series--label text').length).toBe(9);
   });
 });

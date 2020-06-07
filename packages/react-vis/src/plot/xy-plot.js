@@ -144,8 +144,7 @@ class XYPlot extends React.Component {
     };
   }
 
-  // eslint-disable-next-line react/no-deprecated
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const children = getSeriesChildren(nextProps.children);
     const nextData = getStackedData(children, nextProps.stackBy);
     const {scaleMixins} = this.state;

@@ -5,7 +5,7 @@ import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import FauxRadialScatterplot from '../../../showcase/plot/faux-radial-scatterplot';
 
 describe('CircularGridLines', () => {
-  testRenderWithProps(CircularGridLines, GENERIC_XYPLOT_SERIES_PROPS);
+  testRenderWithProps(CircularGridLines, GENERIC_XYPLOT_SERIES_PROPS, true);
 
   test('Showcase Example - FauxRadialScatterplot', () => {
     const $ = mount(<FauxRadialScatterplot />);

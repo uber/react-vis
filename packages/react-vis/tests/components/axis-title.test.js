@@ -16,7 +16,11 @@ describe('AxisTitle', () => {
     const props = Object.assign({}, baseProps, {
       orientation: BOTTOM
     });
-    const $ = mount(<AxisTitle {...props} />);
+    const $ = mount(
+      <svg>
+        <AxisTitle {...props} />
+      </svg>
+    );
     const innerGroupHtml = $.find('g > g').html();
     expect(innerGroupHtml.includes('text-anchor: end')).toBeTruthy();
     expect($.find('text').text()).toBe(baseProps.title);
@@ -27,7 +31,11 @@ describe('AxisTitle', () => {
       orientation: TOP,
       position: 'start'
     });
-    const $ = mount(<AxisTitle {...props} />);
+    const $ = mount(
+      <svg>
+        <AxisTitle {...props} />
+      </svg>
+    );
     const innerGroupHtml = $.find('g > g').html();
     expect(innerGroupHtml.includes('text-anchor: start')).toBeTruthy();
     expect($.find('text').text()).toBe(baseProps.title);
@@ -37,7 +45,11 @@ describe('AxisTitle', () => {
     const props = Object.assign({}, baseProps, {
       orientation: LEFT
     });
-    const $ = mount(<AxisTitle {...props} />);
+    const $ = mount(
+      <svg>
+        <AxisTitle {...props} />
+      </svg>
+    );
     const innerGroupHtml = $.find('g > g').html();
     expect(innerGroupHtml.includes('text-anchor: end')).toBeTruthy();
     expect($.find('text').text()).toBe(baseProps.title);
@@ -48,7 +60,11 @@ describe('AxisTitle', () => {
       orientation: RIGHT,
       position: 'start'
     });
-    const $ = mount(<AxisTitle {...props} />);
+    const $ = mount(
+      <svg>
+        <AxisTitle {...props} />
+      </svg>
+    );
     const innerGroupHtml = $.find('g > g').html();
     expect(innerGroupHtml.includes('text-anchor: start')).toBeTruthy();
     expect($.find('text').text()).toBe(baseProps.title);

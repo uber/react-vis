@@ -1,8 +1,8 @@
 /*eslint-env node*/
 import jsdom from 'jsdom';
 import Enzyme from 'enzyme';
-
 import Adapter from 'enzyme-adapter-react-16';
+
 Enzyme.configure({adapter: new Adapter()});
 
 global.document = jsdom.jsdom('<body></body>');
@@ -16,3 +16,8 @@ Object.keys(document.defaultView).forEach(function mapProperties(property) {
 global.navigator = {
   userAgent: 'node.js'
 };
+
+/*
+ * Canvas mocks
+ */
+HTMLCanvasElement.prototype.getContext = () => {};

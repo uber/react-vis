@@ -6,9 +6,9 @@ import CustomSVGExample from '../../../showcase/plot/custom-svg-example';
 import CustomSVGAllTheMarks from '../../../showcase/plot/custom-svg-all-the-marks';
 import CustomSVGRootLevelComponent from '../../../showcase/plot/custom-svg-root-level';
 
-testRenderWithProps(CustomSVGSeries, GENERIC_XYPLOT_SERIES_PROPS);
-
 describe('CustomSVGSeries', () => {
+  testRenderWithProps(CustomSVGSeries, GENERIC_XYPLOT_SERIES_PROPS);
+
   test('Showcase Example - CustomSVGExample', () => {
     const $ = mount(<CustomSVGExample />);
     expect($.text()).toBe('1.01.52.02.53.068101214x: 187.5y: 200');
