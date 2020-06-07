@@ -9,3 +9,5 @@ import './radial-story';
 
 import './axis-story';
 import './legend-story';
+
+import './misc-story';

@@ -18,36 +18,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {useState} from 'react';
 import LesMisData from './les-mis-data.json';
 
 import './force-directed.scss';
 import ForceDirectedGraph from './force-directed-graph';
 
-export default class ForceDirectedExample extends React.Component {
-  state = {
-    strength: Math.random() * 60 - 30
-  };
-
-  render() {
-    const {strength} = this.state;
-    return (
-      <div className="force-directed-example">
-        <button
-          className="showcase-button"
-          onClick={() => this.setState({strength: Math.random() * 60 - 30})}
-        >
-          {' '}
-          REWEIGHT{' '}
-        </button>
-        <ForceDirectedGraph
-          data={LesMisData}
-          height={500}
-          width={500}
-          animation
-          strength={strength}
-        />
-      </div>
-    );
-  }
+const makeStrength = () => Math.random() * 60 - 30;
+export default function ForceDirectedExample() {
+  const [strength, setStrength] = useState(makeStrength);
+  return (
+    <div className="force-directed-example">
+      <button
+        className="showcase-button"
+        onClick={() => setStrength(makeStrength())}
+      >
+        REWEIGHT
+      </button>
+      <ForceDirectedGraph
+        data={LesMisData}
+        height={500}
+        width={500}
+        animation
+        strength={strength}
+      />
+    </div>
+  );
 }

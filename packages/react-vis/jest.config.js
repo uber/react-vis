@@ -9,5 +9,6 @@ module.exports = {
   rootDir: '.',
   moduleNameMapper: {
     '^~/(.*)': '<rootDir>/src/$1'
-  }
+  },
+  snapshotSerializers: ['enzyme-to-json/serializer']
 };
