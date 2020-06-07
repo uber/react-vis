@@ -2,7 +2,7 @@ import React from 'react';
 
 import {mapSection} from '../showcase-components/showcase-utils';
 import {showCase} from '../index';
-import {REACTVIS_BASE_URL} from '../index';
+import {REACTVIS_BASE_URL} from '../showcase-links';
 const {
   AnimatedParallelCoordinates,
   BasicParallelCoordinates,

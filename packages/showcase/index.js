@@ -124,6 +124,7 @@ import HorizontalDiscreteCustomPalette from './legends/horizontal-discrete-custo
 import AnimationExample from './misc/animation-example';
 import LabelSeriesExample from './misc/label-series-example';
 import GradientExample from './misc/gradient-example';
+import ClipExample from './misc/clip-example';
 import NullDataExample from './misc/null-data-example';
 import SyncedCharts from './misc/synced-charts';
 import TimeChart from './misc/time-chart';
@@ -226,6 +227,7 @@ const mainShowCase = {
   CustomAxes,
   LabelSeriesExample,
   GradientExample,
+  ClipExample,
   NullDataExample,
   ZoomableChartExample,
   SelectionPlotExample,

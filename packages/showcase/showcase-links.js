@@ -31,6 +31,7 @@ export const SHOWCASE_LINKS = {
   TriangleExample: `${SHOWCASE_BASE_URL}/misc/triangle-example.js`,
   VoronoiLineChart: `${SHOWCASE_BASE_URL}/misc/voronoi-line-chart.js`,
   GradientExample: `${SHOWCASE_BASE_URL}/misc/gradient-example.js`,
+  ClipExample: `${SHOWCASE_BASE_URL}/misc/clip-example.js`,
   AnimationExample: `${SHOWCASE_BASE_URL}/misc/animation-example.js`,
   LabelSeriesExample: `${SHOWCASE_BASE_URL}/misc/label-series-example.js`,
   NullDataExample: `${SHOWCASE_BASE_URL}/misc/null-data-example.js`,
