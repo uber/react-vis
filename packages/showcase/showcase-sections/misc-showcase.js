@@ -14,7 +14,8 @@ const {
   ZoomableChartExample,
   SelectionPlotExample,
   DragableChartExample,
-  BidirectionDragChart
+  BidirectionDragChart,
+  ClipExample
 } = showCase;
 
 const MISC = [
@@ -48,6 +49,13 @@ const MISC = [
     sourceLink: `${SHOWCASE_BASE_URL}/misc/gradient-example.js`,
     docsLink:
       'http://uber.github.io/react-vis/documentation/api-reference/gradients'
+  },
+  {
+    name: 'Content Area Clipping',
+    component: ClipExample,
+    componentName: 'ClipExample',
+    sourceLink: `${SHOWCASE_BASE_URL}/misc/clip-example.js`,
+    docsLink: 'http://uber.github.io/react-vis/documentation/api-reference/clip'
   },
   {
     name: 'Animation Example',
