@@ -11,8 +11,9 @@ describe('LineSeriesCanvas', () => {
       <XYPlot width={300} height={300}>
         {Array(k)
           .fill(0)
-          .map(() => (
+          .map((_, index) => (
             <LineSeriesCanvas
+              key={index}
               color="#12939a"
               data={[
                 {x: 1, y: 5},
@@ -39,6 +40,7 @@ describe('LineSeriesCanvas', () => {
       <XYPlot width={300} height={300}>
         {[...Array(k).keys()].map(v => (
           <LineSeriesCanvas
+            key={v}
             color="#12939a"
             data={[
               {x: -50, y: -50},
