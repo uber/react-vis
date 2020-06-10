@@ -50,6 +50,8 @@ import {
 
 import CanvasWrapper from './series/canvas-wrapper';
 
+import {Event} from '../utils/events';
+
 const ATTRIBUTES = [
   'x',
   'y',
@@ -140,7 +142,14 @@ class XYPlot extends React.Component {
     const data = getStackedData(children, stackBy);
     this.state = {
       scaleMixins: this._getScaleMixins(data, props),
-      data
+      data,
+      events: {
+        mouseMove: new Event('move'),
+        mouseDown: new Event('down'),
+        mouseUp: new Event('up'),
+        mouseLeave: new Event('leave'),
+        mouseEnter: new Event('enter')
+      }
     };
   }
 
@@ -222,7 +231,8 @@ class XYPlot extends React.Component {
         ...scaleMixins,
         ...child.props,
         ...XYPlotValues[index],
-        ...dataProps
+        ...dataProps,
+        events: this.state.events
       });
     });
   }
@@ -348,6 +358,7 @@ class XYPlot extends React.Component {
         component.onParentMouseDown(event);
       }
     });
+    this.state.events.mouseDown.fire(event);
   };
 
   /**
@@ -367,6 +378,7 @@ class XYPlot extends React.Component {
         component.onParentMouseEnter(event);
       }
     });
+    this.state.events.mouseEnter.fire(event);
   };
 
   /**
@@ -386,6 +398,7 @@ class XYPlot extends React.Component {
         component.onParentMouseLeave(event);
       }
     });
+    this.state.events.mouseLeave.fire(event);
   };
 
   /**
@@ -405,6 +418,7 @@ class XYPlot extends React.Component {
         component.onParentMouseMove(event);
       }
     });
+    this.state.events.mouseMove.fire(event);
   };
 
   /**
@@ -424,6 +438,7 @@ class XYPlot extends React.Component {
         component.onParentMouseUp(event);
       }
     });
+    this.state.events.mouseUp.fire(event);
   };
 
   /**

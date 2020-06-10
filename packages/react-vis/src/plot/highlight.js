@@ -6,10 +6,8 @@ import {getAttributeScale} from 'utils/scales-utils';
 import {getCombinedClassName} from 'utils/styling-utils';
 
 function getLocs(evt) {
-  // const xLoc = evt.type === 'touchstart' ? evt.pageX : evt.offsetX;
-  // const yLoc = evt.type === 'touchstart' ? evt.pageY : evt.offsetY;
-  const xLoc = evt.offsetX ?? evt.pageX;
-  const yLoc = evt.offsetY ?? evt.pageY;
+  const xLoc = evt.type === 'touchstart' ? evt.pageX : evt.offsetX;
+  const yLoc = evt.type === 'touchstart' ? evt.pageY : evt.offsetY;
   return {xLoc, yLoc};
 }
 
@@ -22,7 +20,7 @@ class Highlight extends AbstractSeries {
     startLocY: 0,
     dragArea: null
   };
-  ref = React.createRef();
+
   _getDrawArea(xLoc, yLoc) {
     const {startLocX, startLocY} = this.state;
     const {
@@ -118,69 +116,10 @@ class Highlight extends AbstractSeries {
     return {};
   }
 
-  _captureMouse = e => {
-    console.log('capture', e.type, e.target, e);
-
-    document.addEventListener('mouseup', this.stopBrushing, {capture: true});
-    document.addEventListener('mousemove', this.onBrush, {capture: true});
-    // document.body.style['pointer-events'] = 'none';
-
-    if (this.ref.current) {
-      this.ref.current.addEventListener('mouseleave', this._mouseLeave, {
-        capture: true
-      });
-    }
-
-    e.preventDefault();
-    e.stopPropagation();
-    // this.startBrushing(e);
-  };
-
-  _releaseMouse = e => {
-    console.log('release', e.type, e.target, e);
-
-    document.removeEventListener('mouseup', this.stopBrushing, {capture: true});
-    document.removeEventListener('mousemove', this.onBrush, {capture: true});
-
-    if (this.ref.current) {
-      this.ref.current.removeEventListener('mouseleave', this._mouseLeave, {
-        capture: true
-      });
-    }
-    // document.body.style['pointer-events'] = 'auto';
-    e.stopPropagation();
-  };
-
-  _mouseLeave = e => {
-    const {toElement} = e;
-    if (toElement === document.documentElement) {
-      this.stopBrushing(e);
-      return;
-    }
-    if (toElement === this.ref.current.parentNode.parentNode) {
-      this.stopBrushing(e);
-      return;
-    }
-    console.log('didnt really leave', toElement, this.ref.current.parentNode);
-    // this.ref.current.
-  };
-
-  startBrushing = e => {
-    // e.preventDefault();
-    this._captureMouse(e);
+  startBrushing(e) {
     const {onBrushStart, onDragStart, drag} = this.props;
     const {dragArea} = this.state;
-    const {xLoc, yLoc} = getLocs(e);
-    console.log(
-      'start',
-      xLoc,
-      yLoc,
-      e.type,
-      e.offsetX,
-      e.offsetY,
-      e.pageX,
-      e.pageY
-    );
+    const {xLoc, yLoc} = getLocs(e.nativeEvent);
 
     const startArea = (dragging, resetDrag) => {
       const emptyBrush = {
@@ -214,23 +153,9 @@ class Highlight extends AbstractSeries {
         onDragStart(e);
       }
     }
-  };
+  }
 
-  stopBrushing = e => {
-    if (e.toElement === document.documentElement) {
-      console.log('is document');
-      // return;
-    }
-    console.log(
-      'stop',
-      e.type,
-      e.target,
-      e.currentTarget,
-      e.toElement,
-      document,
-      e
-    );
-    this._releaseMouse(e);
+  stopBrushing() {
     const {brushing, dragging, brushArea} = this.state;
     // Quickly short-circuit if the user isn't brushing in our component
     if (!brushing && !dragging) {
@@ -258,18 +183,14 @@ class Highlight extends AbstractSeries {
     if (drag && onDragEnd) {
       onDragEnd(!isNulled ? this._convertAreaToCoordinates(brushArea) : null);
     }
-  };
+  }
 
-  onBrush = e => {
-    e.preventDefault();
-    e.stopPropagation();
+  onBrush(e) {
     const {onBrush, onDrag, drag} = this.props;
     const {brushing, dragging} = this.state;
-    const {xLoc, yLoc} = getLocs(e);
-    // console.log('brush', xLoc, yLoc);
+    const {xLoc, yLoc} = getLocs(e.nativeEvent);
     if (brushing) {
       const brushArea = this._getDrawArea(xLoc, yLoc);
-      // console.log('brush area', brushArea);
       this.setState({brushArea});
 
       if (onBrush) {
@@ -284,7 +205,7 @@ class Highlight extends AbstractSeries {
         onDrag(this._convertAreaToCoordinates(brushArea));
       }
     }
-  };
+  }
 
   render() {
     const {
@@ -329,7 +250,6 @@ class Highlight extends AbstractSeries {
         className={getCombinedClassName(className, 'rv-highlight-container')}
       >
         <rect
-          ref={this.ref}
           className="rv-mouse-target"
           fill="black"
           opacity="0"
@@ -337,28 +257,19 @@ class Highlight extends AbstractSeries {
           y="0"
           width={Math.max(touchWidth, 0)}
           height={Math.max(touchHeight, 0)}
-          onMouseDownCapture={e => this.startBrushing(e.nativeEvent)}
-          // onMouseMoveCapture={e => this.onBrush(e)}
-          // onMouseUpCapture={e => this.stopBrushing(e)}
-          // onMouseLeave={e => {
-          //   console.log(
-          //     'mouse leave',
-          //     e.target,
-          //     e.currentTarget,
-          //     getLocs(e.nativeEvent)
-          //   );
-          //   // this._releaseMouse(e);
-          //   // this.stopBrushing(e);
-          // }}
+          onMouseDown={e => this.startBrushing(e)}
+          onMouseMove={e => this.onBrush(e)}
+          onMouseUp={e => this.stopBrushing(e)}
+          onMouseLeave={e => this.stopBrushing(e)}
           // preventDefault() so that mouse event emulation does not happen
-          // onTouchEnd={e => {
-          //   e.preventDefault();
-          //   this.stopBrushing(e);
-          // }}
-          // onTouchCancel={e => {
-          //   e.preventDefault();
-          //   this.stopBrushing(e);
-          // }}
+          onTouchEnd={e => {
+            e.preventDefault();
+            this.stopBrushing(e);
+          }}
+          onTouchCancel={e => {
+            e.preventDefault();
+            this.stopBrushing(e);
+          }}
           onContextMenu={e => e.preventDefault()}
           onContextMenuCapture={e => e.preventDefault()}
         />

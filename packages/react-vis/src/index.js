@@ -74,6 +74,8 @@ export Treemap from 'treemap';
 
 export ContentClipPath from './plot/content-clip-path';
 
+export ZoomHandler from './plot/zoom-handler';
+
 export {
   makeHeightFlexible,
   makeVisFlexible,

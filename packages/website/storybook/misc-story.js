@@ -8,9 +8,11 @@ import {withKnobs, boolean, button} from '@storybook/addon-knobs/react';
 import {SimpleChartWrapper} from './storybook-utils';
 import {generateLinearData} from './storybook-data';
 
-import {LineSeries, ContentClipPath, Highlight} from 'react-vis';
+import {LineSeries, MarkSeries, ContentClipPath, ZoomHandler} from 'react-vis';
 
 const data = generateLinearData({randomFactor: 10});
+
+const highlightData = generateLinearData({});
 
 storiesOf('Misc', module)
   .addDecorator(withKnobs)
@@ -33,16 +35,17 @@ storiesOf('Misc', module)
     const [zoom, setZoom] = useState();
     const onZoom = useCallback(area => {
       console.log('zoom', area);
+      setZoom(area);
     }, []);
 
     button('Reset Zoom', () => setZoom(null), 'Zoom');
 
     const xDomain = zoom ? [zoom.left, zoom.right] : undefined;
-
+    const yDomain = zoom ? [zoom.bottom, zoom.top] : undefined;
     return (
-      <SimpleChartWrapper xDomain={xDomain}>
-        <Highlight onBrushEnd={onZoom} />
-        <LineSeries data={data} />
+      <SimpleChartWrapper xDomain={xDomain} yDomain={yDomain}>
+        <ZoomHandler opacity={0.2} onZoom={onZoom} />
+        <MarkSeries data={highlightData} />
       </SimpleChartWrapper>
     );
   });
