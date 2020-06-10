@@ -8,14 +8,6 @@ const DEFAULT_STATE = {
   startPosition: null
 };
 
-const useStateWithGet = initialState => {
-  const [state, setState] = useState(initialState);
-  const ref = useRef();
-  ref.current = state;
-  const get = useCallback(() => ref.current, []);
-  return [state, setState, get];
-};
-
 export default function ZoomHandler(props) {
   const {
     events: {mouseMove, mouseDown, mouseUp, mouseLeave},
@@ -28,7 +20,15 @@ export default function ZoomHandler(props) {
     innerHeight = 0
   } = props;
 
-  const [state, setState, getState] = useStateWithGet(DEFAULT_STATE);
+  const [state, setState] = useState(DEFAULT_STATE);
+  const stateRef = useRef();
+  // The 'state' is being assigned to the 'ref' so that the `useCallback`s can
+  // reference the value without directly depending on it.
+  // This is important for performance reasons, as directly depending on the state,
+  // will cause the event handlers to be added and removed for each move of the mouse.
+  // The lifecycle of the callbacks isn't affected by the value of the 'state', so
+  // there is no harm in using the `stateRef` to get the latest value of the `state`
+  stateRef.current = state;
 
   const convertArea = useCallback(
     area => {
@@ -47,7 +47,8 @@ export default function ZoomHandler(props) {
 
   const onMouseMove = useCallback(
     e => {
-      const state = getState();
+      // Get the current value of 'state'
+      const state = stateRef.current;
       if (!state.brushing) {
         return;
       }
@@ -76,39 +77,28 @@ export default function ZoomHandler(props) {
         };
       });
     },
-    [
-      enableX,
-      enableY,
-      getState,
-      innerHeight,
-      innerWidth,
-      marginLeft,
-      marginTop,
-      setState
-    ]
+    [enableX, enableY, innerHeight, innerWidth, marginLeft, marginTop]
   );
 
-  const onMouseDown = useCallback(
-    e => {
-      e.stopPropagation();
-      e.preventDefault();
-      const {x, y} = getPosition(e);
+  const onMouseDown = useCallback(e => {
+    e.stopPropagation();
+    e.preventDefault();
+    const {x, y} = getPosition(e);
 
-      const bounds = {left: x, top: y, right: x, bottom: y};
+    const bounds = {left: x, top: y, right: x, bottom: y};
 
-      setState(state => ({
-        ...state,
-        brushing: true,
-        bounds,
-        startPosition: {x, y}
-      }));
-    },
-    [setState]
-  );
+    setState(state => ({
+      ...state,
+      brushing: true,
+      bounds,
+      startPosition: {x, y}
+    }));
+  }, []);
 
   const onMouseUp = useCallback(
     e => {
-      const state = getState();
+      // Get the current value of 'state'
+      const state = stateRef.current;
 
       if (!state.brushing) {
         return setState(DEFAULT_STATE);
@@ -126,15 +116,15 @@ export default function ZoomHandler(props) {
 
       setState(DEFAULT_STATE);
     },
-    [convertArea, getState, onZoom, setState]
+    [convertArea, onZoom]
   );
 
   const onMouseLeave = useCallback(() => {
-    const state = getState();
+    const state = stateRef.current;
     if (state.brushing) {
       setState(DEFAULT_STATE);
     }
-  }, [getState, setState]);
+  }, []);
 
   useEffect(() => mouseMove.subscribe(onMouseMove), [mouseMove, onMouseMove]);
   useEffect(() => mouseDown.subscribe(onMouseDown), [mouseDown, onMouseDown]);
