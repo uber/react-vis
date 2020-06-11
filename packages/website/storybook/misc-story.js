@@ -31,10 +31,9 @@ storiesOf('Misc', module)
       </SimpleChartWrapper>
     );
   })
-  .addWithJSX('Highlight', () => {
+  .addWithJSX('Zoom', () => {
     const [zoom, setZoom] = useState();
     const onZoom = useCallback(area => {
-      console.log('zoom', area);
       setZoom(area);
     }, []);
 

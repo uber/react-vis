@@ -54,6 +54,7 @@ export function SimpleChartWrapper(props) {
           xType={props.xType}
           yDomain={props.yDomain || [0, 20]}
           stackBy={props.stackBy}
+          animation={props.animation}
         >
           {props.noXAxis
             ? null
