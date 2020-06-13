@@ -39,43 +39,51 @@ export const LINEAR_PALETTE = ['#EF5D28', '#FF9833'];
 export function SimpleChartWrapper(props) {
   return (
     <AutoSizer>
-      {({height, width}) => (
-        <XYPlot
-          height={height}
-          width={width}
-          colorRange={props.colorRange}
-          colorScale={props.colorType}
-          fillRange={props.fillRange}
-          fillScale={props.fillScale}
-          margin={props.margin}
-          strokeRange={props.strokeRange}
-          strokeType={props.strokeType}
-          xDomain={props.xDomain}
-          xType={props.xType}
-          yDomain={props.yDomain || [0, 20]}
-          stackBy={props.stackBy}
-        >
-          {props.noXAxis
-            ? null
-            : boolean('X Axis', true, 'General chart options') && <XAxis />}
-          {props.noYAxis
-            ? null
-            : boolean('Y Axis', true, 'General chart options') && <YAxis />}
-          {props.noVerticalGridLines
-            ? null
-            : boolean('vertical gridlines', true, 'General chart options') && (
-                <VerticalGridLines />
-              )}
-          {props.noHorizontalGridLines
-            ? null
-            : boolean(
-                'horizontal gridlines',
-                true,
-                'General chart options'
-              ) && <HorizontalGridLines />}
-          {props.children}
-        </XYPlot>
-      )}
+      {({height, width}) => {
+        if (!width || !height) {
+          return null;
+        }
+        return (
+          <XYPlot
+            height={height}
+            width={width}
+            colorRange={props.colorRange}
+            colorScale={props.colorType}
+            fillRange={props.fillRange}
+            fillScale={props.fillScale}
+            margin={props.margin}
+            strokeRange={props.strokeRange}
+            strokeType={props.strokeType}
+            xDomain={props.xDomain}
+            xType={props.xType}
+            yDomain={props.yDomain || [0, 20]}
+            stackBy={props.stackBy}
+            animation={props.animation}
+          >
+            {props.noXAxis
+              ? null
+              : boolean('X Axis', true, 'General chart options') && <XAxis />}
+            {props.noYAxis
+              ? null
+              : boolean('Y Axis', true, 'General chart options') && <YAxis />}
+            {props.noVerticalGridLines
+              ? null
+              : boolean(
+                  'vertical gridlines',
+                  true,
+                  'General chart options'
+                ) && <VerticalGridLines />}
+            {props.noHorizontalGridLines
+              ? null
+              : boolean(
+                  'horizontal gridlines',
+                  true,
+                  'General chart options'
+                ) && <HorizontalGridLines />}
+            {props.children}
+          </XYPlot>
+        );
+      }}
     </AutoSizer>
   );
 }

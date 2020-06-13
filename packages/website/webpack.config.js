@@ -16,7 +16,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      react: resolve(__dirname, './node_modules/react')
+      react: resolve(__dirname, './node_modules/react'),
+      'react-vis': resolve('../react-vis/src')
     }
   }
 };

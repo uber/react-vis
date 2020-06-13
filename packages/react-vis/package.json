@@ -72,6 +72,7 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
     "eslint-plugin-jest": "^23.13.2",
+    "eslint-plugin-react-hooks": "^4.0.4",
     "jest": "^25.5.4",
     "jsdom": "^9.9.1",
     "node-sass": "^4.9.3",
