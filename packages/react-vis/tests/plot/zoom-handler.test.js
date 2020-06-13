@@ -1,12 +1,12 @@
 import React from 'react';
 
 import {mount} from 'enzyme';
-import ZoomHandler from '../../src/plot/zoom-handler';
+import Selection from '../../src/plot/selection';
 import XYPlot from '../../src/plot/xy-plot';
 
 describe('zoom-handler', () => {
   it('should zoom', () => {
-    const onZoom = jest.fn();
+    const onSelected = jest.fn();
     const wrapper = mount(
       <XYPlot
         width={300}
@@ -15,16 +15,16 @@ describe('zoom-handler', () => {
         xDomain={[0, 20]}
         yDomain={[0, 20]}
       >
-        <ZoomHandler onZoom={onZoom} />
+        <Selection onSelected={onSelected} />
       </XYPlot>
     );
 
     const svg = wrapper.find('svg');
-    svg.simulate('mousedown', mouseEvent(100, 100));
-    svg.simulate('mouseMove', mouseEvent(150, 150));
-    svg.simulate('mouseUp', mouseEvent(150, 150));
+    svg.simulate('mousedown', mouseEvent(100, 110));
+    svg.simulate('mouseMove', mouseEvent(150, 160));
+    svg.simulate('mouseUp', mouseEvent(150, 160));
 
-    expect(onZoom).toBeCalledWith({
+    expect(onSelected).toBeCalledWith({
       left: 4.8,
       top: 12,
       right: 8.8,
@@ -33,7 +33,7 @@ describe('zoom-handler', () => {
   });
 
   it('should render selection', () => {
-    const onZoom = jest.fn();
+    const onSelected = jest.fn();
     const wrapper = mount(
       <XYPlot
         width={300}
@@ -42,7 +42,7 @@ describe('zoom-handler', () => {
         xDomain={[0, 20]}
         yDomain={[0, 20]}
       >
-        <ZoomHandler onZoom={onZoom} />
+        <Selection onSelected={onSelected} />
       </XYPlot>
     );
 
@@ -61,7 +61,7 @@ describe('zoom-handler', () => {
   });
 
   it('should clear selection if plot mouseleave', () => {
-    const onZoom = jest.fn();
+    const onSelected = jest.fn();
     const wrapper = mount(
       <XYPlot
         width={300}
@@ -70,7 +70,7 @@ describe('zoom-handler', () => {
         xDomain={[0, 20]}
         yDomain={[0, 20]}
       >
-        <ZoomHandler onZoom={onZoom} />
+        <Selection onSelected={onSelected} />
       </XYPlot>
     );
 
@@ -82,7 +82,7 @@ describe('zoom-handler', () => {
 
     svg.simulate('mouseleave');
     expect(wrapper.find('rect')).toHaveLength(0);
-    expect(onZoom).not.toBeCalled();
+    expect(onSelected).not.toBeCalled();
   });
 });
 
