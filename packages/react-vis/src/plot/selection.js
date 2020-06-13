@@ -1,5 +1,4 @@
 import React, {useEffect, useState, useCallback, useRef} from 'react';
-import {getCombinedClassName} from '../utils/styling-utils';
 import {getAttributeScale} from '../utils/scales-utils';
 
 const DEFAULT_STATE = {
@@ -8,26 +7,29 @@ const DEFAULT_STATE = {
   startPosition: null
 };
 
-export default function ZoomHandler(props) {
+export default function Selection(props) {
   const {
     events: {mouseMove, mouseDown, mouseUp, mouseLeave},
-    onZoom,
+    onSelecting,
+    onSelected,
     enableX = true,
     enableY = true,
     marginLeft = 0,
     marginTop = 0,
     innerWidth = 0,
-    innerHeight = 0
+    innerHeight = 0,
+    xDomain,
+    yDomain
   } = props;
 
   const [state, setState] = useState(DEFAULT_STATE);
-  const stateRef = useRef();
   // The 'state' is being assigned to the 'ref' so that the `useCallback`s can
   // reference the value without directly depending on it.
   // This is important for performance reasons, as directly depending on the state,
   // will cause the event handlers to be added and removed for each move of the mouse.
   // The lifecycle of the callbacks isn't affected by the value of the 'state', so
   // there is no harm in using the `stateRef` to get the latest value of the `state`
+  const stateRef = useRef();
   stateRef.current = state;
 
   const convertArea = useCallback(
@@ -35,14 +37,16 @@ export default function ZoomHandler(props) {
       const xScale = getAttributeScale(props, 'x');
       const yScale = getAttributeScale(props, 'y');
 
+      // If the axis isn't enabled, then use the domain to ensure
+      // that the entire space is selected.
       return {
-        bottom: yScale.invert(area.bottom),
-        left: xScale.invert(area.left - marginLeft),
-        right: xScale.invert(area.right - marginLeft),
-        top: yScale.invert(area.top)
+        left: enableX ? xScale.invert(area.left - marginLeft) : xDomain[0],
+        top: enableY ? yScale.invert(area.top - marginTop) : yDomain[1],
+        right: enableX ? xScale.invert(area.right - marginLeft) : yDomain[1],
+        bottom: enableY ? yScale.invert(area.bottom - marginTop) : yDomain[0]
       };
     },
-    [marginLeft, props]
+    [enableX, enableY, marginLeft, marginTop, props, xDomain, yDomain]
   );
 
   const onMouseMove = useCallback(
@@ -56,28 +60,36 @@ export default function ZoomHandler(props) {
       e.preventDefault();
       const position = getPosition(e);
 
-      setState(state => {
-        const bounds = {
-          left: enableX
-            ? Math.min(position.x, state.startPosition.x)
-            : marginLeft,
-          top: enableY
-            ? Math.min(position.y, state.startPosition.y)
-            : marginTop,
-          right: enableX
-            ? Math.max(position.x, state.startPosition.x)
-            : innerWidth + marginLeft,
-          bottom: enableY
-            ? Math.max(position.y, state.startPosition.y)
-            : innerHeight + marginTop
-        };
-        return {
-          ...state,
-          bounds
-        };
+      const bounds = {
+        left: enableX
+          ? Math.min(position.x, state.startPosition.x)
+          : marginLeft,
+        top: enableY ? Math.min(position.y, state.startPosition.y) : marginTop,
+        right: enableX
+          ? Math.max(position.x, state.startPosition.x)
+          : innerWidth + marginLeft,
+        bottom: enableY
+          ? Math.max(position.y, state.startPosition.y)
+          : innerHeight + marginTop
+      };
+
+      onSelecting && onSelecting(convertArea(bounds));
+
+      setState({
+        ...state,
+        bounds
       });
     },
-    [enableX, enableY, innerHeight, innerWidth, marginLeft, marginTop]
+    [
+      convertArea,
+      enableX,
+      enableY,
+      innerHeight,
+      innerWidth,
+      marginLeft,
+      marginTop,
+      onSelecting
+    ]
   );
 
   const onMouseDown = useCallback(e => {
@@ -111,12 +123,14 @@ export default function ZoomHandler(props) {
         state.bounds.bottom - state.bounds.top > 5 &&
         state.bounds.right - state.bounds.left > 5
       ) {
-        onZoom && onZoom(convertArea(state.bounds));
+        onSelected && onSelected(convertArea(state.bounds));
+      } else {
+        onSelected && onSelected(null);
       }
 
       setState(DEFAULT_STATE);
     },
-    [convertArea, onZoom]
+    [convertArea, onSelected]
   );
 
   const onMouseLeave = useCallback(() => {
@@ -139,27 +153,27 @@ export default function ZoomHandler(props) {
   }
 
   const {bounds} = state;
-  const {opacity, color, className} = props;
+  const {opacity = 0.2, color, style} = props;
 
   return (
-    <g className={getCombinedClassName(className, 'rv-highlight-container')}>
-      <rect
-        className="rv-highlight"
-        pointerEvents="none"
-        opacity={opacity}
-        fill={color}
-        x={bounds.left}
-        y={bounds.top}
-        width={Math.max(0, bounds.right - bounds.left)}
-        height={Math.max(0, bounds.bottom - bounds.top)}
-      />
-    </g>
+    <rect
+      className="rv-highlight"
+      pointerEvents="none"
+      fill={color}
+      fillOpacity={opacity}
+      x={bounds.left}
+      y={bounds.top}
+      style={style}
+      width={Math.max(0, bounds.right - bounds.left)}
+      height={Math.max(0, bounds.bottom - bounds.top)}
+    />
   );
 }
-ZoomHandler.requiresSVG = true;
+Selection.requiresSVG = true;
 
-function getPosition(evt) {
-  const x = evt.nativeEvent.offsetX ?? evt.nativeEvent.pageX;
-  const y = evt.nativeEvent.offsetY ?? evt.nativeEvent.pageY;
+function getPosition(event) {
+  event = event.nativeEvent ?? event;
+  const x = event.type === 'touchstart' ? event.pageX : event.offsetX;
+  const y = event.type === 'touchstart' ? event.pageY : event.offsetY;
   return {x, y};
 }
