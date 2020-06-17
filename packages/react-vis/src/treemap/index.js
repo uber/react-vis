@@ -91,30 +91,18 @@ function _getScaleFns(props) {
   };
 }
 
-class Treemap extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      scales: _getScaleFns(props),
-      ...getInnerDimensions(props, props.margin)
-    };
-  }
-
-  UNSAFE_componentWillReceiveProps(props) {
-    this.setState({
-      scales: _getScaleFns(props),
-      ...getInnerDimensions(props, props.margin)
-    });
-  }
+function Treemap(props) {
+  const scales = _getScaleFns(props);
+  const innerDimensions = getInnerDimensions(props, props.margin);
 
   /**
    * Create the list of nodes to render.
    * @returns {Array} Array of nodes.
    * @private
    */
-  _getNodesToRender() {
-    const {innerWidth, innerHeight} = this.state;
-    const {data, mode, padding, sortFunction, getSize} = this.props;
+  function _getNodesToRender() {
+    const {innerWidth, innerHeight} = innerDimensions;
+    const {data, mode, padding, sortFunction, getSize} = props;
     if (!data) {
       return [];
     }
@@ -163,13 +151,11 @@ class Treemap extends React.Component {
     return treemapingFunction(structuredInput).descendants();
   }
 
-  render() {
-    const {renderMode} = this.props;
-    const {scales} = this.state;
-    const nodes = this._getNodesToRender();
-    const TreemapElement = renderMode === 'SVG' ? TreemapSVG : TreemapDOM;
-    return <TreemapElement {...this.props} nodes={nodes} scales={scales} />;
-  }
+  const {renderMode} = props;
+  const nodes = _getNodesToRender();
+  const TreemapElement = renderMode === 'SVG' ? TreemapSVG : TreemapDOM;
+
+  return <TreemapElement {...props} nodes={nodes} scales={scales} />;
 }
 
 Treemap.displayName = 'Treemap';
