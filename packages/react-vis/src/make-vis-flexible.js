@@ -18,13 +18,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import window from 'global/window';
 
 import XYPlot from 'plot/xy-plot';
 import {getDOMNode} from 'utils/react-utils';
-
-const CONTAINER_REF = 'container';
 
 // As a performance enhancement, we want to only listen once
 const resizeSubscribers = [];
@@ -101,79 +99,64 @@ function getDisplayName(Component) {
  */
 
 function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
-  const ResultClass = class extends React.Component {
-    static get propTypes() {
-      const {height, width, ...otherPropTypes} = Component.propTypes; // eslint-disable-line no-unused-vars
-      return otherPropTypes;
-    }
+  const ResultFunctionalComponent = function(props) {
+    const containerRef = useRef();
 
-    constructor(props) {
-      super(props);
-      this.state = {
-        height: 0,
-        width: 0
-      };
-    }
-
+    const [size, setSize] = useState({height: 0, width: 0});
     /**
      * Get the width of the container and assign the width.
      * @private
      */
-    _onResize = () => {
-      const containerElement = getDOMNode(this[CONTAINER_REF]);
+    function _onResize() {
+      const containerElement = getDOMNode(containerRef.current);
       const {offsetHeight, offsetWidth} = containerElement;
 
       const newHeight =
-        this.state.height === offsetHeight ? {} : {height: offsetHeight};
+        size.height === offsetHeight ? {} : {height: offsetHeight};
 
-      const newWidth =
-        this.state.width === offsetWidth ? {} : {width: offsetWidth};
+      const newWidth = size.width === offsetWidth ? {} : {width: offsetWidth};
 
-      this.setState({
+      setSize(prevSize => ({
+        ...prevSize,
         ...newHeight,
         ...newWidth
-      });
+      }));
+    }
+
+    useEffect(() => {
+      const cancelSubscription = subscribeToDebouncedResize(_onResize);
+
+      return () => {
+        cancelSubscription();
+      };
+    }, []);
+
+    const {height, width} = size;
+    const componentProps = {
+      ...props,
+      animation: height === 0 && width === 0 ? null : props.animation
     };
 
-    componentDidMount() {
-      this._onResize();
-      this.cancelSubscription = subscribeToDebouncedResize(this._onResize);
-    }
+    const updatedDimensions = {
+      ...(isHeightFlexible ? {height} : {}),
+      ...(isWidthFlexible ? {width} : {})
+    };
 
-    UNSAFE_componentWillReceiveProps() {
-      this._onResize();
-    }
-
-    componentWillUnmount() {
-      this.cancelSubscription();
-    }
-
-    render() {
-      const {height, width} = this.state;
-      const props = {
-        ...this.props,
-        animation: height === 0 && width === 0 ? null : this.props.animation
-      };
-
-      const updatedDimensions = {
-        ...(isHeightFlexible ? {height} : {}),
-        ...(isWidthFlexible ? {width} : {})
-      };
-
-      return (
-        <div
-          ref={ref => (this[CONTAINER_REF] = ref)}
-          style={{width: '100%', height: '100%'}}
-        >
-          <Component {...updatedDimensions} {...props} />
-        </div>
-      );
-    }
+    return (
+      <div ref={containerRef} style={{width: '100%', height: '100%'}}>
+        <Component {...updatedDimensions} {...componentProps} />
+      </div>
+    );
   };
 
-  ResultClass.displayName = `Flexible${getDisplayName(Component)}`;
+  const {height, width, ...otherPropTypes} = Component.propTypes || {}; // eslint-disable-line no-unused-vars
+  ResultFunctionalComponent.propTypes = otherPropTypes;
 
-  return ResultClass;
+  ResultFunctionalComponent.displayName = `Flexible${getDisplayName(
+    Component
+  )}`;
+
+  return ResultFunctionalComponent;
 }
 
 export function makeHeightFlexible(component) {
