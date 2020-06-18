@@ -2,6 +2,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:jest/recommended",
     "prettier",
     "prettier/react"
@@ -9,6 +10,7 @@
   "parser": "babel-eslint",
   "plugins": [
     "react",
+    "react-hooks",
     "prettier",
     "babel",
     "jest"

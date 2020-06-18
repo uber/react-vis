@@ -106,6 +106,7 @@ export const SHOWCASE_LINKS = {
   HorizontalDiscreteColorLegendExample: `${SHOWCASE_BASE_URL}/legends/horizontal-discrete-color.js`,
   HorizontalDiscreteCustomPalette: `${SHOWCASE_BASE_URL}/legends/horizontal-discrete-custom-palette.js`,
   SearchableDiscreteColorLegendExample: `${SHOWCASE_BASE_URL}/legends/searchable-discrete-color.js`,
+  // eslint-disable-next-line max-len
   SearchableDiscreteColorLegendHoverExample: `${SHOWCASE_BASE_URL}/legends/searchable-discrete-color-hover.js`,
   ContinuousColorLegendExample: `${SHOWCASE_BASE_URL}/legends/continuous-color.js`,
   ContinuousSizeLegendExample: `${SHOWCASE_BASE_URL}/legends/continuous-size.js'`

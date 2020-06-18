@@ -103,33 +103,30 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
     const containerRef = useRef();
 
     const [size, setSize] = useState({height: 0, width: 0});
-    /**
-     * Get the width of the container and assign the width.
-     * @private
-     */
-    function _onResize() {
-      const containerElement = getDOMNode(containerRef.current);
-      const {offsetHeight, offsetWidth} = containerElement;
-
-      const newHeight =
-        size.height === offsetHeight ? {} : {height: offsetHeight};
-
-      const newWidth = size.width === offsetWidth ? {} : {width: offsetWidth};
-
-      setSize(prevSize => ({
-        ...prevSize,
-        ...newHeight,
-        ...newWidth
-      }));
-    }
 
     useEffect(() => {
+      function _onResize() {
+        const containerElement = getDOMNode(containerRef.current);
+        const {offsetHeight, offsetWidth} = containerElement;
+
+        const newHeight =
+          size.height === offsetHeight ? {} : {height: offsetHeight};
+
+        const newWidth = size.width === offsetWidth ? {} : {width: offsetWidth};
+
+        setSize(prevSize => ({
+          ...prevSize,
+          ...newHeight,
+          ...newWidth
+        }));
+      }
+
       const cancelSubscription = subscribeToDebouncedResize(_onResize);
 
       return () => {
         cancelSubscription();
       };
-    }, []);
+    }, [size.width, size.height]);
 
     const {height, width} = size;
     const componentProps = {
