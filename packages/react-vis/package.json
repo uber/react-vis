@@ -67,7 +67,6 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "babelify": "^10.0.0",
     "browserify": "^14.3.0",
-    "canvas-prebuilt": "^1.6.11",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
