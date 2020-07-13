@@ -262,6 +262,10 @@ class Highlight extends AbstractSeries {
           onMouseUp={e => this.stopBrushing(e)}
           onMouseLeave={e => this.stopBrushing(e)}
           // preventDefault() so that mouse event emulation does not happen
+          onTouchStart={e => {
+            e.preventDefault();
+            this.startBrushing(e);
+          }}
           onTouchEnd={e => {
             e.preventDefault();
             this.stopBrushing(e);
