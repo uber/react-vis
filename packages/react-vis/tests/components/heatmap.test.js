@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import XYPlot from 'plot/xy-plot';
-import HeatmapSeries from 'plot/series/heatmap-series';
+import XYPlot from '~/plot/xy-plot';
+import HeatmapSeries from '~/plot/series/heatmap-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import HeatmapChart from '../../../showcase/plot/heatmap-chart';
 import LabeledHeatmap from '../../../showcase/plot/labeled-heatmap';

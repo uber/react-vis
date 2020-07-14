@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import PolygonSeries from 'plot/series/mark-series';
+import PolygonSeries from '~/plot/series/mark-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import TriangleExample from '../../../showcase/misc/triangle-example';
 

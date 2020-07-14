@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import DecorativeAxis from 'plot/axis/decorative-axis';
+import DecorativeAxis from '~/plot/axis/decorative-axis';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import DecorativeAxisCrissCross from '../../../showcase/axes/decorative-axes-criss-cross';
 import ParallelCoordinatesExample from '../../../showcase/axes/parallel-coordinates-example';

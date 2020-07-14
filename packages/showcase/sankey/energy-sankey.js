@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Sankey from 'react-vis/sankey';
+import {Sankey} from 'react-vis';
 
 import Energy from '../datasets/energy.json';
 import ShowcaseButton from '../showcase-components/showcase-button';

@@ -22,8 +22,8 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import {DIRECTION} from 'utils/axis-utils';
-import GridLines from 'plot/grid-lines';
+import {DIRECTION} from '~/utils/axis-utils';
+import GridLines from '~/plot/grid-lines';
 
 const {HORIZONTAL} = DIRECTION;
 

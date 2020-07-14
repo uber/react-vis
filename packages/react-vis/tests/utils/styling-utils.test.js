@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import {getCombinedClassName} from 'utils/styling-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 describe('styling-utils', () => {
   test('getCombinedClassName', () => {

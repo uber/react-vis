@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import GradientDefs from 'plot/gradient-defs';
+import GradientDefs from '~/plot/gradient-defs';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import TriangleExample from '../../../showcase/misc/triangle-example';
 import GradientExample from '../../../showcase/misc/gradient-example';

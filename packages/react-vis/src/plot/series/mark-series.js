@@ -21,11 +21,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
-import {warning} from 'utils/react-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
-import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
+import Animation from '~/animation';
+import {ANIMATED_SERIES_PROPS} from '~/utils/series-utils';
+import {warning} from '~/utils/react-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
+import {DEFAULT_SIZE, DEFAULT_OPACITY} from '~/theme';
 
 import AbstractSeries from './abstract-series';
 

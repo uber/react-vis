@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import AxisTitle from 'plot/axis/axis-title';
-import {ORIENTATION} from 'utils/axis-utils';
+import AxisTitle from '~/plot/axis/axis-title';
+import {ORIENTATION} from '~/utils/axis-utils';
 
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 

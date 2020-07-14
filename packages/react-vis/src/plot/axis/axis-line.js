@@ -22,7 +22,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import {ORIENTATION} from 'utils/axis-utils';
+import {ORIENTATION} from '~/utils/axis-utils';
 
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import CustomSVGSeries from 'plot/series/custom-svg-series';
+import CustomSVGSeries from '~/plot/series/custom-svg-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import CustomSVGExample from '../../../showcase/plot/custom-svg-example';
 import CustomSVGAllTheMarks from '../../../showcase/plot/custom-svg-all-the-marks';

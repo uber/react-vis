@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {voronoi} from 'd3-voronoi';
 
-import {getAttributeFunctor} from 'utils/scales-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
+import {getAttributeFunctor} from '~/utils/scales-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 const NOOP = f => f;
 

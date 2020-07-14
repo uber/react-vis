@@ -20,13 +20,13 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Animation from 'animation';
+import Animation from '~/animation';
 import {hexbin} from 'd3-hexbin';
 import {scaleLinear} from 'd3-scale';
 
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
-import {CONTINUOUS_COLOR_RANGE} from 'theme';
+import {ANIMATED_SERIES_PROPS} from '~/utils/series-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
+import {CONTINUOUS_COLOR_RANGE} from '~/theme';
 import AbstractSeries from './abstract-series';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--hexbin';

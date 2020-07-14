@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Sankey from 'react-vis/sankey';
+import {Sankey} from 'react-vis';
 
 const nodes = [{name: 'a', rotation: 0}, {name: 'b'}, {name: 'c'}];
 const links = [

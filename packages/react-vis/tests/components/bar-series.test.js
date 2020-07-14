@@ -1,8 +1,8 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import XYPlot from 'plot/xy-plot';
-import HorizontalBarSeries from 'plot/series/horizontal-bar-series';
-import VerticalBarSeries from 'plot/series/vertical-bar-series';
+import XYPlot from '~/plot/xy-plot';
+import HorizontalBarSeries from '~/plot/series/horizontal-bar-series';
+import VerticalBarSeries from '~/plot/series/vertical-bar-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import StackedHorizontalBarChart from '../../../showcase/plot/stacked-horizontal-bar-chart';
 import StackedVerticalBarChart from '../../../showcase/plot/stacked-vertical-bar-chart';

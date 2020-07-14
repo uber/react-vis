@@ -21,9 +21,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import {transformValueToString} from 'utils/data-utils';
-import {getAttributeFunctor} from 'utils/scales-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
+import {transformValueToString} from '~/utils/data-utils';
+import {getAttributeFunctor} from '~/utils/scales-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 /*
  * Hint provides two options for placement of hint:

@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import XYPlot from 'plot/xy-plot';
-import LineSeriesCanvas from 'plot/series/line-series-canvas';
+import XYPlot from '~/plot/xy-plot';
+import LineSeriesCanvas from '~/plot/series/line-series-canvas';
 
 describe('LineSeriesCanvas', () => {
   test('should be rendered', () => {

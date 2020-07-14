@@ -27,7 +27,7 @@ import {
   getAxisAngle,
   generateFit,
   generatePoints
-} from 'utils/axis-utils';
+} from '~/utils/axis-utils';
 
 describe('axis-utils', () => {
   test('getTicksTotalFromSize', () => {

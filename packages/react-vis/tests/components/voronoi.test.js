@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
 import Voronoi from '../../src/plot/voronoi.js';
-import XYPlot from 'plot/xy-plot';
+import XYPlot from '~/plot/xy-plot';
 
 import VoronoiLineChart from '../../../showcase/misc/voronoi-line-chart';
 

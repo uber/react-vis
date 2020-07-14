@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import Sunburst from 'sunburst';
+import Sunburst from '~/sunburst';
 import BasicSunburst from '../../../showcase/sunbursts/basic-sunburst';
 import SunburstWithTooltips from '../../../showcase/sunbursts/sunburst-with-tooltips';
 import AnimatedSunburst from '../../../showcase/sunbursts/animated-sunburst';

@@ -21,10 +21,10 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-import Animation from 'animation';
-import {ORIENTATION, getTicksTotalFromSize} from 'utils/axis-utils';
-import {getAttributeScale} from 'utils/scales-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
+import Animation from '~/animation';
+import {ORIENTATION, getTicksTotalFromSize} from '~/utils/axis-utils';
+import {getAttributeScale} from '~/utils/scales-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 import AxisLine from './axis-line';
 import AxisTicks from './axis-ticks';

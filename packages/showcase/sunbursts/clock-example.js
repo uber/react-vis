@@ -22,7 +22,7 @@ import React, {useState, useEffect} from 'react';
 
 import {XYPlot, ArcSeries} from 'react-vis';
 
-import {EXTENDED_DISCRETE_COLOR_RANGE} from 'react-vis/theme';
+import {EXTENDED_DISCRETE_COLOR_RANGE} from 'react-vis/dist/theme';
 
 const PI = Math.PI;
 

@@ -22,14 +22,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {pie as pieBuilder} from 'd3-shape';
 
-import {AnimationPropType} from 'animation';
-import ArcSeries from 'plot/series/arc-series';
-import LabelSeries from 'plot/series/label-series';
-import XYPlot from 'plot/xy-plot';
-import {DISCRETE_COLOR_RANGE} from 'theme';
-import {MarginPropType, getRadialLayoutMargin} from 'utils/chart-utils';
-import {getRadialDomain} from 'utils/series-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
+import {AnimationPropType} from '~/animation';
+import ArcSeries from '~/plot/series/arc-series';
+import LabelSeries from '~/plot/series/label-series';
+import XYPlot from '~/plot/xy-plot';
+import {DISCRETE_COLOR_RANGE} from '~/theme';
+import {MarginPropType, getRadialLayoutMargin} from '~/utils/chart-utils';
+import {getRadialDomain} from '~/utils/series-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 const predefinedClassName = 'rv-radial-chart';
 

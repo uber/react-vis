@@ -19,9 +19,9 @@
 // THE SOFTWARE.
 
 import React from 'react';
-import {DISCRETE_COLOR_RANGE} from 'theme';
-import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+import {DISCRETE_COLOR_RANGE} from '~/theme';
+import Animation from '~/animation';
+import {ANIMATED_SERIES_PROPS} from '~/utils/series-utils';
 
 const DEFAULT_LINK_COLOR = DISCRETE_COLOR_RANGE[1];
 const DEFAULT_LINK_OPACITY = 0.7;

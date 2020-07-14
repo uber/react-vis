@@ -22,7 +22,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import {ORIENTATION} from 'utils/axis-utils';
+import {ORIENTATION} from '~/utils/axis-utils';
 
 // Assuming that 16px = 1em
 const ADJUSTMENT_FOR_TEXT_SIZE = 16;

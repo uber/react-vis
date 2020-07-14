@@ -1,8 +1,8 @@
 import React from 'react';
 import {mount} from 'enzyme';
 
-import Sankey from 'sankey';
-import Hint from 'plot/hint';
+import Sankey from '~/sankey';
+import Hint from '~/plot/hint';
 import BasicSankey from '../../../showcase/sankey/basic';
 import VoronoiSankey from '../../../showcase/sankey/voronoi';
 import EnergySankey from '../../../showcase/sankey/energy-sankey';

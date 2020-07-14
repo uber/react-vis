@@ -23,13 +23,13 @@ import PropTypes from 'prop-types';
 import {hierarchy, partition} from 'd3-hierarchy';
 import {scaleLinear, scaleSqrt} from 'd3-scale';
 
-import {AnimationPropType} from 'animation';
-import LabelSeries from 'plot/series/label-series';
-import ArcSeries from 'plot/series/arc-series';
-import XYPlot from 'plot/xy-plot';
-import {getRadialDomain} from 'utils/series-utils';
-import {getRadialLayoutMargin} from 'utils/chart-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
+import {AnimationPropType} from '~/animation';
+import LabelSeries from '~/plot/series/label-series';
+import ArcSeries from '~/plot/series/arc-series';
+import XYPlot from '~/plot/xy-plot';
+import {getRadialDomain} from '~/utils/series-utils';
+import {getRadialLayoutMargin} from '~/utils/chart-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 const predefinedClassName = 'rv-sunburst';
 

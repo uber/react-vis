@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import Treemap from 'react-vis/treemap';
+import {Treemap} from 'react-vis';
 import ShowcaseButton from '../showcase-components/showcase-button';
 
 function _getRandomData(total) {

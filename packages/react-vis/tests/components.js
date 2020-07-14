@@ -18,10 +18,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import HorizontalGrid from 'plot/horizontal-grid-lines';
-import VerticalGrid from 'plot/vertical-grid-lines';
-import XAxisBottom from 'plot/axis/x-axis';
-import YAxisLeft from 'plot/axis/y-axis';
+import HorizontalGrid from '~/plot/horizontal-grid-lines';
+import VerticalGrid from '~/plot/vertical-grid-lines';
+import XAxisBottom from '~/plot/axis/x-axis';
+import YAxisLeft from '~/plot/axis/y-axis';
 
 import {testRenderWithProps} from './test-utils';
 

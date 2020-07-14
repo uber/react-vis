@@ -22,14 +22,14 @@ import PropTypes from 'prop-types';
 import {voronoi} from 'd3-voronoi';
 import {PureComponent} from 'react';
 
-import {AnimationPropType} from 'animation';
+import {AnimationPropType} from '~/animation';
 import {
   getAttributeFunctor,
   getAttr0Functor,
   getAttributeValue,
   getScaleObjectFromProps,
   getScalePropTypesByAttribute
-} from 'utils/scales-utils';
+} from '~/utils/scales-utils';
 
 const propTypes = {
   ...getScalePropTypesByAttribute('x'),

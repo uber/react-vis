@@ -21,8 +21,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import DiscreteColorLegend from 'legends/discrete-color-legend';
-import {getCombinedClassName} from 'utils/styling-utils';
+import DiscreteColorLegend from '~/legends/discrete-color-legend';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 const propTypes = {
   ...DiscreteColorLegend.propTypes,

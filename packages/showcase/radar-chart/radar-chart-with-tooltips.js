@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 import React, {Component} from 'react';
-import RadarChart from 'react-vis/radar-chart';
+import {RadarChart} from 'react-vis';
 import {Hint} from 'react-vis';
 
 // The first 6 data elements here are to simulate a 'spider' type of radar chart -

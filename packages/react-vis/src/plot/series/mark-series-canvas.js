@@ -20,8 +20,8 @@
 
 import {rgb} from 'd3-color';
 
-import {DEFAULT_SIZE, DEFAULT_OPACITY} from 'theme';
-import {getAttributeFunctor} from 'utils/scales-utils';
+import {DEFAULT_SIZE, DEFAULT_OPACITY} from '~/theme';
+import {getAttributeFunctor} from '~/utils/scales-utils';
 
 import AbstractSeries from './abstract-series';
 

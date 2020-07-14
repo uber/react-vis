@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import CircularGridLines from 'plot/circular-grid-lines';
+import CircularGridLines from '~/plot/circular-grid-lines';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import FauxRadialScatterplot from '../../../showcase/plot/faux-radial-scatterplot';
 

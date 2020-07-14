@@ -21,7 +21,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import {getCombinedClassName} from 'utils/styling-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 const propTypes = {
   className: PropTypes.string,

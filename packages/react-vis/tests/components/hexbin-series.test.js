@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import HexbinSeries from 'plot/series/hexbin-series';
+import HexbinSeries from '~/plot/series/hexbin-series';
 import {testRenderWithProps, GENERIC_XYPLOT_SERIES_PROPS} from '../test-utils';
 import HexHeatmap from '../../../showcase/plot/hex-heatmap';
 import HexbinSizeExample from '../../../showcase/plot/hexbin-size-example';

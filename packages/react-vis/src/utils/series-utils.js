@@ -20,8 +20,8 @@
 
 import React from 'react';
 
-import AbstractSeries from 'plot/series/abstract-series';
-import {DISCRETE_COLOR_RANGE, DEFAULT_OPACITY} from 'theme';
+import AbstractSeries from '~/plot/series/abstract-series';
+import {DISCRETE_COLOR_RANGE, DEFAULT_OPACITY} from '~/theme';
 
 /**
  * Check if the component is series or not.

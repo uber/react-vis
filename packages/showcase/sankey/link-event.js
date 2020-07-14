@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Sankey from 'react-vis/sankey';
+import {Sankey} from 'react-vis';
 
 const BLURRED_LINK_OPACITY = 0.3;
 const FOCUSED_LINK_OPACITY = 0.6;

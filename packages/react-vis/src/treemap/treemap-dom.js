@@ -20,7 +20,7 @@
 import React from 'react';
 
 import TreemapLeaf from './treemap-leaf';
-import {getCombinedClassName} from 'utils/styling-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 function TreemapDOM(props) {
   const {

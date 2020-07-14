@@ -26,12 +26,12 @@ import {
   getSeriesPropsFromChildren,
   getSeriesChildren,
   getStackedData
-} from 'utils/series-utils';
-import LineSeries from 'plot/series/line-series';
-import XAxis from 'plot/axis/x-axis';
-import HorizontalBarSeries from 'plot/series/horizontal-rect-series';
-import VerticalBarSeries from 'plot/series/vertical-rect-series';
-import LabelSeries from 'plot/series/label-series';
+} from '~/utils/series-utils';
+import LineSeries from '~/plot/series/line-series';
+import XAxis from '~/plot/axis/x-axis';
+import HorizontalBarSeries from '~/plot/series/horizontal-rect-series';
+import VerticalBarSeries from '~/plot/series/vertical-rect-series';
+import LabelSeries from '~/plot/series/label-series';
 
 describe('series-utils', () => {
   test('isSeriesChild', () => {
