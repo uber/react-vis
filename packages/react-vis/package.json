@@ -21,7 +21,7 @@
   },
   "scripts": {
     "docs": "./publish-docs.sh",
-    "clean": "rm -rf dist es bundle.* index.html && mkdir dist es",
+    "clean": "rimraf dist es bundle.* index.html && mkdir dist es",
     "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
     "build:browser": "browserify src/index.js -t [ babelify --rootMode upward ] --standalone reactVis | uglifyjs > dist/dist.min.js",
     "build": "yarn run clean && babel --root-mode upward src -d dist --copy-files && BABEL_ENV=es babel --root-mode upward src -d es --copy-files && node-sass src/main.scss dist/style.css --output-style compressed && yarn run build:browser",
@@ -81,6 +81,7 @@
     "react-dom": "^16.0.0",
     "react-test-renderer": "^16.13.1",
     "react-vis-showcase": "^0.1.0",
+    "rimraf": "^3.0.2",
     "stylelint": "^7.7.1",
     "stylelint-config-standard": "^15.0.1",
     "uglify-js": "^2.8.22"
