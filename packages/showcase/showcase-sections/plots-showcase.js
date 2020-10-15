@@ -252,11 +252,11 @@ function PlotsShowcase(props) {
   return (
     <article id="plots">
       <h1>Plots</h1>
-      {!forExample && (
-        <section>
-          <ComplexChart />
-        </section>
-      )}
+      {!forExample && mapSection({
+        component: ComplexChart,
+        componentName: 'ComplexChart',
+        sourceLink: `${REACTVIS_BASE_URL}/plot/complex-chart.js`
+      })}
       <h2>Series Types</h2>
 
       {PLOTS.map(mapSection)}
