@@ -32,6 +32,13 @@ Type: (HorizontalBarSeries): `number`
 
 The x position in coordinates of the box to be used. This quantity is treated as a category (at least in VerticalBarSeries) and so considers the exact left-right positioning to be not that important (which is something to watch out for if you are providing exact numbers, in such a case it is better to the rect-series).
 
+#### x0
+(Optional)
+
+Type: (HorizontalBarSeries): `number`
+
+For HorizontalBarSeries, x0 position in coordinates of the box to be used, this is where the bottom of the bar is placed, defaults to the lower bound of the x-domain.
+
 #### y
 Type: (VerticalBarSeries): `number`
 
