@@ -74,7 +74,7 @@
     "eslint-plugin-jest": "^23.13.2",
     "jest": "^25.5.4",
     "jsdom": "^9.9.1",
-    "node-sass": "^4.9.3",
+    "node-sass": "^7.0.0",
     "prettier": "^1.14.2",
     "react": "^16.0.0",
     "react-addons-test-utils": ">=15.4.2",
