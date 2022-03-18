@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ## Style
 
 In order to control the look and feel of your React-Vis components, you have four strategies.

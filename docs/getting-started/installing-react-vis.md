@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ### Install the react-vis module
 
 If you want to use react-vis in your project, add it from the command line: 

@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ### Create a new project with react-vis
 
 Let's create a new vis app from scratch.

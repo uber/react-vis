@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ## Animation
 
 Animation makes your charts feel physical, it makes them feel alive, shoot it makes them feel l33t. `react-vis` offers a simple portal into the [react-motion](https://github.com/chenglou/react-motion) animation system by exposing a simple animation prop on most components! This prop accepts three types of values:

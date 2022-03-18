@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 # Sankey
 
 Sankey diagrams are a form of graph that allows for the easy communication of flows and other transferal processes.
