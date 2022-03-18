@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ### Jump right in on codepen!
 
 You can use react-vis directly on [codepen](https://codepen.io/ubervisualization/pen/BZOeZB) (or equivalent).  

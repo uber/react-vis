@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ## MarkSeries & MarkSeriesCanvas
 
 <!-- INJECT:"ScatterplotChartWithLink" -->

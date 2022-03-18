@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ### Getting started
 
 #### Jump right in on codepen!

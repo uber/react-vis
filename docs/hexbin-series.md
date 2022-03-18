@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ## HexbinSeries
 
 The hexbin series enables the easy creation of aggregated and binned data. This can be useful if you have a lot of overlapping data or if you simply want to provide a courser representation of data to your user. Unlike many other series this one performs the aggregation computation, simply provide a scatterplot like collection of data (points in linear x and y space) and your off!

@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 # Rect Series
 
 RectSeries is a generalization of [BarSeries](bar-series.md) which allows users to build a series of rectangles of arbitrary dimensions. Whereas in barSeries, one dimension of the bars is fixed (width for vertical bar series, height for horizontal bar series), in RectSeries, both dimensions can be controlled.
