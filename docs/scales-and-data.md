@@ -1,3 +1,5 @@
+> This library is deprecated. Please see `DEPRECATED.md`.
+
 ## Scales and data
 
 ### Data
@@ -45,7 +47,7 @@ By the way: can you guess what this dataset is? Answer at the end of the documen
 
 Scales are what actually transform the values of the properties in the data objects into visual attributes. In the example above, for instance, the third object is {x: 2, y: 4}. But the corresponding rectangle is 39.45px from the left and 105.56px from the top of the top left corner of the chart. How? Scales.
 
-React-vis scales are designed so that as often as possible, you shouldn't have to do anything; yet they give you control to override anything they do.  
+React-vis scales are designed so that as often as possible, you shouldn't have to do anything; yet they give you control to override anything they do.
 
 The notion of scales and the corresponding vocabulary are directly taken from d3js.
 Scales have a type, a range and a domain. For a given chart, there are multiple scales: there's one scale per attribute. Attributes include x position, y position, color, size, angle etc. Again, not all attributes are applicable in all series.
@@ -93,35 +95,35 @@ This table is also meant to be used for derived series. Canvas series have the s
 
 To redefine a scale, you must pass a prop to the series that uses that scale. The prop names are based on the name of the attribute: name + Domain, name + Range, name + Type, name + Padding (for instance: yDomain, colorType, xRange).
 
-* `get[name]` (optional)  
-  Type: `function`  
+* `get[name]` (optional)
+  Type: `function`
   An accessor function that gets the value to be compute from the data. For instance if you were keeping your data as rows like {a: 1, b: 2, c: 3}, you could define an x accessor like `getX: d => d.a`.
-* `[name]Domain` (optional)  
-  Type: `Array`  
+* `[name]Domain` (optional)
+  Type: `Array`
   Array of values to visualize from. If domain is not passed, it will be calculated from the values which are passed to component.
-* `[name]Padding` (optional)  
-  Type: `Number`  
+* `[name]Padding` (optional)
+  Type: `Number`
   A percentage that will pad your `[name]Domain`. If the padding not passed `[name]Domain` will not be padded. Note: if you pass `[name]Domain` and it is not calculated from the values, padding will not be used.
 * `[name]Range` (optional)
-  Type: `Array`  
+  Type: `Array`
   Array of real-world values to visualize to. If range is not passed, the defaults (depend on visualization type) will be applied.
-* `[name]Type` (optional)  
-  Type: `('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal')`  
-  Default: `'linear'`  
+* `[name]Type` (optional)
+  Type: `('linear'|'ordinal'|'category'|'time'|'time-utc'|'log'|'literal')`
+  Default: `'linear'`
   Type of the scale. Each scale type can be one of following values:
-    * `'linear'`  
+    * `'linear'`
     Continuous scale, that works with numbers. Similar to [d3.scaleLinear](https://github.com/d3/d3-scale/blob/master/README.md#scaleLinear).
-    * `'ordinal'`  
+    * `'ordinal'`
     Ordinal scale, works with numbers and strings. Similar to [d3.scaleOrdinal](https://github.com/d3/d3-scale/blob/master/README.md#ordinal-scales).
-    * `'category'`  
+    * `'category'`
     Categorical scale, each new value gets the next value from the range. Similar to d3.scale.category\[Number\], but works with other values besides colors.
-    * `'time'`  
+    * `'time'`
     Time scale. Similar to [d3.scaleTime](https://github.com/d3/d3-scale/blob/master/README.md#time-scales).
-    * `'time-utc'`  
+    * `'time-utc'`
     Time UTC scale. Similar to [d3.scaleUtc](https://github.com/d3/d3-scale/blob/master/README.md#scaleUtc)
-    * `'log'`  
+    * `'log'`
     Log scale. Similar to [d3.scaleLog](https://github.com/d3/d3-scale/blob/master/README.md#log-scales).
-    * `'literal'`  
+    * `'literal'`
     Returns exactly the value that was given to it. Similar to [d3.scaleIdentity](https://github.com/d3/d3-scale#scaleIdentity), except that it does NOT coerce data into numbers. This is useful for precisely specifying properties in the data, eg color can be specified directly on the data.
 
 ### Overriding scales
