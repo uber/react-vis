@@ -1,6 +1,9 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
+# ❌❌ This library is deprecated. Please see `DEPRECATED.md`. ❌❌
 
 <p align="right">
+  <a href="./DEPRECATED.md">
+    <img src="https://img.shields.io/maintenance/no/2020?style=flat-square" alt="deprecated" />
+  </a>
   <a href="https://npmjs.org/package/react-vis">
     <img src="https://img.shields.io/npm/v/react-vis.svg?style=flat-square" alt="version" />
   </a>
@@ -20,6 +23,8 @@
 <h5 align="center">A COMPOSABLE VISUALIZATION SYSTEM</h5>
 
 ![demo](docs/assets/react-vis.gif?raw=true)
+
+# ❌❌ This library is deprecated. Please see `DEPRECATED.md`. ❌❌
 
 ## Overview
 
