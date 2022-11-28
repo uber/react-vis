@@ -1,4 +1,4 @@
-import {makeWidthFlexible} from 'make-vis-flexible';
+import {makeWidthFlexible} from '~/make-vis-flexible';
 
 describe('makeWidthFlexible', () => {
   test('displayName given', () => {

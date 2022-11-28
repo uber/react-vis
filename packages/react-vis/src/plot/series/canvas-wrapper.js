@@ -22,8 +22,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {interpolate} from 'd3-interpolate';
-import {extractAnimatedPropValues} from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+import {extractAnimatedPropValues} from '~/animation';
+import {ANIMATED_SERIES_PROPS} from '~/utils/series-utils';
 
 const MAX_DRAWS = 30;
 

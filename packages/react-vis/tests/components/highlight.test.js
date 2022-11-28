@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import Highlight from 'plot/highlight';
+import Highlight from '~/plot/highlight';
 import DragableExample from '../../../showcase/misc/dragable-chart-example';
 import ZoomableChartExample from '../../../showcase/misc/zoomable-chart-example';
 import SelectionPlotExample from '../../../showcase/misc/selection-plot-example';

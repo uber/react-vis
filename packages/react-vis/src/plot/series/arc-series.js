@@ -20,10 +20,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Animation from 'animation';
+import Animation from '~/animation';
 import {arc as arcBuilder} from 'd3-shape';
 
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
+import {ANIMATED_SERIES_PROPS} from '~/utils/series-utils';
 import AbstractSeries from './abstract-series';
 import {
   getAttributeFunctor,
@@ -31,8 +31,8 @@ import {
   extractScalePropsFromProps,
   getMissingScaleProps,
   getScalePropTypesByAttribute
-} from 'utils/scales-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
+} from '~/utils/scales-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--arc';
 const ATTRIBUTES = ['radius', 'angle'];

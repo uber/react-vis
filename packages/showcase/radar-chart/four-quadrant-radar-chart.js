@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import RadarChart from 'react-vis/radar-chart';
+import {RadarChart} from 'react-vis';
 
 const RADAR_PROPS = {
   data: [

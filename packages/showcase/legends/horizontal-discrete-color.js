@@ -20,8 +20,8 @@
 
 import React from 'react';
 
-import DiscreteColorLegend from 'react-vis/legends/discrete-color-legend';
-import GradientDefs from 'react-vis/plot/gradient-defs';
+import {DiscreteColorLegend} from 'react-vis';
+import {GradientDefs} from 'react-vis';
 
 const ITEMS = [
   {title: 'Dashed', color: '#45aeb1', strokeStyle: 'dashed'},

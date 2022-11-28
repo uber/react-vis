@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import ContinuousSizeLegend from 'react-vis/legends/continuous-size-legend';
+import {ContinuousSizeLegend} from 'react-vis';
 
 export default class Example extends React.Component {
   constructor(props) {

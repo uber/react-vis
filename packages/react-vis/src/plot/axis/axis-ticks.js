@@ -22,8 +22,8 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import {ORIENTATION, getTickValues} from 'utils/axis-utils';
-import {getAttributeScale} from 'utils/scales-utils';
+import {ORIENTATION, getTickValues} from '~/utils/axis-utils';
+import {getAttributeScale} from '~/utils/scales-utils';
 
 const {LEFT, RIGHT, TOP, BOTTOM} = ORIENTATION;
 

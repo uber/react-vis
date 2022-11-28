@@ -21,9 +21,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
+import Animation from '~/animation';
+import {ANIMATED_SERIES_PROPS} from '~/utils/series-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 import AbstractSeries from './abstract-series';
 

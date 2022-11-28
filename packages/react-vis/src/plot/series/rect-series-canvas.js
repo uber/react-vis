@@ -20,8 +20,8 @@
 import PropTypes from 'prop-types';
 import {rgb} from 'd3-color';
 
-import {DEFAULT_OPACITY} from 'theme';
-import {getAttributeFunctor, getAttr0Functor} from 'utils/scales-utils';
+import {DEFAULT_OPACITY} from '~/theme';
+import {getAttributeFunctor, getAttr0Functor} from '~/utils/scales-utils';
 import AbstractSeries from './abstract-series';
 
 class RectSeriesCanvas extends AbstractSeries {

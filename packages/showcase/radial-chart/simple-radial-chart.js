@@ -20,7 +20,7 @@
 
 import React from 'react';
 
-import RadialChart from 'react-vis/radial-chart';
+import {RadialChart} from 'react-vis';
 
 export default function SimpleRadialChart() {
   return (

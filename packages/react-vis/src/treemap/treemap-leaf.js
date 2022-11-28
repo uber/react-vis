@@ -22,8 +22,8 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import Animation, {AnimationPropType} from 'animation';
-import {getFontColorFromBackground} from 'utils/scales-utils';
+import Animation, {AnimationPropType} from '~/animation';
+import {getFontColorFromBackground} from '~/utils/scales-utils';
 
 const ANIMATED_PROPS = [
   'colorRange',

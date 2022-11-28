@@ -21,8 +21,8 @@
 import React, {useState, useEffect, useRef} from 'react';
 import window from 'global/window';
 
-import XYPlot from 'plot/xy-plot';
-import {getDOMNode} from 'utils/react-utils';
+import XYPlot from '~/plot/xy-plot';
+import {getDOMNode} from '~/utils/react-utils';
 
 // As a performance enhancement, we want to only listen once
 const resizeSubscribers = [];

@@ -21,11 +21,11 @@
 import React from 'react';
 import {mount} from 'enzyme';
 
-import Animation from 'animation';
-import Axis from 'plot/axis/axis';
-import AxisTicks from 'plot/axis/axis-ticks';
-import VerticalBarSeries from 'plot/series/vertical-bar-series';
-import XYPlot from 'plot/xy-plot';
+import Animation from '~/animation';
+import Axis from '~/plot/axis/axis';
+import AxisTicks from '~/plot/axis/axis-ticks';
+import VerticalBarSeries from '~/plot/series/vertical-bar-series';
+import XYPlot from '~/plot/xy-plot';
 
 describe('Animation', () => {
   test('interpolates xDomain when specified', () => {

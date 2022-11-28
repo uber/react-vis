@@ -35,7 +35,7 @@ import {
   extractScalePropsFromProps,
   getMissingScaleProps,
   literalScale
-} from 'utils/scales-utils';
+} from '~/utils/scales-utils';
 
 const isScaleConsistent = (scaleObject, attr) => {
   return (

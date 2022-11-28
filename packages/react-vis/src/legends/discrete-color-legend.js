@@ -21,9 +21,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import DiscreteColorLegendItem from 'legends/discrete-color-legend-item';
-import {DISCRETE_COLOR_RANGE} from 'theme';
-import {getCombinedClassName} from 'utils/styling-utils';
+import DiscreteColorLegendItem from '~/legends/discrete-color-legend-item';
+import {DISCRETE_COLOR_RANGE} from '~/theme';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 function DiscreteColorLegend({
   className,

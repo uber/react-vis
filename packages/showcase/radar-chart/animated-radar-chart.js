@@ -21,8 +21,8 @@
 import React, {Component} from 'react';
 
 import ShowcaseButton from '../showcase-components/showcase-button';
-import RadarChart from 'react-vis/radar-chart';
-import CircularGridLines from 'react-vis/plot/circular-grid-lines';
+import {RadarChart} from 'react-vis';
+import {CircularGridLines} from 'react-vis';
 
 const DATA = [
   {

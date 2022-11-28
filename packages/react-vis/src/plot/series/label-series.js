@@ -22,9 +22,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import AbstractSeries from './abstract-series';
-import Animation from 'animation';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
+import Animation from '~/animation';
+import {ANIMATED_SERIES_PROPS} from '~/utils/series-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 const predefinedClassName = 'rv-xy-plot__series rv-xy-plot__series--label';
 

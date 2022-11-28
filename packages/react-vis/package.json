@@ -21,6 +21,7 @@
   },
   "scripts": {
     "docs": "./publish-docs.sh",
+    "lint": "eslint .",
     "clean": "rm -rf dist es bundle.* index.html && mkdir dist es",
     "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
     "build:browser": "browserify src/index.js -t [ babelify --rootMode upward ] --standalone reactVis | uglifyjs > dist/dist.min.js",

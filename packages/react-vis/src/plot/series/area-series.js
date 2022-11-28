@@ -22,11 +22,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as d3Shape from 'd3-shape';
 
-import Animation from 'animation';
-import {DEFAULT_OPACITY} from 'theme';
-import {ANIMATED_SERIES_PROPS} from 'utils/series-utils';
-import {warning} from 'utils/react-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
+import Animation from '~/animation';
+import {DEFAULT_OPACITY} from '~/theme';
+import {ANIMATED_SERIES_PROPS} from '~/utils/series-utils';
+import {warning} from '~/utils/react-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
 
 import AbstractSeries from './abstract-series';
 

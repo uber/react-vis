@@ -23,21 +23,21 @@ import PropTypes from 'prop-types';
 import {scaleLinear} from 'd3-scale';
 import {format} from 'd3-format';
 
-import {AnimationPropType} from 'animation';
-import XYPlot from 'plot/xy-plot';
-import {DISCRETE_COLOR_RANGE} from 'theme';
+import {AnimationPropType} from '~/animation';
+import XYPlot from '~/plot/xy-plot';
+import {DISCRETE_COLOR_RANGE} from '~/theme';
 import {
   MarginPropType,
   getInnerDimensions,
   DEFAULT_MARGINS
-} from 'utils/chart-utils';
-import {getCombinedClassName} from 'utils/styling-utils';
-import LineSeries from 'plot/series/line-series';
-import LineMarkSeries from 'plot/series/line-mark-series';
-import LabelSeries from 'plot/series/label-series';
-import DecorativeAxis from 'plot/axis/decorative-axis';
+} from '~/utils/chart-utils';
+import {getCombinedClassName} from '~/utils/styling-utils';
+import LineSeries from '~/plot/series/line-series';
+import LineMarkSeries from '~/plot/series/line-mark-series';
+import LabelSeries from '~/plot/series/label-series';
+import DecorativeAxis from '~/plot/axis/decorative-axis';
 
-import Highlight from 'plot/highlight';
+import Highlight from '~/plot/highlight';
 
 const predefinedClassName = 'rv-parallel-coordinates-chart';
 const DEFAULT_FORMAT = format('.2r');

@@ -22,7 +22,7 @@ import {
   getUniquePropertyValues,
   addValueToArray,
   transformValueToString
-} from 'utils/data-utils';
+} from '~/utils/data-utils';
 
 const arr = [{a: 1}, {b: 3, a: 2}, {a: 2}];
 
