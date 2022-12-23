@@ -1,5 +1,3 @@
-# ❌❌ This library is deprecated. Please see `DEPRECATED.md`. ❌❌
-
 <p align="right">
   <a href="./DEPRECATED.md">
     <img src="https://img.shields.io/maintenance/no/2020?style=flat-square" alt="deprecated" />
@@ -24,7 +22,7 @@
 
 ![demo](docs/assets/react-vis.gif?raw=true)
 
-# ❌❌ This library is deprecated. Please see `DEPRECATED.md`. ❌❌
+> **_NOTE:_** This repository is now under new management.  Please reach out to the new administrators if you have any questions.
 
 ## Overview
 
