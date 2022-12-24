@@ -67,7 +67,7 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "babelify": "^10.0.0",
     "browserify": "^14.3.0",
-    "canvas-prebuilt": "^1.6.11",
+    "canvas": "^2.11.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
@@ -104,11 +104,11 @@
     ]
   },
   "engines": {
-    "node": ">=8.17.0",
+    "node": ">=14.18.0",
     "npm": ">=6.13.0"
   },
   "volta": {
-    "node": "10.20.1",
+    "node": "14.18.0",
     "yarn": "1.22.4"
   }
 }

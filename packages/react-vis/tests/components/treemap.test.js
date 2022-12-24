@@ -51,9 +51,10 @@ describe('Treemap', () => {
 
   test('Basic rendering', () => {
     const $ = mount(<Treemap {...TREEMAP_PROPS} />);
+    console.log($.debug());
     expect($.find('.rv-treemap__leaf').length).toBe(22);
     const expectedText =
-      'EasingNeonateinterpolateISchedulableParallelPauseFunctionSequenceSequenceTransitionTransitionerTransitionEventSchedulerArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
+      'EasingFunctionSequenceinterpolateISchedulableParallelPauseSchedulerSequenceTransitionTransitionerTransitionEventNeonateArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
     expect($.find('.rv-treemap').text()).toBe(expectedText);
     expect($.find('div.little-nested-tree-example').length).toBe(1);
 
@@ -119,7 +120,7 @@ describe('Treemap', () => {
     const $ = mount(<Treemap {...TREEMAP_PROPS} />);
     // the tree from TREEMAP_PROPS doesn't have a title so its text is the same with ot without the root
     const expectedText =
-      'EasingNeonateinterpolateISchedulableParallelPauseFunctionSequenceSequenceTransitionTransitionerTransitionEventSchedulerArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
+      'EasingFunctionSequenceinterpolateISchedulableParallelPauseSchedulerSequenceTransitionTransitionerTransitionEventNeonateArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
     const numberOfElements = 21;
     const numberOfElementsWithRoot = numberOfElements + 1;
     const expectedNewText =
