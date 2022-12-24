@@ -51,7 +51,6 @@ describe('Treemap', () => {
 
   test('Basic rendering', () => {
     const $ = mount(<Treemap {...TREEMAP_PROPS} />);
-    console.log($.debug());
     expect($.find('.rv-treemap__leaf').length).toBe(22);
     const expectedText =
       'EasingFunctionSequenceinterpolateISchedulableParallelPauseSchedulerSequenceTransitionTransitionerTransitionEventNeonateArrayInterpolatorColorInterpolatorDateInterpolatorInterpolatorMatrixInterpolatorNumberInterpolatorObjectInterpolatorPointInterpolatorRectangleInterpolator';
