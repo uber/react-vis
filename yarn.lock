@@ -5582,12 +5582,7 @@ d3-collection@1, d3-collection@^1.0.3:
   resolved "https://registry.yarnpkg.com/d3-collection/-/d3-collection-1.0.7.tgz#349bd2aa9977db071091c13144d5e4f16b5b310e"
   integrity sha1-NJvSqpl32wcQkcExRNXk8WtbMQ4=
 
-d3-color@1, d3-color@^1.0.3:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-1.4.1.tgz#c52002bf8846ada4424d55d97982fef26eb3bc8a"
-  integrity sha1-xSACv4hGraRCTVXZeYL+8m6zvIo=
-
-d3-color@^3.1.0:
+d3-color@1, d3-color@3.1.0, d3-color@^1.0.3, d3-color@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-3.1.0.tgz#395b2833dfac71507f12ac2f7af23bf819de24e2"
   integrity sha1-OVsoM9+scVB/EqwvevI7+BneJOI=
