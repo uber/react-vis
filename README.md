@@ -108,17 +108,27 @@ Take a look at the [folder with examples](docs/examples) or check out some docs:
   * [Legends](docs/legends.md) about the legends.
 
 ## Development
+Make sure you are using the correct version of `node` and `yarn`. To do so, check `package.json` and find the entry "volta", e.g.
 
-To develop on this component, install the dependencies and then build and watch the static files:
+```
+"volta": {
+  "node": "14.18.0",
+  "yarn": "1.22.4"
+}
+```
 
-    npm install && npm run start
+It's recommanded to install [volta](https://volta.sh/) to manage node and yarn.
+
+To develop on react-vis, navigate to `packages/react-vis`, and install the dependencies and then build and watch the static files:
+
+    yarn && yarn start
 
 Once complete, you can view the component's example in your browser (will open automatically).
 Any changes you make to the example code will run the compiler to build the files again.
 
-To lint your code, run the tests, and create code coverage reports:
+To run the tests, and create code coverage reports:
 
-    npm run full-test
+    yarn cover
 
 ## Requirements
 
