@@ -23,7 +23,7 @@
     "docs": "./publish-docs.sh",
     "clean": "rm -rf dist es bundle.* index.html && mkdir dist es",
     "start": "(cd showcase && command -v yarn >/dev/null && yarn && npm start || npm install && npm start)",
-    "build:browser": "browserify src/index.js -t [ babelify --rootMode upward ] --standalone reactVis | uglifyjs > dist/dist.min.js",
+    "build:browser": "browserify src/index.js -t [ babelify --rootMode upward --global ] --standalone reactVis | uglifyjs > dist/dist.min.js",
     "build": "yarn run clean && babel --root-mode upward src -d dist --copy-files && BABEL_ENV=es babel --root-mode upward src -d es --copy-files && node-sass src/main.scss dist/style.css --output-style compressed && yarn run build:browser",
     "lint-styles": "stylelint src/styles/*.scss --syntax scss",
     "test:windows": "babel-node --inspect ./tests/index.js",
