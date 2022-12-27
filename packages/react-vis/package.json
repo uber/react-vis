@@ -35,7 +35,7 @@
   "dependencies": {
     "d3-array": "^1.2.0",
     "d3-collection": "^1.0.3",
-    "d3-color": "^1.0.3",
+    "d3-color": "^3.1.0",
     "d3-contour": "^1.1.0",
     "d3-format": "^1.2.0",
     "d3-geo": "^1.6.4",
@@ -67,7 +67,7 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "babelify": "^10.0.0",
     "browserify": "^14.3.0",
-    "canvas-prebuilt": "^1.6.11",
+    "canvas": "^2.11.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
@@ -104,11 +104,11 @@
     ]
   },
   "engines": {
-    "node": ">=8.17.0",
+    "node": ">=14.18.0",
     "npm": ">=6.13.0"
   },
   "volta": {
-    "node": "10.20.1",
+    "node": "14.18.0",
     "yarn": "1.22.4"
   }
 }
