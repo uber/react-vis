@@ -28,7 +28,7 @@ cp CHANGELOG.md README.md LICENSE packages/react-vis
 
 cd packages/react-vis
 
-npm version VERSION
+npm version $VERSION
 
 publish_command="npm publish"
 
@@ -43,5 +43,7 @@ if [ $DRY_RUN -eq 1 ]
 then
     publish_command+=" --dry-run"
 fi
+
+eval $publish_command
 
 rm CHANGELOG.md README.md LICENSE
