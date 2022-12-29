@@ -15,17 +15,17 @@ describe('LabelSeries', () => {
       </svg>
     );
     expect($.text()).toBe(
-      'UPDATE-101234505101520WigglytuffPsyduckGeodudeDittoSnorlax'
+      'UPDATE−101234505101520WigglytuffPsyduckGeodudeDittoSnorlax'
     );
     expect($.find('.rv-xy-plot__series--label text').length).toBe(5);
 
     $.find('.showcase-button').simulate('click');
     expect($.text()).toBe(
-      'UPDATE-101234505101520WigglytuffPsyduckGeoduderedblue'
+      'UPDATE−101234505101520WigglytuffPsyduckGeoduderedblue'
     );
     $.find('.showcase-button').simulate('click');
     expect($.text()).toBe(
-      'UPDATE-101234505101520WigglytuffPsyduckGeoduderedblue'
+      'UPDATE−101234505101520WigglytuffPsyduckGeoduderedblue'
     );
   });
 

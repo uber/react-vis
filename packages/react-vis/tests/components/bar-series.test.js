@@ -100,7 +100,7 @@ describe('BarSeries', () => {
 
   test('Showcase Example - DifferenceChart', () => {
     const $ = mount(<DifferenceChart />);
-    expect($.text()).toBe('TOGGLE TO CANVAS02468101214-4-20246810');
+    expect($.text()).toBe('TOGGLE TO CANVAS02468101214−4−20246810');
     expect($.find('.rv-xy-plot__series--bar rect').length).toBe(15);
     expect($.find('.rv-xy-plot__series').length).toBe(1);
 

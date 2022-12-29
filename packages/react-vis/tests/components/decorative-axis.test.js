@@ -20,7 +20,7 @@ describe('DecorativeAxis', () => {
   test('Showcase Example - DecorativeAxisCrissCross', () => {
     const $ = mount(<DecorativeAxisCrissCross />);
     expect($.text()).toBe(
-      '-101.01223344556677889100¡1000!¡990!¡980!¡970!¡960!¡950!¡940!¡930!¡920!¡910!¡900!'
+      '−101.01223344556677889100¡1000!¡990!¡980!¡970!¡960!¡950!¡940!¡930!¡920!¡910!¡900!'
     );
     expect($.find('.rv-xy-manipulable-axis').length).toBe(2);
     expect($.find('.rv-xy-plot__axis__tick__line').length).toBe(22);
