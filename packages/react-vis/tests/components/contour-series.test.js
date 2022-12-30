@@ -11,6 +11,6 @@ describe('ContourSeries', () => {
     const $ = mount(<ContourSeriesExample />);
     expect($.text()).toBe('4045505560657075808590951002345678UPDATE');
     expect($.find('.rv-xy-plot__series--contour').length).toBe(1);
-    expect($.find('.rv-xy-plot__series--contour-line').length).toBe(28);
+    expect($.find('.rv-xy-plot__series--contour-line').length).toBe(17);
   });
 });

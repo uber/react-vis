@@ -1,4 +1,5 @@
 /*eslint-env node*/
+import 'regenerator-runtime/runtime';
 import jsdom from 'jsdom';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';

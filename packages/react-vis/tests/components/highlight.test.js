@@ -58,7 +58,7 @@ describe('Highlight', () => {
   test('ZoomableChartExample', () => {
     const $ = mount(<ZoomableChartExample />);
     const initialText =
-      '-5051015200102030405060708090Reset ZoomLast Draw AreaN/A';
+      '−5051015200102030405060708090Reset ZoomLast Draw AreaN/A';
     expect($.text()).toBe(initialText);
 
     // brush in a drag area
@@ -76,7 +76,7 @@ describe('Highlight', () => {
       nativeEvent: {offsetX: 200, offsetY: 200}
     });
     expect($.text()).toBe(
-      '-5051015200102030405060708090Reset ZoomLast Draw AreaTop: 11.083578425950623Right: 34.98Bottom: -0.5863163548405383Left: 13.2'
+      '−5051015200102030405060708090Reset ZoomLast Draw AreaTop: 11.083578425950623Right: 34.98Bottom: -0.5863163548405383Left: 13.2'
     );
   });
 

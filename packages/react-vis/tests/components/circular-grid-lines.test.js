@@ -9,7 +9,7 @@ describe('CircularGridLines', () => {
 
   test('Showcase Example - FauxRadialScatterplot', () => {
     const $ = mount(<FauxRadialScatterplot />);
-    expect($.text()).toBe('-3-2-10123-3-2-10123');
+    expect($.text()).toBe('−3−2−10123−3−2−10123');
     expect($.find('.rv-xy-plot__circular-grid-lines__line').length).toBe(7);
   });
 });

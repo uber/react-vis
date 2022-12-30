@@ -60,6 +60,17 @@ function Sankey(props) {
     style,
     width
   } = props;
+  // d3-sankey sankeyInstance no longer accepts empty nodes array, return empty XYPlot by default
+  if (nodes.length === 0) {
+    return (
+      <XYPlot
+        {...props}
+        yType="literal"
+        className={getCombinedClassName('rv-sankey', className)}
+      />
+    );
+  }
+
   const nodesCopy = [...new Array(nodes.length)].map((e, i) => ({
     ...nodes[i]
   }));

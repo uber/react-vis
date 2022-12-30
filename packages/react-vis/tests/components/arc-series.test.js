@@ -13,7 +13,7 @@ describe('ArcSeries', () => {
         <ArcSeriesExample />
       </svg>
     );
-    expect($.text()).toBe('UPDATE-4-2024-4-2024');
+    expect($.text()).toBe('UPDATE−4−2024−4−2024');
     // multiplied by two to account for shadow listeners
     expect($.find('.rv-xy-plot__series--arc').length).toBe(4);
     expect($.find('.rv-xy-plot__series--arc path').length).toBe(2 * 8);
