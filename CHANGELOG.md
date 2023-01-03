@@ -2,7 +2,7 @@
 - Upgraded all d3 dependencies
 - The layout of Sankey and Contour chart are changed due to the d3 upgrade
 
---
+---
 
 ## v1.9.2
 - we removed the check-stylesheets warnings.
