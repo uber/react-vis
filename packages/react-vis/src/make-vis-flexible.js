@@ -101,7 +101,6 @@ function getDisplayName(Component) {
 function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
   const ResultFunctionalComponent = function(props) {
     const containerRef = useRef();
-
     const [size, setSize] = useState({height: 0, width: 0});
 
     useEffect(() => {
@@ -120,6 +119,8 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
           ...newWidth
         }));
       }
+
+      _onResize();
 
       const cancelSubscription = subscribeToDebouncedResize(_onResize);
 
