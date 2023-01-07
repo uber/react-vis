@@ -101,6 +101,7 @@ function getDisplayName(Component) {
 function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
   const ResultFunctionalComponent = function(props) {
     const containerRef = useRef();
+
     const [size, setSize] = useState({height: 0, width: 0});
 
     useEffect(() => {
