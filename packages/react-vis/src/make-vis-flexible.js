@@ -121,6 +121,8 @@ function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
         }));
       }
 
+      _onResize();
+
       const cancelSubscription = subscribeToDebouncedResize(_onResize);
 
       return () => {

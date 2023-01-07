@@ -15,7 +15,8 @@ const {
   SelectionPlotExample,
   DragableChartExample,
   BidirectionDragChart,
-  ClipExample
+  ClipExample,
+  FlexibleCharts
 } = showCase;
 
 const MISC = [
@@ -96,6 +97,11 @@ const MISC = [
     name: '2d Dragable Chart',
     component: BidirectionDragChart,
     componentName: 'BidirectionDragChart'
+  },
+  {
+    name: 'Flexible Chart',
+    component: FlexibleCharts,
+    componentName: 'FlexibleCharts'
   }
 ];
 
