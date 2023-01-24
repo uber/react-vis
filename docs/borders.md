@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 ## Borders
 
 Sometimes when modifying the domain of the XYPlot it can be useful to enforce a border, so that some components appear, and others do not. One way to do this is to use the `Borders` component. It is a simple component that creates rectangles the directly correspond to the margins of the plot.

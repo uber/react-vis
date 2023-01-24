@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 # XYPlot
 
 XYPlot allows you to make line charts, area charts, scatterplots, heat maps, etc with animations and different interactions between them.

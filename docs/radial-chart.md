@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 # Radial chart
 
 `RadialChart` is responsible for creating pie and donut charts. While this kind of chart is easy to overlook as insignificant, intentionally confusing, or almost always replaceable with a treemap; they can be useful for quickly showing small groups. People don't understand angles very well [(such is our biology)](https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/data-visualization-for-human-perception), but over the last hundred years we have seen a lot of pie charts! This has caused us to become intimately familiar with them.

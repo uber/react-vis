@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 # Bar Series
 
 **TLDR**: use bar series to make bar charts, but not histograms.

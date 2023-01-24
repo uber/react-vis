@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 ## ContourSeries
 
 The contour series allows for the easy creation of contour density plots. These can be more effective for visualizing heat map data than a rectangular heat map! Given a number of points in a space the relative contour lines are computed, so as to simplify the output into a more legible format!

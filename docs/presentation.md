@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 # React-vis
 
 __React-vis__ is a React visualization library. It's been designed with the following principles in mind:

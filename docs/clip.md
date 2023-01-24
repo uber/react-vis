@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 ## Clip
 
 Depending on the data and domain, sometimes the series in the plot will extend into the axis. This can either be solved with a [Border](border.md), or the elements can be clipped.

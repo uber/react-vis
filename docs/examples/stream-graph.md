@@ -1,5 +1,3 @@
-> This library is deprecated. Please see `DEPRECATED.md`.
-
 <!-- STYLETYPE:"example-page" -->
 <!-- INJECT:"StreamgraphExample" -->
 
