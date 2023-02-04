@@ -139,16 +139,16 @@ class XYPlot extends React.Component {
     const children = getSeriesChildren(props.children);
     const data = getStackedData(children, stackBy);
     this.state = {
-      scaleMixins: this._getScaleMixins(data, props),
+      scaleMixins: XYPlot._getScaleMixins(data, props),
       data
     };
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     const children = getSeriesChildren(nextProps.children);
     const nextData = getStackedData(children, nextProps.stackBy);
     const {scaleMixins} = this.state;
-    const nextScaleMixins = this._getScaleMixins(nextData, nextProps);
+    const nextScaleMixins = XYPlot._getScaleMixins(nextData, nextProps);
     if (
       !checkIfMixinsAreEqual(
         nextScaleMixins,
@@ -156,11 +156,13 @@ class XYPlot extends React.Component {
         nextProps.hasTreeStructure
       )
     ) {
-      this.setState({
+      return {
         scaleMixins: nextScaleMixins,
         data: nextData
-      });
+      };
     }
+
+    return null;
   }
 
   /**
@@ -231,7 +233,7 @@ class XYPlot extends React.Component {
    * @returns {Object} Defaults.
    * @private
    */
-  _getDefaultScaleProps(props) {
+  static _getDefaultScaleProps(props) {
     const {innerWidth, innerHeight} = getInnerDimensions(
       props,
       DEFAULT_MARGINS
@@ -262,11 +264,11 @@ class XYPlot extends React.Component {
    * @returns {Object} Map of scale-related props.
    * @private
    */
-  _getScaleMixins(data, props) {
+  static _getScaleMixins(data, props) {
     const filteredData = data.filter(d => d);
     const allData = [].concat(...filteredData);
 
-    const defaultScaleProps = this._getDefaultScaleProps(props);
+    const defaultScaleProps = XYPlot._getDefaultScaleProps(props);
     const optionalScaleProps = getOptionalScaleProps(props);
     const userScaleProps = extractScalePropsFromProps(props, ATTRIBUTES);
     const missingScaleProps = getMissingScaleProps(
