@@ -1,14 +1,3 @@
-# Archived
-
-Unfortunately, `react-vis` currently has no active maintainers. As such, we have
-decided to deprecate the library. This deprecation means that `react-vis` won't
-receive any patches or new features. If you're interested to take on ownership,
-reach out to the Open Source Program Office at ospo@uber.com. 
-
-Anyone is welcome to fork this library.
-
-------
-
 <p align="right">
   <a href="./DEPRECATED.md">
     <img src="https://img.shields.io/maintenance/no/2020?style=flat-square" alt="deprecated" />
