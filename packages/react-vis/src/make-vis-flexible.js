@@ -18,11 +18,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import React, {useState, useEffect, useRef} from 'react';
+import React from 'react';
 import window from 'global/window';
 
 import XYPlot from 'plot/xy-plot';
 import {getDOMNode} from 'utils/react-utils';
+
+const CONTAINER_REF = 'container';
 
 // As a performance enhancement, we want to only listen once
 const resizeSubscribers = [];
@@ -99,63 +101,79 @@ function getDisplayName(Component) {
  */
 
 function makeFlexible(Component, isWidthFlexible, isHeightFlexible) {
-  const ResultFunctionalComponent = function(props) {
-    const containerRef = useRef();
+  const ResultClass = class extends React.Component {
+    static get propTypes() {
+      const {height, width, ...otherPropTypes} = Component.propTypes; // eslint-disable-line no-unused-vars
+      return otherPropTypes;
+    }
 
-    const [size, setSize] = useState({height: 0, width: 0});
-
-    useEffect(() => {
-      function _onResize() {
-        const containerElement = getDOMNode(containerRef.current);
-        const {offsetHeight, offsetWidth} = containerElement;
-
-        const newHeight =
-          size.height === offsetHeight ? {} : {height: offsetHeight};
-
-        const newWidth = size.width === offsetWidth ? {} : {width: offsetWidth};
-
-        setSize(prevSize => ({
-          ...prevSize,
-          ...newHeight,
-          ...newWidth
-        }));
-      }
-
-      _onResize();
-
-      const cancelSubscription = subscribeToDebouncedResize(_onResize);
-
-      return () => {
-        cancelSubscription();
+    constructor(props) {
+      super(props);
+      this.state = {
+        height: 0,
+        width: 0
       };
-    }, [size.width, size.height]);
+    }
 
-    const {height, width} = size;
-    const componentProps = {
-      ...props,
-      animation: height === 0 && width === 0 ? null : props.animation
+    /**
+     * Get the width of the container and assign the width.
+     * @private
+     */
+    _onResize = () => {
+      const containerElement = getDOMNode(this[CONTAINER_REF]);
+      const {offsetHeight, offsetWidth} = containerElement;
+
+      const newHeight =
+        this.state.height === offsetHeight ? {} : {height: offsetHeight};
+
+      const newWidth =
+        this.state.width === offsetWidth ? {} : {width: offsetWidth};
+
+      this.setState({
+        ...newHeight,
+        ...newWidth
+      });
     };
 
-    const updatedDimensions = {
-      ...(isHeightFlexible ? {height} : {}),
-      ...(isWidthFlexible ? {width} : {})
-    };
+    componentDidMount() {
+      this._onResize();
+      this.cancelSubscription = subscribeToDebouncedResize(this._onResize);
+    }
 
-    return (
-      <div ref={containerRef} style={{width: '100%', height: '100%'}}>
-        <Component {...updatedDimensions} {...componentProps} />
-      </div>
-    );
+    UNSAFE_componentWillReceiveProps() {
+      this._onResize();
+    }
+
+    componentWillUnmount() {
+      this.cancelSubscription();
+    }
+
+    render() {
+      const {height, width} = this.state;
+      const props = {
+        ...this.props,
+        animation: height === 0 && width === 0 ? null : this.props.animation
+      };
+
+      const updatedDimensions = {
+        ...(isHeightFlexible ? {height} : {}),
+        ...(isWidthFlexible ? {width} : {})
+      };
+
+      return (
+        <div
+          ref={ref => (this[CONTAINER_REF] = ref)}
+          style={{width: '100%', height: '100%'}}
+        >
+          <Component {...updatedDimensions} {...props} />
+        </div>
+      );
+    }
   };
 
-  const {height, width, ...otherPropTypes} = Component.propTypes || {}; // eslint-disable-line no-unused-vars
-  ResultFunctionalComponent.propTypes = otherPropTypes;
+  ResultClass.displayName = `Flexible${getDisplayName(Component)}`;
 
-  ResultFunctionalComponent.displayName = `Flexible${getDisplayName(
-    Component
-  )}`;
-
-  return ResultFunctionalComponent;
+  return ResultClass;
 }
 
 export function makeHeightFlexible(component) {
