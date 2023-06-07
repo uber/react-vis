@@ -13,12 +13,7 @@
         "@babel/plugin-proposal-class-properties",
         "@babel/plugin-proposal-export-default-from",
         "@babel/plugin-proposal-optional-chaining",
-        "@babel/plugin-proposal-nullish-coalescing-operator",
-        ["@babel/plugin-transform-runtime",
-          {
-            "regenerator": true
-          }
-        ]
+        "@babel/plugin-proposal-nullish-coalescing-operator"
       ]
     },
     "development": {
@@ -30,12 +25,7 @@
         "@babel/plugin-proposal-class-properties",
         "@babel/plugin-proposal-export-default-from",
         "@babel/plugin-proposal-optional-chaining",
-        "@babel/plugin-proposal-nullish-coalescing-operator",
-        ["@babel/plugin-transform-runtime",
-          {
-            "regenerator": true
-          }
-        ]
+        "@babel/plugin-proposal-nullish-coalescing-operator"
       ]
     },
     "es": {
@@ -53,6 +43,23 @@
         "@babel/plugin-proposal-export-default-from",
         "@babel/plugin-proposal-optional-chaining",
         "@babel/plugin-proposal-nullish-coalescing-operator"
+      ]
+    },
+    "browser": {
+      "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-export-default-from",
+        "@babel/plugin-proposal-optional-chaining",
+        "@babel/plugin-proposal-nullish-coalescing-operator",
+        ["@babel/plugin-transform-runtime",
+          {
+            "regenerator": true
+          }
+        ]
       ]
     }
   }

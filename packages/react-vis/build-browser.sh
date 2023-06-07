@@ -28,7 +28,7 @@ do
   fi
 done
 
-browserify src/index.js -t [ babelify --rootMode upward --global ] --standalone reactVis | uglifyjs > dist/dist.min.js
+BABEL_ENV=browser browserify src/index.js -t [ babelify --rootMode upward --global ] --standalone reactVis > dist/dist.min.js
 
 # set the main fields of package.json back to original
 for D3_LIB_PATH in $D3_LIB_PATHS
