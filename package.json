@@ -1,6 +1,6 @@
 {
   "name": "react-vis-master",
-  "version": "1.11.7",
+  "version": "1.12.0",
   "license": "MIT",
   "author": "Visualization Team <visualization@uber.com>",
   "description": "Data visualization library based on React and d3.",
