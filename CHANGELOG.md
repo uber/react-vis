@@ -1,7 +1,8 @@
-## v1.11.8
+## v1.12.0
 - Upgraded all d3 dependencies
 - The layout of Sankey and Contour chart are changed due to the d3 upgrade
-
+- Build fixes
+- Revert #1358 (note that this PR was not included in 1.11.7)
 ---
 
 ## v1.9.2
