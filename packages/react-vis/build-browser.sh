@@ -38,7 +38,7 @@ do
   MAIN="var_$KEY"
   if ! [ -z  "${!MAIN}" ]
   then
-    MOD=$(jq --arg var $UNPKG '.main = $var' $PACKAGE_JSON)
+    MOD=$(jq --arg var "${!MAIN}" '.main = $var' $PACKAGE_JSON)
     cat <<< $MOD | jq . > $PACKAGE_JSON
   fi
 done
