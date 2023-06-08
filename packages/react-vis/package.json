@@ -77,9 +77,9 @@
     "jsdom": "^9.9.1",
     "node-sass": "^4.9.3",
     "prettier": "^1.14.2",
-    "react": "^16.0.0",
+    "react": "^17.0.2",
     "react-addons-test-utils": ">=15.4.2",
-    "react-dom": "^16.0.0",
+    "react-dom": "^17.0.2",
     "react-test-renderer": "^16.13.1",
     "react-vis-showcase": "^0.1.0",
     "regenerator-runtime": "^0.13.11",
@@ -88,8 +88,8 @@
     "uglify-js": "^2.8.22"
   },
   "peerDependencies": {
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "keywords": [
     "d3",
