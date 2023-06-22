@@ -763,6 +763,24 @@ export function extractScalePropsFromProps(props, attributes) {
   return result;
 }
 
+const ALL_ATTRIBUTES = [
+  'x',
+  'y',
+  'radius',
+  'angle',
+  'color',
+  'fill',
+  'stroke',
+  'opacity',
+  'size'
+];
+
+const defaultScaleProps = ALL_ATTRIBUTES.reduce((result, attr) => {
+  result[`get${toTitleCase(attr)}`] = d => d[attr];
+  result[`get${toTitleCase(attr)}0`] = d => d[`${attr}0`];
+  return result;
+}, {});
+
 /**
  * Extract the missing scale props from the given data and return them as
  * an object.
@@ -776,17 +794,21 @@ export function getMissingScaleProps(props, data, attributes) {
   const result = {};
   // Make sure that the domain is set pad it if specified
   attributes.forEach(attr => {
-    if (!props[`get${toTitleCase(attr)}`]) {
-      result[`get${toTitleCase(attr)}`] = d => d[attr];
+    const titleCaseAttr = toTitleCase(attr);
+    const getKey = `get${titleCaseAttr}`;
+    const get0Key = `get${titleCaseAttr}0`;
+
+    if (!props[getKey]) {
+      result[getKey] = defaultScaleProps[getKey];
     }
-    if (!props[`get${toTitleCase(attr)}0`]) {
-      result[`get${toTitleCase(attr)}0`] = d => d[`${attr}0`];
+    if (!props[get0Key]) {
+      result[get0Key] = defaultScaleProps[get0Key];
     }
     if (!props[`${attr}Domain`]) {
       result[`${attr}Domain`] = getDomainByAccessor(
         data,
-        props[`get${toTitleCase(attr)}`] || result[`get${toTitleCase(attr)}`],
-        props[`get${toTitleCase(attr)}0`] || result[`get${toTitleCase(attr)}0`],
+        props[getKey] || result[getKey],
+        props[get0Key] || result[get0Key],
         props[`${attr}Type`]
       );
       if (props[`${attr}Padding`]) {
