@@ -59,7 +59,7 @@ class Animation extends PureComponent {
     this._updateInterpolator(props);
   }
 
-  UNSAFE_componentWillUpdate(props) {
+  componentDidUpdate(props) {
     this._updateInterpolator(this.props, props);
     if (props.onStart) {
       props.onStart();
