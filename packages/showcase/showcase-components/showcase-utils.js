@@ -14,7 +14,7 @@ export function mapSection(section) {
   return (
     <section key={`${name}-index`}>
       <div className="section-header">
-        <h3 className="section-title">{name}</h3>
+        {name && <h3 className="section-title">{name}</h3>}
         <div className="flex">
           {exampleLink && (
             <a {...linkProps} href={exampleLink}>
