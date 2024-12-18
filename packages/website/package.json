@@ -1,5 +1,5 @@
 {
-  "name": "react-vis-website",
+  "name": "@uber/react-vis-website",
   "private": true,
   "version": "1.0.0",
   "description": "A composable charting library",
