@@ -1,3 +1,5 @@
+[![Deploy on Hostinger](https://assets.hostinger.com/vps/deploy.svg)](https://www.hostinger.com/web-apps-hosting)
+
 <p align="right">
   <a href="./DEPRECATED.md">
     <img src="https://img.shields.io/maintenance/no/2020?style=flat-square" alt="deprecated" />
